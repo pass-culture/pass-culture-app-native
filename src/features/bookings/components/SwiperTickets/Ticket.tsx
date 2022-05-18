@@ -99,15 +99,15 @@ export function Ticket({ booking, activationCodeFeatureEnabled }: TicketsProps) 
   )
 }
 
-const SwiperTicketsControlsContainer = styled.View({
-  alignItems: 'center',
-})
-
 const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   width,
   paddingVertical: getSpacing(2),
 }))
+
+const SwiperTicketsControlsContainer = styled.View({
+  alignItems: 'center',
+})
 
 const Separator = () => <Spacer.Row numberOfSpaces={SEPARATOR_VALUE} />

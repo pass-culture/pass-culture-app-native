@@ -302,350 +302,340 @@ exports[`BookingDetails should render correctly 1`] = `
           ]
         }
       />
-      <View
-        style={
+      <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        bounces={false}
+        contentContainerStyle={
+          Object {
+            "paddingHorizontal": 117.60000000000002,
+          }
+        }
+        data={
           Array [
-            Object {
-              "alignItems": "center",
-            },
+            <TicketWithContent
+              activationCodeFeatureEnabled={false}
+              booking={
+                Object {
+                  "cancellationDate": null,
+                  "cancellationReason": null,
+                  "confirmationDate": "2021-03-15T23:01:37.925926",
+                  "dateUsed": null,
+                  "expirationDate": null,
+                  "externalBookings": Array [],
+                  "id": 123,
+                  "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
+                  "quantity": 10,
+                  "stock": Object {
+                    "beginningDatetime": "2021-03-15T20:00:00",
+                    "id": 150230,
+                    "offer": Object {
+                      "extraData": Object {
+                        "isbn": "123456789",
+                      },
+                      "id": 147874,
+                      "isDigital": true,
+                      "isPermanent": false,
+                      "name": "Avez-vous déjà vu ?",
+                      "subcategoryId": "EVENEMENT_PATRIMOINE",
+                      "venue": Object {
+                        "city": "Drancy",
+                        "coordinates": Object {
+                          "latitude": 48.91683,
+                          "longitude": 2.43884,
+                        },
+                        "id": 2185,
+                        "name": "Maison de la Brique",
+                      },
+                      "withdrawalDetails": null,
+                    },
+                  },
+                  "token": "352UW4",
+                  "totalAmount": 1900,
+                }
+              }
+              testID="ticket-without-external-bookings-information"
+            />,
           ]
         }
+        decelerationRate="fast"
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={true}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={740.8}
+        stickyHeaderIndices={Array []}
+        viewabilityConfigCallbackPairs={Array []}
       >
-        <RCTScrollView
-          ItemSeparatorComponent={[Function]}
-          bounces={false}
-          contentContainerStyle={
-            Object {
-              "paddingHorizontal": 91.875,
+        <View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
             }
-          }
-          data={
-            Array [
-              <TicketWithContent
-                activationCodeFeatureEnabled={false}
-                booking={
-                  Object {
-                    "cancellationDate": null,
-                    "cancellationReason": null,
-                    "confirmationDate": "2021-03-15T23:01:37.925926",
-                    "dateUsed": null,
-                    "expirationDate": null,
-                    "externalBookings": Array [],
-                    "id": 123,
-                    "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
-                    "quantity": 10,
-                    "stock": Object {
-                      "beginningDatetime": "2021-03-15T20:00:00",
-                      "id": 150230,
-                      "offer": Object {
-                        "extraData": Object {
-                          "isbn": "123456789",
-                        },
-                        "id": 147874,
-                        "isDigital": true,
-                        "isPermanent": false,
-                        "name": "Avez-vous déjà vu ?",
-                        "subcategoryId": "EVENEMENT_PATRIMOINE",
-                        "venue": Object {
-                          "city": "Drancy",
-                          "coordinates": Object {
-                            "latitude": 48.91683,
-                            "longitude": 2.43884,
-                          },
-                          "id": 2185,
-                          "name": "Maison de la Brique",
-                        },
-                        "withdrawalDetails": null,
-                      },
-                    },
-                    "token": "352UW4",
-                    "totalAmount": 1900,
-                  }
-                }
-                testID="ticket-without-external-bookings-information"
-              />,
-            ]
-          }
-          decelerationRate="fast"
-          getItem={[Function]}
-          getItemCount={[Function]}
-          horizontal={true}
-          keyExtractor={[Function]}
-          onContentSizeChange={[Function]}
-          onLayout={[Function]}
-          onMomentumScrollBegin={[Function]}
-          onMomentumScrollEnd={[Function]}
-          onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onScrollEndDrag={[Function]}
-          removeClippedSubviews={false}
-          renderItem={[Function]}
-          scrollEventThrottle={50}
-          showsHorizontalScrollIndicator={false}
-          snapToInterval={582.25}
-          stickyHeaderIndices={Array []}
-          viewabilityConfigCallbackPairs={Array []}
-        >
-          <View>
+          >
             <View
-              onLayout={[Function]}
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
+                    "alignItems": "center",
+                    "justifyContent": "flex-end",
+                    "paddingVertical": 8,
+                    "width": 724.8,
                   },
-                  null,
                 ]
               }
+              width={724.8}
             >
               <View
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "justifyContent": "flex-end",
-                      "paddingVertical": 8,
-                      "width": 566.25,
+                      "flexDirection": "column",
+                      "justifyContent": "center",
+                      "shadowColor": "#161617",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.1,
+                      "shadowRadius": 3,
                     },
                   ]
                 }
-                width={566.25}
+                testID="ticket-without-external-bookings-information"
               >
+                <View
+                  height={48.54368932038835}
+                  width={300}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
                 <View
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "flexDirection": "column",
-                        "justifyContent": "center",
-                        "shadowColor": "#161617",
-                        "shadowOffset": Object {
-                          "height": 2,
-                          "width": 0,
-                        },
-                        "shadowOpacity": 0.1,
-                        "shadowRadius": 3,
+                        "backgroundColor": "#ffffff",
+                        "maxWidth": "100%",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": 295,
                       },
                     ]
                   }
-                  testID="ticket-without-external-bookings-information"
+                  width={295}
                 >
-                  <View
-                    height={48.54368932038835}
-                    width={300}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
                   <View
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "maxWidth": "100%",
-                          "paddingBottom": 8,
-                          "paddingLeft": 8,
-                          "paddingRight": 8,
-                          "paddingTop": 8,
-                          "width": 295,
+                          "justifyContent": "center",
+                          "minHeight": 192,
+                          "width": "100%",
                         },
                       ]
                     }
-                    width={295}
                   >
-                    <View
+                    <Text
                       style={
                         Array [
                           Object {
-                            "justifyContent": "center",
-                            "minHeight": 192,
-                            "width": "100%",
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 20,
+                            "lineHeight": 24,
+                            "maxWidth": "100%",
+                            "paddingHorizontal": 8,
+                            "textAlign": "center",
                           },
                         ]
                       }
                     >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 20,
-                              "lineHeight": 24,
-                              "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Avez-vous déjà vu ?
-                      </Text>
+                      Avez-vous déjà vu ?
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "paddingHorizontal": 8,
+                            "paddingTop": 24,
+                          },
+                        ]
+                      }
+                    >
                       <View
-                        numberOfSpaces={2}
-                        style={
-                          Array [
-                            Object {
-                              "height": 8,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "paddingHorizontal": 8,
-                              "paddingTop": 24,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityState={
-                            Object {
-                              "disabled": true,
-                            }
+                        accessibilityState={
+                          Object {
+                            "disabled": true,
                           }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={false}
-                          nativeID="animatedComponent"
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={false}
+                        nativeID="animatedComponent"
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "opacity": 1,
+                            "userSelect": "auto",
+                          }
+                        }
+                      >
+                        <Text
+                          fontSize={24}
                           style={
-                            Object {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 24,
+                                "lineHeight": 28,
+                              },
+                              Object {
+                                "color": "#eb0055",
+                                "paddingBottom": 16,
+                                "textAlign": "center",
+                              },
+                            ]
                           }
                         >
-                          <Text
-                            fontSize={24}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 24,
-                                  "lineHeight": 28,
-                                },
-                                Object {
-                                  "color": "#eb0055",
-                                  "paddingBottom": 16,
-                                  "textAlign": "center",
-                                },
-                              ]
-                            }
-                          >
-                            352UW4
+                          352UW4
+                        </Text>
+                      </View>
+                      <View
+                        accessibilityLabel="Accéder à l'offre"
+                        accessibilityRole="link"
+                        accessibilityState={
+                          Object {
+                            "disabled": false,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        nativeID="animatedComponent"
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "borderRadius": 24,
+                            "justifyContent": "center",
+                            "opacity": 1,
+                            "overflow": "hidden",
+                            "userSelect": "auto",
+                          }
+                        }
+                        testID="Accéder à l'offre"
+                      >
+                        <View
+                          height={48}
+                          width="100%"
+                        >
+                          <Text>
+                            undefined-SVG-Mock
                           </Text>
                         </View>
                         <View
-                          accessibilityLabel="Accéder à l'offre"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            Object {
-                              "disabled": false,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          nativeID="animatedComponent"
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
-                              "alignItems": "center",
-                              "borderRadius": 24,
-                              "justifyContent": "center",
-                              "opacity": 1,
-                              "overflow": "hidden",
-                              "userSelect": "auto",
-                            }
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "position": "absolute",
+                              },
+                            ]
                           }
-                          testID="Accéder à l'offre"
                         >
                           <View
-                            height={48}
-                            width="100%"
+                            height={24}
+                            width={24}
                           >
                             <Text>
                               undefined-SVG-Mock
                             </Text>
                           </View>
-                          <View
+                          <Text
+                            adjustsFontSizeToFit={true}
+                            isDisabled={false}
+                            numberOfLines={1}
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "position": "absolute",
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "paddingBottom": 8,
+                                  "paddingLeft": 8,
+                                  "paddingRight": 8,
+                                  "paddingTop": 8,
                                 },
                               ]
                             }
                           >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <Text
-                              adjustsFontSizeToFit={true}
-                              isDisabled={false}
-                              numberOfLines={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "paddingBottom": 8,
-                                    "paddingLeft": 8,
-                                    "paddingRight": 8,
-                                    "paddingTop": 8,
-                                  },
-                                ]
-                              }
-                            >
-                              Accéder à l'offre
-                            </Text>
-                          </View>
+                            Accéder à l'offre
+                          </Text>
                         </View>
                       </View>
                     </View>
                   </View>
-                  <View
-                    height={48.54368932038835}
-                    width={300}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
+                </View>
+                <View
+                  height={48.54368932038835}
+                  width={300}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
                 </View>
               </View>
             </View>
           </View>
-        </RCTScrollView>
-      </View>
+        </View>
+      </RCTScrollView>
       <View
         style={
           Array [

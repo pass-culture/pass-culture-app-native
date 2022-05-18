@@ -9,35 +9,33 @@ export type TicketsProps = {
 }
 
 export function getMultipleTickets({ booking, activationCodeFeatureEnabled }: TicketsProps) {
-  if (booking.externalBookings) {
-    if (booking.externalBookings.length === 0)
-      return {
-        tickets: [
-          <TicketWithContent
-            key={booking.id}
-            booking={booking}
-            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-            testID="ticket-without-external-bookings-information"
-          />,
-        ],
-      }
+  if (!booking.externalBookings) return { tickets: [] }
 
-    const totalSeatsIndex = booking.externalBookings.length
+  if (booking.externalBookings.length === 0)
     return {
-      tickets: booking.externalBookings.map((infos, index) => {
-        const seatIndex = totalSeatsIndex > 1 ? `${index + 1}/${totalSeatsIndex}` : undefined
-        return (
-          <TicketWithContent
-            key={index}
-            booking={booking}
-            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-            externalBookings={{ ...infos, seatIndex }}
-            testID="ticket-with-external-bookings-information"
-          />
-        )
-      }),
+      tickets: [
+        <TicketWithContent
+          key={booking.id}
+          booking={booking}
+          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+          testID="ticket-without-external-bookings-information"
+        />,
+      ],
     }
-  }
 
-  return { tickets: [] }
+  const totalSeatsIndex = booking.externalBookings.length
+  return {
+    tickets: booking.externalBookings.map(({ seat, barcode }, index) => {
+      const seatIndex = totalSeatsIndex > 1 ? `${index + 1}/${totalSeatsIndex}` : undefined
+      return (
+        <TicketWithContent
+          key={index}
+          booking={booking}
+          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+          externalBookings={{ seat: seat === null ? undefined : seat, seatIndex, barcode }}
+          testID="ticket-with-external-bookings-information"
+        />
+      )
+    }),
+  }
 }
