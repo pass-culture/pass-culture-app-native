@@ -4,6 +4,7 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAppSettings } from 'features/auth/settings'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -32,6 +33,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
+  const { data: appSettings } = useAppSettings()
+  const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
 
   function onFocus() {
     setIsFocus(true)
@@ -55,12 +58,12 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         isFocus={isFocus}
         focusOutlineColor={focusOutlineColor}>
         <Spacer.Row numberOfSpaces={1} />
-        {!!LeftIcon && (
+        {!!LeftIcon && !appEnableSearchHomepageRework ? (
           <React.Fragment>
             <LeftIcon />
             <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>
-        )}
+        ) : null}
         <BaseTextInput
           {...nativeProps}
           nativeID={searchInputID}
