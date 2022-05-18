@@ -6,7 +6,7 @@ import { WithdrawalTypeEnum } from 'api/gen'
 import {
   getDelayMessage,
   getStartMessage,
-} from 'features/bookings/components/TicketBody/ticketMessages'
+} from 'features/bookings/components/TicketBody/DefaultBody/defaultBodyMessages'
 import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -27,7 +27,6 @@ export const DefaultBody: FunctionComponent<Props> = ({ withdrawalType, withdraw
           <BicolorEmailSent />
         </IconContainer>
       )}
-
       <WithDrawalContainer testID="withdrawal-info">
         {startMessage}
         {!!delayMessage && (
