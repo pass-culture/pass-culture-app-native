@@ -525,6 +525,7 @@ export const theme: AppThemeType = {
       small: buttonHeights.small,
       tall: buttonHeights.tall,
       inline: buttonHeights.inline,
+      extraSmall: buttonHeights.extraSmall,
     },
     outlineColor: ColorsEnum.ACCENT,
     loading: {

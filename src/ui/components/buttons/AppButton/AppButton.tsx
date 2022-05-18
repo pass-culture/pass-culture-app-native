@@ -36,6 +36,7 @@ const _AppButton = <T extends AppButtonProps>({
   style,
   loadingIndicator: LoadingIndicator,
   center,
+  ellipsizeMode,
 }: OnlyBaseButtonProps<T>) => {
   const pressHandler: AppButtonEventNative =
     disabled || isLoading ? undefined : (onPress as AppButtonEventNative)
@@ -64,6 +65,7 @@ const _AppButton = <T extends AppButtonProps>({
         adjustsFontSizeToFit={adjustsFontSizeToFit}
         numberOfLines={numberOfLines}
         wording={wording}
+        ellipsizeMode={ellipsizeMode}
       />
     </TouchableOpacityButton>
   )

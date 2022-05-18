@@ -9,6 +9,7 @@ export const DESKTOP_CONTENT_MAX_WIDTH = getSpacing(125)
 // buttons
 export const TALL_BUTTON_HEIGHT = getSpacing(12)
 export const SMALL_BUTTON_HEIGHT = getSpacing(10)
+export const EXTRA_SMALL_BUTTON_HEIGHT = getSpacing(8)
 export const DEFAULT_INLINE_BUTTON_HEIGHT = getSpacing(4)
 
 // icons used for Secondary buttons or bigger should be imported with STANDARD_ICON_SIZE

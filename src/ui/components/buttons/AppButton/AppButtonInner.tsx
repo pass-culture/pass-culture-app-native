@@ -12,6 +12,7 @@ export function AppButtonInner({
   adjustsFontSizeToFit = false,
   numberOfLines = 1,
   wording,
+  ellipsizeMode,
 }: AppButtonInnerProps) {
   return (
     <Fragment>
@@ -23,7 +24,10 @@ export function AppButtonInner({
         <Fragment>
           {!!Icon && <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />}
           {!!Title && (
-            <Title adjustsFontSizeToFit={adjustsFontSizeToFit} numberOfLines={numberOfLines}>
+            <Title
+              adjustsFontSizeToFit={adjustsFontSizeToFit}
+              numberOfLines={numberOfLines}
+              ellipsizeMode={ellipsizeMode}>
               {wording}
             </Title>
           )}
