@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { CulturalSurveyAnswersRequest, CulturalSurveyQuestionsResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { shouldShowCulturalSurvey } from 'features/culturalSurvey/helpers/utils'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_CULTURAL_SURVEY_QUESTIONS = 5 * 60 * 1000

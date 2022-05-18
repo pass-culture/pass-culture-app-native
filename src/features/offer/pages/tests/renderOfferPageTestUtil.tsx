@@ -41,7 +41,7 @@ const baseUser = {
   domainsCredit: mockDomainsCredit,
 }
 let mockedUser: Partial<UserProfileResponse> = baseUser
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>
       ({

@@ -36,7 +36,7 @@ let mockUserProfileData: Partial<UserProfileResponse> = {
   domainsCredit: { all: { initial: 3000, remaining: 3000 } },
 }
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     refetch: jest.fn(() =>
       Promise.resolve({

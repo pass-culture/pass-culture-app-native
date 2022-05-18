@@ -1,7 +1,8 @@
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { UserProfileResponse, UserProfileUpdateRequest } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
 export enum CHANGE_EMAIL_ERROR_CODE {
@@ -44,5 +45,17 @@ export function useResetRecreditAmountToShow({
   return useMutation(() => api.postnativev1resetRecreditAmountToShow(), {
     onSuccess,
     onError,
+  })
+}
+
+const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
+
+export function useUserProfileInfo(options = {}) {
+  const { isLoggedIn } = useAuthContext()
+
+  return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
+    enabled: isLoggedIn,
+    staleTime: STALE_TIME_USER_PROFILE,
+    ...options,
   })
 }

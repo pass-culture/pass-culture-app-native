@@ -9,7 +9,7 @@ import { RecreditBirthdayNotification } from '../RecreditBirthdayNotification'
 
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => {
     const birthdate = new Date()
     birthdate.setFullYear(birthdate.getFullYear() - 15)
@@ -24,6 +24,9 @@ jest.mock('features/home/api', () => ({
         },
       } as UserProfileResponse,
     }
+  }),
+  useResetRecreditAmountToShow: jest.fn().mockReturnValue({
+    mutate: jest.fn(),
   }),
 }))
 

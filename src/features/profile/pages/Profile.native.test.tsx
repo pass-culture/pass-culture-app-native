@@ -32,7 +32,7 @@ jest.mock('@react-navigation/bottom-tabs', () =>
   jest.requireActual('@react-navigation/bottom-tabs')
 )
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>
       ({

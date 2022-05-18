@@ -5,9 +5,9 @@ import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import * as HomeAPI from 'features/home/api'
 import { BusinessModule } from 'features/home/components'
 import { BusinessPane } from 'features/home/contentful'
+import * as profileAPI from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
@@ -36,7 +36,7 @@ const props: BusinessPane = {
 
 describe('BusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
-  const homeAPISpy = jest.spyOn(HomeAPI, 'useUserProfileInfo')
+  const homeAPISpy = jest.spyOn(profileAPI, 'useUserProfileInfo')
 
   it('should render correctly - with leftIcon = Idea by default', () => {
     const { toJSON } = renderModule(props)

@@ -15,7 +15,7 @@ const domains_credit_v2 = {
   digital: { initial: 20000, remaining: 5000 },
 }
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 
 describe('BeneficiaryHeader', () => {
   it('should render properly with deposit version 1', () => {

@@ -29,7 +29,7 @@ const user: UserProfileResponse = {
   },
 }
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,

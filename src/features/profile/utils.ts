@@ -1,7 +1,7 @@
 import { UserProfileResponse, DomainsCredit, UserRole, EligibilityType } from 'api/gen/api'
-import { useUserProfileInfo } from 'features/home/api'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { Again } from 'ui/svg/icons/Again'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'

@@ -3,11 +3,11 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 const mockedIsUserExBeneificiary = mocked(isUserExBeneficiary)

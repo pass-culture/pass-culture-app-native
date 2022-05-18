@@ -20,7 +20,7 @@ import { server } from 'tests/server'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
 
 const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]

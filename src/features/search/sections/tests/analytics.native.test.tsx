@@ -25,7 +25,7 @@ jest.mock('features/search/components', () => ({
     visible ? 'CalendarPicker' : 'NoCalendar',
 }))
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
 }))
 

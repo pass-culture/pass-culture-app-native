@@ -2,8 +2,8 @@ import omit from 'lodash.omit'
 import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
 import { HomepageEntry, TagId } from 'features/home/contentful'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 
 const scorePlaylistByTags = (

@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 
+import { useVenueModule } from 'features/home/api/useVenueModule'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { DisplayParametersFields, VenuesSearchParametersFields } from 'features/home/contentful'
-import { useVenueModule } from 'features/home/pages/useVenueModule'
 import { useGeolocation } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
 import { PassPlaylist } from 'ui/components/PassPlaylist'

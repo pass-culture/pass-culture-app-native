@@ -14,7 +14,7 @@ jest.mock('react-query')
 
 const mockedUseMutation = mocked(useMutation)
 const mockDismissModal = jest.fn()
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     data: { firstName: 'Christophe', lastName: 'Dupont', isBeneficiary: true },
   })),

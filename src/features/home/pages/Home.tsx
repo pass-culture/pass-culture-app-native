@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components/native'
 
 import { useHomepageModules } from 'features/home/api'
+import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import {
   BusinessModule,
   ExclusivityModule,
@@ -21,7 +22,6 @@ import { HomeHeader } from 'features/home/components/HomeHeader'
 import { RecommendationModule } from 'features/home/components/RecommendationModule'
 import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
 import { RecommendationPane, ProcessedModule } from 'features/home/contentful/moduleTypes'
-import { useShowSkeleton } from 'features/home/pages/useShowSkeleton'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useABTestingContext } from 'libs/ABTesting'
@@ -56,7 +56,13 @@ const renderModule = ({ item, index }: { item: ProcessedModule; index: number })
     return <VenuesModule moduleId={item.moduleId} display={item.display} search={item.search} />
 
   if (item instanceof RecommendationPane)
-    return <RecommendationModule index={index} display={item.display} />
+    return (
+      <RecommendationModule
+        index={index}
+        displayParameters={item.displayParameters}
+        recommendationParameters={item.recommendationParameters}
+      />
+    )
 
   if (item instanceof ExclusivityPane)
     return (

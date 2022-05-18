@@ -1,6 +1,6 @@
 import { FavoriteOfferResponse, OfferResponse, UserProfileResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
 import { useOffer } from 'features/offer/api/useOffer'
+import { useUserProfileInfo } from 'features/profile/api'
 
 import { getOfferPrice } from './getOfferPrice'
 

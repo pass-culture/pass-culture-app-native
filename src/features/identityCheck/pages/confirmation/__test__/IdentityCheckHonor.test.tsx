@@ -12,7 +12,7 @@ import { act, fireEvent, render, useMutationFactory } from 'tests/utils'
 jest.mock('react-query')
 
 let mockUserProfile: UserProfileResponse = nonBeneficiaryUser
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     refetch: jest.fn(() =>
       Promise.resolve({

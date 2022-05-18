@@ -41,7 +41,7 @@ jest.mock('features/auth/api', () => ({
 jest.mock('features/profile/utils')
 
 jest.mock('features/auth/settings')
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = {

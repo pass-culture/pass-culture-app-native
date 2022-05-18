@@ -8,6 +8,7 @@ export const CONTENT_TYPES = {
   INFORMATION: 'information',
   BUSINESS: 'business',
   RECOMMENDATION: 'recommendation',
+  RECOMMENDATION_PARAMETERS: 'recommendation_parameters',
   VENUES_PLAYLIST: 'venuesPlaylist',
   VENUES_SEARCH_PARAMETERS: 'venuesSearchParameters',
 }
@@ -126,6 +127,11 @@ export interface ExcluDisplayParameters {
   fields: ExclusivityDisplayParametersFields
 }
 
+export interface RecommendationParameters {
+  sys: Sys<typeof CONTENT_TYPES.RECOMMENDATION_PARAMETERS>
+  fields: RecommendationParametersFields
+}
+
 export interface Cover {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
   fields: CoverFields
@@ -157,6 +163,7 @@ export interface VenuesFields {
 export interface RecommendationFields {
   title: string
   displayParameters: DisplayParameters
+  recommendationParameters?: RecommendationParameters
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
@@ -222,6 +229,18 @@ export interface ExclusivityFields {
   image: Image
   offerId: string
   displayParameters?: ExcluDisplayParameters
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendationSearchParameters/fields
+export interface RecommendationParametersFields {
+  title: string
+  categories?: string[]
+  beginningDatetime?: string
+  endingDatetime?: string
+  newestOnly?: boolean
+  isFree?: boolean
+  isEvent?: boolean
+  priceMax?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields

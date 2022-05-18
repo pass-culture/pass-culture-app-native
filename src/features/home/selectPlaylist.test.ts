@@ -10,7 +10,7 @@ const defaultUser: Partial<UserProfileResponse> = { roles: [UserRole.BENEFICIARY
 const underageUser = { ...defaultUser, roles: [UserRole.UNDERAGE_BENEFICIARY] }
 
 let mockedUser = defaultUser
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: mockedUser })),
 }))
 

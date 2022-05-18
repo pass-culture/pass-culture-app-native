@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { AuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -22,7 +22,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 jest.mock('react-query')
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 
 describe('<EighteenBirthdayCard />', () => {

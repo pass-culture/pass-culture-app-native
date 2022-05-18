@@ -1,5 +1,5 @@
 import { UserProfileResponse } from 'api/gen/api'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { computeCredit } from 'features/profile/utils'
 
 export type Credit = { amount: number; isExpired: boolean }

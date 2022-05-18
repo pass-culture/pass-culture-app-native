@@ -2,8 +2,8 @@ import uniqBy from 'lodash.uniqby'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { useUserProfileInfo } from 'features/home/api'
 import { SearchParametersFields } from 'features/home/contentful'
+import { useUserProfileInfo } from 'features/profile/api'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {

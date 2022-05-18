@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/analytics'

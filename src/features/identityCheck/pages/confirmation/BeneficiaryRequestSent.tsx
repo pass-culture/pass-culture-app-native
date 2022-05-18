@@ -7,8 +7,8 @@ import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
-import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'

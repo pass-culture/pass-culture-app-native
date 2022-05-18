@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'

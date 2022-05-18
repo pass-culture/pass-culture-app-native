@@ -10,7 +10,7 @@ import {
   matchSubscriptionMessageIconToSvg,
   isUserExBeneficiary,
   shouldOpenInbox,
-} from './utils'
+} from '../utils'
 
 jest.mock('react-native-email-link')
 jest.mock('features/navigation/helpers')

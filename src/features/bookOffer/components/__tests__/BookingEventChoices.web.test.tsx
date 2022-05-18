@@ -33,7 +33,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   })),
 }))
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     data: {
       id: 1,

@@ -34,7 +34,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     refetch: jest.fn(() =>
       Promise.resolve({

@@ -8,15 +8,18 @@ import { flushAllPromises, render } from 'tests/utils'
 
 import { Home } from '../Home'
 
-jest.mock('features/home/pages/useShowSkeleton', () => ({
+jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
 useRoute.mockImplementation(() => ({ params: { entryId: 'specific_entry_id' } }))
 
 let mockUserProfileInfo: Partial<UserProfileResponse> | undefined = undefined
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: mockUserProfileInfo })),
+}))
+
+jest.mock('features/home/api', () => ({
   useHomepageModules: () => [],
 }))
 

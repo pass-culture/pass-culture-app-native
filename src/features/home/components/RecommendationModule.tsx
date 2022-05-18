@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { useUserProfileInfo } from 'features/home/api'
+import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/atoms'
-import { DisplayParametersFields } from 'features/home/contentful'
+import { DisplayParametersFields, RecommendationParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
-import { useHomeRecommendedHits } from 'features/home/pages/useHomeRecommendedHits'
+import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -15,31 +15,32 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 type RecommendationModuleProps = {
-  display: DisplayParametersFields
+  displayParameters: DisplayParametersFields
   index: number
+  recommendationParameters?: RecommendationParametersFields
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { display, index } = props
+  const { displayParameters, index, recommendationParameters } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const hits = useHomeRecommendedHits(profile?.id, position)
+  const hits = useHomeRecommendedHits(profile?.id, position, recommendationParameters)
   const nbHits = hits?.length || 0
-  const shouldModuleBeDisplayed = nbHits > display.minOffers
+  const shouldModuleBeDisplayed = nbHits > displayParameters.minOffers
 
-  const moduleName = display.title
+  const moduleName = displayParameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, nbHits)
   )
 
   useEffect(() => {
     if (nbHits > 0 && shouldModuleBeDisplayed) {
-      analytics.logRecommendationModuleSeen(display.title, nbHits)
+      analytics.logRecommendationModuleSeen(displayParameters.title, nbHits)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nbHits])
@@ -70,13 +71,13 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     [position, profile?.isBeneficiary]
   )
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
     <PassPlaylist
       testID="recommendationModuleList"
-      title={display.title}
+      title={displayParameters.title}
       onDarkBackground={index === 0}
       data={hits || []}
       itemHeight={itemHeight}
