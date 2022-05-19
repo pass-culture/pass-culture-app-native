@@ -1,13 +1,15 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
+import { View, Platform, AccessibilityRole } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AriaLive } from 'ui/components/AriaLive'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { getSpacing } from 'ui/theme'
+import { HiddenAccessibleText } from 'ui/web/text/HiddenAccessibleText'
 
 type Props = {
   password: string
+  visible?: boolean
   nativeID?: string
 }
 
@@ -47,27 +49,39 @@ function containsSpecialCharacter(password: string): boolean {
   return password.match(SPECIAL_CHARACTER_REGEX) ? true : false
 }
 
-export const PasswordSecurityRules: FunctionComponent<Props> = ({ password, nativeID }) => {
+export const PasswordSecurityRules: FunctionComponent<Props> = ({
+  password,
+  visible = true,
+  nativeID,
+}) => {
   return (
-    <RulesContainer nativeID={nativeID} accessibilityLabel={t`Critères à respecter`}>
-      <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
-      <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
-      <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />
-      <PasswordRule title={t`1 Chiffre`} isValidated={containsNumber(password)} />
-      <PasswordRule
-        title={t`1 Caractère spécial (!@#$%^&*...)`}
-        isValidated={containsSpecialCharacter(password)}
-      />
-      <AriaLive liveType="assertive">
-        {isPasswordCorrect(password) ? t`Tous les critères sont validés` : ''}
-      </AriaLive>
-    </RulesContainer>
+    <React.Fragment>
+      <HiddenAccessibleText id={nativeID}>
+        {t`Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial`}
+      </HiddenAccessibleText>
+      <RulesContainer isVisible={visible}>
+        {!!visible && (
+          <React.Fragment>
+            <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
+            <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
+            <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />
+            <PasswordRule title={t`1 Chiffre`} isValidated={containsNumber(password)} />
+            <PasswordRule
+              title={t`1 Caractère spécial (!@#$%^&*...)`}
+              isValidated={containsSpecialCharacter(password)}
+            />
+          </React.Fragment>
+        )}
+      </RulesContainer>
+    </React.Fragment>
   )
 }
 
-const RulesContainer = styled.View(({ theme }) => ({
+const RulesContainer = styled(View).attrs({
+  accessibilityRole: Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined,
+})<{ isVisible?: boolean }>(({ theme, isVisible }) => ({
   alignItems: 'flex-start',
   width: '100%',
   maxWidth: theme.forms.maxWidth,
-  paddingTop: getSpacing(2),
+  paddingTop: isVisible ? getSpacing(2) : 0,
 }))
