@@ -1,5 +1,4 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
@@ -11,7 +10,7 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { render, fireEvent } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -53,36 +52,33 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 }))
 
 describe('SearchDetails component', () => {
-  it('should call mockStagedDispatch() when typing', () => {
-    const { getByTestId } = render(<SearchDetails />)
-    const searchInput = getByTestId('searchInput')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
-    fireEvent.changeText(searchInput, 'Ma')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Ma' })
-    fireEvent.changeText(searchInput, 'Mama')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Mama' })
-  })
-
   it('should redirect to search home on arrow left click', async () => {
     const { getByTestId } = render(<SearchDetails />)
     const previousBtn = getByTestId('previousBtn')
 
-    fireEvent.press(previousBtn)
-    await superFlushWithAct()
+    await fireEvent.press(previousBtn)
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
-    })
+    expect(navigate).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('TabNavigator', { params: undefined, screen: 'Search' })
   })
 
-  it('should call logSearchQuery on submit', () => {
-    const { getByPlaceholderText } = render(<SearchDetails />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
+  it('should log search query on submit', async () => {
+    const { getByTestId } = render(<SearchDetails />)
+    const searchInput = getByTestId('searchInput')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    await fireEvent(searchInput, 'onChangeText', 'jazzaza')
+    await fireEvent(searchInput, 'onSubmitEditing')
 
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
+  })
+
+  it('should redirect on search on submit', async () => {
+    const { getByTestId } = render(<SearchDetails />)
+    const searchInput = getByTestId('searchInput')
+
+    await fireEvent(searchInput, 'onChangeText', 'jazzaza')
+    await fireEvent(searchInput, 'onSubmitEditing')
+
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         query: 'jazzaza',
@@ -92,5 +88,26 @@ describe('SearchDetails component', () => {
         priceRange: mockStagedSearchState.priceRange,
       })
     )
+  })
+
+  it('should show the text type by the user', async () => {
+    const { getByTestId } = render(<SearchDetails />)
+
+    const searchInput = getByTestId('searchInput')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
+
+    expect(searchInput.props.value).toBe('Some text')
+  })
+
+  it('should reset input when user click on reset icon', async () => {
+    const { getByTestId } = render(<SearchDetails />)
+
+    const searchInput = getByTestId('searchInput')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
+
+    const resetIcon = getByTestId('resetSearchInput')
+    await fireEvent.press(resetIcon)
+
+    expect(searchInput.props.value).toBe('')
   })
 })
