@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const Ean: FunctionComponent<Props> = ({ offer }) => (
-  <EANContainer>
+  <EANContainer testID="ean">
     <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
     <DarkGreyCaption>{offer.extraData?.isbn}</DarkGreyCaption>
   </EANContainer>
