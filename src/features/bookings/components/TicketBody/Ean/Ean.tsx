@@ -2,17 +2,16 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponse } from 'api/gen'
 import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
-  offer: BookingOfferResponse
+  isbn: string
 }
 
-export const Ean: FunctionComponent<Props> = ({ offer }) => (
+export const Ean: FunctionComponent<Props> = ({ isbn }) => (
   <EANContainer testID="ean">
     <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
-    <DarkGreyCaption>{offer.extraData?.isbn}</DarkGreyCaption>
+    <DarkGreyCaption>{isbn}</DarkGreyCaption>
   </EANContainer>
 )
 

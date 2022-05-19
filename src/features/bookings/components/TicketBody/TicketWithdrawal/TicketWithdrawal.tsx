@@ -15,7 +15,7 @@ type Props = {
   withdrawalDelay: number
 }
 
-export const DefaultBody: FunctionComponent<Props> = ({ withdrawalType, withdrawalDelay }) => {
+export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, withdrawalDelay }) => {
   const startMessage = getStartMessage(withdrawalType)
   const delayMessage = getDelayMessage(withdrawalDelay)
   const endMessage = t`avant le début de l’événement.`

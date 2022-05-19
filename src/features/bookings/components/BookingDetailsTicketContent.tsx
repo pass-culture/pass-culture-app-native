@@ -23,49 +23,71 @@ export const BookingDetailsTicketContent: FunctionComponent<Props> = ({
   booking,
   activationCodeFeatureEnabled,
 }) => {
-  const offer = booking.stock.offer
-  const { isEvent } = useSubcategory(offer.subcategoryId)
+  const { offer, beginningDatetime } = booking.stock
+  const {
+    id: offerId,
+    url: offerUrl,
+    name: offerName,
+    subcategoryId: offerSubcategory,
+    extraData,
+    withdrawalType,
+    withdrawalDelay,
+  } = offer
+
+  const { isEvent } = useSubcategory(offerSubcategory)
   const properties = getBookingProperties(booking, isEvent)
 
-  const categoryId = useCategoryId(offer.subcategoryId)
-  const shouldDisplayEAN = offer.extraData?.isbn && categoryId === CategoryIdEnum.LIVRE
+  const categoryId = useCategoryId(offerSubcategory)
+  const isbn =
+    extraData?.isbn && categoryId === CategoryIdEnum.LIVRE ? <Ean isbn={extraData.isbn} /> : null
 
   const accessOfferButton = (
     <TouchableLink
       as={ButtonWithLinearGradient}
       wording={t`Accéder à l'offre`}
       icon={ExternalSite}
-      externalNav={
-        offer.url ? { url: offer.url, params: { analyticsData: { offerId: offer.id } } } : undefined
-      }
+      externalNav={offerUrl ? { url: offerUrl, params: { analyticsData: { offerId } } } : undefined}
     />
   )
 
   const isDigitalAndActivationCodeEnabled =
     activationCodeFeatureEnabled && properties.hasActivationCode
-  const withdrawalType = booking?.stock?.offer?.withdrawalType || undefined
-  const ticketContent = properties.isDigital ? accessOfferButton : <TicketBody booking={booking} />
+
+  const ticketContent = properties.isDigital ? (
+    accessOfferButton
+  ) : (
+    <TicketBody
+      withdrawalType={withdrawalType || undefined}
+      withdrawalDelay={withdrawalDelay || 0}
+      beginningDatetime={beginningDatetime || undefined}
+      subcategoryId={offerSubcategory}
+      qrCodeData={booking.qrCodeData || undefined}
+    />
+  )
 
   return (
     <Container>
-      <Title>{offer.name}</Title>
+      <Title>{offerName}</Title>
       <Spacer.Column numberOfSpaces={2} />
       <TicketContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
             {!!booking.activationCode && (
-              <TicketCode withdrawalType={withdrawalType} code={booking.activationCode?.code} />
+              <TicketCode
+                withdrawalType={withdrawalType || undefined}
+                code={booking.activationCode.code}
+              />
             )}
             {accessOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <TicketCode withdrawalType={withdrawalType} code={booking.token} />
+            <TicketCode withdrawalType={withdrawalType || undefined} code={booking.token} />
             {ticketContent}
           </React.Fragment>
         )}
       </TicketContent>
-      {!!shouldDisplayEAN && <Ean offer={offer} />}
+      {isbn}
     </Container>
   )
 }
