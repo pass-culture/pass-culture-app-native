@@ -24,7 +24,7 @@ export const DefaultBody: FunctionComponent<Props> = ({ withdrawalType, withdraw
     <React.Fragment>
       {withdrawalType === WithdrawalTypeEnum.by_email && (
         <IconContainer>
-          <BicolorEmailSent />
+          <BicolorEmailSent testID="bicolor-email-sent" />
         </IconContainer>
       )}
       <WithDrawalContainer testID="withdrawal-info">

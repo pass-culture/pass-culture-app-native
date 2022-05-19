@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QrCode/> should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  data-testid="qr-code"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "alignItems": "center",
+      "marginBottom": "12px",
+      "msFlexAlign": "center",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+  >
+    <div
+      className="css-text-901oao"
+      dir="auto"
+    >
+      undefined-SVG-Mock
+    </div>
+  </div>
+</div>
+`;
