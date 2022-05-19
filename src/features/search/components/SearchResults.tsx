@@ -152,7 +152,7 @@ export const SearchResults: React.FC = () => {
           <Spacer.BottomScreen />
         </FilterContainer>
       )}
-      <Container>
+      <Container testID="searchResults">
         <FlatList
           ref={flatListRef}
           testID="searchResultsFlatlist"

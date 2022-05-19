@@ -27,6 +27,16 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+const mockSettings = {
+  appEnableSearchHomepageRework: false,
+}
+
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
 const parameters: SearchState = {
   beginningDatetime: null,
   endingDatetime: null,
@@ -63,5 +73,22 @@ describe('Search component', () => {
     render(reactQueryProviderHOC(<Search />))
     expect(mockDispatch).toBeCalledWith({ type: 'SET_STATE_FROM_NAVIGATE', payload: parameters })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
+  })
+
+  it('should show landing page if not search results and rework search feature flag is not activated', () => {
+    mockSettings.appEnableSearchHomepageRework = false
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByTestId } = render(reactQueryProviderHOC(<Search />))
+    const searchLandingPage = getByTestId('searchLandingPage')
+    expect(searchLandingPage).toBeTruthy()
+  })
+
+  it('should show landing page if search results and rework search feature flag is activated', () => {
+    mockSettings.appEnableSearchHomepageRework = true
+    useRoute.mockReturnValueOnce({ params: parameters })
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByTestId } = render(reactQueryProviderHOC(<Search />))
+    const searchLandingPage = getByTestId('searchLandingPage')
+    expect(searchLandingPage).toBeTruthy()
   })
 })

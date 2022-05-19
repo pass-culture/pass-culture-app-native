@@ -3,10 +3,12 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
+import { analytics } from 'libs/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, superFlushWithAct } from 'tests/utils'
@@ -28,16 +30,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 jest.mock('libs/analytics')
-
-const mockSettings = {
-  appEnableSearchHomepageRework: false,
-}
-
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
+jest.mock('features/auth/settings')
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
@@ -60,8 +53,17 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 }))
 
 describe('SearchDetails component', () => {
+  it('should call mockStagedDispatch() when typing', () => {
+    const { getByTestId } = render(<SearchDetails />)
+    const searchInput = getByTestId('searchInput')
+    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
+    fireEvent.changeText(searchInput, 'Ma')
+    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Ma' })
+    fireEvent.changeText(searchInput, 'Mama')
+    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Mama' })
+  })
+
   it('should redirect to search home on arrow left click', async () => {
-    mockSettings.appEnableSearchHomepageRework = true
     const { getByTestId } = render(<SearchDetails />)
     const previousBtn = getByTestId('previousBtn')
 
@@ -72,5 +74,23 @@ describe('SearchDetails component', () => {
       expect(navigate).toBeCalledTimes(1)
     })
     expect(navigate).toBeCalledWith('TabNavigator', { params: undefined, screen: 'Search' })
+  })
+
+  it('should call logSearchQuery on submit', () => {
+    const { getByPlaceholderText } = render(<SearchDetails />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+
+    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
+    expect(navigate).toBeCalledWith(
+      ...getTabNavConfig('Search', {
+        query: 'jazzaza',
+        showResults: true,
+        offerCategories: mockStagedSearchState.offerCategories,
+        locationFilter: mockStagedSearchState.locationFilter,
+        priceRange: mockStagedSearchState.priceRange,
+      })
+    )
   })
 })
