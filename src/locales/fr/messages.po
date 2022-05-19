@@ -925,6 +925,10 @@ msgstr "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle é
 msgid "Détails de l'offre"
 msgstr "Détails de l'offre"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Détails de la recherche"
+msgstr "Détails de la recherche"
+
 #: src/features/bookOffer/services/useModalContent.tsx
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Détails de la réservation"
@@ -1845,6 +1849,7 @@ msgstr "Nouvel e-mail"
 msgid "Nouvelle fenêtre"
 msgstr "Nouvelle fenêtre"
 
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
@@ -1905,6 +1910,7 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/search/components/SearchBox.tsx
+#: src/features/search/components/SearchDetails.tsx
 msgid "Offre, artiste..."
 msgstr "Offre, artiste..."
 
@@ -2285,6 +2291,10 @@ msgstr "Recherche par catégorie"
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
+#: src/features/search/components/SearchDetails.tsx
+msgid "Recherche récente"
+msgstr "Recherche récente"
+
 #: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
@@ -2391,11 +2401,11 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
+#: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
-#: src/ui/components/GenericErrorPage.tsx
 #: src/ui/components/GenericInfoPage.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/PageHeader.tsx
@@ -3246,8 +3256,8 @@ msgid "Victime de notre succès !"
 msgstr "Victime de notre succès !"
 
 #: src/features/identityCheck/pages/Stepper.tsx
-msgid "Voici les 3 étapes que tu vas devoir suivre."
-msgstr "Voici les 3 étapes que tu vas devoir suivre."
+msgid "Voici les {steps} étapes que tu vas devoir suivre."
+msgstr "Voici les {steps} étapes que tu vas devoir suivre."
 
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/libs/itinerary/useItinerary.ts
@@ -3299,6 +3309,7 @@ msgstr "Vous devez d'abord générer un lien"
 msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
 msgstr "Vérification d'identité"

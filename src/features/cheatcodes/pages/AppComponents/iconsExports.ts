@@ -72,6 +72,7 @@ import { Quote } from 'ui/svg/icons/Quote'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
 import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
@@ -152,6 +153,7 @@ export const SecondaryAndBiggerIcons = {
   ScrollToTop,
   SignOut,
   Share,
+  Smartphone,
   Sun,
   Trash,
   Warning,
