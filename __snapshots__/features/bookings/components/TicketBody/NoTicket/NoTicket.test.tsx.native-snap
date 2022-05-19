@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoTicket/> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "width": "100%",
+      },
+    ]
+  }
+  testID="withdrawal-info-no-ticket"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "marginBottom": 12,
+          "marginTop": -16,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      fill="none"
+      height={109.2}
+      width={140}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "maxWidth": "100%",
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement.
+  </Text>
+</View>
+`;

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ean/> should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  data-testid="ean"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxOrient": "horizontal",
+      "WebkitBoxPack": "center",
+      "WebkitFlexDirection": "row",
+      "WebkitJustifyContent": "center",
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginTop": "12px",
+      "msFlexAlign": "center",
+      "msFlexDirection": "row",
+      "msFlexPack": "center",
+    }
+  }
+>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+      }
+    }
+  >
+    EAN 
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "color": "rgba(105,106,111,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+      }
+    }
+  >
+    123456789
+  </div>
+</div>
+`;

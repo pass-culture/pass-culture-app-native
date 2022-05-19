@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QrCode/> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "marginBottom": 12,
+      },
+    ]
+  }
+  testID="qr-code"
+>
+  <View
+    height={170}
+    width={170}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
+</View>
+`;

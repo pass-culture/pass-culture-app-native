@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoTicket/> should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  data-testid="withdrawal-info-no-ticket"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "alignItems": "center",
+        "marginBottom": "12px",
+        "marginTop": "-16px",
+        "msFlexAlign": "center",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "maxWidth": "100%",
+        "textAlign": "center",
+      }
+    }
+  >
+    Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement.
+  </div>
+</div>
+`;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ean/> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginTop": 12,
+      },
+    ]
+  }
+  testID="ean"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    EAN 
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    123456789
+  </Text>
+</View>
+`;

@@ -374,7 +374,7 @@ msgstr "Billet à retirer sur place dès demain"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "C'est aujourd'hui !"
 msgstr "C'est aujourd'hui !"
 
@@ -950,7 +950,7 @@ msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne l
 msgid "E-mail ou mot de passe incorrect"
 msgstr "E-mail ou mot de passe incorrect"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/Ean/Ean.tsx
 msgid "EAN"
 msgstr "EAN"
 
@@ -2242,7 +2242,7 @@ msgstr "Prénom"
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Présente le code ci-dessus sur place"
 msgstr "Présente le code ci-dessus sur place"
 
@@ -2718,7 +2718,7 @@ msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être com
 msgid "Ton adresse | Profil"
 msgstr "Ton adresse | Profil"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 
@@ -2921,7 +2921,7 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton créd
 msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 
@@ -2973,7 +2973,7 @@ msgstr "Tu ne peux pas choisir une date dans le futur"
 msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/NoTicket/NoTicket.tsx
 msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 msgstr "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 
@@ -3067,7 +3067,7 @@ msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
 msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu vas recevoir ton billet par e-mail"
 msgstr "Tu vas recevoir ton billet par e-mail"
 
@@ -3368,7 +3368,7 @@ msgstr "auteur"
 msgid "autour de toi"
 msgstr "autour de toi"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/DefaultBody/DefaultBody.tsx
 msgid "avant le début de l’événement."
 msgstr "avant le début de l’événement."
 
