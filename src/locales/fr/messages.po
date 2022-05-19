@@ -374,7 +374,7 @@ msgstr "Billet à retirer sur place dès demain"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "C'est aujourd'hui !"
 msgstr "C'est aujourd'hui !"
 
@@ -925,6 +925,10 @@ msgstr "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle é
 msgid "Détails de l'offre"
 msgstr "Détails de l'offre"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Détails de la recherche"
+msgstr "Détails de la recherche"
+
 #: src/features/bookOffer/services/useModalContent.tsx
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Détails de la réservation"
@@ -946,7 +950,7 @@ msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne l
 msgid "E-mail ou mot de passe incorrect"
 msgstr "E-mail ou mot de passe incorrect"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/Ean/Ean.tsx
 msgid "EAN"
 msgstr "EAN"
 
@@ -1905,6 +1909,7 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/search/components/SearchBox.tsx
+#: src/features/search/components/SearchDetails.tsx
 msgid "Offre, artiste..."
 msgstr "Offre, artiste..."
 
@@ -2236,7 +2241,7 @@ msgstr "Prénom"
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Présente le code ci-dessus sur place"
 msgstr "Présente le code ci-dessus sur place"
 
@@ -2284,6 +2289,10 @@ msgstr "Recherche par catégorie"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
+
+#: src/features/search/components/SearchDetails.tsx
+msgid "Recherche récente"
+msgstr "Recherche récente"
 
 #: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre"
@@ -2391,11 +2400,11 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
+#: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
-#: src/ui/components/GenericErrorPage.tsx
 #: src/ui/components/GenericInfoPage.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/PageHeader.tsx
@@ -2708,7 +2717,7 @@ msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être com
 msgid "Ton adresse | Profil"
 msgstr "Ton adresse | Profil"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 
@@ -2911,7 +2920,7 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton créd
 msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 
@@ -2963,7 +2972,7 @@ msgstr "Tu ne peux pas choisir une date dans le futur"
 msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/NoTicket/NoTicket.tsx
 msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 msgstr "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 
@@ -3057,7 +3066,7 @@ msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
 msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu vas recevoir ton billet par e-mail"
 msgstr "Tu vas recevoir ton billet par e-mail"
 
@@ -3357,7 +3366,7 @@ msgstr "auteur"
 msgid "autour de toi"
 msgstr "autour de toi"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/components/TicketBody/DefaultBody/DefaultBody.tsx
 msgid "avant le début de l’événement."
 msgstr "avant le début de l’événement."
 
