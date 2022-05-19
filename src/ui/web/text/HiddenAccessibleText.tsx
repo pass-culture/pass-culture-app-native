@@ -1,1 +1,1 @@
-export const HiddenAccessibleText = (_: { id?: string; children: string }) => null
+export const HiddenAccessibleText = (_: { id?: string; role?: string; children: string }) => null

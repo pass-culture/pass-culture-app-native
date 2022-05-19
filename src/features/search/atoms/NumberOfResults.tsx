@@ -1,7 +1,7 @@
 import { plural } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { View } from 'react-native'
+import { AccessibilityRole, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -61,15 +61,15 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
           <Spacer.Column numberOfSpaces={2} />
         </View>
       ) : (
-        <Body {...getHeadingAttrs(2)} aria-live="assertive">
-          {numberOfResults}
-        </Body>
+        <Body {...getHeadingAttrs(2)}>{numberOfResults}</Body>
       )}
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled(View).attrs({
+  accessibilityRole: Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined,
+})({
   margin: getSpacing(6),
   marginBottom: getSpacing(4),
 })
