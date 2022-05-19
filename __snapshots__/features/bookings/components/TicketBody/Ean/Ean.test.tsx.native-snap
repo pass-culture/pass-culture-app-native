@@ -12,6 +12,7 @@ exports[`<Ean/> should render correctly 1`] = `
       },
     ]
   }
+  testID="ean"
 >
   <Text
     style={

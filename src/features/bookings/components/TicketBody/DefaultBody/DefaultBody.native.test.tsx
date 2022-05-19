@@ -5,7 +5,7 @@ import { DefaultBody } from 'features/bookings/components/TicketBody/DefaultBody
 import { render } from 'tests/utils'
 
 describe('<DefaultBody/>', () => {
-  it('should display by email withdrawal icon when withdrawal type by email is specified', () => {
+  it('should display by email withdrawal icon when withdrawal type by email is specified', async () => {
     const { queryByTestId } = render(
       <DefaultBody withdrawalType={WithdrawalTypeEnum.by_email} withdrawalDelay={0} />
     )
