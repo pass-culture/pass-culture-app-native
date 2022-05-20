@@ -1,7 +1,6 @@
-import userEvent from '@testing-library/user-event'
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render, fireEvent } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 
 jest.mock('features/auth/settings')
@@ -16,18 +15,18 @@ describe('SearchInput component', () => {
     )
     const searchInput = getByTestId('searchInput')
 
-    await userEvent.type(searchInput, 'Some text')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
 
-    expect(searchInput).toHaveValue('Some text')
+    expect(onChangeText).toBeCalledWith('Some text')
   })
 
   it('should reset input when user click on reset icon', async () => {
     const { getByTestId } = render(
       <SearchInput value="Some text" onChangeText={onChangeText} onPressRightIcon={onReset} />
     )
-
     const resetIcon = getByTestId('resetSearchInput')
-    await userEvent.click(resetIcon)
+
+    await fireEvent.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
   })
