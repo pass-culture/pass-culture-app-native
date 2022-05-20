@@ -63,24 +63,28 @@ export class VenuesModule {
 }
 
 export class ExclusivityPane {
+  title: string
   alt: string
   image: string
   id: number
   moduleId: string
   display?: ExclusivityDisplayParametersFields
   constructor({
+    title,
     alt,
     image,
     id,
     moduleId,
     display,
   }: {
+    title: string
     alt: string
     image: string
     id: number
     moduleId: string
     display?: ExclusivityDisplayParametersFields
   }) {
+    this.title = title
     this.alt = alt
     this.image = image
     this.id = id

@@ -66,7 +66,13 @@ const renderModule = ({ item, index }: { item: ProcessedModule; index: number })
 
   if (item instanceof ExclusivityPane)
     return (
-      <ExclusivityModule alt={item.alt} image={item.image} id={item.id} display={item.display} />
+      <ExclusivityModule
+        title={item.title}
+        alt={item.alt}
+        image={item.image}
+        id={item.id}
+        display={item.display}
+      />
     )
 
   if (item instanceof BusinessPane) return <BusinessModule module={item} />

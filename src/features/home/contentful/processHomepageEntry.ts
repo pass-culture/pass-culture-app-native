@@ -58,13 +58,13 @@ const buildExclusivity = (
   fields: ExclusivityFields,
   moduleId: string
 ): ExclusivityPane | undefined => {
-  const { alt, offerId, image, displayParameters } = fields
+  const { title, alt, offerId, image, displayParameters } = fields
   const { fields: display = undefined } = displayParameters || {}
   const id = parseOfferId(offerId)
   if (typeof id !== 'number') return
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return new ExclusivityPane({ alt, image: buildImageUrl(image)!, id, moduleId, display })
+  return new ExclusivityPane({ title, alt, image: buildImageUrl(image)!, id, moduleId, display })
 }
 
 const buildVenuesPlaylist = (fields: VenuesFields, moduleId: string): VenuesModule | undefined => {
