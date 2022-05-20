@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
-import { TicketWithContent } from 'features/bookings/components/SwiperTickets/TicketWithContent'
+import { TicketWithContent } from 'features/bookings/components/Ticket/TicketWithContent'
 import { render } from 'tests/utils'
 
 const booking = bookingsSnap.ongoing_bookings[1]

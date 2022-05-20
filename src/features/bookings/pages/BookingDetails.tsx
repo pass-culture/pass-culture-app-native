@@ -6,14 +6,13 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-// import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { Ticket } from 'features/bookings/components/SwiperTickets/Ticket'
+import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator'
@@ -51,8 +50,6 @@ export function BookingDetails() {
     error,
     dataUpdatedAt,
   } = useOngoingOrEndedBooking(params.id)
-
-  // const booking = bookingsSnap.ongoing_bookings[1]
 
   const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -147,7 +144,10 @@ export function BookingDetails() {
         bounces={false}>
         <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
         <Spacer.Column numberOfSpaces={heroMarginTop} />
-        <Ticket booking={booking} activationCodeFeatureEnabled={activationCodeFeatureEnabled} />
+        <TicketSwiper
+          booking={booking}
+          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+        />
         <ViewWithPadding>
           <Spacer.Column numberOfSpaces={4} />
           <OfferRules>{offerRules}</OfferRules>

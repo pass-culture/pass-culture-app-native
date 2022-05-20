@@ -14,7 +14,7 @@ type Props = {
   onPressNext: () => void
 }
 
-export function SwiperTicketsControls({
+export function TicketSwiperControls({
   numberOfSteps,
   currentStep,
   prevTitle,

@@ -2393,7 +2393,7 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
-#: src/features/bookings/components/SwiperTickets/Ticket.tsx
+#: src/features/bookings/components/Ticket/Ticket.tsx
 msgid "Revenir au ticket précédent"
 msgstr "Revenir au ticket précédent"
 
@@ -3280,7 +3280,7 @@ msgstr "Voir le détail de l'offre"
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
 
-#: src/features/bookings/components/SwiperTickets/Ticket.tsx
+#: src/features/bookings/components/Ticket/Ticket.tsx
 msgid "Voir le ticket suivant"
 msgstr "Voir le ticket suivant"
 
