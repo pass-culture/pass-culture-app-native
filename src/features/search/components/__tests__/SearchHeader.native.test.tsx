@@ -1,6 +1,5 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
@@ -10,7 +9,7 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, superFlushWithAct, fireEvent } from 'tests/utils'
+import { render, fireEvent } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -60,12 +59,8 @@ describe('SearchHeader component', () => {
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onFocus')
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
-    })
-    expect(navigate).toBeCalledWith('SearchDetails')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchDetails')
   })
 
   it('should not redirect to new search page if search enable rework feature flag is not activated and focus on search input', async () => {
@@ -74,10 +69,7 @@ describe('SearchHeader component', () => {
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onFocus')
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).not.toBeCalled()
-    })
+    expect(navigate).not.toBeCalled()
   })
 })
