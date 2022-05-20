@@ -86,32 +86,13 @@ Array [
             }
           }
         >
-          <div
+          <button
             aria-label="Revenir en arrière"
-            className="css-view-1dbjc4n"
+            className="sc-furwcr ecChpU"
             data-testid="Revenir en arrière"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
-              }
-            }
+            onClick={[MockFunction]}
             tabIndex="0"
+            type="button"
           >
             <div
               className="css-view-1dbjc4n"
@@ -124,7 +105,7 @@ Array [
                 icon-back-SVG-Mock
               </div>
             </div>
-          </div>
+          </button>
         </div>
         <h1
           aria-level={1}

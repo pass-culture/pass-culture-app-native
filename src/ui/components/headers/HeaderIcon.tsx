@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
@@ -41,7 +41,7 @@ export const HeaderIcon = (props: HeaderIconProps) => {
   const { colors } = useTheme()
 
   return (
-    <TouchableOpacity
+    <Touchable
       activeOpacity={0.5}
       onPress={props.onPress}
       accessibilityRole={props.accessibilityRole}
@@ -62,7 +62,7 @@ export const HeaderIcon = (props: HeaderIconProps) => {
           finalColor={colors.white}
         />
       </StyledAnimatedView>
-    </TouchableOpacity>
+    </Touchable>
   )
 }
 

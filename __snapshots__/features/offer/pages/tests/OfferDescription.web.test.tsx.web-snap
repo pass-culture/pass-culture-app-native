@@ -85,12 +85,12 @@ Object {
                                       class="css-view-1dbjc4n"
                                       style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
                                     >
-                                      <div
+                                      <button
                                         aria-label="Revenir en arrière"
-                                        class="css-view-1dbjc4n"
+                                        class="sc-gKclnd KSjmK"
                                         data-testid="Revenir en arrière"
-                                        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                                         tabindex="0"
+                                        type="button"
                                       >
                                         <div
                                           class="css-view-1dbjc4n"
@@ -103,7 +103,7 @@ Object {
                                             icon-back-SVG-Mock
                                           </div>
                                         </div>
-                                      </div>
+                                      </button>
                                     </div>
                                     <h1
                                       aria-level="1"
@@ -314,12 +314,12 @@ Object {
                                     class="css-view-1dbjc4n"
                                     style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
                                   >
-                                    <div
+                                    <button
                                       aria-label="Revenir en arrière"
-                                      class="css-view-1dbjc4n"
+                                      class="sc-gKclnd KSjmK"
                                       data-testid="Revenir en arrière"
-                                      style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                                       tabindex="0"
+                                      type="button"
                                     >
                                       <div
                                         class="css-view-1dbjc4n"
@@ -332,7 +332,7 @@ Object {
                                           icon-back-SVG-Mock
                                         </div>
                                       </div>
-                                    </div>
+                                    </button>
                                   </div>
                                   <h1
                                     aria-level="1"

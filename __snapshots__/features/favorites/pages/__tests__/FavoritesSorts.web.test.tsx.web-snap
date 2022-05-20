@@ -10,7 +10,7 @@ Object {
         style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <header
-          class="sc-hKwDye uAnLW"
+          class="sc-eCImPb ggegIW"
           role="banner"
         >
           <div
@@ -33,12 +33,12 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
               >
-                <div
+                <button
                   aria-label="Revenir en arrière"
-                  class="css-view-1dbjc4n"
+                  class="sc-hKwDye lgPtFf"
                   data-testid="Revenir en arrière"
-                  style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
+                  type="button"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -51,7 +51,7 @@ Object {
                       icon-back-SVG-Mock
                     </div>
                   </div>
-                </div>
+                </button>
               </div>
               <h1
                 aria-level="1"
@@ -113,7 +113,7 @@ Object {
               role="radiogroup"
             >
               <ul
-                class="sc-eCImPb sc-jRQBWg GcfzH laaqIM"
+                class="sc-jRQBWg sc-gKclnd fOWaqU kMjWsu"
               >
                 <li>
                   <div
@@ -265,7 +265,7 @@ Object {
       style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <header
-        class="sc-hKwDye uAnLW"
+        class="sc-eCImPb ggegIW"
         role="banner"
       >
         <div
@@ -288,12 +288,12 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
             >
-              <div
+              <button
                 aria-label="Revenir en arrière"
-                class="css-view-1dbjc4n"
+                class="sc-hKwDye lgPtFf"
                 data-testid="Revenir en arrière"
-                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
+                type="button"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -306,7 +306,7 @@ Object {
                     icon-back-SVG-Mock
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
             <h1
               aria-level="1"
@@ -368,7 +368,7 @@ Object {
             role="radiogroup"
           >
             <ul
-              class="sc-eCImPb sc-jRQBWg GcfzH laaqIM"
+              class="sc-jRQBWg sc-gKclnd fOWaqU kMjWsu"
             >
               <li>
                 <div

@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -27,11 +27,9 @@ interface HeaderIconProps {
 const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <TouchableOpacity
-      onPress={onGoBack || goBack}
-      {...accessibilityAndTestId(t`Revenir en arrière`)}>
+    <Touchable onPress={onGoBack || goBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
       <ArrowPrevious testID="icon-back" />
-    </TouchableOpacity>
+    </Touchable>
   )
 }
 

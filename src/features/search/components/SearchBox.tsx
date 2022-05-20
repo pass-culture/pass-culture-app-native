@@ -12,7 +12,7 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { HiddenText } from 'ui/components/HiddenText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -21,11 +21,9 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
   const { searchState } = useSearch()
   if (searchState.showResults)
     return (
-      <TouchableOpacity
-        onPress={onPressArrowBack}
-        {...accessibilityAndTestId(t`Revenir en arrière`)}>
+      <Touchable onPress={onPressArrowBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
         <ArrowPrevious />
-      </TouchableOpacity>
+      </Touchable>
     )
   return <MagnifyingGlass />
 }

@@ -26,12 +26,12 @@ Object {
             class="css-view-1dbjc4n"
             style="width: 24px;"
           />
-          <div
+          <button
             aria-label="Revenir en arrière"
-            class="css-view-1dbjc4n"
+            class="sc-eCImPb jVAQLB"
             data-testid="Revenir en arrière"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -78,7 +78,7 @@ Object {
                 </div>
               </div>
             </div>
-          </div>
+          </button>
           <div
             class="css-view-1dbjc4n"
             style="width: 12px;"
@@ -111,12 +111,12 @@ Object {
             class="css-view-1dbjc4n"
             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
-          <div
+          <button
             aria-label="Partager"
-            class="css-view-1dbjc4n"
+            class="sc-eCImPb jVAQLB"
             data-testid="Partager"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -163,19 +163,17 @@ Object {
                 </div>
               </div>
             </div>
-          </div>
+          </button>
           <div
             class="css-view-1dbjc4n"
             style="width: 12px;"
           />
-          <div
-            aria-checked="false"
+          <button
             aria-label="Mettre en favoris"
-            class="css-view-1dbjc4n"
+            class="sc-eCImPb jVAQLB"
             data-testid="Mettre en favoris"
-            role="checkbox"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -222,7 +220,7 @@ Object {
                 </div>
               </div>
             </div>
-          </div>
+          </button>
           <div
             class="css-view-1dbjc4n"
             style="width: 24px;"
@@ -258,12 +256,12 @@ Object {
           class="css-view-1dbjc4n"
           style="width: 24px;"
         />
-        <div
+        <button
           aria-label="Revenir en arrière"
-          class="css-view-1dbjc4n"
+          class="sc-eCImPb jVAQLB"
           data-testid="Revenir en arrière"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -310,7 +308,7 @@ Object {
               </div>
             </div>
           </div>
-        </div>
+        </button>
         <div
           class="css-view-1dbjc4n"
           style="width: 12px;"
@@ -343,12 +341,12 @@ Object {
           class="css-view-1dbjc4n"
           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         />
-        <div
+        <button
           aria-label="Partager"
-          class="css-view-1dbjc4n"
+          class="sc-eCImPb jVAQLB"
           data-testid="Partager"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -395,19 +393,17 @@ Object {
               </div>
             </div>
           </div>
-        </div>
+        </button>
         <div
           class="css-view-1dbjc4n"
           style="width: 12px;"
         />
-        <div
-          aria-checked="false"
+        <button
           aria-label="Mettre en favoris"
-          class="css-view-1dbjc4n"
+          class="sc-eCImPb jVAQLB"
           data-testid="Mettre en favoris"
-          role="checkbox"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -454,7 +450,7 @@ Object {
               </div>
             </div>
           </div>
-        </div>
+        </button>
         <div
           class="css-view-1dbjc4n"
           style="width: 24px;"

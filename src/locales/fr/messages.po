@@ -2656,6 +2656,10 @@ msgstr "Supprimer"
 msgid "Supprimer l'offre {0} de mes favoris"
 msgstr "Supprimer l'offre {0} de mes favoris"
 
+#: src/ui/components/snackBar/SnackBar.tsx
+msgid "Supprimer le message : {0}"
+msgstr "Supprimer le message : {0}"
+
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Supprimer mon compte"
