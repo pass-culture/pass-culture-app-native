@@ -6,6 +6,10 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { SearchResults } from 'features/search/components/SearchResults'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useShowResults } from 'features/search/pages/useShowResults'
+import { analytics } from 'libs/analytics'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -17,13 +21,35 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const SearchDetails: React.FC = () => {
   const { top } = useCustomSafeInsets()
-  const [query, setQuery] = useState<string>('')
   const { navigate } = useNavigation<UseNavigationType>()
   const refSearchInput = useRef<TextInput | null>(null)
+  const showResults = useShowResults()
+  const { searchState: stagedSearchState } = useStagedSearch()
+  const { searchState } = useSearch()
+  const [query, setQuery] = useState<string>(searchState.query || '')
 
   const resetSearchInput = () => {
+    navigate(...getTabNavConfig('Search', { query: '' }))
     setQuery('')
-    refSearchInput.current?.focus()
+  }
+
+  const onSubmitQuery = () => {
+    // When we hit enter, we may have selected a category or a venue on the search landing page
+    // these are the two potentially 'staged' filters that we want to commit to the global search state.
+    // We also want to commit the price filter, as beneficiary users may have access to different offer
+    // price range depending on their available credit.
+    const { locationFilter, offerCategories, priceRange } = stagedSearchState
+
+    navigate(
+      ...getTabNavConfig('Search', {
+        showResults: true,
+        query,
+        locationFilter,
+        offerCategories,
+        priceRange,
+      })
+    )
+    analytics.logSearchQuery(query)
   }
 
   return (
@@ -45,22 +71,27 @@ export const SearchDetails: React.FC = () => {
             autoFocus={true}
             inputHeight="regular"
             LeftIcon={() => <MagnifyingGlassIcon />}
+            onSubmitEditing={onSubmitQuery}
             onPressRightIcon={resetSearchInput}
             ref={refSearchInput}
           />
         </StyledSearchInputContainer>
       </SearchInputContainer>
 
-      <RecentSearchContainer>
-        <ClockIcon />
-        <StyledCaption>{t`Recherche récente`}</StyledCaption>
-      </RecentSearchContainer>
+      {showResults ? (
+        <SearchResults />
+      ) : (
+        <RecentSearchContainer>
+          <ClockIcon />
+          <StyledCaption>{t`Recherche récente`}</StyledCaption>
+        </RecentSearchContainer>
+      )}
     </React.Fragment>
   )
 }
 
 const SearchInputContainer = styled.View({
-  paddingVertical: getSpacing(4),
+  paddingTop: getSpacing(4),
   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',
@@ -73,6 +104,7 @@ const StyledSearchInputContainer = styled.View({
 })
 
 const RecentSearchContainer = styled.View(({ theme }) => ({
+  marginTop: getSpacing(4),
   backgroundColor: theme.colors.greyLight,
   paddingHorizontal: getSpacing(6),
   minHeight: getSpacing(9),

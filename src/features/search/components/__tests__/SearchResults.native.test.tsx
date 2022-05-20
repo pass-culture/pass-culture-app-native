@@ -11,6 +11,9 @@ jest.mock('react-query')
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useIsFocused: jest.fn(),
+  useRoute: jest.fn().mockImplementation(() => ({
+    key: 'ksdqldkmqdmqdq',
+  })),
 }))
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
@@ -41,6 +44,10 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 }))
 
 describe('SearchResults component', () => {
+  it('should render correctly', () => {
+    expect(render(<SearchResults />, { wrapper: NavigationContainer })).toMatchSnapshot()
+  })
+
   it('should log SearchScrollToPage when hitting the bottom of the page', () => {
     const { getByTestId } = render(<SearchResults />, { wrapper: NavigationContainer })
     const flatlist = getByTestId('searchResultsFlatlist')

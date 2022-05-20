@@ -1,45 +1,15 @@
-import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useRef, useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { useAppSettings } from 'features/auth/settings'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useShowResults } from 'features/search/pages/useShowResults'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 import { Form } from 'ui/web/form/Form'
-
-import { useSearchResults } from './useSearchResults'
-
-const useShowResults = () => {
-  const timer = useRef<number>()
-  const { searchState } = useSearch()
-  const [showResults, setShowResults] = useState<boolean>(searchState.showResults)
-  const { isLoading } = useSearchResults()
-
-  useEffect(() => {
-    if (searchState.showResults) {
-      if (!isLoading) {
-        setShowResults(true)
-      } else {
-        // For most networks, 20ms is enough time to fetch the results fom Algolia
-        // In this case we can avoid displaying the placeholders
-        timer.current = globalThis.setTimeout(() => {
-          setShowResults(true)
-        }, 20)
-      }
-    } else {
-      setShowResults(false)
-    }
-    return () => {
-      if (timer.current) {
-        clearTimeout(timer.current)
-      }
-    }
-  }, [searchState.showResults, isLoading])
-
-  return showResults
-}
 
 export function Search() {
   useKeyboardAdjust()
@@ -47,11 +17,16 @@ export function Search() {
   const { dispatch } = useSearch()
   const showResults = useShowResults()
   const searchInputID = uuidv4()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { data: appSettings } = useAppSettings()
+  const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
 
   useEffect(() => {
     if (params) {
       dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
       dispatch({ type: 'SHOW_RESULTS', payload: true })
+
+      if (appEnableSearchHomepageRework) navigate('SearchDetails')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
@@ -60,7 +35,7 @@ export function Search() {
     <Container>
       <Form.Flex>
         <SearchHeader searchInputID={searchInputID} />
-        {showResults ? <SearchResults /> : <SearchLandingPage />}
+        {showResults && !appEnableSearchHomepageRework ? <SearchResults /> : <SearchLandingPage />}
       </Form.Flex>
     </Container>
   )

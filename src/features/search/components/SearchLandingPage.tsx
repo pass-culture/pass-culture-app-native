@@ -43,7 +43,7 @@ export const SearchLandingPage: React.FC = () => {
 
   return (
     <React.Fragment>
-      <ScrollView contentContainerStyle={contentContainerStyle}>
+      <ScrollView contentContainerStyle={contentContainerStyle} testID="searchLandingPage">
         <Spacer.Flex flex={mqSmallWebViewportHeight ? 0.5 : 1} />
 
         <TouchableOpacity

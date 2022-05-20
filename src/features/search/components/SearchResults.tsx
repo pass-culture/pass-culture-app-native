@@ -1,5 +1,5 @@
 import { plural, t } from '@lingui/macro'
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused, useRoute } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
@@ -44,6 +44,7 @@ export const SearchResults: React.FC = () => {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
+  const route = useRoute()
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
   const { data: appSettings } = useAppSettings()
@@ -137,7 +138,9 @@ export const SearchResults: React.FC = () => {
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
-      {appEnableSearchHomepageRework ? <Spacer.Column numberOfSpaces={5} /> : null}
+      {appEnableSearchHomepageRework && route.name === 'Search' ? (
+        <Spacer.Column numberOfSpaces={5} />
+      ) : null}
       <AutoScrollSwitch
         title={t`Activer le chargement automatique des résultats`}
         active={autoScrollEnabled}
@@ -149,7 +152,7 @@ export const SearchResults: React.FC = () => {
           <Spacer.BottomScreen />
         </FilterContainer>
       )}
-      <Container>
+      <Container testID="searchResults">
         <FlatList
           ref={flatListRef}
           testID="searchResultsFlatlist"

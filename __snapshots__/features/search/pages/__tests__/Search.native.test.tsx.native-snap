@@ -196,6 +196,7 @@ exports[`Search component should render correctly 1`] = `
         "flexGrow": 1,
       }
     }
+    testID="searchLandingPage"
   >
     <View>
       <View
