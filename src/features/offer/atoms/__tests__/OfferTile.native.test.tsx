@@ -43,7 +43,7 @@ describe('OfferTile component', () => {
   it('should navigate to the offer when clicking on the image', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    fireEvent.press(getByTestId('tileImage'))
+    await fireEvent.press(getByTestId('tileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'home',
@@ -54,7 +54,7 @@ describe('OfferTile component', () => {
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    fireEvent.press(getByTestId('tileImage'))
+    await fireEvent.press(getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'home',
@@ -65,7 +65,7 @@ describe('OfferTile component', () => {
   it('should prepopulate react-query cache when clicking on offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    fireEvent.press(getByTestId('tileImage'))
+    await fireEvent.press(getByTestId('tileImage'))
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)

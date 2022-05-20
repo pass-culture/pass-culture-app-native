@@ -19,9 +19,9 @@ describe('Filter component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should navigate to Filter page on pressing', () => {
+  it('should navigate to Filter page on pressing', async () => {
     const { getByTestId } = render(<Filter />)
-    fireEvent.press(getByTestId('FilterButton'))
+    await fireEvent.press(getByTestId('FilterButton'))
     expect(navigate).toHaveBeenCalledWith('SearchFilter', undefined)
   })
 })

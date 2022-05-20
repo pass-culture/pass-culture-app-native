@@ -70,9 +70,9 @@ describe('<VenueOffers />', () => {
     expect(queryByText('En voir plus')).toBeFalsy()
   })
 
-  it(`should set search state when clicking "En voir plus" button`, () => {
+  it(`should set search state when clicking "En voir plus" button`, async () => {
     const { getByText } = render(<VenueOffers venueId={venueId} />)
-    fireEvent.press(getByText('En voir plus'))
+    await fireEvent.press(getByText('En voir plus'))
     expect(navigate).toBeCalledWith('TabNavigator', {
       params: {
         ...defaultParams,

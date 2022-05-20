@@ -26,10 +26,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('Hit component', () => {
-  it('should navigate to the offer when clicking on the hit', () => {
+  it('should navigate to the offer when clicking on the hit', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} query="" />))
-    fireEvent.press(getByTestId('offerHit'))
+    await fireEvent.press(getByTestId('offerHit'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,

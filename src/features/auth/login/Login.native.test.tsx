@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
+import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -33,6 +33,7 @@ const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 const mockSettings = {
   enableNativeCulturalSurvey: false,
+  allowAccountReactivation: false,
 }
 
 jest.mock('features/auth/settings', () => ({
@@ -213,6 +214,24 @@ describe('<Login/>', () => {
     })
   })
 
+  it('should redirect to SuspensionScreen WHEN signin is successful for inactive account', async () => {
+    mockSettings.allowAccountReactivation = true
+    simulateSignin200(false)
+    mockSuspensionStatusApiCall(AccountState.SUSPENDED)
+    const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+    })
+  })
+
   it('should show email error message WHEN signin has failed because of invalid e-mail format', async () => {
     const renderAPI = renderLogin()
     const notErrorSnapshot = renderAPI.toJSON()
@@ -333,7 +352,18 @@ function mockMeApiCall(response: UserProfileResponse) {
   )
 }
 
-function simulateSignin200() {
+function mockSuspensionStatusApiCall(status: string) {
+  server.use(
+    rest.get<UserProfileResponse>(
+      env.API_BASE_URL + '/native/v1/account/suspension_status',
+      (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json({ status }))
+      }
+    )
+  )
+}
+
+function simulateSignin200(isActive = true) {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
@@ -343,6 +373,7 @@ function simulateSignin200() {
           ctx.json({
             accessToken: 'accessToken',
             refreshToken: 'refreshToken',
+            isActive,
           })
         )
     )

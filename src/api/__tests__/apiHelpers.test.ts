@@ -281,10 +281,18 @@ describe('[api] helpers', () => {
       expect(result).toEqual({})
     })
 
+    it('should navigate to suspension screen when status is 403 (forbidden)', async () => {
+      const response = await respondWith('', 403)
+
+      const result = await handleGeneratedApiResponse(response)
+
+      expect(navigateFromRef).toBeCalledWith('SuspensionScreen')
+      expect(result).toEqual({})
+    })
+
     it.each([
       400, // Bad Request
       401, // Unauthorized
-      403, // Forbidden
       404, // Not Found
       500, // Internal Server Error
       503, // Service Unavailable

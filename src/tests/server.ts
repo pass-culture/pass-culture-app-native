@@ -29,7 +29,11 @@ export const server = setupServer(
     (_req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json({ accessToken: 'access_token', refreshToken: 'refresh_token' })
+        ctx.json({
+          accessToken: 'access_token',
+          refreshToken: 'refresh_token',
+          isActive: true as boolean,
+        })
       )
     }
   ),

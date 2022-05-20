@@ -66,13 +66,13 @@ export function TouchableLink<T extends ElementType = ElementType>({
     }
   }
 
-  function onClick(event: GestureResponderEvent) {
+  async function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
     if (navigateBeforeOnPress) {
       handleNavigation()
     }
     if (onPress) {
-      onPress(event)
+      await onPress(event)
     }
     if (!navigateBeforeOnPress) {
       handleNavigation()

@@ -17,11 +17,11 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('<NoBookingsView />', () => {
-  it('should navigate to Search when pressing button and log event', () => {
+  it('should navigate to Search when pressing button and log event', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
     const button = renderAPI.getByText('Explorer les offres')
-    fireEvent.press(button)
+    await fireEvent.press(button)
     expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { showResults: true }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
   })

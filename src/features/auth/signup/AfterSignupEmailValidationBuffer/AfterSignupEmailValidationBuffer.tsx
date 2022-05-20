@@ -44,7 +44,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   async function onEmailValidationSuccess({ accessToken, refreshToken }: ValidateEmailResponse) {
-    await loginRoutine({ accessToken, refreshToken }, 'fromSignup')
+    await loginRoutine({ accessToken, refreshToken, isActive: true }, 'fromSignup')
 
     try {
       const user = await api.getnativev1me()

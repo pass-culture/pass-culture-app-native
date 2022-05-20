@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
+import { useAppSettings } from 'features/auth/settings'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
@@ -46,6 +47,7 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
+  const { data: settings } = useAppSettings()
   const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
@@ -77,18 +79,23 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     } else {
       const signinResponse = await signIn({ identifier: email, password })
       if (signinResponse.isSuccess) {
-        handleSigninSuccess()
+        handleSigninSuccess(signinResponse.isActive)
       } else {
         handleSigninFailure(signinResponse)
       }
     }
   }
 
-  async function handleSigninSuccess() {
+  async function handleSigninSuccess(isActive: boolean) {
     try {
       if (props.doNotNavigateOnSigninSuccess) {
         return
       }
+
+      if (settings?.allowAccountReactivation && !isActive) {
+        return navigate('SuspensionScreen')
+      }
+
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 

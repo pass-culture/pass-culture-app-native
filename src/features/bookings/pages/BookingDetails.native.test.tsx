@@ -84,7 +84,7 @@ describe('BookingDetails', () => {
 
       const { getByText } = renderBookingDetails(booking)
       const offerButton = getByText("Accéder à l'offre")
-      fireEvent.press(offerButton)
+      await fireEvent.press(offerButton)
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url, {
         analyticsData: {
@@ -174,12 +174,12 @@ describe('BookingDetails', () => {
     })
   })
 
-  it('should redirect to the Offer page and log event', () => {
+  it('should redirect to the Offer page and log event', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const { getByText } = renderBookingDetails(booking)
 
     const text = getByText('Voir le détail de l’offre')
-    fireEvent.press(text)
+    await fireEvent.press(text)
 
     const offerId = booking.stock.offer.id
 
@@ -191,20 +191,20 @@ describe('BookingDetails', () => {
   })
 
   describe('cancellation button', () => {
-    it('should log event "CancelBooking" when cancelling booking', () => {
+    it('should log event "CancelBooking" when cancelling booking', async () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       const date = new Date()
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date.toISOString()
       const { getAllByTestId } = renderBookingDetails(booking)
-      fireEvent.press(getAllByTestId('Annuler ma réservation')[0])
+      await fireEvent.press(getAllByTestId('Annuler ma réservation')[0])
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })
   })
 
   describe('booking not found', () => {
-    it('should render ScreenError BookingNotFound when booking is not found when data already exists', () => {
+    it('should render ScreenError BookingNotFound when booking is not found when data already exists', async () => {
       const renderAPI = renderBookingDetails(undefined, {
         dataUpdatedAt: new Date().getTime(),
       })
@@ -217,10 +217,10 @@ describe('BookingDetails', () => {
       expect(renderAPI.queryByText('Mes réservations terminées')).toBeTruthy()
       expect(renderAPI.queryByText(`Retourner à l'accueil`)).toBeTruthy()
 
-      fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
+      await fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
       expect(navigate).toBeCalledWith('EndedBookings', undefined)
 
-      fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
+      await fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
       expect(navigateFromRef).toBeCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params

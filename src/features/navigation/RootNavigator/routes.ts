@@ -21,6 +21,7 @@ import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity
 import { AccountReactivationSuccess } from 'features/auth/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
+import { SuspensionScreen } from 'features/auth/suspendedAccount/SuspensionScreen/SuspensionScreen'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -196,18 +197,22 @@ export const routes: Route[] = [
     options: { title: t`Mentions légales` },
   },
   {
-    name: 'SuspendedAccount',
-    component: SuspendedAccount,
+    name: 'SuspensionScreen',
+    component: SuspensionScreen,
     path: 'compte-desactive',
     options: { title: t`Compte désactivé` },
-    secure: true,
+  },
+  {
+    name: 'SuspendedAccount',
+    component: SuspendedAccount,
+    path: 'compte-suspendu-a-la-demande',
+    options: { title: t`Compte désactivé` },
   },
   {
     name: 'FraudulentAccount',
     component: FraudulentAccount,
-    path: 'compte-suspendu',
+    path: 'compte-suspendu-pour-fraude',
     options: { title: t`Compte suspendu` },
-    secure: true,
   },
   {
     name: 'AccountReactivationSuccess',

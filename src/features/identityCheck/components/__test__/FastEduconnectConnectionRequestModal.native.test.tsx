@@ -46,11 +46,11 @@ describe('<IdentityCheckEnd/>', () => {
     expect(hideModalMock).toHaveBeenCalled()
   })
 
-  it('should redirect to EduConnect when cliking on "Identification avec ÉduConnect" button', () => {
+  it('should redirect to EduConnect when cliking on "Identification avec ÉduConnect" button', async () => {
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
     )
-    fireEvent.press(getByText('Identification avec ÉduConnect'))
+    await fireEvent.press(getByText('Identification avec ÉduConnect'))
     expect(hideModalMock).toHaveBeenCalled()
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: IdentityCheckMethod.educonnect,
@@ -59,11 +59,11 @@ describe('<IdentityCheckEnd/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckEduConnect', undefined)
   })
 
-  it('should redirect to identity check Ubble or DMS when cliking on "Identification manuelle" button', () => {
+  it('should redirect to identity check Ubble or DMS when cliking on "Identification manuelle" button', async () => {
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
     )
-    fireEvent.press(getByText('Identification manuelle'))
+    await fireEvent.press(getByText('Identification manuelle'))
     expect(hideModalMock).toHaveBeenCalled()
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: IdentityCheckMethod.ubble,

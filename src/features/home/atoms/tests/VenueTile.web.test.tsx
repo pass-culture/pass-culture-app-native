@@ -25,15 +25,15 @@ describe('VenueTile component', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('should navigate to the venue when clicking on the image', () => {
+  it('should navigate to the venue when clicking on the image', async () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    fireEvent.click(getByTestId('venueTile'))
+    await fireEvent.click(getByTestId('venueTile'))
     expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
   })
 
-  it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
+  it('should log analytics event ConsultVenue when pressing on the venue tile', async () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    fireEvent.click(getByTestId('venueTile'))
+    await fireEvent.click(getByTestId('venueTile'))
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
       from: 'home',

@@ -29,16 +29,16 @@ export const SuspendedAccount = () => {
 
   useFocusEffect(
     useCallback(() => {
-      if (!settings?.allowAccountReactivation || accountSuspensionDate === undefined) {
+      if (!settings?.allowAccountReactivation) {
         navigateToHome()
       }
-    }, [settings, accountSuspensionDate])
+    }, [settings])
   )
 
   const reactivationLimit = settings?.accountReactivationLimit || 60
   let formattedDate = ''
 
-  if (accountSuspensionDate) {
+  if (accountSuspensionDate?.date) {
     const suspensionDate = new Date(accountSuspensionDate.date)
     const reactivationDeadline = addDaysToDate(suspensionDate, reactivationLimit)
     formattedDate = formatToCompleteFrenchDateTime(reactivationDeadline, false)
@@ -64,7 +64,6 @@ export const SuspendedAccount = () => {
           navigateTo={navigateToHomeConfig}
           onPress={signOut}
           icon={PlainArrowPrevious}
-          navigateBeforeOnPress
         />,
       ]}>
       <StyledBody>{t`Tu as jusqu'au ${formattedDate} pour réactiver ton compte.`}</StyledBody>

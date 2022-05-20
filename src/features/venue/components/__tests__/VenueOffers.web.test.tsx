@@ -71,9 +71,9 @@ describe('<VenueOffers />', () => {
     expect(queryByText('En voir plus')).toBeFalsy()
   })
 
-  it(`should set search state when clicking "En voir plus" button`, () => {
+  it(`should set search state when clicking "En voir plus" button`, async () => {
     const { getByText } = render(<VenueOffers venueId={venueId} />)
-    fireEvent.click(getByText('En voir plus'))
+    await fireEvent.click(getByText('En voir plus'))
     expect(navigate).toBeCalledWith('TabNavigator', {
       params: {
         ...defaultParams,
@@ -91,15 +91,15 @@ describe('<VenueOffers />', () => {
     })
   })
 
-  it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, () => {
+  it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, async () => {
     const { getByText } = render(<VenueOffers venueId={venueId} />)
-    fireEvent.click(getByText('En voir plus'))
+    await fireEvent.click(getByText('En voir plus'))
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
-  it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, () => {
+  it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, async () => {
     const { getByText } = render(<VenueOffers venueId={venueId} />)
-    fireEvent.click(getByText('Voir toutes les offres'))
+    await fireEvent.click(getByText('Voir toutes les offres'))
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 })

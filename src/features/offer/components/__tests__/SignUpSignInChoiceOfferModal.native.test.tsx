@@ -17,24 +17,24 @@ describe('SignUpSignInChoiceOfferModal', () => {
     expect(getByText('Connecte-toi pour profiter de cette fonctionnalité')).toBeTruthy()
   })
 
-  it('go to login on click button', () => {
+  it('go to login on click button', async () => {
     const { getByText } = render(
       <SignUpSignInChoiceOfferModal visible={true} dismissModal={dismissModal} />
     )
 
     const button = getByText('Se connecter')
-    fireEvent.press(button)
+    await fireEvent.press(button)
 
     expect(navigate).toBeCalledWith('Login', undefined)
   })
 
-  it('go to signup on click button', () => {
+  it('go to signup on click button', async () => {
     const { getByText } = render(
       <SignUpSignInChoiceOfferModal visible={true} dismissModal={dismissModal} />
     )
 
     const button = getByText(`S'inscrire`)
-    fireEvent.press(button)
+    await fireEvent.press(button)
 
     expect(navigate).toBeCalledWith('SignupForm', undefined)
   })
