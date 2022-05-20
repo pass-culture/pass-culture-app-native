@@ -1759,7 +1759,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="controlButton"
+                  testID="control-button-next"
                 >
                   <View
                     height={24}

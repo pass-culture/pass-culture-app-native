@@ -2393,6 +2393,10 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
+#: src/features/bookings/components/Ticket/Ticket.tsx
+msgid "Revenir au ticket précédent"
+msgstr "Revenir au ticket précédent"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
@@ -3276,6 +3280,10 @@ msgstr "Voir le détail de l'offre"
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
 
+#: src/features/bookings/components/Ticket/Ticket.tsx
+msgid "Voir le ticket suivant"
+msgstr "Voir le ticket suivant"
+
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
@@ -3367,7 +3375,7 @@ msgstr "auteur"
 msgid "autour de toi"
 msgstr "autour de toi"
 
-#: src/features/bookings/components/TicketBody/DefaultBody/DefaultBody.tsx
+#: src/features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal.tsx
 msgid "avant le début de l’événement."
 msgstr "avant le début de l’événement."
 
@@ -3611,6 +3619,14 @@ msgstr "Retrouve \"{name}\" sur le pass Culture"
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
 msgstr "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+
+#: src/features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode.tsx
+msgid "siège"
+msgstr "Siège {seat}"
+
+#: src/features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode.tsx
+msgid "siège avec nombre de sièges"
+msgstr "Place {seat} :"
 
 #: src/features/offer/pages/OfferDescription.tsx
 #: src/features/offer/pages/OfferDescription.tsx

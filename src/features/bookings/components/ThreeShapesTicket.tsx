@@ -8,16 +8,18 @@ import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   width?: number
+  testID?: string
 }>
 
 const isWeb = Platform.OS === 'web'
+const isAndroid = Platform.OS === 'android'
 export function ThreeShapesTicket(props: Props) {
   const { appContentWidth, ticket } = useTheme()
   const defaultWidth = Math.min(ticket.maxWidth, appContentWidth - getSpacing(15))
   const width = props.width || defaultWidth
   const contentWidth = isWeb ? width : width - 5
   return (
-    <Container testID="three-shapes-ticket">
+    <Container testID={props.testID ?? 'three-shapes-ticket'}>
       <TicketHeader width={width} />
       <TicketContent width={contentWidth}>{props.children}</TicketContent>
       <TicketFooter width={width} />
@@ -48,7 +50,7 @@ const Container = styled.View(({ theme }) => {
 
 const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
   let borders = {}
-  if (isWeb) {
+  if (isWeb || isAndroid) {
     borders = {
       borderLeftWidth: 2,
       borderRightWidth: 2,

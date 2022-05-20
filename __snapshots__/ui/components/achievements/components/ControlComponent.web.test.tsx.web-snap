@@ -7,8 +7,8 @@ Object {
     <div>
       <button
         aria-label="Next"
-        class="sc-bdvvtL bmzymd sc-gsDKAQ dxQUjY sc-gsDKAQ dxQUjY"
-        data-testid="controlButton"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
+        data-testid="control-button-next"
         tabindex="0"
         type="next"
       >
@@ -29,8 +29,8 @@ Object {
   "container": <div>
     <button
       aria-label="Next"
-      class="sc-bdvvtL bmzymd sc-gsDKAQ dxQUjY sc-gsDKAQ dxQUjY"
-      data-testid="controlButton"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
+      data-testid="control-button-next"
       tabindex="0"
       type="next"
     >
@@ -108,8 +108,8 @@ Object {
     <div>
       <button
         aria-label="Previous"
-        class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
-        data-testid="controlButton"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
+        data-testid="control-button-prev"
         tabindex="0"
         type="prev"
       >
@@ -130,8 +130,8 @@ Object {
   "container": <div>
     <button
       aria-label="Previous"
-      class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
-      data-testid="controlButton"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
+      data-testid="control-button-prev"
       tabindex="0"
       type="prev"
     >
@@ -209,8 +209,8 @@ Object {
     <div>
       <button
         aria-label="Previous"
-        class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
-        data-testid="controlButton"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
+        data-testid="control-button-prev"
         tabindex="0"
         type="prev"
       >
@@ -231,8 +231,8 @@ Object {
   "container": <div>
     <button
       aria-label="Previous"
-      class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
-      data-testid="controlButton"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
+      data-testid="control-button-prev"
       tabindex="0"
       type="prev"
     >

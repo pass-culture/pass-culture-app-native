@@ -10,10 +10,9 @@ import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator'
@@ -51,6 +50,7 @@ export function BookingDetails() {
     error,
     dataUpdatedAt,
   } = useOngoingOrEndedBooking(params.id)
+
   const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -142,16 +142,12 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url}>
-          <Spacer.Column numberOfSpaces={heroMarginTop} />
-          <ThreeShapesTicket>
-            <BookingDetailsTicketContent
-              booking={booking}
-              activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-            />
-          </ThreeShapesTicket>
-        </HeroHeader>
-
+        <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
+        <Spacer.Column numberOfSpaces={heroMarginTop} />
+        <TicketSwiper
+          booking={booking}
+          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+        />
         <ViewWithPadding>
           <Spacer.Column numberOfSpaces={4} />
           <OfferRules>{offerRules}</OfferRules>

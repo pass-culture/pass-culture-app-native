@@ -44,8 +44,30 @@ describe('<ControlComponent />', () => {
       title: 'Previous',
       type: 'prev',
     })
-    fireEvent.press(getByTestId('controlButton'))
+    fireEvent.press(getByTestId('control-button-prev'))
     expect(onPress).toHaveBeenCalled()
+  })
+
+  it('should render prev button with margin left if withMargin is equal to true', () => {
+    const { getByTestId } = renderControlComponent({
+      onPress,
+      title: 'Previous',
+      type: 'prev',
+      withMargin: true,
+    })
+    const controlButton = getByTestId('control-button-prev')
+    expect(controlButton.props.style.marginLeft).toEqual('70%')
+  })
+
+  it('should render next button with margin right if withMargin is equal to true', () => {
+    const { getByTestId } = renderControlComponent({
+      onPress,
+      title: 'Next',
+      type: 'next',
+      withMargin: true,
+    })
+    const controlButton = getByTestId('control-button-next')
+    expect(controlButton.props.style.marginRight).toEqual('70%')
   })
 })
 

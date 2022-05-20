@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum, BookingReponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { Ean } from 'features/bookings/components/TicketBody/Ean/Ean'
+import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -14,14 +15,17 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
-type Props = {
+export type BookingDetailsTicketContentProps = {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
+  externalBookings?: SeatWithQrCodeProps
+  testID?: string
 }
 
-export const BookingDetailsTicketContent: FunctionComponent<Props> = ({
+export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicketContentProps> = ({
   booking,
   activationCodeFeatureEnabled,
+  externalBookings,
 }) => {
   const { offer, beginningDatetime } = booking.stock
   const {
@@ -62,6 +66,7 @@ export const BookingDetailsTicketContent: FunctionComponent<Props> = ({
       beginningDatetime={beginningDatetime || undefined}
       subcategoryId={offerSubcategory}
       qrCodeData={booking.qrCodeData || undefined}
+      externalBookings={externalBookings}
     />
   )
 

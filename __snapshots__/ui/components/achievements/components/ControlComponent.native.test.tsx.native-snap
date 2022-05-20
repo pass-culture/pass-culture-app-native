@@ -16,12 +16,15 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginRight": "70%",
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "marginTop": 0,
       "opacity": 1,
       "userSelect": "auto",
     }
   }
-  testID="controlButton"
+  testID="control-button-next"
 >
   <View
     height={24}
@@ -51,12 +54,15 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": "70%",
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "marginTop": 0,
       "opacity": 1,
       "userSelect": "auto",
     }
   }
-  testID="controlButton"
+  testID="control-button-prev"
 >
   <View
     height={24}
@@ -86,12 +92,15 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": "70%",
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "marginTop": 0,
       "opacity": 1,
       "userSelect": "auto",
     }
   }
-  testID="controlButton"
+  testID="control-button-prev"
 >
   <View
     height={24}

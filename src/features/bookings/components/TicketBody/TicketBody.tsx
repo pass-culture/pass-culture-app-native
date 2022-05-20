@@ -5,6 +5,10 @@ import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
 import { NoTicket } from 'features/bookings/components/TicketBody/NoTicket/NoTicket'
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
+import {
+  SeatWithQrCode,
+  SeatWithQrCodeProps,
+} from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import { TicketWithdrawal } from 'features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal'
 
 type Props = {
@@ -14,6 +18,7 @@ type Props = {
   subcategoryId: SubcategoryIdEnum
   beginningDatetime?: string
   qrCodeData?: string
+  externalBookings?: SeatWithQrCodeProps
 }
 
 const notQrCodeSubcategories = [
@@ -30,8 +35,11 @@ export const TicketBody: FunctionComponent<Props> = ({
   subcategoryId,
   beginningDatetime,
   qrCodeData,
+  externalBookings,
 }) => {
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryId)
+
+  if (externalBookings) return <SeatWithQrCode {...externalBookings} />
 
   if (qrCodeData && subcategoryShouldHaveQrCode) return <QrCode qrCode={qrCodeData} />
 
