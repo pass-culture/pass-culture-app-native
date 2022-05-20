@@ -742,10 +742,6 @@ msgstr "Copier le lien"
 msgid "Cours et pratique artistiques"
 msgstr "Cours et pratique artistiques"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "Critères à respecter"
-msgstr "Critères à respecter"
-
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Création de compte"
 msgstr "Création de compte"
@@ -1442,6 +1438,10 @@ msgstr "Le lien est expiré !"
 #: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
 msgid "Le lien {0} n'a pas été ajouté à l'historique: {1}"
 msgstr "Le lien {0} n'a pas été ajouté à l'historique: {1}"
+
+#: src/features/auth/components/PasswordSecurityRules.tsx
+msgid "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
+msgstr "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "Le pass Culture"
@@ -2844,10 +2844,6 @@ msgstr "Ton établissement | Profil"
 msgid "Tourne-moi"
 msgstr "Tourne-moi"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "Tous les critères sont validés"
-msgstr "Tous les critères sont validés"
-
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
 msgstr "Tout passer"
@@ -3310,7 +3306,6 @@ msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
 msgstr "Vérification d'identité"
 
@@ -3502,6 +3497,10 @@ msgstr "le"
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"
 msgstr "metteur en scène"
+
+#: src/ui/components/inputs/rules/PasswordRule.tsx
+msgid "minimum"
+msgstr "minimum"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "montant déduit"

@@ -2,7 +2,7 @@ import { plural, t } from '@lingui/macro'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
 import React from 'react'
-import { FlatList } from 'react-native'
+import { AccessibilityRole, FlatList, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -12,11 +12,11 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
-import { AriaLive } from 'ui/components/AriaLive'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { HiddenAccessibleText } from 'ui/web/text/HiddenAccessibleText'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -85,12 +85,14 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
         nbHits={filteredPlaces.length}
         show={filteredPlaces.length > 0 && !isLoading}
       />
+      <View accessibilityRole={Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined}>
+        <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0 && !isLoading} />
+      </View>
       <FlatList
         accessibilityRole="radiogroup"
         data={filteredPlaces}
         keyExtractor={keyExtractor}
         renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
-        ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
         ItemSeparatorComponent={Separator}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
@@ -106,7 +108,7 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
     other: '# résultats',
   })
 
-  return <AriaLive liveType="assertive">{show ? numberOfResults : ''}</AriaLive>
+  return <HiddenAccessibleText role="status">{show ? numberOfResults : ''}</HiddenAccessibleText>
 }
 
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>

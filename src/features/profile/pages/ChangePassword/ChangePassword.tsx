@@ -123,9 +123,11 @@ export function ChangePassword() {
             placeholder={t`Ton nouveau mot de passe`}
             isRequiredField
           />
-          {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
-            <PasswordSecurityRules password={newPassword} nativeID={passwordDescribedBy} />
-          )}
+          <PasswordSecurityRules
+            password={newPassword}
+            visible={shouldDisplayPasswordRules && newPassword.length > 0}
+            nativeID={passwordDescribedBy}
+          />
           <Spacer.Column numberOfSpaces={5} />
           <PasswordInput
             label={t`Confirmer le mot de passe`}

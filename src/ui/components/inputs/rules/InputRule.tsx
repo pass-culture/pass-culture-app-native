@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 type Props = {
   title: string
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   iconSize: number
   isValid: boolean
   testIdSuffix?: string

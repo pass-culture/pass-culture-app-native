@@ -7,7 +7,7 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { View, ViewProps, ViewStyle } from 'react-native'
+import { AccessibilityRole, Platform, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -116,11 +116,7 @@ const _SnackBar = (props: SnackBarProps) => {
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <SnackBarContainer
-          isVisible={isVisible}
-          marginTop={top}
-          testID="snackbar-container"
-          aria-live="assertive">
+        <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
           <Spacer.Flex flex={1}>
             <Text testID="snackbar-message" color={props.color}>
@@ -158,17 +154,20 @@ const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEn
   backgroundColor: props.backgroundColor,
 }))
 
-const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>(
-  ({ isVisible, marginTop }) => ({
-    marginTop,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingTop: getSpacing(2) - marginTop,
-    paddingBottom: getSpacing(2),
-    paddingHorizontal: getSpacing(5),
-    display: isVisible ? 'flex' : 'none',
-  })
-)
+const SnackBarContainer = styled(View).attrs({
+  accessibilityRole: Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined,
+})<{ isVisible: boolean; marginTop: number }>(({ isVisible, marginTop }) => ({
+  marginTop,
+  flexDirection: 'row',
+  alignItems: 'center',
+  display: !isVisible && Platform.OS !== 'web' ? 'none' : 'flex',
+  paddingTop: isVisible ? getSpacing(2) - marginTop : 0,
+  paddingBottom: isVisible ? getSpacing(2) : 0,
+  paddingHorizontal: isVisible ? getSpacing(5) : 0,
+  width: isVisible ? undefined : 0,
+  height: isVisible ? undefined : 0,
+  overflow: 'hidden',
+}))
 
 const Text = styled(Typo.Body)<{ color: string }>((props) => ({
   color: props.color,
