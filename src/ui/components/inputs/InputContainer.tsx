@@ -2,7 +2,7 @@ import React from 'react'
 import { ViewStyle, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getShadow, padding } from 'ui/theme'
+import { padding } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -45,17 +45,6 @@ const StyledView = styled(View)<{
   isDisabled?: boolean
   focusOutlineColor?: ColorsEnum
 }>(({ height, isFocus, isError, isDisabled, focusOutlineColor, theme }) => {
-  let shadows = {}
-  // ACCESSIBILITY : on the web, it is better to have no shadow to increase the contrast
-  if (!isDisabled && Platform.OS !== 'web') {
-    shadows = getShadow({
-      shadowOffset: { width: 0, height: 2 },
-      shadowRadius: 6,
-      shadowColor: theme.colors.black,
-      shadowOpacity: 0.15,
-    })
-  }
-
   const getHeightValue = () => {
     if (height === 'small') {
       return theme.inputs.height.small
@@ -91,6 +80,5 @@ const StyledView = styled(View)<{
           borderRadius: 16,
         }
       : { ...padding(1, 4), alignItems: 'center', borderRadius: 22 }),
-    ...shadows,
   }
 })
