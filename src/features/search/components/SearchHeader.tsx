@@ -44,7 +44,10 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({ searchInputID }) => 
         </SearchBoxReworkContainer>
       ) : (
         <SearchBoxContainer height={inputHeight}>
-          <SearchBox searchInputID={searchInputID} />
+          <SearchBox
+            searchInputID={searchInputID}
+            showLocationButton={appEnableSearchHomepageRework}
+          />
         </SearchBoxContainer>
       )}
     </React.Fragment>
