@@ -39,7 +39,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const { findByText } = renderSignupConfirmationExpiredLink()
 
     const button = await findByText("Retourner à l'accueil")
-    fireEvent.press(button)
+    await fireEvent.press(button)
 
     await waitForExpect(() => {
       expect(navigateFromRef).toBeCalledWith(
@@ -67,7 +67,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   it('should NOT redirect to signup confirmation email sent page WHEN clicking on resend email and response is failure', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/resend_email_validation', async (req, res, ctx) =>
-        res.once(ctx.status(403))
+        res.once(ctx.status(400))
       )
     )
     const { getByText } = renderSignupConfirmationExpiredLink()

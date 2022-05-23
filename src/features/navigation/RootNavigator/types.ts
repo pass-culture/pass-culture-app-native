@@ -107,6 +107,7 @@ export type RootStackParamList = {
     moduleName?: string
   }
   OfferDescription: { id: number }
+  SuspensionScreen: undefined
   ReinitializePassword: { email: string; token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }

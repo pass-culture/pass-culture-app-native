@@ -173,6 +173,11 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     return {}
   }
 
+  if (response.status === 403) {
+    navigateFromRef('SuspensionScreen')
+    return {}
+  }
+
   // We are not suppose to have side-effects in this function but this is a special case
   // where the access token is corrupted and we need to recreate it by logging-in again
   if (

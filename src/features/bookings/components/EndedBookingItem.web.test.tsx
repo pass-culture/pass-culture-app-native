@@ -54,11 +54,11 @@ describe('EndedBookingItem', () => {
     expect(queryByText('le 15/03/2021')).toBeTruthy()
   })
 
-  it('should navigate to offer page ', () => {
+  it('should navigate to offer page ', async () => {
     const { getByTestId } = renderEndedBookingItem(bookingsSnap.ended_bookings[0])
 
     const item = getByTestId('EndedBookingItem')
-    fireEvent.click(item)
+    await fireEvent.click(item)
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: 147874,

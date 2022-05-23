@@ -51,7 +51,6 @@ export const FraudulentAccount = () => {
           navigateTo={navigateToHomeConfig}
           onPress={signOut}
           icon={PlainArrowPrevious}
-          navigateBeforeOnPress
         />,
       ]}>
       <StyledBody>{t`En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.`}</StyledBody>

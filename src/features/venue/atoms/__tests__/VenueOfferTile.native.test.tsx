@@ -41,7 +41,7 @@ describe('VenueOfferTile component', () => {
   it('should navigate to the offer when clicking on the image', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    fireEvent.press(getByTestId('tileImage'))
+    await fireEvent.press(getByTestId('tileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'venue',

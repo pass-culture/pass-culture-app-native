@@ -14,6 +14,7 @@ export type SignInResponse = SignInResponseSuccess | SignInResponseFailure
 
 export type SignInResponseSuccess = {
   isSuccess: true
+  isActive: boolean
 }
 
 export type SignInResponseFailure = {
@@ -50,7 +51,10 @@ export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
     try {
       const response = await api.postnativev1signin(body, { credentials: 'omit' })
       await loginRoutine(response, 'fromLogin')
-      const successResponse: SignInResponseSuccess = { isSuccess: true }
+      const successResponse: SignInResponseSuccess = {
+        isSuccess: true,
+        isActive: response.isActive === undefined ? true : response.isActive,
+      }
       return successResponse
     } catch (error) {
       const errorResponse: SignInResponseFailure = { isSuccess: false }

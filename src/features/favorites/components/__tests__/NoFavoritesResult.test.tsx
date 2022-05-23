@@ -33,10 +33,10 @@ describe('NoFavoritesResult component', () => {
     expect(text).toBeTruthy()
   })
 
-  it('should navigate to Search when pressing button and log event', () => {
+  it('should navigate to Search when pressing button and log event', async () => {
     const renderAPI = render(<NoFavoritesResult />)
     const button = renderAPI.getByText('Explorer les offres')
-    fireEvent.press(button)
+    await fireEvent.press(button)
     expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { showResults: true }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
   })
