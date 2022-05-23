@@ -31,13 +31,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { data: subscription } = useNextSubscriptionStep()
 
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
+  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
   const isUserUnderage = useIsUserUnderage()
-
-  function onBannerPress() {
-    navigateToNextBeneficiaryValidationStep()
-    return
-  }
 
   const deposit = depositAmount.replace(' ', '')
 
@@ -74,7 +69,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
               </Caption>
             )}
             <ModuleBanner
-              onPress={onBannerPress}
+              navigateTo={nextBeneficiaryValidationStepNavConfig}
               leftIcon={<ThumbUp />}
               title={moduleBannerWording}
               subTitle={t`à dépenser dans l'application`}
