@@ -2,9 +2,9 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { env } from 'libs/environment'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
@@ -15,11 +15,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 export const useIdentityCheckSteps = (): StepConfig[] => {
   const { profile, identification } = useIdentityCheckContext()
   const hasSchoolTypes = profile.hasSchoolTypes
-
-  /**
-   * TODO: (PC-14455) replace this const with result from stepperIncludesPhoneValidation value from useNextSubscriptionStep
-   */
-  const stepsIncludePhoneValidation = env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
+  const { data: nextSubscriptionStep } = useNextSubscriptionStep()
 
   const steps: StepConfig[] = [
     {
@@ -52,7 +48,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
   ]
-  if (stepsIncludePhoneValidation) {
+  if (nextSubscriptionStep?.stepperIncludesPhoneValidation) {
     return [
       {
         name: IdentityCheckStep.PHONE_VALIDATION,
