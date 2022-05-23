@@ -1026,13 +1026,6 @@ Array [
                   "paddingLeft": 16,
                   "paddingRight": 16,
                   "paddingTop": 4,
-                  "shadowColor": "#161617",
-                  "shadowOffset": Object {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.15,
-                  "shadowRadius": 6,
                   "width": "100%",
                 },
               ]
@@ -1173,13 +1166,6 @@ Array [
                   "paddingLeft": 16,
                   "paddingRight": 16,
                   "paddingTop": 4,
-                  "shadowColor": "#161617",
-                  "shadowOffset": Object {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.15,
-                  "shadowRadius": 6,
                   "width": "100%",
                 },
               ]
