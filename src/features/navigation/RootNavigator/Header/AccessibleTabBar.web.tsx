@@ -7,7 +7,6 @@ import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRoute
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabRouteName } from 'features/navigation/TabBar/types'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
@@ -29,7 +28,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
                   navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1], fromRef: true }}
                   tabName={route.name}
                   isSelected={route.isSelected}
-                  BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
+                  BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
                 />
               </LinkContainer>
             )
