@@ -39,11 +39,15 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({ searchInputID }) => 
             onFocusSearchInput={() => {
               if (appEnableSearchHomepageRework) navigate('SearchDetails')
             }}
+            showLocationBtn={appEnableSearchHomepageRework}
           />
         </SearchBoxReworkContainer>
       ) : (
         <SearchBoxContainer height={inputHeight}>
-          <SearchBox searchInputID={searchInputID} />
+          <SearchBox
+            searchInputID={searchInputID}
+            showLocationBtn={appEnableSearchHomepageRework}
+          />
         </SearchBoxContainer>
       )}
     </React.Fragment>

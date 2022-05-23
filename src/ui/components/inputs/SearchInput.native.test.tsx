@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { render, fireEvent } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 
@@ -29,5 +30,13 @@ describe('SearchInput component', () => {
     await fireEvent.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
+  })
+
+  it('should redirect on location page on location button click', async () => {
+    const { getByTestId } = render(<SearchInput showLocationBtn={true} />)
+    const locationBtn = getByTestId('locationBtn')
+    await fireEvent.press(locationBtn)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
   })
 })
