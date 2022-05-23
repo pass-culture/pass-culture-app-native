@@ -26,7 +26,7 @@ export function Search() {
       dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
       dispatch({ type: 'SHOW_RESULTS', payload: true })
 
-      if (appEnableSearchHomepageRework) navigate('SearchDetails')
+      if (appEnableSearchHomepageRework && params.query !== '') navigate('SearchDetails')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
