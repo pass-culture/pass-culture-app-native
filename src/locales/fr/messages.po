@@ -563,6 +563,7 @@ msgid "Compte créé !"
 msgstr "Compte créé !"
 
 #: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
@@ -1772,6 +1773,10 @@ msgstr "Nombre de place"
 msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 
+#: src/ui/components/FilterSwitch.tsx
+msgid "Non"
+msgstr "Non"
+
 #: src/ui/components/ValidationMark.tsx
 #: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Non accessible"
@@ -1939,6 +1944,10 @@ msgstr "On est super triste de te voir partir."
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "On y va !"
 msgstr "On y va !"
+
+#: src/ui/components/FilterSwitch.tsx
+msgid "Oui"
+msgstr "Oui"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Oups, cette offre n’est plus disponible !"
@@ -2356,6 +2365,11 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
+#: src/ui/components/headers/PageHeader.tsx
+#: src/ui/components/modals/ModalHeader.tsx
+msgid "Retour"
+msgstr "Retour"
+
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
@@ -2393,7 +2407,7 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
-#: src/features/bookings/components/Ticket/Ticket.tsx
+#: src/features/bookings/components/Ticket/TicketSwiper.tsx
 msgid "Revenir au ticket précédent"
 msgstr "Revenir au ticket précédent"
 
@@ -3280,7 +3294,7 @@ msgstr "Voir le détail de l'offre"
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
 
-#: src/features/bookings/components/Ticket/Ticket.tsx
+#: src/features/bookings/components/Ticket/TicketSwiper.tsx
 msgid "Voir le ticket suivant"
 msgstr "Voir le ticket suivant"
 

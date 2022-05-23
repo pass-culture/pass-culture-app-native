@@ -1,7 +1,9 @@
+import { t } from '@lingui/macro'
 import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { HiddenText } from 'ui/components/HiddenText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
@@ -38,9 +40,11 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
+  const hiddenText = active ? t`Oui` : t`Non`
   return (
     <FilterSwitchContainer>
       <Spacer.Row numberOfSpaces={5} />
+      <HiddenText>{hiddenText}</HiddenText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}

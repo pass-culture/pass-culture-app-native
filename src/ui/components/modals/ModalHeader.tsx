@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { HiddenText } from 'ui/components/HiddenText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -50,6 +51,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         {!!LeftIcon && (
           <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
             <LeftIcon {...accessibilityAndTestId(leftIconAccessibilityLabel, 'leftIcon')} />
+            <HiddenText>{t`Retour`}</HiddenText>
           </HeaderAction>
         )}
       </LeftHeaderActionContainer>
