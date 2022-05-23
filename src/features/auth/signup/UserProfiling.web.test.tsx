@@ -36,6 +36,7 @@ describe('<UserProfiling />', () => {
     mockBackend({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['user-profiling'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
 
@@ -52,6 +53,7 @@ describe('<UserProfiling />', () => {
     mockBackend({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['identity-check'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
 

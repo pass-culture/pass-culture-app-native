@@ -17,6 +17,7 @@ let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
   nextSubscriptionStep: SubscriptionStep['honor-statement'],
   hasIdentityCheckPending: false,
+  stepperIncludesPhoneValidation: false,
 }
 
 jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
@@ -46,6 +47,7 @@ describe('<IdentityCheckEnd/>', () => {
       allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
       nextSubscriptionStep: null,
       hasIdentityCheckPending: false,
+      stepperIncludesPhoneValidation: false,
     }
     render(<IdentityCheckEnd />)
     expect(navigateToHome).not.toHaveBeenCalled()
