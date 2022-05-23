@@ -24,6 +24,8 @@ export type IdentityCheckRootStackParamList = {
   NavigationIdentityCheck: undefined
   // Stepper
   IdentityCheckStepper: undefined
+  // PhoneValidation
+  NewSetPhoneNumber: undefined
   // Profile
   SetName: undefined
   IdentityCheckCity: undefined

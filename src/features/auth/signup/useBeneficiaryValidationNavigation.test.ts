@@ -49,6 +49,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
+    // TODO (PC-15247): replace SetPhoneNumber with NewSetPhoneNumber
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('SetPhoneNumber', undefined)
     })
