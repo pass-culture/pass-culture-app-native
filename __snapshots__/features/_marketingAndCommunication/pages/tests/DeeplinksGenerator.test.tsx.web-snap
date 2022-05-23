@@ -105,6 +105,17 @@ Array [
                 icon-back-SVG-Mock
               </div>
             </div>
+            <div
+              className="css-text-901oao"
+              dir="auto"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              Retour
+            </div>
           </button>
         </div>
         <h1

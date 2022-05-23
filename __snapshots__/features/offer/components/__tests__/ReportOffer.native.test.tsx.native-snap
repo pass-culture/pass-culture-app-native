@@ -188,6 +188,17 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 leftIcon-SVG-Mock
               </Text>
             </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
           </View>
         </View>
         <View
@@ -516,6 +527,17 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 leftIcon-SVG-Mock
               </Text>
             </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
           </View>
         </View>
         <View

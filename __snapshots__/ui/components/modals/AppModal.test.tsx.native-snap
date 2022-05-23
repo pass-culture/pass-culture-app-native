@@ -1618,6 +1618,17 @@ exports[`<AppModal /> with left icon render 1`] = `
                 leftIcon-SVG-Mock
               </Text>
             </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
           </View>
         </View>
         <View

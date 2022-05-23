@@ -416,6 +416,17 @@ exports[`<OfferDescription /> should render 1`] = `
                                     icon-back-SVG-Mock
                                   </Text>
                                 </View>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "display": "none",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Retour
+                                </Text>
                               </View>
                             </View>
                             <Text

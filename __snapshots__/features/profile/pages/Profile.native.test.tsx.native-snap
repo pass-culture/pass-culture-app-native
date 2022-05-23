@@ -508,6 +508,17 @@ exports[`Profile component should render correctly 1`] = `
                             ]
                           }
                         />
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "display": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Oui
+                        </Text>
                         <View
                           accessibilityRole="switch"
                           accessibilityState={

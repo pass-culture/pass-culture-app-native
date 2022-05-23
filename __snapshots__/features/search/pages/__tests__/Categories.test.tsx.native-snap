@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -186,11 +186,11 @@
+@@ -197,11 +197,11 @@
         />
         <View
           accessibilityRole=\\"radio\\"
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -247,16 +247,16 @@
+@@ -258,16 +258,16 @@
                 ]
               }
             />
@@ -37,7 +37,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -275,11 +275,20 @@
+@@ -286,11 +286,20 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -59,7 +59,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessibilityRole=\\"radio\\"
           accessibilityState={
             Object {
-@@ -376,11 +385,11 @@
+@@ -387,11 +396,11 @@
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -72,7 +72,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -437,16 +446,16 @@
+@@ -448,16 +457,16 @@
                 ]
               }
             />
@@ -91,7 +91,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -465,20 +474,11 @@
+@@ -476,20 +485,11 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -220,6 +220,17 @@ exports[`Categories component should render correctly 1`] = `
               icon-back-SVG-Mock
             </Text>
           </View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Retour
+          </Text>
         </View>
       </View>
       <Text
