@@ -11,6 +11,7 @@ import { ExclusivityModule } from '../ExclusivityModule'
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
 
 const props: ExclusivityPane = {
+  title: "Image d'Adèle",
   alt: "Image d'Adèle",
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   id: mockOffer.id,
@@ -47,9 +48,10 @@ describe('ExclusivityModule component', () => {
   it('should log a click event when clicking on the image', () => {
     const { getByTestId } = renderExclusivityModule()
     fireEvent.press(getByTestId('imageExclu'))
-    expect(analytics.logClickExclusivityBlock).toHaveBeenCalledWith(mockOffer.id)
+    expect(analytics.logClickExclusivityBlock).toHaveBeenCalledWith(props.title)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId: mockOffer.id,
+      moduleName: props.title,
       from: 'exclusivity',
     })
   })

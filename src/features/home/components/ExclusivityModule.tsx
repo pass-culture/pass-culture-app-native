@@ -14,6 +14,7 @@ import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ExclusivityModule = ({
+  title,
   alt,
   image,
   id,
@@ -26,8 +27,8 @@ export const ExclusivityModule = ({
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
-    analytics.logClickExclusivityBlock(id)
-    analytics.logConsultOffer({ offerId: id, from: 'exclusivity' })
+    analytics.logClickExclusivityBlock(title)
+    analytics.logConsultOffer({ offerId: id, moduleName: title, from: 'exclusivity' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
