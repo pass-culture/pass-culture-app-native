@@ -2,21 +2,12 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  IdentityCheckMethod,
-  NextSubscriptionStepResponse,
-  SubscriptionStep,
-  UserProfileResponse,
-} from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import { render, superFlushWithAct } from 'tests/utils'
 
-let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
-  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
-  nextSubscriptionStep: SubscriptionStep['identity-check'],
-  hasIdentityCheckPending: false,
-  stepperIncludesPhoneValidation: false,
-}
+let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
@@ -65,10 +56,8 @@ describe('Stepper navigation', () => {
   beforeEach(jest.clearAllMocks)
   it('should navigate to UnderageAccountCreated when next_step is null and initialCredit is lower than 300 euros', async () => {
     mockNextSubscriptionStep = {
-      allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+      ...mockStep,
       nextSubscriptionStep: null,
-      hasIdentityCheckPending: false,
-      stepperIncludesPhoneValidation: false,
     }
     render(<IdentityCheckStepper />)
     await superFlushWithAct()
@@ -78,10 +67,8 @@ describe('Stepper navigation', () => {
   })
   it('should navigate to AccountCreated when next_step is null and initialCredit is 300 euros', async () => {
     mockNextSubscriptionStep = {
-      allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+      ...mockStep,
       nextSubscriptionStep: null,
-      hasIdentityCheckPending: false,
-      stepperIncludesPhoneValidation: false,
     }
     mockUserProfileData = {
       ...mockUserProfileData,
@@ -95,10 +82,8 @@ describe('Stepper navigation', () => {
   })
   it('should stay on stepper when next_step is null initialCredit is not between 0 and 300 euros', async () => {
     mockNextSubscriptionStep = {
-      allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+      ...mockStep,
       nextSubscriptionStep: null,
-      hasIdentityCheckPending: false,
-      stepperIncludesPhoneValidation: false,
     }
     mockUserProfileData = {
       ...mockUserProfileData,

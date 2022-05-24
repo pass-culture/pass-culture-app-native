@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
+import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
 import { render } from 'tests/utils'
@@ -14,10 +15,8 @@ jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
 }))
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
-  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+  ...mockStep,
   nextSubscriptionStep: SubscriptionStep['honor-statement'],
-  hasIdentityCheckPending: false,
-  stepperIncludesPhoneValidation: false,
 }
 
 jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
@@ -44,10 +43,8 @@ describe('<IdentityCheckEnd/>', () => {
 
   it('should navigate to home after timeout if nextSubscriptionStep is null', () => {
     mockNextSubscriptionStep = {
-      allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+      ...mockStep,
       nextSubscriptionStep: null,
-      hasIdentityCheckPending: false,
-      stepperIncludesPhoneValidation: false,
     }
     render(<IdentityCheckEnd />)
     expect(navigateToHome).not.toHaveBeenCalled()

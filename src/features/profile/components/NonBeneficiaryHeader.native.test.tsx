@@ -3,13 +3,9 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import {
-  IdentityCheckMethod,
-  NextSubscriptionStepResponse,
-  SubscriptionMessage,
-  SubscriptionStep,
-} from 'api/gen'
+import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { render, fireEvent } from 'tests/utils'
 
@@ -44,12 +40,7 @@ jest.mock('features/auth/settings')
 jest.mock('features/profile/api')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
-let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
-  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
-  nextSubscriptionStep: SubscriptionStep['identity-check'],
-  hasIdentityCheckPending: false,
-  stepperIncludesPhoneValidation: false,
-}
+let mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
 
 const mockedSubscriptionMessage = {
   callToActionMessage: null,
@@ -69,12 +60,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<EligibilityBanner/>', () => {
     beforeEach(() => {
-      mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
-        nextSubscriptionStep: SubscriptionStep['identity-check'],
-        hasIdentityCheckPending: false,
-        stepperIncludesPhoneValidation: false,
-      }
+      mockNextSubscriptionStep = mockStep
     })
     it('should render the right banner for 18 years old users, call analytics and navigate to nextBeneficiaryValidationStep', async () => {
       const setError = jest.fn()
@@ -139,10 +125,8 @@ describe('<NonBeneficiaryHeader/>', () => {
 
     it('should not display eligibility banner if nextSubscriptionStep is null', () => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+        ...mockStep,
         nextSubscriptionStep: null,
-        hasIdentityCheckPending: false,
-        stepperIncludesPhoneValidation: false,
       }
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
@@ -158,10 +142,9 @@ describe('<NonBeneficiaryHeader/>', () => {
   describe('<IdentityCheckPendingBadge/>', () => {
     it('should display identity check pending badge if hasIdentityCheckPending is true and SubscriptionStep is null', async () => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+        ...mockStep,
         nextSubscriptionStep: null,
         hasIdentityCheckPending: true,
-        stepperIncludesPhoneValidation: false,
       }
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
@@ -178,10 +161,8 @@ describe('<NonBeneficiaryHeader/>', () => {
   describe('<SubscriptionMessageBadge/>', () => {
     it('should render the subscription message if hasIdentityCheckPendingis false and SubscriptionStep is null', () => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+        ...mockStep,
         nextSubscriptionStep: null,
-        hasIdentityCheckPending: false,
-        stepperIncludesPhoneValidation: false,
       }
       const { getByTestId } = render(
         <NonBeneficiaryHeader
