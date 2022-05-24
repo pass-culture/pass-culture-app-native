@@ -6,10 +6,8 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
-import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
 export const Favorites: React.FC = () => {
-  useKeyboardAdjust()
   const { isLoggedIn } = useAuthContext()
 
   if (!isLoggedIn) return <NotConnectedFavorites />
