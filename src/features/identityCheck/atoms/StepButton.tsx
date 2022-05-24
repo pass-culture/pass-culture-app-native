@@ -50,7 +50,7 @@ const StyledTouchableLink = styled(TouchableLink)<{
   state: StepButtonState
 }>(({ state, theme }) => ({
   height: getSpacing(24),
-  marginTop: getSpacing(6),
+  marginTop: getSpacing(2),
   width: '100%',
   backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,
