@@ -48,6 +48,7 @@ let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
   nextSubscriptionStep: SubscriptionStep['identity-check'],
   hasIdentityCheckPending: false,
+  stepperIncludesPhoneValidation: false,
 }
 
 const mockedSubscriptionMessage = {
@@ -72,6 +73,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: SubscriptionStep['identity-check'],
         hasIdentityCheckPending: false,
+        stepperIncludesPhoneValidation: false,
       }
     })
     it('should render the right banner for 18 years old users, call analytics and navigate to nextBeneficiaryValidationStep', async () => {
@@ -140,6 +142,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,
         hasIdentityCheckPending: false,
+        stepperIncludesPhoneValidation: false,
       }
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
@@ -158,6 +161,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,
         hasIdentityCheckPending: true,
+        stepperIncludesPhoneValidation: false,
       }
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
@@ -176,6 +180,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       mockNextSubscriptionStep = {
         allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,
+        stepperIncludesPhoneValidation: false,
         hasIdentityCheckPending: false,
       }
       const { getByTestId } = render(

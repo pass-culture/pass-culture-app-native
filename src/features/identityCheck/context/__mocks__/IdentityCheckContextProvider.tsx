@@ -5,4 +5,15 @@ const identification = {
   lastName: 'Doe',
   birthDate: '1993-01-28',
 }
-export const useIdentityCheckContext = jest.fn().mockReturnValue({ dispatch, identification })
+
+const profile = {
+  name: null,
+  city: null,
+  address: null,
+  status: null,
+  hasSchoolTypes: false,
+  schoolType: null,
+}
+export const useIdentityCheckContext = jest
+  .fn()
+  .mockReturnValue({ dispatch, identification, profile })

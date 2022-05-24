@@ -41,6 +41,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['phone-validation'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
@@ -48,6 +49,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
+    // TODO (PC-15247): replace SetPhoneNumber with NewSetPhoneNumber
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('SetPhoneNumber', undefined)
     })
@@ -57,6 +59,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['identity-check'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
@@ -73,6 +76,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['user-profiling'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
 
@@ -93,6 +97,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['profile-completion'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
@@ -109,6 +114,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['honor-statement'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
@@ -126,6 +132,7 @@ describe('useBeneficiaryValidationNavigation', () => {
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.maintenance,
       maintenancePageType: MaintenancePageType['with-dms'],
+      stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
 
@@ -144,6 +151,7 @@ it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and m
     allowedIdentityCheckMethods,
     nextSubscriptionStep: SubscriptionStep.maintenance,
     maintenancePageType: MaintenancePageType['without-dms'],
+    stepperIncludesPhoneValidation: false,
     hasIdentityCheckPending: false,
   })
 

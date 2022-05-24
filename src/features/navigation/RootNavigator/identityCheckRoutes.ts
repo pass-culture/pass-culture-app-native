@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 
+import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
@@ -42,6 +43,15 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: IdentityCheckStepper,
     path: 'verification-identite',
     options: { title: t`Vérification d'identité` },
+    secure: true,
+  },
+  // Phone Validation
+  // TODO (PC-15247): replace SetPhoneNumber with NewSetPhoneNumber
+  {
+    name: 'NewSetPhoneNumber',
+    component: SetPhoneNumber,
+    path: 'validation-telephone/numero',
+    options: { title: t`Ton numéro de téléphone` },
     secure: true,
   },
   // Profile

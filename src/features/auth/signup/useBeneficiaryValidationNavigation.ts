@@ -55,8 +55,12 @@ export const useBeneficiaryValidationNavigation = (setError: (error: Error) => v
 const getNavConfigForNextSubscriptionStep = (
   nextSubscriptionStep: NextSubscriptionStepResponse
 ): NextStepNavConfig => {
-  const { nextSubscriptionStep: nextStep, maintenancePageType } = nextSubscriptionStep
-  if (nextStep === SubscriptionStep['phone-validation']) {
+  const {
+    nextSubscriptionStep: nextStep,
+    maintenancePageType,
+    stepperIncludesPhoneValidation,
+  } = nextSubscriptionStep
+  if (!stepperIncludesPhoneValidation && nextStep === SubscriptionStep['phone-validation']) {
     return { screen: 'SetPhoneNumber' }
   } else if (nextStep === SubscriptionStep.maintenance) {
     return {
@@ -66,6 +70,7 @@ const getNavConfigForNextSubscriptionStep = (
       },
     }
   } else if (
+    nextStep === SubscriptionStep['phone-validation'] ||
     nextStep === SubscriptionStep['identity-check'] ||
     nextStep === SubscriptionStep['profile-completion'] ||
     nextStep === SubscriptionStep['honor-statement']

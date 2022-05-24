@@ -15,6 +15,7 @@ let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
   nextSubscriptionStep: SubscriptionStep['identity-check'],
   hasIdentityCheckPending: false,
+  stepperIncludesPhoneValidation: false,
 }
 const mockIdentityCheckDispatch = jest.fn()
 
@@ -67,6 +68,7 @@ describe('Stepper navigation', () => {
       allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
       nextSubscriptionStep: null,
       hasIdentityCheckPending: false,
+      stepperIncludesPhoneValidation: false,
     }
     render(<IdentityCheckStepper />)
     await superFlushWithAct()
@@ -79,6 +81,7 @@ describe('Stepper navigation', () => {
       allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
       nextSubscriptionStep: null,
       hasIdentityCheckPending: false,
+      stepperIncludesPhoneValidation: false,
     }
     mockUserProfileData = {
       ...mockUserProfileData,
@@ -95,6 +98,7 @@ describe('Stepper navigation', () => {
       allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
       nextSubscriptionStep: null,
       hasIdentityCheckPending: false,
+      stepperIncludesPhoneValidation: false,
     }
     mockUserProfileData = {
       ...mockUserProfileData,
