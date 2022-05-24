@@ -1,14 +1,8 @@
-import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
 
-let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
-  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
-  nextSubscriptionStep: SubscriptionStep['identity-check'],
-  hasIdentityCheckPending: false,
-  stepperIncludesPhoneValidation: false,
-}
-
+let mockNextSubscriptionStep = mockStep
 let mockIdentityCheckState = mockState
 
 jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
@@ -33,9 +27,7 @@ describe('useIdentityCheckSteps', () => {
   })
   it('should return 4 steps if stepperIncludesPhoneValidation is true', () => {
     mockNextSubscriptionStep = {
-      allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
-      nextSubscriptionStep: SubscriptionStep['identity-check'],
-      hasIdentityCheckPending: false,
+      ...mockStep,
       stepperIncludesPhoneValidation: true,
     }
     const steps = useIdentityCheckSteps()
@@ -43,9 +35,7 @@ describe('useIdentityCheckSteps', () => {
   })
   it('should include IdentityCheckSchoolType if reducer has school types', () => {
     mockNextSubscriptionStep = {
-      allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
-      nextSubscriptionStep: SubscriptionStep['identity-check'],
-      hasIdentityCheckPending: false,
+      ...mockStep,
       stepperIncludesPhoneValidation: false,
     }
     mockIdentityCheckState = {
