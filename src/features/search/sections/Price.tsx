@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 
 import { CenteredSection, TitleWithCount } from 'features/search/atoms'
@@ -34,6 +35,8 @@ export const Price: React.FC = () => {
         max={maxPrice}
         formatValues={formatPriceInEuroToDisplayPrice}
         onValuesChangeFinish={onValuesChangeFinish}
+        minLabel={t`Prix minimum\u00a0:`}
+        maxLabel={t`Prix maximum\u00a0:`}
       />
     </CenteredSection>
   )

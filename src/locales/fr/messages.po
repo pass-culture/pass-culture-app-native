@@ -861,6 +861,14 @@ msgstr "Distance"
 msgid "Distance depuis la localisation"
 msgstr "Distance depuis la localisation"
 
+#: src/features/search/sections/Radius.tsx
+msgid "Distance maximum :"
+msgstr "Distance maximum :"
+
+#: src/features/search/sections/Radius.tsx
+msgid "Distance minimum :"
+msgstr "Distance minimum :"
+
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
@@ -1197,6 +1205,14 @@ msgstr "Heure"
 #: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
 msgid "Historique"
 msgstr "Historique"
+
+#: src/features/search/sections/TimeSlot.tsx
+msgid "Horaire maximum :"
+msgstr "Horaire maximum :"
+
+#: src/features/search/sections/TimeSlot.tsx
+msgid "Horaire minimum :"
+msgstr "Horaire minimum :"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
@@ -2210,6 +2226,16 @@ msgstr "Prix"
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Prix croissant"
 msgstr "Prix croissant"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+#: src/features/search/sections/Price.tsx
+msgid "Prix maximum :"
+msgstr "Prix maximum :"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+#: src/features/search/sections/Price.tsx
+msgid "Prix minimum :"
+msgstr "Prix minimum :"
 
 #: src/features/navigation/helpers/openUrl.ts
 msgid "Problème technique ;("
