@@ -118,7 +118,6 @@ export type RootStackParamList = {
   LocationPicker: undefined
   PersonalData: undefined
   SearchCategories: undefined
-  SearchDetails: undefined
   SearchFilter: undefined
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
