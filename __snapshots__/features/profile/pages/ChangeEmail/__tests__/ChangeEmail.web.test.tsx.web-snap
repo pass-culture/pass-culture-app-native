@@ -34,6 +34,7 @@ Object {
                 class="sc-eCImPb eivvKD"
                 data-testid="Revenir en arrière"
                 tabindex="0"
+                title="Revenir en arrière"
                 type="button"
               >
                 <div
@@ -243,6 +244,7 @@ Object {
                     class="sc-eCImPb eivvKD sc-cidDSM dWLnEj sc-cidDSM dWLnEj"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
+                    title="Afficher le mot de passe"
                     type="button"
                   >
                     <div
@@ -326,6 +328,7 @@ Object {
               class="sc-eCImPb eivvKD"
               data-testid="Revenir en arrière"
               tabindex="0"
+              title="Revenir en arrière"
               type="button"
             >
               <div
@@ -535,6 +538,7 @@ Object {
                   class="sc-eCImPb eivvKD sc-cidDSM dWLnEj sc-cidDSM dWLnEj"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
+                  title="Afficher le mot de passe"
                   type="button"
                 >
                   <div

@@ -90,6 +90,7 @@ Object {
                                         class="sc-gKclnd KSjmK"
                                         data-testid="Revenir en arrière"
                                         tabindex="0"
+                                        title="Revenir en arrière"
                                         type="button"
                                       >
                                         <div
@@ -326,6 +327,7 @@ Object {
                                       class="sc-gKclnd KSjmK"
                                       data-testid="Revenir en arrière"
                                       tabindex="0"
+                                      title="Revenir en arrière"
                                       type="button"
                                     >
                                       <div

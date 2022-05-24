@@ -92,6 +92,7 @@ Array [
             data-testid="Revenir en arrière"
             onClick={[MockFunction]}
             tabIndex="0"
+            title="Revenir en arrière"
             type="button"
           >
             <div
