@@ -275,6 +275,7 @@ Object {
               class="sc-hKwDye lgPtFf sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
               data-testid="iconLocation"
               tabindex="0"
+              title="Géolocalisation désactivée"
               type="button"
             >
               <div
@@ -1629,6 +1630,7 @@ Object {
             class="sc-hKwDye lgPtFf sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
             data-testid="iconLocation"
             tabindex="0"
+            title="Géolocalisation désactivée"
             type="button"
           >
             <div

@@ -38,6 +38,7 @@ Object {
                   class="sc-bdvvtL bmzymd"
                   data-testid="Revenir en arrière"
                   tabindex="0"
+                  title="Revenir en arrière"
                   type="button"
                 >
                   <div
@@ -382,6 +383,7 @@ Object {
                 class="sc-bdvvtL bmzymd"
                 data-testid="Revenir en arrière"
                 tabindex="0"
+                title="Revenir en arrière"
                 type="button"
               >
                 <div

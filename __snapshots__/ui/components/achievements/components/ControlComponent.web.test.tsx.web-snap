@@ -10,6 +10,7 @@ Object {
         class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
         data-testid="control-button-next"
         tabindex="0"
+        title="Next"
         type="next"
       >
         <div
@@ -32,6 +33,7 @@ Object {
       class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
       data-testid="control-button-next"
       tabindex="0"
+      title="Next"
       type="next"
     >
       <div
@@ -111,6 +113,7 @@ Object {
         class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
         data-testid="control-button-prev"
         tabindex="0"
+        title="Previous"
         type="prev"
       >
         <div
@@ -133,6 +136,7 @@ Object {
       class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
       data-testid="control-button-prev"
       tabindex="0"
+      title="Previous"
       type="prev"
     >
       <div
@@ -212,6 +216,7 @@ Object {
         class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
         data-testid="control-button-prev"
         tabindex="0"
+        title="Previous"
         type="prev"
       >
         <div
@@ -234,6 +239,7 @@ Object {
       class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
       data-testid="control-button-prev"
       tabindex="0"
+      title="Previous"
       type="prev"
     >
       <div

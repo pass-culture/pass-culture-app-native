@@ -30,6 +30,7 @@ Object {
             class="sc-bdvvtL gOPMKb"
             data-testid="Revenir en arrière"
             tabindex="0"
+            title="Revenir en arrière"
             type="button"
           >
             <div
@@ -106,6 +107,7 @@ Object {
             class="sc-bdvvtL gOPMKb"
             data-testid="Partager"
             tabindex="0"
+            title="Partager"
             type="button"
           >
             <div
@@ -192,6 +194,7 @@ Object {
           class="sc-bdvvtL gOPMKb"
           data-testid="Revenir en arrière"
           tabindex="0"
+          title="Revenir en arrière"
           type="button"
         >
           <div
@@ -268,6 +271,7 @@ Object {
           class="sc-bdvvtL gOPMKb"
           data-testid="Partager"
           tabindex="0"
+          title="Partager"
           type="button"
         >
           <div

@@ -34,6 +34,7 @@ Object {
                 class="sc-hKwDye lgPtFf"
                 data-testid="Revenir en arrière"
                 tabindex="0"
+                title="Revenir en arrière"
                 type="button"
               >
                 <div
@@ -207,6 +208,7 @@ Object {
               class="sc-hKwDye lgPtFf"
               data-testid="Revenir en arrière"
               tabindex="0"
+              title="Revenir en arrière"
               type="button"
             >
               <div
