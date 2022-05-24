@@ -46,9 +46,9 @@ export const appButtonStyles: ButtonStyles = ({
   center,
 }: ButtonStylesArgs) => {
   const heightButton = () => {
+    if (buttonHeight === 'extraSmall') return theme.buttons.buttonHeights.extraSmall
     if (buttonHeight === 'tall') return theme.buttons.buttonHeights.tall
-    if (buttonHeight === 'small') return theme.buttons.buttonHeights.small
-    return theme.buttons.buttonHeights.extraSmall
+    return theme.buttons.buttonHeights.small
   }
 
   return {

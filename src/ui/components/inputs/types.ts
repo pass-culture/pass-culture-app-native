@@ -24,7 +24,7 @@ type CustomSearchInputProps = {
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
   onFocusSearchInput?: () => void
-  showLocationBtn?: boolean
+  showLocationButton?: boolean
 }
 
 export type RNTextInputProps = Pick<

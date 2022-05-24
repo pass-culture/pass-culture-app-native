@@ -33,9 +33,9 @@ describe('SearchInput component', () => {
   })
 
   it('should redirect on location page on location button click', async () => {
-    const { getByTestId } = render(<SearchInput showLocationBtn={true} />)
-    const locationBtn = getByTestId('locationBtn')
-    await fireEvent.press(locationBtn)
+    const { getByTestId } = render(<SearchInput showLocationButton={true} />)
+    const locationButton = getByTestId('locationButton')
+    await fireEvent.press(locationButton)
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
   })

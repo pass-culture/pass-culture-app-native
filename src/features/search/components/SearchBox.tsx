@@ -31,13 +31,13 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
 type SearchBoxProps = {
   searchInputID: string
   onFocusSearchInput?: () => void
-  showLocationBtn: boolean
+  showLocationButton?: boolean
 }
 
 export const SearchBox: React.FC<SearchBoxProps> = ({
   searchInputID,
   onFocusSearchInput,
-  showLocationBtn,
+  showLocationButton,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
@@ -104,7 +104,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
         onPressRightIcon={resetSearch}
         accessibilityDescribedBy={accessibilityDescribedBy}
         onFocusSearchInput={onFocusSearchInput}
-        showLocationBtn={showLocationBtn}
+        showLocationButton={showLocationButton}
       />
       <HiddenText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche

@@ -44,10 +44,22 @@ jest.mock('features/auth/settings', () => ({
 
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
-  it('should call mockStagedDispatch() when typing', () => {
-    const { getByPlaceholderText } = render(
-      <SearchBox searchInputID={searchInputID} showLocationBtn={false} />
+
+  it('should render SearchBox', () => {
+    expect(render(<SearchBox searchInputID={searchInputID} />)).toMatchSnapshot()
+  })
+
+  it('should display location button if showLocationButton = true', () => {
+    const { queryByTestId } = render(
+      <SearchBox searchInputID={searchInputID} showLocationButton={true} />
     )
+    const locationButton = queryByTestId('locationButton')
+
+    expect(locationButton).toBeTruthy()
+  })
+
+  it('should call mockStagedDispatch() when typing', () => {
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
     expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
     fireEvent.changeText(searchInput, 'Ma')
@@ -57,9 +69,7 @@ describe('SearchBox component', () => {
   })
 
   it('should call logSearchQuery on submit', () => {
-    const { getByPlaceholderText } = render(
-      <SearchBox searchInputID={searchInputID} showLocationBtn={false} />
-    )
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -74,23 +84,5 @@ describe('SearchBox component', () => {
         priceRange: mockStagedSearchState.priceRange,
       })
     )
-  })
-
-  it('should display location button if showLocationBtn = true', () => {
-    const { queryByTestId } = render(
-      <SearchBox searchInputID={searchInputID} showLocationBtn={true} />
-    )
-    const locationBtn = queryByTestId('locationBtn')
-
-    expect(locationBtn).toBeTruthy()
-  })
-
-  it('should not display location button if showLocationBtn = false', () => {
-    const { queryByTestId } = render(
-      <SearchBox searchInputID={searchInputID} showLocationBtn={false} />
-    )
-    const locationBtn = queryByTestId('locationBtn')
-
-    expect(locationBtn).toBeFalsy()
   })
 })

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useCallback, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -59,6 +59,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     setIsFocus(false)
   }
 
+  const onPressLocationButton = useCallback(() => {
+    navigate('LocationFilter')
+  }, [navigate])
+
   return (
     <React.Fragment>
       {!!label && (
@@ -90,15 +94,16 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           aria-describedby={accessibilityDescribedBy}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
-        {props.showLocationBtn ? (
+        {props.showLocationButton ? (
           <StyledButtonPrimary
-            testID="locationBtn"
+            testID="locationButton"
             wording={locationLabel}
-            onPress={() => navigate('LocationFilter')}
+            onPress={onPressLocationButton}
             icon={LocationPointer}
             textSize={getSpacing(3)}
             buttonHeight="extraSmall"
             ellipsizeMode="tail"
+            maxWidth={getSpacing(23)}
           />
         ) : null}
         {value.length > 0 && (
@@ -134,6 +139,6 @@ const StyledInputContainer = styled(InputContainer)({
   outlineOffset: 0,
 })
 
-const StyledButtonPrimary = styledButton((props) => <ButtonPrimary {...props} />)({
+const StyledButtonPrimary = styledButton(ButtonPrimary)({
   maxWidth: getSpacing(34),
 })
