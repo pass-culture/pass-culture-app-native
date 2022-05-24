@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -238,11 +238,11 @@
+@@ -249,11 +249,11 @@
         <ul
           className=\\"sc-dkPtRN sc-hKwDye kHsZXE dWdAkX\\"
         >
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -334,11 +334,11 @@
+@@ -345,11 +345,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -31,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -361,11 +361,22 @@
+@@ -372,11 +372,22 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -494,11 +505,11 @@
+@@ -505,11 +516,11 @@
               />
             </div>
           </li>
@@ -68,7 +68,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -590,11 +601,11 @@
+@@ -601,11 +612,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -617,22 +628,11 @@
+@@ -628,22 +639,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -228,6 +228,17 @@ exports[`Categories component should render correctly 1`] = `
               >
                 icon-back-SVG-Mock
               </div>
+            </div>
+            <div
+              className="css-text-901oao"
+              dir="auto"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              Retour
             </div>
           </button>
         </div>

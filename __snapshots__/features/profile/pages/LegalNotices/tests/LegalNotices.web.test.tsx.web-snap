@@ -47,6 +47,13 @@ Object {
                     icon-back-SVG-Mock
                   </div>
                 </div>
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="display: none;"
+                >
+                  Retour
+                </div>
               </button>
             </div>
             <h1
@@ -212,6 +219,13 @@ Object {
                 >
                   icon-back-SVG-Mock
                 </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="display: none;"
+              >
+                Retour
               </div>
             </button>
           </div>

@@ -105,6 +105,17 @@ exports[`SearchFilter component should render correctly 1`] = `
               icon-back-SVG-Mock
             </Text>
           </View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Retour
+          </Text>
         </View>
       </View>
       <Text
@@ -2689,6 +2700,17 @@ exports[`SearchFilter component should render correctly 1`] = `
                 ]
               }
             />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Non
+            </Text>
             <View
               accessibilityRole="switch"
               accessibilityState={
@@ -2856,6 +2878,17 @@ exports[`SearchFilter component should render correctly 1`] = `
                 ]
               }
             />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Non
+            </Text>
             <View
               accessibilityRole="switch"
               accessibilityState={
@@ -3023,6 +3056,17 @@ exports[`SearchFilter component should render correctly 1`] = `
                 ]
               }
             />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Non
+            </Text>
             <View
               accessibilityRole="switch"
               accessibilityState={
@@ -3190,6 +3234,17 @@ exports[`SearchFilter component should render correctly 1`] = `
                 ]
               }
             />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Non
+            </Text>
             <View
               accessibilityRole="switch"
               accessibilityState={
@@ -3382,6 +3437,17 @@ exports[`SearchFilter component should render correctly 1`] = `
                 ]
               }
             />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Non
+            </Text>
             <View
               accessibilityRole="switch"
               accessibilityState={
