@@ -1,13 +1,10 @@
-import algoliasearch from 'algoliasearch'
-
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { SuggestedVenue } from 'libs/venue'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
-
-const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
   const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
