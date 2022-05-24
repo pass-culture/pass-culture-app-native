@@ -80,7 +80,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           accessible={true}
           collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -159,7 +158,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -301,7 +299,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           accessible={true}
           collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -713,7 +710,6 @@ exports[`SearchFilter component should render correctly 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -777,7 +773,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           </Text>
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "transform": Array [
@@ -802,7 +797,6 @@ exports[`SearchFilter component should render correctly 1`] = `
       </View>
       <View
         collapsable={false}
-        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -854,7 +848,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -927,7 +920,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1000,7 +992,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1073,7 +1064,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1146,7 +1136,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1219,7 +1208,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1292,7 +1280,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1365,7 +1352,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1438,7 +1424,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1511,7 +1496,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1584,7 +1568,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1657,7 +1640,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1730,7 +1712,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1829,7 +1810,6 @@ exports[`SearchFilter component should render correctly 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -1893,7 +1873,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           </Text>
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "transform": Array [
@@ -1918,7 +1897,6 @@ exports[`SearchFilter component should render correctly 1`] = `
       </View>
       <View
         collapsable={false}
-        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -1970,7 +1948,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2043,7 +2020,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2116,7 +2092,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2722,7 +2697,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2755,7 +2729,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                 <View
                   collapsable={false}
                   disabled={false}
-                  nativeID="animatedComponent"
                   style={
                     Object {
                       "alignItems": "center",
@@ -2902,7 +2875,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2935,7 +2907,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                 <View
                   collapsable={false}
                   disabled={false}
-                  nativeID="animatedComponent"
                   style={
                     Object {
                       "alignItems": "center",
@@ -3082,7 +3053,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3115,7 +3085,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                 <View
                   collapsable={false}
                   disabled={false}
-                  nativeID="animatedComponent"
                   style={
                     Object {
                       "alignItems": "center",
@@ -3262,7 +3231,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3295,7 +3263,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                 <View
                   collapsable={false}
                   disabled={false}
-                  nativeID="animatedComponent"
                   style={
                     Object {
                       "alignItems": "center",
@@ -3467,7 +3434,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
-              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3500,7 +3466,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                 <View
                   collapsable={false}
                   disabled={false}
-                  nativeID="animatedComponent"
                   style={
                     Object {
                       "alignItems": "center",
@@ -3581,7 +3546,6 @@ exports[`SearchFilter component should render correctly 1`] = `
       accessible={true}
       collapsable={false}
       focusable={false}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

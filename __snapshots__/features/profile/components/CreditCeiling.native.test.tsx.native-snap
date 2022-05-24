@@ -80,7 +80,6 @@ exports[`CreditCeiling should render properly 1`] = `
         collapsable={false}
         forwardedRef={[Function]}
         isAnimated={false}
-        nativeID="animatedComponent"
         onLayout={[Function]}
         progress={0.78}
         style={

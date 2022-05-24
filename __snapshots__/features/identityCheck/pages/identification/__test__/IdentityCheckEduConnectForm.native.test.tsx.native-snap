@@ -60,7 +60,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

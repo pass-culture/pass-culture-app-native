@@ -68,7 +68,6 @@ exports[`Favorites component should render correctly 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -324,7 +323,6 @@ exports[`Favorites component should render correctly 1`] = `
                   }
                 }
                 locations={null}
-                nativeID="animatedComponent"
                 startPoint={
                   Object {
                     "x": 0,
@@ -416,7 +414,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -484,7 +481,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -551,7 +547,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -618,7 +613,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -685,7 +679,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -767,7 +760,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -848,7 +840,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -950,7 +941,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1018,7 +1008,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1085,7 +1074,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1152,7 +1140,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1219,7 +1206,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1301,7 +1287,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1382,7 +1367,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1484,7 +1468,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1552,7 +1535,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1619,7 +1601,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1686,7 +1667,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1753,7 +1733,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1835,7 +1814,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1916,7 +1894,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2018,7 +1995,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2086,7 +2062,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2153,7 +2128,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2220,7 +2194,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2287,7 +2260,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2369,7 +2341,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2450,7 +2421,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2552,7 +2522,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2620,7 +2589,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2687,7 +2655,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2754,7 +2721,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2821,7 +2787,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2903,7 +2868,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2984,7 +2948,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3086,7 +3049,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3154,7 +3116,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3221,7 +3182,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3288,7 +3248,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3355,7 +3314,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3437,7 +3395,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3518,7 +3475,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3620,7 +3576,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3688,7 +3643,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3755,7 +3709,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3822,7 +3775,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3889,7 +3841,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3971,7 +3922,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4052,7 +4002,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4154,7 +4103,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4222,7 +4170,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4289,7 +4236,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4356,7 +4302,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4423,7 +4368,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4505,7 +4449,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4586,7 +4529,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4688,7 +4630,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4756,7 +4697,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4823,7 +4763,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4890,7 +4829,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4957,7 +4895,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5039,7 +4976,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5120,7 +5056,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5222,7 +5157,6 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -5290,7 +5224,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5357,7 +5290,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5424,7 +5356,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5491,7 +5422,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5573,7 +5503,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -5654,7 +5583,6 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
-                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,

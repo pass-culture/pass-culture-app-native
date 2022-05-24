@@ -5,7 +5,6 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direc
   accessible={true}
   collapsable={false}
   focusable={false}
-  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -45,7 +44,6 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right dire
   accessible={true}
   collapsable={false}
   focusable={false}
-  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -85,7 +83,6 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top g
   accessible={true}
   collapsable={false}
   focusable={false}
-  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
