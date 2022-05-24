@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 
 import { CenteredSection } from 'features/search/atoms'
@@ -28,6 +29,8 @@ export const Radius: React.FC = () => {
         max={MAX_RADIUS}
         formatValues={formatKm}
         onValuesChangeFinish={onValuesChangeFinish}
+        minLabel={t`Distance minimum\u00a0:`}
+        maxLabel={t`Distance maximum\u00a0:`}
       />
     </CenteredSection>
   )

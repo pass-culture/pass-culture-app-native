@@ -15,6 +15,8 @@ interface Props {
   step?: number
   onValuesChangeFinish?: (newValues: number[]) => void
   sliderLength?: number
+  minLabel?: string
+  maxLabel?: string
 }
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
@@ -30,8 +32,8 @@ export function Slider(props: Props) {
   const min = props.min || DEFAULT_MIN
   const max = props.max || DEFAULT_MAX
   const step = props.step || DEFAULT_STEP
-  const minLabel = t`Minimum\u00a0:`
-  const maxLabel = t`Maximum\u00a0:`
+  const minLabel = props.minLabel ?? t`Minimum\u00a0:`
+  const maxLabel = props.maxLabel ?? t`Maximum\u00a0:`
 
   const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
@@ -87,7 +89,7 @@ export function Slider(props: Props) {
         leftCursor?.setAttribute('aria-valuemax', `${values.length === 1 ? max : values[1]}`)
         leftCursor?.setAttribute('aria-valuenow', `${values[0]}`)
         leftCursor?.setAttribute(
-          'aria-valuetext',
+          'aria-label',
           `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
         )
 
@@ -95,7 +97,7 @@ export function Slider(props: Props) {
         rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
         rightCursor?.setAttribute('aria-valuemax', `${max}`)
         rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
-        rightCursor?.setAttribute('aria-valuetext', `${maxLabel} ${formatValues(values[1])}`)
+        rightCursor?.setAttribute('aria-label', `${maxLabel} ${formatValues(values[1])}`)
       }
     }
 

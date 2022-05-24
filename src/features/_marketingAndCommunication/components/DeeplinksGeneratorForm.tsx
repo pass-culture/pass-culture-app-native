@@ -209,6 +209,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               sliderLength={sliderLength}
               formatValues={formatPriceInEuroToDisplayPrice}
               onValuesChangeFinish={onChangePriceRange}
+              minLabel={t`Prix minimum\u00a0:`}
+              maxLabel={t`Prix maximum\u00a0:`}
             />
           </PaddingContainer>
         )}
