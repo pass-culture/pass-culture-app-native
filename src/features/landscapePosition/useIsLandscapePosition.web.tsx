@@ -1,12 +1,19 @@
+/* eslint-disable no-restricted-imports */
 import { useDimensions } from '@react-native-community/hooks'
+import { isIOS } from 'react-device-detect'
 
-// we are in a .web file
-// eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 
 export const useIsLandscapePosition = (): boolean => {
-  const { width: screenWidth, height: screenHeight } = useDimensions().screen
+  const { window, screen } = useDimensions()
 
   if (isDesktopDeviceDetectOnWeb) return false
-  return screenWidth > screenHeight
+
+  let width = screen.width
+  let height = screen.height
+  if (isIOS) {
+    width = window.width
+    height = window.height
+  }
+  return width > height
 }
