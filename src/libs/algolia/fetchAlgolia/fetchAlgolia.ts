@@ -168,7 +168,7 @@ export const buildGeolocationParameter = (
     if (!locationFilter.place.geolocation) return
     return {
       aroundLatLng: `${locationFilter.place.geolocation.latitude}, ${locationFilter.place.geolocation.longitude}`,
-      aroundRadius: computeAroudRadiusInMeters(
+      aroundRadius: computeAroundRadiusInMeters(
         locationFilter.aroundRadius,
         locationFilter.locationType
       ),
@@ -185,14 +185,14 @@ export const buildGeolocationParameter = (
 
   return {
     aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-    aroundRadius: computeAroudRadiusInMeters(
+    aroundRadius: computeAroundRadiusInMeters(
       locationFilter.aroundRadius,
       locationFilter.locationType
     ),
   }
 }
 
-const computeAroudRadiusInMeters = (
+const computeAroundRadiusInMeters = (
   aroundRadius: number | null,
   locationType: LocationType
 ): number | 'all' => {
