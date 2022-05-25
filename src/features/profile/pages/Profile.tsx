@@ -13,7 +13,6 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -230,13 +229,7 @@ export const Profile: React.FC = () => {
         </Section>
         {!!isLoggedIn && (
           <Section>
-            <SignOutRow
-              title={t`Déconnexion`}
-              {...accessibilityAndTestId(t`Déconnexion`)}
-              onPress={signOut}
-              type="clickable"
-              icon={SignOut}
-            />
+            <SignOutRow title={t`Déconnexion`} onPress={signOut} type="clickable" icon={SignOut} />
           </Section>
         )}
         <Section>

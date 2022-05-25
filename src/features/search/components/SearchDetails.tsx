@@ -11,7 +11,7 @@ import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Clock } from 'ui/svg/icons/Clock'
@@ -58,11 +58,12 @@ export const SearchDetails: React.FC = () => {
         <HeaderBackground />
       </HeaderBackgroundWrapper>
       <SearchInputContainer>
-        <TouchableOpacity
+        <Touchable
+          accessibilityLabel={t`Revenir en arrière`}
           testID="previousBtn"
           onPress={() => navigate(...getTabNavConfig('Search'))}>
           <ArrowPrevious />
-        </TouchableOpacity>
+        </Touchable>
         <StyledSearchInputContainer>
           <StyledSearchInput
             value={query}

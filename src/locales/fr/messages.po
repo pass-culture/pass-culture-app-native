@@ -888,7 +888,6 @@ msgid "Débuter le questionnaire"
 msgstr "Débuter le questionnaire"
 
 #: src/features/profile/pages/Profile.tsx
-#: src/features/profile/pages/Profile.tsx
 msgid "Déconnexion"
 msgstr "Déconnexion"
 
@@ -2449,6 +2448,7 @@ msgstr "Revenir au ticket précédent"
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
+#: src/features/search/components/SearchDetails.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/GenericInfoPage.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
@@ -2860,6 +2860,7 @@ msgstr "Ton nom/prénom | Profil"
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Ton numéro de téléphone"
 msgstr "Ton numéro de téléphone"
