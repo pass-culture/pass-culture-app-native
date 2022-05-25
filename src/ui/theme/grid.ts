@@ -55,7 +55,7 @@ type Axis = 'width' | 'height'
 export function useGrid() {
   const { height: windowHeight } = useWindowDimensions()
   const { appContentWidth } = useTheme()
-  const grid = useCallback(
+  return useCallback(
     (grid: Grid, axis: Axis = 'width') => {
       const axisLength = axis === 'width' ? appContentWidth : windowHeight
 
@@ -68,5 +68,4 @@ export function useGrid() {
     },
     [appContentWidth, windowHeight]
   )
-  return grid
 }
