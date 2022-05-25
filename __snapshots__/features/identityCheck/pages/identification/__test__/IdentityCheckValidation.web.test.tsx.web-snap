@@ -26,12 +26,13 @@ Object {
           >
             Mon identité
           </h1>
-          <div
+          <button
             aria-label="Revenir en arrière"
-            class="css-view-1dbjc4n"
+            class="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
             data-testid="Revenir en arrière"
-            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
+            title="Revenir en arrière"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -44,7 +45,7 @@ Object {
                 icon-back-SVG-Mock
               </div>
             </div>
-          </div>
+          </button>
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -170,7 +171,7 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+                    class="sc-dkPtRN gseCFZ sc-eCImPb bxfGfU"
                     tabindex="0"
                     type="submit"
                   >
@@ -231,12 +232,13 @@ Object {
         >
           Mon identité
         </h1>
-        <div
+        <button
           aria-label="Revenir en arrière"
-          class="css-view-1dbjc4n"
+          class="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
           data-testid="Revenir en arrière"
-          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
+          title="Revenir en arrière"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -249,7 +251,7 @@ Object {
               icon-back-SVG-Mock
             </div>
           </div>
-        </div>
+        </button>
       </div>
       <div
         class="css-view-1dbjc4n"
@@ -375,7 +377,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+                  class="sc-dkPtRN gseCFZ sc-eCImPb bxfGfU"
                   tabindex="0"
                   type="submit"
                 >

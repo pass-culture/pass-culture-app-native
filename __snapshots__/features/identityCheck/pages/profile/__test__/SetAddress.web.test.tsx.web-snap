@@ -26,12 +26,13 @@ Object {
           >
             Profil
           </h1>
-          <div
+          <button
             aria-label="Revenir en arrière"
-            class="css-view-1dbjc4n"
+            class="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
             data-testid="Revenir en arrière"
-            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
+            title="Revenir en arrière"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -44,7 +45,7 @@ Object {
                 icon-back-SVG-Mock
               </div>
             </div>
-          </div>
+          </button>
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -67,7 +68,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-bBHxTw gAOzOT"
+                    class="sc-iwjdpV gDrzZS"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -88,7 +89,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-egiyK hHZVhD"
+                      class="sc-bqiRlB cIOFso"
                       dir="ltr"
                       for="testUuidV4"
                     >
@@ -156,7 +157,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
+                    class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="submit"
@@ -218,12 +219,13 @@ Object {
         >
           Profil
         </h1>
-        <div
+        <button
           aria-label="Revenir en arrière"
-          class="css-view-1dbjc4n"
+          class="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
           data-testid="Revenir en arrière"
-          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
+          title="Revenir en arrière"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -236,7 +238,7 @@ Object {
               icon-back-SVG-Mock
             </div>
           </div>
-        </div>
+        </button>
       </div>
       <div
         class="css-view-1dbjc4n"
@@ -259,7 +261,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-bBHxTw gAOzOT"
+                  class="sc-iwjdpV gDrzZS"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -280,7 +282,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-egiyK hHZVhD"
+                    class="sc-bqiRlB cIOFso"
                     dir="ltr"
                     for="testUuidV4"
                   >
@@ -348,7 +350,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
+                  class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"

@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -42,11 +43,11 @@ interface BackButtonProps {
 const BackIcon: React.FC<BackButtonProps> = (props) => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <StyledTouchableOpacity
+    <StyledTouchable
       onPress={props.onGoBack ?? goBack}
       {...accessibilityAndTestId(t`Revenir en arrière`)}>
       <ArrowPrevious testID="icon-back" />
-    </StyledTouchableOpacity>
+    </StyledTouchable>
   )
 }
 
@@ -55,7 +56,7 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledTouchable = styledButton(Touchable)({
   position: 'absolute',
   left: getSpacing(3),
 })

@@ -80,34 +80,14 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
     >
       Identification
     </h1>
-    <div
+    <button
       aria-label="Revenir en arrière"
-      className="css-view-1dbjc4n"
+      className="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
       data-testid="Revenir en arrière"
-      onBlur={[Function]}
       onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "auto",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "auto",
-          "cursor": "pointer",
-          "left": "12px",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "auto",
-          "position": "absolute",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "auto",
-        }
-      }
       tabIndex="0"
+      title="Revenir en arrière"
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"
@@ -120,7 +100,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
           icon-back-SVG-Mock
         </div>
       </div>
-    </div>
+    </button>
   </div>
   <div
     className="css-view-1dbjc4n"
@@ -370,7 +350,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
             }
           >
             <button
-              className="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+              className="sc-dkPtRN gseCFZ sc-eCImPb bxfGfU"
               onClick={[Function]}
               onDoubleClick={[Function]}
               tabIndex={0}
