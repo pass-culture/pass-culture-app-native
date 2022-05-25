@@ -1,17 +1,13 @@
 import { t } from '@lingui/macro'
-import Profiling from '@pass-culture/react-native-profiling'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState, useMemo, memo } from 'react'
-import { Platform } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { api } from 'api/api'
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import { UserProfilingFraudRequest } from 'api/gen'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { Paragraphe } from 'features/auth/components/signupComponents'
@@ -24,10 +20,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
 import { currentTimestamp } from 'libs/dates'
-import { env } from 'libs/environment'
-import { eventMonitoring, captureMonitoringError } from 'libs/monitoring'
-// eslint-disable-next-line no-restricted-imports
-import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { captureMonitoringError } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -46,10 +39,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 const CODE_INPUT_LENGTH = 6
-const AGENT_TYPE = Platform.select({
-  default: 'agent_mobile',
-  web: isDesktopDeviceDetectOnWeb ? 'browser_computer' : 'browser_mobile',
-})
 
 const TIMER = 60
 
@@ -67,7 +56,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
   )
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('SetPhoneNumber', undefined)
-  const [sessionId, setSessionId] = useState<string | undefined>()
   const [codeInputState, setCodeInputState] = useState({
     code: '',
     isValid: false,
@@ -108,17 +96,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
 
   useFocusEffect(
     useCallback(() => {
-      Profiling.profileDevice(
-        env.TMX_ORGID,
-        env.TMX_FPSERVER,
-        setSessionId,
-        () => api.getnativev1userProfilingsessionId(),
-        eventMonitoring.captureException
-      )
-    }, [])
-  )
-  useFocusEffect(
-    useCallback(() => {
       storage.readObject('phone_validation_code_asked_at').then((value) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         setValidationCodeRequestTimestamp(value as any)
@@ -128,16 +105,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
   )
 
   async function onValidateSuccess() {
-    if (!sessionId) {
-      eventMonitoring.captureException(new Error('TMX sessionId is null'))
-    } else {
-      await api
-        .postnativev1userProfiling({
-          agentType: AGENT_TYPE,
-          sessionId,
-        } as UserProfilingFraudRequest)
-        .catch(eventMonitoring.captureException)
-    }
     navigateToNextBeneficiaryValidationStep()
   }
 
