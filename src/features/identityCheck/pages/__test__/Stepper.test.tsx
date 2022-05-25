@@ -10,7 +10,7 @@ import { render, superFlushWithAct } from 'tests/utils'
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
 
-jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
+jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),

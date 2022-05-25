@@ -19,7 +19,7 @@ let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   nextSubscriptionStep: SubscriptionStep['honor-statement'],
 }
 
-jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
+jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),

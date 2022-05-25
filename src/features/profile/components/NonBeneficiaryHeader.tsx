@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { IdentityCheckPendingBadge } from 'features/profile/components/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
@@ -31,13 +31,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { data: subscription } = useNextSubscriptionStep()
 
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
+  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
   const isUserUnderage = useIsUserUnderage()
-
-  function onBannerPress() {
-    navigateToNextBeneficiaryValidationStep()
-    return
-  }
 
   const deposit = depositAmount.replace(' ', '')
 
@@ -74,7 +69,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
               </Caption>
             )}
             <ModuleBanner
-              onPress={onBannerPress}
+              navigateTo={nextBeneficiaryValidationStepNavConfig}
               leftIcon={<ThumbUp />}
               title={moduleBannerWording}
               subTitle={t`à dépenser dans l'application`}

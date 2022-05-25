@@ -49,7 +49,7 @@ const mockedSubscriptionMessage = {
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
 
-jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
+jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),
@@ -64,9 +64,8 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
     it('should render the right banner for 18 years old users, call analytics and navigate to nextBeneficiaryValidationStep', async () => {
       const setError = jest.fn()
-      const {
-        navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
-      } = useBeneficiaryValidationNavigation(setError)
+      const { nextBeneficiaryValidationStepNavConfig } =
+        useBeneficiaryValidationNavigation(setError)
 
       const today = '2021-02-30T00:00:00Z'
       mockdate.set(new Date(today))
@@ -82,7 +81,10 @@ describe('<NonBeneficiaryHeader/>', () => {
       fireEvent.press(banner)
 
       await waitForExpect(() => {
-        expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalled()
+        expect(mockedNavigate).toHaveBeenCalledWith(
+          nextBeneficiaryValidationStepNavConfig?.screen,
+          nextBeneficiaryValidationStepNavConfig?.params
+        )
       })
     })
 

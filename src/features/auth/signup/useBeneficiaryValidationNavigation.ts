@@ -1,31 +1,16 @@
 import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
-import { useQuery } from 'react-query'
 
-import { api } from 'api/api'
 import { NextSubscriptionStepResponse, SubscriptionStep, MaintenancePageType } from 'api/gen'
+import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { UserProfilingError } from 'libs/monitoring/errors'
-import { QueryKeys } from 'libs/queryKeys'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 
 type NextStepNavConfig = TouchableLinkProps['navigateTo']
-
-export const useNextSubscriptionStep = (setError: (error: Error) => void) =>
-  useQuery<NextSubscriptionStepResponse | undefined>(
-    [QueryKeys.NEXT_SUBSCRIPTION_STEP],
-    async () => {
-      try {
-        return await api.getnativev1subscriptionnextStep()
-      } catch (e) {
-        e instanceof Error && setError(e)
-        return undefined
-      }
-    }
-  )
 
 export const useBeneficiaryValidationNavigation = (setError: (error: Error) => void) => {
   const navigateToNextStep = useNavigateToNextSubscriptionStep(setError)

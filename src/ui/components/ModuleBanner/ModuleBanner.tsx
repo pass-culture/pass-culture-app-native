@@ -1,14 +1,15 @@
 import React from 'react'
-import { TouchableHighlight } from 'react-native'
 import styled from 'styled-components/native'
 
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Typo } from 'ui/theme'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 
 interface ModuleBannerProps {
-  onPress: () => void
+  navigateTo: TouchableLinkProps['navigateTo']
   leftIcon: JSX.Element
   rightIcon?: JSX.Element
   title: string
@@ -18,7 +19,7 @@ interface ModuleBannerProps {
 
 export function ModuleBanner(props: ModuleBannerProps) {
   return (
-    <TouchableHighlight onPress={props.onPress} testID={props.testID}>
+    <TouchableLink navigateTo={props.navigateTo} testID={props.testID} highlight>
       <ImageContainer>
         <ImageBackground source={BACKGROUND_IMAGE_SOURCE} testID="module-background">
           <Container>
@@ -31,7 +32,7 @@ export function ModuleBanner(props: ModuleBannerProps) {
           </Container>
         </ImageBackground>
       </ImageContainer>
-    </TouchableHighlight>
+    </TouchableLink>
   )
 }
 

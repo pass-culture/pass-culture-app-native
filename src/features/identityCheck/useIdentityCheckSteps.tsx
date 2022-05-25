@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
+import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { Confirmation } from 'ui/svg/icons/Confirmation'

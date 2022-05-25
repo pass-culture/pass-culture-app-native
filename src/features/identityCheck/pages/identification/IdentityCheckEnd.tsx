@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
+import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
