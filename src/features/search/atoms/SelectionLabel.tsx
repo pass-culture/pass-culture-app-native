@@ -52,7 +52,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
     alignItems: 'center',
     borderRadius: getSpacing(10),
     borderWidth: 2,
-    borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,
+    borderColor: selected ? theme.colors.primary : theme.colors.greyDark,
     marginBottom: getSpacing(3),
     marginRight: getSpacing(3),
     backgroundColor: selected ? theme.colors.primary : theme.colors.white,

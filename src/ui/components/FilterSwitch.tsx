@@ -64,7 +64,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
 const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: boolean) => {
   if (active) return disabled ? theme.uniqueColors.greenDisabled : theme.colors.greenValid
-  return disabled ? theme.uniqueColors.greyDisabled : theme.colors.greyMedium
+  return disabled ? theme.uniqueColors.greyDisabled : theme.colors.greyDark
 }
 
 const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
