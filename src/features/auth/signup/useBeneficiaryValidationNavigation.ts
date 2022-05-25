@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
 
 import { NextSubscriptionStepResponse, SubscriptionStep, MaintenancePageType } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
+import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'

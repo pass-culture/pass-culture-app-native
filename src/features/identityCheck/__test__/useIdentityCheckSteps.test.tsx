@@ -5,7 +5,7 @@ import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSt
 let mockNextSubscriptionStep = mockStep
 let mockIdentityCheckState = mockState
 
-jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
+jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),

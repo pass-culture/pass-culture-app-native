@@ -49,7 +49,7 @@ const mockedSubscriptionMessage = {
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
 
-jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
+jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),
