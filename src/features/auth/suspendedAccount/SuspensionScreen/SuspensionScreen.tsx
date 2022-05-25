@@ -1,7 +1,8 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { AccountState } from 'api/gen'
+import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
@@ -13,6 +14,7 @@ export const SuspensionScreen = () => {
   const { data: settings } = useAppSettings()
   const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatus()
   const suspensionStatus = accountSuspensionStatus?.status
+  const signOut = useLogoutRoutine()
 
   useFocusEffect(
     useCallback(() => {
@@ -27,6 +29,12 @@ export const SuspensionScreen = () => {
       }
     }, [settings, suspensionStatus])
   )
+
+  useEffect(() => {
+    return () => {
+      signOut()
+    }
+  }, [signOut])
 
   if (isLoading) {
     return <LoadingPage />

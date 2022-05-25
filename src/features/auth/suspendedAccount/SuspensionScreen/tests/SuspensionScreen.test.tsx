@@ -24,7 +24,10 @@ jest.mock('features/auth/settings', () => ({
     data: mockSettings,
   })),
 }))
-jest.mock('features/auth/AuthContext')
+const mockSignOut = jest.fn()
+jest.mock('features/auth/AuthContext', () => ({
+  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+}))
 
 describe('<SuspensionsScreen />', () => {
   it('should display SuspendedAccount component if account is suspended upon user request', async () => {
@@ -45,6 +48,15 @@ describe('<SuspensionsScreen />', () => {
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalled()
+    })
+  })
+
+  it('should call sign out function on component unmount', async () => {
+    const { unmount } = render(<SuspensionScreen />)
+
+    unmount()
+    await waitForExpect(() => {
+      expect(mockSignOut).toBeCalled()
     })
   })
 
