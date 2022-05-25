@@ -4,7 +4,7 @@ import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { Typo } from 'ui/theme'
 
@@ -18,11 +18,11 @@ export const LandscapePositionPage: React.FC<LandscapePositionPageProps> = ({ is
       <Helmet>
         <title>{t`Tourne-moi`}</title>
       </Helmet>
-      <GenericInfoPage title={t`Tourne-moi`} icon={PhoneFlip}>
+      <GenericErrorPage title={t`Tourne-moi`} icon={PhoneFlip}>
         <StyledBody>
           {t`Place ton téléphone ou ta tablette à la verticale pour afficher l’application.`}
         </StyledBody>
-      </GenericInfoPage>
+      </GenericErrorPage>
     </StyledModal>
   )
 }

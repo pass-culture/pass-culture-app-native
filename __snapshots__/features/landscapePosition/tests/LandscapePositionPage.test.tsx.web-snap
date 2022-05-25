@@ -87,8 +87,6 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
           "msFlexPack": "center",
           "msFlexPositive": 1,
           "msFlexPreferredSize": "0px",
-          "overflowX": "scroll",
-          "overflowY": "scroll",
           "paddingLeft": "16px",
           "paddingRight": "16px",
         }
@@ -99,6 +97,23 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         style={
           Object {
             "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
           }
         }
       />
@@ -160,6 +175,31 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
       >
         Place ton téléphone ou ta tablette à la verticale pour afficher l’application.
       </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+          }
+        }
+      />
       <div
         className="css-view-1dbjc4n"
         style={
