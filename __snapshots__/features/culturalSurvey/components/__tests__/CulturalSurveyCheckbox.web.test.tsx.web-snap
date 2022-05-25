@@ -11,7 +11,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          data-testid="CulturalSurveyAnswer"
+          data-testid="Visité un musée,-CulturalSurveyAnswer"
           style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
@@ -38,7 +38,9 @@ Object {
               class="css-text-901oao"
               dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-            />
+            >
+              Visité un musée,
+            </div>
             <div
               class="css-text-901oao"
               dir="ltr"
@@ -58,7 +60,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        data-testid="CulturalSurveyAnswer"
+        data-testid="Visité un musée,-CulturalSurveyAnswer"
         style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
@@ -85,7 +87,9 @@ Object {
             class="css-text-901oao"
             dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-          />
+          >
+            Visité un musée,
+          </div>
           <div
             class="css-text-901oao"
             dir="ltr"
@@ -162,7 +166,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          data-testid="CulturalSurveyAnswer"
+          data-testid="Visité un musée,-CulturalSurveyAnswer"
           style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
@@ -189,7 +193,9 @@ Object {
               class="css-text-901oao"
               dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-            />
+            >
+              Visité un musée,
+            </div>
             <div
               class="css-text-901oao"
               dir="ltr"
@@ -224,7 +230,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        data-testid="CulturalSurveyAnswer"
+        data-testid="Visité un musée,-CulturalSurveyAnswer"
         style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
@@ -251,7 +257,9 @@ Object {
             class="css-text-901oao"
             dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-          />
+          >
+            Visité un musée,
+          </div>
           <div
             class="css-text-901oao"
             dir="ltr"

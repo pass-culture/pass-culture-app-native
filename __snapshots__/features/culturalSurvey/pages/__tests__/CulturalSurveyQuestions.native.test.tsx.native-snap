@@ -364,7 +364,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Participé à un festival,-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -496,7 +496,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Assisté à un spectacle-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -627,7 +627,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Allé à la bibliothèque-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -758,7 +758,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Participé à un jeu-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -889,7 +889,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Allé à un concert-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -1006,7 +1006,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Allé au cinéma-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -1123,7 +1123,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Visité un musée,-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -1254,7 +1254,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Participé à une conférence,-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -1385,7 +1385,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Pris un cours-CulturalSurveyAnswer"
           >
             <View
               style={
@@ -1516,7 +1516,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 "userSelect": "auto",
               }
             }
-            testID="CulturalSurveyAnswer"
+            testID="Aucune de ces sorties culturelles-CulturalSurveyAnswer"
           >
             <View
               style={

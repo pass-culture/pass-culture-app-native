@@ -4,6 +4,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
+import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/useCulturalSurvey'
 import {
   useCulturalSurveyContext,
   dispatch,
@@ -45,6 +46,7 @@ jest
   .mockImplementation(useCulturalSurveyContext)
 
 describe('CulturalSurveysQuestions page', () => {
+  const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
   it('should render the page with correct layout', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     expect(QuestionsPage).toMatchSnapshot()
@@ -104,35 +106,27 @@ describe('CulturalSurveysQuestions page', () => {
     })
   })
 
-  it('should updateQuestionsToDisplay on checkbox press', () => {
+  it('should updateQuestionsToDisplay on checkbox press if answer pressed has sub_question', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
-    const CulturalSurveyAnswerCheckboxes = QuestionsPage.getAllByTestId('CulturalSurveyAnswer')
-
-    expect(CulturalSurveyAnswerCheckboxes).not.toBe([])
-
-    fireEvent.press(CulturalSurveyAnswerCheckboxes[0])
+    const CulturalSurveyAnswerCheckbox = QuestionsPage.getByText(
+      // @ts-expect-error mocked Hook is defined
+      questionsFromMockedHook.questions[0].answers[0].title
+    )
+    fireEvent.press(CulturalSurveyAnswerCheckbox)
     expect(dispatch).toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',
       payload: expect.anything(),
     })
   })
 
-  it('should not updateQuestionsToDisplay on checkbox press', () => {
-    const navigationProps = {
-      route: {
-        params: {
-          question: CulturalSurveyQuestionEnum.ACTIVITES,
-        },
-      },
-      navigation: {},
-    } as StackScreenProps<CulturalSurveyRootStackParamList, 'CulturalSurveyQuestions'>
+  it('should not updateQuestionsToDisplay on checkbox press if answer pressed has no sub_question', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const CulturalSurveyAnswerCheckboxes = QuestionsPage.getAllByTestId('CulturalSurveyAnswer')
-
-    expect(CulturalSurveyAnswerCheckboxes).not.toBe([])
-
-    fireEvent.press(CulturalSurveyAnswerCheckboxes[0])
+    const CulturalSurveyAnswerCheckbox = QuestionsPage.getByText(
+      // @ts-expect-error mocked Hook is defined
+      questionsFromMockedHook?.questions[0].answers[2].title
+    )
+    fireEvent.press(CulturalSurveyAnswerCheckbox)
     expect(dispatch).not.toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',
       payload: expect.anything(),
