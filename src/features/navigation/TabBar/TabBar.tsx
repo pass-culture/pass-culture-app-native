@@ -6,7 +6,6 @@ import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigatio
 
 import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
-import { TabRouteName } from './types'
 
 type Props = Pick<BottomTabBarProps, 'navigation'>
 
@@ -31,7 +30,7 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}
-            BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
+            BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
             onPress={onPress}
           />
         )

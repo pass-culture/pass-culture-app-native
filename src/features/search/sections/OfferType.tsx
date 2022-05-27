@@ -15,9 +15,9 @@ import { getSpacing } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
-type OfferType = keyof SearchState['offerTypes']
+type OfferTypes = keyof SearchState['offerTypes']
 
-export const OFFER_TYPES: Array<[OfferType, string]> = [
+export const OFFER_TYPES: Array<[OfferTypes, string]> = [
   ['isDigital', t`Offre numérique`],
   ['isEvent', t`Sortie`],
   ['isThing', t`Offre physique`],
@@ -29,7 +29,7 @@ export const OfferType: React.FC = () => {
   const { offerTypes } = searchState
   const titleID = uuidv4()
 
-  const onPress = (offerType: OfferType) => () => {
+  const onPress = (offerType: OfferTypes) => () => {
     dispatch({ type: 'OFFER_TYPE', payload: offerType })
     logUseFilter()
   }

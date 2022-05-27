@@ -2,7 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { getSpacing } from 'ui/theme'
-import { QuickAccessProps } from 'ui/web/link/types'
+
+type QuickAccessProps = {
+  href: string
+  title: string
+}
 
 export const QuickAccess = ({ href, title }: QuickAccessProps) => (
   <StyledA href={href}>{title}</StyledA>
