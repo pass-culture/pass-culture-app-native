@@ -34,5 +34,5 @@ export const TitleWithCount: React.FC<{
   )
 }
 
-const Title = styled(Typo.Title4).attrs(getHeadingAttrs(undefined))``
+const Title = styled(Typo.Title4).attrs(getHeadingAttrs(0))``
 const RedTitle = styled(Text)(({ theme }) => ({ color: theme.colors.primary }))

@@ -3,7 +3,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 describe('getHeadingAttrs()', () => {
   it.each`
     headingLevel | ariaLevel    | accessibilityRole
-    ${undefined} | ${undefined} | ${undefined}
+    ${0}         | ${undefined} | ${undefined}
     ${1}         | ${1}         | ${'header'}
     ${2}         | ${2}         | ${'header'}
     ${3}         | ${3}         | ${'header'}

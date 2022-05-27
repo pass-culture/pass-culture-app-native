@@ -92,4 +92,4 @@ const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const TextToValidate = styled(Typo.Title3).attrs(getHeadingAttrs(undefined))``
+const TextToValidate = styled(Typo.Title3).attrs(getHeadingAttrs(0))``

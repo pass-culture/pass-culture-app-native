@@ -2,7 +2,7 @@ import React from 'react'
 import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { ColorsEnum, UniqueColors } from './colors'
@@ -51,13 +51,13 @@ const StyledTitle2 = styled(RNText)<{
   fontSize: fontSize ?? theme.typography.title2.fontSize,
 }))
 
-const Title3 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': ariaLevel }) =>
+const Title3 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-level': ariaLevel }) =>
   getHeadingAttrs(ariaLevel ?? 3)
 )(({ theme }) => ({
   ...theme.typography.title3,
 }))
 
-const Title4 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': ariaLevel }) =>
+const Title4 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-level': ariaLevel }) =>
   getHeadingAttrs(ariaLevel ?? 4)
 )(({ theme }) => ({
   ...theme.typography.title4,
