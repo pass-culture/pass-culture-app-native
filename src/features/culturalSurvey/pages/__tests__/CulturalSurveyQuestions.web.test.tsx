@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
@@ -53,9 +54,13 @@ describe('CulturalSurveysQuestions page', () => {
   it('should navigate to next page when pressing Continuer', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.click(Answers[0])
     fireEvent.click(NextQuestionButton)
-    expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-      question: CulturalSurveyQuestionEnum.ACTIVITES,
+    waitForExpect(() => {
+      expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
+        question: CulturalSurveyQuestionEnum.ACTIVITES,
+      })
     })
   })
   it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
@@ -64,9 +69,13 @@ describe('CulturalSurveysQuestions page', () => {
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.click(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.click(NextQuestionButton)
-    expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+    waitForExpect(() => {
+      expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+    })
   })
 
   it('should navigate to home if on lastQuestion and API call is unsuccessful', async () => {
@@ -84,9 +93,13 @@ describe('CulturalSurveysQuestions page', () => {
       return { mutate: onError }
     })
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.click(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.click(NextQuestionButton)
-    expect(navigateToHome).toHaveBeenCalled()
+    waitForExpect(() => {
+      expect(navigateToHome).toHaveBeenCalled()
+    })
   })
 
   it('should dispatch empty answers on go back', () => {

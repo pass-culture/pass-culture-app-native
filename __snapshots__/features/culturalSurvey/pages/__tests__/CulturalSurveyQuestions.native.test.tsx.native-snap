@@ -1571,7 +1571,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     <View
       accessibilityLabel="Continuer vers l'étape suivante"
       accessible={true}
-      focusable={true}
+      focusable={false}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -1582,7 +1582,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#eb0055",
+          "backgroundColor": "#F1F1F4",
           "borderRadius": 24,
           "flexDirection": "row",
           "justifyContent": "center",
@@ -1605,7 +1605,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         style={
           Array [
             Object {
-              "color": "#ffffff",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,

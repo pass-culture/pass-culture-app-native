@@ -189,6 +189,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
           onPress={() => {
             navigateToNextQuestion()
           }}
+          disabled={!currentAnswers.length}
           wording={t`Continuer`}
           testID={'next-cultural-survey-question'}
           accessibilityLabel={t`Continuer vers l'étape suivante`}
