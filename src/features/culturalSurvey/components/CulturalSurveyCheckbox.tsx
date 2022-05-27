@@ -44,7 +44,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
 
   return (
     <StyledLinearGradient>
-      <AnswerContainer onPress={onPress} testID={'CulturalSurveyAnswer'}>
+      <AnswerContainer onPress={onPress} testID={`${props?.title}-CulturalSurveyAnswer`}>
         {!!AnswerIcon && (
           <ActivityIconContainer>
             <AnswerIcon />

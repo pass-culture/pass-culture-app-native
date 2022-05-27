@@ -137,7 +137,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Participé à un festival,-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -190,7 +190,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Assisté à un spectacle-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -243,7 +243,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Allé à la bibliothèque-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -296,7 +296,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Participé à un jeu-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -349,7 +349,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Allé à un concert-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -395,7 +395,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Allé au cinéma-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -441,7 +441,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Visité un musée,-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -494,7 +494,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Participé à une conférence,-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -547,7 +547,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Pris un cours-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -600,7 +600,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="CulturalSurveyAnswer"
+                      data-testid="Aucune de ces sorties culturelles-CulturalSurveyAnswer"
                       style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
@@ -629,15 +629,15 @@ Object {
         >
           <button
             aria-label="Continuer vers l'étape suivante"
-            class="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+            class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
             data-testid="next-cultural-survey-question"
-            tabindex="0"
+            disabled=""
             type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="ltr"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+              style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
             </div>
@@ -783,7 +783,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Participé à un festival,-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -836,7 +836,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Assisté à un spectacle-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -889,7 +889,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Allé à la bibliothèque-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -942,7 +942,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Participé à un jeu-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -995,7 +995,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Allé à un concert-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -1041,7 +1041,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Allé au cinéma-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -1087,7 +1087,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Visité un musée,-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -1140,7 +1140,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Participé à une conférence,-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -1193,7 +1193,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Pris un cours-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -1246,7 +1246,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="CulturalSurveyAnswer"
+                    data-testid="Aucune de ces sorties culturelles-CulturalSurveyAnswer"
                     style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; cursor: pointer; flex-direction: row; justify-content: flex-start; margin: 1px 1px 1px 1px; min-height: 72px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
@@ -1275,15 +1275,15 @@ Object {
       >
         <button
           aria-label="Continuer vers l'étape suivante"
-          class="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+          class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
           data-testid="next-cultural-survey-question"
-          tabindex="0"
+          disabled=""
           type="button"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
             dir="ltr"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+            style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer
           </div>

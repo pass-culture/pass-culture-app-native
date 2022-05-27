@@ -1,9 +1,11 @@
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
+import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/useCulturalSurvey'
 import {
   useCulturalSurveyContext,
   dispatch,
@@ -42,6 +44,8 @@ jest
   .mockImplementation(useCulturalSurveyContext)
 
 describe('CulturalSurveysQuestions page', () => {
+  const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
+
   it('should render the page with correct layout', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     expect(QuestionsPage).toMatchSnapshot()
@@ -50,9 +54,13 @@ describe('CulturalSurveysQuestions page', () => {
   it('should navigate to next page when pressing Continuer', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.click(Answers[0])
     fireEvent.click(NextQuestionButton)
-    expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-      question: CulturalSurveyQuestionEnum.ACTIVITES,
+    waitForExpect(() => {
+      expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
+        question: CulturalSurveyQuestionEnum.ACTIVITES,
+      })
     })
   })
   it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
@@ -61,9 +69,13 @@ describe('CulturalSurveysQuestions page', () => {
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.click(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.click(NextQuestionButton)
-    expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+    waitForExpect(() => {
+      expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+    })
   })
 
   it('should navigate to home if on lastQuestion and API call is unsuccessful', async () => {
@@ -81,9 +93,13 @@ describe('CulturalSurveysQuestions page', () => {
       return { mutate: onError }
     })
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.click(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.click(NextQuestionButton)
-    expect(navigateToHome).toHaveBeenCalled()
+    waitForExpect(() => {
+      expect(navigateToHome).toHaveBeenCalled()
+    })
   })
 
   it('should dispatch empty answers on go back', () => {
@@ -100,35 +116,27 @@ describe('CulturalSurveysQuestions page', () => {
     })
   })
 
-  it('should updateQuestionsToDisplay on checkbox press', () => {
+  it('should updateQuestionsToDisplay on checkbox press if answer pressed has sub_question', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
-    const CulturalSurveyAnswerCheckboxes = QuestionsPage.getAllByTestId('CulturalSurveyAnswer')
-
-    expect(CulturalSurveyAnswerCheckboxes).not.toBe([])
-
-    fireEvent.click(CulturalSurveyAnswerCheckboxes[0])
+    const CulturalSurveyAnswerCheckbox = QuestionsPage.getByText(
+      // @ts-expect-error mocked Hook is defined
+      questionsFromMockedHook.questions[0].answers[0].title
+    )
+    fireEvent.click(CulturalSurveyAnswerCheckbox)
     expect(dispatch).toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',
       payload: expect.anything(),
     })
   })
 
-  it('should not updateQuestionsToDisplay on checkbox press', () => {
-    const navigationProps = {
-      route: {
-        params: {
-          question: CulturalSurveyQuestionEnum.ACTIVITES,
-        },
-      },
-      navigation: {},
-    } as StackScreenProps<CulturalSurveyRootStackParamList, 'CulturalSurveyQuestions'>
+  it('should not updateQuestionsToDisplay on checkbox press if answer pressed has no sub_question', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const CulturalSurveyAnswerCheckboxes = QuestionsPage.getAllByTestId('CulturalSurveyAnswer')
-
-    expect(CulturalSurveyAnswerCheckboxes).not.toBe([])
-
-    fireEvent.click(CulturalSurveyAnswerCheckboxes[0])
+    const CulturalSurveyAnswerCheckbox = QuestionsPage.getByText(
+      // @ts-expect-error mocked Hook is defined
+      questionsFromMockedHook.questions[0].answers[2].title
+    )
+    fireEvent.click(CulturalSurveyAnswerCheckbox)
     expect(dispatch).not.toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',
       payload: expect.anything(),
