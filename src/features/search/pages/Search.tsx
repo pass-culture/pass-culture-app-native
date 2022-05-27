@@ -38,15 +38,17 @@ export function Search() {
     return <SearchLandingPage />
   }
 
+  const onFocusState = (focus: boolean) => {
+    if (appEnableSearchHomepageRework) setIsFocus(focus)
+  }
+
   return (
     <Container>
       <Form.Flex>
         {appEnableSearchHomepageRework ? (
           <SearchHeaderRework
             searchInputID={searchInputID}
-            onFocusState={(focus: boolean) => {
-              if (appEnableSearchHomepageRework) setIsFocus(focus)
-            }}
+            onFocusState={onFocusState}
             isFocus={isFocus}
           />
         ) : (
