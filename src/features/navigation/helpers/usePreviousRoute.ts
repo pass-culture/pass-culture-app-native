@@ -4,8 +4,7 @@ export function usePreviousRoute(): Route<string> | null {
   return useNavigationState((state) => {
     const numberOfRoutes = state.routes.length
     if (numberOfRoutes > 1) {
-      const previousRoute = state.routes[numberOfRoutes - 2]
-      return previousRoute
+      return state.routes[numberOfRoutes - 2]
     }
     return null
   })

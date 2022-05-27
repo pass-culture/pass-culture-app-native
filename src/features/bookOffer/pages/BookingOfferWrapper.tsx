@@ -36,8 +36,7 @@ export const BookingWrapper = ({ children, dismissModal }: BookingWrapperProps) 
 }
 
 export const useBooking = (): IBookingContext => {
-  const bookingContext = useContext(BookingContext)
-  return bookingContext
+  return useContext(BookingContext)
 }
 
 export const useBookingOffer = () => {

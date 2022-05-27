@@ -101,7 +101,8 @@ export function useLoginRoutine() {
    * @param {SigninResponse} response
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
-  const loginRoutine = async (response: SigninResponse, method: LoginRoutineMethod) => {
+
+  return async (response: SigninResponse, method: LoginRoutineMethod) => {
     connectUserToBatchAndFirebase(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
@@ -109,8 +110,6 @@ export function useLoginRoutine() {
     setIsLoggedIn(true)
     resetContexts()
   }
-
-  return loginRoutine
 }
 
 export function useLogoutRoutine(): () => Promise<void> {

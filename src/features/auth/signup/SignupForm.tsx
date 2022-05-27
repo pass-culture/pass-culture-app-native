@@ -125,14 +125,13 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   // otherwise the logic of the "back action" would leak to other components / screens.
   useFocusEffect(
     useCallback(() => {
-      const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
+      return navigation.addListener('beforeRemove', (event) => {
         // For overriding iOS and Android go back and pop screen behaviour
         const isGoBackAction = ['GO_BACK', 'POP'].includes(event.data.action.type)
         if (!isGoBackAction || isFirstStep) return // Remove screen
         goToPreviousStep()
         event.preventDefault() // Do not remove screen
       })
-      return unsubscribeFromNavigationListener
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFirstStep])
   )

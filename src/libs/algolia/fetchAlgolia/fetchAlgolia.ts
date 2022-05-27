@@ -117,14 +117,13 @@ export const fetchAlgolia = async (
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
   try {
-    const response = await index.search<SearchHit>(parameters.query || '', {
+    return await index.search<SearchHit>(parameters.query || '', {
       page: parameters.page || 0,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...searchParameters,
       attributesToRetrieve,
       attributesToHighlight: [], // We disable highlighting because we don't need it
     })
-    return response
   } catch (error) {
     captureAlgoliaError(error)
     return { hits: [] as Hit<SearchHit>[], nbHits: 0, page: 0, nbPages: 0 }
