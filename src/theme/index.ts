@@ -130,7 +130,6 @@ export interface AppThemeType {
     foregroundColor: UniqueColors
     brand: UniqueColors
     brandDark: UniqueColors
-    greyDisabled: UniqueColors
     greenDisabled: UniqueColors
   }
   breakpoints: {
@@ -481,7 +480,6 @@ export const theme: AppThemeType = {
     foregroundColor: UniqueColors.FOREGROUND_COLOR,
     brand: UniqueColors.BRAND,
     brandDark: UniqueColors.BRAND_DARK,
-    greyDisabled: UniqueColors.GREY_DISABLED,
     greenDisabled: UniqueColors.GREEN_DISABLED,
   },
   breakpoints: {

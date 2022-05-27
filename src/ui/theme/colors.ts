@@ -21,7 +21,6 @@ export enum UniqueColors {
   BRAND = '#870087',
   BRAND_DARK = '#070C36',
   GREEN_DISABLED = '#b8d7c1',
-  GREY_DISABLED = '#e6e6e6',
   GREY_OVERLAY = '#00000080',
   BACKGROUND_COLOR = '#DDDDDD',
   FOREGROUND_COLOR = '#EEEEEE',
