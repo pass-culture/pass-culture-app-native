@@ -91,4 +91,18 @@ describe('Search component', () => {
     const searchLandingPage = getByTestId('searchLandingPage')
     expect(searchLandingPage).toBeTruthy()
   })
+
+  it('should show search header without rework if rework search feature flag is not activated', () => {
+    mockSettings.appEnableSearchHomepageRework = false
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { queryByTestId } = render(reactQueryProviderHOC(<Search />))
+    expect(queryByTestId('searchBoxWithoutRework')).toBeTruthy()
+  })
+
+  it('should show search header with rework if rework search feature flag is activated', () => {
+    mockSettings.appEnableSearchHomepageRework = true
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { queryByTestId } = render(reactQueryProviderHOC(<Search />))
+    expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
+  })
 })

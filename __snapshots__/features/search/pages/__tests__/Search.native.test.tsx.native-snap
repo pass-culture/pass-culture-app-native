@@ -59,6 +59,7 @@ exports[`Search component should render correctly 1`] = `
         },
       ]
     }
+    testID="searchBoxWithoutRework"
   >
     <Text
       style={
