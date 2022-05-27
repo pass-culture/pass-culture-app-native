@@ -48,8 +48,27 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate }),
+  useIsFocused: jest.fn(),
+}))
+
 describe('SearchDetails component', () => {
   it('should render SearchDetails', () => {
     expect(render(<SearchDetails />)).toMatchSnapshot()
+  })
+
+  it('should show results if search executed', () => {
+    mockSearchState.showResults = true
+    const { queryByTestId } = render(<SearchDetails />)
+    expect(queryByTestId('searchResults')).toBeTruthy()
+  })
+
+  it('should show recent searches and suggestions if search not executed', () => {
+    mockSearchState.showResults = false
+    const { queryByTestId } = render(<SearchDetails />)
+    expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
   })
 })

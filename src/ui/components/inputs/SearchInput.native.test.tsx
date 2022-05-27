@@ -10,6 +10,10 @@ const onChangeText = jest.fn()
 const onReset = jest.fn()
 
 describe('SearchInput component', () => {
+  it('should render SearchInput', () => {
+    expect(render(<SearchInput onFocusState={() => {}} />)).toMatchSnapshot()
+  })
+
   it('should set value when user input some text', async () => {
     const { getByTestId } = render(
       <SearchInput onChangeText={onChangeText} onPressRightIcon={onReset} />

@@ -119,4 +119,18 @@ describe('SearchBox component', () => {
 
     expect(searchInput.props.value).toBe('')
   })
+
+  it('should reset input when user click on previous button', async () => {
+    const { getByTestId, getByPlaceholderText } = render(
+      <SearchBoxRework searchInputID={searchInputID} />
+    )
+    const previousButton = getByTestId('previousButton')
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
+
+    await fireEvent.press(previousButton)
+
+    expect(searchInput.props.value).toBe('')
+  })
 })
