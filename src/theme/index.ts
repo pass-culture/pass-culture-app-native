@@ -112,6 +112,7 @@ export interface AppThemeType {
     greenValid: ColorsEnum
     greenLight: ColorsEnum
     greyDark: ColorsEnum
+    greySemiDark: ColorsEnum
     greyMedium: ColorsEnum
     greyLight: ColorsEnum
     primary: ColorsEnum
@@ -125,12 +126,10 @@ export interface AppThemeType {
   uniqueColors: {
     tabBar: UniqueColors
     greyOverlay: UniqueColors
-    filterButton: UniqueColors
     backgroundColor: UniqueColors
     foregroundColor: UniqueColors
     brand: UniqueColors
     brandDark: UniqueColors
-    greyDisabled: UniqueColors
     greenDisabled: UniqueColors
   }
   breakpoints: {
@@ -463,6 +462,7 @@ export const theme: AppThemeType = {
     greenValid: ColorsEnum.GREEN_VALID,
     greenLight: ColorsEnum.GREEN_LIGHT,
     greyDark: ColorsEnum.GREY_DARK,
+    greySemiDark: ColorsEnum.GREY_SEMI_DARK,
     greyMedium: ColorsEnum.GREY_MEDIUM,
     greyLight: ColorsEnum.GREY_LIGHT,
     primary: ColorsEnum.PRIMARY,
@@ -476,12 +476,10 @@ export const theme: AppThemeType = {
   uniqueColors: {
     tabBar: UniqueColors.TAB_BAR,
     greyOverlay: UniqueColors.GREY_OVERLAY,
-    filterButton: UniqueColors.FILTER_BUTTON,
     backgroundColor: UniqueColors.BACKGROUND_COLOR,
     foregroundColor: UniqueColors.FOREGROUND_COLOR,
     brand: UniqueColors.BRAND,
     brandDark: UniqueColors.BRAND_DARK,
-    greyDisabled: UniqueColors.GREY_DISABLED,
     greenDisabled: UniqueColors.GREEN_DISABLED,
   },
   breakpoints: {
