@@ -1,16 +1,13 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, fireEvent } from 'tests/utils'
+import { render } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -52,62 +49,7 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 }))
 
 describe('SearchDetails component', () => {
-  it('should redirect to search home on arrow left click', async () => {
-    const { getByTestId } = render(<SearchDetails />)
-    const previousBtn = getByTestId('previousBtn')
-
-    await fireEvent.press(previousBtn)
-
-    expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('TabNavigator', { params: { query: '' }, screen: 'Search' })
-  })
-
-  it('should log search query on submit', async () => {
-    const { getByTestId } = render(<SearchDetails />)
-    const searchInput = getByTestId('searchInput')
-
-    await fireEvent(searchInput, 'onChangeText', 'jazzaza')
-    await fireEvent(searchInput, 'onSubmitEditing')
-
-    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
-  })
-
-  it('should redirect on search on submit', async () => {
-    const { getByTestId } = render(<SearchDetails />)
-    const searchInput = getByTestId('searchInput')
-
-    await fireEvent(searchInput, 'onChangeText', 'jazzaza')
-    await fireEvent(searchInput, 'onSubmitEditing')
-
-    expect(navigate).toBeCalledWith(
-      ...getTabNavConfig('Search', {
-        query: 'jazzaza',
-        showResults: true,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
-      })
-    )
-  })
-
-  it('should show the text type by the user', async () => {
-    const { getByTestId } = render(<SearchDetails />)
-
-    const searchInput = getByTestId('searchInput')
-    await fireEvent(searchInput, 'onChangeText', 'Some text')
-
-    expect(searchInput.props.value).toBe('Some text')
-  })
-
-  it('should reset input when user click on reset icon', async () => {
-    const { getByTestId } = render(<SearchDetails />)
-
-    const searchInput = getByTestId('searchInput')
-    await fireEvent(searchInput, 'onChangeText', 'Some text')
-
-    const resetIcon = getByTestId('resetSearchInput')
-    await fireEvent.press(resetIcon)
-
-    expect(searchInput.props.value).toBe('')
+  it('should render SearchDetails', () => {
+    expect(render(<SearchDetails />)).toMatchSnapshot()
   })
 })
