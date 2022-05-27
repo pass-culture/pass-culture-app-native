@@ -11,7 +11,7 @@ import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AccountReactivationSuccess = () => {
   const { data: settings } = useAppSettings()

@@ -8,7 +8,7 @@ import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { DashedSeparator } from 'ui/components/DashedSeparator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
 

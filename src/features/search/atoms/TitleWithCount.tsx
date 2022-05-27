@@ -4,7 +4,8 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
 const NON_BREAKING_SPACE = '\xa0'
 
 export const TitleWithCount: React.FC<{

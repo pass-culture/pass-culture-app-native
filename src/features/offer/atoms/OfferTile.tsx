@@ -21,7 +21,7 @@ import { OfferCaption } from 'ui/components/OfferCaption'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined

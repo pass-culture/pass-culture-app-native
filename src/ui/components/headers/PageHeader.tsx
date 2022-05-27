@@ -11,7 +11,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Header } from 'ui/web/global/Header'
 
 interface Props {

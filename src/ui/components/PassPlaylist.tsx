@@ -12,7 +12,7 @@ import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSop
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,

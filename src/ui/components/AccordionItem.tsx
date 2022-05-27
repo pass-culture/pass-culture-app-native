@@ -16,7 +16,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useFunctionOnce } from 'libs/hooks'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'

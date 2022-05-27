@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { Separator } from './Separator'
 

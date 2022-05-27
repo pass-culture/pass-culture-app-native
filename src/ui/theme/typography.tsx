@@ -1,6 +1,9 @@
 import React from 'react'
-import { AccessibilityRole, Platform, Text as RNText, TextProps as RNTextProps } from 'react-native'
+import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
+
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { ColorsEnum, UniqueColors } from './colors'
 import { useGrid } from './grid'
@@ -10,23 +13,6 @@ interface CustomTextProps {
   color?: ColorsEnum | UniqueColors
 }
 export type TextProps = CustomTextProps & RNTextProps
-
-export const getHeadingAttrs = (level?: number) => ({
-  ...(Platform.OS === 'web'
-    ? {
-        accessibilityRole: level ? ('header' as AccessibilityRole) : undefined,
-        'aria-level': level,
-        ...getTextAttrs(),
-      }
-    : {}),
-})
-
-export const getTextAttrs = (dir?: string) =>
-  Platform.OS === 'web'
-    ? {
-        dir: dir ?? 'ltr',
-      }
-    : {}
 
 const Hero = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
   ...theme.typography.hero,

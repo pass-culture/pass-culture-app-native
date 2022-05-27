@@ -4,7 +4,7 @@ import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
-import { getTextAttrs } from 'ui/theme/typography'
+import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { RNTextInputProps } from './types'
 
