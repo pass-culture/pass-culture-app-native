@@ -3,25 +3,19 @@ import { useCallback } from 'react'
 
 import { NextSubscriptionStepResponse, SubscriptionStep, MaintenancePageType } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
-import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { UserProfilingError } from 'libs/monitoring/errors'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 
 type NextStepNavConfig = TouchableLinkProps['navigateTo']
 
 export const useBeneficiaryValidationNavigation = (setError: (error: Error) => void) => {
-  const navigateToNextStep = useNavigateToNextSubscriptionStep(setError)
+  const navigateToNextStep = useNavigateToNextSubscriptionStep()
   const { data: nextSubscriptionStep, refetch } = useNextSubscriptionStep(setError)
   let nextStepNavConfig = nextSubscriptionStep
     ? getNavConfigForNextSubscriptionStep(nextSubscriptionStep)
     : undefined
-
-  const beforeNavigateToNextStep = () => {
-    beforeNavigateToNextSubscriptionStep(setError, nextStepNavConfig)
-  }
 
   const navigateToNextBeneficiaryValidationStep = useCallback(async () => {
     const { data } = await refetch()
@@ -32,7 +26,6 @@ export const useBeneficiaryValidationNavigation = (setError: (error: Error) => v
 
   return {
     nextBeneficiaryValidationStepNavConfig: nextStepNavConfig,
-    beforeNavigateToNextSubscriptionStep: beforeNavigateToNextStep,
     navigateToNextBeneficiaryValidationStep,
   }
 }
@@ -61,28 +54,17 @@ const getNavConfigForNextSubscriptionStep = (
     nextStep === SubscriptionStep['honor-statement']
   ) {
     return { screen: 'IdentityCheckStepper' }
-  } else if (nextStep === SubscriptionStep['user-profiling']) {
-    return undefined
   } else {
     return { screen: homeNavConfig[0], params: homeNavConfig[1], fromRef: true }
   }
 }
 
-const beforeNavigateToNextSubscriptionStep = (
-  setError: (error: Error) => void,
-  navConfig: NextStepNavConfig
-) => {
-  if (!navConfig) {
-    setError(new UserProfilingError("SubscriptionStep['user-profiling']", UserProfiling))
-  }
-}
-
-const useNavigateToNextSubscriptionStep = (setError: (error: Error) => void) => {
+const useNavigateToNextSubscriptionStep = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (navConfig: NextStepNavConfig) => {
     if (!navConfig) {
-      beforeNavigateToNextSubscriptionStep(setError, navConfig)
+      navigateToHome()
     } else {
       const { screen, params } = navConfig
       screen === homeNavConfig[0] ? navigateToHome() : navigate(screen, params)

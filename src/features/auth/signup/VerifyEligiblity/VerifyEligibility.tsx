@@ -14,8 +14,7 @@ import { Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
-  const { nextBeneficiaryValidationStepNavConfig, beforeNavigateToNextSubscriptionStep } =
-    useBeneficiaryValidationNavigation(setError)
+  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
 
   if (error) {
     throw error
@@ -31,7 +30,6 @@ export const VerifyEligibility: FunctionComponent = () => {
           as={ButtonPrimaryWhite}
           wording={t`Vérifier mon identité`}
           navigateTo={nextBeneficiaryValidationStepNavConfig}
-          onPress={beforeNavigateToNextSubscriptionStep}
         />,
         <TouchableLink
           key={2}
