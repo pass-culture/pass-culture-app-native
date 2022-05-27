@@ -42,7 +42,6 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
 }
 
 const getInvalidInformation = (
-  onPrimaryButtonPress: () => void,
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
   Icon: UserError,
@@ -54,7 +53,6 @@ const getInvalidInformation = (
   descriptionAlignment: 'center',
   primaryButtonText: t`Vérifier mon identité`,
   tertiaryButtonVisible: true,
-  onPrimaryButtonPress,
   navigateTo,
 })
 
@@ -87,15 +85,11 @@ export function useNotEligibleEduConnectErrorData(
   message: EduConnectErrorMessageEnum | string,
   setError: (error: Error | undefined) => void
 ) {
-  const { nextBeneficiaryValidationStepNavConfig, beforeNavigateToNextSubscriptionStep } =
-    useBeneficiaryValidationNavigation(setError)
+  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
   const { goBack } = useNavigation<UseNavigationType>()
   switch (message) {
     case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
-      return getInvalidInformation(
-        beforeNavigateToNextSubscriptionStep,
-        nextBeneficiaryValidationStepNavConfig
-      )
+      return getInvalidInformation(nextBeneficiaryValidationStepNavConfig)
 
     case EduConnectErrorMessageEnum.UserAgeNotValid:
       return UserAgeNotValid

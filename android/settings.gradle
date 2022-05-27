@@ -6,7 +6,5 @@ project(':@react-native-community_netinfo').projectDir = new File(rootProject.pr
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app', ':react-native-code-push'
 project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
-include ':@pass-culture_react-native-profiling'
-project(':@pass-culture_react-native-profiling').projectDir = new File(rootProject.projectDir, '../node_modules/@pass-culture/react-native-profiling/android')
 includeBuild('../node_modules/react-native-gradle-plugin')
 

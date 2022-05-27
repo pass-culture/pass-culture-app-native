@@ -489,8 +489,6 @@ PODS:
     - React
   - react-native-netinfo (8.0.0):
     - React-Core
-  - react-native-profiling (1.1.2):
-    - React
   - react-native-safe-area-context (3.3.2):
     - React-Core
   - react-native-splash-screen (3.2.0):
@@ -725,7 +723,6 @@ DEPENDENCIES:
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-in-app-review (from `../node_modules/react-native-in-app-review`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
-  - "react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
@@ -882,8 +879,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-in-app-review"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
-  react-native-profiling:
-    :path: "../node_modules/@pass-culture/react-native-profiling"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
@@ -1033,7 +1028,6 @@ SPEC CHECKSUMS:
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
   react-native-netinfo: ba4ea50d836c60580c59079233c400753fe5bcb6
-  react-native-profiling: 11637537015f8502597cf22f9449a94ebfb4907d
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-tracking-transparency: b2029ff756f1128b1f2c7c7c7f3003bc3c950f9f

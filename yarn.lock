@@ -3504,11 +3504,6 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/react-native-profiling@1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@pass-culture/react-native-profiling/-/react-native-profiling-1.1.2.tgz#a904f59425bba79cb250792a85eb23c64dc2264c"
-  integrity sha512-JHu68297KIezyiQWpxPWio9DtFt9WusfKnNYa46ZiV2jp7bzkcmbdtoT60Y432AuXk2V25fOLafYNosUbXd73A==
-
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.6.tgz#9ced74cb23dae31ab385f775e237ce4c50422a1d"
