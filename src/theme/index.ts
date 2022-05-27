@@ -112,6 +112,7 @@ export interface AppThemeType {
     greenValid: ColorsEnum
     greenLight: ColorsEnum
     greyDark: ColorsEnum
+    greySemiDark: ColorsEnum
     greyMedium: ColorsEnum
     greyLight: ColorsEnum
     primary: ColorsEnum
@@ -463,6 +464,7 @@ export const theme: AppThemeType = {
     greenValid: ColorsEnum.GREEN_VALID,
     greenLight: ColorsEnum.GREEN_LIGHT,
     greyDark: ColorsEnum.GREY_DARK,
+    greySemiDark: ColorsEnum.GREY_SEMI_DARK,
     greyMedium: ColorsEnum.GREY_MEDIUM,
     greyLight: ColorsEnum.GREY_LIGHT,
     primary: ColorsEnum.PRIMARY,

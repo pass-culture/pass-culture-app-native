@@ -6,6 +6,7 @@ export enum ColorsEnum {
   GREEN_VALID = '#15884f',
   GREEN_LIGHT = '#2cbe6e',
   GREY_DARK = '#696A6F',
+  GREY_SEMI_DARK = '#90949D',
   GREY_MEDIUM = '#CBCDD2',
   GREY_LIGHT = '#F1F1F4',
   PRIMARY = '#eb0055',
