@@ -11,6 +11,10 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
           style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
         >
           <div
@@ -655,6 +659,10 @@ Object {
       class="css-view-1dbjc4n"
       style="align-self: center; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
     >
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
       <div
         class="css-view-1dbjc4n"
         style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
