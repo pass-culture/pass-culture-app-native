@@ -66,7 +66,16 @@ commands:
           name: Restore Tests cache
           keys:
             - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
-      - run: yarn test:unit:ci
+      - run:
+          name: Install JUnit coverage reporter
+          command: yarn add --dev jest-junit
+      - run:
+          name: Run tests with JUnit as reporter
+          command: yarn test:unit:ci
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
       - save_cache:
           name: Save Tests cache
           key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
