@@ -49,15 +49,6 @@ describe('SearchBox component', () => {
     expect(render(<SearchBox searchInputID={searchInputID} />)).toMatchSnapshot()
   })
 
-  it('should display location button if showLocationButton = true', () => {
-    const { queryByTestId } = render(
-      <SearchBox searchInputID={searchInputID} showLocationButton={true} />
-    )
-    const locationButton = queryByTestId('locationButton')
-
-    expect(locationButton).toBeTruthy()
-  })
-
   it('should call mockStagedDispatch() when typing', () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
