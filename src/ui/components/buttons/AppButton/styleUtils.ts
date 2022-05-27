@@ -44,31 +44,38 @@ export const appButtonStyles: ButtonStyles = ({
   justifyContent,
   numberOfLines,
   center,
-}: ButtonStylesArgs) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: justifyContent ?? 'center',
-  borderRadius: theme.borderRadius.button,
-  padding: 2,
-  minHeight:
-    buttonHeight === 'tall' ? theme.buttons.buttonHeights.tall : theme.buttons.buttonHeights.small,
-  width: '100%',
-  ...(center ? { alignSelf: 'center' } : {}),
-  ...(fullWidth ? {} : { maxWidth: theme.contentPage.maxWidth }),
-  ...(mediumWidth ? { maxWidth: theme.contentPage.mediumWidth } : {}),
-  ...(inline
-    ? {
-        borderWidth: 0,
-        borderRadius: 0,
-        marginTop: 0,
-        padding: 0,
-        width: 'auto',
-        minHeight: inlineHeight ?? theme.buttons.buttonHeights.inline,
-      }
-    : {}),
-  ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
-  ...(numberOfLines ? { height: 'auto' } : {}),
-})
+}: ButtonStylesArgs) => {
+  const heightButton = () => {
+    if (buttonHeight === 'extraSmall') return theme.buttons.buttonHeights.extraSmall
+    if (buttonHeight === 'tall') return theme.buttons.buttonHeights.tall
+    return theme.buttons.buttonHeights.small
+  }
+
+  return {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: justifyContent ?? 'center',
+    borderRadius: theme.borderRadius.button,
+    padding: 2,
+    minHeight: heightButton(),
+    width: '100%',
+    ...(center ? { alignSelf: 'center' } : {}),
+    ...(fullWidth ? {} : { maxWidth: theme.contentPage.maxWidth }),
+    ...(mediumWidth ? { maxWidth: theme.contentPage.mediumWidth } : {}),
+    ...(inline
+      ? {
+          borderWidth: 0,
+          borderRadius: 0,
+          marginTop: 0,
+          padding: 0,
+          width: 'auto',
+          minHeight: inlineHeight ?? theme.buttons.buttonHeights.inline,
+        }
+      : {}),
+    ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
+    ...(numberOfLines ? { height: 'auto' } : {}),
+  }
+}
 
 export const appButtonWebStyles: ElementStylesWeb = ({
   theme,

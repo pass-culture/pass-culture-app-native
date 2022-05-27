@@ -12,7 +12,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme/colors'
 
 export interface TouchableOpacityButtonProps {
-  buttonHeight: 'small' | 'tall'
+  buttonHeight: 'extraSmall' | 'small' | 'tall'
   inline?: boolean
   inlineHeight?: number | string
   mediumWidth?: boolean
@@ -31,6 +31,7 @@ export interface AppButtonInnerProps {
   wording: string
   title?: ComponentType<TextProps>
   numberOfLines?: number
+  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
 }
 
 export type AppButtonEventNative = ((e: GestureResponderEvent) => void) | (() => void) | undefined
@@ -40,7 +41,7 @@ export interface BaseButtonProps {
   accessibilityLabel?: string
   accessibilityDescribedBy?: string
   adjustsFontSizeToFit?: boolean
-  buttonHeight?: 'small' | 'tall'
+  buttonHeight?: 'extraSmall' | 'small' | 'tall'
   disabled?: boolean
   icon?: FunctionComponent<IconInterface>
   loadingIndicator?: ComponentType<IconInterface>
@@ -62,6 +63,8 @@ export interface BaseButtonProps {
   accessibilityRole?: AccessibilityRole
   href?: string
   target?: string
+  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
+  maxWidth?: string | number
 }
 
 export interface AppButtonProps extends BaseButtonProps {

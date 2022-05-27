@@ -1,15 +1,22 @@
 import { t } from '@lingui/macro'
-import React, { forwardRef, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { forwardRef, useCallback, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { LocationType } from 'features/search/enums'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
@@ -35,6 +42,13 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const searchInputID = props.searchInputID ?? uuidv4()
   const { data: appSettings } = useAppSettings()
   const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState } = useStagedSearch()
+  const { locationFilter } = searchState
+  const { locationType } = locationFilter
+  // PLACE and VENUE belong to the same section
+  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { label: locationLabel } = useLocationChoice(section)
 
   function onFocus() {
     setIsFocus(true)
@@ -44,6 +58,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   function onBlur() {
     setIsFocus(false)
   }
+
+  const onPressLocationButton = useCallback(() => {
+    navigate('LocationFilter')
+  }, [navigate])
 
   return (
     <React.Fragment>
@@ -76,6 +94,18 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           aria-describedby={accessibilityDescribedBy}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
+        {props.showLocationButton ? (
+          <StyledButtonPrimary
+            testID="locationButton"
+            wording={locationLabel}
+            onPress={onPressLocationButton}
+            icon={LocationPointer}
+            textSize={getSpacing(3)}
+            buttonHeight="extraSmall"
+            ellipsizeMode="tail"
+            maxWidth={getSpacing(23)}
+          />
+        ) : null}
         {value.length > 0 && (
           <RightIconContainer
             onPress={onPressRightIcon}
@@ -107,4 +137,8 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
 
 const StyledInputContainer = styled(InputContainer)({
   outlineOffset: 0,
+})
+
+const StyledButtonPrimary = styledButton(ButtonPrimary)({
+  maxWidth: getSpacing(34),
 })

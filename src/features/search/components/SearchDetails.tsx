@@ -61,7 +61,7 @@ export const SearchDetails: React.FC = () => {
         <Touchable
           accessibilityLabel={t`Revenir en arrière`}
           testID="previousBtn"
-          onPress={() => navigate(...getTabNavConfig('Search'))}>
+          onPress={resetSearchInput}>
           <ArrowPrevious />
         </Touchable>
         <StyledSearchInputContainer>

@@ -39,6 +39,7 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({ searchInputID }) => 
             onFocusSearchInput={() => {
               if (appEnableSearchHomepageRework) navigate('SearchDetails')
             }}
+            showLocationButton={appEnableSearchHomepageRework}
           />
         </SearchBoxReworkContainer>
       ) : (

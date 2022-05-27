@@ -8,7 +8,7 @@ import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
 
 export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
-  ({ disabled, textSize, icon, theme, ...rest }) => {
+  ({ disabled, textSize, icon, theme, buttonHeight, maxWidth, ...rest }) => {
     let Icon
 
     if (icon) {
@@ -16,12 +16,15 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
         color: disabled
           ? theme.buttons.disabled.primary.iconColor
           : theme.buttons.primary.iconColor,
-        size: theme.buttons.primary.iconSize,
+        size:
+          buttonHeight === 'extraSmall'
+            ? theme.icons.sizes.extraSmall
+            : theme.buttons.primary.iconSize,
       })``
     }
 
     const Title = styled(Typo.ButtonText)({
-      maxWidth: '100%',
+      maxWidth: maxWidth ? maxWidth : '100%',
       color: disabled ? theme.buttons.disabled.primary.textColor : theme.buttons.primary.textColor,
       fontSize: textSize,
       marginLeft: icon

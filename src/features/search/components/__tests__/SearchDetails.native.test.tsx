@@ -59,7 +59,7 @@ describe('SearchDetails component', () => {
     await fireEvent.press(previousBtn)
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('TabNavigator', { params: undefined, screen: 'Search' })
+    expect(navigate).toBeCalledWith('TabNavigator', { params: { query: '' }, screen: 'Search' })
   })
 
   it('should log search query on submit', async () => {
