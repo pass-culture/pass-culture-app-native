@@ -69,6 +69,6 @@ const CompletionContainer = styled.View({
 
 const Validate = styled(DefaultValidate).attrs<{ isCompleted: boolean }>(
   ({ theme, isCompleted }) => ({
-    color: isCompleted ? theme.colors.greenLight : theme.colors.transparent,
+    color: isCompleted ? theme.colors.greenValid : theme.colors.transparent,
   })
 )<{ isCompleted: boolean }>``
