@@ -33,7 +33,7 @@
     "test:lint": "eslint . --ext .js,.ts --cache",
     "test:types": "tsc --noEmit",
     "test:unit": "TZ=UTC JEST=true jest --forceExit",
-    "test:unit:ci": "TZ=UTC yarn test:unit --maxWorkers=2 --logHeapUsage --forceExit --coverage",
+    "test:unit:ci": "yarn test:unit --maxWorkers=2 --logHeapUsage --coverage",
     "watch": "tsc --watch"
   },
   "dependencies": {
