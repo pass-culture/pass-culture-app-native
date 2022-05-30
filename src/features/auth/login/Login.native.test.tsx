@@ -225,7 +225,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await superFlushWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')

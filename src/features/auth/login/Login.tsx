@@ -93,6 +93,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       }
 
       if (settings?.allowAccountReactivation && !isActive) {
+        setIsLoading(false)
         return navigate('SuspensionScreen')
       }
 
