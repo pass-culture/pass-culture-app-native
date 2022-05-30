@@ -25,11 +25,11 @@ describe('express server', () => {
     expect(addressInfo.port).toBe(8080)
   })
 
-  it(`should return same index.html from ${env.APP_PUBLIC_URL} as from ${env.APP_PROXY_URL} (proxy)`, async () => {
+  it(`should return same index.html from ${env.APP_PUBLIC_URL} as from ${env.APP_BUCKET_URL} (bucket)`, async () => {
     const response = await fetch(env.APP_PUBLIC_URL)
     const html = await response.text()
 
-    const responseProxy = await fetch(env.APP_PROXY_URL)
+    const responseProxy = await fetch(env.APP_BUCKET_URL)
     const htmlProxy = await responseProxy.text()
 
     expect(html).toEqual(htmlProxy)

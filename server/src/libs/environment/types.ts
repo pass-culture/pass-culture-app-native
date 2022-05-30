@@ -7,7 +7,7 @@ export interface Environment {
   ENV: string
   REGION: string
   APP_PUBLIC_URL: string
-  APP_PROXY_URL: string
+  APP_BUCKET_URL: string
   API_BASE_URL: string
   API_BASE_PATH_NATIVE_V1: string
   DEEPLINK_PROTOCOL: string

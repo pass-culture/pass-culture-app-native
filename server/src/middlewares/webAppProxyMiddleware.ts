@@ -7,9 +7,9 @@ import { ENTITY_MAP, EntityKeys } from '../services/entities/types'
 import { logger } from '../utils/logging'
 import { replaceHtmlMetas } from '../utils/metas'
 
-const { APP_PROXY_URL } = env
+const { APP_BUCKET_URL } = env
 
-const { href } = new URL(APP_PROXY_URL)
+const { href } = new URL(APP_BUCKET_URL)
 
 const ENTITY_PATH_REGEXP = new RegExp(`/(${Object.keys(ENTITY_MAP).join('|')})/(\\d+)`)
 
