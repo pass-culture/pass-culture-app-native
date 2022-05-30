@@ -27,6 +27,10 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))
 
+jest.mock('features/navigation/helpers', () => ({
+  useCurrentRoute: () => ({ name: 'TabNavigator', key: 'key' }),
+}))
+
 jest.mock('libs/splashscreen')
 const mockUseSplashScreenContext = mocked(useSplashScreenContext)
 
@@ -62,6 +66,18 @@ describe('<RootNavigator />', () => {
       expect(privacyPolicyTitle).toBeTruthy()
     })
     renderAPI.unmount()
+  })
+
+  it('should not display quick access button in native', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: true })
+
+    const renderAPI = await renderRootNavigator()
+    const quickAccessButton = renderAPI.queryByText('Accéder au menu de navigation')
+
+    await waitForExpect(() => {
+      expect(quickAccessButton).toBeNull()
+    })
   })
 })
 

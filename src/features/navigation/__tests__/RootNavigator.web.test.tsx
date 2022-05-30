@@ -36,10 +36,7 @@ jest.mock('libs/splashscreen')
 const mockUseSplashScreenContext = mocked(useSplashScreenContext)
 
 // eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  warn: true,
-  error: true,
-})
+allowConsole({ error: true })
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {
@@ -72,6 +69,32 @@ describe('<RootNavigator />', () => {
     })
     renderAPI.unmount()
   })
+
+  it('should display quick access button if show tabBar and current route is TabNavigator', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: true })
+
+    const renderAPI = await renderRootNavigator()
+    const quickAccessButton = renderAPI.queryByText('Accéder au menu de navigation')
+
+    await waitForExpect(() => {
+      expect(quickAccessButton).toBeTruthy()
+    })
+  })
+
+  it('should not display quick access button if current route is not TabNavigator', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: true })
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseCurrentRoute.mockReturnValue({ name: 'Offer', key: 'key' })
+
+    const renderAPI = await renderRootNavigator()
+    const quickAccessButton = renderAPI.queryByText('Accéder au menu de navigation')
+
+    await waitForExpect(() => {
+      expect(quickAccessButton).toBeNull()
+    })
+  })
 })
 
 describe('ForceUpdate display logic', () => {
@@ -81,6 +104,8 @@ describe('ForceUpdate display logic', () => {
 
   it('should display force update page when global variable is set', async () => {
     await storage.saveObject('has_accepted_cookie', false)
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
     mockedUseMustUpdateApp.mockReturnValueOnce(true)
 
     const rootNavigator = await renderRootNavigator()
