@@ -54,7 +54,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         aria-labelledby={props.accessibilityLabelledBy}
         testID="Interrupteur">
         <StyledBackgroundColor active={active} disabled={disabled}>
-          <StyledToggle style={{ marginLeft }} />
+          <StyledToggle style={{ marginLeft }} active={active} disabled={disabled} />
         </StyledBackgroundColor>
       </TouchableOpacity>
       <HiddenCheckbox id={checkboxID} checked={active} onChange={toggle} />
@@ -64,7 +64,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
 const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: boolean) => {
   if (active) return disabled ? theme.uniqueColors.greenDisabled : theme.colors.greenValid
-  return disabled ? theme.colors.greySemiDark : theme.colors.greyDark
+  return disabled ? theme.colors.white : theme.colors.greySemiDark
 }
 
 const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
@@ -74,27 +74,46 @@ const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }
     height: getSpacing(8),
     borderRadius: getSpacing(4),
     justifyContent: 'center',
+    ...(!active
+      ? {
+          outlineOffset: -getSpacing(0.5), // Hack to create "inside border" with color
+          outlineWidth: getSpacing(0.5),
+          outlineStyle: 'solid',
+          outlineColor: theme.colors.greySemiDark,
+        }
+      : {}),
   })
 )
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)(({ theme }) => ({
-  aspectRatio: '1',
-  width: TOGGLE_WIDTH,
-  height: getSpacing(7),
-  backgroundColor: theme.colors.white,
-  borderRadius: getSpacing(7),
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(0.5),
-    },
-    shadowRadius: 2.5,
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.2,
-  }),
-}))
+const StyledToggle = styled(Animated.View)<{ active: boolean; disabled: boolean }>(
+  ({ theme, active, disabled }) => ({
+    aspectRatio: '1',
+    width: TOGGLE_WIDTH,
+    height: getSpacing(7),
+    backgroundColor: theme.colors.white,
+    borderRadius: getSpacing(7),
+    ...(disabled && !active
+      ? {
+          outlineOffset: -getSpacing(0.75), // Hack to create "inside border" with color
+          outlineWidth: getSpacing(0.5),
+          outlineStyle: 'solid',
+          outlineColor: theme.colors.greySemiDark,
+        }
+      : {
+          ...getShadow({
+            shadowOffset: {
+              width: 0,
+              height: getSpacing(0.5),
+            },
+            shadowRadius: 2.5,
+            shadowColor: theme.colors.black,
+            shadowOpacity: 0.2,
+          }),
+        }),
+  })
+)
 
 const propsAreEqual = (
   prevProps: Readonly<React.PropsWithChildren<Props>>,

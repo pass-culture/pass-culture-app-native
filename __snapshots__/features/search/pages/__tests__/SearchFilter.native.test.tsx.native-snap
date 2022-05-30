@@ -867,7 +867,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -940,7 +940,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1013,7 +1013,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1086,7 +1086,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1159,7 +1159,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1232,7 +1232,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1305,7 +1305,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1378,7 +1378,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1451,7 +1451,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1524,7 +1524,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1597,7 +1597,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1670,7 +1670,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1743,7 +1743,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1983,7 +1983,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -2056,7 +2056,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -2129,7 +2129,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
+                  "borderColor": "#90949D",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -2744,17 +2744,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#696A6F",
+                      "backgroundColor": "#90949D",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
+                      "outlineColor": "#90949D",
+                      "outlineOffset": -2,
+                      "outlineStyle": "solid",
+                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
+                  active={false}
                   collapsable={false}
+                  disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
@@ -2922,17 +2928,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#696A6F",
+                      "backgroundColor": "#90949D",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
+                      "outlineColor": "#90949D",
+                      "outlineOffset": -2,
+                      "outlineStyle": "solid",
+                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
+                  active={false}
                   collapsable={false}
+                  disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
@@ -3100,17 +3112,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#696A6F",
+                      "backgroundColor": "#90949D",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
+                      "outlineColor": "#90949D",
+                      "outlineOffset": -2,
+                      "outlineStyle": "solid",
+                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
+                  active={false}
                   collapsable={false}
+                  disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
@@ -3278,17 +3296,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#696A6F",
+                      "backgroundColor": "#90949D",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
+                      "outlineColor": "#90949D",
+                      "outlineOffset": -2,
+                      "outlineStyle": "solid",
+                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
+                  active={false}
                   collapsable={false}
+                  disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
@@ -3481,17 +3505,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#696A6F",
+                      "backgroundColor": "#90949D",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
+                      "outlineColor": "#90949D",
+                      "outlineOffset": -2,
+                      "outlineStyle": "solid",
+                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
+                  active={false}
                   collapsable={false}
+                  disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
