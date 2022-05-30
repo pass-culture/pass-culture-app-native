@@ -14,7 +14,7 @@ import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BookHourChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()

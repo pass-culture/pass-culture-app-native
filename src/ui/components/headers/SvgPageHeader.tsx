@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface SvgPageHeaderProps {

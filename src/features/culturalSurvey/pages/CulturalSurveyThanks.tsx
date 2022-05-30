@@ -7,7 +7,6 @@ import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const CulturalSurveyThanks: React.FC = () => {
   return (
@@ -36,6 +35,6 @@ const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })
 
-const TextContent = styled(Typo.Body).attrs(getHeadingAttrs(undefined))({
+const TextContent = styled(Typo.Body)({
   textAlign: 'center',
 })

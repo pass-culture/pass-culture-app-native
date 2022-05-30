@@ -18,7 +18,7 @@ import { HiddenText } from 'ui/components/HiddenText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 

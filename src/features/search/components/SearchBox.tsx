@@ -15,7 +15,7 @@ import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
   const { searchState } = useSearch()

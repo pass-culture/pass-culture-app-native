@@ -6,7 +6,7 @@ import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { Step } from '../pages/reducer'
 

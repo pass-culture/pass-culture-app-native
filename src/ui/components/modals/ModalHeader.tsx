@@ -8,7 +8,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenText } from 'ui/components/HiddenText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ModalIconProps } from './types'
 

@@ -8,7 +8,7 @@ import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/ut
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BeneficiaryHeaderProps = {
   firstName?: string | null

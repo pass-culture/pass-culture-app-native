@@ -15,7 +15,7 @@ import { ImageTile } from 'ui/components/ImageTile'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export interface VenueTileProps {
   venue: VenueHit
   width: number

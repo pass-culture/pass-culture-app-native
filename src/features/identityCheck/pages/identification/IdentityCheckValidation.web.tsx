@@ -13,7 +13,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function IdentityCheckValidation() {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
@@ -92,4 +92,4 @@ const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const TextToValidate = styled(Typo.Title3).attrs(getHeadingAttrs(undefined))``
+const TextToValidate = styled(Typo.Title3).attrs(getNoHeadingAttrs())``

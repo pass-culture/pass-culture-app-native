@@ -1,6 +1,9 @@
 import React from 'react'
-import { AccessibilityRole, Platform, Text as RNText, TextProps as RNTextProps } from 'react-native'
+import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
+
+import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { ColorsEnum, UniqueColors } from './colors'
 import { useGrid } from './grid'
@@ -10,23 +13,6 @@ interface CustomTextProps {
   color?: ColorsEnum | UniqueColors
 }
 export type TextProps = CustomTextProps & RNTextProps
-
-export const getHeadingAttrs = (level?: number) => ({
-  ...(Platform.OS === 'web'
-    ? {
-        accessibilityRole: level ? ('header' as AccessibilityRole) : undefined,
-        'aria-level': level,
-        ...getTextAttrs(),
-      }
-    : {}),
-})
-
-export const getTextAttrs = (dir?: string) =>
-  Platform.OS === 'web'
-    ? {
-        dir: dir ?? 'ltr',
-      }
-    : {}
 
 const Hero = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
   ...theme.typography.hero,
@@ -65,13 +51,13 @@ const StyledTitle2 = styled(RNText)<{
   fontSize: fontSize ?? theme.typography.title2.fontSize,
 }))
 
-const Title3 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': ariaLevel }) =>
+const Title3 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-level': ariaLevel }) =>
   getHeadingAttrs(ariaLevel ?? 3)
 )(({ theme }) => ({
   ...theme.typography.title3,
 }))
 
-const Title4 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': ariaLevel }) =>
+const Title4 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-level': ariaLevel }) =>
   getHeadingAttrs(ariaLevel ?? 4)
 )(({ theme }) => ({
   ...theme.typography.title4,

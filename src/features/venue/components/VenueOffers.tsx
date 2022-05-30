@@ -22,7 +22,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   venueId: number

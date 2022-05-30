@@ -9,7 +9,7 @@ import { Booking } from 'features/bookings/components/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 

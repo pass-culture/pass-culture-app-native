@@ -11,7 +11,6 @@ import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const AccountReactivationSuccess = () => {
   const { data: settings } = useAppSettings()
@@ -50,6 +49,6 @@ const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })
 
-const TextContent = styled(Typo.Body).attrs(getHeadingAttrs())({
+const TextContent = styled(Typo.Body)({
   textAlign: 'center',
 })

@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { getHeadingAttrs, Typo } from 'ui/theme/typography'
+import { Typo } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { monthNames } from './Calendar.utils'
 

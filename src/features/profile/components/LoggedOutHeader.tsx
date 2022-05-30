@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export function LoggedOutHeader() {
   return (
     <Container>

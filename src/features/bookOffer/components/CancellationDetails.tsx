@@ -5,7 +5,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToFrenchDate, formatToHour } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const formatDate = (limitDate: string): string => {
   const limit = new Date(limitDate)
