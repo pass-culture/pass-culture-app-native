@@ -776,7 +776,7 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
-  deploy-web-server-testing:
+  deploy-web-proxy-testing:
     executor: gcp
     working_directory: ~/pass-culture
     steps:
@@ -1016,7 +1016,7 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
-      - deploy-web-server-testing:
+      - deploy-web-proxy-testing:
           filters:
             tags:
               only:

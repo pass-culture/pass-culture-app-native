@@ -5,7 +5,7 @@
 app_engine_apis: true
 
 # Set the service name matching the one instanciated in terraform
-service: web-server
+service: web-proxy
 
 runtime: nodejs16
 
