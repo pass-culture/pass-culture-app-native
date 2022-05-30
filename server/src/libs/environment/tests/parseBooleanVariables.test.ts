@@ -26,6 +26,6 @@ describe('parseBooleanVariables', () => {
   })
 
   it("doesn't alter non boolean value", () => {
-    expect(convertedConfig.APP_PUBLIC_URL).toBeDefined()
+    expect(convertedConfig.APP_PUBLIC_URL).toEqual('http://localhost:8080')
   })
 })

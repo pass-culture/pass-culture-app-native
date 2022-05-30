@@ -9,9 +9,6 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "contributors": [
-    "Dimitri Kopriwa <dimitri.kopriwa@passculture.app>"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/pass-culture/pass-culture-app-native.git"
