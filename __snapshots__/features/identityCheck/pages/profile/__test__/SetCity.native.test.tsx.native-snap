@@ -262,6 +262,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 aria-describedby="testUuidV4"
                 autoCorrect={false}
                 editable={true}
+                enablesReturnKeyAutomatically={true}
                 keyboardType="number-pad"
                 nativeID="testUuidV4"
                 onBlur={[Function]}
