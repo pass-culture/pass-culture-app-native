@@ -562,6 +562,8 @@ exports[`Profile component should render correctly 1`] = `
                             }
                           >
                             <View
+                              active={true}
+                              disabled={false}
                               style={
                                 Object {
                                   "aspectRatio": 1,
