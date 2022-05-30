@@ -158,6 +158,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
 
   return (
     <Container>
+      <Spacer.TopScreen />
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
         title={mapQuestionIdToPageTitle(culturalSurveyQuestion?.id)}

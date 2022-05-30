@@ -18,6 +18,17 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   }
 >
   <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
     style={
       Array [
         Object {
