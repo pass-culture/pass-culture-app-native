@@ -37,11 +37,6 @@ create_sourcemaps(){
     "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
     "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
     -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
-
-  echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME} -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
-  mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
-  echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME}.hbc -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
-  mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
 }
 
 upload_sourcemaps(){
@@ -51,10 +46,10 @@ upload_sourcemaps(){
   VERSION=`jq -r .version package.json`
   BUILD=`jq -r .build package.json`
 
-  echo "APP_OS: $APP_OS"
-  echo "APP_ENV: $APP_ENV"
+  echo "APP_OS: ${APP_OS}"
+  echo "APP_ENV: ${APP_ENV}"
   if [[ -n "$CODE_PUSH_LABEL" ]]; then
-    echo "CODE_PUSH_LABEL: $CODE_PUSH_LABEL"
+    echo "CODE_PUSH_LABEL: ${CODE_PUSH_LABEL}"
   fi
   echo "VERSION: $VERSION"
   echo "BUILD: $BUILD"
@@ -71,16 +66,24 @@ upload_sourcemaps(){
 
   echo "Uploading ${APP_OS} source maps... "
 
-  if [[ -n "$CODE_PUSH_LABEL" ]]; then
-    RELEASE="$VERSION-${APP_OS}+codepush:${CODE_PUSH_LABEL}"
+  if [[ -n "${CODE_PUSH_LABEL}" ]]; then
+    RELEASE="${VERSION}-${APP_OS}+codepush:${CODE_PUSH_LABEL}"
   else
-    RELEASE="$VERSION-${APP_OS}"
+    RELEASE="${VERSION}-${APP_OS}"
+
+    # Fix android using wrong source maps (See: https://github.com/getsentry/sentry-react-native/issues/2087)
+    if [[ "${APP_OS}" = "android" ]]; then
+      echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME} -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
+      mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
+      echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME}.hbc -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+      mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+    fi
   fi
 
 
   DIST="${BUILD}-${APP_OS}"
-  echo "RELEASE: $RELEASE"
-  echo "DIST: $DIST"
+  echo "RELEASE: ${RELEASE}"
+  echo "DIST: ${DIST}"
 
   node_modules/@sentry/cli/bin/sentry-cli releases files "${RELEASE}" \
     upload-sourcemaps \
