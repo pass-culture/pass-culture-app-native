@@ -1,16 +1,26 @@
 import { IncomingMessage, ServerResponse } from 'http'
 
 import {
-  OFFER_RESPONSE_SNAP,
+  OFFER_RESPONSE_SNAPSHOT,
   TEST_HTML,
-  VENUE_RESPONSE_SNAP,
-  VENUE_RESPONSE_ALTERNATIVE_SNAP,
+  VENUE_WITH_BANNER_RESPONSE_SNAPSHOT,
+  VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT,
 } from '../../../tests/constants'
 import { env } from '../../libs/environment/env'
 import { ENTITY_MAP } from '../../services/entities/types'
 import { metasResponseInterceptor } from '../webAppProxyMiddleware'
+import { server } from '../../../tests/server'
 
 describe('webAppProxyMiddleware', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
+
   const responseBuffer = Buffer.from(TEST_HTML)
   const proxyRes = {
     headers: {
@@ -40,9 +50,9 @@ describe('webAppProxyMiddleware', () => {
     })
 
     it.each([
-      ['offer', 'offre', `${OFFER_RESPONSE_SNAP.id}`],
-      ['venue', 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
-      ['venue', 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
+      ['offer', 'offre', `${OFFER_RESPONSE_SNAPSHOT.id}`],
+      ['venue', 'lieu', `${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`],
+      ['venue', 'lieu', `${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`],
     ])(
       `should edit html when req.url on %s use valid id: /%s/%s`,
       async (entity: string, endpoint: string, id: string) => {
@@ -57,11 +67,11 @@ describe('webAppProxyMiddleware', () => {
     )
 
     it.each(
-      Object.entries(ENTITY_MAP).map(([key, { API_MODEL_NAME }]) => [API_MODEL_NAME, key, ''])
+      Object.entries(ENTITY_MAP).map(([key, { API_MODEL_NAME }]) => [API_MODEL_NAME, key])
     )(
-      `should not edit html when req.url on %s use valid id: /%s/%s`,
-      async (entity: string, endpoint: string, id: string) => {
-        const url = `${env.APP_PUBLIC_URL}/${endpoint}${id ? `/${id}` : ''}`
+      `should not edit html when req.url on %s use valid id: /%s`,
+      async (entity: string, endpoint: string) => {
+        const url = `${env.APP_PUBLIC_URL}/${endpoint}`
         const finalResponseBuffer = await metasResponseInterceptor(responseBuffer, proxyRes, {
           ...req,
           url,

@@ -1,16 +1,26 @@
-import { OFFER_RESPONSE_SNAP, VENUE_RESPONSE_SNAP } from '../../../tests/constants'
+import { OFFER_RESPONSE_SNAPSHOT, VENUE_WITH_BANNER_RESPONSE_SNAPSHOT } from '../../../tests/constants'
 import { apiClient } from '../apiClient'
 import { EntityKeys } from '../entities/types'
+import { server } from '../../../tests/server'
 
 describe('apiClient', () => {
-  it(`should get offer ${OFFER_RESPONSE_SNAP.id}`, async () => {
-    const offer = await apiClient('offre', OFFER_RESPONSE_SNAP.id)
-    expect(offer).toEqual(OFFER_RESPONSE_SNAP)
+  beforeAll(() => {
+    server.listen()
   })
 
-  it(`should get venue ${VENUE_RESPONSE_SNAP.id}`, async () => {
-    const offer = await apiClient('lieu', VENUE_RESPONSE_SNAP.id)
-    expect(offer).toEqual(VENUE_RESPONSE_SNAP)
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
+
+  it(`should get offer ${OFFER_RESPONSE_SNAPSHOT.id}`, async () => {
+    const offer = await apiClient('offre', OFFER_RESPONSE_SNAPSHOT.id)
+    expect(offer).toEqual(OFFER_RESPONSE_SNAPSHOT)
+  })
+
+  it(`should get venue ${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`, async () => {
+    const offer = await apiClient('lieu', VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id)
+    expect(offer).toEqual(VENUE_WITH_BANNER_RESPONSE_SNAPSHOT)
   })
 
   it('should throw error with wrong entity type', async () => {
@@ -20,7 +30,7 @@ describe('apiClient', () => {
     )
   })
 
-  it(`should throw error when status code is 404 instead of 200`, async () => {
+  it(`should throw error when HTTP status code is not 200`, async () => {
     await expect(async () => await apiClient('offre', 0)).rejects.toThrowError(
       new Error(`Wrong status code: 404`)
     )

@@ -4,7 +4,6 @@
   "private": true,
   "license": "UNLICENSED",
   "main": "build/src/index.js",
-  "esnext": "src/index.ts",
   "author": {
     "email": "support@passculture.app",
     "url": "https://pass.culture.fr",

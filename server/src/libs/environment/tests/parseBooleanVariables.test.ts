@@ -14,11 +14,10 @@ describe('parseBooleanVariables', () => {
   }
   const convertedConfig = parseBooleanVariables(mockedConfig)
 
-  it('should have __DEV__ boolean type and true', () => {
+  it('convert "true" in string to true in boolean', () => {
     expect(convertedConfig.__DEV__).toBe(true)
   })
-
-  it('should have __DEV__ boolean type and false', () => {
+  it('convert "false" in string to false in boolean', () => {
     const { __DEV__ } = parseBooleanVariables({
       ...mockedConfig,
       __DEV__: 'false',
@@ -26,7 +25,7 @@ describe('parseBooleanVariables', () => {
     expect(__DEV__).toBe(false)
   })
 
-  it('should have APP_PUBLIC_URL defined', () => {
+  it("doesn't alter non boolean value", () => {
     expect(convertedConfig.APP_PUBLIC_URL).toBeDefined()
   })
 })

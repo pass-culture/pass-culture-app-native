@@ -1,8 +1,6 @@
 import { Server } from 'http'
 import { AddressInfo } from 'net'
 
-import { server as mswServer } from '../tests/server'
-
 import { env } from './libs/environment/__mocks__/env'
 
 describe('express server', () => {
@@ -27,8 +25,7 @@ describe('express server', () => {
     expect(addressInfo.port).toBe(8080)
   })
 
-  it.skip(`should return same index.html from ${env.APP_PUBLIC_URL} as from ${env.APP_PROXY_URL} (proxy)`, async () => {
-    mswServer.close()
+  it(`should return same index.html from ${env.APP_PUBLIC_URL} as from ${env.APP_PROXY_URL} (proxy)`, async () => {
     const response = await fetch(env.APP_PUBLIC_URL)
     const html = await response.text()
 

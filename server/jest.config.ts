@@ -11,7 +11,6 @@ export default async (): Promise<Config.InitialOptions> => {
       },
     },
     setupFiles: ['<rootDir>/jest/jest.setup.ts'],
-    setupFilesAfterEnv: ['<rootDir>/jest/jest.setupFilesAfterEnv.ts'],
     testRegex: '.(?:test|spec).(?:tsx?|js)$',
     testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/build/'],
   }

@@ -46,7 +46,7 @@ export const TEST_HTML = `<!doctype html>
   </body>
 </html>`
 
-export const OFFER_RESPONSE_SNAP = {
+export const OFFER_RESPONSE_SNAPSHOT = {
   id: 116656,
   accessibility: {
     audioDisability: true,
@@ -104,7 +104,7 @@ export const OFFER_RESPONSE_SNAP = {
   withdrawalDetails: 'How to withdraw, https://test.com',
 }
 
-export const VENUE_RESPONSE_SNAP = {
+export const VENUE_WITH_BANNER_RESPONSE_SNAPSHOT = {
   id: 5543,
   name: 'Le Petit Rintintin 1',
   latitude: 48.87004,
@@ -133,7 +133,7 @@ export const VENUE_RESPONSE_SNAP = {
     website: 'https://my@website.com',
   },
 }
-export const VENUE_RESPONSE_ALTERNATIVE_SNAP = {
+export const VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT = {
   id: 5544,
   name: 'Le Petit Rondoudou 2',
   latitude: 48.77004,
