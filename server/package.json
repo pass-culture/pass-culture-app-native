@@ -2,7 +2,6 @@
   "name": "@pass-culture/web-proxy",
   "description": "Web server proxy for pass-culture-app-native",
   "private": true,
-  "license": "UNLICENSED",
   "main": "build/src/index.js",
   "author": {
     "email": "support@passculture.app",
