@@ -86,5 +86,5 @@ const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline(theme, undefined, isFocus),
+  ...customFocusOutline(theme, theme.colors.black, isFocus),
 }))

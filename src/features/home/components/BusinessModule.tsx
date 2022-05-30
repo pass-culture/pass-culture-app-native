@@ -105,7 +105,7 @@ const Row = styled.View({
 
 const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline(theme, undefined, isFocus),
+  ...customFocusOutline(theme, theme.colors.black, isFocus),
 }))
 
 const ImageContainer = styled.View(({ theme }) => ({
