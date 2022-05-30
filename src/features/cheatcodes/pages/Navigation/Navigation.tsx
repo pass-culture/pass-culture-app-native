@@ -163,12 +163,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
-            wording={'Vérifier éligibilité'}
-            onPress={() => navigate('VerifyEligibility')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
             wording={"C'est pour bientôt"}
             onPress={() =>
               navigate('NotYetUnderageEligibility', {
