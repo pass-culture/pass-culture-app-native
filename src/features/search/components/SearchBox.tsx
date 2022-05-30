@@ -64,22 +64,22 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    if (event.nativeEvent.text.length < 1) return
     // When we hit enter, we may have selected a category or a venue on the search landing page
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const { locationFilter, offerCategories, priceRange } = stagedSearchState
-    const query = event.nativeEvent.text
     navigate(
       ...getTabNavConfig('Search', {
         showResults: true,
-        query,
+        query: event.nativeEvent.text,
         locationFilter,
         offerCategories,
         priceRange,
       })
     )
-    analytics.logSearchQuery(query)
+    analytics.logSearchQuery(event.nativeEvent.text)
   }
 
   return (

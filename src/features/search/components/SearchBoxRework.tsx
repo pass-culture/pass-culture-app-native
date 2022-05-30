@@ -52,6 +52,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    if (event.nativeEvent.text.length < 1) return
     // When we hit enter, we may have selected a category or a venue on the search landing page
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
