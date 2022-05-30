@@ -541,8 +541,6 @@ Array [
             testID="styled-input-container"
           >
             <TextInput
-              accessibilityLabel="Mot de passe"
-              accessible={true}
               aria-describedby="testUuidV4"
               autoCapitalize="none"
               disabled={true}
@@ -1195,8 +1193,6 @@ Array [
             testID="styled-input-container"
           >
             <TextInput
-              accessibilityLabel="Mot de passe"
-              accessible={true}
               aria-describedby="testUuidV4"
               autoCapitalize="none"
               disabled={false}

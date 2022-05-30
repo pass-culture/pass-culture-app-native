@@ -8,7 +8,6 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
@@ -73,7 +72,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           ref={forwardedRef}
           aria-describedby={customProps.accessibilityDescribedBy}
           autoCapitalize="none"
-          {...accessibilityAndTestId(t`Mot de passe`)}
+          testID="Mot de passe"
         />
         <IconTouchableOpacity
           testID="toggle-password-visibility"

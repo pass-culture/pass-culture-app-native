@@ -4,7 +4,7 @@ interface Props {
 }
 export const ErrorMessage: React.FC<Props> = (props) => {
   return (
-    <div role="alert" id={props.relatedInputId || ''}>
+    <div role="alert" id={props.relatedInputId}>
       {props.children}
     </div>
   )
