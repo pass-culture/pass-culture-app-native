@@ -2,19 +2,18 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 describe('getHeadingAttrs()', () => {
   it.each`
-    headingLevel | ariaLevel    | accessibilityRole
-    ${0}         | ${undefined} | ${undefined}
-    ${1}         | ${1}         | ${'header'}
-    ${2}         | ${2}         | ${'header'}
-    ${3}         | ${3}         | ${'header'}
-    ${4}         | ${4}         | ${'header'}
-    ${5}         | ${5}         | ${'header'}
-    ${6}         | ${6}         | ${'header'}
+    headingLevel | ariaLevel
+    ${1}         | ${1}
+    ${2}         | ${2}
+    ${3}         | ${3}
+    ${4}         | ${4}
+    ${5}         | ${5}
+    ${6}         | ${6}
   `(
-    "getHeadingAttrs($headingLevel) = {accessibilityRole: $accessibilityRole, aria-level: $display, dir: 'ltr'}",
-    ({ headingLevel, ariaLevel, accessibilityRole }) => {
+    "getHeadingAttrs($headingLevel) = {accessibilityRole: 'header', aria-level: $display, dir: 'ltr'}",
+    ({ headingLevel, ariaLevel }) => {
       expect(getHeadingAttrs(headingLevel)).toEqual({
-        accessibilityRole,
+        accessibilityRole: 'header',
         'aria-level': ariaLevel,
         dir: 'ltr',
       })

@@ -3,7 +3,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 describe('getHeadingAttrs()', () => {
   it.each`
     headingLevel | display
-    ${0}         | ${{}}
     ${1}         | ${{}}
     ${2}         | ${{}}
     ${3}         | ${{}}

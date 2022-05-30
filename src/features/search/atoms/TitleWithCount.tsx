@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 const NON_BREAKING_SPACE = '\xa0'
 
@@ -34,5 +34,5 @@ export const TitleWithCount: React.FC<{
   )
 }
 
-const Title = styled(Typo.Title4).attrs(getHeadingAttrs(0))``
+const Title = styled(Typo.Title4).attrs(getNoHeadingAttrs())``
 const RedTitle = styled(Text)(({ theme }) => ({ color: theme.colors.primary }))

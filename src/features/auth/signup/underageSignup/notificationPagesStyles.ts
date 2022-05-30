@@ -1,9 +1,9 @@
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-export const StyledSubtitle = styled(Typo.Title4).attrs(getHeadingAttrs(0))({
+export const StyledSubtitle = styled(Typo.Title4).attrs(getNoHeadingAttrs())({
   textAlign: 'center',
 })
 
@@ -15,7 +15,7 @@ export const ProgressBarContainer = styled.View({
   paddingHorizontal: getSpacing(10),
 })
 
-export const Amount = styled(Typo.Title2).attrs(getHeadingAttrs(0))({
+export const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())({
   textAlign: 'center',
 })
 
