@@ -23,7 +23,7 @@ type CustomSearchInputProps = {
   onPressRightIcon?: () => void
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
-  onFocusSearchInput?: () => void
+  onFocusState?: (focus: boolean) => void
   showLocationButton?: boolean
 }
 

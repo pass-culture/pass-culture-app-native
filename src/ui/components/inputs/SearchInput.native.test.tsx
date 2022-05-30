@@ -10,6 +10,10 @@ const onChangeText = jest.fn()
 const onReset = jest.fn()
 
 describe('SearchInput component', () => {
+  it('should render SearchInput', () => {
+    expect(render(<SearchInput onFocusState={() => {}} />)).toMatchSnapshot()
+  })
+
   it('should set value when user input some text', async () => {
     const { getByTestId } = render(
       <SearchInput onChangeText={onChangeText} onPressRightIcon={onReset} />
@@ -30,6 +34,13 @@ describe('SearchInput component', () => {
     await fireEvent.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display location button if showLocationButton = true', () => {
+    const { queryByTestId } = render(<SearchInput showLocationButton={true} />)
+    const locationButton = queryByTestId('locationButton')
+
+    expect(locationButton).toBeTruthy()
   })
 
   it('should redirect on location page on location button click', async () => {

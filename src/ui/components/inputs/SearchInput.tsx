@@ -5,7 +5,6 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
@@ -40,8 +39,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
-  const { data: appSettings } = useAppSettings()
-  const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
   const { locationFilter } = searchState
@@ -52,11 +49,12 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
-    if (props?.onFocusSearchInput) props.onFocusSearchInput()
+    if (props?.onFocusState) props.onFocusState(true)
   }
 
   function onBlur() {
     setIsFocus(false)
+    if (props?.onFocusState) props.onFocusState(false)
   }
 
   const onPressLocationButton = useCallback(() => {
@@ -76,7 +74,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         isFocus={isFocus}
         focusOutlineColor={focusOutlineColor}>
         <Spacer.Row numberOfSpaces={1} />
-        {!!LeftIcon && !appEnableSearchHomepageRework ? (
+        {LeftIcon ? (
           <React.Fragment>
             <LeftIcon />
             <Spacer.Row numberOfSpaces={1} />

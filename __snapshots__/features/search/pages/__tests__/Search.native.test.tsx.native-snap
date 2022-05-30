@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search component should render correctly 1`] = `
+exports[`Search component should render Search 1`] = `
 <View
   style={
     Array [
@@ -59,6 +59,7 @@ exports[`Search component should render correctly 1`] = `
         },
       ]
     }
+    testID="searchBoxWithoutRework"
   >
     <Text
       style={
@@ -300,7 +301,7 @@ exports[`Search component should render correctly 1`] = `
                 ]
               }
             >
-              Toutes les catégories
+              Cinéma
             </Text>
           </View>
         </View>
@@ -396,10 +397,11 @@ exports[`Search component should render correctly 1`] = `
           >
             <View
               height={32}
+              testID="BicolorLocationBuilding"
               width={32}
             >
               <Text>
-                undefined-SVG-Mock
+                BicolorLocationBuilding-SVG-Mock
               </Text>
             </View>
             <View
@@ -426,7 +428,7 @@ exports[`Search component should render correctly 1`] = `
                 ]
               }
             >
-              Partout
+              Le Petit Rintintin 1
             </Text>
           </View>
         </View>

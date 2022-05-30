@@ -1,27 +1,29 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
+import { initialSearchState } from 'features/search/pages/reducer'
+import { Search } from 'features/search/pages/Search'
 import { SearchState } from 'features/search/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, render } from 'tests/utils'
+import { SuggestedVenue } from 'libs/venue'
+import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { render, fireEvent } from 'tests/utils'
 
-import { initialSearchState } from '../reducer'
-import { Search } from '../Search'
+const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 const mockSearchState = initialSearchState
+const mockStagedSearchState: SearchState = {
+  ...initialSearchState,
+  offerCategories: [SearchGroupNameEnum.CINEMA],
+  locationFilter: { locationType: LocationType.VENUE, venue },
+  priceRange: [0, 20],
+}
+
 const mockDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-  }),
-  useStagedSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: jest.fn(),
-  }),
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: jest.fn() }),
   useCommit: () => ({
     commit: jest.fn(),
   }),
@@ -37,58 +39,110 @@ jest.mock('features/auth/settings', () => ({
   })),
 }))
 
-const parameters: SearchState = {
-  beginningDatetime: null,
-  endingDatetime: null,
-  date: null,
-  hitsPerPage: 8,
-  locationFilter: { locationType: LocationType.EVERYWHERE },
-  offerCategories: [SearchGroupNameEnum.CINEMA],
-  offerSubcategories: [],
-  offerIsDuo: false,
-  offerIsFree: false,
-  offerIsNew: false,
-  offerTypes: { isDigital: false, isEvent: false, isThing: false },
-  priceRange: [0, 500],
-  showResults: false,
-  tags: [],
-  timeRange: null,
-  query: '',
-}
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
+}))
+
+const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+jest.mock('features/search/pages/useSearchResults', () => ({
+  useSearchResults: () => ({
+    data: mockData,
+    hits: [],
+    nbHits: 0,
+    isFetching: false,
+    isLoading: false,
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
+  }),
+}))
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate }),
+  useFocusEffect: jest.fn(),
+  useIsFocused: jest.fn(),
+  useRoute: jest.fn().mockReturnValue({ params: {} }),
+}))
 
 describe('Search component', () => {
-  afterAll(jest.resetAllMocks)
-  afterEach(cleanup)
-
-  it('should render correctly', () => {
-    useRoute.mockReturnValueOnce({})
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { toJSON } = render(reactQueryProviderHOC(<Search />))
-    expect(toJSON()).toMatchSnapshot()
+  it('should render Search', () => {
+    expect(render(<Search />)).toMatchSnapshot()
   })
 
   it('should handle coming from "See More" correctly', () => {
-    useRoute.mockReturnValueOnce({ params: parameters })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<Search />))
-    expect(mockDispatch).toBeCalledWith({ type: 'SET_STATE_FROM_NAVIGATE', payload: parameters })
+    render(<Search />)
+    expect(mockDispatch).toBeCalledWith({
+      type: 'SET_STATE_FROM_NAVIGATE',
+      payload: {},
+    })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 
-  it('should show landing page if not search results and rework search feature flag is not activated', () => {
-    mockSettings.appEnableSearchHomepageRework = false
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<Search />))
-    const searchLandingPage = getByTestId('searchLandingPage')
-    expect(searchLandingPage).toBeTruthy()
+  describe('When rework feature flag is not activated', () => {
+    describe('When search not executed', () => {
+      it('should show landing page', () => {
+        mockSettings.appEnableSearchHomepageRework = false
+        mockSearchState.showResults = false
+        const { getByTestId } = render(<Search />)
+        const searchLandingPage = getByTestId('searchLandingPage')
+        expect(searchLandingPage).toBeTruthy()
+      })
+
+      it('should show search box without rework', () => {
+        mockSettings.appEnableSearchHomepageRework = false
+        mockSearchState.showResults = false
+        const { queryByTestId } = render(<Search />)
+        expect(queryByTestId('searchBoxWithoutRework')).toBeTruthy()
+      })
+    })
+
+    it('should show search results when search executed', () => {
+      mockSettings.appEnableSearchHomepageRework = false
+      mockSearchState.showResults = true
+      const { queryByTestId } = render(<Search />)
+      expect(queryByTestId('searchResults')).toBeTruthy()
+    })
   })
 
-  it('should show landing page if search results and rework search feature flag is activated', () => {
-    mockSettings.appEnableSearchHomepageRework = true
-    useRoute.mockReturnValueOnce({ params: parameters })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<Search />))
-    const searchLandingPage = getByTestId('searchLandingPage')
-    expect(searchLandingPage).toBeTruthy()
+  describe('When rework feature flag is activated', () => {
+    describe('When search not executed', () => {
+      it('should show search box with label', () => {
+        mockSettings.appEnableSearchHomepageRework = true
+        mockSearchState.showResults = false
+        const { queryByTestId } = render(<Search />)
+        expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
+      })
+
+      it('should show view for recent searches and suggestions', async () => {
+        mockSettings.appEnableSearchHomepageRework = true
+        mockSearchState.showResults = false
+        const { queryByTestId, getByPlaceholderText } = render(<Search />)
+
+        const searchInput = getByPlaceholderText('Offre, artiste...')
+        await fireEvent(searchInput, 'onFocus')
+
+        expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
+      })
+    })
+
+    describe('When search executed', () => {
+      it('should show search box without label', () => {
+        mockSettings.appEnableSearchHomepageRework = true
+        mockSearchState.showResults = true
+        const { queryByTestId } = render(<Search />)
+        expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
+      })
+
+      it('should show search results', () => {
+        mockSettings.appEnableSearchHomepageRework = true
+        mockSearchState.showResults = true
+        const { queryByTestId } = render(<Search />)
+        expect(queryByTestId('searchResults')).toBeTruthy()
+      })
+    })
   })
 })

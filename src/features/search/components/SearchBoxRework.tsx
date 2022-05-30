@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
 import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -8,48 +8,35 @@ import { v4 as uuidv4 } from 'uuid'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
 import { HiddenText } from 'ui/components/HiddenText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
-  const { searchState } = useSearch()
-  if (searchState.showResults)
-    return (
-      <Touchable onPress={onPressArrowBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
-        <ArrowPrevious />
-      </Touchable>
-    )
-  return <MagnifyingGlass />
-}
+import { getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 type Props = {
   searchInputID: string
+  showLocationButton?: boolean
+  onFocusState?: (focus: boolean) => void
+  isFocus?: boolean
 }
 
-export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
+export const SearchBoxRework: React.FC<Props> = ({
+  searchInputID,
+  showLocationButton,
+  onFocusState,
+  isFocus,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState: stagedSearchState } = useStagedSearch()
   const { searchState, dispatch } = useSearch()
-  const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
-  const [query, _setQuery] = useState<string>('')
+  const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
-
-  function setQuery(value: string) {
-    stagedDispatch({ type: 'SET_QUERY', payload: value })
-    _setQuery(value)
-  }
-
-  useFocusEffect(
-    useCallback(() => {
-      setQuery(searchState.query)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchState.query])
-  )
+  const showResults = useShowResults()
 
   const resetSearch = () => {
     navigate(...getTabNavConfig('Search', { query: '' }))
@@ -58,6 +45,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
 
   const onPressArrowBack = () => {
     setQuery('')
+    if (onFocusState) onFocusState(false)
     dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
@@ -69,38 +57,45 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const { locationFilter, offerCategories, priceRange } = stagedSearchState
-    const query = event.nativeEvent.text
     navigate(
       ...getTabNavConfig('Search', {
         showResults: true,
-        query,
+        query: event.nativeEvent.text,
         locationFilter,
         offerCategories,
         priceRange,
       })
     )
-    analytics.logSearchQuery(query)
+    analytics.logSearchQuery(event.nativeEvent.text)
   }
 
   return (
     <React.Fragment>
       <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
-      <StyledSearchInput
-        searchInputID={searchInputID}
-        value={query}
-        onChangeText={setQuery}
-        placeholder={t`Offre, artiste...`}
-        autoFocus={false}
-        inputHeight="regular"
-        LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
-        onSubmitEditing={onSubmitQuery}
-        accessibilityLabel={t`Rechercher un artiste, titre, lieu...`}
-        onPressRightIcon={resetSearch}
-        accessibilityDescribedBy={accessibilityDescribedBy}
-      />
+      <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(4) : 0}>
+        {showResults || isFocus ? (
+          <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
+            <ArrowPrevious />
+          </StyledTouchableOpacity>
+        ) : null}
+        <StyledSearchInput
+          searchInputID={searchInputID}
+          value={query}
+          onChangeText={setQuery}
+          placeholder={t`Offre, artiste...`}
+          autoFocus={isFocus}
+          inputHeight="regular"
+          LeftIcon={() => <MagnifyingGlassIcon />}
+          onSubmitEditing={onSubmitQuery}
+          onPressRightIcon={resetSearch}
+          onFocusState={onFocusState}
+          testID="searchInput"
+          showLocationButton={showLocationButton}
+        />
+      </SearchInputContainer>
       <HiddenText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
-        "Entrée"`}
+          "Entrée"`}
       </HiddenText>
     </React.Fragment>
   )
@@ -124,4 +119,19 @@ const HiddenTitle = styled(Text).attrs(getHeadingAttrs(1))({
   width: '1px',
   height: '1px',
   overflow: 'hidden',
+})
+
+const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``
+
+const SearchInputContainer = styled.View<{ marginRight: number }>(({ marginRight }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight,
+}))
+
+const StyledTouchableOpacity = styled(TouchableOpacity)({
+  marginHorizontal: getSpacing(4),
 })
