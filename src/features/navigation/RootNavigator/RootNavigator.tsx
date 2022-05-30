@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
+import { useCurrentRoute } from 'features/navigation/helpers'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
@@ -40,16 +41,19 @@ export const RootNavigator: React.ComponentType = () => {
 
   const initialScreen = useInitialScreen()
 
+  const currentRoute = useCurrentRoute()
+  const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
+  const headerWithQuickAccess = showHeaderQuickAccess ? (
+    <QuickAccess href={`#${tabBarId}`} title={t`Accéder au menu de navigation`} />
+  ) : null
+
   if (!initialScreen) {
     return <LoadingPage />
   }
+
   return (
     <TabNavigationStateProvider>
-      {showTabBar ? (
-        <QuickAccess href={`#${tabBarId}`} title={t`Accéder au menu de navigation`} />
-      ) : (
-        <Header mainId={mainId} />
-      )}
+      {showTabBar ? headerWithQuickAccess : <Header mainId={mainId} />}
       <Main id={mainId}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
