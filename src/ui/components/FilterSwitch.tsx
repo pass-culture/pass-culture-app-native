@@ -5,6 +5,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { HiddenText } from 'ui/components/HiddenText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Lock as LockIcon } from 'ui/svg/icons/Lock'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
@@ -53,8 +54,10 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         aria-describedby={props.accessibilityDescribedBy}
         aria-labelledby={props.accessibilityLabelledBy}
         testID="Interrupteur">
-        <StyledBackgroundColor active={active} disabled={disabled}>
-          <StyledToggle style={{ marginLeft }} active={active} disabled={disabled} />
+        <StyledBackgroundColor active={active}>
+          <StyledToggle style={{ marginLeft }} disabled={disabled}>
+            {!!disabled && <Lock />}
+          </StyledToggle>
         </StyledBackgroundColor>
       </TouchableOpacity>
       <HiddenCheckbox id={checkboxID} checked={active} onChange={toggle} />
@@ -62,58 +65,49 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   )
 }
 
-const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: boolean) => {
-  if (active) return disabled ? theme.uniqueColors.greenDisabled : theme.colors.greenValid
-  return disabled ? theme.colors.white : theme.colors.greySemiDark
+const getBackgroundColor = (theme: DefaultTheme, active: boolean) => {
+  if (active) return theme.colors.greenValid
+  return theme.colors.greySemiDark
 }
 
-const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
-  ({ theme, active, disabled }) => ({
-    backgroundColor: getBackgroundColor(theme, active, disabled),
-    width: getSpacing(14),
-    height: getSpacing(8),
-    borderRadius: getSpacing(4),
-    justifyContent: 'center',
-    ...(!active
-      ? {
-          outlineOffset: -getSpacing(0.5), // Hack to create "inside border" with color
-          outlineWidth: getSpacing(0.5),
-          outlineStyle: 'solid',
-          outlineColor: theme.colors.greySemiDark,
-        }
-      : {}),
-  })
-)
+const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active }) => ({
+  backgroundColor: getBackgroundColor(theme, active),
+  width: getSpacing(14),
+  height: getSpacing(8),
+  borderRadius: getSpacing(4),
+  justifyContent: 'center',
+}))
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)<{ active: boolean; disabled: boolean }>(
-  ({ theme, active, disabled }) => ({
-    aspectRatio: '1',
-    width: TOGGLE_WIDTH,
-    height: getSpacing(7),
-    backgroundColor: theme.colors.white,
-    borderRadius: getSpacing(7),
-    ...(disabled && !active
-      ? {
-          outlineOffset: -getSpacing(0.75), // Hack to create "inside border" with color
-          outlineWidth: getSpacing(0.5),
-          outlineStyle: 'solid',
-          outlineColor: theme.colors.greySemiDark,
-        }
-      : {
-          ...getShadow({
-            shadowOffset: {
-              width: 0,
-              height: getSpacing(0.5),
-            },
-            shadowRadius: 2.5,
-            shadowColor: theme.colors.black,
-            shadowOpacity: 0.2,
-          }),
+const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disabled }) => ({
+  aspectRatio: '1',
+  width: TOGGLE_WIDTH,
+  height: getSpacing(7),
+  backgroundColor: theme.colors.white,
+  borderRadius: getSpacing(7),
+  alignItems: 'center',
+  justifyContent: 'center',
+  ...(!disabled
+    ? {
+        ...getShadow({
+          shadowOffset: {
+            width: 0,
+            height: getSpacing(0.5),
+          },
+          shadowRadius: 2.5,
+          shadowColor: theme.colors.black,
+          shadowOpacity: 0.2,
         }),
-  })
-)
+      }
+    : {}),
+}))
+
+const Lock = styled(LockIcon).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+  size: theme.icons.sizes.extraSmall,
+  accessibilityLabel: t`Désactivé`,
+}))``
 
 const propsAreEqual = (
   prevProps: Readonly<React.PropsWithChildren<Props>>,

@@ -2740,7 +2740,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             >
               <View
                 active={false}
-                disabled={false}
                 style={
                   Array [
                     Object {
@@ -2748,26 +2747,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "outlineColor": "#90949D",
-                      "outlineOffset": -2,
-                      "outlineStyle": "solid",
-                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
-                  active={false}
                   collapsable={false}
                   disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
+                      "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
+                      "justifyContent": "center",
                       "marginLeft": 2,
                       "shadowColor": "#161617",
                       "shadowOffset": Object {
@@ -2924,7 +2920,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             >
               <View
                 active={false}
-                disabled={false}
                 style={
                   Array [
                     Object {
@@ -2932,26 +2927,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "outlineColor": "#90949D",
-                      "outlineOffset": -2,
-                      "outlineStyle": "solid",
-                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
-                  active={false}
                   collapsable={false}
                   disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
+                      "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
+                      "justifyContent": "center",
                       "marginLeft": 2,
                       "shadowColor": "#161617",
                       "shadowOffset": Object {
@@ -3108,7 +3100,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             >
               <View
                 active={false}
-                disabled={false}
                 style={
                   Array [
                     Object {
@@ -3116,26 +3107,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "outlineColor": "#90949D",
-                      "outlineOffset": -2,
-                      "outlineStyle": "solid",
-                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
-                  active={false}
                   collapsable={false}
                   disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
+                      "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
+                      "justifyContent": "center",
                       "marginLeft": 2,
                       "shadowColor": "#161617",
                       "shadowOffset": Object {
@@ -3292,7 +3280,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             >
               <View
                 active={false}
-                disabled={false}
                 style={
                   Array [
                     Object {
@@ -3300,26 +3287,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "outlineColor": "#90949D",
-                      "outlineOffset": -2,
-                      "outlineStyle": "solid",
-                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
-                  active={false}
                   collapsable={false}
                   disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
+                      "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
+                      "justifyContent": "center",
                       "marginLeft": 2,
                       "shadowColor": "#161617",
                       "shadowOffset": Object {
@@ -3501,7 +3485,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             >
               <View
                 active={false}
-                disabled={false}
                 style={
                   Array [
                     Object {
@@ -3509,26 +3492,23 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "outlineColor": "#90949D",
-                      "outlineOffset": -2,
-                      "outlineStyle": "solid",
-                      "outlineWidth": 2,
                       "width": 56,
                     },
                   ]
                 }
               >
                 <View
-                  active={false}
                   collapsable={false}
                   disabled={false}
                   nativeID="animatedComponent"
                   style={
                     Object {
+                      "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
+                      "justifyContent": "center",
                       "marginLeft": 2,
                       "shadowColor": "#161617",
                       "shadowOffset": Object {
