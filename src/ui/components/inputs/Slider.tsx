@@ -140,19 +140,22 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     height: getSpacing(7),
     width: getSpacing(7),
     borderRadius: getSpacing(7),
-    borderColor: theme.colors.white,
+    borderColor: theme.colors.greySemiDark,
+    borderWidth: getSpacing(0.5),
     backgroundColor: theme.colors.white,
-    shadowColor: theme.colors.black,
-    shadowRadius: getSpacing(1),
-    shadowOpacity: 0.2,
-    elevation: 4,
+    shadowOpacity: 0,
+  }
+  const trackStyle = {
+    height: 15,
+    marginTop: -7,
+    borderRadius: theme.borderRadius.button,
   }
   return {
     markerStyle,
     pressedMarkerStyle: markerStyle,
-    trackStyle: { height: 15, marginTop: -7, borderRadius: theme.borderRadius.button },
+    trackStyle,
     selectedStyle: { backgroundColor: theme.colors.primary },
-    unselectedStyle: { backgroundColor: theme.colors.greyMedium },
+    unselectedStyle: { backgroundColor: theme.colors.greySemiDark },
     containerStyle: { height: getSpacing(8) },
     sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }

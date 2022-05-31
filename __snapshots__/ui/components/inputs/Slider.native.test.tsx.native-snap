@@ -73,7 +73,7 @@ Array [
                   "marginTop": -7,
                 },
                 Object {
-                  "backgroundColor": "#CBCDD2",
+                  "backgroundColor": "#90949D",
                 },
                 Object {
                   "width": 0,
@@ -129,7 +129,7 @@ Array [
                   "marginTop": -7,
                 },
                 Object {
-                  "backgroundColor": "#CBCDD2",
+                  "backgroundColor": "#90949D",
                 },
                 Object {
                   "width": 0,
@@ -216,13 +216,11 @@ Array [
                       },
                       Object {
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#ffffff",
+                        "borderColor": "#90949D",
                         "borderRadius": 28,
-                        "elevation": 4,
+                        "borderWidth": 2,
                         "height": 28,
-                        "shadowColor": "#161617",
-                        "shadowOpacity": 0.2,
-                        "shadowRadius": 4,
+                        "shadowOpacity": 0,
                         "width": 28,
                       },
                       undefined,
@@ -311,13 +309,11 @@ Array [
                       },
                       Object {
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#ffffff",
+                        "borderColor": "#90949D",
                         "borderRadius": 28,
-                        "elevation": 4,
+                        "borderWidth": 2,
                         "height": 28,
-                        "shadowColor": "#161617",
-                        "shadowOpacity": 0.2,
-                        "shadowRadius": 4,
+                        "shadowOpacity": 0,
                         "width": 28,
                       },
                       undefined,
