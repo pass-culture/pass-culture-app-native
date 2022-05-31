@@ -2964,6 +2964,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary unsuspend_account <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accountunsuspend(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/account/unsuspend`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary book_offer <POST>
      * @param {BookOfferRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3797,6 +3815,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary unsuspend_account <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accountunsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountunsuspend(options)
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary book_offer <POST>
      * @param {BookOfferRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4329,6 +4358,16 @@ export class DefaultApi extends BaseAPI {
     */
   public async postnativev1accountsuspend(options?: any) {
     return DefaultApiFp(this, this.configuration).postnativev1accountsuspend(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary unsuspend_account <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1accountunsuspend(options?: any) {
+    return DefaultApiFp(this, this.configuration).postnativev1accountunsuspend(this.basePath, options)
   }
   /**
     * 

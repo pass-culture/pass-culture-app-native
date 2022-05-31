@@ -18,6 +18,9 @@ jest.mock('features/auth/suspendedAccount/SuspensionScreen/useAccountSuspensionS
 jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate', () => ({
   useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
 }))
+jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend', () => ({
+  useAccountUnsuspend: jest.fn(() => ({ mutate: jest.fn() })),
+}))
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({
