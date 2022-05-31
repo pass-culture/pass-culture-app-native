@@ -548,7 +548,6 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             active={true}
-                            disabled={false}
                             style={
                               Array [
                                 Object {
@@ -562,14 +561,15 @@ exports[`Profile component should render correctly 1`] = `
                             }
                           >
                             <View
-                              active={true}
                               disabled={false}
                               style={
                                 Object {
+                                  "alignItems": "center",
                                   "aspectRatio": 1,
                                   "backgroundColor": "#ffffff",
                                   "borderRadius": 28,
                                   "height": 28,
+                                  "justifyContent": "center",
                                   "marginLeft": 26,
                                   "shadowColor": "#161617",
                                   "shadowOffset": Object {

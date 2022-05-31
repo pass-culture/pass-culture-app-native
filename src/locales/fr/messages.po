@@ -924,6 +924,10 @@ msgstr "Désactive ton flash"
 msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
 
+#: src/ui/components/FilterSwitch.tsx
+msgid "Désactivé"
+msgstr "Désactivé"
+
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer."
 msgstr "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer."
