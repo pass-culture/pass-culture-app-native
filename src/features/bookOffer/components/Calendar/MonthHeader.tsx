@@ -11,5 +11,9 @@ type Props = {
 
 export const MonthHeader: React.FC<Props> = ({ date }) => {
   const month = `${monthNames[date.getMonth()]} ${date.getFullYear()}`
-  return <Typo.Body {...getHeadingAttrs(3)}>{month}</Typo.Body>
+  return (
+    <Typo.Body {...getHeadingAttrs(3)} aria-live="polite">
+      {month}
+    </Typo.Body>
+  )
 }

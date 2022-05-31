@@ -34,7 +34,7 @@ LocaleConfig.locales['fr'] = {
   dayNames,
   dayNamesShort,
   today: t`Aujourd'hui`,
-}
+} as typeof LocaleConfig.locales
 LocaleConfig.defaultLocale = 'fr'
 
 function renderArrow(direction: 'left' | 'right') {
@@ -72,7 +72,9 @@ export const CalendarPicker: React.FC<Props> = ({
 
   const minDate = moment(new Date()).format('YYYY-MM-DD')
   const ref = useRef<Node>(null)
-  const [markedDates, setMarkedDates] = useState<{ [name: string]: { selected: boolean } }>({})
+  const [markedDates, setMarkedDates] = useState<{
+    [name: string]: { selected: boolean; accessibilityLabel: string }
+  }>({})
   const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
   const [mobileDateValues, setMobileDateValues] = useState({
     day: selectedDate.getDate(),
@@ -91,7 +93,7 @@ export const CalendarPicker: React.FC<Props> = ({
 
   useEffect(() => {
     const DateStr = desktopCalendarDate.toISOString().replace(/T.*/gi, '')
-    setMarkedDates({ [DateStr]: { selected: true } })
+    setMarkedDates({ [DateStr]: { selected: true, accessibilityLabel: t`sélectionné` } })
   }, [desktopCalendarDate])
 
   const { isMobileDateInvalid, optionGroups } = useMemo(() => {
