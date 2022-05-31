@@ -6,14 +6,8 @@ i18n.loadLocaleData({
 })
 
 export async function activate(locale: string) {
-  let catalog: { messages: Messages }
-
-  switch (locale) {
-    case 'fr':
-    default:
-      catalog = await import('locales/fr/messages')
-      break
-  }
+  // When adding a new language, you can switch on the locale
+  const catalog: { messages: Messages } = await import('locales/fr/messages')
 
   i18n.load(locale, catalog.messages)
   i18n.activate(locale)

@@ -15,6 +15,7 @@ import {
   dayNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
+import { isBeforeToday } from 'features/search/utils/isBeforeToday'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -94,23 +95,10 @@ export const CalendarPicker: React.FC<Props> = ({
       year: selectedMobileYear,
     } = mobileDateValues
     const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth)
-    const now = new Date()
-    const currentYear = now.getFullYear()
-    const currentMonth = now.getMonth()
-    const currentDate = now.getDate()
+    const currentYear = new Date().getFullYear()
 
-    let invalid = false
-    if (selectedMobileYear < currentYear) {
-      invalid = true
-    } else if (selectedMobileMonthIndex < currentMonth && currentYear === selectedMobileYear) {
-      invalid = true
-    } else if (
-      selectedMobileDay < currentDate &&
-      currentMonth === selectedMobileMonthIndex &&
-      currentYear === selectedMobileYear
-    ) {
-      invalid = true
-    }
+    const invalid = isBeforeToday(selectedMobileYear, selectedMobileMonthIndex, selectedMobileDay)
+
     return {
       isMobileDateInvalid: invalid && isTouch,
       optionGroups: {
