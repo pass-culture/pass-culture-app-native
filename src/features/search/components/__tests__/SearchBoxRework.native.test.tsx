@@ -140,15 +140,7 @@ describe('SearchBox component', () => {
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
 
-    expect(navigate).not.toBeCalledWith(
-      ...getTabNavConfig('Search', {
-        query: '',
-        showResults: true,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
-      })
-    )
+    expect(navigate).not.toBeCalled()
   })
 
   it('should execute a search if input is not empty', () => {
