@@ -20,7 +20,7 @@ export const SuspensionScreen = () => {
   useFocusEffect(
     useCallback(() => {
       if (
-        !settings?.allowAccountReactivation ||
+        !settings?.allowAccountUnsuspension ||
         (suspensionStatus &&
           ![AccountState.SUSPENDED_UPON_USER_REQUEST, AccountState.SUSPENDED].includes(
             suspensionStatus

@@ -16,7 +16,7 @@ import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccessV2() {
   const { data: settings } = useAppSettings()
-  const reactivationLimit = settings?.accountReactivationLimit
+  const reactivationLimit = settings?.accountUnsuspensionLimit
   return (
     <GenericInfoPage
       title={t`Ton compte a été désactivé`}

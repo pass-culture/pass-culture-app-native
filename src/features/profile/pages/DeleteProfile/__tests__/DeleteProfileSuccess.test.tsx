@@ -13,7 +13,7 @@ jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 
 const mockSettings = {
-  allowAccountReactivation: false,
+  allowAccountUnsuspension: false,
 }
 
 jest.mock('features/auth/settings', () => ({
@@ -45,13 +45,13 @@ describe('DeleteProfileSuccess component', () => {
   })
 
   it('should display reactivation button if account reactivation feature flag is activated', () => {
-    mockSettings.allowAccountReactivation = true
+    mockSettings.allowAccountUnsuspension = true
     const renderAPI = render(<DeleteProfileSuccess />)
     expect(renderAPI.queryByText('Réactiver mon compte')).toBeTruthy()
   })
 
   it(`should redirect to Home page when clicking on "Retourner à l'accueil" button of new success screen`, async () => {
-    mockSettings.allowAccountReactivation = true
+    mockSettings.allowAccountUnsuspension = true
     const renderAPI = render(<DeleteProfileSuccess />)
     fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
     await waitForExpect(() => {
@@ -63,7 +63,7 @@ describe('DeleteProfileSuccess component', () => {
   })
 
   it(`should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button of new success screen`, async () => {
-    mockSettings.allowAccountReactivation = true
+    mockSettings.allowAccountUnsuspension = true
     const renderAPI = render(<DeleteProfileSuccess />)
     fireEvent.press(renderAPI.getByText('Réactiver mon compte'))
     await waitForExpect(() => {

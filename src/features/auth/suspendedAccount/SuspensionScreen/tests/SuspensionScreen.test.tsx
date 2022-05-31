@@ -8,7 +8,7 @@ import { render } from 'tests/utils'
 import { SuspensionScreen } from '../SuspensionScreen'
 
 const mockSettings = {
-  allowAccountReactivation: true,
+  allowAccountUnsuspension: true,
 }
 
 const mockSuspensionStatus = { status: AccountState.SUSPENDED_UPON_USER_REQUEST }
@@ -80,7 +80,7 @@ describe('<SuspensionsScreen />', () => {
   })
 
   it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountReactivation = false
+    mockSettings.allowAccountUnsuspension = false
     render(<SuspensionScreen />)
 
     await waitForExpect(() => {

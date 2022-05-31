@@ -94,7 +94,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         return
       }
 
-      if (settings?.allowAccountReactivation && accountState !== AccountState.ACTIVE) {
+      if (settings?.allowAccountUnsuspension && accountState !== AccountState.ACTIVE) {
         setIsLoading(false)
         return navigate('SuspensionScreen')
       }
