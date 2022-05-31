@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import moment from 'moment'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Picker from 'react-mobile-picker'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
@@ -27,7 +28,13 @@ import { getSpacing } from 'ui/theme'
 
 import { Props } from './CalendarPicker.d'
 
-LocaleConfig.locales['fr'] = { monthNames, monthNamesShort, dayNames, dayNamesShort }
+LocaleConfig.locales['fr'] = {
+  monthNames,
+  monthNamesShort,
+  dayNames,
+  dayNamesShort,
+  today: t`Aujourd'hui`,
+}
 LocaleConfig.defaultLocale = 'fr'
 
 function renderArrow(direction: 'left' | 'right') {
@@ -63,8 +70,7 @@ export const CalendarPicker: React.FC<Props> = ({
     [fontFamily, colors]
   )
 
-  const minDate = new Date()
-  minDate.setHours(0, 0, 0, 0)
+  const minDate = moment(new Date()).format('YYYY-MM-DD')
   const ref = useRef<Node>(null)
   const [markedDates, setMarkedDates] = useState<{ [name: string]: { selected: boolean } }>({})
   const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
@@ -153,7 +159,7 @@ export const CalendarPicker: React.FC<Props> = ({
           <RNCalendar
             minDate={minDate}
             style={RN_CALENDAR_STYLE}
-            current={selectedDate as unknown as LocaleConfig}
+            current={moment(selectedDate).format('YYYY-MM-DD')}
             firstDay={1}
             enableSwipeMonths={true}
             renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
@@ -218,8 +224,10 @@ const CalendarButtonWrapper = styled.View({
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
+  accessibilityLabel: t`Mois suivant`,
 }))``
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
+  accessibilityLabel: t`Mois précédent`,
 }))``
