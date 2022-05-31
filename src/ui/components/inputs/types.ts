@@ -55,6 +55,7 @@ export type RNTextInputProps = Pick<
   | 'textContentType'
   | 'value'
   | 'multiline'
+  | 'enablesReturnKeyAutomatically'
 > &
   RefAttributes<RNTextInput> & {
     testID?: string

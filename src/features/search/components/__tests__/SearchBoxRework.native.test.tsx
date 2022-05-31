@@ -133,4 +133,30 @@ describe('SearchBox component', () => {
 
     expect(searchInput.props.value).toBe('')
   })
+
+  it('should not execute a search if input is empty', () => {
+    const { getByPlaceholderText } = render(<SearchBoxRework searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
+
+    expect(navigate).not.toBeCalled()
+  })
+
+  it('should execute a search if input is not empty', () => {
+    const { getByPlaceholderText } = render(<SearchBoxRework searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+
+    expect(navigate).toBeCalledWith(
+      ...getTabNavConfig('Search', {
+        query: 'jazzaza',
+        showResults: true,
+        offerCategories: mockStagedSearchState.offerCategories,
+        locationFilter: mockStagedSearchState.locationFilter,
+        priceRange: mockStagedSearchState.priceRange,
+      })
+    )
+  })
 })

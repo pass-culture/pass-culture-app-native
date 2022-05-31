@@ -79,6 +79,7 @@ Array [
       aria-describedby="testUuidV4"
       autoCorrect={false}
       editable={true}
+      enablesReturnKeyAutomatically={true}
       nativeID="testUuidV4"
       onBlur={[Function]}
       onChangeText={[Function]}

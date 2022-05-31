@@ -59,13 +59,39 @@ describe('SearchBox component', () => {
     expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Mama' })
   })
 
-  it('should call logSearchQuery on submit', () => {
+  it('should call logSearchQuery on submit', async () => {
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    await fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+
+    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
+    expect(navigate).toBeCalledWith(
+      ...getTabNavConfig('Search', {
+        query: 'jazzaza',
+        showResults: true,
+        offerCategories: mockStagedSearchState.offerCategories,
+        locationFilter: mockStagedSearchState.locationFilter,
+        priceRange: mockStagedSearchState.priceRange,
+      })
+    )
+  })
+
+  it('should not execute a search if input is empty', () => {
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
+
+    expect(navigate).not.toBeCalled()
+  })
+
+  it('should execute a search if input is not empty', () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
-    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         query: 'jazzaza',

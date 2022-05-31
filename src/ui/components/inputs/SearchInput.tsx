@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { forwardRef, useCallback, useState } from 'react'
+import React, { forwardRef, useCallback, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -46,6 +46,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
+  const searchInput = useRef<RNTextInput>(null)
 
   function onFocus() {
     setIsFocus(true)
@@ -53,6 +54,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   }
 
   function onBlur() {
+    if (props.value === '') {
+      searchInput.current?.focus()
+      return
+    }
     setIsFocus(false)
     if (props?.onFocusState) props.onFocusState(false)
   }
@@ -83,13 +88,14 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         <BaseTextInput
           {...nativeProps}
           nativeID={searchInputID}
-          ref={forwardedRef}
+          ref={forwardedRef || searchInput}
           onFocus={onFocus}
           onBlur={onBlur}
           autoCorrect={false}
           returnKeyType={props.returnKeyType ?? 'search'}
           selectionColor={undefined}
           aria-describedby={accessibilityDescribedBy}
+          enablesReturnKeyAutomatically={true}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
         {props.showLocationButton ? (
