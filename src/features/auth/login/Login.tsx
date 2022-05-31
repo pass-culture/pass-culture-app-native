@@ -56,7 +56,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
-  const passwordInputErrorId = uuidv4()
   const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const { params } = useRoute<UseRouteType<'Login'>>()
@@ -171,7 +170,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           messageId={errorMessage}
           numberOfSpacesTop={5}
           centered
-          relatedInputId={passwordInputErrorId}
         />
         <Spacer.Column numberOfSpaces={7} />
         <EmailInput
@@ -199,7 +197,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           textContentType="password"
           onSubmitEditing={onSubmit}
           isRequiredField
-          accessibilityDescribedBy={passwordInputErrorId}
         />
         <Spacer.Column numberOfSpaces={7} />
         <ButtonContainer>

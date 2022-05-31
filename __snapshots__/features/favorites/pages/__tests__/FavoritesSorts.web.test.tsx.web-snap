@@ -166,7 +166,6 @@ Object {
                     </div>
                   </div>
                   <div
-                    id=""
                     role="alert"
                   />
                 </li>
@@ -202,7 +201,6 @@ Object {
                     />
                   </div>
                   <div
-                    id=""
                     role="alert"
                   />
                 </li>
@@ -238,7 +236,6 @@ Object {
                     />
                   </div>
                   <div
-                    id=""
                     role="alert"
                   />
                 </li>
@@ -429,7 +426,6 @@ Object {
                   </div>
                 </div>
                 <div
-                  id=""
                   role="alert"
                 />
               </li>
@@ -465,7 +461,6 @@ Object {
                   />
                 </div>
                 <div
-                  id=""
                   role="alert"
                 />
               </li>
@@ -501,7 +496,6 @@ Object {
                   />
                 </div>
                 <div
-                  id=""
                   role="alert"
                 />
               </li>
