@@ -2,6 +2,7 @@
 
 exports[`ReportOffer General modal behavior Report offer snapshots should display report offer modal if isVisible is true 1`] = `
 <Modal
+  accessibilityDescribedBy="testUuidV4"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -55,6 +56,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     }
   />
   <View
+    accessibilityDescribedBy="testUuidV4"
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
@@ -97,7 +99,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     swipeThreshold={100}
   >
     <View
-      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
@@ -337,6 +338,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
 
 exports[`ReportOffer General modal behavior Report offer snapshots should not display report offer modal if isVisible is false 1`] = `
 <Modal
+  accessibilityDescribedBy="testUuidV4"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -392,6 +394,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     }
   />
   <View
+    accessibilityDescribedBy="testUuidV4"
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -436,7 +439,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     swipeThreshold={100}
   >
     <View
-      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [

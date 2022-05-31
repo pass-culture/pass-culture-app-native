@@ -96,7 +96,7 @@ export const AppModal: FunctionComponent<Props> = ({
     [setScrollViewContentHeight, scrollViewRef]
   )
 
-  const modalId = uuidv4()
+  const titleId = uuidv4()
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
@@ -110,16 +110,16 @@ export const AppModal: FunctionComponent<Props> = ({
       onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID="modal"
       deviceHeight={windowHeight}
-      deviceWidth={windowWidth}>
-      <ModalContainer
-        height={isSmallScreen ? windowHeight : modalHeight}
-        testID="modalContainer"
-        aria-describedby={modalId}>
+      deviceWidth={windowWidth}
+      aria-describedby={titleId}
+      accessibilityRole="dialog"
+      aria-modal={true}>
+      <ModalContainer height={isSmallScreen ? windowHeight : modalHeight} testID="modalContainer">
         <ModalHeader
           title={title}
           numberOfLines={titleNumberOfLines}
           onLayout={updateHeaderHeight}
-          accessibilityDescribedBy={modalId}
+          accessibilityDescribedBy={titleId}
           {...iconProps}
         />
         <SpacerBetweenHeaderAndContent />

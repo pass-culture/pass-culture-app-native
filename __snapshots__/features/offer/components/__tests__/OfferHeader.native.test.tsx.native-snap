@@ -444,6 +444,7 @@ Array [
     />
   </View>,
   <Modal
+    accessibilityDescribedBy="testUuidV4"
     animationType="none"
     deviceHeight={1334}
     deviceWidth={750}
@@ -497,6 +498,7 @@ Array [
       }
     />
     <View
+      accessibilityDescribedBy="testUuidV4"
       deviceHeight={1334}
       deviceWidth={750}
       forwardedRef={[Function]}
@@ -539,7 +541,6 @@ Array [
       swipeThreshold={100}
     >
       <View
-        aria-describedby="testUuidV4"
         height={428}
         style={
           Array [

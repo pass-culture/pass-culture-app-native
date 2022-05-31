@@ -2,6 +2,7 @@
 
 exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = `
 <Modal
+  accessibilityDescribedBy="testUuidV4"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -57,6 +58,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     }
   />
   <View
+    accessibilityDescribedBy="testUuidV4"
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -101,7 +103,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     swipeThreshold={100}
   >
     <View
-      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
@@ -551,6 +552,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
 
 exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
 <Modal
+  accessibilityDescribedBy="testUuidV4"
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
@@ -604,6 +606,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     }
   />
   <View
+    accessibilityDescribedBy="testUuidV4"
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
@@ -646,7 +649,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     swipeThreshold={100}
   >
     <View
-      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
