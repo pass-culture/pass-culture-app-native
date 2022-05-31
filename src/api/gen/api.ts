@@ -1878,10 +1878,10 @@ export interface SigninResponse {
    */
   accessToken: string
   /**
-   * @type {boolean}
+   * @type {AccountState}
    * @memberof SigninResponse
    */
-  isActive: boolean
+  accountState: AccountState
   /**
    * @type {string}
    * @memberof SigninResponse

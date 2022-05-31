@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import {
+  AccountState,
   BookingsResponse,
   CulturalSurveyRequest,
   NextSubscriptionStepResponse,
@@ -32,7 +33,7 @@ export const server = setupServer(
         ctx.json({
           accessToken: 'access_token',
           refreshToken: 'refresh_token',
-          isActive: true as boolean,
+          accountState: AccountState.ACTIVE as AccountState,
         })
       )
     }

@@ -216,7 +216,7 @@ describe('<Login/>', () => {
 
   it('should redirect to SuspensionScreen WHEN signin is successful for inactive account', async () => {
     mockSettings.allowAccountReactivation = true
-    simulateSignin200(false)
+    simulateSignin200(AccountState.SUSPENDED)
     mockSuspensionStatusApiCall(AccountState.SUSPENDED)
     const renderAPI = renderLogin()
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
@@ -363,7 +363,7 @@ function mockSuspensionStatusApiCall(status: string) {
   )
 }
 
-function simulateSignin200(isActive = true) {
+function simulateSignin200(accountState = AccountState.ACTIVE) {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
@@ -373,7 +373,7 @@ function simulateSignin200(isActive = true) {
           ctx.json({
             accessToken: 'accessToken',
             refreshToken: 'refreshToken',
-            isActive,
+            accountState,
           })
         )
     )

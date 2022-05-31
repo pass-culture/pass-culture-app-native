@@ -449,6 +449,10 @@ msgstr "Centre d'aide"
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
+#: src/features/auth/login/Login.tsx
+msgid "Cette adresse e-mail est liée à un compte supprimé"
+msgstr "Cette adresse e-mail est liée à un compte supprimé"
+
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
@@ -929,10 +933,6 @@ msgstr "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle é
 msgid "Détails de l'offre"
 msgstr "Détails de l'offre"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Détails de la recherche"
-msgstr "Détails de la recherche"
-
 #: src/features/bookOffer/services/useModalContent.tsx
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Détails de la réservation"
@@ -1289,6 +1289,7 @@ msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
 #: src/features/search/components/SearchBox.tsx
+#: src/features/search/components/SearchBoxRework.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
 "\"Entrée\""
@@ -1713,7 +1714,6 @@ msgstr "Mon profil"
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
-#: src/ui/components/inputs/PasswordInput.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -1930,7 +1930,7 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchDetails.tsx
+#: src/features/search/components/SearchBoxRework.tsx
 msgid "Offre, artiste..."
 msgstr "Offre, artiste..."
 
@@ -2325,15 +2325,12 @@ msgstr "Recherche par catégorie"
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
-#: src/features/search/components/SearchDetails.tsx
-msgid "Recherche récente"
-msgstr "Recherche récente"
-
-#: src/features/search/components/SearchHeader.tsx
+#: src/features/search/components/SearchHeaderRework.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
 
 #: src/features/search/components/SearchBox.tsx
+#: src/features/search/components/SearchBoxRework.tsx
 msgid "Recherche une offre, un titre, un lieu..."
 msgstr "Recherche une offre, un titre, un lieu..."
 
@@ -2448,7 +2445,6 @@ msgstr "Revenir au ticket précédent"
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchDetails.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/GenericInfoPage.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
