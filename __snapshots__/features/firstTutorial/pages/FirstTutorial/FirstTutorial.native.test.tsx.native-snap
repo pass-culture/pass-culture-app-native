@@ -54,7 +54,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -139,7 +138,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
         >
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             onMoveShouldSetResponder={[Function]}
             onMoveShouldSetResponderCapture={[Function]}
             onResponderEnd={[Function]}
@@ -326,6 +324,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 >
                   <View
+                    collapsable={false}
                     forwardedRef={[Function]}
                     style={
                       Object {
@@ -338,7 +337,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       accessible={true}
                       collapsable={false}
                       focusable={true}
-                      nativeID="animatedComponent"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -953,7 +951,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   <View
                     collapsable={false}
                     forwardedRef={[Function]}
-                    nativeID="animatedComponent"
                     style={Object {}}
                   >
                     <View
@@ -1127,7 +1124,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   <View
                     collapsable={false}
                     forwardedRef={[Function]}
-                    nativeID="animatedComponent"
                     style={Object {}}
                   >
                     <View
@@ -1301,7 +1297,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   <View
                     collapsable={false}
                     forwardedRef={[Function]}
-                    nativeID="animatedComponent"
                     style={Object {}}
                   >
                     <View
@@ -1530,7 +1525,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={false}
-                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1579,7 +1573,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={false}
-                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1628,7 +1621,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={false}
-                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1677,7 +1669,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={false}
-                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1744,7 +1735,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   accessible={true}
                   collapsable={false}
                   focusable={true}
-                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}

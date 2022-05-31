@@ -31,6 +31,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
 >
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
     forwardedRef={[Function]}
     onClick={[Function]}
@@ -55,6 +56,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
     }
   />
   <View
+    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
@@ -206,7 +208,6 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -308,7 +309,6 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
                   accessible={true}
                   collapsable={false}
                   focusable={true}
-                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -448,7 +448,6 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
                 accessible={true}
                 collapsable={false}
                 focusable={true}
-                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -510,7 +509,6 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
                 accessible={true}
                 collapsable={false}
                 focusable={true}
-                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}

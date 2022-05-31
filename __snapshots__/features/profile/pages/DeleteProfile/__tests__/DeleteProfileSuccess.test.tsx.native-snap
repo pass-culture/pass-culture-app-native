@@ -217,7 +217,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

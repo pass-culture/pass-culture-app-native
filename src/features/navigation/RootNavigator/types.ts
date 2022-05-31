@@ -136,7 +136,6 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
-  UserProfiling: undefined
   Venue: { id: number }
   LandscapePositionPage: undefined
   DeeplinksGenerator: undefined

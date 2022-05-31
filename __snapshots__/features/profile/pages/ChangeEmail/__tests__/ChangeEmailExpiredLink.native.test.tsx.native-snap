@@ -219,7 +219,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -281,7 +280,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -572,7 +570,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -634,7 +631,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         accessible={true}
         collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

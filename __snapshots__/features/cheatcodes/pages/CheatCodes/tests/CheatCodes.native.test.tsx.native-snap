@@ -40,6 +40,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -81,6 +82,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -132,6 +134,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -172,6 +175,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -212,6 +216,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -252,6 +257,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -292,6 +298,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -332,6 +339,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   <View
     accessibilityRole="button"
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -491,6 +499,7 @@ exports[`CheatCodes component should render correctly 1`] = `
   />
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
