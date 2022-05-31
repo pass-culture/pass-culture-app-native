@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
+import { AccountState } from 'api/gen'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import {
@@ -52,7 +53,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
-  const [hasEmailError, setHasEmailError] = useSafeState(false)
+  const [emailErrorMessage, setEmailErrorMessage] = useSafeState('')
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
@@ -63,9 +64,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { goBack } = useGoBack(...homeNavConfig)
 
   function onEmailChange(mail: string) {
-    if (hasEmailError) {
+    if (emailErrorMessage) {
       setIsLoading(false)
-      setHasEmailError(false)
+      setEmailErrorMessage('')
     }
     setEmail(mail)
   }
@@ -74,24 +75,26 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     setIsLoading(true)
     setErrorMessage(null)
     if (!isEmailValid(email)) {
-      setHasEmailError(true)
+      setEmailErrorMessage(
+        t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
+      )
     } else {
       const signinResponse = await signIn({ identifier: email, password })
       if (signinResponse.isSuccess) {
-        handleSigninSuccess(signinResponse.isActive)
+        handleSigninSuccess(signinResponse.accountState)
       } else {
         handleSigninFailure(signinResponse)
       }
     }
   }
 
-  async function handleSigninSuccess(isActive: boolean) {
+  async function handleSigninSuccess(accountState: AccountState) {
     try {
       if (props.doNotNavigateOnSigninSuccess) {
         return
       }
 
-      if (settings?.allowAccountReactivation && !isActive) {
+      if (settings?.allowAccountReactivation && accountState !== AccountState.ACTIVE) {
         setIsLoading(false)
         return navigate('SuspensionScreen')
       }
@@ -117,6 +120,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     const failureCode = response.content?.code
     if (failureCode === 'EMAIL_NOT_VALIDATED') {
       navigate('SignupConfirmationEmailSent', { email })
+    } else if (failureCode === 'ACCOUNT_DELETED') {
+      setEmailErrorMessage(t`Cette adresse e-mail est liée à un compte supprimé`)
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
       setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie`)
@@ -176,14 +181,14 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           label={t`Adresse e-mail`}
           email={email}
           onEmailChange={onEmailChange}
-          isError={hasEmailError || !!errorMessage}
+          isError={!!emailErrorMessage || !!errorMessage}
           isRequiredField
           autoFocus
           accessibilityDescribedBy={emailInputErrorId}
         />
         <InputError
-          visible={hasEmailError}
-          messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
+          visible={!!emailErrorMessage}
+          messageId={emailErrorMessage}
           numberOfSpacesTop={2}
           relatedInputId={emailInputErrorId}
         />

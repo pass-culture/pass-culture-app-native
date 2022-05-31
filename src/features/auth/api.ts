@@ -3,7 +3,7 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
-import { AccountRequest, SigninRequest } from 'api/gen'
+import { AccountRequest, AccountState, SigninRequest } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { campaignTracker } from 'libs/campaign'
@@ -14,14 +14,14 @@ export type SignInResponse = SignInResponseSuccess | SignInResponseFailure
 
 export type SignInResponseSuccess = {
   isSuccess: true
-  isActive: boolean
+  accountState: AccountState
 }
 
 export type SignInResponseFailure = {
   isSuccess: false
   statusCode?: number
   content?: {
-    code: 'EMAIL_NOT_VALIDATED' | 'NETWORK_REQUEST_FAILED'
+    code: 'ACCOUNT_DELETED' | 'EMAIL_NOT_VALIDATED' | 'NETWORK_REQUEST_FAILED'
     general: string[]
   }
 }
@@ -53,7 +53,7 @@ export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
       await loginRoutine(response, 'fromLogin')
       const successResponse: SignInResponseSuccess = {
         isSuccess: true,
-        isActive: response.isActive === undefined ? true : response.isActive,
+        accountState: response.accountState,
       }
       return successResponse
     } catch (error) {
