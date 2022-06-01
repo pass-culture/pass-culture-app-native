@@ -284,13 +284,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (~> 1.11, >= 1.11.2)
+  cocoapods (~> 1.11.2)
   fastlane
   fastlane-plugin-appcenter
   fastlane-plugin-load_json!
-
-RUBY VERSION
-   ruby 2.7.4p191
 
 BUNDLED WITH
    2.2.22

@@ -195,6 +195,7 @@ exports[`SearchResults component should render correctly 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

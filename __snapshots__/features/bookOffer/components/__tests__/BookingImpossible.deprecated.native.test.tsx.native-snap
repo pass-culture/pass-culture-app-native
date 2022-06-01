@@ -88,6 +88,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     accessible={true}
     collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -149,6 +150,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     accessible={true}
     collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -296,6 +298,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
     accessible={true}
     collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

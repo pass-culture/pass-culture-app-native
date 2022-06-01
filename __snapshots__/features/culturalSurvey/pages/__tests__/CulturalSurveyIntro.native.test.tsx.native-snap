@@ -139,6 +139,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       accessible={true}
       collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -200,6 +201,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       accessible={true}
       collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

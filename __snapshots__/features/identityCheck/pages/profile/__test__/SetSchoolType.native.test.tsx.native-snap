@@ -60,6 +60,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
       accessible={true}
       collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -227,6 +228,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -288,6 +290,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -347,6 +350,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -406,6 +410,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -465,6 +470,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -524,6 +530,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -599,6 +606,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -675,6 +683,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               accessible={true}
               collapsable={false}
               focusable={false}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -827,6 +836,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
       accessible={true}
       collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -994,6 +1004,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1055,6 +1066,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1116,6 +1128,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1206,6 +1219,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               accessible={true}
               collapsable={false}
               focusable={false}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}

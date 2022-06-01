@@ -102,6 +102,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           accessible={true}
           collapsable={false}
           focusable={false}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

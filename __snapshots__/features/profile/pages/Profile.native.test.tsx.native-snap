@@ -24,6 +24,7 @@ exports[`Profile component should render correctly 1`] = `
       activityState={2}
       collapsable={false}
       forwardedRef={[Function]}
+      nativeID="animatedComponent"
       style={
         Object {
           "bottom": 0,
@@ -198,6 +199,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -306,6 +308,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -527,6 +530,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessible={true}
                           collapsable={false}
                           focusable={true}
+                          nativeID="animatedComponent"
                           onClick={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
@@ -557,7 +561,6 @@ exports[`Profile component should render correctly 1`] = `
                             }
                           >
                             <View
-                              collapsable={false}
                               disabled={false}
                               style={
                                 Object {
@@ -639,6 +642,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -746,6 +750,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -888,6 +893,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -985,6 +991,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1092,6 +1099,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1264,6 +1272,7 @@ exports[`Profile component should render correctly 1`] = `
                         accessible={true}
                         collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -1343,6 +1352,7 @@ exports[`Profile component should render correctly 1`] = `
                         accessible={true}
                         collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -1422,6 +1432,7 @@ exports[`Profile component should render correctly 1`] = `
                         accessible={true}
                         collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -1501,6 +1512,7 @@ exports[`Profile component should render correctly 1`] = `
                         accessible={true}
                         collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -1617,6 +1629,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1821,6 +1834,7 @@ exports[`Profile component should render correctly 1`] = `
         >
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             pointerEvents="box-none"
             style={
               Object {
@@ -1835,6 +1849,7 @@ exports[`Profile component should render correctly 1`] = `
           >
             <View
               collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "backgroundColor": "rgb(255, 255, 255)",
@@ -1853,6 +1868,7 @@ exports[`Profile component should render correctly 1`] = `
           </View>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             pointerEvents="box-none"
             style={
               Object {
@@ -1884,6 +1900,7 @@ exports[`Profile component should render correctly 1`] = `
             >
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -1897,6 +1914,7 @@ exports[`Profile component should render correctly 1`] = `
               />
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -1910,6 +1928,7 @@ exports[`Profile component should render correctly 1`] = `
                   accessibilityRole="header"
                   aria-level="1"
                   collapsable={false}
+                  nativeID="animatedComponent"
                   numberOfLines={1}
                   style={
                     Object {
@@ -1924,6 +1943,7 @@ exports[`Profile component should render correctly 1`] = `
               </View>
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -1942,7 +1962,6 @@ exports[`Profile component should render correctly 1`] = `
     </RNSScreen>
   </RNSScreenContainer>
   <View
-    collapsable={false}
     onLayout={[Function]}
     pointerEvents="auto"
     style={
