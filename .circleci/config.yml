@@ -58,10 +58,11 @@ commands:
                 gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
                 gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
             done
-            \curl -sSL https://get.rvm.io | bash -s stable
-            source /home/circleci/.rvm/scripts/rvm
-            rvm install $(cat .ruby-version)
-            rvm use $(cat .ruby-version)
+            curl -sSL https://get.rvm.io | bash -s stable
+            source ~/.rvm/scripts/rvm
+            echo "source ~/.rvm/scripts/rvm" >> ~/.profile
+            rvm install "ruby-$(cat .ruby-version)"
+            rvm use "ruby-$(cat .ruby-version)"
 
   install_node_modules:
     description: Install Node Dependencies
@@ -412,10 +413,10 @@ jobs:
     steps:
       - checkout
       - skip_testing_soft_deploy_when_new_tag
-      - install_node_version
-      - install_node_modules
       - install_ruby_version
       - install_ruby_modules
+      - install_node_version
+      - install_node_modules
       - setup_sentry
       - run:
           name: Deploy Android App for testing environment
