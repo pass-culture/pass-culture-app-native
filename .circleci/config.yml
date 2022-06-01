@@ -759,13 +759,13 @@ workflows:
       # - test-lint-and-types:
       #     requires:
       #       - checkout-and-install-deps
-      - test-native:
-          requires:
-            - checkout-and-install-deps
-          context: SonarCloud
-      - test-web:
-          requires:
-            - checkout-and-install-deps
+      # - test-native:
+      #     requires:
+      #       - checkout-and-install-deps
+      #     context: SonarCloud
+      # - test-web:
+      #     requires:
+      #       - checkout-and-install-deps
       - deploy-soft-testing:
           # filters:
           #   branches:
@@ -774,7 +774,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       # - transition-jira-ticket:
       #     filters:
       #       branches:
@@ -784,7 +784,7 @@ workflows:
       #       - checkout-and-install-deps
       #       - test-lint-and-types
       #       - test-native
-      #       - test-web
+            # - test-web
       #       - deploy-soft-testing
       #       - deploy-web-testing
       #     context: JIRA
@@ -798,7 +798,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - deploy-ios-testing-hard:
           # filters:
           #   tags:
@@ -808,7 +808,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - notify-hard-testing-release:
           filters:
             tags:
@@ -827,7 +827,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - deploy-ios-staging-hard:
           filters:
             tags:
@@ -837,7 +837,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - notify-hard-staging-release:
           filters:
             tags:
@@ -856,7 +856,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - deploy-android-production-hard:
           filters:
             tags:
@@ -866,7 +866,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - deploy-ios-production-hard:
           filters:
             tags:
@@ -876,7 +876,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - notify-hard-production-release:
           filters:
             tags:
@@ -895,7 +895,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-native
+            # - test-native
       - deploy-web-testing:
           filters:
             tags:
@@ -905,7 +905,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-web
+            # - test-web
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
@@ -962,4 +962,4 @@ workflows:
           requires:
             - checkout-and-install-deps
             # - test-lint-and-types
-            - test-web
+            # - test-web
