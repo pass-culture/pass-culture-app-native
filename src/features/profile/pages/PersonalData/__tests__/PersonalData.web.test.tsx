@@ -5,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -60,7 +61,7 @@ describe('PersonalData', () => {
     })
   })
 
-  it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+  it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     const { getByText } = await renderPersonalData({
       isBeneficiary: false,
       ...mockedIdentity,
@@ -69,7 +70,10 @@ describe('PersonalData', () => {
     const row = getByText('Supprimer mon compte')
     fireEvent.click(row)
 
-    expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
+    await waitForExpect(() => {
+      expect(analytics.logAccountDeletion).toBeCalled()
+      expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
+    })
   })
 })
 

@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils/web'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -65,12 +66,13 @@ describe('<SuspendedAccount />', () => {
     })
   })
 
-  it('should redirect to reactivation screen on success', async () => {
+  it('should log analytics and redirect to reactivation screen on success', async () => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const { getByText } = render(<SuspendedAccount />)
 
     await fireEvent.click(getByText('Réactiver mon compte'))
+    expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     useMutationCallbacks.onSuccess()
     await waitForExpect(() => {
@@ -80,12 +82,13 @@ describe('<SuspendedAccount />', () => {
     })
   })
 
-  it('should show error snackbar on error', async () => {
+  it('should log analytics and show error snackbar on error', async () => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const { getByText } = render(<SuspendedAccount />)
 
     await fireEvent.click(getByText('Réactiver mon compte'))
+    expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     const response = {
       content: { message: 'Une erreur s’est produite pendant la réactivation.' },

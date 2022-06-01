@@ -1,6 +1,8 @@
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
 export enum AnalyticsEvent {
   ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
+  ACCOUNT_DELETION = 'AccountDeletion',
+  ACCOUNT_REACTIVATION = 'AccountReactivation',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   BACK_TO_HOME_FROM_EDUCONNECT_ERROR = 'BackToHomeFromEduconnectError',
@@ -23,6 +25,7 @@ export enum AnalyticsEvent {
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
+  CONSULT_ARTICLE_ACCOUNT_DELETION = 'ConsultArticleAccountDeletion',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_DISCLAIMER_VALIDATION_MAIL = 'ConsultDisclaimerValidationMail',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',

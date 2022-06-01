@@ -10,6 +10,7 @@ import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAcc
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -48,6 +49,11 @@ export const SuspendedAccount = () => {
     onAccountUnsuspendFailure
   )
 
+  const onReactivationPress = () => {
+    analytics.logAccountReactivation('suspendedaccount')
+    unsuspendAccount()
+  }
+
   useFocusEffect(
     useCallback(() => {
       if (!settings?.allowAccountReactivation) {
@@ -76,7 +82,7 @@ export const SuspendedAccount = () => {
           key={1}
           wording={t`Réactiver mon compte`}
           isLoading={unsuspendIsLoading}
-          onPress={unsuspendAccount}
+          onPress={onReactivationPress}
         />,
         <TouchableLink
           key={2}

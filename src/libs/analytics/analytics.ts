@@ -220,5 +220,10 @@ export const analytics = {
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
   logQuitAuthenticationMethodSelection: () =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION),
+  logAccountDeletion: () => analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_DELETION),
+  logAccountReactivation: (from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_REACTIVATION, { from }),
+  logConsultArticleAccountDeletion: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION),
   useInit,
 }

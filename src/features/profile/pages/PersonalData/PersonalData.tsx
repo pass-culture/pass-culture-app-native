@@ -79,6 +79,7 @@ export function PersonalData() {
           title={t`Supprimer mon compte`}
           type="navigable"
           navigateTo={{ screen: 'ConfirmDeleteProfile' }}
+          onPress={analytics.logAccountDeletion}
           icon={Trash}
         />
       </Container>
