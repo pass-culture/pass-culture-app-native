@@ -107,14 +107,16 @@ commands:
     steps:
       - restore_cache:
           name: Restore Gem dependencies
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-bump-rn-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run:
           name: Install Gem dependencies
           command: |
+            ruby --version
+            rvm --version
             bundle install --path=vendor/bundle
       - save_cache:
           name: Save Gem dependencies
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-bump-rn-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - .bundle/
             - vendor/bundle
