@@ -76,8 +76,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         "msFlexPack": "center",
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "overflowX": "scroll",
-        "overflowY": "scroll",
+        "overflowY": "auto",
         "paddingLeft": "16px",
         "paddingRight": "16px",
       }
