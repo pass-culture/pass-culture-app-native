@@ -7,6 +7,7 @@ import { useAccountSuspend } from 'features/auth/api'
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -79,6 +80,7 @@ export function ConfirmDeleteProfile() {
             as={ButtonTertiaryBlack}
             wording={t`Consulter l’article d’aide`}
             externalNav={{ url: env.FAQ_LINK_DELETE_ACCOUNT }}
+            onPress={analytics.logConsultArticleAccountDeletion}
             icon={ExternalSiteFilled}
           />
         </ButtonContainer>

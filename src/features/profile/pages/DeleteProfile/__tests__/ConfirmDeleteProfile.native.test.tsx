@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/env'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
@@ -77,11 +78,14 @@ describe('ConfirmDeleteProfile component', () => {
     })
   })
 
-  it('should redirect to FAQ when clicking on FAQ link', () => {
+  it('should log analytics and redirect to FAQ when clicking on FAQ link', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Consulter l’article d’aide'))
-    expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined)
+    await waitForExpect(() => {
+      expect(analytics.logConsultArticleAccountDeletion).toBeCalled()
+      expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined)
+    })
   })
 
   it('should go back when clicking on go back button', () => {

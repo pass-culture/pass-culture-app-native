@@ -98,7 +98,7 @@ describe('PersonalData', () => {
     })
   })
 
-  it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+  it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     const { getByText } = await renderPersonalData({
       isBeneficiary: false,
       ...mockedIdentity,
@@ -107,7 +107,10 @@ describe('PersonalData', () => {
     const row = getByText('Supprimer mon compte')
     fireEvent.press(row)
 
-    expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
+    await waitForExpect(() => {
+      expect(analytics.logAccountDeletion).toBeCalled()
+      expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
+    })
   })
 })
 

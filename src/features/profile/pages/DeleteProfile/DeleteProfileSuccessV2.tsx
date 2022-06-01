@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Emoji } from 'ui/components/Emoji'
@@ -31,6 +32,7 @@ export function DeleteProfileSuccessV2() {
           key={2}
           as={ButtonTertiaryWhite}
           wording={t`Réactiver mon compte`}
+          onPress={() => analytics.logAccountReactivation('deleteprofilesuccess')}
           icon={Again}
           navigateTo={{ screen: 'Login' }}
         />,
