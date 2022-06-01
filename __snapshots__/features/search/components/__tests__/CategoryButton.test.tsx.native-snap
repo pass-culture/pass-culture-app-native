@@ -16,25 +16,36 @@ exports[`CategoryButton should render correctly 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "borderColor": "#90949D",
-      "borderRadius": 8,
-      "borderWidth": 1,
+      "borderBottomColor": "#90949D",
+      "borderBottomWidth": 1,
+      "borderRadius": 4,
+      "borderRightColor": "#90949D",
+      "borderRightWidth": 1,
+      "borderTopColor": "#90949D",
+      "borderTopWidth": 1,
       "flexDirection": "row",
       "height": 72,
       "opacity": 1,
-      "paddingLeft": 12,
+      "paddingRight": 16,
     }
   }
 >
   <View
-    fill="#eb0055"
-    height={24}
-    width={24}
-  >
-    <Text>
-      undefined-SVG-Mock
-    </Text>
-  </View>
+    backgroundColor="#870087"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#870087",
+          "borderBottomLeftRadius": 3,
+          "borderBottomRightRadius": 0,
+          "borderTopLeftRadius": 3,
+          "borderTopRightRadius": 0,
+          "height": 72,
+          "width": 4,
+        },
+      ]
+    }
+  />
   <Text
     style={
       Array [
@@ -43,12 +54,21 @@ exports[`CategoryButton should render correctly 1`] = `
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
-          "marginLeft": 8,
+          "marginLeft": 12,
         },
       ]
     }
   >
     Bibliothèques & Médiathèques
   </Text>
+  <View
+    fill="#161617"
+    height={24}
+    width={24}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
 </View>
 `;
