@@ -1,6 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render } from 'tests/utils'
@@ -57,6 +58,15 @@ describe('DeleteProfileSuccess component', () => {
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
       )
+    })
+  })
+
+  it(`should redirect to Login page when clicking on "Réactiver mon compte" button of new success screen`, async () => {
+    mockSettings.allowAccountReactivation = true
+    const renderAPI = render(<DeleteProfileSuccess />)
+    fireEvent.press(renderAPI.getByText('Réactiver mon compte'))
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('Login', undefined)
     })
   })
 })

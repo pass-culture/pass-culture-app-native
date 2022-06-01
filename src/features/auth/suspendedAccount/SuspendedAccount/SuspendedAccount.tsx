@@ -1,17 +1,20 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { useAccountSuspensionDate } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate'
+import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { PageNotFound } from 'features/navigation/PageNotFound'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
@@ -23,9 +26,27 @@ const addDaysToDate = (date: Date, days: number) => {
 }
 
 export const SuspendedAccount = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings } = useAppSettings()
   const { data: accountSuspensionDate } = useAccountSuspensionDate()
   const signOut = useLogoutRoutine()
+  const { showErrorSnackBar } = useSnackBarContext()
+
+  function onAccountUnsuspendSuccess() {
+    navigate('AccountReactivationSuccess')
+  }
+
+  function onAccountUnsuspendFailure() {
+    showErrorSnackBar({
+      message: t`Une erreur s’est produite pendant la réactivation.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  }
+
+  const { mutate: unsuspendAccount, isLoading: unsuspendIsLoading } = useAccountUnsuspend(
+    onAccountUnsuspendSuccess,
+    onAccountUnsuspendFailure
+  )
 
   useFocusEffect(
     useCallback(() => {
@@ -51,11 +72,11 @@ export const SuspendedAccount = () => {
       title={t`Ton compte est désactivé`}
       icon={ProfileDeletionIllustration}
       buttons={[
-        <TouchableLink
+        <ButtonPrimaryWhite
           key={1}
-          as={ButtonPrimaryWhite}
           wording={t`Réactiver mon compte`}
-          navigateTo={{ screen: 'AccountReactivationSuccess' }}
+          isLoading={unsuspendIsLoading}
+          onPress={unsuspendAccount}
         />,
         <TouchableLink
           key={2}
@@ -70,10 +91,6 @@ export const SuspendedAccount = () => {
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>
         {t`Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.`}
-      </StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>
-        {t`Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.`}
       </StyledBody>
     </GenericInfoPage>
   ) : (

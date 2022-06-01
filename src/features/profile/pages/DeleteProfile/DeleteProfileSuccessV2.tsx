@@ -27,7 +27,13 @@ export function DeleteProfileSuccessV2() {
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
         />,
-        <ButtonTertiaryWhite key={2} wording={t`Réactiver mon compte`} icon={Again} />,
+        <TouchableLink
+          key={2}
+          as={ButtonTertiaryWhite}
+          wording={t`Réactiver mon compte`}
+          icon={Again}
+          navigateTo={{ screen: 'Login' }}
+        />,
       ]}>
       <StyledBody>
         <Emoji.CryingFace withSpaceAfter />

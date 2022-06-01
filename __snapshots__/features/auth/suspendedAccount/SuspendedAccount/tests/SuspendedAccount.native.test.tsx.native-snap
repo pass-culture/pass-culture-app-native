@@ -210,31 +210,6 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
       Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
     </Text>
     <View
-      numberOfSpaces={5}
-      style={
-        Array [
-          Object {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
-    </Text>
-    <View
       numberOfSpaces={30}
       style={
         Array [

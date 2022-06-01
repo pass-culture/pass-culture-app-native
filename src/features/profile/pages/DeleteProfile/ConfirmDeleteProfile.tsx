@@ -27,9 +27,9 @@ export function ConfirmDeleteProfile() {
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  function onAccountSuspendSuccess() {
+  async function onAccountSuspendSuccess() {
     navigate('DeleteProfileSuccess')
-    signOut()
+    await signOut()
   }
 
   function onAccountSuspendFailure() {

@@ -7,13 +7,14 @@ import { useAppSettings } from 'features/auth/settings'
 import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { useAccountSuspensionStatus } from 'features/auth/suspendedAccount/SuspensionScreen/useAccountSuspensionStatus'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
 export const SuspensionScreen = () => {
   const { data: settings } = useAppSettings()
   const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatus()
   const suspensionStatus = accountSuspensionStatus?.status
+  const currentRoute = useCurrentRoute()
   const signOut = useLogoutRoutine()
 
   useFocusEffect(
@@ -32,9 +33,14 @@ export const SuspensionScreen = () => {
 
   useEffect(() => {
     return () => {
-      signOut()
+      if (
+        currentRoute?.name &&
+        !['AccountReactivationSuccess', 'SuspensionScreen'].includes(currentRoute?.name)
+      ) {
+        signOut()
+      }
     }
-  }, [signOut])
+  }, [signOut, currentRoute?.name])
 
   if (isLoading) {
     return <LoadingPage />
