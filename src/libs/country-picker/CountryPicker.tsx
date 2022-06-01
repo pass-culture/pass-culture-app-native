@@ -55,9 +55,9 @@ export const CountryPicker: React.FC<Props> = (props) => {
     LogBox.ignoreLogs(['VirtualizedLists should'])
   }, [])
 
-  function onSelect(country: Country) {
-    setCountry(country)
-    props.onSelect(country)
+  function onSelect(selectedCountry: Country) {
+    setCountry(selectedCountry)
+    props.onSelect(selectedCountry)
     hideModal()
   }
 

@@ -30,7 +30,7 @@ type NotEligibleEduConnectErrorData = {
   navigateTo?: TouchableLinkProps['navigateTo']
 }
 
-const UserAgeNotValid: NotEligibleEduConnectErrorData = {
+const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
   Icon: UserError,
   title: t`Oh non\u00a0!`,
   description:
@@ -41,7 +41,7 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
 }
 
-const getInvalidInformation = (
+const getInvalidInformationErrorData = (
   onPrimaryButtonPress: () => void,
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
@@ -58,7 +58,7 @@ const getInvalidInformation = (
   navigateTo,
 })
 
-const getUserTypeNotStudent = (
+const getUserTypeNotStudentErrorData = (
   onPrimaryButtonPress: () => void,
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
@@ -75,7 +75,7 @@ const getUserTypeNotStudent = (
   navigateTo,
 })
 
-const GenericError: NotEligibleEduConnectErrorData = {
+const GenericErrorData: NotEligibleEduConnectErrorData = {
   Icon: MaintenanceCone,
   title: t`Oups\u00a0!`,
   description: t`Une erreur s'est produite pendant le chargement`,
@@ -92,16 +92,16 @@ export function useNotEligibleEduConnectErrorData(
   const { goBack } = useNavigation<UseNavigationType>()
   switch (message) {
     case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
-      return getInvalidInformation(
+      return getInvalidInformationErrorData(
         beforeNavigateToNextSubscriptionStep,
         nextBeneficiaryValidationStepNavConfig
       )
 
     case EduConnectErrorMessageEnum.UserAgeNotValid:
-      return UserAgeNotValid
+      return UserAgeNotValidErrorData
 
     case EduConnectErrorMessageEnum.UserTypeNotStudent:
-      return getUserTypeNotStudent(
+      return getUserTypeNotStudentErrorData(
         () => {
           goBack()
         },
@@ -109,6 +109,6 @@ export function useNotEligibleEduConnectErrorData(
       )
 
     default:
-      return GenericError
+      return GenericErrorData
   }
 }

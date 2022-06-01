@@ -33,10 +33,10 @@ export function getScreensAndConfig(
         Screens.push(getScreenComponent(deeplinkName, route, ScreenComponent))
       })
     } else if (pathConfig) {
-      const { deeplinkPaths, ...restOfPathConfig } = pathConfig
+      const { deeplinkPaths: deeplinkPathsFromPathConfig, ...restOfPathConfig } = pathConfig
       screensConfig[name] = restOfPathConfig
       Screens.push(getScreenComponent(name, route, ScreenComponent))
-      deeplinkPaths?.forEach((p, idx) => {
+      deeplinkPathsFromPathConfig?.forEach((p, idx) => {
         const deeplinkName = getPrivateScreenName(`${name}${idx + 1}`) as AnyScreen
         screensConfig[deeplinkName] = { ...restOfPathConfig, path: p }
         Screens.push(getScreenComponent(deeplinkName, route, ScreenComponent))
