@@ -11,7 +11,7 @@ executors:
 
   android:
     docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+      - image: cimg/android:2022.04
 
   ios:
     macos:
@@ -42,6 +42,26 @@ commands:
             source $BASH_ENV
             nvm install --default
             nvm use
+
+  install_ruby_version:
+    description: Install ruby version with rvm
+    steps:
+      - run:
+          name: Install ruby version with rvm
+          command: |
+            set -e
+            for key in \
+              409B6B1796C275462A1703113804BB82D39DC0E3 \
+              7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
+            ; do \
+                gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key" || \
+                gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
+                gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
+            done
+            \curl -sSL https://get.rvm.io | bash -s stable
+            source /home/circleci/.rvm/scripts/rvm
+            rvm install $(cat .ruby-version)
+            rvm use $(cat .ruby-version)
 
   install_node_modules:
     description: Install Node Dependencies
@@ -392,6 +412,7 @@ jobs:
       - skip_testing_soft_deploy_when_new_tag
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -421,6 +442,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -455,6 +477,7 @@ jobs:
             - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
@@ -485,6 +508,7 @@ jobs:
             - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
@@ -508,6 +532,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_staging_secrets
       - setup_sentry
@@ -534,6 +559,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_staging_secrets
       - setup_sentry
@@ -560,6 +586,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_production_secrets
       - setup_sentry
@@ -589,6 +616,7 @@ jobs:
             - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
@@ -610,6 +638,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_production_secrets
       - setup_sentry
@@ -727,9 +756,9 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - test-lint-and-types:
-          requires:
-            - checkout-and-install-deps
+      # - test-lint-and-types:
+      #     requires:
+      #       - checkout-and-install-deps
       - test-native:
           requires:
             - checkout-and-install-deps
@@ -738,47 +767,47 @@ workflows:
           requires:
             - checkout-and-install-deps
       - deploy-soft-testing:
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
-      - transition-jira-ticket:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-            - test-web
-            - deploy-soft-testing
-            - deploy-web-testing
-          context: JIRA
+      # - transition-jira-ticket:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #     requires:
+      #       - checkout-and-install-deps
+      #       - test-lint-and-types
+      #       - test-native
+      #       - test-web
+      #       - deploy-soft-testing
+      #       - deploy-web-testing
+      #     context: JIRA
 
       - deploy-android-testing-hard:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
+          # filters:
+          #   tags:
+          #     only: /^testing\/v.*/
+          #   branches:
+          #     ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - deploy-ios-testing-hard:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
+          # filters:
+          #   tags:
+          #     only: /^testing\/v.*/
+          #   branches:
+          #     ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - notify-hard-testing-release:
           filters:
@@ -797,7 +826,7 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - deploy-ios-staging-hard:
           filters:
@@ -807,7 +836,7 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - notify-hard-staging-release:
           filters:
@@ -826,7 +855,7 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - deploy-android-production-hard:
           filters:
@@ -836,7 +865,7 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - deploy-ios-production-hard:
           filters:
@@ -846,7 +875,7 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - notify-hard-production-release:
           filters:
@@ -865,7 +894,7 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-native
       - deploy-web-testing:
           filters:
@@ -875,7 +904,7 @@ workflows:
               only: master
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-web
           context:
             - GCP
@@ -932,5 +961,5 @@ workflows:
           type: approval
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
+            # - test-lint-and-types
             - test-web
