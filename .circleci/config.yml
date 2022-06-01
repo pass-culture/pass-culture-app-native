@@ -11,7 +11,7 @@ executors:
 
   android:
     docker:
-      - image: cimg/android:2022.04
+      - image: cimg/android:2022.04-node
 
   ios:
     macos:
