@@ -63,6 +63,7 @@ commands:
             echo "source ~/.rvm/scripts/rvm" >> ~/.profile
             rvm install "ruby-$(cat .ruby-version)"
             rvm use "ruby-$(cat .ruby-version)"
+            echo . $(rvm $(cat .ruby-version) do rvm env --path) >> $BASH_ENV
 
   install_node_modules:
     description: Install Node Dependencies
@@ -112,8 +113,6 @@ commands:
       - run:
           name: Install Gem dependencies
           command: |
-            ruby --version
-            rvm --version
             bundle install --path=vendor/bundle
       - save_cache:
           name: Save Gem dependencies
