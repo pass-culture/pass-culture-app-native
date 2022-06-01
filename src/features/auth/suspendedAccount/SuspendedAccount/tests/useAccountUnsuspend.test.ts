@@ -27,16 +27,12 @@ function simulateUnsuspensionError() {
   )
 }
 
-describe('useAccountSuspensionDate', () => {
-  beforeEach(() => {
-    jest.resetAllMocks()
-  })
-
+describe('useAccountUnsuspend', () => {
   it('should call success function on success', async () => {
     simulateUnsuspension()
     const { result } = renderAccountUnsuspendHook()
 
-    await result.current.mutate()
+    result.current.mutate()
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -49,7 +45,7 @@ describe('useAccountSuspensionDate', () => {
     simulateUnsuspensionError()
     const { result } = renderAccountUnsuspendHook()
 
-    await result.current.mutate()
+    result.current.mutate()
     await superFlushWithAct()
 
     await waitForExpect(() => {

@@ -92,10 +92,6 @@ export const SuspendedAccount = () => {
       <StyledBody>
         {t`Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.`}
       </StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>
-        {t`Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.`}
-      </StyledBody>
     </GenericInfoPage>
   ) : (
     <PageNotFound />

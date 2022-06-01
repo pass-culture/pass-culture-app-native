@@ -2174,10 +2174,6 @@ msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
-#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
-msgid "Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe."
-msgstr "Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe."
-
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -3187,6 +3183,10 @@ msgid ""
 msgstr ""
 "Une erreur s’est produite pendant la modification de ton e-mail.\n"
 "Réessaie plus tard."
+
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
+msgid "Une erreur s’est produite pendant la réactivation."
+msgstr "Une erreur s’est produite pendant la réactivation."
 
 #: src/features/home/components/NoContentError.tsx
 msgid "Une erreur s’est produite pendant le chargement de nos recommandations."

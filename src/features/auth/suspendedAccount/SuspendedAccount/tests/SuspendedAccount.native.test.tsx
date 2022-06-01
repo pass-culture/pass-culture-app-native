@@ -1,11 +1,12 @@
 import React from 'react'
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -47,6 +48,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 }
 
 describe('<SuspendedAccount />', () => {
+  const queryClient = useQueryClient()
   it('should match snapshot', () => {
     expect(render(<SuspendedAccount />)).toMatchSnapshot()
   })
@@ -72,6 +74,8 @@ describe('<SuspendedAccount />', () => {
 
     useMutationCallbacks.onSuccess()
     await waitForExpect(() => {
+      expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.USER_PROFILE)
+      expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.NEXT_SUBSCRIPTION_STEP)
       expect(navigate).toHaveBeenCalledWith('AccountReactivationSuccess')
     })
   })

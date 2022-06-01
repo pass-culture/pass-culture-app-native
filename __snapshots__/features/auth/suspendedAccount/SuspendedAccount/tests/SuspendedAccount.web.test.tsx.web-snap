@@ -96,17 +96,6 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 20px;"
-          />
-          <div
-            class="css-text-901oao"
-            dir="ltr"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-          >
-            Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
-          </div>
-          <div
-            class="css-view-1dbjc4n"
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
@@ -248,17 +237,6 @@ Object {
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
-        />
-        <div
-          class="css-text-901oao"
-          dir="ltr"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-        >
-          Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
         </div>
         <div
           class="css-view-1dbjc4n"
