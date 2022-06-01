@@ -28,11 +28,11 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   const emailInput = useRef<RNTextInput | null>(null)
   const checkboxID = uuidv4()
 
-  function onEmailChange(email: string) {
+  function onEmailChange(newEmailInput: string) {
     if (hasError) {
       setHasError(false)
     }
-    setEmail(email)
+    setEmail(newEmailInput)
   }
 
   function validateEmail() {

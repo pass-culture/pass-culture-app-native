@@ -80,9 +80,9 @@ export function BookingDetails() {
     return <LoadingPage />
   } else if (!isLoading && !booking) {
     if (Platform.OS !== 'web') {
-      const error = new Error('BookingNotFound')
-      error.name = 'BookingNotFound'
-      eventMonitoring.captureException(error, {
+      const bookingNotFoundError = new Error('BookingNotFound')
+      bookingNotFoundError.name = 'BookingNotFound'
+      eventMonitoring.captureException(bookingNotFoundError, {
         extra: {
           status,
           isLoading,

@@ -77,9 +77,9 @@ export const GenericAchievement: FunctionComponent<Props> = ({
   }
 
   const controlProps: SwiperControlsProps = {
-    DotComponent: function DotComponent(props: DotComponentPropsForSwiper) {
-      return <DotComponentForSwiper {...props} numberOfSteps={cards.length} />
-    },
+    DotComponent: (props: DotComponentPropsForSwiper) => (
+      <DotComponentForSwiper {...props} numberOfSteps={cards.length} />
+    ),
     PrevComponent: (props: ControlComponentProps) => <ControlComponent {...props} withMargin />,
     NextComponent: (props: ControlComponentProps) => <ControlComponent {...props} withMargin />,
     prevTitle: t`Revenir à l'étape précédente`,

@@ -5,7 +5,10 @@ export function useModal(defaultVisibility = false) {
 
   const showModal = useCallback(() => setVisible(true), [])
   const hideModal = useCallback(() => setVisible(false), [])
-  const toggleModal = useCallback(() => setVisible((visible) => !visible), [])
+  const toggleModal = useCallback(
+    () => setVisible((previousVisibleState) => !previousVisibleState),
+    []
+  )
 
   return { visible, showModal, hideModal, toggleModal }
 }

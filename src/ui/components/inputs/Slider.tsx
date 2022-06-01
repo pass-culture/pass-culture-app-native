@@ -50,14 +50,20 @@ export function Slider(props: Props) {
     if (relativeStep === null || ![LEFT_CURSOR, RIGHT_CURSOR].includes(cursor)) return
 
     let nextValues: number[] = []
-    setValues((values) => {
-      if (values.length === 1) {
-        nextValues = [Math.min(Math.max(min, values[0] + relativeStep), max)]
-      } else if (values.length === 2) {
+    setValues((previousValues) => {
+      if (previousValues.length === 1) {
+        nextValues = [Math.min(Math.max(min, previousValues[0] + relativeStep), max)]
+      } else if (previousValues.length === 2) {
         nextValues =
           cursor === LEFT_CURSOR
-            ? [Math.min(Math.max(min, values[0] + relativeStep), values[1]), values[1]] // Left cursor's value needs to be less than right cursor's value, but greater than min
-            : [values[0], Math.max(Math.min(max, values[1] + relativeStep), values[0])] // Right cursor's value needs to be greater than left cursor's value, but less than max
+            ? [
+                Math.min(Math.max(min, previousValues[0] + relativeStep), previousValues[1]),
+                previousValues[1],
+              ] // Left cursor's value needs to be less than right cursor's value, but greater than min
+            : [
+                previousValues[0],
+                Math.max(Math.min(max, previousValues[1] + relativeStep), previousValues[0]),
+              ] // Right cursor's value needs to be greater than left cursor's value, but less than max
       }
       return nextValues
     })
