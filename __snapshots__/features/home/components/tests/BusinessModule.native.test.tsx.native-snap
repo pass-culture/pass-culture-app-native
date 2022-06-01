@@ -86,8 +86,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
                 "top": 0,
               },
               Object {
-                "height": 144,
-                "width": 912,
+                "height": undefined,
+                "width": undefined,
               },
               undefined,
             ]
@@ -277,8 +277,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
                 "top": 0,
               },
               Object {
-                "height": 144,
-                "width": 912,
+                "height": undefined,
+                "width": undefined,
               },
               undefined,
             ]
@@ -489,8 +489,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
                 "top": 0,
               },
               Object {
-                "height": 144,
-                "width": 912,
+                "height": undefined,
+                "width": undefined,
               },
               undefined,
             ]

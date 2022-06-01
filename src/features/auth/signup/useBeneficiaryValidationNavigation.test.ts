@@ -11,8 +11,10 @@ import {
   MaintenancePageType,
 } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
+import { UserProfilingError } from 'libs/monitoring/errors'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
@@ -67,6 +69,27 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
+    })
+  })
+
+  it('should set UserProfilingError if nextStep is user-profiling', async () => {
+    mockNextStepRequest({
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: SubscriptionStep['user-profiling'],
+      stepperIncludesPhoneValidation: false,
+      hasIdentityCheckPending: false,
+    })
+
+    const setError = jest.fn()
+    const { result } = renderHook(() => useBeneficiaryValidationNavigation(setError), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
+
+    await waitForExpect(() => {
+      expect(setError).toBeCalledWith(
+        new UserProfilingError("SubscriptionStep['user-profiling']", UserProfiling)
+      )
     })
   })
 

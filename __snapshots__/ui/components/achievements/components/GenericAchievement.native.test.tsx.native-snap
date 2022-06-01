@@ -76,6 +76,7 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
         >
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             onMoveShouldSetResponder={[Function]}
             onMoveShouldSetResponderCapture={[Function]}
             onResponderEnd={[Function]}

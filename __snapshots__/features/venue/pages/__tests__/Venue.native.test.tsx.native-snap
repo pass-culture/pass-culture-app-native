@@ -15,6 +15,7 @@ exports[`<Venue /> should match snapshot 1`] = `
 >
   <View
     collapsable={false}
+    nativeID="animatedComponent"
     safeAreaTop={16}
     style={
       Object {
@@ -76,6 +77,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -93,6 +95,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           collapsable={false}
+          nativeID="animatedComponent"
           style={
             Object {
               "alignItems": "center",
@@ -123,6 +126,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           >
             <View
               collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 1,
@@ -143,6 +147,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
             <View
               collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 0,
@@ -178,6 +183,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       <Text
         aria-hidden={true}
         collapsable={false}
+        nativeID="animatedComponent"
         numberOfLines={1}
         style={
           Object {
@@ -219,6 +225,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -236,6 +243,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           collapsable={false}
+          nativeID="animatedComponent"
           style={
             Object {
               "alignItems": "center",
@@ -266,6 +274,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           >
             <View
               collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 1,
@@ -287,6 +296,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
             <View
               collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 0,
@@ -761,6 +771,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           accessible={true}
           collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -868,6 +879,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           collapsable={false}
+          nativeID="animatedComponent"
           style={
             Object {
               "height": 0,
@@ -1917,6 +1929,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     accessible={true}
                     collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1955,6 +1968,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         accessible={true}
                         collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -2080,6 +2094,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           accessible={true}
           collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -2288,6 +2303,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -2377,6 +2393,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -2426,6 +2443,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           </Text>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "transform": Array [
@@ -2450,6 +2468,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       </View>
       <View
         collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -2551,6 +2570,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -2600,6 +2620,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           </Text>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "transform": Array [
@@ -2624,6 +2645,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       </View>
       <View
         collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -3176,6 +3198,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -3225,6 +3248,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           </Text>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "transform": Array [
@@ -3249,6 +3273,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       </View>
       <View
         collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -3290,6 +3315,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3345,6 +3371,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3400,6 +3427,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               accessible={true}
               collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}

@@ -69,6 +69,7 @@ Array [
           accessible={true}
           collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -244,6 +245,7 @@ Array [
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -293,6 +295,7 @@ Array [
               </Text>
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 style={
                   Object {
                     "transform": Array [
@@ -317,6 +320,7 @@ Array [
           </View>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "height": 0,
@@ -365,6 +369,7 @@ Array [
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -471,6 +476,7 @@ Array [
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -577,6 +583,7 @@ Array [
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -692,6 +699,7 @@ Array [
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -798,6 +806,7 @@ Array [
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -904,6 +913,7 @@ Array [
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1002,6 +1012,7 @@ Array [
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -1051,6 +1062,7 @@ Array [
               </Text>
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 style={
                   Object {
                     "transform": Array [
@@ -1075,6 +1087,7 @@ Array [
           </View>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "height": 0,
@@ -1232,6 +1245,7 @@ Array [
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -1281,6 +1295,7 @@ Array [
               </Text>
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 style={
                   Object {
                     "transform": Array [
@@ -1305,6 +1320,7 @@ Array [
           </View>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "height": 0,
@@ -1813,6 +1829,7 @@ Array [
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -1862,6 +1879,7 @@ Array [
               </Text>
               <View
                 collapsable={false}
+                nativeID="animatedComponent"
                 style={
                   Object {
                     "transform": Array [
@@ -1886,6 +1904,7 @@ Array [
           </View>
           <View
             collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "height": 0,
@@ -2075,6 +2094,7 @@ Array [
           accessible={true}
           collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -2347,6 +2367,7 @@ Array [
             accessible={true}
             collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

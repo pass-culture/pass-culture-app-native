@@ -14,7 +14,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   <View
     accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance ?"
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -231,7 +230,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   <View
     accessibilityLabel="Continuer"
     accessible={true}
-    collapsable={false}
     focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}

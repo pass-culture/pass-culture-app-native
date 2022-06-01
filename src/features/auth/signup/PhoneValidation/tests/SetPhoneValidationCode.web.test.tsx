@@ -47,6 +47,10 @@ jest.mock('features/profile/api', () => ({
   })),
 }))
 
+jest.mock('@pass-culture/react-native-profiling', () => ({
+  profileDevice: jest.fn(),
+}))
+
 const mockedUseMutation = mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},

@@ -6,6 +6,7 @@ exports[`Suggestion should display component correctly 1`] = `
   accessible={true}
   collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}

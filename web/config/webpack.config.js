@@ -393,6 +393,7 @@ module.exports = function (webpackEnv) {
                 /node_modules\/@ptomasroos\/react-native-multi-slider/,
                 /node_modules\/react-native-gesture-handler/,
                 /node_modules\/react-native-animatable/,
+                /node_modules\/@pass-culture\/react-native-profiling/,
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
                 /node_modules\/react-native-qrcode-svg/,

@@ -147,7 +147,6 @@ exports[`FirstCard should render first card 1`] = `
     }
   >
     <View
-      collapsable={false}
       forwardedRef={[Function]}
       style={
         Object {
@@ -160,6 +159,7 @@ exports[`FirstCard should render first card 1`] = `
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -223,6 +223,7 @@ exports[`FirstCard should render first card 1`] = `
         accessible={true}
         collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

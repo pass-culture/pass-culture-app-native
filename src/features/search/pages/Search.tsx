@@ -10,9 +10,11 @@ import { SearchDetails } from 'features/search/components/SearchDetails'
 import { SearchHeaderRework } from 'features/search/components/SearchHeaderRework'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
+import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 import { Form } from 'ui/web/form/Form'
 
 export function Search() {
+  useKeyboardAdjust()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const showResults = useShowResults()

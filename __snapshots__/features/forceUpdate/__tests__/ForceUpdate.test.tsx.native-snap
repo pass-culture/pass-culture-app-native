@@ -193,6 +193,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
         accessible={true}
         collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

@@ -60,6 +60,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
       accessible={true}
       collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -377,6 +378,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
               accessible={true}
               collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
