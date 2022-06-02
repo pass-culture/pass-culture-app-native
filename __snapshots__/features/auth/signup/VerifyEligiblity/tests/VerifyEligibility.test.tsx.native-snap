@@ -14,60 +14,106 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   }
 >
   <View
-    height="100%"
+    customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "height": 16,
         },
       ]
     }
-    width="100%"
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "maxWidth": 400,
+          "paddingHorizontal": 24,
+          "paddingTop": 16,
+          "width": "100%",
+        },
+      ]
+    }
   >
     <View
-      height="100%"
-      width="100%"
+      style={
+        Array [
+          Object {
+            "alignSelf": "stretch",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 88,
+              "width": 132,
+            },
+          ]
+        }
+      >
+        <View
+          fill="none"
+          height="100%"
+          width="100%"
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          height={53}
+          width={157}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
     </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "#CBCDD2",
+            "borderBottomWidth": 1,
+            "paddingVertical": 12,
+          },
+        ]
+      }
+    />
   </View>
   <View
     style={
       Array [
         Object {
-          "alignItems": "center",
           "flexBasis": 0,
           "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "maxWidth": 400,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
         },
       ]
     }
   >
-    <View
-      customHeight={16}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View
       style={
         Array [
@@ -89,24 +135,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         ]
       }
     />
-    <View
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        Array [
-          Object {
-            "height": 20,
-          },
-        ]
-      }
-    />
     <Text
       fontSize={24}
       style={
@@ -118,8 +146,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "lineHeight": 28,
           },
           Object {
-            "color": "#ffffff",
-            "textAlign": "center",
+            "color": "#161617",
           },
         ]
       }
@@ -136,23 +163,46 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         ]
       }
     />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. 
-
- Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
-    </Text>
+    <View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
+      </Text>
+    </View>
     <View
       numberOfSpaces={30}
       style={
@@ -190,7 +240,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     >
       <View
-        accessibilityLabel="Vérifier mon identité"
+        accessibilityLabel="Commencer la vérification"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -205,7 +255,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "#eb0055",
             "borderRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
@@ -220,7 +270,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "width": "100%",
           }
         }
-        testID="Vérifier mon identité"
+        testID="Commencer la vérification"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -228,7 +278,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           style={
             Array [
               Object {
-                "color": "#eb0055",
+                "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -238,7 +288,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             ]
           }
         >
-          Vérifier mon identité
+          Commencer la vérification
         </Text>
       </View>
       <View
@@ -299,7 +349,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           style={
             Array [
               Object {
-                "color": "#ffffff",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,

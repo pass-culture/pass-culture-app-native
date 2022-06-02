@@ -26,34 +26,101 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     className="css-view-1dbjc4n"
     style={
       Object {
-        "bottom": "0px",
-        "height": "100%",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
+        "height": "16px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "maxWidth": "400px",
+        "paddingLeft": "24px",
+        "paddingRight": "24px",
+        "paddingTop": "16px",
         "width": "100%",
-        "zIndex": -1,
       }
     }
   >
     <div
       className="css-view-1dbjc4n"
+      style={
+        Object {
+          "WebkitAlignSelf": "stretch",
+          "WebkitBoxDirection": "normal",
+          "WebkitBoxOrient": "horizontal",
+          "WebkitBoxPack": "justify",
+          "WebkitFlexDirection": "row",
+          "WebkitJustifyContent": "space-between",
+          "alignSelf": "stretch",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "msFlexDirection": "row",
+          "msFlexItemAlign": "stretch",
+          "msFlexPack": "justify",
+          "msGridRowAlign": "stretch",
+        }
+      }
     >
       <div
-        className="css-text-901oao"
-        dir="auto"
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "88px",
+            "width": "132px",
+          }
+        }
       >
-        undefined-SVG-Mock
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxPack": "center",
+            "WebkitJustifyContent": "center",
+            "justifyContent": "center",
+            "msFlexPack": "center",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
       </div>
     </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "borderBottomColor": "rgba(203,205,210,1.00)",
+          "borderBottomWidth": "1px",
+          "paddingBottom": "12px",
+          "paddingTop": "12px",
+        }
+      }
+    />
   </div>
   <div
     className="css-view-1dbjc4n"
     style={
       Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
         "WebkitBoxDirection": "normal",
         "WebkitBoxFlex": 1,
         "WebkitBoxOrient": "vertical",
@@ -63,51 +130,24 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
         "WebkitJustifyContent": "center",
-        "alignItems": "center",
         "flexBasis": "0px",
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
         "justifyContent": "center",
-        "maxWidth": "360px",
-        "msFlexAlign": "center",
+        "maxWidth": "400px",
         "msFlexDirection": "column",
         "msFlexNegative": 1,
         "msFlexPack": "center",
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "overflowY": "auto",
-        "paddingLeft": "16px",
-        "paddingRight": "16px",
+        "overflowX": "scroll",
+        "overflowY": "scroll",
+        "paddingLeft": "24px",
+        "paddingRight": "24px",
       }
     }
   >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "20px",
-        }
-      }
-    />
     <h1
       aria-level={1}
       className="css-reset-4rbku5 css-text-901oao"
@@ -115,11 +155,10 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       role="heading"
       style={
         Object {
-          "color": "rgba(255,255,255,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-Medium",
           "fontSize": "22px",
           "lineHeight": "28px",
-          "textAlign": "center",
         }
       }
     >
@@ -134,21 +173,44 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     />
     <div
-      className="css-text-901oao"
-      dir="ltr"
-      style={
-        Object {
-          "color": "rgba(255,255,255,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "textAlign": "center",
-        }
-      }
+      className="css-view-1dbjc4n"
     >
-      Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. 
-
- Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
+      <div
+        className="css-text-901oao"
+        dir="ltr"
+        style={
+          Object {
+            "color": "rgba(105,106,111,1.00)",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+          }
+        }
+      >
+        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-text-901oao"
+        dir="ltr"
+        style={
+          Object {
+            "color": "rgba(22,22,23,1.00)",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+          }
+        }
+      >
+        Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
+      </div>
     </div>
     <div
       className="css-view-1dbjc4n"
@@ -163,8 +225,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           "flexBasis": "0px",
           "flexGrow": 1,
           "flexShrink": 1,
-          "marginTop": "32px",
-          "maxHeight": "96px",
+          "marginTop": "100px",
+          "maxHeight": "4px",
           "msFlexItemAlign": "stretch",
           "msFlexNegative": 1,
           "msFlexPositive": 1,
@@ -174,7 +236,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+        className="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -186,7 +248,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           style={
             Object {
               "WebkitLineClamp": 1,
-              "color": "rgba(235,0,85,1.00)",
+              "color": "rgba(255,255,255,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -195,7 +257,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             }
           }
         >
-          Vérifier mon identité
+          Commencer la vérification
         </div>
       </button>
       <div
@@ -207,7 +269,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+        className="sc-bdvvtL hWVHSw sc-hKwDye gvtKtm"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -230,7 +292,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           style={
             Object {
               "WebkitLineClamp": 1,
-              "color": "rgba(255,255,255,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",

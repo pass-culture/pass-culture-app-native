@@ -36,7 +36,7 @@ describe('<VerifyEligibility />', () => {
     const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
     const { findByText } = render(<VerifyEligibility />)
 
-    const button = await findByText('Vérifier mon identité')
+    const button = await findByText('Commencer la vérification')
     fireEvent.press(button)
 
     await waitForExpect(() => {
