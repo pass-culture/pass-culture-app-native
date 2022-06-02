@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import moment from 'moment'
 import React from 'react'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { DateData, Theme } from 'react-native-calendars/src/types'
@@ -40,6 +41,11 @@ const calendarHeaderStyle = {
       marginTop: 6,
       alignItems: 'center',
     },
+    week: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginTop: 7,
+    },
   },
 } as Theme
 
@@ -71,13 +77,13 @@ const RNCalendarTheme = {
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
-  const minDate = getMinAvailableDate(markedDates) || new Date()
+  const minDate = getMinAvailableDate(markedDates) || moment(new Date()).format('YYYY-MM-DD')
   const selectDay = useSelectDay()
 
   return (
     <RNCalendar
       style={RNCalendarTheme}
-      current={minDate as unknown as LocaleConfig}
+      current={minDate}
       firstDay={1}
       enableSwipeMonths={true}
       renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
@@ -85,28 +91,30 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
       renderArrow={renderArrow}
       theme={calendarHeaderStyle}
       markedDates={markedDates}
-      dayComponent={({ date, marking = defaultMarking }: { date: DateData; marking: unknown }) => {
-        // problem in the definition of marking in the library:
-        // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
-        const { price, status, selected } = marking as Marking
+      dayComponent={
+        (({ date, marking = defaultMarking }: { date: DateData; marking: unknown }) => {
+          // problem in the definition of marking in the library:
+          // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
+          const { price, status, selected } = marking as Marking
 
-        if (selected && offerId) {
-          analytics.logBookingOfferConfirmDates(offerId)
-        }
+          if (selected && offerId) {
+            analytics.logBookingOfferConfirmDates(offerId)
+          }
 
-        const onPress = selectDay({ date, selected, status })
+          const onPress = selectDay({ date, selected, status })
 
-        return (
-          <Container onPress={onPress} disabled={!onPress}>
-            <DayComponent status={status} selected={selected} date={date} />
-            {typeof price === 'number' ? (
-              <Caption status={status}>{formatToFrenchDecimal(price).replace(' ', '')}</Caption>
-            ) : (
-              <Spacer.Column numberOfSpaces={getSpacing(1)} />
-            )}
-          </Container>
-        )
-      }}
+          return (
+            <Container onPress={onPress} disabled={!onPress}>
+              <DayComponent status={status} selected={selected} date={date} />
+              {typeof price === 'number' ? (
+                <Caption status={status}>{formatToFrenchDecimal(price).replace(' ', '')}</Caption>
+              ) : (
+                <Spacer.Column numberOfSpaces={getSpacing(1)} />
+              )}
+            </Container>
+          )
+        }) as React.ComponentType
+      }
     />
   )
 }

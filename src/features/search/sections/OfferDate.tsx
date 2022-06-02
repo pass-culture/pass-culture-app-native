@@ -12,6 +12,7 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
@@ -50,7 +51,9 @@ export function OfferDate({ setScrollEnabled }: Props) {
   return (
     <React.Fragment>
       <Container testID="offerDateContainer">
-        <Typo.Title4 nativeID={titleID}>{SectionTitle.OfferDate}</Typo.Title4>
+        <Typo.Title4 {...getHeadingAttrs(3)} nativeID={titleID}>
+          {SectionTitle.OfferDate}
+        </Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
         <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
           <VerticalUl>
