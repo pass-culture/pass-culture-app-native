@@ -29,8 +29,8 @@ export const CategoryButton: FunctionComponent<Props> = ({
 
   return (
     <TouchableContainer style={style} borderLeftColor={borderLeftColor}>
-      <Label>{label}</Label>
       <StyledIcon />
+      <Label>{label}</Label>
     </TouchableContainer>
   )
 }
@@ -40,10 +40,7 @@ const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
     flexDirection: 'row',
     alignItems: 'center',
     height: getSpacing(18),
-    borderTopLeftRadius: getSpacing(0.75),
-    borderTopRightRadius: getSpacing(1),
-    borderBottomRightRadius: getSpacing(1),
-    borderBottomLeftRadius: getSpacing(0.75),
+    borderRadius: getSpacing(1),
     borderTopColor: theme.colors.greySemiDark,
     borderBottomColor: theme.colors.greySemiDark,
     borderRightColor: theme.colors.greySemiDark,
@@ -52,8 +49,9 @@ const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
     borderBottomWidth: 1,
     borderRightWidth: 1,
     borderLeftWidth: getSpacing(1),
-    paddingRight: getSpacing(4),
+    paddingLeft: getSpacing(2),
+    paddingRight: getSpacing(3),
   })
 )
 
-const Label = styled(Typo.Caption)({ marginLeft: getSpacing(3) })
+const Label = styled(Typo.Caption)({ marginLeft: getSpacing(2) })

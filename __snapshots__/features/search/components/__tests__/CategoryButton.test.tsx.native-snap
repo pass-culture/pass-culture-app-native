@@ -17,39 +17,22 @@ exports[`CategoryButton should render correctly 1`] = `
     Object {
       "alignItems": "center",
       "borderBottomColor": "#90949D",
-      "borderBottomLeftRadius": 3,
-      "borderBottomRightRadius": 4,
       "borderBottomWidth": 1,
       "borderLeftColor": "#870087",
       "borderLeftWidth": 4,
+      "borderRadius": 4,
       "borderRightColor": "#90949D",
       "borderRightWidth": 1,
       "borderTopColor": "#90949D",
-      "borderTopLeftRadius": 3,
-      "borderTopRightRadius": 4,
       "borderTopWidth": 1,
       "flexDirection": "row",
       "height": 72,
       "opacity": 1,
-      "paddingRight": 16,
+      "paddingLeft": 8,
+      "paddingRight": 12,
     }
   }
 >
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-          "marginLeft": 12,
-        },
-      ]
-    }
-  >
-    Bibliothèques & Médiathèques
-  </Text>
   <View
     fill="#161617"
     height={24}
@@ -59,5 +42,20 @@ exports[`CategoryButton should render correctly 1`] = `
       undefined-SVG-Mock
     </Text>
   </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+          "marginLeft": 8,
+        },
+      ]
+    }
+  >
+    Bibliothèques & Médiathèques
+  </Text>
 </View>
 `;
