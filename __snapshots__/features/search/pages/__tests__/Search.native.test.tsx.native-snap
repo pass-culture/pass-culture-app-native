@@ -98,7 +98,9 @@ exports[`Search component should render Search 1`] = `
             "width": "100%",
           },
           Object {
+            "borderRadius": 24,
             "outlineOffset": 0,
+            "paddingRight": 8,
           },
         ]
       }

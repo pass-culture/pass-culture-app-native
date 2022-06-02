@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        class="sc-hKwDye lgPtFf sc-cCcXHH cGRVPb sc-cCcXHH cGRVPb"
+        class="sc-hKwDye lgPtFf sc-gWXbKe NbGXg sc-gWXbKe NbGXg"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -204,7 +204,7 @@ Object {
               style="height: 16px;"
             />
             <a
-              class="sc-gsDKAQ gFcuOJ sc-gWXbKe jAXlhK"
+              class="sc-gsDKAQ gFcuOJ sc-hiCibw bikoQs"
               href="https://passculture-delete-account.faq"
               tabindex="0"
               target="_blank"
@@ -239,7 +239,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="sc-hKwDye lgPtFf sc-cCcXHH cGRVPb sc-cCcXHH cGRVPb"
+      class="sc-hKwDye lgPtFf sc-gWXbKe NbGXg sc-gWXbKe NbGXg"
       data-testid="Revenir en arrière"
       tabindex="0"
       type="button"
@@ -437,7 +437,7 @@ Object {
             style="height: 16px;"
           />
           <a
-            class="sc-gsDKAQ gFcuOJ sc-gWXbKe jAXlhK"
+            class="sc-gsDKAQ gFcuOJ sc-hiCibw bikoQs"
             href="https://passculture-delete-account.faq"
             tabindex="0"
             target="_blank"
