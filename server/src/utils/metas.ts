@@ -2,7 +2,7 @@ import { env } from '../libs/environment/env'
 import { apiClient } from '../services/apiClient'
 import { ENTITY_METAS_CONFIG_MAP, EntityKeys } from '../services/entities/types'
 
-const { APP_PUBLIC_URL } = env
+const { APP_PUBLIC_URL, ORGANIZATION_PREFIX } = env
 
 const { href } = new URL(APP_PUBLIC_URL)
 
@@ -29,6 +29,10 @@ const REGEX = {
   ['al:android:url']: /<meta\s+(name)="(al:android:url)"\s+content="([^"]*)"\s*\/?>/g,
 }
 
+export function addOrganizationPrefix(title: string) {
+  return `${ORGANIZATION_PREFIX} | ${title}`
+}
+
 export async function replaceHtmlMetas(
   html: string,
   endpoint: string,
@@ -40,7 +44,7 @@ export async function replaceHtmlMetas(
   const METAS_CONFIG = ENTITY_METAS_CONFIG_MAP[type]
   const metaConfig = {
     title: {
-      data: METAS_CONFIG.title(entity),
+      data: addOrganizationPrefix(METAS_CONFIG.title(entity)),
       regEx: REGEX.title,
     },
     description: {
@@ -52,7 +56,7 @@ export async function replaceHtmlMetas(
       regEx: REGEX['og:url'],
     },
     ['og:title']: {
-      data: METAS_CONFIG['og:title'](entity),
+      data: addOrganizationPrefix(METAS_CONFIG['og:title'](entity)),
       regEx: REGEX['og:title'],
     },
     ['og:description']: {
@@ -76,7 +80,7 @@ export async function replaceHtmlMetas(
       regEx: REGEX['twitter:url'],
     },
     ['twitter:title']: {
-      data: METAS_CONFIG['twitter:title'](entity),
+      data: addOrganizationPrefix(METAS_CONFIG['twitter:title'](entity)),
       regEx: REGEX['twitter:title'],
     },
     ['twitter:description']: {
