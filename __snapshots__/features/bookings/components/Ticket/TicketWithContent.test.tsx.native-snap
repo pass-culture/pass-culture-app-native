@@ -74,11 +74,11 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         Avez-vous déjà vu ?
       </Text>
       <View
-        numberOfSpaces={2}
+        numberOfSpaces={3}
         style={
           Array [
             Object {
-              "height": 8,
+              "height": 12,
             },
           ]
         }
@@ -88,7 +88,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           Array [
             Object {
               "paddingHorizontal": 8,
-              "paddingTop": 24,
+              "paddingVertical": 12,
             },
           ]
         }
@@ -143,7 +143,6 @@ exports[`<TicketWithContent/> should render properly 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "marginBottom": 12,
               },
             ]
           }

@@ -73,7 +73,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   return (
     <Container>
       <Title>{offerName}</Title>
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={3} />
       <TicketContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
@@ -110,6 +110,6 @@ const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
 })
 
 const TicketContent = styled.View({
-  paddingTop: getSpacing(6),
   paddingHorizontal: getSpacing(2),
+  paddingVertical: getSpacing(3),
 })
