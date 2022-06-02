@@ -99,7 +99,9 @@ Object {
               />
               <div
                 aria-describedby="testUuidV4"
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
