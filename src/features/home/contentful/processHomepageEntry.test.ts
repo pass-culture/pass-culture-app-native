@@ -1,4 +1,4 @@
-import { AlgoliaParameters } from 'features/home/contentful/contentful'
+import { AlgoliaParameters, ContentTypes } from 'features/home/contentful/contentful'
 import { adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
 
 import { buildSearchParams, parseOfferId, processHomepageEntry } from './processHomepageEntry'
@@ -9,6 +9,7 @@ describe('processHomepageEntry', () => {
   })
 
   it('should format homepage entries: no fields case', () => {
+    const homepageNatifType: ContentTypes = ContentTypes.HOMEPAGE_NATIF
     const sys = {
       space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
       id: '16PgpnlCOYYIhUTclR0oO4',
@@ -17,7 +18,9 @@ describe('processHomepageEntry', () => {
       updatedAt: '2020-10-30T10:07:29.549Z',
       environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
       revision: 154,
-      contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
+      contentType: {
+        sys: { type: 'Link', linkType: 'ContentType', id: homepageNatifType },
+      },
       locale: 'en-US',
     }
 
@@ -33,6 +36,7 @@ describe('processHomepageEntry', () => {
   })
 
   describe('buildSearchParams', () => {
+    const algoliaType: ContentTypes = ContentTypes.ALGOLIA
     const algoliaParameters = {
       metadata: { tags: [] },
       sys: {
@@ -44,7 +48,7 @@ describe('processHomepageEntry', () => {
         environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
         revision: 35,
         contentType: {
-          sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+          sys: { type: 'Link', linkType: 'ContentType', id: algoliaType },
         },
         locale: 'en-US',
       },

@@ -4,7 +4,7 @@ import {
   ExclusivityFields,
   HomepageEntry,
   HomepageModule,
-  CONTENT_TYPES,
+  ContentTypes,
   Image,
   RecommendationFields,
   AlgoliaParameters,
@@ -104,15 +104,15 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
       const moduleId = getModuleId(module)
 
       switch (contentType) {
-        case CONTENT_TYPES.ALGOLIA:
+        case ContentTypes.ALGOLIA:
           return buildAlgoliaModule(fields as AlgoliaFields, moduleId)
-        case CONTENT_TYPES.RECOMMENDATION:
+        case ContentTypes.RECOMMENDATION:
           return buildRecommendation(fields as RecommendationFields)
-        case CONTENT_TYPES.EXCLUSIVITY:
+        case ContentTypes.EXCLUSIVITY:
           return buildExclusivity(fields as ExclusivityFields, moduleId)
-        case CONTENT_TYPES.VENUES_PLAYLIST:
+        case ContentTypes.VENUES_PLAYLIST:
           return buildVenuesPlaylist(fields as VenuesFields, moduleId)
-        case CONTENT_TYPES.BUSINESS:
+        case ContentTypes.BUSINESS:
           return buildBusiness(fields as BusinessFields, moduleId)
         default:
           return
