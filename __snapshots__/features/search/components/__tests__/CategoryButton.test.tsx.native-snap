@@ -17,11 +17,16 @@ exports[`CategoryButton should render correctly 1`] = `
     Object {
       "alignItems": "center",
       "borderBottomColor": "#90949D",
+      "borderBottomLeftRadius": 3,
+      "borderBottomRightRadius": 4,
       "borderBottomWidth": 1,
-      "borderRadius": 4,
+      "borderLeftColor": "#870087",
+      "borderLeftWidth": 4,
       "borderRightColor": "#90949D",
       "borderRightWidth": 1,
       "borderTopColor": "#90949D",
+      "borderTopLeftRadius": 3,
+      "borderTopRightRadius": 4,
       "borderTopWidth": 1,
       "flexDirection": "row",
       "height": 72,
@@ -30,22 +35,6 @@ exports[`CategoryButton should render correctly 1`] = `
     }
   }
 >
-  <View
-    backgroundColor="#870087"
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#870087",
-          "borderBottomLeftRadius": 3,
-          "borderBottomRightRadius": 0,
-          "borderTopLeftRadius": 3,
-          "borderTopRightRadius": 0,
-          "height": 72,
-          "width": 4,
-        },
-      ]
-    }
-  />
   <Text
     style={
       Array [

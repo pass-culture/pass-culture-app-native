@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { View, ViewStyle } from 'react-native'
+import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -28,36 +28,32 @@ export const CategoryButton: FunctionComponent<Props> = ({
   )
 
   return (
-    <TouchableContainer style={style}>
-      <BorderLeft backgroundColor={borderLeftColor} />
+    <TouchableContainer style={style} borderLeftColor={borderLeftColor}>
       <Label>{label}</Label>
       <StyledIcon />
     </TouchableContainer>
   )
 }
 
-const TouchableContainer = styled.TouchableOpacity(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  height: getSpacing(18),
-  borderRadius: getSpacing(1),
-  borderTopColor: theme.colors.greySemiDark,
-  borderBottomColor: theme.colors.greySemiDark,
-  borderRightColor: theme.colors.greySemiDark,
-  borderTopWidth: 1,
-  borderBottomWidth: 1,
-  borderRightWidth: 1,
-  paddingRight: getSpacing(4),
-}))
+const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
+  ({ theme, borderLeftColor }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: getSpacing(18),
+    borderTopLeftRadius: getSpacing(0.75),
+    borderTopRightRadius: getSpacing(1),
+    borderBottomRightRadius: getSpacing(1),
+    borderBottomLeftRadius: getSpacing(0.75),
+    borderTopColor: theme.colors.greySemiDark,
+    borderBottomColor: theme.colors.greySemiDark,
+    borderRightColor: theme.colors.greySemiDark,
+    borderLeftColor,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderRightWidth: 1,
+    borderLeftWidth: getSpacing(1),
+    paddingRight: getSpacing(4),
+  })
+)
 
 const Label = styled(Typo.Caption)({ marginLeft: getSpacing(3) })
-
-const BorderLeft = styled(View)<{ backgroundColor: string }>(({ backgroundColor }) => ({
-  height: getSpacing(18),
-  width: getSpacing(1),
-  backgroundColor,
-  borderTopLeftRadius: getSpacing(0.75),
-  borderTopRightRadius: 0,
-  borderBottomRightRadius: 0,
-  borderBottomLeftRadius: getSpacing(0.75),
-}))

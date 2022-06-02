@@ -20,13 +20,15 @@ exports[`CategoryButton should render correctly 1`] = `
       "WebkitUserSelect": "none",
       "alignItems": "center",
       "borderBottomColor": "rgba(144,148,157,1.00)",
-      "borderBottomLeftRadius": "4px",
+      "borderBottomLeftRadius": "3px",
       "borderBottomRightRadius": "4px",
       "borderBottomWidth": "1px",
+      "borderLeftColor": "rgba(135,0,135,1.00)",
+      "borderLeftWidth": "4px",
       "borderRightColor": "rgba(144,148,157,1.00)",
       "borderRightWidth": "1px",
       "borderTopColor": "rgba(144,148,157,1.00)",
-      "borderTopLeftRadius": "4px",
+      "borderTopLeftRadius": "3px",
       "borderTopRightRadius": "4px",
       "borderTopWidth": "1px",
       "cursor": "pointer",
@@ -45,20 +47,6 @@ exports[`CategoryButton should render correctly 1`] = `
   }
   tabIndex="0"
 >
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "backgroundColor": "rgba(135,0,135,1.00)",
-        "borderBottomLeftRadius": "3px",
-        "borderBottomRightRadius": "0px",
-        "borderTopLeftRadius": "3px",
-        "borderTopRightRadius": "0px",
-        "height": "72px",
-        "width": "4px",
-      }
-    }
-  />
   <div
     className="css-text-901oao"
     dir="ltr"
