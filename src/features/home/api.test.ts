@@ -38,8 +38,11 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.length > 0)
-      expect(result.current).toEqual(processHomepageEntry(adaptedHomepageEntry))
+      await waitFor(() => result.current.modules.length > 0)
+      expect(result.current).toEqual({
+        modules: processHomepageEntry(adaptedHomepageEntry),
+        homeEntryId: '16PgpnlCOYYIhUTclR0oO4',
+      })
     })
 
     it('calls the API and returns the data with specified entryId', async () => {
@@ -48,8 +51,11 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.length > 0)
-      expect(result.current).toEqual(processHomepageEntry(adaptedSecondHomepageEntry))
+      await waitFor(() => result.current.modules.length > 0)
+      expect(result.current).toEqual({
+        modules: processHomepageEntry(adaptedSecondHomepageEntry),
+        homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
+      })
     })
 
     it('should log ConsultHome with specified entryId', async () => {
@@ -58,7 +64,7 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.length > 0)
+      await waitFor(() => result.current.modules.length > 0)
       expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { entryId })
     })
   })

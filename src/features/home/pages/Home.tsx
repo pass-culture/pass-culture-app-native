@@ -96,8 +96,8 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { homeEntryId } = useABTestingContext()
-  const modules = useHomepageModules(params?.entryId ?? homeEntryId) || []
+  const { homeEntryId: ABTestingEntryId } = useABTestingContext()
+  const { modules, homeEntryId } = useHomepageModules(params?.entryId ?? ABTestingEntryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const showSkeleton = useShowSkeleton()
   const initialNumToRender = 5

@@ -47,6 +47,10 @@ export function useHomepageModules(paramsEntryId?: string) {
     if (entryId) analytics.logConsultHome({ entryId })
   }, [entryId])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entryId])
+  return useMemo(
+    () =>
+      entry ? { modules: processHomepageEntry(entry), homeEntryId: entryId } : { modules: [] },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [entryId]
+  )
 }

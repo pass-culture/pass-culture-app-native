@@ -20,7 +20,10 @@ jest.mock('features/profile/api', () => ({
 }))
 
 jest.mock('features/home/api', () => ({
-  useHomepageModules: () => [],
+  useHomepageModules: () => ({
+    modules: [],
+    homeEntryId: 'fakeEntryId',
+  }),
 }))
 
 describe('Home component', () => {
