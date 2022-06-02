@@ -922,7 +922,10 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <Modal
+    accessibilityRole="dialog"
     animationType="none"
+    aria-describedby="testUuidV4"
+    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -977,6 +980,9 @@ exports[`BookingDetails should render correctly 1`] = `
       }
     />
     <View
+      accessibilityRole="dialog"
+      aria-describedby="testUuidV4"
+      aria-modal={true}
       collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
@@ -1021,7 +1027,6 @@ exports[`BookingDetails should render correctly 1`] = `
       swipeThreshold={100}
     >
       <View
-        aria-describedby="testUuidV4"
         height={428}
         style={
           Array [
@@ -1359,7 +1364,10 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
   </Modal>
   <Modal
+    accessibilityRole="dialog"
     animationType="none"
+    aria-describedby="testUuidV4"
+    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -1414,6 +1422,9 @@ exports[`BookingDetails should render correctly 1`] = `
       }
     />
     <View
+      accessibilityRole="dialog"
+      aria-describedby="testUuidV4"
+      aria-modal={true}
       collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
@@ -1458,7 +1469,6 @@ exports[`BookingDetails should render correctly 1`] = `
       swipeThreshold={100}
     >
       <View
-        aria-describedby="testUuidV4"
         height={428}
         style={
           Array [

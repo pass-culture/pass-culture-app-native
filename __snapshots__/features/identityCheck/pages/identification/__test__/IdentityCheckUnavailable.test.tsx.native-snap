@@ -187,7 +187,10 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     />
     <Modal
+      accessibilityRole="dialog"
       animationType="none"
+      aria-describedby="testUuidV4"
+      aria-modal={true}
       deviceHeight={1334}
       deviceWidth={750}
       hardwareAccelerated={false}
@@ -242,6 +245,9 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         }
       />
       <View
+        accessibilityRole="dialog"
+        aria-describedby="testUuidV4"
+        aria-modal={true}
         collapsable={false}
         deviceHeight={1334}
         deviceWidth={750}
@@ -286,7 +292,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         swipeThreshold={100}
       >
         <View
-          aria-describedby="testUuidV4"
           height={428}
           style={
             Array [

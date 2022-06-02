@@ -1887,7 +1887,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
+                            accessibilityRole="dialog"
                             animationType="none"
+                            aria-describedby="testUuidV4"
+                            aria-modal={true}
                             deviceHeight={1334}
                             deviceWidth={750}
                             hardwareAccelerated={false}
@@ -1940,6 +1943,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             />
                             <View
+                              accessibilityRole="dialog"
+                              aria-describedby="testUuidV4"
+                              aria-modal={true}
                               deviceHeight={1334}
                               deviceWidth={750}
                               forwardedRef={[Function]}
@@ -1982,7 +1988,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               swipeThreshold={100}
                             >
                               <View
-                                aria-describedby="testUuidV4"
                                 height={428}
                                 style={
                                   Array [
@@ -4711,7 +4716,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
+                            accessibilityRole="dialog"
                             animationType="none"
+                            aria-describedby="testUuidV4"
+                            aria-modal={true}
                             deviceHeight={1334}
                             deviceWidth={750}
                             hardwareAccelerated={false}
@@ -4764,6 +4772,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             />
                             <View
+                              accessibilityRole="dialog"
+                              aria-describedby="testUuidV4"
+                              aria-modal={true}
                               deviceHeight={1334}
                               deviceWidth={750}
                               forwardedRef={[Function]}
@@ -4806,7 +4817,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               swipeThreshold={100}
                             >
                               <View
-                                aria-describedby="testUuidV4"
                                 height={428}
                                 style={
                                   Array [

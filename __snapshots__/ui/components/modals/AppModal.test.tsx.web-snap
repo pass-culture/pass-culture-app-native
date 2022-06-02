@@ -36,7 +36,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; top: 0px; transform: translateY(0px);"
               >
                 <div
@@ -202,7 +204,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -428,7 +432,9 @@ Object {
               style="flex: 1; top: 0px;"
             >
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -594,7 +600,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -760,7 +768,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -926,7 +936,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -1118,7 +1130,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -1284,7 +1298,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -1448,11 +1464,13 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-describedby="testUuidV4"
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
-                  aria-describedby="testUuidV4"
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
                   style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
@@ -1616,7 +1634,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -1801,7 +1821,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -1967,7 +1989,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -2133,7 +2157,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -2299,7 +2325,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
@@ -2458,7 +2486,9 @@ Object {
                 tabindex="0"
               />
               <div
+                aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                role="dialog"
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
