@@ -12,4 +12,5 @@ export interface Environment {
   API_BASE_PATH_NATIVE_V1: string
   DEEPLINK_PROTOCOL: string
   PROXY_CACHE_CONTROL: string
+  ORGANIZATION_PREFIX: string
 }
