@@ -5,6 +5,7 @@ import { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacityButtonProps } from 'ui/components/buttons/AppButton/types'
 import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
+import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type ButtonStyles = InterpolationFunction<
@@ -51,6 +52,19 @@ export const appButtonStyles: ButtonStyles = ({
     return theme.buttons.buttonHeights.small
   }
 
+  const paddingJustifyFlexStart = () => {
+    if (buttonHeight === 'extraSmall')
+      return {
+        paddingRight: getSpacing(2),
+        paddingLeft: getSpacing(2),
+      }
+
+    return {
+      paddingRight: 0,
+      paddingLeft: 0,
+    }
+  }
+
   return {
     flexDirection: 'row',
     alignItems: 'center',
@@ -58,7 +72,7 @@ export const appButtonStyles: ButtonStyles = ({
     borderRadius: theme.borderRadius.button,
     padding: 2,
     minHeight: heightButton(),
-    width: '100%',
+    width: buttonHeight !== 'extraSmall' ? '100%' : 'auto',
     ...(center ? { alignSelf: 'center' } : {}),
     ...(fullWidth ? {} : { maxWidth: theme.contentPage.maxWidth }),
     ...(mediumWidth ? { maxWidth: theme.contentPage.mediumWidth } : {}),
@@ -72,7 +86,7 @@ export const appButtonStyles: ButtonStyles = ({
           minHeight: inlineHeight ?? theme.buttons.buttonHeights.inline,
         }
       : {}),
-    ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
+    ...(justifyContent === 'flex-start' ? paddingJustifyFlexStart() : {}),
     ...(numberOfLines ? { height: 'auto' } : {}),
   }
 }

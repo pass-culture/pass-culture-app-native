@@ -99,14 +99,14 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
         {props.showLocationButton ? (
-          <StyledButtonPrimary
+          <ButtonPrimary
             testID="locationButton"
             wording={locationLabel}
             onPress={onPressLocationButton}
             icon={LocationPointer}
-            textSize={getSpacing(3)}
             buttonHeight="extraSmall"
             ellipsizeMode="tail"
+            justifyContent="flex-start"
             maxWidth={getSpacing(23)}
           />
         ) : null}
@@ -141,8 +141,6 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
 
 const StyledInputContainer = styled(InputContainer)({
   outlineOffset: 0,
-})
-
-const StyledButtonPrimary = styledButton(ButtonPrimary)({
-  maxWidth: getSpacing(34),
+  borderRadius: getSpacing(6),
+  paddingRight: getSpacing(2),
 })
