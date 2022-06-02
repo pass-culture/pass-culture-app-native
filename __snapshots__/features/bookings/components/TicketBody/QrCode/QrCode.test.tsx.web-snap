@@ -9,7 +9,6 @@ exports[`<QrCode/> should render correctly 1`] = `
       "WebkitAlignItems": "center",
       "WebkitBoxAlign": "center",
       "alignItems": "center",
-      "marginBottom": "12px",
       "msFlexAlign": "center",
     }
   }

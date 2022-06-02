@@ -6,7 +6,6 @@ exports[`<QrCode/> should render correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "marginBottom": 12,
       },
     ]
   }

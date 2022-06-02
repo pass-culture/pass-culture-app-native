@@ -93,7 +93,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         className="css-view-1dbjc4n"
         style={
           Object {
-            "height": "8px",
+            "height": "12px",
           }
         }
       />
@@ -101,9 +101,10 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         className="css-view-1dbjc4n"
         style={
           Object {
+            "paddingBottom": "12px",
             "paddingLeft": "8px",
             "paddingRight": "8px",
-            "paddingTop": "24px",
+            "paddingTop": "12px",
           }
         }
       >
@@ -159,7 +160,6 @@ exports[`<TicketWithContent/> should render properly 1`] = `
               "WebkitAlignItems": "center",
               "WebkitBoxAlign": "center",
               "alignItems": "center",
-              "marginBottom": "12px",
               "msFlexAlign": "center",
             }
           }
