@@ -52,6 +52,7 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
             searchInputID={searchInputID}
             onFocusState={onFocusState}
             isFocus={isFocus}
+            accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
           />
         </SearchBoxContainer>
       </React.Fragment>

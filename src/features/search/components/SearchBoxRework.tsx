@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData } from 'react-native'
+import { NativeSyntheticEvent, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -23,6 +23,7 @@ type Props = {
   showLocationButton?: boolean
   onFocusState?: (focus: boolean) => void
   isFocus?: boolean
+  accessibleHiddenTitle?: string
 }
 
 export const SearchBoxRework: React.FC<Props> = ({
@@ -30,6 +31,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   showLocationButton,
   onFocusState,
   isFocus,
+  accessibleHiddenTitle,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState } = useStagedSearch()
@@ -73,7 +75,7 @@ export const SearchBoxRework: React.FC<Props> = ({
 
   return (
     <React.Fragment>
-      <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
+      {!!accessibleHiddenTitle && <HiddenTitle>{accessibleHiddenTitle}</HiddenTitle>}
       <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(4) : 0}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
@@ -117,7 +119,7 @@ const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const HiddenTitle = styled(Text).attrs(getHeadingAttrs(1))({
+const HiddenTitle = styled(HiddenText).attrs(getHeadingAttrs(1))({
   width: '1px',
   height: '1px',
   overflow: 'hidden',

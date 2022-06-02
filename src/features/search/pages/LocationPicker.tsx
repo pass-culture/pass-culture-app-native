@@ -8,6 +8,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { HiddenText } from 'ui/components/HiddenText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { getSpacing, Spacer } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { SuggestedPlaces } from './SuggestedPlaces'
 
@@ -36,6 +37,7 @@ export const LocationPicker: React.FC = () => {
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <StyledInput>
+        <HiddenTitle>{t`Recherche une adresse, un lieu...`}</HiddenTitle>
         <SearchInput
           value={value}
           onChangeText={onChangeText}
@@ -63,3 +65,9 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const StyledInput = styled.View({ alignItems: 'center', marginHorizontal: getSpacing(6) })
+
+const HiddenTitle = styled(HiddenText).attrs(getHeadingAttrs(1))({
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+})

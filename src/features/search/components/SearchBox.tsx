@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData } from 'react-native'
+import { NativeSyntheticEvent, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -85,7 +85,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
 
   return (
     <React.Fragment>
-      <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
+      <HiddenTitle>{t`Recherche une offre, un titre, un lieu...`}</HiddenTitle>
       <StyledSearchInput
         searchInputID={searchInputID}
         value={query}
@@ -121,7 +121,7 @@ const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const HiddenTitle = styled(Text).attrs(getHeadingAttrs(1))({
+const HiddenTitle = styled(HiddenText).attrs(getHeadingAttrs(1))({
   width: '1px',
   height: '1px',
   overflow: 'hidden',
