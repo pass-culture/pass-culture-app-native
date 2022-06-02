@@ -20,16 +20,16 @@ exports[`CategoryButton should render correctly 1`] = `
       "WebkitUserSelect": "none",
       "alignItems": "center",
       "borderBottomColor": "rgba(144,148,157,1.00)",
-      "borderBottomLeftRadius": "8px",
-      "borderBottomRightRadius": "8px",
+      "borderBottomLeftRadius": "3px",
+      "borderBottomRightRadius": "4px",
       "borderBottomWidth": "1px",
-      "borderLeftColor": "rgba(144,148,157,1.00)",
-      "borderLeftWidth": "1px",
+      "borderLeftColor": "rgba(135,0,135,1.00)",
+      "borderLeftWidth": "4px",
       "borderRightColor": "rgba(144,148,157,1.00)",
       "borderRightWidth": "1px",
       "borderTopColor": "rgba(144,148,157,1.00)",
-      "borderTopLeftRadius": "8px",
-      "borderTopRightRadius": "8px",
+      "borderTopLeftRadius": "3px",
+      "borderTopRightRadius": "4px",
       "borderTopWidth": "1px",
       "cursor": "pointer",
       "flexDirection": "row",
@@ -38,7 +38,7 @@ exports[`CategoryButton should render correctly 1`] = `
       "msFlexDirection": "row",
       "msTouchAction": "manipulation",
       "msUserSelect": "none",
-      "paddingLeft": "12px",
+      "paddingRight": "16px",
       "touchAction": "manipulation",
       "transitionDuration": "0s",
       "transitionProperty": "opacity",
@@ -48,16 +48,6 @@ exports[`CategoryButton should render correctly 1`] = `
   tabIndex="0"
 >
   <div
-    className="css-view-1dbjc4n"
-  >
-    <div
-      className="css-text-901oao"
-      dir="auto"
-    >
-      undefined-SVG-Mock
-    </div>
-  </div>
-  <div
     className="css-text-901oao"
     dir="ltr"
     style={
@@ -66,11 +56,21 @@ exports[`CategoryButton should render correctly 1`] = `
         "fontFamily": "Montserrat-SemiBold",
         "fontSize": "12px",
         "lineHeight": "16px",
-        "marginLeft": "8px",
+        "marginLeft": "12px",
       }
     }
   >
     Bibliothèques & Médiathèques
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+  >
+    <div
+      className="css-text-901oao"
+      dir="auto"
+    >
+      undefined-SVG-Mock
+    </div>
   </div>
 </div>
 `;
