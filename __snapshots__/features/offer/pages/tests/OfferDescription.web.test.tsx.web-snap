@@ -107,7 +107,7 @@ Object {
                                         <div
                                           class="css-text-901oao"
                                           dir="auto"
-                                          style="display: none;"
+                                          style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                                         >
                                           Retour
                                         </div>
@@ -344,7 +344,7 @@ Object {
                                       <div
                                         class="css-text-901oao"
                                         dir="auto"
-                                        style="display: none;"
+                                        style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                                       >
                                         Retour
                                       </div>

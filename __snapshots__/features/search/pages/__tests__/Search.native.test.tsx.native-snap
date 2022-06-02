@@ -66,9 +66,6 @@ exports[`Search component should render Search 1`] = `
         Array [
           Object {
             "display": "none",
-            "height": 1,
-            "overflow": "hidden",
-            "width": 1,
           },
         ]
       }

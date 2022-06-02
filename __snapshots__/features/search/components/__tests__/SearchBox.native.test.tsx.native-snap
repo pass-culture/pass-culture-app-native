@@ -7,9 +7,6 @@ Array [
       Array [
         Object {
           "display": "none",
-          "height": 1,
-          "overflow": "hidden",
-          "width": 1,
         },
       ]
     }

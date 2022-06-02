@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { HiddenText } from 'ui/components/HiddenText'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { getSpacing, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -37,7 +37,9 @@ export const LocationPicker: React.FC = () => {
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <StyledInput>
-        <HiddenTitle>{t`Recherche une adresse, un lieu...`}</HiddenTitle>
+        <HiddenAccessibleText {...getHeadingAttrs(1)}>
+          {t`Recherche une adresse, un lieu...`}
+        </HiddenAccessibleText>
         <SearchInput
           value={value}
           onChangeText={onChangeText}
@@ -49,10 +51,9 @@ export const LocationPicker: React.FC = () => {
           accessibilityDescribedBy={accessibilityDescribedBy}
         />
       </StyledInput>
-      <HiddenText
-        nativeID={
-          accessibilityDescribedBy
-        }>{t`Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix`}</HiddenText>
+      <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
+        {t`Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix`}
+      </HiddenAccessibleText>
       <Spacer.Column numberOfSpaces={4} />
       <SuggestedPlaces query={debouncedValue} accessibilityLabelledBy={titleID} />
     </Container>
@@ -65,9 +66,3 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const StyledInput = styled.View({ alignItems: 'center', marginHorizontal: getSpacing(6) })
-
-const HiddenTitle = styled(HiddenText).attrs(getHeadingAttrs(1))({
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
-})

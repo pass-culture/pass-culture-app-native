@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
-import { HiddenText } from 'ui/components/HiddenText'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -75,7 +75,9 @@ export const SearchBoxRework: React.FC<Props> = ({
 
   return (
     <React.Fragment>
-      {!!accessibleHiddenTitle && <HiddenTitle>{accessibleHiddenTitle}</HiddenTitle>}
+      {!!accessibleHiddenTitle && (
+        <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
+      )}
       <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(4) : 0}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
@@ -97,10 +99,10 @@ export const SearchBoxRework: React.FC<Props> = ({
           showLocationButton={showLocationButton}
         />
       </SearchInputContainer>
-      <HiddenText nativeID={accessibilityDescribedBy}>
+      <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
           "Entrée"`}
-      </HiddenText>
+      </HiddenAccessibleText>
     </React.Fragment>
   )
 }
@@ -118,12 +120,6 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
 const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
-
-const HiddenTitle = styled(HiddenText).attrs(getHeadingAttrs(1))({
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
-})
 
 const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

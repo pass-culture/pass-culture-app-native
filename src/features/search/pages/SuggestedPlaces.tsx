@@ -12,7 +12,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
-import { HiddenText } from 'ui/components/HiddenText'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -109,10 +109,10 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
   })
 
   return (
-    <HiddenText
+    <HiddenAccessibleText
       accessibilityRole={Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined}>
       {show ? numberOfResults : ''}
-    </HiddenText>
+    </HiddenAccessibleText>
   )
 }
 
