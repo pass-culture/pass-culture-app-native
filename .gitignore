@@ -108,3 +108,13 @@ sourcemaps/*
 
 # forgot in work dir after npm pack
 *.tgz
+
+# typescript
+tsconfig.tsbuildinfo
+
+# firebase
+firebase-debug.log
+
+# server
+/server/.env
+/.firebase

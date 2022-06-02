@@ -1,0 +1,70 @@
+{
+  "name": "@pass-culture/web-proxy",
+  "description": "Web server proxy for pass-culture-app-native",
+  "private": true,
+  "main": "build/src/index.js",
+  "author": {
+    "email": "support@passculture.app",
+    "url": "https://pass.culture.fr",
+    "name": "pass Culture",
+    "twitter": "@pass_Culture"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pass-culture/pass-culture-app-native.git"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "predeploy": "yarn build",
+    "deploy": "gcloud beta app deploy --quiet",
+    "deploy:testing": "cat .env.testing > .env && sed -i.back -e '/web-proxy-testing/! s/web-proxy/web-proxy-testing/g' app.yaml && yarn deploy",
+    "deploy:staging": "cat .env.staging > .env  && sed -i.back -e '/web-proxy-staging/! s/web-proxy/web-proxy-staging/g' app.yaml && yarn deploy",
+    "deploy:integration": "cat .env.integration > .env && sed -i.back -e '/web-proxy-integration/! s/web-proxy/web-proxy-integration/g' app.yaml && yarn deploy",
+    "deploy:production": "cat .env.production > .env && sed -i.back -e '/web-proxy-production/! s/web-proxy/web-proxy-production/g' app.yaml && yarn deploy",
+    "dev": "ENV=testing node-dev src/index.ts",
+    "start": "node build/src/index.js",
+    "test": "yarn test:lint && yarn test:types && yarn test:unit",
+    "test:lint": "eslint . --ext .js,.ts --cache",
+    "test:types": "tsc --noEmit",
+    "test:unit": "TZ=UTC JEST=true jest --forceExit",
+    "test:unit:ci": "yarn test:unit --maxWorkers=2 --logHeapUsage --coverage",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.3",
+    "http-proxy-middleware": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.1",
+    "@swc/core": "^1.2.163",
+    "@types/node": "^16.11.7",
+    "@types/express": "^4.17.13",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-local-rules": "^1.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-typescript-sort-keys": "^1.8.0",
+    "prettier": "^2.6.2",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "msw": "^0.39.2",
+    "node-dev": "^7.4.2",
+    "nodemon": "^2.0.15",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.3.5"
+  }
+}

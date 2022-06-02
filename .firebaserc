@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "passculture-native"
+  },
+  "targets": {
+    "passculture-native": {
+      "hosting": {
+        "testing": [
+          "passculture-native-testing"
+        ]
+      }
+    }
+  }
+}

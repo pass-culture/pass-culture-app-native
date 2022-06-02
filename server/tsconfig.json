@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "composite": true,
+    "rootDir": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "es5",
+    "outDir": "build",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "lib": [
+      "es6"
+    ]
+  },
+  "exclude": [
+    "build/**",
+    "**/src/**/tests/**",
+    "**/src/**/specs/**",
+    "node_modules/**",
+    "babel.config.js"
+  ],
+  "ts-node": {
+    "swc": true
+  }
+}

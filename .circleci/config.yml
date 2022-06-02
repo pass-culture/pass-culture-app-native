@@ -59,6 +59,36 @@ commands:
           paths:
             - node_modules
 
+  install_node_modules_proxy:
+    description: Install proxy Node Dependencies
+    steps:
+      - restore_cache:
+          name: Restore Node Modules
+          keys:
+            - node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable --cwd server
+      - save_cache:
+          name: Save Node Modules
+          key: node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - node_modules
+
+  unit_test_proxy:
+    description: Unit Tests Proxy
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run: yarn --cwd server test:unit:ci
+      - save_cache:
+          name: Save Tests cache
+          key: jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - .jest
+
   unit_test_native:
     description: Unit Tests Native
     steps:
@@ -214,9 +244,11 @@ commands:
       gcp_key_name:
         type: env_var_name
     steps:
-      - run: echo ${<< parameters.gcp_key_name >>} > ${HOME}/gcp-key.json
-      - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
-      - run: gcloud --quiet config set project ${GCP_PROJECT}
+      - run:
+          name: Authenticate to GCP
+          command: |
+            echo ${<< parameters.gcp_key_name >>} | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCP_PROJECT}
 
   copy_assetlinks:
     description: Copy assetlinks-<< parameters.env >>.json to assetlinks.json
@@ -269,10 +301,14 @@ commands:
   sonarcloud-scanner:
     description: Detect bugs and vulnerabilities
     parameters:
+      directory:
+        default: .
+        description: change directory to run sonar-scanner from a sub directory
+        type: string
       cache_version:
-        default: 1
+        default: '1'
         description: increment this value if the cache is corrupted and you want to start with a clean cache
-        type: integer
+        type: string
       sonar_token_variable_name:
         default: SONAR_TOKEN
         description: the name of the environment variable where the SonarCloud API token is stored
@@ -294,6 +330,7 @@ commands:
             export SONAR_USER_HOME=$SCANNER_DIRECTORY/.sonar
             OS="linux"
             echo $SONAR_USER_HOME
+            cd <<parameters.directory>>
 
             if [[ ! -x "$SCANNER_DIRECTORY/sonar-scanner-$VERSION-$OS/bin/sonar-scanner" ]]; then
               curl -Ol https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$VERSION-$OS.zip
@@ -312,6 +349,19 @@ commands:
           paths:
             - /tmp/cache/scanner
 
+  deploy-web-proxy:
+    parameters:
+      env:
+        type: string
+    steps:
+      - checkout
+      - install_node_modules_proxy
+      - authenticate_gcp:
+          gcp_key_name: GCP_APP_NATIVE_KEY
+      - run:
+          name: Deploy web proxy to <<parameters.env>>
+          command: yarn --cwd server deploy:<<parameters.env>>
+
 ###################
 #  JOBS
 ###################
@@ -323,6 +373,30 @@ jobs:
     steps:
       - checkout
       - install_node_modules
+
+  checkout-and-install-proxy-deps:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules_proxy
+
+  test-proxy:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules_proxy
+      - run:
+          name: Linter
+          command: yarn --cwd server test:lint
+      - run:
+          name: Typescript Type Check
+          command: yarn --cwd server test:types
+      - unit_test_proxy
+      - sonarcloud-scanner:
+          directory: server
+          cache_version: proxy-1
 
   test-lint-and-types:
     executor: node
@@ -715,6 +789,34 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
+  deploy-web-proxy-testing:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: testing
+
+  deploy-web-proxy-staging:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: staging
+
+  deploy-web-proxy-integration:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: integration
+
+  deploy-web-proxy-production:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: production
+
 ###################
 #  WORKFLOWS
 ###################
@@ -727,6 +829,14 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - checkout-and-install-proxy-deps:
+          filters:
+            tags:
+              only: /.*/
+      - test-proxy:
+          requires:
+            - checkout-and-install-proxy-deps
+          context: SonarCloud
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
@@ -919,6 +1029,56 @@ workflows:
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
+      - deploy-web-proxy-testing:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
+          requires:
+            - test-proxy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-staging:
+          filters:
+            tags:
+              only:
+                - /^(patch\/)?v.*/
+                - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-integration:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-production:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_PROD
       - wait_for_approval_web_to_deploy:
           filters:
             tags:
@@ -934,3 +1094,16 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
+      - wait_for_approval_web_proxy_to_deploy:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+                - /^(patch\/)?v.*/
+                - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+          type: approval
+          requires:
+            - test-proxy

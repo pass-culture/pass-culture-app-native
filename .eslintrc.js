@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules'],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
@@ -191,7 +192,7 @@ module.exports = {
     jest: true,
     serviceworker: true,
   },
-  ignorePatterns: ['build', '.*.js', '*.config.js', 'node_modules', 'coverage'],
+  ignorePatterns: ['build', '.*.js', '*.config.js', 'node_modules', 'coverage', 'server'],
   // TypeScript files overrides
   overrides: [
     {
