@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
 import { useUtmParams } from 'libs/utm'
@@ -225,5 +226,17 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_REACTIVATION, { from }),
   logConsultArticleAccountDeletion: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION),
+  logModuleDisplayedOnHomepage: (
+    moduleId: string,
+    moduleType: ContentTypes,
+    index: number,
+    homeEntryId: string | undefined
+  ) =>
+    analyticsProvider.logEvent(AnalyticsEvent.MODULE_DISPLAYED_ON_HOMEPAGE, {
+      moduleId,
+      moduleType,
+      index,
+      homeEntryId,
+    }),
   useInit,
 }
