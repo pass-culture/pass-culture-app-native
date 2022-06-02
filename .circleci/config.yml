@@ -1103,7 +1103,8 @@ workflows:
                 - /^(patch\/)?v.*/
                 - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only:
+                - master
           type: approval
           requires:
             - test-proxy
