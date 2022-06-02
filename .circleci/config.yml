@@ -349,6 +349,19 @@ commands:
           paths:
             - /tmp/cache/scanner
 
+  deploy-web-proxy:
+    parameters:
+      env:
+        type: string
+    steps:
+      - checkout
+      - install_node_modules_proxy
+      - authenticate_gcp:
+          gcp_key_name: GCP_APP_NATIVE_KEY
+      - run:
+          name: Deploy web proxy to <<parameters.env>>
+          command: yarn --cwd server deploy:<<parameters.env>>
+
 ###################
 #  JOBS
 ###################
@@ -780,14 +793,29 @@ jobs:
     executor: gcp
     working_directory: ~/pass-culture
     steps:
-      - checkout
-      - install_node_modules_proxy
-      - authenticate_gcp:
-          gcp_key_name: GCP_APP_NATIVE_KEY
-      - run:
-          name: Deploy
-          command: yarn --cwd server deploy:testing
+      - deploy-web-proxy:
+          env: testing
 
+  deploy-web-proxy-staging:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: staging
+
+  deploy-web-proxy-integration:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: integration
+
+  deploy-web-proxy-production:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: production
 
 ###################
 #  WORKFLOWS
@@ -1001,6 +1029,56 @@ workflows:
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
+      - deploy-web-proxy-testing:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
+          requires:
+            - test-proxy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-staging:
+          filters:
+            tags:
+              only:
+                - /^(patch\/)?v.*/
+                - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-integration:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-production:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_PROD
       - wait_for_approval_web_to_deploy:
           filters:
             tags:
@@ -1016,13 +1094,14 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
-      - deploy-web-proxy-testing:
+      - wait_for_approval_web_proxy_to_deploy:
           filters:
             tags:
               only:
-                - master
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+                - /^(patch\/)?v.*/
+                - /^hotfix-staging.*/
+          type: approval
           requires:
             - test-proxy
-          context:
-            - GCP
-            - GCP_APP_NATIVE_EHP
