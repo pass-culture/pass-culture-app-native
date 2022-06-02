@@ -1,21 +1,22 @@
 import { t } from '@lingui/macro'
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
+import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
+import { Booking } from 'features/bookings/components/types'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -32,12 +33,14 @@ import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimens
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const scrollIndicatorInsets = { right: 1 }
+const emptyBookings: Booking[] = []
 
 export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
@@ -65,6 +68,24 @@ export function BookingDetails() {
   const { venue, id: offerId } = booking?.stock.offer || {}
   const { address, postalCode, city } = venue || {}
   const venueFullAddress = address ? formatFullAddress(address, postalCode, city) : undefined
+
+  const { data: bookings } = useBookings()
+  const { ended_bookings: endedBookings = emptyBookings } = bookings || {}
+  const { showInfoSnackBar } = useSnackBarContext()
+
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  // Allows to display a message in case of refresh specifying the cancellation
+  // of the reservation being consulted if it is made via Flask Admin
+  const cancellationConsultedBooking = endedBookings.filter((item) => item.id === params.id)
+  if (cancellationConsultedBooking.length > 0) {
+    const endedBooking = cancellationConsultedBooking[0]
+    showInfoSnackBar({
+      message: t`Votre réservation ${endedBooking.stock.offer.name} a été annulée`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    navigate('EndedBookings')
+  }
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
