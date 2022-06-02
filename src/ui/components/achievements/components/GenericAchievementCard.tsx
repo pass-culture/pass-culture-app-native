@@ -118,17 +118,18 @@ Those props are provided by the GenericAchievementCard and must be passed down t
         />
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
-      <StyledTitle>{props.title}</StyledTitle>
-      <StyledSubTitle>{props.subTitle}</StyledSubTitle>
-      <Spacer.Flex flex={0.5} />
-      {!!props.centerChild && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <props.centerChild />
-          <Spacer.Column numberOfSpaces={5} />
-        </React.Fragment>
-      )}
-      <StyledBody>{props.text}</StyledBody>
+      <ContentContainer>
+        <StyledTitle>{props.title}</StyledTitle>
+        <StyledSubTitle>{props.subTitle}</StyledSubTitle>
+        <Spacer.Column numberOfSpaces={4} />
+        {!!props.centerChild && (
+          <React.Fragment>
+            <props.centerChild />
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
+        )}
+        <StyledBody>{props.text}</StyledBody>
+      </ContentContainer>
       <Spacer.Flex flex={2} />
       <BottomButtonsContainer
         isSmallScreen={isSmallScreen}
@@ -199,5 +200,8 @@ const StyledSubTitle = styled(Typo.Title2)({
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
-  overflow: 'scroll',
+})
+
+const ContentContainer = styled.View({
+  overflowY: 'auto',
 })
