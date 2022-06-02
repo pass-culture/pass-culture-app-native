@@ -7,8 +7,8 @@ export const useMustUpdateApp = () => {
   const minimalBuildNumber = useMinimalBuildNumber()
   const mustUpdateApp = !!minimalBuildNumber && build < minimalBuildNumber
 
-  if (mustUpdateApp && !build) {
-    eventMonitoring.captureException(new Error('MustUpdateAppError'), {
+  if (!minimalBuildNumber) {
+    eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
       extra: {
         mustUpdateApp,
         minimalBuildNumber,
