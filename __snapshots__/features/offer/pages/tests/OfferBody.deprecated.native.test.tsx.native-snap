@@ -1887,8 +1887,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
-                            accessibilityDescribedBy="testUuidV4"
+                            accessibilityRole="dialog"
                             animationType="none"
+                            aria-describedby="testUuidV4"
+                            aria-modal={true}
                             deviceHeight={1334}
                             deviceWidth={750}
                             hardwareAccelerated={false}
@@ -1941,7 +1943,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             />
                             <View
-                              accessibilityDescribedBy="testUuidV4"
+                              accessibilityRole="dialog"
+                              aria-describedby="testUuidV4"
+                              aria-modal={true}
                               deviceHeight={1334}
                               deviceWidth={750}
                               forwardedRef={[Function]}
@@ -4712,8 +4716,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
-                            accessibilityDescribedBy="testUuidV4"
+                            accessibilityRole="dialog"
                             animationType="none"
+                            aria-describedby="testUuidV4"
+                            aria-modal={true}
                             deviceHeight={1334}
                             deviceWidth={750}
                             hardwareAccelerated={false}
@@ -4766,7 +4772,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             />
                             <View
-                              accessibilityDescribedBy="testUuidV4"
+                              accessibilityRole="dialog"
+                              aria-describedby="testUuidV4"
+                              aria-modal={true}
                               deviceHeight={1334}
                               deviceWidth={750}
                               forwardedRef={[Function]}

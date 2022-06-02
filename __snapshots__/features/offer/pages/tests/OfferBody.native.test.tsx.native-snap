@@ -1101,8 +1101,10 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       </View>
     </View>
     <Modal
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityRole="dialog"
       animationType="none"
+      aria-describedby="testUuidV4"
+      aria-modal={true}
       deviceHeight={1334}
       deviceWidth={750}
       hardwareAccelerated={false}
@@ -1155,7 +1157,9 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       />
       <View
-        accessibilityDescribedBy="testUuidV4"
+        accessibilityRole="dialog"
+        aria-describedby="testUuidV4"
+        aria-modal={true}
         deviceHeight={1334}
         deviceWidth={750}
         forwardedRef={[Function]}

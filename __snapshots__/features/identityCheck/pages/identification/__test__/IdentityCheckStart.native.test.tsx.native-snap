@@ -388,8 +388,10 @@ Array [
                     </View>
                   </View>
                   <Modal
-                    accessibilityDescribedBy="testUuidV4"
+                    accessibilityRole="dialog"
                     animationType="none"
+                    aria-describedby="testUuidV4"
+                    aria-modal={true}
                     deviceHeight={1334}
                     deviceWidth={750}
                     hardwareAccelerated={false}
@@ -444,7 +446,9 @@ Array [
                       }
                     />
                     <View
-                      accessibilityDescribedBy="testUuidV4"
+                      accessibilityRole="dialog"
+                      aria-describedby="testUuidV4"
+                      aria-modal={true}
                       collapsable={false}
                       deviceHeight={1334}
                       deviceWidth={750}
@@ -986,8 +990,10 @@ Array [
     </View>
   </View>,
   <Modal
-    accessibilityDescribedBy="testUuidV4"
+    accessibilityRole="dialog"
     animationType="none"
+    aria-describedby="testUuidV4"
+    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -1042,7 +1048,9 @@ Array [
       }
     />
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityRole="dialog"
+      aria-describedby="testUuidV4"
+      aria-modal={true}
       collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
