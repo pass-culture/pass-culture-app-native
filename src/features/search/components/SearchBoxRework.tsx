@@ -74,7 +74,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   return (
     <React.Fragment>
       <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
-      <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(4) : 0}>
+      <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(6) : 0}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
@@ -110,7 +110,7 @@ const StyledSearchInput = styled((props) => <SearchInput {...props} />).attrs(({
 })
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
+  size: theme.icons.sizes.small,
 }))``
 
 const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
@@ -135,5 +135,6 @@ const SearchInputContainer = styled.View<{ marginRight: number }>(({ marginRight
 }))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
-  marginHorizontal: getSpacing(4),
+  marginLeft: getSpacing(6),
+  marginRight: getSpacing(4),
 })
