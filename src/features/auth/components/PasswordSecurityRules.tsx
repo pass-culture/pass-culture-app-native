@@ -3,9 +3,9 @@ import React, { FunctionComponent } from 'react'
 import { View, Platform, AccessibilityRole } from 'react-native'
 import styled from 'styled-components/native'
 
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { getSpacing } from 'ui/theme'
-import { HiddenAccessibleText } from 'ui/web/text/HiddenAccessibleText'
 
 type Props = {
   password: string
@@ -56,7 +56,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
 }) => {
   return (
     <React.Fragment>
-      <HiddenAccessibleText id={nativeID}>
+      <HiddenAccessibleText nativeID={nativeID}>
         {t`Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial`}
       </HiddenAccessibleText>
       <RulesContainer isVisible={visible}>

@@ -12,11 +12,11 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { HiddenAccessibleText } from 'ui/web/text/HiddenAccessibleText'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -108,7 +108,12 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
     other: '# résultats',
   })
 
-  return <HiddenAccessibleText role="status">{show ? numberOfResults : ''}</HiddenAccessibleText>
+  return (
+    <HiddenAccessibleText
+      accessibilityRole={Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined}>
+      {show ? numberOfResults : ''}
+    </HiddenAccessibleText>
+  )
 }
 
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>

@@ -3,7 +3,7 @@ import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { HiddenText } from 'ui/components/HiddenText'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Lock as LockIcon } from 'ui/svg/icons/Lock'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
@@ -45,7 +45,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   return (
     <FilterSwitchContainer>
       <Spacer.Row numberOfSpaces={5} />
-      <HiddenText>{hiddenText}</HiddenText>
+      <HiddenAccessibleText>{hiddenText}</HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}

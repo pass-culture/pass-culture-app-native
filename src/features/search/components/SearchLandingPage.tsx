@@ -14,7 +14,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { HiddenText } from 'ui/components/HiddenText'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -51,10 +51,9 @@ export const SearchLandingPage: React.FC = () => {
           aria-describedby={searchCategoriesDescribedBy}>
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
-        <HiddenText
-          nativeID={
-            searchCategoriesDescribedBy
-          }>{t`Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton "Rechercher"`}</HiddenText>
+        <HiddenAccessibleText nativeID={searchCategoriesDescribedBy}>
+          {t`Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton "Rechercher"`}
+        </HiddenAccessibleText>
 
         <Separator isSmallWebViewportHeight={mqSmallWebViewportHeight} />
 
@@ -63,11 +62,9 @@ export const SearchLandingPage: React.FC = () => {
           aria-describedby={locationFilterDescribedBy}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
-        <HiddenText
-          nativeID={
-            locationFilterDescribedBy
-          }>{t`Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton "Rechercher"`}</HiddenText>
-
+        <HiddenAccessibleText nativeID={locationFilterDescribedBy}>
+          {t`Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton "Rechercher"`}
+        </HiddenAccessibleText>
         {!mqSmallWebViewportHeight && <Spacer.Flex flex={2} />}
       </ScrollView>
       <SearchButtonContainer isSmallWebViewportHeight={mqSmallWebViewportHeight}>

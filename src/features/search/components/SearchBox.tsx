@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData } from 'react-native'
+import { NativeSyntheticEvent, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
-import { HiddenText } from 'ui/components/HiddenText'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -85,7 +85,9 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
 
   return (
     <React.Fragment>
-      <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
+      <HiddenAccessibleText {...getHeadingAttrs(1)}>
+        {t`Recherche une offre, un titre, un lieu...`}
+      </HiddenAccessibleText>
       <StyledSearchInput
         searchInputID={searchInputID}
         value={query}
@@ -99,10 +101,10 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
         onPressRightIcon={resetSearch}
         accessibilityDescribedBy={accessibilityDescribedBy}
       />
-      <HiddenText nativeID={accessibilityDescribedBy}>
+      <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
         "Entrée"`}
-      </HiddenText>
+      </HiddenAccessibleText>
     </React.Fragment>
   )
 }
@@ -120,9 +122,3 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
 const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
-
-const HiddenTitle = styled(Text).attrs(getHeadingAttrs(1))({
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
-})

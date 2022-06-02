@@ -65,9 +65,7 @@ exports[`Search component should render Search 1`] = `
       style={
         Array [
           Object {
-            "height": 1,
-            "overflow": "hidden",
-            "width": 1,
+            "display": "none",
           },
         ]
       }

@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchBoxRework } from 'features/search/components/SearchBoxRework'
@@ -8,6 +9,7 @@ import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
@@ -28,7 +30,9 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
         </HeaderBackgroundWrapperWithLabel>
         <Spacer.TopScreen />
         <SearchBoxContainer testID="searchBoxWithLabel">
-          <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
+          <View {...getHeadingAttrs(1)}>
+            <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
+          </View>
           <Spacer.Column numberOfSpaces={2} />
           <SearchBoxRework
             searchInputID={searchInputID}
@@ -52,6 +56,7 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
             searchInputID={searchInputID}
             onFocusState={onFocusState}
             isFocus={isFocus}
+            accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
           />
         </SearchBoxContainer>
       </React.Fragment>

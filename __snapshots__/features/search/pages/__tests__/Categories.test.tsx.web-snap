@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -250,11 +250,11 @@
+@@ -255,11 +255,11 @@
         <ul
           className=\\"sc-dkPtRN sc-hKwDye kHsZXE dWdAkX\\"
         >
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -346,11 +346,11 @@
+@@ -351,11 +351,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -31,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -373,11 +373,22 @@
+@@ -378,11 +378,22 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -506,11 +517,11 @@
+@@ -511,11 +522,11 @@
               />
             </div>
           </li>
@@ -68,7 +68,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -602,11 +613,11 @@
+@@ -607,11 +618,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -629,22 +640,11 @@
+@@ -634,22 +645,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -235,7 +235,12 @@ exports[`Categories component should render correctly 1`] = `
               dir="auto"
               style={
                 Object {
-                  "display": "none",
+                  "WebkitClipPath": "inset(50%)",
+                  "clipPath": "inset(50%)",
+                  "height": "1px",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "width": "1px",
                 }
               }
             >

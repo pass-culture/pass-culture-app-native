@@ -2325,12 +2325,16 @@ msgstr "Recherche par catégorie"
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
+#: src/features/search/pages/LocationPicker.tsx
+msgid "Recherche une adresse, un lieu..."
+msgstr "Recherche une adresse, un lieu..."
+
 #: src/features/search/components/SearchHeaderRework.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
 
 #: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchBoxRework.tsx
+#: src/features/search/components/SearchHeaderRework.tsx
 msgid "Recherche une offre, un titre, un lieu..."
 msgstr "Recherche une offre, un titre, un lieu..."
 
