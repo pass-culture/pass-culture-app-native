@@ -55,70 +55,77 @@ exports[`ThirdCard should render third card 1`] = `
       ]
     }
   />
-  <Text
-    fontSize={28}
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Black",
-          "fontSize": 28,
-          "lineHeight": 36,
-        },
-        Object {
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Toute la culture
-  </Text>
-  <Text
-    fontSize={24}
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 24,
-          "lineHeight": 28,
-        },
-        Object {
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    à portée de main !
-  </Text>
   <View
-    flex={0.5}
     style={
       Array [
         Object {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "overflow": "scroll",
-          "textAlign": "center",
+          "overflowY": "auto",
         },
       ]
     }
   >
-    Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.
-  </Text>
+    <Text
+      fontSize={28}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Toute la culture
+    </Text>
+    <Text
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      à portée de main !
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.
+    </Text>
+  </View>
   <View
     flex={2}
     style={

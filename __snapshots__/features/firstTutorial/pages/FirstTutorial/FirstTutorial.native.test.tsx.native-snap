@@ -234,70 +234,77 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 />
-                <Text
-                  fontSize={28}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 28,
-                        "lineHeight": 36,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Le pass Culture
-                </Text>
-                <Text
-                  fontSize={24}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 24,
-                        "lineHeight": 28,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  c'est...
-                </Text>
                 <View
-                  flex={0.5}
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "overflow": "scroll",
-                        "textAlign": "center",
+                        "overflowY": "auto",
                       },
                     ]
                   }
                 >
-                  une initiative du Gouvernement financée par le ministère de la Culture.
-                </Text>
+                  <Text
+                    fontSize={28}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Le pass Culture
+                  </Text>
+                  <Text
+                    fontSize={24}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    c'est...
+                  </Text>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    une initiative du Gouvernement financée par le ministère de la Culture.
+                  </Text>
+                </View>
                 <View
                   flex={2}
                   style={
@@ -452,82 +459,57 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 />
-                <Text
-                  fontSize={28}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 28,
-                        "lineHeight": 36,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Des offres pour tous
-                </Text>
-                <Text
-                  fontSize={24}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 24,
-                        "lineHeight": 28,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  et si tu as...
-                </Text>
-                <View
-                  flex={0.5}
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    Array [
-                      Object {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     Array [
                       Object {
-                        "flexDirection": "row",
-                        "justifyContent": "center",
+                        "overflowY": "auto",
                       },
                     ]
                   }
                 >
-                  <View
-                    flex={0.5}
+                  <Text
+                    fontSize={28}
                     style={
                       Array [
                         Object {
-                          "flexBasis": 0,
-                          "flexGrow": 0.5,
-                          "flexShrink": 1,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Des offres pour tous
+                  </Text>
+                  <Text
+                    fontSize={24}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    et si tu as...
+                  </Text>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
                         },
                       ]
                     }
@@ -536,393 +518,415 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     style={
                       Array [
                         Object {
-                          "flexDirection": "column",
+                          "flexDirection": "row",
+                          "justifyContent": "center",
                         },
                       ]
                     }
                   >
                     <View
+                      flex={0.5}
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#320096",
-                            "borderRadius": 4,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 0,
-                            "paddingVertical": 0,
-                            "transform": Array [
-                              Object {
-                                "rotate": "-4.34deg",
-                              },
-                            ],
-                            "width": 43,
+                            "flexBasis": 0,
+                            "flexGrow": 0.5,
+                            "flexShrink": 1,
                           },
                         ]
                       }
-                      tagHeight={20}
-                      tagWidth={43}
-                      testID="Aide financière 15 ans"
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexDirection": "column",
+                          },
+                        ]
+                      }
                     >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "#320096",
+                              "borderRadius": 4,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "paddingHorizontal": 0,
+                              "paddingVertical": 0,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "-4.34deg",
+                                },
+                              ],
+                              "width": 43,
+                            },
+                          ]
+                        }
+                        tagHeight={20}
+                        tagWidth={43}
+                        testID="Aide financière 15 ans"
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "center",
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                                "transform": Array [
+                                  Object {
+                                    "rotate": "4.34deg",
+                                  },
+                                ],
+                              },
+                            ]
+                          }
+                        >
+                          20 €
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
                       <Text
                         style={
                           Array [
                             Object {
                               "alignSelf": "center",
-                              "color": "#ffffff",
+                              "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
                               "lineHeight": 16,
-                              "transform": Array [
-                                Object {
-                                  "rotate": "4.34deg",
-                                },
-                              ],
                             },
                           ]
                         }
                       >
-                        20 €
+                        15 ans
                       </Text>
                     </View>
                     <View
-                      numberOfSpaces={1}
+                      flex={0.25}
                       style={
                         Array [
                           Object {
-                            "height": 4,
+                            "flexBasis": 0,
+                            "flexGrow": 0.25,
+                            "flexShrink": 1,
                           },
                         ]
                       }
                     />
-                    <Text
+                    <View
                       style={
                         Array [
                           Object {
-                            "alignSelf": "center",
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "flexDirection": "column",
                           },
                         ]
                       }
                     >
-                      15 ans
-                    </Text>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "#320096",
+                              "borderRadius": 4,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "paddingHorizontal": 0,
+                              "paddingVertical": 0,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "-4.34deg",
+                                },
+                              ],
+                              "width": 43,
+                            },
+                          ]
+                        }
+                        tagHeight={20}
+                        tagWidth={43}
+                        testID="Aide financière 16 ans"
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "center",
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                                "transform": Array [
+                                  Object {
+                                    "rotate": "4.34deg",
+                                  },
+                                ],
+                              },
+                            ]
+                          }
+                        >
+                          30 €
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        16 ans
+                      </Text>
+                    </View>
+                    <View
+                      flex={0.25}
+                      style={
+                        Array [
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 0.25,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexDirection": "column",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "#320096",
+                              "borderRadius": 4,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "paddingHorizontal": 0,
+                              "paddingVertical": 0,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "-4.34deg",
+                                },
+                              ],
+                              "width": 43,
+                            },
+                          ]
+                        }
+                        tagHeight={20}
+                        tagWidth={43}
+                        testID="Aide financière 17 ans"
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "center",
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                                "transform": Array [
+                                  Object {
+                                    "rotate": "4.34deg",
+                                  },
+                                ],
+                              },
+                            ]
+                          }
+                        >
+                          30 €
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        17 ans
+                      </Text>
+                    </View>
+                    <View
+                      flex={0.25}
+                      style={
+                        Array [
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 0.25,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexDirection": "column",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "#320096",
+                              "borderRadius": 4,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "paddingHorizontal": 0,
+                              "paddingVertical": 0,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "-4.34deg",
+                                },
+                              ],
+                              "width": 43,
+                            },
+                          ]
+                        }
+                        tagHeight={20}
+                        tagWidth={43}
+                        testID="Aide financière 18 ans"
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "center",
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                                "transform": Array [
+                                  Object {
+                                    "rotate": "4.34deg",
+                                  },
+                                ],
+                              },
+                            ]
+                          }
+                        >
+                          300 €
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        18 ans
+                      </Text>
+                    </View>
+                    <View
+                      flex={0.5}
+                      style={
+                        Array [
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 0.5,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
-                    flex={0.25}
+                    numberOfSpaces={4}
                     style={
                       Array [
                         Object {
-                          "flexBasis": 0,
-                          "flexGrow": 0.25,
-                          "flexShrink": 1,
+                          "height": 16,
                         },
                       ]
                     }
                   />
-                  <View
+                  <Text
                     style={
                       Array [
                         Object {
-                          "flexDirection": "column",
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "center",
                         },
                       ]
                     }
                   >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#320096",
-                            "borderRadius": 4,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 0,
-                            "paddingVertical": 0,
-                            "transform": Array [
-                              Object {
-                                "rotate": "-4.34deg",
-                              },
-                            ],
-                            "width": 43,
-                          },
-                        ]
-                      }
-                      tagHeight={20}
-                      tagWidth={43}
-                      testID="Aide financière 16 ans"
-                    >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "alignSelf": "center",
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "transform": Array [
-                                Object {
-                                  "rotate": "4.34deg",
-                                },
-                              ],
-                            },
-                          ]
-                        }
-                      >
-                        30 €
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      16 ans
-                    </Text>
-                  </View>
-                  <View
-                    flex={0.25}
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 0.25,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#320096",
-                            "borderRadius": 4,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 0,
-                            "paddingVertical": 0,
-                            "transform": Array [
-                              Object {
-                                "rotate": "-4.34deg",
-                              },
-                            ],
-                            "width": 43,
-                          },
-                        ]
-                      }
-                      tagHeight={20}
-                      tagWidth={43}
-                      testID="Aide financière 17 ans"
-                    >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "alignSelf": "center",
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "transform": Array [
-                                Object {
-                                  "rotate": "4.34deg",
-                                },
-                              ],
-                            },
-                          ]
-                        }
-                      >
-                        30 €
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      17 ans
-                    </Text>
-                  </View>
-                  <View
-                    flex={0.25}
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 0.25,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#320096",
-                            "borderRadius": 4,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 0,
-                            "paddingVertical": 0,
-                            "transform": Array [
-                              Object {
-                                "rotate": "-4.34deg",
-                              },
-                            ],
-                            "width": 43,
-                          },
-                        ]
-                      }
-                      tagHeight={20}
-                      tagWidth={43}
-                      testID="Aide financière 18 ans"
-                    >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "alignSelf": "center",
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "transform": Array [
-                                Object {
-                                  "rotate": "4.34deg",
-                                },
-                              ],
-                            },
-                          ]
-                        }
-                      >
-                        300 €
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      18 ans
-                    </Text>
-                  </View>
-                  <View
-                    flex={0.5}
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 0.5,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
+                    de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application.
+                  </Text>
                 </View>
-                <View
-                  numberOfSpaces={5}
-                  style={
-                    Array [
-                      Object {
-                        "height": 20,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "overflow": "scroll",
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application.
-                </Text>
                 <View
                   flex={2}
                   style={
@@ -1033,70 +1037,77 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 />
-                <Text
-                  fontSize={28}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 28,
-                        "lineHeight": 36,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Toute la culture
-                </Text>
-                <Text
-                  fontSize={24}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 24,
-                        "lineHeight": 28,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  à portée de main !
-                </Text>
                 <View
-                  flex={0.5}
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "overflow": "scroll",
-                        "textAlign": "center",
+                        "overflowY": "auto",
                       },
                     ]
                   }
                 >
-                  Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.
-                </Text>
+                  <Text
+                    fontSize={28}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Toute la culture
+                  </Text>
+                  <Text
+                    fontSize={24}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    à portée de main !
+                  </Text>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.
+                  </Text>
+                </View>
                 <View
                   flex={2}
                   style={
@@ -1207,70 +1218,77 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 />
-                <Text
-                  fontSize={28}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 28,
-                        "lineHeight": 36,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Des nouveautés
-                </Text>
-                <Text
-                  fontSize={24}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 24,
-                        "lineHeight": 28,
-                      },
-                      Object {
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  quotidiennes
-                </Text>
                 <View
-                  flex={0.5}
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 0.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "overflow": "scroll",
-                        "textAlign": "center",
+                        "overflowY": "auto",
                       },
                     ]
                   }
                 >
-                  Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !
-                </Text>
+                  <Text
+                    fontSize={28}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Des nouveautés
+                  </Text>
+                  <Text
+                    fontSize={24}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
+                        },
+                        Object {
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    quotidiennes
+                  </Text>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !
+                  </Text>
+                </View>
                 <View
                   flex={2}
                   style={
