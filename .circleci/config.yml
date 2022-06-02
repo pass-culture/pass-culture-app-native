@@ -1102,6 +1102,8 @@ workflows:
                 - /^hotfix-prod.*/
                 - /^(patch\/)?v.*/
                 - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
           type: approval
           requires:
             - test-proxy
