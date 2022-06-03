@@ -11,7 +11,7 @@ executors:
 
   android:
     docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+      - image: cimg/android:2022.04-node
 
   ios:
     macos:
