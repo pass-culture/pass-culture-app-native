@@ -1036,7 +1036,7 @@ workflows:
             branches:
               only: master
           requires:
-            - test-proxy
+            - wait_for_approval_web_proxy_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
