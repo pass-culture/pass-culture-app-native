@@ -112,6 +112,30 @@ commands:
           paths:
             - .jest
 
+  install_ruby_version:
+    description: Install ruby version with rvm
+    steps:
+      - run:
+          name: Install ruby version with rvm
+          command: |
+            set -e
+            if ! type gpg &>/dev/null
+            then HOMEBREW_NO_AUTO_UPDATE=1 brew install gpg
+            fi
+            for key in \
+              409B6B1796C275462A1703113804BB82D39DC0E3 \
+              7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
+            ; do \
+                gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key" || \
+                gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
+                gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
+            done
+            curl -sSL https://get.rvm.io | bash -s stable
+            source ~/.rvm/scripts/rvm
+            rvm install "ruby-$(cat .ruby-version)"
+            rvm use "ruby-$(cat .ruby-version)"
+            echo . $(rvm $(cat .ruby-version) do rvm env --path) >> $BASH_ENV
+
   install_ruby_modules:
     description: Install Ruby Dependencies
     steps:
@@ -467,6 +491,7 @@ jobs:
       - skip_testing_soft_deploy_when_new_tag
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -496,6 +521,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -583,6 +609,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_staging_secrets
       - setup_sentry
@@ -609,6 +636,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_staging_secrets
       - setup_sentry
@@ -635,6 +663,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_production_secrets
       - setup_sentry
@@ -685,6 +714,7 @@ jobs:
       - checkout
       - install_node_version
       - install_node_modules
+      - install_ruby_version
       - install_ruby_modules
       - setup_production_secrets
       - setup_sentry
