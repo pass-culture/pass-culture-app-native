@@ -8,12 +8,9 @@ type EventMonitoring = {
   captureException: (
     exception: unknown,
     captureContext?: CaptureContext | Record<string, unknown>
-  ) => void
-  captureEvent: (event: Event | Record<string, unknown>) => void
-  captureMessage: (
-    message: string,
-    captureContext?: CaptureContext | Record<string, unknown> | Severity
-  ) => void
+  ) => string
+  captureEvent: (event: Event | Record<string, unknown>) => string
+  captureMessage: (message: string, captureContext?: CaptureContext | Severity) => string
   configureScope: (callback: (scope: SentryModule.Scope) => void) => void
   init: ({ enabled }: { enabled: boolean }) => void
   setUser: (user: User | Record<string, unknown> | null) => void
@@ -21,8 +18,8 @@ type EventMonitoring = {
 
 export const eventMonitoring: EventMonitoring = {
   captureException: SentryModule.captureException,
-  captureMessage: SentryModule.captureMessage,
   captureEvent: SentryModule.captureEvent,
+  captureMessage: SentryModule.captureMessage,
   configureScope: SentryModule.configureScope,
   setUser: SentryModule.setUser,
   async init({ enabled } = { enabled: true }) {
