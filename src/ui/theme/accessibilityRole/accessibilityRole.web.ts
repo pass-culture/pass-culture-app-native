@@ -7,5 +7,5 @@ export enum AccessibilityRoleEnum {
   RADIO = 'radio',
   RADIOGROUP = 'radiogroup',
   SWITCH = 'switch',
-  // STATUS = 'status',
+  STATUS = 'status',
 }

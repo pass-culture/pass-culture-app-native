@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -29,6 +29,7 @@ const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse asso
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
 export const SetAddress = () => {
+  const { accessibilityRole } = useTheme()
   const { data: settings } = useAppSettings()
   const { dispatch, profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -133,7 +134,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <AdressesContainer accessibilityRole="radiogroup">
+          <AdressesContainer accessibilityRole={accessibilityRole.radiogroup}>
             {addresses.map((address, index) => (
               <AddressOption
                 label={address}

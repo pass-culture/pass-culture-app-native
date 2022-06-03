@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -33,6 +33,7 @@ const exception = 'Failed to fetch data from API: https://geo.api.gouv.fr/commun
 const noPostalCodeFound = t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
 
 export const SetCity = () => {
+  const { accessibilityRole } = useTheme()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { dispatch, profile } = useIdentityCheckContext()
@@ -120,7 +121,7 @@ export const SetCity = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <CitiesContainer accessibilityRole="radiogroup">
+          <CitiesContainer accessibilityRole={accessibilityRole.radiogroup}>
             <VerticalUl>
               {cities.map((city, index) => (
                 <Li key={city.name}>

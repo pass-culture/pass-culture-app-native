@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
@@ -11,23 +11,26 @@ interface Props {
   onPress: (name: string) => void
 }
 
-export const RadioButtonWithBorder = ({ label, description, selected, onPress }: Props) => (
-  <Label
-    accessibilityRole="radio"
-    accessibilityState={{ checked: selected }}
-    selected={selected}
-    onPress={() => onPress(label)}>
-    <TextContainer>
-      <ButtonText selected={selected}>{label}</ButtonText>
-      {description ? <Caption>{description}</Caption> : null}
-    </TextContainer>
-    {selected ? (
-      <IconContainer>
-        <Validate />
-      </IconContainer>
-    ) : null}
-  </Label>
-)
+export const RadioButtonWithBorder = ({ label, description, selected, onPress }: Props) => {
+  const { accessibilityRole } = useTheme()
+  return (
+    <Label
+      accessibilityRole={accessibilityRole.radio}
+      accessibilityState={{ checked: selected }}
+      selected={selected}
+      onPress={() => onPress(label)}>
+      <TextContainer>
+        <ButtonText selected={selected}>{label}</ButtonText>
+        {description ? <Caption>{description}</Caption> : null}
+      </TextContainer>
+      {selected ? (
+        <IconContainer>
+          <Validate />
+        </IconContainer>
+      ) : null}
+    </Label>
+  )
+}
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   color: theme.colors.primary,

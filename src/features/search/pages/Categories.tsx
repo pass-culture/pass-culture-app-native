@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnum } from 'api/gen'
@@ -35,6 +35,7 @@ const useSelectCategory = (callback: () => void) => {
 }
 
 export const Categories: React.FC = () => {
+  const { accessibilityRole } = useTheme()
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -42,7 +43,7 @@ export const Categories: React.FC = () => {
   return (
     <Container>
       <PageHeader titleID={titleID} title={t`Catégories`} />
-      <StyledScrollView accessibilityRole="radiogroup" aria-labelledby={titleID}>
+      <StyledScrollView accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
         <VerticalUl>

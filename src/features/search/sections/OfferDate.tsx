@@ -24,7 +24,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
   const { searchState, dispatch } = useStagedSearch()
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferDate)
-  const { isTouch } = useTheme()
+  const { isTouch, accessibilityRole } = useTheme()
   const titleID = uuidv4()
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
           {SectionTitle.OfferDate}
         </Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
+        <View accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
           <VerticalUl>
             <Li>
               <RadioButton

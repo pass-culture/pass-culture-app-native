@@ -42,6 +42,7 @@ export interface AppThemeType {
     radio: AccessibilityRoleEnum
     radiogroup: AccessibilityRoleEnum
     switch: AccessibilityRoleEnum
+    status: AccessibilityRoleEnum
   }
   appContentWidth: number
   minScreenHeight: number
@@ -365,6 +366,7 @@ export const theme: AppThemeType = {
     radio: AccessibilityRoleEnum.RADIO,
     radiogroup: AccessibilityRoleEnum.RADIOGROUP,
     switch: AccessibilityRoleEnum.SWITCH,
+    status: AccessibilityRoleEnum.STATUS,
   },
   appContentWidth: getSpacing(100),
   minScreenHeight: getSpacing(133),

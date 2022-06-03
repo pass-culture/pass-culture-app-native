@@ -19,7 +19,7 @@ interface RadioButtonProps {
 }
 
 export function RadioButton(props: RadioButtonProps) {
-  const { isMobileViewport } = useTheme()
+  const { isMobileViewport, accessibilityRole } = useTheme()
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
   const StyledIcon =
     !!props.icon &&
@@ -31,7 +31,7 @@ export function RadioButton(props: RadioButtonProps) {
 
   return (
     <StyledTouchableOpacity
-      accessibilityRole="radio"
+      accessibilityRole={accessibilityRole.radio}
       accessibilityState={{ checked: props.isSelected }}
       accessibilityLabel={props.accessibilityLabel}
       onPress={() => props.onSelect(props.label)}
