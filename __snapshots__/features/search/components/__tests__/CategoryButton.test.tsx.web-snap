@@ -20,7 +20,7 @@ exports[`CategoryButton should render correctly 1`] = `
       "WebkitUserSelect": "none",
       "alignItems": "center",
       "borderBottomColor": "rgba(144,148,157,1.00)",
-      "borderBottomLeftRadius": "3px",
+      "borderBottomLeftRadius": "4px",
       "borderBottomRightRadius": "4px",
       "borderBottomWidth": "1px",
       "borderLeftColor": "rgba(135,0,135,1.00)",
@@ -28,7 +28,7 @@ exports[`CategoryButton should render correctly 1`] = `
       "borderRightColor": "rgba(144,148,157,1.00)",
       "borderRightWidth": "1px",
       "borderTopColor": "rgba(144,148,157,1.00)",
-      "borderTopLeftRadius": "3px",
+      "borderTopLeftRadius": "4px",
       "borderTopRightRadius": "4px",
       "borderTopWidth": "1px",
       "cursor": "pointer",
@@ -38,7 +38,8 @@ exports[`CategoryButton should render correctly 1`] = `
       "msFlexDirection": "row",
       "msTouchAction": "manipulation",
       "msUserSelect": "none",
-      "paddingRight": "16px",
+      "paddingLeft": "8px",
+      "paddingRight": "12px",
       "touchAction": "manipulation",
       "transitionDuration": "0s",
       "transitionProperty": "opacity",
@@ -48,21 +49,6 @@ exports[`CategoryButton should render correctly 1`] = `
   tabIndex="0"
 >
   <div
-    className="css-text-901oao"
-    dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-        "marginLeft": "12px",
-      }
-    }
-  >
-    Bibliothèques & Médiathèques
-  </div>
-  <div
     className="css-view-1dbjc4n"
   >
     <div
@@ -71,6 +57,21 @@ exports[`CategoryButton should render correctly 1`] = `
     >
       undefined-SVG-Mock
     </div>
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+        "marginLeft": "8px",
+      }
+    }
+  >
+    Bibliothèques & Médiathèques
   </div>
 </div>
 `;
