@@ -79,9 +79,9 @@ export function BookingDetails() {
   // of the reservation being consulted if it is made via Flask Admin
   const cancellationConsultedBooking = endedBookings.filter((item) => item.id === params.id)
   if (cancellationConsultedBooking.length > 0) {
-    const endedBooking = cancellationConsultedBooking[0]
+    const nameCanceledBooking = cancellationConsultedBooking[0].stock.offer.name
     showInfoSnackBar({
-      message: t`Votre réservation ${endedBooking.stock.offer.name} a été annulée`,
+      message: t`Votre réservation ${nameCanceledBooking} a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate('EndedBookings')

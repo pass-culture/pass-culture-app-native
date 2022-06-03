@@ -238,6 +238,7 @@ msgid "Aucune connexion internet. Réessaie plus tard"
 msgstr "Aucune connexion internet. Réessaie plus tard"
 
 #: src/features/bookings/helpers.ts
+#: src/features/search/components/CalendarPicker.web.tsx
 #: src/features/search/sections/OfferDate.tsx
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
@@ -1689,10 +1690,12 @@ msgid "Modifier mon e-mail"
 msgstr "Modifier mon e-mail"
 
 #: src/features/bookOffer/components/Calendar/Calendar.tsx
+#: src/features/search/components/CalendarPicker.web.tsx
 msgid "Mois précédent"
 msgstr "Mois précédent"
 
 #: src/features/bookOffer/components/Calendar/Calendar.tsx
+#: src/features/search/components/CalendarPicker.web.tsx
 msgid "Mois suivant"
 msgstr "Mois suivant"
 
@@ -3354,6 +3357,10 @@ msgstr "Voir toutes les offres"
 msgid "Votre lien"
 msgstr "Votre lien"
 
+#: src/features/bookings/pages/BookingDetails.tsx
+msgid "Votre réservation {nameCanceledBooking} a été annulée"
+msgstr "Votre réservation {nameCanceledBooking} a été annulée"
+
 #: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
 msgid "Vous devez d'abord générer un lien"
 msgstr "Vous devez d'abord générer un lien"
@@ -3681,6 +3688,10 @@ msgstr "spécialité"
 #: src/features/favorites/atoms/Favorite.tsx
 msgid "starting from date"
 msgstr "Dès le {date}"
+
+#: src/features/search/components/CalendarPicker.web.tsx
+msgid "sélectionné"
+msgstr "sélectionné"
 
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "tes réservations seront annulées et supprimées"
