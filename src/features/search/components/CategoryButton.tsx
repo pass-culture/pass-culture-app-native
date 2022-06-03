@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -26,32 +26,42 @@ export const CategoryButton: FunctionComponent<Props> = ({
       }))({}),
     [Icon]
   )
+  const [pressStatus, setPressStatus] = useState(false)
+
+  const onPress = () => {
+    setPressStatus(!pressStatus)
+  }
 
   return (
-    <TouchableContainer style={style} borderLeftColor={borderLeftColor}>
+    <TouchableContainer
+      style={style}
+      borderLeftColor={borderLeftColor}
+      onPress={onPress}
+      pressStatus={pressStatus}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>
   )
 }
 
-const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
-  ({ theme, borderLeftColor }) => ({
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: getSpacing(18),
-    borderRadius: getSpacing(1),
-    borderTopColor: theme.colors.greySemiDark,
-    borderBottomColor: theme.colors.greySemiDark,
-    borderRightColor: theme.colors.greySemiDark,
-    borderLeftColor,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRightWidth: 1,
-    borderLeftWidth: getSpacing(1),
-    paddingLeft: getSpacing(2),
-    paddingRight: getSpacing(3),
-  })
-)
+const TouchableContainer = styled.TouchableOpacity<{
+  borderLeftColor: string
+  pressStatus: boolean
+}>(({ theme, borderLeftColor, pressStatus }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  height: getSpacing(18),
+  borderRadius: getSpacing(1),
+  borderTopColor: !pressStatus ? theme.colors.greySemiDark : borderLeftColor,
+  borderBottomColor: !pressStatus ? theme.colors.greySemiDark : borderLeftColor,
+  borderRightColor: !pressStatus ? theme.colors.greySemiDark : borderLeftColor,
+  borderLeftColor,
+  borderTopWidth: 1,
+  borderBottomWidth: 1,
+  borderRightWidth: 1,
+  borderLeftWidth: getSpacing(1),
+  paddingLeft: getSpacing(2),
+  paddingRight: getSpacing(3),
+}))
 
 const Label = styled(Typo.Caption)({ marginLeft: getSpacing(2) })
