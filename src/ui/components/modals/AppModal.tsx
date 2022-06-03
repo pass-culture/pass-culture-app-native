@@ -52,7 +52,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom } = useCustomSafeInsets()
-  const { isSmallScreen } = useTheme()
+  const { isSmallScreen, accessibilityRole } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -112,7 +112,7 @@ export const AppModal: FunctionComponent<Props> = ({
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
       aria-describedby={titleId}
-      accessibilityRole="dialog"
+      accessibilityRole={accessibilityRole.dialog}
       aria-modal={true}>
       <ModalContainer height={isSmallScreen ? windowHeight : modalHeight} testID="modalContainer">
         <ModalHeader

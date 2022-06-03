@@ -18,6 +18,7 @@ import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
 import { IllustrationSizesType, illustrationSizes } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
+import { AccessibilityRoleEnum } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetectOnWeb || isTabletDeviceDetectOnWeb)
@@ -32,6 +33,9 @@ interface Typography {
 }
 
 export interface AppThemeType {
+  accessibilityRole: {
+    dialog: AccessibilityRoleEnum
+  }
   appContentWidth: number
   minScreenHeight: number
   appBarHeight: number
@@ -345,6 +349,9 @@ export interface AppThemeType {
 }
 
 export const theme: AppThemeType = {
+  accessibilityRole: {
+    dialog: AccessibilityRoleEnum.DIALOG,
+  },
   appContentWidth: getSpacing(100),
   minScreenHeight: getSpacing(133),
   appBarHeight: getSpacing(16),
