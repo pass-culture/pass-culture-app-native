@@ -78,7 +78,7 @@ export const SearchBoxRework: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(4) : 0}>
+      <SearchInputContainer marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
@@ -114,7 +114,7 @@ const StyledSearchInput = styled((props) => <SearchInput {...props} />).attrs(({
 })
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
+  size: theme.icons.sizes.small,
 }))``
 
 const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
@@ -125,13 +125,13 @@ const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const SearchInputContainer = styled.View<{ marginRight: number }>(({ marginRight }) => ({
+const SearchInputContainer = styled.View<{ marginHorizontal: number }>(({ marginHorizontal }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  marginRight,
+  marginHorizontal,
 }))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
-  marginHorizontal: getSpacing(4),
+  marginRight: getSpacing(4),
 })

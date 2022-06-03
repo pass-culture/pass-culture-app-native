@@ -141,6 +141,7 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
 
 const StyledInputContainer = styled(InputContainer)({
   outlineOffset: 0,
+  borderRadius: getSpacing(6),
 })
 
 const StyledButtonPrimary = styledButton(ButtonPrimary)({
