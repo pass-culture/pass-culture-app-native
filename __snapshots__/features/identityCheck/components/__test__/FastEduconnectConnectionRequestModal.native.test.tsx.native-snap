@@ -2,7 +2,7 @@
 
 exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-describedby="testUuidV4"
   aria-modal={true}
@@ -60,7 +60,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-describedby="testUuidV4"
     aria-modal={true}
     collapsable={false}
@@ -556,7 +556,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
 
 exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-describedby="testUuidV4"
   aria-modal={true}
@@ -612,7 +612,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-describedby="testUuidV4"
     aria-modal={true}
     deviceHeight={1334}

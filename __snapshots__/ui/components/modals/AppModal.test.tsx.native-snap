@@ -2,7 +2,7 @@
 
 exports[`<AppModal /> on big screen 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -57,7 +57,7 @@ exports[`<AppModal /> on big screen 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -248,7 +248,7 @@ exports[`<AppModal /> on big screen 1`] = `
 
 exports[`<AppModal /> on small screen 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -303,7 +303,7 @@ exports[`<AppModal /> on small screen 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -494,7 +494,7 @@ exports[`<AppModal /> on small screen 1`] = `
 
 exports[`<AppModal /> when hidden 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -551,7 +551,7 @@ exports[`<AppModal /> when hidden 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -744,7 +744,7 @@ exports[`<AppModal /> when hidden 1`] = `
 
 exports[`<AppModal /> with backdrop disabled 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -774,7 +774,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
   visible={true}
 >
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -965,7 +965,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
 
 exports[`<AppModal /> with backdrop enabled by default 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -1020,7 +1020,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1211,7 +1211,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
 
 exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -1266,7 +1266,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1457,7 +1457,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
 
 exports[`<AppModal /> with left icon render 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -1512,7 +1512,7 @@ exports[`<AppModal /> with left icon render 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1749,7 +1749,7 @@ exports[`<AppModal /> with left icon render 1`] = `
 
 exports[`<AppModal /> with long title on 1 line 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -1804,7 +1804,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1995,7 +1995,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
 
 exports[`<AppModal /> with long title on 2 lines by default 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -2050,7 +2050,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -2241,7 +2241,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
 
 exports[`<AppModal /> with minimal props 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-describedby="testUuidV4"
   aria-modal={true}
@@ -2297,7 +2297,7 @@ exports[`<AppModal /> with minimal props 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-describedby="testUuidV4"
     aria-modal={true}
     deviceHeight={1334}
@@ -2490,7 +2490,7 @@ exports[`<AppModal /> with minimal props 1`] = `
 
 exports[`<AppModal /> with right icon render 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -2545,7 +2545,7 @@ exports[`<AppModal /> with right icon render 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -2771,7 +2771,7 @@ exports[`<AppModal /> with right icon render 1`] = `
 
 exports[`<AppModal /> with scroll disabled 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -2826,7 +2826,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -3017,7 +3017,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
 
 exports[`<AppModal /> with scroll enabled by default 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -3072,7 +3072,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -3263,7 +3263,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
 
 exports[`<AppModal /> with scroll explicitly enabled 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -3318,7 +3318,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -3509,7 +3509,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
 
 exports[`<AppModal /> without children 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -3564,7 +3564,7 @@ exports[`<AppModal /> without children 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -3751,7 +3751,7 @@ exports[`<AppModal /> without children 1`] = `
 
 exports[`<AppModal /> without title 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-modal={true}
   deviceHeight={1334}
@@ -3806,7 +3806,7 @@ exports[`<AppModal /> without title 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
