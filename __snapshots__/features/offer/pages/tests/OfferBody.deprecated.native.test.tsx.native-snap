@@ -1887,7 +1887,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
-                            accessibilityRole="dialog"
+                            accessibilityRole="none"
                             animationType="none"
                             aria-describedby="testUuidV4"
                             aria-modal={true}
@@ -1943,7 +1943,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             />
                             <View
-                              accessibilityRole="dialog"
+                              accessibilityRole="none"
                               aria-describedby="testUuidV4"
                               aria-modal={true}
                               deviceHeight={1334}
@@ -4716,7 +4716,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
-                            accessibilityRole="dialog"
+                            accessibilityRole="none"
                             animationType="none"
                             aria-describedby="testUuidV4"
                             aria-modal={true}
@@ -4772,7 +4772,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             />
                             <View
-                              accessibilityRole="dialog"
+                              accessibilityRole="none"
                               aria-describedby="testUuidV4"
                               aria-modal={true}
                               deviceHeight={1334}

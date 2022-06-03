@@ -4,6 +4,7 @@ import { Platform } from 'react-native'
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { getSpacing, getSpacingString } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
+import { AccessibilityRoleEnum } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { buttonHeights, ButtonHeightsType } from 'ui/theme/buttonHeights'
 // eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
@@ -18,7 +19,6 @@ import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
 import { IllustrationSizesType, illustrationSizes } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
-import { AccessibilityRoleEnum } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetectOnWeb || isTabletDeviceDetectOnWeb)

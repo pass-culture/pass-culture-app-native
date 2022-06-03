@@ -187,7 +187,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     />
     <Modal
-      accessibilityRole="dialog"
+      accessibilityRole="none"
       animationType="none"
       aria-describedby="testUuidV4"
       aria-modal={true}
@@ -245,7 +245,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         }
       />
       <View
-        accessibilityRole="dialog"
+        accessibilityRole="none"
         aria-describedby="testUuidV4"
         aria-modal={true}
         collapsable={false}

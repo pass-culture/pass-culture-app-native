@@ -2,7 +2,7 @@
 
 exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-describedby="testUuidV4"
   aria-modal={true}
@@ -58,7 +58,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-describedby="testUuidV4"
     aria-modal={true}
     deviceHeight={1334}

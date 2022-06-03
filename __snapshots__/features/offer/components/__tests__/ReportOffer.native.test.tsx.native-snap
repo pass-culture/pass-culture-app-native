@@ -2,7 +2,7 @@
 
 exports[`ReportOffer General modal behavior Report offer snapshots should display report offer modal if isVisible is true 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-describedby="testUuidV4"
   aria-modal={true}
@@ -58,7 +58,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-describedby="testUuidV4"
     aria-modal={true}
     deviceHeight={1334}
@@ -342,7 +342,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
 
 exports[`ReportOffer General modal behavior Report offer snapshots should not display report offer modal if isVisible is false 1`] = `
 <Modal
-  accessibilityRole="dialog"
+  accessibilityRole="none"
   animationType="none"
   aria-describedby="testUuidV4"
   aria-modal={true}
@@ -400,7 +400,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     }
   />
   <View
-    accessibilityRole="dialog"
+    accessibilityRole="none"
     aria-describedby="testUuidV4"
     aria-modal={true}
     collapsable={false}
