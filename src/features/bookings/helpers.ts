@@ -221,12 +221,16 @@ function getWithdrawLabel(booking: Booking, properties: BookingProperties): stri
   return ''
 }
 
-function getLocationLabel(stock: BookingStockResponse, properties: BookingProperties): string {
+export function getLocationLabel(
+  stock: BookingStockResponse,
+  properties: BookingProperties
+): string {
   if (properties.isPermanent || properties.isDigital) {
     return ''
   }
   const { venue } = stock.offer
-  return venue.name + (venue.city ? ',\u00a0' + venue.city : '')
+  const displayNameVenue = venue.publicName || venue.name
+  return displayNameVenue + (venue.city ? ',\u00a0' + venue.city : '')
 }
 
 export function getBookingLabels(

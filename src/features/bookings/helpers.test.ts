@@ -12,6 +12,7 @@ import {
   getBookingProperties,
   getEventOnSiteWithdrawLabel,
   getOfferRules,
+  getLocationLabel,
 } from 'features/bookings/helpers'
 
 describe('getBookingLabelForActivationCode', () => {
@@ -603,5 +604,58 @@ describe('getOfferRules', () => {
     }
     const offerRules = getOfferRules(properties)
     expect(offerRules).toEqual('')
+  })
+})
+
+describe('getLocationLabel', () => {
+  const initialBooking = bookingsSnap.ongoing_bookings[1]
+
+  it('should return empty string if permanent offer', () => {
+    const properties = {
+      isPermanent: true,
+    }
+    const offerRules = getLocationLabel(initialBooking.stock, properties)
+    expect(offerRules).toEqual('')
+  })
+
+  it('should return empty string if digital offer', () => {
+    const properties = {
+      isDigital: true,
+    }
+    const offerRules = getLocationLabel(initialBooking.stock, properties)
+    expect(offerRules).toEqual('')
+  })
+
+  it('should display the name of the venue if public name not informed', () => {
+    const properties = {
+      isPermanent: false,
+      isDigital: false,
+    }
+    const offerRules = getLocationLabel(initialBooking.stock, properties)
+    expect(offerRules).toEqual('Maison de la Brique,\u00a0Drancy')
+  })
+
+  it('should display the public name of the venue if informed', () => {
+    const properties = {
+      isPermanent: false,
+      isDigital: false,
+    }
+
+    const booking = {
+      ...initialBooking,
+      stock: {
+        ...initialBooking.stock,
+        offer: {
+          ...initialBooking.stock.offer,
+          venue: {
+            ...initialBooking.stock.offer.venue,
+            publicName: 'Maison de la Brique public',
+          },
+        },
+      },
+    }
+
+    const offerRules = getLocationLabel(booking.stock, properties)
+    expect(offerRules).toEqual('Maison de la Brique public,\u00a0Drancy')
   })
 })
