@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -14,10 +14,11 @@ interface Props {
 }
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
+  const { accessibilityRole } = useTheme()
   return (
     <StyledTouchableOpacity
       selected={selected}
-      accessibilityRole="checkbox"
+      accessibilityRole={accessibilityRole.checkbox}
       accessibilityState={{ checked: selected }}
       onPress={onPress}>
       {selected ? (

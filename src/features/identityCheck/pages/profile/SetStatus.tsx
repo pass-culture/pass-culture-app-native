@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
+import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum } from 'api/gen'
@@ -19,6 +20,7 @@ import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 export const SetStatus = () => {
+  const { accessibilityRole } = useTheme()
   const { activities } = useProfileOptions()
   const { dispatch, profile } = useIdentityCheckContext()
   const isUserUnderage = useIsUserUnderage()
@@ -61,7 +63,7 @@ export const SetStatus = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
+          <View accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
             <VerticalUl>
               {filteredActivities &&
                 filteredActivities.map((activity) => (

@@ -37,7 +37,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
     moduleId,
   } = props
   const isDisabled = !url
-  const { appContentWidth } = useTheme()
+  const { appContentWidth, accessibilityRole } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = Math.min(
@@ -89,7 +89,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
       <Spacer.Row numberOfSpaces={6} />
       <StyledTouchableLink
         highlight
-        accessibilityRole={url ? 'link' : undefined}
+        accessibilityRole={url ? accessibilityRole.link : undefined}
         onPress={() => setShouldRedirect(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
@@ -19,6 +19,7 @@ type Props = {
 }
 
 export const LocationChoice: React.FC<Props> = (props) => {
+  const { accessibilityRole } = useTheme()
   const { section, onPress, arrowNext = false, testID, accessibilityDescribedBy } = props
   const { Icon, label, isSelected } = useLocationChoice(section)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
@@ -31,7 +32,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
   return (
     <Container
       onPress={onPress}
-      accessibilityRole="radio"
+      accessibilityRole={accessibilityRole.radio}
       accessibilityState={{ checked: selected }}
       testID={`locationChoice-${testID}`}>
       <FirstPart>

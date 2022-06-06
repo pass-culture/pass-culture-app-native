@@ -38,7 +38,7 @@ interface Props {
 export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
-  const { colors } = useTheme()
+  const { colors, accessibilityRole } = useTheme()
   const {
     visible: signInModalVisible,
     showModal: showSignInModal,
@@ -145,7 +145,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
             testID={t`Mettre en favoris`}
-            accessibilityRole="checkbox"
+            accessibilityRole={accessibilityRole.checkbox}
             accessibilityState={{ checked: !!favorite }}
           />
           <Spacer.Row numberOfSpaces={6} />

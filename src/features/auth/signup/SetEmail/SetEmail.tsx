@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -19,6 +19,7 @@ import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 import { PreValidationSignupStepProps } from '../types'
 
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+  const { accessibilityRole } = useTheme()
   const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
@@ -67,7 +68,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
       <Spacer.Column numberOfSpaces={4} />
       <StyledCheckBox
         onPress={onCheckboxPress}
-        accessibilityRole="checkbox"
+        accessibilityRole={accessibilityRole.checkbox}
         accessibilityState={{ checked: isNewsletterChecked }}>
         <CheckboxInput isChecked={isNewsletterChecked} />
         <CheckBoxText>

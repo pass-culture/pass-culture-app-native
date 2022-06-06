@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
-import styled, { DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -23,6 +23,7 @@ const TOGGLE_PATH_START = 2
 const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
+  const { accessibilityRole } = useTheme()
   const { toggle, active = false, disabled = false, checkboxID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
@@ -49,7 +50,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        accessibilityRole="switch"
+        accessibilityRole={accessibilityRole.switch}
         accessibilityState={{ checked: active }}
         aria-describedby={props.accessibilityDescribedBy}
         aria-labelledby={props.accessibilityLabelledBy}
