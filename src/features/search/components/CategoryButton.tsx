@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-interface Props {
+export type CategoryButtonProps = {
   label: string
   Icon: FunctionComponent<IconInterface>
   color: string
@@ -14,7 +14,7 @@ interface Props {
   children?: never
 }
 
-export const CategoryButton: FunctionComponent<Props> = ({
+export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
   Icon,
   color,
