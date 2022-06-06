@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule } from 'features/home/components'
-import { BusinessPane } from 'features/home/contentful'
+import { BusinessModuleProps } from 'features/home/components/BusinessModule'
 import * as profileAPI from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,7 +24,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-const props: BusinessPane = {
+const props: BusinessModuleProps = {
   title: 'Title of module',
   firstLine: 'firstLine',
   secondLine: 'secondLine',
@@ -33,6 +33,8 @@ const props: BusinessPane = {
   moduleId: 'module-id',
   targetNotConnectedUsersOnly: undefined,
   leftIcon: undefined,
+  homeEntryId: 'abcd',
+  index: 1,
 }
 
 describe('BusinessModule component', () => {
@@ -129,6 +131,6 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderModule = (module: BusinessPane) =>
+const renderModule = (props: BusinessModuleProps) =>
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  render(reactQueryProviderHOC(<BusinessModule module={module} />))
+  render(reactQueryProviderHOC(<BusinessModule {...props} />))

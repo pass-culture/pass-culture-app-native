@@ -6,7 +6,8 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule } from 'features/home/components'
-import { BusinessPane } from 'features/home/contentful'
+import { BusinessModuleProps } from 'features/home/components/BusinessModule'
+import { ContentTypes } from 'features/home/contentful'
 import * as profileAPI from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,7 +24,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-const props: BusinessPane = {
+const props: BusinessModuleProps = {
   title: 'Title of module',
   firstLine: 'firstLine',
   secondLine: 'secondLine',
@@ -32,6 +33,8 @@ const props: BusinessPane = {
   moduleId: 'module-id',
   targetNotConnectedUsersOnly: undefined,
   leftIcon: undefined,
+  homeEntryId: 'abcd',
+  index: 1,
 }
 
 describe('BusinessModule component', () => {
@@ -66,6 +69,25 @@ describe('BusinessModule component', () => {
     expect(analytics.logClickBusinessBlock).toHaveBeenCalledWith(props.title)
   })
 
+  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
+    renderModule(props)
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
+      1,
+      props.moduleId,
+      ContentTypes.BUSINESS,
+      props.index,
+      props.homeEntryId
+    )
+  })
+
+  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+    mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    renderModule({ ...props, targetNotConnectedUsersOnly: true })
+
+    expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+  })
+
   it('should open url when clicking on the image', async () => {
     const { getByTestId } = renderModule(props)
     fireEvent.press(getByTestId('imageBusiness'))
@@ -78,7 +100,10 @@ describe('BusinessModule component', () => {
   it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
-    const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
+    const { getByTestId } = renderModule({
+      ...props,
+      url: 'some_url_with_email={email}',
+    })
 
     fireEvent.press(getByTestId('imageBusiness'))
     await superFlushWithAct()
@@ -100,7 +125,10 @@ describe('BusinessModule component', () => {
       } as UseQueryResult<UserProfileResponse>
     })
 
-    const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
+    const { getByTestId } = renderModule({
+      ...props,
+      url: 'some_url_with_email={email}',
+    })
 
     fireEvent.press(getByTestId('imageBusiness'))
     await waitForExpect(() =>
@@ -119,7 +147,10 @@ describe('BusinessModule component', () => {
       } as UseQueryResult<UserProfileResponse>
     })
 
-    const { getByTestId } = renderModule({ ...props, url: 'some_url_with_no_email' })
+    const { getByTestId } = renderModule({
+      ...props,
+      url: 'some_url_with_no_email',
+    })
 
     fireEvent.press(getByTestId('imageBusiness'))
     await waitForExpect(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
@@ -128,6 +159,6 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderModule = (module: BusinessPane) =>
+const renderModule = (props: BusinessModuleProps) =>
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  render(reactQueryProviderHOC(<BusinessModule module={module} />))
+  render(reactQueryProviderHOC(<BusinessModule {...props} />))

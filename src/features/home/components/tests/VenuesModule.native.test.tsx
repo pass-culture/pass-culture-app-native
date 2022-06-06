@@ -13,8 +13,10 @@ jest.mock('features/home/api/useVenueModule', () => ({
 
 const props = {
   moduleId: 'fakemoduleid',
-  display: { title: 'Module title' } as DisplayParametersFields,
+  display: { title: 'Module title', minOffers: 1 } as DisplayParametersFields,
   search: [],
+  homeEntryId: 'fakeEntryId',
+  index: 1,
 }
 
 describe('VenuesModule component', () => {

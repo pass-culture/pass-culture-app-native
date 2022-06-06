@@ -54,6 +54,7 @@ export enum AnalyticsEvent {
   LOGOUT = 'Logout',
   MAIL_TO = 'MailTo',
   MODIFY_MAIL = 'ModifyMail',
+  MODULE_DISPLAYED_ON_HOMEPAGE = 'ModuleDisplayedOnHomePage',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
   NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',

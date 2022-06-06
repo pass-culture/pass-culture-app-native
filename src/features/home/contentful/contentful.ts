@@ -1,16 +1,16 @@
-export const CONTENT_TYPES = {
-  ALGOLIA: 'algolia',
-  ALGOLIA_PARAMETERS: 'algoliaParameters',
-  DISPLAY_PARAMETERS: 'displayParameters',
-  EXCLUSIVITY: 'exclusivity',
-  EXCLUSIVITY_DISPLAY_PARAMETERS: 'exclusivityDisplayParameters',
-  HOMEPAGE_NATIF: 'homepageNatif',
-  INFORMATION: 'information',
-  BUSINESS: 'business',
-  RECOMMENDATION: 'recommendation',
-  RECOMMENDATION_PARAMETERS: 'recommendation_parameters',
-  VENUES_PLAYLIST: 'venuesPlaylist',
-  VENUES_SEARCH_PARAMETERS: 'venuesSearchParameters',
+export enum ContentTypes {
+  ALGOLIA = 'algolia',
+  ALGOLIA_PARAMETERS = 'algoliaParameters',
+  DISPLAY_PARAMETERS = 'displayParameters',
+  EXCLUSIVITY = 'exclusivity',
+  EXCLUSIVITY_DISPLAY_PARAMETERS = 'exclusivityDisplayParameters',
+  HOMEPAGE_NATIF = 'homepageNatif',
+  INFORMATION = 'information',
+  BUSINESS = 'business',
+  RECOMMENDATION = 'recommendation',
+  RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
+  VENUES_PLAYLIST = 'venuesPlaylist',
+  VENUES_SEARCH_PARAMETERS = 'venuesSearchParameters',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -108,32 +108,32 @@ interface EntryCollectionError {
 }
 
 export interface AlgoliaParameters {
-  sys: Sys<typeof CONTENT_TYPES.ALGOLIA>
+  sys: Sys<typeof ContentTypes.ALGOLIA>
   fields: SearchParametersFields
 }
 
 export interface VenuesSearchParameters {
-  sys: Sys<typeof CONTENT_TYPES.VENUES_PLAYLIST>
+  sys: Sys<typeof ContentTypes.VENUES_PLAYLIST>
   fields: VenuesSearchParametersFields
 }
 
 export interface DisplayParameters {
-  sys: Sys<typeof CONTENT_TYPES.DISPLAY_PARAMETERS>
+  sys: Sys<typeof ContentTypes.DISPLAY_PARAMETERS>
   fields: DisplayParametersFields
 }
 
 export interface ExcluDisplayParameters {
-  sys: Sys<typeof CONTENT_TYPES.EXCLUSIVITY_DISPLAY_PARAMETERS>
+  sys: Sys<typeof ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS>
   fields: ExclusivityDisplayParametersFields
 }
 
 export interface RecommendationParameters {
-  sys: Sys<typeof CONTENT_TYPES.RECOMMENDATION_PARAMETERS>
+  sys: Sys<typeof ContentTypes.RECOMMENDATION_PARAMETERS>
   fields: RecommendationParametersFields
 }
 
 export interface Cover {
-  sys: Sys<typeof CONTENT_TYPES.INFORMATION>
+  sys: Sys<typeof ContentTypes.INFORMATION>
   fields: CoverFields
 }
 
@@ -257,7 +257,7 @@ export type HomepageModule =
   | { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
 
 export interface Image {
-  sys: Sys<typeof CONTENT_TYPES.INFORMATION>
+  sys: Sys<typeof ContentTypes.INFORMATION>
   fields: {
     title: string
     description?: string
@@ -285,6 +285,6 @@ export interface Tag {
 
 export interface HomepageEntry {
   metadata: { tags: Tag[] }
-  sys: Sys<typeof CONTENT_TYPES.HOMEPAGE_NATIF>
+  sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
 }

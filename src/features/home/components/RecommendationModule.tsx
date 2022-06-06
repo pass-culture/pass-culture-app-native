@@ -2,7 +2,11 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/atoms'
-import { DisplayParametersFields, RecommendationParametersFields } from 'features/home/contentful'
+import {
+  ContentTypes,
+  DisplayParametersFields,
+  RecommendationParametersFields,
+} from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
@@ -15,9 +19,11 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 type RecommendationModuleProps = {
+  moduleId: string
   displayParameters: DisplayParametersFields
   index: number
   recommendationParameters?: RecommendationParametersFields
+  homeEntryId: string | undefined
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -39,11 +45,17 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   )
 
   useEffect(() => {
-    if (nbHits > 0 && shouldModuleBeDisplayed) {
+    if (shouldModuleBeDisplayed) {
       analytics.logRecommendationModuleSeen(displayParameters.title, nbHits)
+      analytics.logModuleDisplayedOnHomepage(
+        props.moduleId,
+        ContentTypes.RECOMMENDATION,
+        props.index,
+        props.homeEntryId
+      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nbHits])
+  }, [shouldModuleBeDisplayed])
 
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
     ({ item, width, height }) => {

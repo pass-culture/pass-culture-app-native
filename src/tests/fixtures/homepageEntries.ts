@@ -1,4 +1,4 @@
-import { HomepageEntry } from 'features/home/contentful'
+import { ContentTypes, HomepageEntry } from 'features/home/contentful'
 
 export const homepageEntriesAPIResponse = {
   sys: { type: 'Array' },
@@ -85,7 +85,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-30T10:07:22.489Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.EXCLUSIVITY },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -95,7 +97,13 @@ export const homepageEntriesAPIResponse = {
           offerId: '317',
           displayParameters: {
             sys: {
-              contentType: { sys: { id: 'recommendation', linkType: 'ContentType', type: 'Link' } },
+              contentType: {
+                sys: {
+                  id: ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS,
+                  linkType: 'ContentType',
+                  type: 'Link',
+                },
+              },
               createdAt: '2021-02-24T14:22:44.717Z',
               environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
               id: 'SeAbW1XVKWDJodP3Vu7Y0',
@@ -122,7 +130,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-08-29T07:57:20.653Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 2,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -141,7 +149,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T09:58:02.410Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 4,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -163,7 +171,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-28T17:38:37.435Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 14,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -181,7 +191,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-28T17:32:47.396Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'business' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.BUSINESS },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -202,7 +214,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-28T17:32:47.396Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'business' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.BUSINESS },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -223,7 +237,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-08-29T07:45:59.469Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: { layout: 'two-items', minOffers: 2, title: 'A faire ce week-end !' },
@@ -254,7 +270,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-14T12:28:36.910Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -277,7 +293,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T20:46:20.548Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: { title: 'Sélection Mbappé', tags: ['foot'], hitsPerPage: 2 },
@@ -291,7 +307,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T20:12:43.399Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 31,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: { title: 'A faire à deux', layout: 'two-items', minOffers: 2 },
@@ -305,7 +323,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-08-29T07:46:18.978Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -327,7 +345,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-08-11T17:06:05.805Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 12,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -349,7 +367,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T20:12:38.015Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 49,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: { title: 'Offres duo', tags: ['duo'], hitsPerPage: 10 },
@@ -363,7 +381,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T20:14:47.999Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 8,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: { title: 'Puisque tu aimes les visites', tags: ['visites'], hitsPerPage: 4 },
@@ -377,7 +395,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-13T20:05:19.272Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 6,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: { layout: 'one-item-medium', minOffers: 1, title: 'Offres du moment' },
@@ -391,7 +411,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-13T20:12:58.372Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -409,7 +431,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-28T16:19:18.179Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -431,7 +453,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-28T14:49:31.709Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: { title: 'Pour bien commencer...', layout: 'one-item-medium', minOffers: 2 },
@@ -445,7 +469,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T19:58:49.836Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 2,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: { title: 'Puisque tu aimes les visites...', layout: 'two-items', minOffers: 2 },
@@ -459,7 +485,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-13T20:07:22.693Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 9,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: { title: 'Les offres du moment', tags: ['offre_du_moment'], hitsPerPage: 4 },
@@ -473,7 +499,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-29T15:35:35.598Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -513,7 +541,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-29T15:35:17.130Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -531,7 +559,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-13T20:13:01.277Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -553,7 +581,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-29T15:34:08.945Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 4,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -575,7 +603,7 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-13T20:26:07.952Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 2,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: { title: 'Goncourt', tags: ['goncourt'], hitsPerPage: 4 },
@@ -589,7 +617,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-12T20:03:42.832Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 18,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'business' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.BUSINESS },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -610,7 +640,9 @@ export const homepageEntriesAPIResponse = {
           updatedAt: '2020-10-14T12:28:32.602Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
+          },
           locale: 'en-US',
         },
         fields: { title: 'La sélection de ...', layout: 'one-item-medium', minOffers: 2 },
@@ -697,7 +729,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
     updatedAt: '2020-10-30T10:07:29.549Z',
     environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
     revision: 154,
-    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
+    contentType: {
+      sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.HOMEPAGE_NATIF },
+    },
     locale: 'en-US',
   },
   fields: {
@@ -711,7 +745,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-30T10:07:22.489Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.EXCLUSIVITY },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -741,7 +777,13 @@ export const adaptedHomepageEntry: HomepageEntry = {
           offerId: '317',
           displayParameters: {
             sys: {
-              contentType: { sys: { id: 'recommendation', linkType: 'ContentType', type: 'Link' } },
+              contentType: {
+                sys: {
+                  id: ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS,
+                  linkType: 'ContentType',
+                  type: 'Link',
+                },
+              },
               createdAt: '2021-02-24T14:22:44.717Z',
               environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
               id: 'SeAbW1XVKWDJodP3Vu7Y0',
@@ -768,7 +810,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-29T15:34:08.945Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 4,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -783,7 +825,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 14,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -803,7 +845,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 3,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -820,7 +862,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-28T16:19:18.179Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -835,7 +877,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 8,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -851,7 +893,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 2,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -868,7 +910,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-12T09:58:02.410Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 4,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -883,7 +925,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 9,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -899,7 +941,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 6,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -916,7 +958,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-08-29T07:46:18.978Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -930,7 +972,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 2,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -951,7 +993,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 1,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -969,7 +1011,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-12T20:03:42.832Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 18,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'business' } },
+          contentType: {
+            sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.BUSINESS },
+          },
           locale: 'en-US',
         },
         fields: {
@@ -1033,7 +1077,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
           url: 'https://passculture.zendesk.com/hc/fr/',
         },
         sys: {
-          contentType: { sys: { id: 'business', linkType: 'ContentType', type: 'Link' } },
+          contentType: {
+            sys: { id: ContentTypes.BUSINESS, linkType: 'ContentType', type: 'Link' },
+          },
           createdAt: '2020-10-28T17:32:47.396Z',
           environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
           id: '24FUVnnPPJ9v7JHkO7eaXK',
@@ -1075,7 +1121,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
           url: 'https://passculture.zendesk.com/hc/fr/',
         },
         sys: {
-          contentType: { sys: { id: 'business', linkType: 'ContentType', type: 'Link' } },
+          contentType: {
+            sys: { id: ContentTypes.BUSINESS, linkType: 'ContentType', type: 'Link' },
+          },
           createdAt: '2020-10-28T17:32:47.396Z',
           environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
           id: '24FUVnnPPJ9v7JHkO7eaID',
@@ -1095,7 +1143,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-08-11T17:06:05.805Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 12,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -1109,7 +1157,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 49,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -1125,7 +1173,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 31,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -1143,7 +1191,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-14T12:28:36.910Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 3,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -1158,7 +1206,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 3,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -1174,7 +1222,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 3,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -1189,7 +1237,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
               updatedAt: '2020-10-14T14:17:28.874Z',
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 2,
-              contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'information' } },
+              contentType: {
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.INFORMATION },
+              },
               locale: 'en-US',
             },
             fields: {
@@ -1228,7 +1278,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-13T20:13:01.277Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -1243,7 +1293,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 2,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -1259,7 +1309,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 1,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -1280,7 +1330,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           updatedAt: '2020-10-29T15:35:40.388Z',
           environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
           revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
           locale: 'en-US',
         },
         fields: {
@@ -1295,7 +1345,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 1,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA },
               },
               locale: 'en-US',
             },
@@ -1315,7 +1365,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
               revision: 1,
               contentType: {
-                sys: { type: 'Link', linkType: 'ContentType', id: 'displayParameters' },
+                sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.DISPLAY_PARAMETERS },
               },
               locale: 'en-US',
             },
@@ -1344,7 +1394,9 @@ export const adaptedSecondHomepageEntry: HomepageEntry = {
     updatedAt: '2020-10-28T17:32:42.192Z',
     environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
     revision: 1,
-    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
+    contentType: {
+      sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.HOMEPAGE_NATIF },
+    },
     locale: 'en-US',
   },
   fields: {
@@ -1380,7 +1432,9 @@ export const adaptedSecondHomepageEntry: HomepageEntry = {
           url: 'https://passculture.zendesk.com/hc/fr/',
         },
         sys: {
-          contentType: { sys: { id: 'business', linkType: 'ContentType', type: 'Link' } },
+          contentType: {
+            sys: { id: ContentTypes.BUSINESS, linkType: 'ContentType', type: 'Link' },
+          },
           createdAt: '2020-10-28T17:32:47.396Z',
           environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
           id: '24FUVnnPPJ9v7JHkO7eaXK',

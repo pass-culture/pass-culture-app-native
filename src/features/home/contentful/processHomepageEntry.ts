@@ -4,7 +4,7 @@ import {
   ExclusivityFields,
   HomepageEntry,
   HomepageModule,
-  CONTENT_TYPES,
+  ContentTypes,
   Image,
   RecommendationFields,
   AlgoliaParameters,
@@ -48,10 +48,13 @@ const buildAlgoliaModule = (
   return new Offers({ search, display, moduleId })
 }
 
-const buildRecommendation = (fields: RecommendationFields): RecommendationPane => {
+const buildRecommendation = (
+  fields: RecommendationFields,
+  moduleId: string
+): RecommendationPane => {
   const displayParameters = fields.displayParameters.fields
   const recommendationParameters = fields.recommendationParameters?.fields
-  return new RecommendationPane({ displayParameters, recommendationParameters })
+  return new RecommendationPane({ displayParameters, moduleId, recommendationParameters })
 }
 
 const buildExclusivity = (
@@ -104,15 +107,15 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
       const moduleId = getModuleId(module)
 
       switch (contentType) {
-        case CONTENT_TYPES.ALGOLIA:
+        case ContentTypes.ALGOLIA:
           return buildAlgoliaModule(fields as AlgoliaFields, moduleId)
-        case CONTENT_TYPES.RECOMMENDATION:
-          return buildRecommendation(fields as RecommendationFields)
-        case CONTENT_TYPES.EXCLUSIVITY:
+        case ContentTypes.RECOMMENDATION:
+          return buildRecommendation(fields as RecommendationFields, moduleId)
+        case ContentTypes.EXCLUSIVITY:
           return buildExclusivity(fields as ExclusivityFields, moduleId)
-        case CONTENT_TYPES.VENUES_PLAYLIST:
+        case ContentTypes.VENUES_PLAYLIST:
           return buildVenuesPlaylist(fields as VenuesFields, moduleId)
-        case CONTENT_TYPES.BUSINESS:
+        case ContentTypes.BUSINESS:
           return buildBusiness(fields as BusinessFields, moduleId)
         default:
           return
