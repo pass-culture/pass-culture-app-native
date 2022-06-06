@@ -110,7 +110,7 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
         case ContentTypes.ALGOLIA:
           return buildAlgoliaModule(fields as AlgoliaFields, moduleId)
         case ContentTypes.RECOMMENDATION:
-          return buildRecommendation(fields as RecommendationFields)
+          return buildRecommendation(fields as RecommendationFields, moduleId)
         case ContentTypes.EXCLUSIVITY:
           return buildExclusivity(fields as ExclusivityFields, moduleId)
         case ContentTypes.VENUES_PLAYLIST:

@@ -1,8 +1,13 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { useVenueModule } from 'features/home/api/useVenueModule'
 import { VenueTile } from 'features/home/atoms/VenueTile'
-import { DisplayParametersFields, VenuesSearchParametersFields } from 'features/home/contentful'
+import {
+  ContentTypes,
+  DisplayParametersFields,
+  VenuesSearchParametersFields,
+} from 'features/home/contentful'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -13,6 +18,8 @@ type VenuesModuleProps = {
   moduleId: string
   display: DisplayParametersFields
   search: VenuesSearchParametersFields[]
+  homeEntryId: string | undefined
+  index: number
 }
 
 const ITEM_HEIGHT = LENGTH_S
@@ -20,7 +27,13 @@ const ITEM_WIDTH = ITEM_HEIGHT * (3 / 2)
 
 const keyExtractor = (item: VenueHit) => item.id.toString()
 
-export const VenuesModule = ({ moduleId, display, search }: VenuesModuleProps) => {
+export const VenuesModule = ({
+  moduleId,
+  display,
+  search,
+  index,
+  homeEntryId,
+}: VenuesModuleProps) => {
   const { position } = useGeolocation()
   const hits = useVenueModule({ search, moduleId }) || []
 
@@ -32,7 +45,21 @@ export const VenuesModule = ({ moduleId, display, search }: VenuesModuleProps) =
   )
 
   const shouldModuleBeDisplayed = hits.length > display.minOffers
+
+  useEffect(() => {
+    if (shouldModuleBeDisplayed) {
+      analytics.logModuleDisplayedOnHomepage(
+        moduleId,
+        ContentTypes.VENUES_PLAYLIST,
+        index,
+        homeEntryId
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldModuleBeDisplayed])
+
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+
   return (
     <PassPlaylist
       testID="offersModuleList"

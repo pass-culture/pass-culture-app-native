@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
 import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityModule.utils'
-import { ExclusivityPane } from 'features/home/contentful'
+import { ContentTypes, ExclusivityPane } from 'features/home/contentful'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -13,13 +13,21 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
+export interface ExclusivityModuleProps extends ExclusivityPane {
+  homeEntryId: string | undefined
+  index: number
+}
+
 export const ExclusivityModule = ({
   title,
   alt,
   image,
   id,
+  moduleId,
   display,
-}: Omit<ExclusivityPane, 'moduleId'>) => {
+  homeEntryId,
+  index,
+}: ExclusivityModuleProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const { data: offer } = useExcluOffer(id)
   const { position } = useGeolocation()
@@ -35,7 +43,16 @@ export const ExclusivityModule = ({
   const source = useMemo(() => ({ uri: image }), [image])
 
   const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position, maxPrice)
+
+  useEffect(() => {
+    if (shouldModuleBeDisplayed) {
+      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldModuleBeDisplayed])
+
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />

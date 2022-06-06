@@ -5,6 +5,7 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import {
   SearchParametersFields,
   DisplayParametersFields,
+  ContentTypes,
 } from 'features/home/contentful/contentful'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -27,6 +28,8 @@ const props = {
   moduleId: 'fakeModuleId',
   cover: null,
   position: null,
+  homeEntryId: 'fakeEntryId',
+  index: 1,
 }
 
 const nativeEventEnd = {
@@ -73,23 +76,29 @@ describe('OffersModule component - Analytics', () => {
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger logEvent "AllTilesSeen" with module title if no display.title', async () => {
-    const component = render(
+  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
+    render(<OffersModule {...props} />)
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
+      1,
+      props.moduleId,
+      ContentTypes.ALGOLIA,
+      props.index,
+      props.homeEntryId
+    )
+  })
+
+  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+    render(
       <OffersModule
         {...props}
         search={[{ title: 'Search title' } as SearchParametersFields]}
-        display={{ ...props.display, title: '' }}
+        display={{ ...props.display, minOffers: mockNbHits + 1 }}
         index={1}
       />
     )
-    const scrollView = component.getByTestId('offersModuleList')
 
-    await act(async () => {
-      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-      await flushAllPromises()
-    })
-
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Search title', mockNbHits)
+    expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
