@@ -878,27 +878,27 @@ workflows:
           requires:
             - checkout-and-install-deps
       - deploy-soft-testing:
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - transition-jira-ticket:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-            - test-web
-            - deploy-soft-testing
-            - deploy-web-testing
-          context: JIRA
+            # - test-lint-and-types
+            # - test-native
+      # - transition-jira-ticket:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #     requires:
+      #       - checkout-and-install-deps
+      #       - test-lint-and-types
+      #       - test-native
+            # - test-web
+      #       - deploy-soft-testing
+      #       - deploy-web-testing
+      #     context: JIRA
 
       - deploy-android-testing-hard:
           filters:
@@ -918,17 +918,17 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - notify-hard-testing-release:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - deploy-ios-testing-hard
-            - deploy-android-testing-hard
+            # - test-lint-and-types
+            # - test-native
+      # - notify-hard-testing-release:
+      #     filters:
+      #       tags:
+      #         only: /^testing\/v.*/
+      #       branches:
+      #         ignore: /.*/
+      #     requires:
+      #       - deploy-ios-testing-hard
+      #       - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
             tags:
@@ -937,8 +937,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-ios-staging-hard:
           filters:
             tags:
@@ -947,8 +947,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - notify-hard-staging-release:
           filters:
             tags:
@@ -966,8 +966,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-android-production-hard:
           filters:
             tags:
@@ -976,8 +976,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-ios-production-hard:
           filters:
             tags:
@@ -986,8 +986,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - notify-hard-production-release:
           filters:
             tags:
@@ -1005,8 +1005,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-web-testing:
           filters:
             tags:
@@ -1015,8 +1015,8 @@ workflows:
               only: master
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-web
+            # - test-lint-and-types
+            # - test-web
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
