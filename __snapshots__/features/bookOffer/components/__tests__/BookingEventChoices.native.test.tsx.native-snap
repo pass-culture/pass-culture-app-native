@@ -50,7 +50,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     accessible={true}
     collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -149,7 +148,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     accessible={true}
     collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -255,7 +253,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -400,7 +397,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -561,7 +557,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     accessible={true}
     collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

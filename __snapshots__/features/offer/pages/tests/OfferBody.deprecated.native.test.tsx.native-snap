@@ -31,6 +31,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       }
     >
       <View
+        collapsable={false}
         pointerEvents="box-none"
         style={
           Object {
@@ -46,6 +47,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           style={null}
         >
           <View
+            collapsable={false}
             pointerEvents="box-none"
             style={
               Object {
@@ -61,7 +63,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           >
             <View
               collapsable={false}
-              nativeID="animatedComponent"
               style={
                 Object {
                   "backgroundColor": "rgb(255, 255, 255)",
@@ -80,7 +81,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           </View>
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             pointerEvents="box-none"
             style={
               Object {
@@ -111,6 +111,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
               }
             >
               <View
+                collapsable={false}
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -124,6 +125,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                 }
               />
               <View
+                collapsable={false}
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -138,7 +140,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                   accessibilityRole="header"
                   aria-level="1"
                   collapsable={false}
-                  nativeID="animatedComponent"
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -153,6 +154,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                 </Text>
               </View>
               <View
+                collapsable={false}
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -179,6 +181,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <RNSScreen
           activityState={2}
+          collapsable={false}
           forwardedRef={[Function]}
           pointerEvents="box-none"
           style={
@@ -255,7 +258,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           >
             <View
               collapsable={false}
-              nativeID="animatedComponent"
               pointerEvents="box-none"
               style={
                 Object {
@@ -871,6 +873,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 <View
                                   accessibilityLabel="Voir la suite de la description"
                                   accessible={true}
+                                  collapsable={false}
                                   focusable={true}
                                   onClick={[Function]}
                                   onResponderGrant={[Function]}
@@ -1021,6 +1024,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             }
                             accessible={true}
+                            collapsable={false}
                             focusable={true}
                             onClick={[Function]}
                             onLayout={[Function]}
@@ -1070,6 +1074,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 Modalités de retrait
                               </Text>
                               <View
+                                collapsable={false}
                                 style={
                                   Object {
                                     "transform": Array [
@@ -1093,6 +1098,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <View
+                            collapsable={false}
                             style={
                               Object {
                                 "height": 0,
@@ -1192,6 +1198,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             }
                             accessible={true}
+                            collapsable={false}
                             focusable={true}
                             onClick={[Function]}
                             onLayout={[Function]}
@@ -1241,6 +1248,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 Accessibilité
                               </Text>
                               <View
+                                collapsable={false}
                                 style={
                                   Object {
                                     "transform": Array [
@@ -1264,6 +1272,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <View
+                            collapsable={false}
                             style={
                               Object {
                                 "height": 0,
@@ -1827,6 +1836,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               <View
                                 accessibilityLabel="Signaler l'offre"
                                 accessible={true}
+                                collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
@@ -1916,449 +1926,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="modal"
                             transparent={true}
                             visible={false}
-                          >
-                            <View
-                              accessible={true}
-                              focusable={true}
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                Object {
-                                  "backgroundColor": "black",
-                                  "bottom": 0,
-                                  "height": 1334,
-                                  "left": 0,
-                                  "opacity": 0,
-                                  "position": "absolute",
-                                  "right": 0,
-                                  "top": 0,
-                                  "width": 750,
-                                }
-                              }
-                            />
-                            <View
-                              accessibilityRole="none"
-                              aria-describedby="testUuidV4"
-                              aria-modal={true}
-                              deviceHeight={1334}
-                              deviceWidth={750}
-                              forwardedRef={[Function]}
-                              hideModalContentWhileAnimating={false}
-                              onBackdropPress={[Function]}
-                              onModalHide={[Function]}
-                              onModalWillHide={[Function]}
-                              onModalWillShow={[Function]}
-                              panResponderThreshold={4}
-                              pointerEvents="box-none"
-                              scrollHorizontal={false}
-                              scrollOffset={0}
-                              scrollOffsetMax={0}
-                              scrollTo={null}
-                              statusBarTranslucent={true}
-                              style={
-                                Object {
-                                  "alignItems": "center",
-                                  "bottom": 0,
-                                  "flex": 1,
-                                  "justifyContent": "center",
-                                  "left": 0,
-                                  "margin": "auto",
-                                  "position": "absolute",
-                                  "right": 0,
-                                  "top": "auto",
-                                  "transform": Array [
-                                    Object {
-                                      "translateY": 0,
-                                    },
-                                  ],
-                                }
-                              }
-                              supportedOrientations={
-                                Array [
-                                  "portrait",
-                                  "landscape",
-                                ]
-                              }
-                              swipeThreshold={100}
-                            >
-                              <View
-                                height={428}
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
-                                      "borderBottomEndRadius": 0,
-                                      "borderBottomLeftRadius": 0,
-                                      "borderBottomRightRadius": 0,
-                                      "borderBottomStartRadius": 0,
-                                      "borderTopEndRadius": 16,
-                                      "borderTopLeftRadius": 20,
-                                      "borderTopRightRadius": 20,
-                                      "borderTopStartRadius": 16,
-                                      "flexDirection": "column",
-                                      "height": 428,
-                                      "justifyContent": "center",
-                                      "maxHeight": 650,
-                                      "maxWidth": 960,
-                                      "paddingBottom": 20,
-                                      "paddingLeft": 20,
-                                      "paddingRight": 20,
-                                      "paddingTop": 20,
-                                      "width": "100%",
-                                    },
-                                  ]
-                                }
-                                testID="modalContainer"
-                              >
-                                <View
-                                  onLayout={[Function]}
-                                  style={
-                                    Array [
-                                      Object {
-                                        "display": "flex",
-                                        "flexDirection": "row",
-                                        "justifyContent": "center",
-                                        "width": "100%",
-                                      },
-                                    ]
-                                  }
-                                  testID="modalHeader"
-                                >
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "flex-start",
-                                          "flexBasis": 0,
-                                          "flexDirection": "row",
-                                          "flexGrow": 0.1,
-                                          "flexShrink": 1,
-                                          "justifyContent": "flex-start",
-                                        },
-                                      ]
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
-                                          "flexBasis": 0,
-                                          "flexGrow": 0.8,
-                                          "flexShrink": 1,
-                                          "justifyContent": "center",
-                                          "paddingLeft": 12,
-                                          "paddingRight": 12,
-                                          "zIndex": 1,
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <Text
-                                      nativeID="testUuidV4"
-                                      numberOfLines={2}
-                                      style={
-                                        Array [
-                                          Object {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-Medium",
-                                            "fontSize": 18,
-                                            "lineHeight": 22,
-                                            "textAlign": "center",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      Signaler une offre
-                                    </Text>
-                                  </View>
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "flex-start",
-                                          "flexBasis": 0,
-                                          "flexDirection": "row",
-                                          "flexGrow": 0.1,
-                                          "flexShrink": 1,
-                                          "justifyContent": "flex-end",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <View
-                                      accessible={true}
-                                      focusable={true}
-                                      onClick={[Function]}
-                                      onResponderGrant={[Function]}
-                                      onResponderMove={[Function]}
-                                      onResponderRelease={[Function]}
-                                      onResponderTerminate={[Function]}
-                                      onResponderTerminationRequest={[Function]}
-                                      onStartShouldSetResponder={[Function]}
-                                      style={
-                                        Object {
-                                          "opacity": 1,
-                                          "paddingBottom": 4,
-                                          "paddingLeft": 4,
-                                          "paddingRight": 4,
-                                          "paddingTop": 4,
-                                          "userSelect": "auto",
-                                        }
-                                      }
-                                      testID="Fermer la modale"
-                                    >
-                                      <View
-                                        height={20}
-                                        testID="rightIcon"
-                                        width={20}
-                                      >
-                                        <Text>
-                                          rightIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                                <View
-                                  style={
-                                    Array [
-                                      Object {
-                                        "height": 20,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <View
-                                  backdropColor="#00000080"
-                                  paddingBottom={8}
-                                  style={
-                                    Array [
-                                      Object {
-                                        "maxHeight": "100%",
-                                        "maxWidth": 480,
-                                        "paddingBottom": 8,
-                                        "width": "100%",
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <RCTScrollView
-                                    contentContainerStyle={Object {}}
-                                    onContentSizeChange={[Function]}
-                                    scrollEnabled={true}
-                                    testID="modalScrollView"
-                                  >
-                                    <View>
-                                      <View
-                                        style={
-                                          Array [
-                                            Object {
-                                              "width": "100%",
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#161617",
-                                                "fontFamily": "Montserrat-Regular",
-                                                "fontSize": 15,
-                                                "lineHeight": 20,
-                                                "textAlign": "center",
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU.
-                                        </Text>
-                                        <View
-                                          numberOfSpaces={8}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "height": 32,
-                                              },
-                                            ]
-                                          }
-                                        />
-                                        <View
-                                          style={
-                                            Array [
-                                              Object {
-                                                "alignItems": "center",
-                                                "flexDirection": "row",
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          <View
-                                            height={24}
-                                            width={24}
-                                          >
-                                            <Text>
-                                              undefined-SVG-Mock
-                                            </Text>
-                                          </View>
-                                          <View
-                                            numberOfSpaces={3.75}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "width": 15,
-                                                },
-                                              ]
-                                            }
-                                          />
-                                          <Text
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#161617",
-                                                  "flexBasis": 0,
-                                                  "flexGrow": 1,
-                                                  "flexShrink": 1,
-                                                  "fontFamily": "Montserrat-Regular",
-                                                  "fontSize": 15,
-                                                  "lineHeight": 20,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs.
-                                          </Text>
-                                        </View>
-                                        <View
-                                          numberOfSpaces={8}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "height": 32,
-                                              },
-                                            ]
-                                          }
-                                        />
-                                        <View
-                                          style={
-                                            Array [
-                                              Object {
-                                                "alignItems": "center",
-                                                "flexDirection": "row",
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          <View
-                                            height={24}
-                                            width={24}
-                                          >
-                                            <Text>
-                                              undefined-SVG-Mock
-                                            </Text>
-                                          </View>
-                                          <View
-                                            numberOfSpaces={3.75}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "width": 15,
-                                                },
-                                              ]
-                                            }
-                                          />
-                                          <Text
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#161617",
-                                                  "flexBasis": 0,
-                                                  "flexGrow": 1,
-                                                  "flexShrink": 1,
-                                                  "fontFamily": "Montserrat-Regular",
-                                                  "fontSize": 15,
-                                                  "lineHeight": 20,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Ton identité restera anonyme auprès des acteurs culturels.
-                                          </Text>
-                                        </View>
-                                        <View
-                                          numberOfSpaces={13}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "height": 52,
-                                              },
-                                            ]
-                                          }
-                                        />
-                                        <View
-                                          accessibilityLabel="Signaler l'offre"
-                                          accessible={true}
-                                          focusable={true}
-                                          onClick={[Function]}
-                                          onResponderGrant={[Function]}
-                                          onResponderMove={[Function]}
-                                          onResponderRelease={[Function]}
-                                          onResponderTerminate={[Function]}
-                                          onResponderTerminationRequest={[Function]}
-                                          onStartShouldSetResponder={[Function]}
-                                          style={
-                                            Object {
-                                              "alignItems": "center",
-                                              "backgroundColor": "#eb0055",
-                                              "borderRadius": 24,
-                                              "flexDirection": "row",
-                                              "justifyContent": "center",
-                                              "maxWidth": 500,
-                                              "minHeight": 40,
-                                              "opacity": 1,
-                                              "paddingBottom": 2,
-                                              "paddingLeft": 2,
-                                              "paddingRight": 2,
-                                              "paddingTop": 2,
-                                              "userSelect": "auto",
-                                              "width": "100%",
-                                            }
-                                          }
-                                          testID="go-to-reason-report-button"
-                                        >
-                                          <Text
-                                            adjustsFontSizeToFit={false}
-                                            numberOfLines={1}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#ffffff",
-                                                  "fontFamily": "Montserrat-Bold",
-                                                  "fontSize": 15,
-                                                  "lineHeight": 20,
-                                                  "marginLeft": 0,
-                                                  "maxWidth": "100%",
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Signaler l'offre
-                                          </Text>
-                                        </View>
-                                      </View>
-                                    </View>
-                                  </RCTScrollView>
-                                </View>
-                              </View>
-                            </View>
-                          </Modal>
+                          />
                           <View
                             style={
                               Array [
@@ -2425,6 +1993,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       }
     >
       <View
+        collapsable={false}
         pointerEvents="box-none"
         style={
           Object {
@@ -2440,6 +2009,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           style={null}
         >
           <View
+            collapsable={false}
             pointerEvents="box-none"
             style={
               Object {
@@ -2455,7 +2025,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           >
             <View
               collapsable={false}
-              nativeID="animatedComponent"
               style={
                 Object {
                   "backgroundColor": "rgb(255, 255, 255)",
@@ -2474,7 +2043,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           </View>
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             pointerEvents="box-none"
             style={
               Object {
@@ -2505,6 +2073,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
               }
             >
               <View
+                collapsable={false}
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -2518,6 +2087,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                 }
               />
               <View
+                collapsable={false}
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -2532,7 +2102,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                   accessibilityRole="header"
                   aria-level="1"
                   collapsable={false}
-                  nativeID="animatedComponent"
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -2547,6 +2116,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                 </Text>
               </View>
               <View
+                collapsable={false}
                 pointerEvents="box-none"
                 style={
                   Object {
@@ -2573,6 +2143,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <RNSScreen
           activityState={2}
+          collapsable={false}
           forwardedRef={[Function]}
           pointerEvents="box-none"
           style={
@@ -2649,7 +2220,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           >
             <View
               collapsable={false}
-              nativeID="animatedComponent"
               pointerEvents="box-none"
               style={
                 Object {
@@ -3339,6 +2909,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 <View
                                   accessibilityLabel="Voir la suite de la description"
                                   accessible={true}
+                                  collapsable={false}
                                   focusable={true}
                                   onClick={[Function]}
                                   onResponderGrant={[Function]}
@@ -3528,6 +3099,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               accessibilityLabel="Lieu PATHE BEAUGRENELLE"
                               accessibilityRole="link"
                               accessible={true}
+                              collapsable={false}
                               focusable={true}
                               onClick={[Function]}
                               onResponderGrant={[Function]}
@@ -3762,6 +3334,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               <View
                                 accessibilityLabel="Voir l'itinéraire"
                                 accessible={true}
+                                collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
@@ -3850,6 +3423,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             }
                             accessible={true}
+                            collapsable={false}
                             focusable={true}
                             onClick={[Function]}
                             onLayout={[Function]}
@@ -3899,6 +3473,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 Modalités de retrait
                               </Text>
                               <View
+                                collapsable={false}
                                 style={
                                   Object {
                                     "transform": Array [
@@ -3922,6 +3497,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <View
+                            collapsable={false}
                             style={
                               Object {
                                 "height": 0,
@@ -4021,6 +3597,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             }
                             accessible={true}
+                            collapsable={false}
                             focusable={true}
                             onClick={[Function]}
                             onLayout={[Function]}
@@ -4070,6 +3647,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 Accessibilité
                               </Text>
                               <View
+                                collapsable={false}
                                 style={
                                   Object {
                                     "transform": Array [
@@ -4093,6 +3671,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <View
+                            collapsable={false}
                             style={
                               Object {
                                 "height": 0,
@@ -4656,6 +4235,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               <View
                                 accessibilityLabel="Signaler l'offre"
                                 accessible={true}
+                                collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
@@ -4745,449 +4325,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="modal"
                             transparent={true}
                             visible={false}
-                          >
-                            <View
-                              accessible={true}
-                              focusable={true}
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                Object {
-                                  "backgroundColor": "black",
-                                  "bottom": 0,
-                                  "height": 1334,
-                                  "left": 0,
-                                  "opacity": 0,
-                                  "position": "absolute",
-                                  "right": 0,
-                                  "top": 0,
-                                  "width": 750,
-                                }
-                              }
-                            />
-                            <View
-                              accessibilityRole="none"
-                              aria-describedby="testUuidV4"
-                              aria-modal={true}
-                              deviceHeight={1334}
-                              deviceWidth={750}
-                              forwardedRef={[Function]}
-                              hideModalContentWhileAnimating={false}
-                              onBackdropPress={[Function]}
-                              onModalHide={[Function]}
-                              onModalWillHide={[Function]}
-                              onModalWillShow={[Function]}
-                              panResponderThreshold={4}
-                              pointerEvents="box-none"
-                              scrollHorizontal={false}
-                              scrollOffset={0}
-                              scrollOffsetMax={0}
-                              scrollTo={null}
-                              statusBarTranslucent={true}
-                              style={
-                                Object {
-                                  "alignItems": "center",
-                                  "bottom": 0,
-                                  "flex": 1,
-                                  "justifyContent": "center",
-                                  "left": 0,
-                                  "margin": "auto",
-                                  "position": "absolute",
-                                  "right": 0,
-                                  "top": "auto",
-                                  "transform": Array [
-                                    Object {
-                                      "translateY": 0,
-                                    },
-                                  ],
-                                }
-                              }
-                              supportedOrientations={
-                                Array [
-                                  "portrait",
-                                  "landscape",
-                                ]
-                              }
-                              swipeThreshold={100}
-                            >
-                              <View
-                                height={428}
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
-                                      "borderBottomEndRadius": 0,
-                                      "borderBottomLeftRadius": 0,
-                                      "borderBottomRightRadius": 0,
-                                      "borderBottomStartRadius": 0,
-                                      "borderTopEndRadius": 16,
-                                      "borderTopLeftRadius": 20,
-                                      "borderTopRightRadius": 20,
-                                      "borderTopStartRadius": 16,
-                                      "flexDirection": "column",
-                                      "height": 428,
-                                      "justifyContent": "center",
-                                      "maxHeight": 650,
-                                      "maxWidth": 960,
-                                      "paddingBottom": 20,
-                                      "paddingLeft": 20,
-                                      "paddingRight": 20,
-                                      "paddingTop": 20,
-                                      "width": "100%",
-                                    },
-                                  ]
-                                }
-                                testID="modalContainer"
-                              >
-                                <View
-                                  onLayout={[Function]}
-                                  style={
-                                    Array [
-                                      Object {
-                                        "display": "flex",
-                                        "flexDirection": "row",
-                                        "justifyContent": "center",
-                                        "width": "100%",
-                                      },
-                                    ]
-                                  }
-                                  testID="modalHeader"
-                                >
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "flex-start",
-                                          "flexBasis": 0,
-                                          "flexDirection": "row",
-                                          "flexGrow": 0.1,
-                                          "flexShrink": 1,
-                                          "justifyContent": "flex-start",
-                                        },
-                                      ]
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
-                                          "flexBasis": 0,
-                                          "flexGrow": 0.8,
-                                          "flexShrink": 1,
-                                          "justifyContent": "center",
-                                          "paddingLeft": 12,
-                                          "paddingRight": 12,
-                                          "zIndex": 1,
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <Text
-                                      nativeID="testUuidV4"
-                                      numberOfLines={2}
-                                      style={
-                                        Array [
-                                          Object {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-Medium",
-                                            "fontSize": 18,
-                                            "lineHeight": 22,
-                                            "textAlign": "center",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      Signaler une offre
-                                    </Text>
-                                  </View>
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "flex-start",
-                                          "flexBasis": 0,
-                                          "flexDirection": "row",
-                                          "flexGrow": 0.1,
-                                          "flexShrink": 1,
-                                          "justifyContent": "flex-end",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <View
-                                      accessible={true}
-                                      focusable={true}
-                                      onClick={[Function]}
-                                      onResponderGrant={[Function]}
-                                      onResponderMove={[Function]}
-                                      onResponderRelease={[Function]}
-                                      onResponderTerminate={[Function]}
-                                      onResponderTerminationRequest={[Function]}
-                                      onStartShouldSetResponder={[Function]}
-                                      style={
-                                        Object {
-                                          "opacity": 1,
-                                          "paddingBottom": 4,
-                                          "paddingLeft": 4,
-                                          "paddingRight": 4,
-                                          "paddingTop": 4,
-                                          "userSelect": "auto",
-                                        }
-                                      }
-                                      testID="Fermer la modale"
-                                    >
-                                      <View
-                                        height={20}
-                                        testID="rightIcon"
-                                        width={20}
-                                      >
-                                        <Text>
-                                          rightIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                  </View>
-                                </View>
-                                <View
-                                  style={
-                                    Array [
-                                      Object {
-                                        "height": 20,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <View
-                                  backdropColor="#00000080"
-                                  paddingBottom={8}
-                                  style={
-                                    Array [
-                                      Object {
-                                        "maxHeight": "100%",
-                                        "maxWidth": 480,
-                                        "paddingBottom": 8,
-                                        "width": "100%",
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <RCTScrollView
-                                    contentContainerStyle={Object {}}
-                                    onContentSizeChange={[Function]}
-                                    scrollEnabled={true}
-                                    testID="modalScrollView"
-                                  >
-                                    <View>
-                                      <View
-                                        style={
-                                          Array [
-                                            Object {
-                                              "width": "100%",
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#161617",
-                                                "fontFamily": "Montserrat-Regular",
-                                                "fontSize": 15,
-                                                "lineHeight": 20,
-                                                "textAlign": "center",
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU.
-                                        </Text>
-                                        <View
-                                          numberOfSpaces={8}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "height": 32,
-                                              },
-                                            ]
-                                          }
-                                        />
-                                        <View
-                                          style={
-                                            Array [
-                                              Object {
-                                                "alignItems": "center",
-                                                "flexDirection": "row",
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          <View
-                                            height={24}
-                                            width={24}
-                                          >
-                                            <Text>
-                                              undefined-SVG-Mock
-                                            </Text>
-                                          </View>
-                                          <View
-                                            numberOfSpaces={3.75}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "width": 15,
-                                                },
-                                              ]
-                                            }
-                                          />
-                                          <Text
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#161617",
-                                                  "flexBasis": 0,
-                                                  "flexGrow": 1,
-                                                  "flexShrink": 1,
-                                                  "fontFamily": "Montserrat-Regular",
-                                                  "fontSize": 15,
-                                                  "lineHeight": 20,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs.
-                                          </Text>
-                                        </View>
-                                        <View
-                                          numberOfSpaces={8}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "height": 32,
-                                              },
-                                            ]
-                                          }
-                                        />
-                                        <View
-                                          style={
-                                            Array [
-                                              Object {
-                                                "alignItems": "center",
-                                                "flexDirection": "row",
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          <View
-                                            height={24}
-                                            width={24}
-                                          >
-                                            <Text>
-                                              undefined-SVG-Mock
-                                            </Text>
-                                          </View>
-                                          <View
-                                            numberOfSpaces={3.75}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "width": 15,
-                                                },
-                                              ]
-                                            }
-                                          />
-                                          <Text
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#161617",
-                                                  "flexBasis": 0,
-                                                  "flexGrow": 1,
-                                                  "flexShrink": 1,
-                                                  "fontFamily": "Montserrat-Regular",
-                                                  "fontSize": 15,
-                                                  "lineHeight": 20,
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Ton identité restera anonyme auprès des acteurs culturels.
-                                          </Text>
-                                        </View>
-                                        <View
-                                          numberOfSpaces={13}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "height": 52,
-                                              },
-                                            ]
-                                          }
-                                        />
-                                        <View
-                                          accessibilityLabel="Signaler l'offre"
-                                          accessible={true}
-                                          focusable={true}
-                                          onClick={[Function]}
-                                          onResponderGrant={[Function]}
-                                          onResponderMove={[Function]}
-                                          onResponderRelease={[Function]}
-                                          onResponderTerminate={[Function]}
-                                          onResponderTerminationRequest={[Function]}
-                                          onStartShouldSetResponder={[Function]}
-                                          style={
-                                            Object {
-                                              "alignItems": "center",
-                                              "backgroundColor": "#eb0055",
-                                              "borderRadius": 24,
-                                              "flexDirection": "row",
-                                              "justifyContent": "center",
-                                              "maxWidth": 500,
-                                              "minHeight": 40,
-                                              "opacity": 1,
-                                              "paddingBottom": 2,
-                                              "paddingLeft": 2,
-                                              "paddingRight": 2,
-                                              "paddingTop": 2,
-                                              "userSelect": "auto",
-                                              "width": "100%",
-                                            }
-                                          }
-                                          testID="go-to-reason-report-button"
-                                        >
-                                          <Text
-                                            adjustsFontSizeToFit={false}
-                                            numberOfLines={1}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#ffffff",
-                                                  "fontFamily": "Montserrat-Bold",
-                                                  "fontSize": 15,
-                                                  "lineHeight": 20,
-                                                  "marginLeft": 0,
-                                                  "maxWidth": "100%",
-                                                },
-                                              ]
-                                            }
-                                          >
-                                            Signaler l'offre
-                                          </Text>
-                                        </View>
-                                      </View>
-                                    </View>
-                                  </RCTScrollView>
-                                </View>
-                              </View>
-                            </View>
-                          </Modal>
+                          />
                           <View
                             style={
                               Array [
