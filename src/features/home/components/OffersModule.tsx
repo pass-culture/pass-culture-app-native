@@ -1,8 +1,12 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile, SeeMore } from 'features/home/atoms'
-import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
+import {
+  SearchParametersFields,
+  DisplayParametersFields,
+  ContentTypes,
+} from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -21,12 +25,13 @@ type OffersModuleProps = {
   moduleId: string
   cover: string | null
   index: number
+  homeEntryId: string | undefined
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { cover, display, search, index, moduleId } = props
+  const { cover, display, search, index, moduleId, homeEntryId } = props
   const data = useOfferModule({ search, moduleId })
   const { position } = useGeolocation()
   const parseSearchParameters = useParseSearchParameters()
@@ -86,8 +91,6 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
 
-  const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
-
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }) => {
       return (
@@ -104,7 +107,17 @@ export const OffersModule = (props: OffersModuleProps) => {
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
 
+  const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
+
+  useEffect(() => {
+    if (shouldModuleBeDisplayed) {
+      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.ALGOLIA, index, homeEntryId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldModuleBeDisplayed])
+
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+
   return (
     <PassPlaylist
       testID="offersModuleList"

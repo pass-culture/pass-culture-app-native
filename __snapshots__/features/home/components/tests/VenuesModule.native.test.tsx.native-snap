@@ -1,0 +1,1079 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenuesModule component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "paddingBottom": 24,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={2}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 20,
+            "lineHeight": 24,
+          },
+        ]
+      }
+      testID="playlistTitle"
+    >
+      Module title
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ItemSeparatorComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "width: 16px;",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      ListFooterComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "width: 24px;",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      ListHeaderComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "width: 24px;",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data={
+        Array [
+          Object {
+            "accessibility": Object {
+              "audioDisability": false,
+              "mentalDisability": false,
+              "motorDisability": false,
+              "visualDisability": true,
+            },
+            "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+            "contact": Object {
+              "email": "contact@venue.com",
+              "phoneNumber": "+33102030405",
+              "socialMedias": Object {
+                "facebook": "https://facebook.com",
+                "instagram": "https://instagram.com",
+                "snapchat": "https://snapchat.com",
+                "twitter": "https://twitter.com",
+              },
+              "website": "https://my@website.com",
+            },
+            "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+            "id": 5543,
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+            "name": "Le Petit Rintintin 1",
+            "publicName": "Librairie Quantique",
+            "venueTypeCode": "MOVIE",
+          },
+          Object {
+            "accessibility": Object {
+              "audioDisability": false,
+              "mentalDisability": false,
+              "motorDisability": false,
+              "visualDisability": true,
+            },
+            "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+            "contact": Object {
+              "email": "contact@venue.com",
+              "phoneNumber": "+33102030405",
+              "socialMedias": Object {
+                "facebook": "https://facebook.com",
+                "instagram": "https://instagram.com",
+                "snapchat": "https://snapchat.com",
+                "twitter": "https://twitter.com",
+              },
+              "website": "https://my@website.com",
+            },
+            "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+            "id": 5544,
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+            "name": "Le Petit Rintintin 2",
+            "publicName": "Librairie Quantique",
+            "venueTypeCode": "MOVIE",
+          },
+          Object {
+            "accessibility": Object {
+              "audioDisability": false,
+              "mentalDisability": false,
+              "motorDisability": false,
+              "visualDisability": true,
+            },
+            "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+            "contact": Object {
+              "email": "contact@venue.com",
+              "phoneNumber": "+33102030405",
+              "socialMedias": Object {
+                "facebook": "https://facebook.com",
+                "instagram": "https://instagram.com",
+                "snapchat": "https://snapchat.com",
+                "twitter": "https://twitter.com",
+              },
+              "website": "https://my@website.com",
+            },
+            "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+            "id": 5545,
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+            "name": "Le Petit Rintintin 3",
+            "publicName": "Librairie Quantique",
+            "venueTypeCode": "MOVIE",
+          },
+          Object {
+            "accessibility": Object {
+              "audioDisability": false,
+              "mentalDisability": false,
+              "motorDisability": false,
+              "visualDisability": true,
+            },
+            "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+            "contact": Object {
+              "email": "contact@venue.com",
+              "phoneNumber": "+33102030405",
+              "socialMedias": Object {
+                "facebook": "https://facebook.com",
+                "instagram": "https://instagram.com",
+                "snapchat": "https://snapchat.com",
+                "twitter": "https://twitter.com",
+              },
+              "website": "https://my@website.com",
+            },
+            "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+            "id": 5546,
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+            "name": "Le Petit Rintintin 4",
+            "publicName": "Librairie Quantique",
+            "venueTypeCode": "MOVIE",
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      getItemLayout={[Function]}
+      horizontal={true}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={0.2}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEnabled={true}
+      scrollEventThrottle={200}
+      showsHorizontalScrollIndicator={false}
+      stickyHeaderIndices={Array []}
+      testID="offersModuleList"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View>
+            <View
+              accessibilityLabel="Lieu Le Petit Rintintin 1 du type Salle de projections, "
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "borderRadius": 8,
+                  "marginVertical": 4,
+                  "maxHeight": 240,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": 252,
+                }
+              }
+              testID="venueTile"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "column-reverse",
+                    },
+                  ]
+                }
+              >
+                <View
+                  maxWidth={252}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 252,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Le Petit Rintintin 1
+                  </Text>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Salle de projections
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "#F1F1F4",
+                        },
+                        Object {
+                          "borderRadius": 8,
+                          "height": 168,
+                          "width": 252,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "accessibility": Object {
+                  "audioDisability": false,
+                  "mentalDisability": false,
+                  "motorDisability": false,
+                  "visualDisability": true,
+                },
+                "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "contact": Object {
+                  "email": "contact@venue.com",
+                  "phoneNumber": "+33102030405",
+                  "socialMedias": Object {
+                    "facebook": "https://facebook.com",
+                    "instagram": "https://instagram.com",
+                    "snapchat": "https://snapchat.com",
+                    "twitter": "https://twitter.com",
+                  },
+                  "website": "https://my@website.com",
+                },
+                "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                "id": 5543,
+                "latitude": 48.87004,
+                "longitude": 2.3785,
+                "name": "Le Petit Rintintin 1",
+                "publicName": "Librairie Quantique",
+                "venueTypeCode": "MOVIE",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View>
+            <View
+              accessibilityLabel="Lieu Le Petit Rintintin 2 du type Salle de projections, "
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "borderRadius": 8,
+                  "marginVertical": 4,
+                  "maxHeight": 240,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": 252,
+                }
+              }
+              testID="venueTile"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "column-reverse",
+                    },
+                  ]
+                }
+              >
+                <View
+                  maxWidth={252}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 252,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Le Petit Rintintin 2
+                  </Text>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Salle de projections
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "#F1F1F4",
+                        },
+                        Object {
+                          "borderRadius": 8,
+                          "height": 168,
+                          "width": 252,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "accessibility": Object {
+                  "audioDisability": false,
+                  "mentalDisability": false,
+                  "motorDisability": false,
+                  "visualDisability": true,
+                },
+                "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "contact": Object {
+                  "email": "contact@venue.com",
+                  "phoneNumber": "+33102030405",
+                  "socialMedias": Object {
+                    "facebook": "https://facebook.com",
+                    "instagram": "https://instagram.com",
+                    "snapchat": "https://snapchat.com",
+                    "twitter": "https://twitter.com",
+                  },
+                  "website": "https://my@website.com",
+                },
+                "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                "id": 5544,
+                "latitude": 48.87004,
+                "longitude": 2.3785,
+                "name": "Le Petit Rintintin 2",
+                "publicName": "Librairie Quantique",
+                "venueTypeCode": "MOVIE",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View>
+            <View
+              accessibilityLabel="Lieu Le Petit Rintintin 3 du type Salle de projections, "
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "borderRadius": 8,
+                  "marginVertical": 4,
+                  "maxHeight": 240,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": 252,
+                }
+              }
+              testID="venueTile"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "column-reverse",
+                    },
+                  ]
+                }
+              >
+                <View
+                  maxWidth={252}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 252,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Le Petit Rintintin 3
+                  </Text>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Salle de projections
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "#F1F1F4",
+                        },
+                        Object {
+                          "borderRadius": 8,
+                          "height": 168,
+                          "width": 252,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "accessibility": Object {
+                  "audioDisability": false,
+                  "mentalDisability": false,
+                  "motorDisability": false,
+                  "visualDisability": true,
+                },
+                "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "contact": Object {
+                  "email": "contact@venue.com",
+                  "phoneNumber": "+33102030405",
+                  "socialMedias": Object {
+                    "facebook": "https://facebook.com",
+                    "instagram": "https://instagram.com",
+                    "snapchat": "https://snapchat.com",
+                    "twitter": "https://twitter.com",
+                  },
+                  "website": "https://my@website.com",
+                },
+                "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                "id": 5545,
+                "latitude": 48.87004,
+                "longitude": 2.3785,
+                "name": "Le Petit Rintintin 3",
+                "publicName": "Librairie Quantique",
+                "venueTypeCode": "MOVIE",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View>
+            <View
+              accessibilityLabel="Lieu Le Petit Rintintin 4 du type Salle de projections, "
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "borderRadius": 8,
+                  "marginVertical": 4,
+                  "maxHeight": 240,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": 252,
+                }
+              }
+              testID="venueTile"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "column-reverse",
+                    },
+                  ]
+                }
+              >
+                <View
+                  maxWidth={252}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 252,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Le Petit Rintintin 4
+                  </Text>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Salle de projections
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "#F1F1F4",
+                        },
+                        Object {
+                          "borderRadius": 8,
+                          "height": 168,
+                          "width": 252,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

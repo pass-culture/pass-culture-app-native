@@ -4,7 +4,7 @@ import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { BusinessPane } from 'features/home/contentful'
+import { BusinessPane, ContentTypes } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
@@ -17,9 +17,25 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
-export const BusinessModule = ({ module }: { module: BusinessPane }) => {
+export interface BusinessModuleProps extends BusinessPane {
+  homeEntryId: string | undefined
+  index: number
+}
+
+export const BusinessModule = (props: BusinessModuleProps) => {
   const [isFocus, setIsFocus] = useState(false)
-  const { title, firstLine, secondLine, leftIcon, image, url } = module
+  const {
+    title,
+    firstLine,
+    secondLine,
+    leftIcon,
+    image,
+    url,
+    homeEntryId,
+    index,
+    targetNotConnectedUsersOnly,
+    moduleId,
+  } = props
   const isDisabled = !url
   const { appContentWidth } = useTheme()
   const { isLoggedIn } = useAuthContext()
@@ -57,8 +73,17 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 
-  const shouldModuleBeDisplayed = showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)
+  const shouldModuleBeDisplayed = showBusinessModule(targetNotConnectedUsersOnly, isLoggedIn)
+
+  useEffect(() => {
+    if (shouldModuleBeDisplayed) {
+      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.BUSINESS, index, homeEntryId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldModuleBeDisplayed])
+
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />

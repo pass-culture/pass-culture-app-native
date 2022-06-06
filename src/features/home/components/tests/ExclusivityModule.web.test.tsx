@@ -1,23 +1,24 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { ExclusivityPane } from 'features/home/contentful'
 import { offerResponseSnap as mockOffer } from 'features/offer/api/snaps/offerResponseSnap'
 import { analytics } from 'libs/analytics'
 import { render, fireEvent } from 'tests/utils/web'
 
-import { ExclusivityModule } from '../ExclusivityModule'
+import { ExclusivityModule, ExclusivityModuleProps } from '../ExclusivityModule'
 
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-const props: ExclusivityPane = {
+const props: ExclusivityModuleProps = {
   title: "Image d'Adèle",
   alt: "Image d'Adèle",
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   id: mockOffer.id,
   moduleId: 'module-id',
   display: { isGeolocated: false, aroundRadius: undefined, title: '' },
+  homeEntryId: 'abcd',
+  index: 1,
 }
 
 const mockPosition = {

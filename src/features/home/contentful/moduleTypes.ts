@@ -95,16 +95,20 @@ export class ExclusivityPane {
 
 export class RecommendationPane {
   displayParameters: DisplayParametersFields
+  moduleId: string
   recommendationParameters?: RecommendationParametersFields
 
   constructor({
     displayParameters,
+    moduleId,
     recommendationParameters,
   }: {
     displayParameters: DisplayParametersFields
+    moduleId: string
     recommendationParameters?: RecommendationParametersFields
   }) {
     this.displayParameters = displayParameters
+    this.moduleId = moduleId
     this.recommendationParameters = recommendationParameters
   }
 }
