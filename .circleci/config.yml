@@ -424,12 +424,13 @@ jobs:
   test-web:
     executor: node
     working_directory: ~/pass-culture
+    resource_class: medium+
     steps:
       - checkout
       - install_node_modules
       - run:
           name: Unit Tests Web
-          command: yarn test:unit:web:ci
+          command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
 
   notify-hard-testing-release:
     executor: node
