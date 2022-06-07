@@ -9,11 +9,18 @@ interface Props {
   label: string
   Icon: FunctionComponent<IconInterface>
   color: string
+  onPress: () => void
   style?: ViewStyle
   children?: never
 }
 
-export const CategoryButton: FunctionComponent<Props> = ({ label, Icon, color, style }) => {
+export const CategoryButton: FunctionComponent<Props> = ({
+  label,
+  Icon,
+  color,
+  onPress,
+  style,
+}) => {
   const StyledIcon = useMemo(
     () =>
       styled(Icon).attrs(({ theme }) => ({
@@ -24,7 +31,7 @@ export const CategoryButton: FunctionComponent<Props> = ({ label, Icon, color, s
   )
 
   return (
-    <TouchableContainer style={style} borderLeftColor={color}>
+    <TouchableContainer style={style} borderLeftColor={color} onPress={onPress}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>
