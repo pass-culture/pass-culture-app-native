@@ -1,14 +1,9 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import React, { forwardRef, useCallback, useRef, useState } from 'react'
+import React, { forwardRef, useRef, useState } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { LocationType } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -36,16 +31,12 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     accessibilityDescribedBy,
     onPressRightIcon,
     focusOutlineColor,
+    onPressLocationButton,
+    locationLabel,
+    showLocationButton,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useStagedSearch()
-  const { locationFilter } = searchState
-  const { locationType } = locationFilter
-  // PLACE and VENUE belong to the same section
-  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
-  const { label: locationLabel } = useLocationChoice(section)
   const searchInput = useRef<RNTextInput>(null)
 
   function onFocus() {
@@ -61,10 +52,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     setIsFocus(false)
     if (props?.onFocusState) props.onFocusState(false)
   }
-
-  const onPressLocationButton = useCallback(() => {
-    navigate('LocationFilter')
-  }, [navigate])
 
   return (
     <React.Fragment>
@@ -98,10 +85,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           enablesReturnKeyAutomatically={true}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
-        {props.showLocationButton ? (
+        {showLocationButton ? (
           <StyledButtonPrimary
             testID="locationButton"
-            wording={locationLabel}
+            wording={locationLabel || ''}
             onPress={onPressLocationButton}
             icon={LocationPointer}
             textSize={getSpacing(3)}

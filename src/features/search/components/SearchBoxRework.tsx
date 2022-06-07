@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
@@ -39,6 +41,11 @@ export const SearchBoxRework: React.FC<Props> = ({
   const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
   const showResults = useShowResults()
+  const { locationFilter } = stagedSearchState
+  const { locationType } = locationFilter
+  // PLACE and VENUE belong to the same section
+  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { label: locationLabel } = useLocationChoice(section)
 
   const resetSearch = () => {
     navigate(...getTabNavConfig('Search', { query: '' }))
@@ -52,6 +59,10 @@ export const SearchBoxRework: React.FC<Props> = ({
     dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
   }
+
+  const onPressLocationButton = useCallback(() => {
+    navigate('LocationFilter')
+  }, [navigate])
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
     const queryText = event.nativeEvent.text
@@ -97,6 +108,8 @@ export const SearchBoxRework: React.FC<Props> = ({
           onFocusState={onFocusState}
           testID="searchInput"
           showLocationButton={showLocationButton}
+          onPressLocationButton={onPressLocationButton}
+          locationLabel={locationLabel}
         />
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>

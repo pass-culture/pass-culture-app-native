@@ -159,4 +159,14 @@ describe('SearchBox component', () => {
       })
     )
   })
+
+  it('should redirect on location page on location button click', async () => {
+    const { getByTestId } = render(
+      <SearchBoxRework searchInputID={searchInputID} showLocationButton={true} />
+    )
+    const locationButton = getByTestId('locationButton')
+    await fireEvent.press(locationButton)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
+  })
 })
