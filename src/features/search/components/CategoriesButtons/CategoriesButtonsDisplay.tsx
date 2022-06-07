@@ -25,6 +25,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
     renderItem={CategoyButtonItem}
     keyExtractor={(item) => item.label}
     numColumns={2}
+    testID="categoriesButtons"
   />
 )
 
