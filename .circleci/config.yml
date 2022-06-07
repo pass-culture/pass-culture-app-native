@@ -878,14 +878,14 @@ workflows:
           requires:
             - checkout-and-install-deps
       - deploy-soft-testing:
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - transition-jira-ticket:
           filters:
             branches:
@@ -900,16 +900,16 @@ workflows:
             - deploy-web-testing
           context: JIRA
 
-      - deploy-android-testing-hard:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+      # - deploy-android-testing-hard:
+      #     filters:
+      #       tags:
+      #         only: /^testing\/v.*/
+      #       branches:
+      #         ignore: /.*/
+      #     requires:
+      #       - checkout-and-install-deps
+      #       - test-lint-and-types
+      #       - test-native
       - deploy-ios-testing-hard:
           filters:
             tags:
@@ -918,17 +918,17 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - notify-hard-testing-release:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - deploy-ios-testing-hard
-            - deploy-android-testing-hard
+            # - test-lint-and-types
+            # - test-native
+      # - notify-hard-testing-release:
+      #     filters:
+      #       tags:
+      #         only: /^testing\/v.*/
+      #       branches:
+      #         ignore: /.*/
+      #     requires:
+      #       - deploy-ios-testing-hard
+      #       - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
             tags:
