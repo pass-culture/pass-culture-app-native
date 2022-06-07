@@ -2,6 +2,7 @@ import { plural, t } from '@lingui/macro'
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
 import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
+import { getLocationLabel } from 'features/bookings/getLocationLabel'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -219,18 +220,6 @@ function getWithdrawLabel(booking: Booking, properties: BookingProperties): stri
       : getEventWithdrawLabel(booking.stock)
   if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.expirationDate)
   return ''
-}
-
-export function getLocationLabel(
-  stock: BookingStockResponse,
-  properties: BookingProperties
-): string {
-  if (properties.isPermanent || properties.isDigital) {
-    return ''
-  }
-  const { venue } = stock.offer
-  const displayNameVenue = venue.publicName || venue.name
-  return displayNameVenue + (venue.city ? `, ${venue.city}` : '')
 }
 
 export function getBookingLabels(
