@@ -74,7 +74,7 @@ export const WebShareModal = ({
         window.open(
           isDesktopDeviceDetectOnWeb
             ? `https://telegram.me/share/msg?url=${url}&text=${message}`
-            : `tg://msg?text=${message}`
+            : `tg://msg?text=${encodeURIComponent(message + '\n' + url)}`
         ),
     },
   ]
