@@ -26,7 +26,7 @@ export function SearchRework() {
   }, [dispatch, params])
 
   const bodySearch = () => {
-    // SearchDetails intégrera les recherches récentes et les suggestions
+    // SearchDetails will integrate recent searches and suggestions
     if (showResults || isFocus) return <SearchDetails />
     return <SearchLandingPage />
   }
