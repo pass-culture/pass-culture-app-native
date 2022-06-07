@@ -10,7 +10,8 @@ describe('CategoryButton', () => {
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Icon={Bookstore}
-        borderLeftColor="#870087"
+        color="#870087"
+        onPress={jest.fn()}
       />
     )
     expect(categoryButton).toMatchSnapshot()

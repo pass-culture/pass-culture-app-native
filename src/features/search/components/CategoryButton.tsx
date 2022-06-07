@@ -5,17 +5,20 @@ import styled from 'styled-components/native'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-interface Props {
+export type CategoryButtonProps = {
   label: string
   Icon: FunctionComponent<IconInterface>
-  borderLeftColor: string
+  color: string
+  onPress: () => void
   style?: ViewStyle
+  children?: never
 }
 
-export const CategoryButton: FunctionComponent<Props> = ({
+export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
   Icon,
-  borderLeftColor,
+  color,
+  onPress,
   style,
 }) => {
   const StyledIcon = useMemo(
@@ -28,7 +31,7 @@ export const CategoryButton: FunctionComponent<Props> = ({
   )
 
   return (
-    <TouchableContainer style={style} borderLeftColor={borderLeftColor}>
+    <TouchableContainer style={style} borderLeftColor={color} onPress={onPress}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>

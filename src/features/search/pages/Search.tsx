@@ -28,8 +28,7 @@ export function Search() {
       dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
       dispatch({ type: 'SHOW_RESULTS', payload: true })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params])
+  }, [dispatch, params])
 
   const bodySearch = () => {
     if (showResults && !appEnableSearchHomepageRework) return <SearchResults />

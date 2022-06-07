@@ -16,6 +16,6 @@ export const Libraries = Template.bind({})
 Libraries.args = {
   label: 'Bibliothèques & Médiathèques',
   Icon: Bookstore,
-  borderLeftColor: '#870087',
+  color: '#870087',
   style: { width: 220 },
 }

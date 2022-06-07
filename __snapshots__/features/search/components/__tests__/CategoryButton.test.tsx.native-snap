@@ -4,7 +4,7 @@ exports[`CategoryButton should render correctly 1`] = `
 <View
   accessible={true}
   collapsable={false}
-  focusable={false}
+  focusable={true}
   nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}

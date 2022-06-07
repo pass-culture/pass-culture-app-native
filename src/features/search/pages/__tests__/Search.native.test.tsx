@@ -83,25 +83,28 @@ describe('Search component', () => {
   })
 
   describe('When rework feature flag is not activated', () => {
+    beforeEach(() => {
+      mockSettings.appEnableSearchHomepageRework = false
+    })
+
     describe('When search not executed', () => {
-      it('should show landing page', () => {
-        mockSettings.appEnableSearchHomepageRework = false
+      beforeEach(() => {
         mockSearchState.showResults = false
+      })
+
+      it('should show landing page', () => {
         const { getByTestId } = render(<Search />)
         const searchLandingPage = getByTestId('searchLandingPage')
         expect(searchLandingPage).toBeTruthy()
       })
 
       it('should show search box without rework', () => {
-        mockSettings.appEnableSearchHomepageRework = false
-        mockSearchState.showResults = false
         const { queryByTestId } = render(<Search />)
         expect(queryByTestId('searchBoxWithoutRework')).toBeTruthy()
       })
     })
 
     it('should show search results when search executed', () => {
-      mockSettings.appEnableSearchHomepageRework = false
       mockSearchState.showResults = true
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
@@ -109,17 +112,21 @@ describe('Search component', () => {
   })
 
   describe('When rework feature flag is activated', () => {
+    beforeEach(() => {
+      mockSettings.appEnableSearchHomepageRework = true
+    })
+
     describe('When search not executed', () => {
-      it('should show search box with label', () => {
-        mockSettings.appEnableSearchHomepageRework = true
+      beforeEach(() => {
         mockSearchState.showResults = false
+      })
+
+      it('should show search box with label', () => {
         const { queryByTestId } = render(<Search />)
         expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
       })
 
       it('should show view for recent searches and suggestions', async () => {
-        mockSettings.appEnableSearchHomepageRework = true
-        mockSearchState.showResults = false
         const { queryByTestId, getByPlaceholderText } = render(<Search />)
 
         const searchInput = getByPlaceholderText('Offre, artiste...')
@@ -130,16 +137,16 @@ describe('Search component', () => {
     })
 
     describe('When search executed', () => {
-      it('should show search box without label', () => {
-        mockSettings.appEnableSearchHomepageRework = true
+      beforeEach(() => {
         mockSearchState.showResults = true
+      })
+
+      it('should show search box without label', () => {
         const { queryByTestId } = render(<Search />)
         expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
       })
 
       it('should show search results', () => {
-        mockSettings.appEnableSearchHomepageRework = true
-        mockSearchState.showResults = true
         const { queryByTestId } = render(<Search />)
         expect(queryByTestId('searchResults')).toBeTruthy()
       })
