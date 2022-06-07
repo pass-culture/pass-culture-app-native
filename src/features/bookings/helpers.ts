@@ -230,7 +230,7 @@ export function getLocationLabel(
   }
   const { venue } = stock.offer
   const displayNameVenue = venue.publicName || venue.name
-  return displayNameVenue + (venue.city ? ',\u00a0' + venue.city : '')
+  return displayNameVenue + (venue.city ? `, ${venue.city}` : '')
 }
 
 export function getBookingLabels(

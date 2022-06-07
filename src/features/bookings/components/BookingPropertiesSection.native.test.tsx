@@ -46,7 +46,7 @@ describe('<BookingPropertiesSection />', () => {
     booking.stock.offer.isPermanent = false
     const { getByText } = await renderBookingProperties(booking)
     await waitForExpect(() => {
-      expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
+      expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
     })
   })
 })

@@ -66,7 +66,7 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
-      locationLabel: 'Maison de la Brique, Drancy',
+      locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: '',
     })
   })
@@ -79,7 +79,7 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
-      locationLabel: 'Maison de la Brique, Drancy',
+      locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: "Aujourd'hui",
     })
   })
@@ -92,7 +92,7 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
-      locationLabel: 'Maison de la Brique, Drancy',
+      locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Demain',
     })
   })
@@ -108,7 +108,7 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'À retirer avant le 15 mars 2021',
-      locationLabel: 'Maison de la Brique, Drancy',
+      locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Dernier jour pour retirer',
     })
   })
@@ -124,7 +124,7 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'À retirer avant le 16 mars 2021',
-      locationLabel: 'Maison de la Brique, Drancy',
+      locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Avant dernier jour pour retirer',
     })
   })
@@ -626,13 +626,13 @@ describe('getLocationLabel', () => {
     expect(offerRules).toEqual('')
   })
 
-  it('should display the name of the venue if public name not informed', () => {
+  it('should display the name of the venue when public name is not set', () => {
     const properties = {
       isPermanent: false,
       isDigital: false,
     }
     const offerRules = getLocationLabel(initialBooking.stock, properties)
-    expect(offerRules).toEqual('Maison de la Brique,\u00a0Drancy')
+    expect(offerRules).toEqual('Maison de la Brique, Drancy')
   })
 
   it('should display the public name of the venue if informed', () => {
@@ -656,6 +656,6 @@ describe('getLocationLabel', () => {
     }
 
     const offerRules = getLocationLabel(booking.stock, properties)
-    expect(offerRules).toEqual('Maison de la Brique public,\u00a0Drancy')
+    expect(offerRules).toEqual('Maison de la Brique public, Drancy')
   })
 })
