@@ -1,60 +1,16 @@
-import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
-import { UseRouteType } from 'features/navigation/RootNavigator'
-import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
-import { SearchDetails } from 'features/search/components/SearchDetails'
-import { SearchHeaderRework } from 'features/search/components/SearchHeaderRework'
-import { useSearch } from 'features/search/pages/SearchWrapper'
-import { useShowResults } from 'features/search/pages/useShowResults'
-import { Form } from 'ui/web/form/Form'
+import { SearchLegacy } from 'features/search/pages/SearchLegacy'
+import { SearchRework } from 'features/search/pages/SearchRework'
 
 export function Search() {
-  const { params } = useRoute<UseRouteType<'Search'>>()
-  const { dispatch } = useSearch()
-  const showResults = useShowResults()
-  const searchInputID = uuidv4()
   const { data: appSettings } = useAppSettings()
   const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
-  const [isFocus, setIsFocus] = useState(false)
 
-  useEffect(() => {
-    if (params) {
-      dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
-      dispatch({ type: 'SHOW_RESULTS', payload: true })
-    }
-  }, [dispatch, params])
-
-  const bodySearch = () => {
-    if (showResults && !appEnableSearchHomepageRework) return <SearchResults />
-    // SearchDetails intégrera les recherches récentes et les suggestions
-    if (appEnableSearchHomepageRework && (showResults || isFocus)) return <SearchDetails />
-    return <SearchLandingPage />
+  if (appEnableSearchHomepageRework) {
+    return <SearchRework />
   }
 
-  const onFocusState = (focus: boolean) => {
-    if (appEnableSearchHomepageRework) setIsFocus(focus)
-  }
-
-  return (
-    <Container>
-      <Form.Flex>
-        {appEnableSearchHomepageRework ? (
-          <SearchHeaderRework
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-          />
-        ) : (
-          <SearchHeader searchInputID={searchInputID} />
-        )}
-        {bodySearch()}
-      </Form.Flex>
-    </Container>
-  )
+  return <SearchLegacy />
 }
-
-const Container = styled.View({ flex: 1 })
