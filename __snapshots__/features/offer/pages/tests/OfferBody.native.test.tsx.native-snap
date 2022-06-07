@@ -564,6 +564,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           <View
             accessibilityLabel="Voir plus d'informations"
             accessible={true}
+            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -753,6 +754,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         accessibilityLabel="Lieu Cinéma de la fin"
         accessibilityRole="link"
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -939,6 +941,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         <View
           accessibilityLabel="Voir l'itinéraire"
           accessible={true}
+          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1041,6 +1044,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         <View
           accessibilityLabel="Signaler l'offre"
           accessible={true}
+          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1133,6 +1137,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
     >
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
         forwardedRef={[Function]}
         onClick={[Function]}
@@ -1160,6 +1165,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         accessibilityRole="none"
         aria-describedby="testUuidV4"
         aria-modal={true}
+        collapsable={false}
         deviceHeight={1334}
         deviceWidth={750}
         forwardedRef={[Function]}
@@ -1308,6 +1314,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             >
               <View
                 accessible={true}
+                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1519,6 +1526,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   <View
                     accessibilityLabel="Signaler l'offre"
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
