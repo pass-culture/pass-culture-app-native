@@ -8,17 +8,12 @@ import { getSpacing, Typo } from 'ui/theme'
 interface Props {
   label: string
   Icon: FunctionComponent<IconInterface>
-  borderLeftColor: string
+  color: string
   style?: ViewStyle
   children?: never
 }
 
-export const CategoryButton: FunctionComponent<Props> = ({
-  label,
-  Icon,
-  borderLeftColor,
-  style,
-}) => {
+export const CategoryButton: FunctionComponent<Props> = ({ label, Icon, color, style }) => {
   const StyledIcon = useMemo(
     () =>
       styled(Icon).attrs(({ theme }) => ({
@@ -29,7 +24,7 @@ export const CategoryButton: FunctionComponent<Props> = ({
   )
 
   return (
-    <TouchableContainer style={style} borderLeftColor={borderLeftColor}>
+    <TouchableContainer style={style} borderLeftColor={color}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>

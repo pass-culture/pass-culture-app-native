@@ -7,11 +7,7 @@ import { Bookstore } from 'ui/svg/icons/bicolor/Bookstore'
 describe('CategoryButton', () => {
   it('should render correctly', () => {
     const categoryButton = render(
-      <CategoryButton
-        label="Bibliothèques & Médiathèques"
-        Icon={Bookstore}
-        borderLeftColor="#870087"
-      />
+      <CategoryButton label="Bibliothèques & Médiathèques" Icon={Bookstore} color="#870087" />
     )
     expect(categoryButton).toMatchSnapshot()
   })
