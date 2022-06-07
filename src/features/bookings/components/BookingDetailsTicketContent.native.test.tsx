@@ -16,6 +16,7 @@ describe('BookingDetailsTicketContent', () => {
       )
 
       getByText(booking.activationCode.code)
+      // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
       expect(queryByText(booking.token)).toBeFalsy()
     })
 
@@ -32,7 +33,7 @@ describe('BookingDetailsTicketContent', () => {
       const { getByText, queryByText } = render(
         <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={false} />
       )
-
+      // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
       getByText(booking.token)
       expect(queryByText(booking.activationCode.code)).toBeFalsy()
     })

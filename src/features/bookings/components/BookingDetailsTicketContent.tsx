@@ -45,6 +45,13 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   const isbn =
     extraData?.isbn && categoryId === CategoryIdEnum.LIVRE ? <Ean isbn={extraData.isbn} /> : null
 
+  const isDigitalAndActivationCodeEnabled =
+    activationCodeFeatureEnabled && properties.hasActivationCode
+
+  const activationCode = !!booking.activationCode && (
+    <TicketCode withdrawalType={withdrawalType || undefined} code={booking.activationCode.code} />
+  )
+
   const accessOfferButton = (
     <TouchableLink
       as={ButtonWithLinearGradient}
@@ -54,8 +61,9 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     />
   )
 
-  const isDigitalAndActivationCodeEnabled =
-    activationCodeFeatureEnabled && properties.hasActivationCode
+  const ticketToken = !!booking.token && (
+    <TicketCode withdrawalType={withdrawalType || undefined} code={booking.token} />
+  )
 
   const ticketContent = properties.isDigital ? (
     accessOfferButton
@@ -77,17 +85,12 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
       <TicketContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
-            {!!booking.activationCode && (
-              <TicketCode
-                withdrawalType={withdrawalType || undefined}
-                code={booking.activationCode.code}
-              />
-            )}
+            {activationCode}
             {accessOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <TicketCode withdrawalType={withdrawalType || undefined} code={booking.token} />
+            {ticketToken}
             {ticketContent}
           </React.Fragment>
         )}

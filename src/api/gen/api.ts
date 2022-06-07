@@ -390,7 +390,7 @@ export interface BookingReponse {
    * @type {string}
    * @memberof BookingReponse
    */
-  token: string
+  token?: string | null
   /**
    * @type {number}
    * @memberof BookingReponse
@@ -1743,7 +1743,7 @@ export interface SendPhoneValidationRequest {
    * @type {string}
    * @memberof SendPhoneValidationRequest
    */
-  phoneNumber?: string | null
+  phoneNumber: string
 }
 /**
  * @export
