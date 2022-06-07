@@ -10,6 +10,7 @@ interface Props {
   Icon: FunctionComponent<IconInterface>
   borderLeftColor: string
   style?: ViewStyle
+  children?: never
 }
 
 export const CategoryButton: FunctionComponent<Props> = ({
