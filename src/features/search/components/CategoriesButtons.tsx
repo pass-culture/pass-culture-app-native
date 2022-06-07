@@ -3,6 +3,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryButton, CategoryButtonProps } from 'features/search/components/CategoryButton'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   categories: CategoryButtonProps[]
@@ -27,5 +28,5 @@ export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
 
 const StyledCategoryButton = styled(CategoryButton)({
   flex: 1,
-  margin: 4,
+  margin: getSpacing(1),
 })
