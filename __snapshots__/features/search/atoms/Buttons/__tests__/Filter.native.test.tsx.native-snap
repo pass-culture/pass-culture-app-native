@@ -6,7 +6,6 @@ exports[`Filter component should render correctly 1`] = `
   accessible={false}
   collapsable={false}
   focusable={true}
-  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}

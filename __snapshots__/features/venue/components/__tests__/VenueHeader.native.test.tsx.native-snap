@@ -3,7 +3,6 @@
 exports[`<VenueHeader /> should render correctly 1`] = `
 <View
   collapsable={false}
-  nativeID="animatedComponent"
   safeAreaTop={16}
   style={
     Object {
@@ -65,7 +64,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -83,7 +81,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
     >
       <View
         collapsable={false}
-        nativeID="animatedComponent"
         style={
           Object {
             "alignItems": "center",
@@ -114,7 +111,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
         >
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "opacity": 1,
@@ -135,7 +131,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
           </View>
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "opacity": 0,
@@ -171,7 +166,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
     <Text
       aria-hidden={true}
       collapsable={false}
-      nativeID="animatedComponent"
       numberOfLines={1}
       style={
         Object {
@@ -213,7 +207,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -231,7 +224,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
     >
       <View
         collapsable={false}
-        nativeID="animatedComponent"
         style={
           Object {
             "alignItems": "center",
@@ -262,7 +254,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
         >
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "opacity": 1,
@@ -284,7 +275,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
           </View>
           <View
             collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "opacity": 0,

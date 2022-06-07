@@ -42,7 +42,6 @@ Array [
     accessible={true}
     collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -230,7 +229,6 @@ Array [
       accessible={true}
       collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -307,7 +305,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -31,10 +31,121 @@
+@@ -31,10 +31,120 @@
             \\"height\\": 16,
           },
         ]
@@ -319,7 +317,6 @@ exports[`WhereSection should render correctly 2`] = `
 +     accessible={true}
 +     collapsable={false}
 +     focusable={true}
-+     nativeID=\\"animatedComponent\\"
 +     onClick={[Function onClick]}
 +     onResponderGrant={[Function onResponderGrant]}
 +     onResponderMove={[Function onResponderMove]}

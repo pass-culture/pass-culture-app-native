@@ -504,7 +504,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     accessible={true}
     collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1075,7 +1074,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     accessible={true}
     collapsable={false}
     focusable={false}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

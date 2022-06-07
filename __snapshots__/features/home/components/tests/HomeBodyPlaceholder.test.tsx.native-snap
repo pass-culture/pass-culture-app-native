@@ -66,7 +66,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
-          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -186,7 +185,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -253,7 +251,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -320,7 +317,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -411,7 +407,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -478,7 +473,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -545,7 +539,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -636,7 +629,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -703,7 +695,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -770,7 +761,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -861,7 +851,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -928,7 +917,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -995,7 +983,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1109,7 +1096,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
-          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -1232,7 +1218,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1299,7 +1284,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1366,7 +1350,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1457,7 +1440,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1524,7 +1506,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1591,7 +1572,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1682,7 +1662,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1749,7 +1728,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1816,7 +1794,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1907,7 +1884,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1974,7 +1950,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2041,7 +2016,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2132,7 +2106,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2199,7 +2172,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2266,7 +2238,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2370,7 +2341,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           }
         }
         locations={null}
-        nativeID="animatedComponent"
         startPoint={
           Object {
             "x": 0,
@@ -2469,7 +2439,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
-          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -2592,7 +2561,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2659,7 +2627,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2726,7 +2693,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2817,7 +2783,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2884,7 +2849,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2951,7 +2915,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3042,7 +3005,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3109,7 +3071,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3176,7 +3137,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3267,7 +3227,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3334,7 +3293,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3401,7 +3359,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3492,7 +3449,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3559,7 +3515,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3626,7 +3581,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3740,7 +3694,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
-          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -3860,7 +3813,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3927,7 +3879,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3994,7 +3945,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4085,7 +4035,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4152,7 +4101,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4219,7 +4167,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4310,7 +4257,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4377,7 +4323,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4444,7 +4389,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4535,7 +4479,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4602,7 +4545,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -4669,7 +4611,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     }
                   }
                   locations={null}
-                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,

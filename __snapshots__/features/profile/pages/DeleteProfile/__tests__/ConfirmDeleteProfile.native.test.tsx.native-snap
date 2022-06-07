@@ -6,7 +6,6 @@ Array [
     accessible={true}
     collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -339,7 +338,6 @@ Array [
           accessible={true}
           collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -401,7 +399,6 @@ Array [
           accessible={true}
           collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
