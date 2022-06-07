@@ -9,6 +9,8 @@ service: web-proxy
 
 runtime: nodejs16
 
+instance_class: F2
+
 # Add secure: always to have the HTTPS
 handlers:
 - url: .*
