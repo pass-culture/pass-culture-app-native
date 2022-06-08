@@ -9,6 +9,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "overflowY": "auto",
       },
     ]
   }
@@ -102,13 +103,12 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     style={
       Array [
         Object {
-          "flexBasis": 0,
+          "flexBasis": "auto",
           "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
           "maxWidth": 400,
-          "overflow": "scroll",
           "paddingHorizontal": 24,
         },
       ]

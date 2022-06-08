@@ -103,20 +103,22 @@ const spacingMatrix = {
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
+  overflowY: 'auto',
 })
 
 const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const Content = styled.View({
+const Content = styled.View(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
+  flexShrink: theme.isNative ? 1 : 0,
+  flexBasis: 'auto',
   justifyContent: 'center',
   paddingHorizontal: getSpacing(6),
   maxWidth: getSpacing(100),
-  overflow: 'scroll',
-})
+}))
 
 const HeaderContainer = styled.View({
   maxWidth: getSpacing(100),
