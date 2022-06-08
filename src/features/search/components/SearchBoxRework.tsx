@@ -71,7 +71,7 @@ export const SearchBoxRework: React.FC<Props> = ({
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
-    const { locationFilter, offerCategories, priceRange } = stagedSearchState
+    const { offerCategories, priceRange } = stagedSearchState
     navigate(
       ...getTabNavConfig('Search', {
         showResults: true,

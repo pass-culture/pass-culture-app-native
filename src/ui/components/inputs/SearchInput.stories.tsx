@@ -46,3 +46,12 @@ WithValue.args = {
   placeholder: 'Placeholder...',
   value: 'Value',
 }
+
+export const WithLocationButton = Template.bind({})
+WithLocationButton.args = {
+  placeholder: 'Placeholder...',
+  value: '',
+  showLocationButton: true,
+  locationLabel: 'Autour de moi',
+  inputHeight: 'regular',
+}
