@@ -107,8 +107,7 @@ export const SearchBoxRework: React.FC<Props> = ({
           onPressRightIcon={resetSearch}
           onFocusState={onFocusState}
           testID="searchInput"
-          showLocationButton={showLocationButton}
-          onPressLocationButton={onPressLocationButton}
+          onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
           locationLabel={locationLabel}
         />
       </SearchInputContainer>

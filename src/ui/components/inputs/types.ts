@@ -24,7 +24,6 @@ type CustomSearchInputProps = {
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
   onFocusState?: (focus: boolean) => void
-  showLocationButton?: boolean
   onPressLocationButton?: () => void
   locationLabel?: string
 }
@@ -88,7 +87,6 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     accessibilityDescribedBy: props.accessibilityDescribedBy,
     onPressRightIcon: props.onPressRightIcon,
     focusOutlineColor: props.focusOutlineColor,
-    showLocationButton: props.showLocationButton,
     onPressLocationButton: props.onPressLocationButton,
     locationLabel: props.locationLabel,
   }

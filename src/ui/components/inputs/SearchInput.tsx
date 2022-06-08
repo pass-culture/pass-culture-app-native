@@ -33,7 +33,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     focusOutlineColor,
     onPressLocationButton,
     locationLabel,
-    showLocationButton,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
@@ -85,7 +84,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           enablesReturnKeyAutomatically={true}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
-        {showLocationButton ? (
+        {onPressLocationButton ? (
           <StyledButtonPrimary
             testID="locationButton"
             wording={locationLabel || ''}
