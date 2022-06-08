@@ -47,6 +47,7 @@ export interface AppThemeType {
   isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTouch: boolean
+  isNative: boolean
   isSmallScreen: boolean
   showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
@@ -357,6 +358,7 @@ export const theme: AppThemeType = {
     },
   },
   isTouch,
+  isNative,
   isSmallScreen: false, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
