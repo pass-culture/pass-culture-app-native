@@ -1,0 +1,27 @@
+diff --git a/node_modules/@sentry/react/node_modules/@sentry/browser/esm/transports/utils.js b/node_modules/@sentry/browser/esm/transports/utils.js
+index f3829ce..96029d9 100644
+--- a/node_modules/@sentry/react/node_modules/@sentry/browser/esm/transports/utils.js
++++ b/node_modules/@sentry/react/node_modules/@sentry/browser/esm/transports/utils.js
+@@ -79,11 +79,6 @@ export function getNativeFetchImplementation() {
+ export function sendReport(url, body) {
+     var isRealNavigator = Object.prototype.toString.call(global && global.navigator) === '[object Navigator]';
+     var hasSendBeacon = isRealNavigator && typeof global.navigator.sendBeacon === 'function';
+-    if (hasSendBeacon) {
+-        // Prevent illegal invocations - https://xgwang.me/posts/you-may-not-know-beacon/#it-may-throw-error%2C-be-sure-to-catch
+-        var sendBeacon = global.navigator.sendBeacon.bind(global.navigator);
+-        return sendBeacon(url, body);
+-    }
+     if (supportsFetch()) {
+         var fetch_1 = getNativeFetchImplementation();
+         return forget(fetch_1(url, {
+@@ -93,5 +88,10 @@ export function sendReport(url, body) {
+             keepalive: true,
+         }));
+     }
++    if (hasSendBeacon) {
++        // Prevent illegal invocations - https://xgwang.me/posts/you-may-not-know-beacon/#it-may-throw-error%2C-be-sure-to-catch
++        var sendBeacon = global.navigator.sendBeacon.bind(global.navigator);
++        return sendBeacon(url, body);
++    }
+ }
+ //# sourceMappingURL=utils.js.map
