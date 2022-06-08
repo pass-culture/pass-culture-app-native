@@ -26,7 +26,7 @@ Download the `google-services.json` file (1password) and place it inside the `an
 To run the app, simply run: `yarn android:testing`.
 This will also start the metro server. If not, run `yarn start` in another tab.
 
-### Troubleshouting
+### Troubleshooting
 
 <details>
   <summary>No value has been specified for property 'manifestOutputDirectory'</summary>

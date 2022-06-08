@@ -10,7 +10,7 @@
 If we squash the PR when we merge it, the PR title becomes the commit message on master.
 As a result, we just need to enforce consistency on the title of the PR to have consistent commit message on master.
 
-The commits of the PR won't be on master, but are still useful for PR readliness and for future reference.
+The commits of the PR won't be on master, but are still useful for PR readiness and for future reference.
 
 ### Key points
 
@@ -33,8 +33,8 @@ The commits of the PR won't be on master, but are still useful for PR readliness
 
 Available types: `build`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor` and `test`.
 
-- Github action to ensure that the PR title is in the right format: [pr-title-checker.yml](../../.github/workflows/pr-title-checker.yml)
-- Test of the regex used in the github action: [pr-title-checker.test.ts](../../.github/pr-title-checker.test.ts)
+- GitHub action to ensure that the PR title is in the right format: [pr-title-checker.yml](../../.github/workflows/pr-title-checker.yml)
+- Test of the regex used in the GitHub action: [pr-title-checker.test.ts](../../.github/pr-title-checker.test.ts)
 
 ### Resources
 

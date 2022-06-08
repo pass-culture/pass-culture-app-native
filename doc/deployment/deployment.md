@@ -32,9 +32,9 @@ If you don't see your changes, try to check if the codepush was correctly downlo
 
 3 possibilities:
 
-- it displays "no update found": you are up to date
-- it shows "New version available on AppCenter" you need to go to hyperurl.co/pc-testing
-- it download the update and restart the app
+- it displays "no update found": you are up-to-date
+- it shows "New version available on AppCenter" you need to go to http://hyperurl.co/pc-testing
+- it downloads the update and restart the app
 </details>
 
 #### Hard deploy (manual)
@@ -48,7 +48,7 @@ CircleCI will detect the tag and launch the lanes `deploy-android-testing-hard` 
 
 ### Staging (MES)
 
-You can review & download the **staging** apps on Appcenter for [iOS][5] & [Android][6] of using this [url][7].
+You can review & download the **staging** apps on AppCenter for [iOS][5] & [Android][6] of using this [url][7].
 
 #### Hard deploy (once a week, manual)
 
@@ -101,7 +101,7 @@ If not urgent, it is better to release a new version.
 #### Troubleshooting
 
 <details>
-  <summary>I don't see my codepush on staging/prod app</summary>
+  <summary>I don't see my CodePush on staging/prod app</summary>
   
 Check if you can find it on AppCenter. Example for [staging iOS][8].
 

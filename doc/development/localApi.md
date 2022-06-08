@@ -41,4 +41,4 @@ Since the backend differs between local / testing, you won't:
 - be able to access the detail of an offer (wrong id)
 - hence book an offer, or favorite it.
 
-However you can still access the app and should be able to workaround those limitations.
+However, you can still access the app and should be able to work around those limitations.
