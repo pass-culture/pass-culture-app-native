@@ -12,7 +12,7 @@
     export enum Colors {
         ACCENT = '#0066ff',
         ATTENTION = '#ffea00',
-        ...
+    //  ...
     }
     ```
   - ❌ Bad:
@@ -20,7 +20,7 @@
     export enum ColorsEnum {
         ACCENT = '#0066ff',
         ATTENTION = '#ffea00',
-        ...
+    //  ...
     }
     ```
 

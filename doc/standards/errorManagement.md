@@ -15,7 +15,7 @@ Which means he also wrap the `RootNavigator` one.
 The `ErrorBoundary` will intercept errors coming from wrapped components and render a custom error page through its `FallbackComponent` argument.
 In our case, we've defined `AsyncErrorBoundary` to be the default error page.
 Every error linked to component life cycle will be caught by the ErrorBoundary when not handle at a lower level.
-This means if you have several `ErrorBoundaries` that wrap a specific component, the error will be handle by the closest one.
+This means if you have several `ErrorBoundaries` that wrap a specific component, the error will be handled by the closest one.
 
 If you want to override the default `ErrorBoundary`, you can wrap your component like this :
 
