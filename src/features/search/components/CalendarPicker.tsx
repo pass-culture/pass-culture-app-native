@@ -28,7 +28,7 @@ export const CalendarPicker: React.FC<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title="Choisis une date"
+      title={t`Choisis une date`}
       leftIconAccessibilityLabel={undefined}
       leftIcon={undefined}
       onLeftIconPress={undefined}
