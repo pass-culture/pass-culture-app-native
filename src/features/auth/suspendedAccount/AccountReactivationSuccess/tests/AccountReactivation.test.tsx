@@ -8,7 +8,7 @@ import { fireEvent, render } from 'tests/utils'
 import { AccountReactivationSuccess } from '../AccountReactivationSuccess'
 
 const mockSettings = {
-  allowAccountReactivation: true,
+  allowAccountUnsuspension: true,
 }
 
 jest.mock('features/navigation/helpers')
@@ -35,7 +35,7 @@ describe('<AccountReactivationSuccess />', () => {
   })
 
   it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountReactivation = false
+    mockSettings.allowAccountUnsuspension = false
     render(<AccountReactivationSuccess />)
 
     await waitForExpect(() => {

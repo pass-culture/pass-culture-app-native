@@ -1759,12 +1759,12 @@ export interface SettingsResponse {
    * @type {number}
    * @memberof SettingsResponse
    */
-  accountReactivationLimit: number
+  accountUnsuspensionLimit: number
   /**
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  allowAccountReactivation: boolean
+  allowAccountUnsuspension: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse

@@ -15,7 +15,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { SuspendedAccount } from '../SuspendedAccount'
 
 const mockSettings = {
-  allowAccountReactivation: true,
+  allowAccountUnsuspension: true,
 }
 
 jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate', () => ({
@@ -116,7 +116,7 @@ describe('<SuspendedAccount />', () => {
   })
 
   it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountReactivation = false
+    mockSettings.allowAccountUnsuspension = false
     render(<SuspendedAccount />)
 
     await waitForExpect(() => {

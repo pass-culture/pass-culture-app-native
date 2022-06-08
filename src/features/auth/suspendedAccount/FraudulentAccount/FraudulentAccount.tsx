@@ -23,13 +23,13 @@ export const FraudulentAccount = () => {
 
   useFocusEffect(
     useCallback(() => {
-      if (!settings?.allowAccountReactivation) {
+      if (!settings?.allowAccountUnsuspension) {
         navigateToHome()
       }
     }, [settings])
   )
 
-  return settings?.allowAccountReactivation ? (
+  return settings?.allowAccountUnsuspension ? (
     <GenericInfoPage
       headerGoBack
       onGoBackPress={signOut}

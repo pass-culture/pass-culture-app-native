@@ -33,7 +33,7 @@ const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 const mockSettings = {
   enableNativeCulturalSurvey: false,
-  allowAccountReactivation: false,
+  allowAccountUnsuspension: false,
 }
 
 jest.mock('features/auth/settings', () => ({
@@ -215,8 +215,8 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to SuspensionScreen WHEN signin is successful for inactive account', async () => {
-    mockSettings.allowAccountReactivation = true
-    simulateSignin200(AccountState.SUSPENDED)
+    mockSettings.allowAccountUnsuspension = true
+    simulateSignin200(AccountState.INACTIVE)
     mockSuspensionStatusApiCall(AccountState.SUSPENDED)
     const renderAPI = renderLogin()
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')

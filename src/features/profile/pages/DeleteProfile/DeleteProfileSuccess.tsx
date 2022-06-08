@@ -13,7 +13,7 @@ import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
   const { data: settings } = useAppSettings()
-  return settings?.allowAccountReactivation ? (
+  return settings?.allowAccountUnsuspension ? (
     <DeleteProfileSuccessV2 />
   ) : (
     <GenericInfoPage
