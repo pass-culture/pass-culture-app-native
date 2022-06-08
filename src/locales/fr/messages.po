@@ -502,6 +502,11 @@ msgstr "Choisir un lieu"
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
 
+#: src/features/search/components/CalendarPicker.tsx
+#: src/features/search/components/CalendarPicker.web.tsx
+msgid "Choisis une date"
+msgstr "Choisis une date"
+
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Choisis une date dans le futur"
 msgstr "Choisis une date dans le futur"
