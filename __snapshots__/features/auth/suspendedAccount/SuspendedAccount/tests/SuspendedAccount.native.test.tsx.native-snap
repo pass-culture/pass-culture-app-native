@@ -41,6 +41,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
     </View>
   </View>
   <View
+<<<<<<< HEAD
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -74,6 +75,8 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
     </View>
   </View>
   <View
+=======
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
     style={
       Array [
         Object {

@@ -1,12 +1,9 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { contactSupport } from 'features/auth/support.services'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
-import { PageNotFound } from 'features/navigation/PageNotFound'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -17,19 +14,8 @@ import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
 
 export const FraudulentAccount = () => {
-  const { data: settings } = useAppSettings()
-
-  useFocusEffect(
-    useCallback(() => {
-      if (!settings?.allowAccountReactivation) {
-        navigateToHome()
-      }
-    }, [settings])
-  )
-
-  return settings?.allowAccountReactivation ? (
+  return (
     <GenericInfoPage
-      headerGoBack
       title={t`Ton compte a été suspendu`}
       icon={UserBlocked}
       buttons={[
@@ -55,8 +41,6 @@ export const FraudulentAccount = () => {
         {t`Si tu souhaites revoir cette décision, tu peux contacter le support.`}
       </StyledBody>
     </GenericInfoPage>
-  ) : (
-    <PageNotFound />
   )
 }
 

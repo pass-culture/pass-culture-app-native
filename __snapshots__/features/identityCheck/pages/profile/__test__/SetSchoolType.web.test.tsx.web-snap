@@ -94,11 +94,16 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
+<<<<<<< HEAD
                       class="sc-fKVqWL clyjXB"
+=======
+                      class="sc-bBHxTw gAOzOT"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     >
                       <ul
                         class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
                       >
+<<<<<<< HEAD
                         <li>
                           <div
                             aria-checked="false"
@@ -107,6 +112,12 @@ Object {
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
+=======
+                        <ul
+                          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                        >
+                          <li>
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                             <div
                               class="css-view-1dbjc4n"
                               style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
@@ -392,11 +403,16 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
+<<<<<<< HEAD
                     class="sc-fKVqWL clyjXB"
+=======
+                    class="sc-bBHxTw gAOzOT"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <ul
                       class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
                     >
+<<<<<<< HEAD
                       <li>
                         <div
                           aria-checked="false"
@@ -405,6 +421,12 @@ Object {
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
+=======
+                      <ul
+                        class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                      >
+                        <li>
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                           <div
                             class="css-view-1dbjc4n"
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
@@ -747,11 +769,16 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
+<<<<<<< HEAD
                       class="sc-fKVqWL clyjXB"
+=======
+                      class="sc-bBHxTw gAOzOT"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     >
                       <ul
                         class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
                       >
+<<<<<<< HEAD
                         <li>
                           <div
                             aria-checked="false"
@@ -760,6 +787,12 @@ Object {
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
+=======
+                        <ul
+                          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                        >
+                          <li>
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                             <div
                               class="css-view-1dbjc4n"
                               style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
@@ -965,11 +998,16 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
+<<<<<<< HEAD
                     class="sc-fKVqWL clyjXB"
+=======
+                    class="sc-bBHxTw gAOzOT"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <ul
                       class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
                     >
+<<<<<<< HEAD
                       <li>
                         <div
                           aria-checked="false"
@@ -978,6 +1016,12 @@ Object {
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
+=======
+                      <ul
+                        class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                      >
+                        <li>
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                           <div
                             class="css-view-1dbjc4n"
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"

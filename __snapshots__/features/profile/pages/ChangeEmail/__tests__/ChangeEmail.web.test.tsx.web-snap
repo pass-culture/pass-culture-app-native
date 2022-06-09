@@ -6,7 +6,12 @@ Object {
   "baseElement": <body>
     <div>
       <header
+<<<<<<< HEAD
         class="sc-jJoQJp fXbXpW"
+=======
+        class="sc-hiCibw lgCcuM"
+        role="banner"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
       >
         <div
           class="css-view-1dbjc4n"
@@ -114,9 +119,16 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
+<<<<<<< HEAD
                 <div
                   class="css-view-1dbjc4n"
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+=======
+                <label
+                  class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
+                  dir="ltr"
+                  for="testUuidV4"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <label
                     class="sc-egiyK hHZVhD"
@@ -172,9 +184,16 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
+<<<<<<< HEAD
                 <div
                   class="css-view-1dbjc4n"
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+=======
+                <label
+                  class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
+                  dir="ltr"
+                  for="testUuidV4"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <label
                     class="sc-egiyK hHZVhD"
@@ -218,7 +237,11 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
+<<<<<<< HEAD
                     class="sc-eCImPb eivvKD sc-hiCibw VfUYt sc-hiCibw VfUYt"
+=======
+                    class="sc-hKwDye lgPtFf sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     type="button"
@@ -276,7 +299,12 @@ Object {
   </body>,
   "container": <div>
     <header
+<<<<<<< HEAD
       class="sc-jJoQJp fXbXpW"
+=======
+      class="sc-hiCibw lgCcuM"
+      role="banner"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
     >
       <div
         class="css-view-1dbjc4n"
@@ -384,9 +412,16 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
+<<<<<<< HEAD
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+=======
+              <label
+                class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
+                dir="ltr"
+                for="testUuidV4"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <label
                   class="sc-egiyK hHZVhD"
@@ -442,9 +477,16 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
+<<<<<<< HEAD
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+=======
+              <label
+                class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
+                dir="ltr"
+                for="testUuidV4"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <label
                   class="sc-egiyK hHZVhD"
@@ -488,7 +530,11 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
+<<<<<<< HEAD
                   class="sc-eCImPb eivvKD sc-hiCibw VfUYt sc-hiCibw VfUYt"
+=======
+                  class="sc-hKwDye lgPtFf sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   type="button"

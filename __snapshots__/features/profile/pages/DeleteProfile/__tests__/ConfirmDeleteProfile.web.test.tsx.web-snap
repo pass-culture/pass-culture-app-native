@@ -6,7 +6,11 @@ Object {
   "baseElement": <body>
     <div>
       <button
+<<<<<<< HEAD
         class="sc-hKwDye lgPtFf sc-jJoQJp kmIoZE sc-jJoQJp kmIoZE"
+=======
+        class="sc-hKwDye lgPtFf sc-gWXbKe NbGXg sc-gWXbKe NbGXg"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -70,7 +74,7 @@ Object {
             Les conséquences :
           </div>
           <ul
-            class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+            class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
           >
             <li>
               <div
@@ -204,7 +208,11 @@ Object {
               style="height: 16px;"
             />
             <a
+<<<<<<< HEAD
               class="sc-gsDKAQ gFcuOJ sc-ikJyIC bSBRIN"
+=======
+              class="sc-gsDKAQ gFcuOJ sc-hiCibw bikoQs"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               href="https://passculture-delete-account.faq"
               tabindex="0"
               target="_blank"
@@ -239,7 +247,11 @@ Object {
   </body>,
   "container": <div>
     <button
+<<<<<<< HEAD
       class="sc-hKwDye lgPtFf sc-jJoQJp kmIoZE sc-jJoQJp kmIoZE"
+=======
+      class="sc-hKwDye lgPtFf sc-gWXbKe NbGXg sc-gWXbKe NbGXg"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
       data-testid="Revenir en arrière"
       tabindex="0"
       type="button"
@@ -303,7 +315,7 @@ Object {
           Les conséquences :
         </div>
         <ul
-          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+          class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
         >
           <li>
             <div
@@ -437,7 +449,11 @@ Object {
             style="height: 16px;"
           />
           <a
+<<<<<<< HEAD
             class="sc-gsDKAQ gFcuOJ sc-ikJyIC bSBRIN"
+=======
+            class="sc-gsDKAQ gFcuOJ sc-hiCibw bikoQs"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             href="https://passculture-delete-account.faq"
             tabindex="0"
             target="_blank"

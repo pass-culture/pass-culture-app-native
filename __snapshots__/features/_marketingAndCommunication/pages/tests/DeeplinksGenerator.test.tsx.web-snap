@@ -3,7 +3,12 @@
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 Array [
   <header
+<<<<<<< HEAD
     className="sc-caiLqq gjrVWF"
+=======
+    className="sc-efQSVx irOWlR"
+    role="banner"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
   >
     <div
       className="css-view-1dbjc4n"

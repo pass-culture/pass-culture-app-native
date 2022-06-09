@@ -82,7 +82,11 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
     </h1>
     <div
       aria-label="Revenir en arrière"
+<<<<<<< HEAD
       className="css-view-1dbjc4n"
+=======
+      className="sc-hKwDye lgPtFf sc-hiCibw eSoNzi sc-hiCibw eSoNzi"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
       data-testid="Revenir en arrière"
       onBlur={[Function]}
       onClick={[Function]}

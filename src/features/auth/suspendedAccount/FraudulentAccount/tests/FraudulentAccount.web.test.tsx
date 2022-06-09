@@ -3,7 +3,6 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { contactSupport } from 'features/auth/support.services'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHome, navigateToHomeConfig, openUrl } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils/web'
 
@@ -24,17 +23,6 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 describe('<FraudulentAccount />', () => {
   it('should match snapshot', () => {
     expect(render(<FraudulentAccount />)).toMatchSnapshot()
-  })
-
-  it('should go back when clicking on go back icon', async () => {
-    const { getByTestId } = render(<FraudulentAccount />)
-
-    const leftIconButton = getByTestId('Revenir en arrière')
-    fireEvent.click(leftIconButton)
-
-    await waitForExpect(() => {
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
-    })
   })
 
   it('should open mail app when clicking on contact support button', async () => {

@@ -67,7 +67,11 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
+<<<<<<< HEAD
                     class="sc-fKVqWL clyjXB"
+=======
+                    class="sc-bBHxTw gAOzOT"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -89,6 +93,10 @@ Object {
                     />
                     <label
                       class="sc-egiyK hHZVhD"
+<<<<<<< HEAD
+=======
+                      dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       for="testUuidV4"
                     >
                       Entre ton adresse
@@ -258,7 +266,11 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
+<<<<<<< HEAD
                   class="sc-fKVqWL clyjXB"
+=======
+                  class="sc-bBHxTw gAOzOT"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -280,6 +292,10 @@ Object {
                   />
                   <label
                     class="sc-egiyK hHZVhD"
+<<<<<<< HEAD
+=======
+                    dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     for="testUuidV4"
                   >
                     Entre ton adresse

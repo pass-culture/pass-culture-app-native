@@ -14,7 +14,11 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
+<<<<<<< HEAD
             class="sc-bdvvtL hWVHSw sc-pVTFL iXSrby"
+=======
+            class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -56,7 +60,12 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
+<<<<<<< HEAD
                   class="sc-egiyK hHZVhD"
+=======
+                  class="sc-crHmcD cfjgl"
+                  dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   for="testUuidV4"
                 >
                   Jour
@@ -66,24 +75,40 @@ Object {
                   style="height: 8px;"
                 />
                 <div
+<<<<<<< HEAD
                   class="sc-ikJyIC qQflh"
                 >
                   <select
                     aria-label="Entrée pour le jour de la date de naissance"
                     class="sc-hiCibw jbDLvr"
+=======
+                  class="sc-hiCibw cmJrdQ"
+                >
+                  <select
+                    aria-label="Entrée pour le jour de la date de naissance"
+                    class="sc-cCcXHH iUwyAq"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-Jour"
                     id="testUuidV4"
                     role="listbox"
                   >
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       role="option"
                       value=""
                     >
                       JJ
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1"
@@ -91,7 +116,11 @@ Object {
                       1
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2"
@@ -99,7 +128,11 @@ Object {
                       2
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="3"
@@ -107,7 +140,11 @@ Object {
                       3
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="4"
@@ -115,7 +152,11 @@ Object {
                       4
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="5"
@@ -123,7 +164,11 @@ Object {
                       5
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="6"
@@ -131,7 +176,11 @@ Object {
                       6
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="7"
@@ -139,7 +188,11 @@ Object {
                       7
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="8"
@@ -147,7 +200,11 @@ Object {
                       8
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="9"
@@ -155,7 +212,11 @@ Object {
                       9
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="10"
@@ -163,7 +224,11 @@ Object {
                       10
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="11"
@@ -171,7 +236,11 @@ Object {
                       11
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="12"
@@ -179,7 +248,11 @@ Object {
                       12
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="13"
@@ -187,7 +260,11 @@ Object {
                       13
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="14"
@@ -195,7 +272,11 @@ Object {
                       14
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="15"
@@ -203,7 +284,11 @@ Object {
                       15
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="16"
@@ -211,7 +296,11 @@ Object {
                       16
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="17"
@@ -219,7 +308,11 @@ Object {
                       17
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="18"
@@ -227,7 +320,11 @@ Object {
                       18
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="19"
@@ -235,7 +332,11 @@ Object {
                       19
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="20"
@@ -243,7 +344,11 @@ Object {
                       20
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="21"
@@ -251,7 +356,11 @@ Object {
                       21
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="22"
@@ -259,7 +368,11 @@ Object {
                       22
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="23"
@@ -267,7 +380,11 @@ Object {
                       23
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="24"
@@ -275,7 +392,11 @@ Object {
                       24
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="25"
@@ -283,7 +404,11 @@ Object {
                       25
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="26"
@@ -291,7 +416,11 @@ Object {
                       26
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="27"
@@ -299,7 +428,11 @@ Object {
                       27
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="28"
@@ -307,7 +440,11 @@ Object {
                       28
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="29"
@@ -315,7 +452,11 @@ Object {
                       29
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="30"
@@ -323,7 +464,11 @@ Object {
                       30
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="31"
@@ -332,7 +477,11 @@ Object {
                     </option>
                   </select>
                   <div
+<<<<<<< HEAD
                     class="sc-jJoQJp czYFgK"
+=======
+                    class="sc-gWXbKe hBTEtW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -361,7 +510,12 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
+<<<<<<< HEAD
                   class="sc-egiyK hHZVhD"
+=======
+                  class="sc-crHmcD cfjgl"
+                  dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   for="testUuidV4"
                 >
                   Mois
@@ -371,24 +525,40 @@ Object {
                   style="height: 8px;"
                 />
                 <div
+<<<<<<< HEAD
                   class="sc-ikJyIC qQflh"
                 >
                   <select
                     aria-label="Entrée pour le mois de la date de naissance"
                     class="sc-hiCibw idogCv"
+=======
+                  class="sc-hiCibw cmJrdQ"
+                >
+                  <select
+                    aria-label="Entrée pour le mois de la date de naissance"
+                    class="sc-cCcXHH Redne"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-Mois"
                     id="testUuidV4"
                     role="listbox"
                   >
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       role="option"
                       value=""
                     >
                       MM
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Janvier"
@@ -396,7 +566,11 @@ Object {
                       Janvier
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Février"
@@ -404,7 +578,11 @@ Object {
                       Février
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Mars"
@@ -412,7 +590,11 @@ Object {
                       Mars
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Avril"
@@ -420,7 +602,11 @@ Object {
                       Avril
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Mai"
@@ -428,7 +614,11 @@ Object {
                       Mai
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Juin"
@@ -436,7 +626,11 @@ Object {
                       Juin
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Juillet"
@@ -444,7 +638,11 @@ Object {
                       Juillet
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Août"
@@ -452,7 +650,11 @@ Object {
                       Août
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Septembre"
@@ -460,7 +662,11 @@ Object {
                       Septembre
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Octobre"
@@ -468,7 +674,11 @@ Object {
                       Octobre
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Novembre"
@@ -476,7 +686,11 @@ Object {
                       Novembre
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="Décembre"
@@ -485,7 +699,11 @@ Object {
                     </option>
                   </select>
                   <div
+<<<<<<< HEAD
                     class="sc-jJoQJp czYFgK"
+=======
+                    class="sc-gWXbKe hBTEtW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -514,7 +732,12 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
+<<<<<<< HEAD
                   class="sc-egiyK hHZVhD"
+=======
+                  class="sc-crHmcD cfjgl"
+                  dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   for="testUuidV4"
                 >
                   Année
@@ -524,24 +747,40 @@ Object {
                   style="height: 8px;"
                 />
                 <div
+<<<<<<< HEAD
                   class="sc-ikJyIC qQflh"
                 >
                   <select
                     aria-label="Entrée pour l'année de la date de naissance"
                     class="sc-hiCibw fCEEZj"
+=======
+                  class="sc-hiCibw cmJrdQ"
+                >
+                  <select
+                    aria-label="Entrée pour l'année de la date de naissance"
+                    class="sc-cCcXHH uTEYW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-Année"
                     id="testUuidV4"
                     role="listbox"
                   >
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       role="option"
                       value=""
                     >
                       AAAA
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2006"
@@ -549,7 +788,11 @@ Object {
                       2006
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2005"
@@ -557,7 +800,11 @@ Object {
                       2005
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2004"
@@ -565,7 +812,11 @@ Object {
                       2004
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2003"
@@ -573,7 +824,11 @@ Object {
                       2003
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2002"
@@ -581,7 +836,11 @@ Object {
                       2002
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2001"
@@ -589,7 +848,11 @@ Object {
                       2001
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="2000"
@@ -597,7 +860,11 @@ Object {
                       2000
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1999"
@@ -605,7 +872,11 @@ Object {
                       1999
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1998"
@@ -613,7 +884,11 @@ Object {
                       1998
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1997"
@@ -621,7 +896,11 @@ Object {
                       1997
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1996"
@@ -629,7 +908,11 @@ Object {
                       1996
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1995"
@@ -637,7 +920,11 @@ Object {
                       1995
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1994"
@@ -645,7 +932,11 @@ Object {
                       1994
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1993"
@@ -653,7 +944,11 @@ Object {
                       1993
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1992"
@@ -661,7 +956,11 @@ Object {
                       1992
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1991"
@@ -669,7 +968,11 @@ Object {
                       1991
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1990"
@@ -677,7 +980,11 @@ Object {
                       1990
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1989"
@@ -685,7 +992,11 @@ Object {
                       1989
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1988"
@@ -693,7 +1004,11 @@ Object {
                       1988
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1987"
@@ -701,7 +1016,11 @@ Object {
                       1987
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1986"
@@ -709,7 +1028,11 @@ Object {
                       1986
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1985"
@@ -717,7 +1040,11 @@ Object {
                       1985
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1984"
@@ -725,7 +1052,11 @@ Object {
                       1984
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1983"
@@ -733,7 +1064,11 @@ Object {
                       1983
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1982"
@@ -741,7 +1076,11 @@ Object {
                       1982
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1981"
@@ -749,7 +1088,11 @@ Object {
                       1981
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1980"
@@ -757,7 +1100,11 @@ Object {
                       1980
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1979"
@@ -765,7 +1112,11 @@ Object {
                       1979
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1978"
@@ -773,7 +1124,11 @@ Object {
                       1978
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1977"
@@ -781,7 +1136,11 @@ Object {
                       1977
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1976"
@@ -789,7 +1148,11 @@ Object {
                       1976
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1975"
@@ -797,7 +1160,11 @@ Object {
                       1975
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1974"
@@ -805,7 +1172,11 @@ Object {
                       1974
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1973"
@@ -813,7 +1184,11 @@ Object {
                       1973
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1972"
@@ -821,7 +1196,11 @@ Object {
                       1972
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1971"
@@ -829,7 +1208,11 @@ Object {
                       1971
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1970"
@@ -837,7 +1220,11 @@ Object {
                       1970
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1969"
@@ -845,7 +1232,11 @@ Object {
                       1969
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1968"
@@ -853,7 +1244,11 @@ Object {
                       1968
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1967"
@@ -861,7 +1256,11 @@ Object {
                       1967
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1966"
@@ -869,7 +1268,11 @@ Object {
                       1966
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1965"
@@ -877,7 +1280,11 @@ Object {
                       1965
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1964"
@@ -885,7 +1292,11 @@ Object {
                       1964
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1963"
@@ -893,7 +1304,11 @@ Object {
                       1963
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1962"
@@ -901,7 +1316,11 @@ Object {
                       1962
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1961"
@@ -909,7 +1328,11 @@ Object {
                       1961
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1960"
@@ -917,7 +1340,11 @@ Object {
                       1960
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1959"
@@ -925,7 +1352,11 @@ Object {
                       1959
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1958"
@@ -933,7 +1364,11 @@ Object {
                       1958
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1957"
@@ -941,7 +1376,11 @@ Object {
                       1957
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1956"
@@ -949,7 +1388,11 @@ Object {
                       1956
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1955"
@@ -957,7 +1400,11 @@ Object {
                       1955
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1954"
@@ -965,7 +1412,11 @@ Object {
                       1954
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1953"
@@ -973,7 +1424,11 @@ Object {
                       1953
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1952"
@@ -981,7 +1436,11 @@ Object {
                       1952
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1951"
@@ -989,7 +1448,11 @@ Object {
                       1951
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1950"
@@ -997,7 +1460,11 @@ Object {
                       1950
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1949"
@@ -1005,7 +1472,11 @@ Object {
                       1949
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1948"
@@ -1013,7 +1484,11 @@ Object {
                       1948
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1947"
@@ -1021,7 +1496,11 @@ Object {
                       1947
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1946"
@@ -1029,7 +1508,11 @@ Object {
                       1946
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1945"
@@ -1037,7 +1520,11 @@ Object {
                       1945
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1944"
@@ -1045,7 +1532,11 @@ Object {
                       1944
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1943"
@@ -1053,7 +1544,11 @@ Object {
                       1943
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1942"
@@ -1061,7 +1556,11 @@ Object {
                       1942
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1941"
@@ -1069,7 +1568,11 @@ Object {
                       1941
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1940"
@@ -1077,7 +1580,11 @@ Object {
                       1940
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1939"
@@ -1085,7 +1592,11 @@ Object {
                       1939
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1938"
@@ -1093,7 +1604,11 @@ Object {
                       1938
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1937"
@@ -1101,7 +1616,11 @@ Object {
                       1937
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1936"
@@ -1109,7 +1628,11 @@ Object {
                       1936
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1935"
@@ -1117,7 +1640,11 @@ Object {
                       1935
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1934"
@@ -1125,7 +1652,11 @@ Object {
                       1934
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1933"
@@ -1133,7 +1664,11 @@ Object {
                       1933
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1932"
@@ -1141,7 +1676,11 @@ Object {
                       1932
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1931"
@@ -1149,7 +1688,11 @@ Object {
                       1931
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1930"
@@ -1157,7 +1700,11 @@ Object {
                       1930
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1929"
@@ -1165,7 +1712,11 @@ Object {
                       1929
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1928"
@@ -1173,7 +1724,11 @@ Object {
                       1928
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1927"
@@ -1181,7 +1736,11 @@ Object {
                       1927
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1926"
@@ -1189,7 +1748,11 @@ Object {
                       1926
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1925"
@@ -1197,7 +1760,11 @@ Object {
                       1925
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1924"
@@ -1205,7 +1772,11 @@ Object {
                       1924
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1923"
@@ -1213,7 +1784,11 @@ Object {
                       1923
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1922"
@@ -1221,7 +1796,11 @@ Object {
                       1922
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1921"
@@ -1229,7 +1808,11 @@ Object {
                       1921
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1920"
@@ -1237,7 +1820,11 @@ Object {
                       1920
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1919"
@@ -1245,7 +1832,11 @@ Object {
                       1919
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1918"
@@ -1253,7 +1844,11 @@ Object {
                       1918
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1917"
@@ -1261,7 +1856,11 @@ Object {
                       1917
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1916"
@@ -1269,7 +1868,11 @@ Object {
                       1916
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1915"
@@ -1277,7 +1880,11 @@ Object {
                       1915
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1914"
@@ -1285,7 +1892,11 @@ Object {
                       1914
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1913"
@@ -1293,7 +1904,11 @@ Object {
                       1913
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1912"
@@ -1301,7 +1916,11 @@ Object {
                       1912
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1911"
@@ -1309,7 +1928,11 @@ Object {
                       1911
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1910"
@@ -1317,7 +1940,11 @@ Object {
                       1910
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1909"
@@ -1325,7 +1952,11 @@ Object {
                       1909
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1908"
@@ -1333,7 +1964,11 @@ Object {
                       1908
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1907"
@@ -1341,7 +1976,11 @@ Object {
                       1907
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1906"
@@ -1349,7 +1988,11 @@ Object {
                       1906
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1905"
@@ -1357,7 +2000,11 @@ Object {
                       1905
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1904"
@@ -1365,7 +2012,11 @@ Object {
                       1904
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1903"
@@ -1373,7 +2024,11 @@ Object {
                       1903
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1902"
@@ -1381,7 +2036,11 @@ Object {
                       1902
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1901"
@@ -1389,7 +2048,11 @@ Object {
                       1901
                     </option>
                     <option
+<<<<<<< HEAD
                       class="sc-gWXbKe dBSpeI"
+=======
+                      class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                       data-testid="select-option"
                       role="option"
                       value="1900"
@@ -1398,7 +2061,11 @@ Object {
                     </option>
                   </select>
                   <div
+<<<<<<< HEAD
                     class="sc-jJoQJp czYFgK"
+=======
+                    class="sc-gWXbKe hBTEtW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1459,7 +2126,11 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
+<<<<<<< HEAD
           class="sc-bdvvtL hWVHSw sc-pVTFL iXSrby"
+=======
+          class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -1501,7 +2172,12 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
+<<<<<<< HEAD
                 class="sc-egiyK hHZVhD"
+=======
+                class="sc-crHmcD cfjgl"
+                dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 for="testUuidV4"
               >
                 Jour
@@ -1511,24 +2187,40 @@ Object {
                 style="height: 8px;"
               />
               <div
+<<<<<<< HEAD
                 class="sc-ikJyIC qQflh"
               >
                 <select
                   aria-label="Entrée pour le jour de la date de naissance"
                   class="sc-hiCibw jbDLvr"
+=======
+                class="sc-hiCibw cmJrdQ"
+              >
+                <select
+                  aria-label="Entrée pour le jour de la date de naissance"
+                  class="sc-cCcXHH iUwyAq"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   data-testid="select-Jour"
                   id="testUuidV4"
                   role="listbox"
                 >
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     role="option"
                     value=""
                   >
                     JJ
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1"
@@ -1536,7 +2228,11 @@ Object {
                     1
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2"
@@ -1544,7 +2240,11 @@ Object {
                     2
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="3"
@@ -1552,7 +2252,11 @@ Object {
                     3
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="4"
@@ -1560,7 +2264,11 @@ Object {
                     4
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="5"
@@ -1568,7 +2276,11 @@ Object {
                     5
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="6"
@@ -1576,7 +2288,11 @@ Object {
                     6
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="7"
@@ -1584,7 +2300,11 @@ Object {
                     7
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="8"
@@ -1592,7 +2312,11 @@ Object {
                     8
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="9"
@@ -1600,7 +2324,11 @@ Object {
                     9
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="10"
@@ -1608,7 +2336,11 @@ Object {
                     10
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="11"
@@ -1616,7 +2348,11 @@ Object {
                     11
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="12"
@@ -1624,7 +2360,11 @@ Object {
                     12
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="13"
@@ -1632,7 +2372,11 @@ Object {
                     13
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="14"
@@ -1640,7 +2384,11 @@ Object {
                     14
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="15"
@@ -1648,7 +2396,11 @@ Object {
                     15
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="16"
@@ -1656,7 +2408,11 @@ Object {
                     16
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="17"
@@ -1664,7 +2420,11 @@ Object {
                     17
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="18"
@@ -1672,7 +2432,11 @@ Object {
                     18
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="19"
@@ -1680,7 +2444,11 @@ Object {
                     19
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="20"
@@ -1688,7 +2456,11 @@ Object {
                     20
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="21"
@@ -1696,7 +2468,11 @@ Object {
                     21
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="22"
@@ -1704,7 +2480,11 @@ Object {
                     22
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="23"
@@ -1712,7 +2492,11 @@ Object {
                     23
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="24"
@@ -1720,7 +2504,11 @@ Object {
                     24
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="25"
@@ -1728,7 +2516,11 @@ Object {
                     25
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="26"
@@ -1736,7 +2528,11 @@ Object {
                     26
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="27"
@@ -1744,7 +2540,11 @@ Object {
                     27
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="28"
@@ -1752,7 +2552,11 @@ Object {
                     28
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="29"
@@ -1760,7 +2564,11 @@ Object {
                     29
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="30"
@@ -1768,7 +2576,11 @@ Object {
                     30
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="31"
@@ -1777,7 +2589,11 @@ Object {
                   </option>
                 </select>
                 <div
+<<<<<<< HEAD
                   class="sc-jJoQJp czYFgK"
+=======
+                  class="sc-gWXbKe hBTEtW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1806,7 +2622,12 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
+<<<<<<< HEAD
                 class="sc-egiyK hHZVhD"
+=======
+                class="sc-crHmcD cfjgl"
+                dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 for="testUuidV4"
               >
                 Mois
@@ -1816,24 +2637,40 @@ Object {
                 style="height: 8px;"
               />
               <div
+<<<<<<< HEAD
                 class="sc-ikJyIC qQflh"
               >
                 <select
                   aria-label="Entrée pour le mois de la date de naissance"
                   class="sc-hiCibw idogCv"
+=======
+                class="sc-hiCibw cmJrdQ"
+              >
+                <select
+                  aria-label="Entrée pour le mois de la date de naissance"
+                  class="sc-cCcXHH Redne"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   data-testid="select-Mois"
                   id="testUuidV4"
                   role="listbox"
                 >
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     role="option"
                     value=""
                   >
                     MM
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Janvier"
@@ -1841,7 +2678,11 @@ Object {
                     Janvier
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Février"
@@ -1849,7 +2690,11 @@ Object {
                     Février
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Mars"
@@ -1857,7 +2702,11 @@ Object {
                     Mars
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Avril"
@@ -1865,7 +2714,11 @@ Object {
                     Avril
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Mai"
@@ -1873,7 +2726,11 @@ Object {
                     Mai
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Juin"
@@ -1881,7 +2738,11 @@ Object {
                     Juin
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Juillet"
@@ -1889,7 +2750,11 @@ Object {
                     Juillet
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Août"
@@ -1897,7 +2762,11 @@ Object {
                     Août
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Septembre"
@@ -1905,7 +2774,11 @@ Object {
                     Septembre
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Octobre"
@@ -1913,7 +2786,11 @@ Object {
                     Octobre
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Novembre"
@@ -1921,7 +2798,11 @@ Object {
                     Novembre
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="Décembre"
@@ -1930,7 +2811,11 @@ Object {
                   </option>
                 </select>
                 <div
+<<<<<<< HEAD
                   class="sc-jJoQJp czYFgK"
+=======
+                  class="sc-gWXbKe hBTEtW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1959,7 +2844,12 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
+<<<<<<< HEAD
                 class="sc-egiyK hHZVhD"
+=======
+                class="sc-crHmcD cfjgl"
+                dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 for="testUuidV4"
               >
                 Année
@@ -1969,24 +2859,40 @@ Object {
                 style="height: 8px;"
               />
               <div
+<<<<<<< HEAD
                 class="sc-ikJyIC qQflh"
               >
                 <select
                   aria-label="Entrée pour l'année de la date de naissance"
                   class="sc-hiCibw fCEEZj"
+=======
+                class="sc-hiCibw cmJrdQ"
+              >
+                <select
+                  aria-label="Entrée pour l'année de la date de naissance"
+                  class="sc-cCcXHH uTEYW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   data-testid="select-Année"
                   id="testUuidV4"
                   role="listbox"
                 >
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     role="option"
                     value=""
                   >
                     AAAA
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2006"
@@ -1994,7 +2900,11 @@ Object {
                     2006
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2005"
@@ -2002,7 +2912,11 @@ Object {
                     2005
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2004"
@@ -2010,7 +2924,11 @@ Object {
                     2004
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2003"
@@ -2018,7 +2936,11 @@ Object {
                     2003
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2002"
@@ -2026,7 +2948,11 @@ Object {
                     2002
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2001"
@@ -2034,7 +2960,11 @@ Object {
                     2001
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="2000"
@@ -2042,7 +2972,11 @@ Object {
                     2000
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1999"
@@ -2050,7 +2984,11 @@ Object {
                     1999
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1998"
@@ -2058,7 +2996,11 @@ Object {
                     1998
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1997"
@@ -2066,7 +3008,11 @@ Object {
                     1997
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1996"
@@ -2074,7 +3020,11 @@ Object {
                     1996
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1995"
@@ -2082,7 +3032,11 @@ Object {
                     1995
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1994"
@@ -2090,7 +3044,11 @@ Object {
                     1994
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1993"
@@ -2098,7 +3056,11 @@ Object {
                     1993
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1992"
@@ -2106,7 +3068,11 @@ Object {
                     1992
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1991"
@@ -2114,7 +3080,11 @@ Object {
                     1991
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1990"
@@ -2122,7 +3092,11 @@ Object {
                     1990
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1989"
@@ -2130,7 +3104,11 @@ Object {
                     1989
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1988"
@@ -2138,7 +3116,11 @@ Object {
                     1988
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1987"
@@ -2146,7 +3128,11 @@ Object {
                     1987
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1986"
@@ -2154,7 +3140,11 @@ Object {
                     1986
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1985"
@@ -2162,7 +3152,11 @@ Object {
                     1985
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1984"
@@ -2170,7 +3164,11 @@ Object {
                     1984
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1983"
@@ -2178,7 +3176,11 @@ Object {
                     1983
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1982"
@@ -2186,7 +3188,11 @@ Object {
                     1982
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1981"
@@ -2194,7 +3200,11 @@ Object {
                     1981
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1980"
@@ -2202,7 +3212,11 @@ Object {
                     1980
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1979"
@@ -2210,7 +3224,11 @@ Object {
                     1979
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1978"
@@ -2218,7 +3236,11 @@ Object {
                     1978
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1977"
@@ -2226,7 +3248,11 @@ Object {
                     1977
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1976"
@@ -2234,7 +3260,11 @@ Object {
                     1976
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1975"
@@ -2242,7 +3272,11 @@ Object {
                     1975
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1974"
@@ -2250,7 +3284,11 @@ Object {
                     1974
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1973"
@@ -2258,7 +3296,11 @@ Object {
                     1973
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1972"
@@ -2266,7 +3308,11 @@ Object {
                     1972
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1971"
@@ -2274,7 +3320,11 @@ Object {
                     1971
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1970"
@@ -2282,7 +3332,11 @@ Object {
                     1970
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1969"
@@ -2290,7 +3344,11 @@ Object {
                     1969
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1968"
@@ -2298,7 +3356,11 @@ Object {
                     1968
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1967"
@@ -2306,7 +3368,11 @@ Object {
                     1967
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1966"
@@ -2314,7 +3380,11 @@ Object {
                     1966
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1965"
@@ -2322,7 +3392,11 @@ Object {
                     1965
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1964"
@@ -2330,7 +3404,11 @@ Object {
                     1964
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1963"
@@ -2338,7 +3416,11 @@ Object {
                     1963
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1962"
@@ -2346,7 +3428,11 @@ Object {
                     1962
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1961"
@@ -2354,7 +3440,11 @@ Object {
                     1961
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1960"
@@ -2362,7 +3452,11 @@ Object {
                     1960
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1959"
@@ -2370,7 +3464,11 @@ Object {
                     1959
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1958"
@@ -2378,7 +3476,11 @@ Object {
                     1958
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1957"
@@ -2386,7 +3488,11 @@ Object {
                     1957
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1956"
@@ -2394,7 +3500,11 @@ Object {
                     1956
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1955"
@@ -2402,7 +3512,11 @@ Object {
                     1955
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1954"
@@ -2410,7 +3524,11 @@ Object {
                     1954
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1953"
@@ -2418,7 +3536,11 @@ Object {
                     1953
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1952"
@@ -2426,7 +3548,11 @@ Object {
                     1952
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1951"
@@ -2434,7 +3560,11 @@ Object {
                     1951
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1950"
@@ -2442,7 +3572,11 @@ Object {
                     1950
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1949"
@@ -2450,7 +3584,11 @@ Object {
                     1949
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1948"
@@ -2458,7 +3596,11 @@ Object {
                     1948
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1947"
@@ -2466,7 +3608,11 @@ Object {
                     1947
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1946"
@@ -2474,7 +3620,11 @@ Object {
                     1946
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1945"
@@ -2482,7 +3632,11 @@ Object {
                     1945
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1944"
@@ -2490,7 +3644,11 @@ Object {
                     1944
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1943"
@@ -2498,7 +3656,11 @@ Object {
                     1943
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1942"
@@ -2506,7 +3668,11 @@ Object {
                     1942
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1941"
@@ -2514,7 +3680,11 @@ Object {
                     1941
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1940"
@@ -2522,7 +3692,11 @@ Object {
                     1940
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1939"
@@ -2530,7 +3704,11 @@ Object {
                     1939
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1938"
@@ -2538,7 +3716,11 @@ Object {
                     1938
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1937"
@@ -2546,7 +3728,11 @@ Object {
                     1937
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1936"
@@ -2554,7 +3740,11 @@ Object {
                     1936
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1935"
@@ -2562,7 +3752,11 @@ Object {
                     1935
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1934"
@@ -2570,7 +3764,11 @@ Object {
                     1934
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1933"
@@ -2578,7 +3776,11 @@ Object {
                     1933
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1932"
@@ -2586,7 +3788,11 @@ Object {
                     1932
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1931"
@@ -2594,7 +3800,11 @@ Object {
                     1931
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1930"
@@ -2602,7 +3812,11 @@ Object {
                     1930
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1929"
@@ -2610,7 +3824,11 @@ Object {
                     1929
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1928"
@@ -2618,7 +3836,11 @@ Object {
                     1928
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1927"
@@ -2626,7 +3848,11 @@ Object {
                     1927
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1926"
@@ -2634,7 +3860,11 @@ Object {
                     1926
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1925"
@@ -2642,7 +3872,11 @@ Object {
                     1925
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1924"
@@ -2650,7 +3884,11 @@ Object {
                     1924
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1923"
@@ -2658,7 +3896,11 @@ Object {
                     1923
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1922"
@@ -2666,7 +3908,11 @@ Object {
                     1922
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1921"
@@ -2674,7 +3920,11 @@ Object {
                     1921
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1920"
@@ -2682,7 +3932,11 @@ Object {
                     1920
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1919"
@@ -2690,7 +3944,11 @@ Object {
                     1919
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1918"
@@ -2698,7 +3956,11 @@ Object {
                     1918
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1917"
@@ -2706,7 +3968,11 @@ Object {
                     1917
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1916"
@@ -2714,7 +3980,11 @@ Object {
                     1916
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1915"
@@ -2722,7 +3992,11 @@ Object {
                     1915
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1914"
@@ -2730,7 +4004,11 @@ Object {
                     1914
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1913"
@@ -2738,7 +4016,11 @@ Object {
                     1913
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1912"
@@ -2746,7 +4028,11 @@ Object {
                     1912
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1911"
@@ -2754,7 +4040,11 @@ Object {
                     1911
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1910"
@@ -2762,7 +4052,11 @@ Object {
                     1910
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1909"
@@ -2770,7 +4064,11 @@ Object {
                     1909
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1908"
@@ -2778,7 +4076,11 @@ Object {
                     1908
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1907"
@@ -2786,7 +4088,11 @@ Object {
                     1907
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1906"
@@ -2794,7 +4100,11 @@ Object {
                     1906
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1905"
@@ -2802,7 +4112,11 @@ Object {
                     1905
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1904"
@@ -2810,7 +4124,11 @@ Object {
                     1904
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1903"
@@ -2818,7 +4136,11 @@ Object {
                     1903
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1902"
@@ -2826,7 +4148,11 @@ Object {
                     1902
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1901"
@@ -2834,7 +4160,11 @@ Object {
                     1901
                   </option>
                   <option
+<<<<<<< HEAD
                     class="sc-gWXbKe dBSpeI"
+=======
+                    class="sc-cidDSM hmUpWc"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     data-testid="select-option"
                     role="option"
                     value="1900"
@@ -2843,7 +4173,11 @@ Object {
                   </option>
                 </select>
                 <div
+<<<<<<< HEAD
                   class="sc-jJoQJp czYFgK"
+=======
+                  class="sc-gWXbKe hBTEtW"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2961,7 +4295,11 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
+<<<<<<< HEAD
             class="sc-bdvvtL hWVHSw sc-pVTFL iXSrby"
+=======
+            class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -2998,7 +4336,12 @@ Object {
               style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
             >
               <label
+<<<<<<< HEAD
                 class="sc-egiyK hHZVhD"
+=======
+                class="sc-crHmcD cfjgl"
+                dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 for="testUuidV4"
               >
                 Date de naissance
@@ -4013,7 +5356,11 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
+<<<<<<< HEAD
           class="sc-bdvvtL hWVHSw sc-pVTFL iXSrby"
+=======
+          class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -4050,7 +5397,12 @@ Object {
             style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
           >
             <label
+<<<<<<< HEAD
               class="sc-egiyK hHZVhD"
+=======
+              class="sc-crHmcD cfjgl"
+              dir="ltr"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               for="testUuidV4"
             >
               Date de naissance

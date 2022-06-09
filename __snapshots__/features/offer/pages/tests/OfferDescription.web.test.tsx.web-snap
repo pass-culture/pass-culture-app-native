@@ -62,7 +62,12 @@ Object {
                               style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                             >
                               <header
+<<<<<<< HEAD
                                 class="sc-ikJyIC fMMUXF"
+=======
+                                class="sc-hiCibw lgCcuM"
+                                role="banner"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -290,7 +295,12 @@ Object {
                             style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <header
+<<<<<<< HEAD
                               class="sc-ikJyIC fMMUXF"
+=======
+                              class="sc-hiCibw lgCcuM"
+                              role="banner"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                             >
                               <div
                                 class="css-view-1dbjc4n"

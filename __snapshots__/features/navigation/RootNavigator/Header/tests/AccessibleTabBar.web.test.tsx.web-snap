@@ -6,7 +6,11 @@ Object {
   "baseElement": <body>
     <div>
       <nav
+<<<<<<< HEAD
         class="sc-ezbkAF igBdDc"
+=======
+        class="sc-kLwhqv gMIamO"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
         id="tabBarID"
       >
         <div
@@ -22,10 +26,17 @@ Object {
               style="width: 16px;"
             />
             <ul
+<<<<<<< HEAD
               class="sc-bqiRlB sc-bYoBSM fZQgdx fePCKa"
             >
               <li
                 class="sc-kLwhqv jrQiEP"
+=======
+              class="sc-egiyK sc-ikJyIC fXDcKC iGXYCt"
+            >
+              <li
+                class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -76,7 +87,11 @@ Object {
                 </div>
               </li>
               <li
+<<<<<<< HEAD
                 class="sc-kLwhqv jrQiEP"
+=======
+                class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -112,7 +127,11 @@ Object {
                 </div>
               </li>
               <li
+<<<<<<< HEAD
                 class="sc-kLwhqv jrQiEP"
+=======
+                class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -148,7 +167,11 @@ Object {
                 </div>
               </li>
               <li
+<<<<<<< HEAD
                 class="sc-kLwhqv jrQiEP"
+=======
+                class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -184,7 +207,11 @@ Object {
                 </div>
               </li>
               <li
+<<<<<<< HEAD
                 class="sc-kLwhqv jrQiEP"
+=======
+                class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -235,7 +262,11 @@ Object {
   </body>,
   "container": <div>
     <nav
+<<<<<<< HEAD
       class="sc-ezbkAF igBdDc"
+=======
+      class="sc-kLwhqv gMIamO"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
       id="tabBarID"
     >
       <div
@@ -251,10 +282,17 @@ Object {
             style="width: 16px;"
           />
           <ul
+<<<<<<< HEAD
             class="sc-bqiRlB sc-bYoBSM fZQgdx fePCKa"
           >
             <li
               class="sc-kLwhqv jrQiEP"
+=======
+            class="sc-egiyK sc-ikJyIC fXDcKC iGXYCt"
+          >
+            <li
+              class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             >
               <div
                 class="css-view-1dbjc4n"
@@ -305,7 +343,11 @@ Object {
               </div>
             </li>
             <li
+<<<<<<< HEAD
               class="sc-kLwhqv jrQiEP"
+=======
+              class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             >
               <div
                 class="css-view-1dbjc4n"
@@ -341,7 +383,11 @@ Object {
               </div>
             </li>
             <li
+<<<<<<< HEAD
               class="sc-kLwhqv jrQiEP"
+=======
+              class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             >
               <div
                 class="css-view-1dbjc4n"
@@ -377,7 +423,11 @@ Object {
               </div>
             </li>
             <li
+<<<<<<< HEAD
               class="sc-kLwhqv jrQiEP"
+=======
+              class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             >
               <div
                 class="css-view-1dbjc4n"
@@ -413,7 +463,11 @@ Object {
               </div>
             </li>
             <li
+<<<<<<< HEAD
               class="sc-kLwhqv jrQiEP"
+=======
+              class="sc-jJoQJp dCTevw"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
             >
               <div
                 class="css-view-1dbjc4n"

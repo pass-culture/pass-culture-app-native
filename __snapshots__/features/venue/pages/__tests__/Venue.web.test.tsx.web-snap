@@ -434,7 +434,11 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
+<<<<<<< HEAD
                 class="sc-eCImPb eivvKD sc-jJoQJp eRwNdp sc-jJoQJp eRwNdp"
+=======
+                class="sc-bdvvtL bmzymd sc-cidDSM fzzLBF sc-cidDSM fzzLBF"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 data-testid="iconLocation"
                 tabindex="0"
                 type="button"
@@ -872,7 +876,11 @@ Object {
               style="margin-right: 24px; margin-left: 24px;"
             >
               <button
+<<<<<<< HEAD
                 class="sc-dJjYzT izAAoh"
+=======
+                class="sc-dlVxhl etOseE"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 type="button"
               >
                 <div
@@ -1142,10 +1150,17 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
+<<<<<<< HEAD
                     class="sc-fotOHu sc-hiCibw fHUdDM ietfbc"
                   >
                     <li
                       class="sc-gWXbKe UoJFI"
+=======
+                    class="sc-iCfMLu sc-jcFjpl iQwHgL iLzjWr"
+                  >
+                    <li
+                      class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     >
                       <div
                         aria-label="Handicap visuel : Accessible"
@@ -1214,7 +1229,11 @@ Object {
                       </div>
                     </li>
                     <li
+<<<<<<< HEAD
                       class="sc-gWXbKe UoJFI"
+=======
+                      class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     >
                       <div
                         aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1283,7 +1302,11 @@ Object {
                       </div>
                     </li>
                     <li
+<<<<<<< HEAD
                       class="sc-gWXbKe UoJFI"
+=======
+                      class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     >
                       <div
                         aria-label="Handicap moteur : Non accessible"
@@ -1352,7 +1375,11 @@ Object {
                       </div>
                     </li>
                     <li
+<<<<<<< HEAD
                       class="sc-gWXbKe UoJFI"
+=======
+                      class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                     >
                       <div
                         aria-label="Handicap auditif : Non accessible"
@@ -1947,7 +1974,11 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
+<<<<<<< HEAD
               class="sc-eCImPb eivvKD sc-jJoQJp eRwNdp sc-jJoQJp eRwNdp"
+=======
+              class="sc-bdvvtL bmzymd sc-cidDSM fzzLBF sc-cidDSM fzzLBF"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               data-testid="iconLocation"
               tabindex="0"
               type="button"
@@ -2385,7 +2416,11 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
+<<<<<<< HEAD
               class="sc-dJjYzT izAAoh"
+=======
+              class="sc-dlVxhl etOseE"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               type="button"
             >
               <div
@@ -2655,10 +2690,17 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
+<<<<<<< HEAD
                   class="sc-fotOHu sc-hiCibw fHUdDM ietfbc"
                 >
                   <li
                     class="sc-gWXbKe UoJFI"
+=======
+                  class="sc-iCfMLu sc-jcFjpl iQwHgL iLzjWr"
+                >
+                  <li
+                    class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -2727,7 +2769,11 @@ Object {
                     </div>
                   </li>
                   <li
+<<<<<<< HEAD
                     class="sc-gWXbKe UoJFI"
+=======
+                    class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2796,7 +2842,11 @@ Object {
                     </div>
                   </li>
                   <li
+<<<<<<< HEAD
                     class="sc-gWXbKe UoJFI"
+=======
+                    class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -2865,7 +2915,11 @@ Object {
                     </div>
                   </li>
                   <li
+<<<<<<< HEAD
                     class="sc-gWXbKe UoJFI"
+=======
+                    class="sc-caiLqq jBFBin"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"

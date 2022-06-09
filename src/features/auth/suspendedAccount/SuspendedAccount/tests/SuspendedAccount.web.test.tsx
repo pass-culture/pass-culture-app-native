@@ -2,7 +2,6 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils/web'
 
@@ -22,17 +21,6 @@ jest.mock('features/auth/settings', () => ({
 describe('<SuspendedAccount />', () => {
   it('should match snapshot', () => {
     expect(render(<SuspendedAccount />)).toMatchSnapshot()
-  })
-
-  it('should go back when clicking on go back icon', async () => {
-    const { getByTestId } = render(<SuspendedAccount />)
-
-    const leftIconButton = getByTestId('Revenir en arrière')
-    fireEvent.click(leftIconButton)
-
-    await waitForExpect(() => {
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
-    })
   })
 
   it('should go to home page when clicking on go to home button', async () => {

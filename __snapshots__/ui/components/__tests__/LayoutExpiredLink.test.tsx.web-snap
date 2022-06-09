@@ -196,7 +196,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <a
+<<<<<<< HEAD
       className="sc-gsDKAQ BjQFx sc-kDTinF hPdTAM"
+=======
+      className="sc-gsDKAQ BjQFx sc-pVTFL iXSrby"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
       href="https://passculture.zendesk.com/hc/fr/"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -234,7 +238,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     </a>
     <button
       aria-label="Ouvrir le gestionnaire mail pour contacter le support"
+<<<<<<< HEAD
       className="sc-bdvvtL krGSRA sc-kDTinF hPdTAM"
+=======
+      className="sc-bdvvtL krGSRA sc-pVTFL iXSrby"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
       data-testid="Ouvrir le gestionnaire mail pour contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -328,7 +336,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
+<<<<<<< HEAD
         className="sc-bdvvtL krGSRA sc-kDTinF hPdTAM"
+=======
+        className="sc-bdvvtL krGSRA sc-pVTFL iXSrby"
+>>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
