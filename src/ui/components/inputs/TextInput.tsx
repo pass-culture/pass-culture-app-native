@@ -55,6 +55,12 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
         isError={customProps.isError}
         isDisabled={customProps.disabled}
         style={customProps.containerStyle}>
+        {customProps.leftComponent ? (
+          <React.Fragment>
+            {customProps.leftComponent}
+            <Spacer.Row numberOfSpaces={2} />
+          </React.Fragment>
+        ) : null}
         <BaseTextInput
           {...nativeProps}
           nativeID={textInputID}

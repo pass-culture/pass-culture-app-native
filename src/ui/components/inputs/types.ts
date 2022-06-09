@@ -12,6 +12,7 @@ type CustomTextInputProps = {
   isRequiredField?: boolean
   accessibilityDescribedBy?: string
   focusOutlineColor?: ColorsEnum
+  leftComponent?: React.ReactElement
 }
 
 type CustomSearchInputProps = {
@@ -75,6 +76,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     isRequiredField: props.isRequiredField,
     accessibilityDescribedBy: props.accessibilityDescribedBy,
     focusOutlineColor: props.focusOutlineColor,
+    leftComponent: props.leftComponent,
   }
 }
 
