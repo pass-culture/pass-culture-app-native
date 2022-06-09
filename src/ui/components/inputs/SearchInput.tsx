@@ -87,7 +87,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
         {onPressLocationButton ? (
-          <StyledButtonPrimary
+          <LocationButton
             testID="locationButton"
             wording={locationLabel || ''}
             onPress={onPressLocationButton}
@@ -133,6 +133,6 @@ const StyledInputContainer = styled(InputContainer)({
   borderRadius: getSpacing(6),
 })
 
-const StyledButtonPrimary = styledButton(ButtonPrimary)({
+const LocationButton = styledButton(ButtonPrimary)({
   maxWidth: getSpacing(34),
 })
