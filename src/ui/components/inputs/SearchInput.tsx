@@ -67,7 +67,9 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (
           <React.Fragment>
+            <LeftIconContainer>
             <LeftIcon />
+            </LeftIconContainer>
             <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>
         ) : null}
@@ -110,6 +112,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 }
 
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
+
+const LeftIconContainer = styled.View({ flexShrink: 0 })
 
 const RightIconContainer = styledButton(Touchable)({
   position: 'absolute',
