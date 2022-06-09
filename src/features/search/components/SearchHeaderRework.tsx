@@ -69,9 +69,10 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
 const SearchBoxContainer = styled.View({
   alignSelf: 'center',
   height: getSpacing(8),
-  width: '90%',
   marginVertical: getSpacing(6),
   position: 'relative',
+  width: '100%',
+  paddingHorizontal: getSpacing(6),
   zIndex: 1,
 })
 

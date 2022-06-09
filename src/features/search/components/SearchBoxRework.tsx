@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
@@ -39,6 +41,11 @@ export const SearchBoxRework: React.FC<Props> = ({
   const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
   const showResults = useShowResults()
+  const { locationFilter } = stagedSearchState
+  const { locationType } = locationFilter
+  // PLACE and VENUE belong to the same section
+  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { label: locationLabel } = useLocationChoice(section)
 
   const resetSearch = () => {
     navigate(...getTabNavConfig('Search', { query: '' }))
@@ -53,6 +60,10 @@ export const SearchBoxRework: React.FC<Props> = ({
     dispatch({ type: 'INIT' })
   }
 
+  const onPressLocationButton = useCallback(() => {
+    navigate('LocationFilter')
+  }, [navigate])
+
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
     const queryText = event.nativeEvent.text
     if (queryText.length < 1 && Platform.OS !== 'android') return
@@ -60,7 +71,7 @@ export const SearchBoxRework: React.FC<Props> = ({
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
-    const { locationFilter, offerCategories, priceRange } = stagedSearchState
+    const { offerCategories, priceRange } = stagedSearchState
     navigate(
       ...getTabNavConfig('Search', {
         showResults: true,
@@ -78,7 +89,7 @@ export const SearchBoxRework: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer marginRight={showResults || isFocus ? getSpacing(4) : 0}>
+      <SearchInputContainer marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
@@ -96,7 +107,8 @@ export const SearchBoxRework: React.FC<Props> = ({
           onPressRightIcon={resetSearch}
           onFocusState={onFocusState}
           testID="searchInput"
-          showLocationButton={showLocationButton}
+          onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
+          locationLabel={locationLabel}
         />
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
@@ -114,7 +126,7 @@ const StyledSearchInput = styled((props) => <SearchInput {...props} />).attrs(({
 })
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
+  size: theme.icons.sizes.small,
 }))``
 
 const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
@@ -125,13 +137,13 @@ const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const SearchInputContainer = styled.View<{ marginRight: number }>(({ marginRight }) => ({
+const SearchInputContainer = styled.View<{ marginHorizontal: number }>(({ marginHorizontal }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  marginRight,
+  marginHorizontal,
 }))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
-  marginHorizontal: getSpacing(4),
+  marginRight: getSpacing(4),
 })
