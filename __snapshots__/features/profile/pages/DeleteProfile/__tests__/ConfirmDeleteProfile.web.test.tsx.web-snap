@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        class="sc-hKwDye lgPtFf sc-gWXbKe NbGXg sc-gWXbKe NbGXg"
+        class="sc-hKwDye lgPtFf sc-hiCibw kzgpNK sc-hiCibw kzgpNK"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -70,7 +70,7 @@ Object {
             Les conséquences :
           </div>
           <ul
-            class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+            class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
           >
             <li>
               <div
@@ -204,7 +204,7 @@ Object {
               style="height: 16px;"
             />
             <a
-              class="sc-gsDKAQ gFcuOJ sc-hiCibw bikoQs"
+              class="sc-gsDKAQ gFcuOJ sc-jJoQJp bkQoIy"
               href="https://passculture-delete-account.faq"
               tabindex="0"
               target="_blank"
@@ -239,7 +239,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="sc-hKwDye lgPtFf sc-gWXbKe NbGXg sc-gWXbKe NbGXg"
+      class="sc-hKwDye lgPtFf sc-hiCibw kzgpNK sc-hiCibw kzgpNK"
       data-testid="Revenir en arrière"
       tabindex="0"
       type="button"
@@ -303,7 +303,7 @@ Object {
           Les conséquences :
         </div>
         <ul
-          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+          class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
         >
           <li>
             <div
@@ -437,7 +437,7 @@ Object {
             style="height: 16px;"
           />
           <a
-            class="sc-gsDKAQ gFcuOJ sc-hiCibw bikoQs"
+            class="sc-gsDKAQ gFcuOJ sc-jJoQJp bkQoIy"
             href="https://passculture-delete-account.faq"
             tabindex="0"
             target="_blank"

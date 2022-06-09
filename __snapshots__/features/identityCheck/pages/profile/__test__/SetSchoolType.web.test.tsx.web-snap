@@ -95,7 +95,7 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-bBHxTw gAOzOT"
+                      class="sc-fKVqWL clyjXB"
                     >
                       <div
                         aria-labelledby="testUuidV4"
@@ -103,7 +103,7 @@ Object {
                         role="radiogroup"
                       >
                         <ul
-                          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                          class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
                         >
                           <li>
                             <div
@@ -400,7 +400,7 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-bBHxTw gAOzOT"
+                    class="sc-fKVqWL clyjXB"
                   >
                     <div
                       aria-labelledby="testUuidV4"
@@ -408,7 +408,7 @@ Object {
                       role="radiogroup"
                     >
                       <ul
-                        class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                        class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
                       >
                         <li>
                           <div
@@ -762,7 +762,7 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-bBHxTw gAOzOT"
+                      class="sc-fKVqWL clyjXB"
                     >
                       <div
                         aria-labelledby="testUuidV4"
@@ -770,7 +770,7 @@ Object {
                         role="radiogroup"
                       >
                         <ul
-                          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                          class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
                         >
                           <li>
                             <div
@@ -987,7 +987,7 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-bBHxTw gAOzOT"
+                    class="sc-fKVqWL clyjXB"
                   >
                     <div
                       aria-labelledby="testUuidV4"
@@ -995,7 +995,7 @@ Object {
                       role="radiogroup"
                     >
                       <ul
-                        class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                        class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
                       >
                         <li>
                           <div

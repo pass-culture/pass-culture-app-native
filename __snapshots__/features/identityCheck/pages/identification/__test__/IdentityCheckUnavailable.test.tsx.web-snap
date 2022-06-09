@@ -76,8 +76,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         "msFlexPack": "center",
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "overflowX": "scroll",
-        "overflowY": "scroll",
+        "overflowY": "auto",
         "paddingLeft": "16px",
         "paddingRight": "16px",
       }
@@ -204,7 +203,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL krGSRA sc-kDTinF hPdTAM"
+        className="sc-bdvvtL krGSRA sc-jrQzAO gEVuSj"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

@@ -46,7 +46,6 @@ export const SuspendedAccount = () => {
 
   return settings?.allowAccountReactivation ? (
     <GenericInfoPage
-      headerGoBack
       onGoBackPress={signOut}
       title={t`Ton compte est désactivé`}
       icon={ProfileDeletionIllustration}

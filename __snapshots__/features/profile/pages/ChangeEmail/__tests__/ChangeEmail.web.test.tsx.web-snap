@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-gWXbKe jVsLRG"
+        class="sc-hiCibw lgCcuM"
         role="banner"
       >
         <div
@@ -109,14 +109,14 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-iwjdpV gDrzZS"
+              class="sc-bBHxTw gAOzOT"
             >
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-bqiRlB sc-cCcXHH cIOFso hmPVTb"
+                  class="sc-egiyK sc-gWXbKe hHZVhD dFPkkI"
                   dir="ltr"
                   for="testUuidV4"
                 >
@@ -181,7 +181,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-bqiRlB sc-cCcXHH cIOFso hmPVTb"
+                  class="sc-egiyK sc-gWXbKe hHZVhD dFPkkI"
                   dir="ltr"
                   for="testUuidV4"
                 >
@@ -233,7 +233,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-eCImPb eivvKD sc-cidDSM dWLnEj sc-cidDSM dWLnEj"
+                    class="sc-eCImPb eivvKD sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     type="button"
@@ -291,7 +291,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-gWXbKe jVsLRG"
+      class="sc-hiCibw lgCcuM"
       role="banner"
     >
       <div
@@ -394,14 +394,14 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-iwjdpV gDrzZS"
+            class="sc-bBHxTw gAOzOT"
           >
             <div
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-bqiRlB sc-cCcXHH cIOFso hmPVTb"
+                class="sc-egiyK sc-gWXbKe hHZVhD dFPkkI"
                 dir="ltr"
                 for="testUuidV4"
               >
@@ -466,7 +466,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-bqiRlB sc-cCcXHH cIOFso hmPVTb"
+                class="sc-egiyK sc-gWXbKe hHZVhD dFPkkI"
                 dir="ltr"
                 for="testUuidV4"
               >
@@ -518,7 +518,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-eCImPb eivvKD sc-cidDSM dWLnEj sc-cidDSM dWLnEj"
+                  class="sc-eCImPb eivvKD sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   type="button"
