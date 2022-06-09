@@ -41,39 +41,6 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
     </View>
   </View>
   <View
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    nativeID="animatedComponent"
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "left": 24,
-        "opacity": 1,
-        "position": "absolute",
-        "top": 30,
-        "userSelect": "auto",
-        "zIndex": 1,
-      }
-    }
-    testID="Revenir en arrière"
-  >
-    <View
-      height={24}
-      width={24}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
     style={
       Array [
         Object {
