@@ -24,23 +24,6 @@ Object {
             </div>
           </div>
         </div>
-        <button
-          class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
-          data-testid="Revenir en arrière"
-          tabindex="0"
-          type="button"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </button>
         <div
           class="css-view-1dbjc4n"
           style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
@@ -131,7 +114,7 @@ Object {
               style="height: 16px;"
             />
             <button
-              class="sc-bdvvtL krGSRA sc-jRQBWg CQePl"
+              class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
               tabindex="0"
               type="button"
             >
@@ -183,23 +166,6 @@ Object {
           </div>
         </div>
       </div>
-      <button
-        class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
-        data-testid="Revenir en arrière"
-        tabindex="0"
-        type="button"
-      >
-        <div
-          class="css-view-1dbjc4n"
-        >
-          <div
-            class="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-      </button>
       <div
         class="css-view-1dbjc4n"
         style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
@@ -290,7 +256,7 @@ Object {
             style="height: 16px;"
           />
           <button
-            class="sc-bdvvtL krGSRA sc-jRQBWg CQePl"
+            class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
             tabindex="0"
             type="button"
           >

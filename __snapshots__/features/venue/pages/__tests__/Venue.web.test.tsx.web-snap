@@ -437,7 +437,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="sc-bdvvtL bmzymd sc-jcFjpl tKFOw sc-jcFjpl tKFOw"
+                class="sc-bdvvtL bmzymd sc-cidDSM fzzLBF sc-cidDSM fzzLBF"
                 data-testid="iconLocation"
                 tabindex="0"
                 title="Géolocalisation désactivée"
@@ -880,7 +880,7 @@ Object {
               style="margin-right: 24px; margin-left: 24px;"
             >
               <button
-                class="sc-kfPuZi kCqwnZ"
+                class="sc-dlVxhl etOseE"
                 type="button"
               >
                 <div
@@ -1151,10 +1151,10 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="sc-iCfMLu sc-caiLqq iQwHgL gFGgld"
+                    class="sc-iCfMLu sc-jcFjpl iQwHgL iLzjWr"
                   >
                     <li
-                      class="sc-iUKqMP kLUouX"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap visuel : Accessible"
@@ -1223,7 +1223,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-iUKqMP kLUouX"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1292,7 +1292,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-iUKqMP kLUouX"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap moteur : Non accessible"
@@ -1361,7 +1361,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-iUKqMP kLUouX"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap auditif : Non accessible"
@@ -1959,7 +1959,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-bdvvtL bmzymd sc-jcFjpl tKFOw sc-jcFjpl tKFOw"
+              class="sc-bdvvtL bmzymd sc-cidDSM fzzLBF sc-cidDSM fzzLBF"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"
@@ -2402,7 +2402,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-kfPuZi kCqwnZ"
+              class="sc-dlVxhl etOseE"
               type="button"
             >
               <div
@@ -2673,10 +2673,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-iCfMLu sc-caiLqq iQwHgL gFGgld"
+                  class="sc-iCfMLu sc-jcFjpl iQwHgL iLzjWr"
                 >
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -2745,7 +2745,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2814,7 +2814,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -2883,7 +2883,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"

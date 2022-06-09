@@ -4,7 +4,6 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
@@ -52,18 +51,6 @@ describe('<SuspendedAccount />', () => {
   const queryClient = useQueryClient()
   it('should match snapshot', () => {
     expect(render(<SuspendedAccount />)).toMatchSnapshot()
-  })
-
-  it('should go back when clicking on go back icon', async () => {
-    const { getByTestId } = render(<SuspendedAccount />)
-
-    const leftIconButton = getByTestId('Revenir en arrière')
-    fireEvent.press(leftIconButton)
-
-    await waitForExpect(() => {
-      expect(mockGoBack).toBeCalledTimes(1)
-      expect(mockSignOut).toBeCalledTimes(1)
-    })
   })
 
   it('should log analytics and redirect to reactivation screen on success', async () => {
