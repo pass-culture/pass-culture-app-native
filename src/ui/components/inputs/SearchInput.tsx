@@ -95,7 +95,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
             textSize={getSpacing(3)}
             buttonHeight="extraSmall"
             ellipsizeMode="tail"
-            maxWidth={getSpacing(23)}
           />
         ) : null}
         {value.length > 0 && (

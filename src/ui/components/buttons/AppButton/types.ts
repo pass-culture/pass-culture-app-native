@@ -64,7 +64,6 @@ export interface BaseButtonProps {
   href?: string
   target?: string
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
-  maxWidth?: string | number
 }
 
 export interface AppButtonProps extends BaseButtonProps {
