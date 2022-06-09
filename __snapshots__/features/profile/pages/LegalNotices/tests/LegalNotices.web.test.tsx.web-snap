@@ -6,12 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-<<<<<<< HEAD
-        class="sc-kLwhqv hbvUeN"
-=======
-        class="sc-hiCibw lgCcuM"
-        role="banner"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+        class="sc-bYoBSM beLEmW"
       >
         <div
           class="css-view-1dbjc4n"
@@ -176,12 +171,7 @@ Object {
   </body>,
   "container": <div>
     <header
-<<<<<<< HEAD
-      class="sc-kLwhqv hbvUeN"
-=======
-      class="sc-hiCibw lgCcuM"
-      role="banner"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+      class="sc-bYoBSM beLEmW"
     >
       <div
         class="css-view-1dbjc4n"

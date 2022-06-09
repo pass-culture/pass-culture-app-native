@@ -8,21 +8,13 @@ Object {
   >
     <div>
       <a
-<<<<<<< HEAD
-        class="sc-iJKOTD kJmyar"
-=======
-        class="sc-bYoBSM dYpcVc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+        class="sc-llYSUQ hSKAOO"
         href="#testUuidV4"
       >
         Accéder au menu de navigation
       </a>
       <main
-<<<<<<< HEAD
-        class="sc-llYSUQ dHRNRN"
-=======
-        class="sc-ezbkAF kvEtOC"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+        class="sc-cxpSdN iFIiWV"
         id="testUuidV4"
       >
         <div
@@ -54,293 +46,8 @@ Object {
           </div>
         </div>
       </main>
-<<<<<<< HEAD
       <nav
-        class="sc-bBHxTw ghmUDW"
-=======
-      <footer
-        class="sc-giYglK"
-        role="contentinfo"
-      >
-        <nav
-          class="sc-cxpSdN fGgkAn"
-          id="testUuidV4"
-          role="navigation"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-top-style: solid; border-top-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: row; width: 100%;"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 16px;"
-              />
-              <ul
-                class="sc-ksdxgE sc-llYSUQ hUAJHV bBNdHY"
-              >
-                <li
-                  class="sc-iJKOTD laBwND"
-                >
-                  <a
-                    aria-current="page"
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    data-testid="Home tab"
-                    href="/TabNavigator/Home"
-                    style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="Home tab selected"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        Home tab selected-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
-                    >
-                      Accueil
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 4px;"
-                    />
-                  </a>
-                </li>
-                <li
-                  class="sc-iJKOTD laBwND"
-                >
-                  <a
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    data-testid="Search tab"
-                    href="/TabNavigator/Search"
-                    style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
-                    >
-                      Recherche
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                  </a>
-                </li>
-                <li
-                  class="sc-iJKOTD laBwND"
-                >
-                  <a
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    data-testid="Bookings tab"
-                    href="/TabNavigator/Bookings"
-                    style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
-                    >
-                      Réservations
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                  </a>
-                </li>
-                <li
-                  class="sc-iJKOTD laBwND"
-                >
-                  <a
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    data-testid="Favorites tab"
-                    href="/TabNavigator/Favorites"
-                    style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
-                    >
-                      Favoris
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                  </a>
-                </li>
-                <li
-                  class="sc-iJKOTD laBwND"
-                >
-                  <a
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    data-testid="Profile tab"
-                    href="/TabNavigator/Profile"
-                    style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
-                    >
-                      Profil
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                  </a>
-                </li>
-              </ul>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 16px;"
-              />
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 8px;"
-            />
-          </div>
-        </nav>
-      </footer>
-    </div>
-  </body>,
-  "container": <div>
-    <a
-      class="sc-bYoBSM dYpcVc"
-      href="#testUuidV4"
-    >
-      Accéder au menu de navigation
-    </a>
-    <main
-      class="sc-ezbkAF kvEtOC"
-      id="testUuidV4"
-      role="main"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          />
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer
-      class="sc-giYglK"
-      role="contentinfo"
-    >
-      <nav
-        class="sc-cxpSdN fGgkAn"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+        class="sc-fKVqWL celeKM"
         id="testUuidV4"
       >
         <div
@@ -356,17 +63,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-<<<<<<< HEAD
-              class="sc-ksdxgE sc-iwjdpV hUAJHV dQnYRY"
+              class="sc-bqiRlB sc-bBHxTw fZQgdx fHYOUt"
             >
               <li
-                class="sc-cxpSdN jxZzlG"
-=======
-              class="sc-ksdxgE sc-llYSUQ hUAJHV bBNdHY"
-            >
-              <li
-                class="sc-iJKOTD laBwND"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                class="sc-iwjdpV CbhWy"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -417,11 +117,7 @@ Object {
                 </a>
               </li>
               <li
-<<<<<<< HEAD
-                class="sc-cxpSdN jxZzlG"
-=======
-                class="sc-iJKOTD laBwND"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                class="sc-iwjdpV CbhWy"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -457,11 +153,7 @@ Object {
                 </a>
               </li>
               <li
-<<<<<<< HEAD
-                class="sc-cxpSdN jxZzlG"
-=======
-                class="sc-iJKOTD laBwND"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                class="sc-iwjdpV CbhWy"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -497,11 +189,7 @@ Object {
                 </a>
               </li>
               <li
-<<<<<<< HEAD
-                class="sc-cxpSdN jxZzlG"
-=======
-                class="sc-iJKOTD laBwND"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                class="sc-iwjdpV CbhWy"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -537,11 +225,7 @@ Object {
                 </a>
               </li>
               <li
-<<<<<<< HEAD
-                class="sc-cxpSdN jxZzlG"
-=======
-                class="sc-iJKOTD laBwND"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                class="sc-iwjdpV CbhWy"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -592,13 +276,13 @@ Object {
   </body>,
   "container": <div>
     <a
-      class="sc-iJKOTD kJmyar"
+      class="sc-llYSUQ hSKAOO"
       href="#testUuidV4"
     >
       Accéder au menu de navigation
     </a>
     <main
-      class="sc-llYSUQ dHRNRN"
+      class="sc-cxpSdN iFIiWV"
       id="testUuidV4"
     >
       <div
@@ -631,7 +315,7 @@ Object {
       </div>
     </main>
     <nav
-      class="sc-bBHxTw ghmUDW"
+      class="sc-fKVqWL celeKM"
       id="testUuidV4"
     >
       <div
@@ -647,10 +331,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-ksdxgE sc-iwjdpV hUAJHV dQnYRY"
+            class="sc-bqiRlB sc-bBHxTw fZQgdx fHYOUt"
           >
             <li
-              class="sc-cxpSdN jxZzlG"
+              class="sc-iwjdpV CbhWy"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -701,7 +385,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-cxpSdN jxZzlG"
+              class="sc-iwjdpV CbhWy"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -737,7 +421,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-cxpSdN jxZzlG"
+              class="sc-iwjdpV CbhWy"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -773,7 +457,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-cxpSdN jxZzlG"
+              class="sc-iwjdpV CbhWy"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -809,7 +493,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-cxpSdN jxZzlG"
+              class="sc-iwjdpV CbhWy"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"

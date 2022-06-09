@@ -710,7 +710,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-bkkeKt ilbeXG"
+              class="sc-fFeiMQ cNJSWC"
               type="button"
             >
               <div
@@ -791,11 +791,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-<<<<<<< HEAD
-                class="sc-gsDKAQ jJvgoT sc-jJoQJp bkQoIy"
-=======
-                class="sc-gsDKAQ jJvgoT sc-gWXbKe jAXlhK"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                class="sc-gsDKAQ jJvgoT sc-ikJyIC bSBRIN"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -984,17 +980,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-<<<<<<< HEAD
-                  class="sc-ksdxgE sc-hiCibw hUAJHV ietfbc"
+                  class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
                 >
                   <li
-                    class="sc-gWXbKe UoJFI"
-=======
-                  class="sc-bqiRlB sc-cCcXHH fZQgdx jwxopx"
-                >
-                  <li
-                    class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -1063,11 +1052,7 @@ Object {
                     </div>
                   </li>
                   <li
-<<<<<<< HEAD
-                    class="sc-gWXbKe UoJFI"
-=======
-                    class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1136,11 +1121,7 @@ Object {
                     </div>
                   </li>
                   <li
-<<<<<<< HEAD
-                    class="sc-gWXbKe UoJFI"
-=======
-                    class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -1209,11 +1190,7 @@ Object {
                     </div>
                   </li>
                   <li
-<<<<<<< HEAD
-                    class="sc-gWXbKe UoJFI"
-=======
-                    class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"
@@ -2082,7 +2059,7 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <button
-            class="sc-bkkeKt ilbeXG"
+            class="sc-fFeiMQ cNJSWC"
             type="button"
           >
             <div
@@ -2163,11 +2140,7 @@ Object {
             style="align-items: flex-start;"
           >
             <a
-<<<<<<< HEAD
-              class="sc-gsDKAQ jJvgoT sc-jJoQJp bkQoIy"
-=======
-              class="sc-gsDKAQ jJvgoT sc-gWXbKe jAXlhK"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+              class="sc-gsDKAQ jJvgoT sc-ikJyIC bSBRIN"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
@@ -2356,17 +2329,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-<<<<<<< HEAD
-                class="sc-ksdxgE sc-hiCibw hUAJHV ietfbc"
+                class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
               >
                 <li
-                  class="sc-gWXbKe UoJFI"
-=======
-                class="sc-bqiRlB sc-cCcXHH fZQgdx jwxopx"
-              >
-                <li
-                  class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     aria-label="Handicap visuel : Accessible"
@@ -2435,11 +2401,7 @@ Object {
                   </div>
                 </li>
                 <li
-<<<<<<< HEAD
-                  class="sc-gWXbKe UoJFI"
-=======
-                  class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2508,11 +2470,7 @@ Object {
                   </div>
                 </li>
                 <li
-<<<<<<< HEAD
-                  class="sc-gWXbKe UoJFI"
-=======
-                  class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     aria-label="Handicap moteur : Non accessible"
@@ -2581,11 +2539,7 @@ Object {
                   </div>
                 </li>
                 <li
-<<<<<<< HEAD
-                  class="sc-gWXbKe UoJFI"
-=======
-                  class="sc-cidDSM gERRtc"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     aria-label="Handicap auditif : Non accessible"

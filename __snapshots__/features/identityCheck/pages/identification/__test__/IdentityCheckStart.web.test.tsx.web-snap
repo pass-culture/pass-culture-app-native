@@ -137,13 +137,8 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                         style=\\"height: 16px;\\"
 -                       />
                           <button
-<<<<<<< HEAD
--                         class=\\"sc-bdvvtL hWVHSw sc-ikJyIC bSBRIN\\"
-+                           class=\\"sc-bdvvtL gURUjO sc-crHmcD dlEnXt\\"
-=======
--                         class=\\"sc-dkPtRN gseCFZ sc-cidDSM iUBxLC\\"
-+                           class=\\"sc-dkPtRN iwJcZz sc-crHmcD dlEnXt\\"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+-                         class=\\"sc-bdvvtL hWVHSw sc-kLwhqv gyEfHx\\"
++                           class=\\"sc-bdvvtL gURUjO sc-iqseJM iIctML\\"
                             tabindex=\\"0\\"
                             type=\\"button\\"
                           >

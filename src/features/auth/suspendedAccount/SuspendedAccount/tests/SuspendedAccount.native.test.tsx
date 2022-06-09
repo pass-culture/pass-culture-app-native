@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils'
 
 import { SuspendedAccount } from '../SuspendedAccount'
@@ -31,15 +31,6 @@ describe('<SuspendedAccount />', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
-    })
-  })
-
-  it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountReactivation = false
-    render(<SuspendedAccount />)
-
-    await waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 })

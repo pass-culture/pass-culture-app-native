@@ -26,7 +26,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
+          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -155,7 +155,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
+        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -341,7 +341,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
+          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -470,7 +470,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
+        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
       >
         <div
           class="css-view-1dbjc4n"

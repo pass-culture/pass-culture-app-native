@@ -26,7 +26,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
+          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -53,7 +53,7 @@ Object {
             role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
-            Ton compte est désactivé
+            Page introuvable !
           </h1>
           <div
             class="css-view-1dbjc4n"
@@ -64,29 +64,7 @@ Object {
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
-            Tu as jusqu'au xxxx pour réactiver ton compte.
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
-          />
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-          >
-            Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
-          />
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-          >
-            Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
+            Il est possible que cette page soit désactivée ou n'existe pas.
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -101,34 +79,6 @@ Object {
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-              >
-                Réactiver mon compte
-              </div>
-            </button>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
-            />
-            <button
-              class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
-              tabindex="0"
-              type="button"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                data-testid="button-icon"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                >
-                  button-icon-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Retourner à l'accueil
               </div>
@@ -164,7 +114,7 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
+        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-y: auto; padding-right: 16px; padding-left: 16px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -191,7 +141,7 @@ Object {
           role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
-          Ton compte est désactivé
+          Page introuvable !
         </h1>
         <div
           class="css-view-1dbjc4n"
@@ -202,29 +152,7 @@ Object {
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
-          Tu as jusqu'au xxxx pour réactiver ton compte.
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
-        />
-        <div
-          class="css-text-901oao"
-          dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-        >
-          Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
-        />
-        <div
-          class="css-text-901oao"
-          dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-        >
-          Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
+          Il est possible que cette page soit désactivée ou n'existe pas.
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -239,34 +167,6 @@ Object {
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-            >
-              Réactiver mon compte
-            </div>
-          </button>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
-          />
-          <button
-            class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
-            tabindex="0"
-            type="button"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              data-testid="button-icon"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                button-icon-SVG-Mock
-              </div>
-            </div>
-            <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Retourner à l'accueil
             </div>

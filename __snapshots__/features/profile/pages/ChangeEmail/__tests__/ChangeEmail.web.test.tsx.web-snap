@@ -6,12 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-<<<<<<< HEAD
-        class="sc-jJoQJp fXbXpW"
-=======
-        class="sc-hiCibw lgCcuM"
-        role="banner"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+        class="sc-ikJyIC fMMUXF"
       >
         <div
           class="css-view-1dbjc4n"
@@ -113,25 +108,18 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-fKVqWL clyjXB"
+              class="sc-kfPuZi eQSIVP"
             >
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
-<<<<<<< HEAD
                 <div
                   class="css-view-1dbjc4n"
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
-=======
-                <label
-                  class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
-                  dir="ltr"
-                  for="testUuidV4"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <label
-                    class="sc-egiyK hHZVhD"
+                    class="sc-crHmcD cfjgl"
                     for="testUuidV4"
                   >
                     Nouvel e-mail
@@ -184,19 +172,12 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
-<<<<<<< HEAD
                 <div
                   class="css-view-1dbjc4n"
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
-=======
-                <label
-                  class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
-                  dir="ltr"
-                  for="testUuidV4"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
                 >
                   <label
-                    class="sc-egiyK hHZVhD"
+                    class="sc-crHmcD cfjgl"
                     for="testUuidV4"
                   >
                     Mot de passe
@@ -237,11 +218,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-<<<<<<< HEAD
-                    class="sc-eCImPb eivvKD sc-hiCibw VfUYt sc-hiCibw VfUYt"
-=======
-                    class="sc-hKwDye lgPtFf sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-eCImPb eivvKD sc-jJoQJp emvDdv sc-jJoQJp emvDdv"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     type="button"
@@ -299,12 +276,7 @@ Object {
   </body>,
   "container": <div>
     <header
-<<<<<<< HEAD
-      class="sc-jJoQJp fXbXpW"
-=======
-      class="sc-hiCibw lgCcuM"
-      role="banner"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+      class="sc-ikJyIC fMMUXF"
     >
       <div
         class="css-view-1dbjc4n"
@@ -406,25 +378,18 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-fKVqWL clyjXB"
+            class="sc-kfPuZi eQSIVP"
           >
             <div
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
-<<<<<<< HEAD
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
-=======
-              <label
-                class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
-                dir="ltr"
-                for="testUuidV4"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <label
-                  class="sc-egiyK hHZVhD"
+                  class="sc-crHmcD cfjgl"
                   for="testUuidV4"
                 >
                   Nouvel e-mail
@@ -477,19 +442,12 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
-<<<<<<< HEAD
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
-=======
-              <label
-                class="sc-crHmcD sc-gWXbKe cfjgl dFPkkI"
-                dir="ltr"
-                for="testUuidV4"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
               >
                 <label
-                  class="sc-egiyK hHZVhD"
+                  class="sc-crHmcD cfjgl"
                   for="testUuidV4"
                 >
                   Mot de passe
@@ -530,11 +488,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-<<<<<<< HEAD
-                  class="sc-eCImPb eivvKD sc-hiCibw VfUYt sc-hiCibw VfUYt"
-=======
-                  class="sc-hKwDye lgPtFf sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                  class="sc-eCImPb eivvKD sc-jJoQJp emvDdv sc-jJoQJp emvDdv"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   type="button"

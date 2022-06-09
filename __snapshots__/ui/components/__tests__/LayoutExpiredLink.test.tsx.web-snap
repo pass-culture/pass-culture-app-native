@@ -76,8 +76,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         "msFlexPack": "center",
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "overflowX": "scroll",
-        "overflowY": "scroll",
+        "overflowY": "auto",
         "paddingLeft": "16px",
         "paddingRight": "16px",
       }
@@ -196,11 +195,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <a
-<<<<<<< HEAD
-      className="sc-gsDKAQ BjQFx sc-kDTinF hPdTAM"
-=======
-      className="sc-gsDKAQ BjQFx sc-pVTFL iXSrby"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+      className="sc-gsDKAQ BjQFx sc-jrQzAO gEVuSj"
       href="https://passculture.zendesk.com/hc/fr/"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -238,11 +233,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     </a>
     <button
       aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-<<<<<<< HEAD
-      className="sc-bdvvtL krGSRA sc-kDTinF hPdTAM"
-=======
-      className="sc-bdvvtL krGSRA sc-pVTFL iXSrby"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+      className="sc-bdvvtL krGSRA sc-jrQzAO gEVuSj"
       data-testid="Ouvrir le gestionnaire mail pour contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -336,11 +327,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
-<<<<<<< HEAD
-        className="sc-bdvvtL krGSRA sc-kDTinF hPdTAM"
-=======
-        className="sc-bdvvtL krGSRA sc-pVTFL iXSrby"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+        className="sc-bdvvtL krGSRA sc-jrQzAO gEVuSj"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

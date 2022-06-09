@@ -67,11 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-<<<<<<< HEAD
-                    class="sc-fKVqWL clyjXB"
-=======
-                    class="sc-bBHxTw gAOzOT"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-kfPuZi eQSIVP"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -92,11 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-egiyK hHZVhD"
-<<<<<<< HEAD
-=======
-                      dir="ltr"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                      class="sc-crHmcD cfjgl"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -156,7 +148,7 @@ Object {
                       style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                     >
                       <ul
-                        class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                        class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
                       />
                     </div>
                   </div>
@@ -270,11 +262,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-<<<<<<< HEAD
-                  class="sc-fKVqWL clyjXB"
-=======
-                  class="sc-bBHxTw gAOzOT"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                  class="sc-kfPuZi eQSIVP"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -295,11 +283,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-egiyK hHZVhD"
-<<<<<<< HEAD
-=======
-                    dir="ltr"
->>>>>>> ea00770e9 ((PC-15880) fix(GenericInfoPage): remove headerGoBack (#3102))
+                    class="sc-crHmcD cfjgl"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -359,7 +343,7 @@ Object {
                     style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                   >
                     <ul
-                      class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
+                      class="sc-egiyK sc-bqiRlB fXDcKC gMzCuJ"
                     />
                   </div>
                 </div>
