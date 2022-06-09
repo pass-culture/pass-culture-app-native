@@ -5,7 +5,7 @@ import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
-import { Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ disabled, textSize, icon, theme, buttonHeight, ...rest }) => {
@@ -23,13 +23,16 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       })``
     }
 
+    const marginLeftWithIcon = () => {
+      if (buttonHeight === 'extraSmall') return getSpacing(1)
+      return theme.buttons.primary.marginLeftWithIcon
+    }
+
     const Title = styled(buttonHeight !== 'extraSmall' ? Typo.ButtonText : Typo.Caption)({
       maxWidth: '100%',
       color: disabled ? theme.buttons.disabled.primary.textColor : theme.buttons.primary.textColor,
       fontSize: textSize,
-      marginLeft: icon
-        ? theme.buttons.primary.marginLeftWithIcon
-        : theme.buttons.primary.marginLeft,
+      marginLeft: icon ? marginLeftWithIcon() : theme.buttons.primary.marginLeft,
     })
 
     return {
