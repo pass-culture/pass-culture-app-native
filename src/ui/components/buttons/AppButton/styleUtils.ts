@@ -4,6 +4,7 @@ import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacityButtonProps } from 'ui/components/buttons/AppButton/types'
+import { getEffectiveBorderRadius } from 'ui/components/buttons/AppButton/utils'
 import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -52,12 +53,24 @@ export const appButtonStyles: ButtonStyles = ({
     return theme.buttons.buttonHeights.small
   }
 
+  const padding = 2
+
+  const hasBackground = backgroundColor !== undefined
+  const borderRadius = theme.borderRadius.button
+  const effectiveBorderRadius = getEffectiveBorderRadius({
+    borderRadius,
+    buttonHeight: heightButton(),
+  })
+  const horizontalPadding = hasBackground ? effectiveBorderRadius : padding
+
   return {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: justifyContent ?? 'center',
-    borderRadius: theme.borderRadius.button,
-    padding: 2,
+    borderRadius,
+    padding,
+    paddingLeft: horizontalPadding,
+    paddingRight: horizontalPadding,
     minHeight: heightButton(),
     width: '100%',
     backgroundColor,
