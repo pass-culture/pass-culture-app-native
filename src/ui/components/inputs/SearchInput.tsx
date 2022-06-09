@@ -134,5 +134,6 @@ const StyledInputContainer = styled(InputContainer)({
 })
 
 const LocationButton = styledButton(ButtonPrimary)({
-  maxWidth: getSpacing(34),
+  // max width corresponds to the size of "Autour de moi" state.
+  maxWidth: 142,
 })
