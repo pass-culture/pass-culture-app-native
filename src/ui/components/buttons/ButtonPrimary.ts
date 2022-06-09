@@ -23,7 +23,7 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       })``
     }
 
-    const Title = styled(Typo.ButtonText)({
+    const Title = styled(buttonHeight !== 'extraSmall' ? Typo.ButtonText : Typo.Caption)({
       maxWidth: '100%',
       color: disabled ? theme.buttons.disabled.primary.textColor : theme.buttons.primary.textColor,
       fontSize: textSize,
