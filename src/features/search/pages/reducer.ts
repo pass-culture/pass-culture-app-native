@@ -92,7 +92,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         offerCategories: addOrRemove(state.offerCategories, action.payload).sort(sortCategories),
       }
     case 'SET_CATEGORY':
-      return { ...state, offerCategories: action.payload.sort(sortCategories) }
+      return { ...state, offerCategories: [...action.payload].sort(sortCategories) }
     case 'OFFER_TYPE':
       return {
         ...state,

@@ -29,7 +29,7 @@ const getWeekDatesFromDate = (date: Date): Date[] => {
     timestampsOfTheWeek.push(date.getTime() + MILLISECONDS_IN_A_DAY * daysUntilSunday)
     daysUntilSunday--
   }
-  return timestampsOfTheWeek
+  return [...timestampsOfTheWeek]
     .sort((a, b) => a - b)
     .map((timestampOfTheWeek) => new Date(timestampOfTheWeek))
 }
