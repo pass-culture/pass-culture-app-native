@@ -1,16 +1,16 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { GenericOfficialPage } from 'ui/components/GenericOfficialPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
@@ -21,36 +21,48 @@ export const VerifyEligibility: FunctionComponent = () => {
   }
 
   return (
-    <GenericInfoPage
+    <GenericOfficialPage
       title={t`Vérifie ton identité`}
-      icon={HappyFace}
       buttons={[
         <TouchableLink
           key={1}
-          as={ButtonPrimaryWhite}
-          wording={t`Vérifier mon identité`}
+          as={ButtonPrimary}
+          wording={t`Commencer la vérification`}
           navigateTo={nextBeneficiaryValidationStepNavConfig}
         />,
         <TouchableLink
           key={2}
-          as={ButtonTertiaryWhite}
+          as={ButtonTertiaryBlack}
           icon={PlainArrowPrevious}
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
         />,
       ]}>
-      <StyledBody>
-        {t({
-          id: 'need verify identity',
-          message:
-            'Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. \n\n Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.',
-        })}
-      </StyledBody>
-    </GenericInfoPage>
+      <View>
+        <StyledBody>
+          {t({
+            id: 'need verify identity',
+            message:
+              'Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.',
+          })}
+        </StyledBody>
+        <Spacer.Column numberOfSpaces={4} />
+        <BoldBody>
+          {t({
+            id: 'check identity information',
+            message:
+              'Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.',
+          })}
+        </BoldBody>
+      </View>
+    </GenericOfficialPage>
   )
 }
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
+  color: theme.colors.greyDark,
+}))
+
+const BoldBody = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.black,
 }))

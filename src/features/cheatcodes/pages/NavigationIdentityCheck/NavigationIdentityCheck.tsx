@@ -25,6 +25,7 @@ export function NavigationIdentityCheck(): JSX.Element {
     fastEduconnectConnectionRequestModalVisible,
     setFastEduconnectConnectionRequestModalVisible,
   ] = useState(false)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const trigger = (message: EduConnectErrorMessageEnum) => {
     setScreenError(new ScreenError(message, NotEligibleEduConnect))
@@ -89,6 +90,12 @@ export function NavigationIdentityCheck(): JSX.Element {
             onPress={() => {
               setFastEduconnectConnectionRequestModalVisible(true)
             }}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
+            wording={'VerifyEligibility'}
+            onPress={() => navigate('VerifyEligibility')}
           />
         </Row>
       </StyledContainer>

@@ -1,14 +1,16 @@
 msgid ""
 msgstr ""
+"POT-Creation-Date: 2022-06-02 12:13+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: fr\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language: \n"
 "Language-Team: \n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
@@ -543,6 +545,7 @@ msgstr "Clique sur le lien reçu à l’adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
+#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
 msgid "Commencer la vérification"
@@ -3398,7 +3401,6 @@ msgstr "Vérifie ton identité"
 msgid "Vérifie ton identité sur ton smartphone"
 msgstr "Vérifie ton identité sur ton smartphone"
 
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Vérifier mon identité"
@@ -3452,6 +3454,10 @@ msgstr "carte d'identité"
 #: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "cette offre ?"
 msgstr "cette offre ?"
+
+#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+msgid "check identity information"
+msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "credit expired on date"
@@ -3577,10 +3583,7 @@ msgstr "{price} seront déduits de ton crédit pass Culture"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "need verify identity"
-msgstr ""
-"Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. \n"
-"\n"
-" Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
+msgstr "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement."
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "not cancellable because expired for ex beneficiary"
