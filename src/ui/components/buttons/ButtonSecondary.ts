@@ -36,10 +36,10 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       icon: Icon,
       title: Title,
       loadingIndicator: LoadingIndicator,
+      backgroundColor: theme.buttons.secondary.backgroundColor,
     }
   }
 )(({ theme, isLoading, disabled }) => {
-  const backgroundColor = theme.buttons.secondary.backgroundColor
   const borderWidth = theme.buttons.secondary.borderWidth
   let borderColor = theme.buttons.secondary.borderColor
 
@@ -59,7 +59,6 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   }
 
   return {
-    backgroundColor,
     borderColor,
     borderWidth,
     ...webOnly,

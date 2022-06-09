@@ -8,7 +8,7 @@ import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
-  ({ disabled, textSize, icon, theme, buttonHeight, ...rest }) => {
+  ({ isLoading, disabled, textSize, icon, theme, buttonHeight, ...rest }) => {
     let Icon
 
     if (icon) {
@@ -21,6 +21,14 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
             ? theme.icons.sizes.extraSmall
             : theme.buttons.primary.iconSize,
       })``
+    }
+
+    let backgroundColor = theme.buttons.primary.backgroundColor
+
+    if (isLoading) {
+      backgroundColor = theme.buttons.loading.primary.backgroundColor
+    } else if (disabled) {
+      backgroundColor = theme.buttons.disabled.primary.backgroundColor
     }
 
     const marginLeftWithIcon = () => {
@@ -40,17 +48,10 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
+      backgroundColor,
     }
   }
-)(({ theme, isLoading, disabled }) => {
-  let backgroundColor = theme.buttons.primary.backgroundColor
-
-  if (isLoading) {
-    backgroundColor = theme.buttons.loading.primary.backgroundColor
-  } else if (disabled) {
-    backgroundColor = theme.buttons.disabled.primary.backgroundColor
-  }
-
+)(({ theme }) => {
   let webOnly = {}
   if (Platform.OS === 'web') {
     webOnly = {
@@ -61,7 +62,6 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
   }
 
   return {
-    backgroundColor,
     ...webOnly,
   }
 })

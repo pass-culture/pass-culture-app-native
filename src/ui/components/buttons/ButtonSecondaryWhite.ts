@@ -20,6 +20,11 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
       })``
     }
 
+    let backgroundColor = theme.buttons.secondaryWhite.backgroundColor
+    if (disabled) {
+      backgroundColor = theme.buttons.disabled.secondaryWhite.backgroundColor
+    }
+
     const Title = styled(Typo.ButtonText)({
       maxWidth: '100%',
       color: disabled
@@ -38,17 +43,16 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
       loadingIndicator: LoadingIndicator,
       focusOutlineColor:
         Platform.OS === 'web' ? theme.buttons.secondaryWhite.outlineColor : undefined,
+      backgroundColor,
     }
   }
 )(({ theme, isLoading, disabled }) => {
-  let backgroundColor = theme.buttons.secondaryWhite.backgroundColor
   let borderWidth = theme.buttons.secondaryWhite.borderWidth
   let borderColor = theme.buttons.secondaryWhite.borderColor
 
   if (isLoading) {
     borderColor = theme.buttons.loading.secondaryWhite.borderColor
   } else if (disabled) {
-    backgroundColor = theme.buttons.disabled.secondaryWhite.backgroundColor
     borderWidth = 0
   }
 
@@ -62,7 +66,6 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
   }
 
   return {
-    backgroundColor,
     borderColor,
     borderWidth,
     ...webOnly,

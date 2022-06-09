@@ -44,6 +44,7 @@ export const appButtonStyles: ButtonStyles = ({
   justifyContent,
   numberOfLines,
   center,
+  backgroundColor,
 }: ButtonStylesArgs) => {
   const heightButton = () => {
     if (buttonHeight === 'extraSmall') return theme.buttons.buttonHeights.extraSmall
@@ -59,6 +60,7 @@ export const appButtonStyles: ButtonStyles = ({
     padding: 2,
     minHeight: heightButton(),
     width: '100%',
+    backgroundColor,
     ...(center ? { alignSelf: 'center' } : {}),
     ...(fullWidth ? {} : { maxWidth: theme.contentPage.maxWidth }),
     ...(mediumWidth ? { maxWidth: theme.contentPage.mediumWidth } : {}),

@@ -36,6 +36,7 @@ const _AppButton = <T extends AppButtonProps>({
   center,
   type = 'button',
   className,
+  backgroundColor,
   name,
   focusOutlineColor,
   accessibilityRole,
@@ -92,6 +93,7 @@ const _AppButton = <T extends AppButtonProps>({
       style={style as CSSProperties}
       center={center}
       className={className}
+      backgroundColor={backgroundColor}
       focusOutlineColor={focusOutlineColor}
       tabIndex={disabled || isLoading ? undefined : 0}
       {...buttonLinkProps}>

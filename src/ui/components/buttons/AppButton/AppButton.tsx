@@ -37,6 +37,7 @@ const _AppButton = <T extends AppButtonProps>({
   loadingIndicator: LoadingIndicator,
   center,
   ellipsizeMode,
+  backgroundColor,
 }: OnlyBaseButtonProps<T>) => {
   const pressHandler: AppButtonEventNative =
     disabled || isLoading ? undefined : (onPress as AppButtonEventNative)
@@ -56,7 +57,8 @@ const _AppButton = <T extends AppButtonProps>({
       justifyContent={justifyContent}
       numberOfLines={numberOfLines}
       style={style as StyleProp<ViewStyle>}
-      center={center}>
+      center={center}
+      backgroundColor={backgroundColor}>
       <AppButtonInner
         loadingIndicator={LoadingIndicator}
         isLoading={isLoading}
