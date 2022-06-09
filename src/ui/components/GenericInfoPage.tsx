@@ -1,23 +1,15 @@
-import { t } from '@lingui/macro'
 import React, { ReactNode, useMemo, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { Background } from 'ui/svg/Background'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  headerGoBack?: boolean
   onGoBackPress?: () => void
   noIndex?: boolean
   flex?: boolean
@@ -29,10 +21,12 @@ type Props = {
 
 const ANIMATION_SIZE = getSpacing(45)
 
+// NEVER EVER USE NAVIGATION ON THIS PAGE OR
+// IT WILL BREAK !!!
+// THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
-  headerGoBack,
-  onGoBackPress,
   noIndex = true,
   animation,
   icon: Icon,
@@ -41,8 +35,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   buttons,
 }) => {
   const { isTouch } = useTheme()
-  const { top } = useCustomSafeInsets()
-  const { canGoBack, goBack } = useGoBack(...homeNavConfig)
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   const StyledIcon =
     Icon &&
@@ -68,17 +60,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         </Helmet>
       )}
       <Background />
-      {headerGoBack && canGoBack() ? (
-        <HeaderContainer
-          onPress={() => {
-            goBack()
-            onGoBackPress && onGoBackPress()
-          }}
-          top={top + getSpacing(3.5)}
-          testID="Revenir en arrière">
-          <StyledArrowPrevious />
-        </HeaderContainer>
-      ) : null}
       <Content>
         <Spacer.TopScreen />
         {!!isTouch && (
@@ -139,19 +120,6 @@ const Container = styled.View({
   flex: 1,
   alignItems: 'center',
 })
-
-const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  size: theme.icons.sizes.small,
-  accessibilityLabel: t`Revenir en arrière`,
-}))``
-
-const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
-  position: 'absolute',
-  top,
-  left: getSpacing(6),
-  zIndex: theme.zIndex.floatingButton,
-}))
 
 const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
   width: props.size,

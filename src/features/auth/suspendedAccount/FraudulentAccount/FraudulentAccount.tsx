@@ -31,7 +31,6 @@ export const FraudulentAccount = () => {
 
   return settings?.allowAccountReactivation ? (
     <GenericInfoPage
-      headerGoBack
       onGoBackPress={signOut}
       title={t`Ton compte a été suspendu`}
       icon={UserBlocked}
