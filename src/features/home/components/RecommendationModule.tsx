@@ -35,7 +35,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const hits = useHomeRecommendedHits(profile?.id, position, recommendationParameters)
+  const hits = useHomeRecommendedHits(profile?.id, position, moduleId, recommendationParameters)
   const nbHits = hits?.length || 0
   const shouldModuleBeDisplayed = nbHits > displayParameters.minOffers
 
@@ -79,7 +79,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, profile?.isBeneficiary]
+    [position, profile?.isBeneficiary, labelMapping, mapping]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)

@@ -30,6 +30,7 @@ interface RecommendedIdsRequest {
 export const useHomeRecommendedHits = (
   userId: number | undefined,
   position: GeoCoordinates | null,
+  moduleId: string,
   recommendationParameters?: RecommendationParametersFields
 ): SearchHit[] | undefined => {
   const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
@@ -43,7 +44,7 @@ export const useHomeRecommendedHits = (
     })
   }, [getRecommendedIds, recommendationParameters])
 
-  return useAlgoliaRecommendedHits(recommendedIds || [])
+  return useAlgoliaRecommendedHits(recommendedIds || [], moduleId)
 }
 
 export const getRecommendationEndpoint = (
@@ -85,12 +86,13 @@ export const useHomeRecommendedIdsMutation = (recommendationUrl: string) => {
   )
 }
 
-const useAlgoliaRecommendedHits = (ids: string[]): SearchHit[] | undefined => {
+const useAlgoliaRecommendedHits = (ids: string[], moduleId: string): SearchHit[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformAlgoliaHits()
 
+  const moduleQueryKey = moduleId
   const { data: hits } = useQuery(
-    QueryKeys.RECOMMENDATION_HITS,
+    [QueryKeys.RECOMMENDATION_HITS, moduleQueryKey],
     async () => await fetchAlgoliaHits(ids, isUserUnderage),
     { enabled: ids.length > 0 }
   )
