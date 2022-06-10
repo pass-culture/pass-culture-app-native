@@ -35,13 +35,23 @@ exports[`AppButton Component * inline property should use inline css style when 
   testID="Testing inline"
 >
   <View
-    height={32}
-    testID="button-icon"
-    width={32}
+    style={
+      Array [
+        Object {
+          "flexShrink": 0,
+        },
+      ]
+    }
   >
-    <Text>
-      button-icon-SVG-Mock
-    </Text>
+    <View
+      height={32}
+      testID="button-icon"
+      width={32}
+    >
+      <Text>
+        button-icon-SVG-Mock
+      </Text>
+    </View>
   </View>
   <Text
     adjustsFontSizeToFit={false}

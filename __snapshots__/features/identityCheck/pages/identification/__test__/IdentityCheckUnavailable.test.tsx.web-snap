@@ -203,7 +203,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL krGSRA sc-jrQzAO gEVuSj"
+        className="sc-bdvvtL iPuvqD sc-jrQzAO gEVuSj"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -211,13 +211,24 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          data-testid="button-icon"
+          style={
+            Object {
+              "WebkitFlexShrink": 0,
+              "flexShrink": 0,
+              "msFlexNegative": 0,
+            }
+          }
         >
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="button-icon"
           >
-            button-icon-SVG-Mock
+            <div
+              className="css-text-901oao"
+              dir="auto"
+            >
+              button-icon-SVG-Mock
+            </div>
           </div>
         </div>
         <div

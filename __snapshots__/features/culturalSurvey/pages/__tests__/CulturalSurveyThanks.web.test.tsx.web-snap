@@ -243,7 +243,7 @@ l’étendue du catalogue pass Culture.
           style="padding-bottom: 40px;"
         >
           <button
-            class="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+            class="sc-bdvvtL kUaFXY sc-dkPtRN kmXVLA"
             data-testid="discover-button"
             tabindex="0"
             type="button"
@@ -503,7 +503,7 @@ l’étendue du catalogue pass Culture.
         style="padding-bottom: 40px;"
       >
         <button
-          class="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+          class="sc-bdvvtL kUaFXY sc-dkPtRN kmXVLA"
           data-testid="discover-button"
           tabindex="0"
           type="button"

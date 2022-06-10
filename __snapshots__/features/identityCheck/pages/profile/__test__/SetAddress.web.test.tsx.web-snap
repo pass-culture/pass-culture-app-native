@@ -157,7 +157,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                    class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="submit"
@@ -350,7 +350,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                  class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"

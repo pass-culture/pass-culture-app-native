@@ -68,7 +68,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         {LeftIcon ? (
           <React.Fragment>
             <LeftIconContainer>
-            <LeftIcon />
+              <LeftIcon />
             </LeftIconContainer>
             <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>

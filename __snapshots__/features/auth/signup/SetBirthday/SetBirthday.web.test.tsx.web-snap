@@ -14,20 +14,25 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-            class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+            class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
           >
             <div
               class="css-view-1dbjc4n"
-              data-testid="button-icon"
+              style="flex-shrink: 0;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
               >
-                button-icon-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
               </div>
             </div>
             <div
@@ -1431,7 +1436,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
+            class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -1462,20 +1467,25 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-          class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+          class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
         >
           <div
             class="css-view-1dbjc4n"
-            data-testid="button-icon"
+            style="flex-shrink: 0;"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
+              class="css-view-1dbjc4n"
+              data-testid="button-icon"
             >
-              button-icon-SVG-Mock
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                button-icon-SVG-Mock
+              </div>
             </div>
           </div>
           <div
@@ -2879,7 +2889,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
+          class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"
@@ -2967,20 +2977,25 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-            class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+            class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
           >
             <div
               class="css-view-1dbjc4n"
-              data-testid="button-icon"
+              style="flex-shrink: 0;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
               >
-                button-icon-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
               </div>
             </div>
             <div
@@ -3989,7 +4004,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
+            class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -4020,20 +4035,25 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-          class="sc-bdvvtL hWVHSw sc-iCfMLu uxgRG"
+          class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
         >
           <div
             class="css-view-1dbjc4n"
-            data-testid="button-icon"
+            style="flex-shrink: 0;"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
+              class="css-view-1dbjc4n"
+              data-testid="button-icon"
             >
-              button-icon-SVG-Mock
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                button-icon-SVG-Mock
+              </div>
             </div>
           </div>
           <div
@@ -5042,7 +5062,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
+          class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"

@@ -259,13 +259,23 @@ Array [
       testID="Voir l'itinéraire"
     >
       <View
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
       </View>
       <Text
         adjustsFontSizeToFit={false}

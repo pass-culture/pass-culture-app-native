@@ -270,7 +270,7 @@ Object {
                 >
                   <button
                     aria-label="Choisis ton statut"
-                    class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                    class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                     data-testid="Choisis ton statut"
                     disabled=""
                     type="submit"
@@ -576,7 +576,7 @@ Object {
               >
                 <button
                   aria-label="Choisis ton statut"
-                  class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                  class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                   data-testid="Choisis ton statut"
                   disabled=""
                   type="submit"
@@ -859,7 +859,7 @@ Object {
                 >
                   <button
                     aria-label="Choisis ton statut"
-                    class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                    class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                     data-testid="Choisis ton statut"
                     disabled=""
                     type="submit"
@@ -1085,7 +1085,7 @@ Object {
               >
                 <button
                   aria-label="Choisis ton statut"
-                  class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                  class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                   data-testid="Choisis ton statut"
                   disabled=""
                   type="submit"

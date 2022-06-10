@@ -306,7 +306,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <a
-                  className="sc-hKwDye fnhQXq sc-eCImPb ckCibG"
+                  className="sc-hKwDye eTKlRZ sc-eCImPb ckCibG"
                   href="https://dmsfrenchcitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
@@ -315,13 +315,24 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 >
                   <div
                     className="css-view-1dbjc4n"
-                    data-testid="button-icon"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 0,
+                        "flexShrink": 0,
+                        "msFlexNegative": 0,
+                      }
+                    }
                   >
                     <div
-                      className="css-text-901oao"
-                      dir="auto"
+                      className="css-view-1dbjc4n"
+                      data-testid="button-icon"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        className="css-text-901oao"
+                        dir="auto"
+                      >
+                        button-icon-SVG-Mock
+                      </div>
                     </div>
                   </div>
                   <div
@@ -419,7 +430,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <a
-                  className="sc-hKwDye fnhQXq sc-eCImPb ckCibG"
+                  className="sc-hKwDye eTKlRZ sc-eCImPb ckCibG"
                   href="https://dmsforeigncitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
@@ -428,13 +439,24 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 >
                   <div
                     className="css-view-1dbjc4n"
-                    data-testid="button-icon"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 0,
+                        "flexShrink": 0,
+                        "msFlexNegative": 0,
+                      }
+                    }
                   >
                     <div
-                      className="css-text-901oao"
-                      dir="auto"
+                      className="css-view-1dbjc4n"
+                      data-testid="button-icon"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        className="css-text-901oao"
+                        dir="auto"
+                      >
+                        button-icon-SVG-Mock
+                      </div>
                     </div>
                   </div>
                   <div

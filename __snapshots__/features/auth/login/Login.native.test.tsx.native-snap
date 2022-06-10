@@ -31,7 +31,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
                   collapsable={false}
-@@ -656,22 +656,22 @@
+@@ -666,22 +666,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -690,11 +690,11 @@
+@@ -700,11 +700,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -333,7 +333,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
                   collapsable={false}
-@@ -656,22 +718,22 @@
+@@ -666,22 +728,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -358,7 +358,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -690,11 +752,11 @@
+@@ -700,11 +762,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -519,7 +519,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
                   collapsable={false}
-@@ -656,22 +718,22 @@
+@@ -666,22 +728,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -544,7 +544,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -690,11 +752,11 @@
+@@ -700,11 +762,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -705,7 +705,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
                   collapsable={false}
-@@ -656,22 +718,22 @@
+@@ -666,22 +728,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -730,7 +730,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -690,11 +752,11 @@
+@@ -700,11 +762,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={

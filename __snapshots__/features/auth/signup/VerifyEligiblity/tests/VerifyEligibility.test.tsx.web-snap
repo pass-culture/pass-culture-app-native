@@ -187,7 +187,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           }
         }
       >
-        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.
+        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. 
+
+ Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
       </div>
       <div
         className="css-view-1dbjc4n"
@@ -263,7 +265,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+        className="sc-bdvvtL kUaFXY sc-dkPtRN kmXVLA"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -296,7 +298,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL hWVHSw sc-hKwDye gvtKtm"
+        className="sc-bdvvtL dbqTj sc-hKwDye gvtKtm"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -304,13 +306,24 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          data-testid="button-icon"
+          style={
+            Object {
+              "WebkitFlexShrink": 0,
+              "flexShrink": 0,
+              "msFlexNegative": 0,
+            }
+          }
         >
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="button-icon"
           >
-            button-icon-SVG-Mock
+            <div
+              className="css-text-901oao"
+              dir="auto"
+            >
+              button-icon-SVG-Mock
+            </div>
           </div>
         </div>
         <div

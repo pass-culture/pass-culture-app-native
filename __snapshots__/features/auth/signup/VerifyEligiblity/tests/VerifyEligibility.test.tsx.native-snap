@@ -177,7 +177,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           ]
         }
       >
-        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.
+        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. 
+
+ Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
       </Text>
       <View
         numberOfSpaces={4}
@@ -279,8 +281,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "minHeight": 40,
             "opacity": 1,
             "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
             "paddingTop": 2,
             "userSelect": "auto",
             "width": "100%",
@@ -350,13 +352,23 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           adjustsFontSizeToFit={false}

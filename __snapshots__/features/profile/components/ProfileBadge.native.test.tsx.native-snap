@@ -251,13 +251,23 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       testID="call-to-action-button"
     >
       <View
-        height={16}
-        testID="button-icon"
-        width={16}
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          height={16}
+          testID="button-icon"
+          width={16}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
       </View>
       <Text
         adjustsFontSizeToFit={false}

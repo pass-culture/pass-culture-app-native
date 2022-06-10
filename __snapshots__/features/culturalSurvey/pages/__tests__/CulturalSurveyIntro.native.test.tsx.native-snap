@@ -157,8 +157,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
           "minHeight": 40,
           "opacity": 1,
           "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 2,
           "userSelect": "auto",
           "width": "100%",
@@ -228,13 +228,23 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       testID="answer-survey-later"
     >
       <View
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
       </View>
       <Text
         adjustsFontSizeToFit={false}

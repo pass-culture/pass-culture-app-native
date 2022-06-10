@@ -5,7 +5,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-@@ -502,11 +502,11 @@
+@@ -512,11 +512,11 @@
               class=\\"css-view-1dbjc4n\\"
               style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
             >
@@ -18,7 +18,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                   class=\\"css-view-1dbjc4n\\"
                   style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
                 >
-@@ -518,96 +518,87 @@
+@@ -528,96 +528,87 @@
                       class=\\"css-view-1dbjc4n\\"
                       style=\\"align-items: center; height: 100%;\\"
                     >
@@ -102,7 +102,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                           style=\\"height: 24px;\\"
                         />
 -                     <button
--                       class=\\"sc-dkPtRN gseCFZ sc-eCImPb bxfGfU\\"
+-                       class=\\"sc-dkPtRN gPFOJd sc-eCImPb idTzrf\\"
 -                       tabindex=\\"0\\"
 -                       type=\\"button\\"
 -                     >
@@ -145,7 +145,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                           >
                             <div
                               class=\\"css-view-1dbjc4n\\"
-@@ -621,29 +612,45 @@
+@@ -636,29 +627,45 @@
                               </div>
                             </div>
                             <div
@@ -173,7 +173,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                 style=\\"background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;\\"
 +               >
 +                 <button
-+                   class=\\"sc-dkPtRN gseCFZ sc-eCImPb bxfGfU\\"
++                   class=\\"sc-dkPtRN gPFOJd sc-eCImPb idTzrf\\"
 +                   tabindex=\\"0\\"
 +                   type=\\"button\\"
 +                 >

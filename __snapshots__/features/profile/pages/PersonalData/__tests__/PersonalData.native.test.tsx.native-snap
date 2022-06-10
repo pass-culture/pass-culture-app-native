@@ -343,14 +343,24 @@ Array [
           testID="Modifier e-mail"
         >
           <View
-            fill="#eb0055"
-            height={16}
-            testID="button-icon"
-            width={16}
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              fill="#eb0055"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -537,14 +547,24 @@ Array [
           testID="Modifier mot de passe"
         >
           <View
-            fill="#eb0055"
-            height={16}
-            testID="button-icon"
-            width={16}
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              fill="#eb0055"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
           </View>
           <Text
             adjustsFontSizeToFit={false}

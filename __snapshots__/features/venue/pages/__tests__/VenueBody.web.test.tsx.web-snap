@@ -803,13 +803,18 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="button-icon"
+                  style="flex-shrink: 0;"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
-                    button-icon-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      button-icon-SVG-Mock
+                    </div>
                   </div>
                 </div>
                 <div
@@ -2158,13 +2163,18 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="button-icon"
+                style="flex-shrink: 0;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
+                  data-testid="button-icon"
                 >
-                  button-icon-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    button-icon-SVG-Mock
+                  </div>
                 </div>
               </div>
               <div

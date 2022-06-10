@@ -1868,12 +1868,22 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 testID="report-offer-body"
                               >
                                 <View
-                                  height={20}
-                                  width={20}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "flexShrink": 0,
+                                      },
+                                    ]
+                                  }
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    width={20}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
@@ -3366,13 +3376,23 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 testID="Voir l'itinéraire"
                               >
                                 <View
-                                  height={20}
-                                  testID="button-icon"
-                                  width={20}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "flexShrink": 0,
+                                      },
+                                    ]
+                                  }
                                 >
-                                  <Text>
-                                    button-icon-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    testID="button-icon"
+                                    width={20}
+                                  >
+                                    <Text>
+                                      button-icon-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
@@ -4267,12 +4287,22 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 testID="report-offer-body"
                               >
                                 <View
-                                  height={20}
-                                  width={20}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "flexShrink": 0,
+                                      },
+                                    ]
+                                  }
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    width={20}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}

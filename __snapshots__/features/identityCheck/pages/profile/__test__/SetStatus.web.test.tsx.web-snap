@@ -336,7 +336,7 @@ Object {
                 >
                   <button
                     aria-label="Choisis ton statut"
-                    class="sc-dkPtRN gseCFZ sc-eCImPb cYRLFR"
+                    class="sc-dkPtRN dWzRNU sc-eCImPb idTzrf"
                     data-testid="Choisis ton statut"
                     disabled=""
                     type="submit"
@@ -708,7 +708,7 @@ Object {
               >
                 <button
                   aria-label="Choisis ton statut"
-                  class="sc-dkPtRN gseCFZ sc-eCImPb cYRLFR"
+                  class="sc-dkPtRN dWzRNU sc-eCImPb idTzrf"
                   data-testid="Choisis ton statut"
                   disabled=""
                   type="submit"

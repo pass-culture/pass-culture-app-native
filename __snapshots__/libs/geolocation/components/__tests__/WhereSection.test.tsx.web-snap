@@ -236,7 +236,7 @@ Array [
     }
   >
     <a
-      className="sc-gsDKAQ lfupOt sc-dkPtRN fwCeAR"
+      className="sc-gsDKAQ bNJins sc-dkPtRN fwCeAR"
       href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -245,13 +245,24 @@ Array [
     >
       <div
         className="css-view-1dbjc4n"
-        data-testid="button-icon"
+        style={
+          Object {
+            "WebkitFlexShrink": 0,
+            "flexShrink": 0,
+            "msFlexNegative": 0,
+          }
+        }
       >
         <div
-          className="css-text-901oao"
-          dir="auto"
+          className="css-view-1dbjc4n"
+          data-testid="button-icon"
         >
-          button-icon-SVG-Mock
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            button-icon-SVG-Mock
+          </div>
         </div>
       </div>
       <div
