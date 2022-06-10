@@ -12,11 +12,10 @@ type Props = PropsWithChildren<{
 }>
 
 const isWeb = Platform.OS === 'web'
-const TICKET_SIZE_RATIO = 0.755 // 0.05 is a hack to fit header and footer ThreeShapesTicket shadow
 
 export function ThreeShapesTicket(props: Props) {
   const { appContentWidth, ticket } = useTheme()
-  const width = Math.min(ticket.maxWidth, appContentWidth * TICKET_SIZE_RATIO)
+  const width = Math.min(ticket.maxWidth, appContentWidth * ticket.sizeRatio)
   const contentWidth = isWeb ? width : width - 5
   return (
     <Container testID={props.testID ?? 'three-shapes-ticket'}>
