@@ -22,7 +22,7 @@ export const formatPriceInEuroToDisplayPrice = (priceInEuro: number) =>
 const getPricePerPlace = (prices: number[]): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
   if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0])}`
-  const sortedPrices = uniquePrices.sort((a, b) => a - b)
+  const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
   return t`Dès ${formatToFrenchDecimal(sortedPrices[0])}`
 }
 
