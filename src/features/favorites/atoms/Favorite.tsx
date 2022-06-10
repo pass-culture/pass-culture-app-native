@@ -199,7 +199,6 @@ const Column = styled.View(({ theme }) => ({
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
 const ButtonContainer = styled.View({
-  minWidth: getSpacing(30),
   maxWidth: getSpacing(70),
   width: '47%',
 })
