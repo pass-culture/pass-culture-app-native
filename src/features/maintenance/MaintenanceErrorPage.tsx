@@ -15,7 +15,7 @@ export const MaintenanceErrorPage = ({ resetErrorBoundary }: Props) => {
   useEffect(() => resetErrorBoundary, [])
   // This one is for when feature flip switch back to off later
   useEffect(() => {
-    // it must be false and not undefined (which means not fetched)
+    // it must be false and not null (which means not fetched)
     if (status === MAINTENANCE.OFF) {
       resetErrorBoundary()
     }
