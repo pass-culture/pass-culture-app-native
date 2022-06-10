@@ -53,7 +53,7 @@ export const appButtonStyles: ButtonStyles = ({
     return theme.buttons.buttonHeights.small
   }
 
-  const padding = 2
+  const defaultPadding = 2
 
   const hasBackground = backgroundColor !== undefined
   const borderRadius = theme.borderRadius.button
@@ -61,14 +61,14 @@ export const appButtonStyles: ButtonStyles = ({
     borderRadius,
     buttonHeight: heightButton(),
   })
-  const horizontalPadding = hasBackground ? effectiveBorderRadius : padding
+  const horizontalPadding = hasBackground ? effectiveBorderRadius : defaultPadding
 
   return {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: justifyContent ?? 'center',
     borderRadius,
-    padding,
+    padding: defaultPadding,
     paddingLeft: horizontalPadding,
     paddingRight: horizontalPadding,
     minHeight: heightButton(),
