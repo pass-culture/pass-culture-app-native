@@ -46,7 +46,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logRecommendationModuleSeen(displayParameters.title, nbHits)
       analytics.logModuleDisplayedOnHomepage(
         moduleId,
         ContentTypes.RECOMMENDATION,
