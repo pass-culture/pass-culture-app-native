@@ -29,7 +29,7 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { displayParameters, index, recommendationParameters } = props
+  const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
   const mapping = useCategoryIdMapping()
@@ -48,10 +48,10 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     if (shouldModuleBeDisplayed) {
       analytics.logRecommendationModuleSeen(displayParameters.title, nbHits)
       analytics.logModuleDisplayedOnHomepage(
-        props.moduleId,
+        moduleId,
         ContentTypes.RECOMMENDATION,
-        props.index,
-        props.homeEntryId
+        index,
+        homeEntryId
       )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
