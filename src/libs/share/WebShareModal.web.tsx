@@ -88,6 +88,8 @@ export const WebShareModal = ({
     dismissModal()
   }
 
+  const chooseContact = t`Veuillez choisir un contact`
+
   return (
     <AppModal
       visible={visible}
@@ -128,7 +130,7 @@ export const WebShareModal = ({
                   accessibilityLabel={t`Ouvrir l'application de message`}
                   icon={SMSFilled}
                   onPress={() => {
-                    location.href = `sms:${t`Veuillez choisir un contact`}?&body=${message}: ${url}`
+                    location.href = `sms:${chooseContact}?&body=${message}: ${url}`
                   }}
                 />
               </NonSocialButtonsItem>

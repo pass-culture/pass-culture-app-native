@@ -129,7 +129,13 @@ export const SearchResults: React.FC = () => {
 
   const helmetTitle =
     numberOfResults +
-    (searchState.query.length > 0 ? ` ${t`pour`} "${searchState.query}"` : '') +
+    (searchState.query.length > 0
+      ? t({
+          id: 'search state query',
+          values: { searchStateQuery: searchState.query },
+          message: 'pour ${searchStateQuery}',
+        })
+      : '') +
     ' | Recherche | pass Culture'
   return (
     <React.Fragment>

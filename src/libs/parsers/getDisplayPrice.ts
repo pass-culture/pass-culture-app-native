@@ -35,7 +35,11 @@ export const getDisplayPrice = (prices: number[] | undefined): string => {
 export const getDisplayPriceWithDuoMention = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
   if (prices.includes(0)) return t`Gratuit`
-  return `${getPricePerPlace(prices)} ${t`/ place`}`
+  return t({
+    id: 'price per place',
+    values: { price: getPricePerPlace(prices) },
+    message: '{price} / place',
+  })
 }
 
 export const getFavoriteDisplayPrice = ({

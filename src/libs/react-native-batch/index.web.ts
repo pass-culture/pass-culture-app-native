@@ -30,6 +30,8 @@ export const Batch = {
         native: {},
       }
     }
+
+    const ENV = env.ENV === 'production' ? '' : `.${env.ENV}`
     /* Finalize the Batch SDK setup */
     /* eslint-disable-next-line */
     const options = {
@@ -43,7 +45,7 @@ export const Batch = {
       useExistingServiceWorker: true,
       dev: __DEV__,
       safari: {
-        [env.PUBLIC_URL]: `web.passculture${env.ENV === 'production' ? '' : `.${env.ENV}`}`,
+        [env.PUBLIC_URL]: `web.passculture${env.ENV === 'production' ? '' : ENV}`,
       },
     }
 

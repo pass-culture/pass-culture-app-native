@@ -22,7 +22,13 @@ export const OfferCaption = (props: OfferCaptionProps) => {
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       {!!date && <StyledCaption numberOfLines={1}>{date}</StyledCaption>}
       <StyledCaption testID="priceIsDuo">
-        {isDuo && isBeneficiary ? `${price} - ${t`Duo`}` : price}
+        {isDuo && isBeneficiary
+          ? t({
+              id: 'price',
+              values: { price },
+              message: '{price} - Duo',
+            })
+          : price}
       </StyledCaption>
     </CaptionContainer>
   )
