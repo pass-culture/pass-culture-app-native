@@ -7,7 +7,6 @@ import { TicketHeader } from 'ui/svg/TicketHeader'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
-  width?: number
   testID?: string
 }>
 

@@ -706,10 +706,9 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Badge </Text>
         </AlignedText>
         <AlignedText>
-          <ThreeShapesTicket width={200}>
+          <ThreeShapesTicket>
             <QRCode value="passculture" />
           </ThreeShapesTicket>
-          <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={5} />
