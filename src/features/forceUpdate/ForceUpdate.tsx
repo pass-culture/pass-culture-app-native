@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useMinimalBuildNumber } from 'features/forceUpdate/useMinimalBuildNumber'
 import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { Helmet } from 'libs/react-helmet/Helmet'
@@ -10,6 +11,8 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Star } from 'ui/svg/icons/Star'
 import { Typo } from 'ui/theme'
+
+import { build } from '../../../package.json'
 
 const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}`
 const IOS_STORE_LINK = `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}`
@@ -42,7 +45,26 @@ const buttonText = Platform.select({
   web: t`Actualiser la page`,
 })
 
-export const ForceUpdate = () => {
+type Props = {
+  resetErrorBoundary: () => void
+}
+
+export const ForceUpdate = ({ resetErrorBoundary }: Props) => {
+  const minimalBuildNumber = useMinimalBuildNumber()
+
+  // This first hook will be like a componentWillUnmount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => resetErrorBoundary, [])
+
+  // This one is for when minimalBuildNumber gets back to an older value
+  useEffect(() => {
+    // it must be false and not null (which means not fetched)
+    if (!!minimalBuildNumber && build >= minimalBuildNumber) {
+      resetErrorBoundary()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [minimalBuildNumber])
+
   return (
     <React.Fragment>
       <Helmet>
