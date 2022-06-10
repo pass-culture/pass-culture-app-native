@@ -92,7 +92,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
             wording={locationLabel || ''}
             onPress={onPressLocationButton}
             icon={LocationPointer}
-            textSize={getSpacing(3)}
             buttonHeight="extraSmall"
             ellipsizeMode="tail"
           />
