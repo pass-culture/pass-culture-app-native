@@ -144,6 +144,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         "msFlexPreferredSize": "auto",
         "paddingLeft": "24px",
         "paddingRight": "24px",
+        "width": "100%",
       }
     }
   >
@@ -211,6 +212,33 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
       </div>
     </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxFlex": 1,
+        "WebkitBoxOrient": "vertical",
+        "WebkitFlexBasis": "auto",
+        "WebkitFlexDirection": "column",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "auto",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": "400px",
+        "msFlexDirection": "column",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "auto",
+        "paddingLeft": "24px",
+        "paddingRight": "24px",
+        "width": "100%",
+      }
+    }
+  >
     <div
       className="css-view-1dbjc4n"
       style={

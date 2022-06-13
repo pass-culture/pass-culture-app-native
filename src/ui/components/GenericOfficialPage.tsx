@@ -74,6 +74,8 @@ export const GenericOfficialPage: FunctionComponent<Props> = ({
             <Spacer.Flex flex={0.5} />
           </React.Fragment>
         )}
+      </Content>
+      <BottomContent>
         {!!buttons && (
           <BottomContainer>
             {buttons.map((button, index) => (
@@ -85,7 +87,7 @@ export const GenericOfficialPage: FunctionComponent<Props> = ({
           </BottomContainer>
         )}
         <Spacer.BottomScreen />
-      </Content>
+      </BottomContent>
     </Wrapper>
   )
 }
@@ -117,8 +119,18 @@ const Content = styled.View(({ theme }) => ({
   flexBasis: 'auto',
   justifyContent: 'center',
   paddingHorizontal: getSpacing(6),
+  width: '100%',
   maxWidth: getSpacing(100),
 }))
+
+const BottomContent = styled.View({
+  flexDirection: 'column',
+  flex: 1,
+  flexBasis: 'auto',
+  paddingHorizontal: getSpacing(6),
+  width: '100%',
+  maxWidth: getSpacing(100),
+})
 
 const HeaderContainer = styled.View({
   maxWidth: getSpacing(100),
@@ -160,7 +172,7 @@ const BottomContainer = styled.View(({ theme }) => ({
   ...(theme.isTouch
     ? {
         justifyContent: 'flex-end',
-        marginBottom: getSpacing(8),
+        marginBottom: getSpacing(4),
       }
     : {
         marginTop: getSpacing(25),
