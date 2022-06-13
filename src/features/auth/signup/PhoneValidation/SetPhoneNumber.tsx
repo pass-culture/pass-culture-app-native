@@ -124,6 +124,8 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
     return t`Attends` + ` ${remainingTime}s.`
   }
 
+  const LeftCountryPicker = <CountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
+
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -145,8 +147,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
             </Paragraphe>
             <Spacer.Column numberOfSpaces={8} />
             <InputContainer>
-              <StyledCountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
-              <StyledTextInput
+              <TextInput
                 autoCapitalize="none"
                 isError={false}
                 keyboardType="number-pad"
@@ -155,6 +156,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
                 textContentType="telephoneNumber"
                 onSubmitEditing={requestSendPhoneValidationCode}
                 accessibilityDescribedBy={phoneNumberInputErrorId}
+                leftComponent={LeftCountryPicker}
                 {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
               />
             </InputContainer>
@@ -199,31 +201,12 @@ const InputContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   width: '100%',
-  maxWidth: getSpacing(90),
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
-
-const PICKER_WIDTH_DESKTOP = 30 // in %
-const PICKER_WIDTH_MOBILE = 35 // in %
-const INPUT_WIDTH_DESKTOP = 100 - PICKER_WIDTH_DESKTOP // in %
-const INPUT_WIDTH_MOBILE = 100 - PICKER_WIDTH_MOBILE // in %
-
-const StyledCountryPicker = styled(CountryPicker).attrs(({ theme }) => ({
-  width: theme.isDesktopViewport ? `${PICKER_WIDTH_DESKTOP}%` : `${PICKER_WIDTH_MOBILE}%`,
-}))``
-
-const StyledTextInput = styled(TextInput).attrs((props) => {
-  const { theme } = props
-  return {
-    containerStyle: {
-      width: theme.isDesktopViewport ? `${INPUT_WIDTH_DESKTOP}%` : `${INPUT_WIDTH_MOBILE}%`,
-    },
-  }
-})({})
 
 /**
  * 6 to 10 digits

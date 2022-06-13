@@ -19,7 +19,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ALLOWED_COUNTRY_CODES, FLAG_TYPE } from './constants'
@@ -102,6 +102,8 @@ export const CountryPicker: React.FC<Props> = (props) => {
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
         <ArrowDown />
+        <Spacer.Row numberOfSpaces={2} />
+        <VerticalSeparator />
       </StyledTouchable>
       <AppModal
         title={t`Choix de l'indicatif téléphonique`}
@@ -158,7 +160,13 @@ const StyledTouchable = styledButton(Touchable)<{ buttonWidth?: string; isFocus?
   })
 )
 
-const CallingCodeText = styled(Typo.ButtonText)({
+const VerticalSeparator = styled.View(({ theme }) => ({
+  paddingVertical: getSpacing(2.5),
+  borderRightWidth: getSpacing(0.25),
+  borderRightColor: theme.colors.greyMedium,
+}))
+
+const CallingCodeText = styled(Typo.Body)({
   marginLeft: -getSpacing(1), // To compensate for the Flag component right margin
   marginRight: getSpacing(1),
 })
