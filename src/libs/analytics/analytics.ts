@@ -72,11 +72,6 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName }),
   logClickBusinessBlock: (moduleName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName }),
-  logRecommendationModuleSeen: (moduleName: string, numberOfTiles: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.RECOMMENDATION_MODULE_SEEN, {
-      moduleName,
-      numberOfTiles,
-    }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>

@@ -42,7 +42,7 @@ describe('useHomeRecommendedHits', () => {
   })
 
   it('should not make any call if there is no recommendation module', async () => {
-    renderHook(() => useHomeRecommendedHits(undefined, null), {
+    renderHook(() => useHomeRecommendedHits(undefined, null, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -55,7 +55,7 @@ describe('useHomeRecommendedHits', () => {
   })
 
   it('calls fetchAlgolia with params and returns data', async () => {
-    const { result } = renderHook(() => useHomeRecommendedHits(mockUserId, null), {
+    const { result } = renderHook(() => useHomeRecommendedHits(mockUserId, null, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })

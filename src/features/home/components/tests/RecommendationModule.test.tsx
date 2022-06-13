@@ -21,33 +21,6 @@ jest.mock('features/home/api/useHomeRecommendedHits', () => ({
 describe('RecommendationModule', () => {
   afterEach(jest.clearAllMocks)
 
-  it('should trigger logEvent "RecommendationModuleSeen" when reaching the recommendation module', () => {
-    render(
-      <RecommendationModule
-        displayParameters={displayParameters}
-        index={1}
-        moduleId={'abcd'}
-        homeEntryId={'xyz'}
-      />
-    )
-
-    expect(analytics.logRecommendationModuleSeen).toHaveBeenCalledWith('Tes offres recommandées', 4)
-  })
-
-  it('should not trigger logEvent "RecommendationModuleSeen" if not enough hits', () => {
-    const minOffers = mockedAlgoliaResponse.hits.length + 1
-    render(
-      <RecommendationModule
-        displayParameters={{ ...displayParameters, minOffers }}
-        index={1}
-        moduleId={'abcd'}
-        homeEntryId={'xyz'}
-      />
-    )
-
-    expect(analytics.logRecommendationModuleSeen).not.toHaveBeenCalled()
-  })
-
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
     render(
       <RecommendationModule
