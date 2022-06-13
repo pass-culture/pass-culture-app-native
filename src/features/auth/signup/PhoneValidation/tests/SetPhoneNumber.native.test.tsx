@@ -57,7 +57,7 @@ describe('SetPhoneNumber', () => {
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
       await superFlushWithAct()
-      const input = getByPlaceholderText('6 12 34 56 78')
+      const input = getByPlaceholderText('06 12 34 56 78')
       await act(async () => {
         fireEvent.changeText(input, '612345678')
       })
@@ -78,7 +78,7 @@ describe('SetPhoneNumber', () => {
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
-      const input = getByPlaceholderText('6 12 34 56 78')
+      const input = getByPlaceholderText('06 12 34 56 78')
       await act(async () => {
         fireEvent.changeText(input, phoneNumber)
       })
@@ -93,7 +93,7 @@ describe('SetPhoneNumber', () => {
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
+      const input = getByPlaceholderText('06 12 34 56 78')
       await act(async () => {
         fireEvent.changeText(input, '612345678')
       })
@@ -121,7 +121,7 @@ describe('SetPhoneNumber', () => {
       await superFlushWithAct()
 
       const continueButton = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
+      const input = getByPlaceholderText('06 12 34 56 78')
       await act(async () => {
         fireEvent.changeText(input, '600000000')
       })
@@ -155,7 +155,7 @@ describe('SetPhoneNumber', () => {
         await superFlushWithAct()
 
         const button = getByTestId(buttonTestId)
-        const input = getByPlaceholderText('6 12 34 56 78')
+        const input = getByPlaceholderText('06 12 34 56 78')
         await act(async () => {
           fireEvent.changeText(input, '612345678')
         })
@@ -181,7 +181,7 @@ describe('SetPhoneNumber', () => {
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
+      const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(button)
 

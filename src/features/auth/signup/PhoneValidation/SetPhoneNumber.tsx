@@ -34,7 +34,7 @@ const TIMER = 60
 
 function getPlaceholder(countryCode: CountryCode): string {
   if (countryCode === 'NC') return '654 321'
-  return '6 12 34 56 78'
+  return '06 12 34 56 78'
 }
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
