@@ -120,11 +120,11 @@ export function useLogoutRoutine(): () => Promise<void> {
     try {
       BatchUser.editor().setIdentifier(null).save()
       analytics.logLogout()
+      await storage.clear('access_token')
+      await clearRefreshToken()
       LoggedInQueryKeys.forEach((queryKey) => {
         queryClient.removeQueries(queryKey)
       })
-      await storage.clear('access_token')
-      await clearRefreshToken()
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {
@@ -134,10 +134,10 @@ export function useLogoutRoutine(): () => Promise<void> {
   }, [setIsLoggedIn])
 }
 
-// List of keys that are accessible only when logged in
-// To clean when logging out
-const LoggedInQueryKeys: QueryKeys[] = [
+// List of keys that are accessible only when logged in to clean when logging out
+export const LoggedInQueryKeys: QueryKeys[] = [
   QueryKeys.BOOKINGS,
+  QueryKeys.CULTURAL_SURVEY_QUESTIONS,
   QueryKeys.FAVORITES,
   QueryKeys.FAVORITES_COUNT,
   QueryKeys.RECOMMENDATION_HITS,

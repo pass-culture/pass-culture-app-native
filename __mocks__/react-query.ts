@@ -2,6 +2,7 @@
 import { mockedBookingsResponse } from './fixtures/booking'
 
 const invalidateQueries = jest.fn()
+const removeQueries = jest.fn()
 
 export class QueryCache {
   clear() {}
@@ -29,6 +30,7 @@ const getQueryState = (key: string) => {
 
 export const useQueryClient = jest.fn().mockReturnValue({
   invalidateQueries,
+  removeQueries,
   getQueryData: () => {},
   setQueryData: () => {},
   getQueryState,
