@@ -76,10 +76,7 @@ export function Navigation(): JSX.Element {
           <CheatCodesButton />
         </Row>
         <Row half>
-          <ButtonPrimary
-            wording={'IdentityCheck 🎨'}
-            onPress={() => navigate('NavigationIdentityCheck')}
-          />
+          <ButtonPrimary wording={'SignUp 🎨'} onPress={() => navigate('NavigationSignUp')} />
         </Row>
         <Row half>
           <ButtonPrimary

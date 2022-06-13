@@ -18,7 +18,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
-export function NavigationIdentityCheck(): JSX.Element {
+export function NavigationSignUp(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [
@@ -37,7 +37,7 @@ export function NavigationIdentityCheck(): JSX.Element {
     <ScrollView>
       <Spacer.TopScreen />
       <ModalHeader
-        title="New IdentityCheck 🎨"
+        title="New SignUp 🎨"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
@@ -116,7 +116,7 @@ interface LinkToComponentProps {
 }
 
 const LinkToComponent = ({
-  name = 'NavigationIdentityCheck',
+  name = 'NavigationSignUp',
   onPress,
   title,
   navigationParams,
