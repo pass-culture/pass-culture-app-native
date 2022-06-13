@@ -38,7 +38,6 @@ export const WebShareModal = ({
 }: WebShareModalProps) => {
   const { showSuccessSnackBar } = useSnackBarContext()
   const { message, url } = shareContent
-
   const socialButtonProps = [
     {
       label: t`Facebook`,
