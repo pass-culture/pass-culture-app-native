@@ -1,19 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
+import { useQueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { useLogoutRoutine } from 'features/auth/AuthContext'
+import { LoggedInQueryKeys, useLogoutRoutine } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain'
 import { act, flushAllPromises, render } from 'tests/utils'
-import { QueryKeys } from 'libs/queryKeys'
-import { useQueryClient } from 'react-query'
 
 jest.mock('react-query')
 
 const TestLogoutComponent = () => {
-  useLogoutRoutine()
+  const logout = useLogoutRoutine()
+  logout()
   return null
 }
 
@@ -22,17 +22,53 @@ describe('AuthContext', () => {
     const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
     const queryClient = useQueryClient()
 
-    it('should ...', async () => {
+    it('should remove batch identifier', async () => {
       render(<TestLogoutComponent />)
 
       await act(flushAllPromises)
 
       await waitForExpect(() => {
         expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(null)
+      })
+    })
+
+    it('should log analytics', async () => {
+      render(<TestLogoutComponent />)
+
+      await act(flushAllPromises)
+
+      await waitForExpect(() => {
         expect(analytics.logLogout).toBeCalledTimes(1)
+      })
+    })
+
+    it('should remove access token from async storage', async () => {
+      render(<TestLogoutComponent />)
+
+      await act(flushAllPromises)
+
+      await waitForExpect(() => {
         expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+      })
+    })
+
+    it('should clear refresh token', async () => {
+      render(<TestLogoutComponent />)
+
+      await act(flushAllPromises)
+
+      await waitForExpect(() => {
         expect(mockClearRefreshToken).toHaveBeenCalled()
-        expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.USER_PROFILE)
+      })
+    })
+
+    it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
+      render(<TestLogoutComponent />)
+
+      await act(flushAllPromises)
+
+      await waitForExpect(() => {
+        expect(queryClient.removeQueries).toHaveBeenCalledWith(query)
       })
     })
   })

@@ -135,7 +135,7 @@ export function useLogoutRoutine(): () => Promise<void> {
 }
 
 // List of keys that are accessible only when logged in to clean when logging out
-const LoggedInQueryKeys: QueryKeys[] = [
+export const LoggedInQueryKeys: QueryKeys[] = [
   QueryKeys.BOOKINGS,
   QueryKeys.CULTURAL_SURVEY_QUESTIONS,
   QueryKeys.FAVORITES,
