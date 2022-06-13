@@ -56,8 +56,11 @@ describe('SetPhoneNumber', () => {
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
-      const input = getByPlaceholderText('6 12 34 56 78')
-      fireEvent.changeText(input, '612345678')
+      await superFlushWithAct()
+      const input = getByPlaceholderText('06 12 34 56 78')
+      await act(async () => {
+        fireEvent.changeText(input, '612345678')
+      })
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     })
@@ -75,10 +78,14 @@ describe('SetPhoneNumber', () => {
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
-      const input = getByPlaceholderText('6 12 34 56 78')
-      fireEvent.changeText(input, phoneNumber)
+      const input = getByPlaceholderText('06 12 34 56 78')
+      await act(async () => {
+        fireEvent.changeText(input, phoneNumber)
+      })
 
-      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      await waitForExpect(() =>
+        expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      )
     })
 
     it('should navigate to SetSetPhoneNumberCode on /send_phone_validation request success', async () => {
@@ -86,8 +93,10 @@ describe('SetPhoneNumber', () => {
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
-      fireEvent.changeText(input, '612345678')
+      const input = getByPlaceholderText('06 12 34 56 78')
+      await act(async () => {
+        fireEvent.changeText(input, '612345678')
+      })
       fireEvent.press(button)
 
       await act(async () => {
@@ -109,9 +118,13 @@ describe('SetPhoneNumber', () => {
       }
 
       const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumber()
+      await superFlushWithAct()
+
       const continueButton = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
-      fireEvent.changeText(input, '600000000')
+      const input = getByPlaceholderText('06 12 34 56 78')
+      await act(async () => {
+        fireEvent.changeText(input, '600000000')
+      })
 
       rerender(<SetPhoneNumber />)
 
@@ -142,8 +155,10 @@ describe('SetPhoneNumber', () => {
         await superFlushWithAct()
 
         const button = getByTestId(buttonTestId)
-        const input = getByPlaceholderText('6 12 34 56 78')
-        fireEvent.changeText(input, '612345678')
+        const input = getByPlaceholderText('06 12 34 56 78')
+        await act(async () => {
+          fireEvent.changeText(input, '612345678')
+        })
         fireEvent.press(button)
 
         await flushAllPromises()
@@ -163,9 +178,10 @@ describe('SetPhoneNumber', () => {
       }
 
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
+      await superFlushWithAct()
 
       const button = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
+      const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(button)
 

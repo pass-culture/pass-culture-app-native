@@ -64,7 +64,7 @@ Array [
         Array [
           Object {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
+            "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
             "marginLeft": -4,
@@ -84,6 +84,27 @@ Array [
         undefined-SVG-Mock
       </Text>
     </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "borderRightColor": "#CBCDD2",
+            "borderRightWidth": 1,
+            "paddingVertical": 10,
+          },
+        ]
+      }
+    />
   </View>,
   <Modal
     accessibilityRole="none"

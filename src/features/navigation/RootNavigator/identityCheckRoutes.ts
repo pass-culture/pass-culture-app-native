@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
-import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
+import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
+import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
@@ -30,6 +31,13 @@ import {
 
 // Try to keep those routes in the same order as the user flow
 export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[] = [
+  {
+    // debug route: in navigation component
+    name: 'NavigationSignUp',
+    component: NavigationSignUp,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-navigation-sign-up',
+  },
   {
     // debug route: in navigation component
     name: 'NavigationIdentityCheck',

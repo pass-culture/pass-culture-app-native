@@ -37,7 +37,7 @@ export function NavigationIdentityCheck(): JSX.Element {
     <ScrollView>
       <Spacer.TopScreen />
       <ModalHeader
-        title="New IdentityCheck 🎨"
+        title="IdentityCheck 🎨"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
@@ -47,6 +47,21 @@ export function NavigationIdentityCheck(): JSX.Element {
       />
       <StyledContainer>
         <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
+        <LinkToComponent title={`PhoneValidation`} onPress={() => navigate('SetPhoneNumber')} />
+        <LinkToComponent
+          title={`Too many codes`}
+          onPress={() => navigate('PhoneValidationTooManyAttempts')}
+        />
+        <LinkToComponent
+          title={`Too many SMS sent`}
+          onPress={() => navigate('PhoneValidationTooManySMSSent')}
+        />
+        <LinkToComponent
+          title={'Set Phone Validation Code'}
+          onPress={() =>
+            navigate('SetPhoneValidationCode', { phoneNumber: '+33612345678', countryCode: 'FR' })
+          }
+        />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />
@@ -116,7 +131,7 @@ interface LinkToComponentProps {
 }
 
 const LinkToComponent = ({
-  name = 'NavigationIdentityCheck',
+  name = 'NavigationSignUp',
   onPress,
   title,
   navigationParams,

@@ -47,7 +47,7 @@ interface LinkToComponentProps {
 }
 
 const LinkToComponent = ({
-  name = 'NavigationIdentityCheck',
+  name = 'NavigationSignUp',
   onPress,
   title,
   navigationParams,
