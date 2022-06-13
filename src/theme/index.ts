@@ -93,6 +93,7 @@ export interface AppThemeType {
     qrCodeSize: number
     backgroundColor: ColorsEnum
     borderColor: ColorsEnum
+    sizeRatio: number
   }
   tiles: {
     borderRadius: number
@@ -415,6 +416,7 @@ export const theme: AppThemeType = {
     qrCodeSize: 170,
     backgroundColor: ColorsEnum.WHITE,
     borderColor: ColorsEnum.GREY_LIGHT,
+    sizeRatio: 0.755, // 0.05 is a hack to fit header and footer ThreeShapesTicket shadow
   },
   tiles: {
     borderRadius: getSpacing(1),

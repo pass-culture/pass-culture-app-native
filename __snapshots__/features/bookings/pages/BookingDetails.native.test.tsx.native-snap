@@ -432,6 +432,9 @@ exports[`BookingDetails should render correctly 1`] = `
                       Object {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
+                        "borderColor": "#F1F1F4",
+                        "borderLeftWidth": 2,
+                        "borderRightWidth": 2,
                         "maxWidth": "100%",
                         "paddingBottom": 8,
                         "paddingLeft": 8,

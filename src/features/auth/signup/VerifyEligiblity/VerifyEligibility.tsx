@@ -40,19 +40,11 @@ export const VerifyEligibility: FunctionComponent = () => {
       ]}>
       <View>
         <StyledBody>
-          {t({
-            id: 'need verify identity',
-            message:
-              'Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.',
-          })}
+          {t`Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.`}
         </StyledBody>
         <Spacer.Column numberOfSpaces={4} />
         <BoldBody>
-          {t({
-            id: 'check identity information',
-            message:
-              'Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.',
-          })}
+          {t`Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.`}
         </BoldBody>
       </View>
     </GenericOfficialPage>

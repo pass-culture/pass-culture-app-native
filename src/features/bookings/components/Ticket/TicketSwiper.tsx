@@ -17,7 +17,6 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const SEPARATOR_VALUE = 4
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
-const TICKET_SIZE_RATIO = 0.755 // 0.05 is a hack to fit header and footer ThreeShapesTicket shadow
 
 const keyExtractor = (item: ReactElement<TicketsProps>, index: number) =>
   `${item.props.booking.stock.offer.name}-${index}`
@@ -29,7 +28,7 @@ export function TicketSwiper({ booking, activationCodeFeatureEnabled }: TicketsP
   const [currentIndex, setCurrentIndex] = useState(1)
 
   const NUMBER_OF_TICKETS = tickets.length ?? 0
-  const TICKET_WIDTH = isTouch ? appContentWidth * TICKET_SIZE_RATIO : ticket.maxWidth
+  const TICKET_WIDTH = isTouch ? appContentWidth * ticket.sizeRatio : ticket.maxWidth
   const TICKET_SPACING = (appContentWidth - TICKET_WIDTH) / 2
   const TOTAL_TICKETS_WIDTH = TICKET_WIDTH * NUMBER_OF_TICKETS
   const APP_COMPONENT_WIDTH_WITH_MARGIN = appContentWidth * 0.9
