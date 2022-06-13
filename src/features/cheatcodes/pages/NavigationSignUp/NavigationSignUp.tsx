@@ -4,15 +4,12 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
-import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
-import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import {
   RootScreenNames,
   RootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -20,24 +17,17 @@ import { padding, Spacer } from 'ui/theme'
 
 export function NavigationSignUp(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
-  const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [
     fastEduconnectConnectionRequestModalVisible,
     setFastEduconnectConnectionRequestModalVisible,
   ] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const trigger = (message: EduConnectErrorMessageEnum) => {
-    setScreenError(new ScreenError(message, NotEligibleEduConnect))
-  }
-
-  if (screenError) throw screenError
-
   return (
     <ScrollView>
       <Spacer.TopScreen />
       <ModalHeader
-        title="New SignUp 🎨"
+        title="SignUp 🎨"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
@@ -46,58 +36,45 @@ export function NavigationSignUp(): JSX.Element {
         onRightIconPress={undefined}
       />
       <StyledContainer>
-        <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
-        <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
-        <LinkToComponent name="IdentityCheckStart" />
-        <LinkToComponent name="IdentityCheckUnavailable" />
-        <LinkToComponent name="IdentityCheckPending" />
-        <LinkToComponent name="SetName" />
-        <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
-        <LinkToComponent name="IdentityCheckCity" title="SetCity" />
-        <LinkToComponent name="IdentityCheckEnd" />
-        <LinkToComponent name="IdentityCheckHonor" />
-        <LinkToComponent name="IdentityCheckEduConnectForm" />
-        <LinkToComponent name="IdentityCheckEduConnect" title={'EduConnect'} />
-        <LinkToComponent name="IdentityCheckDMS" />
         <LinkToComponent
-          name="IdentityCheckValidation"
-          navigationParams={{
-            firstName: 'firstName',
-            lastName: 'lastName',
-            dateOfBirth: '2021-12-01',
-          }}
+          title={'IdentityCheck 🎨'}
+          onPress={() => navigate('NavigationIdentityCheck')}
         />
         <LinkToComponent
-          title={'UserAgeNotValid Educonnect Error'}
-          onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
+          title={'Email envoyé'}
+          onPress={() =>
+            navigate('SignupConfirmationEmailSent', {
+              email: 'jean.dupont@gmail.com',
+            })
+          }
         />
         <LinkToComponent
-          title={'UserAgeNotValid18YearsOld Error'}
-          onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
+          title={'Account confirmation lien expiré'}
+          onPress={() =>
+            navigate('SignupConfirmationExpiredLink', {
+              email: 'john@wick.com',
+            })
+          }
         />
         <LinkToComponent
-          title={'UserTypeNotStudent Error'}
-          onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
+          title={'Validate Email'}
+          onPress={() =>
+            navigate('AfterSignupEmailValidationBuffer', {
+              token: 'whichTokenDoYouWantReally',
+              expiration_timestamp: 456789123,
+              email: 'john@wick.com',
+            })
+          }
         />
-
+        <LinkToComponent title={'Account Created'} onPress={() => navigate('AccountCreated')} />
         <LinkToComponent
-          title={'Generic Error'}
-          onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
+          title={"C'est pour bientôt"}
+          onPress={() =>
+            navigate('NotYetUnderageEligibility', {
+              eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
+            })
+          }
         />
-        <Row half>
-          <ButtonPrimary
-            wording={'Identifie-toi en 2 minutes'}
-            onPress={() => {
-              setFastEduconnectConnectionRequestModalVisible(true)
-            }}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'VerifyEligibility'}
-            onPress={() => navigate('VerifyEligibility')}
-          />
-        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
       <FastEduconnectConnectionRequestModal

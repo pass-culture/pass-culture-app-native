@@ -105,16 +105,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
-            wording={'Signup : email envoyé'}
-            onPress={() =>
-              navigate('SignupConfirmationEmailSent', {
-                email: 'jean.dupont@gmail.com',
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
             wording={'Reset mdp lien expiré'}
             onPress={() =>
               navigate('ResetPasswordExpiredLink', {
@@ -125,45 +115,10 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
-            wording={'Account confirmation lien expiré'}
-            onPress={() =>
-              navigate('SignupConfirmationExpiredLink', {
-                email: 'john@wick.com',
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Signup : Validate Email'}
-            onPress={() =>
-              navigate('AfterSignupEmailValidationBuffer', {
-                token: 'whichTokenDoYouWantReally',
-                expiration_timestamp: 456789123,
-                email: 'john@wick.com',
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary wording={'Account Created'} onPress={() => navigate('AccountCreated')} />
-        </Row>
-        <Row half>
-          <ButtonPrimary
             wording={'Reset mdp email envoyé'}
             onPress={() =>
               navigate('ResetPasswordEmailSent', {
                 email: 'jean.dupont@gmail.com',
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={"C'est pour bientôt"}
-            onPress={() =>
-              navigate('NotYetUnderageEligibility', {
-                eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
               })
             }
           />
@@ -290,24 +245,9 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording={`PhoneValidation`} onPress={() => navigate('SetPhoneNumber')} />
-        </Row>
-        <Row half>
           <ButtonPrimary
             wording={`Pages non écrans`}
             onPress={() => navigate('NavigationNotScreensPages')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={`Phone validation too many attempts`}
-            onPress={() => navigate('PhoneValidationTooManyAttempts')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={`Phone validation too many SMS sent`}
-            onPress={() => navigate('PhoneValidationTooManySMSSent')}
           />
         </Row>
         <Row half>
@@ -362,14 +302,6 @@ export function Navigation(): JSX.Element {
                   NoContentError
                 )
               )
-            }
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Set Phone Validation Code'}
-            onPress={() =>
-              navigate('SetPhoneValidationCode', { phoneNumber: '+33612345678', countryCode: 'FR' })
             }
           />
         </Row>

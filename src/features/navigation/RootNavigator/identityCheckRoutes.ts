@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
+import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
@@ -36,6 +37,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: NavigationSignUp,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-sign-up',
+  },
+  {
+    // debug route: in navigation component
+    name: 'NavigationIdentityCheck',
+    component: NavigationIdentityCheck,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-navigation-identity-check',
   },
   // Stepper
   {

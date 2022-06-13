@@ -22,6 +22,7 @@ export type CulturalSurveyRootStackParamList = {
 
 export type IdentityCheckRootStackParamList = {
   NavigationSignUp: undefined
+  NavigationIdentityCheck: undefined
   // Stepper
   IdentityCheckStepper: undefined
   // PhoneValidation
