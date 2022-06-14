@@ -7,10 +7,9 @@ import ReactNativeCountryPicker, {
   getAllCountries,
   Flag,
 } from 'react-native-country-picker-modal'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,6 +39,7 @@ async function getAllowedCountries() {
 }
 
 export const CountryPicker: React.FC<Props> = (props) => {
+  const { accessibilityRole } = useTheme()
   const { visible, showModal, hideModal } = useModal(false)
 
   const [countries, setCountries] = useState<Country[]>([])
@@ -68,7 +68,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
     return (
       <View {...getHeadingAttrs(2)}>
         <TouchableOpacity
-          accessibilityRole={theme.accessibilityRole.radio}
+          accessibilityRole={accessibilityRole.radio}
           accessibilityState={{ checked: selected }}
           key={item.cca2}
           testID={`country-selector-${item.cca2}`}
@@ -138,10 +138,10 @@ const IconContainer = styled.View({
   paddingHorizontal: getSpacing(2),
 })
 
-const ValidateIcon = styled(Validate).attrs({
+const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.small,
-})``
+}))``
 
 const focusStyle =
   Platform.OS === 'web'
@@ -171,6 +171,6 @@ const CallingCodeText = styled(Typo.Body)({
   marginRight: getSpacing(1),
 })
 
-const ArrowDown = styled(DefaultArrowDown).attrs({
+const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-})``
+}))``

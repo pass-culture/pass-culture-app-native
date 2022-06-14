@@ -17,10 +17,6 @@ msgstr ""
 msgid "+"
 msgstr "+"
 
-#: src/libs/parsers/getDisplayPrice.ts
-msgid "/ place"
-msgstr "/ place"
-
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "1 Caractère spécial (!@#$%^&*...)"
 msgstr "1 Caractère spécial (!@#$%^&*...)"
@@ -888,7 +884,6 @@ msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train d
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/DuoChoiceSelector.tsx
-#: src/ui/components/OfferCaption.tsx
 msgid "Duo"
 msgstr "Duo"
 
@@ -3618,7 +3613,6 @@ msgstr "passeport"
 msgid "permanente"
 msgstr "permanente"
 
-#: src/features/search/components/SearchResults.tsx
 #: src/libs/tileAccessibilityLabel.ts
 msgid "pour"
 msgstr "pour"
@@ -3630,6 +3624,14 @@ msgstr "pour parler de tes pratiques culturelles !"
 #: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
 msgid "pour tes réponses !"
 msgstr "pour tes réponses !"
+
+#: src/ui/components/OfferCaption.tsx
+msgid "price"
+msgstr "{price} - Duo"
+
+#: src/libs/parsers/getDisplayPrice.ts
+msgid "price per place"
+msgstr "{price} / place"
 
 #: src/libs/tileAccessibilityLabel.ts
 msgid "prix"
@@ -3666,6 +3668,10 @@ msgstr "réalisée"
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
+
+#: src/features/search/components/SearchResults.tsx
+msgid "search state query"
+msgstr "pour ${searchStateQuery}"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"

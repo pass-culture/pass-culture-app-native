@@ -24,6 +24,7 @@ import { Helmet } from 'ui/web/global/Helmet'
 const keyExtractor = (item: SearchHit) => item.objectID
 
 const ANIMATION_DURATION = 700
+const SPACE = ' '
 
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -129,7 +130,14 @@ export const SearchResults: React.FC = () => {
 
   const helmetTitle =
     numberOfResults +
-    (searchState.query.length > 0 ? ` ${t`pour`} "${searchState.query}"` : '') +
+    (searchState.query.length > 0
+      ? SPACE +
+        t({
+          id: 'search state query',
+          values: { searchStateQuery: searchState.query },
+          message: 'pour ${searchStateQuery}',
+        })
+      : '') +
     ' | Recherche | pass Culture'
   return (
     <React.Fragment>
