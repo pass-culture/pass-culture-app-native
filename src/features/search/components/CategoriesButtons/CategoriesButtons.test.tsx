@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
 import { render } from 'tests/utils'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+
+import { CategoriesButtons } from './CategoriesButtons'
 
 describe('CategoriesButtons', () => {
   it('should sort search group names alphabetically', () => {

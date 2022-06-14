@@ -2,8 +2,9 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryButton, CategoryButtonProps } from 'features/search/components/CategoryButton'
 import { getSpacing } from 'ui/theme'
+
+import { CategoryButton, CategoryButtonProps } from '../CategoryButton'
 
 type Props = {
   categories: CategoryButtonProps[]
