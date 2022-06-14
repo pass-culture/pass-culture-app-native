@@ -73,9 +73,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Instrument,
     facetFilter: SearchGroupNameEnum.INSTRUMENTS,
   },
-  [SearchGroupNameEnum.MATERIEL]: {
+  [SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.ArtsMaterial,
-    facetFilter: SearchGroupNameEnum.MATERIEL,
+    facetFilter: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
   },
 }
 

@@ -445,7 +445,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       id: SubcategoryIdEnum.MATERIEL_ART_CREATIF,
       categoryId: CategoryIdEnum.BEAUX_ARTS,
       appLabel: 'Matériel arts créatifs',
-      searchGroupName: SearchGroupNameEnum.MATERIEL,
+      searchGroupName: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
       homepageLabelName: HomepageLabelNameEnum.MATERIEL,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
@@ -670,7 +670,7 @@ export const placeholderData: SubcategoriesResponseModel = {
     { name: SearchGroupNameEnum.MEDIA_PRESSE, value: 'Médias & presse' },
     { name: SearchGroupNameEnum.CONCERTS_FESTIVALS, value: 'Concerts & festivals' },
     { name: SearchGroupNameEnum.INSTRUMENTS, value: 'Instruments de musique' },
-    { name: SearchGroupNameEnum.MATERIEL, value: 'Beaux-Arts' },
+    { name: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS, value: 'Beaux-Arts' },
     { name: SearchGroupNameEnum.NONE, value: null },
   ],
   homepageLabels: [

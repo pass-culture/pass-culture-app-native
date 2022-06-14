@@ -53,7 +53,7 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.LIVRE_NUMERIQUE}                | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnum.LIVRES}
     ${SubcategoryIdEnum.LIVRE_PAPIER}                   | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnum.LIVRES}
     ${SubcategoryIdEnum.LOCATION_INSTRUMENT}            | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnum.INSTRUMENTS}
-    ${SubcategoryIdEnum.MATERIEL_ART_CREATIF}           | ${false} | ${CategoryIdEnum.BEAUX_ARTS}          | ${SearchGroupNameEnum.MATERIEL}
+    ${SubcategoryIdEnum.MATERIEL_ART_CREATIF}           | ${false} | ${CategoryIdEnum.BEAUX_ARTS}          | ${SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.MUSEE_VENTE_DISTANCE}           | ${false} | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.OEUVRE_ART}                     | ${false} | ${CategoryIdEnum.TECHNIQUE}           | ${SearchGroupNameEnum.NONE}
     ${SubcategoryIdEnum.PARTITION}                      | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnum.INSTRUMENTS}

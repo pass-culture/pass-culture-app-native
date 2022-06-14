@@ -16,7 +16,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.MEDIA_PRESSE}               | ${'Presse, médias'}
     ${SearchGroupNameEnum.CONCERTS_FESTIVALS}         | ${'Spectacles'}
     ${SearchGroupNameEnum.INSTRUMENTS}                | ${'Instruments de musique'}
-    ${SearchGroupNameEnum.MATERIEL}                   | ${'Beaux-Arts'}
+    ${SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS}                   | ${'Beaux-Arts'}
     ${SearchGroupNameEnum.NONE}                       | ${'Toutes les catégories'}
   `(
     'useSearchGroupLabel($SearchGroupName) = $category',
