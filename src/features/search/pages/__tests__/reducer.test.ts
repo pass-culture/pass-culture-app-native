@@ -46,7 +46,7 @@ describe('Search reducer', () => {
         SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
         SearchGroupNameEnum.FILMS_SERIES_CINEMA,
         SearchGroupNameEnum.JEUX_JEUX_VIDEOS,
-        SearchGroupNameEnum.CONFERENCE,
+        SearchGroupNameEnum.RENCONTRES_CONFERENCES,
         SearchGroupNameEnum.INSTRUMENT,
       ],
       tags: [],

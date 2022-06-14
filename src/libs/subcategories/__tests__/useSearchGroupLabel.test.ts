@@ -7,8 +7,8 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}        | ${'Films, séries'}
     ${SearchGroupNameEnum.CARTES_JEUNES}              | ${'Cartes jeunes'}
     ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}        | ${'Cinéma'}
-    ${SearchGroupNameEnum.CONFERENCE}                 | ${'Conférences, rencontres'}
-    ${SearchGroupNameEnum.JEUX_JEUX_VIDEOS}                        | ${'Jeux'}
+    ${SearchGroupNameEnum.RENCONTRES_CONFERENCES}     | ${'Conférences, rencontres'}
+    ${SearchGroupNameEnum.JEUX_JEUX_VIDEOS}           | ${'Jeux'}
     ${SearchGroupNameEnum.LIVRES}                     | ${'Livre'}
     ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES} | ${'Visites, expositions'}
     ${SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'Musique'}
