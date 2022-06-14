@@ -61,9 +61,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Press,
     facetFilter: SearchGroupNameEnum.MEDIA_PRESSE,
   },
-  [SearchGroupNameEnum.JEU]: {
+  [SearchGroupNameEnum.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
-    facetFilter: SearchGroupNameEnum.JEU,
+    facetFilter: SearchGroupNameEnum.JEUX_JEUX_VIDEOS,
   },
   [SearchGroupNameEnum.CONFERENCE]: {
     icon: categoriesIcons.Conference,
