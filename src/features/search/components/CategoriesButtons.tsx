@@ -10,6 +10,12 @@ type Props = {
   children?: never
 }
 
+const CategoyButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
+  <CategoryButtonContainer>
+    <CategoryButton {...item} />
+  </CategoryButtonContainer>
+)
+
 export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
   const [sortedCategories, setSortedCategories] = useState<CategoryButtonProps[]>()
   useEffect(() => {
@@ -19,14 +25,14 @@ export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
   return (
     <FlatList
       data={sortedCategories}
-      renderItem={({ item }) => <StyledCategoryButton {...item} />}
+      renderItem={CategoyButtonItem}
       keyExtractor={(item) => item.label}
       numColumns={2}
     />
   )
 }
 
-const StyledCategoryButton = styled(CategoryButton)({
-  flex: 1,
-  margin: getSpacing(1),
+const CategoryButtonContainer = styled.View({
+  flexBasis: '50%',
+  padding: getSpacing(1),
 })

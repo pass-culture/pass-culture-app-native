@@ -44,3 +44,39 @@ Default.args = {
     },
   ],
 }
+
+export const WithOddNumberOfCategories = Template.bind({})
+WithOddNumberOfCategories.args = {
+  categories: [
+    {
+      label: 'Musique',
+      color: 'blue',
+      Icon: categoriesIcons.Music,
+      onPress: action('Musique'),
+    },
+    {
+      label: 'Cinéma',
+      color: 'royalblue',
+      Icon: categoriesIcons.Cinema,
+      onPress: action('Cinéma'),
+    },
+    {
+      label: 'Livre',
+      color: 'purple',
+      Icon: categoriesIcons.Book,
+      onPress: action('Livre'),
+    },
+    {
+      label: 'Théâtre',
+      color: 'green',
+      Icon: categoriesIcons.Workshop,
+      onPress: action('Théâtre'),
+    },
+    {
+      label: 'Jeux',
+      color: 'green',
+      Icon: categoriesIcons.VideoGame,
+      onPress: action('Jeux'),
+    },
+  ],
+}
