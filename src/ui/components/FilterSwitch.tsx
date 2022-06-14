@@ -50,7 +50,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        accessibilityRole={accessibilityRole.switch}
+        accessibilityRole={accessibilityRole.checkbox}
         accessibilityState={{ checked: active }}
         aria-describedby={props.accessibilityDescribedBy}
         aria-labelledby={props.accessibilityLabelledBy}
