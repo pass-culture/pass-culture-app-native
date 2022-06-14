@@ -27,7 +27,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
         size: theme.icons.sizes.small,
         color: theme.colors.black,
       }))({}),
-    [Icon]
+    [Icon, color]
   )
 
   return (
