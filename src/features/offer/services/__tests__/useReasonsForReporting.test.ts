@@ -10,7 +10,7 @@ import { server } from 'tests/server'
 
 import { useReasonsForReporting } from '../useReasonsForReporting'
 
-jest.mock('libs/network/useNetwork')
+jest.mock('libs/network/useNetInfo')
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 

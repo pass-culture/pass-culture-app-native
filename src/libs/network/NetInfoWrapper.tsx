@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+// eslint-disable-next-line no-restricted-imports
 import { useNetInfo } from '@react-native-community/netinfo'
 import { useEffect } from 'react'
 

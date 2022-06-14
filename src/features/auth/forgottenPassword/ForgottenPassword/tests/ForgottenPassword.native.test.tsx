@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import * as netInfoModule from '@react-native-community/netinfo'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
