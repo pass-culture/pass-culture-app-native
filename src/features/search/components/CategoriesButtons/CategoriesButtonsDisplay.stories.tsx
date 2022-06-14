@@ -4,26 +4,20 @@ import React from 'react'
 
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
-import { CategoriesButtons } from './CategoriesButtons'
+import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
 
 export default {
   title: 'ui/CategoriesButtons',
-  component: CategoriesButtons,
-} as ComponentMeta<typeof CategoriesButtons>
+  component: CategoriesButtonsDisplay,
+} as ComponentMeta<typeof CategoriesButtonsDisplay>
 
-const Template: ComponentStory<typeof CategoriesButtons> = (props) => (
-  <CategoriesButtons {...props} />
+const Template: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+  <CategoriesButtonsDisplay {...props} />
 )
 
 export const Default = Template.bind({})
 Default.args = {
-  categories: [
-    {
-      label: 'Musique',
-      color: 'blue',
-      Icon: categoriesIcons.Music,
-      onPress: action('Musique'),
-    },
+  sortedCategories: [
     {
       label: 'Cinéma',
       color: 'royalblue',
@@ -35,6 +29,12 @@ Default.args = {
       color: 'purple',
       Icon: categoriesIcons.Book,
       onPress: action('Livre'),
+    },
+    {
+      label: 'Musique',
+      color: 'blue',
+      Icon: categoriesIcons.Music,
+      onPress: action('Musique'),
     },
     {
       label: 'Théâtre',
@@ -47,18 +47,18 @@ Default.args = {
 
 export const WithOddNumberOfCategories = Template.bind({})
 WithOddNumberOfCategories.args = {
-  categories: [
-    {
-      label: 'Musique',
-      color: 'blue',
-      Icon: categoriesIcons.Music,
-      onPress: action('Musique'),
-    },
+  sortedCategories: [
     {
       label: 'Cinéma',
       color: 'royalblue',
       Icon: categoriesIcons.Cinema,
       onPress: action('Cinéma'),
+    },
+    {
+      label: 'Jeux',
+      color: 'green',
+      Icon: categoriesIcons.VideoGame,
+      onPress: action('Jeux'),
     },
     {
       label: 'Livre',
@@ -67,16 +67,16 @@ WithOddNumberOfCategories.args = {
       onPress: action('Livre'),
     },
     {
+      label: 'Musique',
+      color: 'blue',
+      Icon: categoriesIcons.Music,
+      onPress: action('Musique'),
+    },
+    {
       label: 'Théâtre',
       color: 'green',
       Icon: categoriesIcons.Workshop,
       onPress: action('Théâtre'),
-    },
-    {
-      label: 'Jeux',
-      color: 'green',
-      Icon: categoriesIcons.VideoGame,
-      onPress: action('Jeux'),
     },
   ],
 }
