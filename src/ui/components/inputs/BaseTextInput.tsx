@@ -78,4 +78,5 @@ const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   fontFamily: theme.fontFamily.regular,
   fontSize: getSpacing(3.75),
   height: '100%',
+  ...(Platform.OS === 'web' && { width: 'inherit' }),
 }))

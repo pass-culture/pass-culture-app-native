@@ -55,12 +55,22 @@ Array [
       }
     />
     <View
-      height={20}
-      width={20}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={20}
+        width={20}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={1}

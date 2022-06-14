@@ -21,6 +21,7 @@ export interface TouchableOpacityButtonProps {
   numberOfLines?: number
   center?: boolean
   focusOutlineColor?: ColorsEnum
+  backgroundColor?: string
 }
 
 export interface AppButtonInnerProps {
@@ -64,7 +65,6 @@ export interface BaseButtonProps {
   href?: string
   target?: string
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
-  maxWidth?: string | number
 }
 
 export interface AppButtonProps extends BaseButtonProps {
@@ -73,6 +73,7 @@ export interface AppButtonProps extends BaseButtonProps {
   title?: ComponentType<TextProps>
   style?: StyleProp<ViewStyle> | CSSProperties
   className?: string
+  backgroundColor?: string
 }
 
 export type Only<TestedType, StandardType> = TestedType &

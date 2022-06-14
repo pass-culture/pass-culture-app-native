@@ -145,19 +145,24 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-dkPtRN gseCFZ sc-gKclnd jTmzXN"
+                    class="sc-dkPtRN gPFOJd sc-gKclnd ecJASa"
                     tabindex="0"
                     type="button"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="button-icon"
+                      style="flex-shrink: 0;"
                     >
                       <div
-                        class="css-text-901oao"
-                        dir="auto"
+                        class="css-view-1dbjc4n"
+                        data-testid="button-icon"
                       >
-                        button-icon-SVG-Mock
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          button-icon-SVG-Mock
+                        </div>
                       </div>
                     </div>
                     <div
@@ -336,19 +341,24 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-dkPtRN gseCFZ sc-gKclnd jTmzXN"
+                  class="sc-dkPtRN gPFOJd sc-gKclnd ecJASa"
                   tabindex="0"
                   type="button"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="button-icon"
+                    style="flex-shrink: 0;"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
+                      class="css-view-1dbjc4n"
+                      data-testid="button-icon"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        button-icon-SVG-Mock
+                      </div>
                     </div>
                   </div>
                   <div

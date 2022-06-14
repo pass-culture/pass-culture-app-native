@@ -334,7 +334,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     }
   >
     <button
-      className="sc-bdvvtL hWVHSw sc-jRQBWg hAQjLf"
+      className="sc-bdvvtL kUaFXY sc-jRQBWg kyMyBM"
       onClick={[Function]}
       onDoubleClick={[Function]}
       tabIndex={0}

@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { Fragment } from 'react'
+import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppButtonInnerProps } from 'ui/components/buttons/AppButton/types'
@@ -22,7 +23,11 @@ export function AppButtonInner({
         />
       ) : (
         <Fragment>
-          {!!Icon && <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />}
+          {!!Icon && (
+            <IconWrapper>
+              <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />
+            </IconWrapper>
+          )}
           {!!Title && (
             <Title
               adjustsFontSizeToFit={adjustsFontSizeToFit}
@@ -36,3 +41,5 @@ export function AppButtonInner({
     </Fragment>
   )
 }
+
+const IconWrapper = styled.View({ flexShrink: 0 })

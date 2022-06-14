@@ -356,14 +356,24 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               testID="C’est quoi ÉduConnect ?"
             >
               <View
-                fill="#161617"
-                height={16}
-                testID="button-icon"
-                width={16}
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  fill="#161617"
+                  height={16}
+                  testID="button-icon"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 adjustsFontSizeToFit={false}
@@ -417,8 +427,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "minHeight": 40,
                   "opacity": 1,
                   "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
                   "paddingTop": 2,
                   "userSelect": "auto",
                   "width": "100%",
@@ -531,14 +541,24 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               testID="Identification manuelle"
             >
               <View
-                fill="#161617"
-                height={20}
-                testID="button-icon"
-                width={20}
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  fill="#161617"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 adjustsFontSizeToFit={false}

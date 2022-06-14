@@ -197,8 +197,8 @@ exports[`NoContentError should render correctly 1`] = `
             "minHeight": 48,
             "opacity": 1,
             "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
+            "paddingLeft": 24,
+            "paddingRight": 24,
             "paddingTop": 2,
             "userSelect": "auto",
             "width": "100%",
@@ -207,13 +207,23 @@ exports[`NoContentError should render correctly 1`] = `
         testID="Rechercher une offre"
       >
         <View
-          height={24}
-          testID="button-icon"
-          width={24}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            testID="button-icon"
+            width={24}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           adjustsFontSizeToFit={false}

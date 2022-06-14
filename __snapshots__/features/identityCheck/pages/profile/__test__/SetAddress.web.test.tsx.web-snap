@@ -121,7 +121,7 @@ Object {
                         id="testUuidV4"
                         placeholder="Ex : 34 avenue de l'Opéra"
                         spellcheck="false"
-                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
                         type="text"
                         value=""
                       />
@@ -157,7 +157,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                    class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="submit"
@@ -314,7 +314,7 @@ Object {
                       id="testUuidV4"
                       placeholder="Ex : 34 avenue de l'Opéra"
                       spellcheck="false"
-                      style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                      style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
                       type="text"
                       value=""
                     />
@@ -350,7 +350,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-dkPtRN gseCFZ sc-gKclnd jeEaJc"
+                  class="sc-dkPtRN dWzRNU sc-gKclnd ecJASa"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"

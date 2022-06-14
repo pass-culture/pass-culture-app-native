@@ -1480,6 +1480,7 @@ Array [
                         "paddingLeft": "0px",
                         "paddingRight": "0px",
                         "paddingTop": "0px",
+                        "width": "inherit",
                       }
                     }
                     type="text"
@@ -1760,6 +1761,7 @@ Array [
                         "paddingLeft": "0px",
                         "paddingRight": "0px",
                         "paddingTop": "0px",
+                        "width": "inherit",
                       }
                     }
                     type="text"
@@ -1906,6 +1908,7 @@ Array [
                         "paddingLeft": "0px",
                         "paddingRight": "0px",
                         "paddingTop": "0px",
+                        "width": "inherit",
                       }
                     }
                     type="text"
@@ -2052,6 +2055,7 @@ Array [
                         "paddingLeft": "0px",
                         "paddingRight": "0px",
                         "paddingTop": "0px",
+                        "width": "inherit",
                       }
                     }
                     type="text"
@@ -2198,6 +2202,7 @@ Array [
                         "paddingLeft": "0px",
                         "paddingRight": "0px",
                         "paddingTop": "0px",
+                        "width": "inherit",
                       }
                     }
                     type="text"
@@ -2478,6 +2483,7 @@ Array [
                         "paddingLeft": "0px",
                         "paddingRight": "0px",
                         "paddingTop": "0px",
+                        "width": "inherit",
                       }
                     }
                     type="text"
@@ -2570,7 +2576,7 @@ Array [
           Seulement les "ids" disposent de validation !
         </div>
         <button
-          className="sc-jRQBWg cuWqud sc-jrQzAO iuFRFd"
+          className="sc-jRQBWg kDsamd sc-jrQzAO knTdKe"
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}

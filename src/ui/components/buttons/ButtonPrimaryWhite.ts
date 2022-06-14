@@ -38,6 +38,7 @@ export const ButtonPrimaryWhite = styledButton(AppButton).attrs<BaseButtonProps>
       title: Title,
       focusOutlineColor:
         Platform.OS === 'web' ? theme.buttons.primaryWhite.outlineColor : undefined,
+      backgroundColor: theme.buttons.primaryWhite.backgroundColor,
     }
   }
 )(({ theme }) => {
@@ -51,7 +52,6 @@ export const ButtonPrimaryWhite = styledButton(AppButton).attrs<BaseButtonProps>
   }
 
   return {
-    backgroundColor: theme.buttons.primaryWhite.backgroundColor,
     ...webOnly,
   }
 })

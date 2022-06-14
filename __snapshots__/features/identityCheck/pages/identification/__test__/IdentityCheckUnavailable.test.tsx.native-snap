@@ -286,13 +286,23 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           adjustsFontSizeToFit={false}

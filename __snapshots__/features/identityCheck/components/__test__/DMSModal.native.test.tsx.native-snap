@@ -331,13 +331,23 @@ exports[`<DMSModal/> should render correctly 1`] = `
               testID="Je suis de nationalité française"
             >
               <View
-                height={20}
-                testID="button-icon"
-                width={20}
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 adjustsFontSizeToFit={false}
@@ -415,13 +425,23 @@ exports[`<DMSModal/> should render correctly 1`] = `
               testID="Je suis de nationalité étrangère"
             >
               <View
-                height={20}
-                testID="button-icon"
-                width={20}
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 adjustsFontSizeToFit={false}

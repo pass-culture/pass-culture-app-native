@@ -4,7 +4,9 @@ import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacityButtonProps } from 'ui/components/buttons/AppButton/types'
+import { getEffectiveBorderRadius } from 'ui/components/buttons/AppButton/utils'
 import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
+import { padding } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type ButtonStyles = InterpolationFunction<
@@ -44,6 +46,7 @@ export const appButtonStyles: ButtonStyles = ({
   justifyContent,
   numberOfLines,
   center,
+  backgroundColor,
 }: ButtonStylesArgs) => {
   const heightButton = () => {
     if (buttonHeight === 'extraSmall') return theme.buttons.buttonHeights.extraSmall
@@ -51,14 +54,27 @@ export const appButtonStyles: ButtonStyles = ({
     return theme.buttons.buttonHeights.small
   }
 
+  const defaultPadding = 2
+
+  const hasBackground = backgroundColor !== undefined
+  const borderRadius = theme.borderRadius.button
+  const effectiveBorderRadius = getEffectiveBorderRadius({
+    borderRadius,
+    buttonHeight: heightButton(),
+  })
+  const horizontalPadding = hasBackground ? effectiveBorderRadius : defaultPadding
+
   return {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: justifyContent ?? 'center',
-    borderRadius: theme.borderRadius.button,
-    padding: 2,
+    borderRadius,
+    padding: defaultPadding,
+    paddingLeft: horizontalPadding,
+    paddingRight: horizontalPadding,
     minHeight: heightButton(),
     width: '100%',
+    backgroundColor,
     ...(center ? { alignSelf: 'center' } : {}),
     ...(fullWidth ? {} : { maxWidth: theme.contentPage.maxWidth }),
     ...(mediumWidth ? { maxWidth: theme.contentPage.mediumWidth } : {}),
@@ -67,7 +83,7 @@ export const appButtonStyles: ButtonStyles = ({
           borderWidth: 0,
           borderRadius: 0,
           marginTop: 0,
-          padding: 0,
+          ...padding(0),
           width: 'auto',
           minHeight: inlineHeight ?? theme.buttons.buttonHeights.inline,
         }

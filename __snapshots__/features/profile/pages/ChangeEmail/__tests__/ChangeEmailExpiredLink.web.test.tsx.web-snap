@@ -84,7 +84,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
-              class="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+              class="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
               tabindex="0"
               type="button"
             >
@@ -101,19 +101,24 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               style="height: 16px;"
             />
             <button
-              class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+              class="sc-bdvvtL iPuvqD sc-hKwDye gvtKtm"
               tabindex="0"
               type="button"
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="button-icon"
+                style="flex-shrink: 0;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
+                  data-testid="button-icon"
                 >
-                  button-icon-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    button-icon-SVG-Mock
+                  </div>
                 </div>
               </div>
               <div
@@ -213,7 +218,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
-            class="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+            class="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
             tabindex="0"
             type="button"
           >
@@ -230,19 +235,24 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style="height: 16px;"
           />
           <button
-            class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+            class="sc-bdvvtL iPuvqD sc-hKwDye gvtKtm"
             tabindex="0"
             type="button"
           >
             <div
               class="css-view-1dbjc4n"
-              data-testid="button-icon"
+              style="flex-shrink: 0;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
               >
-                button-icon-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
               </div>
             </div>
             <div
@@ -399,7 +409,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
-              class="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+              class="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
               tabindex="0"
               type="button"
             >
@@ -416,19 +426,24 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               style="height: 16px;"
             />
             <button
-              class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+              class="sc-bdvvtL iPuvqD sc-hKwDye gvtKtm"
               tabindex="0"
               type="button"
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="button-icon"
+                style="flex-shrink: 0;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
+                  data-testid="button-icon"
                 >
-                  button-icon-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    button-icon-SVG-Mock
+                  </div>
                 </div>
               </div>
               <div
@@ -528,7 +543,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
-            class="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+            class="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
             tabindex="0"
             type="button"
           >
@@ -545,19 +560,24 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style="height: 16px;"
           />
           <button
-            class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+            class="sc-bdvvtL iPuvqD sc-hKwDye gvtKtm"
             tabindex="0"
             type="button"
           >
             <div
               class="css-view-1dbjc4n"
-              data-testid="button-icon"
+              style="flex-shrink: 0;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
               >
-                button-icon-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
               </div>
             </div>
             <div

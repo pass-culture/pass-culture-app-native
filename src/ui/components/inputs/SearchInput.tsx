@@ -38,6 +38,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const searchInputID = props.searchInputID ?? uuidv4()
   const searchInput = useRef<RNTextInput>(null)
 
+  const shouldShowLocationButton = !!onPressLocationButton
+
   function onFocus() {
     setIsFocus(true)
     if (props?.onFocusState) props.onFocusState(true)
@@ -63,11 +65,14 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
       <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
-        focusOutlineColor={focusOutlineColor}>
+        focusOutlineColor={focusOutlineColor}
+        shouldShowLocationButton={shouldShowLocationButton}>
         <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (
           <React.Fragment>
-            <LeftIcon />
+            <LeftIconContainer>
+              <LeftIcon />
+            </LeftIconContainer>
             <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>
         ) : null}
@@ -84,16 +89,14 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           enablesReturnKeyAutomatically={true}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
-        {onPressLocationButton ? (
-          <StyledButtonPrimary
+        {shouldShowLocationButton ? (
+          <LocationButton
             testID="locationButton"
             wording={locationLabel || ''}
             onPress={onPressLocationButton}
             icon={LocationPointer}
-            textSize={getSpacing(3)}
             buttonHeight="extraSmall"
             ellipsizeMode="tail"
-            maxWidth={getSpacing(23)}
           />
         ) : null}
         {value.length > 0 && (
@@ -111,6 +114,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
+const LeftIconContainer = styled.View({ flexShrink: 0 })
+
 const RightIconContainer = styledButton(Touchable)({
   position: 'absolute',
   right: getSpacing(1),
@@ -125,11 +130,15 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
   selectionColor: theme.colors.greyDark,
 }))``
 
-const StyledInputContainer = styled(InputContainer)({
-  outlineOffset: 0,
-  borderRadius: getSpacing(6),
-})
+const StyledInputContainer = styled(InputContainer)(
+  ({ shouldShowLocationButton }: { shouldShowLocationButton: boolean }) => ({
+    outlineOffset: 0,
+    borderRadius: getSpacing(6),
+    ...(shouldShowLocationButton ? { paddingRight: getSpacing(2) } : {}),
+  })
+)
 
-const StyledButtonPrimary = styledButton(ButtonPrimary)({
-  maxWidth: getSpacing(34),
+const LocationButton = styledButton(ButtonPrimary)({
+  // max width corresponds to the size of "Autour de moi" state.
+  maxWidth: 142,
 })

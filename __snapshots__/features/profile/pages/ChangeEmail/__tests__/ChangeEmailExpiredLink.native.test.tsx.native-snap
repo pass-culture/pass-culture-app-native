@@ -237,8 +237,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "minHeight": 40,
             "opacity": 1,
             "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
             "paddingTop": 2,
             "userSelect": "auto",
             "width": "100%",
@@ -308,13 +308,23 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -588,8 +598,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "minHeight": 40,
             "opacity": 1,
             "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
             "paddingTop": 2,
             "userSelect": "auto",
             "width": "100%",
@@ -659,13 +669,23 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
         <Text
           adjustsFontSizeToFit={false}

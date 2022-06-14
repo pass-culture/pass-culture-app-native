@@ -961,20 +961,25 @@ Object {
                 style="align-items: flex-start;"
               >
                 <a
-                  class="sc-hKwDye ksRHhg sc-jRQBWg CQePl"
+                  class="sc-hKwDye yVdEp sc-jRQBWg CQePl"
                   href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                   tabindex="0"
                   target="_blank"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="button-icon"
+                    style="flex-shrink: 0;"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
+                      class="css-view-1dbjc4n"
+                      data-testid="button-icon"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        button-icon-SVG-Mock
+                      </div>
                     </div>
                   </div>
                   <div
@@ -2483,20 +2488,25 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-hKwDye ksRHhg sc-jRQBWg CQePl"
+                class="sc-hKwDye yVdEp sc-jRQBWg CQePl"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="button-icon"
+                  style="flex-shrink: 0;"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
-                    button-icon-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      button-icon-SVG-Mock
+                    </div>
                   </div>
                 </div>
                 <div

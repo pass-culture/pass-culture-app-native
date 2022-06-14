@@ -55,10 +55,7 @@ const Container = styled.View(({ theme }) => ({
   padding: getSpacing(4),
 }))
 
-const ButtonContainer = styled.View({
-  maxWidth: getSpacing(44),
-  width: '100%',
-})
+const ButtonContainer = styled.View({})
 
 const Explanation = styled(Typo.Body)(({ theme }) => ({
   flex: 1,

@@ -356,8 +356,8 @@ Array [
               "minHeight": 40,
               "opacity": 1,
               "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
               "paddingTop": 2,
               "userSelect": "auto",
               "width": "100%",
@@ -427,13 +427,23 @@ Array [
           testID="Consulter l’article d’aide"
         >
           <View
-            height={20}
-            testID="button-icon"
-            width={20}
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              testID="button-icon"
+              width={20}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
           </View>
           <Text
             adjustsFontSizeToFit={false}
