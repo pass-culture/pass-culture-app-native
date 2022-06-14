@@ -4,9 +4,9 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { queriesToInvalidateOnUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -63,8 +63,9 @@ describe('<SuspendedAccount />', () => {
 
     useMutationCallbacks.onSuccess()
     await waitForExpect(() => {
-      expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.USER_PROFILE)
-      expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
+        expect(queryClient.invalidateQueries).toHaveBeenCalledWith(queryKey)
+      )
       expect(navigate).toHaveBeenCalledWith('AccountReactivationSuccess')
     })
   })
