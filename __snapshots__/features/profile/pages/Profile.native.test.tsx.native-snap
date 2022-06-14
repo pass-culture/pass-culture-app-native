@@ -517,7 +517,7 @@ exports[`Profile component should render correctly 1`] = `
                           Oui
                         </Text>
                         <View
-                          accessibilityRole="switch"
+                          accessibilityRole="checkbox"
                           accessibilityState={
                             Object {
                               "checked": true,

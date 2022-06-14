@@ -2681,7 +2681,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               Non
             </Text>
             <View
-              accessibilityRole="switch"
+              accessibilityRole="checkbox"
               accessibilityState={
                 Object {
                   "checked": false,
@@ -2859,7 +2859,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               Non
             </Text>
             <View
-              accessibilityRole="switch"
+              accessibilityRole="checkbox"
               accessibilityState={
                 Object {
                   "checked": false,
@@ -3037,7 +3037,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               Non
             </Text>
             <View
-              accessibilityRole="switch"
+              accessibilityRole="checkbox"
               accessibilityState={
                 Object {
                   "checked": false,
@@ -3215,7 +3215,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               Non
             </Text>
             <View
-              accessibilityRole="switch"
+              accessibilityRole="checkbox"
               accessibilityState={
                 Object {
                   "checked": false,
@@ -3418,7 +3418,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               Non
             </Text>
             <View
-              accessibilityRole="switch"
+              accessibilityRole="checkbox"
               accessibilityState={
                 Object {
                   "checked": false,

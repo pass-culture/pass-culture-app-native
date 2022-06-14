@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -20,6 +21,7 @@ interface Props {
 
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   const { isMobileViewport } = useTheme()
+  const labelID = uuidv4()
   const checkboxID = uuidv4()
   const {
     icon,
@@ -46,12 +48,17 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
         </InputLabel>
       </TitleContainer>
       <FilterSwitchLabelContainer>
-        {toggleLabel && !isMobileViewport ? <ToggleLabel>{toggleLabel}</ToggleLabel> : null}
+        {toggleLabel && !isMobileViewport ? (
+          <ToggleLabel id={labelID} htmlFor={checkboxID}>
+            {toggleLabel}
+          </ToggleLabel>
+        ) : null}
         <FilterSwitch
           checkboxID={checkboxID}
           active={active}
           toggle={toggle}
           disabled={disabled}
+          accessibilityLabelledBy={labelID}
           accessibilityDescribedBy={accessibilityDescribedBy}
         />
       </FilterSwitchLabelContainer>
@@ -76,6 +83,7 @@ const FilterSwitchLabelContainer = styled.View({
   alignItems: 'center',
 })
 
-const ToggleLabel = styled(Typo.Caption)(({ theme }) => ({
+const ToggleLabel = styledInputLabel(InputLabel)(({ theme }) => ({
+  ...theme.typography.caption,
   color: theme.colors.greyDark,
 }))

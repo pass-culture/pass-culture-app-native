@@ -66,29 +66,20 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
     >
       <label
         className=\\"sc-bdvvtL gQnzaU\\"
-@@ -64,13 +74,27 @@
-          \\"WebkitFlexDirection\\": \\"row\\",
-          \\"alignItems\\": \\"center\\",
-          \\"flexDirection\\": \\"row\\",
+@@ -67,10 +77,18 @@
           \\"msFlexAlign\\": \\"center\\",
           \\"msFlexDirection\\": \\"row\\",
-+       }
-+     }
-+   >
-+     <div
-+       className=\\"css-text-901oao\\"
-+       dir=\\"ltr\\"
-+       style={
-+         Object {
-+           \\"color\\": \\"rgba(105,106,111,1.00)\\",
-+           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+           \\"fontSize\\": \\"12px\\",
-+           \\"lineHeight\\": \\"16px\\",
-          }
         }
-      >
+      }
+    >
++     <label
++       className=\\"sc-bdvvtL sc-gsDKAQ gQnzaU kBdLMI\\"
++       dir=\\"ltr\\"
++       htmlFor=\\"testUuidV4\\"
++       id=\\"testUuidV4\\"
++     >
 +       Partager ma position
-+     </div>
++     </label>
       <div
         className=\\"css-view-1dbjc4n\\"
         style={
