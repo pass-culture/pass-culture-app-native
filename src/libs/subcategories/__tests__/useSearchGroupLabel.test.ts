@@ -14,7 +14,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'Musique'}
     ${SearchGroupNameEnum.COURS}                      | ${'Cours, ateliers'}
     ${SearchGroupNameEnum.PRESSE}                     | ${'Presse, médias'}
-    ${SearchGroupNameEnum.SPECTACLE}                  | ${'Spectacles'}
+    ${SearchGroupNameEnum.CONCERTS_FESTIVALS}                  | ${'Spectacles'}
     ${SearchGroupNameEnum.INSTRUMENT}                 | ${'Instruments de musique'}
     ${SearchGroupNameEnum.MATERIEL}                   | ${'Beaux-Arts'}
     ${SearchGroupNameEnum.NONE}                       | ${'Toutes les catégories'}

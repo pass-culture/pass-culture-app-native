@@ -13,7 +13,7 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
   ['Matériel arts créatifs']: SearchGroupNameEnum.MATERIEL,
   ['Musique']: SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
   ['Presse']: SearchGroupNameEnum.PRESSE,
-  ['Spectacles']: SearchGroupNameEnum.SPECTACLE,
+  ['Spectacles']: SearchGroupNameEnum.CONCERTS_FESTIVALS,
   ['Visites, expositions']: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
 }
 

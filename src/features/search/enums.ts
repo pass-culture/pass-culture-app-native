@@ -45,9 +45,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Music,
     facetFilter: SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
   },
-  [SearchGroupNameEnum.SPECTACLE]: {
+  [SearchGroupNameEnum.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Show,
-    facetFilter: SearchGroupNameEnum.SPECTACLE,
+    facetFilter: SearchGroupNameEnum.CONCERTS_FESTIVALS,
   },
   [SearchGroupNameEnum.COURS]: {
     icon: categoriesIcons.Workshop,
