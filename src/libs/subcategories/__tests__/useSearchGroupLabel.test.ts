@@ -3,21 +3,21 @@ import { useSearchGroupLabel } from 'libs/subcategories'
 
 describe('useCategoryId', () => {
   it.each`
-    SearchGroupName                      | SearchGroupLabel
-    ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}          | ${'Films, séries'}
-    ${SearchGroupNameEnum.CARTES_JEUNES} | ${'Cartes jeunes'}
+    SearchGroupName                                   | SearchGroupLabel
+    ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}        | ${'Films, séries'}
+    ${SearchGroupNameEnum.CARTES_JEUNES}              | ${'Cartes jeunes'}
     ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}        | ${'Cinéma'}
-    ${SearchGroupNameEnum.CONFERENCE}    | ${'Conférences, rencontres'}
-    ${SearchGroupNameEnum.JEU}           | ${'Jeux'}
-    ${SearchGroupNameEnum.LIVRE}         | ${'Livre'}
-    ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES}        | ${'Visites, expositions'}
-    ${SearchGroupNameEnum.MUSIQUE}       | ${'Musique'}
-    ${SearchGroupNameEnum.COURS}         | ${'Cours, ateliers'}
-    ${SearchGroupNameEnum.PRESSE}        | ${'Presse, médias'}
-    ${SearchGroupNameEnum.SPECTACLE}     | ${'Spectacles'}
-    ${SearchGroupNameEnum.INSTRUMENT}    | ${'Instruments de musique'}
-    ${SearchGroupNameEnum.MATERIEL}      | ${'Beaux-Arts'}
-    ${SearchGroupNameEnum.NONE}          | ${'Toutes les catégories'}
+    ${SearchGroupNameEnum.CONFERENCE}                 | ${'Conférences, rencontres'}
+    ${SearchGroupNameEnum.JEU}                        | ${'Jeux'}
+    ${SearchGroupNameEnum.LIVRE}                      | ${'Livre'}
+    ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES} | ${'Visites, expositions'}
+    ${SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'Musique'}
+    ${SearchGroupNameEnum.COURS}                      | ${'Cours, ateliers'}
+    ${SearchGroupNameEnum.PRESSE}                     | ${'Presse, médias'}
+    ${SearchGroupNameEnum.SPECTACLE}                  | ${'Spectacles'}
+    ${SearchGroupNameEnum.INSTRUMENT}                 | ${'Instruments de musique'}
+    ${SearchGroupNameEnum.MATERIEL}                   | ${'Beaux-Arts'}
+    ${SearchGroupNameEnum.NONE}                       | ${'Toutes les catégories'}
   `(
     'useSearchGroupLabel($SearchGroupName) = $category',
     ({ SearchGroupName, SearchGroupLabel }) => {

@@ -41,9 +41,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Museum,
     facetFilter: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
   },
-  [SearchGroupNameEnum.MUSIQUE]: {
+  [SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
     icon: categoriesIcons.Music,
-    facetFilter: SearchGroupNameEnum.MUSIQUE,
+    facetFilter: SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
   },
   [SearchGroupNameEnum.SPECTACLE]: {
     icon: categoriesIcons.Show,

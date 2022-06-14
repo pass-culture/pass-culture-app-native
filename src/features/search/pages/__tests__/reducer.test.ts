@@ -42,7 +42,7 @@ describe('Search reducer', () => {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
         SearchGroupNameEnum.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnum.MUSIQUE,
+        SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
         SearchGroupNameEnum.COURS,
         SearchGroupNameEnum.FILMS_SERIES_CINEMA,
         SearchGroupNameEnum.JEU,
@@ -61,7 +61,10 @@ describe('Search reducer', () => {
 
   it('should handle SET_STATE_FROM_NAVIGATE - MAX_PRICE', () => {
     const parameters = {
-      offerCategories: [SearchGroupNameEnum.FILMS_SERIES_CINEMA, SearchGroupNameEnum.MUSIQUE],
+      offerCategories: [
+        SearchGroupNameEnum.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      ],
       priceRange: [30, 500],
     }
     const action: Action = {
@@ -70,7 +73,10 @@ describe('Search reducer', () => {
     }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
-      offerCategories: [SearchGroupNameEnum.FILMS_SERIES_CINEMA, SearchGroupNameEnum.MUSIQUE],
+      offerCategories: [
+        SearchGroupNameEnum.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      ],
       priceRange: [30, MAX_PRICE],
     })
   })
