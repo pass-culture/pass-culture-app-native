@@ -3033,7 +3033,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="styled-input-container"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(105,106,111,1.00); border-right-color: rgba(105,106,111,1.00); border-bottom-color: rgba(105,106,111,1.00); border-left-color: rgba(105,106,111,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 17px 4px 17px; width: 100%;"
             >
               <div
                 class="css-text-901oao"
@@ -4091,7 +4091,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="styled-input-container"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(105,106,111,1.00); border-right-color: rgba(105,106,111,1.00); border-bottom-color: rgba(105,106,111,1.00); border-left-color: rgba(105,106,111,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 17px 4px 17px; width: 100%;"
           >
             <div
               class="css-text-901oao"

@@ -90,7 +90,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -279,7 +279,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -313,7 +313,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -465,7 +465,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -499,7 +499,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -651,7 +651,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -685,7 +685,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#696A6F\\",
+-                     \\"borderColor\\": \\"#90949D\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",

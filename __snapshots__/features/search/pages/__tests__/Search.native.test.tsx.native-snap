@@ -73,7 +73,6 @@ exports[`Search component should render Search 1`] = `
       Recherche une offre, un titre, un lieu...
     </Text>
     <View
-      focusOutlineColor="#161617"
       height="regular"
       isDisabled={false}
       isError={false}
@@ -83,15 +82,15 @@ exports[`Search component should render Search 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
-            "borderColor": "#696A6F",
+            "borderColor": "#90949D",
             "borderRadius": 22,
             "borderStyle": "solid",
             "borderWidth": 1,
             "flexDirection": "row",
             "height": 48,
             "paddingBottom": 4,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 17,
+            "paddingRight": 17,
             "paddingTop": 4,
             "width": "100%",
           },

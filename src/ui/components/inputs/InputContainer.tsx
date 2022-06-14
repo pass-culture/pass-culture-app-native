@@ -1,18 +1,16 @@
 import React from 'react'
-import { ViewStyle, View, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import { ViewStyle, View } from 'react-native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
-import { padding } from 'ui/theme'
+import { getSpacing, padding } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type Props = {
   isError?: boolean
   isFocus?: boolean
   isDisabled?: boolean
   inputHeight?: 'small' | 'regular' | 'tall'
-  focusOutlineColor?: ColorsEnum
   style?: ViewStyle
 }
 
@@ -23,6 +21,8 @@ const defaultProps: Props = {
   isDisabled: false,
 }
 
+const BORDER_FOCUS_INCREASE = 0.25
+
 export const InputContainer: React.FC<Props> = (props) => (
   <StyledView
     testID="styled-input-container"
@@ -30,7 +30,6 @@ export const InputContainer: React.FC<Props> = (props) => (
     isFocus={props.isFocus}
     isError={props.isError}
     isDisabled={props.isDisabled}
-    focusOutlineColor={props.focusOutlineColor}
     style={props.style}>
     {props.children}
   </StyledView>
@@ -38,13 +37,31 @@ export const InputContainer: React.FC<Props> = (props) => (
 
 InputContainer.defaultProps = defaultProps
 
+const getBorderColor = (
+  theme: DefaultTheme,
+  isFocus?: boolean,
+  isDisabled?: boolean,
+  isError?: boolean
+) => {
+  if (isDisabled) {
+    return undefined
+  }
+  if (isFocus) {
+    return theme.colors.black
+  }
+  if (isError) {
+    return theme.colors.error
+  }
+  return theme.colors.greySemiDark
+}
+
 const StyledView = styled(View)<{
   height: Props['inputHeight']
   isFocus?: boolean
   isError?: boolean
   isDisabled?: boolean
   focusOutlineColor?: ColorsEnum
-}>(({ height, isFocus, isError, isDisabled, focusOutlineColor, theme }) => {
+}>(({ height, isFocus, isError, isDisabled, theme }) => {
   const getHeightValue = () => {
     if (height === 'small') {
       return theme.inputs.height.small
@@ -52,33 +69,28 @@ const StyledView = styled(View)<{
     return height === 'regular' ? theme.inputs.height.regular : theme.inputs.height.tall
   }
 
-  const getBorderColor = () => {
-    if (isDisabled) {
-      return undefined
-    }
-    return isError ? theme.colors.error : theme.colors.greyDark
-  }
-
-  const focusRules =
-    Platform.OS === 'web' && focusOutlineColor
-      ? customFocusOutline(theme, focusOutlineColor, isFocus)
-      : { borderColor: theme.colors.primary }
+  const borderWidth = isFocus ? getSpacing(0.25 + BORDER_FOCUS_INCREASE) : getSpacing(0.25)
+  const horizontalPadding = isFocus ? 4 : 4 + BORDER_FOCUS_INCREASE
+  const tallHorizontalPadding = isFocus ? 3 : 3 + BORDER_FOCUS_INCREASE
 
   return {
     height: getHeightValue(),
     width: '100%',
     flexDirection: 'row',
     borderStyle: 'solid',
-    borderWidth: '1px',
-    borderColor: getBorderColor(),
+    borderWidth,
+    borderColor: getBorderColor(theme, isFocus, isDisabled, isError),
     backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
-    ...(isFocus && focusRules),
     ...(height === 'tall'
       ? {
-          ...padding(2, 3),
+          ...padding(2, tallHorizontalPadding), // This assures that things don't move when the border width changes on focus
           alignItems: 'flex-start',
           borderRadius: 16,
         }
-      : { ...padding(1, 4), alignItems: 'center', borderRadius: 22 }),
+      : {
+          ...padding(1, horizontalPadding), // This assures that things don't move when the border width changes on focus
+          alignItems: 'center',
+          borderRadius: 22,
+        }),
   }
 })
