@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
+import { SetPhoneNumberDeprecated } from 'features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated'
 import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -54,10 +54,10 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     secure: true,
   },
   // Phone Validation
-  // TODO (PC-15247): replace SetPhoneNumber with NewSetPhoneNumber
+  // TODO (PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
   {
-    name: 'NewSetPhoneNumber',
-    component: SetPhoneNumber,
+    name: 'SetPhoneNumber',
+    component: SetPhoneNumberDeprecated,
     path: 'validation-telephone/numero',
     options: { title: t`Ton numéro de téléphone` },
     secure: true,

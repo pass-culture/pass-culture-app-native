@@ -11,7 +11,7 @@ import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
-import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
+import { SetPhoneNumberDeprecated } from 'features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated'
 import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
@@ -343,8 +343,8 @@ export const routes: Route[] = [
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   {
-    name: 'SetPhoneNumber',
-    component: SetPhoneNumber,
+    name: 'SetPhoneNumberDeprecated',
+    component: SetPhoneNumberDeprecated,
     path: 'creation-compte/telephone',
     options: { title: t`Ton numéro de téléphone` },
   },

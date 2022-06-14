@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
+import { SetPhoneNumberDeprecated } from 'features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -126,7 +126,7 @@ describe('SetPhoneNumber', () => {
         fireEvent.changeText(input, '600000000')
       })
 
-      rerender(<SetPhoneNumber />)
+      rerender(<SetPhoneNumberDeprecated />)
 
       fireEvent.press(continueButton)
 
@@ -194,7 +194,7 @@ describe('SetPhoneNumber', () => {
 })
 
 function renderSetPhoneNumber() {
-  return render(<SetPhoneNumber />, {
+  return render(<SetPhoneNumberDeprecated />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
