@@ -256,7 +256,7 @@ describe('getCtaWordingAndAction', () => {
     describe('underage beneficiary', () => {
       it.each`
         isEvent  | expected                     | disabled | isDigital | category                          | price | isForbiddenToUnderage | showBookingModal
-        ${false} | ${'Réserver'}                | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20} | ${false}              | ${true}
+        ${false} | ${'Réserver'}                | ${false} | ${true}   | ${SearchGroupNameEnum.MEDIA_PRESSE}     | ${20} | ${false}              | ${true}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}       | ${20} | ${false}              | ${true}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}       | ${0}  | ${false}              | ${true}
         ${false} | ${'Réserver'}                | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}  | ${false}              | ${true}

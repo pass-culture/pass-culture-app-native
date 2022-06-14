@@ -13,7 +13,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES} | ${'Visites, expositions'}
     ${SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'Musique'}
     ${SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS}      | ${'Cours, ateliers'}
-    ${SearchGroupNameEnum.PRESSE}                     | ${'Presse, médias'}
+    ${SearchGroupNameEnum.MEDIA_PRESSE}               | ${'Presse, médias'}
     ${SearchGroupNameEnum.CONCERTS_FESTIVALS}         | ${'Spectacles'}
     ${SearchGroupNameEnum.INSTRUMENT}                 | ${'Instruments de musique'}
     ${SearchGroupNameEnum.MATERIEL}                   | ${'Beaux-Arts'}
