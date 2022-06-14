@@ -12,25 +12,21 @@ describe('CategoriesButtons', () => {
         categories={[
           {
             label: 'Musique - label',
-            color: 'blue',
             Icon: categoriesIcons.Music,
             onPress: jest.fn(),
           },
           {
             label: 'Cinéma - label',
-            color: 'royalblue',
             Icon: categoriesIcons.Cinema,
             onPress: jest.fn(),
           },
           {
             label: 'Livre - label',
-            color: 'purple',
             Icon: categoriesIcons.Book,
             onPress: jest.fn(),
           },
           {
             label: 'Théâtre - label',
-            color: 'green',
             Icon: categoriesIcons.Workshop,
             onPress: jest.fn(),
           },

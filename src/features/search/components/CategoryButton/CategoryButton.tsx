@@ -7,7 +7,7 @@ import { getSpacing, Typo } from 'ui/theme'
 export type CategoryButtonProps = {
   label: string
   Icon: FunctionComponent<IconInterface>
-  color: string
+  color?: string
   onPress: () => void
   children?: never
 }
@@ -22,7 +22,8 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
     () =>
       styled(Icon).attrs(({ theme }) => ({
         size: theme.icons.sizes.small,
-        color: theme.colors.black,
+        color: color ? theme.colors.black : theme.colors.primary,
+        color2: color ? undefined : theme.colors.secondary,
       }))({}),
     [Icon, color]
   )
@@ -35,7 +36,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 }
 
-const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
+const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor?: string }>(
   ({ theme, borderLeftColor }) => ({
     flexDirection: 'row',
     alignItems: 'center',
@@ -44,11 +45,11 @@ const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
     borderTopColor: theme.colors.greySemiDark,
     borderBottomColor: theme.colors.greySemiDark,
     borderRightColor: theme.colors.greySemiDark,
-    borderLeftColor,
+    borderLeftColor: borderLeftColor ?? theme.colors.greySemiDark,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderRightWidth: 1,
-    borderLeftWidth: getSpacing(1),
+    borderLeftWidth: borderLeftColor ? getSpacing(1) : 1,
     paddingLeft: getSpacing(2),
     paddingRight: getSpacing(3),
   })
