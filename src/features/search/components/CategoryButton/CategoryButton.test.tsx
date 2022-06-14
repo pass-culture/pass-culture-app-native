@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { CategoryButton } from 'features/search/components/CategoryButton'
 import { render } from 'tests/utils'
 import { Bookstore } from 'ui/svg/icons/bicolor/Bookstore'
+
+import { CategoryButton } from './CategoryButton'
 
 describe('CategoryButton', () => {
   it('should render correctly', () => {
