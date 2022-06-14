@@ -33,9 +33,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Card,
     facetFilter: SearchGroupNameEnum.CARTES_JEUNES,
   },
-  [SearchGroupNameEnum.CINEMA]: {
+  [SearchGroupNameEnum.FILMS_SERIES_CINEMA]: {
     icon: categoriesIcons.Cinema,
-    facetFilter: SearchGroupNameEnum.CINEMA,
+    facetFilter: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
   },
   [SearchGroupNameEnum.VISITE]: {
     icon: categoriesIcons.Museum,
@@ -56,10 +56,6 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
   [SearchGroupNameEnum.LIVRE]: {
     icon: categoriesIcons.Book,
     facetFilter: SearchGroupNameEnum.LIVRE,
-  },
-  [SearchGroupNameEnum.FILM]: {
-    icon: categoriesIcons.Streaming,
-    facetFilter: SearchGroupNameEnum.FILM,
   },
   [SearchGroupNameEnum.PRESSE]: {
     icon: categoriesIcons.Press,

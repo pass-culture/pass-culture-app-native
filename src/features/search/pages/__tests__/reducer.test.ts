@@ -41,10 +41,10 @@ describe('Search reducer', () => {
     const parameters = {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
-        SearchGroupNameEnum.CINEMA,
+        SearchGroupNameEnum.FILMS_SERIES_CINEMA,
         SearchGroupNameEnum.MUSIQUE,
         SearchGroupNameEnum.COURS,
-        SearchGroupNameEnum.FILM,
+        SearchGroupNameEnum.FILMS_SERIES_CINEMA,
         SearchGroupNameEnum.JEU,
         SearchGroupNameEnum.CONFERENCE,
         SearchGroupNameEnum.INSTRUMENT,
@@ -61,7 +61,7 @@ describe('Search reducer', () => {
 
   it('should handle SET_STATE_FROM_NAVIGATE - MAX_PRICE', () => {
     const parameters = {
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.MUSIQUE],
+      offerCategories: [SearchGroupNameEnum.FILMS_SERIES_CINEMA, SearchGroupNameEnum.MUSIQUE],
       priceRange: [30, 500],
     }
     const action: Action = {
@@ -70,7 +70,7 @@ describe('Search reducer', () => {
     }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.MUSIQUE],
+      offerCategories: [SearchGroupNameEnum.FILMS_SERIES_CINEMA, SearchGroupNameEnum.MUSIQUE],
       priceRange: [30, MAX_PRICE],
     })
   })
@@ -145,12 +145,12 @@ describe('Search reducer', () => {
     // 2. Add CINEMA
     newState = searchReducer(newState, {
       type: 'TOGGLE_CATEGORY',
-      payload: SearchGroupNameEnum.CINEMA,
+      payload: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
     })
     expect(newState).toStrictEqual({
       ...state,
       // Note: the categories are sorted to later reuse react-query cache
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.JEU],
+      offerCategories: [SearchGroupNameEnum.FILMS_SERIES_CINEMA, SearchGroupNameEnum.JEU],
     })
 
     // 3. Remove JEUX_VIDEO
@@ -158,7 +158,10 @@ describe('Search reducer', () => {
       type: 'TOGGLE_CATEGORY',
       payload: SearchGroupNameEnum.JEU,
     })
-    expect(newState).toStrictEqual({ ...state, offerCategories: [SearchGroupNameEnum.CINEMA] })
+    expect(newState).toStrictEqual({
+      ...state,
+      offerCategories: [SearchGroupNameEnum.FILMS_SERIES_CINEMA],
+    })
   })
 
   it('should handle OFFER_TYPE', () => {

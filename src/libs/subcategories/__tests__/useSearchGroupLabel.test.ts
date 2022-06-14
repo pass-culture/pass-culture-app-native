@@ -4,9 +4,9 @@ import { useSearchGroupLabel } from 'libs/subcategories'
 describe('useCategoryId', () => {
   it.each`
     SearchGroupName                      | SearchGroupLabel
-    ${SearchGroupNameEnum.FILM}          | ${'Films, séries'}
+    ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}          | ${'Films, séries'}
     ${SearchGroupNameEnum.CARTES_JEUNES} | ${'Cartes jeunes'}
-    ${SearchGroupNameEnum.CINEMA}        | ${'Cinéma'}
+    ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}        | ${'Cinéma'}
     ${SearchGroupNameEnum.CONFERENCE}    | ${'Conférences, rencontres'}
     ${SearchGroupNameEnum.JEU}           | ${'Jeux'}
     ${SearchGroupNameEnum.LIVRE}         | ${'Livre'}

@@ -32,7 +32,7 @@ describe('Categories component', () => {
   it('should match diff snapshot when new category is selected', () => {
     const allSelected = renderCategories().toJSON()
 
-    mockSearchState.offerCategories = [SearchGroupNameEnum.CINEMA]
+    mockSearchState.offerCategories = [SearchGroupNameEnum.FILMS_SERIES_CINEMA]
     const cinemaSelected = renderCategories().toJSON()
     expect(cinemaSelected).toMatchDiffSnapshot(allSelected)
   })
