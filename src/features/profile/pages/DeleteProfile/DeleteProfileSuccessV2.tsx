@@ -26,7 +26,7 @@ export function DeleteProfileSuccessV2() {
           key={1}
           as={ButtonPrimaryWhite}
           wording={t`Retourner à l'accueil`}
-          navigateTo={navigateToHomeConfig}
+          navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
         />,
         <TouchableLink
           key={2}

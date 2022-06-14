@@ -87,7 +87,7 @@ export const SuspendedAccount = () => {
           key={2}
           as={ButtonTertiaryWhite}
           wording={t`Retourner à l'accueil`}
-          navigateTo={navigateToHomeConfig}
+          navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
           onPress={signOut}
           icon={PlainArrowPrevious}
         />,
