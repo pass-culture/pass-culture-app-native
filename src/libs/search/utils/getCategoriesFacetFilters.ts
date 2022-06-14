@@ -7,7 +7,7 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
   ['Conférences, rencontres']: SearchGroupNameEnum.RENCONTRES_CONFERENCES,
   ['Cours, ateliers']: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
   ['Films, séries, podcasts']: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
-  ['Instruments de musique']: SearchGroupNameEnum.INSTRUMENT,
+  ['Instruments de musique']: SearchGroupNameEnum.INSTRUMENTS,
   ['Jeux vidéos']: SearchGroupNameEnum.JEUX_JEUX_VIDEOS,
   ['Livres']: SearchGroupNameEnum.LIVRES,
   ['Matériel arts créatifs']: SearchGroupNameEnum.MATERIEL,

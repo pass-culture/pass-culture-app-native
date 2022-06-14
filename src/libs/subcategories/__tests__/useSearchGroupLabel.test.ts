@@ -15,7 +15,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS}      | ${'Cours, ateliers'}
     ${SearchGroupNameEnum.MEDIA_PRESSE}               | ${'Presse, médias'}
     ${SearchGroupNameEnum.CONCERTS_FESTIVALS}         | ${'Spectacles'}
-    ${SearchGroupNameEnum.INSTRUMENT}                 | ${'Instruments de musique'}
+    ${SearchGroupNameEnum.INSTRUMENTS}                | ${'Instruments de musique'}
     ${SearchGroupNameEnum.MATERIEL}                   | ${'Beaux-Arts'}
     ${SearchGroupNameEnum.NONE}                       | ${'Toutes les catégories'}
   `(

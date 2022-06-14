@@ -260,8 +260,8 @@ describe('getCtaWordingAndAction', () => {
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}       | ${20} | ${false}              | ${true}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}       | ${0}  | ${false}              | ${true}
         ${false} | ${'Réserver'}                | ${false} | ${false}  | ${SearchGroupNameEnum.JEUX_JEUX_VIDEOS}        | ${0}  | ${false}              | ${true}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${false}              | ${true}
-        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${true}               | ${undefined}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENTS} | ${20} | ${false}              | ${true}
+        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.INSTRUMENTS} | ${20} | ${true}               | ${undefined}
       `(
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, isForbiddenToUnderage=$isForbiddenToUnderage, category=$category and price=$price',
         ({

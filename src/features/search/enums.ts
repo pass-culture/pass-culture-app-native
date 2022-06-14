@@ -69,9 +69,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Conference,
     facetFilter: SearchGroupNameEnum.RENCONTRES_CONFERENCES,
   },
-  [SearchGroupNameEnum.INSTRUMENT]: {
+  [SearchGroupNameEnum.INSTRUMENTS]: {
     icon: categoriesIcons.Instrument,
-    facetFilter: SearchGroupNameEnum.INSTRUMENT,
+    facetFilter: SearchGroupNameEnum.INSTRUMENTS,
   },
   [SearchGroupNameEnum.MATERIEL]: {
     icon: categoriesIcons.ArtsMaterial,
