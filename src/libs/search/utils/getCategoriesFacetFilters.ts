@@ -14,7 +14,7 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
   ['Musique']: SearchGroupNameEnum.MUSIQUE,
   ['Presse']: SearchGroupNameEnum.PRESSE,
   ['Spectacles']: SearchGroupNameEnum.SPECTACLE,
-  ['Visites, expositions']: SearchGroupNameEnum.VISITE,
+  ['Visites, expositions']: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
 }
 
 export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnum => {

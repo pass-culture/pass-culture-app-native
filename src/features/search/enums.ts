@@ -37,9 +37,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Cinema,
     facetFilter: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
   },
-  [SearchGroupNameEnum.VISITE]: {
+  [SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
-    facetFilter: SearchGroupNameEnum.VISITE,
+    facetFilter: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
   },
   [SearchGroupNameEnum.MUSIQUE]: {
     icon: categoriesIcons.Music,

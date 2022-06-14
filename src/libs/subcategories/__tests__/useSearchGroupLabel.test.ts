@@ -10,7 +10,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.CONFERENCE}    | ${'Conférences, rencontres'}
     ${SearchGroupNameEnum.JEU}           | ${'Jeux'}
     ${SearchGroupNameEnum.LIVRE}         | ${'Livre'}
-    ${SearchGroupNameEnum.VISITE}        | ${'Visites, expositions'}
+    ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES}        | ${'Visites, expositions'}
     ${SearchGroupNameEnum.MUSIQUE}       | ${'Musique'}
     ${SearchGroupNameEnum.COURS}         | ${'Cours, ateliers'}
     ${SearchGroupNameEnum.PRESSE}        | ${'Presse, médias'}
