@@ -7,8 +7,7 @@ import ReactNativeCountryPicker, {
   getAllCountries,
   Flag,
 } from 'react-native-country-picker-modal'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
