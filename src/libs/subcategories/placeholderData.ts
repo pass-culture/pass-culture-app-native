@@ -211,7 +211,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       id: SubcategoryIdEnum.CARTE_JEUNES,
       categoryId: CategoryIdEnum.CARTE_JEUNES,
       appLabel: 'Carte jeunes',
-      searchGroupName: SearchGroupNameEnum.CARTE_JEUNES,
+      searchGroupName: SearchGroupNameEnum.CARTES_JEUNES,
       homepageLabelName: HomepageLabelNameEnum.CARTE_JEUNES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
@@ -660,7 +660,7 @@ export const placeholderData: SubcategoriesResponseModel = {
   ],
   searchGroups: [
     { name: SearchGroupNameEnum.FILM, value: 'Films, séries' },
-    { name: SearchGroupNameEnum.CARTE_JEUNES, value: 'Carte jeunes' },
+    { name: SearchGroupNameEnum.CARTES_JEUNES, value: 'Carte jeunes' },
     { name: SearchGroupNameEnum.CINEMA, value: 'Cinéma' },
     { name: SearchGroupNameEnum.CONFERENCE, value: 'Conférences, rencontres' },
     { name: SearchGroupNameEnum.JEU, value: 'Jeux' },

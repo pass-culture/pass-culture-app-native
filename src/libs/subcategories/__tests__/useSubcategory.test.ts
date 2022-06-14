@@ -27,7 +27,7 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.CAPTATION_MUSIQUE}              | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnum.MUSIQUE}
     ${SubcategoryIdEnum.CARTE_CINE_ILLIMITE}            | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnum.CINEMA}
     ${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}        | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnum.CINEMA}
-    ${SubcategoryIdEnum.CARTE_JEUNES}                   | ${false} | ${CategoryIdEnum.CARTE_JEUNES}        | ${SearchGroupNameEnum.CARTE_JEUNES}
+    ${SubcategoryIdEnum.CARTE_JEUNES}                   | ${false} | ${CategoryIdEnum.CARTE_JEUNES}        | ${SearchGroupNameEnum.CARTES_JEUNES}
     ${SubcategoryIdEnum.CARTE_MUSEE}                    | ${false} | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnum.VISITE}
     ${SubcategoryIdEnum.CINE_PLEIN_AIR}                 | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnum.CINEMA}
     ${SubcategoryIdEnum.CINE_VENTE_DISTANCE}            | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnum.CINEMA}
