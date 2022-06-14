@@ -38,6 +38,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const searchInputID = props.searchInputID ?? uuidv4()
   const searchInput = useRef<RNTextInput>(null)
 
+  const shouldShowLocationButton = !!onPressLocationButton
+
   function onFocus() {
     setIsFocus(true)
     if (props?.onFocusState) props.onFocusState(true)
@@ -63,7 +65,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
       <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
-        focusOutlineColor={focusOutlineColor}>
+        focusOutlineColor={focusOutlineColor}
+        shouldShowLocationButton={shouldShowLocationButton}>
         <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (
           <React.Fragment>
@@ -86,7 +89,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           enablesReturnKeyAutomatically={true}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
-        {onPressLocationButton ? (
+        {shouldShowLocationButton ? (
           <LocationButton
             testID="locationButton"
             wording={locationLabel || ''}
@@ -127,10 +130,13 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
   selectionColor: theme.colors.greyDark,
 }))``
 
-const StyledInputContainer = styled(InputContainer)({
-  outlineOffset: 0,
-  borderRadius: getSpacing(6),
-})
+const StyledInputContainer = styled(InputContainer)(
+  ({ shouldShowLocationButton }: { shouldShowLocationButton: boolean }) => ({
+    outlineOffset: 0,
+    borderRadius: getSpacing(6),
+    ...(shouldShowLocationButton ? { paddingRight: getSpacing(2) } : {}),
+  })
+)
 
 const LocationButton = styledButton(ButtonPrimary)({
   // max width corresponds to the size of "Autour de moi" state.
