@@ -9,7 +9,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.FILMS_SERIES_CINEMA}        | ${'Cinéma'}
     ${SearchGroupNameEnum.CONFERENCE}                 | ${'Conférences, rencontres'}
     ${SearchGroupNameEnum.JEU}                        | ${'Jeux'}
-    ${SearchGroupNameEnum.LIVRE}                      | ${'Livre'}
+    ${SearchGroupNameEnum.LIVRES}                     | ${'Livre'}
     ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES} | ${'Visites, expositions'}
     ${SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'Musique'}
     ${SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS}      | ${'Cours, ateliers'}
