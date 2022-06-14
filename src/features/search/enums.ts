@@ -49,9 +49,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Show,
     facetFilter: SearchGroupNameEnum.CONCERTS_FESTIVALS,
   },
-  [SearchGroupNameEnum.COURS]: {
+  [SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Workshop,
-    facetFilter: SearchGroupNameEnum.COURS,
+    facetFilter: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
   },
   [SearchGroupNameEnum.LIVRE]: {
     icon: categoriesIcons.Book,

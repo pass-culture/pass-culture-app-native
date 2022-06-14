@@ -12,9 +12,9 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.LIVRE}                      | ${'Livre'}
     ${SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES} | ${'Visites, expositions'}
     ${SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'Musique'}
-    ${SearchGroupNameEnum.COURS}                      | ${'Cours, ateliers'}
+    ${SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS}      | ${'Cours, ateliers'}
     ${SearchGroupNameEnum.PRESSE}                     | ${'Presse, médias'}
-    ${SearchGroupNameEnum.CONCERTS_FESTIVALS}                  | ${'Spectacles'}
+    ${SearchGroupNameEnum.CONCERTS_FESTIVALS}         | ${'Spectacles'}
     ${SearchGroupNameEnum.INSTRUMENT}                 | ${'Instruments de musique'}
     ${SearchGroupNameEnum.MATERIEL}                   | ${'Beaux-Arts'}
     ${SearchGroupNameEnum.NONE}                       | ${'Toutes les catégories'}

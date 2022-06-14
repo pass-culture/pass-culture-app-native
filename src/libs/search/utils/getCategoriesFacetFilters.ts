@@ -5,7 +5,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
   ['Cinéma']: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
   ['Conférences, rencontres']: SearchGroupNameEnum.CONFERENCE,
-  ['Cours, ateliers']: SearchGroupNameEnum.COURS,
+  ['Cours, ateliers']: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
   ['Films, séries, podcasts']: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
   ['Instruments de musique']: SearchGroupNameEnum.INSTRUMENT,
   ['Jeux vidéos']: SearchGroupNameEnum.JEU,

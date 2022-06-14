@@ -43,7 +43,7 @@ describe('Search reducer', () => {
       offerCategories: [
         SearchGroupNameEnum.FILMS_SERIES_CINEMA,
         SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
-        SearchGroupNameEnum.COURS,
+        SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
         SearchGroupNameEnum.FILMS_SERIES_CINEMA,
         SearchGroupNameEnum.JEU,
         SearchGroupNameEnum.CONFERENCE,
