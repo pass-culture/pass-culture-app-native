@@ -174,6 +174,12 @@ export interface AppThemeType {
     headerNav: ZIndex
     snackbar: ZIndex
   }
+  offlineMode: {
+    banner: {
+      backgroundColor: ColorsEnum
+      textColor: ColorsEnum
+    }
+  }
   contentPage: {
     mediumWidth: number
     maxWidth: number
@@ -536,6 +542,12 @@ export const theme: AppThemeType = {
     tabBar: ZIndex.TAB_BAR,
     headerNav: ZIndex.HEADER_NAV,
     snackbar: ZIndex.SNACKBAR,
+  },
+  offlineMode: {
+    banner: {
+      backgroundColor: ColorsEnum.BLACK,
+      textColor: ColorsEnum.WHITE,
+    },
   },
   contentPage: {
     mediumWidth: DESKTOP_CONTENT_MEDIUM_WIDTH,
