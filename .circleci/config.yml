@@ -391,7 +391,10 @@ commands:
           gcp_key_name: GCP_APP_NATIVE_KEY
       - run:
           name: Deploy web proxy to <<parameters.env>>
-          command: yarn --cwd server deploy:<<parameters.env>>
+          command: |
+            if ./scripts/check_server_diff.sh; then
+              yarn --cwd server deploy:<<parameters.env>>
+            fi
 
 ###################
 #  JOBS
