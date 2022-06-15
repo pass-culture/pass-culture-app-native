@@ -25,33 +25,41 @@ type CategoryCriteria = {
 }
 
 export const CATEGORY_CRITERIA: CategoryCriteria = {
-  [SearchGroupNameEnum.NONE]: {
-    icon: categoriesIcons.All,
-    facetFilter: SearchGroupNameEnum.NONE,
+  [SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS]: {
+    icon: categoriesIcons.Workshop,
+    facetFilter: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
+  },
+  [SearchGroupNameEnum.BIBLIOTHEQUES_MEDIATHEQUE]: {
+    icon: categoriesIcons.Bookstore,
+    facetFilter: SearchGroupNameEnum.BIBLIOTHEQUES_MEDIATHEQUE,
   },
   [SearchGroupNameEnum.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
     facetFilter: SearchGroupNameEnum.CARTES_JEUNES,
-  },
-  [SearchGroupNameEnum.FILMS_SERIES_CINEMA]: {
-    icon: categoriesIcons.Cinema,
-    facetFilter: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
-  },
-  [SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES]: {
-    icon: categoriesIcons.Museum,
-    facetFilter: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
   },
   [SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
     icon: categoriesIcons.Music,
     facetFilter: SearchGroupNameEnum.CD_VINYLE_MUSIQUE_EN_LIGNE,
   },
   [SearchGroupNameEnum.CONCERTS_FESTIVALS]: {
-    icon: categoriesIcons.Show,
+    icon: categoriesIcons.Conference,
     facetFilter: SearchGroupNameEnum.CONCERTS_FESTIVALS,
   },
-  [SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS]: {
-    icon: categoriesIcons.Workshop,
-    facetFilter: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
+  [SearchGroupNameEnum.EVENEMENTS_EN_LIGNE]: {
+    icon: categoriesIcons.LiveEvent,
+    facetFilter: SearchGroupNameEnum.EVENEMENTS_EN_LIGNE,
+  },
+  [SearchGroupNameEnum.FILMS_SERIES_CINEMA]: {
+    icon: categoriesIcons.Cinema,
+    facetFilter: SearchGroupNameEnum.FILMS_SERIES_CINEMA,
+  },
+  [SearchGroupNameEnum.INSTRUMENTS]: {
+    icon: categoriesIcons.Instrument,
+    facetFilter: SearchGroupNameEnum.INSTRUMENTS,
+  },
+  [SearchGroupNameEnum.JEUX_JEUX_VIDEOS]: {
+    icon: categoriesIcons.VideoGame,
+    facetFilter: SearchGroupNameEnum.JEUX_JEUX_VIDEOS,
   },
   [SearchGroupNameEnum.LIVRES]: {
     icon: categoriesIcons.Book,
@@ -61,21 +69,25 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Press,
     facetFilter: SearchGroupNameEnum.MEDIA_PRESSE,
   },
-  [SearchGroupNameEnum.JEUX_JEUX_VIDEOS]: {
-    icon: categoriesIcons.VideoGame,
-    facetFilter: SearchGroupNameEnum.JEUX_JEUX_VIDEOS,
+  [SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES]: {
+    icon: categoriesIcons.Museum,
+    facetFilter: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
+  },
+  [SearchGroupNameEnum.NONE]: {
+    icon: categoriesIcons.All,
+    facetFilter: SearchGroupNameEnum.NONE,
+  },
+  [SearchGroupNameEnum.PLATEFORMES_EN_LIGNE]: {
+    icon: categoriesIcons.Numeric,
+    facetFilter: SearchGroupNameEnum.PLATEFORMES_EN_LIGNE,
   },
   [SearchGroupNameEnum.RENCONTRES_CONFERENCES]: {
-    icon: categoriesIcons.Conference,
+    icon: categoriesIcons.Microphone,
     facetFilter: SearchGroupNameEnum.RENCONTRES_CONFERENCES,
   },
-  [SearchGroupNameEnum.INSTRUMENTS]: {
-    icon: categoriesIcons.Instrument,
-    facetFilter: SearchGroupNameEnum.INSTRUMENTS,
-  },
-  [SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS]: {
-    icon: categoriesIcons.ArtsMaterial,
-    facetFilter: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
+  [SearchGroupNameEnum.SPECTACLES]: {
+    icon: categoriesIcons.Show,
+    facetFilter: SearchGroupNameEnum.SPECTACLES,
   },
 }
 
