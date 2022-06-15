@@ -202,6 +202,10 @@ msgstr "Annulé"
 msgid "Arts visuels, arts plastiques et galeries"
 msgstr "Arts visuels, arts plastiques et galeries"
 
+#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
+msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Attends"
@@ -513,7 +517,7 @@ msgstr "Choisis une date dans le futur"
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/libs/country-picker/CountryPicker.tsx
+#: src/features/auth/signup/PhoneValidation/components/CountryPicker.tsx
 msgid "Choix de l'indicatif téléphonique"
 msgstr "Choix de l'indicatif téléphonique"
 
@@ -1116,7 +1120,7 @@ msgstr "Favoris"
 msgid "Fermer la modale"
 msgstr "Fermer la modale"
 
-#: src/libs/country-picker/CountryPicker.tsx
+#: src/features/auth/signup/PhoneValidation/components/CountryPicker.tsx
 msgid "Fermer la modale de choix de l'indicatif téléphonique"
 msgstr "Fermer la modale de choix de l'indicatif téléphonique"
 
@@ -1832,6 +1836,10 @@ msgstr "Notifications"
 msgid "Nous avons besoin de connaître ton âge."
 msgstr "Nous avons besoin de connaître ton âge."
 
+#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+msgid "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement."
+msgstr "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement."
+
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard."
 msgstr "Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard."
@@ -1991,7 +1999,7 @@ msgstr "Oups !"
 msgid "Ouvrir l'application de message"
 msgstr "Ouvrir l'application de message"
 
-#: src/libs/country-picker/CountryPicker.tsx
+#: src/features/auth/signup/PhoneValidation/components/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
 msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
 
@@ -3449,10 +3457,6 @@ msgstr "carte d'identité"
 msgid "cette offre ?"
 msgstr "cette offre ?"
 
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "check identity information"
-msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
-
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "credit expired on date"
 msgstr "crédit expiré le {deadline}"
@@ -3574,10 +3578,6 @@ msgstr "minimum"
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
-
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "need verify identity"
-msgstr "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement."
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "not cancellable because expired for ex beneficiary"
