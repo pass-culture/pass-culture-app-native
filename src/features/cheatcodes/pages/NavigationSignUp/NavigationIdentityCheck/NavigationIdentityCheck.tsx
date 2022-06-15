@@ -65,6 +65,7 @@ export function NavigationIdentityCheck(): JSX.Element {
             navigate('SetPhoneValidationCode', { phoneNumber: '+33612345678', countryCode: 'FR' })
           }
         />
+        <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />

@@ -27,6 +27,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckStepper: undefined
   // PhoneValidation
   SetPhoneNumber: undefined
+  SetPhoneNumberDeprecated: undefined
   // Profile
   SetName: undefined
   IdentityCheckCity: undefined
@@ -127,7 +128,6 @@ export type RootStackParamList = {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
   }
-  SetPhoneNumberDeprecated: undefined
   SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined

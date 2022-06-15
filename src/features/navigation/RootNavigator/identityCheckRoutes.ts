@@ -18,6 +18,7 @@ import { IdentityCheckStart } from 'features/identityCheck/pages/identification/
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
+import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
@@ -54,11 +55,18 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     secure: true,
   },
   // Phone Validation
-  // TODO (PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
+  {
+    name: 'SetPhoneNumberDeprecated',
+    component: SetPhoneNumberDeprecated,
+    path: 'creation-compte/telephone',
+    options: { title: t`Ton numéro de téléphone` },
+    secure: true,
+  },
   {
     name: 'SetPhoneNumber',
-    component: SetPhoneNumberDeprecated,
-    path: 'validation-telephone/numero',
+    component: SetPhoneNumber,
+    // TODO (PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
+    path: 'validation-telephone/numero-cheatcodes-only',
     options: { title: t`Ton numéro de téléphone` },
     secure: true,
   },
