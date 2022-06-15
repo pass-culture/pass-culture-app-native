@@ -25,6 +25,13 @@ executors:
           password: $GCP_INFRA_KEY
 
 ###################
+#  ORBS
+###################
+
+orbs:
+  path-filtering: circleci/path-filtering@0.1.3
+
+###################
 #  COMMANDS
 ###################
 
@@ -1060,14 +1067,22 @@ workflows:
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
+      - path-filtering/filter:
+          base-revision: HEAD~1
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
+          config-path: .circleci/config.yml
+          mapping: |
+            server/.* deploy-web-proxy-testing true
       - deploy-web-proxy-testing:
           filters:
             tags:
               ignore: /.*/
             branches:
               only: master
-          requires:
-            - wait_for_approval_web_proxy_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
