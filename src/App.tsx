@@ -31,6 +31,7 @@ import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
+import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -83,9 +84,11 @@ const App: FunctionComponent = function () {
                               <CulturalSurveyContextProvider>
                                 <IdentityCheckContextProvider>
                                   <SplashScreenProvider>
-                                    <ScreenErrorProvider>
-                                      <AppNavigationContainer />
-                                    </ScreenErrorProvider>
+                                    <OfflineModeContainer>
+                                      <ScreenErrorProvider>
+                                        <AppNavigationContainer />
+                                      </ScreenErrorProvider>
+                                    </OfflineModeContainer>
                                   </SplashScreenProvider>
                                 </IdentityCheckContextProvider>
                               </CulturalSurveyContextProvider>
