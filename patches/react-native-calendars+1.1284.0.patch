@@ -1,7 +1,16 @@
 diff --git a/node_modules/react-native-calendars/src/calendar/day/basic/index.js b/node_modules/react-native-calendars/src/calendar/day/basic/index.js
-index dbb6832..c4474a3 100644
+index dbb6832..20ca65b 100644
 --- a/node_modules/react-native-calendars/src/calendar/day/basic/index.js
 +++ b/node_modules/react-native-calendars/src/calendar/day/basic/index.js
+@@ -88,7 +88,7 @@ const BasicDay = (props) => {
+         return (<Marking type={markingType} theme={theme} marked={isMultiDot ? true : marked} selected={isSelected} disabled={isDisabled} inactive={isInactive} today={isToday} dotColor={dotColor} dots={dots} periods={periods}/>);
+     };
+     const renderText = () => {
+-        return (<Text allowFontScaling={false} style={getTextStyle()}>
++        return (<Text dir="ltr" allowFontScaling={false} style={getTextStyle()}>
+         {String(children)}
+       </Text>);
+     };
 @@ -100,7 +100,7 @@ const BasicDay = (props) => {
      };
      const renderContainer = () => {
@@ -12,7 +21,7 @@ index dbb6832..c4474a3 100644
        </TouchableOpacity>);
      };
 diff --git a/node_modules/react-native-calendars/src/calendar/header/index.js b/node_modules/react-native-calendars/src/calendar/header/index.js
-index ad35a94..0a07a0a 100644
+index ad35a94..f425a5e 100644
 --- a/node_modules/react-native-calendars/src/calendar/header/index.js
 +++ b/node_modules/react-native-calendars/src/calendar/header/index.js
 @@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
@@ -45,10 +54,19 @@ index ad35a94..0a07a0a 100644
                  dayStyle.push(style[dayTextAtIndex]);
              }
 -            return (<Text allowFontScaling={false} key={index} style={dayStyle} numberOfLines={1} accessibilityLabel={''}>
-+            return (<Text allowFontScaling={false} key={index} style={dayStyle} numberOfLines={1} accessibilityLabel={weekFullDaysNames[index]}>
++            return (<Text dir="ltr" allowFontScaling={false} key={index} style={dayStyle} numberOfLines={1} accessibilityLabel={weekFullDaysNames[index]}>
            {day}
          </Text>);
          });
+@@ -76,7 +73,7 @@ const CalendarHeader = forwardRef((props, ref) => {
+             return customHeaderTitle;
+         }
+         return (<Fragment>
+-        <Text allowFontScaling={false} style={style.current.monthText} testID={testID ? `${HEADER_MONTH_NAME}-${testID}` : HEADER_MONTH_NAME} {...webProps}>
++        <Text dir="ltr" allowFontScaling={false} style={style.current.monthText} testID={testID ? `${HEADER_MONTH_NAME}-${testID}` : HEADER_MONTH_NAME} {...webProps}>
+           {formatNumbers(month?.toString(monthFormat))}
+         </Text>
+       </Fragment>);
 @@ -92,7 +89,7 @@ const CalendarHeader = forwardRef((props, ref) => {
          const imageSource = isLeft ? require('../img/previous.png') : require('../img/next.png');
          const renderArrowDirection = isLeft ? 'left' : 'right';
@@ -121,6 +139,19 @@ index dc38b65..138c80a 100644
        </View>
      </GestureComponent>);
  };
+diff --git a/node_modules/react-native-calendars/src/commons/WeekDaysNames.js b/node_modules/react-native-calendars/src/commons/WeekDaysNames.js
+index f57b436..a2b8009 100644
+--- a/node_modules/react-native-calendars/src/commons/WeekDaysNames.js
++++ b/node_modules/react-native-calendars/src/commons/WeekDaysNames.js
+@@ -3,7 +3,7 @@ import { Text } from 'react-native';
+ import { weekDayNames } from '../dateutils';
+ const WeekDaysNames = React.memo(({ firstDay, style }) => {
+     const dayNames = weekDayNames(firstDay);
+-    return dayNames.map((day, index) => (<Text allowFontScaling={false} key={index} style={style} numberOfLines={1} accessibilityLabel={''}>
++    return dayNames.map((day, index) => (<Text dir="ltr" allowFontScaling={false} key={index} style={style} numberOfLines={1} accessibilityLabel={''}>
+       {day}
+     </Text>));
+ });
 diff --git a/node_modules/react-native-calendars/src/dateutils.d.ts b/node_modules/react-native-calendars/src/dateutils.d.ts
 index a20e758..94c8bab 100644
 --- a/node_modules/react-native-calendars/src/dateutils.d.ts
@@ -152,3 +183,16 @@ index f7ce459..20380ff 100644
  export function page(date, firstDayOfWeek = 0, showSixWeeks = false) {
      const days = month(date);
      let before = [];
+diff --git a/node_modules/react-native-calendars/src/expandableCalendar/index.js b/node_modules/react-native-calendars/src/expandableCalendar/index.js
+index d85e6a9..14505be 100644
+--- a/node_modules/react-native-calendars/src/expandableCalendar/index.js
++++ b/node_modules/react-native-calendars/src/expandableCalendar/index.js
+@@ -339,7 +339,7 @@ const ExpandableCalendar = (props) => {
+     const renderHeader = () => {
+         const monthYear = new XDate(date).toString('MMMM yyyy');
+         return (<Animated.View ref={header} style={headerStyle} pointerEvents={'none'}>
+-        <Text allowFontScaling={false} style={style.current.headerTitle}>
++        <Text dir="ltr" allowFontScaling={false} style={style.current.headerTitle}>
+           {monthYear}
+         </Text>
+         {renderWeekDaysNames()}
