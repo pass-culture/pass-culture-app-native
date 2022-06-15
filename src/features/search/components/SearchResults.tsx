@@ -135,7 +135,7 @@ export const SearchResults: React.FC = () => {
         t({
           id: 'search state query',
           values: { searchStateQuery: searchState.query },
-          message: 'pour ${searchStateQuery}',
+          message: 'pour {searchStateQuery}',
         })
       : '') +
     ' | Recherche | pass Culture'
