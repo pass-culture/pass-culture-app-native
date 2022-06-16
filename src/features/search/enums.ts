@@ -25,6 +25,10 @@ type CategoryCriteria = {
 }
 
 export const CATEGORY_CRITERIA: CategoryCriteria = {
+  [SearchGroupNameEnum.NONE]: {
+    icon: categoriesIcons.All,
+    facetFilter: SearchGroupNameEnum.NONE,
+  },
   [SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Workshop,
     facetFilter: SearchGroupNameEnum.ARTS_LOISIRS_CREATIFS,
@@ -44,6 +48,10 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
   [SearchGroupNameEnum.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
     facetFilter: SearchGroupNameEnum.CONCERTS_FESTIVALS,
+  },
+  [SearchGroupNameEnum.RENCONTRES_CONFERENCES]: {
+    icon: categoriesIcons.Microphone,
+    facetFilter: SearchGroupNameEnum.RENCONTRES_CONFERENCES,
   },
   [SearchGroupNameEnum.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
@@ -73,17 +81,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Museum,
     facetFilter: SearchGroupNameEnum.MUSEES_VISITES_CULTURELLES,
   },
-  [SearchGroupNameEnum.NONE]: {
-    icon: categoriesIcons.All,
-    facetFilter: SearchGroupNameEnum.NONE,
-  },
   [SearchGroupNameEnum.PLATEFORMES_EN_LIGNE]: {
     icon: categoriesIcons.Numeric,
     facetFilter: SearchGroupNameEnum.PLATEFORMES_EN_LIGNE,
-  },
-  [SearchGroupNameEnum.RENCONTRES_CONFERENCES]: {
-    icon: categoriesIcons.Microphone,
-    facetFilter: SearchGroupNameEnum.RENCONTRES_CONFERENCES,
   },
   [SearchGroupNameEnum.SPECTACLES]: {
     icon: categoriesIcons.Show,
