@@ -58,7 +58,7 @@ msgid "Abandonner"
 msgstr "Abandonner"
 
 #: src/features/auth/components/QuitSignupModal.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
 msgid "Abandonner l'inscription"
@@ -206,7 +206,7 @@ msgstr "Arts visuels, arts plastiques et galeries"
 msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Attends"
 msgstr "Attends"
@@ -218,6 +218,10 @@ msgstr "Attention tu n'as que 3 tentatives."
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
+
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
+msgid "Attention, il te reste 5 demandes"
+msgstr "Attention, il te reste 5 demandes"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
@@ -619,7 +623,7 @@ msgstr "Confirmation de réservation"
 msgid "Confirme ton e-mail"
 msgstr "Confirme ton e-mail"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Confirme ton numéro"
 msgstr "Confirme ton numéro"
@@ -694,7 +698,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
@@ -702,6 +706,7 @@ msgstr "Contacter le support"
 #: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
@@ -1061,7 +1066,8 @@ msgstr "Entrée pour le mois de la date de naissance"
 msgid "Entrée pour le nom"
 msgstr "Entrée pour le nom"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 msgid "Entrée pour le numéro de téléphone"
 msgstr "Entrée pour le numéro de téléphone"
 
@@ -1887,6 +1893,7 @@ msgstr "Nouvel e-mail"
 msgid "Nouvelle fenêtre"
 msgstr "Nouvelle fenêtre"
 
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Numéro de téléphone"
@@ -2188,7 +2195,7 @@ msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
@@ -2254,6 +2261,7 @@ msgstr "Prix minimum :"
 msgid "Problème technique ;("
 msgstr "Problème technique ;("
 
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
@@ -2873,8 +2881,9 @@ msgstr "Ton nom/prénom | Profil"
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Ton numéro de téléphone"
 msgstr "Ton numéro de téléphone"
 
@@ -3128,6 +3137,10 @@ msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 #: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu vas recevoir ton billet par e-mail"
 msgstr "Tu vas recevoir ton billet par e-mail"
+
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
+msgid "Tu vas recevoir un code de validation pour confirmer ton numéro."
+msgstr "Tu vas recevoir un code de validation pour confirmer ton numéro."
 
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Tu y es presque"
