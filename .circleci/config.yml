@@ -25,13 +25,6 @@ executors:
           password: $GCP_INFRA_KEY
 
 ###################
-#  ORBS
-###################
-
-orbs:
-  path-filtering: circleci/path-filtering@0.1.3
-
-###################
 #  COMMANDS
 ###################
 
@@ -391,7 +384,10 @@ commands:
           gcp_key_name: GCP_APP_NATIVE_KEY
       - run:
           name: Deploy web proxy to <<parameters.env>>
-          command: yarn --cwd server deploy:<<parameters.env>>
+          command: |
+            if ./scripts/check_server_diff.sh; then
+              yarn --cwd server deploy:<<parameters.env>>
+            fi
 
 ###################
 #  JOBS
@@ -1067,22 +1063,14 @@ workflows:
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
-      - path-filtering/filter:
-          base-revision: HEAD~1
-          filters:
-            tags:
-              ignore: /.*/
-            branches:
-              only: master
-          config-path: .circleci/config.yml
-          mapping: |
-            server/.* deploy-web-proxy-testing true
       - deploy-web-proxy-testing:
           filters:
             tags:
               ignore: /.*/
             branches:
               only: master
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
