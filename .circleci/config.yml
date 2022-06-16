@@ -1069,6 +1069,8 @@ workflows:
               ignore: /.*/
             branches:
               only: master
+          requires:
+            - test-proxy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
