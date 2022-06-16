@@ -865,10 +865,10 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - checkout-and-install-deps:
-          filters:
-            tags:
-              only: /.*/
+      - checkout-and-install-deps
+#          filters:
+#            tags:
+#              only: /.*/
       - checkout-and-install-proxy-deps:
           filters:
             tags:
@@ -970,10 +970,12 @@ workflows:
             - deploy-android-staging-hard
       - deploy-soft-staging:
           filters:
-            tags:
-              only: /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only: PC-15704
+#            tags:
+#              only: /^hotfix-staging.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
