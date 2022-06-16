@@ -36,7 +36,7 @@ export const AccountReactivationSuccess = () => {
         <TouchableLink
           as={ButtonPrimary}
           wording={t`Découvrir le catalogue`}
-          navigateTo={navigateToHomeConfig}
+          navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>
