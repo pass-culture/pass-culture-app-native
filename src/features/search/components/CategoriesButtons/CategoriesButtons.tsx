@@ -2,13 +2,20 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryButton, CategoryButtonProps } from 'features/search/components/CategoryButton'
 import { getSpacing } from 'ui/theme'
+
+import { CategoryButton, CategoryButtonProps } from '../CategoryButton'
 
 type Props = {
   categories: CategoryButtonProps[]
   children?: never
 }
+
+const CategoyButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
+  <CategoryButtonContainer>
+    <CategoryButton {...item} />
+  </CategoryButtonContainer>
+)
 
 export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
   const [sortedCategories, setSortedCategories] = useState<CategoryButtonProps[]>()
@@ -19,14 +26,14 @@ export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
   return (
     <FlatList
       data={sortedCategories}
-      renderItem={({ item }) => <StyledCategoryButton {...item} />}
+      renderItem={CategoyButtonItem}
       keyExtractor={(item) => item.label}
       numColumns={2}
     />
   )
 }
 
-const StyledCategoryButton = styled(CategoryButton)({
-  flex: 1,
-  margin: getSpacing(1),
+const CategoryButtonContainer = styled.View({
+  flexBasis: '50%',
+  padding: getSpacing(1),
 })
