@@ -26,7 +26,7 @@ const LiveEventSvg: React.FunctionComponent<AccessibleIcon> = ({
       testID={testID}
       accessibilityLabel={accessibilityLabel}>
       <Defs>
-        <LinearGradient id={gradientId} x1="2%" x2="9.836%" y1="1.5%" y2="22.77%">
+        <LinearGradient id={gradientId} x1="18.271%" x2="81.729%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? primary} />
           <Stop offset="100%" stopColor={color2 ?? color ?? secondary} />
         </LinearGradient>

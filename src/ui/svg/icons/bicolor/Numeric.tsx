@@ -26,7 +26,7 @@ const NumericSvg: React.FunctionComponent<AccessibleIcon> = ({
       testID={testID}
       accessibilityLabel={accessibilityLabel}>
       <Defs>
-        <LinearGradient id={gradientId} x1="2.5%" x2="10%" y1="2%" y2="22.87%">
+        <LinearGradient id={gradientId} x1="18.271%" x2="81.729%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? primary} />
           <Stop offset="100%" stopColor={color2 ?? color ?? secondary} />
         </LinearGradient>
