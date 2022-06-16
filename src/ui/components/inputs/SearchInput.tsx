@@ -30,7 +30,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     accessibilityLabel,
     accessibilityDescribedBy,
     onPressRightIcon,
-    focusOutlineColor,
     onPressLocationButton,
     locationLabel,
   } = customProps
@@ -65,7 +64,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
       <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
-        focusOutlineColor={focusOutlineColor}
         shouldShowLocationButton={shouldShowLocationButton}>
         <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (

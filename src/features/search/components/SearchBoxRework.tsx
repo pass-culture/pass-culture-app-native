@@ -119,9 +119,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   )
 }
 
-const StyledSearchInput = styled((props) => <SearchInput {...props} />).attrs(({ theme }) => ({
-  focusOutlineColor: theme.colors.black,
-}))({
+const StyledSearchInput = styled((props) => <SearchInput {...props} />)({
   outlineOffset: 0,
 })
 
