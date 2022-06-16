@@ -99,7 +99,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         ]
       }
     >
-      Inscris-toi pour accéder à toutes les fonctionnalités de l’application
+      Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton crédit pass Culture
     </Text>
     <View
       numberOfSpaces={8}

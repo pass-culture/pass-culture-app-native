@@ -1326,10 +1326,6 @@ msgstr "Information"
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
-#: src/features/profile/components/LoggedOutHeader.tsx
-msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
-msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
-
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "J'ai compris"
 msgstr "J'ai compris"
@@ -2982,6 +2978,10 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer d
 #: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
+
+#: src/features/profile/components/LoggedOutHeader.tsx
+msgid "Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton crédit pass Culture"
+msgstr "Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton crédit pass Culture"
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Tu as jusqu'au {formattedDate} pour réactiver ton compte."

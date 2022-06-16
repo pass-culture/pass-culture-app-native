@@ -21,7 +21,7 @@ export function LoggedOutHeader() {
         <Title>{t`Profil`}</Title>
         <Spacer.Column numberOfSpaces={7} />
         <Description>
-          {t`Inscris-toi pour accéder à toutes les fonctionnalités de l’application`}
+          {t`Tu as entre 15 et 18 ans\u00a0? Crée-toi un compte pour bénéficier de ton crédit pass Culture`}
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <TouchableLink
