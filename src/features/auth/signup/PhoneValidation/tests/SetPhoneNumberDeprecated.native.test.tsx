@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
+import { SetPhoneNumberDeprecated } from 'features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -56,11 +56,8 @@ describe('SetPhoneNumber', () => {
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
-      await superFlushWithAct()
       const input = getByPlaceholderText('06 12 34 56 78')
-      await act(async () => {
-        fireEvent.changeText(input, '612345678')
-      })
+      fireEvent.changeText(input, '612345678')
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     })
@@ -79,9 +76,7 @@ describe('SetPhoneNumber', () => {
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
       const input = getByPlaceholderText('06 12 34 56 78')
-      await act(async () => {
-        fireEvent.changeText(input, phoneNumber)
-      })
+      fireEvent.changeText(input, phoneNumber)
 
       await waitForExpect(() =>
         expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -94,9 +89,7 @@ describe('SetPhoneNumber', () => {
 
       const button = getByTestId('Continuer')
       const input = getByPlaceholderText('06 12 34 56 78')
-      await act(async () => {
-        fireEvent.changeText(input, '612345678')
-      })
+      fireEvent.changeText(input, '612345678')
       fireEvent.press(button)
 
       await act(async () => {
@@ -122,11 +115,9 @@ describe('SetPhoneNumber', () => {
 
       const continueButton = getByTestId('Continuer')
       const input = getByPlaceholderText('06 12 34 56 78')
-      await act(async () => {
-        fireEvent.changeText(input, '600000000')
-      })
+      fireEvent.changeText(input, '600000000')
 
-      rerender(<SetPhoneNumber />)
+      rerender(<SetPhoneNumberDeprecated />)
 
       fireEvent.press(continueButton)
 
@@ -156,9 +147,7 @@ describe('SetPhoneNumber', () => {
 
         const button = getByTestId(buttonTestId)
         const input = getByPlaceholderText('06 12 34 56 78')
-        await act(async () => {
-          fireEvent.changeText(input, '612345678')
-        })
+        fireEvent.changeText(input, '612345678')
         fireEvent.press(button)
 
         await flushAllPromises()
@@ -194,7 +183,7 @@ describe('SetPhoneNumber', () => {
 })
 
 function renderSetPhoneNumber() {
-  return render(<SetPhoneNumber />, {
+  return render(<SetPhoneNumberDeprecated />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

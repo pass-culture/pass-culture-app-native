@@ -39,7 +39,8 @@ const getNavConfigForNextSubscriptionStep = (
     stepperIncludesPhoneValidation,
   } = nextSubscriptionStep
   if (!stepperIncludesPhoneValidation && nextStep === SubscriptionStep['phone-validation']) {
-    return { screen: 'SetPhoneNumber' }
+    // TODO (PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
+    return { screen: 'SetPhoneNumberDeprecated' }
   } else if (nextStep === SubscriptionStep.maintenance) {
     return {
       screen: 'IdentityCheckUnavailable',

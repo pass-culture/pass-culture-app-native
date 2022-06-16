@@ -47,7 +47,10 @@ export function NavigationIdentityCheck(): JSX.Element {
       />
       <StyledContainer>
         <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
-        <LinkToComponent title={`PhoneValidation`} onPress={() => navigate('SetPhoneNumber')} />
+        <LinkToComponent
+          title={`Old PhoneValidation`}
+          onPress={() => navigate('SetPhoneNumberDeprecated')}
+        />
         <LinkToComponent
           title={`Too many codes`}
           onPress={() => navigate('PhoneValidationTooManyAttempts')}
@@ -62,6 +65,7 @@ export function NavigationIdentityCheck(): JSX.Element {
             navigate('SetPhoneValidationCode', { phoneNumber: '+33612345678', countryCode: 'FR' })
           }
         />
+        <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />
