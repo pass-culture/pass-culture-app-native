@@ -1069,8 +1069,6 @@ workflows:
               ignore: /.*/
             branches:
               only: master
-          requires:
-            - wait_for_approval_web_proxy_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
@@ -1137,8 +1135,7 @@ workflows:
                 - /^(patch\/)?v.*/
                 - /^hotfix-staging.*/
             branches:
-              only:
-                - master
+              ignore: /.*/
           type: approval
           requires:
             - test-proxy
