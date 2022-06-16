@@ -487,7 +487,7 @@ PODS:
     - React-Core
   - react-native-in-app-review (3.2.3):
     - React
-  - react-native-netinfo (8.0.0):
+  - react-native-netinfo (9.0.0):
     - React-Core
   - react-native-safe-area-context (3.3.2):
     - React-Core
@@ -1027,7 +1027,7 @@ SPEC CHECKSUMS:
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
-  react-native-netinfo: ba4ea50d836c60580c59079233c400753fe5bcb6
+  react-native-netinfo: 5b664b2945a8f02102b296f0f812bddd6827ed9c
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-tracking-transparency: b2029ff756f1128b1f2c7c7c7f3003bc3c950f9f
@@ -1070,6 +1070,6 @@ SPEC CHECKSUMS:
   Yoga: 99652481fcd320aefa4a7ef90095b95acd181952
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: b98540f7915b0622f77bfcdf63e504f98bca4fb7
+PODFILE CHECKSUM: 69a57d444c1f220c476b15f6975b94a38ba9ab37
 
 COCOAPODS: 1.11.3
