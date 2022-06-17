@@ -1,7 +1,12 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
+import {
+  Keyboard,
+  NativeSyntheticEvent,
+  Platform,
+  TextInputSubmitEditingEventData,
+} from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -61,6 +66,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID }) => {
     dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
+    Keyboard.dismiss()
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
