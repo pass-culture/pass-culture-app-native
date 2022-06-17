@@ -112,6 +112,13 @@ commands:
           paths:
             - .jest
 
+  unit_test_web:
+    description: Unit Tests Web
+    steps:
+      - run:
+          name: Run tests
+          command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
+
   install_ruby_version:
     description: Install ruby version with rvm
     steps:
@@ -455,9 +462,7 @@ jobs:
     steps:
       - checkout
       - install_node_modules
-      - run:
-          name: Unit Tests Web
-          command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
+      - unit_test_web
 
   notify-hard-testing-release:
     executor: node
