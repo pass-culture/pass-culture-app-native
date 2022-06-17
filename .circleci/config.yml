@@ -97,9 +97,6 @@ commands:
           keys:
             - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
-          name: Install JUnit coverage reporter
-          command: yarn add --dev jest-junit
-      - run:
           name: Run tests with JUnit as reporter
           command: yarn test:unit:ci
           environment:
@@ -115,9 +112,6 @@ commands:
   unit_test_web:
     description: Unit Tests Web
     steps:
-      - run:
-          name: Install JUnit coverage reporter
-          command: yarn add --dev jest-junit
       - run:
           name: Run tests with JUnit as reporter
           command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
