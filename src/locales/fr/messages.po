@@ -2122,6 +2122,10 @@ msgstr "Partager ma position"
 msgid "Partout"
 msgstr "Partout"
 
+#: src/libs/network/OfflinePage.tsx
+msgid "Pas de réseau internet"
+msgstr "Pas de réseau internet"
+
 #: src/features/search/atoms/NoSearchResult.tsx
 msgid "Pas de résultat trouvé pour"
 msgstr "Pas de résultat trouvé pour"
@@ -3031,6 +3035,10 @@ msgstr "Tu n'as pas de smartphone ?"
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
+
+#: src/libs/network/OfflinePage.tsx
+msgid "Tu n'es pas connecté à internet"
+msgstr "Tu n'es pas connecté à internet"
 
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"

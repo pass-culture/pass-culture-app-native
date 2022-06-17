@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfflinePage /> should match snapshot with default message 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      height={143.52}
+      width={184}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Pas de réseau internet
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Tu n'es pas connecté à internet
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
