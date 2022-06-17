@@ -33,7 +33,6 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
      */
     if (Platform.OS === 'android') {
       handleKeyboardWillShow(e)
-      return
     }
     // If needed, implement iOS behavior here
   }
@@ -53,7 +52,6 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
      */
     if (Platform.OS === 'android') {
       handleKeyboardWillHide(e)
-      return
     }
     // If needed, implement iOS behavior here
   }

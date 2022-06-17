@@ -68,7 +68,6 @@ export const BusinessModule = (props: BusinessModuleProps) => {
     }
     if (isUserLoading) {
       showInfoSnackBar({ message: t`Redirection en cours` })
-      return
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])

@@ -105,7 +105,7 @@ export const getCtaWordingAndAction = ({
       },
     }
   }
-  return
+  return undefined
 }
 
 export const useCtaWordingAndAction = (props: {
