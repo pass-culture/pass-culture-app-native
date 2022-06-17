@@ -28,6 +28,7 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents/AppCompon
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { NavigationAccountSuspension } from 'features/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -193,6 +194,13 @@ export const routes: Route[] = [
     component: LegalNotices,
     path: 'notices-legales',
     options: { title: t`Mentions légales` },
+  },
+  {
+    // debug route: in navigation component
+    name: 'NavigationAccountSuspension',
+    component: NavigationAccountSuspension,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-navigation-account-suspension',
   },
   {
     name: 'SuspensionScreen',

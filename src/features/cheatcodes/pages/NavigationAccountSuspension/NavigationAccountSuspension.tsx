@@ -8,14 +8,14 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer } from 'ui/theme'
 
-export function NavigationCulturalSurvey(): JSX.Element {
+export function NavigationAccountSuspension(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
 
   return (
     <ScrollView>
       <Spacer.TopScreen />
       <ModalHeader
-        title="New CulturalSurvey 🎨"
+        title="Account Management 🎨"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
@@ -24,9 +24,11 @@ export function NavigationCulturalSurvey(): JSX.Element {
         onRightIconPress={undefined}
       />
       <StyledContainer>
-        <LinkToComponent name="CulturalSurveyIntro" />
-        <LinkToComponent name="CulturalSurveyQuestions" />
-        <LinkToComponent name="CulturalSurveyThanks" />
+        <LinkToComponent name="FraudulentAccount" />
+        <LinkToComponent name="SuspendedAccount" />
+        <LinkToComponent name="AccountReactivationSuccess" />
+        <LinkToComponent name="ConfirmDeleteProfile" />
+        <LinkToComponent name="DeleteProfileSuccess" />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
