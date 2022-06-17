@@ -3,14 +3,11 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
-import {
-  RootScreenNames,
-  RootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -124,29 +121,6 @@ export function NavigationIdentityCheck(): JSX.Element {
         hideModal={() => setFastEduconnectConnectionRequestModalVisible(false)}
       />
     </ScrollView>
-  )
-}
-
-interface LinkToComponentProps {
-  name?: RootScreenNames
-  onPress?: () => void
-  title?: string
-  navigationParams?: RootStackParamList[RootScreenNames]
-}
-
-const LinkToComponent = ({
-  name = 'NavigationSignUp',
-  onPress,
-  title,
-  navigationParams,
-}: LinkToComponentProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToComponent = () => navigate(name, navigationParams)
-
-  return (
-    <Row half>
-      <ButtonPrimary wording={title ?? name} onPress={onPress ?? navigateToComponent} />
-    </Row>
   )
 }
 

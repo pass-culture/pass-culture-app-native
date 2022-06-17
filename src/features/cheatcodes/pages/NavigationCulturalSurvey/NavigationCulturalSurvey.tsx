@@ -1,18 +1,12 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  RootScreenNames,
-  RootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator'
+import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { padding, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export function NavigationCulturalSurvey(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
@@ -39,36 +33,8 @@ export function NavigationCulturalSurvey(): JSX.Element {
   )
 }
 
-interface LinkToComponentProps {
-  name?: RootScreenNames
-  onPress?: () => void
-  title?: string
-  navigationParams?: RootStackParamList[RootScreenNames]
-}
-
-const LinkToComponent = ({
-  name = 'NavigationSignUp',
-  onPress,
-  title,
-  navigationParams,
-}: LinkToComponentProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToComponent = () => navigate(name, navigationParams)
-
-  return (
-    <Row half>
-      <ButtonPrimary wording={title ?? name} onPress={onPress ?? navigateToComponent} />
-    </Row>
-  )
-}
-
 const StyledContainer = styled.View({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))
