@@ -1769,6 +1769,11 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
+  appEnableAutocomplete: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
   appEnableSearchHomepageRework: boolean
   /**
    * @type {boolean}
@@ -2526,6 +2531,8 @@ export interface VenueResponse {
 export enum VenueTypeCodeKey {
   'VISUAL_ARTS' = 'VISUAL_ARTS',
   'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
+  'TRAVELING_CINEMA' = 'TRAVELING_CINEMA',
+  'MOVIE' = 'MOVIE',
   'ARTISTIC_COURSE' = 'ARTISTIC_COURSE',
   'SCIENTIFIC_CULTURE' = 'SCIENTIFIC_CULTURE',
   'FESTIVAL' = 'FESTIVAL',
@@ -2538,7 +2545,6 @@ export enum VenueTypeCodeKey {
   'CONCERT_HALL' = 'CONCERT_HALL',
   'DIGITAL' = 'DIGITAL',
   'PATRIMONY_TOURISM' = 'PATRIMONY_TOURISM',
-  'MOVIE' = 'MOVIE',
   'PERFORMING_ARTS' = 'PERFORMING_ARTS',
   'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
   'ADMINISTRATIVE' = 'ADMINISTRATIVE',
