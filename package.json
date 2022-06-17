@@ -57,7 +57,7 @@
     "test:unit": "TZ=UTC JEST=true jest --forceExit",
     "test:unit:ci": "yarn test:unit --maxWorkers=2 --logHeapUsage --coverage --ci --reporters=default --reporters=jest-junit",
     "test:unit:web": "TZ=UTC JEST=true jest --config jest.web.config.js --forceExit",
-    "test:unit:web:ci": "yarn test:unit:web --runInBand --logHeapUsage",
+    "test:unit:web:ci": "yarn test:unit:web --runInBand --logHeapUsage --coverage --ci --reporters=default --reporters=jest-junit",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
     "fix:lint": "eslint . --ext .js,.ts,.tsx --fix",
     "postinstall": "patch-package && jetify && yarn translations:compile",
