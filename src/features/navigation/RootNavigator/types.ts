@@ -103,6 +103,7 @@ export type RootStackParamList = {
     preventCancellation?: boolean
   }
   Navigation: undefined
+  NavigationAccountSuspension: undefined
   NavigationNotScreensPages: undefined
   NotificationSettings: undefined
   Offer: {

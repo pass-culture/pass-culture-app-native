@@ -86,6 +86,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
+            wording={'Account Management 🎨'}
+            onPress={() => navigate('NavigationAccountSuspension')}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
             wording={'Sentry'}
             onPress={() => {
               const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
@@ -134,36 +140,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary wording="Venue" onPress={() => navigate('Venue', { id: venueId })} />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Fraudulent Account'}
-            onPress={() => navigate('FraudulentAccount')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Suspended Account'}
-            onPress={() => navigate('SuspendedAccount')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Account Reactivation Success'}
-            onPress={() => navigate('AccountReactivationSuccess')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Confirm delete profile'}
-            onPress={() => navigate('ConfirmDeleteProfile')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Delete Profile Success'}
-            onPress={() => navigate('DeleteProfileSuccess')}
-          />
         </Row>
         <Row half>
           <ButtonPrimary
