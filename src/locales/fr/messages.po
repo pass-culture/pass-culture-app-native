@@ -202,6 +202,10 @@ msgstr "Annulé"
 msgid "Arts visuels, arts plastiques et galeries"
 msgstr "Arts visuels, arts plastiques et galeries"
 
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
+msgid "Assure-toi d'indiquer ton numéro de téléphone personnel"
+msgstr "Assure-toi d'indiquer ton numéro de téléphone personnel"
+
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
@@ -1294,6 +1298,10 @@ msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
 msgid "Il est possible que cette page soit désactivée ou n'existe pas."
 msgstr "Il est possible que cette page soit désactivée ou n'existe pas."
 
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
+msgid "Il ne peut être associé qu’à un seul compte"
+msgstr "Il ne peut être associé qu’à un seul compte"
+
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
 msgstr "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
@@ -1333,6 +1341,7 @@ msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
@@ -2187,6 +2196,10 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
+msgid "Pour que la validation de ton numéro de téléphone se passe au mieux :"
+msgstr "Pour que la validation de ton numéro de téléphone se passe au mieux :"
+
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pour quelle raison me demande-t-on ma date de naissance ?"
 msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
@@ -2311,6 +2324,7 @@ msgid "Quelle est ton adresse ?"
 msgstr "Quelle est ton adresse ?"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 msgid "Quelques conseils"
 msgstr "Quelques conseils"
 
@@ -2494,6 +2508,7 @@ msgid "Revenir à l'accueil"
 msgstr "Revenir à l'accueil"
 
 #: src/features/bookOffer/services/useModalContent.tsx
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/ui/components/achievements/components/GenericAchievement.tsx
@@ -3146,6 +3161,10 @@ msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 msgid "Tu vas recevoir ton billet par e-mail"
 msgstr "Tu vas recevoir ton billet par e-mail"
 
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
+msgid "Tu vas recevoir un code de validation par SMS"
+msgstr "Tu vas recevoir un code de validation par SMS"
+
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 msgid "Tu vas recevoir un code de validation pour confirmer ton numéro."
 msgstr "Tu vas recevoir un code de validation pour confirmer ton numéro."
@@ -3415,6 +3434,10 @@ msgstr "Vérification par smartphone"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Vérification éligibilité"
 msgstr "Vérification éligibilité"
+
+#: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
+msgid "Vérifie que tu as un bon réseau"
+msgstr "Vérifie que tu as un bon réseau"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "Vérifie ton identité"

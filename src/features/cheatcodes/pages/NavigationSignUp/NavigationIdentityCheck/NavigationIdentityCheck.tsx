@@ -7,6 +7,7 @@ import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
+import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -22,6 +23,7 @@ export function NavigationIdentityCheck(): JSX.Element {
     fastEduconnectConnectionRequestModalVisible,
     setFastEduconnectConnectionRequestModalVisible,
   ] = useState(false)
+  const [phoneValidationTipsModalVisible, setPhoneValidationTipsModalVisible] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
 
   const trigger = (message: EduConnectErrorMessageEnum) => {
@@ -63,6 +65,10 @@ export function NavigationIdentityCheck(): JSX.Element {
           }
         />
         <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
+        <LinkToComponent
+          title={'PhoneValidation tips Modal'}
+          onPress={() => setPhoneValidationTipsModalVisible(true)}
+        />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />
@@ -119,6 +125,10 @@ export function NavigationIdentityCheck(): JSX.Element {
       <FastEduconnectConnectionRequestModal
         visible={fastEduconnectConnectionRequestModalVisible}
         hideModal={() => setFastEduconnectConnectionRequestModalVisible(false)}
+      />
+      <PhoneValidationTipsModal
+        isVisible={phoneValidationTipsModalVisible}
+        dismissModal={() => setPhoneValidationTipsModalVisible(false)}
       />
     </ScrollView>
   )

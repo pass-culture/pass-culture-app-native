@@ -5,10 +5,11 @@ import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { theme } from 'theme'
+import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
-import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { IconInterface } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
@@ -63,7 +64,9 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
   return steps
 }
 
-const SmartphoneIcon: React.FC<IconInterface> = () => <Smartphone opacity={0.5} />
+const SmartphoneIcon: React.FC<IconInterface> = () => (
+  <BicolorSmartphone opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+)
 const ProfileIcon: React.FC<IconInterface> = () => <Profile opacity={0.5} />
 const IdCardIcon: React.FC<IconInterface> = () => <IdCard opacity={0.5} />
 const ConfirmationIcon: React.FC<IconInterface> = () => <Confirmation opacity={0.5} />
