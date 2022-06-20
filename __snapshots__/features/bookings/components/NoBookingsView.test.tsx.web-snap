@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "WebkitBoxFlex": 1,
+      "WebkitBoxPack": "center",
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "WebkitJustifyContent": "center",
+      "alignItems": "center",
+      "flexBasis": "0px",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "center",
+      "marginBottom": "40px",
+      "msFlexAlign": "center",
+      "msFlexNegative": 1,
+      "msFlexPack": "center",
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "40px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+  >
+    <div
+      className="css-text-901oao"
+      dir="auto"
+    >
+      undefined-SVG-Mock
+    </div>
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "color": "rgba(105,106,111,1.00)",
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "maxWidth": "500px",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Tu n’as pas de réservations en cours.
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "color": "rgba(105,106,111,1.00)",
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "maxWidth": "500px",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier.
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "160px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`<NoBookingsView /> should render online no bookings view 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "WebkitBoxFlex": 1,
+      "WebkitBoxPack": "center",
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "WebkitJustifyContent": "center",
+      "alignItems": "center",
+      "flexBasis": "0px",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "center",
+      "marginBottom": "40px",
+      "msFlexAlign": "center",
+      "msFlexNegative": 1,
+      "msFlexPack": "center",
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+  >
+    <div
+      className="css-text-901oao"
+      dir="auto"
+    >
+      undefined-SVG-Mock
+    </div>
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "color": "rgba(105,106,111,1.00)",
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "maxWidth": "500px",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Tu n’as pas de réservations en cours.
+Découvre les offres disponibles
+sans attendre !
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "32px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+  >
+    <button
+      className="sc-gsDKAQ bJAeEt sc-gKclnd ecJASa"
+      onClick={[Function]}
+      onDoubleClick={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <div
+        className="css-text-901oao css-textMultiLine-cens5h"
+        dir="ltr"
+        style={
+          Object {
+            "WebkitLineClamp": 1,
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+            "marginLeft": "0px",
+            "maxWidth": "100%",
+          }
+        }
+      >
+        Explorer les offres
+      </div>
+    </button>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "32px",
+      }
+    }
+  />
+</div>
+`;
