@@ -31,7 +31,6 @@ const translation: ReactNativeCountryPickerProps['translation'] = 'fra'
 interface Props {
   initialCountry: Country
   onSelect: (country: Country) => void
-  width?: string
 }
 
 async function getAllowedCountries() {
@@ -74,7 +73,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
           testID={`country-selector-${item.cca2}`}
           onPress={() => onSelect(item)}>
           <CountryContainer>
-            <Flag countryCode={item.cca2} withEmoji flagSize={30} />
+            <Flag countryCode={item.cca2} withEmoji flagSize={25} />
             <Typo.Body>{itemTitle}</Typo.Body>
             {!!selected && (
               <IconContainer>
