@@ -10,7 +10,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  onGoBackPress?: () => void
   noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
