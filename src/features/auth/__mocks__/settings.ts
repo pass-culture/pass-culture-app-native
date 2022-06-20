@@ -7,6 +7,7 @@ export const mockDefaultSettings: SettingsResponse = {
   isRecaptchaEnabled: true,
   enablePhoneValidation: true,
   displayDmsRedirection: true,
+  appEnableAutocomplete: true,
   appEnableSearchHomepageRework: false,
   autoActivateDigitalBookings: true,
   enableIdCheckRetention: false,

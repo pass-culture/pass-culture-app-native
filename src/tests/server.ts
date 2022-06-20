@@ -147,6 +147,7 @@ function requestSettingsSuccess(
     allowAccountUnsuspension: false,
     appEnableSearchHomepageRework: false,
     accountUnsuspensionLimit: 60,
+    appEnableAutocomplete: true,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {
