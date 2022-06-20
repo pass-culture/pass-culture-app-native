@@ -17,5 +17,4 @@ Libraries.args = {
   label: 'Bibliothèques & Médiathèques',
   Icon: Bookstore,
   color: '#870087',
-  style: { width: 220 },
 }
