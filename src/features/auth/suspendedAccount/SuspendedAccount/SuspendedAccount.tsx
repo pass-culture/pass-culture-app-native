@@ -73,7 +73,6 @@ export const SuspendedAccount = () => {
 
   return settings?.allowAccountUnsuspension ? (
     <GenericInfoPage
-      onGoBackPress={signOut}
       title={t`Ton compte est désactivé`}
       icon={ProfileDeletionIllustration}
       buttons={[
