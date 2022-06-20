@@ -97,7 +97,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
     <React.Fragment>
       <StyledTouchable
         onPress={showModal}
-        buttonWidth={props.width}
         {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
@@ -150,15 +149,13 @@ const focusStyle =
         '&:focus-visible': { outline: 'auto' },
       }
     : {}
-const StyledTouchable = styledButton(Touchable)<{ buttonWidth?: string; isFocus?: boolean }>(
-  ({ buttonWidth }) => ({
-    width: buttonWidth,
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexShrink: 0,
-    ...focusStyle,
-  })
-)
+
+const StyledTouchable = styledButton(Touchable)({
+  flexDirection: 'row',
+  alignItems: 'center',
+  flexShrink: 0,
+  ...focusStyle,
+})
 
 const VerticalSeparator = styled.View(({ theme }) => ({
   paddingVertical: getSpacing(2.5),
