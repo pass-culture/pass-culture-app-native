@@ -73,7 +73,6 @@ export const SuspendedAccount = () => {
 
   return settings?.allowAccountUnsuspension ? (
     <GenericInfoPage
-      onGoBackPress={signOut}
       title={t`Ton compte est désactivé`}
       icon={ProfileDeletionIllustration}
       buttons={[
@@ -90,6 +89,7 @@ export const SuspendedAccount = () => {
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
           onPress={signOut}
           icon={PlainArrowPrevious}
+          navigateBeforeOnPress
         />,
       ]}>
       <StyledBody>{t`Tu as jusqu'au ${formattedDate} pour réactiver ton compte.`}</StyledBody>
