@@ -16,6 +16,7 @@ import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
+import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
@@ -73,7 +74,6 @@ import { Quote } from 'ui/svg/icons/Quote'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
-import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
 import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
@@ -110,6 +110,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorProfile,
   BicolorSearch,
   BicolorSignal,
+  BicolorSmartphone,
   ArrowNext,
   ArrowPrevious,
   Bell,
@@ -154,7 +155,7 @@ export const SecondaryAndBiggerIcons = {
   ScrollToTop,
   SignOut,
   Share,
-  Smartphone,
+
   Sun,
   Trash,
   Warning,
