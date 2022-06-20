@@ -159,10 +159,10 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             "borderWidth": 1,
             "flexDirection": "row",
             "height": 40,
-            "paddingBottom": 4,
+            "paddingBottom": 0,
             "paddingLeft": 17,
             "paddingRight": 17,
-            "paddingTop": 4,
+            "paddingTop": 0,
             "width": "100%",
           },
         ]

@@ -1435,10 +1435,10 @@ Array [
                       "height": "40px",
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "paddingBottom": "4px",
+                      "paddingBottom": "0px",
                       "paddingLeft": "17px",
                       "paddingRight": "17px",
-                      "paddingTop": "4px",
+                      "paddingTop": "0px",
                       "width": "100%",
                     }
                   }
@@ -1716,10 +1716,10 @@ Array [
                       "height": "40px",
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "paddingBottom": "4px",
+                      "paddingBottom": "0px",
                       "paddingLeft": "17px",
                       "paddingRight": "17px",
-                      "paddingTop": "4px",
+                      "paddingTop": "0px",
                       "width": "100%",
                     }
                   }
@@ -1863,10 +1863,10 @@ Array [
                       "height": "40px",
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "paddingBottom": "4px",
+                      "paddingBottom": "0px",
                       "paddingLeft": "17px",
                       "paddingRight": "17px",
-                      "paddingTop": "4px",
+                      "paddingTop": "0px",
                       "width": "100%",
                     }
                   }
@@ -2010,10 +2010,10 @@ Array [
                       "height": "40px",
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "paddingBottom": "4px",
+                      "paddingBottom": "0px",
                       "paddingLeft": "17px",
                       "paddingRight": "17px",
-                      "paddingTop": "4px",
+                      "paddingTop": "0px",
                       "width": "100%",
                     }
                   }
@@ -2157,10 +2157,10 @@ Array [
                       "height": "40px",
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "paddingBottom": "4px",
+                      "paddingBottom": "0px",
                       "paddingLeft": "17px",
                       "paddingRight": "17px",
-                      "paddingTop": "4px",
+                      "paddingTop": "0px",
                       "width": "100%",
                     }
                   }
@@ -2438,10 +2438,10 @@ Array [
                       "height": "40px",
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "paddingBottom": "4px",
+                      "paddingBottom": "0px",
                       "paddingLeft": "17px",
                       "paddingRight": "17px",
-                      "paddingTop": "4px",
+                      "paddingTop": "0px",
                       "width": "100%",
                     }
                   }

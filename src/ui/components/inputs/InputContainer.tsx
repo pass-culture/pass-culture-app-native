@@ -88,7 +88,7 @@ const StyledView = styled(View)<{
           borderRadius: 16,
         }
       : {
-          ...padding(1, horizontalPadding), // This assures that things don't move when the border width changes on focus
+          ...padding(0, horizontalPadding), // This assures that things don't move when the border width changes on focus
           alignItems: 'center',
           borderRadius: 22,
         }),

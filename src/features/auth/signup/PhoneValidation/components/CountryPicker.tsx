@@ -31,7 +31,6 @@ const translation: ReactNativeCountryPickerProps['translation'] = 'fra'
 interface Props {
   initialCountry: Country
   onSelect: (country: Country) => void
-  width?: string
 }
 
 async function getAllowedCountries() {
@@ -74,7 +73,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
           testID={`country-selector-${item.cca2}`}
           onPress={() => onSelect(item)}>
           <CountryContainer>
-            <Flag countryCode={item.cca2} withEmoji flagSize={30} />
+            <Flag countryCode={item.cca2} withEmoji flagSize={25} />
             <Typo.Body>{itemTitle}</Typo.Body>
             {!!selected && (
               <IconContainer>
@@ -97,7 +96,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
     <React.Fragment>
       <StyledTouchable
         onPress={showModal}
-        buttonWidth={props.width}
         {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
@@ -150,15 +148,13 @@ const focusStyle =
         '&:focus-visible': { outline: 'auto' },
       }
     : {}
-const StyledTouchable = styledButton(Touchable)<{ buttonWidth?: string; isFocus?: boolean }>(
-  ({ buttonWidth }) => ({
-    width: buttonWidth,
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexShrink: 0,
-    ...focusStyle,
-  })
-)
+
+const StyledTouchable = styledButton(Touchable)({
+  flexDirection: 'row',
+  alignItems: 'center',
+  flexShrink: 0,
+  ...focusStyle,
+})
 
 const VerticalSeparator = styled.View(({ theme }) => ({
   paddingVertical: getSpacing(2.5),
