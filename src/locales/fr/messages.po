@@ -212,7 +212,7 @@ msgstr "Assure-toi d'indiquer ton numéro de téléphone personnel"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
-msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
+msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.<<<<<<< HEAD"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
@@ -1316,6 +1316,10 @@ msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne co
 #: src/features/venue/pages/VenueNotFound.tsx
 msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
 msgstr "Il est possible que ce lieu soit désactivé ou n'existe pas."
+
+#: src/features/bookings/components/NoBookingsView.tsx
+msgid "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier."
+msgstr "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier."
 
 #: src/features/offer/pages/OfferNotFound.tsx
 msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
@@ -3108,13 +3112,17 @@ msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour
 msgstr "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 
 #: src/features/bookings/components/NoBookingsView.tsx
+msgid "Tu n’as pas de réservations en cours."
+msgstr "Tu n’as pas de réservations en cours."
+
+#: src/features/bookings/components/NoBookingsView.tsx
 msgid ""
 "Tu n’as pas de réservations en cours.\n"
-"Découvre les offres disponibles \n"
+"Découvre les offres disponibles\n"
 "sans attendre !"
 msgstr ""
 "Tu n’as pas de réservations en cours.\n"
-"Découvre les offres disponibles \n"
+"Découvre les offres disponibles\n"
 "sans attendre !"
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
@@ -3519,6 +3527,10 @@ msgstr "À activer avant le {date}"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
+
+#: src/libs/network/OfflineModeContainer.tsx
+msgid "aucune connexion internet."
+msgstr "aucune connexion internet."
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "auteur"
