@@ -13,6 +13,7 @@ type CustomTextInputProps = {
   accessibilityDescribedBy?: string
   focusOutlineColor?: ColorsEnum
   leftComponent?: React.ReactElement
+  rightLabel?: string
 }
 
 type CustomSearchInputProps = {
@@ -77,6 +78,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     accessibilityDescribedBy: props.accessibilityDescribedBy,
     focusOutlineColor: props.focusOutlineColor,
     leftComponent: props.leftComponent,
+    rightLabel: props.rightLabel,
   }
 }
 

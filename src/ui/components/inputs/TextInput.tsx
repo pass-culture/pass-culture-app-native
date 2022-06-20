@@ -1,5 +1,7 @@
+import { t } from '@lingui/macro'
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
@@ -37,6 +39,12 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     }
   }
 
+  const RightLabel = () => {
+    if (isRequiredField) return <RequiredLabel />
+    if (customProps.rightLabel) return <Label>{t`${customProps.rightLabel}`}</Label>
+    return <React.Fragment />
+  }
+
   return (
     <ContainerWithMaxWidth>
       {!!customProps.label && (
@@ -44,7 +52,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           <FlexInputLabel htmlFor={textInputID}>
             <LabelContainer>
               <Typo.Body>{customProps.label}</Typo.Body>
-              {!!isRequiredField && <RequiredLabel />}
+              <RightLabel />
             </LabelContainer>
           </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
@@ -74,5 +82,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     </ContainerWithMaxWidth>
   )
 }
+
+const Label = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
