@@ -15,6 +15,7 @@ import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
+import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
@@ -108,6 +109,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorLogo,
   BicolorProfile,
   BicolorSearch,
+  BicolorSignal,
   ArrowNext,
   ArrowPrevious,
   Bell,
