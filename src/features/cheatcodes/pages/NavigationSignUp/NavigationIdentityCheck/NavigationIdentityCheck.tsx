@@ -73,6 +73,15 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'PhoneValidation tips Modal'}
           onPress={() => setPhoneValidationTipsModalVisible(true)}
         />
+        <LinkToComponent
+          title={'New SetPhoneValidationCode'}
+          onPress={() =>
+            navigate('SetPhoneValidationCode', {
+              phoneNumber: '+33612345678',
+              countryCode: 'FR',
+            })
+          }
+        />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />

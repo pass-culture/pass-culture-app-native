@@ -27,6 +27,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckStepper: undefined
   // PhoneValidation
   SetPhoneNumber: undefined
+  SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   SetPhoneNumberDeprecated: undefined
   SetPhoneValidationCodeDeprecated: { phoneNumber: string; countryCode: CountryCode }
   // Profile
