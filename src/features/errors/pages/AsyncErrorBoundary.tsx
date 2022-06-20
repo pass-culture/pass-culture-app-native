@@ -13,7 +13,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { BrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -114,3 +114,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))
+
+const BrokenConnection = styled(BicolorBrokenConnection).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  color2: theme.colors.white,
+}))``

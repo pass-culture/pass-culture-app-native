@@ -8,7 +8,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
-import { BrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Typo } from 'ui/theme'
 
@@ -49,3 +49,8 @@ const BodyText = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))
+
+const BrokenConnection = styled(BicolorBrokenConnection).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  color2: theme.colors.white,
+}))``
