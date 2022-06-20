@@ -38,9 +38,3 @@ export const BicolorBrokenConnection = styled(BicolorBrokenConnectionSvg).attrs(
     size: size ?? theme.illustrations.sizes.medium,
   })
 )``
-
-export const BrokenConnection = styled(BicolorBrokenConnectionSvg).attrs(({ size, theme }) => ({
-  color: theme.colors.black,
-  color2: theme.colors.black,
-  size: size ?? theme.illustrations.sizes.medium,
-}))``
