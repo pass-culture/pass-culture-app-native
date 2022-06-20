@@ -9,8 +9,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
   formatPhoneNumber,
-  SetPhoneValidationCode,
-} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
+  SetPhoneValidationCodeDeprecated,
+} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
@@ -61,7 +61,7 @@ const navigationProps = {
       countryCode: 'FR',
     },
   },
-} as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+} as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -70,7 +70,7 @@ const formattedPhoneNumber = formatPhoneNumber(
   navigationProps.route.params.countryCode as CountryCode
 ).replace(/ /g, '\u00a0')
 
-describe('SetPhoneValidationCode', () => {
+describe('SetPhoneValidationCodeDeprecated', () => {
   beforeEach(() => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
@@ -220,7 +220,7 @@ describe('SetPhoneValidationCode', () => {
 })
 
 function renderSetPhoneValidationCode() {
-  return render(<SetPhoneValidationCode {...navigationProps} />)
+  return render(<SetPhoneValidationCodeDeprecated {...navigationProps} />)
 }
 
 function renderModalWithFilledCodeInput(code: string) {
@@ -232,9 +232,9 @@ function renderModalWithFilledCodeInput(code: string) {
         countryCode: 'FR',
       },
     },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
   const input = renderAPI.getByTestId('Entrée du code de confirmation')
   fireEvent.changeText(input, code)
-  renderAPI.rerender(<SetPhoneValidationCode {...navigationProps} />)
+  renderAPI.rerender(<SetPhoneValidationCodeDeprecated {...navigationProps} />)
   return renderAPI
 }

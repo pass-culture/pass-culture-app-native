@@ -42,9 +42,12 @@ const CODE_INPUT_LENGTH = 6
 
 const TIMER = 60
 
-type SetPhoneValidationCodeProps = StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+type SetPhoneValidationCodeProps = StackScreenProps<
+  RootStackParamList,
+  'SetPhoneValidationCodeDeprecated'
+>
 
-export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeComponent({
+export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidationCodeComponent({
   route,
 }: SetPhoneValidationCodeProps) {
   const [error, setError] = useState<Error | undefined>()
@@ -55,7 +58,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     route.params.countryCode as CountryCode
   )
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('SetPhoneNumber', undefined)
+  const { goBack } = useGoBack('SetPhoneNumberDeprecated', undefined)
   const [codeInputState, setCodeInputState] = useState({
     code: '',
     isValid: false,
