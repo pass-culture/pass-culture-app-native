@@ -33,7 +33,7 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title={t`Numéro de téléphone`}
       fixedTopChildren={
         <React.Fragment>
           <CenteredTitle titleID={titleID} title={t`Valide ton numéro de téléphone`} />
