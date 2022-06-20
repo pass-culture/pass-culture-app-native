@@ -6,11 +6,18 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
+import { OfflinePage } from 'libs/network/OfflinePage'
+import { useNetInfo } from 'libs/network/useNetInfo'
 
 export const Favorites: React.FC = () => {
+  const netInfo = useNetInfo()
   const { isLoggedIn } = useAuthContext()
 
-  if (!isLoggedIn) return <NotConnectedFavorites />
+  if (!netInfo.isConnected) {
+    return <OfflinePage />
+  } else if (!isLoggedIn) {
+    return <NotConnectedFavorites />
+  }
 
   return (
     <Container>
