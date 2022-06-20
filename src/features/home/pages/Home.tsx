@@ -27,6 +27,8 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useABTestingContext } from 'libs/ABTesting'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { OfflinePage } from 'libs/network/OfflinePage'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { Spinner } from 'ui/components/Spinner'
 import { Spacer } from 'ui/theme'
 
@@ -112,7 +114,7 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   )
 }
 
-export const Home: FunctionComponent = () => {
+export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { homeEntryId: ABTestingEntryId } = useABTestingContext()
   const { modules, homeEntryId } = useHomepageModules(params?.entryId ?? ABTestingEntryId) || {}
@@ -191,6 +193,14 @@ export const Home: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={6} />
     </Container>
   )
+}
+
+export const Home: FunctionComponent = () => {
+  const netInfo = useNetInfo()
+  if (netInfo.isConnected) {
+    return <OnlineHome />
+  }
+  return <OfflinePage />
 }
 
 const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
