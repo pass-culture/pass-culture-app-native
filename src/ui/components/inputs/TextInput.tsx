@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
+import { InputCaption } from 'ui/components/inputs/InputCaption'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Spacer, Typo } from 'ui/theme'
@@ -41,7 +42,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
 
   const RightLabel = () => {
     if (isRequiredField) return <RequiredLabel />
-    if (customProps.rightLabel) return <Label>{t`${customProps.rightLabel}`}</Label>
+    if (customProps.rightLabel) return <InputCaption>{t`${customProps.rightLabel}`}</InputCaption>
     return <React.Fragment />
   }
 
@@ -82,9 +83,5 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     </ContainerWithMaxWidth>
   )
 }
-
-const Label = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
