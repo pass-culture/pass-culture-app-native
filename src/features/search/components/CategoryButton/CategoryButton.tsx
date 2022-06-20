@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -10,7 +9,6 @@ export type CategoryButtonProps = {
   Icon: FunctionComponent<IconInterface>
   color: string
   onPress: () => void
-  style?: ViewStyle
   children?: never
 }
 
@@ -19,7 +17,6 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   Icon,
   color,
   onPress,
-  style,
 }) => {
   const StyledIcon = useMemo(
     () =>
@@ -31,7 +28,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 
   return (
-    <TouchableContainer style={style} borderLeftColor={color} onPress={onPress}>
+    <TouchableContainer borderLeftColor={color} onPress={onPress}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>
