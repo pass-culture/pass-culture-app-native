@@ -63,6 +63,16 @@ This will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 This will bump the `patch` version, create a tag `patch/vX.X.X+1` and push it.
 CircleCI will detect the tag `patch/vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
 
+#### Patch staging with additionnal commits
+
+Pull master to make sure you have all the commits you need to patch.
+Checkout the tag you want to start from.
+
+- `git checkout vX.X.X`
+- list all commits you want to patch to your tag.
+- run `git cherry-pick <commit-hash>` for all commits **in the order they were merged to `master`** to avoid conflicts.
+- build and deploy the patch by running the following script: `trigger:staging:deploy:patch`
+
 ### Production (MEP)
 
 #### Hard deploy (when MEP wanted, manual)
