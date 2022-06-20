@@ -212,7 +212,7 @@ msgstr "Assure-toi d'indiquer ton numéro de téléphone personnel"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
-msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.<<<<<<< HEAD"
+msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
