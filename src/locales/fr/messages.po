@@ -53,6 +53,10 @@ msgstr "17 ans"
 msgid "18 ans"
 msgstr "18 ans"
 
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
+msgid "5 demandes"
+msgstr "5 demandes"
+
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "Abandonner"
 msgstr "Abandonner"
@@ -222,10 +226,6 @@ msgstr "Attention tu n'as que 3 tentatives."
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
-
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "Attention, il te reste 5 demandes"
-msgstr "Attention, il te reste 5 demandes"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
@@ -1305,6 +1305,10 @@ msgstr "Il ne peut être associé qu’à un seul compte"
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
 msgstr "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
+
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
+msgid "Il te reste"
+msgstr "Il te reste"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 msgid "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
@@ -3533,6 +3537,10 @@ msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription e
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
+
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
+msgid "de code de validation"
+msgstr "de code de validation"
 
 #: src/libs/tileAccessibilityLabel.ts
 msgid "de la catégorie"
