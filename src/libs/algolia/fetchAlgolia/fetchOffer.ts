@@ -1,83 +1,20 @@
 import { Hit } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
 
-import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
+import {
+  offerAttributesToRetrieve,
+  buildOfferSearchParameters,
+} from 'libs/algolia/fetchAlgolia/config'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
-
-import { RADIUS_FILTERS } from '../enums'
-
-import { buildFacetFilters } from './fetchAlgolia.facetFilters'
-import { buildNumericFilters } from './fetchAlgolia.numericFilters'
-
-// We don't use all the fields indexed. Simply retrieve the one we use.
-// see SearchHit
-export const attributesToRetrieve = [
-  'offer.dates',
-  'offer.isDigital',
-  'offer.isDuo',
-  'offer.isEducational',
-  'offer.name',
-  'offer.prices',
-  'offer.subcategoryId',
-  'offer.thumbUrl',
-  'objectID',
-  '_geoloc',
-]
-
-const buildSearchParameters = (
-  {
-    beginningDatetime = null,
-    date = null,
-    endingDatetime = null,
-    locationFilter,
-    offerCategories = [],
-    offerSubcategories = [],
-    objectIds = [],
-    offerIsDuo = false,
-    offerIsFree = false,
-    offerIsNew = false,
-    offerTypes = {
-      isDigital: false,
-      isEvent: false,
-      isThing: false,
-    },
-    priceRange = null,
-    timeRange = null,
-    tags = [],
-  }: PartialSearchState & { objectIds?: string[] },
-  userLocation: GeoCoordinates | null,
-  isUserUnderage: boolean
-) => ({
-  ...buildFacetFilters({
-    locationFilter,
-    offerCategories,
-    offerSubcategories,
-    objectIds,
-    offerTypes,
-    offerIsDuo,
-    tags,
-    isUserUnderage,
-  }),
-  ...buildNumericFilters({
-    beginningDatetime,
-    date,
-    endingDatetime,
-    offerIsFree,
-    offerIsNew,
-    priceRange,
-    timeRange,
-  }),
-  ...buildGeolocationParameter(locationFilter, userLocation),
-})
 
 export const fetchMultipleOffers = async (
   paramsList: PartialSearchState[],
@@ -89,9 +26,9 @@ export const fetchMultipleOffers = async (
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
-      ...buildSearchParameters(params, userLocation, isUserUnderage),
+      ...buildOfferSearchParameters(params, userLocation, isUserUnderage),
       attributesToHighlight: [], // We disable highlighting because we don't need it
-      attributesToRetrieve,
+      attributesToRetrieve: offerAttributesToRetrieve,
     },
   }))
 
@@ -114,7 +51,7 @@ export const fetchOffer = async (
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
 ): Promise<Response> => {
-  const searchParameters = buildSearchParameters(parameters, userLocation, isUserUnderage)
+  const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
   try {
@@ -122,7 +59,7 @@ export const fetchOffer = async (
       page: parameters.page || 0,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...searchParameters,
-      attributesToRetrieve,
+      attributesToRetrieve: offerAttributesToRetrieve,
       attributesToHighlight: [], // We disable highlighting because we don't need it
     })
   } catch (error) {
@@ -136,7 +73,7 @@ export const fetchOfferHits = async (
   isUserUnderage: boolean
 ): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
-  const searchParameters = buildSearchParameters(
+  const searchParameters = buildOfferSearchParameters(
     { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
     null,
     isUserUnderage
@@ -147,7 +84,7 @@ export const fetchOfferHits = async (
       page: 0,
       hitsPerPage: objectIds.length,
       ...searchParameters,
-      attributesToRetrieve,
+      attributesToRetrieve: offerAttributesToRetrieve,
       attributesToHighlight: [], // We disable highlighting because we don't need it
     })
     const hits = response.hits.filter(Boolean) as SearchHit[]
@@ -156,48 +93,4 @@ export const fetchOfferHits = async (
     captureAlgoliaError(error)
     return [] as SearchHit[]
   }
-}
-
-export const buildGeolocationParameter = (
-  locationFilter: PartialSearchState['locationFilter'],
-  userLocation: GeoCoordinates | null
-): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
-  if (locationFilter.locationType === LocationType.VENUE) return
-
-  if (locationFilter.locationType === LocationType.PLACE) {
-    if (!locationFilter.place.geolocation) return
-    return {
-      aroundLatLng: `${locationFilter.place.geolocation.latitude}, ${locationFilter.place.geolocation.longitude}`,
-      aroundRadius: computeAroundRadiusInMeters(
-        locationFilter.aroundRadius,
-        locationFilter.locationType
-      ),
-    }
-  }
-
-  if (!userLocation) return
-  if (locationFilter.locationType === LocationType.EVERYWHERE) {
-    return {
-      aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-      aroundRadius: 'all',
-    }
-  }
-
-  return {
-    aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-    aroundRadius: computeAroundRadiusInMeters(
-      locationFilter.aroundRadius,
-      locationFilter.locationType
-    ),
-  }
-}
-
-const computeAroundRadiusInMeters = (
-  aroundRadius: number | null,
-  locationType: LocationType
-): number | 'all' => {
-  if (locationType === LocationType.EVERYWHERE) return RADIUS_FILTERS.UNLIMITED_RADIUS
-  if (aroundRadius === null) return RADIUS_FILTERS.UNLIMITED_RADIUS
-  if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
-  return aroundRadius * 1000
 }
