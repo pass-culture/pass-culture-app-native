@@ -8,4 +8,11 @@ describe('SetPhoneNumber', () => {
     const SetPhoneNumberPage = render(<SetPhoneNumber />)
     expect(SetPhoneNumberPage).toMatchSnapshot()
   })
+
+  it('should show modal on first render', () => {
+    const { queryByText } = render(<SetPhoneNumber />)
+    expect(queryByText("J'ai compris")).toBeTruthy()
+  })
+
+  // TODO PC-14869 : implement the check that modal is visible when going to SetPhoneValiditationCode then using GoBack
 })
