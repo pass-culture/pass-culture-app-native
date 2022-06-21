@@ -159,7 +159,7 @@ const StyledTouchable = styledButton(Touchable)({
 const VerticalSeparator = styled.View(({ theme }) => ({
   paddingVertical: getSpacing(2.5),
   borderRightWidth: getSpacing(0.25),
-  borderRightColor: theme.colors.greyMedium,
+  borderRightColor: theme.colors.greyDark,
 }))
 
 const CallingCodeText = styled(Typo.Body)({

@@ -98,7 +98,7 @@ Array [
       style={
         Array [
           Object {
-            "borderRightColor": "#CBCDD2",
+            "borderRightColor": "#696A6F",
             "borderRightWidth": 1,
             "paddingVertical": 10,
           },
