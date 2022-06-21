@@ -1,9 +1,4 @@
-export {
-  attributesToRetrieve,
-  fetchOffer,
-  fetchOfferHits,
-  fetchMultipleOffers,
-} from './fetchAlgolia'
+export { attributesToRetrieve, fetchOffer, fetchOfferHits, fetchMultipleOffers } from './fetchOffer'
 export {
   filterOfferHit,
   isVenueHitTypeguard,

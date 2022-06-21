@@ -14,8 +14,9 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 
 import { RADIUS_FILTERS } from '../enums'
-import { buildFacetFilters } from '../fetchAlgolia/fetchAlgolia.facetFilters'
-import { buildNumericFilters } from '../fetchAlgolia/fetchAlgolia.numericFilters'
+
+import { buildFacetFilters } from './fetchAlgolia.facetFilters'
+import { buildNumericFilters } from './fetchAlgolia.numericFilters'
 
 // We don't use all the fields indexed. Simply retrieve the one we use.
 // see SearchHit
