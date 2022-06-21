@@ -10,6 +10,8 @@ import { CountryPicker, METROPOLITAN_FRANCE } from 'features/auth/signup/PhoneVa
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useSafeState } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,6 +28,7 @@ export const SetPhoneNumber = () => {
   const [_phoneNumber, setPhoneNumber] = useState('')
   const [invalidPhoneNumberMessage, _setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
+  const { goBack } = useGoBack(...homeNavConfig)
 
   const {
     visible: isTipsModalVisible,
@@ -96,7 +99,11 @@ export const SetPhoneNumber = () => {
               <Spacer.Column numberOfSpaces={8} />
             )}
 
-            <PhoneValidationTipsModal isVisible={isTipsModalVisible} dismissModal={hideTipsModal} />
+            <PhoneValidationTipsModal
+              isVisible={isTipsModalVisible}
+              dismissModal={hideTipsModal}
+              onGoBack={goBack}
+            />
           </View>
         </Form.MaxWidth>
       }

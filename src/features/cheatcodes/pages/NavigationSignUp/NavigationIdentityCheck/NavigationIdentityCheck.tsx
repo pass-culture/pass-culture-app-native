@@ -129,6 +129,7 @@ export function NavigationIdentityCheck(): JSX.Element {
       <PhoneValidationTipsModal
         isVisible={phoneValidationTipsModalVisible}
         dismissModal={() => setPhoneValidationTipsModalVisible(false)}
+        onGoBack={goBack}
       />
     </ScrollView>
   )
