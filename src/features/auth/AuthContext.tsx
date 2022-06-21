@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
@@ -111,7 +112,6 @@ export function useLoginRoutine() {
     resetContexts()
   }
 }
-
 export function useLogoutRoutine(): () => Promise<void> {
   const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
@@ -125,6 +125,7 @@ export function useLogoutRoutine(): () => Promise<void> {
       LoggedInQueryKeys.forEach((queryKey) => {
         queryClient.removeQueries(queryKey)
       })
+      await AsyncStorage.multiRemove(LoggedInQueryKeys)
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {

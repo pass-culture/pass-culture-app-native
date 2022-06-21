@@ -11,6 +11,7 @@ import {
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { IncompleteSearchHit, SearchHit } from 'libs/search'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
@@ -89,12 +90,13 @@ export const useHomeRecommendedIdsMutation = (recommendationUrl: string) => {
 const useAlgoliaRecommendedHits = (ids: string[], moduleId: string): SearchHit[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformAlgoliaHits()
+  const netInfo = useNetInfo()
 
   const moduleQueryKey = moduleId
   const { data: hits } = useQuery(
     [QueryKeys.RECOMMENDATION_HITS, moduleQueryKey],
     async () => await fetchAlgoliaHits(ids, isUserUnderage),
-    { enabled: ids.length > 0 }
+    { enabled: !!netInfo.isConnected && ids.length > 0 }
   )
 
   return useMemo(() => {
