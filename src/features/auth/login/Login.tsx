@@ -53,7 +53,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
-  const [emailErrorMessage, setEmailErrorMessage] = useSafeState('')
+  const [emailErrorMessage, setEmailErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
@@ -66,7 +66,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   function onEmailChange(mail: string) {
     if (emailErrorMessage) {
       setIsLoading(false)
-      setEmailErrorMessage('')
+      setEmailErrorMessage(null)
     }
     setEmail(mail)
   }
