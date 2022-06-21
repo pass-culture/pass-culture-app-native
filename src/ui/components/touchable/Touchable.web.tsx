@@ -18,6 +18,12 @@ const StyledTouchable = styled.button.attrs<TouchableProps>(
 )(appTouchableOpacityWebStyles)
 
 export const Touchable: React.FC<TouchableProps> = ({ onPress, ...rest }) => (
+  /*
+  We can't export styled.button.attrs directly,
+  despite the Props type given to attrs,
+  Styled would log the following warning in the tests :
+  Warning: Unknown event handler property `onPress`. It will be ignored.
+  */
   // @ts-ignore bug with typescript
   <StyledTouchable onClick={onPress} {...rest} />
 )
