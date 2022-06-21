@@ -1,8 +1,8 @@
 export {
   attributesToRetrieve,
-  fetchAlgolia,
-  fetchAlgoliaHits,
-  fetchMultipleAlgolia,
+  fetchOffer,
+  fetchOfferHits,
+  fetchMultipleOffers,
 } from './fetchAlgolia'
 export {
   filterAlgoliaHit,

@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
-import { fetchAlgolia, filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
+import { fetchOffer, filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 
@@ -14,7 +14,7 @@ export const useVenueOffers = (venueId: number) => {
 
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venueId],
-    () => fetchAlgolia({ ...params, page: 0 }, null, isUserUnderage),
+    () => fetchOffer({ ...params, page: 0 }, null, isUserUnderage),
     {
       select: ({ hits, nbHits }) => ({
         hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID') as SearchHit[],

@@ -7,7 +7,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {
-  fetchMultipleAlgolia,
+  fetchMultipleOffers,
   filterAlgoliaHit,
   useTransformAlgoliaHits,
 } from 'libs/algolia/fetchAlgolia'
@@ -37,7 +37,7 @@ export const useOfferModule = ({
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
-    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage)
+    async () => await fetchMultipleOffers(parsedParameters, position, isUserUnderage)
   )
 
   useEffect(() => {

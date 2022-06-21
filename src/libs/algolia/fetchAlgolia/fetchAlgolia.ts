@@ -78,7 +78,7 @@ const buildSearchParameters = (
   ...buildGeolocationParameter(locationFilter, userLocation),
 })
 
-export const fetchMultipleAlgolia = async (
+export const fetchMultipleOffers = async (
   paramsList: PartialSearchState[],
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
@@ -108,7 +108,7 @@ export const fetchMultipleAlgolia = async (
   }
 }
 
-export const fetchAlgolia = async (
+export const fetchOffer = async (
   parameters: SearchParametersQuery,
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
@@ -130,7 +130,7 @@ export const fetchAlgolia = async (
   }
 }
 
-export const fetchAlgoliaHits = async (
+export const fetchOfferHits = async (
   objectIds: string[],
   isUserUnderage: boolean
 ): Promise<SearchHit[]> => {
