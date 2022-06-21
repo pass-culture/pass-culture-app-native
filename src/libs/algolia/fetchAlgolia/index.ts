@@ -1,5 +1,6 @@
-export { fetchOffer, fetchOfferHits } from './fetchOffer'
+export { fetchOffer } from './fetchOffer'
 export { fetchMultipleOffers } from './fetchMultipleOffers'
+export { fetchOfferHits } from './fetchOfferHits'
 export {
   filterOfferHit,
   isVenueHitTypeguard,
