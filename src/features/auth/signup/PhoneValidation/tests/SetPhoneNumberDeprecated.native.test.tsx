@@ -95,7 +95,7 @@ describe('SetPhoneNumber', () => {
       await act(async () => {
         useMutationCallbacks.onSuccess()
       })
-      expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode', {
+      expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCodeDeprecated', {
         countryCode: 'FR',
         phoneNumber: '612345678',
       })

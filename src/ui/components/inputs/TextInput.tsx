@@ -1,9 +1,11 @@
+import { t } from '@lingui/macro'
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
+import { InputCaption } from 'ui/components/inputs/InputCaption'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Spacer, Typo } from 'ui/theme'
@@ -37,6 +39,12 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     }
   }
 
+  const RightLabel = () => {
+    if (isRequiredField) return <RequiredLabel />
+    if (customProps.rightLabel) return <InputCaption>{t`${customProps.rightLabel}`}</InputCaption>
+    return <React.Fragment />
+  }
+
   return (
     <ContainerWithMaxWidth>
       {!!customProps.label && (
@@ -44,7 +52,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           <FlexInputLabel htmlFor={textInputID}>
             <LabelContainer>
               <Typo.Body>{customProps.label}</Typo.Body>
-              {!!isRequiredField && <RequiredLabel />}
+              <RightLabel />
             </LabelContainer>
           </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />

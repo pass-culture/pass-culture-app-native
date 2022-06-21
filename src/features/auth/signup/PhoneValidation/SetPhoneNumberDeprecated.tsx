@@ -78,7 +78,7 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
-    navigate('SetPhoneValidationCode', { phoneNumber, countryCode: country.cca2 })
+    navigate('SetPhoneValidationCodeDeprecated', { phoneNumber, countryCode: country.cca2 })
   }
 
   function onError(error: ApiError | unknown) {

@@ -9,8 +9,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
   formatPhoneNumber,
-  SetPhoneValidationCode,
-} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
+  SetPhoneValidationCodeDeprecated,
+} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
@@ -54,7 +54,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 }
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-describe('SetPhoneValidationCode', () => {
+describe('SetPhoneValidationCodeDeprecated', () => {
   beforeEach(() => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
@@ -229,10 +229,10 @@ function renderSetPhoneValidationCode() {
         countryCode: 'FR',
       },
     },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
   return render(
     <SafeAreaProvider>
-      <SetPhoneValidationCode {...navigationProps} />
+      <SetPhoneValidationCodeDeprecated {...navigationProps} />
     </SafeAreaProvider>
   )
 }
@@ -246,12 +246,12 @@ function renderModalWithFilledCodeInput(code: string) {
         countryCode: 'FR',
       },
     },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
   const input = renderAPI.getByTestId('Entrée du code de confirmation')
   fireEvent.change(input, { target: { value: code } })
   renderAPI.rerender(
     <SafeAreaProvider>
-      <SetPhoneValidationCode {...navigationProps} />
+      <SetPhoneValidationCodeDeprecated {...navigationProps} />
     </SafeAreaProvider>
   )
   return renderAPI

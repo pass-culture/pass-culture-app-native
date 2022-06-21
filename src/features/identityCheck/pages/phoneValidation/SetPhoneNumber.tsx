@@ -40,7 +40,7 @@ export const SetPhoneNumber = () => {
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title={t`Numéro de téléphone`}
       fixedTopChildren={
         <React.Fragment>
           <CenteredTitle titleID={titleID} title={t`Ton numéro de téléphone`} />

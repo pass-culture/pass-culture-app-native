@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SetPhoneNumber should match snapshot 1`] = `
+exports[`SetPhoneValidationCode should match snapshot 1`] = `
 <View
   style={
     Array [
@@ -179,15 +179,15 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                   ]
                 }
               >
-                Ton numéro de téléphone
+                Valide ton numéro de téléphone
               </Text>
             </View>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={5}
               style={
                 Array [
                   Object {
-                    "height": 24,
+                    "height": 20,
                   },
                 ]
               }
@@ -229,7 +229,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Tu vas recevoir un code de validation pour confirmer ton numéro.
+                  Saisis le code reçu au +33 6 12 34 56 78.
                 </Text>
                 <View
                   numberOfSpaces={6}
@@ -290,7 +290,21 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                             ]
                           }
                         >
-                          Numéro de téléphone
+                          Code de validation
+                        </Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#696A6F",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          Format : 6 chiffres
                         </Text>
                       </View>
                     </View>
@@ -330,131 +344,6 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                       }
                       testID="styled-input-container"
                     >
-                      <View
-                        accessibilityLabel="Ouvrir la modale de choix de l'indicatif téléphonique"
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Ouvrir la modale de choix de l'indicatif téléphonique"
-                      >
-                        <View
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "justifyContent": "center",
-                              "marginRight": 10,
-                              "width": 30,
-                            }
-                          }
-                        >
-                          <ActivityIndicator
-                            size="small"
-                          />
-                        </View>
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                                "marginLeft": -4,
-                                "marginRight": 4,
-                              },
-                            ]
-                          }
-                        >
-                          +33
-                        </Text>
-                        <View
-                          fill="#161617"
-                          height={16}
-                          width={16}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            Array [
-                              Object {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "borderRightColor": "#CBCDD2",
-                                "borderRightWidth": 1,
-                                "paddingVertical": 10,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <Modal
-                        accessibilityRole="none"
-                        animationType="none"
-                        aria-describedby="testUuidV4"
-                        aria-modal={true}
-                        deviceHeight={1334}
-                        deviceWidth={750}
-                        hardwareAccelerated={false}
-                        hideModalContentWhileAnimating={false}
-                        onBackdropPress={[Function]}
-                        onModalHide={[Function]}
-                        onModalWillHide={[Function]}
-                        onModalWillShow={[Function]}
-                        onRequestClose={[Function]}
-                        panResponderThreshold={4}
-                        scrollHorizontal={false}
-                        scrollOffset={0}
-                        scrollOffsetMax={0}
-                        scrollTo={null}
-                        statusBarTranslucent={true}
-                        supportedOrientations={
-                          Array [
-                            "portrait",
-                            "landscape",
-                          ]
-                        }
-                        swipeThreshold={100}
-                        testID="modal"
-                        transparent={true}
-                        visible={false}
-                      />
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          Array [
-                            Object {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
                       <TextInput
                         aria-describedby="testUuidV4"
                         aria-required={false}
@@ -466,7 +355,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                         onChangeText={[Function]}
                         onFocus={[Function]}
                         onSubmitEditing={[Function]}
-                        placeholder="06 12 34 56 78"
+                        placeholder="012345"
                         placeholderTextColor="#696A6F"
                         returnKeyType="next"
                         style={
@@ -486,21 +375,104 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                             },
                           ]
                         }
-                        textContentType="telephoneNumber"
+                        textContentType="oneTimeCode"
                       />
                     </View>
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={8}
+                  numberOfSpaces={4}
                   style={
                     Array [
                       Object {
-                        "height": 32,
+                        "height": 16,
                       },
                     ]
                   }
                 />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                        "justifyContent": "flex-end",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Code non reçu ?"
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderRadius": 0,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginTop": 0,
+                        "maxWidth": 500,
+                        "minHeight": 20,
+                        "opacity": 1,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Code non reçu ?"
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "marginLeft": 8,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      Code non reçu ?
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </RCTScrollView>
@@ -522,89 +494,55 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
             }
           >
             <View
+              accessibilityLabel="Continuer"
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
               }
+              testID="Continuer"
             >
               <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
                     },
                   ]
                 }
               >
-                Attention, il te reste 5 demandes
+                Continuer
               </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Continuer"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-                testID="Continuer"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Continuer
-                </Text>
-              </View>
             </View>
             <View
               customHeight={8}

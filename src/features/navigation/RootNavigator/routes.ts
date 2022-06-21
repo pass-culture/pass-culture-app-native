@@ -11,7 +11,6 @@ import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
-import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/signup/SignupForm'
@@ -353,12 +352,6 @@ export const routes: Route[] = [
     name: 'LandscapePositionPage',
     component: LandscapePositionPage,
     path: 'position-paysage',
-  },
-  {
-    name: 'SetPhoneValidationCode',
-    component: SetPhoneValidationCode,
-    path: 'creation-compte/code-de-validation-telephone',
-    options: { title: t`Validation téléphone` },
   },
   {
     name: 'PhoneValidationTooManyAttempts',
