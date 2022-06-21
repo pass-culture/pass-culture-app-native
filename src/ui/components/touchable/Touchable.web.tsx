@@ -12,7 +12,7 @@ const StyledTouchable = styled.button.attrs<TouchableProps>(
     onClick,
     'data-testid': testID,
     'aria-label': accessibilityLabel,
-    ['title']: accessibilityLabel,
+    title: accessibilityLabel,
     ...rest,
   })
 )(appTouchableOpacityWebStyles)
