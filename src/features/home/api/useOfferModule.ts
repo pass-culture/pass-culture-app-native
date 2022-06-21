@@ -8,8 +8,8 @@ import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {
   fetchMultipleOffers,
-  filterAlgoliaHit,
-  useTransformAlgoliaHits,
+  filterOfferHit,
+  useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
@@ -28,7 +28,7 @@ export const useOfferModule = ({
   moduleId,
 }: UseOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
   const { position } = useGeolocation()
-  const transformHits = useTransformAlgoliaHits()
+  const transformHits = useTransformOfferHits()
   const parseSearchParameters = useParseSearchParameters()
   const isUserUnderage = useIsUserUnderage()
   const { data: user } = useUserProfileInfo()
@@ -49,7 +49,7 @@ export const useOfferModule = ({
   return useMemo(() => {
     if (!data) return
 
-    const hits = data.hits.filter(filterAlgoliaHit).map(transformHits)
+    const hits = data.hits.filter(filterOfferHit).map(transformHits)
     return {
       hits: uniqBy(hits, 'objectID') as SearchHit[],
       nbHits: data.nbHits,

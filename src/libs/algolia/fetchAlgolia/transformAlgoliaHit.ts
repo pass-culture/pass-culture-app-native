@@ -38,14 +38,14 @@ const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
   hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc
 
 // We don't want to display offers without image nor subcategoryId
-export const filterAlgoliaHit = (hit: IncompleteSearchHit): boolean =>
+export const filterOfferHit = (hit: IncompleteSearchHit): boolean =>
   hit && hit.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
 
 // We don't want to display venues without image
 export const isVenueHitTypeguard = (hit: IncompleteVenueHit): hit is VenueHit =>
   hit && typeof hit.bannerUrl === 'string'
 
-export const transformAlgoliaHit =
+export const transformOfferHit =
   (urlPrefix?: string) =>
   (hit: AlgoliaHit): AlgoliaHit => ({
     ...hit,
@@ -57,10 +57,10 @@ export const transformAlgoliaHit =
     _geoloc: parseGeoloc(hit),
   })
 
-export const useTransformAlgoliaHits = () => {
+export const useTransformOfferHits = () => {
   const { data: settings } = useAppSettings()
   const { objectStorageUrl: urlPrefix } = settings || {}
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useCallback(transformAlgoliaHit(urlPrefix), [urlPrefix])
+  return useCallback(transformOfferHit(urlPrefix), [urlPrefix])
 }

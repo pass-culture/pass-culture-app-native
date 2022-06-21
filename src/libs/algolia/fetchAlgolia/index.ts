@@ -5,8 +5,8 @@ export {
   fetchMultipleOffers,
 } from './fetchAlgolia'
 export {
-  filterAlgoliaHit,
+  filterOfferHit,
   isVenueHitTypeguard,
-  transformAlgoliaHit,
-  useTransformAlgoliaHits,
+  transformOfferHit,
+  useTransformOfferHits,
 } from './transformAlgoliaHit'
