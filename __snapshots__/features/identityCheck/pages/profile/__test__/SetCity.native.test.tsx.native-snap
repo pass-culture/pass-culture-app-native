@@ -57,6 +57,7 @@ exports[`<SetCity/> should render correctly 1`] = `
     </Text>
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}

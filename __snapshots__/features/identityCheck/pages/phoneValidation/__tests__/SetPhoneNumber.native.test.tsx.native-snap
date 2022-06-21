@@ -57,6 +57,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
     </Text>
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -332,6 +333,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                     >
                       <View
                         accessibilityLabel="Ouvrir la modale de choix de l'indicatif téléphonique"
+                        accessibilityRole="button"
                         accessible={true}
                         collapsable={false}
                         focusable={true}

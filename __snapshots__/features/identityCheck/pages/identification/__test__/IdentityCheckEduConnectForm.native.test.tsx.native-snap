@@ -57,6 +57,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
     </Text>
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}

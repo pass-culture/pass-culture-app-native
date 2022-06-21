@@ -1535,6 +1535,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 >
                   <View
+                    accessibilityRole="button"
                     accessibilityState={
                       Object {
                         "disabled": true,
@@ -1583,6 +1584,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityRole="button"
                     accessibilityState={
                       Object {
                         "disabled": true,
@@ -1631,6 +1633,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityRole="button"
                     accessibilityState={
                       Object {
                         "disabled": true,
@@ -1679,6 +1682,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityRole="button"
                     accessibilityState={
                       Object {
                         "disabled": true,
@@ -1750,6 +1754,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               >
                 <View
                   accessibilityLabel="Continuer vers l'étape suivante"
+                  accessibilityRole="button"
                   accessible={true}
                   collapsable={false}
                   focusable={true}

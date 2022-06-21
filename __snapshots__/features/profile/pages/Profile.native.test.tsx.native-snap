@@ -1609,6 +1609,7 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityRole="button"
                     accessibilityState={
                       Object {
                         "disabled": false,

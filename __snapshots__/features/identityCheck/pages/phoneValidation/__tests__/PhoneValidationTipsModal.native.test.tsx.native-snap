@@ -163,6 +163,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
           }
         >
           <View
+            accessibilityRole="button"
             accessible={true}
             collapsable={false}
             focusable={true}

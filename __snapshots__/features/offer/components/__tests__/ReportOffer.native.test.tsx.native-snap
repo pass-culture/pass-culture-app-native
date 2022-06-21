@@ -163,6 +163,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           }
         >
           <View
+            accessibilityRole="button"
             accessible={true}
             collapsable={false}
             focusable={false}
@@ -255,6 +256,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           }
         >
           <View
+            accessibilityRole="button"
             accessible={true}
             collapsable={false}
             focusable={true}

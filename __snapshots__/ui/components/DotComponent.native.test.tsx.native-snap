@@ -2,6 +2,7 @@
 
 exports[`<DotComponent /> renders dot active color 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -53,6 +54,7 @@ exports[`<DotComponent /> renders dot active color 1`] = `
 
 exports[`<DotComponent /> should render correctly 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,

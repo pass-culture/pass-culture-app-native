@@ -2,9 +2,10 @@
 
 exports[`<Touchable /> should render correctly 1`] = `
 <View
+  accessibilityRole="button"
   accessible={true}
   collapsable={false}
-  focusable={false}
+  focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -27,9 +28,10 @@ exports[`<Touchable /> should render correctly 1`] = `
 
 exports[`<Touchable /> should render correctly on custom type 1`] = `
 <View
+  accessibilityRole="button"
   accessible={true}
   collapsable={false}
-  focusable={false}
+  focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}

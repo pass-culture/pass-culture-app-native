@@ -3,6 +3,7 @@
 exports[`<Touchable /> should render correctly 1`] = `
 <button
   className="sc-bdvvtL bmzymd"
+  onClick={[MockFunction]}
   tabIndex="0"
   type="button"
 >
@@ -18,6 +19,7 @@ exports[`<Touchable /> should render correctly 1`] = `
 exports[`<Touchable /> should render correctly on custom type 1`] = `
 <button
   className="sc-bdvvtL bmzymd"
+  onClick={[MockFunction]}
   tabIndex="0"
   type="reset"
 >
