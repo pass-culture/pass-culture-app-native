@@ -1,4 +1,4 @@
-import { parseThumbUrl } from '../fetchAlgolia/transformAlgoliaHit'
+import { parseThumbUrl } from '../fetchAlgolia/transformOfferHit'
 
 describe('parseThumbUrl()', () => {
   it.each`

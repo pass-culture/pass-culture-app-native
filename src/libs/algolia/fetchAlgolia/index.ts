@@ -9,4 +9,4 @@ export {
   isVenueHitTypeguard,
   transformOfferHit,
   useTransformOfferHits,
-} from './transformAlgoliaHit'
+} from './transformOfferHit'
