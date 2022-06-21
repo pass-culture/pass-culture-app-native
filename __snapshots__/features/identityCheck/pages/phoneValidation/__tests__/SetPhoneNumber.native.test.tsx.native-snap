@@ -1066,20 +1066,58 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                 ]
               }
             >
-              <Text
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Attention, il te reste 5 demandes
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Il te reste 
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  5 demandes 
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  de code de validation
+                </Text>
+              </View>
               <View
                 numberOfSpaces={2}
                 style={

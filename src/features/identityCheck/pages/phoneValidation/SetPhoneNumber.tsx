@@ -102,7 +102,11 @@ export const SetPhoneNumber = () => {
       }
       fixedBottomChildren={
         <BottomContentContainer>
-          <Typo.Caption>{t`Attention, il te reste 5 demandes`}</Typo.Caption>
+          <RemainingAttemptsContainer>
+            <GreyCaption>{t`Il te reste` + ' '}</GreyCaption>
+            <Typo.Caption>{t`5 demandes` + ' '}</Typo.Caption>
+            <GreyCaption>{t`de code de validation`}</GreyCaption>
+          </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             type="submit"
@@ -116,6 +120,14 @@ export const SetPhoneNumber = () => {
     />
   )
 }
+
+const RemainingAttemptsContainer = styled.View({
+  flexDirection: 'row',
+})
+
+const GreyCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
