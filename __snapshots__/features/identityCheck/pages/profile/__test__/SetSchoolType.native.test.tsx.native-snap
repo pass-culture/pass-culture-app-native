@@ -57,6 +57,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
     </Text>
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -824,6 +825,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
     </Text>
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}

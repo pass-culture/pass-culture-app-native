@@ -753,6 +753,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         />
         <View
           accessibilityLabel="Géolocalisation désactivée"
+          accessibilityRole="button"
           accessibilityState={
             Object {
               "disabled": false,

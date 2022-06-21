@@ -41,6 +41,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     </View>
   </View>
   <View
+    accessibilityRole="button"
     accessible={true}
     collapsable={false}
     focusable={true}

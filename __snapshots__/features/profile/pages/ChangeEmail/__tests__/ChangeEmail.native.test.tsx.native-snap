@@ -66,6 +66,7 @@ Array [
       >
         <View
           accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -580,6 +581,7 @@ Array [
             />
             <View
               accessibilityLabel="Afficher le mot de passe"
+              accessibilityRole="button"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -773,6 +775,7 @@ Array [
       >
         <View
           accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -1229,6 +1232,7 @@ Array [
             />
             <View
               accessibilityLabel="Afficher le mot de passe"
+              accessibilityRole="button"
               accessible={true}
               collapsable={false}
               focusable={true}

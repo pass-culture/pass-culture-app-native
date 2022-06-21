@@ -1408,6 +1408,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           }
         >
           <View
+            accessibilityRole="button"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -2494,6 +2495,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         >
           <View
+            accessibilityRole="button"
             accessible={true}
             collapsable={false}
             focusable={true}

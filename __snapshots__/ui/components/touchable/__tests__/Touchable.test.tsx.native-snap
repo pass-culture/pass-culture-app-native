@@ -2,6 +2,7 @@
 
 exports[`<Touchable /> should render correctly 1`] = `
 <View
+  accessibilityRole="button"
   accessible={true}
   collapsable={false}
   focusable={false}
@@ -27,6 +28,7 @@ exports[`<Touchable /> should render correctly 1`] = `
 
 exports[`<Touchable /> should render correctly on custom type 1`] = `
 <View
+  accessibilityRole="button"
   accessible={true}
   collapsable={false}
   focusable={false}

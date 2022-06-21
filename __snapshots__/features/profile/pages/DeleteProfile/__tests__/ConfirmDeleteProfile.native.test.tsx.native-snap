@@ -3,6 +3,7 @@
 exports[`ConfirmDeleteProfile component should render confirm delete profile 1`] = `
 Array [
   <View
+    accessibilityRole="button"
     accessible={true}
     collapsable={false}
     focusable={true}

@@ -244,6 +244,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           }
         >
           <View
+            accessibilityRole="button"
             accessible={true}
             collapsable={false}
             focusable={true}
