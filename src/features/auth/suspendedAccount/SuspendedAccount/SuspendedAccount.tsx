@@ -27,14 +27,14 @@ const addDaysToDate = (date: Date, days: number) => {
 }
 
 export const SuspendedAccount = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
   const { data: settings } = useAppSettings()
   const { data: accountSuspensionDate } = useAccountSuspensionDate()
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
 
   function onAccountUnsuspendSuccess() {
-    navigate('AccountReactivationSuccess')
+    replace('AccountReactivationSuccess')
   }
 
   function onAccountUnsuspendFailure() {

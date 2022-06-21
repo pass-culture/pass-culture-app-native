@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { queriesToInvalidateOnUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -66,7 +66,7 @@ describe('<SuspendedAccount />', () => {
       queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
         expect(queryClient.invalidateQueries).toHaveBeenCalledWith(queryKey)
       )
-      expect(navigate).toHaveBeenCalledWith('AccountReactivationSuccess')
+      expect(replace).toHaveBeenCalledWith('AccountReactivationSuccess')
     })
   })
 
