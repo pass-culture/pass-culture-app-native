@@ -1,0 +1,368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
+<View
+  testID="recentsSearchesAndSuggestions"
+>
+  <View>
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "paddingHorizontal": 24,
+          "paddingTop": 16,
+        }
+      }
+      data={
+        Array [
+          Object {
+            "objectID": "1",
+            "offer": Object {
+              "name": "Test1",
+              "searchGroupName": "CINEMA",
+            },
+          },
+          Object {
+            "objectID": "2",
+            "offer": Object {
+              "name": "Test2",
+              "searchGroupName": "FILM",
+            },
+          },
+          Object {
+            "objectID": "3",
+            "offer": Object {
+              "name": "Test3",
+              "searchGroupName": "MUSIQUE",
+            },
+          },
+          Object {
+            "objectID": "4",
+            "offer": Object {
+              "name": "Test4",
+              "searchGroupName": "LIVRE",
+            },
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "opacity": 1,
+                "paddingBottom": 16,
+              }
+            }
+          >
+            <View
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                    },
+                  ]
+                }
+              >
+                Test1
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 dans 
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Cinéma
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "opacity": 1,
+                "paddingBottom": 16,
+              }
+            }
+          >
+            <View
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                    },
+                  ]
+                }
+              >
+                Test2
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 dans 
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Films, séries
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "opacity": 1,
+                "paddingBottom": 16,
+              }
+            }
+          >
+            <View
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                    },
+                  ]
+                }
+              >
+                Test3
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 dans 
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Musique
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "opacity": 1,
+                "paddingBottom": 16,
+              }
+            }
+          >
+            <View
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                    },
+                  ]
+                }
+              >
+                Test4
+              </Text>
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;
