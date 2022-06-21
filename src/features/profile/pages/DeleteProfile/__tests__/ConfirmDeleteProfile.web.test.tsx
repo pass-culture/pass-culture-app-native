@@ -3,7 +3,7 @@ import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { replace } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
@@ -53,8 +53,8 @@ describe('ConfirmDeleteProfile component', () => {
     useMutationCallbacks.onSuccess()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
+      expect(replace).toBeCalledTimes(1)
+      expect(replace).toHaveBeenCalledWith('DeleteProfileSuccess')
       expect(mockSignOut).toBeCalled()
     })
   })
