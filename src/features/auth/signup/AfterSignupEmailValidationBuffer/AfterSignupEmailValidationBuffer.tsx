@@ -15,12 +15,13 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
 
-  const { navigate } = useNavigation<UseNavigationType>()
-  const delayedNavigate: typeof navigate = (...args: Parameters<typeof navigate>) => {
+  const { replace } = useNavigation<UseNavigationType>()
+  const delayedReplace: typeof replace = (...args: Parameters<typeof replace>) => {
     setTimeout(() => {
-      navigate(...args)
+      replace(...args)
     }, 2000)
   }
+
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,7 +36,7 @@ export function AfterSignupEmailValidationBuffer() {
 
   function beforeEmailValidation() {
     if (isTimestampExpired(params.expiration_timestamp)) {
-      delayedNavigate('SignupConfirmationExpiredLink', { email: params.email })
+      delayedReplace('SignupConfirmationExpiredLink', { email: params.email })
       return
     }
     validateEmail({
@@ -53,24 +54,24 @@ export function AfterSignupEmailValidationBuffer() {
       const user = await api.getnativev1me()
 
       if (user.isEligibleForBeneficiaryUpgrade) {
-        delayedNavigate('VerifyEligibility')
+        delayedReplace('VerifyEligibility')
         return
       }
       if (user.eligibilityStartDatetime && new Date(user.eligibilityStartDatetime) >= new Date()) {
-        delayedNavigate('NotYetUnderageEligibility', {
+        delayedReplace('NotYetUnderageEligibility', {
           eligibilityStartDatetime: user.eligibilityStartDatetime.toString(),
         })
         return
       }
-      delayedNavigate('AccountCreated')
+      delayedReplace('AccountCreated')
     } catch {
-      delayedNavigate('AccountCreated')
+      delayedReplace('AccountCreated')
     }
   }
 
   function onEmailValidationFailure() {
     showInfoSnackBar({ message: t`Ce lien de validation n'est plus valide` })
-    delayedNavigate(...homeNavConfig)
+    delayedReplace(...homeNavConfig)
   }
 
   return <LoadingPage />

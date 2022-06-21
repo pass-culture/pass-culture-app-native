@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as datesLib from 'libs/dates'
@@ -67,8 +67,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
-        expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('AccountCreated')
+        expect(replace).toBeCalledTimes(1)
+        expect(replace).toHaveBeenCalledWith('AccountCreated')
       })
       loginRoutine.mockRestore()
     })
@@ -92,8 +92,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
-        expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('VerifyEligibility')
+        expect(replace).toBeCalledTimes(1)
+        expect(replace).toHaveBeenCalledWith('VerifyEligibility')
       })
       loginRoutine.mockRestore()
     })
@@ -114,7 +114,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AccountCreated')
+        expect(replace).toHaveBeenCalledWith('AccountCreated')
       })
     })
 
@@ -135,7 +135,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('NotYetUnderageEligibility', {
+        expect(replace).toHaveBeenCalledWith('NotYetUnderageEligibility', {
           eligibilityStartDatetime: '2021-12-01T00:00:00Z',
         })
       })
@@ -157,8 +157,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: "Ce lien de validation n'est plus valide",
         })
-        expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
+        expect(replace).toBeCalledTimes(1)
+        expect(replace).toHaveBeenCalledWith(...homeNavConfig)
       })
     })
   })
@@ -170,8 +170,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
+        expect(replace).toBeCalledTimes(1)
+        expect(replace).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
           email: 'john@wick.com',
         })
       })
