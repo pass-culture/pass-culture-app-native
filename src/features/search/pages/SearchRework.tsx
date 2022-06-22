@@ -4,11 +4,12 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { CategoriesButtons, OnPressCategory } from 'features/search/components/CategoriesButtons'
+import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { SearchHeaderRework } from 'features/search/components/SearchHeaderRework'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
+import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
@@ -18,6 +19,7 @@ export function SearchRework() {
   const showResults = useShowResults()
   const searchInputID = uuidv4()
   const [isFocus, setIsFocus] = useState(false)
+  const showResultsForCategory = useShowResultsForCategory()
 
   useEffect(() => {
     if (params) {
@@ -25,10 +27,6 @@ export function SearchRework() {
       dispatch({ type: 'SHOW_RESULTS', payload: true })
     }
   }, [dispatch, params])
-
-  const showResultsForCategory: OnPressCategory = () => {
-    alert('le click sera fonctionnel lorsque cette US PC-15130 sera fini')
-  }
 
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions

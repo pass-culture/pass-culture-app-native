@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { SearchGroupNameEnum } from 'api/gen'
 import { SearchRework } from 'features/search/pages/SearchRework'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
-import { render } from 'tests/utils'
+import * as useShowResultsForCategory from 'features/search/pages/useShowResultsForCategory'
+import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/search/pages/useSearchResults', () => ({
   useSearchResults: () => ({
@@ -25,6 +27,19 @@ describe('SearchRework component', () => {
       const categoriesButtons = getByTestId('categoriesButtons')
 
       expect(categoriesButtons).toBeTruthy()
+    })
+
+    it('should show results for a category when pressing a category button', async () => {
+      const mockShowResultsForCategory = jest.fn()
+      jest
+        .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
+        .mockReturnValueOnce(mockShowResultsForCategory)
+      const { getByText } = render(<SearchRework />)
+
+      const categoryButton = getByText('Spectacles')
+      await fireEvent.press(categoryButton)
+
+      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
     })
   })
 })
