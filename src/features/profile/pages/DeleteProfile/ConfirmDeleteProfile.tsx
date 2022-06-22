@@ -23,13 +23,13 @@ import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 export function ConfirmDeleteProfile() {
-  const { replace } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
 
   async function onAccountSuspendSuccess() {
-    replace('DeleteProfileSuccess')
+    navigate('DeleteProfileSuccess')
     await signOut()
   }
 
