@@ -13,11 +13,17 @@ import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 
-export const fetchOffer = async (
-  parameters: SearchParametersQuery,
-  userLocation: GeoCoordinates | null,
+type FetchOfferArgs = {
+  parameters: SearchParametersQuery
+  userLocation: GeoCoordinates | null
   isUserUnderage: boolean
-): Promise<Response> => {
+}
+
+export const fetchOffer = async ({
+  parameters,
+  userLocation,
+  isUserUnderage,
+}: FetchOfferArgs): Promise<Response> => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 

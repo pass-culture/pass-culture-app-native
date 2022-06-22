@@ -14,7 +14,12 @@ export const useVenueOffers = (venueId: number) => {
 
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venueId],
-    () => fetchOffer({ ...params, page: 0 }, null, isUserUnderage),
+    () =>
+      fetchOffer({
+        parameters: { ...params, page: 0 },
+        userLocation: null,
+        isUserUnderage,
+      }),
     {
       select: ({ hits, nbHits }) => ({
         hits: uniqBy(hits.filter(filterOfferHit).map(transformHits), 'objectID') as SearchHit[],

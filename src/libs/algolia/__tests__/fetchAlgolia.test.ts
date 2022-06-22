@@ -56,7 +56,11 @@ describe('fetchOffer', () => {
   it('should fetch with provided query and default page number', () => {
     const query = 'searched query'
 
-    fetchOffer({ ...baseParams, query } as SearchParametersQuery, null, false)
+    fetchOffer({
+      parameters: { ...baseParams, query } as SearchParametersQuery,
+      userLocation: null,
+      isUserUnderage: false,
+    })
 
     expect(search).toHaveBeenCalledWith(query, {
       page: 0,
@@ -70,7 +74,11 @@ describe('fetchOffer', () => {
   it('should fetch with provided query and default page number', () => {
     const query = 'searched query'
 
-    fetchOffer({ ...baseParams, query } as SearchParametersQuery, null, false)
+    fetchOffer({
+      parameters: { ...baseParams, query } as SearchParametersQuery,
+      userLocation: null,
+      isUserUnderage: false,
+    })
 
     expect(search).toHaveBeenCalledWith(query, {
       page: 0,
@@ -85,7 +93,11 @@ describe('fetchOffer', () => {
     it('should fetch with provided query and default underage filter', () => {
       const query = 'searched query'
 
-      fetchOffer({ ...baseParams, query } as SearchParametersQuery, null, true)
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: true,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isForbiddenToUnderage:false']],
@@ -99,7 +111,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerCategories = ['LECON']
 
-      fetchOffer({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, true)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerCategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: true,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [
@@ -119,7 +135,11 @@ describe('fetchOffer', () => {
     it('should fetch with provided query', () => {
       const query = 'searched query'
 
-      fetchOffer({ ...baseParams, query } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
       expect(search).toHaveBeenCalledWith(query, {
@@ -132,7 +152,11 @@ describe('fetchOffer', () => {
     })
 
     it('should fetch without query parameter when no keyword is provided', () => {
-      fetchOffer({ ...baseParams, query: '', page: 0 } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query: '', page: 0 } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
@@ -148,14 +172,14 @@ describe('fetchOffer', () => {
     it('should fetch with geolocation coordinates when latitude and longitude are provided', () => {
       const query = 'searched query'
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
           query,
         } as SearchParametersQuery,
         userLocation,
-        false
-      )
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
@@ -171,14 +195,14 @@ describe('fetchOffer', () => {
     it('should not fetch with geolocation coordinates when latitude and longitude are not valid', () => {
       const query = 'searched query'
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
           query,
         } as SearchParametersQuery,
-        null,
-        false
-      )
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -192,14 +216,14 @@ describe('fetchOffer', () => {
     it('should fetch offers with geolocation coordinates, when latitude, longitude and radius are provided and search is around me', () => {
       const query = 'searched query'
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
           query,
         } as SearchParametersQuery,
         userLocation,
-        false
-      )
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
@@ -215,14 +239,14 @@ describe('fetchOffer', () => {
     it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius equals zero', () => {
       const query = 'searched query'
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { aroundRadius: 0, locationType: LocationType.AROUND_ME },
           query,
         } as SearchParametersQuery,
         userLocation,
-        false
-      )
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
@@ -238,14 +262,14 @@ describe('fetchOffer', () => {
     it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius is null', () => {
       const query = 'searched query'
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { aroundRadius: null, locationType: LocationType.AROUND_ME },
           query,
         } as SearchParametersQuery,
         userLocation,
-        false
-      )
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
@@ -264,7 +288,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerCategories: string[] = []
 
-      fetchOffer({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerCategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -279,7 +307,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerCategories = ['LECON']
 
-      fetchOffer({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerCategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.searchGroupName:LECON']],
@@ -294,7 +326,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerCategories = ['SPECTACLE', 'LIVRE']
 
-      fetchOffer({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerCategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [
@@ -312,7 +348,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerSubcategories = ['CINE_PLEIN_AIR']
 
-      fetchOffer({ ...baseParams, query, offerSubcategories } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerSubcategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.subcategoryId:CINE_PLEIN_AIR']],
@@ -327,7 +367,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerSubcategories = ['CINE_PLEIN_AIR', 'ESCAPE_GAME']
 
-      fetchOffer({ ...baseParams, query, offerSubcategories } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerSubcategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [
@@ -350,7 +394,11 @@ describe('fetchOffer', () => {
     it('should fetch with no facetFilters when no offer type is provided', () => {
       const query = 'searched query'
 
-      fetchOffer({ ...baseParams, query } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -369,7 +417,11 @@ describe('fetchOffer', () => {
         isThing: false,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isDigital:true']],
@@ -388,7 +440,11 @@ describe('fetchOffer', () => {
         isThing: false,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -407,7 +463,11 @@ describe('fetchOffer', () => {
         isThing: true,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [
@@ -430,7 +490,11 @@ describe('fetchOffer', () => {
         isThing: false,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isEvent:true']],
@@ -449,7 +513,11 @@ describe('fetchOffer', () => {
         isThing: true,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isThing:true']],
@@ -468,7 +536,11 @@ describe('fetchOffer', () => {
         isThing: false,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [
@@ -490,7 +562,11 @@ describe('fetchOffer', () => {
         isThing: true,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isDigital:false']],
@@ -509,7 +585,11 @@ describe('fetchOffer', () => {
         isThing: true,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -528,7 +608,11 @@ describe('fetchOffer', () => {
         isThing: false,
       }
 
-      fetchOffer({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -545,7 +629,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerIsDuo = false
 
-      fetchOffer({ ...baseParams, query, offerIsDuo } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsDuo } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -560,7 +648,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerIsDuo = true
 
-      fetchOffer({ ...baseParams, query, offerIsDuo } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsDuo } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false'], ['offer.isDuo:true']],
@@ -577,7 +669,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerIsNew = false
 
-      fetchOffer({ ...baseParams, query, offerIsNew } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsNew } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -593,7 +689,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerIsNew = true
 
-      fetchOffer({ ...baseParams, query, offerIsNew } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsNew } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -613,7 +713,11 @@ describe('fetchOffer', () => {
       const query = 'searched query'
       const offerIsFree = false
 
-      fetchOffer({ ...baseParams, query, offerIsFree } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsFree } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -629,11 +733,11 @@ describe('fetchOffer', () => {
       const offerIsFree = true
       const priceRange: Range<number> = [0, 300]
 
-      fetchOffer(
-        { ...baseParams, query, offerIsFree, priceRange } as SearchParametersQuery,
-        null,
-        false
-      )
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsFree, priceRange } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -649,11 +753,11 @@ describe('fetchOffer', () => {
       const offerIsFree = false
       const priceRange: Range<number> = [0, 50]
 
-      fetchOffer(
-        { ...baseParams, query, offerIsFree, priceRange } as SearchParametersQuery,
-        null,
-        false
-      )
+      fetchOffer({
+        parameters: { ...baseParams, query, offerIsFree, priceRange } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -675,15 +779,15 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate },
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
@@ -704,15 +808,15 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK, selectedDate },
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
@@ -733,15 +837,15 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mock_WEEKEND_getFirstFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
@@ -762,15 +866,15 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mockGetFirstOfDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
@@ -790,7 +894,11 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([64800, 79200])
 
-        fetchOffer({ ...baseParams, timeRange } as SearchParametersQuery, null, false)
+        fetchOffer({
+          parameters: { ...baseParams, timeRange } as SearchParametersQuery,
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mockComputeTimeRangeFromHoursToSeconds).toHaveBeenCalledWith(timeRange)
         expect(search).toHaveBeenCalledWith('', {
@@ -811,16 +919,16 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
@@ -843,16 +951,16 @@ describe('fetchOffer', () => {
           [327, 328],
         ])
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK, selectedDate },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mock_WEEK_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
@@ -877,16 +985,16 @@ describe('fetchOffer', () => {
           [225, 226],
         ])
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mock_WEEKEND_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(
           selectedDate,
@@ -911,16 +1019,16 @@ describe('fetchOffer', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
-        fetchOffer(
-          {
+        fetchOffer({
+          parameters: {
             ...baseParams,
             query,
             date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
-          null,
-          false
-        )
+          userLocation: null,
+          isUserUnderage: false,
+        })
 
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
@@ -944,15 +1052,15 @@ describe('fetchOffer', () => {
       const offerIsFree = true
       const selectedDate = new Date(2020, 3, 19, 11)
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           ...baseParams,
           date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
           offerIsFree,
         } as SearchParametersQuery,
-        null,
-        false
-      )
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -970,15 +1078,15 @@ describe('fetchOffer', () => {
       const offerIsFree = true
       const timeRange = [10, 17]
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           ...baseParams,
           timeRange: timeRange as Range<number>,
           offerIsFree,
         } as SearchParametersQuery,
-        null,
-        false
-      )
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -999,16 +1107,16 @@ describe('fetchOffer', () => {
       const offerIsFree = true
       const selectedDate = new Date(2020, 3, 19, 11)
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           ...baseParams,
           date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
           timeRange: [18, 22],
           offerIsFree,
         } as SearchParametersQuery,
-        null,
-        false
-      )
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -1032,17 +1140,17 @@ describe('fetchOffer', () => {
       }
       const page = 2
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
           query,
           offerCategories,
           offerTypes,
           page,
         } as SearchParametersQuery,
-        userLocation,
-        false
-      )
+        userLocation: userLocation,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: page,
@@ -1071,8 +1179,8 @@ describe('fetchOffer', () => {
         isThing: false,
       }
 
-      fetchOffer(
-        {
+      fetchOffer({
+        parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
           query,
           offerCategories,
@@ -1080,9 +1188,9 @@ describe('fetchOffer', () => {
           priceRange: priceRange as Range<number>,
           offerTypes,
         } as SearchParametersQuery,
-        userLocation,
-        false
-      )
+        userLocation: userLocation,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -1106,7 +1214,11 @@ describe('fetchOffer', () => {
     it('should fetch with no facetFilters parameter when no tags are provided', () => {
       const tags: string[] = []
 
-      fetchOffer({ ...baseParams, tags } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, tags } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
@@ -1120,7 +1232,11 @@ describe('fetchOffer', () => {
     it('should fetch with facetFilters parameter when tags are provided', () => {
       const tags = ['Semaine du 14 juillet', 'Offre cinema spéciale pass culture']
 
-      fetchOffer({ ...baseParams, tags } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, tags } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
@@ -1139,7 +1255,11 @@ describe('fetchOffer', () => {
     it('should fetch with no hitsPerPage parameter when not provided', () => {
       const hitsPerPage = null
 
-      fetchOffer({ ...baseParams, hitsPerPage } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, hitsPerPage } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
@@ -1153,7 +1273,11 @@ describe('fetchOffer', () => {
     it('should fetch with hitsPerPage when provided', () => {
       const hitsPerPage = 5
 
-      fetchOffer({ ...baseParams, hitsPerPage } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, hitsPerPage } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith('', {
         hitsPerPage,
@@ -1172,7 +1296,11 @@ describe('fetchOffer', () => {
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
-      fetchOffer({ ...baseParams, query, beginningDatetime } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, beginningDatetime } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -1188,7 +1316,11 @@ describe('fetchOffer', () => {
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
-      fetchOffer({ ...baseParams, query, endingDatetime } as SearchParametersQuery, null, false)
+      fetchOffer({
+        parameters: { ...baseParams, query, endingDatetime } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
@@ -1206,11 +1338,16 @@ describe('fetchOffer', () => {
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000).mockReturnValueOnce(1596326400)
 
-      fetchOffer(
-        { ...baseParams, query, beginningDatetime, endingDatetime } as SearchParametersQuery,
-        null,
-        false
-      )
+      fetchOffer({
+        parameters: {
+          ...baseParams,
+          query,
+          beginningDatetime,
+          endingDatetime,
+        } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
 
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],

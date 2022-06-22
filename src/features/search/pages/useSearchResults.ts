@@ -23,7 +23,11 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, partialSearchState],
     async ({ pageParam: page = 0 }) =>
-      await fetchOffer({ page, ...partialSearchState }, position, isUserUnderage),
+      await fetchOffer({
+        parameters: { page, ...partialSearchState },
+        userLocation: position,
+        isUserUnderage,
+      }),
     { getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined) }
   )
 
