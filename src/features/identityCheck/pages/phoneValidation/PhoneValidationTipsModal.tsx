@@ -13,6 +13,7 @@ import { Spacer, Typo } from 'ui/theme'
 interface Props {
   isVisible: boolean
   dismissModal: () => void
+  onGoBack: () => void
 }
 
 export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
@@ -20,10 +21,7 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
     <AppModal
       visible={props.isVisible}
       title={t`Quelques conseils`}
-      onLeftIconPress={
-        // TODO PC-14458 : replace function to include navigation to stepper onLeftIconPress
-        props.dismissModal
-      }
+      onLeftIconPress={props.onGoBack}
       leftIcon={ArrowPrevious}
       leftIconAccessibilityLabel={t`Revenir à l'étape précédente`}
       rightIconAccessibilityLabel={undefined}
