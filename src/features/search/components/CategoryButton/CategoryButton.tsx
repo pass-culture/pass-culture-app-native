@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -8,9 +7,8 @@ import { getSpacing, Typo } from 'ui/theme'
 export type CategoryButtonProps = {
   label: string
   Icon: FunctionComponent<IconInterface>
-  color: string
+  color?: string
   onPress: () => void
-  style?: ViewStyle
   children?: never
 }
 
@@ -19,26 +17,26 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   Icon,
   color,
   onPress,
-  style,
 }) => {
   const StyledIcon = useMemo(
     () =>
       styled(Icon).attrs(({ theme }) => ({
         size: theme.icons.sizes.small,
-        color: theme.colors.black,
+        color: color ? theme.colors.black : theme.colors.primary,
+        color2: color ? undefined : theme.colors.secondary,
       }))({}),
-    [Icon]
+    [Icon, color]
   )
 
   return (
-    <TouchableContainer style={style} borderLeftColor={color} onPress={onPress}>
+    <TouchableContainer borderLeftColor={color} onPress={onPress}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>
   )
 }
 
-const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
+const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor?: string }>(
   ({ theme, borderLeftColor }) => ({
     flexDirection: 'row',
     alignItems: 'center',
@@ -47,11 +45,11 @@ const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor: string }>(
     borderTopColor: theme.colors.greySemiDark,
     borderBottomColor: theme.colors.greySemiDark,
     borderRightColor: theme.colors.greySemiDark,
-    borderLeftColor,
+    borderLeftColor: borderLeftColor ?? theme.colors.greySemiDark,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderRightWidth: 1,
-    borderLeftWidth: getSpacing(1),
+    borderLeftWidth: borderLeftColor ? getSpacing(1) : 1,
     paddingLeft: getSpacing(2),
     paddingRight: getSpacing(3),
   })

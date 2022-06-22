@@ -12,10 +12,15 @@ export default {
 
 const Template: ComponentStory<typeof CategoryButton> = (props) => <CategoryButton {...props} />
 
-export const Libraries = Template.bind({})
-Libraries.args = {
+export const WithColor = Template.bind({})
+WithColor.args = {
   label: 'Bibliothèques & Médiathèques',
   Icon: Bookstore,
   color: '#870087',
-  style: { width: 220 },
+}
+
+export const WithoutColor = Template.bind({})
+WithoutColor.args = {
+  label: 'Bibliothèques & Médiathèques',
+  Icon: Bookstore,
 }

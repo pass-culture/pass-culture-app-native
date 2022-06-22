@@ -1,39 +1,20 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { FlatList } from 'react-native'
-import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
-import { CategoryButton, CategoryButtonProps } from '../CategoryButton'
+import { CategoriesButtonsDisplay, ListCategoryButtonProps } from './CategoriesButtonsDisplay'
 
 type Props = {
-  categories: CategoryButtonProps[]
+  categories: ListCategoryButtonProps
   children?: never
 }
 
-const CategoyButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
-  <CategoryButtonContainer>
-    <CategoryButton {...item} />
-  </CategoryButtonContainer>
-)
-
 export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
-  const [sortedCategories, setSortedCategories] = useState<CategoryButtonProps[]>()
+  const [sortedCategories, setSortedCategories] = useState<ListCategoryButtonProps>()
+
   useEffect(() => {
     setSortedCategories([...categories].sort((a, b) => a.label.localeCompare(b.label)))
   }, [categories])
 
-  return (
-    <FlatList
-      data={sortedCategories}
-      renderItem={CategoyButtonItem}
-      keyExtractor={(item) => item.label}
-      numColumns={2}
-    />
-  )
-}
+  if (sortedCategories === undefined) return null
 
-const CategoryButtonContainer = styled.View({
-  flexBasis: '50%',
-  padding: getSpacing(1),
-})
+  return <CategoriesButtonsDisplay sortedCategories={sortedCategories} />
+}

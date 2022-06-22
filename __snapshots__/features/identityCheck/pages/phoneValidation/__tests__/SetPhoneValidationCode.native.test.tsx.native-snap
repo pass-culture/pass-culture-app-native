@@ -57,6 +57,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
     </Text>
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}
