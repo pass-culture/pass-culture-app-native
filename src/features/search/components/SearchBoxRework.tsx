@@ -1,7 +1,10 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
 import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -20,7 +23,7 @@ import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/Magnifyi
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = {
+type Props = UseSearchBoxProps & {
   searchInputID: string
   showLocationButton?: boolean
   onFocusState?: (focus: boolean) => void
@@ -28,17 +31,20 @@ type Props = {
   accessibleHiddenTitle?: string
 }
 
+const SEARCH_DEBOUNCE_MS = 500
+
 export const SearchBoxRework: React.FC<Props> = ({
   searchInputID,
   showLocationButton,
   onFocusState,
   isFocus,
   accessibleHiddenTitle,
+  ...props
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState } = useStagedSearch()
   const { searchState, dispatch } = useSearch()
-  const [query, setQuery] = useState<string>(searchState.query || '')
+  // const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
   const showResults = useShowResults()
   const { locationFilter } = stagedSearchState
@@ -46,14 +52,39 @@ export const SearchBoxRework: React.FC<Props> = ({
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
+  const inputRef = useRef<RNTextInput | null>(null)
+  const { query, refine } = useSearchBox(props)
+  const [value, setValue] = useState<string>(searchState.query || query)
+  const [debouncedValue, setDebouncedValue] = useState<string>(value)
+  const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
+
+  // Track when the value coming from the React state changes to synchronize
+  // it with InstantSearch.
+  useEffect(() => {
+    if (query !== debouncedValue) {
+      refine(debouncedValue)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedValue, refine])
+
+  // Track when the InstantSearch query changes to synchronize it with
+  // the React state.
+  useEffect(() => {
+    // We bypass the state update if the input is focused to avoid concurrent
+    // updates when typing.
+    if (!inputRef.current?.isFocused() && query !== debouncedValue) {
+      setValue(query)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query])
 
   const resetSearch = () => {
     navigate(...getTabNavConfig('Search', { query: '' }))
-    setQuery('')
+    setValue('')
   }
 
   const onPressArrowBack = () => {
-    setQuery('')
+    setValue('')
     if (onFocusState) onFocusState(false)
     dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
@@ -84,6 +115,11 @@ export const SearchBoxRework: React.FC<Props> = ({
     analytics.logSearchQuery(queryText)
   }
 
+  const onChangeText = (value: string) => {
+    setValue(value)
+    debouncedSetValue(value)
+  }
+
   return (
     <React.Fragment>
       {!!accessibleHiddenTitle && (
@@ -97,8 +133,8 @@ export const SearchBoxRework: React.FC<Props> = ({
         ) : null}
         <StyledSearchInput
           searchInputID={searchInputID}
-          value={query}
-          onChangeText={setQuery}
+          value={value}
+          onChangeText={onChangeText}
           placeholder={t`Offre, artiste...`}
           autoFocus={isFocus}
           inputHeight="regular"
@@ -109,6 +145,7 @@ export const SearchBoxRework: React.FC<Props> = ({
           testID="searchInput"
           onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
           locationLabel={locationLabel}
+          ref={inputRef}
         />
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
