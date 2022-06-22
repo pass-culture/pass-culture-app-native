@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
+import { CategoriesButtons, OnPressCategory } from 'features/search/components/CategoriesButtons'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { SearchHeaderRework } from 'features/search/components/SearchHeaderRework'
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -26,6 +26,10 @@ export function SearchRework() {
     }
   }, [dispatch, params])
 
+  const showResultsForCategory: OnPressCategory = () => {
+    alert('le click sera fonctionnel lorsque cette US PC-15130 sera fini')
+  }
+
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions
     if (showResults || isFocus) return <SearchDetails />
@@ -33,7 +37,7 @@ export function SearchRework() {
     return (
       <Categories>
         <CategoriesTitle>{categoriesTitle}</CategoriesTitle>
-        <CategoriesButtons />
+        <CategoriesButtons onPressCategory={showResultsForCategory} />
         <Spacer.TabBar />
       </Categories>
     )
