@@ -28,10 +28,10 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"Afficher le mot de passe\\"
-                  accessibilityRole=\\"button\\"
-                  accessible={true}
-@@ -669,22 +669,22 @@
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+@@ -676,22 +676,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -703,11 +703,11 @@
+@@ -710,11 +710,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -182,9 +182,9 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"Afficher le mot de passe\\"
-                  accessibilityRole=\\"button\\"
-                  accessible={true}"
+                  numberOfSpaces={2}
+                  style={
+                    Array ["
 `;
 
 exports[`<Login/> should show error message and error inputs WHEN signin has failed because of network failure 1`] = `
@@ -330,10 +330,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"Afficher le mot de passe\\"
-                  accessibilityRole=\\"button\\"
-                  accessible={true}
-@@ -669,22 +731,22 @@
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+@@ -676,22 +738,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -358,7 +358,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -703,11 +765,11 @@
+@@ -710,11 +772,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -516,10 +516,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"Afficher le mot de passe\\"
-                  accessibilityRole=\\"button\\"
-                  accessible={true}
-@@ -669,22 +731,22 @@
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+@@ -676,22 +738,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -544,7 +544,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -703,11 +765,11 @@
+@@ -710,11 +772,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -702,10 +702,10 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"Afficher le mot de passe\\"
-                  accessibilityRole=\\"button\\"
-                  accessible={true}
-@@ -669,22 +731,22 @@
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+@@ -676,22 +738,22 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -730,7 +730,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -703,11 +765,11 @@
+@@ -710,11 +772,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
