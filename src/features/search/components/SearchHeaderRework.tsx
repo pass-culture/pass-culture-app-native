@@ -3,6 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchBoxAutocomplete } from 'features/search/components/SearchBoxAutocomplete'
 import { SearchBoxRework } from 'features/search/components/SearchBoxRework'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -16,9 +17,15 @@ type Props = {
   searchInputID: string
   onFocusState?: (focus: boolean) => void
   isFocus?: boolean
+  appEnableAutocomplete: boolean
 }
 
-export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusState, isFocus }) => {
+export const SearchHeaderRework: React.FC<Props> = ({
+  searchInputID,
+  onFocusState,
+  isFocus,
+  appEnableAutocomplete,
+}) => {
   const { top } = useCustomSafeInsets()
   const showResults = useShowResults()
 
@@ -34,12 +41,21 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
             <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
           </View>
           <Spacer.Column numberOfSpaces={2} />
-          <SearchBoxRework
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-            showLocationButton={true}
-          />
+          {appEnableAutocomplete ? (
+            <SearchBoxAutocomplete
+              searchInputID={searchInputID}
+              onFocusState={onFocusState}
+              isFocus={isFocus}
+              showLocationButton={true}
+            />
+          ) : (
+            <SearchBoxRework
+              searchInputID={searchInputID}
+              onFocusState={onFocusState}
+              isFocus={isFocus}
+              showLocationButton={true}
+            />
+          )}
         </SearchBoxContainer>
       </React.Fragment>
     )
@@ -52,12 +68,21 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
           <HeaderBackground />
         </HeaderBackgroundWrapperWithoutLabel>
         <SearchBoxContainer testID="searchBoxWithoutLabel">
-          <SearchBoxRework
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-            accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
-          />
+          {appEnableAutocomplete ? (
+            <SearchBoxAutocomplete
+              searchInputID={searchInputID}
+              onFocusState={onFocusState}
+              isFocus={isFocus}
+              accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
+            />
+          ) : (
+            <SearchBoxRework
+              searchInputID={searchInputID}
+              onFocusState={onFocusState}
+              isFocus={isFocus}
+              accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
+            />
+          )}
         </SearchBoxContainer>
       </React.Fragment>
     )

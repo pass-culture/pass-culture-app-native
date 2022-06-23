@@ -5,6 +5,7 @@ import { InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchLandingPage } from 'features/search/components'
 import { SearchDetails } from 'features/search/components/SearchDetails'
@@ -23,6 +24,8 @@ export function SearchRework() {
   const searchInputID = uuidv4()
   const [isFocus, setIsFocus] = useState(false)
   const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
+  const { data: appSettings } = useAppSettings()
+  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
 
   useEffect(() => {
     if (params) {
@@ -33,7 +36,8 @@ export function SearchRework() {
 
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions
-    if (showResults || isFocus) return <SearchDetails isFocus={isFocus} />
+    if (showResults || isFocus)
+      return <SearchDetails isFocus={isFocus} appEnableAutocomplete={appEnableAutocomplete} />
     return <SearchLandingPage />
   }
 
@@ -44,14 +48,27 @@ export function SearchRework() {
   return (
     <Container>
       <Form.Flex>
-        <InstantSearch searchClient={searchClient} indexName={offersIndex}>
-          <SearchHeaderRework
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-          />
-          {bodySearch()}
-        </InstantSearch>
+        {appEnableAutocomplete ? (
+          <InstantSearch searchClient={searchClient} indexName={offersIndex}>
+            <SearchHeaderRework
+              searchInputID={searchInputID}
+              onFocusState={onFocusState}
+              isFocus={isFocus}
+              appEnableAutocomplete={appEnableAutocomplete}
+            />
+            {bodySearch()}
+          </InstantSearch>
+        ) : (
+          <React.Fragment>
+            <SearchHeaderRework
+              searchInputID={searchInputID}
+              onFocusState={onFocusState}
+              isFocus={isFocus}
+              appEnableAutocomplete={appEnableAutocomplete}
+            />
+            {bodySearch()}
+          </React.Fragment>
+        )}
       </Form.Flex>
     </Container>
   )

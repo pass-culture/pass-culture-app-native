@@ -9,9 +9,10 @@ import { AlgoliaHit } from 'libs/algolia'
 
 type Props = {
   isFocus: boolean
+  appEnableAutocomplete: boolean
 }
 
-export const SearchDetails: React.FC<Props> = ({ isFocus }) => {
+export const SearchDetails: React.FC<Props> = ({ isFocus, appEnableAutocomplete }) => {
   const listRef = useRef<FlatList>(null)
   const showResults = useShowResults()
 
@@ -19,7 +20,7 @@ export const SearchDetails: React.FC<Props> = ({ isFocus }) => {
     <SearchResults />
   ) : (
     <View testID="recentsSearchesAndSuggestions">
-      <InfiniteHits ref={listRef} hitComponent={Hit} />
+      {appEnableAutocomplete ? <InfiniteHits ref={listRef} hitComponent={Hit} /> : null}
     </View>
   )
 }
