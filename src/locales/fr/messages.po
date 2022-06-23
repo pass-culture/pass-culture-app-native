@@ -227,6 +227,10 @@ msgstr "Attention tu n'as que 3 tentatives."
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
 
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
+msgid "Attention, il te reste : 5 demandes"
+msgstr "Attention, il te reste : 5 demandes"
+
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
@@ -557,6 +561,7 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Code de validation"
 msgstr "Code de validation"
 
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneValidationCode.tsx
 msgid "Code non reçu ?"
 msgstr "Code non reçu ?"
@@ -863,6 +868,10 @@ msgstr "Demande en attente"
 msgid "Demande envoyée !"
 msgstr "Demande envoyée !"
 
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
+msgid "Demander un autre code"
+msgstr "Demander un autre code"
+
 #: src/features/bookings/helpers.ts
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
@@ -1135,6 +1144,7 @@ msgid "Favoris"
 msgstr "Favoris"
 
 #: src/features/bookOffer/pages/BookingOfferModal.tsx
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
 #: src/features/offer/components/ReportOfferModal.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
 #: src/libs/share/WebShareModal.web.tsx
@@ -2688,6 +2698,10 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 #: src/features/search/sections/Hour.tsx
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
+
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
+msgid "Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en demander un nouveau."
+msgstr "Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en demander un nouveau."
 
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
