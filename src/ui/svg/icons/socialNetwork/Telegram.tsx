@@ -29,8 +29,8 @@ const TelegramSvg: React.FunctionComponent<IconInterface> = ({ size, testID }) =
           x2="23.98"
           y2="47.6203"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor="#2AABEE" />
-          <Stop offset="1" stopColor="#229ED9" />
+          <Stop offset="0%" stopColor="#2AABEE" />
+          <Stop offset="100%" stopColor="#229ED9" />
         </LinearGradient>
       </Defs>
     </Svg>

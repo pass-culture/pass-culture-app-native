@@ -22,8 +22,8 @@ const NotMemoizedVenueHeaderBackground: React.FC<Props> = (props) => {
           x2="151.59"
           y2="377.219"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor="#EB0055" />
-          <Stop offset="1" stopColor="#320096" />
+          <Stop offset="0%" stopColor="#EB0055" />
+          <Stop offset="100%" stopColor="#320096" />
         </LinearGradient>
       </Defs>
       <Rect width="397" height="338" transform="translate(-11 -9)" fill="#F1F1F4" />

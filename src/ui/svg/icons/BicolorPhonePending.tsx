@@ -31,8 +31,8 @@ const BicolorPhonePendingSvg: React.FC<BicolorIconInterface> = ({
           y1="0%"
           y2="100%"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={color2} />
-          <Stop offset="1" stopColor={color} />
+          <Stop offset="0%" stopColor={color2} />
+          <Stop offset="100%" stopColor={color} />
         </LinearGradient>
       </Defs>
     </Svg>

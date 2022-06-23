@@ -25,8 +25,8 @@ const WhatsAppSvg: React.FunctionComponent<IconInterface> = ({ size, testID }) =
           x2="24"
           y2="48"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor="#61FD7D" />
-          <Stop offset="1" stopColor="#25CF43" />
+          <Stop offset="0%" stopColor="#61FD7D" />
+          <Stop offset="100%" stopColor="#25CF43" />
         </LinearGradient>
       </Defs>
     </Svg>
