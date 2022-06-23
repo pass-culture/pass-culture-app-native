@@ -8,11 +8,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { useModal } from 'ui/components/modals/useModal'
 import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
@@ -30,6 +32,8 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
   )
   const titleID = uuidv4()
   const validationCodeInputErrorId = uuidv4()
+
+  const { visible: isCodeNotReceivedModalVisible, hideModal, showModal } = useModal(false)
 
   return (
     <PageWithHeader
@@ -68,11 +72,13 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
                 inline
                 icon={Again}
                 wording={t`Code non reçu\u00a0?`}
-                onPress={() => {
-                  // do nothing yet
-                }}
+                onPress={showModal}
               />
             </ButtonContainer>
+            <CodeNotReceivedModal
+              isVisible={isCodeNotReceivedModalVisible}
+              dismissModal={hideModal}
+            />
           </View>
         </Form.MaxWidth>
       }
