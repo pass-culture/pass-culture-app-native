@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 import useIsMounted from './useIsMounted'
 
@@ -9,22 +9,19 @@ export default function useSafeState<State>(
 
   const isMounted = useIsMounted()
 
-  const safeSetState = useCallback(
-    (newState: SetStateAction<State>): void => {
-      if (isMounted.current) {
-        setState(newState)
-      } else {
-        // eslint-disable-next-line no-console
-        console.log(
-          `Warning: Can't call setState on an unmounted component. 
-          This is a no-op, but it indicates a memory leak in your application. 
-          To fix, cancel all subscriptions and asynchronous tasks in 
-          the return function of useEffect().`
-        )
-      }
-    },
-    [isMounted]
-  )
+  function safeSetState(newState: SetStateAction<State>): void {
+    if (isMounted.current) {
+      setState(newState)
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(
+        `Warning: Can't call setState on an unmounted component. 
+        This is a no-op, but it indicates a memory leak in your application. 
+        To fix, cancel all subscriptions and asynchronous tasks in 
+        the return function of useEffect().`
+      )
+    }
+  }
 
   return [state, safeSetState]
 }
