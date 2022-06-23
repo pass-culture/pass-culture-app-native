@@ -17,6 +17,7 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
+import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
@@ -44,6 +45,10 @@ export function App() {
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
+  }, [])
+
+  useEffect(() => {
+    initAlgoliaAnalytics()
   }, [])
 
   return (

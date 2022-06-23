@@ -21,6 +21,7 @@ import { IdentityCheckContextProvider } from 'features/identityCheck/context/Ide
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
+import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
@@ -58,6 +59,10 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
+  }, [])
+
+  useEffect(() => {
+    initAlgoliaAnalytics()
   }, [])
 
   return (
