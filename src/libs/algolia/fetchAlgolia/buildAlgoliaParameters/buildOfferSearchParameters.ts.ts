@@ -3,7 +3,7 @@ import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { GeoCoordinates } from 'libs/geolocation'
 
 import { buildFacetFilters } from '../buildFacetFilters'
-import { buildNumericFilters } from '../fetchAlgolia.numericFilters'
+import { buildNumericFilters } from '../buildNumericFilters'
 
 export const buildOfferSearchParameters = (
   {
