@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo } from 'react'
+import React, { FunctionComponent, memo, useCallback, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -49,11 +49,11 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { data: settings } = useAppSettings()
-  const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
-  const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
+  const [email, setEmail] = useState(INITIAL_IDENTIFIER)
+  const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
-  const [emailErrorMessage, setEmailErrorMessage] = useSafeState('')
+  const [emailErrorMessage, setEmailErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
@@ -66,12 +66,71 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   function onEmailChange(mail: string) {
     if (emailErrorMessage) {
       setIsLoading(false)
-      setEmailErrorMessage('')
+      setEmailErrorMessage(null)
     }
     setEmail(mail)
   }
 
-  async function handleSignin() {
+  const handleSigninSuccess = useCallback(
+    async (accountState: AccountState) => {
+      try {
+        if (props.doNotNavigateOnSigninSuccess) {
+          return
+        }
+
+        if (settings?.allowAccountUnsuspension && accountState !== AccountState.ACTIVE) {
+          setIsLoading(false)
+          return navigate('SuspensionScreen')
+        }
+
+        const user = await api.getnativev1me()
+        const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+
+        if (user?.recreditAmountToShow) {
+          navigate('RecreditBirthdayNotification')
+        } else if (!hasSeenEligibleCard && user.showEligibleCard) {
+          navigate('EighteenBirthday')
+        } else if (shouldShowCulturalSurvey(user)) {
+          navigate(culturalSurveyRoute)
+        } else {
+          navigateToHome()
+        }
+      } catch {
+        setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard`)
+      }
+    },
+    [
+      culturalSurveyRoute,
+      navigate,
+      props.doNotNavigateOnSigninSuccess,
+      setErrorMessage,
+      setIsLoading,
+      settings?.allowAccountUnsuspension,
+    ]
+  )
+
+  const handleSigninFailure = useCallback(
+    (response: SignInResponseFailure) => {
+      const failureCode = response.content?.code
+      if (failureCode === 'EMAIL_NOT_VALIDATED') {
+        navigate('SignupConfirmationEmailSent', { email })
+      } else if (failureCode === 'ACCOUNT_DELETED') {
+        setEmailErrorMessage(t`Cette adresse e-mail est liée à un compte supprimé`)
+      } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
+        setIsLoading(false)
+        setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie`)
+      } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
+        setIsLoading(false)
+        setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute`)
+      } else {
+        setIsLoading(false)
+        setErrorMessage(t`E-mail ou mot de passe incorrect`)
+      }
+    },
+    [email, navigate, setEmailErrorMessage, setErrorMessage, setIsLoading]
+  )
+
+  const handleSignin = useCallback(async () => {
     setIsLoading(true)
     setErrorMessage(null)
     if (!isEmailValid(email)) {
@@ -86,68 +145,31 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         handleSigninFailure(signinResponse)
       }
     }
-  }
+  }, [
+    email,
+    handleSigninFailure,
+    handleSigninSuccess,
+    password,
+    setEmailErrorMessage,
+    setErrorMessage,
+    setIsLoading,
+    signIn,
+  ])
 
-  async function handleSigninSuccess(accountState: AccountState) {
-    try {
-      if (props.doNotNavigateOnSigninSuccess) {
-        return
-      }
-
-      if (settings?.allowAccountUnsuspension && accountState !== AccountState.ACTIVE) {
-        setIsLoading(false)
-        return navigate('SuspensionScreen')
-      }
-
-      const user = await api.getnativev1me()
-      const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
-
-      if (user?.recreditAmountToShow) {
-        navigate('RecreditBirthdayNotification')
-      } else if (!hasSeenEligibleCard && user.showEligibleCard) {
-        navigate('EighteenBirthday')
-      } else if (shouldShowCulturalSurvey(user)) {
-        navigate(culturalSurveyRoute)
-      } else {
-        navigateToHome()
-      }
-    } catch {
-      setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard`)
-    }
-  }
-
-  function handleSigninFailure(response: SignInResponseFailure) {
-    const failureCode = response.content?.code
-    if (failureCode === 'EMAIL_NOT_VALIDATED') {
-      navigate('SignupConfirmationEmailSent', { email })
-    } else if (failureCode === 'ACCOUNT_DELETED') {
-      setEmailErrorMessage(t`Cette adresse e-mail est liée à un compte supprimé`)
-    } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
-      setIsLoading(false)
-      setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie`)
-    } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
-      setIsLoading(false)
-      setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute`)
-    } else {
-      setIsLoading(false)
-      setErrorMessage(t`E-mail ou mot de passe incorrect`)
-    }
-  }
-
-  async function onSubmit() {
+  const onSubmit = useCallback(async () => {
     if (!shouldDisableLoginButton) {
       Keyboard.dismiss()
       handleSignin()
     }
-  }
+  }, [handleSignin, shouldDisableLoginButton])
 
-  function onClose() {
+  const onClose = useCallback(() => {
     navigateToHome()
-  }
+  }, [])
 
-  function onForgottenPasswordClick() {
+  const onForgottenPasswordClick = useCallback(() => {
     navigate('ForgottenPassword')
-  }
+  }, [navigate])
 
   const rightIconProps = params?.preventCancellation
     ? {
