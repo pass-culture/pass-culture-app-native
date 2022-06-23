@@ -3,6 +3,10 @@ import {
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
 
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
+}))
+
 describe('formatFullAddress', () => {
   it.each`
     address               | postalCode   | city         | expected

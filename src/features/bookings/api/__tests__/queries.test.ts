@@ -9,6 +9,10 @@ import { server } from 'tests/server'
 
 import { useOngoingOrEndedBooking } from '../queries'
 
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
+}))
+
 server.use(
   rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
     res(ctx.status(200), ctx.json(bookingsSnap))
