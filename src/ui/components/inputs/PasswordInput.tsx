@@ -74,6 +74,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           autoCapitalize="none"
           testID="Mot de passe"
         />
+        <Spacer.Row numberOfSpaces={2} />
         <IconTouchableOpacity
           testID="toggle-password-visibility"
           accessibilityLabel={
@@ -90,11 +91,10 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
 export const PasswordInput = forwardRef<RNTextInput, TextInputProps>(WithRefPasswordInput)
 
 const StyledBaseTextInput = styled(BaseTextInput)({
-  flex: 0.9,
+  flex: 1,
 })
 
 const IconTouchableOpacity = styledButton(Touchable)({
-  flex: 0.1,
   maxWidth: 60,
   alignItems: 'flex-end',
 })

@@ -229,7 +229,14 @@ export const Profile: React.FC = () => {
         </Section>
         {!!isLoggedIn && (
           <Section>
-            <SignOutRow title={t`Déconnexion`} onPress={signOut} type="clickable" icon={SignOut} />
+            <Spacer.Column numberOfSpaces={4} />
+            <SectionRow
+              title={t`Déconnexion`}
+              onPress={signOut}
+              type="clickable"
+              icon={SignOut}
+              iconSize={SECTION_ROW_ICON_SIZE}
+            />
           </Section>
         )}
         <Section>
@@ -277,8 +284,4 @@ const NetworkRowContainer = styled.View({
 const StyledUl = webStyled(Ul)({
   flex: 1,
   justifyContent: 'space-between',
-})
-
-const SignOutRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
-  marginTop: getSpacing(4),
 })

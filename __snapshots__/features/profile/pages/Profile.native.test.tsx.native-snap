@@ -1609,6 +1609,16 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   />
                   <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <View
                     accessibilityRole="button"
                     accessibilityState={
                       Object {
@@ -1640,11 +1650,7 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          Array [
-                            Object {
-                              "marginTop": 16,
-                            },
-                          ],
+                          undefined,
                         ]
                       }
                     >

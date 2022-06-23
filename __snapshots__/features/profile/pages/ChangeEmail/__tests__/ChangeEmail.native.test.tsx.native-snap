@@ -570,7 +570,7 @@ Array [
                   },
                   Object {
                     "flexBasis": 0,
-                    "flexGrow": 0.9,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                   },
                 ]
@@ -578,6 +578,16 @@ Array [
               testID="Mot de passe"
               textContentType="password"
               value=""
+            />
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
             />
             <View
               accessibilityLabel="Afficher le mot de passe"
@@ -595,9 +605,6 @@ Array [
               style={
                 Object {
                   "alignItems": "flex-end",
-                  "flexBasis": 0,
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
                   "maxWidth": 60,
                   "opacity": 1,
                   "userSelect": "auto",
@@ -1221,7 +1228,7 @@ Array [
                   },
                   Object {
                     "flexBasis": 0,
-                    "flexGrow": 0.9,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                   },
                 ]
@@ -1229,6 +1236,16 @@ Array [
               testID="Mot de passe"
               textContentType="password"
               value=""
+            />
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
             />
             <View
               accessibilityLabel="Afficher le mot de passe"
@@ -1246,9 +1263,6 @@ Array [
               style={
                 Object {
                   "alignItems": "flex-end",
-                  "flexBasis": 0,
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
                   "maxWidth": 60,
                   "opacity": 1,
                   "userSelect": "auto",
