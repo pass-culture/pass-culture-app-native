@@ -11,6 +11,10 @@ import {
 import { AppModal } from './AppModal'
 import { fireEvent, render } from './testUtils'
 
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
+}))
+
 describe('<AppModal />', () => {
   afterEach(() => {
     jest.resetAllMocks()

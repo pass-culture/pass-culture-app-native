@@ -23,6 +23,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
+}))
+
 describe('<ArchiveBookingModal />', () => {
   it('should call on onDismiss', () => {
     const onDismiss = jest.fn()
