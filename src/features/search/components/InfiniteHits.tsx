@@ -14,7 +14,7 @@ export const InfiniteHits = forwardRef(
     { hitComponent: Hit, ...props }: InfiniteHitsProps<THit>,
     ref: React.ForwardedRef<FlatList<THit>>
   ) => {
-    const { hits, isLastPage, showMore } = useInfiniteHits(props)
+    const { hits } = useInfiniteHits(props)
     const contentContainerStyle = { paddingHorizontal: getSpacing(6), paddingTop: getSpacing(4) }
 
     return (
@@ -23,11 +23,6 @@ export const InfiniteHits = forwardRef(
         contentContainerStyle={contentContainerStyle}
         data={hits as unknown as THit[]}
         keyExtractor={(item) => item.objectID}
-        onEndReached={() => {
-          if (!isLastPage) {
-            showMore()
-          }
-        }}
         renderItem={({ item, index }) => <Hit hit={item as unknown as THit} index={index} />}
       />
     )
