@@ -69,7 +69,7 @@ Object {
           class="css-view-1dbjc4n"
         >
           <button
-            class="sc-bdvvtL kUaFXY sc-dkPtRN kmXVLA"
+            class="sc-bdvvtL fWgamm sc-dkPtRN kmXVLA"
             data-testid="start-cultural-survey"
             tabindex="0"
             type="button"
@@ -88,7 +88,7 @@ Object {
           style="margin-top: 12px;"
         >
           <button
-            class="sc-bdvvtL dbqTj sc-hKwDye gvtKtm"
+            class="sc-bdvvtL fACJhR sc-hKwDye gvtKtm"
             data-testid="answer-survey-later"
             tabindex="0"
             type="button"
@@ -190,7 +190,7 @@ Object {
         class="css-view-1dbjc4n"
       >
         <button
-          class="sc-bdvvtL kUaFXY sc-dkPtRN kmXVLA"
+          class="sc-bdvvtL fWgamm sc-dkPtRN kmXVLA"
           data-testid="start-cultural-survey"
           tabindex="0"
           type="button"
@@ -209,7 +209,7 @@ Object {
         style="margin-top: 12px;"
       >
         <button
-          class="sc-bdvvtL dbqTj sc-hKwDye gvtKtm"
+          class="sc-bdvvtL fACJhR sc-hKwDye gvtKtm"
           data-testid="answer-survey-later"
           tabindex="0"
           type="button"

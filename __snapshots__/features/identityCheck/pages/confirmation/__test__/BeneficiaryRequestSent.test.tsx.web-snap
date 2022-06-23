@@ -187,7 +187,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
+        className="sc-bdvvtL jPOqmR sc-dkPtRN kmXVLA"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

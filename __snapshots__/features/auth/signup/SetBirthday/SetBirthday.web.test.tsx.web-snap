@@ -14,7 +14,7 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-            class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
+            class="sc-bdvvtL fACJhR sc-iCfMLu uxgRG"
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -1436,7 +1436,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
+            class="sc-bdvvtL fCocGj sc-jRQBWg kyMyBM"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -1467,7 +1467,7 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-          class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
+          class="sc-bdvvtL fACJhR sc-iCfMLu uxgRG"
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -2889,7 +2889,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
+          class="sc-bdvvtL fCocGj sc-jRQBWg kyMyBM"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"
@@ -2977,7 +2977,7 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-            class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
+            class="sc-bdvvtL fACJhR sc-iCfMLu uxgRG"
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -4004,7 +4004,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
+            class="sc-bdvvtL fCocGj sc-jRQBWg kyMyBM"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -4035,7 +4035,7 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-          class="sc-bdvvtL dbqTj sc-iCfMLu uxgRG"
+          class="sc-bdvvtL fACJhR sc-iCfMLu uxgRG"
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -5062,7 +5062,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL kMjAut sc-jRQBWg kyMyBM"
+          class="sc-bdvvtL fCocGj sc-jRQBWg kyMyBM"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"

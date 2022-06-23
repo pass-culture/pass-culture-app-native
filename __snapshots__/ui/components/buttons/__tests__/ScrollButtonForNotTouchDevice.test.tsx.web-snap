@@ -3,7 +3,7 @@
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direction 1`] = `
 <button
   aria-hidden={true}
-  className="sc-bdvvtL bzaTwO"
+  className="sc-bdvvtL bmZQeQ"
   tabIndex="-1"
   type="button"
 />
@@ -12,7 +12,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direc
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right direction 1`] = `
 <button
   aria-hidden={true}
-  className="sc-bdvvtL lkYAyW"
+  className="sc-bdvvtL ckIYrg"
   tabIndex="-1"
   type="button"
 />
@@ -21,7 +21,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right dire
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top given 1`] = `
 <button
   aria-hidden={true}
-  className="sc-bdvvtL gmRGzD"
+  className="sc-bdvvtL cabxTh"
   tabIndex="-1"
   type="button"
 />

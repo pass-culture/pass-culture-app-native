@@ -171,7 +171,7 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-dkPtRN gPFOJd sc-eCImPb idTzrf"
+                    class="sc-dkPtRN ktnIIT sc-eCImPb idTzrf"
                     tabindex="0"
                     type="submit"
                   >
@@ -377,7 +377,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-dkPtRN gPFOJd sc-eCImPb idTzrf"
+                  class="sc-dkPtRN ktnIIT sc-eCImPb idTzrf"
                   tabindex="0"
                   type="submit"
                 >
