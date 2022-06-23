@@ -1,8 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { getSpacing } from 'ui/theme'
 
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
 
@@ -12,7 +14,9 @@ export default {
 } as ComponentMeta<typeof CategoriesButtonsDisplay>
 
 const Template: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
-  <CategoriesButtonsDisplay {...props} />
+  <Wrapper>
+    <CategoriesButtonsDisplay {...props} />
+  </Wrapper>
 )
 
 export const Default = Template.bind({})
@@ -71,3 +75,7 @@ WithOddNumberOfCategories.args = {
     },
   ],
 }
+
+const Wrapper = styled.View({
+  marginHorizontal: getSpacing(1),
+})
