@@ -3041,8 +3041,8 @@ msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
 #: src/libs/network/OfflinePage.tsx
-msgid "Tu n'es pas connecté à internet"
-msgstr "Tu n'es pas connecté à internet"
+msgid "Tu n'es pas connecté à internet."
+msgstr "Tu n'es pas connecté à internet."
 
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"

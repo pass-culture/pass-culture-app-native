@@ -16,7 +16,7 @@ export const OfflinePage = () => {
         <Spacer.Column numberOfSpaces={5} />
         <StyledTitle2>{t`Pas de réseau internet`}</StyledTitle2>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledTitle4>{t`Tu n'es pas connecté à internet`}</StyledTitle4>
+        <StyledBody>{t`Tu n'es pas connecté à internet.`}</StyledBody>
         <Spacer.Column numberOfSpaces={5} />
         <Spacer.Flex />
         <Spacer.BottomScreen />
@@ -34,7 +34,7 @@ const StyledTitle2 = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })
 
-const StyledTitle4 = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({
+const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
   textAlign: 'center',
 })
 
