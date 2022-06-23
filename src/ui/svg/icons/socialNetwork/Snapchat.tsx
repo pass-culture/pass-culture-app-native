@@ -1,11 +1,23 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
+import { Path, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from '../types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-const SnapchatSvg: React.FunctionComponent<IconInterface> = ({ size, color: _color, testID }) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" testID={testID} aria-hidden>
+import { AccessibleIcon } from '../types'
+
+const SnapchatSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color: _color,
+  accessibilityLabel,
+  testID,
+}) => (
+  <AccessibleSvg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    accessibilityLabel={accessibilityLabel}
+    testID={testID}>
     <G fill="none" fillRule="evenodd">
       <G fillRule="nonzero">
         <G>
@@ -25,7 +37,7 @@ const SnapchatSvg: React.FunctionComponent<IconInterface> = ({ size, color: _col
         </G>
       </G>
     </G>
-  </Svg>
+  </AccessibleSvg>
 )
 
 export const Snapchat = styled(SnapchatSvg).attrs(({ color, size, theme }) => ({

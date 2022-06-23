@@ -1,7 +1,8 @@
 import * as React from 'react'
-import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
+import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import { useTheme } from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
 import { getSpacing } from '../theme'
@@ -18,12 +19,11 @@ const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
   const { id: id3, xlinkHref: xlinkHref3 } = svgIdentifier()
   const { id: id4, fill: fill4 } = svgIdentifier()
   return (
-    <Svg
+    <AccessibleSvg
       preserveAspectRatio="xMidYMin slice"
       height={height}
       width={width}
-      viewBox={`0 0 375 352`}
-      aria-hidden>
+      viewBox={`0 0 375 352`}>
       <Defs>
         <LinearGradient id={id1} x1="34.782%" x2="88.023%" y1="5.945%" y2="111.119%">
           <Stop offset="0%" stopColor="#EB0055" />
@@ -46,7 +46,7 @@ const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
           mask={fill4}
         />
       </G>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

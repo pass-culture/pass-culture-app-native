@@ -1,13 +1,25 @@
 import * as React from 'react'
-import Svg, { Path, Circle } from 'react-native-svg'
+import { Path, Circle } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const PhoneFlipSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
+const PhoneFlipSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" fill="none" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={height}
+      viewBox="0 0 200 156"
+      fill="none"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Path
         d="M91 56H33a8 8 0 00-8 8v55a8 8 0 008 8h47.5"
         stroke={color}
@@ -42,7 +54,7 @@ const PhoneFlipSvg: React.FunctionComponent<IconInterface> = ({ size, color, tes
         transform="rotate(8.89 139.125 29.146)"
         fill={color}
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

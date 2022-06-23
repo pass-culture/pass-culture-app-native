@@ -1,11 +1,23 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
+import { Path, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from './types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-const ArrowNextDoubleSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
-  <Svg width={size} height={size} viewBox="0 0 52 53" testID={testID}>
+import { AccessibleIcon } from './types'
+
+const ArrowNextDoubleSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => (
+  <AccessibleSvg
+    width={size}
+    height={size}
+    viewBox="0 0 52 53"
+    accessibilityLabel={accessibilityLabel}
+    testID={testID}>
     <G fill="none" fillRule="evenodd">
       <G fill={color}>
         <Path
@@ -18,7 +30,7 @@ const ArrowNextDoubleSvg: React.FunctionComponent<IconInterface> = ({ size, colo
         />
       </G>
     </G>
-  </Svg>
+  </AccessibleSvg>
 )
 
 export const ArrowNextDouble = styled(ArrowNextDoubleSvg).attrs(({ color, size, theme }) => ({

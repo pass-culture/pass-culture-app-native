@@ -1,13 +1,24 @@
 import * as React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const NoBookingsSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
+const NoBookingsSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={height}
+      viewBox="0 0 200 156"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Path
         fill={color}
         fillRule="evenodd"
@@ -22,7 +33,7 @@ const NoBookingsSvg: React.FunctionComponent<IconInterface> = ({ size, color, te
         fill={color}
         d="M142.741 93.3368C141.746 92.3459 140.133 92.3443 139.137 93.3333C138.141 94.3223 138.139 95.9274 139.134 96.9184L146.246 104.008L139.179 111.086C138.187 112.08 138.192 113.685 139.191 114.671C140.189 115.658 141.803 115.652 142.794 114.659L149.855 107.587L156.977 114.627C157.976 115.613 159.589 115.608 160.581 114.615C161.573 113.622 161.568 112.017 160.569 111.03L153.45 103.993L160.529 96.9666C161.525 95.9778 161.527 94.3727 160.533 93.3816C159.539 92.3905 157.925 92.3886 156.929 93.3775L149.84 100.414L142.741 93.3368Z"
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

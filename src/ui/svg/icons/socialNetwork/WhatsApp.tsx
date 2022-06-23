@@ -1,16 +1,26 @@
 import React from 'react'
-import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg'
+import { Path, Defs, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { IconInterface } from '../types'
+import { AccessibleIcon } from '../types'
 
-const WhatsAppSvg: React.FunctionComponent<IconInterface> = ({ size, testID }) => {
+const WhatsAppSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  accessibilityLabel,
+  testID,
+}) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -29,7 +39,7 @@ const WhatsAppSvg: React.FunctionComponent<IconInterface> = ({ size, testID }) =
           <Stop offset="1" stopColor="#25CF43" />
         </LinearGradient>
       </Defs>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

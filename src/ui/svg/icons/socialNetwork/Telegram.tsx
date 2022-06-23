@@ -1,16 +1,26 @@
 import React from 'react'
-import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { IconInterface } from '../types'
+import { AccessibleIcon } from '../types'
 
-const TelegramSvg: React.FunctionComponent<IconInterface> = ({ size, testID }) => {
+const TelegramSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  accessibilityLabel,
+  testID,
+}) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Path
         d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z"
         fill={gradientFill}
@@ -33,7 +43,7 @@ const TelegramSvg: React.FunctionComponent<IconInterface> = ({ size, testID }) =
           <Stop offset="1" stopColor="#229ED9" />
         </LinearGradient>
       </Defs>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

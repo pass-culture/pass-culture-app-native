@@ -1,16 +1,18 @@
 import * as React from 'react'
-import Svg, { Defs, LinearGradient, Stop, Path, G } from 'react-native-svg'
+import { Defs, LinearGradient, Stop, Path, G } from 'react-native-svg'
 import { useTheme } from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
 import { getSpacing } from '../theme'
 
-import { IconInterface } from './icons/types'
+import { AccessibleIcon } from './icons/types'
 
-const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: number }> = ({
+const NotMemoizedRectangle: React.FC<Omit<AccessibleIcon, 'color'> & { height?: number }> = ({
   size = 32,
   height = getSpacing(2),
+  accessibilityLabel,
   testID,
 }) => {
   const {
@@ -18,13 +20,13 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
   } = useTheme()
   const { id, fill } = svgIdentifier()
   return (
-    <Svg
+    <AccessibleSvg
       width={size}
       height={height}
       viewBox="0 0 375 8"
       preserveAspectRatio="none"
-      testID={testID}
-      aria-hidden>
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Defs>
         <LinearGradient id={id} x1="0%" x2="100%" y1="49.977%" y2="50.023%">
           <Stop offset="0%" stopColor={primary} />
@@ -36,7 +38,7 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
           <Path d="M4 313H371V314H4z" />
         </G>
       </G>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

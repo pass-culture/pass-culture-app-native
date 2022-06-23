@@ -1,21 +1,28 @@
 import React, { memo } from 'react'
-import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { BicolorIconInterface } from './types'
+import { AccessibleBicolorIconInterface } from './types'
 
-const NotMemoizedBicolorFavoriteAuthed: React.FC<BicolorIconInterface> = ({
+const NotMemoizedBicolorFavoriteAuthed: React.FC<AccessibleBicolorIconInterface> = ({
   size,
   color,
   color2,
   thin,
+  accessibilityLabel,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   return (
-    <Svg width={size} height={size} viewBox="0 0 27 22" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 27 22"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Defs>
         <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
           <Stop offset="0%" stopColor={color} />
@@ -31,7 +38,7 @@ const NotMemoizedBicolorFavoriteAuthed: React.FC<BicolorIconInterface> = ({
         strokeWidth={thin ? 0 : 0.3}
         transform="translate(-3 -11)"
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

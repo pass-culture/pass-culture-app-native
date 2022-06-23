@@ -1,19 +1,25 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
-import styled, { useTheme } from 'styled-components/native'
+import { Path, G } from 'react-native-svg'
+import styled from 'styled-components/native'
 
-import { RectangleIconInterface } from './types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-function LogoPassCultureSvg({ width, height, color, testID }: RectangleIconInterface) {
-  const { accessibilityRole } = useTheme()
+import { AccessibleRectangleIconInterface } from './types'
+
+function LogoPassCultureSvg({
+  width,
+  height,
+  color,
+  accessibilityLabel,
+  testID,
+}: AccessibleRectangleIconInterface) {
   return (
-    <Svg
+    <AccessibleSvg
       width={width}
       height={height}
       viewBox="0 0 107 36"
       testID={testID}
-      accessibilityLabel="pass culture"
-      accessibilityRole={accessibilityRole.image}>
+      accessibilityLabel={accessibilityLabel ?? 'pass culture'}>
       <G fill="none" fillRule="evenodd">
         <G fill={color} fillRule="nonzero">
           <Path
@@ -22,7 +28,7 @@ function LogoPassCultureSvg({ width, height, color, testID }: RectangleIconInter
           />
         </G>
       </G>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 
