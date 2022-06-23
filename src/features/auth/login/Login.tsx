@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useState } from 'react'
+import React, { FunctionComponent, memo } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -18,7 +18,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
-
+import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -49,11 +49,11 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { data: settings } = useAppSettings()
-  const [email, setEmail] = useState(INITIAL_IDENTIFIER)
-  const [password, setPassword] = useState(INITIAL_PASSWORD)
-  const [isLoading, setIsLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [emailErrorMessage, setEmailErrorMessage] = useState('')
+  const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
+  const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
+  const [isLoading, setIsLoading] = useSafeState(false)
+  const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
+  const [emailErrorMessage, setEmailErrorMessage] = useSafeState('')
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
