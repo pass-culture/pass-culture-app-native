@@ -12,11 +12,17 @@ import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 
-export const fetchMultipleOffers = async (
-  paramsList: PartialSearchState[],
-  userLocation: GeoCoordinates | null,
+type FetchMultipleOffersArgs = {
+  paramsList: PartialSearchState[]
+  userLocation: GeoCoordinates | null
   isUserUnderage: boolean
-): Promise<{ hits: SearchHit[]; nbHits: number }> => {
+}
+
+export const fetchMultipleOffers = async ({
+  paramsList,
+  userLocation,
+  isUserUnderage,
+}: FetchMultipleOffersArgs): Promise<{ hits: SearchHit[]; nbHits: number }> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.query,
