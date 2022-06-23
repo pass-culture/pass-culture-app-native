@@ -1,4 +1,5 @@
 import React from 'react'
+// eslint-disable-next-line no-restricted-imports
 import Svg, { SvgProps } from 'react-native-svg'
 import { useTheme } from 'styled-components/native'
 
