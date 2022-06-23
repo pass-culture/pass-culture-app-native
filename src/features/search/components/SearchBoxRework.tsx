@@ -44,7 +44,6 @@ export const SearchBoxRework: React.FC<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState } = useStagedSearch()
   const { searchState, dispatch } = useSearch()
-  // const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
   const showResults = useShowResults()
   const { locationFilter } = stagedSearchState
@@ -54,7 +53,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
   const { query, refine } = useSearchBox(props)
-  const [value, setValue] = useState<string>(searchState.query || query)
+  const [value, setValue] = useState<string>(query)
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
 
@@ -72,7 +71,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   useEffect(() => {
     // We bypass the state update if the input is focused to avoid concurrent
     // updates when typing.
-    if (!inputRef.current?.isFocused() && query !== debouncedValue) {
+    if (!inputRef.current?.isFocused() && query !== debouncedValue && searchState.query === '') {
       setValue(query)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
