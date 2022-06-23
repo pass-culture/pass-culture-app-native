@@ -29,7 +29,7 @@ Default.args = {
       onPress: action('Livre'),
     },
     {
-      label: 'Musique',
+      label: 'CD, vinyles, musique en ligne',
       Icon: categoriesIcons.Music,
       onPress: action('Musique'),
     },
@@ -50,17 +50,17 @@ WithOddNumberOfCategories.args = {
       onPress: action('Cinéma'),
     },
     {
-      label: 'Jeux',
+      label: 'Bibliothèque, médiathèque',
       Icon: categoriesIcons.VideoGame,
       onPress: action('Jeux'),
     },
     {
-      label: 'Livre',
+      label: 'Conférences, rencontres',
       Icon: categoriesIcons.Book,
       onPress: action('Livre'),
     },
     {
-      label: 'Musique',
+      label: 'CD, vinyles, musique en ligne',
       Icon: categoriesIcons.Music,
       onPress: action('Musique'),
     },
