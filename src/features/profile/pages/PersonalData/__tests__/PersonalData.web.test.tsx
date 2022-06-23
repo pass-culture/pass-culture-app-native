@@ -19,6 +19,10 @@ jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
+}))
+
 const mockedIdentity: Partial<UserProfileResponse> = {
   firstName: 'Rosa',
   lastName: 'Bonheur',

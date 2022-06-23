@@ -1,14 +1,18 @@
-import { useQuery, UseQueryResult } from 'react-query'
+import { UseQueryResult } from 'react-query'
 
 import { api } from 'api/api'
 import { BookingReponse, BookingsResponse } from 'api/gen'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
+import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 
 // Arbitrary. Make sure the cache is invalidated after each booking
 const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
 export function useBookings(options = {}) {
-  return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
+  const netInfo = useNetInfo()
+  return usePersistQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
+    enabled: !!netInfo.isConnected,
     staleTime: STALE_TIME_BOOKINGS,
     ...options,
   })

@@ -11,6 +11,10 @@ import { render, waitFor } from 'tests/utils'
 
 import { OfferIconCaptions } from '../OfferIconCaptions'
 
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
+}))
+
 const defaultBookableStocks: OfferResponse['stocks'] = [
   {
     id: 1,
