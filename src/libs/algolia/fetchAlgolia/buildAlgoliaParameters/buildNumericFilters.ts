@@ -5,7 +5,7 @@ import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
 
-import { FiltersArray } from '../types'
+import { FiltersArray } from '../../types'
 
 export const buildNumericFilters = ({
   date,
