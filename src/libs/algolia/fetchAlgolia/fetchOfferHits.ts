@@ -1,10 +1,8 @@
 import { initialSearchState } from 'features/search/pages/reducer'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
+import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import {
-  offerAttributesToRetrieve,
-  buildOfferSearchParameters,
-} from 'libs/algolia/fetchAlgolia/config'
 import { env } from 'libs/environment'
 import { SearchHit } from 'libs/search'
 

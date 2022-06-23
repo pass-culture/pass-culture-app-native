@@ -7,4 +7,4 @@ export {
   transformOfferHit,
   useTransformOfferHits,
 } from './transformOfferHit'
-export { offerAttributesToRetrieve } from './config'
+export { offerAttributesToRetrieve } from './buildAlgoliaParameters/offerAttributesToRetrieve'

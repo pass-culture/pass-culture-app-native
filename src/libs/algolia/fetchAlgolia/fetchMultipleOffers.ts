@@ -2,11 +2,9 @@ import flatten from 'lodash.flatten'
 
 import { PartialSearchState } from 'features/search/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
+import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import {
-  offerAttributesToRetrieve,
-  buildOfferSearchParameters,
-} from 'libs/algolia/fetchAlgolia/config'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
