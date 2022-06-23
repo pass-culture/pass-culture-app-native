@@ -1364,7 +1364,7 @@ describe('fetchOfferHits', () => {
   it('should fetch with default search params', () => {
     const queryIds = ['id1', 'id2']
 
-    fetchOfferHits(queryIds, false)
+    fetchOfferHits({ objectIds: queryIds, isUserUnderage: false })
 
     expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     expect(search).toHaveBeenCalledWith('', {
@@ -1379,7 +1379,7 @@ describe('fetchOfferHits', () => {
 
   it('should fetch with udnerage search params', () => {
     const queryIds = ['id1', 'id2']
-    fetchOfferHits(queryIds, true)
+    fetchOfferHits({ objectIds: queryIds, isUserUnderage: true })
 
     expect(search).toHaveBeenCalledWith('', {
       facetFilters: [

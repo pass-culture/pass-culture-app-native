@@ -8,10 +8,15 @@ import {
 import { env } from 'libs/environment'
 import { SearchHit } from 'libs/search'
 
-export const fetchOfferHits = async (
-  objectIds: string[],
+type FetchOfferHitsArgs = {
+  objectIds: string[]
   isUserUnderage: boolean
-): Promise<SearchHit[]> => {
+}
+
+export const fetchOfferHits = async ({
+  objectIds,
+  isUserUnderage,
+}: FetchOfferHitsArgs): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
     { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
