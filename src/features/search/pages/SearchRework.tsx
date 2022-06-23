@@ -33,7 +33,7 @@ export function SearchRework() {
 
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions
-    if (showResults || isFocus) return <SearchDetails />
+    if (showResults || isFocus) return <SearchDetails isFocus={isFocus} />
     return <SearchLandingPage />
   }
 

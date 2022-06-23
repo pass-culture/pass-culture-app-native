@@ -45,10 +45,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   }
 
   function onBlur() {
-    if (props.value === '' && Platform.OS === 'web') {
-      searchInput.current?.focus()
-      return
-    }
     setIsFocus(false)
     if (props?.onFocusState) props.onFocusState(false)
   }

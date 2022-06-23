@@ -7,11 +7,15 @@ import { SearchResults } from 'features/search/components/SearchResults'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { AlgoliaHit } from 'libs/algolia'
 
-export const SearchDetails: React.FC = () => {
+type Props = {
+  isFocus: boolean
+}
+
+export const SearchDetails: React.FC<Props> = ({ isFocus }) => {
   const listRef = useRef<FlatList>(null)
   const showResults = useShowResults()
 
-  return showResults ? (
+  return showResults && !isFocus ? (
     <SearchResults />
   ) : (
     <View testID="recentsSearchesAndSuggestions">
