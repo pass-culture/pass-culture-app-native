@@ -1,12 +1,12 @@
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
-import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
+import { transformOfferHit } from 'libs/algolia/fetchAlgolia'
 import { VenueTypeCode } from 'libs/parsers'
 export { parseSearchParameters } from './parseSearchParameters'
 export { useParseSearchParameters } from './useParseSearchParameters'
 
-export const transformHit = transformAlgoliaHit
+export const transformHit = transformOfferHit
 
 // An incomplete search hit may not have a subcategoryId (for retrocompatibility)
 export type IncompleteSearchHit = AlgoliaHit
