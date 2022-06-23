@@ -42,9 +42,7 @@ describe('useAlgoliaRecommendedHits', () => {
   })
 
   it('should return undefined when algolia does not return any hit', async () => {
-    jest
-      .spyOn(fetchAlgoliaAPI, 'fetchAlgoliaHits')
-      .mockImplementationOnce(jest.fn().mockResolvedValue(undefined))
+    jest.spyOn(fetchAlgoliaAPI, 'fetchAlgoliaHits').mockResolvedValueOnce([])
     const { waitForNextUpdate, result } = renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),

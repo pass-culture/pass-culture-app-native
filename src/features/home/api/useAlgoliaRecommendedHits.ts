@@ -25,7 +25,7 @@ export const useAlgoliaRecommendedHits = (
   )
 
   return useMemo(() => {
-    if (!hits) return
+    if (!hits || hits.length === 0) return
 
     return (hits as IncompleteSearchHit[])
       .filter(filterAlgoliaHit)
