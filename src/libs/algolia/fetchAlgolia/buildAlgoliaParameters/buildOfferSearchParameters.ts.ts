@@ -2,7 +2,7 @@ import { PartialSearchState } from 'features/search/types'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { GeoCoordinates } from 'libs/geolocation'
 
-import { buildFacetFilters } from '../fetchAlgolia.facetFilters'
+import { buildFacetFilters } from '../buildFacetFilters'
 import { buildNumericFilters } from '../fetchAlgolia.numericFilters'
 
 export const buildOfferSearchParameters = (
