@@ -89,6 +89,21 @@ describe('fetchOffer', () => {
     })
   })
 
+  it('should store Algolia query ID after fetching an offer', async () => {
+    const spyStoreQueryID = jest.fn()
+    const query = 'searched query'
+    search.mockResolvedValueOnce({ queryID: 'queryID' })
+
+    await fetchOffer({
+      parameters: { ...baseParams, query } as SearchParametersQuery,
+      userLocation: null,
+      isUserUnderage: false,
+      storeQueryID: spyStoreQueryID,
+    })
+
+    expect(spyStoreQueryID).toHaveBeenCalledWith('queryID')
+  })
+
   describe('underage', () => {
     it('should fetch with provided query and default underage filter', () => {
       const query = 'searched query'
