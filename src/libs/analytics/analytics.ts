@@ -60,6 +60,7 @@ export const analytics = {
   logConsultOffer: (params: {
     offerId: number
     from: Referrals
+    moduleId?: string
     moduleName?: string
     query?: string
     venueId?: number

@@ -38,6 +38,7 @@ export interface OfferTileProps {
   isBeneficiary?: boolean
   analyticsFrom: Referrals
   moduleName?: string
+  moduleId?: string
   width: number
   height: number
 }
@@ -81,6 +82,7 @@ export function OfferTile(props: OfferTileProps) {
     width,
     height,
     moduleName,
+    moduleId,
     isBeneficiary,
     categoryLabel,
     venueId,
@@ -98,7 +100,7 @@ export function OfferTile(props: OfferTileProps) {
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
-    analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, venueId })
+    analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, moduleId, venueId })
   }
 
   return (
