@@ -15,16 +15,20 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   searchInputID: string
-  onFocusState?: (focus: boolean) => void
-  isFocus?: boolean
   appEnableAutocomplete: boolean
+  isShowAutocomplete: boolean
+  isSetShowAutocomplete: (isShowAutocomple: boolean) => void
+  setAutocompleteValue: (query: string) => void
+  autocompleteValue: string
 }
 
 export const SearchHeaderRework: React.FC<Props> = ({
   searchInputID,
-  onFocusState,
-  isFocus,
   appEnableAutocomplete,
+  isSetShowAutocomplete,
+  isShowAutocomplete,
+  setAutocompleteValue,
+  autocompleteValue,
 }) => {
   const { top } = useCustomSafeInsets()
   const showResults = useShowResults()
@@ -44,16 +48,20 @@ export const SearchHeaderRework: React.FC<Props> = ({
           {appEnableAutocomplete ? (
             <SearchBoxAutocomplete
               searchInputID={searchInputID}
-              onFocusState={onFocusState}
-              isFocus={isFocus}
+              isFocus={false}
+              isSetShowAutocomplete={isSetShowAutocomplete}
+              isShowAutocomplete={isShowAutocomplete}
               showLocationButton={true}
+              setAutocompleteValue={setAutocompleteValue}
             />
           ) : (
             <SearchBoxRework
               searchInputID={searchInputID}
-              onFocusState={onFocusState}
-              isFocus={isFocus}
+              isFocus={false}
+              isSetShowAutocomplete={isSetShowAutocomplete}
+              isShowAutocomplete={isShowAutocomplete}
               showLocationButton={true}
+              setAutocompleteValue={setAutocompleteValue}
             />
           )}
         </SearchBoxContainer>
@@ -71,16 +79,20 @@ export const SearchHeaderRework: React.FC<Props> = ({
           {appEnableAutocomplete ? (
             <SearchBoxAutocomplete
               searchInputID={searchInputID}
-              onFocusState={onFocusState}
-              isFocus={isFocus}
+              isFocus={!showResults ? true : false}
+              isSetShowAutocomplete={isSetShowAutocomplete}
+              isShowAutocomplete={isShowAutocomplete}
               accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
+              setAutocompleteValue={setAutocompleteValue}
             />
           ) : (
             <SearchBoxRework
               searchInputID={searchInputID}
-              onFocusState={onFocusState}
-              isFocus={isFocus}
+              isFocus={!showResults ? true : false}
+              isSetShowAutocomplete={isSetShowAutocomplete}
+              isShowAutocomplete={isShowAutocomplete}
               accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
+              setAutocompleteValue={setAutocompleteValue}
             />
           )}
         </SearchBoxContainer>
@@ -88,7 +100,9 @@ export const SearchHeaderRework: React.FC<Props> = ({
     )
   }
 
-  return !showResults && !isFocus ? searchBoxWithLabel() : searchBoxWithoutLabel()
+  return !showResults && !isShowAutocomplete && autocompleteValue === ''
+    ? searchBoxWithLabel()
+    : searchBoxWithoutLabel()
 }
 
 const SearchBoxContainer = styled.View({

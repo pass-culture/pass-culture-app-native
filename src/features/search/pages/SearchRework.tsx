@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import algoliasearch from 'algoliasearch'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -22,10 +22,11 @@ export function SearchRework() {
   const { dispatch } = useSearch()
   const showResults = useShowResults()
   const searchInputID = uuidv4()
-  const [isFocus, setIsFocus] = useState(false)
   const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
   const { data: appSettings } = useAppSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
+  const [isShowAutocomplete, isSetShowAutocomplete] = useState(false)
+  const [autocompleteValue, setAutocompleteValue] = useState<string>('')
 
   useEffect(() => {
     if (params) {
@@ -36,14 +37,16 @@ export function SearchRework() {
 
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions
-    if (showResults || isFocus)
-      return <SearchDetails isFocus={isFocus} appEnableAutocomplete={appEnableAutocomplete} />
+    if (showResults || isShowAutocomplete)
+      return (
+        <SearchDetails
+          isShowAutocomplete={isShowAutocomplete}
+          appEnableAutocomplete={appEnableAutocomplete}
+          isSetShowAutocomplete={isSetShowAutocomplete}
+        />
+      )
     return <SearchLandingPage />
   }
-
-  const onFocusState = useCallback((focus: boolean) => {
-    setIsFocus(focus)
-  }, [])
 
   return (
     <Container>
@@ -52,9 +55,11 @@ export function SearchRework() {
           <InstantSearch searchClient={searchClient} indexName={offersIndex}>
             <SearchHeaderRework
               searchInputID={searchInputID}
-              onFocusState={onFocusState}
-              isFocus={isFocus}
               appEnableAutocomplete={appEnableAutocomplete}
+              isShowAutocomplete={isShowAutocomplete}
+              isSetShowAutocomplete={isSetShowAutocomplete}
+              setAutocompleteValue={setAutocompleteValue}
+              autocompleteValue={autocompleteValue}
             />
             {bodySearch()}
           </InstantSearch>
@@ -62,9 +67,11 @@ export function SearchRework() {
           <React.Fragment>
             <SearchHeaderRework
               searchInputID={searchInputID}
-              onFocusState={onFocusState}
-              isFocus={isFocus}
               appEnableAutocomplete={appEnableAutocomplete}
+              isShowAutocomplete={isShowAutocomplete}
+              isSetShowAutocomplete={isSetShowAutocomplete}
+              setAutocompleteValue={setAutocompleteValue}
+              autocompleteValue={autocompleteValue}
             />
             {bodySearch()}
           </React.Fragment>
