@@ -28,7 +28,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 describe('Hit component', () => {
   it('should navigate to the offer when clicking on the hit', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} query="" />))
+    const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
     await fireEvent.press(getByTestId('offerHit'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -44,17 +44,21 @@ describe('Hit component', () => {
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} query="" />))
+    const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
     expect(queryByText('10 km')).toBeTruthy()
   })
   it('offer name should take full space if no geolocation', () => {
     mockDistance = '10 km'
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const withDistance = render(reactQueryProviderHOC(<Hit hit={hit} query="" />)).toJSON()
+    const withDistance = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />)
+    ).toJSON()
 
     mockDistance = null
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const withoutDistance = render(reactQueryProviderHOC(<Hit hit={hit} query="" />)).toJSON()
+    const withoutDistance = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />)
+    ).toJSON()
     expect(withoutDistance).toMatchDiffSnapshot(withDistance)
   })
 })

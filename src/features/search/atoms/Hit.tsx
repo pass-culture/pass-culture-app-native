@@ -19,9 +19,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   hit: SearchHit
   query: string
+  index: number
 }
 
-export const Hit: React.FC<Props> = ({ hit, query }) => {
+export const Hit: React.FC<Props> = ({ hit, query, index }) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
   const queryClient = useQueryClient()

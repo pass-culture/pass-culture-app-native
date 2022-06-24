@@ -72,7 +72,9 @@ export const SearchResults: React.FC = () => {
   }, [hasNextPage])
 
   const renderItem = useCallback(
-    ({ item: hit }: { item: SearchHit }) => <Hit hit={hit} query={searchState.query} />,
+    ({ item: hit, index }: { item: SearchHit; index: number }) => (
+      <Hit hit={hit} query={searchState.query} index={index} />
+    ),
     [searchState.query]
   )
 
