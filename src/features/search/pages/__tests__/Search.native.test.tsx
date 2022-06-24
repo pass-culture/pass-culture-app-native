@@ -8,6 +8,7 @@ import { Search } from 'features/search/pages/Search'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import * as useShowResultsForCategory from 'features/search/pages/useShowResultsForCategory'
 import { SearchState } from 'features/search/types'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent } from 'tests/utils'
@@ -61,7 +62,12 @@ jest.mock('@react-navigation/native', () => ({
   useRoute: jest.fn().mockReturnValue({ params: {} }),
 }))
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
 describe('Search component', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true })
+
   it('should render Search', () => {
     expect(render(<Search />)).toMatchSnapshot()
   })
@@ -71,6 +77,14 @@ describe('Search component', () => {
     expect(mockDispatch).toBeCalledWith({
       type: 'SET_STATE_FROM_NAVIGATE',
       payload: {},
+    })
+  })
+
+  describe('When offline', () => {
+    it('should display offline page', () => {
+      mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+      const renderAPI = render(<Search />)
+      expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
     })
   })
 

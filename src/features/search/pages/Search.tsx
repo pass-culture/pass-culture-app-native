@@ -12,10 +12,13 @@ import { useShowResults } from 'features/search/pages/useShowResults'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { OfflinePage } from 'libs/network/OfflinePage'
+import { useNetInfo } from 'libs/network/useNetInfo'
 
 const searchInputID = uuidv4()
 
 export function Search() {
+  const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const showResults = useShowResults()
@@ -37,6 +40,10 @@ export function Search() {
         <Spacer.TabBar />
       </Container>
     )
+  }
+
+  if (!netInfo.isConnected) {
+    return <OfflinePage />
   }
 
   return (
