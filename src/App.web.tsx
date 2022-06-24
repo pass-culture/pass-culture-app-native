@@ -18,6 +18,7 @@ import { IdentityCheckContextProvider } from 'features/identityCheck/context/Ide
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
+import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
@@ -61,22 +62,24 @@ export function App() {
                 <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
                   <GeolocationWrapper>
                     <FavoritesWrapper>
-                      <SearchWrapper>
-                        <I18nProvider i18n={i18n}>
-                          <SnackBarProvider>
-                            <CulturalSurveyContextProvider>
-                              <IdentityCheckContextProvider>
-                                <AppWebHead />
-                                <ScreenErrorProvider>
-                                  <Suspense fallback={<LoadingPage />}>
-                                    <AppNavigationContainer />
-                                  </Suspense>
-                                </ScreenErrorProvider>
-                              </IdentityCheckContextProvider>
-                            </CulturalSurveyContextProvider>
-                          </SnackBarProvider>
-                        </I18nProvider>
-                      </SearchWrapper>
+                      <SearchAnalyticsWrapper>
+                        <SearchWrapper>
+                          <I18nProvider i18n={i18n}>
+                            <SnackBarProvider>
+                              <CulturalSurveyContextProvider>
+                                <IdentityCheckContextProvider>
+                                  <AppWebHead />
+                                  <ScreenErrorProvider>
+                                    <Suspense fallback={<LoadingPage />}>
+                                      <AppNavigationContainer />
+                                    </Suspense>
+                                  </ScreenErrorProvider>
+                                </IdentityCheckContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </SnackBarProvider>
+                          </I18nProvider>
+                        </SearchWrapper>
+                      </SearchAnalyticsWrapper>
                     </FavoritesWrapper>
                   </GeolocationWrapper>
                 </ErrorBoundary>

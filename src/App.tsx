@@ -22,6 +22,7 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
+import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
@@ -74,23 +75,25 @@ const App: FunctionComponent = function () {
               <AuthWrapper>
                 <GeolocationWrapper>
                   <FavoritesWrapper>
-                    <SearchWrapper>
-                      <I18nProvider i18n={i18n}>
-                        <SnackBarProvider>
-                          <NetInfoWrapper>
-                            <CulturalSurveyContextProvider>
-                              <IdentityCheckContextProvider>
-                                <SplashScreenProvider>
-                                  <ScreenErrorProvider>
-                                    <AppNavigationContainer />
-                                  </ScreenErrorProvider>
-                                </SplashScreenProvider>
-                              </IdentityCheckContextProvider>
-                            </CulturalSurveyContextProvider>
-                          </NetInfoWrapper>
-                        </SnackBarProvider>
-                      </I18nProvider>
-                    </SearchWrapper>
+                    <SearchAnalyticsWrapper>
+                      <SearchWrapper>
+                        <I18nProvider i18n={i18n}>
+                          <SnackBarProvider>
+                            <NetInfoWrapper>
+                              <CulturalSurveyContextProvider>
+                                <IdentityCheckContextProvider>
+                                  <SplashScreenProvider>
+                                    <ScreenErrorProvider>
+                                      <AppNavigationContainer />
+                                    </ScreenErrorProvider>
+                                  </SplashScreenProvider>
+                                </IdentityCheckContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </NetInfoWrapper>
+                          </SnackBarProvider>
+                        </I18nProvider>
+                      </SearchWrapper>
+                    </SearchAnalyticsWrapper>
                   </FavoritesWrapper>
                 </GeolocationWrapper>
               </AuthWrapper>
