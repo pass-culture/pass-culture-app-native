@@ -69,8 +69,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),
   logClickExclusivityBlock: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
-  logClickSeeMore: (moduleName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName }),
+  logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, params),
   logClickBusinessBlock: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>

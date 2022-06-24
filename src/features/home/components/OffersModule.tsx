@@ -59,7 +59,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore
     ? () => {
-        analytics.logClickSeeMore(moduleName)
+        analytics.logClickSeeMore({ moduleName, moduleId })
       }
     : undefined
 
