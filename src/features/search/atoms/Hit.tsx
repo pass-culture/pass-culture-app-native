@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
+import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnProduct'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
@@ -29,6 +30,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
+  const { logClickOnOffer } = useLogClickOnOffer()
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
@@ -58,6 +60,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
       })
     )
     analytics.logConsultOffer({ offerId, from: 'search', query: query })
+    logClickOnOffer({ objectID, position: index })
   }
 
   return (

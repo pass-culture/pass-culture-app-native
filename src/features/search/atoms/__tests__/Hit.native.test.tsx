@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
+import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnProduct'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,6 +24,14 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),
+}))
+
+const spyLogClickOnOffer = jest.fn()
+const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')
+mockUseLogClickOnOffer.mockReturnValue({ logClickOnOffer: spyLogClickOnOffer })
+
+jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
+  useSearchAnalyticsState: () => ({ currentQueryID: 'abc123' }),
 }))
 
 describe('Hit component', () => {
@@ -60,5 +69,18 @@ describe('Hit component', () => {
       reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />)
     ).toJSON()
     expect(withoutDistance).toMatchDiffSnapshot(withDistance)
+  })
+
+  it('should notify Algolia when pressing on an hit', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByRole } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
+
+    const hitComponent = getByRole('link')
+    await fireEvent.press(hitComponent)
+
+    expect(spyLogClickOnOffer).toHaveBeenCalledWith({
+      objectID: '102280',
+      position: 0,
+    })
   })
 })
