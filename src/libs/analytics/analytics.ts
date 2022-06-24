@@ -70,8 +70,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { moduleName }),
   logClickSeeMore: (moduleName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName }),
-  logClickBusinessBlock: (moduleName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName }),
+  logClickBusinessBlock: (params: { moduleName: string; moduleId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
