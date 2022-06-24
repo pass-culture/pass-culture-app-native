@@ -1,10 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
-import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -13,10 +12,7 @@ import { Spacer } from 'ui/theme'
 
 export function NavigationSignUp(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
-  const [
-    fastEduconnectConnectionRequestModalVisible,
-    setFastEduconnectConnectionRequestModalVisible,
-  ] = useState(false)
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (
@@ -73,10 +69,6 @@ export function NavigationSignUp(): JSX.Element {
         />
       </StyledContainer>
       <Spacer.BottomScreen />
-      <FastEduconnectConnectionRequestModal
-        visible={fastEduconnectConnectionRequestModalVisible}
-        hideModal={() => setFastEduconnectConnectionRequestModalVisible(false)}
-      />
     </ScrollView>
   )
 }
