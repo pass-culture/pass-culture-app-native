@@ -1,18 +1,22 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 import { Country, CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'features/auth/signup/PhoneValidation/components'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { amplitude } from 'libs/amplitude'
 import { useSafeState } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -26,8 +30,9 @@ const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 export const SetPhoneNumber = () => {
   const titleID = uuidv4()
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [invalidPhoneNumberMessage, _setInvalidPhoneNumberMessage] = useSafeState('')
+  const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
+  const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
 
@@ -53,7 +58,31 @@ export const SetPhoneNumber = () => {
     return '06 12 34 56 78'
   }
 
-  const inputLabel = t`Numéro de téléphone`
+  const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
+    onSuccess: () => {
+      navigate('SetPhoneValidationCode', { phoneNumber, countryCode: country.cca2 })
+    },
+    onError: (error: ApiError | unknown) => {
+      const { content } = error as ApiError
+      if (content.code === 'TOO_MANY_SMS_SENT') {
+        navigate('PhoneValidationTooManySMSSent')
+      } else {
+        const message = extractApiErrorMessage(error)
+        setInvalidPhoneNumberMessage(message)
+      }
+    },
+  })
+
+  async function requestSendPhoneValidationCode() {
+    const callingCode = country.callingCode[0]
+    if (isContinueButtonEnabled && callingCode) {
+      setInvalidPhoneNumberMessage('')
+      const phoneNumberWithPrefix = `+${callingCode}${formatPhoneNumber(phoneNumber)}`
+      sendPhoneValidationCode(phoneNumberWithPrefix)
+    }
+
+    await amplitude().logEvent('young18_set_phone_number_clicked_front')
+  }
 
   const LeftCountryPicker = <CountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
 
@@ -76,7 +105,7 @@ export const SetPhoneNumber = () => {
                 autoCapitalize="none"
                 isError={false}
                 keyboardType="number-pad"
-                label={inputLabel}
+                label={t`Numéro de téléphone`}
                 onChangeText={onChangeText}
                 placeholder={getPlaceholder(country.cca2)}
                 textContentType="telephoneNumber"
@@ -118,11 +147,10 @@ export const SetPhoneNumber = () => {
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             type="submit"
-            onPress={() => {
-              // do nothing yet
-            }}
+            onPress={requestSendPhoneValidationCode}
             wording={t`Continuer`}
             disabled={!isContinueButtonEnabled}
+            isLoading={isLoading}
           />
         </BottomContentContainer>
       }
@@ -135,6 +163,13 @@ export const SetPhoneNumber = () => {
  */
 function isPhoneNumberValid(word: string) {
   return word.match(/^\d{6,10}$/)
+}
+
+function formatPhoneNumber(phoneNumber: string) {
+  if (phoneNumber.startsWith('0')) {
+    return phoneNumber.substring(1)
+  }
+  return phoneNumber
 }
 
 const RemainingAttemptsContainer = styled.View({
