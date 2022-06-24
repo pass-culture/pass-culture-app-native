@@ -30,7 +30,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index }) => {
       <MagnifyingGlassIcon />
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Typo.Body>{offerName}</Typo.Body>
-        {index < limitResultWithCategory ? (
+        {index < limitResultWithCategory && searchGroupName !== SearchGroupNameEnum.NONE ? (
           <React.Fragment>
             <OfferIn>{offerIn}</OfferIn>
             <OfferSearchGroup>{offerSearchGroup}</OfferSearchGroup>
