@@ -47,10 +47,15 @@ export function usePersistQuery<
 
   const persistQuery = useMemo<UsePersistQuery<TData, TError>>(() => {
     if (persistData) {
-      return { ...query, data: persistData, isOfflineData: true } as UsePersistQuery<TData, TError>
+      return {
+        ...query,
+        // @ts-ignore useQuery select options does not offer to pass typing to useQuery, cast should happen within passed selected
+        data: options?.select ? options.select(persistData as any) : persistData,
+        isOfflineData: true,
+      } as UsePersistQuery<TData, TError>
     }
     return query
-  }, [persistData, query])
+  }, [persistData, query, options])
 
   useEffect(() => {
     if (!query.isLoading && query.data) {

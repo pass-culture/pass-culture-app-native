@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
-import { View, Text } from 'react-native'
 import { UseQueryOptions } from 'react-query'
 import { QueryFunction } from 'react-query/types/core/types'
 import waitForExpect from 'wait-for-expect'
@@ -117,6 +116,26 @@ describe('usePersistQuery', () => {
         })
       })
     })
+
+    describe('react-query option.select support', () => {
+      it('should return defined when select find the entity', async () => {
+        let cursor: TestData | null = null
+        renderUsePersistQuery({
+          queryKey,
+          queryFn,
+          options: {
+            // @ts-ignore cast for select occur on return
+            select(data) {
+              cursor = data.find((item) => item.id === offlineData[1].id) as TestData
+              return cursor
+            },
+          },
+        })
+        await waitForExpect(() => {
+          expect(cursor).toEqual(offlineData[1])
+        })
+      })
+    })
   })
 })
 
@@ -129,12 +148,8 @@ function TestApp({
   queryFn: QueryFunction<TestData[]>
   options?: Omit<UseQueryOptions<TestData[]>, 'queryKey'>
 }) {
-  const query = usePersistQuery<TestData[]>(queryKey, queryFn, options)
-  return (
-    <View>
-      <Text>isOfflineData: {query.isOfflineData}</Text>
-    </View>
-  )
+  usePersistQuery<TestData[]>(queryKey, queryFn, options)
+  return null
 }
 
 function renderUsePersistQuery({
