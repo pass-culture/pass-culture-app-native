@@ -70,8 +70,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
           offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
         }
         onPress={handlePressOffer}
-        accessibilityLabel={accessibilityLabel}
-        testID="offerHit">
+        accessibilityLabel={accessibilityLabel}>
         <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <Column>

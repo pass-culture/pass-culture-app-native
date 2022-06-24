@@ -37,8 +37,8 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 describe('Hit component', () => {
   it('should navigate to the offer when clicking on the hit', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
-    await fireEvent.press(getByTestId('offerHit'))
+    const { getByRole } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
+    await fireEvent.press(getByRole('link'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
