@@ -3766,8 +3766,8 @@ msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
 #: src/features/search/components/SearchResults.tsx
-msgid "search state query"
-msgstr "pour ${searchStateQuery}"
+msgid "search query"
+msgstr "pour {searchQuery}"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"
