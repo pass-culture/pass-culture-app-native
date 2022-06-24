@@ -15,7 +15,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
       collapsable={false}
       focusable={true}
       onClick={[Function onClick]}
-@@ -110,10 +110,22 @@
+@@ -109,10 +109,22 @@
                 \\"flexDirection\\": \\"row\\",
               },
             ]
@@ -38,7 +38,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
               style={
                 Array [
                   Object {
-@@ -125,10 +137,39 @@
+@@ -124,10 +136,39 @@
                 ]
               }
             >
