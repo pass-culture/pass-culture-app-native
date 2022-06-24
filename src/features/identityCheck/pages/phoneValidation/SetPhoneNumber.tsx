@@ -25,10 +25,11 @@ const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = () => {
   const titleID = uuidv4()
-  const [_phoneNumber, setPhoneNumber] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
   const [invalidPhoneNumberMessage, _setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { goBack } = useGoBack(...homeNavConfig)
+  const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
 
   const {
     visible: isTipsModalVisible,
@@ -121,11 +122,19 @@ export const SetPhoneNumber = () => {
               // do nothing yet
             }}
             wording={t`Continuer`}
+            disabled={!isContinueButtonEnabled}
           />
         </BottomContentContainer>
       }
     />
   )
+}
+
+/**
+ * 6 to 10 digits
+ */
+function isPhoneNumberValid(word: string) {
+  return word.match(/^\d{6,10}$/)
 }
 
 const RemainingAttemptsContainer = styled.View({
