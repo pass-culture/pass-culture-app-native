@@ -83,7 +83,7 @@ describe('SetPhoneNumber', () => {
       )
     })
 
-    it('should navigate to SetSetPhoneNumberCode on /send_phone_validation request success', async () => {
+    it('should navigate to SetPhoneNumberCode on /send_phone_validation request success', async () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
       await superFlushWithAct()
 
