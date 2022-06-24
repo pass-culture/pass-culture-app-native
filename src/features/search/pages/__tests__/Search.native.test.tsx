@@ -5,6 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Search } from 'features/search/pages/Search'
 import { SearchState } from 'features/search/types'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent } from 'tests/utils'
@@ -68,7 +69,12 @@ jest.mock('@react-navigation/native', () => ({
   useRoute: jest.fn().mockReturnValue({ params: {} }),
 }))
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
 describe('Search component', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true })
+
   it('should render Search', () => {
     expect(render(<Search />)).toMatchSnapshot()
   })
@@ -80,6 +86,14 @@ describe('Search component', () => {
       payload: {},
     })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
+  })
+
+  describe('When offline', () => {
+    it('should display offline page', () => {
+      mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+      const renderAPI = render(<Search />)
+      expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+    })
   })
 
   describe('When rework feature flag is not activated', () => {
