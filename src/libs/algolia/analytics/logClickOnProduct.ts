@@ -22,7 +22,7 @@ const logClickOnProduct = ({ index, queryID, objectIDs, positions }: LogClickOnP
   })
 }
 
-const logClickOnOffer =
+export const logClickOnOffer =
   (currentQueryID?: string) =>
   ({ objectID, position }: { objectID: string; position: number }) => {
     if (currentQueryID === undefined) {

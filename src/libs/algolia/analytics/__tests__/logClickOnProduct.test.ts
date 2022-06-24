@@ -1,0 +1,32 @@
+import AlgoliaSearchInsights from 'search-insights'
+
+import { logClickOnOffer } from 'libs/algolia/analytics/logClickOnProduct'
+import { captureMonitoringError } from 'libs/monitoring'
+
+jest.mock('search-insights')
+const mockAlgoliaSearchInsights = AlgoliaSearchInsights as jest.Mock
+
+jest.mock('libs/monitoring')
+const mockCaptureMonitoringError = captureMonitoringError as jest.Mock
+
+describe('logClickOnOffer', () => {
+  it('should send the corresponding Algolia click event when called', () => {
+    logClickOnOffer('abc123')({ objectID: 'object123', position: 0 })
+
+    expect(mockAlgoliaSearchInsights).toHaveBeenCalledWith('clickedObjectIDsAfterSearch', {
+      eventName: 'Product Clicked',
+      index: 'algoliaOffersIndexName',
+      objectIDs: ['object123'],
+      positions: [1],
+      queryID: 'abc123',
+    })
+  })
+  it('should raise a warning instead of sending an event when called without no queryID set', () => {
+    logClickOnOffer()({ objectID: 'object123', position: 0 })
+
+    expect(mockAlgoliaSearchInsights).not.toHaveBeenCalled()
+    expect(mockCaptureMonitoringError).toHaveBeenCalledWith(
+      'Algolia Analytics: useLogClickOnOffer called without any QueryID set'
+    )
+  })
+})
