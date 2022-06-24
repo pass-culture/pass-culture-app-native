@@ -112,6 +112,7 @@ export type RootStackParamList = {
     id: number
     from?: Referrals
     moduleName?: string
+    moduleId?: string
   }
   OfferDescription: { id: number }
   SuspensionScreen: undefined

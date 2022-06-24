@@ -63,8 +63,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
       if (typeof offerId === 'number') {
-        const { from, moduleName } = params
-        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName })
+        const { from, moduleName, moduleId } = params
+        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId })
       }
     },
     onError: (error) => {

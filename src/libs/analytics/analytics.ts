@@ -113,6 +113,7 @@ export const analytics = {
     offerId: number
     from?: Referrals
     moduleName?: string
+    moduleId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
   logConsultWhyAnniversary: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),

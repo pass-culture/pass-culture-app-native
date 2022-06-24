@@ -108,7 +108,10 @@ export function OfferTile(props: OfferTileProps) {
       <StyledTouchableLink
         highlight
         height={height + MAX_OFFER_CAPTION_HEIGHT}
-        navigateTo={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
+        navigateTo={{
+          screen: 'Offer',
+          params: { id: offerId, from: analyticsFrom, moduleName, moduleId },
+        }}
         onPress={handlePressOffer}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
