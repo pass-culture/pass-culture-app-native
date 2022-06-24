@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
-import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
+import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
 export const BackgroundSecondary = memo(NotMemoizedBackground)
@@ -31,7 +32,7 @@ function BackgroundSvg() {
   const { id: id2, xlinkHref: xlinkHref2 } = svgIdentifier()
   const { id: id3 } = svgIdentifier()
   return (
-    <Svg width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none" aria-hidden>
+    <AccessibleSvg width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none">
       <Defs>
         <LinearGradient
           id={id}
@@ -51,6 +52,6 @@ function BackgroundSvg() {
         </Mask>
         <Use fill={fill} xlinkHref={xlinkHref2} />
       </G>
-    </Svg>
+    </AccessibleSvg>
   )
 }

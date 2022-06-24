@@ -54,6 +54,11 @@ module.exports = {
         importNames: ['TouchableOpacity'],
         message: 'use ui/components/TouchableOpacity instead',
       },
+      {
+        name: 'react-native-svg',
+        importNames: ['default'],
+        message: 'use ui/svg/AccessibleSvg instead',
+      },
       { name: '@bam.tech/react-native-batch', message: 'use libs/react-native-batch instead' },
       { name: '@react-native-community/netinfo', message: 'use libs/network/netinfo instead' },
       {

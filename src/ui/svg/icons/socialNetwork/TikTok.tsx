@@ -1,11 +1,23 @@
 import * as React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from '../types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-const TikTokSvg: React.FunctionComponent<IconInterface> = ({ size, color: _color, testID }) => (
-  <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
+import { AccessibleIcon } from '../types'
+
+const TikTokSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color: _color,
+  accessibilityLabel,
+  testID,
+}) => (
+  <AccessibleSvg
+    width={size}
+    height={size}
+    viewBox="0 0 48 48"
+    accessibilityLabel={accessibilityLabel}
+    testID={testID}>
     <Path
       d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z"
       fill="black"
@@ -38,7 +50,7 @@ const TikTokSvg: React.FunctionComponent<IconInterface> = ({ size, color: _color
       d="M29.6063 29.3507V17.7694C31.8734 19.4236 34.5949 20.3103 37.385 20.3038V15.8961C35.7366 15.5421 34.2461 14.6525 33.1381 13.3617C31.3498 12.185 30.1157 10.3123 29.7255 8.18256H25.6303V30.9926C25.5484 33.0276 24.2083 34.7866 22.2913 35.3753C20.3743 35.9639 18.3011 35.2531 17.1257 33.6042C15.2166 32.5816 14.2368 30.3687 14.7493 28.2369C15.2617 26.1051 17.1349 24.6016 19.2925 24.5904C19.7628 24.5947 20.23 24.6689 20.6792 24.8108V20.403C16.6074 20.4732 12.9609 22.9837 11.384 26.8027C9.80702 30.6217 10.5974 35.0276 13.3989 38.034C15.1402 39.2302 17.2024 39.8498 19.3033 39.8081C24.9851 39.8081 29.5944 35.1297 29.6063 29.3507Z"
       fill="white"
     />
-  </Svg>
+  </AccessibleSvg>
 )
 
 export const TikTok = styled(TikTokSvg).attrs(({ color, size, theme }) => ({

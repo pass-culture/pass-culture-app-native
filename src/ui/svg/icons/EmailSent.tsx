@@ -1,13 +1,24 @@
 import * as React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const EmailSentSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
+const EmailSentSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={height}
+      viewBox="0 0 200 156"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Path
         fill={color}
         fillRule="evenodd"
@@ -22,7 +33,7 @@ const EmailSentSvg: React.FunctionComponent<IconInterface> = ({ size, color, tes
         fill={color}
         d="M44.9669 106.456C43.8053 106.573 42.9552 107.6 43.0682 108.751C43.1812 109.901 44.2145 110.74 45.3761 110.623L71.667 107.987C72.8286 107.871 73.6787 106.844 73.5657 105.693C73.4526 104.542 72.4194 103.704 71.2577 103.82L44.9669 106.456Z"
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 
