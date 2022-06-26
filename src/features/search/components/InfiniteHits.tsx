@@ -23,6 +23,8 @@ export const InfiniteHits = forwardRef(
         contentContainerStyle={contentContainerStyle}
         data={hits as unknown as THit[]}
         keyExtractor={(item) => item.objectID}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
         renderItem={({ item, index }) => <Hit hit={item as unknown as THit} index={index} />}
       />
     )
