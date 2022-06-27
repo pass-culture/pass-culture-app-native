@@ -1446,7 +1446,7 @@ describe('fetchOfferHits', () => {
     })
   })
 
-  it('should fetch with udnerage search params', () => {
+  it('should fetch with underage search params', () => {
     const queryIds = ['id1', 'id2']
     fetchOfferHits({ objectIds: queryIds, isUserUnderage: true })
 
