@@ -83,7 +83,7 @@ Object {
           >
             <button
               aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-              class="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
+              class="sc-bdvvtL jPOqmR sc-dkPtRN kmXVLA"
               data-testid="Ouvrir le gestionnaire mail pour contacter le support"
               href=""
               tabindex="0"
@@ -119,7 +119,7 @@ Object {
               style="height: 16px;"
             />
             <button
-              class="sc-bdvvtL iPuvqD sc-hKwDye gvtKtm"
+              class="sc-bdvvtL leURAp sc-hKwDye gvtKtm"
               tabindex="0"
               type="button"
             >
@@ -235,7 +235,7 @@ Object {
         >
           <button
             aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-            class="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
+            class="sc-bdvvtL jPOqmR sc-dkPtRN kmXVLA"
             data-testid="Ouvrir le gestionnaire mail pour contacter le support"
             href=""
             tabindex="0"
@@ -271,7 +271,7 @@ Object {
             style="height: 16px;"
           />
           <button
-            class="sc-bdvvtL iPuvqD sc-hKwDye gvtKtm"
+            class="sc-bdvvtL leURAp sc-hKwDye gvtKtm"
             tabindex="0"
             type="button"
           >

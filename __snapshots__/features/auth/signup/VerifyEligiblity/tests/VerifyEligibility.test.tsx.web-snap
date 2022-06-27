@@ -263,7 +263,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL kUaFXY sc-dkPtRN kmXVLA"
+        className="sc-bdvvtL fWgamm sc-dkPtRN kmXVLA"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -296,7 +296,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL dbqTj sc-hKwDye gvtKtm"
+        className="sc-bdvvtL fACJhR sc-hKwDye gvtKtm"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

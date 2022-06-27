@@ -236,7 +236,7 @@ Array [
     }
   >
     <a
-      className="sc-gsDKAQ bNJins sc-dkPtRN fwCeAR"
+      className="sc-gsDKAQ fllxqS sc-dkPtRN fwCeAR"
       href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
       onClick={[Function]}
       onDoubleClick={[Function]}

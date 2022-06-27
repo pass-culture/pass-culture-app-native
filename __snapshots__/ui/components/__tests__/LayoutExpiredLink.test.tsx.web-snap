@@ -195,7 +195,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <a
-      className="sc-gsDKAQ fiQpqO sc-pVTFL iXSrby"
+      className="sc-gsDKAQ bhoYMA sc-pVTFL iXSrby"
       href="https://passculture.zendesk.com/hc/fr/"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -244,7 +244,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     </a>
     <button
       aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-      className="sc-bdvvtL iPuvqD sc-pVTFL iXSrby"
+      className="sc-bdvvtL leURAp sc-pVTFL iXSrby"
       data-testid="Ouvrir le gestionnaire mail pour contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -315,7 +315,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL KrMkj sc-dkPtRN kmXVLA"
+        className="sc-bdvvtL jPOqmR sc-dkPtRN kmXVLA"
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
@@ -349,7 +349,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL iPuvqD sc-pVTFL iXSrby"
+        className="sc-bdvvtL leURAp sc-pVTFL iXSrby"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
