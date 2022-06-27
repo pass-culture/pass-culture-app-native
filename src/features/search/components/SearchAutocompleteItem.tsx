@@ -5,7 +5,10 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AlgoliaHit } from 'libs/algolia'
+import { analytics } from 'libs/analytics'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing, Typo } from 'ui/theme'
@@ -13,20 +16,41 @@ import { getSpacing, Typo } from 'ui/theme'
 type Props = {
   hit: AlgoliaHit
   index: number
+  isSetShowAutocomplete: (isShowAutocomplete: boolean) => void
 }
 
-export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index }) => {
+export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, isSetShowAutocomplete }) => {
   const limitResultWithCategory = 3
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const { navigate } = useNavigation<UseNavigationType>()
   const searchGroupName = hit.offer.searchGroupName as SearchGroupNameEnum
-  const offerId = +hit.objectID || 0
   const offerName = hit.offer.name
   const offerIn = ' dans '
   const offerSearchGroup = searchGroupLabelMapping[searchGroupName]
+  const { searchState: stagedSearchState } = useStagedSearch()
+  const { locationFilter } = stagedSearchState
+
+  const onPress = () => {
+    isSetShowAutocomplete(false)
+    // When we hit enter, we may have selected a category or a venue on the search landing page
+    // these are the two potentially 'staged' filters that we want to commit to the global search state.
+    // We also want to commit the price filter, as beneficiary users may have access to different offer
+    // price range depending on their available credit.
+    const { priceRange } = stagedSearchState
+    navigate(
+      ...getTabNavConfig('Search', {
+        showResults: true,
+        query: offerName,
+        locationFilter,
+        offerCategories: [searchGroupName],
+        priceRange,
+      })
+    )
+    analytics.logSearchQuery(offerName || '')
+  }
 
   return (
-    <AutocompleteItemTouchable onPress={() => navigate('Offer', { id: offerId, from: 'search' })}>
+    <AutocompleteItemTouchable onPress={onPress}>
       <MagnifyingGlassIcon />
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Typo.Body>{offerName}</Typo.Body>

@@ -13,6 +13,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -58,6 +59,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const [value, setValue] = useState<string>(query)
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
+  const showResults = useShowResults()
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
@@ -87,8 +89,13 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   }
 
   const onPressArrowBack = () => {
-    setValue('')
+    if (isShowAutocomplete) {
+      isSetShowAutocomplete(false)
+      return
+    }
+
     isSetShowAutocomplete(false)
+    setValue('')
     setAutocompleteValue('')
     dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
@@ -131,8 +138,9 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer marginHorizontal={isShowAutocomplete ? getSpacing(6) : 0}>
-        {isShowAutocomplete ? (
+      <SearchInputContainer
+        marginHorizontal={isShowAutocomplete || showResults ? getSpacing(6) : 0}>
+        {isShowAutocomplete || showResults ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>

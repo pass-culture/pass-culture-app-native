@@ -13,7 +13,11 @@ type Props = {
   isSetShowAutocomplete: (isShowAutocomplete: boolean) => void
 }
 
-export const SearchDetails: React.FC<Props> = ({ isShowAutocomplete, appEnableAutocomplete }) => {
+export const SearchDetails: React.FC<Props> = ({
+  isShowAutocomplete,
+  appEnableAutocomplete,
+  isSetShowAutocomplete,
+}) => {
   const listRef = useRef<FlatList>(null)
   const showResults = useShowResults()
   const showResultsWithoutAutocomplete = !appEnableAutocomplete && showResults
@@ -23,7 +27,13 @@ export const SearchDetails: React.FC<Props> = ({ isShowAutocomplete, appEnableAu
     <SearchResults />
   ) : (
     <React.Fragment>
-      {appEnableAutocomplete ? <SearchAutocomplete ref={listRef} hitComponent={Hit} /> : null}
+      {appEnableAutocomplete ? (
+        <SearchAutocomplete
+          ref={listRef}
+          hitComponent={Hit}
+          isSetShowAutocomplete={isSetShowAutocomplete}
+        />
+      ) : null}
     </React.Fragment>
   )
 }
@@ -31,8 +41,11 @@ export const SearchDetails: React.FC<Props> = ({ isShowAutocomplete, appEnableAu
 export type HitProps = {
   hit: AlgoliaHit
   index: number
+  isSetShowAutocomplete: (isShowAutocomplete: boolean) => void
 }
 
-function Hit({ hit, index }: HitProps) {
-  return <SearchAutocompleteItem hit={hit} index={index} />
+function Hit({ hit, index, isSetShowAutocomplete }: HitProps) {
+  return (
+    <SearchAutocompleteItem hit={hit} index={index} isSetShowAutocomplete={isSetShowAutocomplete} />
+  )
 }

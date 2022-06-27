@@ -4,14 +4,16 @@ import { FlatList } from 'react-native'
 
 import { AlgoliaHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
+import { HitProps } from 'features/search/components/SearchDetails'
 
-type SearchAutocompleteProps<AlgoliaHit> = UseInfiniteHitsProps & {
-  hitComponent: (props: { hit: AlgoliaHit; index: number }) => JSX.Element
+type SearchAutocompleteProps = UseInfiniteHitsProps & {
+  hitComponent: (props: HitProps) => JSX.Element
+  isSetShowAutocomplete: (isShowAutocomplete: boolean) => void
 }
 
 export const SearchAutocomplete = forwardRef(
   <THit extends AlgoliaHit>(
-    { hitComponent: Item, ...props }: SearchAutocompleteProps<THit>,
+    { hitComponent: Item, isSetShowAutocomplete, ...props }: SearchAutocompleteProps,
     ref: Ref<FlatList<THit>>
   ) => {
     const { hits } = useInfiniteHits(props)
@@ -25,7 +27,7 @@ export const SearchAutocomplete = forwardRef(
         keyExtractor={(item) => item.objectID}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
-        renderItem={({ item, index }) => <Item hit={item as unknown as THit} index={index} />}
+        renderItem={({ item, index }) => <Item hit={item as unknown as THit} index={index} isSetShowAutocomplete={isSetShowAutocomplete} />}
       />
     )
   }

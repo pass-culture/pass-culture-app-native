@@ -10,6 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -48,6 +49,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
+  const showResults = useShowResults()
 
   const resetSearch = () => {
     setAutocompleteValue('')
@@ -57,8 +59,13 @@ export const SearchBoxRework: React.FC<Props> = ({
   }
 
   const onPressArrowBack = () => {
-    setQuery('')
+    if (isShowAutocomplete) {
+      isSetShowAutocomplete(false)
+      return
+    }
+
     isSetShowAutocomplete(false)
+    setQuery('')
     setAutocompleteValue('')
     dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
@@ -95,8 +102,9 @@ export const SearchBoxRework: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer marginHorizontal={isShowAutocomplete ? getSpacing(6) : 0}>
-        {isShowAutocomplete ? (
+      <SearchInputContainer
+        marginHorizontal={isShowAutocomplete || showResults ? getSpacing(6) : 0}>
+        {isShowAutocomplete || showResults ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
