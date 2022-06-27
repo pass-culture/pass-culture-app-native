@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
 import { FlatList } from 'react-native'
 
-import { InfiniteHits } from 'features/search/components/InfiniteHits'
+import { SearchAutocomplete } from 'features/search/components/SearchAutocomplete'
 import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem'
 import { SearchResults } from 'features/search/components/SearchResults'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { AlgoliaHit } from 'libs/algolia'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 type Props = {
   isShowAutocomplete: boolean
@@ -14,11 +13,7 @@ type Props = {
   isSetShowAutocomplete: (isShowAutocomplete: boolean) => void
 }
 
-export const SearchDetails: React.FC<Props> = ({
-  isShowAutocomplete,
-  appEnableAutocomplete,
-  isSetShowAutocomplete,
-}) => {
+export const SearchDetails: React.FC<Props> = ({ isShowAutocomplete, appEnableAutocomplete }) => {
   const listRef = useRef<FlatList>(null)
   const showResults = useShowResults()
   const showResultsWithoutAutocomplete = !appEnableAutocomplete && showResults
@@ -27,11 +22,9 @@ export const SearchDetails: React.FC<Props> = ({
   return showResultsWithoutAutocomplete || showResultsWithAutocomplete ? (
     <SearchResults />
   ) : (
-    <TouchableOpacity
-      testID="recentsSearchesAndSuggestions"
-      onPress={() => isSetShowAutocomplete(false)}>
-      {appEnableAutocomplete ? <InfiniteHits ref={listRef} hitComponent={Hit} /> : null}
-    </TouchableOpacity>
+    <React.Fragment>
+      {appEnableAutocomplete ? <SearchAutocomplete ref={listRef} hitComponent={Hit} /> : null}
+    </React.Fragment>
   )
 }
 

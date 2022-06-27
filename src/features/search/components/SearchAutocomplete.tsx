@@ -5,13 +5,13 @@ import { FlatList } from 'react-native'
 import { AlgoliaHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
-type InfiniteHitsProps<AlgoliaHit> = UseInfiniteHitsProps & {
+type SearchAutocompleteProps<AlgoliaHit> = UseInfiniteHitsProps & {
   hitComponent: (props: { hit: AlgoliaHit; index: number }) => JSX.Element
 }
 
-export const InfiniteHits = forwardRef(
+export const SearchAutocomplete = forwardRef(
   <THit extends AlgoliaHit>(
-    { hitComponent: Item, ...props }: InfiniteHitsProps<THit>,
+    { hitComponent: Item, ...props }: SearchAutocompleteProps<THit>,
     ref: Ref<FlatList<THit>>
   ) => {
     const { hits } = useInfiniteHits(props)
@@ -31,4 +31,4 @@ export const InfiniteHits = forwardRef(
   }
 )
 
-InfiniteHits.displayName = 'InfiniteHits'
+SearchAutocomplete.displayName = 'SearchAutocomplete'
