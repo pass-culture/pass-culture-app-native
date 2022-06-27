@@ -26,7 +26,15 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 jest.mock('libs/analytics')
-jest.mock('features/auth/settings')
+
+const mockSettings = {
+  appEnableAutocomplete: true,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
@@ -56,19 +64,40 @@ jest.mock('@react-navigation/native', () => ({
 }))
 
 describe('SearchDetails component', () => {
+  const isSetShowAutocomplete = jest.fn
   it('should render SearchDetails', () => {
-    expect(render(<SearchDetails />)).toMatchSnapshot()
+    expect(
+      render(
+        <SearchDetails
+          isShowAutocomplete={true}
+          appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+          isSetShowAutocomplete={isSetShowAutocomplete}
+        />
+      )
+    ).toMatchSnapshot()
   })
 
-  it('should show results if search executed', () => {
+  it('should show results if search executed and suggestions not visible', () => {
     mockSearchState.showResults = true
-    const { queryByTestId } = render(<SearchDetails />)
+    const { queryByTestId } = render(
+      <SearchDetails
+        isShowAutocomplete={false}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isSetShowAutocomplete={isSetShowAutocomplete}
+      />
+    )
     expect(queryByTestId('searchResults')).toBeTruthy()
   })
 
-  it('should show recent searches and suggestions if search not executed', () => {
+  it('should show suggestions if search not executed', () => {
     mockSearchState.showResults = false
-    const { queryByTestId } = render(<SearchDetails />)
+    const { queryByTestId } = render(
+      <SearchDetails
+        isShowAutocomplete={true}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isSetShowAutocomplete={isSetShowAutocomplete}
+      />
+    )
     expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
   })
 })

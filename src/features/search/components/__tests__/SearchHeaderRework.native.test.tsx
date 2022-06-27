@@ -28,7 +28,15 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 jest.mock('libs/analytics')
 
-jest.mock('features/auth/settings')
+const mockSettings = {
+  appEnableAutocomplete: true,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
@@ -47,34 +55,64 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 describe('SearchHeaderRework component', () => {
   const searchInputID = uuidv4()
+  const isSetShowAutocomplete = jest.fn
+  const setAutocompleteValue = jest.fn
 
-  it('should show search box with label if no search execution and focus is not on input', () => {
+  it('should show search box with label if no search execution and autocomplete list not visible', () => {
     const { queryByTestId } = render(
-      <SearchHeaderRework searchInputID={searchInputID} isFocus={false} />
+      <SearchHeaderRework
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isShowAutocomplete={false}
+        autocompleteValue=""
+        isSetShowAutocomplete={isSetShowAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
   })
 
-  it('should not show search box without label if no search execution and focus is not on input', () => {
+  it('should not show search box without label if no search execution and autocomplete list not visible', () => {
     const { queryByTestId } = render(
-      <SearchHeaderRework searchInputID={searchInputID} isFocus={false} />
+      <SearchHeaderRework
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isShowAutocomplete={false}
+        autocompleteValue=""
+        isSetShowAutocomplete={isSetShowAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeFalsy()
   })
 
-  it('should show search box without label if focus is on input', () => {
+  it('should show search box without label if autocomplete list visible', () => {
     const { queryByTestId } = render(
-      <SearchHeaderRework searchInputID={searchInputID} isFocus={true} />
+      <SearchHeaderRework
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isShowAutocomplete={true}
+        autocompleteValue=""
+        isSetShowAutocomplete={isSetShowAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
   })
 
-  it('should not show search box with label if focus is on input', () => {
+  it('should not show search box with label if autocomplete list visible', () => {
     const { queryByTestId } = render(
-      <SearchHeaderRework searchInputID={searchInputID} isFocus={true} />
+      <SearchHeaderRework
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isShowAutocomplete={true}
+        autocompleteValue=""
+        isSetShowAutocomplete={isSetShowAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     expect(queryByTestId('searchBoxWithLabel')).toBeFalsy()
@@ -83,7 +121,14 @@ describe('SearchHeaderRework component', () => {
   it('should show search box without label if search execution', () => {
     mockSearchState.showResults = true
     const { queryByTestId } = render(
-      <SearchHeaderRework searchInputID={searchInputID} isFocus={true} />
+      <SearchHeaderRework
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isShowAutocomplete={true}
+        autocompleteValue=""
+        isSetShowAutocomplete={isSetShowAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
@@ -92,7 +137,14 @@ describe('SearchHeaderRework component', () => {
   it('should not show search box with label if search execution', () => {
     mockSearchState.showResults = true
     const { queryByTestId } = render(
-      <SearchHeaderRework searchInputID={searchInputID} isFocus={true} />
+      <SearchHeaderRework
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isShowAutocomplete={true}
+        autocompleteValue=""
+        isSetShowAutocomplete={isSetShowAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     expect(queryByTestId('searchBoxWithLabel')).toBeFalsy()

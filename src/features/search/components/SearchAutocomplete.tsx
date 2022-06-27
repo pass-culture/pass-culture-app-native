@@ -27,6 +27,7 @@ export const SearchAutocomplete = forwardRef(
         keyExtractor={(item) => item.objectID}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
+        testID='recentsSearchesAndSuggestions'
         renderItem={({ item, index }) => (
           <Item
             hit={item as unknown as THit}
