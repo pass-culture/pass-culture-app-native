@@ -11,8 +11,11 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromises, fireEvent, render } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from '../components/types'
@@ -32,6 +35,8 @@ const mockSettings = {
   autoActivateDigitalBookings: false,
 }
 
+const mockSnackBarTimeout = SNACK_BAR_TIME_OUT
+
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({
     data: mockSettings,
@@ -42,10 +47,23 @@ jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+  SNACK_BAR_TIME_OUT: mockSnackBarTimeout,
+}))
+
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true }) // we allow it just for 1 test which is error throwing when no booking is found 404
 
 describe('BookingDetails', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true })
+
   afterEach(jest.restoreAllMocks)
 
   beforeAll(() => {
@@ -190,6 +208,26 @@ describe('BookingDetails', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
   })
 
+  it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByText } = renderBookingDetails(booking)
+
+    const text = getByText('Voir le détail de l’offre')
+    await fireEvent.press(text)
+
+    const offerId = booking.stock.offer.id
+
+    expect(navigate).not.toBeCalledWith('Offer', {
+      id: offerId,
+      from: 'bookingdetails',
+    })
+    expect(analytics.logConsultOffer).not.toHaveBeenCalledWith({ offerId, from: 'bookings' })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: `Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
   describe('cancellation button', () => {
     it('should log event "CancelBooking" when cancelling booking', async () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }

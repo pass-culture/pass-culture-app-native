@@ -35,6 +35,20 @@ describe('<TouchableLink />', () => {
     })
   })
 
+  it('should not navigate to right screen with expected params when enableNavigate is false', async () => {
+    const { getByTestId } = render(
+      <TouchableLink
+        enableNavigate={false}
+        navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1] }}
+        testID={testID}
+      />
+    )
+    fireEvent.click(getByTestId(testID))
+    await waitForExpect(() => {
+      expect(navigate).not.toBeCalledWith(...homeNavConfig)
+    })
+  })
+
   it('should navigate using navigateFromRef if fromRef={true}', async () => {
     const { getByTestId } = render(
       <TouchableLink

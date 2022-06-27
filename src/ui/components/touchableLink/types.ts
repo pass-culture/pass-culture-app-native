@@ -5,6 +5,7 @@ import { UrlParamsProps } from 'features/navigation/helpers'
 import { RootNavigateParams } from 'features/navigation/RootNavigator'
 
 export type TouchableLinkProps<T = ElementType> = {
+  enableNavigate?: boolean
   navigateTo?: {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]

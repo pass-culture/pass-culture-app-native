@@ -7,7 +7,9 @@ import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
@@ -34,7 +36,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
 describe('<CancelBookingModal />', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true })
+
   it('should dismiss modal on press rightIconButton', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const page = render(
@@ -67,6 +74,21 @@ describe('<CancelBookingModal />', () => {
 
     fireEvent.press(getByText('Annuler ma réservation'))
     expect(analytics.logConfirmBookingCancellation).toHaveBeenCalledWith(booking.stock.offer.id)
+  })
+
+  it('should showErrorSnackBar and close modal on press "Annuler ma réservation"', () => {
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByText } = render(
+      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
+    )
+
+    fireEvent.press(getByText('Annuler ma réservation'))
+    expect(mockDismissModal).toBeCalled()
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: `Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
   })
 
   it('should display offer name', () => {
