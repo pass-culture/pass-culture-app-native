@@ -92,13 +92,30 @@ export function usePatchProfile() {
   )
 }
 
-interface HonorStatementMutationOptions {
+interface MutationOptions {
   onSuccess: () => void
   onError: (error: unknown) => void
 }
 
-export function usePostHonorStatement({ onSuccess, onError }: HonorStatementMutationOptions) {
+export function usePostHonorStatement({ onSuccess, onError }: MutationOptions) {
   return useMutation(() => api.postnativev1subscriptionhonorStatement(), {
+    onSuccess,
+    onError,
+  })
+}
+
+export function useSendPhoneValidationMutation({ onSuccess, onError }: MutationOptions) {
+  return useMutation(
+    (phoneNumber: string) => api.postnativev1sendPhoneValidationCode({ phoneNumber }),
+    {
+      onSuccess,
+      onError,
+    }
+  )
+}
+
+export function useValidatePhoneNumberMutation({ onSuccess, onError }: MutationOptions) {
+  return useMutation((code: string) => api.postnativev1validatePhoneNumber({ code }), {
     onSuccess,
     onError,
   })

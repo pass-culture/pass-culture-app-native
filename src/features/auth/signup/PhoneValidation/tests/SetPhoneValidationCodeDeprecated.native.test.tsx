@@ -6,13 +6,13 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import * as AuthApi from 'features/auth/api'
 import {
   formatPhoneNumber,
   SetPhoneValidationCodeDeprecated,
 } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
+import * as IdentityCheckAPI from 'features/identityCheck/api'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -195,7 +195,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
     it('should request new validation code on press', async () => {
       const sendPhoneValidationCode = jest.fn()
       // eslint-disable-next-line local-rules/independant-mocks
-      jest.spyOn(AuthApi, 'useSendPhoneValidationMutation').mockReturnValue({
+      jest.spyOn(IdentityCheckAPI, 'useSendPhoneValidationMutation').mockReturnValue({
         mutate: sendPhoneValidationCode,
       } as unknown as UseMutationResult<EmptyResponse, unknown, string, unknown>)
 

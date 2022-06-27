@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SetPhoneNumber should match snapshot 1`] = `
+exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
 <View
   style={
     Array [
@@ -365,9 +365,29 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                             }
                           }
                         >
-                          <ActivityIndicator
-                            size="small"
-                          />
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "borderColor": "transparent",
+                                  "borderWidth": 0.5,
+                                  "justifyContent": "center",
+                                },
+                                Object {
+                                  "fontSize": 25,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              allowFontScaling={false}
+                            >
+                              🇫🇷
+                            </Text>
+                          </Text>
                         </View>
                         <Text
                           style={
@@ -532,514 +552,8 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                   swipeThreshold={100}
                   testID="modal"
                   transparent={true}
-                  visible={true}
-                >
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    forwardedRef={[Function]}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "backgroundColor": "black",
-                        "bottom": 0,
-                        "height": 1334,
-                        "left": 0,
-                        "opacity": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "width": 750,
-                      }
-                    }
-                  />
-                  <View
-                    accessibilityRole="none"
-                    aria-describedby="testUuidV4"
-                    aria-modal={true}
-                    collapsable={false}
-                    deviceHeight={1334}
-                    deviceWidth={750}
-                    forwardedRef={[Function]}
-                    hideModalContentWhileAnimating={false}
-                    onBackdropPress={[MockFunction]}
-                    onModalHide={[Function]}
-                    onModalWillHide={[Function]}
-                    onModalWillShow={[Function]}
-                    panResponderThreshold={4}
-                    pointerEvents="box-none"
-                    scrollHorizontal={false}
-                    scrollOffset={0}
-                    scrollOffsetMax={0}
-                    scrollTo={null}
-                    statusBarTranslucent={true}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "bottom": 0,
-                        "flex": 1,
-                        "justifyContent": "center",
-                        "left": 0,
-                        "margin": "auto",
-                        "position": "absolute",
-                        "right": 0,
-                        "top": "auto",
-                        "transform": Array [
-                          Object {
-                            "translateY": 1334,
-                          },
-                        ],
-                      }
-                    }
-                    supportedOrientations={
-                      Array [
-                        "portrait",
-                        "landscape",
-                      ]
-                    }
-                    swipeThreshold={100}
-                  >
-                    <View
-                      height={428}
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomEndRadius": 0,
-                            "borderBottomLeftRadius": 0,
-                            "borderBottomRightRadius": 0,
-                            "borderBottomStartRadius": 0,
-                            "borderTopEndRadius": 16,
-                            "borderTopLeftRadius": 20,
-                            "borderTopRightRadius": 20,
-                            "borderTopStartRadius": 16,
-                            "flexDirection": "column",
-                            "height": 428,
-                            "justifyContent": "center",
-                            "maxHeight": 650,
-                            "maxWidth": 960,
-                            "paddingBottom": 20,
-                            "paddingLeft": 20,
-                            "paddingRight": 20,
-                            "paddingTop": 20,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="modalContainer"
-                    >
-                      <View
-                        onLayout={[Function]}
-                        style={
-                          Array [
-                            Object {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                        testID="modalHeader"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "flex-start",
-                                "flexBasis": 0,
-                                "flexDirection": "row",
-                                "flexGrow": 0.1,
-                                "flexShrink": 1,
-                                "justifyContent": "flex-start",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityRole="button"
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "opacity": 1,
-                                "paddingBottom": 4,
-                                "paddingLeft": 4,
-                                "paddingRight": 4,
-                                "paddingTop": 4,
-                                "userSelect": "auto",
-                              }
-                            }
-                            testID="Revenir à l'étape précédente"
-                          >
-                            <View
-                              height={20}
-                              testID="leftIcon"
-                              width={20}
-                            >
-                              <Text>
-                                leftIcon-SVG-Mock
-                              </Text>
-                            </View>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "display": "none",
-                                  },
-                                ]
-                              }
-                            >
-                              Retour
-                            </Text>
-                          </View>
-                        </View>
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "flexBasis": 0,
-                                "flexGrow": 0.8,
-                                "flexShrink": 1,
-                                "justifyContent": "center",
-                                "paddingLeft": 12,
-                                "paddingRight": 12,
-                                "zIndex": 1,
-                              },
-                            ]
-                          }
-                        >
-                          <Text
-                            nativeID="testUuidV4"
-                            numberOfLines={2}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 18,
-                                  "lineHeight": 22,
-                                  "textAlign": "center",
-                                },
-                              ]
-                            }
-                          >
-                            Quelques conseils
-                          </Text>
-                        </View>
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "flex-start",
-                                "flexBasis": 0,
-                                "flexDirection": "row",
-                                "flexGrow": 0.1,
-                                "flexShrink": 1,
-                                "justifyContent": "flex-end",
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "height": 20,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        backdropColor="#00000080"
-                        paddingBottom={8}
-                        style={
-                          Array [
-                            Object {
-                              "maxHeight": "100%",
-                              "maxWidth": 480,
-                              "paddingBottom": 8,
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                      >
-                        <RCTScrollView
-                          contentContainerStyle={Object {}}
-                          onContentSizeChange={[Function]}
-                          scrollEnabled={true}
-                          testID="modalScrollView"
-                        >
-                          <View>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "textAlign": "center",
-                                  },
-                                ]
-                              }
-                            >
-                              Pour que la validation de ton numéro de téléphone se passe au mieux :
-                            </Text>
-                            <View
-                              numberOfSpaces={8}
-                              style={
-                                Array [
-                                  Object {
-                                    "height": 32,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={24}
-                                testID="BicolorSignal"
-                                width={24}
-                              >
-                                <Text>
-                                  BicolorSignal-SVG-Mock
-                                </Text>
-                              </View>
-                              <View
-                                numberOfSpaces={3.75}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 15,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "flexDirection": "column",
-                                      "flexShrink": 1,
-                                    },
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "#161617",
-                                        "flexBasis": 0,
-                                        "flexGrow": 1,
-                                        "flexShrink": 1,
-                                        "fontFamily": "Montserrat-Regular",
-                                        "fontSize": 15,
-                                        "lineHeight": 20,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Vérifie que tu as un bon réseau
-                                </Text>
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "#696A6F",
-                                        "flexBasis": 0,
-                                        "flexGrow": 1,
-                                        "flexShrink": 1,
-                                        "fontFamily": "Montserrat-SemiBold",
-                                        "fontSize": 12,
-                                        "lineHeight": 16,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Tu vas recevoir un code de validation par SMS
-                                </Text>
-                              </View>
-                            </View>
-                            <View
-                              numberOfSpaces={8}
-                              style={
-                                Array [
-                                  Object {
-                                    "height": 32,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={24}
-                                testID="BicolorSmartphone"
-                                width={24}
-                              >
-                                <Text>
-                                  BicolorSmartphone-SVG-Mock
-                                </Text>
-                              </View>
-                              <View
-                                numberOfSpaces={3.75}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 15,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "flexDirection": "column",
-                                      "flexShrink": 1,
-                                    },
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "#161617",
-                                        "flexBasis": 0,
-                                        "flexGrow": 1,
-                                        "flexShrink": 1,
-                                        "fontFamily": "Montserrat-Regular",
-                                        "fontSize": 15,
-                                        "lineHeight": 20,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Assure-toi d'indiquer ton numéro de téléphone personnel
-                                </Text>
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "#696A6F",
-                                        "flexBasis": 0,
-                                        "flexGrow": 1,
-                                        "flexShrink": 1,
-                                        "fontFamily": "Montserrat-SemiBold",
-                                        "fontSize": 12,
-                                        "lineHeight": 16,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Il ne peut être associé qu’à un seul compte
-                                </Text>
-                              </View>
-                            </View>
-                            <View
-                              numberOfSpaces={13}
-                              style={
-                                Array [
-                                  Object {
-                                    "height": 52,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              accessibilityLabel="J'ai compris"
-                              accessible={true}
-                              collapsable={false}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                Object {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#eb0055",
-                                  "borderRadius": 24,
-                                  "flexDirection": "row",
-                                  "justifyContent": "center",
-                                  "maxWidth": 500,
-                                  "minHeight": 40,
-                                  "opacity": 1,
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 20,
-                                  "paddingRight": 20,
-                                  "paddingTop": 2,
-                                  "userSelect": "auto",
-                                  "width": "100%",
-                                }
-                              }
-                              testID="dismiss-phone-validation-tips-modal"
-                            >
-                              <Text
-                                adjustsFontSizeToFit={false}
-                                numberOfLines={1}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                      "marginLeft": 0,
-                                      "maxWidth": "100%",
-                                    },
-                                  ]
-                                }
-                              >
-                                J'ai compris
-                              </Text>
-                            </View>
-                          </View>
-                        </RCTScrollView>
-                      </View>
-                    </View>
-                  </View>
-                </Modal>
+                  visible={false}
+                />
               </View>
             </View>
           </RCTScrollView>
@@ -1135,7 +649,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                 accessibilityLabel="Continuer"
                 accessible={true}
                 collapsable={false}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1146,7 +660,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#eb0055",
+                    "backgroundColor": "#F1F1F4",
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
@@ -1169,7 +683,7 @@ exports[`SetPhoneNumber should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#ffffff",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,

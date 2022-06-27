@@ -39,11 +39,6 @@ type SignUpResponse =
       }
     }
 
-interface PhoneValidationMutationsOptions {
-  onSuccess: () => void
-  onError: (error: unknown) => void
-}
-
 export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
   const loginRoutine = useLoginRoutine()
 
@@ -114,26 +109,3 @@ export function useDepositAmountsByAge() {
 }
 
 export const SIGNUP_NUMBER_OF_STEPS = 4 // email, password, birthday, cgu
-
-export function useSendPhoneValidationMutation({
-  onSuccess,
-  onError,
-}: PhoneValidationMutationsOptions) {
-  return useMutation(
-    (phoneNumber: string) => api.postnativev1sendPhoneValidationCode({ phoneNumber }),
-    {
-      onSuccess,
-      onError,
-    }
-  )
-}
-
-export function useValidatePhoneNumberMutation({
-  onSuccess,
-  onError,
-}: PhoneValidationMutationsOptions) {
-  return useMutation((code: string) => api.postnativev1validatePhoneNumber({ code }), {
-    onSuccess,
-    onError,
-  })
-}
