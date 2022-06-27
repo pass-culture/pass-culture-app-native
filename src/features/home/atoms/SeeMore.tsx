@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
 
@@ -21,7 +20,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onP
     <ClickableArea activeOpacity={1} navigateTo={navigateTo} onPress={onPress}>
       <Row>
         <Spacer.Row numberOfSpaces={16} />
-        <RoundContainer onPress={onPress}>
+        <RoundContainer>
           <ArrowNext testID={'arrow-next'} />
         </RoundContainer>
         <Spacer.Row numberOfSpaces={16} />
@@ -47,7 +46,7 @@ const ClickableArea = styled(TouchableLink)({
   alignItems: 'center',
 })
 
-const RoundContainer = styled(TouchableOpacity)(({ theme }) => ({
+const RoundContainer = styled.View(({ theme }) => ({
   width: getSpacing(16),
   aspectRatio: '1',
   borderRadius: getSpacing(8),
