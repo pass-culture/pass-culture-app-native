@@ -23,50 +23,24 @@ export const Default = Template.bind({})
 Default.args = {
   sortedCategories: [
     {
-      label: 'Cinéma',
-      Icon: categoriesIcons.Cinema,
-      onPress: action('Cinéma'),
-    },
-    {
-      label: 'Livre',
-      Icon: categoriesIcons.Book,
-      onPress: action('Livre'),
-    },
-    {
-      label: 'CD, vinyles, musique en ligne',
-      Icon: categoriesIcons.Music,
-      onPress: action('Musique'),
-    },
-    {
-      label: 'Théâtre',
-      Icon: categoriesIcons.Workshop,
-      onPress: action('Théâtre'),
-    },
-  ],
-}
-
-export const WithOddNumberOfCategories = Template.bind({})
-WithOddNumberOfCategories.args = {
-  sortedCategories: [
-    {
-      label: 'Cinéma',
-      Icon: categoriesIcons.Cinema,
-      onPress: action('Cinéma'),
-    },
-    {
       label: 'Bibliothèque, médiathèque',
       Icon: categoriesIcons.VideoGame,
       onPress: action('Jeux'),
     },
     {
-      label: 'Conférences, rencontres',
-      Icon: categoriesIcons.Book,
-      onPress: action('Livre'),
-    },
-    {
       label: 'CD, vinyles, musique en ligne',
       Icon: categoriesIcons.Music,
       onPress: action('Musique'),
+    },
+    {
+      label: 'Cinéma',
+      Icon: categoriesIcons.Cinema,
+      onPress: action('Cinéma'),
+    },
+    {
+      label: 'Conférences, rencontres',
+      Icon: categoriesIcons.Book,
+      onPress: action('Livre'),
     },
     {
       label: 'Théâtre',
