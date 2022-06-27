@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Text } from 'react-native'
+import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
@@ -32,6 +32,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, isSetShowA
 
   const onPress = () => {
     isSetShowAutocomplete(false)
+    Keyboard.dismiss()
     // When we hit enter, we may have selected a category or a venue on the search landing page
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
