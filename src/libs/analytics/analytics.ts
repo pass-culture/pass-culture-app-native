@@ -60,18 +60,19 @@ export const analytics = {
   logConsultOffer: (params: {
     offerId: number
     from: Referrals
+    moduleId?: string
     moduleName?: string
     query?: string
     venueId?: number
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
   logConsultVenue: (params: { venueId: number; from: Referrals }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),
-  logClickExclusivityBlock: (moduleName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { moduleName }),
-  logClickSeeMore: (moduleName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName }),
-  logClickBusinessBlock: (moduleName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName }),
+  logClickExclusivityBlock: (params: { moduleName: string; moduleId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
+  logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, params),
+  logClickBusinessBlock: (params: { moduleName: string; moduleId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
@@ -112,6 +113,7 @@ export const analytics = {
     offerId: number
     from?: Referrals
     moduleName?: string
+    moduleId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
   logConsultWhyAnniversary: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),

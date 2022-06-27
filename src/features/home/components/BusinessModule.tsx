@@ -52,7 +52,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
 
   const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
-    analytics.logClickBusinessBlock(title)
+    analytics.logClickBusinessBlock({ moduleName: title, moduleId })
     openUrl(finalUrl)
   }
 

@@ -109,6 +109,9 @@ describe('OffersModule component - Analytics', () => {
       fireEvent.press(component.getByText('En voir plus'))
     })
 
-    expect(analytics.logClickSeeMore).toHaveBeenCalledWith('Module title')
+    expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
+      moduleId: 'fakeModuleId',
+      moduleName: 'Module title',
+    })
   })
 })

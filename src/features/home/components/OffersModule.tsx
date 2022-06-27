@@ -59,7 +59,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore
     ? () => {
-        analytics.logClickSeeMore(moduleName)
+        analytics.logClickSeeMore({ moduleName, moduleId })
       }
     : undefined
 
@@ -80,6 +80,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           price={getDisplayPrice(item.offer.prices)}
           isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
+          moduleId={moduleId}
           width={width}
           height={height}
         />
