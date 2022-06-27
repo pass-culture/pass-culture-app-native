@@ -1,18 +1,18 @@
-import { Hit as AlgoliaHit } from '@algolia/client-search'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-hooks'
 import { FlatList } from 'react-native'
 
+import { AlgoliaHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
-type InfiniteHitsProps<THit> = UseInfiniteHitsProps & {
-  hitComponent: (props: { hit: THit; index: number }) => JSX.Element
+type InfiniteHitsProps<AlgoliaHit> = UseInfiniteHitsProps & {
+  hitComponent: (props: { hit: AlgoliaHit; index: number }) => JSX.Element
 }
 
 export const InfiniteHits = forwardRef(
-  <THit extends AlgoliaHit<Record<string, unknown>>>(
-    { hitComponent: Hit, ...props }: InfiniteHitsProps<THit>,
-    ref: React.ForwardedRef<FlatList<THit>>
+  <THit extends AlgoliaHit>(
+    { hitComponent: Item, ...props }: InfiniteHitsProps<THit>,
+    ref: Ref<FlatList<THit>>
   ) => {
     const { hits } = useInfiniteHits(props)
     const contentContainerStyle = { paddingHorizontal: getSpacing(6), paddingTop: getSpacing(4) }
@@ -25,14 +25,10 @@ export const InfiniteHits = forwardRef(
         keyExtractor={(item) => item.objectID}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
-        renderItem={({ item, index }) => <Hit hit={item as unknown as THit} index={index} />}
+        renderItem={({ item, index }) => <Item hit={item as unknown as THit} index={index} />}
       />
     )
   }
 )
 
-declare module 'react' {
-  function forwardRef<T, P = Record<string, unknown>>(
-    render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
-  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null
-}
+InfiniteHits.displayName = 'InfiniteHits'
