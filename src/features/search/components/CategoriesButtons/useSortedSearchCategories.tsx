@@ -4,10 +4,11 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 
 import { ListCategoryButtonProps } from './CategoriesButtonsDisplay'
 
-export const makeDisplaySearchResultsWithCategory = (_facetFilter: SearchGroupNameEnum) => () =>
-  alert('le click sera fonctionnel lorsque cette US PC-15130 sera fini')
+export type OnPressCategory = (pressedCategory: SearchGroupNameEnum) => void
 
-export const useSortedSearchCategories = (): ListCategoryButtonProps => {
+export const useSortedSearchCategories = (
+  onPressCategory: OnPressCategory
+): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   const categories = Array.from(Object.values(availableCategories))
@@ -15,7 +16,9 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
     .map((category) => ({
       label: searchGroupLabelMapping[category.facetFilter],
       Icon: category.icon,
-      onPress: makeDisplaySearchResultsWithCategory(category.facetFilter),
+      onPress() {
+        onPressCategory(category.facetFilter)
+      },
     }))
     .sort((a, b) => a.label.localeCompare(b.label))
 }

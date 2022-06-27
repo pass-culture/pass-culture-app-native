@@ -9,6 +9,7 @@ import { SearchDetails } from 'features/search/components/SearchDetails'
 import { SearchHeaderRework } from 'features/search/components/SearchHeaderRework'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
+import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
@@ -18,6 +19,7 @@ export function SearchRework() {
   const showResults = useShowResults()
   const searchInputID = uuidv4()
   const [isFocus, setIsFocus] = useState(false)
+  const showResultsForCategory = useShowResultsForCategory()
 
   useEffect(() => {
     if (params) {
@@ -33,7 +35,7 @@ export function SearchRework() {
     return (
       <Categories>
         <CategoriesTitle>{categoriesTitle}</CategoriesTitle>
-        <CategoriesButtons />
+        <CategoriesButtons onPressCategory={showResultsForCategory} />
         <Spacer.TabBar />
       </Categories>
     )
