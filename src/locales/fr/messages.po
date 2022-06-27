@@ -1353,6 +1353,14 @@ msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compt
 msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
+#: src/features/bookings/pages/BookingDetails.tsx
+msgid "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer."
+msgstr "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer."
+
+#: src/features/bookings/components/CancelBookingModal.tsx
+msgid "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer."
+msgstr "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer."
+
 #: src/features/search/components/SearchBox.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"

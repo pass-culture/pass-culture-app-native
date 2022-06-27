@@ -5,6 +5,7 @@ import { UrlParamsProps } from 'features/navigation/helpers'
 import { RootNavigateParams } from 'features/navigation/RootNavigator'
 
 export type InternalNavigationProps = {
+  enableNavigate?: boolean
   navigateTo: {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]
@@ -22,6 +23,7 @@ export type ExternalNavigationProps = {
     onSuccess?: () => void | Promise<void>
     onError?: () => void
   }
+  enableNavigate?: never
   navigateTo?: never
 }
 

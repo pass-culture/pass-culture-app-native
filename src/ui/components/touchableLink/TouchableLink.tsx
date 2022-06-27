@@ -16,6 +16,7 @@ const ON_PRESS_DEBOUNCE_DELAY = 300
 
 export function TouchableLink({
   onPress,
+  enableNavigate = true,
   navigateTo,
   externalNav,
   navigateBeforeOnPress,
@@ -46,7 +47,7 @@ export function TouchableLink({
       : { accessibilityRole: 'link' }
 
   const handleNavigation = () => {
-    if (navigateTo) {
+    if (navigateTo && enableNavigate) {
       const { screen, params, fromRef, withPush } = navigateTo
       if (withPush) {
         fromRef ? pushFromRef(screen, params) : push(screen, params)
@@ -65,13 +66,13 @@ export function TouchableLink({
 
   async function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
-    if (navigateBeforeOnPress) {
+    if (navigateBeforeOnPress && enableNavigate) {
       handleNavigation()
     }
     if (onPress) {
       await onPress(event)
     }
-    if (!navigateBeforeOnPress) {
+    if (!navigateBeforeOnPress && enableNavigate) {
       handleNavigation()
     }
   }
