@@ -55,6 +55,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles }),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR, params),
+  logConsultTutorial: (from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_TUTORIAL, { from }),
   logConsultHome: (params: { entryId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultOffer: (params: {
@@ -115,6 +117,10 @@ export const analytics = {
     moduleName?: string
     moduleId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
+  logContinueSetEmail: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SET_EMAIL),
+  logContinueSetPassword: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SET_PASSWORD),
+  logContinueSetBirthday: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SET_BIRTHDAY),
+  logContinueCGU: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_CGU),
   logConsultWhyAnniversary: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),
   logCancelSignup: (pageName: string) =>
@@ -126,8 +132,16 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK),
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
+  logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),
+  logSignInFromOffer: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_OFFER, { offerId }),
+  logSignUpFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_FAVORITE),
+  logSignUpFromOffer: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_OFFER, { offerId }),
   logSignUpTooYoung: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_TOO_YOUNG, { age }),
+  logQuitFavoriteModalForSignIn: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
   logReinitializeFilters: () => analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS),
   logUseFilter: (filter: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),

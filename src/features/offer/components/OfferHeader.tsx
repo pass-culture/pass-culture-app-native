@@ -160,7 +160,11 @@ export const OfferHeader: React.FC<Props> = (props) => {
           dismissModal={hideShareOfferModal}
         />
       ) : null}
-      <SignUpSignInChoiceOfferModal visible={signInModalVisible} dismissModal={hideSignInModal} />
+      <SignUpSignInChoiceOfferModal
+        visible={signInModalVisible}
+        offerId={offerId}
+        dismissModal={hideSignInModal}
+      />
     </React.Fragment>
   )
 }
