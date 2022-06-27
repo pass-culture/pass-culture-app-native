@@ -1,8 +1,9 @@
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { StoryViewport } from 'ui/storybook/StoryViewport'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
 
@@ -41,17 +42,46 @@ const sortedCategories = [
   },
 ]
 
-const Template: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
-  <Wrapper>
-    <CategoriesButtonsDisplay {...props} />
-  </Wrapper>
-)
+const BodyWrapper = styled.View({
+  marginHorizontal: -getSpacing(4),
+})
 
-export const Default = Template.bind({})
+const Wrapper = styled.View({
+  marginHorizontal: getSpacing(5),
+})
+
+const Template = (Component: FunctionComponent) => {
+  const WrappedComponent: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+    <Component>
+      <Wrapper>
+        <CategoriesButtonsDisplay {...props} />
+      </Wrapper>
+    </Component>
+  )
+  return WrappedComponent
+}
+
+export const Default = Template(BodyWrapper)
 Default.args = {
   sortedCategories,
 }
 
-const Wrapper = styled.View({
-  marginHorizontal: getSpacing(1),
-})
+export const OnSmallPhone = Template(StoryViewport.SmallPhone)
+OnSmallPhone.args = {
+  sortedCategories,
+}
+
+export const OnPhone = Template(StoryViewport.Phone)
+OnPhone.args = {
+  sortedCategories,
+}
+
+export const OnTablet = Template(StoryViewport.Tablet)
+OnTablet.args = {
+  sortedCategories,
+}
+
+export const OnDesktop = Template(StoryViewport.Desktop)
+OnDesktop.args = {
+  sortedCategories,
+}
