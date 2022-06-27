@@ -1,45 +1,44 @@
 import { t } from '@lingui/macro'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { Check } from 'ui/svg/icons/Check'
 import { Error } from 'ui/svg/icons/Error'
 import { Info } from 'ui/svg/icons/Info'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { SnackBarSettings, SnackBarType } from './types'
 
 export const mapSnackBarTypeToStyle = (
+  theme: DefaultTheme,
   type: SnackBarType
 ): Pick<SnackBarSettings, 'icon' | 'color' | 'backgroundColor' | 'progressBarColor'> => {
   switch (type) {
     case SnackBarType.SUCCESS:
       return {
         icon: AccessibleCheck,
-        backgroundColor: ColorsEnum.GREEN_VALID,
-        progressBarColor: ColorsEnum.GREEN_LIGHT,
-        color: ColorsEnum.WHITE,
+        backgroundColor: theme.colors.greenValid,
+        progressBarColor: theme.colors.greenLight,
+        color: theme.colors.white,
       }
     case SnackBarType.ERROR:
       return {
         icon: AccessibleError,
-        backgroundColor: ColorsEnum.ERROR,
-        progressBarColor: ColorsEnum.PRIMARY_DISABLED,
-        color: ColorsEnum.WHITE,
+        backgroundColor: theme.colors.error,
+        progressBarColor: theme.colors.primaryDisabled,
+        color: theme.colors.white,
       }
     case SnackBarType.INFO:
       return {
         icon: AccessibleInfo,
-        backgroundColor: ColorsEnum.ACCENT,
-        progressBarColor: ColorsEnum.WHITE,
-        color: ColorsEnum.WHITE,
+        backgroundColor: theme.colors.accent,
+        progressBarColor: theme.colors.white,
+        color: theme.colors.white,
       }
     default:
       return {
         icon: undefined,
-        backgroundColor: ColorsEnum.TRANSPARENT,
-        progressBarColor: ColorsEnum.TRANSPARENT,
-        color: ColorsEnum.WHITE,
+        backgroundColor: theme.colors.transparent,
+        progressBarColor: theme.colors.transparent,
+        color: theme.colors.white,
       }
   }
 }

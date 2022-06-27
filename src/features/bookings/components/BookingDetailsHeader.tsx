@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -17,13 +17,14 @@ interface Props {
  */
 
 export const BookingDetailsHeader: React.FC<Props> = (props) => {
+  const theme = useTheme()
   const { headerTransition, title } = props
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
-  const { animationState, backgroundColor } = getAnimationState(headerTransition)
+  const { animationState, backgroundColor } = getAnimationState(theme, headerTransition)
 
   return (
     <React.Fragment>

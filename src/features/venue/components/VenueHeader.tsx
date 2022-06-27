@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -24,6 +24,7 @@ interface Props {
  * @param props.headerTransition should be between animated between 0 and 1
  */
 export const VenueHeader: React.FC<Props> = (props) => {
+  const theme = useTheme()
   const { headerTransition, title, venueId } = props
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
 
@@ -41,7 +42,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
-  const { animationState, backgroundColor } = getAnimationState(headerTransition)
+  const { animationState, backgroundColor } = getAnimationState(theme, headerTransition)
   const { top } = useSafeAreaInsets()
 
   return (

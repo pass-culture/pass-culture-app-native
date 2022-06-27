@@ -6,20 +6,22 @@ import {
 } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
+import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
 
-const NAV_THEME_CONFIG = { colors: { background: ColorsEnum.WHITE } } as Theme
+const getNavThemeConfig = (theme: DefaultTheme) =>
+  ({
+    colors: { background: theme.colors.white },
+  } as Theme)
 const SECONDARY_TITLE = author?.name || 'pass Culture'
 const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
   formatter(options, _route) {
@@ -32,6 +34,7 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 
 export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
+  const theme = useTheme()
 
   const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
@@ -71,7 +74,7 @@ export const AppNavigationContainer = () => {
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
-      theme={NAV_THEME_CONFIG}>
+      theme={getNavThemeConfig(theme)}>
       <RootNavigator />
     </NavigationContainer>
   )

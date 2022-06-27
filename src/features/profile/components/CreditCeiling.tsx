@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { ExpenseDomain } from 'api/gen/api'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
@@ -24,50 +24,51 @@ type CreditCeilingProps = {
   isUserUnderageBeneficiary: boolean
 }
 
-const CreditCeilingMapWithPhysical = {
+const CreditCeilingMapWithPhysical = (theme: DefaultTheme) => ({
   [ExpenseDomain.all]: {
     label: 'en sorties (concerts...)',
-    color: ColorsEnum.ACCENT,
+    color: theme.colors.accent,
     icon: OfferEvent,
   },
   [ExpenseDomain.physical]: {
     label: 'en offres physiques (livres...)',
-    color: ColorsEnum.SECONDARY,
+    color: theme.colors.secondary,
     icon: OfferPhysical,
   },
   [ExpenseDomain.digital]: {
     label: 'en offres numériques (streaming...)',
-    color: ColorsEnum.PRIMARY,
+    color: theme.colors.primary,
     icon: OfferDigital,
   },
-}
+})
 
-const CreditCeilingMapWithoutPhysical = {
+const CreditCeilingMapWithoutPhysical = (theme: DefaultTheme) => ({
   [ExpenseDomain.all]: {
     label: 'en sorties & biens physiques (concerts, livres...)',
-    color: ColorsEnum.PRIMARY,
+    color: theme.colors.primary,
     icon: Offers,
   },
   [ExpenseDomain.digital]: {
     label: 'en offres numériques (streaming...)',
-    color: ColorsEnum.SECONDARY,
+    color: theme.colors.secondary,
     icon: OfferDigital,
   },
   [ExpenseDomain.physical]: null,
-}
+})
 
-const underageBeneficiaryCeilingConfig = {
-  ...CreditCeilingMapWithoutPhysical[ExpenseDomain.all],
+const underageBeneficiaryCeilingConfig = (theme: DefaultTheme) => ({
+  ...CreditCeilingMapWithoutPhysical(theme)[ExpenseDomain.all],
   icon: BicolorLogo,
-}
+})
 
 export function CreditCeiling(props: CreditCeilingProps) {
+  const theme = useTheme()
   let ceilingConfig = null
   const beneficiaryCeilingConfig = props.hasPhysicalCeiling
-    ? CreditCeilingMapWithPhysical[props.domain]
-    : CreditCeilingMapWithoutPhysical[props.domain]
+    ? CreditCeilingMapWithPhysical(theme)[props.domain]
+    : CreditCeilingMapWithoutPhysical(theme)[props.domain]
   ceilingConfig = props.isUserUnderageBeneficiary
-    ? underageBeneficiaryCeilingConfig
+    ? underageBeneficiaryCeilingConfig(theme)
     : beneficiaryCeilingConfig
 
   if (!ceilingConfig || props.initial <= 0) {
@@ -75,7 +76,7 @@ export function CreditCeiling(props: CreditCeilingProps) {
   }
   const amountLabel = formatPriceInEuroToDisplayPrice(props.amount)
   const progress = Number((props.amount / props.initial).toFixed(2))
-  const color = props.amount === 0 ? ColorsEnum.GREY_DARK : ceilingConfig.color
+  const color = props.amount === 0 ? theme.colors.greyDark : ceilingConfig.color
 
   return (
     <Container>
