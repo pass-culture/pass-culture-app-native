@@ -10,8 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { ConsentSettings } from './ConsentSettings'
 
@@ -152,7 +151,7 @@ async function renderConsentSettings() {
   function expectSaveButtonEnabled() {
     const saveButton = renderAPI.getByTestId(SAVE_BUTTON_TEST_ID)
     const background = saveButton.props.style.backgroundColor
-    expect(background).toEqual(ColorsEnum.PRIMARY)
+    expect(background).toEqual(theme.colors.primary)
   }
 
   return {

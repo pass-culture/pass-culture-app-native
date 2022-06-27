@@ -11,8 +11,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoli
 import { analytics } from 'libs/analytics'
 import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { OffersModule } from '../OffersModule'
 
@@ -50,12 +49,12 @@ describe('OffersModule component', () => {
   it('should render correctly - with black title', () => {
     const component = render(<OffersModule {...props} index={1} />)
     expect(component).toMatchSnapshot()
-    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(ColorsEnum.BLACK)
+    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(theme.colors.black)
   })
 
   it('should render with white title if first module displayed', async () => {
     const component = render(<OffersModule {...props} index={0} />)
-    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(ColorsEnum.WHITE)
+    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(theme.colors.white)
   })
 })
 

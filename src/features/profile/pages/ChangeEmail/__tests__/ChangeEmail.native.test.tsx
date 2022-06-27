@@ -7,9 +7,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
+import { theme } from 'theme'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { ChangeEmail } from '../ChangeEmail'
 
@@ -79,18 +78,18 @@ describe('<ChangeEmail/>', () => {
   })
 
   it.each`
-    password          | email                | backgroundColor          | isDisabled
-    ${'password>=12'} | ${'valid@email.com'} | ${ColorsEnum.PRIMARY}    | ${false}
-    ${'password>=12'} | ${'invalid@email'}   | ${ColorsEnum.GREY_LIGHT} | ${true}
-    ${'password<12'}  | ${'valid@email.com'} | ${ColorsEnum.GREY_LIGHT} | ${true}
-    ${'password>=12'} | ${''}                | ${ColorsEnum.GREY_LIGHT} | ${true}
+    password          | email                | backgroundColor           | isDisabled
+    ${'password>=12'} | ${'valid@email.com'} | ${theme.colors.primary}   | ${false}
+    ${'password>=12'} | ${'invalid@email'}   | ${theme.colors.greyLight} | ${true}
+    ${'password<12'}  | ${'valid@email.com'} | ${theme.colors.greyLight} | ${true}
+    ${'password>=12'} | ${''}                | ${theme.colors.greyLight} | ${true}
   `(
     'CTA "Enregistrer" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
     async ({ password, email, backgroundColor }) => {
       const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
       const submitButton = getByTestId('Enregistrer')
       const background = submitButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(background).toEqual(theme.colors.greyLight)
 
       const passwordInput = getByPlaceholderText('Ton mot de passe')
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -108,7 +107,7 @@ describe('<ChangeEmail/>', () => {
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer')
     const background = submitButton.props.style.backgroundColor
-    expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+    expect(background).toEqual(theme.colors.greyLight)
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -117,7 +116,7 @@ describe('<ChangeEmail/>', () => {
 
     await waitForExpect(() => {
       const background = submitButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(background).toEqual(theme.colors.greyLight)
 
       const errorMessage = queryByText("L'e-mail saisi est identique à votre e-mail actuel")
       expect(errorMessage).toBeTruthy()

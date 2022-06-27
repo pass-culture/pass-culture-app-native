@@ -8,9 +8,8 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
+import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { SignupForm } from './SignupForm'
 
@@ -50,10 +49,10 @@ describe('<SignupForm />', () => {
     const { getAllByTestId } = render(<SignupForm {...defaultProps} />)
     const dots = getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
-    expect(dots[0].props.borderColor).toEqual(ColorsEnum.PRIMARY)
-    expect(dots[1].props.borderColor).toEqual(ColorsEnum.GREY_DARK)
-    expect(dots[2].props.borderColor).toEqual(ColorsEnum.GREY_DARK)
-    expect(dots[3].props.borderColor).toEqual(ColorsEnum.GREY_DARK)
+    expect(dots[0].props.borderColor).toEqual(theme.colors.primary)
+    expect(dots[1].props.borderColor).toEqual(theme.colors.greyDark)
+    expect(dots[2].props.borderColor).toEqual(theme.colors.greyDark)
+    expect(dots[3].props.borderColor).toEqual(theme.colors.greyDark)
   })
 
   it('should display 4 step dots with the second one as current step', () => {
@@ -61,10 +60,10 @@ describe('<SignupForm />', () => {
     fireEvent.press(getByTestId('goToNextStep'))
     const dots = getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
-    expect(dots[0].props.borderColor).toEqual(ColorsEnum.GREEN_VALID)
-    expect(dots[1].props.borderColor).toEqual(ColorsEnum.PRIMARY)
-    expect(dots[2].props.borderColor).toEqual(ColorsEnum.GREY_DARK)
-    expect(dots[3].props.borderColor).toEqual(ColorsEnum.GREY_DARK)
+    expect(dots[0].props.borderColor).toEqual(theme.colors.greenValid)
+    expect(dots[1].props.borderColor).toEqual(theme.colors.primary)
+    expect(dots[2].props.borderColor).toEqual(theme.colors.greyDark)
+    expect(dots[3].props.borderColor).toEqual(theme.colors.greyDark)
   })
 
   it('should open quit signup modal when preventCancellation route param is false', () => {

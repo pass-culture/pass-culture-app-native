@@ -16,8 +16,7 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { NotificationSettings } from './NotificationSettings'
 
@@ -216,7 +215,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(10)
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
-        expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+        expect(saveButton?.props.style.backgroundColor).toEqual(theme.colors.primary)
       })
 
       act(() => {
@@ -226,7 +225,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct()
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
-        expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+        expect(saveButton?.props.style.backgroundColor).toEqual(theme.colors.greyLight)
       })
     })
 
@@ -260,7 +259,7 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
-        expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+        expect(saveButton?.props.style.backgroundColor).toEqual(theme.colors.primary)
       })
 
       act(() => {
@@ -270,7 +269,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct()
       await waitForExpect(() => {
         expect(getByTestId('Enregistrer').props.style.backgroundColor).toEqual(
-          ColorsEnum.GREY_LIGHT
+          theme.colors.greyLight
         )
         expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
       })

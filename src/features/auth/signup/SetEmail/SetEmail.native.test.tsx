@@ -2,8 +2,7 @@ import React from 'react'
 
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { fireEvent, render } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
@@ -15,7 +14,7 @@ describe('<SetEmail />', () => {
     const { getByTestId } = render(<SetEmail {...props} />)
 
     const button = getByTestId('Continuer')
-    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+    expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
   })
 
   it('should enable validate button when email input is filled', async () => {
@@ -25,7 +24,7 @@ describe('<SetEmail />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     const button = getByTestId('Continuer')
-    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+    expect(button.props.style.backgroundColor).toEqual(theme.colors.primary)
   })
 
   it('should call goToNextStep() on valid email with email and newsletter params', () => {

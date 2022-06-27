@@ -2,8 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { FunctionComponent } from 'react'
 import { Button } from 'react-native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
@@ -21,28 +20,28 @@ export const Simple = Template.bind({})
 Simple.args = {
   visible: true,
   message: 'Une petite snackbar standard',
-  backgroundColor: ColorsEnum.PRIMARY,
-  progressBarColor: ColorsEnum.WHITE,
-  color: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.primary,
+  progressBarColor: theme.colors.white,
+  color: theme.colors.white,
 }
 
 export const Success = Template.bind({})
 Success.args = {
-  ...mapSnackBarTypeToStyle(SnackBarType.SUCCESS),
+  ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS),
   visible: true,
   message: 'Une petite snackbar de succès',
 }
 
 export const Info = Template.bind({})
 Info.args = {
-  ...mapSnackBarTypeToStyle(SnackBarType.INFO),
+  ...mapSnackBarTypeToStyle(theme, SnackBarType.INFO),
   visible: true,
   message: "Une petite snackbar d'info",
 }
 
 export const InError = Template.bind({})
 InError.args = {
-  ...mapSnackBarTypeToStyle(SnackBarType.ERROR),
+  ...mapSnackBarTypeToStyle(theme, SnackBarType.ERROR),
   visible: true,
   message: "Une petite snackbar d'erreur",
 }

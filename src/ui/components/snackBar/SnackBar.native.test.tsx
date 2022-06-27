@@ -2,9 +2,8 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
+import { theme } from 'theme'
 import { Check } from 'ui/svg/icons/Check'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings } from './types'
@@ -28,9 +27,9 @@ describe('SnackBar Component', () => {
           visible: true,
           message: 'message',
           icon: Check,
-          backgroundColor: ColorsEnum.ACCENT,
-          progressBarColor: ColorsEnum.GREEN_LIGHT,
-          color: ColorsEnum.WHITE,
+          backgroundColor: theme.colors.accent,
+          progressBarColor: theme.colors.greenLight,
+          color: theme.colors.white,
           timeout: 1000,
           refresher: 1,
         })
@@ -42,9 +41,9 @@ describe('SnackBar Component', () => {
       const progressBar = getByTestId('snackbar-progressbar')
       const message = getByTestId('snackbar-message')
 
-      expect(view.props.backgroundColor).toEqual(ColorsEnum.ACCENT)
-      expect(progressBar.props.backgroundColor).toEqual(ColorsEnum.GREEN_LIGHT)
-      expect(message.props.color).toEqual(ColorsEnum.WHITE)
+      expect(view.props.backgroundColor).toEqual(theme.colors.accent)
+      expect(progressBar.props.backgroundColor).toEqual(theme.colors.greenLight)
+      expect(message.props.color).toEqual(theme.colors.white)
     })
     it('should not display proress bar if timeout is not provided', () => {
       const { queryByTestId } = render(
@@ -52,9 +51,9 @@ describe('SnackBar Component', () => {
           visible: true,
           message: 'message',
           icon: Check,
-          backgroundColor: ColorsEnum.ACCENT,
-          progressBarColor: ColorsEnum.GREEN_LIGHT,
-          color: ColorsEnum.WHITE,
+          backgroundColor: theme.colors.accent,
+          progressBarColor: theme.colors.greenLight,
+          color: theme.colors.white,
           refresher: 1,
         })
       )
@@ -84,9 +83,9 @@ describe('SnackBar Component', () => {
           visible: true,
           message: 'message',
           icon: undefined,
-          backgroundColor: ColorsEnum.ACCENT,
-          progressBarColor: ColorsEnum.GREEN_LIGHT,
-          color: ColorsEnum.WHITE,
+          backgroundColor: theme.colors.accent,
+          progressBarColor: theme.colors.greenLight,
+          color: theme.colors.white,
           refresher: 1,
         })
       )
@@ -245,9 +244,9 @@ function renderHelperSnackBar(visible: boolean, props: SnackBarHelperSettings, r
       icon={Check}
       onClose={props.onClose}
       timeout={props.timeout}
-      backgroundColor={ColorsEnum.PRIMARY}
-      progressBarColor={ColorsEnum.SECONDARY}
-      color={ColorsEnum.WHITE}
+      backgroundColor={theme.colors.primary}
+      progressBarColor={theme.colors.secondary}
+      color={theme.colors.white}
       refresher={refresher}
       animationDuration={props.animationDuration}
     />

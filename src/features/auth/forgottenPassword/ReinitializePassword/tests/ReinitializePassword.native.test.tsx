@@ -6,8 +6,7 @@ import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { ReinitializePassword } from '../ReinitializePassword'
 
@@ -33,7 +32,7 @@ describe('ReinitializePassword Page', () => {
 
     await waitForExpect(async () => {
       const background = continueButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.PRIMARY)
+      expect(background).toEqual(theme.colors.primary)
     })
   })
 
@@ -48,7 +47,7 @@ describe('ReinitializePassword Page', () => {
 
     await waitForExpect(async () => {
       const color = notMatchingErrorText.props.style[0].color
-      expect(color).toEqual(ColorsEnum.ERROR)
+      expect(color).toEqual(theme.colors.error)
     })
   })
 
