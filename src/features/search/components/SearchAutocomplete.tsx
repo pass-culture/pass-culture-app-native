@@ -2,9 +2,9 @@ import React, { forwardRef, Ref } from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-hooks'
 import { FlatList } from 'react-native'
 
+import { HitProps } from 'features/search/components/SearchDetails'
 import { AlgoliaHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
-import { HitProps } from 'features/search/components/SearchDetails'
 
 type SearchAutocompleteProps = UseInfiniteHitsProps & {
   hitComponent: (props: HitProps) => JSX.Element
@@ -27,7 +27,13 @@ export const SearchAutocomplete = forwardRef(
         keyExtractor={(item) => item.objectID}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
-        renderItem={({ item, index }) => <Item hit={item as unknown as THit} index={index} isSetShowAutocomplete={isSetShowAutocomplete} />}
+        renderItem={({ item, index }) => (
+          <Item
+            hit={item as unknown as THit}
+            index={index}
+            isSetShowAutocomplete={isSetShowAutocomplete}
+          />
+        )}
       />
     )
   }
