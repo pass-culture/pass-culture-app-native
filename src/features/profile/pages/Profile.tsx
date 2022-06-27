@@ -17,6 +17,8 @@ import { env } from 'libs/environment'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { OfflinePage } from 'libs/network/OfflinePage'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -39,7 +41,7 @@ import Package from '../../../../package.json'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
-export const Profile: React.FC = () => {
+const OnlineProfile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { data: user } = useUserProfileInfo()
   const { isLoggedIn } = useAuthContext()
@@ -253,6 +255,14 @@ export const Profile: React.FC = () => {
       </ProfileContainer>
     </ScrollView>
   )
+}
+
+export const Profile: React.FC = () => {
+  const netInfo = useNetInfo()
+  if (!netInfo.isConnected) {
+    return <OfflinePage />
+  }
+  return <OnlineProfile />
 }
 
 const paddingVertical = getSpacing(4)
