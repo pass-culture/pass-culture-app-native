@@ -1,6 +1,6 @@
 import AlgoliaSearchInsights from 'search-insights'
 
-import { logClickOnOffer } from 'libs/algolia/analytics/logClickOnProduct'
+import { logClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { captureMonitoringError } from 'libs/monitoring'
 
 jest.mock('search-insights')
