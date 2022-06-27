@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 export function OfflineModeContainer({ children }: { children: ReactNode }) {
   const netInfo = useNetInfo()
@@ -13,6 +13,7 @@ export function OfflineModeContainer({ children }: { children: ReactNode }) {
       {!netInfo.isConnected && (
         <OfflineModeBanner>
           <OfflineModeBannerText>{t`aucune connexion internet.`}</OfflineModeBannerText>
+          <Spacer.BottomScreen />
         </OfflineModeBanner>
       )}
     </FlexView>

@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
 export const TabBarContainer = ({ children }: { children: React.ReactNode }) => {
   const { bottom } = useCustomSafeInsets()
+  const netInfo = useNetInfo()
   return (
     <MainContainer>
       <RowContainer>
@@ -14,7 +16,7 @@ export const TabBarContainer = ({ children }: { children: React.ReactNode }) => 
         {children}
         <Spacer.Row numberOfSpaces={4} />
       </RowContainer>
-      <SafeAreaPlaceholder safeHeight={bottom} />
+      <SafeAreaPlaceholder safeHeight={netInfo.isConnected ? bottom : 0} />
     </MainContainer>
   )
 }
