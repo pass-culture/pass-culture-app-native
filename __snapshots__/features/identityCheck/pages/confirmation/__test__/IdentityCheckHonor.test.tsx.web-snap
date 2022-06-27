@@ -82,7 +82,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
     </h1>
     <button
       aria-label="Revenir en arrière"
-      className="sc-hKwDye lgPtFf sc-gWXbKe fzHrRQ sc-gWXbKe fzHrRQ"
+      className="sc-hKwDye lgPtFf sc-cCcXHH bIwzUH sc-cCcXHH bIwzUH"
       data-testid="Revenir en arrière"
       onClick={[MockFunction]}
       tabIndex="0"
@@ -353,7 +353,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 }
               >
                 <button
-                  className="sc-bdvvtL kUaFXY sc-jRQBWg kyMyBM"
+                  className="sc-bdvvtL fWgamm sc-jRQBWg kyMyBM"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   tabIndex={0}

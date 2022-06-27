@@ -200,7 +200,7 @@ Object {
                             >
                               <button
                                 aria-label="Copier le lien"
-                                class="sc-dkPtRN kzqezq sc-jRQBWg CQePl"
+                                class="sc-dkPtRN ceOvMg sc-jRQBWg CQePl"
                                 data-testid="Copier le lien"
                                 tabindex="0"
                                 type="button"
@@ -236,7 +236,7 @@ Object {
                             >
                               <button
                                 aria-label="Ouvrir le gestionnaire mail"
-                                class="sc-dkPtRN kzqezq sc-jRQBWg CQePl"
+                                class="sc-dkPtRN ceOvMg sc-jRQBWg CQePl"
                                 data-testid="Ouvrir le gestionnaire mail"
                                 tabindex="0"
                                 type="button"
@@ -404,7 +404,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            class="sc-dkPtRN csvwml sc-eCImPb idTzrf"
+                            class="sc-dkPtRN ezUaYj sc-eCImPb idTzrf"
                             tabindex="0"
                             type="button"
                           >

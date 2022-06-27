@@ -1,22 +1,30 @@
 import * as React from 'react'
-import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { BicolorIconInterface } from './types'
+import { AccessibleBicolorIconInterface } from './types'
 
-const BicolorPhonePendingSvg: React.FC<BicolorIconInterface> = ({
+const BicolorPhonePendingSvg: React.FC<AccessibleBicolorIconInterface> = ({
   size,
   color,
   color2,
+  accessibilityLabel,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" fill="none" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={height}
+      viewBox="0 0 200 156"
+      fill="none"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -35,7 +43,7 @@ const BicolorPhonePendingSvg: React.FC<BicolorIconInterface> = ({
           <Stop offset="100%" stopColor={color} />
         </LinearGradient>
       </Defs>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

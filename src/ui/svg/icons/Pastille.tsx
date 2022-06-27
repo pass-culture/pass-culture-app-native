@@ -1,14 +1,16 @@
 import * as React from 'react'
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg'
+import { Defs, LinearGradient, Rect, Stop } from 'react-native-svg'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { RectangleIconInterface } from './types'
+import { AccessibleRectangleIconInterface } from './types'
 
-export const Pastille: React.FunctionComponent<RectangleIconInterface> = ({
+export const Pastille: React.FunctionComponent<AccessibleRectangleIconInterface> = ({
   height = 15,
   width = 21,
   color,
+  accessibilityLabel,
   testID,
   style,
 }) => {
@@ -16,13 +18,13 @@ export const Pastille: React.FunctionComponent<RectangleIconInterface> = ({
   const fill = color || gradientFill
   const rx = typeof width === 'number' ? width / 3 : 7
   return (
-    <Svg
+    <AccessibleSvg
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       style={style}
-      testID={testID}
-      aria-hidden>
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Defs>
         <LinearGradient id={gradientId} x1="-41.961%" x2="126.229%" y1="-1.762%" y2="116.717%">
           <Stop offset="0%" stopColor="#EB0055" />
@@ -30,6 +32,6 @@ export const Pastille: React.FunctionComponent<RectangleIconInterface> = ({
         </LinearGradient>
       </Defs>
       <Rect fill={fill} fillRule="evenodd" width={width} height={height} x={0} y={0} rx={rx} />
-    </Svg>
+    </AccessibleSvg>
   )
 }

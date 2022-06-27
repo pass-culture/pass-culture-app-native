@@ -35,8 +35,8 @@ export const ExclusivityModule = ({
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
-    analytics.logClickExclusivityBlock(title)
-    analytics.logConsultOffer({ offerId: id, moduleName: title, from: 'exclusivity' })
+    analytics.logClickExclusivityBlock({ moduleName: title, moduleId })
+    analytics.logConsultOffer({ offerId: id, moduleName: title, moduleId, from: 'exclusivity' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 

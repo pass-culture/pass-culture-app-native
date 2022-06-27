@@ -66,7 +66,10 @@ describe('BusinessModule component', () => {
   it('should log "BusinessBlockClicked" when clicking on the image', () => {
     const { getByTestId } = renderModule(props)
     fireEvent.click(getByTestId('imageBusiness'))
-    expect(analytics.logClickBusinessBlock).toHaveBeenCalledWith(props.title)
+    expect(analytics.logClickBusinessBlock).toHaveBeenCalledWith({
+      moduleName: props.title,
+      moduleId: props.moduleId,
+    })
   })
 
   it('should open url when clicking on the image', async () => {

@@ -127,18 +127,17 @@ export const SearchResults: React.FC = () => {
     one: '# résultat',
     other: '# résultats',
   })
-
-  const helmetTitle =
-    numberOfResults +
-    (searchState.query.length > 0
+  const searchStateQuery =
+    searchState.query.length > 0
       ? SPACE +
         t({
-          id: 'search state query',
-          values: { searchStateQuery: searchState.query },
-          message: 'pour {searchStateQuery}',
+          id: 'search query',
+          values: { searchQuery: searchState.query },
+          message: 'pour {searchQuery}',
         })
-      : '') +
-    ' | Recherche | pass Culture'
+      : ''
+  const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
+
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}

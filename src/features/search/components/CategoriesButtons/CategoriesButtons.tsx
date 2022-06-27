@@ -1,20 +1,15 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 
-import { CategoriesButtonsDisplay, ListCategoryButtonProps } from './CategoriesButtonsDisplay'
+import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
+import { OnPressCategory, useSortedSearchCategories } from './useSortedSearchCategories'
 
 type Props = {
-  categories: ListCategoryButtonProps
+  onPressCategory: OnPressCategory
   children?: never
 }
 
-export const CategoriesButtons: FunctionComponent<Props> = ({ categories }) => {
-  const [sortedCategories, setSortedCategories] = useState<ListCategoryButtonProps>()
-
-  useEffect(() => {
-    setSortedCategories([...categories].sort((a, b) => a.label.localeCompare(b.label)))
-  }, [categories])
-
-  if (sortedCategories === undefined) return null
+export const CategoriesButtons: FunctionComponent<Props> = ({ onPressCategory }) => {
+  const sortedCategories = useSortedSearchCategories(onPressCategory)
 
   return <CategoriesButtonsDisplay sortedCategories={sortedCategories} />
 }

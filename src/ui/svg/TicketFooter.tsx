@@ -1,8 +1,9 @@
 import React, { memo } from 'react'
-import Svg, { Path } from 'react-native-svg'
+import { Path } from 'react-native-svg'
 import { useTheme } from 'styled-components/native'
 import styled from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -19,7 +20,7 @@ function TicketFooterComponent(props: Props) {
   const theme = useTheme()
 
   return (
-    <Svg
+    <AccessibleSvg
       style={{
         aspectRatio: ratio,
         transform: [
@@ -30,8 +31,7 @@ function TicketFooterComponent(props: Props) {
       }}
       width={props.width}
       height={height}
-      viewBox={viewBox}
-      aria-hidden>
+      viewBox={viewBox}>
       <Path
         d="M186.5,2c0,17.67-14.33,32-32,32s-32-14.33-32-32H26C12.75,2,2,12.75,2,26v24h305V26c0-13.25-10.75-24-24-24
 		H186.5z"
@@ -43,7 +43,7 @@ function TicketFooterComponent(props: Props) {
 		C309,11.66,297.34,0,283,0L283,0z"
         fill={theme.colors.greyLight}
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

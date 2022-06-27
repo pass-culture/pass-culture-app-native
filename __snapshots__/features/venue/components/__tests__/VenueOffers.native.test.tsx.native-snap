@@ -999,37 +999,27 @@ Array [
                     }
                   />
                   <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#F1F1F4",
-                        "borderRadius": 32,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "justifyContent": "center",
-                        "opacity": 1,
-                        "shadowColor": "#161617",
-                        "shadowOffset": Object {
-                          "height": 8,
-                          "width": 0,
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "aspectRatio": 1,
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#F1F1F4",
+                          "borderRadius": 32,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "justifyContent": "center",
+                          "shadowColor": "#161617",
+                          "shadowOffset": Object {
+                            "height": 8,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.15,
+                          "shadowRadius": 12,
+                          "width": 64,
                         },
-                        "shadowOpacity": 0.15,
-                        "shadowRadius": 12,
-                        "userSelect": "auto",
-                        "width": 64,
-                      }
+                      ]
                     }
                   >
                     <View

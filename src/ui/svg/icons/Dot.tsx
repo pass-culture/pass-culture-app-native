@@ -19,7 +19,7 @@ const DotSvg: React.FC<Props> = ({ size, borderColor, fillColor, accessibilityLa
     viewBox="0 0 9 9"
     accessibilityLabel={accessibilityLabel}
     testID={testID}
-    // @ts-expect-error : borderColor and fillColor are on <Svg/> only for test purposes
+    // @ts-expect-error : borderColor and fillColor are on <AccessibleSvg/> only for test purposes
     borderColor={borderColor}
     fillColor={fillColor}>
     <G fill={fillColor} stroke={borderColor} strokeWidth="1">

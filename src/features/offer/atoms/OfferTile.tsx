@@ -38,6 +38,7 @@ export interface OfferTileProps {
   isBeneficiary?: boolean
   analyticsFrom: Referrals
   moduleName?: string
+  moduleId?: string
   width: number
   height: number
 }
@@ -81,6 +82,7 @@ export function OfferTile(props: OfferTileProps) {
     width,
     height,
     moduleName,
+    moduleId,
     isBeneficiary,
     categoryLabel,
     venueId,
@@ -98,7 +100,7 @@ export function OfferTile(props: OfferTileProps) {
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
-    analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, venueId })
+    analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, moduleId, venueId })
   }
 
   return (
@@ -106,7 +108,10 @@ export function OfferTile(props: OfferTileProps) {
       <StyledTouchableLink
         highlight
         height={height + MAX_OFFER_CAPTION_HEIGHT}
-        navigateTo={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
+        navigateTo={{
+          screen: 'Offer',
+          params: { id: offerId, from: analyticsFrom, moduleName, moduleId },
+        }}
         onPress={handlePressOffer}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

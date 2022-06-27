@@ -34,26 +34,28 @@ Illustrations should be imported with a fixed ratio of 156/200, a black color, a
 
 ```jsx
 import React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const MyIllustrationSvg: React.FunctionComponent<IconInterface> = ({
+const MyIllustrationSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
+  accessibilityLabel,
   testID,
 }) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID} aria-hidden>
+    <AccessibleSvg width={size} height={height} viewBox="0 0 200 156" accessibilityLabel={accessibilityLabel} testID={testID}>
       <Path
         fill={color}
         fillRule="evenodd"
         clipRule="evenodd"
         d="M100 18C133.137 18 160 44.8629 160 78C160 91.3909 155.5114.525C146.542 115.12 70C112 67.792 113.787 66 116 66Z"
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 
@@ -65,9 +67,9 @@ export const MyIllustration = styled(MyIllustrationSvg).attrs(({ color, size, th
 
 > Do not import constants to style your SVG, instead, use `theme` API from styled-components
 
-## Accessible icons
+## Linear pictograms
 
-Accessible SVGs are the ones that indicate an action that can be performed. They should be wrapped in the `AccessibleSvg` component as follows.
+Regular linear pictograms should be imported as follows:
 
 ```jsx
 import React from 'react'
@@ -77,52 +79,18 @@ import styled from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const MyAccessiblePictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
+const MyRegularPictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
-  testID,
   accessibilityLabel,
-}) => (
-  <AccessibleSvg
-    width={size}
-    height={size}
-    viewBox="0 0 48 48"
-    testID={testID}
-    accessibilityLabel={accessibilityLabel ?? 'what my icon does'}>
-    <Path fill={color} d="M37 44.15.4263 33.0687 14.5 31.9198 14.5H24.7191Z" />
-  </AccessibleSvg>
-)
-
-export const MyAccessiblePictogram = styled(MyAccessiblePictogramSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  size: size ?? theme.icons.sizes.standard
-}))``
-```
-
-Icons that are not meant to be accessible should come with the `aria-hidden` prop, as written in all the following examples.
-
-## Linear pictograms
-
-Regular linear pictograms should be imported as follows:
-
-```jsx
-import React from 'react'
-import Svg, { Path } from 'react-native-svg'
-import styled from 'styled-components/native'
-
-import { IconInterface } from './types'
-
-const MyRegularPictogramSvg: React.FunctionComponent<IconInterface> = ({
-  size,
-  color,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
+  <AccessibleSvg width={size} height={size} viewBox="0 0 48 48" accessibilityLabel={accessibilityLabel} testID={testID}>
     <Path
       fill={color}
       d="M24 5.4059 23 15.4512V27.5488C23 28.0741 23.4477 28.5 28.0741 25 27.5488V15.4512Z"
     />
-  </Svg>
+  </AccessibleSvg>
 )
 
 export const MyRegularPictogram = styled(MyRegularPictogramSvg).attrs(({ color, size, theme }) => ({
@@ -139,23 +107,24 @@ The offset value of the Stop component should always be specified (for valid HTM
 
 ```jsx
 import React from 'react'
-import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
-
-import { IconInterface } from './types'
 
 const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
   size,
   color,
   color2,
+  accessibilityLabel,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
+    <AccessibleSvg width={size} height={size} viewBox="0 0 48 48" accessibilityLabel={accessibilityLabel} testID={testID}>
       <Defs>
         <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />
@@ -167,7 +136,7 @@ const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
         clipRule={'evenodd'}
         fillRule={'evenodd'}
         d="M24 6.5C22.8923 6.5 22 74 38 29.74H34ZM35 35.5V31.74H37V35.5H35Z" />
-      </Svg>
+      </AccessibleSvg>
   )
 }
 
@@ -178,3 +147,6 @@ export const MyBicolorPictogram = styled(MyBicolorPictogramSvg).attrs(({ color, 
 }))``
 
 ```
+
+## Accessibility
+By using `AccessibleSvg`, all the accessibility attributes are automatically handled, by hiding the element from screen readers if there is no accessibility label attached, and adding the correct accessibility role when there is one.

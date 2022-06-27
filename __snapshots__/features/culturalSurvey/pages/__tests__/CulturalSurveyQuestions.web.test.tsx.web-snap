@@ -633,7 +633,7 @@ Object {
         >
           <button
             aria-label="Continuer vers l'étape suivante"
-            class="sc-bdvvtL kMjAut sc-dkPtRN kmXVLA"
+            class="sc-bdvvtL fCocGj sc-dkPtRN kmXVLA"
             data-testid="next-cultural-survey-question"
             disabled=""
             type="button"
@@ -1283,7 +1283,7 @@ Object {
       >
         <button
           aria-label="Continuer vers l'étape suivante"
-          class="sc-bdvvtL kMjAut sc-dkPtRN kmXVLA"
+          class="sc-bdvvtL fCocGj sc-dkPtRN kmXVLA"
           data-testid="next-cultural-survey-question"
           disabled=""
           type="button"

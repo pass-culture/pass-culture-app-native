@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled from 'styled-components/native'
 
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -36,7 +38,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 }
 
-const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor?: string }>(
+const TouchableContainer = styledButton(Touchable)<{ borderLeftColor?: string }>(
   ({ theme, borderLeftColor }) => ({
     flexDirection: 'row',
     alignItems: 'center',
@@ -55,4 +57,6 @@ const TouchableContainer = styled.TouchableOpacity<{ borderLeftColor?: string }>
   })
 )
 
-const Label = styled(Typo.Caption)({ marginLeft: getSpacing(2) })
+const Label = styled(Typo.Caption)({
+  marginLeft: getSpacing(2),
+})

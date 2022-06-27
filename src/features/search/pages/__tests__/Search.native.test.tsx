@@ -11,7 +11,7 @@ import { render, fireEvent } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
-const mockSearchState = initialSearchState
+let mockSearchState = initialSearchState
 const mockStagedSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnum.CINEMA],
@@ -89,7 +89,10 @@ describe('Search component', () => {
 
     describe('When search not executed', () => {
       beforeEach(() => {
-        mockSearchState.showResults = false
+        mockSearchState = {
+          ...initialSearchState,
+          showResults: false,
+        }
       })
 
       it('should show landing page', () => {
@@ -105,7 +108,10 @@ describe('Search component', () => {
     })
 
     it('should show search results when search executed', () => {
-      mockSearchState.showResults = true
+      mockSearchState = {
+        ...initialSearchState,
+        showResults: true,
+      }
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
     })
@@ -118,7 +124,10 @@ describe('Search component', () => {
 
     describe('When search not executed', () => {
       beforeEach(() => {
-        mockSearchState.showResults = false
+        mockSearchState = {
+          ...initialSearchState,
+          showResults: false,
+        }
       })
 
       it('should show search box with label', () => {
@@ -138,7 +147,10 @@ describe('Search component', () => {
 
     describe('When search executed', () => {
       beforeEach(() => {
-        mockSearchState.showResults = true
+        mockSearchState = {
+          ...initialSearchState,
+          showResults: true,
+        }
       })
 
       it('should show search box without label', () => {

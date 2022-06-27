@@ -102,7 +102,6 @@ export const appButtonWebStyles: ElementStylesWeb = ({
     ...(appButtonStyles({ theme, ...rest }) as Record<string, unknown>),
     cursor: 'pointer',
     outline: 'none',
-    borderStyle: 'solid',
     borderWidth: 0,
     display: 'flex',
     overflow: 'hidden',
