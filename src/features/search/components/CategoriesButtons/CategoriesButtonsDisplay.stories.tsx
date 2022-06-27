@@ -13,6 +13,34 @@ export default {
   component: CategoriesButtonsDisplay,
 } as ComponentMeta<typeof CategoriesButtonsDisplay>
 
+const sortedCategories = [
+  {
+    label: 'Bibliothèque, médiathèque',
+    Icon: categoriesIcons.VideoGame,
+    onPress: action('Jeux'),
+  },
+  {
+    label: 'CD, vinyles, musique en ligne',
+    Icon: categoriesIcons.Music,
+    onPress: action('Musique'),
+  },
+  {
+    label: 'Cinéma',
+    Icon: categoriesIcons.Cinema,
+    onPress: action('Cinéma'),
+  },
+  {
+    label: 'Conférences, rencontres',
+    Icon: categoriesIcons.Book,
+    onPress: action('Livre'),
+  },
+  {
+    label: 'Théâtre',
+    Icon: categoriesIcons.Workshop,
+    onPress: action('Théâtre'),
+  },
+]
+
 const Template: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
   <Wrapper>
     <CategoriesButtonsDisplay {...props} />
@@ -21,33 +49,7 @@ const Template: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  sortedCategories: [
-    {
-      label: 'Bibliothèque, médiathèque',
-      Icon: categoriesIcons.VideoGame,
-      onPress: action('Jeux'),
-    },
-    {
-      label: 'CD, vinyles, musique en ligne',
-      Icon: categoriesIcons.Music,
-      onPress: action('Musique'),
-    },
-    {
-      label: 'Cinéma',
-      Icon: categoriesIcons.Cinema,
-      onPress: action('Cinéma'),
-    },
-    {
-      label: 'Conférences, rencontres',
-      Icon: categoriesIcons.Book,
-      onPress: action('Livre'),
-    },
-    {
-      label: 'Théâtre',
-      Icon: categoriesIcons.Workshop,
-      onPress: action('Théâtre'),
-    },
-  ],
+  sortedCategories,
 }
 
 const Wrapper = styled.View({
