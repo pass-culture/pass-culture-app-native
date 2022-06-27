@@ -126,6 +126,12 @@ describe('Search component', () => {
         expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
       })
 
+      it('should display categories buttons', () => {
+        const { getByTestId } = render(<Search />)
+        const categoriesButtons = getByTestId('categoriesButtons')
+        expect(categoriesButtons).toBeTruthy()
+      })
+
       it('should show view for recent searches and suggestions', async () => {
         const { queryByTestId, getByPlaceholderText } = render(<Search />)
 
