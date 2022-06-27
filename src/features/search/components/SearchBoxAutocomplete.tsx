@@ -3,7 +3,12 @@ import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
-import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
+import {
+  Keyboard,
+  NativeSyntheticEvent,
+  Platform,
+  TextInputSubmitEditingEventData,
+} from 'react-native'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -81,16 +86,26 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
+  useEffect(() => {
+    // If the user select a value in autocomplete list it must be display in search input
+    onChangeText(searchState.query)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchState.query])
+
   const resetSearch = () => {
     setAutocompleteValue('')
     navigate(...getTabNavConfig('Search', { query: '' }))
     setValue('')
     isSetShowAutocomplete(false)
+    // To force remove focus on search input
+    Keyboard.dismiss()
   }
 
   const onPressArrowBack = () => {
     if (isShowAutocomplete) {
       isSetShowAutocomplete(false)
+      // To force remove focus on search input
+      Keyboard.dismiss()
       return
     }
 
