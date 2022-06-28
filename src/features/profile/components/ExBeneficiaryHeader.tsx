@@ -23,7 +23,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
   return (
     <Container testID={'ex-beneficiary-header'}>
       <Spacer.TopScreen />
-      <HeaderBackground />
+      <HeaderBackground height={getSpacing(45)} />
       <Spacer.Column numberOfSpaces={6} />
       <TitleContainer>
         <Title4>{name}</Title4>

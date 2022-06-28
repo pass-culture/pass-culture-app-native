@@ -9,20 +9,24 @@ import { getSpacing } from '../theme'
 
 interface HeaderBackgroundProps {
   height?: string | number
+  position?: 'absolute' | 'relative'
 }
 
 const defaultHeight = getSpacing(73.5)
 
-function NotMemoizedHeaderBackground({ height = defaultHeight }: HeaderBackgroundProps) {
+function NotMemoizedHeaderBackground({
+  height = defaultHeight,
+  position = 'absolute',
+}: HeaderBackgroundProps) {
   return (
-    <BackgroundContainer height={height}>
+    <BackgroundContainer height={height} position={position}>
       <HeaderBackgroundSvg height={height} />
     </BackgroundContainer>
   )
 }
 
-const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, theme }) => ({
-  position: 'absolute',
+const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, position, theme }) => ({
+  position: position ?? 'absolute',
   top: 0,
   left: 0,
   right: 0,

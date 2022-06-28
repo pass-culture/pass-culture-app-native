@@ -12,7 +12,7 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Subscripti
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
+import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Typo } from 'ui/theme'
