@@ -1,5 +1,5 @@
-import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
+import { t, plural } from '@lingui/macro'
+import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -13,6 +13,15 @@ interface Props {
 }
 
 export const CodeNotReceivedModal: FunctionComponent<Props> = (props) => {
+  // TODO : PC-14462 implement attempts remaining fetch and delete this mock initialization
+  const [requestsRemaining, setRequestsRemaining] = useState(5)
+  const hasOneRequestRemaining = requestsRemaining === 1
+
+  const requestsWording = plural(requestsRemaining, {
+    one: '# demande',
+    other: '# demandes',
+  })
+
   return (
     <AppModal
       visible={props.isVisible}
@@ -27,13 +36,23 @@ export const CodeNotReceivedModal: FunctionComponent<Props> = (props) => {
         <Introduction>{t`Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en demander un nouveau.`}</Introduction>
         <Spacer.Column numberOfSpaces={8} />
         <BottomContentContainer>
-          <Typo.Caption>{t`Attention, il te reste\u00a0: 5 demandes`}</Typo.Caption>
+          <WarningContainer>
+            <WarningMessage>{t`Attention, il te reste\u00a0:` + ' '}</WarningMessage>
+            <WarningRemainingAttempts isLastAttempt={hasOneRequestRemaining}>
+              {requestsWording}
+            </WarningRemainingAttempts>
+          </WarningContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             type="submit"
             onPress={() => {
               props.dismissModal()
-              // TODO : PC-14461 implement code resend
+              // TODO : PC-14461 implement code resend and delete this mock behavior
+              if (requestsRemaining > 0) {
+                setRequestsRemaining(requestsRemaining - 1)
+              } else {
+                setRequestsRemaining(5)
+              }
             }}
             wording={t`Demander un autre code`}
           />
@@ -50,3 +69,17 @@ const Introduction = styled(Typo.Body)({
 const BottomContentContainer = styled.View({
   alignItems: 'center',
 })
+
+const WarningContainer = styled.View({
+  flexDirection: 'row',
+})
+
+const WarningMessage = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const WarningRemainingAttempts = styled(Typo.Caption)<{ isLastAttempt: boolean }>(
+  ({ theme, isLastAttempt }) => ({
+    color: isLastAttempt ? theme.colors.error : theme.colors.black,
+  })
+)
