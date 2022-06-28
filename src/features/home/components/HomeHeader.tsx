@@ -10,7 +10,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { HeaderBackground } from 'ui/svg/HeaderBackground'
+import { HeaderBackground, HEADER_BACKGROUND_DEFAULT_SIZE } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -41,6 +41,9 @@ export const HomeHeader: FunctionComponent = function () {
 
   return (
     <React.Fragment>
+      <BounceBackgroundWrapper>
+        <HeaderBackground />
+      </BounceBackgroundWrapper>
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
@@ -86,6 +89,11 @@ const HeaderBackgroundWrapper = styled.View(({ theme }) => ({
   left: 0,
   zIndex: theme.zIndex.background,
 }))
+
+const BounceBackgroundWrapper = styled(HeaderBackgroundWrapper)({
+  top: -HEADER_BACKGROUND_DEFAULT_SIZE,
+  transform: 'scaleY(-1)',
+})
 
 const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',

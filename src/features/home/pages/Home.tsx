@@ -174,7 +174,6 @@ export const Home: FunctionComponent = () => {
         <FlatList
           testID="homeBodyScrollView"
           scrollEventThrottle={400}
-          bounces={false}
           onScroll={onScroll}
           data={modulesToDisplay}
           renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
@@ -182,10 +181,11 @@ export const Home: FunctionComponent = () => {
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
           ListHeaderComponent={ListHeaderComponent}
           initialNumToRender={initialNumToRender}
-          onEndReachedThreshold={0.5}
+          onEndReachedThreshold={1}
           removeClippedSubviews={false}
           onEndReached={onEndReached}
-          onContentSizeChange={() => setIsLoading(false)}
+          onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
+          bounces
         />
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />

@@ -11,9 +11,11 @@ interface Props {
   height?: number
 }
 
+export const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
+
 const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
   const width = useTheme().appContentWidth + getSpacing(1)
-  const height = props.height || getSpacing(73.5)
+  const height = props.height || HEADER_BACKGROUND_DEFAULT_SIZE
   const { id: id1, fill: fill1 } = svgIdentifier()
   const { id: id2, fill: fill2 } = svgIdentifier()
   const { id: id3, xlinkHref: xlinkHref3 } = svgIdentifier()
