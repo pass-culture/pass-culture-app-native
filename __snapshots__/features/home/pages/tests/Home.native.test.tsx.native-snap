@@ -30,7 +30,7 @@ exports[`Home component should render correctly without login modal 1`] = `
         />
       }
       ListHeaderComponent={[Function]}
-      bounces={false}
+      bounces={true}
       data={Array []}
       getItem={[Function]}
       getItemCount={[Function]}
@@ -38,7 +38,7 @@ exports[`Home component should render correctly without login modal 1`] = `
       keyExtractor={[Function]}
       onContentSizeChange={[Function]}
       onEndReached={[Function]}
-      onEndReachedThreshold={0.5}
+      onEndReachedThreshold={1}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
       onMomentumScrollEnd={[Function]}
@@ -78,25 +78,29 @@ exports[`Home component should render correctly without login modal 1`] = `
               }
             />
             <View
-              height={294}
-              position="absolute"
+              height={894}
               style={
                 Array [
                   Object {
                     "backgroundColor": "#eb0055",
-                    "height": 294,
+                    "height": 894,
                     "left": 0,
                     "overflow": "hidden",
                     "position": "absolute",
                     "right": 0,
-                    "top": 0,
+                    "top": -600,
+                    "transform": Array [
+                      Object {
+                        "scaleY": -1,
+                      },
+                    ],
                     "zIndex": -1,
                   },
                 ]
               }
             >
               <View
-                height={294}
+                height={894}
                 width={964}
               >
                 <Text>

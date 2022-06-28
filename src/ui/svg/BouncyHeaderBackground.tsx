@@ -1,42 +1,42 @@
 import * as React from 'react'
 import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { HEADER_BACKGROUND_DEFAULT_SIZE } from 'ui/svg/HeaderBackground'
 import { svgIdentifier } from 'ui/svg/utils'
 
 import { getSpacing } from '../theme'
 
-interface HeaderBackgroundProps {
+interface BouncyHeaderBackgroundProps {
   height?: string | number
-  position?: 'absolute' | 'relative'
 }
 
-export const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
-
-function NotMemoizedHeaderBackground({
-  height = HEADER_BACKGROUND_DEFAULT_SIZE,
-  position = 'absolute',
-}: HeaderBackgroundProps) {
+const BOUNCE_HEIGHT = getSpacing(150)
+function NotMemoizedBouncyHeaderBackground({
+  height = HEADER_BACKGROUND_DEFAULT_SIZE + BOUNCE_HEIGHT,
+}: BouncyHeaderBackgroundProps) {
   return (
-    <BackgroundContainer height={height} position={position}>
-      <HeaderBackgroundSvg height={height} />
+    <BackgroundContainer height={height}>
+      <BouncyHeaderBackgroundSvg height={height} />
     </BackgroundContainer>
   )
 }
 
-const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, position, theme }) => ({
-  position,
-  top: 0,
+const BackgroundContainer = styled.View<BouncyHeaderBackgroundProps>(({ height, theme }) => ({
+  position: 'absolute',
+  top: -BOUNCE_HEIGHT,
   left: 0,
   right: 0,
   height,
   overflow: 'hidden',
   zIndex: theme.zIndex.background,
   backgroundColor: theme.colors.primary,
+  transform: 'scaleY(-1)',
 }))
 
-const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
+const BouncyHeaderBackgroundSvg: React.FC<BouncyHeaderBackgroundProps> = (props) => {
   const width = useTheme().appContentWidth + getSpacing(1)
   const height = props.height || HEADER_BACKGROUND_DEFAULT_SIZE
   const { id: id1, fill: fill1 } = svgIdentifier()
@@ -45,7 +45,7 @@ const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
   const { id: id4, fill: fill4 } = svgIdentifier()
   return (
     <AccessibleSvg
-      preserveAspectRatio="xMidYMin slice"
+      preserveAspectRatio="xMinYMin slice"
       height={height}
       width={width}
       viewBox={`0 0 375 352`}>
@@ -75,4 +75,4 @@ const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
   )
 }
 
-export const HeaderBackground = React.memo(NotMemoizedHeaderBackground)
+export const BouncyHeaderBackground = React.memo(NotMemoizedBouncyHeaderBackground)
