@@ -166,6 +166,7 @@ export const Profile: React.FC = () => {
                   screen: 'FirstTutorial',
                   params: { shouldCloseAppOnBackAction: false },
                 }}
+                onPress={() => analytics.logConsultTutorial('profile')}
                 icon={LifeBuoy}
               />
             </Li>

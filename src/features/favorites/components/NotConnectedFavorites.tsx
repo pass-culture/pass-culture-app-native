@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -35,6 +36,7 @@ export const NotConnectedFavorites = () => {
             as={ButtonPrimaryWhite}
             wording={t`S'inscrire`}
             navigateTo={{ screen: 'SignupForm' }}
+            onPress={analytics.logSignUpFromFavorite}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
@@ -42,6 +44,7 @@ export const NotConnectedFavorites = () => {
             as={ButtonTertiaryWhite}
             wording={t`Se connecter`}
             navigateTo={{ screen: 'Login' }}
+            onPress={analytics.logSignInFromFavorite}
             buttonHeight="tall"
           />
         </ButtonContainer>

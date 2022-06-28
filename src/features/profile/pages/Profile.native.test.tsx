@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
 import { UseQueryResult } from 'react-query'
+import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -176,7 +177,9 @@ describe('Profile component', () => {
       const row = getByText('Comment ça marche\u00a0?')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
+      await waitForExpect(() => {
+        expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
+      })
     })
 
     it('should navigate when the faq row is clicked', async () => {
@@ -248,6 +251,14 @@ describe('Profile component', () => {
   })
 
   describe('Analytics', () => {
+    it('should log event ConsultTutorial when user clicks on tutorial section', async () => {
+      const { getByText } = await renderProfile()
+
+      const row = getByText('Comment ça marche\u00a0?')
+      fireEvent.press(row)
+      expect(analytics.logConsultTutorial).toHaveBeenNthCalledWith(1, 'profile')
+    })
+
     it('should log event ProfilScrolledToBottom when user reach end of screen', async () => {
       // eslint-disable-next-line local-rules/independant-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))

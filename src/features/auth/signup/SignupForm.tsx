@@ -10,6 +10,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { AsyncError, captureMonitoringError } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
@@ -43,22 +44,32 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     Component: SetEmail,
     tracker: async () => {
       await amplitude().logEvent('user_set_email_clicked_front')
+      await analytics.logContinueSetEmail()
     },
   },
   {
     name: PreValidationSignupStep.Password,
     headerTitle: t`Mot de passe`,
     Component: SetPassword,
+    tracker: async () => {
+      await analytics.logContinueSetPassword()
+    },
   },
   {
     name: PreValidationSignupStep.Birthday,
     headerTitle: t`Date de naissance`,
     Component: SetBirthday,
+    tracker: async () => {
+      await analytics.logContinueSetBirthday()
+    },
   },
   {
     name: PreValidationSignupStep.CGU,
     headerTitle: t`CGU & Données`,
     Component: AcceptCgu,
+    tracker: async () => {
+      await analytics.logContinueCGU()
+    },
   },
 ]
 const SIGNUP_STEP_CONFIG_MAX_INDEX = SIGNUP_STEP_CONFIG.length - 1

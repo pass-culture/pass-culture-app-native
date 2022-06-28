@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { View, Text } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
@@ -114,5 +115,70 @@ describe('<SignupForm />', () => {
     fireEvent.press(getByTestId('leftIcon'))
     getByText('SetEmail')
     expect(mockGoBack).toBeCalledTimes(0)
+  })
+
+  it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
+    const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
+    getByText('SetEmail')
+    fireEvent.press(getByTestId('goToNextStep'))
+
+    await waitForExpect(() => {
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
+    const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
+    fireEvent.press(getByTestId('goToNextStep'))
+    getByText('SetPassword')
+    fireEvent.press(getByTestId('goToNextStep'))
+
+    await waitForExpect(() => {
+      expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
+    const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
+    fireEvent.press(getByTestId('goToNextStep'))
+    getByText('SetPassword')
+    fireEvent.press(getByTestId('leftIcon'))
+    getByText('SetEmail')
+    fireEvent.press(getByTestId('goToNextStep'))
+
+    await waitForExpect(() => {
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(2)
+      expect(analytics.logContinueSetPassword).not.toHaveBeenCalled()
+    })
+  })
+
+  it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
+    const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
+    fireEvent.press(getByTestId('goToNextStep'))
+    fireEvent.press(getByTestId('goToNextStep'))
+    getByText('SetBirthday')
+    fireEvent.press(getByTestId('goToNextStep'))
+
+    await waitForExpect(() => {
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should call logContinueCGU when clicking on AcceptCgu button', async () => {
+    const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
+    fireEvent.press(getByTestId('goToNextStep'))
+    fireEvent.press(getByTestId('goToNextStep'))
+    fireEvent.press(getByTestId('goToNextStep'))
+    getByText('AcceptCgu')
+    fireEvent.press(getByTestId('goToNextStep'))
+
+    await waitForExpect(() => {
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueCGU).toHaveBeenCalledTimes(1)
+    })
   })
 })
