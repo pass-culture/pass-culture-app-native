@@ -228,8 +228,8 @@ msgid "Attention, il est impossible de réserver plusieurs fois la même offre 
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
 
 #: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
-msgid "Attention, il te reste : 5 demandes"
-msgstr "Attention, il te reste : 5 demandes"
+msgid "Attention, il te reste :"
+msgstr "Attention, il te reste :"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
@@ -3916,6 +3916,10 @@ msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation
 #: src/features/bookings/components/OnGoingBookingsList.tsx
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
+
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
+msgid "{requestsRemaining, plural, one {# demande} other {# demandes}}"
+msgstr "{requestsRemaining, plural, one {# demande} other {# demandes}}"
 
 #: src/features/bookings/helpers.ts
 msgid "À activer"
