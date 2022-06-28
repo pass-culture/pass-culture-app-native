@@ -1,23 +1,29 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const TicketCodeTitle = ({
+  accessibilityLabel,
   onPress,
   children,
 }: {
+  accessibilityLabel?: string
   onPress?: () => void
   children: ReactNode
 }) => (
-  <TouchableOpacity onPress={onPress} disabled={!onPress}>
+  <StyledTouchable accessibilityLabel={accessibilityLabel} onPress={onPress} disabled={!onPress}>
     <StyledTitle>{children}</StyledTitle>
-  </TouchableOpacity>
+  </StyledTouchable>
 )
 
 const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
   color: theme.colors.primary,
-  textAlign: 'center',
-  paddingBottom: getSpacing(4),
 }))
+
+const StyledTouchable = styledButton(Touchable)({
+  marginBottom: getSpacing(4),
+  alignSelf: 'center',
+})
