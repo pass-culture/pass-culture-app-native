@@ -13,9 +13,7 @@ export function LoggedOutHeader() {
   return (
     <Container>
       <Spacer.TopScreen />
-      <HeaderBackgroundWrapper>
-        <HeaderBackground />
-      </HeaderBackgroundWrapper>
+      <HeaderBackground height="100%" />
       <Spacer.Column numberOfSpaces={6} />
       <HeaderContent>
         <Title>{t`Profil`}</Title>
@@ -50,12 +48,6 @@ export function LoggedOutHeader() {
 
 const Container = styled.View({
   overflow: 'hidden',
-})
-
-const HeaderBackgroundWrapper = styled.View({
-  position: 'absolute',
-  top: 0,
-  maxHeight: getSpacing(73.5),
 })
 
 const HeaderContent = styled.View({

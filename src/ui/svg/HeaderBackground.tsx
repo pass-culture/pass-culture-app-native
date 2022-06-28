@@ -1,19 +1,44 @@
 import * as React from 'react'
 import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
 import { getSpacing } from '../theme'
 
-interface Props {
-  height?: number
+interface HeaderBackgroundProps {
+  height?: string | number
+  position?: 'absolute' | 'relative'
 }
 
-const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
+const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
+
+function NotMemoizedHeaderBackground({
+  height = HEADER_BACKGROUND_DEFAULT_SIZE,
+  position = 'absolute',
+}: HeaderBackgroundProps) {
+  return (
+    <BackgroundContainer height={height} position={position}>
+      <HeaderBackgroundSvg height={height} />
+    </BackgroundContainer>
+  )
+}
+
+const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, position, theme }) => ({
+  position,
+  top: 0,
+  left: 0,
+  right: 0,
+  height,
+  overflow: 'hidden',
+  zIndex: theme.zIndex.background,
+  backgroundColor: theme.colors.primary,
+}))
+
+const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
   const width = useTheme().appContentWidth + getSpacing(1)
-  const height = props.height || getSpacing(73.5)
+  const height = props.height || HEADER_BACKGROUND_DEFAULT_SIZE
   const { id: id1, fill: fill1 } = svgIdentifier()
   const { id: id2, fill: fill2 } = svgIdentifier()
   const { id: id3, xlinkHref: xlinkHref3 } = svgIdentifier()

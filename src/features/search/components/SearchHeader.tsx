@@ -17,9 +17,7 @@ export const SearchHeader: React.FC<Props> = ({ searchInputID }) => {
 
   return (
     <React.Fragment>
-      <HeaderBackgroundWrapper height={top + getSpacing(24)}>
-        <HeaderBackground />
-      </HeaderBackgroundWrapper>
+      <HeaderBackground height={top + getSpacing(24)} />
       <Spacer.TopScreen />
       <SearchBoxContainer height={inputHeight} testID="searchBoxWithoutRework">
         <SearchBox searchInputID={searchInputID} />
@@ -33,13 +31,4 @@ const SearchBoxContainer = styled.View<{ height: number }>(({ height }) => ({
   height,
   marginVertical: getSpacing(6),
   width: '90%',
-}))
-
-const HeaderBackgroundWrapper = styled.View<{ height: number }>(({ height, theme }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  height,
-  overflow: 'hidden',
-  zIndex: theme.zIndex.background,
 }))

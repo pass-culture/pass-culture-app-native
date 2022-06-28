@@ -14,13 +14,16 @@ exports[`Search component should render Search 1`] = `
 >
   <View
     height={112}
+    position="absolute"
     style={
       Array [
         Object {
+          "backgroundColor": "#eb0055",
           "height": 112,
           "left": 0,
           "overflow": "hidden",
           "position": "absolute",
+          "right": 0,
           "top": 0,
           "zIndex": -1,
         },
@@ -28,7 +31,7 @@ exports[`Search component should render Search 1`] = `
     }
   >
     <View
-      height={294}
+      height={112}
       width={964}
     >
       <Text>

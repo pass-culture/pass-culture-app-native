@@ -23,9 +23,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
   return (
     <Container testID={'ex-beneficiary-header'}>
       <Spacer.TopScreen />
-      <HeaderBackgroundWrapper>
-        <HeaderBackground />
-      </HeaderBackgroundWrapper>
+      <HeaderBackground height={getSpacing(45)} />
       <Spacer.Column numberOfSpaces={6} />
       <TitleContainer>
         <Title4>{name}</Title4>
@@ -67,12 +65,6 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
 const Container = styled.View({
   alignItems: 'center',
   paddingHorizontal: getSpacing(5.5),
-})
-
-const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(45),
-  overflow: 'hidden',
-  position: 'absolute',
 })
 
 const TitleContainer = styled.View({

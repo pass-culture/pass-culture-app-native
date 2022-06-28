@@ -26,9 +26,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
   return (
     <Container testID="beneficiary-header">
       <Spacer.TopScreen />
-      <HeaderBackgroundWrapper>
-        <HeaderBackground />
-      </HeaderBackgroundWrapper>
+      <HeaderBackground />
       <Spacer.Column numberOfSpaces={6} />
       <UserNameAndCredit>
         <Title>{name}</Title>
@@ -50,14 +48,6 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
 
 const Container = styled.View({
   paddingHorizontal: getSpacing(5.5),
-})
-
-const HeaderBackgroundWrapper = styled.View({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  maxHeight: getSpacing(73.5),
 })
 
 const UserNameAndCredit = styled.View({

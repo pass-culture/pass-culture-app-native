@@ -10,21 +10,21 @@ interface SvgPageHeaderProps {
   title: string
 }
 
-export default function SvgPageHeader({ title }: SvgPageHeaderProps) {
+export function SvgPageHeader({ title }: SvgPageHeaderProps) {
   const { top } = useCustomSafeInsets()
+  const maxHeight = getSpacing(14) + top
   return (
-    <HeaderBackgroundWrapper style={{ maxHeight: getSpacing(14) + top }}>
-      <HeaderBackground />
+    <HeaderBackgroundWrapper maxHeight={maxHeight}>
+      <HeaderBackground height="100%" position="relative" />
       <Title>{title}</Title>
     </HeaderBackgroundWrapper>
   )
 }
 
-const HeaderBackgroundWrapper = styled.View({
-  overflow: 'hidden',
-  position: 'relative',
+const HeaderBackgroundWrapper = styled.View<{ maxHeight?: number }>(({ maxHeight }) => ({
   alignItems: 'center',
-})
+  maxHeight,
+}))
 
 const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   position: 'absolute',

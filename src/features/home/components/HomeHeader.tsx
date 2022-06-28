@@ -41,9 +41,7 @@ export const HomeHeader: FunctionComponent = function () {
 
   return (
     <React.Fragment>
-      <HeaderBackgroundWrapper>
-        <HeaderBackground />
-      </HeaderBackgroundWrapper>
+      <HeaderBackground />
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
@@ -79,13 +77,6 @@ const CenterContainer = styled.View({
   flexGrow: 1,
   alignItems: 'center',
 })
-
-const HeaderBackgroundWrapper = styled.View(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  zIndex: theme.zIndex.background,
-}))
 
 const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',

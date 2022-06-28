@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
-import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
+import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
 
 export function Bookings() {
   return (

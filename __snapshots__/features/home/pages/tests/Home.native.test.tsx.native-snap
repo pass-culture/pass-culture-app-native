@@ -78,11 +78,17 @@ exports[`Home component should render correctly without login modal 1`] = `
               }
             />
             <View
+              height={294}
+              position="absolute"
               style={
                 Array [
                   Object {
+                    "backgroundColor": "#eb0055",
+                    "height": 294,
                     "left": 0,
+                    "overflow": "hidden",
                     "position": "absolute",
+                    "right": 0,
                     "top": 0,
                     "zIndex": -1,
                   },
