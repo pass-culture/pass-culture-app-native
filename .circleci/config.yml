@@ -867,12 +867,16 @@ workflows:
     jobs:
       - checkout-and-install-deps:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only: PC-14945-fix
+            # tags:
+            #   only: /.*/
       - checkout-and-install-proxy-deps:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only: PC-14945-fix
+            # tags:
+            #   only: /.*/
       - test-proxy:
           requires:
             - checkout-and-install-proxy-deps
@@ -912,24 +916,28 @@ workflows:
 
       - deploy-android-testing-hard:
           filters:
-            tags:
-              only: /^testing\/v.*/
             branches:
-              ignore: /.*/
+              only: PC-14945-fix
+            # tags:
+            #   only: /^testing\/v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-ios-testing-hard:
           filters:
-            tags:
-              only: /^testing\/v.*/
             branches:
-              ignore: /.*/
+              only: PC-14945-fix
+            # tags:
+            #   only: /^testing\/v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - notify-hard-testing-release:
           filters:
             tags:
