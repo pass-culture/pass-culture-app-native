@@ -97,6 +97,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         }
       >
         <View
+          accessibilityRole="button"
           accessibilityState={
             Object {
               "disabled": true,
@@ -114,6 +115,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             Object {
+              "alignSelf": "center",
+              "marginBottom": 16,
               "opacity": 1,
               "userSelect": "auto",
             }
@@ -131,8 +134,6 @@ exports[`<TicketWithContent/> should render properly 1`] = `
                 },
                 Object {
                   "color": "#eb0055",
-                  "paddingBottom": 16,
-                  "textAlign": "center",
                 },
               ]
             }

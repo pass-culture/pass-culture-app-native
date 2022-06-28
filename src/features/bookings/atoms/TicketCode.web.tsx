@@ -23,7 +23,11 @@ export function TicketCode({ code, withdrawalType }: TicketCodeProps) {
   }, [code])
 
   if (withdrawalType === undefined || withdrawalType === WithdrawalTypeEnum.on_site) {
-    return <TicketCodeTitle onPress={copyToClipboard}>{code}</TicketCodeTitle>
+    return (
+      <TicketCodeTitle accessibilityLabel={t`Copier le code`} onPress={copyToClipboard}>
+        {code}
+      </TicketCodeTitle>
+    )
   }
 
   return null

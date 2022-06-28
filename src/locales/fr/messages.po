@@ -771,6 +771,10 @@ msgstr "Copier"
 msgid "Copier dans le press-papier"
 msgstr "Copier dans le press-papier"
 
+#: src/features/bookings/atoms/TicketCode.web.tsx
+msgid "Copier le code"
+msgstr "Copier le code"
+
 #: src/libs/share/WebShareModal.web.tsx
 msgid "Copier le lien"
 msgstr "Copier le lien"

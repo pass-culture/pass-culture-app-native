@@ -108,30 +108,14 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           }
         }
       >
-        <div
-          className="css-view-1dbjc4n"
-          onBlur={[Function]}
+        <button
+          aria-label="Copier le code"
+          className="sc-bdvvtL bmzymd sc-gsDKAQ cvEfWt sc-gsDKAQ cvEfWt"
+          disabled={false}
           onClick={[Function]}
-          onContextMenu={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          style={
-            Object {
-              "MozTransitionProperty": "opacity",
-              "MozUserSelect": "auto",
-              "WebkitTransitionDuration": "0s",
-              "WebkitTransitionProperty": "opacity",
-              "WebkitUserSelect": "auto",
-              "cursor": "pointer",
-              "msTouchAction": "manipulation",
-              "msUserSelect": "auto",
-              "touchAction": "manipulation",
-              "transitionDuration": "0s",
-              "transitionProperty": "opacity",
-              "userSelect": "auto",
-            }
-          }
           tabIndex="0"
+          title="Copier le code"
+          type="button"
         >
           <h2
             aria-level={2}
@@ -144,14 +128,12 @@ exports[`<TicketWithContent/> should render properly 1`] = `
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": "22px",
                 "lineHeight": "28px",
-                "paddingBottom": "16px",
-                "textAlign": "center",
               }
             }
           >
             352UW4
           </h2>
-        </div>
+        </button>
         <div
           className="css-view-1dbjc4n"
           data-testid="qr-code"
