@@ -25,9 +25,7 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
   const searchBoxWithLabel = () => {
     return (
       <React.Fragment>
-        <HeaderBackgroundWrapperWithLabel height={top + getSpacing(20)}>
-          <HeaderBackground />
-        </HeaderBackgroundWrapperWithLabel>
+        <HeaderBackground height={top + getSpacing(20)} />
         <Spacer.TopScreen />
         <SearchBoxContainer testID="searchBoxWithLabel">
           <View {...getHeadingAttrs(1)}>
@@ -45,12 +43,14 @@ export const SearchHeaderRework: React.FC<Props> = ({ searchInputID, onFocusStat
     )
   }
 
+  // If top is equal to 0, the Header Background will be displayed with its default size
+  const headerBackground = top ? <HeaderBackground height={top} /> : null
+
   const searchBoxWithoutLabel = () => {
     return (
       <React.Fragment>
-        <HeaderBackgroundWrapperWithoutLabel maxHeight={top}>
-          <HeaderBackground />
-        </HeaderBackgroundWrapperWithoutLabel>
+        {headerBackground}
+        <Spacer.TopScreen />
         <SearchBoxContainer testID="searchBoxWithoutLabel">
           <SearchBoxRework
             searchInputID={searchInputID}
@@ -75,21 +75,6 @@ const SearchBoxContainer = styled.View({
   paddingHorizontal: getSpacing(6),
   zIndex: 1,
 })
-
-const HeaderBackgroundWrapperWithLabel = styled.View<{ height: number }>(({ height, theme }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  height,
-  overflow: 'hidden',
-  zIndex: theme.zIndex.background,
-}))
-
-const HeaderBackgroundWrapperWithoutLabel = styled.View<{ maxHeight: number }>(({ maxHeight }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  maxHeight,
-}))
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.title4,
