@@ -6,23 +6,8 @@ import { QueryFunction } from 'react-query/types/core/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfo } from 'libs/network/useNetInfo'
 
-export type UsePersistQuery<TData, TError> = UseQueryResult<TData, TError> & {
-  isOfflineData?: boolean
-}
-
-export function usePersistQuery<
-  TQueryFnData = unknown,
-  TError = unknown,
-  TData = TQueryFnData,
-  TQueryKey extends QueryKey = QueryKey
->(
-  queryKey: TQueryKey,
-  queryFn: QueryFunction<TQueryFnData, TQueryKey>,
-  options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey'>
-): UsePersistQuery<TData, TError> {
-  const netInfo = useNetInfo()
+function useGetPersistData<TData, TQueryKey>(queryKey: TQueryKey) {
   const [persistData, setPersistData] = useState<TData | undefined>()
-
   useEffect(() => {
     if (!persistData) {
       AsyncStorage.getItem(String(queryKey))
@@ -36,6 +21,38 @@ export function usePersistQuery<
         })
     }
   }, [persistData, queryKey])
+  return persistData
+}
+
+function useSetPersistQuery<TData, TError, TQueryKey>(
+  query: UseQueryResult<TData, TError>,
+  queryKey: TQueryKey
+) {
+  useEffect(() => {
+    if (!query.isLoading && query.data) {
+      AsyncStorage.setItem(String(queryKey), JSON.stringify(query.data)).catch((error) => {
+        eventMonitoring.captureException(error, { context: { queryKey, data: query.data } })
+      })
+    }
+  }, [query.data, query.isLoading, queryKey])
+}
+
+export type UsePersistQueryResult<TData, TError> = UseQueryResult<TData, TError> & {
+  isOfflineData?: boolean
+}
+
+export function usePersistQuery<
+  TQueryFnData = unknown,
+  TError = unknown,
+  TData = TQueryFnData,
+  TQueryKey extends QueryKey = QueryKey
+>(
+  queryKey: TQueryKey,
+  queryFn: QueryFunction<TQueryFnData, TQueryKey>,
+  options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey'>
+): UsePersistQueryResult<TData, TError> {
+  const netInfo = useNetInfo()
+  const persistData = useGetPersistData(queryKey)
 
   const query = useQuery<TQueryFnData, TError, TData, TQueryKey>(queryKey, queryFn, {
     ...options,
@@ -45,28 +62,21 @@ export function usePersistQuery<
         : !!netInfo.isConnected,
   })
 
-  const persistQuery = useMemo<UsePersistQuery<TData, TError>>(() => {
-    if (persistData) {
-      return {
-        ...query,
-        // @ts-ignore useQuery select options does not offer to pass typing to useQuery, cast should happen within passed selected
-        data: options?.select ? options.select(persistData as any) : persistData,
-        isOfflineData: true,
-      } as UsePersistQuery<TData, TError>
-    }
-    return query
-  }, [persistData, query, options])
+  const persistQuery = useMemo<UsePersistQueryResult<TData, TError>>(
+    () =>
+      !persistData
+        ? query
+        : ({
+            ...query,
+            // @ts-ignore useQuery select options does not offer to pass typing to useQuery,
+            // cast should happen within passed selected
+            data: options?.select ? options.select(persistData as any) : persistData,
+            isOfflineData: true,
+          } as UsePersistQueryResult<TData, TError>),
+    [persistData, query, options]
+  )
 
-  useEffect(() => {
-    if (!query.isLoading && query.data) {
-      AsyncStorage.setItem(String(queryKey), JSON.stringify(query.data)).catch((error) => {
-        eventMonitoring.captureException(error, { context: { queryKey, data: query.data } })
-      })
-    }
-  }, [query.data, query.isLoading, queryKey])
+  useSetPersistQuery(query, queryKey)
 
-  if (!query.data && persistData) {
-    return persistQuery
-  }
-  return query
+  return !query.data && persistData ? persistQuery : query
 }
