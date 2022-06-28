@@ -22,5 +22,5 @@ export enum VenuesFacets {
   tags = 'tags',
   venue_type = 'venue_type',
   // TODO(PC-15233): rename this field by has_at_least_one_bookable_offer
-  is_eligible_for_strict_search = 'is_eligible_for_strict_search',
+  has_at_least_one_bookable_offer = 'has_at_least_one_bookable_offer',
 }

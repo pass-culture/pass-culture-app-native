@@ -66,8 +66,10 @@ export const buildVenuesQueryOptions = (
   }
 
   // We want to show on home page only venues that have at least one offer that is searchable in algolia
-  const isEligibleForSearchPredicate = [`${VenuesFacets.is_eligible_for_strict_search}:true`]
-  facetFilters.push(isEligibleForSearchPredicate)
+  const hasAtLeastOneBookableOfferPredicate = [
+    `${VenuesFacets.has_at_least_one_bookable_offer}:true`,
+  ]
+  facetFilters.push(hasAtLeastOneBookableOfferPredicate)
 
   return {
     ...buildGeolocationParameter(locationFilter, userLocation),
