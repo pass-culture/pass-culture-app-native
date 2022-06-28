@@ -15,7 +15,7 @@ export function SvgPageHeader({ title }: SvgPageHeaderProps) {
   const maxHeight = getSpacing(14) + top
   return (
     <HeaderBackgroundWrapper maxHeight={maxHeight}>
-      <HeaderBackground height={'100%'} position="relative" />
+      <HeaderBackground height="100%" position="relative" />
       <Title>{title}</Title>
     </HeaderBackgroundWrapper>
   )

@@ -13,7 +13,7 @@ export function LoggedOutHeader() {
   return (
     <Container>
       <Spacer.TopScreen />
-      <HeaderBackground height={'100%'} />
+      <HeaderBackground height="100%" />
       <Spacer.Column numberOfSpaces={6} />
       <HeaderContent>
         <Title>{t`Profil`}</Title>

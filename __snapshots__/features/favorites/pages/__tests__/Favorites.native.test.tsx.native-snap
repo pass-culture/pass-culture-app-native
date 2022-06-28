@@ -29,8 +29,10 @@ exports[`Favorites component should render correctly 1`] = `
       style={
         Array [
           Object {
+            "backgroundColor": "#eb0055",
             "height": "100%",
             "left": 0,
+            "overflow": "hidden",
             "position": "relative",
             "right": 0,
             "top": 0,

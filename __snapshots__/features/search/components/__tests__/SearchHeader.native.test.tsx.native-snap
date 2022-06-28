@@ -8,8 +8,10 @@ Array [
     style={
       Array [
         Object {
+          "backgroundColor": "#eb0055",
           "height": 112,
           "left": 0,
+          "overflow": "hidden",
           "position": "absolute",
           "right": 0,
           "top": 0,

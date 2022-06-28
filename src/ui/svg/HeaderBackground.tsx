@@ -26,12 +26,14 @@ function NotMemoizedHeaderBackground({
 }
 
 const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, position, theme }) => ({
-  position: position ?? 'absolute',
+  position,
   top: 0,
   left: 0,
   right: 0,
-  height: height ?? HEADER_BACKGROUND_DEFAULT_SIZE,
+  height,
+  overflow: 'hidden',
   zIndex: theme.zIndex.background,
+  backgroundColor: theme.colors.primary,
 }))
 
 const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
