@@ -22,15 +22,15 @@ const SnackBarContext = createContext<SnackBarContextValue>({
 })
 
 export const SnackBarProvider = memo(function SnackBarProviderComponent({ children }) {
-  const { colors } = useTheme()
+  const theme = useTheme()
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',
     onClose: undefined,
     icon: undefined,
-    backgroundColor: colors.transparent,
-    progressBarColor: colors.transparent,
-    color: colors.white,
+    backgroundColor: theme.colors.transparent,
+    progressBarColor: theme.colors.transparent,
+    color: theme.colors.white,
     refresher: 0,
   })
 
@@ -45,17 +45,17 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({ childr
     showErrorSnackBar: (settings) =>
       showSnackBar({
         ...settings,
-        ...mapSnackBarTypeToStyle(SnackBarType.ERROR),
+        ...mapSnackBarTypeToStyle(theme, SnackBarType.ERROR),
       }),
     showInfoSnackBar: (settings) =>
       showSnackBar({
         ...settings,
-        ...mapSnackBarTypeToStyle(SnackBarType.INFO),
+        ...mapSnackBarTypeToStyle(theme, SnackBarType.INFO),
       }),
     showSuccessSnackBar: (settings) =>
       showSnackBar({
         ...settings,
-        ...mapSnackBarTypeToStyle(SnackBarType.SUCCESS),
+        ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS),
       }),
   })
 

@@ -25,8 +25,7 @@ import {
   useMutationFactory,
   flushAllPromises,
 } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 // eslint-disable-next-line local-rules/no-allow-console
 // allowConsole({ error: true })
@@ -119,7 +118,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
       await act(flushAllPromises)
-      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+      expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.primary)
     })
 
     it.each([
@@ -129,7 +128,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
       const continueButton = getByTestId('Continuer')
       await act(flushAllPromises)
-      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.greyLight)
     })
 
     it('should display input error message if validate phone number request fails', async () => {

@@ -1,16 +1,23 @@
 import React from 'react'
 
 import { render } from 'tests/utils/web'
+import { theme } from 'theme'
 import { Close } from 'ui/svg/icons/Close'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { AnimatedProgressBar } from './AnimatedProgressBar'
+
+jest.mock('theme', () => ({
+  theme: {
+    colors: {
+      primary: 'rgb(235, 0, 85)', // We need the RGB value of primary for these tests
+    },
+  },
+}))
 
 describe('AnimatedProgressBar', () => {
   it('should render properly', () => {
     const expectedProgress = 0.5
-    const expectedBackgroundColor = ColorsEnum.PRIMARY
+    const expectedBackgroundColor = theme.colors.primary
 
     const renderAPI = render(
       <AnimatedProgressBar
@@ -24,11 +31,11 @@ describe('AnimatedProgressBar', () => {
   })
   it('should have the right length and color', () => {
     const expectedProgress = 0.5
-    const expectedBackgroundColor = 'rgb(235, 0, 85)'
+    const expectedBackgroundColor = theme.colors.primary
 
     const { getByText, getByTestId } = render(
       <AnimatedProgressBar
-        color={expectedBackgroundColor as ColorsEnum}
+        color={expectedBackgroundColor}
         progress={expectedProgress}
         icon={Close}
       />
@@ -46,11 +53,11 @@ describe('AnimatedProgressBar', () => {
 
   it('should have the right length and color when animated', () => {
     const expectedProgress = 0.5
-    const expectedBackgroundColor = 'rgb(235, 0, 85)'
+    const expectedBackgroundColor = theme.colors.primary
 
     const { getByText, getByTestId } = render(
       <AnimatedProgressBar
-        color={expectedBackgroundColor as ColorsEnum}
+        color={expectedBackgroundColor}
         progress={expectedProgress}
         icon={Close}
         isAnimated

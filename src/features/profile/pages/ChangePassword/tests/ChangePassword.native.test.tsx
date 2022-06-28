@@ -9,10 +9,9 @@ import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises, superFlushWithAct, render, act, fireEvent } from 'tests/utils'
+import { theme } from 'theme'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { ChangePassword } from '../ChangePassword'
 
@@ -46,7 +45,7 @@ describe('ChangePassword', () => {
     const continueButton = getByTestId('Enregistrer')
 
     const background = continueButton.props.style.backgroundColor
-    expect(background).toEqual(ColorsEnum.PRIMARY)
+    expect(background).toEqual(theme.colors.primary)
   })
 
   it('should display the matching error when the passwords dont match', async () => {
@@ -61,7 +60,7 @@ describe('ChangePassword', () => {
     const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
 
     const color = notMatchingErrorText.props.style[0].color
-    expect(color).toEqual(ColorsEnum.ERROR)
+    expect(color).toEqual(theme.colors.error)
   })
 
   it('should validate PasswordSecurityRules when password is correct', async () => {

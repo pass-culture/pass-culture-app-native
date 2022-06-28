@@ -2,8 +2,7 @@
 import React from 'react'
 
 import { render } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { CheckboxInput } from './CheckboxInput'
 
@@ -15,7 +14,7 @@ describe('<CheckboxInput />', () => {
     const { getByTestId } = render(NotCheckedCheckboxInput)
 
     const renderedCheckbox = getByTestId('checkbox')
-    expect(renderedCheckbox.props.style[0].backgroundColor).toEqual(ColorsEnum.WHITE)
+    expect(renderedCheckbox.props.style[0].backgroundColor).toEqual(theme.colors.white)
   })
 
   it('should render correctly when checked', () => {

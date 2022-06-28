@@ -3,10 +3,10 @@ import { Animated } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render } from 'tests/utils/web'
+import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { Logo } from '../../svg/icons/Logo'
-import { ColorsEnum } from '../../theme/colors'
 import { AnimatedIcon } from '../AnimatedIcon'
 
 const DummyComponent: React.FC = () => {
@@ -21,8 +21,8 @@ const DummyComponent: React.FC = () => {
         Icon={Logo}
         testID="icon"
         size={1}
-        initialColor={ColorsEnum.PRIMARY}
-        finalColor={ColorsEnum.SECONDARY}
+        initialColor={theme.colors.primary}
+        finalColor={theme.colors.secondary}
       />
     </TouchableOpacity>
   )

@@ -2,8 +2,6 @@ import React from 'react'
 
 import { fireEvent, render } from 'tests/utils/web'
 import { theme } from 'theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { DotComponent, getDotColors } from './DotComponent'
 
@@ -40,27 +38,27 @@ describe('<DotComponent />', () => {
 
   it('should get grey medium color when after active index', () => {
     const { borderColor, fillColor } = getDotColors(theme, 2, 1)
-    expect(borderColor).toBe(ColorsEnum.GREY_DARK)
-    expect(fillColor).toBe(ColorsEnum.TRANSPARENT)
+    expect(borderColor).toBe(theme.colors.greyDark)
+    expect(fillColor).toBe(theme.colors.transparent)
   })
 
   it('should get primary color when active index', () => {
     const { borderColor, fillColor } = getDotColors(theme, 2, 2)
-    expect(borderColor).toBe(ColorsEnum.PRIMARY)
-    expect(fillColor).toBe(ColorsEnum.PRIMARY)
+    expect(borderColor).toBe(theme.colors.primary)
+    expect(fillColor).toBe(theme.colors.primary)
   })
 
   it('should get green valid color when before active index', () => {
     const { borderColor, fillColor } = getDotColors(theme, 1, 2)
-    expect(borderColor).toBe(ColorsEnum.GREEN_VALID)
-    expect(fillColor).toBe(ColorsEnum.GREEN_VALID)
+    expect(borderColor).toBe(theme.colors.greenValid)
+    expect(fillColor).toBe(theme.colors.greenValid)
   })
 
   it('should get neutral color when before active index if withNeutralPreviousStepsColor is true', () => {
     const withNeutralPreviousStepsColor = true
     const { borderColor, fillColor } = getDotColors(theme, 1, 2, withNeutralPreviousStepsColor)
-    expect(borderColor).toBe(ColorsEnum.GREY_DARK)
-    expect(fillColor).toBe(ColorsEnum.TRANSPARENT)
+    expect(borderColor).toBe(theme.colors.greyDark)
+    expect(fillColor).toBe(theme.colors.transparent)
   })
 })
 

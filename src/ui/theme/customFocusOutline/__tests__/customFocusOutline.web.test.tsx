@@ -1,11 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks'
 
 import { theme } from 'theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-const color = ColorsEnum.WHITE
+const color = theme.colors.white
 let isFocus = true
 
 describe('customWebFocusOutline', () => {

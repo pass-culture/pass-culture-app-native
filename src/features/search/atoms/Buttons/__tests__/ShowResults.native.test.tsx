@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { render } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { ShowResults } from '../ShowResults'
 
@@ -29,7 +28,7 @@ describe('<ShowResults />', () => {
       const { getByText, getByTestId } = render(<ShowResults />)
       getByText(expected)
 
-      const expectedColor = disabled ? ColorsEnum.GREY_LIGHT : ColorsEnum.PRIMARY
+      const expectedColor = disabled ? theme.colors.greyLight : theme.colors.primary
       expect(getByTestId(expected).props.style.backgroundColor).toBe(expectedColor)
     }
   )

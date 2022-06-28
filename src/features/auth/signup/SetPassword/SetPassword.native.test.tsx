@@ -2,8 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { SetPassword } from './SetPassword'
 
@@ -21,7 +20,7 @@ describe('SetPassword Page', () => {
     const continueButton = getByTestId('Continuer')
 
     const background = continueButton.props.style.backgroundColor
-    expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+    expect(background).toEqual(theme.colors.greyLight)
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
 
@@ -29,7 +28,7 @@ describe('SetPassword Page', () => {
 
     await waitFor(async () => {
       const background = continueButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.PRIMARY)
+      expect(background).toEqual(theme.colors.primary)
     })
   })
 

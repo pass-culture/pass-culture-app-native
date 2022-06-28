@@ -4,8 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { fireEvent, render, waitFor } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 jest.mock('features/auth/settings')
 const mockDispatch = jest.fn()
@@ -35,7 +34,7 @@ describe('<SetName/>', () => {
     const continueButton = getByTestId('Continuer')
 
     const background = continueButton.props.style.backgroundColor
-    expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+    expect(background).toEqual(theme.colors.greyLight)
 
     const firstNameInput = getByPlaceholderText('Ton prénom')
     const lastNameInput = getByPlaceholderText('Ton nom')
@@ -44,7 +43,7 @@ describe('<SetName/>', () => {
 
     await waitFor(async () => {
       const background = continueButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.PRIMARY)
+      expect(background).toEqual(theme.colors.primary)
     })
   })
 

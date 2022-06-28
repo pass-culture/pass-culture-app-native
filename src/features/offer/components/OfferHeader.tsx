@@ -38,7 +38,7 @@ interface Props {
 export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
-  const { colors, accessibilityRole } = useTheme()
+  const theme = useTheme()
   const {
     visible: signInModalVisible,
     showModal: showSignInModal,
@@ -87,7 +87,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     },
   })
 
-  const { animationState, backgroundColor } = getAnimationState(headerTransition)
+  const { animationState, backgroundColor } = getAnimationState(theme, headerTransition)
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
 
   function pressFavorite() {
@@ -141,11 +141,11 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <HeaderIcon
             animationState={animationState}
             scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
-            initialColor={favorite ? colors.primary : undefined}
+            initialColor={favorite ? theme.colors.primary : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
             testID={t`Mettre en favoris`}
-            accessibilityRole={accessibilityRole.checkbox}
+            accessibilityRole={theme.accessibilityRole.checkbox}
             accessibilityState={{ checked: !!favorite }}
           />
           <Spacer.Row numberOfSpaces={6} />

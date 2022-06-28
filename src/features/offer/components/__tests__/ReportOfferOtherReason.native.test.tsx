@@ -6,9 +6,8 @@ import waitForExpect from 'wait-for-expect'
 import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { theme } from 'theme'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 jest.mock('react-query')
 
@@ -33,13 +32,13 @@ describe('<ReportOfferOtherReason />', () => {
       const { getByTestId } = renderReportOfferOtherReason()
 
       const reportButton = getByTestId('report-other-button')
-      expect(reportButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(reportButton.props.style.backgroundColor).toEqual(theme.colors.greyLight)
 
       const largeTextInput = getByTestId('large-text-input')
       fireEvent.changeText(largeTextInput, 'Hello !')
 
       await waitForExpect(() => {
-        expect(reportButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+        expect(reportButton.props.style.backgroundColor).toEqual(theme.colors.primary)
       })
     })
 

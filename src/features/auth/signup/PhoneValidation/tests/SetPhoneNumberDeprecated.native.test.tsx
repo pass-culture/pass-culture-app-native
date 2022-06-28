@@ -16,8 +16,7 @@ import {
   superFlushWithAct,
   useMutationFactory,
 } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 jest.mock('react-query')
 
@@ -54,12 +53,12 @@ describe('SetPhoneNumber', () => {
 
       const button = getByTestId('Continuer')
 
-      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
 
       const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, '612345678')
 
-      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+      expect(button.props.style.backgroundColor).toEqual(theme.colors.primary)
     })
 
     it.each([
@@ -73,13 +72,13 @@ describe('SetPhoneNumber', () => {
 
       const button = getByTestId('Continuer')
 
-      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
 
       const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, phoneNumber)
 
       await waitForExpect(() =>
-        expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+        expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
       )
     })
 

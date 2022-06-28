@@ -2,8 +2,7 @@ import React from 'react'
 
 import { ExpenseDomain } from 'api/gen'
 import { render } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { theme } from 'theme'
 
 import { CreditCeiling } from './CreditCeiling'
 
@@ -45,6 +44,6 @@ describe('CreditCeiling', () => {
       />
     )
     const progressBar = getByTestId('animated-progress-bar')
-    expect(progressBar.props.backgroundColor).toBe(ColorsEnum.GREY_DARK)
+    expect(progressBar.props.backgroundColor).toBe(theme.colors.greyDark)
   })
 })
