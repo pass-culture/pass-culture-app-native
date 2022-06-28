@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C1955A99E745B9B354F57A /* AppDelegate.m */; };
+		169ADE7F286B68770097D949 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169ADE7E286B68770097D949 /* NotificationService.swift */; };
+		169ADE83286B68770097D949 /* RichNotificationsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 169ADE7C286B68770097D949 /* RichNotificationsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
@@ -26,7 +28,28 @@
 		FDED59262FBBE5B4AB33E814 /* libPods-PassCulture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FBB194E5DF2C29156814D6 /* libPods-PassCulture.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		169ADE81286B68770097D949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD2E04E3714A40F5958ADCD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 169ADE7B286B68770097D949;
+			remoteInfo = RichNotificationsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		169ADE84286B68770097D949 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				169ADE83286B68770097D949 /* RichNotificationsExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78212E04267B904800A8913E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,6 +66,9 @@
 
 /* Begin PBXFileReference section */
 		030D8707D3F8414C91A9D78A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PassCulture/AppDelegate.h; sourceTree = "<group>"; };
+		169ADE7C286B68770097D949 /* RichNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		169ADE7E286B68770097D949 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		169ADE80286B68770097D949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		364C381B59463043D7637B91 /* Pods-PassCulture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.release.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.release.xcconfig"; sourceTree = "<group>"; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
@@ -72,6 +98,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		169ADE79286B68770097D949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF9265DAA24E49F5A7E5EDBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		169ADE7D286B68770097D949 /* RichNotificationsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				169ADE7E286B68770097D949 /* NotificationService.swift */,
+				169ADE80286B68770097D949 /* Info.plist */,
+			);
+			path = RichNotificationsExtension;
+			sourceTree = "<group>";
+		};
 		2F09B5F584694FA397052BFB /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +141,7 @@
 				6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */,
 				4F80AFA8A04449E4B81411BE /* PassCulture */,
 				2F09B5F584694FA397052BFB /* Libraries */,
+				169ADE7D286B68770097D949 /* RichNotificationsExtension */,
 				EB02EDD0A6CC42B28A408830 /* Products */,
 				77E58495325A4481BF007316 /* Frameworks */,
 				D2B9297F2C754E49AAED936C /* Pods */,
@@ -165,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAEF50B8632400B8EEB6469 /* PassCulture.app */,
+				169ADE7C286B68770097D949 /* RichNotificationsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +216,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		169ADE7B286B68770097D949 /* RichNotificationsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 169ADE87286B68770097D949 /* Build configuration list for PBXNativeTarget "RichNotificationsExtension" */;
+			buildPhases = (
+				169ADE78286B68770097D949 /* Sources */,
+				169ADE79286B68770097D949 /* Frameworks */,
+				169ADE7A286B68770097D949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RichNotificationsExtension;
+			productName = RichNotificationsExtension;
+			productReference = 169ADE7C286B68770097D949 /* RichNotificationsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5A4125C241FC47CCB40AF3D4 /* PassCulture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D19BBFEC21BA49D2987E1E5F /* Build configuration list for PBXNativeTarget "PassCulture" */;
@@ -187,10 +248,12 @@
 				C417FF480BAB4310D39A8868 /* [CP] Copy Pods Resources */,
 				6118FC3F4A398138AE514EB7 /* [CP-User] [RNFB] Core Configuration */,
 				260533F25B7E4D4284853996 /* Upload Debug Symbols to Sentry */,
+				169ADE84286B68770097D949 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				169ADE82286B68770097D949 /* PBXTargetDependency */,
 			);
 			name = PassCulture;
 			productName = PassCulture;
@@ -203,9 +266,13 @@
 		CD2E04E3714A40F5958ADCD0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = PassCulture;
 				TargetAttributes = {
+					169ADE7B286B68770097D949 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					5A4125C241FC47CCB40AF3D4 = {
 						DevelopmentTeam = WBC4X3LRTS;
 						LastSwiftMigration = 1130;
@@ -226,11 +293,19 @@
 			projectRoot = "";
 			targets = (
 				5A4125C241FC47CCB40AF3D4 /* PassCulture */,
+				169ADE7B286B68770097D949 /* RichNotificationsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		169ADE7A286B68770097D949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9A16669FD424A8AA0F84376 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +456,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		169ADE78286B68770097D949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				169ADE7F286B68770097D949 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CD2851957C741289489E339 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,11 +476,20 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		169ADE82286B68770097D949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 169ADE7B286B68770097D949 /* RichNotificationsExtension */;
+			targetProxy = 169ADE81286B68770097D949 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		088BAA7B42054CE9AB04E28D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4AC6F5229DD6B491FBEF3FD8 /* Pods-PassCulture.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "$(IOS_APP_ICON)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PassCulture/PassCulture.entitlements;
@@ -437,10 +529,93 @@
 			};
 			name = Debug;
 		};
+		169ADE85286B68770097D949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "$(IOS_TEAM_ID)";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RichNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RichNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 PassCulture. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = app.passculture.test.RichNotificationsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		169ADE86286B68770097D949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "$(IOS_TEAM_ID)";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RichNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RichNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 PassCulture. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = app.passculture.test.RichNotificationsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		6AF8480A0AB74BD4819AE26A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 364C381B59463043D7637B91 /* Pods-PassCulture.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "$(IOS_APP_ICON)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PassCulture/PassCulture.entitlements;
@@ -600,6 +775,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		169ADE87286B68770097D949 /* Build configuration list for PBXNativeTarget "RichNotificationsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				169ADE85286B68770097D949 /* Debug */,
+				169ADE86286B68770097D949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		798F19CA4A3D47C18E2967A0 /* Build configuration list for PBXProject "PassCulture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

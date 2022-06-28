@@ -8,6 +8,7 @@ PODS:
   - AppsFlyerFramework/Main (6.4.4)
   - Base64 (1.1.2)
   - Batch (1.19.0)
+  - BatchExtension-ObjC (3.0.0)
   - BatchFirebaseDispatcher (3.0.0):
     - Batch (~> 1.19)
     - Firebase/Analytics
@@ -660,6 +661,7 @@ PODS:
 DEPENDENCIES:
   - "amplitude-react-native (from `../node_modules/@amplitude/react-native`)"
   - Batch (~> 1.17)
+  - BatchExtension-ObjC
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
@@ -765,6 +767,7 @@ SPEC REPOS:
     - AppsFlyerFramework
     - Base64
     - Batch
+    - BatchExtension-ObjC
     - BatchFirebaseDispatcher
     - CocoaAsyncSocket
     - Firebase
@@ -961,6 +964,7 @@ SPEC CHECKSUMS:
   AppsFlyerFramework: 6ea252ecb04cf443550576922cddb95b35c958ed
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 9e55d8217609dfe8f11cd5e78ca88ebffd9e5115
+  BatchExtension-ObjC: 2ef21e8c1bdd129f9cce122c56c994f55edcd8e1
   BatchFirebaseDispatcher: 6758d8dc969b75c667908d922b708ab942690fc0
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
@@ -975,7 +979,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
   FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
   FirebaseDynamicLinks: 1dc816ef789c5adac6fede0b46d11478175c70e4
-  FirebaseFirestore: cb361b7f8f225a225c9f11b8d42066baebb1630c
+  FirebaseFirestore: 3a0a7e1e72e4359b92d4c38de06d84e4c4900c0a
   FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
   FirebasePerformance: 66eb58c3e3568a0501a9be271c8ff424dea0ff34
   FirebaseRemoteConfig: 2d6e2cfdb49af79535c8af8a80a4a5009038ec2b
@@ -989,7 +993,7 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: 6ff8327c15058e9e220f27f150431a50cd41c4cf
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 476ee3e89abb49e07f822b48323c51c57124b572
+  glog: 5337263514dd6f09803962437687240c5dc39aa4
   GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -1005,7 +1009,7 @@ SPEC CHECKSUMS:
   Permission-LocationWhenInUse: d98db702ec75e93a3ff94bc297d0b66ea04231e1
   Permission-Notifications: e247d69c22ae72770d1c5314ad6ccd1256c57c83
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
-  RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
+  RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
   RCTRequired: 3e917ea5377751094f38145fdece525aa90545a0
   RCTTypeSafety: c43c072a4bd60feb49a9570b0517892b4305c45e
   React: 176dd882de001854ced260fad41bb68a31aa4bd0
@@ -1070,6 +1074,6 @@ SPEC CHECKSUMS:
   Yoga: 99652481fcd320aefa4a7ef90095b95acd181952
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 69a57d444c1f220c476b15f6975b94a38ba9ab37
+PODFILE CHECKSUM: ff42183281b272aba102218111a27ae8601bfa22
 
 COCOAPODS: 1.11.3
