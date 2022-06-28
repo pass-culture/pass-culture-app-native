@@ -22,18 +22,23 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
     }
   />
   <View
+    height="100%"
+    position="absolute"
     style={
       Array [
         Object {
-          "maxHeight": 294,
+          "height": "100%",
+          "left": 0,
           "position": "absolute",
+          "right": 0,
           "top": 0,
+          "zIndex": -1,
         },
       ]
     }
   >
     <View
-      height={294}
+      height="100%"
       width={964}
     >
       <Text>

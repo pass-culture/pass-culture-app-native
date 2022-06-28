@@ -69,26 +69,40 @@ exports[`Profile component should render correctly 1`] = `
           >
             <View>
               <View
+                maxHeight={72}
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "overflow": "hidden",
-                      "position": "relative",
-                    },
-                    Object {
                       "maxHeight": 72,
                     },
                   ]
                 }
               >
                 <View
-                  height={294}
-                  width={964}
+                  height="100%"
+                  position="relative"
+                  style={
+                    Array [
+                      Object {
+                        "height": "100%",
+                        "left": 0,
+                        "position": "relative",
+                        "right": 0,
+                        "top": 0,
+                        "zIndex": -1,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                  <View
+                    height="100%"
+                    width={964}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
                 <Text
                   style={
