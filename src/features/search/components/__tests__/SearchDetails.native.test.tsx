@@ -63,6 +63,13 @@ jest.mock('@react-navigation/native', () => ({
   useIsFocused: jest.fn(),
 }))
 
+jest.mock('react-instantsearch-hooks', () => ({
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+}))
+
 describe('SearchDetails component', () => {
   const isSetShowAutocomplete = jest.fn
   it('should render SearchDetails', () => {
@@ -77,7 +84,7 @@ describe('SearchDetails component', () => {
     ).toMatchSnapshot()
   })
 
-  it('should show results if search executed and suggestions not visible', () => {
+  it('should show results if search executed and autocomplete list display flag is false', () => {
     mockSearchState.showResults = true
     const { queryByTestId } = render(
       <SearchDetails
@@ -89,8 +96,32 @@ describe('SearchDetails component', () => {
     expect(queryByTestId('searchResults')).toBeTruthy()
   })
 
-  it('should show suggestions if search not executed', () => {
+  it('should not show results if search executed and autocomplete list display flag is true', () => {
+    mockSearchState.showResults = true
+    const { queryByTestId } = render(
+      <SearchDetails
+        isShowAutocomplete={true}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isSetShowAutocomplete={isSetShowAutocomplete}
+      />
+    )
+    expect(queryByTestId('searchResults')).toBeFalsy()
+  })
+
+  it('should show autocomplete list if search not executed and autocomplete list display flag is true', () => {
     mockSearchState.showResults = false
+    const { queryByTestId } = render(
+      <SearchDetails
+        isShowAutocomplete={true}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        isSetShowAutocomplete={isSetShowAutocomplete}
+      />
+    )
+    expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
+  })
+
+  it('should show autocomplete list if search executed and autocomplete list display flag is true', () => {
+    mockSearchState.showResults = true
     const { queryByTestId } = render(
       <SearchDetails
         isShowAutocomplete={true}

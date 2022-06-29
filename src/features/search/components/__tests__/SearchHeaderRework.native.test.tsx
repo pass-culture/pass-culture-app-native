@@ -52,6 +52,15 @@ jest.mock('features/search/pages/useSearchResults', () => ({
     isFetchingNextPage: false,
   }),
 }))
+jest.mock('react-instantsearch-hooks', () => ({
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+  useInfiniteHits: () => ({
+    hits: [],
+  }),
+}))
 
 describe('SearchHeaderRework component', () => {
   const searchInputID = uuidv4()

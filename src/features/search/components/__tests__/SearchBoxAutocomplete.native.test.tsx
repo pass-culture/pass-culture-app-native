@@ -52,6 +52,12 @@ jest.mock('features/search/pages/useSearchResults', () => ({
     isFetchingNextPage: false,
   }),
 }))
+jest.mock('react-instantsearch-hooks', () => ({
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+}))
 
 describe('SearchBoxAutocomplete component', () => {
   const searchInputID = uuidv4()

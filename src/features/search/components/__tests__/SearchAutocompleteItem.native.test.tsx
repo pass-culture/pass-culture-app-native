@@ -81,4 +81,26 @@ describe('SearchAutocompleteItem component', () => {
       })
     )
   })
+
+  it('should not display the search group name if the hit is in the top three and search group name is NONE', () => {
+    const hitWithNoneSearchGroup = {
+      ...hit,
+      offer: {
+        ...hit.offer,
+        searchGroupName: SearchGroupNameEnum.NONE,
+      },
+    }
+
+    const { queryByText } = render(
+      <SearchAutocompleteItem
+        index={0}
+        hit={hitWithNoneSearchGroup}
+        isSetShowAutocomplete={isSetShowAutocomplete}
+      />
+    )
+
+    const text = 'Test1'
+
+    expect(queryByText(text)).toBeTruthy()
+  })
 })

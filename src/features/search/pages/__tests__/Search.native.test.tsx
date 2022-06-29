@@ -134,15 +134,6 @@ describe('Search component', () => {
         const { queryByTestId } = render(<Search />)
         expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
       })
-
-      it('should show view for recent searches and suggestions', async () => {
-        const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-        const searchInput = getByPlaceholderText('Offre, artiste...')
-        await fireEvent(searchInput, 'onFocus')
-
-        expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
-      })
     })
 
     describe('When search executed', () => {
