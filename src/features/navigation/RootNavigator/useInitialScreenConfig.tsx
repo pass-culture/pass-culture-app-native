@@ -6,7 +6,7 @@ import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 

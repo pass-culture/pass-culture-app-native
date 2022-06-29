@@ -68,6 +68,7 @@ describe('fetchOffer', () => {
       attributesToRetrieve: offerAttributesToRetrieve,
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      clickAnalytics: true,
     })
   })
 
@@ -86,7 +87,23 @@ describe('fetchOffer', () => {
       attributesToRetrieve: offerAttributesToRetrieve,
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      clickAnalytics: true,
     })
+  })
+
+  it('should store Algolia query ID after fetching an offer', async () => {
+    const spyStoreQueryID = jest.fn()
+    const query = 'searched query'
+    search.mockResolvedValueOnce({ queryID: 'queryID' })
+
+    await fetchOffer({
+      parameters: { ...baseParams, query } as SearchParametersQuery,
+      userLocation: null,
+      isUserUnderage: false,
+      storeQueryID: spyStoreQueryID,
+    })
+
+    expect(spyStoreQueryID).toHaveBeenCalledWith('queryID')
   })
 
   describe('underage', () => {
@@ -105,6 +122,7 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
         numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
       })
     })
     it('should fetch with facetFilters parameter when one category is provided and when underage', () => {
@@ -127,6 +145,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -148,6 +167,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -164,6 +184,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -189,6 +210,7 @@ describe('fetchOffer', () => {
         attributesToRetrieve: offerAttributesToRetrieve,
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
       })
     })
 
@@ -210,6 +232,7 @@ describe('fetchOffer', () => {
         attributesToRetrieve: offerAttributesToRetrieve,
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
       })
     })
 
@@ -233,6 +256,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -256,6 +280,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -279,6 +304,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -300,6 +326,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -319,6 +346,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -341,6 +369,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -360,6 +389,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -382,6 +412,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -406,6 +437,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -429,6 +461,7 @@ describe('fetchOffer', () => {
         attributesToHighlight: [],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -452,6 +485,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -479,6 +513,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -502,6 +537,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -525,6 +561,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -551,6 +588,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -574,6 +612,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -597,6 +636,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -620,6 +660,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -641,6 +682,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -660,6 +702,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -681,6 +724,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -704,6 +748,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -725,6 +770,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -745,6 +791,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -765,6 +812,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -797,6 +845,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
 
@@ -826,6 +875,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
 
@@ -855,6 +905,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
 
@@ -884,6 +935,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
     })
@@ -907,6 +959,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
     })
@@ -937,6 +990,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
 
@@ -972,6 +1026,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
 
@@ -1009,6 +1064,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
 
@@ -1037,6 +1093,7 @@ describe('fetchOffer', () => {
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve: offerAttributesToRetrieve,
+          clickAnalytics: true,
         })
       })
     })
@@ -1068,6 +1125,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1094,6 +1152,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1127,6 +1186,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1164,6 +1224,7 @@ describe('fetchOffer', () => {
         aroundRadius: 'all',
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     })
@@ -1205,6 +1266,7 @@ describe('fetchOffer', () => {
         aroundRadius: 'all',
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     })
@@ -1226,6 +1288,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1247,6 +1310,7 @@ describe('fetchOffer', () => {
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -1267,6 +1331,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1286,6 +1351,7 @@ describe('fetchOffer', () => {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -1308,6 +1374,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1328,6 +1395,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
 
@@ -1355,6 +1423,7 @@ describe('fetchOffer', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
       })
     })
   })
@@ -1377,7 +1446,7 @@ describe('fetchOfferHits', () => {
     })
   })
 
-  it('should fetch with udnerage search params', () => {
+  it('should fetch with underage search params', () => {
     const queryIds = ['id1', 'id2']
     fetchOfferHits({ objectIds: queryIds, isUserUnderage: true })
 

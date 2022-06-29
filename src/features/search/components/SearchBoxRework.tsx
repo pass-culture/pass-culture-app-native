@@ -11,7 +11,7 @@ import { useLocationChoice } from 'features/search/components/locationChoice.uti
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'

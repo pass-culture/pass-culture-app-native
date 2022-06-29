@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap as mockOffer } from 'features/offer/api/snaps/offerResponseSnap'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils/web'
 
 import { ExclusivityModule, ExclusivityModuleProps } from '../ExclusivityModule'

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { Clock } from 'ui/svg/icons/Clock'
 import { getSpacingString, Spacer, Typo } from 'ui/theme'
 

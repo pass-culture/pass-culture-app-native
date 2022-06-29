@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
 

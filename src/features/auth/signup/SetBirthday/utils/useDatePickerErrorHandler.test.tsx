@@ -11,7 +11,7 @@ import {
   FUTUR_DATE,
   NOT_ELIGIBLE_YOUNGEST_AGE_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 
 import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'
 

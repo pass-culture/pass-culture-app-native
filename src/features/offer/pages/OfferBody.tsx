@@ -13,7 +13,7 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'

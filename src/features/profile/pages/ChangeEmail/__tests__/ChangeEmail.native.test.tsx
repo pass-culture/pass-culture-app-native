@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { theme } from 'theme'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'

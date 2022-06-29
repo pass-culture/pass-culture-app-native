@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { VenueTile, VenueTileProps } from '../VenueTile'

@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import appsFlyer from 'react-native-appsflyer'
 
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useTrackingConsent } from 'libs/trackingConsent'
 

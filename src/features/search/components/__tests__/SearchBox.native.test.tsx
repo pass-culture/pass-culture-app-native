@@ -7,7 +7,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render } from 'tests/utils'
@@ -30,7 +30,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
-jest.mock('libs/analytics')
+jest.mock('libs/firebase/analytics')
 
 const mockSettings = {
   appEnableSearchHomepageRework: false,

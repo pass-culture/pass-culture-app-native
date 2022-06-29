@@ -4,7 +4,8 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
-import { analytics } from 'libs/analytics'
+import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
+import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,15 +20,17 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   hit: SearchHit
   query: string
+  index: number
 }
 
-export const Hit: React.FC<Props> = ({ hit, query }) => {
+export const Hit: React.FC<Props> = ({ hit, query, index }) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
+  const { logClickOnOffer } = useLogClickOnOffer()
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
@@ -57,6 +60,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
       })
     )
     analytics.logConsultOffer({ offerId, from: 'search', query: query })
+    logClickOnOffer({ objectID, position: index })
   }
 
   return (
@@ -66,8 +70,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
         }
         onPress={handlePressOffer}
-        accessibilityLabel={accessibilityLabel}
-        testID="offerHit">
+        accessibilityLabel={accessibilityLabel}>
         <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <Column>

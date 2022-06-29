@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { PushNotificationsModal } from '../PushNotificationsModal'

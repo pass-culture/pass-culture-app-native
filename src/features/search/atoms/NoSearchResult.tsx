@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { NoOffer } from 'ui/svg/icons/NoOffer'

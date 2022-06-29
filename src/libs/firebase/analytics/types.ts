@@ -1,4 +1,4 @@
-import { AnalyticsEvent } from 'libs/analytics/events'
+import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 type AnalyticsParam = Record<string, unknown>
 

@@ -21,10 +21,12 @@ import { IdentityCheckContextProvider } from 'features/identityCheck/context/Ide
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
-import { analytics } from 'libs/analytics'
+import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
+import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
@@ -60,6 +62,10 @@ const App: FunctionComponent = function () {
     eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
+  useEffect(() => {
+    initAlgoliaAnalytics()
+  }, [])
+
   return (
     <ABTestingProvider>
       <ThemeProvider theme={theme}>
@@ -69,23 +75,25 @@ const App: FunctionComponent = function () {
               <AuthWrapper>
                 <GeolocationWrapper>
                   <FavoritesWrapper>
-                    <SearchWrapper>
-                      <I18nProvider i18n={i18n}>
-                        <SnackBarProvider>
-                          <NetInfoWrapper>
-                            <CulturalSurveyContextProvider>
-                              <IdentityCheckContextProvider>
-                                <SplashScreenProvider>
-                                  <ScreenErrorProvider>
-                                    <AppNavigationContainer />
-                                  </ScreenErrorProvider>
-                                </SplashScreenProvider>
-                              </IdentityCheckContextProvider>
-                            </CulturalSurveyContextProvider>
-                          </NetInfoWrapper>
-                        </SnackBarProvider>
-                      </I18nProvider>
-                    </SearchWrapper>
+                    <SearchAnalyticsWrapper>
+                      <SearchWrapper>
+                        <I18nProvider i18n={i18n}>
+                          <SnackBarProvider>
+                            <NetInfoWrapper>
+                              <CulturalSurveyContextProvider>
+                                <IdentityCheckContextProvider>
+                                  <SplashScreenProvider>
+                                    <ScreenErrorProvider>
+                                      <AppNavigationContainer />
+                                    </ScreenErrorProvider>
+                                  </SplashScreenProvider>
+                                </IdentityCheckContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </NetInfoWrapper>
+                          </SnackBarProvider>
+                        </I18nProvider>
+                      </SearchWrapper>
+                    </SearchAnalyticsWrapper>
                   </FavoritesWrapper>
                 </GeolocationWrapper>
               </AuthWrapper>

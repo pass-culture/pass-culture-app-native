@@ -1,4 +1,4 @@
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 
 export const useLogFilterOnce = (filter: string) =>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils/web'
 
 import { LoggedOutHeader } from './LoggedOutHeader'

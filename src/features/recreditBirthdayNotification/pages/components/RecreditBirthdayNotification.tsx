@@ -12,7 +12,7 @@ import {
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useUserProfileInfo, useResetRecreditAmountToShow } from 'features/profile/api'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { storage } from 'libs/storage'

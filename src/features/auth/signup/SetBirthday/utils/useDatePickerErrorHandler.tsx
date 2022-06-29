@@ -6,8 +6,8 @@ import {
   DEFAULT_YOUNGEST_AGE,
   UNDER_YOUNGEST_AGE,
 } from 'features/auth/signup/SetBirthday/utils/constants'
-import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
+import { analytics } from 'libs/firebase/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 
 export const useDatePickerErrorHandler = (date?: Date) => {

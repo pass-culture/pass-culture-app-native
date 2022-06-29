@@ -11,7 +11,7 @@ import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -72,7 +72,9 @@ export const SearchResults: React.FC = () => {
   }, [hasNextPage])
 
   const renderItem = useCallback(
-    ({ item: hit }: { item: SearchHit }) => <Hit hit={hit} query={searchState.query} />,
+    ({ item: hit, index }: { item: SearchHit; index: number }) => (
+      <Hit hit={hit} query={searchState.query} index={index} />
+    ),
     [searchState.query]
   )
 

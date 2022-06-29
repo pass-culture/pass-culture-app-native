@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoFavoritesResult } from '../NoFavoritesResult'

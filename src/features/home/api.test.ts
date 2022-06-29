@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { processHomepageEntry } from 'features/home/contentful'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import {
   homepageEntriesAPIResponse,
   adaptedHomepageEntry,

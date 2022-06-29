@@ -6,6 +6,7 @@ import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
 import { PartialSearchState } from 'features/search/types'
+import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,6 +20,7 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { position } = useGeolocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
+  const { setCurrentQueryID } = useSearchAnalyticsState()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, partialSearchState],
@@ -27,6 +29,7 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
         parameters: { page, ...partialSearchState },
         userLocation: position,
         isUserUnderage,
+        storeQueryID: setCurrentQueryID,
       }),
     { getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined) }
   )

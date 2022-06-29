@@ -8,7 +8,7 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
 import { fireEvent, render } from 'tests/utils'
 

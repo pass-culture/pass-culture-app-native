@@ -10,7 +10,7 @@ import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAcc
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'

@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
+import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
@@ -12,6 +13,8 @@ export const useVenueOffers = (venueId: number) => {
   const params = useVenueSearchParameters(venueId)
   const isUserUnderage = useIsUserUnderage()
 
+  const { setCurrentQueryID } = useSearchAnalyticsState()
+
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venueId],
     () =>
@@ -19,6 +22,7 @@ export const useVenueOffers = (venueId: number) => {
         parameters: { ...params, page: 0 },
         userLocation: null,
         isUserUnderage,
+        storeQueryID: setCurrentQueryID,
       }),
     {
       select: ({ hits, nbHits }) => ({

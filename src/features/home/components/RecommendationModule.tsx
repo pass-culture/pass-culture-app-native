@@ -9,7 +9,7 @@ import {
 } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useUserProfileInfo } from 'features/profile/api'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'

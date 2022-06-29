@@ -5,7 +5,7 @@ import {
   requestTrackingPermission,
 } from 'react-native-tracking-transparency'
 
-export const getTrackingConsent = async (callback?: (status: TrackingStatus) => void) =>
+export const requestIDFATrackingConsent = async (callback?: (status: TrackingStatus) => void) =>
   getTrackingStatus().then((status) => {
     if (status === 'unavailable') {
       // android and iOS < 14
@@ -20,7 +20,7 @@ export const useTrackingConsent = () => {
   const [trackingStatus, setTrackingStatus] = useState<TrackingStatus>('not-determined')
 
   useEffect(() => {
-    getTrackingConsent(setTrackingStatus)
+    requestIDFATrackingConsent(setTrackingStatus)
   }, [])
 
   return {

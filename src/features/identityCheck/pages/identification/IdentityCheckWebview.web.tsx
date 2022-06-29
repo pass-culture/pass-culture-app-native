@@ -4,7 +4,7 @@ import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LoadingPage } from 'ui/components/LoadingPage'
 

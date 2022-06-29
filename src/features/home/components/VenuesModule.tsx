@@ -7,7 +7,7 @@ import {
   DisplayParametersFields,
   VenuesSearchParametersFields,
 } from 'features/home/contentful'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
 import { PassPlaylist } from 'ui/components/PassPlaylist'

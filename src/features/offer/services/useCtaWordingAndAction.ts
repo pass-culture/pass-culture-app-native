@@ -4,7 +4,7 @@ import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/g
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'

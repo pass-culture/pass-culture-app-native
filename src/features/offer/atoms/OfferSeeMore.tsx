@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'

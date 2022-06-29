@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'
