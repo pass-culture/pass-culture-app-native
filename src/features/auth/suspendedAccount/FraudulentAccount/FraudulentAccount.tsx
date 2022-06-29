@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
-import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { PageNotFound } from 'features/navigation/PageNotFound'
+import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -37,9 +37,9 @@ export const FraudulentAccount = () => {
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`Contacter le support`}
+          wording={t`Contacter le service`}
           accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
-          externalNav={contactSupport.forGenericQuestion}
+          externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
           icon={Email}
         />,
         <TouchableLink
@@ -51,10 +51,10 @@ export const FraudulentAccount = () => {
           icon={PlainArrowPrevious}
         />,
       ]}>
-      <StyledBody>{t`En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.`}</StyledBody>
+      <StyledBody>{t`Ton compte est actuellement suspendu pour des raisons de sécurité.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>
-        {t`Si tu souhaites revoir cette décision, tu peux contacter le support.`}
+        {t`Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude.`}
       </StyledBody>
     </GenericInfoPage>
   ) : (

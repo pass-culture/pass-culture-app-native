@@ -149,7 +149,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
         ]
       }
     >
-      En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
+      Ton compte est actuellement suspendu pour des raisons de sécurité.
     </Text>
     <View
       numberOfSpaces={5}
@@ -174,7 +174,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
         ]
       }
     >
-      Si tu souhaites revoir cette décision, tu peux contacter le support.
+      Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude.
     </Text>
     <View
       numberOfSpaces={30}
@@ -242,7 +242,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
             "width": "100%",
           }
         }
-        testID="Contacter le support"
+        testID="Contacter le service"
       >
         <View
           style={
@@ -279,7 +279,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
             ]
           }
         >
-          Contacter le support
+          Contacter le service
         </Text>
       </View>
       <View

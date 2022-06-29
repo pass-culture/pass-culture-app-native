@@ -64,7 +64,7 @@ Object {
             dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
-            En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
+            Ton compte est actuellement suspendu pour des raisons de sécurité.
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -75,20 +75,19 @@ Object {
             dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
-            Si tu souhaites revoir cette décision, tu peux contacter le support.
+            Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude.
           </div>
           <div
             class="css-view-1dbjc4n"
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
-            <button
+            <a
               aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-              class="sc-bdvvtL jPOqmR sc-dkPtRN kmXVLA"
+              class="sc-gsDKAQ jhcNBc sc-dkPtRN kmXVLA"
               data-testid="Ouvrir le gestionnaire mail pour contacter le support"
-              href=""
+              href="mailto:service.fraude@test.passculture.app"
               tabindex="0"
               target="_blank"
-              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -111,9 +110,9 @@ Object {
                 dir="ltr"
                 style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
-                Contacter le support
+                Contacter le service
               </div>
-            </button>
+            </a>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
@@ -216,7 +215,7 @@ Object {
           dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
-          En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
+          Ton compte est actuellement suspendu pour des raisons de sécurité.
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -227,20 +226,19 @@ Object {
           dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
-          Si tu souhaites revoir cette décision, tu peux contacter le support.
+          Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude.
         </div>
         <div
           class="css-view-1dbjc4n"
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
-          <button
+          <a
             aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-            class="sc-bdvvtL jPOqmR sc-dkPtRN kmXVLA"
+            class="sc-gsDKAQ jhcNBc sc-dkPtRN kmXVLA"
             data-testid="Ouvrir le gestionnaire mail pour contacter le support"
-            href=""
+            href="mailto:service.fraude@test.passculture.app"
             tabindex="0"
             target="_blank"
-            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -263,9 +261,9 @@ Object {
               dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
-              Contacter le support
+              Contacter le service
             </div>
-          </button>
+          </a>
           <div
             class="css-view-1dbjc4n"
             style="height: 16px;"

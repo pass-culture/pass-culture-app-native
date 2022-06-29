@@ -51,6 +51,7 @@ export interface Environment {
   SIGNUP_POSTAL_CODE: string
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
+  FRAUD_EMAIL_ADDRESS: string
   TMX_FPSERVER: string
   TMX_ORGID: string
   URL_PREFIX: string
