@@ -67,8 +67,12 @@ export const analytics = {
     query?: string
     venueId?: number
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
-  logConsultVenue: (params: { venueId: number; from: Referrals }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),
+  logConsultVenue: (params: {
+    venueId: number
+    from: Referrals
+    moduleName?: string
+    moduleId?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),
   logClickExclusivityBlock: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>

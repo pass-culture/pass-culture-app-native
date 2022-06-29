@@ -13,6 +13,8 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 const venue = mockVenues.hits[0]
 
 const props: VenueTileProps = {
+  moduleId: 'module-id',
+  moduleName: 'le nom du module',
   venue,
   userPosition: null,
   width: 100,
@@ -37,6 +39,8 @@ describe('VenueTile component', () => {
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
       from: 'home',
+      moduleName: 'le nom du module',
+      moduleId: 'module-id',
     })
   })
 })
