@@ -7,7 +7,7 @@ import { Search } from 'features/search/pages/Search'
 import { SearchState } from 'features/search/types'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, fireEvent } from 'tests/utils'
+import { render } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
