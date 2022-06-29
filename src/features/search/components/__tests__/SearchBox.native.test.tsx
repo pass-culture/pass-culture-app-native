@@ -32,14 +32,26 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 jest.mock('libs/firebase/analytics')
 
-const mockSettings = {
-  appEnableSearchHomepageRework: false,
-}
+jest.mock('features/auth/settings')
 
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
+jest.mock('features/profile/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
+}))
+
+const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+jest.mock('features/search/pages/useSearchResults', () => ({
+  useSearchResults: () => ({
+    data: mockData,
+    hits: [],
+    nbHits: 0,
+    isFetching: false,
+    isLoading: false,
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
+  }),
 }))
 
 describe('SearchBox component', () => {
@@ -49,21 +61,11 @@ describe('SearchBox component', () => {
     expect(render(<SearchBox searchInputID={searchInputID} />)).toMatchSnapshot()
   })
 
-  it('should call mockStagedDispatch() when typing', () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
-    fireEvent.changeText(searchInput, 'Ma')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Ma' })
-    fireEvent.changeText(searchInput, 'Mama')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Mama' })
-  })
-
-  it('should call logSearchQuery on submit', async () => {
+  it('should call logSearchQuery on submit', () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
-    await fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
     expect(navigate).toBeCalledWith(
@@ -75,6 +77,65 @@ describe('SearchBox component', () => {
         priceRange: mockStagedSearchState.priceRange,
       })
     )
+  })
+
+  it('should not show previous if no search executed and no focus on input', () => {
+    const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const previousButton = queryByTestId('previousButton')
+
+    expect(previousButton).toBeFalsy()
+  })
+
+  it('should show previous button if search executed', () => {
+    mockSearchState.showResults = true
+    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const previousButton = getByTestId('previousButton')
+
+    expect(previousButton).toBeTruthy()
+  })
+
+  it('should show previous button if focus on input', () => {
+    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} isFocus={true} />)
+    const previousButton = getByTestId('previousButton')
+
+    expect(previousButton).toBeTruthy()
+  })
+
+  it('should show the text type by the user', async () => {
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
+
+    expect(searchInput.props.value).toBe('Some text')
+  })
+
+  it('should reset input when user click on reset icon', async () => {
+    const { getByTestId, getByPlaceholderText } = render(
+      <SearchBox searchInputID={searchInputID} />
+    )
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
+
+    const resetIcon = getByTestId('resetSearchInput')
+    await fireEvent.press(resetIcon)
+
+    expect(searchInput.props.value).toBe('')
+  })
+
+  it('should reset input when user click on previous button', async () => {
+    const { getByTestId, getByPlaceholderText } = render(
+      <SearchBox searchInputID={searchInputID} />
+    )
+    const previousButton = getByTestId('previousButton')
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onChangeText', 'Some text')
+
+    await fireEvent.press(previousButton)
+
+    expect(searchInput.props.value).toBe('')
   })
 
   it('should not execute a search if input is empty', () => {
@@ -101,5 +162,15 @@ describe('SearchBox component', () => {
         priceRange: mockStagedSearchState.priceRange,
       })
     )
+  })
+
+  it('should redirect on location page on location button click', async () => {
+    const { getByTestId } = render(
+      <SearchBox searchInputID={searchInputID} showLocationButton={true} />
+    )
+    const locationButton = getByTestId('locationButton')
+    await fireEvent.press(locationButton)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
   })
 })
