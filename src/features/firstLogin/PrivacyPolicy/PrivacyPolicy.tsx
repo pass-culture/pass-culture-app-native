@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
-import { getTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 export function PrivacyPolicy() {
   const [hasUserMadeCookieChoice, setHasUserMadeCookieChoice] = useState(true)
@@ -19,7 +19,7 @@ export function PrivacyPolicy() {
   async function acceptCookie() {
     setHasUserMadeCookieChoice(true)
     storage.saveObject('has_accepted_cookie', true)
-    await getTrackingConsent()
+    await requestIDFATrackingConsent()
   }
 
   async function refuseCookie() {
@@ -27,7 +27,7 @@ export function PrivacyPolicy() {
     await storage.saveObject('has_accepted_cookie', false)
     await analytics.logHasRefusedCookie()
     await analytics.disableCollection()
-    await getTrackingConsent()
+    await requestIDFATrackingConsent()
   }
 
   return hasUserMadeCookieChoice ? null : (
