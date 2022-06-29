@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { BookingConfirmation } from '../BookingConfirmation'

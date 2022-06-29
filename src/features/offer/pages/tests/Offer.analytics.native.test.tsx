@@ -1,7 +1,7 @@
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { superFlushWithAct, act, fireEvent, cleanup } from 'tests/utils'
 
 import { offerId, renderOfferPage, renderOfferBodyPage } from './renderOfferPageTestUtil'

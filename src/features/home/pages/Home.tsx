@@ -25,7 +25,7 @@ import { RecommendationPane, ProcessedModule } from 'features/home/contentful/mo
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useABTestingContext } from 'libs/ABTesting'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'

@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { Referrals } from 'features/navigation/RootNavigator'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 
 export const useLogBeforeNavToSearchResults = ({ from }: { from: Referrals }) => {
   const { dispatch } = useSearch()

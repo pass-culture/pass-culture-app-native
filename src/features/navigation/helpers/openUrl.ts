@@ -3,8 +3,8 @@ import { Alert, Linking } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { analytics } from 'libs/analytics'
-import { OfferAnalyticsData } from 'libs/analytics/analytics'
+import { analytics } from 'libs/firebase/analytics'
+import { OfferAnalyticsData } from 'libs/firebase/analytics/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
 
 import { isAppUrl } from './isAppUrl'

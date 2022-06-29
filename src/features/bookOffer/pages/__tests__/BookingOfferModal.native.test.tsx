@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, fireEvent, render } from 'tests/utils'
 

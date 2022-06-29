@@ -8,7 +8,7 @@ import {
   ContentTypes,
 } from 'features/home/contentful/contentful'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { theme } from 'theme'

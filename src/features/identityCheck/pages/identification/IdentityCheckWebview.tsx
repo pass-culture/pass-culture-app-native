@@ -7,7 +7,7 @@ import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { parseUrlParams } from 'features/identityCheck/utils/parseUrlParams'
 import { navigateToHome } from 'features/navigation/helpers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { Spacer } from 'ui/theme'
 

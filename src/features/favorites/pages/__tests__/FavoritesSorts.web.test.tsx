@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import {
   GeolocPositionError,
   GeolocPermissionState,

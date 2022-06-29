@@ -3,7 +3,7 @@ import React from 'react'
 import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { SignupStep } from 'features/auth/signup/enums'
 import { navigateToHome } from 'features/navigation/helpers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')

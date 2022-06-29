@@ -5,7 +5,7 @@ import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
 import styled, { useTheme } from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'

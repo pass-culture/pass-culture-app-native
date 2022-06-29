@@ -17,7 +17,7 @@ import { AlreadyChangedEmailDisclaimer } from 'features/profile/pages/ChangeEmai
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useCheckHasCurrentEmailChange } from 'features/profile/pages/ChangeEmail/utils/useCheckHasCurrentEmailChange'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

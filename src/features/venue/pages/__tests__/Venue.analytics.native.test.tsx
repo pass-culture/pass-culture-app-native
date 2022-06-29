@@ -3,7 +3,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { VenueBody } from 'features/venue/pages/VenueBody'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { act, fireEvent } from 'tests/utils'
 import { render } from 'tests/utils'
 

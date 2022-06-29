@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 

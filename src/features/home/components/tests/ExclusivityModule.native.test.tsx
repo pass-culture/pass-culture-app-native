@@ -6,7 +6,7 @@ import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { ContentTypes } from 'features/home/contentful'
 import { offerResponseSnap as mockOffer } from 'features/offer/api/snaps/offerResponseSnap'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 import { ExclusivityModule, ExclusivityModuleProps } from '../ExclusivityModule'

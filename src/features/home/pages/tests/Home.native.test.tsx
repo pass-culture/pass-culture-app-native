@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { Home } from '../Home'

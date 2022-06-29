@@ -3,8 +3,8 @@ import { Platform } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { share, ShareContent } from 'libs/share'
 

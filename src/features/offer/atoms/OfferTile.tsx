@@ -12,7 +12,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageCaption } from 'ui/components/ImageCaption'

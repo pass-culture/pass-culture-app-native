@@ -2,7 +2,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { storeUtmParams } from 'libs/utm'
 
 jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))

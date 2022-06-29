@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { SocialNetworkCard } from '../SocialNetworkCard'

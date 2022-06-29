@@ -11,9 +11,9 @@ import {
   ContentTypes,
 } from 'features/home/contentful'
 import { useSelectPlaylist } from 'features/home/selectPlaylist'
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
+import { analytics } from 'libs/firebase/analytics'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 

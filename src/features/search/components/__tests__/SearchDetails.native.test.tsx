@@ -25,7 +25,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
-jest.mock('libs/analytics')
+jest.mock('libs/firebase/analytics')
 jest.mock('features/auth/settings')
 
 jest.mock('features/home/api', () => ({

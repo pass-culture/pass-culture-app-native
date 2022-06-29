@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { api } from 'api/api'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { act, cleanup, fireEvent } from 'tests/utils'
 
 import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'

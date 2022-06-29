@@ -1,7 +1,7 @@
 import { getStateFromPath } from '@react-navigation/native'
 
 import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { storeUtmParams } from 'libs/utm'
 
 import { getNestedNavigationFromState } from './getNestedNavigationFromState'

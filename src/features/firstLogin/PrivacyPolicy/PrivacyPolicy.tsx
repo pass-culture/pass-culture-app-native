@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 

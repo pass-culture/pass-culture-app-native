@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'

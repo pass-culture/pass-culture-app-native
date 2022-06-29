@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { BookingsResponse, SubcategoriesResponseModel } from 'api/gen'
 import { useBookings } from 'features/bookings/api/queries'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { flushAllPromises, render } from 'tests/utils'
 

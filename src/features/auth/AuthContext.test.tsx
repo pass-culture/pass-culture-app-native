@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { LoggedInQueryKeys, useLogoutRoutine } from 'features/auth/AuthContext'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { act, flushAllPromises, render } from 'tests/utils'
 

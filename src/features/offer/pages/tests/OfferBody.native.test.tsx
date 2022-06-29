@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { OfferBody } from 'features/offer/pages/OfferBody'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')

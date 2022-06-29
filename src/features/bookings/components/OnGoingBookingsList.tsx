@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { useBookings } from 'features/bookings/api/queries'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'

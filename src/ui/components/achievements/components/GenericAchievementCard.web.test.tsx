@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils/web'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
