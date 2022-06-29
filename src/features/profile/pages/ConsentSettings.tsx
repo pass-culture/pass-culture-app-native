@@ -8,8 +8,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { storage } from 'libs/storage'
-import { getCookiesConsent } from 'libs/trackingConsent/consent'
+import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -32,7 +31,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
       // If the user has navigated to this page from the privacy modal, we consider that
       // as an implicit refusal, which they can change with the switch if they want to.
       if (hasAcceptedCookie === null) {
-        storage.saveObject('has_accepted_cookie', false)
+        setCookiesConsent(false)
       }
       setIsTrackingSwitchActive(Boolean(hasAcceptedCookie))
     })
@@ -44,7 +43,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   }
 
   function save() {
-    storage.saveObject('has_accepted_cookie', isTrackingSwitchActive).then(() => {
+    setCookiesConsent(isTrackingSwitchActive).then(() => {
       setIsSaveButtonDisabled((prevValue) => !prevValue)
       if (isTrackingSwitchActive) {
         analytics.enableCollection()
