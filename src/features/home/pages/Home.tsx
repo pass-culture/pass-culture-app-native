@@ -28,7 +28,7 @@ import { useABTestingContext } from 'libs/ABTesting'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { Spinner } from 'ui/components/Spinner'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
@@ -102,10 +102,9 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   return (
     <React.Fragment>
       {!!isLoading && (
-        <React.Fragment>
+        <FooterContainer>
           <Spinner />
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
+        </FooterContainer>
       )}
       <Spacer.TabBar />
     </React.Fragment>
@@ -174,7 +173,6 @@ export const Home: FunctionComponent = () => {
         <FlatList
           testID="homeBodyScrollView"
           scrollEventThrottle={400}
-          bounces={false}
           onScroll={onScroll}
           data={modulesToDisplay}
           renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
@@ -182,10 +180,11 @@ export const Home: FunctionComponent = () => {
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
           ListHeaderComponent={ListHeaderComponent}
           initialNumToRender={initialNumToRender}
-          onEndReachedThreshold={0.5}
+          onEndReachedThreshold={1}
           removeClippedSubviews={false}
           onEndReached={onEndReached}
-          onContentSizeChange={() => setIsLoading(false)}
+          onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
+          bounces
         />
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />
@@ -202,6 +201,11 @@ const Container = styled.View({
   flexBasis: 1,
   flexGrow: 1,
   flexShrink: 0,
+})
+
+const FooterContainer = styled.View({
+  paddingTop: getSpacing(2),
+  paddingBottom: getSpacing(10),
 })
 
 const ListHeaderContainer = styled.View({
