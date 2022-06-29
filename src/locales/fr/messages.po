@@ -706,10 +706,13 @@ msgstr "Consulter notre centre d'aide"
 msgid "Contact"
 msgstr "Contact"
 
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
+msgid "Contacter le service"
+msgstr "Contacter le service"
+
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -1028,10 +1031,6 @@ msgstr "En attendant, tu peux découvrir l'application !"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
-
-#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
-msgid "En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte."
-msgstr "En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte."
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
@@ -2225,6 +2224,10 @@ msgstr "Possibilité de réserver 2 places."
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
+msgid "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
+msgstr "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
+
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
@@ -2723,10 +2726,6 @@ msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, 
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
-#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
-msgid "Si tu souhaites revoir cette décision, tu peux contacter le support."
-msgstr "Si tu souhaites revoir cette décision, tu peux contacter le support."
-
 #: src/features/offer/components/ReportOfferDescription.tsx
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 #: src/features/offer/components/ReportOfferReason.tsx
@@ -2873,6 +2872,10 @@ msgstr "Ton compte a été réactivé"
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Ton compte a été suspendu"
 msgstr "Ton compte a été suspendu"
+
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
+msgid "Ton compte est actuellement suspendu pour des raisons de sécurité."
+msgstr "Ton compte est actuellement suspendu pour des raisons de sécurité."
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Ton compte est désactivé"

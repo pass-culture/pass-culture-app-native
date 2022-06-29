@@ -2,8 +2,8 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, navigateToHomeConfig, openUrl } from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { FraudulentAccount } from '../FraudulentAccount'
@@ -31,17 +31,14 @@ describe('<FraudulentAccount />', () => {
     expect(render(<FraudulentAccount />)).toMatchSnapshot()
   })
 
-  it('should open mail app when clicking on contact support button', async () => {
+  it('should open mail app when clicking on contact service button', async () => {
     const { getByText } = render(<FraudulentAccount />)
 
-    const contactSupportButton = getByText('Contacter le support')
-    fireEvent.click(contactSupportButton)
+    const contactFraudButton = getByText('Contacter le service')
+    fireEvent.click(contactFraudButton)
 
     await waitForExpect(() => {
-      expect(mockedOpenUrl).toBeCalledWith(
-        contactSupport.forGenericQuestion.url,
-        contactSupport.forGenericQuestion.params
-      )
+      expect(mockedOpenUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined)
     })
   })
 
