@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
+import { getCookiesConsent } from 'libs/trackingConsent/consent'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 export function PrivacyPolicy() {
   const [hasUserMadeCookieChoice, setHasUserMadeCookieChoice] = useState(true)
 
   useEffect(() => {
-    storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
+    getCookiesConsent().then((hasAcceptedCookie) => {
       if (hasAcceptedCookie === null) {
         setHasUserMadeCookieChoice(false)
       }

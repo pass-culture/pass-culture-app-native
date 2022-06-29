@@ -9,6 +9,7 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
+import { getCookiesConsent } from 'libs/trackingConsent/consent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -27,7 +28,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
 
   useEffect(() => {
-    storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
+    getCookiesConsent().then((hasAcceptedCookie) => {
       // If the user has navigated to this page from the privacy modal, we consider that
       // as an implicit refusal, which they can change with the switch if they want to.
       if (hasAcceptedCookie === null) {
