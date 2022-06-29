@@ -35,13 +35,21 @@ export const VenuesModule = ({
   homeEntryId,
 }: VenuesModuleProps) => {
   const { position } = useGeolocation()
+  const moduleName = display.title
   const hits = useVenueModule({ search, moduleId }) || []
 
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
-      <VenueTile venue={item} width={width} height={height} userPosition={position} />
+      <VenueTile
+        moduleName={moduleName}
+        moduleId={moduleId}
+        venue={item}
+        width={width}
+        height={height}
+        userPosition={position}
+      />
     ),
-    [position]
+    [position, moduleName, moduleId]
   )
 
   const shouldModuleBeDisplayed = hits.length > display.minOffers

@@ -18,6 +18,8 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export interface VenueTileProps {
   venue: VenueHit
+  moduleName: string
+  moduleId: string
   width: number
   height: number
   userPosition: GeoCoordinates | null
@@ -42,7 +44,12 @@ export const VenueTile = (props: VenueTileProps) => {
   function handlePressVenue() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
-    analytics.logConsultVenue({ venueId: venue.id, from: 'home' })
+    analytics.logConsultVenue({
+      venueId: venue.id,
+      moduleId: props.moduleId,
+      moduleName: props.moduleName,
+      from: 'home',
+    })
   }
 
   return (
