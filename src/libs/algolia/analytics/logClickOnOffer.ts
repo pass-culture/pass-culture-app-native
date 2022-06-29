@@ -4,6 +4,7 @@ import AlgoliaSearchInsights from 'search-insights'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
+import { getCookiesConsent } from 'libs/trackingConsent/consent'
 
 type LogClickOnProductArgs = {
   index: string
@@ -24,7 +25,12 @@ const logClickOnProduct = ({ index, queryID, objectIDs, positions }: LogClickOnP
 
 export const logClickOnOffer =
   (currentQueryID?: string) =>
-  ({ objectID, position }: { objectID: string; position: number }) => {
+  async ({ objectID, position }: { objectID: string; position: number }) => {
+    const hasAcceptedCookies = await getCookiesConsent()
+    if (!hasAcceptedCookies) {
+      return
+    }
+
     if (currentQueryID === undefined) {
       captureMonitoringError('Algolia Analytics: useLogClickOnOffer called without any QueryID set')
       return
