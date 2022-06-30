@@ -11,7 +11,6 @@ I have:
 - [ ] Attached a **ticket number** or **GitHub dev name** for any added TODO / FIXME.
 - [ ] Added new reusable components to **AppComponents** page and communicate to the team on slack.
 - [ ] If my PR is a bugfix, I add the link of the "résolution de problème sur le bug" [on Notion](2)
-- [ ] Made sure translations file is up-to-date (`yarn translations:extract`)
 
 ## Screenshots
 
