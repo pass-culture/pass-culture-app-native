@@ -4,7 +4,7 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 
-import { useShowResultsWithStagedSearch } from '../useShowResultsWithStagedSearch'
+import { useNavigateWithStagedSearch } from '../useNavigateWithStagedSearch'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -33,7 +33,7 @@ describe('useShowResultsWithStagedSearch', () => {
   })
 
   it('should set search state with staged search state', () => {
-    const { result: resultCallback } = renderHook(useShowResultsWithStagedSearch)
+    const { result: resultCallback } = renderHook(useNavigateWithStagedSearch)
 
     resultCallback.current()
 
@@ -44,7 +44,7 @@ describe('useShowResultsWithStagedSearch', () => {
   })
 
   it('should show results', () => {
-    const { result: resultCallback } = renderHook(useShowResultsWithStagedSearch)
+    const { result: resultCallback } = renderHook(useNavigateWithStagedSearch)
 
     resultCallback.current()
 
