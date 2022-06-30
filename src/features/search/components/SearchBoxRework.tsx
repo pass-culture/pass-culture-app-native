@@ -36,7 +36,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   accessibleHiddenTitle,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState: stagedSearchState } = useStagedSearch()
+  const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
   const { searchState, dispatch } = useSearch()
   const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
@@ -55,6 +55,7 @@ export const SearchBoxRework: React.FC<Props> = ({
   const onPressArrowBack = () => {
     setQuery('')
     if (onFocusState) onFocusState(false)
+    stagedDispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
