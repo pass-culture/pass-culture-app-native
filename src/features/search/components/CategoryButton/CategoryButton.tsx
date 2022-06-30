@@ -48,15 +48,16 @@ const TouchableContainer = styledButton(Touchable)<{ borderLeftColor?: string }>
     borderBottomColor: theme.colors.greySemiDark,
     borderRightColor: theme.colors.greySemiDark,
     borderLeftColor: borderLeftColor ?? theme.colors.greySemiDark,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRightWidth: 1,
-    borderLeftWidth: borderLeftColor ? getSpacing(1) : 1,
-    paddingLeft: getSpacing(2),
-    paddingRight: getSpacing(3),
+    borderTopWidth: getSpacing(0.25),
+    borderBottomWidth: getSpacing(0.25),
+    borderRightWidth: getSpacing(0.25),
+    borderLeftWidth: getSpacing(borderLeftColor ? 1 : 0.25),
+    paddingLeft: getSpacing(theme.isMobileViewport ? 2 : 3),
+    paddingRight: getSpacing(theme.isMobileViewport ? 2 : 3),
   })
 )
 
 const Label = styled(Typo.Caption)({
+  flex: 1,
   marginLeft: getSpacing(2),
 })

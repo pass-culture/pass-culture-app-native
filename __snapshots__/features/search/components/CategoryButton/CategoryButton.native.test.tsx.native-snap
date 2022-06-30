@@ -29,7 +29,7 @@ exports[`CategoryButton should render correctly 1`] = `
       "height": 72,
       "opacity": 1,
       "paddingLeft": 8,
-      "paddingRight": 12,
+      "paddingRight": 8,
       "userSelect": "auto",
     }
   }
@@ -48,6 +48,9 @@ exports[`CategoryButton should render correctly 1`] = `
       Array [
         Object {
           "color": "#161617",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
