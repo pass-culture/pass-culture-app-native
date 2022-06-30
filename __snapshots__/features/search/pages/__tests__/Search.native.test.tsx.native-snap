@@ -13,13 +13,13 @@ exports[`Search component should render Search 1`] = `
   }
 >
   <View
-    height={112}
+    height={96}
     position="absolute"
     style={
       Array [
         Object {
           "backgroundColor": "#eb0055",
-          "height": 112,
+          "height": 96,
           "left": 0,
           "overflow": "hidden",
           "position": "absolute",
@@ -31,7 +31,7 @@ exports[`Search component should render Search 1`] = `
     }
   >
     <View
-      height={112}
+      height={96}
       width={964}
     >
       <Text>
@@ -51,135 +51,237 @@ exports[`Search component should render Search 1`] = `
     }
   />
   <View
-    height={48}
     style={
       Array [
         Object {
           "alignSelf": "center",
-          "height": 48,
+          "height": 32,
           "marginVertical": 24,
-          "width": "90%",
+          "paddingHorizontal": 24,
+          "position": "relative",
+          "width": "100%",
+          "zIndex": 1,
         },
       ]
     }
-    testID="searchBoxWithoutRework"
+    testID="searchBoxWithLabel"
   >
-    <Text
-      style={
-        Array [
-          Object {
-            "display": "none",
-          },
-        ]
-      }
-    >
-      Recherche une offre, un titre, un lieu...
-    </Text>
-    <View
-      height="regular"
-      isDisabled={false}
-      isError={false}
-      isFocus={false}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 22,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "height": 48,
-            "paddingBottom": 0,
-            "paddingLeft": 17,
-            "paddingRight": 17,
-            "paddingTop": 0,
-            "width": "100%",
-          },
-          Object {
-            "borderRadius": 24,
-            "outlineOffset": 0,
-          },
-        ]
-      }
-      testID="styled-input-container"
-    >
-      <View
-        numberOfSpaces={1}
+    <View>
+      <Text
+        htmlFor="testUuidV4"
         style={
           Array [
             Object {
-              "width": 4,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexShrink": 0,
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
             },
           ]
         }
       >
+        Recherche une offre
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      marginHorizontal={0}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginHorizontal": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height="regular"
+        isDisabled={false}
+        isError={false}
+        isFocus={false}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderColor": "#90949D",
+              "borderRadius": 22,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "height": 48,
+              "paddingBottom": 0,
+              "paddingLeft": 17,
+              "paddingRight": 17,
+              "paddingTop": 0,
+              "width": "100%",
+            },
+            Object {
+              "borderRadius": 24,
+              "outlineOffset": 0,
+              "paddingRight": 8,
+            },
+          ]
+        }
+        testID="styled-input-container"
+      >
         <View
-          height={20}
-          width={20}
+          numberOfSpaces={1}
+          style={
+            Array [
+              Object {
+                "width": 4,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
+          <View
+            height={20}
+            width={20}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={1}
+          style={
+            Array [
+              Object {
+                "width": 4,
+              },
+            ]
+          }
+        />
+        <TextInput
+          accessible={false}
+          autoCorrect={false}
+          editable={true}
+          enablesReturnKeyAutomatically={true}
+          nativeID="testUuidV4"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Offre, artiste..."
+          placeholderTextColor="#696A6F"
+          returnKeyType="search"
+          selectionColor="#696A6F"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "height": "100%",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+              Object {},
+            ]
+          }
+          testID="searchInput"
+          value=""
+        />
+        <View
+          accessibilityLabel="Le Petit Rintintin 1"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 142,
+              "minHeight": 32,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="locationButton"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Le Petit Rintintin 1
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={1}
-        style={
-          Array [
-            Object {
-              "width": 4,
-            },
-          ]
-        }
-      />
-      <TextInput
-        accessibilityLabel="Rechercher un artiste, titre, lieu..."
-        accessible={true}
-        aria-describedby="testUuidV4"
-        autoCorrect={false}
-        editable={true}
-        enablesReturnKeyAutomatically={true}
-        nativeID="testUuidV4"
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        onSubmitEditing={[Function]}
-        placeholder="Offre, artiste..."
-        placeholderTextColor="#696A6F"
-        returnKeyType="search"
-        selectionColor="#696A6F"
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "height": "100%",
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-            Object {},
-          ]
-        }
-        testID="searchInput"
-        value=""
-      />
     </View>
     <Text
       nativeID="testUuidV4"
@@ -196,377 +298,1347 @@ exports[`Search component should render Search 1`] = `
     </Text>
   </View>
   <RCTScrollView
-    contentContainerStyle={
-      Object {
-        "alignItems": "center",
-        "flexGrow": 1,
-      }
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "paddingBottom": 24,
+          "paddingHorizontal": 20,
+          "paddingTop": 44,
+        },
+      ]
     }
-    testID="searchLandingPage"
   >
     <View>
-      <View
-        flex={1}
+      <Text
         style={
           Array [
             Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+              "paddingBottom": 16,
+              "paddingHorizontal": 4,
             },
           ]
         }
-      />
-      <View
-        accessibilityRole="button"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
+        Explore les catégories
+      </Text>
+      <RCTScrollView
+        data={
+          Array [
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
               },
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+              "label": "Beaux-Arts",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
                 },
-              ]
-            }
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Carte jeunes",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Cinéma",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Conférences, rencontres",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Cours, ateliers",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Films, séries",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Instruments de musique",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Jeux",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Livre",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Musique",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Presse, médias",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Spectacles",
+              "onPress": [Function],
+            },
+            Object {
+              "Icon": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "label": "Visites, expositions",
+              "onPress": [Function],
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        stickyHeaderIndices={Array []}
+        testID="categoriesButtons"
+        viewabilityConfigCallbackPairs={Array []}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+            style={null}
           >
-            Je cherche
-          </Text>
-          <View
-            numberOfSpaces={2}
-            style={
-              Array [
+            <View
+              style={
                 Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
                   "flexDirection": "row",
-                  "paddingHorizontal": 8,
-                },
-              ]
-            }
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Beaux-Arts
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Carte jeunes
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
           >
             <View
-              height={32}
-              width={32}
+              style={
+                Object {
+                  "flexDirection": "row",
+                }
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Cinéma
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Conférences, rencontres
+                  </Text>
+                </View>
+              </View>
             </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
             <View
-              numberOfSpaces={2}
               style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
-                  },
-                ]
+                Object {
+                  "flexDirection": "row",
+                }
               }
             >
-              Cinéma
-            </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Cours, ateliers
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Films, séries
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Instruments de musique
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Jeux
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Livre
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Presse, médias
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Spectacles
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": "50%",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderBottomColor": "#90949D",
+                      "borderBottomWidth": 1,
+                      "borderLeftColor": "#90949D",
+                      "borderLeftWidth": 1,
+                      "borderRadius": 4,
+                      "borderRightColor": "#90949D",
+                      "borderRightWidth": 1,
+                      "borderTopColor": "#90949D",
+                      "borderTopWidth": 1,
+                      "flexDirection": "row",
+                      "height": 72,
+                      "opacity": 1,
+                      "paddingLeft": 8,
+                      "paddingRight": 12,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 8,
+                        },
+                      ]
+                    }
+                  >
+                    Visites, expositions
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
-      <Text
-        nativeID="testUuidV4"
-        style={
-          Array [
-            Object {
-              "display": "none",
-            },
-          ]
-        }
-      >
-        Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton "Rechercher"
-      </Text>
+      </RCTScrollView>
       <View
-        isSmallWebViewportHeight={false}
+        customHeight={72}
+        enable={true}
         style={
           Array [
             Object {
-              "backgroundColor": "#F1F1F4",
-              "height": 2,
-              "marginVertical": 32,
-              "width": 912,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="button"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Où
-          </Text>
-          <View
-            numberOfSpaces={2}
-            style={
-              Array [
-                Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "paddingHorizontal": 8,
-                },
-              ]
-            }
-          >
-            <View
-              height={32}
-              testID="BicolorLocationBuilding"
-              width={32}
-            >
-              <Text>
-                BicolorLocationBuilding-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
-                  },
-                ]
-              }
-            >
-              Le Petit Rintintin 1
-            </Text>
-          </View>
-        </View>
-      </View>
-      <Text
-        nativeID="testUuidV4"
-        style={
-          Array [
-            Object {
-              "display": "none",
-            },
-          ]
-        }
-      >
-        Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton "Rechercher"
-      </Text>
-      <View
-        flex={2}
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 2,
-              "flexShrink": 1,
+              "height": 72,
             },
           ]
         }
       />
     </View>
   </RCTScrollView>
-  <View
-    isSmallWebViewportHeight={false}
-    style={
-      Array [
-        Object {
-          "alignSelf": "center",
-          "bottom": 88,
-          "position": "absolute",
-          "width": 912,
-        },
-      ]
-    }
-  >
-    <View
-      accessibilityLabel="Rechercher"
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "borderRadius": 24,
-          "justifyContent": "center",
-          "opacity": 1,
-          "overflow": "hidden",
-          "userSelect": "auto",
-        }
-      }
-      testID="Rechercher"
-    >
-      <View
-        height={48}
-        width="100%"
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "position": "absolute",
-            },
-          ]
-        }
-      >
-        <Text
-          adjustsFontSizeToFit={true}
-          isDisabled={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "paddingBottom": 8,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 8,
-              },
-            ]
-          }
-        >
-          Rechercher
-        </Text>
-      </View>
-    </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;

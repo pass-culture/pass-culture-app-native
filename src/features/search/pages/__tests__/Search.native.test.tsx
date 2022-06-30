@@ -4,6 +4,8 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Search } from 'features/search/pages/Search'
+import { SearchWrapper } from 'features/search/pages/SearchWrapper'
+import * as useShowResultsForCategory from 'features/search/pages/useShowResultsForCategory'
 import { SearchState } from 'features/search/types'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -27,16 +29,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useCommit: () => ({
     commit: jest.fn(),
   }),
-}))
-
-const mockSettings = {
-  appEnableSearchHomepageRework: false,
-}
-
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
 }))
 
 jest.mock('features/home/api', () => ({
@@ -82,86 +74,66 @@ describe('Search component', () => {
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 
-  describe('When rework feature flag is not activated', () => {
+  describe('When search not executed', () => {
     beforeEach(() => {
-      mockSettings.appEnableSearchHomepageRework = false
+      mockSearchState = {
+        ...initialSearchState,
+        showResults: false,
+      }
     })
 
-    describe('When search not executed', () => {
-      beforeEach(() => {
-        mockSearchState = {
-          ...initialSearchState,
-          showResults: false,
-        }
-      })
+    it('should display categories buttons', () => {
+      const { getByTestId } = render(<Search />, { wrapper: SearchWrapper })
 
-      it('should show landing page', () => {
-        const { getByTestId } = render(<Search />)
-        const searchLandingPage = getByTestId('searchLandingPage')
-        expect(searchLandingPage).toBeTruthy()
-      })
+      const categoriesButtons = getByTestId('categoriesButtons')
 
-      it('should show search box without rework', () => {
-        const { queryByTestId } = render(<Search />)
-        expect(queryByTestId('searchBoxWithoutRework')).toBeTruthy()
-      })
+      expect(categoriesButtons).toBeTruthy()
     })
 
-    it('should show search results when search executed', () => {
+    it('should show results for a category when pressing a category button', async () => {
+      const mockShowResultsForCategory = jest.fn()
+      jest
+        .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
+        .mockReturnValueOnce(mockShowResultsForCategory)
+      const { getByText } = render(<Search />)
+
+      const categoryButton = getByText('Spectacles')
+      await fireEvent.press(categoryButton)
+
+      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
+    })
+
+    it('should show search box with label', () => {
+      const { queryByTestId } = render(<Search />)
+      expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
+    })
+
+    it('should show view for recent searches and suggestions', async () => {
+      const { queryByTestId, getByPlaceholderText } = render(<Search />)
+
+      const searchInput = getByPlaceholderText('Offre, artiste...')
+      await fireEvent(searchInput, 'onFocus')
+
+      expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
+    })
+  })
+
+  describe('When search executed', () => {
+    beforeEach(() => {
       mockSearchState = {
         ...initialSearchState,
         showResults: true,
       }
+    })
+
+    it('should show search box without label', () => {
+      const { queryByTestId } = render(<Search />)
+      expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
+    })
+
+    it('should show search results', () => {
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
-    })
-  })
-
-  describe('When rework feature flag is activated', () => {
-    beforeEach(() => {
-      mockSettings.appEnableSearchHomepageRework = true
-    })
-
-    describe('When search not executed', () => {
-      beforeEach(() => {
-        mockSearchState = {
-          ...initialSearchState,
-          showResults: false,
-        }
-      })
-
-      it('should show search box with label', () => {
-        const { queryByTestId } = render(<Search />)
-        expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
-      })
-
-      it('should show view for recent searches and suggestions', async () => {
-        const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-        const searchInput = getByPlaceholderText('Offre, artiste...')
-        await fireEvent(searchInput, 'onFocus')
-
-        expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
-      })
-    })
-
-    describe('When search executed', () => {
-      beforeEach(() => {
-        mockSearchState = {
-          ...initialSearchState,
-          showResults: true,
-        }
-      })
-
-      it('should show search box without label', () => {
-        const { queryByTestId } = render(<Search />)
-        expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
-      })
-
-      it('should show search results', () => {
-        const { queryByTestId } = render(<Search />)
-        expect(queryByTestId('searchResults')).toBeTruthy()
-      })
     })
   })
 })
