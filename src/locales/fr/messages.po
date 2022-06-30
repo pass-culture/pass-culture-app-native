@@ -1182,7 +1182,6 @@ msgstr "Fermer le calendrier"
 msgid "Festival"
 msgstr "Festival"
 
-#: src/features/search/atoms/Buttons/Filter.tsx
 #: src/features/search/pages/SearchFilter.tsx
 msgid "Filtrer"
 msgstr "Filtrer"
@@ -3968,10 +3967,6 @@ msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# ré
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
 msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
-
-#: src/features/search/atoms/Buttons/Filter.tsx
-msgid "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
-msgstr "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
