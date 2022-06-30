@@ -333,6 +333,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "isPermanent": false,
                       "name": "Avez-vous déjà vu ?",
                       "subcategoryId": "EVENEMENT_PATRIMOINE",
+                      "url": "https://example.com",
                       "venue": Object {
                         "city": "Drancy",
                         "coordinates": Object {

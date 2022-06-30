@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Again } from 'ui/svg/icons/Again'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -11,12 +11,12 @@ type SuggestionProps = {
 
 export const Suggestion: React.FC<SuggestionProps> = ({ suggestion }) => {
   return (
-    <TouchableLink>
+    <TouchableOpacity>
       <Container>
         <AgainIcon />
         <StyledBody>{suggestion}</StyledBody>
       </Container>
-    </TouchableLink>
+    </TouchableOpacity>
   )
 }
 

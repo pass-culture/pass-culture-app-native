@@ -68,13 +68,15 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
                 })}
               </Caption>
             )}
-            <ModuleBanner
-              navigateTo={nextBeneficiaryValidationStepNavConfig}
-              leftIcon={<ThumbUp />}
-              title={moduleBannerWording}
-              subTitle={t`à dépenser dans l'application`}
-              testID="eligibility-banner"
-            />
+            {!!nextBeneficiaryValidationStepNavConfig && (
+              <ModuleBanner
+                navigateTo={nextBeneficiaryValidationStepNavConfig}
+                leftIcon={<ThumbUp />}
+                title={moduleBannerWording}
+                subTitle={t`à dépenser dans l'application`}
+                testID="eligibility-banner"
+              />
+            )}
           </View>
         )
       }

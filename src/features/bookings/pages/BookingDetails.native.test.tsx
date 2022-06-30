@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash.clonedeep'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
@@ -65,7 +66,8 @@ describe('BookingDetails', () => {
   })
 
   it('should render correctly', async () => {
-    const booking = bookingsSnap.ongoing_bookings[0]
+    const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+    booking.stock.offer.url = 'https://example.com'
     const { toJSON } = renderBookingDetails(booking)
     expect(toJSON()).toMatchSnapshot()
   })
@@ -78,7 +80,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
       booking.stock.offer.url = 'https://example.com'
 
@@ -93,15 +95,21 @@ describe('BookingDetails', () => {
       })
     })
 
-    it('should display booking qr code if offer is physical', async () => {
+    it('should not display offer link button if no url', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
+      const { queryByText } = renderBookingDetails(booking)
+      expect(queryByText("Accéder à l'offre")).toBeFalsy()
+    })
+
+    it('should display booking qr code if offer is physical', async () => {
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = false
       const { getByTestId } = renderBookingDetails(booking)
       getByTestId('qr-code')
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       const { getByText } = renderBookingDetails(booking)
       getByText('123456789')
@@ -110,7 +118,7 @@ describe('BookingDetails', () => {
 
   describe('Offer rules', () => {
     it('should display rules for a digital offer', () => {
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
 
       const { getByText } = renderBookingDetails(booking)
@@ -121,7 +129,7 @@ describe('BookingDetails', () => {
     })
     it('should display rules for a digital offer with activation code', () => {
       mockSettings.autoActivateDigitalBookings = true
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
       booking.activationCode = {
         code: 'fdfdfsds',
@@ -138,7 +146,7 @@ describe('BookingDetails', () => {
       ['event', true],
       ['physical', false],
     ])('should display rules for a %s & non-digital offer', (type, isEvent) => {
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       jest
         .spyOn(Helpers, 'getBookingProperties')
         .mockReturnValue({ isEvent, isDigital: false, isPhysical: !isEvent })
@@ -192,7 +200,7 @@ describe('BookingDetails', () => {
 
   describe('cancellation button', () => {
     it('should log event "CancelBooking" when cancelling booking', async () => {
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       const date = new Date()
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date.toISOString()

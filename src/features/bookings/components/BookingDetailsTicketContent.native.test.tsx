@@ -7,7 +7,18 @@ import { render } from 'tests/utils'
 import { bookingsSnap } from '../api/bookingsSnap'
 
 describe('BookingDetailsTicketContent', () => {
-  const booking = { ...bookingsSnap.ongoing_bookings[0], activationCode: { code: 'someCode' } }
+  const originalBooking = bookingsSnap.ongoing_bookings[0]
+  const booking = {
+    ...originalBooking,
+    activationCode: { code: 'someCode' },
+    stock: {
+      ...originalBooking.stock,
+      offer: {
+        ...originalBooking.stock.offer,
+        url: 'https://example.com',
+      },
+    },
+  }
 
   describe('activationCodeFeatureEnabled === true & token', () => {
     it('should display the booking activation code when activationCodeFeatureEnabled is true', () => {
@@ -45,7 +56,7 @@ describe('BookingDetailsTicketContent', () => {
       expect(queryByText("Accéder à l'offre")).toBeTruthy()
     })
 
-    it('should not display the access button offer when isDigital offer', () => {
+    it('should not display the access button offer when offer is not digital', () => {
       booking.stock.offer.isDigital = false
       const { queryByText } = render(
         <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={false} />

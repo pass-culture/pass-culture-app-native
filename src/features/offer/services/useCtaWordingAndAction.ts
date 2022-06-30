@@ -7,7 +7,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 import { useOffer } from '../api/useOffer'
 
@@ -30,8 +30,8 @@ interface Props {
 interface ICTAWordingAndAction {
   showBookingModal?: boolean
   wording?: string
-  navigateTo?: TouchableLinkProps['navigateTo']
-  externalNav?: TouchableLinkProps['externalNav']
+  navigateTo?: InternalNavigationProps['navigateTo']
+  externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
 }
 

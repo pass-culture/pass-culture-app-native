@@ -180,18 +180,12 @@ export function BookingDetails() {
               <Separator />
               <Spacer.Column numberOfSpaces={4} />
               <SeeItineraryButton
-                externalNav={
-                  venueFullAddress
-                    ? {
-                        url: getGoogleMapsItineraryUrl(venueFullAddress),
-                        address: venueFullAddress,
-                      }
-                    : undefined
-                }
+                externalNav={{
+                  url: getGoogleMapsItineraryUrl(venueFullAddress),
+                  address: venueFullAddress,
+                }}
                 onPress={() =>
-                  !!venueFullAddress &&
-                  offerId &&
-                  analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
+                  offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
                 }
               />
             </React.Fragment>

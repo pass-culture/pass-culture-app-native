@@ -94,17 +94,15 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }) => {
-      return (
+      return showSeeMore ? (
         <SeeMore
-          navigateTo={
-            showSeeMore
-              ? { screen: searchTabConfig[0], params: searchTabConfig[1], withPush: true }
-              : undefined
-          }
+          navigateTo={{ screen: searchTabConfig[0], params: searchTabConfig[1], withPush: true }}
           width={width}
           height={height}
           onPress={onPressSeeMore as () => void}
         />
+      ) : (
+        <React.Fragment />
       )
     },
     [onPressSeeMore, showSeeMore, searchTabConfig]

@@ -55,11 +55,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <View {...getHeadingAttrs(3)}>
       <TouchableLink
-        navigateTo={
-          stock.offer.id
-            ? { screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }
-            : undefined
-        }
+        navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="EndedBookingItem">

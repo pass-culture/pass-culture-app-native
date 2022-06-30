@@ -54,6 +54,16 @@ export const Offer: FunctionComponent = () => {
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
+  const externalNavProps = externalNav
+    ? { externalNav, isOnPressDebounced: true, icon: ExternalSite }
+    : undefined
+  const navigationProps = navigateTo ? { navigateTo, isOnPressDebounced: true } : externalNavProps
+  const onPress = () => {
+    onPressCTA && onPressCTA()
+    if (showBookingModal) {
+      showBookingOfferModal()
+    }
+  }
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
@@ -65,21 +75,20 @@ export const Offer: FunctionComponent = () => {
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          <TouchableLink
-            as={ButtonWithLinearGradient}
-            wording={wording}
-            navigateTo={navigateTo}
-            externalNav={externalNav}
-            onPress={() => {
-              onPressCTA && onPressCTA()
-              if (showBookingModal) {
-                showBookingOfferModal()
-              }
-            }}
-            icon={externalNav ? ExternalSite : undefined}
-            isDisabled={onPressCTA === undefined && !navigateTo && !externalNav}
-            isOnPressDebounced
-          />
+          {navigationProps ? (
+            <TouchableLink
+              as={ButtonWithLinearGradient}
+              wording={wording}
+              onPress={onPress}
+              {...navigationProps}
+            />
+          ) : (
+            <ButtonWithLinearGradient
+              wording={wording}
+              onPress={onPress}
+              isDisabled={onPressCTA === undefined}
+            />
+          )}
         </CallToActionContainer>
       )}
 
