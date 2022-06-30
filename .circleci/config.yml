@@ -447,6 +447,19 @@ jobs:
           name: Typescript Type Check
           command: yarn test:types
 
+  test-translations:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - run:
+          name: Check if translations are up to date
+          command: |
+            cp src/locales/fr/messages.po src/locales/fr/current_messages.po
+            yarn translations:extract
+            diff src/locales/fr/current_messages.po src/locales/fr/messages.po -u --color
+
   test-native:
     executor: node
     working_directory: ~/pass-culture
@@ -880,6 +893,9 @@ workflows:
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
+      - test-translations:
+          requires:
+            - checkout-and-install-deps
       - test-native:
           requires:
             - checkout-and-install-deps
@@ -895,6 +911,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - transition-jira-ticket:
           filters:
@@ -904,6 +921,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
             - test-web
             - deploy-soft-testing
@@ -919,6 +937,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - deploy-ios-testing-hard:
           filters:
@@ -929,6 +948,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - notify-hard-testing-release:
           filters:
@@ -948,6 +968,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - deploy-ios-staging-hard:
           filters:
@@ -958,6 +979,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - notify-hard-staging-release:
           filters:
@@ -977,6 +999,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - deploy-android-production-hard:
           filters:
@@ -987,6 +1010,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - deploy-ios-production-hard:
           filters:
@@ -997,6 +1021,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - notify-hard-production-release:
           filters:
@@ -1016,6 +1041,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-native
       - deploy-web-testing:
           filters:
@@ -1026,6 +1052,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-web
           context:
             - GCP
@@ -1133,6 +1160,7 @@ workflows:
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
+            - test-translations
             - test-web
       - wait_for_approval_web_proxy_to_deploy:
           filters:
