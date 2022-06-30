@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import omit from 'lodash.omit'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   Insets,
   Keyboard,
@@ -14,15 +14,17 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { FilterButton } from 'features/search/atoms/Buttons'
 import { LocationType } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { SearchView } from 'features/search/types'
+import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useLocationChoice } from './locationChoice.utils'
@@ -40,6 +42,7 @@ export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTit
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
+  const { searchState } = useSearch()
   const [query, setQuery] = useState<string>(params?.query || '')
   const accessibilityDescribedBy = uuidv4()
   const { locationFilter } = stagedSearchState
@@ -51,6 +54,7 @@ export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTit
   const hasEditableSearchInput =
     params?.view === SearchView.Suggestions || params?.view === SearchView.Results
   const inputRef = useRef<RNTextInput | null>(null)
+  const activeFilters = useFilterCount(searchState)
 
   useEffect(() => {
     setQuery(params?.query || '')
@@ -150,6 +154,12 @@ export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTit
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}
         />
+        {params?.view === SearchView.Results && (
+          <Fragment>
+            <Spacer.Row numberOfSpaces={4} />
+            <FilterButton activeFilters={activeFilters} />
+          </Fragment>
+        )}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche

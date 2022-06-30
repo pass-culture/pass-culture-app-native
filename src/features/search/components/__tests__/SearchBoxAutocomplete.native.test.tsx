@@ -7,6 +7,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
+import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -53,6 +54,8 @@ jest.mock('features/search/pages/useSearchResults', () => ({
     isFetchingNextPage: false,
   }),
 }))
+
+jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 jest.mock('react-instantsearch-hooks', () => ({
   useSearchBox: () => ({
@@ -245,5 +248,31 @@ describe('SearchBoxAutocomplete component', () => {
     await fireEvent(searchInput, 'onFocus')
 
     expect(navigate).not.toBeCalled()
+  })
+
+  it('should display the search filter button when showing results', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
+    const { queryByTestId } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
+
+    expect(queryByTestId('searchFilterButton')).toBeTruthy()
+  })
+
+  it.each([[SearchView.Landing], [SearchView.Suggestions]])(
+    'should hide the search filter button when not showing results',
+    (view) => {
+      useRoute.mockReturnValueOnce({ params: { view, query: 'la fnac' } })
+      const { queryByTestId } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
+
+      expect(queryByTestId('searchFilterButton')).toBeNull()
+    }
+  )
+
+  it('should display filter button with the number of active filters', async () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
+    const { getByTestId } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
+
+    const filterButton = getByTestId('searchFilterBadge')
+
+    expect(filterButton).toHaveTextContent('3')
   })
 })
