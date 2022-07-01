@@ -24,3 +24,6 @@ export const prepareLogEventParams = (params: Record<string, unknown>) =>
     acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
     return acc
   }, {})
+
+const STRING_VALUE_MAX_LENGTH = 100
+export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
