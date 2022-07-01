@@ -19,7 +19,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
-type SetPhoneValidationCodeProps = StackScreenProps<
+export type SetPhoneValidationCodeProps = StackScreenProps<
   IdentityCheckRootStackParamList,
   'SetPhoneValidationCode'
 >
