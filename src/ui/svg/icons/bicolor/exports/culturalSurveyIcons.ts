@@ -15,7 +15,6 @@ import { PerformingArts } from 'ui/svg/icons/bicolor/PerformingArts'
 import { Piano } from 'ui/svg/icons/bicolor/Piano'
 import { Press } from 'ui/svg/icons/bicolor/Press'
 import { PuzzlePiece } from 'ui/svg/icons/bicolor/PuzzlePiece'
-import { ReversedHat } from 'ui/svg/icons/bicolor/ReversedHat'
 import { Show } from 'ui/svg/icons/bicolor/Show'
 import { Streaming } from 'ui/svg/icons/bicolor/Streaming'
 import { Theater } from 'ui/svg/icons/bicolor/Theater'
@@ -37,7 +36,6 @@ export const culturalSurveyIcons = {
   Opera,
   PencilTip,
   PuzzlePiece,
-  ReversedHat,
   Theater,
   Video,
   Cinema,
