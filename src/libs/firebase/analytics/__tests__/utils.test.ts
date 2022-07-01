@@ -1,6 +1,6 @@
 import { NativeScrollEvent } from 'react-native'
 
-import { isCloseToBottom } from './utils'
+import { isCloseToBottom } from 'libs/firebase/analytics/utils'
 
 describe('[Analytics utils]', () => {
   const nativeEventMiddle = {
