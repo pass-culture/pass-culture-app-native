@@ -3,7 +3,8 @@ import React from 'react'
 
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
-import { fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 const navigationProps = {
   route: {
@@ -16,12 +17,12 @@ const navigationProps = {
 
 describe('SetPhoneValidationCode', () => {
   it('should match snapshot', () => {
-    const SetPhoneValidationCodePage = render(<SetPhoneValidationCode {...navigationProps} />)
+    const SetPhoneValidationCodePage = renderSetPhoneValidationCode()
     expect(SetPhoneValidationCodePage).toMatchSnapshot()
   })
+
   it("should have modal closed on render, and open modal when clicking on 'code non reçu'", async () => {
-    const CodePage = render(<SetPhoneValidationCode {...navigationProps} />)
-    await superFlushWithAct()
+    const CodePage = renderSetPhoneValidationCode()
 
     expect(CodePage.queryByText('Demander un autre code')).toBeFalsy()
 
@@ -30,3 +31,10 @@ describe('SetPhoneValidationCode', () => {
     expect(CodePage.queryByText('Demander un autre code')).toBeTruthy()
   })
 })
+
+function renderSetPhoneValidationCode() {
+  return render(<SetPhoneValidationCode {...navigationProps} />, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+}

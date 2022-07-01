@@ -78,6 +78,7 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
             <CodeNotReceivedModal
               isVisible={isCodeNotReceivedModalVisible}
               dismissModal={hideModal}
+              phoneNumber={formattedPhoneNumber}
             />
           </View>
         </Form.MaxWidth>
