@@ -1,3 +1,4 @@
+import { Accordion } from 'ui/svg/icons/bicolor/Accordion'
 import { Book } from 'ui/svg/icons/bicolor/Book'
 import { Bookstore } from 'ui/svg/icons/bicolor/Bookstore'
 import { Brush } from 'ui/svg/icons/bicolor/Brush'
@@ -22,6 +23,7 @@ import { Video } from 'ui/svg/icons/bicolor/Video'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 
 export const culturalSurveyIcons = {
+  Accordion,
   Brush,
   Micro,
   Museum,
