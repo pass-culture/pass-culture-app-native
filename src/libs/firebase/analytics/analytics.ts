@@ -1,40 +1,17 @@
-import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
-import { useUtmParams } from 'libs/utm'
-
-import { AnalyticsEvent } from './events'
-import { analyticsProvider } from './provider'
-import { LoginRoutineMethod } from './types'
-
-const STRING_VALUE_MAX_LENGTH = 100
+import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { analyticsProvider } from 'libs/firebase/analytics/provider'
+import { LoginRoutineMethod, OfferAnalyticsData } from 'libs/firebase/analytics/types'
+import { useInit } from 'libs/firebase/analytics/useInit'
+import { urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
 
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
-
-export type OfferAnalyticsData = {
-  offerId?: number
-}
-
-const useInit = () => {
-  const { campaignDate } = useUtmParams()
-
-  useEffect(() => {
-    // If the user has clicked on marketing link 24h ago, we want to remove the marketing params
-    const ago24Hours = new Date()
-    ago24Hours.setDate(ago24Hours.getDate() - 1)
-
-    if (campaignDate && campaignDate < ago24Hours) {
-      analytics.setDefaultEventParameters(undefined)
-    }
-  }, [campaignDate])
-}
-
-const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
 
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,

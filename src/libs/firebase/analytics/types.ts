@@ -13,3 +13,7 @@ export interface AnalyticsProvider {
   logLogin: ({ method }: { method: LoginRoutineMethod }) => Promise<void> | void
   logEvent: <P extends AnalyticsParam>(name: AnalyticsEvent, params?: P) => Promise<void> | void
 }
+
+export type OfferAnalyticsData = {
+  offerId?: number
+}
