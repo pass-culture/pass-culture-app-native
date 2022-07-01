@@ -1,4 +1,4 @@
-import { AnalyticsEvent, validateAnalyticsEvent } from './events'
+import { AnalyticsEvent, validateAnalyticsEvent } from '../events'
 
 const analyticsMembers = [...Object.values(AnalyticsEvent)]
 
