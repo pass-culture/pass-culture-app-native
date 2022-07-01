@@ -5,7 +5,6 @@ import waitForExpect from 'wait-for-expect'
 import { navigate, push } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { navigateFromRef, pushFromRef } from 'features/navigation/navigationRef'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { analytics } from 'libs/firebase/analytics'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
@@ -32,39 +31,45 @@ describe('<TouchableLink />', () => {
   describe('Internal Navigation', () => {
     it('should navigate to right screen with expected params (nominal case)', async () => {
       const { getByText } = render(
-        <TouchableLink navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1] }}>
+        <TouchableLink navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}>
           <TouchableLinkContent />
         </TouchableLink>
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(navigate).toBeCalledWith(...homeNavConfig)
+        expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Home', params: undefined })
       })
     })
 
     it('should push right screen with expected params if withPush={true}', async () => {
       const { getByText } = render(
         <TouchableLink
-          navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1], withPush: true }}>
+          navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' }, withPush: true }}>
           <TouchableLinkContent />
         </TouchableLink>
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(push).toBeCalledWith(...homeNavConfig)
+        expect(push).toBeCalledWith('TabNavigator', {
+          screen: 'Home',
+          params: undefined,
+        })
       })
     })
 
     it('should navigate using navigateFromRef if fromRef={true}', async () => {
       const { getByText } = render(
         <TouchableLink
-          navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1], fromRef: true }}>
+          navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' }, fromRef: true }}>
           <TouchableLinkContent />
         </TouchableLink>
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(navigateFromRef).toBeCalledWith(...homeNavConfig)
+        expect(navigateFromRef).toBeCalledWith('TabNavigator', {
+          screen: 'Home',
+          params: undefined,
+        })
       })
     })
 
@@ -72,8 +77,8 @@ describe('<TouchableLink />', () => {
       const { getByText } = render(
         <TouchableLink
           navigateTo={{
-            screen: homeNavConfig[0],
-            params: homeNavConfig[1],
+            screen: 'TabNavigator',
+            params: { screen: 'Home' },
             fromRef: true,
             withPush: true,
           }}>
@@ -82,7 +87,10 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(pushFromRef).toBeCalledWith(...homeNavConfig)
+        expect(pushFromRef).toBeCalledWith('TabNavigator', {
+          screen: 'Home',
+          params: undefined,
+        })
       })
     })
 

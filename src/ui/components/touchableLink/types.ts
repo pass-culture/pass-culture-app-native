@@ -8,8 +8,8 @@ export type InternalNavigationProps = {
   navigateTo: {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]
-    fromRef?: boolean
-    withPush?: boolean
+    withPush?: boolean // If true, uses push instead of navigate
+    fromRef?: boolean // If true, uses navigateFromRef/pushFromRef instead of navigate/push
   }
   externalNav?: never
 }
@@ -18,7 +18,7 @@ export type ExternalNavigationProps = {
   externalNav: {
     url: string
     params?: UrlParamsProps
-    address?: string
+    address?: string // If provided, navigates using useItinerary hook
     onSuccess?: () => void | Promise<void>
     onError?: () => void
   }
@@ -33,8 +33,8 @@ type AsProps = {
 
 export type TouchableLinkProps =
   | (InternalNavigationProps | ExternalNavigationProps) & {
-      navigateBeforeOnPress?: boolean
-      highlight?: boolean
+      navigateBeforeOnPress?: boolean // If true, triggers navigation before onPress function
+      highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
       isOnPressDebounced?: boolean
     } & TouchableOpacityProps &
       AsProps
