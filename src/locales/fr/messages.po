@@ -1453,10 +1453,6 @@ msgstr "L'e-mail saisi est identique à votre e-mail actuel"
 msgid "L'historique n'a pas pu supprimer les données locales: {0}"
 msgstr "L'historique n'a pas pu supprimer les données locales: {0}"
 
-#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
-msgid "L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation."
-msgstr "L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation."
-
 #: src/features/bookOffer/components/BookingImpossible.tsx
 #: src/features/offer/components/OfferHeader.tsx
 msgid "L'offre n'a pas été ajoutée à tes favoris"
@@ -2281,6 +2277,10 @@ msgstr "Pourquoi signales-tu"
 msgid "Pratique artistiques"
 msgstr "Pratique artistiques"
 
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+msgid "Prends 1 minute"
+msgstr "Prends 1 minute"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "Prends une photo de ta"
 msgstr "Prends une photo de ta"
@@ -2289,7 +2289,6 @@ msgstr "Prends une photo de ta"
 msgid "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 msgstr "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 
-#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
 #: src/features/navigation/RootNavigator/culturalSurveyRoutes.ts
 msgid "Prenons 1 minute"
 msgstr "Prenons 1 minute"
@@ -2817,6 +2816,10 @@ msgstr "Terminer"
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "Terminer ma réservation"
 msgstr "Terminer ma réservation"
+
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+msgid "Tes réponses vont nous aider à mieux te connaître."
+msgstr "Tes réponses vont nous aider à mieux te connaître."
 
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Titre de séjour, carte d'identité ou passeport."
@@ -3718,8 +3721,8 @@ msgid "pour"
 msgstr "pour"
 
 #: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
-msgid "pour parler de tes pratiques culturelles !"
-msgstr "pour parler de tes pratiques culturelles !"
+msgid "pour nous parler de tes activités culturelles préférées"
+msgstr "pour nous parler de tes activités culturelles préférées"
 
 #: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
 msgid "pour tes réponses !"

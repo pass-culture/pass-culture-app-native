@@ -39,7 +39,7 @@ Object {
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
         >
-          Prenons 1 minute
+          Prends 1 minute
         </h3>
         <h4
           aria-level="4"
@@ -48,7 +48,7 @@ Object {
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
         >
-          pour parler de tes pratiques culturelles !
+          pour nous parler de tes activités culturelles préférées
         </h4>
         <div
           class="css-view-1dbjc4n"
@@ -59,7 +59,7 @@ Object {
           dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-bottom: 20px; text-align: center;"
         >
-          L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation.
+          Tes réponses vont nous aider à mieux te connaître.
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -160,7 +160,7 @@ Object {
         role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
       >
-        Prenons 1 minute
+        Prends 1 minute
       </h3>
       <h4
         aria-level="4"
@@ -169,7 +169,7 @@ Object {
         role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
       >
-        pour parler de tes pratiques culturelles !
+        pour nous parler de tes activités culturelles préférées
       </h4>
       <div
         class="css-view-1dbjc4n"
@@ -180,7 +180,7 @@ Object {
         dir="ltr"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-bottom: 20px; text-align: center;"
       >
-        L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation.
+        Tes réponses vont nous aider à mieux te connaître.
       </div>
       <div
         class="css-view-1dbjc4n"
