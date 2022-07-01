@@ -4,12 +4,11 @@ import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
+import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { analyticsProvider } from 'libs/firebase/analytics/provider'
+import { LoginRoutineMethod, OfferAnalyticsData } from 'libs/firebase/analytics/types'
 import { useInit } from 'libs/firebase/analytics/useInit'
 import { urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
-
-import { AnalyticsEvent } from './events'
-import { analyticsProvider } from './provider'
-import { LoginRoutineMethod, OfferAnalyticsData } from './types'
 
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }

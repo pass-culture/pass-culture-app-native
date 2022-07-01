@@ -1,14 +1,13 @@
 import { AgentType } from 'api/gen'
-
-import { AnalyticsEvent } from '../events'
+import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 const mockLogEvent = jest.fn()
 jest.mock('@react-native-firebase/analytics', () => () => ({
   logEvent: mockLogEvent,
 }))
 
-jest.unmock('./provider')
-const { analytics } = jest.requireActual('./analytics')
+jest.unmock('libs/firebase/analytics/provider')
+const { analytics } = jest.requireActual('libs/firebase/analytics/analytics')
 
 describe('analytics - logEvent', () => {
   it('should cast offerId and bookingId from number to string', () => {
