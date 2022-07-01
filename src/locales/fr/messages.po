@@ -537,6 +537,11 @@ msgstr "Choix de l'indicatif téléphonique"
 msgid "Cinéma - Salle de projections"
 msgstr "Cinéma - Salle de projections"
 
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Cinéma itinérant"
+msgstr "Cinéma itinérant"
+
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
 msgstr "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
@@ -1349,7 +1354,6 @@ msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
 #: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchBoxRework.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
 "\"Entrée\""
@@ -1996,7 +2000,6 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchBoxRework.tsx
 msgid "Offre, artiste..."
 msgstr "Offre, artiste..."
 
@@ -2404,12 +2407,11 @@ msgstr "Recherche par localisation"
 msgid "Recherche une adresse, un lieu..."
 msgstr "Recherche une adresse, un lieu..."
 
-#: src/features/search/components/SearchHeaderRework.tsx
+#: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
 
-#: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchHeaderRework.tsx
+#: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre, un titre, un lieu..."
 msgstr "Recherche une offre, un titre, un lieu..."
 
@@ -2420,10 +2422,6 @@ msgstr "Rechercher"
 #: src/features/navigation/TabBar/routes.ts
 msgid "Rechercher des offres"
 msgstr "Rechercher des offres"
-
-#: src/features/search/components/SearchBox.tsx
-msgid "Rechercher un artiste, titre, lieu..."
-msgstr "Rechercher un artiste, titre, lieu..."
 
 #: src/features/home/components/NoContentError.tsx
 msgid "Rechercher une offre"
@@ -2523,7 +2521,6 @@ msgstr "Revenir au ticket précédent"
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
-#: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/PageHeader.tsx
