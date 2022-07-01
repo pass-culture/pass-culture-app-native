@@ -24,13 +24,13 @@ export function Search() {
   useEffect(() => {
     if (params) {
       dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
-      dispatch({ type: 'SHOW_RESULTS', payload: true })
     }
   }, [dispatch, params])
 
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions
-    if (showResults || isFocus) return <SearchDetails />
+    // To avoid blink effect when refreshing the view (due to dispatch delay), we also test params.showResults
+    if (params?.showResults || showResults || isFocus) return <SearchDetails />
     const categoriesTitle = 'Explore les catégories'
     return (
       <Categories>
@@ -48,7 +48,12 @@ export function Search() {
   return (
     <Container>
       <Form.Flex>
-        <SearchHeader searchInputID={searchInputID} onFocusState={onFocusState} isFocus={isFocus} />
+        <SearchHeader
+          paramsShowResults={params?.showResults}
+          searchInputID={searchInputID}
+          onFocusState={onFocusState}
+          isFocus={isFocus}
+        />
         {bodySearch()}
       </Form.Flex>
     </Container>
