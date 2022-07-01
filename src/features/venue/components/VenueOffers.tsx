@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useCallback } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,7 +7,7 @@ import { SeeMore } from 'features/home/atoms'
 import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
@@ -38,25 +38,33 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
   const params = useVenueSearchParameters(venueId)
-  const searchTabNavConfig = getTabNavConfig('Search', params)
+  const searchTabNavConfig = useMemo(() => {
+    return getTabNavConfig('Search', {
+      ...params,
+      ...(venue
+        ? {
+            locationFilter: {
+              ...params.locationFilter,
+              locationType: LocationType.VENUE,
+              venue: {
+                ...(params.locationFilter.locationType === LocationType.VENUE
+                  ? params.locationFilter.venue
+                  : {}),
+                label: venue.name,
+                info: venue.city || '',
+                venueId: venue.id,
+              },
+            },
+          }
+        : {}),
+      showResults: true,
+    })
+  }, [params, venue])
   const searchNavConfig = { screen: searchTabNavConfig[0], params: searchTabNavConfig[1] }
   const { hits = [], nbHits = 0 } = venueOffers || {}
 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-
-  const { dispatch } = useStagedSearch()
-  const saveVenueFilter = useCallback(() => {
-    venue &&
-      dispatch({
-        type: 'SET_LOCATION_VENUE',
-        payload: {
-          label: venue.name,
-          info: venue.city || '',
-          venueId: venue.id,
-        },
-      })
-  }, [dispatch, venue])
 
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
     ({ item, width, height }) => {
@@ -84,9 +92,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
-    saveVenueFilter()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [saveVenueFilter])
+  }, [venueId])
 
   const showSeeMore = nbHits > hits.length
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined

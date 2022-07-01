@@ -86,6 +86,7 @@ describe('<VenueOffers />', () => {
             venueId: 5543,
           },
         },
+        showResults: true,
       },
       screen: 'Search',
     })

@@ -45,7 +45,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   // When we navigate to the search page, we want to show 20 results per page,
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const searchParams = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
+  const searchParams = { ...parseSearchParameters(parameters), hitsPerPage: 20, showResults: true }
   const searchTabConfig = getTabNavConfig('Search', searchParams)
   const moduleName = display.title || parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>

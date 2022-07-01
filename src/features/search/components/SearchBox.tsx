@@ -10,6 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useNavigateWithStagedSearch } from 'features/search/pages/useNavigateWithStagedSearch'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -21,6 +22,7 @@ import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
+  paramsShowResults?: boolean
   searchInputID: string
   showLocationButton?: boolean
   onFocusState?: (focus: boolean) => void
@@ -29,6 +31,7 @@ type Props = {
 }
 
 export const SearchBox: React.FC<Props> = ({
+  paramsShowResults,
   searchInputID,
   showLocationButton,
   onFocusState,
@@ -37,7 +40,7 @@ export const SearchBox: React.FC<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const [query, setQuery] = useState<string>(searchState.query || '')
   const accessibilityDescribedBy = uuidv4()
   const showResults = useShowResults()
@@ -46,9 +49,12 @@ export const SearchBox: React.FC<Props> = ({
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
+  const showResultsWithStagedSearch = useNavigateWithStagedSearch()
 
   const resetSearch = () => {
-    navigate(...getTabNavConfig('Search', { query: '' }))
+    showResultsWithStagedSearch({
+      query: '',
+    })
     setQuery('')
   }
 
@@ -56,9 +62,10 @@ export const SearchBox: React.FC<Props> = ({
     setQuery('')
     if (onFocusState) onFocusState(false)
     stagedDispatch({ type: 'SET_QUERY', payload: '' })
-    dispatch({ type: 'SET_QUERY', payload: '' })
-    dispatch({ type: 'SHOW_RESULTS', payload: false })
-    dispatch({ type: 'INIT' })
+    showResultsWithStagedSearch({
+      query: '',
+      showResults: false,
+    })
   }
 
   const onPressLocationButton = useCallback(() => {
@@ -90,8 +97,9 @@ export const SearchBox: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}>
-        {showResults || isFocus ? (
+      <SearchInputContainer
+        marginHorizontal={paramsShowResults || showResults || isFocus ? getSpacing(6) : 0}>
+        {paramsShowResults || showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
