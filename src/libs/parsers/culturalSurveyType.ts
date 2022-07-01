@@ -33,7 +33,7 @@ export const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [CulturalSurveyAnswerEnum.SPECTACLE_DANSE]: culturalSurveyIcons.DanceFeet,
   [CulturalSurveyAnswerEnum.SPECTACLE_HUMOUR]: culturalSurveyIcons.Festival,
   [CulturalSurveyAnswerEnum.SPECTACLE_OPERA]: culturalSurveyIcons.Opera,
-  [CulturalSurveyAnswerEnum.SPECTACLE_RUE]: culturalSurveyIcons.ReversedHat,
+  [CulturalSurveyAnswerEnum.SPECTACLE_RUE]: culturalSurveyIcons.Accordion,
   [CulturalSurveyAnswerEnum.SPECTACLE_THEATRE]: culturalSurveyIcons.Theater,
   [CulturalSurveyAnswerEnum.SANS_ACTIVITES]: null,
   [CulturalSurveyAnswerEnum.SANS_SORTIES]: null,
