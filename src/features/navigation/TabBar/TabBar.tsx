@@ -22,7 +22,7 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
             canPreventDefault: true,
           })
           if (!event.defaultPrevented) {
-            navigation.navigate(route.name)
+            navigation.navigate('TabNavigator', { screen: route.name, params: route.params })
           }
         }
         return (
