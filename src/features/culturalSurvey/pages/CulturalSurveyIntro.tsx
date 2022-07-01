@@ -22,11 +22,9 @@ export const CulturalSurveyIntro = (): JSX.Element => {
     <GenericInfoPageWhite
       icon={StyledBicolorPhonePending}
       titleComponent={Typo.Title3}
-      title={t`Prenons 1 minute`}
-      subtitle={t`pour parler de tes pratiques culturelles\u00a0!`}>
-      <StyledBody>
-        {t`L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation.`}
-      </StyledBody>
+      title={t`Prends 1 minute`}
+      subtitle={t`pour nous parler de tes activités culturelles préférées`}>
+      <StyledBody>{t`Tes réponses vont nous aider à mieux te connaître.`}</StyledBody>
       <Spacer.Flex flex={1} />
       <View>
         <ButtonPrimary
