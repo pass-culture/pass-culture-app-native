@@ -13,12 +13,18 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
+  paramsShowResults?: boolean
   searchInputID: string
   onFocusState?: (focus: boolean) => void
   isFocus?: boolean
 }
 
-export const SearchHeader: React.FC<Props> = ({ searchInputID, onFocusState, isFocus }) => {
+export const SearchHeader: React.FC<Props> = ({
+  paramsShowResults,
+  searchInputID,
+  onFocusState,
+  isFocus,
+}) => {
   const { top } = useCustomSafeInsets()
   const showResults = useShowResults()
 
@@ -53,6 +59,7 @@ export const SearchHeader: React.FC<Props> = ({ searchInputID, onFocusState, isF
         <Spacer.TopScreen />
         <SearchBoxContainer testID="searchBoxWithoutLabel">
           <SearchBox
+            paramsShowResults={paramsShowResults}
             searchInputID={searchInputID}
             onFocusState={onFocusState}
             isFocus={isFocus}
@@ -63,7 +70,9 @@ export const SearchHeader: React.FC<Props> = ({ searchInputID, onFocusState, isF
     )
   }
 
-  return !showResults && !isFocus ? searchBoxWithLabel() : searchBoxWithoutLabel()
+  return !paramsShowResults && !showResults && !isFocus
+    ? searchBoxWithLabel()
+    : searchBoxWithoutLabel()
 }
 
 const SearchBoxContainer = styled.View({

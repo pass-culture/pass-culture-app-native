@@ -60,7 +60,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           isSelected={selectedScreen === screenName}
           onSelect={() => {
             setSelectedScreen(screenName)
-            setScreenParams({})
+            setScreenParams(screenName !== 'Search' ? {} : { showResults: 'true' })
           }}
         />
         <Spacer.Column numberOfSpaces={2} />

@@ -71,7 +71,6 @@ describe('Search component', () => {
       type: 'SET_STATE_FROM_NAVIGATE',
       payload: {},
     })
-    expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 
   describe('When search not executed', () => {
