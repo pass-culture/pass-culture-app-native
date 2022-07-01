@@ -52,20 +52,18 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
 
   const { visible: isCodeNotReceivedModalVisible, hideModal, showModal } = useModal(false)
 
-  const onValidatePhoneNumberError = (err: unknown | ApiError) => {
-    const { content } = err as ApiError
-    if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
-      navigate('PhoneValidationTooManyAttempts')
-    } else {
-      setErrorMessage(extractApiErrorMessage(err))
-    }
-  }
-
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: () => {
       navigate('IdentityCheckStepper')
     },
-    onError: onValidatePhoneNumberError,
+    onError: (err: unknown | ApiError) => {
+      const { content } = err as ApiError
+      if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
+        navigate('PhoneValidationTooManyAttempts')
+      } else {
+        setErrorMessage(extractApiErrorMessage(err))
+      }
+    },
   })
 
   const onChangeValue = (value: string) => {
