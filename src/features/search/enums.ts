@@ -140,6 +140,10 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MOVIE],
     facetFilter: VenueTypeCodeKey.MOVIE,
   },
+  [VenueTypeCodeKey.TRAVELING_CINEMA]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.TRAVELING_CINEMA],
+    facetFilter: VenueTypeCodeKey.TRAVELING_CINEMA,
+  },
   [VenueTypeCodeKey.OTHER]: {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.OTHER],
     facetFilter: VenueTypeCodeKey.OTHER,
