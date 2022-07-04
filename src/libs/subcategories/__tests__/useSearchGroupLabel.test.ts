@@ -19,7 +19,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnum.MATERIEL}     | ${'Beaux-Arts'}
     ${SearchGroupNameEnum.NONE}         | ${'Toutes les catégories'}
   `(
-    'useSearchGroupLabel($SearchGroupName) = $category',
+    'useSearchGroupLabel($SearchGroupName) = $SearchGroupLabel',
     ({ SearchGroupName, SearchGroupLabel }) => {
       expect(useSearchGroupLabel(SearchGroupName)).toBe(SearchGroupLabel)
     }
