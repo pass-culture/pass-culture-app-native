@@ -81,7 +81,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   useEffect(() => {
     // For offers of type Thing, we don't manually select a date (thus a stock).
-    // So we select it programatically given the bookable stocks.
+    // So we select it programmatically given the bookable stocks.
     const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
 
     if (!selectedStock && firstBookableStock) {
