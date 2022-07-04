@@ -60,4 +60,5 @@ const TouchableContainer = styledButton(Touchable)<{ borderLeftColor?: string }>
 const Label = styled(Typo.Caption)({
   flex: 1,
   marginLeft: getSpacing(2),
+  textAlign: 'left',
 })
