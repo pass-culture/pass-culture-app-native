@@ -10,7 +10,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 export function Search() {
@@ -31,13 +31,12 @@ export function Search() {
     // SearchDetails will integrate recent searches and suggestions
     // To avoid blink effect when refreshing the view (due to dispatch delay), we also test params.showResults
     if (params?.showResults || showResults || isFocus) return <SearchDetails />
-    const categoriesTitle = 'Explore les catégories'
     return (
-      <Categories>
-        <CategoriesTitle>{categoriesTitle}</CategoriesTitle>
+      <Container>
+        <Spacer.Column numberOfSpaces={5} />
         <CategoriesButtons onPressCategory={showResultsForCategory} />
         <Spacer.TabBar />
-      </Categories>
+      </Container>
     )
   }
 
@@ -61,15 +60,3 @@ export function Search() {
 }
 
 const Container = styled.View({ flex: 1 })
-
-const Categories = styled.ScrollView({
-  flex: 1,
-  paddingTop: getSpacing(11),
-  paddingBottom: getSpacing(6),
-  paddingHorizontal: getSpacing(5),
-})
-
-const CategoriesTitle = styled(Typo.Title4)({
-  paddingHorizontal: getSpacing(1),
-  paddingBottom: getSpacing(4),
-})

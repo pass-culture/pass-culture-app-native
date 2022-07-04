@@ -46,16 +46,10 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-const Wrapper = styled.View({
-  marginHorizontal: getSpacing(5),
-})
-
 const Template = (Component: FunctionComponent) => {
   const WrappedComponent: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
     <Component>
-      <Wrapper>
-        <CategoriesButtonsDisplay {...props} />
-      </Wrapper>
+      <CategoriesButtonsDisplay {...props} />
     </Component>
   )
   return WrappedComponent
