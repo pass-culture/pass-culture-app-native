@@ -179,26 +179,51 @@ describe('<BookingDetails />', () => {
 
       const page = await renderBookingDetails(mockStocks)
 
-      await act(async () => {
-        await fireEvent.press(page.getByText('Confirmer la réservation'))
-      })
-
-      await act(async () => {
-        await flushAllPromisesTimes(10)
-      })
+      await fireEvent.press(page.getByText('Confirmer la réservation'))
 
       await waitForExpect(() => {
         expect(mockShowErrorSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ timeout: 5000, message })
-        if (code) {
-          expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
-          expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, code)
-        } else {
-          expect(analytics.logBookingError).not.toHaveBeenCalled()
-        }
       })
     }
   )
+
+  it('should log booking error when error is known', async () => {
+    const response = { code: 'INSUFFICIENT_CREDIT' }
+
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+        res(ctx.status(400), ctx.json(response))
+      )
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
+      expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, 'INSUFFICIENT_CREDIT')
+    })
+  })
+
+  it('should log booking error when error is unknown', async () => {
+    const response = {}
+
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+        res(ctx.status(400), ctx.json(response))
+      )
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(analytics.logBookingError).not.toHaveBeenCalled()
+    })
+  })
 
   describe('duo selector', () => {
     it('should not display the Duo selector when the offer is not duo', async () => {
