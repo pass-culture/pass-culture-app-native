@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -13,11 +13,12 @@ import { useShowResultsForCategory } from 'features/search/pages/useShowResultsF
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
+const searchInputID = uuidv4()
+
 export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const showResults = useShowResults()
-  const searchInputID = uuidv4()
   const [isFocus, setIsFocus] = useState(false)
   const showResultsForCategory = useShowResultsForCategory()
 
@@ -40,17 +41,13 @@ export function Search() {
     )
   }
 
-  const onFocusState = useCallback((focus: boolean) => {
-    setIsFocus(focus)
-  }, [])
-
   return (
     <Container>
       <Form.Flex>
         <SearchHeader
           paramsShowResults={params?.showResults}
           searchInputID={searchInputID}
-          onFocusState={onFocusState}
+          onFocusState={setIsFocus}
           isFocus={isFocus}
         />
         {bodySearch()}

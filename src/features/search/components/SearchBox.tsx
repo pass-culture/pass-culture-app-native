@@ -111,13 +111,14 @@ export const SearchBox: React.FC<Props> = ({
           placeholder={t`Offre, artiste...`}
           autoFocus={isFocus}
           inputHeight="regular"
-          LeftIcon={() => <MagnifyingGlassIcon />}
+          LeftIcon={MagnifyingGlassIcon}
           onSubmitEditing={onSubmitQuery}
           onPressRightIcon={resetSearch}
           onFocusState={onFocusState}
           testID="searchInput"
           onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
           locationLabel={locationLabel}
+          nativeAutoFocus
         />
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
@@ -128,7 +129,7 @@ export const SearchBox: React.FC<Props> = ({
   )
 }
 
-const StyledSearchInput = styled((props) => <SearchInput {...props} />)({
+const StyledSearchInput = styled(SearchInput)({
   outlineOffset: 0,
 })
 
