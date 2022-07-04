@@ -106,7 +106,10 @@ describe('TabBar', () => {
 
     fireEvent.press(profileTab)
 
-    expect(navigation.navigate).toBeCalledWith('Profile')
+    expect(navigation.navigate).toBeCalledWith('TabNavigator', {
+      screen: 'Profile',
+      params: undefined,
+    })
   })
 })
 
