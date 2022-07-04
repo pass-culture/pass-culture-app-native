@@ -3,13 +3,14 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { useIsUserUnderage } from 'features/profile/utils'
+import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -69,6 +70,11 @@ jest.mock('libs/subcategories', () => ({
 mockUseSubcategoriesMapping.mockReturnValue({
   EVENEMENT_PATRIMOINE: { isEvent: true },
 })
+
+const spyLogOfferConversion = jest.fn()
+jest
+  .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
+  .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
 describe('<BookingDetails />', () => {
   it('should initialize correctly state when offer isDigital', async () => {
@@ -157,6 +163,38 @@ describe('<BookingDetails />', () => {
         af_category: mockOffer.subcategoryId,
       })
       expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
+    })
+  })
+
+  it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { from: 'search' },
+    })
+
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(spyLogOfferConversion).toHaveBeenCalledWith('1337')
+    })
+  })
+
+  it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(spyLogOfferConversion).not.toHaveBeenCalled()
     })
   })
 
