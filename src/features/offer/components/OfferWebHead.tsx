@@ -3,7 +3,7 @@ import React from 'react'
 import { OfferResponse } from 'api/gen'
 import { Helmet } from 'libs/react-helmet/Helmet'
 
-import { description } from '../../../../../package.json'
+import { description } from '../../../../package.json'
 
 interface Props {
   offer: OfferResponse
