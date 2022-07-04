@@ -727,6 +727,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -801,6 +802,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -888,6 +890,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -962,6 +965,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1049,6 +1053,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1123,6 +1128,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1210,6 +1216,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1284,6 +1291,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1371,6 +1379,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1445,6 +1454,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1532,6 +1542,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1606,6 +1617,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
@@ -1693,6 +1705,7 @@ exports[`Search component should render Search 1`] = `
                         "fontSize": 12,
                         "lineHeight": 16,
                         "marginLeft": 8,
+                        "textAlign": "left",
                       },
                     ]
                   }
