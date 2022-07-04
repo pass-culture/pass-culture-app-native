@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { CategoryButton, CategoryButtonProps } from '../CategoryButton'
 
@@ -30,9 +30,23 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
       keyExtractor={(item) => item.label}
       numColumns={numColumns}
       key={key}
+      ListHeaderComponent={CategoriesTitle}
+      contentContainerStyle={contentContainerStyle}
       testID="categoriesButtons"
     />
   )
+}
+
+const CategoriesTitle = styled(Typo.Title4).attrs({
+  children: 'Explore les catégories',
+})({
+  paddingHorizontal: getSpacing(1),
+  paddingBottom: getSpacing(4),
+})
+
+const contentContainerStyle = {
+  paddingVertical: getSpacing(6),
+  paddingHorizontal: getSpacing(5),
 }
 
 const CategoryButtonContainer = styled.View(({ theme }) => ({
