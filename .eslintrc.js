@@ -26,6 +26,7 @@ module.exports = {
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],
     'local-rules/nbsp-in-french-translations': ['error'],
+    'local-rules/todo-format': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       2, // error
       {
