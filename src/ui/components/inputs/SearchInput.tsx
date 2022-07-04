@@ -41,7 +41,9 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
-    if (props?.onFocusState) props.onFocusState(true)
+    if (props.onFocusState) {
+      props.onFocusState(true)
+    }
   }
 
   function onBlur() {
@@ -50,7 +52,9 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
       return
     }
     setIsFocus(false)
-    if (props?.onFocusState) props.onFocusState(false)
+    if (props.onFocusState) {
+      props.onFocusState(false)
+    }
   }
 
   return (

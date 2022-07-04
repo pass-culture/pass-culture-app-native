@@ -29,4 +29,22 @@ describe('<BaseTextInput />', () => {
     expect(nativeTextInput.props.autoFocus).toBe(undefined)
     expect(ref.current?.focus).toBeCalledTimes(1)
   })
+
+  it('should use native autoFocus when prop nativeAutoFocus and autoFocus is true', () => {
+    const ref = React.createRef<RNTextInput>()
+    const renderAPI = render(
+      <BaseTextInput
+        autoFocus={true}
+        placeholder={'placeholder'}
+        value={'value'}
+        ref={ref}
+        nativeAutoFocus={true}
+      />
+    )
+
+    const nativeTextInput = renderAPI.getByPlaceholderText('placeholder')
+
+    expect(nativeTextInput.props.autoFocus).toBe(true)
+    expect(ref.current?.focus).toBeCalledTimes(0)
+  })
 })

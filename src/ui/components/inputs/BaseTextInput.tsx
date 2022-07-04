@@ -9,11 +9,9 @@ import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 import { RNTextInputProps } from './types'
 
 export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function BaseTextInput(
-  props,
+  { nativeAutoFocus, autoFocus, ...props },
   forwardedRef
 ) {
-  const { autoFocus, ...restOfProps } = props
-
   const inputRef = useRef<RNTextInput>(null)
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
      *     when navigating between two screens with autofocus inputs. Otherwise, the keyboard won't
      *     be displayed on the second screen.
      */
-    if (autoFocus && !inputRef.current.isFocused()) {
+    if (!nativeAutoFocus && autoFocus && !inputRef.current.isFocused()) {
       if (Platform.OS === 'ios') {
         inputRef.current.focus()
       } else {
@@ -45,14 +43,15 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputRef.current, autoFocus, props.secureTextEntry])
+  }, [inputRef.current, nativeAutoFocus, autoFocus, props.secureTextEntry])
 
   return (
     <StyledTextInput
-      {...restOfProps}
+      {...props}
+      autoFocus={nativeAutoFocus ? autoFocus : undefined}
       editable={!props.disabled}
       testID={props.testID}
-      placeholder={restOfProps.placeholder || ''}
+      placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
       ref={(ref) => {
         if (ref) {
