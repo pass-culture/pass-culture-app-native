@@ -19,60 +19,80 @@ type Props = {
   isFocus?: boolean
 }
 
+const SearchBoxWithLabel = ({
+  searchInputID,
+  onFocusState,
+  isFocus,
+}: Omit<Props, 'paramsShowResults'>) => {
+  const { top } = useCustomSafeInsets()
+
+  return (
+    <React.Fragment>
+      <HeaderBackground height={top + getSpacing(20)} />
+      <Spacer.TopScreen />
+      <SearchBoxContainer testID="searchBoxWithLabel">
+        <View {...getHeadingAttrs(1)}>
+          <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
+        </View>
+        <Spacer.Column numberOfSpaces={2} />
+        <SearchBox
+          searchInputID={searchInputID}
+          onFocusState={onFocusState}
+          isFocus={isFocus}
+          showLocationButton={true}
+        />
+      </SearchBoxContainer>
+    </React.Fragment>
+  )
+}
+
+const SearchBoxWithoutLabel = ({
+  isFocus,
+  onFocusState,
+  searchInputID,
+  paramsShowResults,
+}: Props) => {
+  const { top } = useCustomSafeInsets()
+
+  return (
+    <React.Fragment>
+      {top ? <HeaderBackground height={top} /> : null}
+      <Spacer.TopScreen />
+      <SearchBoxContainer testID="searchBoxWithoutLabel">
+        <SearchBox
+          paramsShowResults={paramsShowResults}
+          searchInputID={searchInputID}
+          onFocusState={onFocusState}
+          isFocus={isFocus}
+          accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
+        />
+      </SearchBoxContainer>
+    </React.Fragment>
+  )
+}
+
 export const SearchHeader: React.FC<Props> = ({
   paramsShowResults,
   searchInputID,
   onFocusState,
   isFocus,
 }) => {
-  const { top } = useCustomSafeInsets()
   const showResults = useShowResults()
 
-  const searchBoxWithLabel = () => {
-    return (
-      <React.Fragment>
-        <HeaderBackground height={top + getSpacing(20)} />
-        <Spacer.TopScreen />
-        <SearchBoxContainer testID="searchBoxWithLabel">
-          <View {...getHeadingAttrs(1)}>
-            <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
-          </View>
-          <Spacer.Column numberOfSpaces={2} />
-          <SearchBox
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-            showLocationButton={true}
-          />
-        </SearchBoxContainer>
-      </React.Fragment>
-    )
-  }
-
-  // If top is equal to 0, the Header Background will be displayed with its default size
-  const headerBackground = top ? <HeaderBackground height={top} /> : null
-
-  const searchBoxWithoutLabel = () => {
-    return (
-      <React.Fragment>
-        {headerBackground}
-        <Spacer.TopScreen />
-        <SearchBoxContainer testID="searchBoxWithoutLabel">
-          <SearchBox
-            paramsShowResults={paramsShowResults}
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-            accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
-          />
-        </SearchBoxContainer>
-      </React.Fragment>
-    )
-  }
-
-  return !paramsShowResults && !showResults && !isFocus
-    ? searchBoxWithLabel()
-    : searchBoxWithoutLabel()
+  return !paramsShowResults && !showResults && !isFocus ? (
+    <SearchBoxWithLabel
+      searchInputID={searchInputID}
+      onFocusState={onFocusState}
+      isFocus={isFocus}
+    />
+  ) : (
+    <SearchBoxWithoutLabel
+      isFocus={isFocus}
+      onFocusState={onFocusState}
+      searchInputID={searchInputID}
+      paramsShowResults={paramsShowResults}
+    />
+  )
 }
 
 const SearchBoxContainer = styled.View({

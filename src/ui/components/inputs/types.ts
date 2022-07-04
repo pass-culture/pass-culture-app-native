@@ -1,4 +1,4 @@
-import { RefAttributes } from 'react'
+import { ComponentProps, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
@@ -14,6 +14,7 @@ type CustomTextInputProps = {
   focusOutlineColor?: ColorsEnum
   leftComponent?: React.ReactElement
   rightLabel?: string
+  showSoftInputOnFocus?: boolean
 }
 
 type CustomSearchInputProps = {
@@ -31,7 +32,7 @@ type CustomSearchInputProps = {
 }
 
 export type RNTextInputProps = Pick<
-  React.ComponentProps<typeof RNTextInput> & { disabled?: boolean },
+  ComponentProps<typeof RNTextInput> & { disabled?: boolean; nativeAutoFocus?: boolean },
   /* react-native-web's TextInput supports the prop "disabled"
    * which adds the web property "disabled" (not focusable) to the input
    * https://github.com/necolas/react-native-web/commit/fc033a3161be76224d120dec7aab7009e9414fa7 */
@@ -59,6 +60,7 @@ export type RNTextInputProps = Pick<
   | 'value'
   | 'multiline'
   | 'enablesReturnKeyAutomatically'
+  | 'nativeAutoFocus'
 > &
   RefAttributes<RNTextInput> & {
     testID?: string
@@ -120,5 +122,6 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     selectTextOnFocus: props.selectTextOnFocus,
     textContentType: props.textContentType,
     value: props.value,
+    nativeAutoFocus: props.nativeAutoFocus,
   }
 }
