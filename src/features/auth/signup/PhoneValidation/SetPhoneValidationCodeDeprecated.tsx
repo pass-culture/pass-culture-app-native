@@ -17,7 +17,7 @@ import { contactSupport } from 'features/auth/support.services'
 import {
   useSendPhoneValidationMutation,
   useValidatePhoneNumberMutation,
-} from 'features/identityCheck/api'
+} from 'features/identityCheck/api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'

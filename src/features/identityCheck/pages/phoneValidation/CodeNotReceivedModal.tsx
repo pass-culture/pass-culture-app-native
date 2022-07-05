@@ -4,7 +4,7 @@ import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import { useSendPhoneValidationMutation } from 'features/identityCheck/api'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/api/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'

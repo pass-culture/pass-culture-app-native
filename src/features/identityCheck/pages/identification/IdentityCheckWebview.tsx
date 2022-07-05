@@ -3,7 +3,7 @@ import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
+import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { parseUrlParams } from 'features/identityCheck/utils/parseUrlParams'
 import { navigateToHome } from 'features/navigation/helpers'

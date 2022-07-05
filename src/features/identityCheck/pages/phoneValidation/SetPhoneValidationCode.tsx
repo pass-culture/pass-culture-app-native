@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import { useValidatePhoneNumberMutation } from 'features/identityCheck/api'
+import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'

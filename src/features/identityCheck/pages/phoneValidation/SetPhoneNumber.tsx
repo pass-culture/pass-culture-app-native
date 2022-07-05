@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'features/auth/signup/PhoneValidation/components'
-import { useSendPhoneValidationMutation } from 'features/identityCheck/api'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
