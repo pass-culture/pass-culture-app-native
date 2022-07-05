@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
@@ -11,7 +11,7 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckState } from 'features/identityCheck/context/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { MutationKeys } from 'libs/queryKeys'
+import { MutationKeys, QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
@@ -119,4 +119,10 @@ export function useValidatePhoneNumberMutation({ onSuccess, onError }: MutationO
     onSuccess,
     onError,
   })
+}
+
+export function usePhoneValidationRemainingAttempts() {
+  return useQuery(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS, () =>
+    api.getnativev1phoneValidationremainingAttempts()
+  )
 }

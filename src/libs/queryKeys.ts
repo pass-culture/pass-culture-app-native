@@ -17,6 +17,7 @@ export enum QueryKeys {
   NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
+  PHONE_VALIDATION_REMAINING_ATTEMPTS = 'phoneValidationRemainingAttempts',
   PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
