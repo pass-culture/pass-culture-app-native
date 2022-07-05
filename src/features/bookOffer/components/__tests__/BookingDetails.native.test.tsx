@@ -140,7 +140,7 @@ describe('<BookingDetails />', () => {
 
   it('should dismiss modal on successfully booking an offer', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
     const page = await renderBookingDetails(mockStocks)
@@ -172,7 +172,7 @@ describe('<BookingDetails />', () => {
     })
 
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
     const page = await renderBookingDetails(mockStocks)
@@ -186,7 +186,7 @@ describe('<BookingDetails />', () => {
 
   it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
     const page = await renderBookingDetails(mockStocks)
@@ -210,7 +210,7 @@ describe('<BookingDetails />', () => {
       const response = code ? { code } : {}
 
       server.use(
-        rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
           res(ctx.status(400), ctx.json(response))
         )
       )
@@ -230,7 +230,7 @@ describe('<BookingDetails />', () => {
     const response = { code: 'INSUFFICIENT_CREDIT' }
 
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
         res(ctx.status(400), ctx.json(response))
       )
     )
@@ -249,7 +249,7 @@ describe('<BookingDetails />', () => {
     const response = {}
 
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
         res(ctx.status(400), ctx.json(response))
       )
     )
