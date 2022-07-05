@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -7,8 +7,9 @@ import { v4 as uuidv4 } from 'uuid'
 import { isApiError } from 'api/apiHelpers'
 import { OfferStockResponse } from 'api/gen'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useIsUserUnderage } from 'features/profile/utils'
+import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -46,12 +47,19 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const mapping = useSubcategoriesMapping()
   const { quantity, offerId } = bookingState
   const accessibilityDescribedBy = uuidv4()
+  const route = useRoute<UseRouteType<'Offer'>>()
+  const { logOfferConversion } = useLogOfferConversion()
+
+  const isFromSearch = route.params?.from === 'search'
+  const algoliaOfferId = offerId?.toString()
 
   const { mutate } = useBookOfferMutation({
     onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
         analytics.logBookingConfirmation(offerId, bookingId)
+        isFromSearch && algoliaOfferId && logOfferConversion(algoliaOfferId)
+
         if (!!selectedStock && !!offer)
           campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
             af_offer_id: offer.id,
@@ -81,7 +89,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   useEffect(() => {
     // For offers of type Thing, we don't manually select a date (thus a stock).
-    // So we select it programatically given the bookable stocks.
+    // So we select it programmatically given the bookable stocks.
     const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
 
     if (!selectedStock && firstBookableStock) {

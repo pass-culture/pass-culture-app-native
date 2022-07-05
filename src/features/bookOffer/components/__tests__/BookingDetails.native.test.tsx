@@ -3,13 +3,14 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { useIsUserUnderage } from 'features/profile/utils'
+import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -69,6 +70,11 @@ jest.mock('libs/subcategories', () => ({
 mockUseSubcategoriesMapping.mockReturnValue({
   EVENEMENT_PATRIMOINE: { isEvent: true },
 })
+
+const spyLogOfferConversion = jest.fn()
+jest
+  .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
+  .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
 describe('<BookingDetails />', () => {
   it('should initialize correctly state when offer isDigital', async () => {
@@ -134,7 +140,7 @@ describe('<BookingDetails />', () => {
 
   it('should dismiss modal on successfully booking an offer', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
     const page = await renderBookingDetails(mockStocks)
@@ -160,6 +166,38 @@ describe('<BookingDetails />', () => {
     })
   })
 
+  it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { from: 'search' },
+    })
+
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(spyLogOfferConversion).toHaveBeenCalledWith('1337')
+    })
+  })
+
+  it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(spyLogOfferConversion).not.toHaveBeenCalled()
+    })
+  })
+
   it.each`
     code                     | message
     ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
@@ -172,33 +210,58 @@ describe('<BookingDetails />', () => {
       const response = code ? { code } : {}
 
       server.use(
-        rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
           res(ctx.status(400), ctx.json(response))
         )
       )
 
       const page = await renderBookingDetails(mockStocks)
 
-      await act(async () => {
-        await fireEvent.press(page.getByText('Confirmer la réservation'))
-      })
-
-      await act(async () => {
-        await flushAllPromisesTimes(10)
-      })
+      await fireEvent.press(page.getByText('Confirmer la réservation'))
 
       await waitForExpect(() => {
         expect(mockShowErrorSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ timeout: 5000, message })
-        if (code) {
-          expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
-          expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, code)
-        } else {
-          expect(analytics.logBookingError).not.toHaveBeenCalled()
-        }
       })
     }
   )
+
+  it('should log booking error when error is known', async () => {
+    const response = { code: 'INSUFFICIENT_CREDIT' }
+
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
+        res(ctx.status(400), ctx.json(response))
+      )
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
+      expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, 'INSUFFICIENT_CREDIT')
+    })
+  })
+
+  it('should log booking error when error is unknown', async () => {
+    const response = {}
+
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
+        res(ctx.status(400), ctx.json(response))
+      )
+    )
+
+    const page = await renderBookingDetails(mockStocks)
+
+    await fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitForExpect(() => {
+      expect(analytics.logBookingError).not.toHaveBeenCalled()
+    })
+  })
 
   describe('duo selector', () => {
     it('should not display the Duo selector when the offer is not duo', async () => {
