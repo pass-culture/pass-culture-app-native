@@ -19,7 +19,7 @@ export interface CodeNotReceivedModalProps {
 }
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
-  // TODO : PC-14462 implement attempts remaining fetch and delete this mock initialization
+  // TODO(PC-14462): implement attempts remaining fetch and delete this mock initialization
   const [requestsRemaining, setRequestsRemaining] = useState(5)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -72,7 +72,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
             type="submit"
             onPress={() => {
               sendPhoneValidationCode(props.phoneNumber)
-              // TODO : PC-14461 implement code resend and delete this mock behavior
+              // TODO(PC-14461): implement code resend and delete this mock behavior
               if (requestsRemaining > 0) {
                 setRequestsRemaining(requestsRemaining - 1)
               } else {

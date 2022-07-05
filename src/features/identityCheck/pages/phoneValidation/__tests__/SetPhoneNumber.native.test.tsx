@@ -10,7 +10,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme/colors'
 
 describe('SetPhoneNumber', () => {
-  // FIXME(anoukhello) find a way to get snapshot with modal animation
+  // FIXME(anoukhello): find a way to get snapshot with modal animation
   // when keeping visible to true, snapshot is different on every test run on modal animation props opacity and translateY
   it('should match snapshot without modal appearance', async () => {
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
@@ -124,7 +124,7 @@ describe('SetPhoneNumber', () => {
     })
   })
 
-  // TODO PC-14869 : implement the check that modal is visible when going to SetPhoneValiditationCode then using GoBack
+  // TODO(PC-14869): implement the check that modal is visible when going to SetPhoneValiditationCode then using GoBack
 })
 
 function renderSetPhoneNumber() {

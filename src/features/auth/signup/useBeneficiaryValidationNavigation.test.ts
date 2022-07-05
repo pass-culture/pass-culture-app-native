@@ -47,7 +47,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    // TODO (PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
+    // TODO(PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('SetPhoneNumberDeprecated', undefined)
     })

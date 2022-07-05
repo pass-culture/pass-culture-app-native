@@ -67,7 +67,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
-    // TODO (PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
+    // TODO(PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
     path: 'validation-telephone/numero-cheatcodes-only',
     options: { title: t`Ton numéro de téléphone` },
     secure: true,
@@ -75,7 +75,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   {
     name: 'SetPhoneValidationCode',
     component: SetPhoneValidationCode,
-    // TODO (PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
+    // TODO(PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
     path: 'validation-telephone/code-cheatcodes-only',
     options: { title: t`Validation du numéro de téléphone` },
   },
