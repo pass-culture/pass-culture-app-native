@@ -41,10 +41,9 @@ export const SetPhoneNumber = () => {
   const { goBack } = useGoBack(...homeNavConfig)
   const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
 
-  const { data } = usePhoneValidationRemainingAttempts()
-  const hasOneRequestRemaining = data?.remainingAttempts === 1
+  const { phoneValidationRemainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
 
-  const requestsWording = plural(data?.remainingAttempts ?? 0, {
+  const requestsWording = plural(phoneValidationRemainingAttempts?.remainingAttempts ?? 0, {
     one: '# demande',
     other: '# demandes',
   })
@@ -155,7 +154,7 @@ export const SetPhoneNumber = () => {
         <BottomContentContainer>
           <RemainingAttemptsContainer>
             <GreyCaption>{t`Il te reste` + ' '}</GreyCaption>
-            <WarningRemainingAttempts isLastAttempt={hasOneRequestRemaining}>
+            <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording + ' '}
             </WarningRemainingAttempts>
             <GreyCaption>{t`de code de validation`}</GreyCaption>

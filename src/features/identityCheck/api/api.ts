@@ -122,7 +122,10 @@ export function useValidatePhoneNumberMutation({ onSuccess, onError }: MutationO
 }
 
 export function usePhoneValidationRemainingAttempts() {
-  return useQuery(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS, () =>
-    api.getnativev1phoneValidationremainingAttempts()
+  const { data: phoneValidationRemainingAttempts } = useQuery(
+    QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS,
+    () => api.getnativev1phoneValidationremainingAttempts()
   )
+  const isLastAttempt = phoneValidationRemainingAttempts?.remainingAttempts === 1
+  return { phoneValidationRemainingAttempts, isLastAttempt }
 }

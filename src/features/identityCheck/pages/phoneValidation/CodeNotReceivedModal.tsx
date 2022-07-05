@@ -24,12 +24,11 @@ export interface CodeNotReceivedModalProps {
 }
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
-  const { data } = usePhoneValidationRemainingAttempts()
+  const { phoneValidationRemainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
-  const hasOneRequestRemaining = data?.remainingAttempts === 1
 
-  const requestsWording = plural(data?.remainingAttempts ?? 0, {
+  const requestsWording = plural(phoneValidationRemainingAttempts?.remainingAttempts ?? 0, {
     one: '# demande',
     other: '# demandes',
   })
@@ -70,7 +69,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
         <BottomContentContainer>
           <WarningContainer>
             <WarningMessage>{t`Attention, il te reste\u00a0:` + ' '}</WarningMessage>
-            <WarningRemainingAttempts isLastAttempt={hasOneRequestRemaining}>
+            <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording}
             </WarningRemainingAttempts>
           </WarningContainer>
