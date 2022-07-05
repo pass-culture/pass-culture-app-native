@@ -3,9 +3,11 @@ import { renderHook } from '@testing-library/react-hooks'
 import {
   categoryIdMappingSnap,
   subcategoriesMappingSnap,
+  useCategoryHomeLabelMappingSnap,
   useSearchGroupLabelMappingSnap,
-} from 'libs/subcategories/__fixtures__/mappings'
+} from 'libs/subcategories/fixtures/mappings'
 import {
+  useCategoryHomeLabelMapping,
   useCategoryIdMapping,
   useSearchGroupLabelMapping,
   useSubcategoriesMapping,
@@ -37,5 +39,12 @@ describe('useSearchGroupLabelMapping', () => {
   it('should match search group label mapping', () => {
     const { result } = renderHook(useSearchGroupLabelMapping)
     expect(result.current).toEqual(useSearchGroupLabelMappingSnap)
+  })
+})
+
+describe('useCategoryHomeLabelMapping', () => {
+  it('should match category Home label mapping', () => {
+    const { result } = renderHook(useCategoryHomeLabelMapping)
+    expect(result.current).toEqual(useCategoryHomeLabelMappingSnap)
   })
 })
