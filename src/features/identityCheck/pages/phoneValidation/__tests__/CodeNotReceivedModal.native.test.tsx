@@ -26,7 +26,7 @@ describe('<CodeNotReceivedModal />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  // TODO PC-14462: if requestsRemaining is passed as props, test case where requestsRemaining is 1 for style
+  // TODO(PC-14462): if requestsRemaining is passed as props, test case where requestsRemaining is 1 for style
 
   it('should call dismissModal upon pressing on Close', () => {
     const dismissModalMock = jest.fn()

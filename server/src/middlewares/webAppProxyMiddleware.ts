@@ -31,7 +31,7 @@ export async function metasResponseInterceptor(
     return responseBuffer
   }
 
-  // TODO: remove me when PC-14035 is resolved : (404 GCP cloud storage issue, see with OPs)
+  // TODO(kopax): remove me when PC-14035 is resolved : (404 GCP cloud storage issue, see with OPs)
   res.statusCode = 200
 
   const html = responseBuffer.toString('utf8')
@@ -53,7 +53,7 @@ export async function metasResponseInterceptor(
   try {
     return replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
   } catch (error) {
-    // FIXME: when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
+    // FIXME(kopax): when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
     // eslint-disable-next-line no-console
     logger.info(`Replacing HTML metas failed: ${(error as Error).message}`)

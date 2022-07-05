@@ -11,7 +11,6 @@ import { superFlushWithAct } from 'tests/utils'
 const onSuccess = jest.fn()
 const onError = jest.fn()
 
-// TODO: see with @aliraiki if this test is necessary (should be tested inside the component itself)
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({
   error: true,

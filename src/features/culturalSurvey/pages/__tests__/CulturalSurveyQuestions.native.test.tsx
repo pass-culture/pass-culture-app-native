@@ -77,7 +77,7 @@ describe('CulturalSurveysQuestions page', () => {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
-    // TODO: yorickeando: understand why mutate is called twice in test and remove double implementation
+    // TODO(yorickeando): understand why mutate is called twice in test and remove double implementation
     // @ts-ignore ignore useMutationType
     mockedUseCulturalSurveyAnswersMutation.mockImplementationOnce(({ onError }) => {
       return { mutate: onError }

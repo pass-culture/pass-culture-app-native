@@ -1,4 +1,4 @@
-// FIXME: for some reason, this is scanned by root project and cause a linting error
+// FIXME(kopax): for some reason, this is scanned by root project and cause a linting error
 // eslint-disable-next-line import/no-unresolved
 
 import { app } from './app'
