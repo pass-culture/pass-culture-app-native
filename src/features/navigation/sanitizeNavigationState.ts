@@ -1,5 +1,7 @@
+import cloneDeep from 'lodash.clonedeep'
+
 export function sanitizeNavigationState(state: Record<string, unknown>) {
-  const newState = { ...state }
+  const newState = cloneDeep(state)
   // @ts-ignore NavigationState is normally readonly, we voluntary don't use this type
   newState.routes = newState?.routes?.map((route) => {
     if (route.params?.screen === 'Search' && route.params?.params) {
