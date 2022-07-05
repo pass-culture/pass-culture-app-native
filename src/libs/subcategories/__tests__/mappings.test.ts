@@ -1,8 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { categoryIdMappingSnap } from 'libs/subcategories/__fixtures__/categoryIdMappingSnap'
-import { subcategoriesMappingSnap } from 'libs/subcategories/__fixtures__/subcategoriesMappingSnap'
-import { useCategoryIdMapping, useSubcategoriesMapping } from 'libs/subcategories/mappings'
+import {
+  categoryIdMappingSnap,
+  subcategoriesMappingSnap,
+  useSearchGroupLabelMappingSnap,
+} from 'libs/subcategories/__fixtures__/mappings'
+import {
+  useCategoryIdMapping,
+  useSearchGroupLabelMapping,
+  useSubcategoriesMapping,
+} from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 const mockSubcategories = placeholderData.subcategories
@@ -23,5 +30,12 @@ describe('useSubcategoriesMapping', () => {
   it('should match subcategories mapping', () => {
     const { result } = renderHook(useSubcategoriesMapping)
     expect(result.current).toEqual(subcategoriesMappingSnap)
+  })
+})
+
+describe('useSearchGroupLabelMapping', () => {
+  it('should match search group label mapping', () => {
+    const { result } = renderHook(useSearchGroupLabelMapping)
+    expect(result.current).toEqual(useSearchGroupLabelMappingSnap)
   })
 })
