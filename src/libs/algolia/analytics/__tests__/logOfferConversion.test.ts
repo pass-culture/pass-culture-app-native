@@ -5,13 +5,17 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { getCookiesConsent } from 'libs/trackingConsent/consent'
 
 jest.mock('search-insights')
-const mockAlgoliaSearchInsights = AlgoliaSearchInsights as jest.Mock
+const mockAlgoliaSearchInsights = AlgoliaSearchInsights as jest.MockedFunction<
+  typeof AlgoliaSearchInsights
+>
 
 jest.mock('libs/monitoring')
-const mockCaptureMonitoringError = captureMonitoringError as jest.Mock
+const mockCaptureMonitoringError = captureMonitoringError as jest.MockedFunction<
+  typeof captureMonitoringError
+>
 
 jest.mock('libs/trackingConsent/consent')
-const mockGetConsentToCookies = getCookiesConsent as jest.Mock
+const mockGetConsentToCookies = getCookiesConsent as jest.MockedFunction<typeof getCookiesConsent>
 mockGetConsentToCookies.mockResolvedValue(true)
 
 describe('logOfferConversion', () => {
