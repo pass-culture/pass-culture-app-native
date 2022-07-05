@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useState } from 'react'
@@ -6,34 +7,83 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
+import { useValidatePhoneNumberMutation } from 'features/identityCheck/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
-import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
+import {
+  IdentityCheckRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
-type SetPhoneValidationCodeProps = StackScreenProps<
+export type SetPhoneValidationCodeProps = StackScreenProps<
   IdentityCheckRootStackParamList,
   'SetPhoneValidationCode'
 >
 
+const CODE_INPUT_LENGTH = 6
+
 export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) => {
-  const [_codeInput, setCodeInput] = useState('')
   const formattedPhoneNumber = formatPhoneNumber(
     route.params.phoneNumber,
     route.params.countryCode as CountryCode
   )
+
+  const [codeInputState, setCodeInputState] = useState({
+    code: '',
+    isValid: false,
+  })
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const { navigate } = useNavigation<UseNavigationType>()
   const titleID = uuidv4()
   const validationCodeInputErrorId = uuidv4()
 
   const { visible: isCodeNotReceivedModalVisible, hideModal, showModal } = useModal(false)
+
+  const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
+    onSuccess: () => {
+      navigate('IdentityCheckStepper')
+    },
+    onError: (err: unknown | ApiError) => {
+      const { content } = err as ApiError
+      if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
+        navigate('PhoneValidationTooManyAttempts')
+      } else {
+        setErrorMessage(extractApiErrorMessage(err))
+      }
+    },
+  })
+
+  const onChangeValue = (value: string) => {
+    setCodeInputState({
+      code: value,
+      isValid: !!value && value.length === CODE_INPUT_LENGTH,
+    })
+  }
+
+  const validateCode = async () => {
+    if (codeInputState.isValid) {
+      setErrorMessage('')
+      const { code } = codeInputState
+      if (code) {
+        validatePhoneNumber(code)
+      }
+    }
+
+    await amplitude().logEvent('young18_set_phone_validation_code_clicked_front')
+  }
 
   return (
     <PageWithHeader
@@ -56,16 +106,20 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
                 keyboardType="number-pad"
                 label={t`Code de validation`}
                 rightLabel={t`Format\u00a0: 6 chiffres`}
-                onChangeText={setCodeInput}
+                onChangeText={onChangeValue}
                 placeholder={'012345'}
                 textContentType="oneTimeCode"
-                onSubmitEditing={() => {
-                  // do nothing yet
-                }}
+                onSubmitEditing={validateCode}
                 accessibilityDescribedBy={validationCodeInputErrorId}
                 {...accessibilityAndTestId(t`Entrée pour le code reçu par sms`)}
               />
             </InputContainer>
+            <InputError
+              visible={!!errorMessage}
+              messageId={errorMessage}
+              numberOfSpacesTop={3}
+              relatedInputId={validationCodeInputErrorId}
+            />
             <Spacer.Column numberOfSpaces={4} />
             <ButtonContainer>
               <ButtonTertiaryBlack
@@ -83,7 +137,14 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
           </View>
         </Form.MaxWidth>
       }
-      fixedBottomChildren={<ButtonPrimary type="submit" wording={t`Continuer`} />}
+      fixedBottomChildren={
+        <ButtonPrimary
+          type="submit"
+          wording={t`Continuer`}
+          isLoading={isLoading}
+          onPress={validateCode}
+        />
+      }
     />
   )
 }
