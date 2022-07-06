@@ -19,6 +19,17 @@ const navigationProps = {
 
 jest.mock('features/auth/settings')
 
+jest.mock('features/identityCheck/api/api', () => {
+  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+  return {
+    ...ActualIdentityCheckAPI,
+    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+      phoneValidationRemainingAttempts: { remainingAttempts: 5, counterResetDatetime: 'time' },
+      isLastAttempt: false,
+    }),
+  }
+})
+
 describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 

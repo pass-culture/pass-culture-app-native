@@ -1,7 +1,9 @@
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import {
   CodeNotReceivedModal,
   CodeNotReceivedModalProps,
@@ -18,6 +20,19 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+jest.mock('features/identityCheck/api/api', () => {
+  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+  return {
+    ...ActualIdentityCheckAPI,
+    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+      phoneValidationRemainingAttempts: { remainingAttempts: 5, counterResetDatetime: 'time' },
+      isLastAttempt: false,
+    }),
+  }
+})
+
+const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
+
 describe('<CodeNotReceivedModal />', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
@@ -26,7 +41,14 @@ describe('<CodeNotReceivedModal />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  // TODO(PC-14462): if requestsRemaining is passed as props, test case where requestsRemaining is 1 for style
+  it('should have a different color if one attempt remaining', () => {
+    mockedUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+      phoneValidationRemainingAttempts: { remainingAttempts: 1, counterResetDatetime: 'time' },
+      isLastAttempt: true,
+    })
+    const renderAPI = renderCodeNotReceivedModal()
+    expect(renderAPI).toMatchSnapshot()
+  })
 
   it('should call dismissModal upon pressing on Close', () => {
     const dismissModalMock = jest.fn()
