@@ -44,7 +44,7 @@ const Container = styled.View({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  maxWidth: getSpacing(18),
+  maxWidth: getSpacing(20),
 })
 
 const NetworkIconBox = styled.View({
