@@ -9,6 +9,7 @@ export type TouchableLinkProps<T = ElementType> = {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]
     fromRef?: boolean
+    withPush?: boolean
   }
   externalNav?: {
     url: string

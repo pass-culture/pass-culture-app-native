@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks'
 
+import { push } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 
-import { navigate } from '../../../../../__mocks__/@react-navigation/native'
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
 
 const mockSearchState = initialSearchState
@@ -49,7 +49,7 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnum.SPECTACLE)
 
-    expect(navigate).toBeCalledWith('TabNavigator', {
+    expect(push).toBeCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,

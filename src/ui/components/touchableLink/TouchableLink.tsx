@@ -12,7 +12,7 @@ import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } 
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
-import { navigateFromRef } from 'features/navigation/navigationRef'
+import { pushFromRef, navigateFromRef } from 'features/navigation/navigationRef'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -41,7 +41,7 @@ export function TouchableLink<T extends ElementType = ElementType>({
   const TouchableLinkComponent = Tag ? Tag : TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
   const [isFocus, setIsFocus] = useState(false)
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, push } = useNavigation<UseNavigationType>()
   const { navigateTo: navigateToItinerary } = useItinerary()
 
   const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
@@ -54,8 +54,12 @@ export function TouchableLink<T extends ElementType = ElementType>({
 
   const handleNavigation = () => {
     if (navigateTo) {
-      const { screen, params, fromRef } = navigateTo
-      ;(fromRef ? navigateFromRef : navigate)(screen, params)
+      const { screen, params, fromRef, withPush } = navigateTo
+      if (withPush) {
+        fromRef ? pushFromRef(screen, params) : push(screen, params)
+      } else {
+        fromRef ? navigateFromRef(screen, params) : navigate(screen, params)
+      }
     } else if (externalNav) {
       const { url, params, address, onSuccess, onError } = externalNav
       if (address) {

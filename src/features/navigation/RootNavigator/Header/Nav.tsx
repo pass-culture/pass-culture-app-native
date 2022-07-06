@@ -34,6 +34,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
                 screen: getTabNavConfig(route.name)[0],
                 params: getTabNavConfig(route.name)[1],
                 fromRef: true,
+                withPush: true,
               }}
             />
           </StyledLi>
