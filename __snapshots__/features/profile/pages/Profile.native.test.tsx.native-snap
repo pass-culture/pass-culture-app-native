@@ -1301,7 +1301,7 @@ exports[`Profile component should render correctly 1`] = `
                                 "alignItems": "center",
                                 "flexDirection": "column",
                                 "justifyContent": "center",
-                                "maxWidth": 72,
+                                "maxWidth": 80,
                               },
                             ]
                           }
@@ -1380,7 +1380,7 @@ exports[`Profile component should render correctly 1`] = `
                                 "alignItems": "center",
                                 "flexDirection": "column",
                                 "justifyContent": "center",
-                                "maxWidth": 72,
+                                "maxWidth": 80,
                               },
                             ]
                           }
@@ -1459,7 +1459,7 @@ exports[`Profile component should render correctly 1`] = `
                                 "alignItems": "center",
                                 "flexDirection": "column",
                                 "justifyContent": "center",
-                                "maxWidth": 72,
+                                "maxWidth": 80,
                               },
                             ]
                           }
@@ -1538,7 +1538,7 @@ exports[`Profile component should render correctly 1`] = `
                                 "alignItems": "center",
                                 "flexDirection": "column",
                                 "justifyContent": "center",
-                                "maxWidth": 72,
+                                "maxWidth": 80,
                               },
                             ]
                           }
