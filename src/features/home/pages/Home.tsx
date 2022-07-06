@@ -1,12 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState, FunctionComponent } from 'react'
-import {
-  FlatList,
-  ScrollView,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  Platform,
-} from 'react-native'
+import React, { useCallback, FunctionComponent } from 'react'
+import { FlatList, ScrollView, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageModules } from 'features/home/api'
@@ -27,8 +21,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useABTestingContext } from 'libs/ABTesting'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { Spinner } from 'ui/components/Spinner'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
@@ -98,19 +91,6 @@ const renderModule = (
   return <React.Fragment></React.Fragment>
 }
 
-const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
-  return (
-    <React.Fragment>
-      {!!isLoading && (
-        <FooterContainer>
-          <Spinner />
-        </FooterContainer>
-      )}
-      <Spacer.TabBar />
-    </React.Fragment>
-  )
-}
-
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { homeEntryId: ABTestingEntryId } = useABTestingContext()
@@ -118,40 +98,14 @@ export const Home: FunctionComponent = () => {
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const showSkeleton = useShowSkeleton()
   const initialNumToRender = 5
-  const maxToRenderPerBatch = 5
-  const [maxIndex, setMaxIndex] = useState(initialNumToRender)
-  const [isLoading, setIsLoading] = useState(false)
-  const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
 
   const onScroll = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      if (isCloseToBottom(nativeEvent) && modulesToDisplay.length === modules.length)
-        logHasSeenAllModules()
+      if (isCloseToBottom(nativeEvent)) logHasSeenAllModules()
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [modules.length, modulesToDisplay.length]
+    [modules.length]
   )
-
-  const onEndReached = useCallback(() => {
-    if (Platform.OS === 'web') return
-    if (maxIndex < modules.length) {
-      setIsLoading(true)
-      setMaxIndex(maxIndex + maxToRenderPerBatch)
-    }
-  }, [modules.length, maxIndex])
-
-  useEffect(() => {
-    // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
-    const loadMore = setInterval(() => {
-      if (maxIndex < modules.length && isLoading) {
-        setMaxIndex(maxIndex + maxToRenderPerBatch)
-      } else {
-        setIsLoading(false)
-      }
-    }, 3000)
-
-    return () => clearInterval(loadMore)
-  }, [modules.length, isLoading, maxIndex])
 
   return (
     <Container>
@@ -174,16 +128,14 @@ export const Home: FunctionComponent = () => {
           testID="homeBodyScrollView"
           scrollEventThrottle={400}
           onScroll={onScroll}
-          data={modulesToDisplay}
+          data={modules}
           renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
           keyExtractor={keyExtractor}
-          ListFooterComponent={<FooterComponent isLoading={isLoading} />}
+          ListFooterComponent={<Spacer.TabBar />}
           ListHeaderComponent={ListHeaderComponent}
           initialNumToRender={initialNumToRender}
-          onEndReachedThreshold={1}
+          onEndReachedThreshold={0.5}
           removeClippedSubviews={false}
-          onEndReached={onEndReached}
-          onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
           bounces
         />
       </HomeBodyLoadingContainer>
@@ -201,11 +153,6 @@ const Container = styled.View({
   flexBasis: 1,
   flexGrow: 1,
   flexShrink: 0,
-})
-
-const FooterContainer = styled.View({
-  paddingTop: getSpacing(2),
-  paddingBottom: getSpacing(10),
 })
 
 const ListHeaderContainer = styled.View({
