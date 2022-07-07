@@ -35,7 +35,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-bdvvtL bmzymd"
+                  class="sc-bdvvtL bQLkxd"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -380,7 +380,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="sc-bdvvtL bmzymd"
+                class="sc-bdvvtL bQLkxd"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"

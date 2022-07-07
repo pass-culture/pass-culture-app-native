@@ -38,7 +38,11 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Array [
-        Object {},
+        Object {
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
         Object {
           "borderRadius": 8,
         },
@@ -229,7 +233,11 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     onStartShouldSetResponder={[Function]}
     style={
       Array [
-        Object {},
+        Object {
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
         Object {
           "borderRadius": 8,
         },
@@ -441,7 +449,11 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     onStartShouldSetResponder={[Function]}
     style={
       Array [
-        Object {},
+        Object {
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
         Object {
           "borderRadius": 8,
         },

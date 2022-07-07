@@ -272,7 +272,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-hKwDye lgPtFf sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
+              class="sc-hKwDye huZUNX sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"
@@ -482,7 +482,7 @@ Object {
                         aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Titane - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -560,7 +560,7 @@ Object {
                         aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Bac Nord - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -638,7 +638,7 @@ Object {
                         aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Black Widow - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -715,12 +715,12 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-dJjYzT izAAoh"
+              class="sc-hGPBjI dQZwCy"
               type="button"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; position: absolute;"
+                style="align-items: center; flex-direction: row;"
               >
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
@@ -796,7 +796,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-gsDKAQ bODHgs sc-cCcXHH jQczlt"
+                class="sc-gsDKAQ dRfsuw sc-cidDSM iUBxLC"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -991,10 +991,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-ksdxgE sc-cidDSM hUAJHV CruJq"
+                  class="sc-fotOHu sc-jcFjpl fHUdDM iLzjWr"
                 >
                   <li
-                    class="sc-jcFjpl ihLUwl"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -1063,7 +1063,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-jcFjpl ihLUwl"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1132,7 +1132,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-jcFjpl ihLUwl"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -1201,7 +1201,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-jcFjpl ihLUwl"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"
@@ -1632,7 +1632,7 @@ Object {
           />
           <button
             aria-label="Géolocalisation désactivée"
-            class="sc-hKwDye lgPtFf sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
+            class="sc-hKwDye huZUNX sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
             data-testid="iconLocation"
             tabindex="0"
             title="Géolocalisation désactivée"
@@ -1842,7 +1842,7 @@ Object {
                       aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                       class="css-view-1dbjc4n"
                       data-testid="offre Titane - VF"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                       tabindex="0"
                     >
                       <div
@@ -1920,7 +1920,7 @@ Object {
                       aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                       class="css-view-1dbjc4n"
                       data-testid="offre Bac Nord - VF"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                       tabindex="0"
                     >
                       <div
@@ -1998,7 +1998,7 @@ Object {
                       aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                       class="css-view-1dbjc4n"
                       data-testid="offre Black Widow - VF"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                       tabindex="0"
                     >
                       <div
@@ -2075,12 +2075,12 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <button
-            class="sc-dJjYzT izAAoh"
+            class="sc-hGPBjI dQZwCy"
             type="button"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; position: absolute;"
+              style="align-items: center; flex-direction: row;"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -2156,7 +2156,7 @@ Object {
             style="align-items: flex-start;"
           >
             <a
-              class="sc-gsDKAQ bODHgs sc-cCcXHH jQczlt"
+              class="sc-gsDKAQ dRfsuw sc-cidDSM iUBxLC"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
@@ -2351,10 +2351,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-ksdxgE sc-cidDSM hUAJHV CruJq"
+                class="sc-fotOHu sc-jcFjpl fHUdDM iLzjWr"
               >
                 <li
-                  class="sc-jcFjpl ihLUwl"
+                  class="sc-caiLqq jBFBin"
                 >
                   <div
                     aria-label="Handicap visuel : Accessible"
@@ -2423,7 +2423,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-jcFjpl ihLUwl"
+                  class="sc-caiLqq jBFBin"
                 >
                   <div
                     aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2492,7 +2492,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-jcFjpl ihLUwl"
+                  class="sc-caiLqq jBFBin"
                 >
                   <div
                     aria-label="Handicap moteur : Non accessible"
@@ -2561,7 +2561,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-jcFjpl ihLUwl"
+                  class="sc-caiLqq jBFBin"
                 >
                   <div
                     aria-label="Handicap auditif : Non accessible"

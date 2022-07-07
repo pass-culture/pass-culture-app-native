@@ -11,7 +11,7 @@ import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
-import { getHoverStyle } from 'ui/theme/getHoverStyle'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 const ON_PRESS_DEBOUNCE_DELAY = 300
 

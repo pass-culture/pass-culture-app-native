@@ -16,7 +16,7 @@ Object {
         <div
           aria-disabled="true"
           class="css-view-1dbjc4n"
-          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; user-select: none;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
           tabindex="-1"
         >
           <div
@@ -105,7 +105,7 @@ Object {
       <div
         aria-disabled="true"
         class="css-view-1dbjc4n"
-        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; user-select: none;"
+        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
         tabindex="-1"
       >
         <div
@@ -251,7 +251,7 @@ Object {
         <div
           class="css-cursor-18t94o4 css-view-1dbjc4n"
           role="link"
-          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
           tabindex="0"
         >
           <div
@@ -355,7 +355,7 @@ Object {
       <div
         class="css-cursor-18t94o4 css-view-1dbjc4n"
         role="link"
-        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
         tabindex="0"
       >
         <div
@@ -516,7 +516,7 @@ Object {
         <div
           class="css-cursor-18t94o4 css-view-1dbjc4n"
           role="link"
-          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
           tabindex="0"
         >
           <div
@@ -642,7 +642,7 @@ Object {
       <div
         class="css-cursor-18t94o4 css-view-1dbjc4n"
         role="link"
-        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
         tabindex="0"
       >
         <div

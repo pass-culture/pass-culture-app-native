@@ -5,7 +5,7 @@ import styledNative, { DefaultTheme } from 'styled-components/native'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getHoverStyle } from 'ui/theme/getHoverStyle'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,

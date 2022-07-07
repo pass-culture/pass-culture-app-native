@@ -17,4 +17,5 @@ export type ButtonInsideTexteProps = {
   href?: string
   target?: string
   type?: 'button' | 'submit' | 'reset'
+  testID?: string
 }

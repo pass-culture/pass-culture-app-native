@@ -28,7 +28,7 @@ Object {
           />
           <button
             aria-label="Revenir en arrière"
-            class="sc-eCImPb jVAQLB"
+            class="sc-eCImPb jjmLSd"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -114,7 +114,7 @@ Object {
           />
           <button
             aria-label="Partager"
-            class="sc-eCImPb jVAQLB"
+            class="sc-eCImPb jjmLSd"
             data-testid="Partager"
             tabindex="0"
             title="Partager"
@@ -172,7 +172,7 @@ Object {
           />
           <button
             aria-label="Mettre en favoris"
-            class="sc-eCImPb jVAQLB"
+            class="sc-eCImPb jjmLSd"
             data-testid="Mettre en favoris"
             tabindex="0"
             title="Mettre en favoris"
@@ -261,7 +261,7 @@ Object {
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-eCImPb jVAQLB"
+          class="sc-eCImPb jjmLSd"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -347,7 +347,7 @@ Object {
         />
         <button
           aria-label="Partager"
-          class="sc-eCImPb jVAQLB"
+          class="sc-eCImPb jjmLSd"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -405,7 +405,7 @@ Object {
         />
         <button
           aria-label="Mettre en favoris"
-          class="sc-eCImPb jVAQLB"
+          class="sc-eCImPb jjmLSd"
           data-testid="Mettre en favoris"
           tabindex="0"
           title="Mettre en favoris"

@@ -105,7 +105,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            className="sc-bdvvtL bmzymd"
+            className="sc-bdvvtL bQLkxd"
             data-testid="Revenir en arrière"
             onClick={[MockFunction]}
             tabIndex="0"

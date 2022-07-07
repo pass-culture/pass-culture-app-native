@@ -110,7 +110,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
       >
         <button
           aria-label="Copier le code"
-          className="sc-bdvvtL bmzymd sc-gsDKAQ cvEfWt sc-gsDKAQ cvEfWt"
+          className="sc-bdvvtL bbYvlI sc-gsDKAQ cvEfWt sc-gsDKAQ cvEfWt"
           disabled={false}
           onClick={[Function]}
           tabIndex="0"

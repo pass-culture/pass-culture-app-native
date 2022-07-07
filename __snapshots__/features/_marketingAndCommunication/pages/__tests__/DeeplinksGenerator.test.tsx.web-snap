@@ -3,7 +3,7 @@
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 Array [
   <header
-    className="sc-cTAqQK KBowD"
+    className="sc-jObWnj iaUMDy"
     role="banner"
   >
     <div
@@ -88,7 +88,7 @@ Array [
         >
           <button
             aria-label="Revenir en arrière"
-            className="sc-furwcr ecChpU"
+            className="sc-furwcr ifPSvY"
             data-testid="Revenir en arrière"
             onClick={[MockFunction]}
             tabIndex="0"
@@ -2576,7 +2576,7 @@ Array [
           Seulement les "ids" disposent de validation !
         </div>
         <button
-          className="sc-jRQBWg dtJDBn sc-jrQzAO knTdKe"
+          className="sc-jRQBWg iCvaVx sc-jrQzAO knTdKe"
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}

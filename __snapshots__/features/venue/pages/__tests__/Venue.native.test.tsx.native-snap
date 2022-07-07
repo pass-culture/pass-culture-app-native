@@ -1211,7 +1211,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       Array [
-                        Object {},
+                        Object {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
                         Object {
                           "borderRadius": 8,
                           "marginVertical": 4,
@@ -1442,7 +1446,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       Array [
-                        Object {},
+                        Object {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
                         Object {
                           "borderRadius": 8,
                           "marginVertical": 4,
@@ -1673,7 +1681,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       Array [
-                        Object {},
+                        Object {
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                        },
                         Object {
                           "borderRadius": 8,
                           "marginVertical": 4,

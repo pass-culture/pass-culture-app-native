@@ -82,7 +82,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
     </h1>
     <button
       aria-label="Revenir en arrière"
-      className="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
+      className="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
       data-testid="Revenir en arrière"
       onClick={[MockFunction]}
       tabIndex="0"
@@ -306,7 +306,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <a
-                  className="sc-hKwDye gZJXJj sc-eCImPb ckCibG"
+                  className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
                   href="https://dmsfrenchcitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
@@ -430,7 +430,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <a
-                  className="sc-hKwDye gZJXJj sc-eCImPb ckCibG"
+                  className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
                   href="https://dmsforeigncitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}

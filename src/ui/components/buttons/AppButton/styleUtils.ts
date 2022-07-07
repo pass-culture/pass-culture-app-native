@@ -8,7 +8,7 @@ import { getEffectiveBorderRadius } from 'ui/components/buttons/AppButton/utils'
 import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
 import { padding } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getHoverStyle } from 'ui/theme/getHoverStyle'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type ButtonStyles = InterpolationFunction<
   ThemedStyledProps<

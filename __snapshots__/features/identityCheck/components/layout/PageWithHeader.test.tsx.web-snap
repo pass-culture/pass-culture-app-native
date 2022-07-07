@@ -82,7 +82,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
     </h1>
     <button
       aria-label="Revenir en arrière"
-      className="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
+      className="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
       data-testid="Revenir en arrière"
       onClick={[MockFunction]}
       tabIndex="0"

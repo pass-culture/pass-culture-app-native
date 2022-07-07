@@ -956,7 +956,7 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
                     >
                       <button
-                        class="sc-bdvvtL bmzymd sc-gsDKAQ jRkUIY sc-gsDKAQ jRkUIY"
+                        class="sc-bdvvtL bQLkxd sc-gsDKAQ jRkUIY sc-gsDKAQ jRkUIY"
                         data-testid="Revenir à l'étape précédente"
                         tabindex="0"
                         type="button"
@@ -1672,7 +1672,7 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
                       <button
-                        class="sc-bdvvtL bmzymd sc-gsDKAQ jRkUIY sc-gsDKAQ jRkUIY"
+                        class="sc-bdvvtL bQLkxd sc-gsDKAQ jRkUIY sc-gsDKAQ jRkUIY"
                         data-testid="Fermer la modale et annuler"
                         tabindex="0"
                         type="button"
