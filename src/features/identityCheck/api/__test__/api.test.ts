@@ -26,10 +26,13 @@ describe('usePhoneValidationRemainingAttempts', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await waitFor(() => !!result.current.phoneValidationRemainingAttempts)
+    await waitFor(() => !!result.current.remainingAttempts)
 
-    expect(result.current.phoneValidationRemainingAttempts).toEqual(
-      phoneValidationRemainingAttemptsAPIResponse
+    expect(result.current.remainingAttempts).toEqual(
+      phoneValidationRemainingAttemptsAPIResponse.remainingAttempts
+    )
+    expect(result.current.counterResetDatetime).toEqual(
+      phoneValidationRemainingAttemptsAPIResponse.counterResetDatetime
     )
     expect(result.current.isLastAttempt).toEqual(false)
     expect(phoneValidationApiMock).toHaveBeenCalledTimes(1)

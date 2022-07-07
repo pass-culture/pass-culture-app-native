@@ -24,7 +24,8 @@ jest.mock('features/identityCheck/api/api', () => {
   return {
     ...ActualIdentityCheckAPI,
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
-      phoneValidationRemainingAttempts: { remainingAttempts: 5, counterResetDatetime: 'time' },
+      remainingAttempts: 5,
+      counterResetDatetime: 'time',
       isLastAttempt: false,
     }),
   }

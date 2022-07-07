@@ -127,5 +127,5 @@ export function usePhoneValidationRemainingAttempts() {
     () => api.getnativev1phoneValidationremainingAttempts()
   )
   const isLastAttempt = phoneValidationRemainingAttempts?.remainingAttempts === 1
-  return { phoneValidationRemainingAttempts, isLastAttempt }
+  return { ...phoneValidationRemainingAttempts, isLastAttempt }
 }

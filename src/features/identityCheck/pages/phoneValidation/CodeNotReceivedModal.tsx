@@ -24,11 +24,11 @@ export interface CodeNotReceivedModalProps {
 }
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
-  const { phoneValidationRemainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
+  const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const requestsWording = plural(phoneValidationRemainingAttempts?.remainingAttempts ?? 0, {
+  const requestsWording = plural(remainingAttempts ?? 0, {
     one: '# demande',
     other: '# demandes',
   })

@@ -16,7 +16,8 @@ jest.mock('features/identityCheck/api/api', () => {
   return {
     ...ActualIdentityCheckAPI,
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
-      phoneValidationRemainingAttempts: { remainingAttempts: 5, counterResetDatetime: 'time' },
+      remainingAttempts: 5,
+      counterResetDatetime: 'time',
       isLastAttempt: false,
     }),
   }
@@ -35,7 +36,8 @@ describe('SetPhoneNumber', () => {
       toggleModal: jest.fn(),
     })
     mockedUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-      phoneValidationRemainingAttempts: { remainingAttempts: 4, counterResetDatetime: 'time' },
+      remainingAttempts: 4,
+      counterResetDatetime: 'time',
       isLastAttempt: false,
     })
     const SetPhoneNumberPage = renderSetPhoneNumber()
@@ -54,7 +56,8 @@ describe('SetPhoneNumber', () => {
       toggleModal: jest.fn(),
     })
     mockedUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-      phoneValidationRemainingAttempts: { remainingAttempts: 1, counterResetDatetime: 'time' },
+      remainingAttempts: 1,
+      counterResetDatetime: 'time',
       isLastAttempt: true,
     })
     const SetPhoneNumberPage = renderSetPhoneNumber()
