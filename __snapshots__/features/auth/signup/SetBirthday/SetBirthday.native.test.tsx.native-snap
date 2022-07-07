@@ -226,6 +226,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     }
     testID="date-picker-spinner-native"
     textColor="#161617"
+    theme="auto"
     title="Select date"
   />
   <View
