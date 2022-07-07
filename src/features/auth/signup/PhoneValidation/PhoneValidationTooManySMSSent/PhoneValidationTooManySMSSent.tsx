@@ -4,8 +4,10 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -20,6 +22,13 @@ export function PhoneValidationTooManySMSSent() {
           as={ButtonPrimaryWhite}
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
+        />,
+        <TouchableLink
+          key={2}
+          as={ButtonTertiaryWhite}
+          icon={PlainArrowPrevious}
+          wording={t`J'ai reçu mon code`}
+          navigateTo={{ screen: 'SetPhoneValidationCode' }}
         />,
       ]}>
       <StyledBody>{t`Tu as dépassé le nombre de 5 demandes de code autorisées.`}</StyledBody>
