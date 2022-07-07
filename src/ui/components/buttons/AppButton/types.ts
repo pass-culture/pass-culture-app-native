@@ -21,7 +21,7 @@ export interface TouchableOpacityButtonProps {
   numberOfLines?: number
   center?: boolean
   focusOutlineColor?: ColorsEnum
-  hoverUnderlineColor?: ColorsEnum
+  hoverUnderlineColor?: ColorsEnum | null
   backgroundColor?: string
 }
 

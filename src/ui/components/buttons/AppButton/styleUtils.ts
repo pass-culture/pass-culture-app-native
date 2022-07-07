@@ -123,6 +123,8 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
   hoverUnderlineColor,
   activeOpacity,
 }: ButtonStylesArgs) => {
+  const underlineColor =
+    hoverUnderlineColor === undefined ? theme.colors.black : hoverUnderlineColor
   return {
     flexDirection: 'column',
     cursor: 'pointer',
@@ -140,6 +142,6 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
     ['&:disabled']: {
       cursor: 'initial',
     },
-    ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black),
+    ...getHoverStyle(underlineColor),
   }
 }

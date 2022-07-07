@@ -7,6 +7,7 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
@@ -28,15 +29,19 @@ export const ReinitializeFilters = () => {
   }
 
   return (
-    <Touchable
+    <StyledTouchable
       onPress={reinitializeFilters}
       {...accessibilityAndTestId(t`Réinitialiser les filtres`)}
       type="reset">
       <ButtonText>{t`Réinitialiser`}</ButtonText>
-    </Touchable>
+    </StyledTouchable>
   )
 }
 
 const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.white,
+}))``
