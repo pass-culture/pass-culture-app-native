@@ -37,6 +37,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       title: Title,
       loadingIndicator: LoadingIndicator,
       backgroundColor: theme.buttons.secondary.backgroundColor,
+      hoverUnderlineColor: theme.buttons.secondary.textColor,
     }
   }
 )(({ theme, isLoading, disabled }) => {

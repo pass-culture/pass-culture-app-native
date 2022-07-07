@@ -36,6 +36,7 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
       icon: Icon,
       title: Title,
       inlineHeight: getSpacing(5),
+      hoverUnderlineColor: theme.buttons.tertiaryBlack.textColor,
     }
   }
 )(({ theme }) => ({

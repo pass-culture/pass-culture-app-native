@@ -5,6 +5,7 @@ import styledNative, { DefaultTheme } from 'styled-components/native'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle'
 
 export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,
@@ -78,6 +79,7 @@ const gradientButtonStyles = ({ theme }: { theme: DefaultTheme }) => ({
     backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
   },
   ...customFocusOutline(theme, theme.buttons.outlineColor),
+  ...getHoverStyle(theme.buttons.linearGradient.textColor),
 })
 
 const Button = styled.button(gradientButtonStyles)
@@ -95,7 +97,6 @@ const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabl
 }))
 
 const LegendContainer = styledNative.View({
-  position: 'absolute',
   alignItems: 'center',
   flexDirection: 'row',
 })

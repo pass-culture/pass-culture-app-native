@@ -21,6 +21,7 @@ export interface TouchableOpacityButtonProps {
   numberOfLines?: number
   center?: boolean
   focusOutlineColor?: ColorsEnum
+  hoverUnderlineColor?: ColorsEnum
   backgroundColor?: string
 }
 
@@ -61,6 +62,7 @@ export interface BaseButtonProps {
   type?: 'button' | 'submit' | 'reset'
   name?: string
   focusOutlineColor?: ColorsEnum
+  hoverUnderlineColor?: ColorsEnum
   accessibilityRole?: AccessibilityRole
   href?: string
   target?: string

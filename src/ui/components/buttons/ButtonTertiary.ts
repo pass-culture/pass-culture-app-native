@@ -40,6 +40,7 @@ export const ButtonTertiary = styledButton(AppButton).attrs<BaseButtonProps>(
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
+      hoverUnderlineColor: theme.buttons.tertiary.textColor,
     }
   }
 )(({ theme }) => ({

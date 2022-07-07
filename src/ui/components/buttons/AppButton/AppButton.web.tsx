@@ -39,6 +39,7 @@ const _AppButton = <T extends AppButtonProps>({
   backgroundColor,
   name,
   focusOutlineColor,
+  hoverUnderlineColor,
   accessibilityRole,
   href,
   target,
@@ -95,6 +96,7 @@ const _AppButton = <T extends AppButtonProps>({
       className={className}
       backgroundColor={backgroundColor}
       focusOutlineColor={focusOutlineColor}
+      hoverUnderlineColor={hoverUnderlineColor}
       tabIndex={disabled || isLoading ? undefined : 0}
       {...buttonLinkProps}>
       <AppButtonInner
