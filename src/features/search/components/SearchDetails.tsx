@@ -1,11 +1,12 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchResults } from 'features/search/components/SearchResults'
-import { useShowResults } from 'features/search/pages/useShowResults'
 
 export const SearchDetails: React.FC = () => {
-  const showResults = useShowResults()
+  const { params } = useRoute<UseRouteType<'Search'>>()
 
-  return showResults ? <SearchResults /> : <View testID="recentsSearchesAndSuggestions" />
+  return params?.showResults ? <SearchResults /> : <View testID="recentsSearchesAndSuggestions" />
 }

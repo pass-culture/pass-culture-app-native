@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { LocationType } from 'features/search/enums'
@@ -48,26 +49,19 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
-const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate }),
-  useIsFocused: jest.fn(),
-}))
-
 describe('SearchDetails component', () => {
   it('should render SearchDetails', () => {
     expect(render(<SearchDetails />)).toMatchSnapshot()
   })
 
   it('should show results if search executed', () => {
-    mockSearchState.showResults = true
+    useRoute.mockReturnValueOnce({ params: { showResults: true } })
     const { queryByTestId } = render(<SearchDetails />)
     expect(queryByTestId('searchResults')).toBeTruthy()
   })
 
   it('should show recent searches and suggestions if search not executed', () => {
-    mockSearchState.showResults = false
+    useRoute.mockReturnValueOnce({ params: { showResults: false } })
     const { queryByTestId } = render(<SearchDetails />)
     expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
   })

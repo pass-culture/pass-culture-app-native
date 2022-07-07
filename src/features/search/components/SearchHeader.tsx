@@ -19,7 +19,11 @@ type Props = {
   isFocus?: boolean
 }
 
-const SearchBoxWithLabel = ({ searchInputID, onFocusState, isFocus, paramsShowResults }: Props) => {
+const SearchBoxWithLabel = ({
+  searchInputID,
+  onFocusState,
+  isFocus,
+}: Omit<Props, 'paramsShowResults'>) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -32,7 +36,6 @@ const SearchBoxWithLabel = ({ searchInputID, onFocusState, isFocus, paramsShowRe
         </View>
         <Spacer.Column numberOfSpaces={2} />
         <SearchBox
-          paramsShowResults={paramsShowResults}
           searchInputID={searchInputID}
           onFocusState={onFocusState}
           isFocus={isFocus}
@@ -47,8 +50,7 @@ const SearchBoxWithoutLabel = ({
   isFocus,
   onFocusState,
   searchInputID,
-  paramsShowResults,
-}: Props) => {
+}: Omit<Props, 'paramsShowResults'>) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -57,7 +59,6 @@ const SearchBoxWithoutLabel = ({
       <Spacer.TopScreen />
       <SearchBoxContainer testID="searchBoxWithoutLabel">
         <SearchBox
-          paramsShowResults={paramsShowResults}
           searchInputID={searchInputID}
           onFocusState={onFocusState}
           isFocus={isFocus}
@@ -78,7 +79,6 @@ export const SearchHeader: React.FC<Props> = ({
 
   return !paramsShowResults && !showResults && !isFocus ? (
     <SearchBoxWithLabel
-      paramsShowResults={paramsShowResults}
       searchInputID={searchInputID}
       onFocusState={onFocusState}
       isFocus={isFocus}
@@ -88,7 +88,6 @@ export const SearchHeader: React.FC<Props> = ({
       isFocus={isFocus}
       onFocusState={onFocusState}
       searchInputID={searchInputID}
-      paramsShowResults={paramsShowResults}
     />
   )
 }

@@ -1,16 +1,15 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useCallback, useEffect, useState } from 'react'
 import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { useNavigateWithStagedSearch } from 'features/search/pages/useNavigateWithStagedSearch'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -22,7 +21,6 @@ import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  paramsShowResults?: boolean
   searchInputID: string
   showLocationButton?: boolean
   onFocusState?: (focus: boolean) => void
@@ -31,17 +29,16 @@ type Props = {
 }
 
 export const SearchBox: React.FC<Props> = ({
-  paramsShowResults,
   searchInputID,
   showLocationButton,
   onFocusState,
   isFocus,
   accessibleHiddenTitle,
 }) => {
+  const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
-  const { searchState } = useSearch()
-  const [query, setQuery] = useState<string>(searchState.query || '')
+  const [query, setQuery] = useState<string>(params?.query || '')
   const accessibilityDescribedBy = uuidv4()
   const showResults = useShowResults()
   const { locationFilter } = stagedSearchState
@@ -49,24 +46,26 @@ export const SearchBox: React.FC<Props> = ({
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
-  const showResultsWithStagedSearch = useNavigateWithStagedSearch()
+  const showResultsWithStagedSearch = usePushWithStagedSearch()
 
-  const resetSearch = () => {
+  useEffect(() => {
+    setQuery(params?.query || '')
+  }, [params?.query])
+
+  const resetQuery = useCallback(() => {
     showResultsWithStagedSearch({
       query: '',
     })
-    setQuery('')
-  }
+  }, [showResultsWithStagedSearch])
 
-  const onPressArrowBack = () => {
-    setQuery('')
+  const onPressArrowBack = useCallback(() => {
     if (onFocusState) onFocusState(false)
     stagedDispatch({ type: 'SET_QUERY', payload: '' })
     showResultsWithStagedSearch({
       query: '',
       showResults: false,
     })
-  }
+  }, [onFocusState, showResultsWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
@@ -80,15 +79,13 @@ export const SearchBox: React.FC<Props> = ({
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const { offerCategories, priceRange } = stagedSearchState
-    navigate(
-      ...getTabNavConfig('Search', {
-        showResults: true,
-        query: queryText,
-        locationFilter,
-        offerCategories,
-        priceRange,
-      })
-    )
+    showResultsWithStagedSearch({
+      showResults: true,
+      query: queryText,
+      locationFilter,
+      offerCategories,
+      priceRange,
+    })
     analytics.logSearchQuery(queryText)
   }
 
@@ -98,8 +95,8 @@ export const SearchBox: React.FC<Props> = ({
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
       <SearchInputContainer
-        marginHorizontal={paramsShowResults || showResults || isFocus ? getSpacing(6) : 0}>
-        {paramsShowResults || showResults || isFocus ? (
+        marginHorizontal={params?.showResults || showResults || isFocus ? getSpacing(6) : 0}>
+        {params?.showResults || showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
@@ -113,7 +110,7 @@ export const SearchBox: React.FC<Props> = ({
           inputHeight="regular"
           LeftIcon={MagnifyingGlassIcon}
           onSubmitEditing={onSubmitQuery}
-          onPressRightIcon={resetSearch}
+          onPressRightIcon={resetQuery}
           onFocusState={onFocusState}
           testID="searchInput"
           onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
