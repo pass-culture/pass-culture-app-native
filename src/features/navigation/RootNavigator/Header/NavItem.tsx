@@ -39,18 +39,20 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
   thin: !selected,
 }))<{ selected?: boolean }>``
 
-const StyledTouchableLink = styled(TouchableLink)<{ isSelected?: boolean }>(
+const StyledTouchableLink = styled(TouchableLink).attrs<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
-    height: getSpacing(11),
-    paddingHorizontal: getSpacing(4),
-    borderWidth: 1,
-    borderColor: isSelected ? theme.uniqueColors.brand : theme.colors.transparent,
-    borderRadius: theme.borderRadius.button * 2,
+    hoverUnderlineColor: isSelected ? theme.uniqueColors.brand : theme.colors.black,
   })
-)
+)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  alignSelf: 'center',
+  height: getSpacing(11),
+  paddingHorizontal: getSpacing(4),
+  borderWidth: 1,
+  borderColor: isSelected ? theme.uniqueColors.brand : theme.colors.transparent,
+  borderRadius: theme.borderRadius.button * 2,
+}))
 
 const Title = styled(Typo.ButtonText)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   marginLeft: 12,

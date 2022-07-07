@@ -11,6 +11,7 @@ import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle'
 
 const ON_PRESS_DEBOUNCE_DELAY = 300
 
@@ -26,6 +27,7 @@ export function TouchableLink({
   onBlur,
   as: Tag,
   isOnPressDebounced,
+  hoverUnderlineColor,
   ...rest
 }: TouchableLinkProps) {
   const TouchableComponent = (
@@ -34,6 +36,7 @@ export function TouchableLink({
   const TouchableLinkComponent = Tag ? Tag : TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
   const [isFocus, setIsFocus] = useState(false)
+  const [isHover, setIsHover] = useState(false)
   const { navigate, push } = useNavigation<UseNavigationType>()
   const { navigateTo: navigateToItinerary } = useItinerary()
 
@@ -107,18 +110,33 @@ export function TouchableLink({
       {...rest}
       disabled={disabled}
       isFocus={isFocus}
+      isHover={isHover}
+      hoverUnderlineColor={hoverUnderlineColor}
       onFocus={onLinkFocus}
       onBlur={onLinkBlur}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
       onPress={disabled ? undefined : callOnClick}>
       {children}
     </TouchableLinkComponent>
   )
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => touchableFocusOutline(theme, isFocus)
-)
+const StyledTouchableOpacity = styled(TouchableOpacity)<{
+  isFocus?: boolean
+  isHover?: boolean
+  hoverUnderlineColor?: TouchableLinkProps['hoverUnderlineColor']
+}>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
+  ...touchableFocusOutline(theme, isFocus),
+  ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black, isHover),
+}))
 
-const StyledTouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => touchableFocusOutline(theme, isFocus)
-)
+const StyledTouchableHighlight = styled.TouchableHighlight<{
+  isFocus?: boolean
+  isHover?: boolean
+  hoverUnderlineColor?: TouchableLinkProps['hoverUnderlineColor']
+}>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
+  textDecoration: 'none',
+  ...touchableFocusOutline(theme, isFocus),
+  ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black, isHover),
+}))

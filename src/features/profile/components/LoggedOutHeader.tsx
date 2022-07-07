@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -33,12 +34,15 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={5} />
         <LoginCta>
-          <Body>{t`Tu as déjà un compte\u00a0?` + '\u00a0'}</Body>
-          <TouchableLink
-            navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
-            {...accessibilityAndTestId(t`Connecte-toi`)}>
-            <ButtonText>{t`Connecte-toi`}</ButtonText>
-          </TouchableLink>
+          <Body>
+            {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
+            <TouchableLink
+              as={StyledButtonInsideText}
+              navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
+              wording={t`Connecte-toi`}
+              {...accessibilityAndTestId(t`Connecte-toi`)}
+            />
+          </Body>
         </LoginCta>
         <Spacer.Column numberOfSpaces={7} />
       </HeaderContent>
@@ -73,6 +77,6 @@ const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
   color: theme.colors.white,
-}))
+}))``

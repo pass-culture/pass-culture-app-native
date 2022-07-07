@@ -55,7 +55,9 @@ const FilterIcon = styled(FilterIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styled(TouchableLink)({ overflow: 'hidden' })
+const Container = styled(TouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.white,
+}))({ overflow: 'hidden' })
 
 const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
