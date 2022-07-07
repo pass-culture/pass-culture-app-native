@@ -4,7 +4,7 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 
-import { navigate } from '../../../../../__mocks__/@react-navigation/native'
+import { push } from '../../../../../__mocks__/@react-navigation/native'
 import { useNavigateWithStagedSearch } from '../useNavigateWithStagedSearch'
 
 const mockSearchState = initialSearchState
@@ -38,7 +38,7 @@ describe('useShowResultsWithStagedSearch', () => {
 
     resultCallback.current()
 
-    expect(navigate).toBeCalledWith('TabNavigator', {
+    expect(push).toBeCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,
@@ -66,7 +66,7 @@ describe('useShowResultsWithStagedSearch', () => {
 
     resultCallback.current()
 
-    expect(navigate).toHaveBeenLastCalledWith('TabNavigator', {
+    expect(push).toHaveBeenLastCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,

@@ -1,9 +1,9 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, push } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { navigateFromRef } from 'features/navigation/navigationRef'
+import { navigateFromRef, pushFromRef } from 'features/navigation/navigationRef'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { render, fireEvent } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -35,6 +35,19 @@ describe('<TouchableLink />', () => {
     })
   })
 
+  it('should push right screen with expected params', async () => {
+    const { getByTestId } = render(
+      <TouchableLink
+        navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1], withPush: true }}
+        testID={testID}
+      />
+    )
+    fireEvent.press(getByTestId(testID))
+    await waitForExpect(() => {
+      expect(push).toBeCalledWith(...homeNavConfig)
+    })
+  })
+
   it('should navigate using navigateFromRef if fromRef={true}', async () => {
     const { getByTestId } = render(
       <TouchableLink
@@ -45,6 +58,24 @@ describe('<TouchableLink />', () => {
     fireEvent.press(getByTestId(testID))
     await waitForExpect(() => {
       expect(navigateFromRef).toBeCalledWith(...homeNavConfig)
+    })
+  })
+
+  it('should push using pushFromRef if fromRef={true}', async () => {
+    const { getByTestId } = render(
+      <TouchableLink
+        navigateTo={{
+          screen: homeNavConfig[0],
+          params: homeNavConfig[1],
+          fromRef: true,
+          withPush: true,
+        }}
+        testID={testID}
+      />
+    )
+    fireEvent.press(getByTestId(testID))
+    await waitForExpect(() => {
+      expect(pushFromRef).toBeCalledWith(...homeNavConfig)
     })
   })
 

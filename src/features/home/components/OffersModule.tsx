@@ -97,7 +97,9 @@ export const OffersModule = (props: OffersModuleProps) => {
       return (
         <SeeMore
           navigateTo={
-            showSeeMore ? { screen: searchTabConfig[0], params: searchTabConfig[1] } : undefined
+            showSeeMore
+              ? { screen: searchTabConfig[0], params: searchTabConfig[1], withPush: true }
+              : undefined
           }
           width={width}
           height={height}

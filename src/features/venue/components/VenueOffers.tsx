@@ -60,7 +60,11 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
       showResults: true,
     })
   }, [params, venue])
-  const searchNavConfig = { screen: searchTabNavConfig[0], params: searchTabNavConfig[1] }
+  const searchNavConfig = {
+    screen: searchTabNavConfig[0],
+    params: searchTabNavConfig[1],
+    withPush: true,
+  }
   const { hits = [], nbHits = 0 } = venueOffers || {}
 
   const mapping = useCategoryIdMapping()

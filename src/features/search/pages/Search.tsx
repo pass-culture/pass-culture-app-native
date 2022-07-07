@@ -23,9 +23,7 @@ export function Search() {
   const showResultsForCategory = useShowResultsForCategory()
 
   useEffect(() => {
-    if (params) {
-      dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
-    }
+    dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params || { showResults: false } })
   }, [dispatch, params])
 
   const bodySearch = () => {

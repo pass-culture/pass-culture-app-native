@@ -84,7 +84,12 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {!!isBrandVisible && (
           <LogoContainer
-            navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1], fromRef: true }}>
+            navigateTo={{
+              screen: homeNavConfig[0],
+              params: homeNavConfig[1],
+              fromRef: true,
+              withPush: true,
+            }}>
             <LogoPassCulture
               color={theme.uniqueColors.brand}
               height={getSpacing(10)}

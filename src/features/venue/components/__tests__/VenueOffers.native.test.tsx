@@ -3,7 +3,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { push } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -73,7 +73,7 @@ describe('<VenueOffers />', () => {
   it(`should set search state when clicking "En voir plus" button`, async () => {
     const { getByText } = render(<VenueOffers venueId={venueId} />)
     await fireEvent.press(getByText('En voir plus'))
-    expect(navigate).toBeCalledWith('TabNavigator', {
+    expect(push).toBeCalledWith('TabNavigator', {
       params: {
         ...defaultParams,
         locationFilter: {
