@@ -322,6 +322,6 @@ const HelpRow = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const GreyMediumSeparator = styled(Separator)(({ theme }) => ({
+const GreyMediumSeparator = styled(Separator).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
-}))
+}))``

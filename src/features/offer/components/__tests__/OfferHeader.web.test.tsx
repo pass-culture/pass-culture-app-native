@@ -29,7 +29,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferHeader } from '../OfferHeader'
 
 // eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true, warn: true })
+allowConsole({ error: true })
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
