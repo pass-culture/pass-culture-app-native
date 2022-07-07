@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
+import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'

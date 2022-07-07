@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { usePostHonorStatement } from 'features/identityCheck/api'
+import { usePostHonorStatement } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'

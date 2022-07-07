@@ -1,13 +1,29 @@
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
+jest.mock('features/identityCheck/api/api', () => {
+  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+  return {
+    ...ActualIdentityCheckAPI,
+    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+      remainingAttempts: 5,
+      counterResetDatetime: 'time',
+      isLastAttempt: false,
+    }),
+  }
+})
+
+const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
 
 describe('SetPhoneNumber', () => {
   // FIXME(anoukhello): find a way to get snapshot with modal animation
@@ -19,6 +35,11 @@ describe('SetPhoneNumber', () => {
       hideModal: jest.fn(),
       toggleModal: jest.fn(),
     })
+    mockedUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+      remainingAttempts: 4,
+      counterResetDatetime: 'time',
+      isLastAttempt: false,
+    })
     const SetPhoneNumberPage = renderSetPhoneNumber()
     await waitFor(() => expect(SetPhoneNumberPage).toMatchSnapshot())
   })
@@ -26,6 +47,21 @@ describe('SetPhoneNumber', () => {
   it('should show modal on first render', async () => {
     const { getByText } = renderSetPhoneNumber()
     await waitFor(() => expect(getByText("J'ai compris")).toBeTruthy())
+  })
+  it('should have a different color if 1 attempt is remaining', async () => {
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: false,
+      showModal: jest.fn(),
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+    mockedUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+      remainingAttempts: 1,
+      counterResetDatetime: 'time',
+      isLastAttempt: true,
+    })
+    const SetPhoneNumberPage = renderSetPhoneNumber()
+    await waitFor(() => expect(SetPhoneNumberPage).toMatchSnapshot())
   })
 
   describe('continue button', () => {

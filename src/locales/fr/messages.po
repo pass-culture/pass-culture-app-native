@@ -53,10 +53,6 @@ msgstr "17 ans"
 msgid "18 ans"
 msgstr "18 ans"
 
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "5 demandes"
-msgstr "5 demandes"
-
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "Abandonner"
 msgstr "Abandonner"
@@ -3268,7 +3264,7 @@ msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la v
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
-#: src/features/identityCheck/api.ts
+#: src/features/identityCheck/api/api.ts
 msgid "Une erreur est survenue lors de la mise à jour de votre profil"
 msgstr "Une erreur est survenue lors de la mise à jour de votre profil"
 
@@ -3846,6 +3842,11 @@ msgstr "voir moins"
 msgid "voir plus"
 msgstr "voir plus"
 
+#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
+msgid "{0, plural, one {# demande} other {# demandes}}"
+msgstr "{0, plural, one {# demande} other {# demandes}}"
+
 #: src/features/bookings/pages/EndedBookingsSection.tsx
 msgid "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
@@ -3919,10 +3920,6 @@ msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation
 #: src/features/bookings/components/OnGoingBookingsList.tsx
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
-
-#: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
-msgid "{requestsRemaining, plural, one {# demande} other {# demandes}}"
-msgstr "{requestsRemaining, plural, one {# demande} other {# demandes}}"
 
 #: src/features/bookings/helpers.ts
 msgid "À activer"

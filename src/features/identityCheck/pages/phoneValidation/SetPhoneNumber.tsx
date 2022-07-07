@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
@@ -8,7 +8,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'features/auth/signup/PhoneValidation/components'
-import { useSendPhoneValidationMutation } from 'features/identityCheck/api'
+import {
+  usePhoneValidationRemainingAttempts,
+  useSendPhoneValidationMutation,
+} from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
@@ -18,6 +21,8 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
 import { useSafeState } from 'libs/hooks'
+import { QueryKeys } from 'libs/queryKeys'
+import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -35,6 +40,13 @@ export const SetPhoneNumber = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
+
+  const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
+
+  const requestsWording = plural(remainingAttempts ?? 0, {
+    one: '# demande',
+    other: '# demandes',
+  })
 
   const {
     visible: isTipsModalVisible,
@@ -61,6 +73,7 @@ export const SetPhoneNumber = () => {
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
       navigate('SetPhoneValidationCode', { phoneNumber, countryCode: country.cca2 })
+      queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
     },
     onError: (error: ApiError | unknown) => {
       const { content } = error as ApiError
@@ -141,7 +154,9 @@ export const SetPhoneNumber = () => {
         <BottomContentContainer>
           <RemainingAttemptsContainer>
             <GreyCaption>{t`Il te reste` + ' '}</GreyCaption>
-            <Typo.Caption>{t`5 demandes` + ' '}</Typo.Caption>
+            <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
+              {requestsWording + ' '}
+            </WarningRemainingAttempts>
             <GreyCaption>{t`de code de validation`}</GreyCaption>
           </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
@@ -195,3 +210,9 @@ const InputContainer = styled.View(({ theme }) => ({
   width: '100%',
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
 }))
+
+const WarningRemainingAttempts = styled(Typo.Caption)<{ isLastAttempt: boolean }>(
+  ({ theme, isLastAttempt }) => ({
+    color: isLastAttempt ? theme.colors.error : theme.colors.black,
+  })
+)

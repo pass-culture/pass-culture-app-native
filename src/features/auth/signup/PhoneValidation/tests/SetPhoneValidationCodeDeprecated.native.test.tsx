@@ -12,7 +12,7 @@ import {
 } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
-import * as IdentityCheckAPI from 'features/identityCheck/api'
+import * as IdentityCheckAPI from 'features/identityCheck/api/api'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { RootStackParamList } from 'features/navigation/RootNavigator'

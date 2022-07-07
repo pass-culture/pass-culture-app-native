@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useQueryClient } from 'react-query'
 
-import { usePatchProfile } from 'features/identityCheck/api'
+import { usePatchProfile } from 'features/identityCheck/api/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
