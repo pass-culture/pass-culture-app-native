@@ -52,21 +52,21 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     <TicketCode withdrawalType={withdrawalType || undefined} code={booking.activationCode.code} />
   )
 
-  const accessOfferButton = (
+  const accessExternalOfferButton = offerUrl ? (
     <TouchableLink
       as={ButtonWithLinearGradient}
       wording={t`Accéder à l'offre`}
       icon={ExternalSite}
-      externalNav={offerUrl ? { url: offerUrl, params: { analyticsData: { offerId } } } : undefined}
+      externalNav={{ url: offerUrl, params: { analyticsData: { offerId } } }}
     />
-  )
+  ) : null
 
   const ticketToken = !!booking.token && (
     <TicketCode withdrawalType={withdrawalType || undefined} code={booking.token} />
   )
 
   const ticketContent = properties.isDigital ? (
-    accessOfferButton
+    accessExternalOfferButton
   ) : (
     <TicketBody
       withdrawalType={withdrawalType || undefined}
@@ -86,7 +86,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
             {activationCode}
-            {accessOfferButton}
+            {accessExternalOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>

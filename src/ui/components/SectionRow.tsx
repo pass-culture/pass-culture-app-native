@@ -1,94 +1,42 @@
-import React, { FunctionComponent } from 'react'
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React from 'react'
+import { useTheme } from 'styled-components/native'
 
+import { SectionRowContent, SectionRowContentProps } from 'ui/components/SectionRowContent'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
-import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { IconInterface } from 'ui/svg/icons/types'
-import { Typo, Spacer } from 'ui/theme'
+import { InternalOrExternalNavigationProps } from 'ui/components/touchableLink/types'
 
-type SectionRowProps = {
-  title: string
-  accessibilityLabel?: string
-  renderTitle?: (title: string) => JSX.Element
-  iconSize?: number
-  ctaIconSize?: number
-  icon?: FunctionComponent<IconInterface>
-  style?: StyleProp<ViewStyle>
-  numberOfLines?: number
-  navigateTo?: TouchableLinkProps['navigateTo']
-  externalNav?: TouchableLinkProps['externalNav']
-} & (
-  | {
-      type: 'navigable'
-      onPress?: () => void
-    }
-  | {
-      type: 'clickable'
-      onPress?: () => void
-      cta?: JSX.Element
-    }
-)
+type SectionRowProps = SectionRowContentProps & Partial<InternalOrExternalNavigationProps>
 
-export function SectionRow(props: SectionRowProps) {
+export function SectionRow({
+  navigateTo,
+  externalNav,
+  onPress,
+  accessibilityLabel,
+  ...props
+}: SectionRowProps) {
   const { activeOpacity } = useTheme()
-  const Icon = props.icon
-  const numberOfLines = props.numberOfLines || 2
+  const hasNavProps = navigateTo || externalNav
+  const touchableProps = {
+    activeOpacity: onPress || hasNavProps ? activeOpacity : 1,
+    onPress,
+    disabled: !onPress && !hasNavProps,
+    accessibilityLabel,
+  }
 
-  const title = props.renderTitle ? (
-    props.renderTitle(props.title)
-  ) : (
-    <Typo.ButtonText numberOfLines={numberOfLines}>{props.title}</Typo.ButtonText>
-  )
+  const externalNavProps = externalNav ? { externalNav } : undefined
+  const navigationProps = navigateTo ? { navigateTo } : externalNavProps
 
-  const TouchableComponent = props.navigateTo || props.externalNav ? TouchableLink : Touchable
-
-  const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
-    size: props.ctaIconSize || theme.icons.sizes.smaller,
-  }))``
+  if (navigationProps) {
+    return (
+      <TouchableLink {...navigationProps} {...touchableProps}>
+        <SectionRowContent {...props} />
+      </TouchableLink>
+    )
+  }
   return (
-    <TouchableComponent
-      activeOpacity={props.onPress || props.navigateTo || props.externalNav ? activeOpacity : 1}
-      onPress={props.onPress}
-      navigateTo={props.navigateTo}
-      externalNav={props.externalNav}
-      disabled={!props.onPress && !props.navigateTo && !props.externalNav}
-      accessibilityLabel={props.accessibilityLabel}>
-      <View style={[styles.container, props.style]}>
-        {!!Icon && (
-          <React.Fragment>
-            <Icon size={props.iconSize} />
-            <Spacer.Row numberOfSpaces={2} />
-          </React.Fragment>
-        )}
-        <TitleContainer>{title}</TitleContainer>
-        <CTAContainer>
-          {props.type == 'navigable' ? (
-            <ArrowNext testID="section-row-navigable-icon" />
-          ) : (
-            props.cta
-          )}
-        </CTAContainer>
-      </View>
-    </TouchableComponent>
+    <Touchable {...touchableProps}>
+      <SectionRowContent {...props} />
+    </Touchable>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-})
-
-const TitleContainer = styled.View({
-  flex: 1,
-  textAlign: 'left',
-})
-
-const CTAContainer = styled.View({
-  alignItems: 'flex-end',
-})

@@ -2,11 +2,11 @@ import React from 'react'
 
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EditPen } from 'ui/svg/icons/EditPen'
 
 type EditButtonProps = {
-  navigateTo: TouchableLinkProps['navigateTo']
+  navigateTo: InternalNavigationProps['navigateTo']
   wording: string
   testID?: string
   onPress?: () => void

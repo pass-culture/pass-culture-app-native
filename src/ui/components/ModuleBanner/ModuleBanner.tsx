@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Typo } from 'ui/theme'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 
 interface ModuleBannerProps {
-  navigateTo: TouchableLinkProps['navigateTo']
+  navigateTo: InternalNavigationProps['navigateTo']
   leftIcon: JSX.Element
   rightIcon?: JSX.Element
   title: string

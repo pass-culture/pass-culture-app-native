@@ -3,14 +3,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
 
 interface SeeMoreProps {
   height: number
   width: number
-  navigateTo?: TouchableLinkProps['navigateTo']
+  navigateTo?: InternalNavigationProps['navigateTo']
   onPress: () => void
 }
 

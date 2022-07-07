@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { shouldOpenInbox } from 'features/profile/utils'
+import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/utils'
+import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -23,21 +24,30 @@ const renderCallToAction = (
 ) => {
   if (!callToActionMessage || !callToActionLink) return null
 
+  const shouldOpenInbox = checkShouldOpenInbox(callToActionLink)
+  const sharedButtonProps = {
+    wording: callToActionMessage,
+    icon: callToActionIcon || undefined,
+    numberOfLines: 2,
+    justifyContent: 'flex-start' as BaseButtonProps['justifyContent'],
+    testID: 'call-to-action-button',
+  }
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <TouchableLink
-        as={ButtonQuaternaryBlack}
-        icon={callToActionIcon || undefined}
-        testID="call-to-action-button"
-        externalNav={shouldOpenInbox(callToActionLink) ? undefined : { url: callToActionLink }}
-        onPress={() => {
-          shouldOpenInbox(callToActionLink) && openInbox()
-        }}
-        wording={callToActionMessage}
-        justifyContent="flex-start"
-        numberOfLines={2}
-      />
+      {shouldOpenInbox ? (
+        <ButtonQuaternaryBlack
+          onPress={openInbox}
+          disabled={!shouldOpenInbox}
+          {...sharedButtonProps}
+        />
+      ) : (
+        <TouchableLink
+          as={ButtonQuaternaryBlack}
+          externalNav={{ url: callToActionLink }}
+          {...sharedButtonProps}
+        />
+      )}
     </React.Fragment>
   )
 }

@@ -24,12 +24,14 @@ export const VerifyEligibility: FunctionComponent = () => {
     <GenericOfficialPage
       title={t`Vérifie ton identité`}
       buttons={[
-        <TouchableLink
-          key={1}
-          as={ButtonPrimary}
-          wording={t`Commencer la vérification`}
-          navigateTo={nextBeneficiaryValidationStepNavConfig}
-        />,
+        !!nextBeneficiaryValidationStepNavConfig && (
+          <TouchableLink
+            key={1}
+            as={ButtonPrimary}
+            wording={t`Commencer la vérification`}
+            navigateTo={nextBeneficiaryValidationStepNavConfig}
+          />
+        ),
         <TouchableLink
           key={2}
           as={ButtonTertiaryBlack}

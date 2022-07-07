@@ -7,7 +7,7 @@ import { Cover } from 'features/home/atoms/Cover'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -24,7 +24,7 @@ type Props = Pick<
   coverUrl?: string | null
   onDarkBackground?: boolean
   renderFooter?: RenderFooterItem
-  titleSeeMoreLink?: TouchableLinkProps['navigateTo']
+  titleSeeMoreLink?: InternalNavigationProps['navigateTo']
 }
 
 export const PassPlaylist = (props: Props) => {

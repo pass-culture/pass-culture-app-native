@@ -111,12 +111,11 @@ export const WhereSection: React.FC<Props> = ({
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
           <SeeItineraryButton
-            externalNav={
-              venueFullAddress
-                ? { url: getGoogleMapsItineraryUrl(venueFullAddress), address: venueFullAddress }
-                : undefined
-            }
-            onPress={venueFullAddress ? beforeNavigateToItinerary : undefined}
+            externalNav={{
+              url: getGoogleMapsItineraryUrl(venueFullAddress),
+              address: venueFullAddress,
+            }}
+            onPress={beforeNavigateToItinerary}
           />
         </React.Fragment>
       )}

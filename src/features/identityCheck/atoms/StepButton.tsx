@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -14,7 +14,7 @@ export type StepButtonState = 'completed' | 'current' | 'disabled'
 interface Props {
   step: StepConfig
   state: StepButtonState
-  navigateTo?: TouchableLinkProps['navigateTo']
+  navigateTo?: InternalNavigationProps['navigateTo']
   onPress?: () => void
 }
 

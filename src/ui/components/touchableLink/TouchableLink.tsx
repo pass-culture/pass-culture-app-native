@@ -1,13 +1,6 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, {
-  ComponentProps,
-  createRef,
-  ElementType,
-  ReactElement,
-  useEffect,
-  useState,
-} from 'react'
+import React, { createRef, ElementType, useEffect, useState } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -21,7 +14,7 @@ import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocu
 
 const ON_PRESS_DEBOUNCE_DELAY = 300
 
-export function TouchableLink<T extends ElementType = ElementType>({
+export function TouchableLink({
   onPress,
   navigateTo,
   externalNav,
@@ -34,7 +27,7 @@ export function TouchableLink<T extends ElementType = ElementType>({
   as: Tag,
   isOnPressDebounced,
   ...rest
-}: TouchableLinkProps<T> & ComponentProps<T>): ReactElement {
+}: TouchableLinkProps) {
   const TouchableComponent = (
     highlight ? StyledTouchableHighlight : StyledTouchableOpacity
   ) as ElementType

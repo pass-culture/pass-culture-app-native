@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -12,7 +12,7 @@ import { getSpacing, Typo } from 'ui/theme'
 interface NavItemInterface {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
-  navigateTo: TouchableLinkProps['navigateTo']
+  navigateTo: InternalNavigationProps['navigateTo']
   tabName: TabRouteName
 }
 

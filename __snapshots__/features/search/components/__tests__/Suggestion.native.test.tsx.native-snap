@@ -2,10 +2,9 @@
 
 exports[`Suggestion should display component correctly 1`] = `
 <View
-  accessibilityRole="link"
   accessible={true}
   collapsable={false}
-  focusable={true}
+  focusable={false}
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
