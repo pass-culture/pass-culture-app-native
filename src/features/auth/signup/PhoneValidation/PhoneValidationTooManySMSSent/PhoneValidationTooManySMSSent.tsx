@@ -7,12 +7,12 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function PhoneValidationTooManySMSSent() {
   return (
     <GenericInfoPage
-      title={t`Trop de tentatives\u00a0!`}
+      title={t`Réessaie plus tard`}
       icon={UserBlocked}
       buttons={[
         <TouchableLink
@@ -22,9 +22,9 @@ export function PhoneValidationTooManySMSSent() {
           navigateTo={navigateToHomeConfig}
         />,
       ]}>
-      <StyledBody>
-        {t`Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures\u00a0!`}
-      </StyledBody>
+      <StyledBody>{t`Tu as dépassé le nombre de 5 demandes de code autorisées.`}</StyledBody>
+      <Spacer.Column numberOfSpaces={5} />
+      <StyledBody>{t`Tu pourras réessayer dans 12 heures.`}</StyledBody>
     </GenericInfoPage>
   )
 }
