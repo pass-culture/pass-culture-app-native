@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
+exports[`<NoBookingsView /> should render offline no bookings view when netInfo.isConnected is false 1`] = `
 <div
   className="css-view-1dbjc4n"
   style={
@@ -48,7 +48,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "40px",
+        "height": "64px",
       }
     }
   />
@@ -82,8 +82,8 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
         "msFlexNegative": 1,
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "paddingLeft": "16px",
-        "paddingRight": "16px",
+        "paddingLeft": "32px",
+        "paddingRight": "32px",
         "textAlign": "center",
       }
     }
@@ -110,8 +110,8 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
         "msFlexNegative": 1,
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "paddingLeft": "16px",
-        "paddingRight": "16px",
+        "paddingLeft": "32px",
+        "paddingRight": "32px",
         "textAlign": "center",
       }
     }
@@ -139,7 +139,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "160px",
+        "height": "208px",
       }
     }
   />
@@ -163,7 +163,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
 </div>
 `;
 
-exports[`<NoBookingsView /> should render online no bookings view 1`] = `
+exports[`<NoBookingsView /> should render online no bookings view when netInfo.isConnected is true 1`] = `
 <div
   className="css-view-1dbjc4n"
   style={
@@ -251,7 +251,7 @@ sans attendre !
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "32px",
+        "height": "64px",
       }
     }
   />

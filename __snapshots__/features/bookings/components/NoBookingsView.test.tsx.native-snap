@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
+exports[`<NoBookingsView /> should render offline no bookings view when netInfo.isConnected is false 1`] = `
 <View
   style={
     Array [
@@ -27,11 +27,11 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
     }
   />
   <View
-    numberOfSpaces={10}
+    numberOfSpaces={16}
     style={
       Array [
         Object {
-          "height": 40,
+          "height": 64,
         },
       ]
     }
@@ -45,6 +45,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
     </Text>
   </View>
   <Text
+    offline={true}
     style={
       Array [
         Object {
@@ -56,7 +57,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
           "fontSize": 15,
           "lineHeight": 20,
           "maxWidth": 500,
-          "paddingHorizontal": 16,
+          "paddingHorizontal": 32,
           "textAlign": "center",
         },
       ]
@@ -65,6 +66,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
     Tu n’as pas de réservations en cours.
   </Text>
   <Text
+    offline={true}
     style={
       Array [
         Object {
@@ -76,7 +78,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
           "fontSize": 15,
           "lineHeight": 20,
           "maxWidth": 500,
-          "paddingHorizontal": 16,
+          "paddingHorizontal": 32,
           "textAlign": "center",
         },
       ]
@@ -96,11 +98,11 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
     }
   />
   <View
-    numberOfSpaces={40}
+    numberOfSpaces={52}
     style={
       Array [
         Object {
-          "height": 160,
+          "height": 208,
         },
       ]
     }
@@ -119,7 +121,7 @@ exports[`<NoBookingsView /> should render offline no bookings view 1`] = `
 </View>
 `;
 
-exports[`<NoBookingsView /> should render online no bookings view 1`] = `
+exports[`<NoBookingsView /> should render online no bookings view when netInfo.isConnected is true 1`] = `
 <View
   style={
     Array [
@@ -176,11 +178,11 @@ Découvre les offres disponibles
 sans attendre !
   </Text>
   <View
-    numberOfSpaces={8}
+    numberOfSpaces={16}
     style={
       Array [
         Object {
-          "height": 32,
+          "height": 64,
         },
       ]
     }

@@ -21,14 +21,14 @@ export function NoBookingsView() {
       {!netInfo.isConnected ? (
         <React.Fragment>
           <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(2.5)} />
+          <Spacer.Column numberOfSpaces={getSpacing(4)} />
           <StyledNoBookings />
-          <Explanation>{t`Tu n’as pas de réservations en cours.`}</Explanation>
-          <Explanation>
+          <Explanation offline>{t`Tu n’as pas de réservations en cours.`}</Explanation>
+          <Explanation offline>
             {t`Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier.`}
           </Explanation>
           <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(10)} />
+          <Spacer.Column numberOfSpaces={getSpacing(13)} />
           <Spacer.Flex />
         </React.Fragment>
       ) : (
@@ -40,7 +40,7 @@ export function NoBookingsView() {
       Découvre les offres disponibles
       sans attendre\u00a0!`}
           </Explanation>
-          <Spacer.Column numberOfSpaces={getSpacing(2)} />
+          <Spacer.Column numberOfSpaces={getSpacing(4)} />
           <ButtonContainer>
             <TouchableLink
               as={ButtonPrimary}
@@ -73,9 +73,9 @@ const Container = styled.View({
 
 const ButtonContainer = styled.View({})
 
-const Explanation = styled(Typo.Body)(({ theme }) => ({
+const Explanation = styled(Typo.Body)<{ offline?: boolean }>(({ theme, offline }) => ({
   flex: 1,
-  paddingHorizontal: getSpacing(4),
+  paddingHorizontal: getSpacing(offline ? 8 : 4),
   maxWidth: theme.contentPage.maxWidth,
   textAlign: 'center',
   color: theme.colors.greyDark,
