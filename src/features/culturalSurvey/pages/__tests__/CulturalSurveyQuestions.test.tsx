@@ -54,8 +54,13 @@ describe('CulturalSurveysQuestions page', () => {
 
   it('should navigate to next page when pressing Continuer', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    // TODO(PC-16100): use const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false }) and fireEvent.click(Answers[0]) after merge PC-16100
+    const Answer = QuestionsPage.getByTestId('Visité un musée,-CulturalSurveyAnswer')
+    fireEvent.press(Answer)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
+
     expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.ACTIVITES,
     })
@@ -67,8 +72,13 @@ describe('CulturalSurveysQuestions page', () => {
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    // TODO(PC-16100): use const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false }) and fireEvent.click(Answers[0]) after merge PC-16100
+    const Answer = QuestionsPage.getByTestId('Visité un musée,-CulturalSurveyAnswer')
+    fireEvent.press(Answer)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
+
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
   })
 
@@ -87,8 +97,13 @@ describe('CulturalSurveysQuestions page', () => {
       return { mutate: onError }
     })
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    // TODO(PC-16100): use const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false }) and fireEvent.click(Answers[0]) after merge PC-16100
+    const Answer = QuestionsPage.getByTestId('Visité un musée,-CulturalSurveyAnswer')
+    fireEvent.press(Answer)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
+
     expect(navigateToHome).toHaveBeenCalled()
   })
 
@@ -108,6 +123,7 @@ describe('CulturalSurveysQuestions page', () => {
 
   it('should updateQuestionsToDisplay on checkbox press if answer pressed has sub_question', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
     const CulturalSurveyAnswerCheckbox = QuestionsPage.getByText(
       // @ts-expect-error mocked Hook is defined
       questionsFromMockedHook.questions[0].answers[0].title
