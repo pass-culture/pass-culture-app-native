@@ -131,14 +131,14 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
       style={
         Object {
           "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": "18px",
-          "lineHeight": "22px",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": "15px",
+          "lineHeight": "20px",
           "textAlign": "center",
         }
       }
     >
-      Tu n'es pas connecté à internet
+      Tu n'es pas connecté à internet.
     </h2>
     <div
       className="css-view-1dbjc4n"

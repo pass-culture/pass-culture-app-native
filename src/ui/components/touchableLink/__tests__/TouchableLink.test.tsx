@@ -94,6 +94,28 @@ describe('<TouchableLink />', () => {
       })
     })
 
+    it('should not navigate to right screen with expected params when enableNavigate is false', async () => {
+      const { getByText } = render(
+        <TouchableLink
+          enableNavigate={false}
+          navigateTo={{
+            screen: 'TabNavigator',
+            params: { screen: 'Home' },
+            fromRef: true,
+            withPush: true,
+          }}>
+          <TouchableLinkContent />
+        </TouchableLink>
+      )
+      fireEvent.press(getByText(linkText))
+      await waitForExpect(() => {
+        expect(navigate).not.toBeCalledWith('TabNavigator', {
+          screen: 'Home',
+          params: undefined,
+        })
+      })
+    })
+
     it('should fire onPress if given, before navigation', async () => {
       const { getByText } = render(
         <TouchableLink

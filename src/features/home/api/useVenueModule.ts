@@ -4,6 +4,7 @@ import { useQuery } from 'react-query'
 import { VenuesModule } from 'features/home/contentful'
 import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 import { useGeolocation } from 'libs/geolocation'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 
@@ -12,10 +13,12 @@ export const useVenueModule = ({
   moduleId,
 }: Pick<VenuesModule, 'search' | 'moduleId'>): VenueHit[] | undefined => {
   const { position } = useGeolocation()
+  const netInfo = useNetInfo()
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_VENUES_MODULE, moduleId],
-    async () => await fetchMultipleVenues(search, position)
+    async () => fetchMultipleVenues(search, position),
+    { enabled: !!netInfo.isConnected }
   )
 
   useEffect(() => {

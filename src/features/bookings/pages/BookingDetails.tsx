@@ -24,6 +24,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { eventMonitoring, ScreenError } from 'libs/monitoring'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -44,6 +45,7 @@ const emptyBookings: Booking[] = []
 
 export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
+  const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const {
     status,
@@ -71,7 +73,7 @@ export function BookingDetails() {
 
   const { data: bookings } = useBookings()
   const { ended_bookings: endedBookings = emptyBookings } = bookings || {}
-  const { showInfoSnackBar } = useSnackBarContext()
+  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -134,17 +136,24 @@ export function BookingDetails() {
   }
 
   const onNavigateToOfferPress = () => {
-    queryClient.setQueryData(
-      [QueryKeys.OFFER, offer.id],
-      mergeOfferData({
-        ...offer,
-        categoryId: mapping[offer.subcategoryId].categoryId,
-        thumbUrl: offer.image?.url,
-        name: offer.name,
-        offerId: offer.id,
+    if (netInfo.isConnected) {
+      queryClient.setQueryData(
+        [QueryKeys.OFFER, offer.id],
+        mergeOfferData({
+          ...offer,
+          categoryId: mapping[offer.subcategoryId].categoryId,
+          thumbUrl: offer.image?.url,
+          name: offer.name,
+          offerId: offer.id,
+        })
+      )
+      analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
+    } else {
+      showErrorSnackBar({
+        message: t`Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.`,
+        timeout: SNACK_BAR_TIME_OUT,
       })
-    )
-    analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
+    }
   }
 
   const helmetTitle = `${t`Ma réservation pour`} ${booking.stock.offer.name} | pass Culture`
@@ -200,6 +209,7 @@ export function BookingDetails() {
           )}
           <Spacer.Column numberOfSpaces={8} />
           <TouchableLink
+            enableNavigate={!!netInfo.isConnected}
             as={ButtonPrimary}
             testID="Voir le détail de l’offre"
             wording={t`Voir le détail de l’offre`}

@@ -5,36 +5,56 @@ import styled from 'styled-components/native'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
 export function NoBookingsView() {
+  const netInfo = useNetInfo()
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'bookings' })
   const searchNavConfig = getTabNavConfig('Search', { showResults: true })
 
   return (
     <Container>
-      <Spacer.Flex />
-      <StyledNoBookings />
-      <Explanation>
-        {t`Tu n’as pas de réservations en cours.
-      Découvre les offres disponibles 
+      {!netInfo.isConnected ? (
+        <React.Fragment>
+          <Spacer.Flex />
+          <Spacer.Column numberOfSpaces={getSpacing(4)} />
+          <StyledNoBookings />
+          <Explanation offline>{t`Tu n’as pas de réservations en cours.`}</Explanation>
+          <Explanation offline>
+            {t`Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier.`}
+          </Explanation>
+          <Spacer.Flex />
+          <Spacer.Column numberOfSpaces={getSpacing(13)} />
+          <Spacer.Flex />
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Spacer.Flex />
+          <StyledNoBookings />
+          <Explanation>
+            {t`Tu n’as pas de réservations en cours.
+      Découvre les offres disponibles
       sans attendre\u00a0!`}
-      </Explanation>
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonContainer>
-        <TouchableLink
-          as={ButtonPrimary}
-          navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
-          wording={t`Explorer les offres`}
-          onPress={onPressExploreOffers}
-          buttonHeight="tall"
-        />
-      </ButtonContainer>
-      <Spacer.Flex />
-      <Spacer.Column numberOfSpaces={8} />
-      <EndedBookingsSection />
+          </Explanation>
+          <Spacer.Column numberOfSpaces={getSpacing(4)} />
+          <ButtonContainer>
+            <TouchableLink
+              as={ButtonPrimary}
+              navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
+              wording={t`Explorer les offres`}
+              onPress={onPressExploreOffers}
+              buttonHeight="tall"
+            />
+          </ButtonContainer>
+          <Spacer.Flex />
+          <Spacer.Column numberOfSpaces={getSpacing(2)} />
+          <EndedBookingsSection />
+        </React.Fragment>
+      )}
     </Container>
   )
 }
@@ -53,8 +73,10 @@ const Container = styled.View({
 
 const ButtonContainer = styled.View({})
 
-const Explanation = styled(Typo.Body)(({ theme }) => ({
+const Explanation = styled(Typo.Body)<{ offline?: boolean }>(({ theme, offline }) => ({
   flex: 1,
+  paddingHorizontal: getSpacing(offline ? 8 : 4),
+  maxWidth: theme.contentPage.maxWidth,
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

@@ -1321,6 +1321,10 @@ msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne co
 msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
 msgstr "Il est possible que ce lieu soit désactivé ou n'existe pas."
 
+#: src/features/bookings/components/NoBookingsView.tsx
+msgid "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier."
+msgstr "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier."
+
 #: src/features/offer/pages/OfferNotFound.tsx
 msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
 msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
@@ -1348,6 +1352,14 @@ msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compt
 #: src/features/auth/login/Login.tsx
 msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
+
+#: src/features/bookings/pages/BookingDetails.tsx
+msgid "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer."
+msgstr "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer."
+
+#: src/features/bookings/components/CancelBookingModal.tsx
+msgid "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer."
+msgstr "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer."
 
 #: src/features/search/components/SearchBox.tsx
 msgid ""
@@ -3095,8 +3107,8 @@ msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
 #: src/libs/network/OfflinePage.tsx
-msgid "Tu n'es pas connecté à internet"
-msgstr "Tu n'es pas connecté à internet"
+msgid "Tu n'es pas connecté à internet."
+msgstr "Tu n'es pas connecté à internet."
 
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
@@ -3111,13 +3123,17 @@ msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour
 msgstr "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 
 #: src/features/bookings/components/NoBookingsView.tsx
+msgid "Tu n’as pas de réservations en cours."
+msgstr "Tu n’as pas de réservations en cours."
+
+#: src/features/bookings/components/NoBookingsView.tsx
 msgid ""
 "Tu n’as pas de réservations en cours.\n"
-"Découvre les offres disponibles \n"
+"Découvre les offres disponibles\n"
 "sans attendre !"
 msgstr ""
 "Tu n’as pas de réservations en cours.\n"
-"Découvre les offres disponibles \n"
+"Découvre les offres disponibles\n"
 "sans attendre !"
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
@@ -3522,6 +3538,10 @@ msgstr "À activer avant le {date}"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
+
+#: src/libs/network/OfflineModeContainer.tsx
+msgid "aucune connexion internet."
+msgstr "aucune connexion internet."
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "auteur"

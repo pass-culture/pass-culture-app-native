@@ -38,8 +38,13 @@ server.use(
     return res(ctx.status(200), ctx.json(userProfileAPIResponse))
   })
 )
+
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
+jest.mock('libs/react-query/usePersistQuery', () => ({
+  usePersistQuery: jest.requireActual('react-query').useQuery,
 }))
 
 describe('useUserProfileInfo', () => {
@@ -52,6 +57,7 @@ describe('useUserProfileInfo', () => {
     expect(result.current.data).toEqual(userProfileAPIResponse)
     expect(userProfileApiMock).toHaveBeenCalledTimes(1)
   })
+
   it("doesn't call the api if the user isn't logged in", async () => {
     mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
     const { result, waitFor } = renderHook(useUserProfileInfo, {

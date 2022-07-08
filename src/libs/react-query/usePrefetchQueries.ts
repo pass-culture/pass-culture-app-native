@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { getEntries } from 'features/home/api'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 
@@ -15,8 +16,11 @@ const prefetchQueries = async () => {
 }
 
 export const usePrefetchQueries = () => {
+  const { isConnected } = useNetInfo()
   useEffect(() => {
-    prefetchQueries()
+    if (isConnected) {
+      prefetchQueries()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isConnected])
 }

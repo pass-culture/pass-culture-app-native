@@ -11,6 +11,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -33,6 +34,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   dismissModal,
   booking,
 }) => {
+  const netInfo = useNetInfo()
   const { data: user } = useUserProfileInfo()
   const refundRule = getRefundRule(booking, user)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -57,8 +59,16 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   })
 
   const confirmCancelBooking = () => {
-    analytics.logConfirmBookingCancellation(booking.stock.offer.id)
-    mutate(booking.id)
+    if (netInfo.isConnected) {
+      analytics.logConfirmBookingCancellation(booking.stock.offer.id)
+      mutate(booking.id)
+    } else {
+      dismissModal()
+      showErrorSnackBar({
+        message: t`Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
   }
 
   return (

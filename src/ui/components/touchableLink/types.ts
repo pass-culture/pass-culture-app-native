@@ -7,6 +7,7 @@ import { RootNavigateParams } from 'features/navigation/RootNavigator'
 import { ColorsEnum } from 'ui/theme/colors'
 
 export type InternalNavigationProps = {
+  enableNavigate?: boolean // It is used by offline mode to prevent navigation
   navigateTo: {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]
@@ -24,6 +25,7 @@ export type ExternalNavigationProps = {
     onSuccess?: () => void | Promise<void>
     onError?: () => void
   }
+  enableNavigate?: never
   navigateTo?: never
 }
 
