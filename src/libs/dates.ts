@@ -69,3 +69,10 @@ export const formatToReadableFrenchDate = (date: Date | string) => {
   const month = monthNames[monthOrder].toLowerCase()
   return `${day} ${month}`
 }
+
+export const timeDiffInHours = (date: Date | string) => {
+  const formattedDate = new Date(date)
+  const currentDate = new Date()
+  const diff = (formattedDate.getTime() - currentDate.getTime()) / 3600000
+  return Math.ceil(diff)
+}
