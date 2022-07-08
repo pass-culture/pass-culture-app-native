@@ -37,7 +37,8 @@ jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation
 // We allow console.error here because of act warning that we can't reproduce locally
 // We allow warning for android 'Expected style "elevation: 4px" to be unitless' due to shadow style
 // eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true, warn: true })
+allowConsole({ warn: true })
+
 describe('NotificationSettings', () => {
   afterEach(() => {
     cleanup()

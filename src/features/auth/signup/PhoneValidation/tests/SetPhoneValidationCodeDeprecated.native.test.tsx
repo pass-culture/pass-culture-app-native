@@ -27,9 +27,6 @@ import {
 } from 'tests/utils'
 import { theme } from 'theme'
 
-// eslint-disable-next-line local-rules/no-allow-console
-// allowConsole({ error: true })
-
 jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')

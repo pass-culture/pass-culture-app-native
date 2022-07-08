@@ -17,11 +17,6 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 const venueId = venueResponseSnap.id
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
-
 describe('<Venue />', () => {
   it('should match snapshot', async () => {
     const venue = await renderVenue(venueId)

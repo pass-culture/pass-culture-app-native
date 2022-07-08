@@ -25,11 +25,6 @@ const mockedUseVenue = mocked(useVenue)
 
 const venueId = venueResponseSnap.id
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
-
 describe('<VenueBody />', () => {
   it('should render correctly', async () => {
     const venue = await renderVenueBody(venueId)

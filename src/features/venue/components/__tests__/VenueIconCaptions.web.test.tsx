@@ -28,11 +28,6 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
-
 describe('<VenueIconCaptions />', () => {
   it('should change accessibilityLabel when geolocation is active or not', async () => {
     mockDistance = '10 km'

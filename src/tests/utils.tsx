@@ -1,18 +1,17 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 // eslint-disable-next-line no-restricted-imports
-import { render, RenderOptions } from '@testing-library/react-native'
+import { act, render, RenderOptions } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
 import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
 import React, { ReactNode } from 'react'
-import { act, ReactTestInstance } from 'react-test-renderer'
+import { ReactTestInstance } from 'react-test-renderer'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { messages } from 'locales/fr/messages'
-
-import { computedTheme } from './computedTheme'
+import { computedTheme } from 'tests/computedTheme'
 
 i18n.load({
   fr: messages,
@@ -100,6 +99,7 @@ export type CustomRenderOptions = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions) {
   const { wrapper: Wrapper, theme, ...restOfOptions } = options || {}
+
   return render(ui, {
     wrapper: Wrapper
       ? ({ children }) => (

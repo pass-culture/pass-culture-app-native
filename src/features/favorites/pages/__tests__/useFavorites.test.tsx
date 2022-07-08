@@ -20,9 +20,6 @@ import { superFlushWithAct } from 'tests/utils'
 
 import { useFavorites, useRemoveFavorite, useAddFavorite, useFavorite } from '../useFavorites'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 

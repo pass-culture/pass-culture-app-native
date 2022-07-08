@@ -18,9 +18,6 @@ import { ResetPasswordExpiredLink } from '../ResetPasswordExpiredLink'
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers')
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     const { getByText } = await renderResetPasswordExpiredLink()

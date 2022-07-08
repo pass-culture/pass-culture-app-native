@@ -79,8 +79,9 @@ type PropsWithTheme = {
   children?: ReactNode
 }
 
-const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
+const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
   return (
+    // ThemeProviderWeb is useful to recycle .test.tsx for both native and web
     <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
       <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
         <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
