@@ -4,6 +4,7 @@ import { rest } from 'msw'
 import { BookingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { env } from 'libs/environment'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
@@ -14,12 +15,17 @@ jest.mock('libs/react-query/usePersistQuery', () => ({
 }))
 
 server.use(
-  rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+  rest.get<BookingsResponse>(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
     res(ctx.status(200), ctx.json(bookingsSnap))
   )
 )
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
 describe('[API] booking queries', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+
   describe('[Method] useOngoingOrEndedBooking', () => {
     it('should return ongoing_bookings when there is one', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]

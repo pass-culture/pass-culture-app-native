@@ -12,7 +12,7 @@ const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 export function useBookings(options = {}) {
   const netInfo = useNetInfo()
   return usePersistQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
-    enabled: !!netInfo.isConnected,
+    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     staleTime: STALE_TIME_BOOKINGS,
     ...options,
   })

@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
-import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
+import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
 
 export const Favorites: React.FC = () => {
   const netInfo = useNetInfo()

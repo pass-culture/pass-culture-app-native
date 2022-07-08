@@ -68,9 +68,8 @@ export function usePersistQuery<
         ? query
         : ({
             ...query,
-            // @ts-ignore useQuery select options does not offer to pass typing to useQuery,
-            // cast should happen within passed selected
-            data: options?.select ? options.select(persistData as any) : persistData,
+            // @ts-ignore useQuery select options does not offer to pass typing to useQuery, cast should happen within passed selected
+            data: options?.select ? options.select(persistData as any) : persistData, // eslint-disable-line @typescript-eslint/no-explicit-any
             isOfflineData: true,
           } as UsePersistQueryResult<TData, TError>),
     [persistData, query, options]

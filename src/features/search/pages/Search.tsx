@@ -10,10 +10,10 @@ import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
-import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
+import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 const searchInputID = uuidv4()
 
