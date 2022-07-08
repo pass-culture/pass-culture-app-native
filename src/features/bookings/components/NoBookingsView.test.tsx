@@ -18,7 +18,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
 describe('<NoBookingsView />', () => {
