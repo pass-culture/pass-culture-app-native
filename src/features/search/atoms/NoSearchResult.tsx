@@ -1,8 +1,12 @@
 import { t } from '@lingui/macro'
+import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { UseRouteType } from 'features/navigation/RootNavigator'
+import { LocationType } from 'features/search/enums'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -11,24 +15,34 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
-  const { searchState, dispatch } = useSearch()
-  const { query } = searchState
+  const { params } = useRoute<UseRouteType<'Search'>>()
+  const query = params?.query
+  const showResultsWithStagedSearch = usePushWithStagedSearch()
 
   useEffect(() => {
-    analytics.logNoSearchResult(query)
+    if (query) {
+      analytics.logNoSearchResult(query)
+    }
   }, [query])
 
   const handlePressAroundMe = useCallback(() => {
-    dispatch({ type: 'INIT' })
-    dispatch({ type: 'SET_QUERY', payload: '' })
+    showResultsWithStagedSearch(
+      {
+        locationFilter: position
+          ? {
+              locationType: LocationType.AROUND_ME,
+              aroundRadius: MAX_RADIUS,
+            }
+          : { locationType: LocationType.EVERYWHERE },
+        showResults: true,
+      },
+      { reset: true }
+    )
+  }, [position, showResultsWithStagedSearch])
 
-    const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
-    dispatch({ type: actionType })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!position])
-
-  const errorMessage =
-    query.length > 0 ? t`Pas de résultat trouvé pour` + ` "${query}"` : t`Pas de résultat trouvé.`
+  const errorMessage = query
+    ? t`Pas de résultat trouvé pour` + ` "${query}"`
+    : t`Pas de résultat trouvé.`
 
   return (
     <Container>

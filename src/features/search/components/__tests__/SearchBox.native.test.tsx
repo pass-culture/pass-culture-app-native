@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, push } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
@@ -68,8 +68,9 @@ describe('SearchBox component', () => {
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
-    expect(navigate).toBeCalledWith(
+    expect(push).toBeCalledWith(
       ...getTabNavConfig('Search', {
+        ...initialSearchState,
         query: 'jazzaza',
         showResults: true,
         offerCategories: mockStagedSearchState.offerCategories,
@@ -121,7 +122,12 @@ describe('SearchBox component', () => {
     const resetIcon = getByTestId('resetSearchInput')
     await fireEvent.press(resetIcon)
 
-    expect(searchInput.props.value).toBe('')
+    expect(push).toBeCalledWith(
+      ...getTabNavConfig('Search', {
+        ...mockStagedSearchState,
+        query: '',
+      })
+    )
   })
 
   it('should reset input when user click on previous button', async () => {
@@ -134,8 +140,13 @@ describe('SearchBox component', () => {
     await fireEvent(searchInput, 'onChangeText', 'Some text')
 
     await fireEvent.press(previousButton)
-
-    expect(searchInput.props.value).toBe('')
+    expect(push).toBeCalledWith(
+      ...getTabNavConfig('Search', {
+        ...mockStagedSearchState,
+        query: '',
+        showResults: false,
+      })
+    )
   })
 
   it('should not execute a search if input is empty', () => {
@@ -153,8 +164,9 @@ describe('SearchBox component', () => {
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
-    expect(navigate).toBeCalledWith(
+    expect(push).toBeCalledWith(
       ...getTabNavConfig('Search', {
+        ...initialSearchState,
         query: 'jazzaza',
         showResults: true,
         offerCategories: mockStagedSearchState.offerCategories,

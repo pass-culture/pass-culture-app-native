@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -118,19 +119,17 @@ describe('Search component', () => {
   })
 
   describe('When search executed', () => {
-    beforeEach(() => {
-      mockSearchState = {
-        ...initialSearchState,
-        showResults: true,
-      }
-    })
-
     it('should show search box without label', () => {
+      useRoute.mockReturnValueOnce({ params: { showResults: true } })
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
     })
 
     it('should show search results', () => {
+      useRoute
+        .mockReturnValueOnce({ params: { showResults: true, query: 'la fnac' } })
+        .mockReturnValueOnce({ params: { showResults: true, query: 'la fnac' } })
+        .mockReturnValueOnce({ params: { showResults: true, query: 'la fnac' } })
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
     })

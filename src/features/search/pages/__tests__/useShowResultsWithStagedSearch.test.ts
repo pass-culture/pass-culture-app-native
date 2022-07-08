@@ -5,7 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 
 import { push } from '../../../../../__mocks__/@react-navigation/native'
-import { useNavigateWithStagedSearch } from '../useNavigateWithStagedSearch'
+import { usePushWithStagedSearch } from '../usePushWithStagedSearch'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -34,7 +34,7 @@ describe('useShowResultsWithStagedSearch', () => {
   })
 
   it('should set search state with staged search state', () => {
-    const { result: resultCallback } = renderHook(useNavigateWithStagedSearch)
+    const { result: resultCallback } = renderHook(usePushWithStagedSearch)
 
     resultCallback.current()
 
@@ -62,7 +62,7 @@ describe('useShowResultsWithStagedSearch', () => {
   })
 
   it('should show results', () => {
-    const { result: resultCallback } = renderHook(useNavigateWithStagedSearch)
+    const { result: resultCallback } = renderHook(usePushWithStagedSearch)
 
     resultCallback.current()
 
