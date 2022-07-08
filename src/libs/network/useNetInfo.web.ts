@@ -10,5 +10,5 @@ import { useNetInfo as useNetInfoDefault } from '@react-native-community/netinfo
 // on web, we don't have caching and we don't use network connection info.
 // if the network is down, we just let the query fail (this will not crash)
 export const useNetInfo = () => {
-  return { ...useNetInfoDefault(), isConnected: true }
+  return { ...useNetInfoDefault(), isConnected: true, isInternetReachable: true }
 }
