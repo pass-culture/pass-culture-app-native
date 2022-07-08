@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { navigateToHome } from 'features/navigation/helpers'
-import { render, fireEvent } from 'tests/utils/web'
+import { render, fireEvent } from 'tests/utilsNew'
 
 jest.mock('features/culturalSurvey/useGetNextQuestion')
 jest.mock('features/navigation/helpers')
@@ -19,7 +19,7 @@ describe('CulturalSurveyIntro page', () => {
   it('should navigate to first page when pressing Débuter le questionnaire', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const StartButton = CulturalSurveyIntroPage.getByTestId('start-cultural-survey')
-    fireEvent.click(StartButton)
+    fireEvent.press(StartButton)
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.SORTIES,
     })
@@ -28,7 +28,7 @@ describe('CulturalSurveyIntro page', () => {
   it('should navigate to home when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const LaterButton = CulturalSurveyIntroPage.getByTestId('answer-survey-later')
-    fireEvent.click(LaterButton)
+    fireEvent.press(LaterButton)
     expect(navigateToHome).toHaveBeenCalled()
   })
 })

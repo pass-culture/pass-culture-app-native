@@ -14,10 +14,9 @@ import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalS
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers/__mocks__'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utilsNew'
 
 jest.mock('features/navigation/helpers')
-jest.mock('react-query')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
 const mockedUseCulturalSurveyAnswersMutation = mocked(useCulturalSurveyAnswersMutation)
@@ -45,7 +44,7 @@ jest
   .spyOn(CulturalSurveyContextProviderModule, 'useCulturalSurveyContext')
   .mockImplementation(useCulturalSurveyContext)
 
-describe('CulturalSurveysQuestions page', () => {
+describe('CulturalSurveyQuestions page', () => {
   const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
   it('should render the page with correct layout', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
@@ -54,10 +53,16 @@ describe('CulturalSurveysQuestions page', () => {
 
   it('should navigate to next page when pressing Continuer', async () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.press(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
-    expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-      question: CulturalSurveyQuestionEnum.ACTIVITES,
+
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
+        question: CulturalSurveyQuestionEnum.ACTIVITES,
+      })
     })
   })
 
@@ -67,9 +72,15 @@ describe('CulturalSurveysQuestions page', () => {
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.press(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
-    expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+    })
   })
 
   it('should navigate to home if on lastQuestion and API call is unsuccessful', async () => {
@@ -87,9 +98,15 @@ describe('CulturalSurveysQuestions page', () => {
       return { mutate: onError }
     })
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
+    fireEvent.press(Answers[0])
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
-    expect(navigateToHome).toHaveBeenCalled()
+
+    await waitFor(() => {
+      expect(navigateToHome).toHaveBeenCalled()
+    })
   })
 
   it('should dispatch empty answers on go back', () => {
