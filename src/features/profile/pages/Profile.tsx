@@ -259,10 +259,10 @@ const OnlineProfile: React.FC = () => {
 
 export const Profile: React.FC = () => {
   const netInfo = useNetInfo()
-  if (!netInfo.isConnected) {
-    return <OfflinePage />
+  if (netInfo.isConnected) {
+    return <OnlineProfile />
   }
-  return <OnlineProfile />
+  return <OfflinePage />
 }
 
 const paddingVertical = getSpacing(4)

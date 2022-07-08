@@ -17,6 +17,6 @@ export const useExcluOffer = (id: number) => {
         return undefined
       }
     },
-    { enabled: !netInfo.isConnected && typeof id === 'number' }
+    { enabled: !!netInfo.isConnected && typeof id === 'number' }
   )
 }

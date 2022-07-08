@@ -22,13 +22,13 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
 describe('<NoBookingsView />', () => {
-  it('should render online no bookings view', () => {
+  it('should render online no bookings view when netInfo.isConnected is true', () => {
     mockUseNetInfo.mockReturnValueOnce({ isConnected: true })
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
     expect(renderAPI).toMatchSnapshot()
   })
-  it('should render offline no bookings view', () => {
+  it('should render offline no bookings view when netInfo.isConnected is false', () => {
     mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))

@@ -19,6 +19,7 @@ type TestData = {
   description: string
 }
 
+// We allow console to prevent the test to fail, it may be fixable, but I didn't found how
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({
   error: true,
