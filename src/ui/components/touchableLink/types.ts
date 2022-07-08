@@ -5,7 +5,7 @@ import { UrlParamsProps } from 'features/navigation/helpers'
 import { RootNavigateParams } from 'features/navigation/RootNavigator'
 
 export type InternalNavigationProps = {
-  enableNavigate?: boolean
+  enableNavigate?: boolean // It is used by offline mode to prevent navigation
   navigateTo: {
     screen: RootNavigateParams[0]
     params?: RootNavigateParams[1]
