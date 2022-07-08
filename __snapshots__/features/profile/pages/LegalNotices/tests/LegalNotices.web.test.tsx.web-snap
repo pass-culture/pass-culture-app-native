@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-gWXbKe jVsLRG"
+        class="sc-cCcXHH aZHDF"
         role="banner"
       >
         <div
@@ -31,7 +31,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="sc-hKwDye lgPtFf"
+                class="sc-hKwDye huZUNX"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -180,7 +180,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-gWXbKe jVsLRG"
+      class="sc-cCcXHH aZHDF"
       role="banner"
     >
       <div
@@ -205,7 +205,7 @@ Object {
           >
             <button
               aria-label="Revenir en arrière"
-              class="sc-hKwDye lgPtFf"
+              class="sc-hKwDye huZUNX"
               data-testid="Revenir en arrière"
               tabindex="0"
               title="Revenir en arrière"

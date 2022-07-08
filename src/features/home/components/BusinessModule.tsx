@@ -127,7 +127,9 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.white,
+}))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline(theme, theme.colors.black, isFocus),
 }))

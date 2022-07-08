@@ -17,7 +17,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
   const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
   return (
-    <StyledTouchableOpacity externalNav={{ url }} testID={testID}>
+    <StyledTouchableLink externalNav={{ url }} primary={primary} testID={testID}>
       <ButtonText primary={primary}>
         <Spacer.Row numberOfSpaces={1} />
         <Text>
@@ -26,7 +26,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
         </Text>
         {remainingWords}
       </ButtonText>
-    </StyledTouchableOpacity>
+    </StyledTouchableLink>
   )
 }
 
@@ -34,7 +34,11 @@ const Text = styled.Text({
   whiteSpace: 'nowrap',
 })
 
-const StyledTouchableOpacity = styled(TouchableLink)({
+const StyledTouchableLink = styled(TouchableLink).attrs<{ primary?: boolean }>(
+  ({ theme, primary }) => ({
+    hoverUnderlineColor: primary ? theme.colors.primary : undefined,
+  })
+)({
   display: 'inline',
 })
 

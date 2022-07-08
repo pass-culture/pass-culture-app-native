@@ -102,7 +102,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                           style=\\"height: 24px;\\"
                         />
 -                     <button
--                       class=\\"sc-dkPtRN ktnIIT sc-eCImPb idTzrf\\"
+-                       class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
 -                       tabindex=\\"0\\"
 -                       type=\\"button\\"
 -                     >
@@ -138,8 +138,8 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                         style=\\"height: 16px;\\"
 -                       />
                           <button
--                         class=\\"sc-dkPtRN ceOvMg sc-caiLqq fGqtMB\\"
-+                           class=\\"sc-dkPtRN dOEEJJ sc-crHmcD dlEnXt\\"
+-                         class=\\"sc-dkPtRN dMotSY sc-iUKqMP fSscXR\\"
++                           class=\\"sc-dkPtRN fSwvKJ sc-bqiRlB lhIoLE\\"
                             tabindex=\\"0\\"
                             type=\\"button\\"
                           >
@@ -173,7 +173,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                 style=\\"background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;\\"
 +               >
 +                 <button
-+                   class=\\"sc-dkPtRN ktnIIT sc-eCImPb idTzrf\\"
++                   class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
 +                   tabindex=\\"0\\"
 +                   type=\\"button\\"
 +                 >

@@ -32,6 +32,7 @@ export const TabBarComponent: React.FC<Props> = ({
     navigateTo={navigateTo}
     onPress={onPress}
     activeOpacity={1}
+    selected={isSelected}
     accessibilityLabel={menu[tabName].accessibilityLabel}
     testID={`${tabName} tab`}
     aria-current={isSelected ? 'page' : undefined}>
@@ -58,9 +59,12 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
 
 const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
-const TabComponentContainer = styled(TouchableLink).attrs(({ theme, accessibilityLabel }) => ({
-  accessibilityLabel: theme.tabBar.showLabels ? undefined : accessibilityLabel,
-}))(({ theme }) => ({
+const TabComponentContainer = styled(TouchableLink).attrs(
+  ({ theme, accessibilityLabel, selected }) => ({
+    accessibilityLabel: theme.tabBar.showLabels ? undefined : accessibilityLabel,
+    hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,
+  })
+)(({ theme }) => ({
   alignItems: 'center',
   height: theme.tabBar.height,
   flex: 1,

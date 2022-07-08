@@ -43,6 +43,8 @@ Array [
     onContextMenu={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     style={
       Object {
         "MozTransitionProperty": "opacity",
@@ -236,7 +238,7 @@ Array [
     }
   >
     <a
-      className="sc-gsDKAQ fllxqS sc-dkPtRN fwCeAR"
+      className="sc-gsDKAQ dqGycy sc-dkPtRN fwCeAR"
       href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -300,7 +302,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -30,10 +30,138 @@
+@@ -30,10 +30,140 @@
           \\"height\\": \\"16px\\",
         }
       }
@@ -314,6 +316,8 @@ exports[`WhereSection should render correctly 2`] = `
 +     onContextMenu={[Function onContextMenu]}
 +     onFocus={[Function onStyledFocus]}
 +     onKeyDown={[Function onKeyDown]}
++     onMouseEnter={[Function onMouseEnter]}
++     onMouseLeave={[Function onMouseLeave]}
 +     style={
 +       Object {
 +         \\"MozTransitionProperty\\": \\"opacity\\",

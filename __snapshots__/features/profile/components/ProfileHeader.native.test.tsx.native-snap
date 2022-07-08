@@ -201,43 +201,54 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         }
       >
         Tu as déjà un compte ? 
-      </Text>
-      <View
-        accessibilityLabel="Connecte-toi"
-        accessibilityRole="link"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="Connecte-toi"
-      >
-        <Text
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
+            Object {
+              "marginVertical": -1.5,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
           }
+          testID="Connecte-toi"
         >
-          Connecte-toi
-        </Text>
-      </View>
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
+            typography="ButtonText"
+          >
+            <Text
+              color="#ffffff"
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              typography="ButtonText"
+            >
+              Connecte-toi
+            </Text>
+          </View>
+        </View>
+      </Text>
     </View>
     <View
       numberOfSpaces={7}

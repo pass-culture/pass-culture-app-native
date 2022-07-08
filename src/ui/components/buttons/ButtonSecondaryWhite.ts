@@ -43,6 +43,7 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
       loadingIndicator: LoadingIndicator,
       focusOutlineColor:
         Platform.OS === 'web' ? theme.buttons.secondaryWhite.outlineColor : undefined,
+      hoverUnderlineColor: theme.buttons.secondaryWhite.textColor,
       backgroundColor,
     }
   }

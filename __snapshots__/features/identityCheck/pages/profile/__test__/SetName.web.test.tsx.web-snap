@@ -28,7 +28,7 @@ Object {
           </h1>
           <button
             aria-label="Revenir en arrière"
-            class="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
+            class="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -270,7 +270,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-dkPtRN pRcBe sc-eCImPb idTzrf"
+                    class="sc-dkPtRN fPOvak sc-eCImPb idTzrf"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="submit"
@@ -334,7 +334,7 @@ Object {
         </h1>
         <button
           aria-label="Revenir en arrière"
-          class="sc-bdvvtL bmzymd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
+          class="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -576,7 +576,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-dkPtRN pRcBe sc-eCImPb idTzrf"
+                  class="sc-dkPtRN fPOvak sc-eCImPb idTzrf"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"

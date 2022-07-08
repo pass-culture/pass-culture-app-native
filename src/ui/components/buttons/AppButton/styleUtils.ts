@@ -8,6 +8,7 @@ import { getEffectiveBorderRadius } from 'ui/components/buttons/AppButton/utils'
 import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
 import { padding } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type ButtonStyles = InterpolationFunction<
   ThemedStyledProps<
@@ -96,6 +97,7 @@ export const appButtonStyles: ButtonStyles = ({
 export const appButtonWebStyles: ElementStylesWeb = ({
   theme,
   focusOutlineColor,
+  hoverUnderlineColor,
   ...rest
 }: ButtonStylesArgs) => {
   return {
@@ -112,13 +114,17 @@ export const appButtonWebStyles: ElementStylesWeb = ({
       background: 'none',
     },
     ...customFocusOutline(theme, focusOutlineColor ?? theme.buttons.outlineColor),
+    ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black),
   }
 }
 
 export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
   theme,
+  hoverUnderlineColor,
   activeOpacity,
 }: ButtonStylesArgs) => {
+  const underlineColor =
+    hoverUnderlineColor === undefined ? theme.colors.black : hoverUnderlineColor
   return {
     flexDirection: 'column',
     cursor: 'pointer',
@@ -136,5 +142,6 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
     ['&:disabled']: {
       cursor: 'initial',
     },
+    ...getHoverStyle(underlineColor),
   }
 }

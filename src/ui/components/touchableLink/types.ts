@@ -3,6 +3,8 @@ import { TouchableOpacityProps } from 'react-native'
 
 import { UrlParamsProps } from 'features/navigation/helpers'
 import { RootNavigateParams } from 'features/navigation/RootNavigator'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 export type InternalNavigationProps = {
   navigateTo: {
@@ -35,6 +37,7 @@ export type TouchableLinkProps =
   | (InternalNavigationProps | ExternalNavigationProps) & {
       navigateBeforeOnPress?: boolean // If true, triggers navigation before onPress function
       highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
+      hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
       isOnPressDebounced?: boolean
     } & TouchableOpacityProps &
       AsProps

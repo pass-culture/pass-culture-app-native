@@ -49,6 +49,7 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       icon: Icon,
       title: Title,
       backgroundColor,
+      hoverUnderlineColor: theme.buttons.primary.textColor,
     }
   }
 )(({ theme }) => {

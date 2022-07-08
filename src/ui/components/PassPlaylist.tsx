@@ -63,6 +63,7 @@ export const PassPlaylist = (props: Props) => {
         <TitleSeparator color={titleSeparatorColor} />
         <Spacer.Row numberOfSpaces={3} />
         <StyledTouchableLink
+          onDarkBackground={props.onDarkBackground}
           navigateTo={props.titleSeeMoreLink}
           onPress={props.onPressSeeMore}
           {...accessibilityAndTestId(t`Voir plus d’offres de la sélection` + ' ' + props.title)}>
@@ -115,7 +116,11 @@ const TitleSeparator = styled.View<{ color?: ColorsEnum }>((props) => ({
   backgroundColor: props.color,
 }))
 
-const StyledTouchableLink = styled(TouchableLink)({
+const StyledTouchableLink = styled(TouchableLink).attrs<{ onDarkBackground?: boolean }>(
+  ({ theme, onDarkBackground }) => ({
+    hoverUnderlineColor: onDarkBackground ? theme.colors.white : theme.colors.primary,
+  })
+)({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacing(1),

@@ -83,7 +83,7 @@ Object {
           >
             <a
               aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-              class="sc-gsDKAQ jhcNBc sc-dkPtRN kmXVLA"
+              class="sc-gsDKAQ jXMMaZ sc-dkPtRN kmXVLA"
               data-testid="Ouvrir le gestionnaire mail pour contacter le support"
               href="mailto:service.fraude@test.passculture.app"
               tabindex="0"
@@ -118,7 +118,7 @@ Object {
               style="height: 16px;"
             />
             <button
-              class="sc-bdvvtL leURAp sc-hKwDye gvtKtm"
+              class="sc-bdvvtL kkjdLP sc-hKwDye gvtKtm"
               tabindex="0"
               type="button"
             >
@@ -234,7 +234,7 @@ Object {
         >
           <a
             aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-            class="sc-gsDKAQ jhcNBc sc-dkPtRN kmXVLA"
+            class="sc-gsDKAQ jXMMaZ sc-dkPtRN kmXVLA"
             data-testid="Ouvrir le gestionnaire mail pour contacter le support"
             href="mailto:service.fraude@test.passculture.app"
             tabindex="0"
@@ -269,7 +269,7 @@ Object {
             style="height: 16px;"
           />
           <button
-            class="sc-bdvvtL leURAp sc-hKwDye gvtKtm"
+            class="sc-bdvvtL kkjdLP sc-hKwDye gvtKtm"
             tabindex="0"
             type="button"
           >

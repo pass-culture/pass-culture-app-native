@@ -35,7 +35,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-hKwDye lgPtFf"
+                  class="sc-hKwDye huZUNX"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -248,7 +248,7 @@ Object {
           style="padding: 20px 20px 20px 20px;"
         >
           <button
-            class="sc-bdvvtL fMGKoY sc-dkPtRN kmXVLA"
+            class="sc-bdvvtL cYnXzS sc-dkPtRN kmXVLA"
             tabindex="0"
             type="button"
           >
@@ -295,7 +295,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="sc-hKwDye lgPtFf"
+                class="sc-hKwDye huZUNX"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -508,7 +508,7 @@ Object {
         style="padding: 20px 20px 20px 20px;"
       >
         <button
-          class="sc-bdvvtL fMGKoY sc-dkPtRN kmXVLA"
+          class="sc-bdvvtL cYnXzS sc-dkPtRN kmXVLA"
           tabindex="0"
           type="button"
         >

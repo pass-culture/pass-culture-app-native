@@ -27,7 +27,9 @@ const SortIcon = styled(SortIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styled(TouchableLink)({
+const Container = styled(TouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.white,
+}))({
   overflow: 'hidden',
 })
 

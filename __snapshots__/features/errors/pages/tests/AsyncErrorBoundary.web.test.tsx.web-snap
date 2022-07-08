@@ -25,7 +25,7 @@ Object {
           </div>
         </div>
         <button
-          class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
+          class="sc-hKwDye huZUNX sc-eCImPb clWlnA sc-eCImPb clWlnA"
           data-testid="Revenir en arrière"
           tabindex="0"
           type="button"
@@ -96,7 +96,7 @@ Object {
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <button
-              class="sc-bdvvtL cufYYl sc-dkPtRN kmXVLA"
+              class="sc-bdvvtL ykksg sc-dkPtRN kmXVLA"
               tabindex="0"
               type="button"
             >
@@ -142,7 +142,7 @@ Object {
         </div>
       </div>
       <button
-        class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
+        class="sc-hKwDye huZUNX sc-eCImPb clWlnA sc-eCImPb clWlnA"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -213,7 +213,7 @@ Object {
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <button
-            class="sc-bdvvtL cufYYl sc-dkPtRN kmXVLA"
+            class="sc-bdvvtL ykksg sc-dkPtRN kmXVLA"
             tabindex="0"
             type="button"
           >

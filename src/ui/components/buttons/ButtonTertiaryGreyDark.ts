@@ -35,6 +35,7 @@ export const ButtonTertiaryGreyDark = styledButton(AppButton).attrs<BaseButtonPr
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
+      hoverUnderlineColor: theme.buttons.tertiaryGreyDark.textColor,
     }
   }
 )(({ theme }) => ({

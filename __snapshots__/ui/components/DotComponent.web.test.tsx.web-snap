@@ -7,7 +7,7 @@ Object {
     <div>
       <button
         aria-hidden="false"
-        class="sc-bdvvtL cJVdrh"
+        class="sc-bdvvtL iVpXNB"
         data-testid="button"
         tabindex="0"
         type="button"
@@ -34,7 +34,7 @@ Object {
   "container": <div>
     <button
       aria-hidden="false"
-      class="sc-bdvvtL cJVdrh"
+      class="sc-bdvvtL iVpXNB"
       data-testid="button"
       tabindex="0"
       type="button"
@@ -118,7 +118,7 @@ Object {
     <div>
       <button
         aria-hidden="false"
-        class="sc-bdvvtL cJVdrh"
+        class="sc-bdvvtL iVpXNB"
         data-testid="button"
         tabindex="0"
         type="button"
@@ -145,7 +145,7 @@ Object {
   "container": <div>
     <button
       aria-hidden="false"
-      class="sc-bdvvtL cJVdrh"
+      class="sc-bdvvtL iVpXNB"
       data-testid="button"
       tabindex="0"
       type="button"

@@ -96,6 +96,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
     <React.Fragment>
       <StyledTouchable
         onPress={showModal}
+        hoverUnderlineColor={null}
         {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>

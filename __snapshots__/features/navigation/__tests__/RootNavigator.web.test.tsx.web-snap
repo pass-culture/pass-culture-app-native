@@ -8,13 +8,13 @@ Object {
   >
     <div>
       <a
-        class="sc-kLwhqv jhKrEr"
+        class="sc-ikJyIC gynVxb"
         href="#testUuidV4"
       >
         Accéder au menu de navigation
       </a>
       <main
-        class="sc-bYoBSM NHlPr"
+        class="sc-kLwhqv flNEgk"
         id="testUuidV4"
         role="main"
       >
@@ -48,11 +48,11 @@ Object {
         </div>
       </main>
       <footer
-        class="sc-ezbkAF"
+        class="sc-bYoBSM"
         role="contentinfo"
       >
         <nav
-          class="sc-llYSUQ ccqIdn"
+          class="sc-iJKOTD hKtcLm"
           id="testUuidV4"
           role="navigation"
         >
@@ -69,10 +69,10 @@ Object {
                 style="width: 16px;"
               />
               <ul
-                class="sc-hBUSln sc-iJKOTD cjntIJ JswSF"
+                class="sc-hBUSln sc-giYglK cjntIJ hlogUx"
               >
                 <li
-                  class="sc-giYglK dgFuXv"
+                  class="sc-ezbkAF kZHMKF"
                 >
                   <a
                     aria-current="page"
@@ -124,7 +124,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-giYglK dgFuXv"
+                  class="sc-ezbkAF kZHMKF"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -160,7 +160,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-giYglK dgFuXv"
+                  class="sc-ezbkAF kZHMKF"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -196,7 +196,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-giYglK dgFuXv"
+                  class="sc-ezbkAF kZHMKF"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -232,7 +232,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-giYglK dgFuXv"
+                  class="sc-ezbkAF kZHMKF"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -284,13 +284,13 @@ Object {
   </body>,
   "container": <div>
     <a
-      class="sc-kLwhqv jhKrEr"
+      class="sc-ikJyIC gynVxb"
       href="#testUuidV4"
     >
       Accéder au menu de navigation
     </a>
     <main
-      class="sc-bYoBSM NHlPr"
+      class="sc-kLwhqv flNEgk"
       id="testUuidV4"
       role="main"
     >
@@ -324,11 +324,11 @@ Object {
       </div>
     </main>
     <footer
-      class="sc-ezbkAF"
+      class="sc-bYoBSM"
       role="contentinfo"
     >
       <nav
-        class="sc-llYSUQ ccqIdn"
+        class="sc-iJKOTD hKtcLm"
         id="testUuidV4"
         role="navigation"
       >
@@ -345,10 +345,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-hBUSln sc-iJKOTD cjntIJ JswSF"
+              class="sc-hBUSln sc-giYglK cjntIJ hlogUx"
             >
               <li
-                class="sc-giYglK dgFuXv"
+                class="sc-ezbkAF kZHMKF"
               >
                 <a
                   aria-current="page"
@@ -400,7 +400,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-giYglK dgFuXv"
+                class="sc-ezbkAF kZHMKF"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -436,7 +436,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-giYglK dgFuXv"
+                class="sc-ezbkAF kZHMKF"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -472,7 +472,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-giYglK dgFuXv"
+                class="sc-ezbkAF kZHMKF"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -508,7 +508,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-giYglK dgFuXv"
+                class="sc-ezbkAF kZHMKF"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"

@@ -41,6 +41,7 @@ export const ButtonQuaternary = styledButton(AppButton).attrs<BaseButtonProps>(
       icon: Icon,
       loadingIndicator: LoadingIndicator,
       title: Title,
+      hoverUnderlineColor: theme.buttons.quaternary.textColor,
     }
   }
 )(({ theme }) => ({

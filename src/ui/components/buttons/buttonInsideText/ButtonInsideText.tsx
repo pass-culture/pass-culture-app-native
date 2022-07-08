@@ -14,11 +14,13 @@ export function ButtonInsideText({
   onLongPress,
   icon: Icon,
   color,
+  testID,
 }: ButtonInsideTexteProps) {
   return (
     <StyledTouchableOpacity
       onPress={onPress as AppButtonEventNative}
-      onLongPress={onLongPress as AppButtonEventNative}>
+      onLongPress={onLongPress as AppButtonEventNative}
+      testID={testID}>
       <ButtonInsideTextInner wording={wording} icon={Icon} color={color} typography={typography} />
     </StyledTouchableOpacity>
   )

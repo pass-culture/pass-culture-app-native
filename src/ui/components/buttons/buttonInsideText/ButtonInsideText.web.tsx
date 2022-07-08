@@ -1,5 +1,6 @@
 import React, { MouseEventHandler, useCallback } from 'react'
 import styled, { CSSObject } from 'styled-components'
+import { DefaultTheme } from 'styled-components/native'
 
 import {
   AppButtonEventWeb,
@@ -7,6 +8,7 @@ import {
 } from 'ui/components/buttons/AppButton/types'
 import { ButtonInsideTextInner } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextInner'
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export function ButtonInsideText({
   wording,
@@ -19,6 +21,7 @@ export function ButtonInsideText({
   href,
   target,
   type = 'button',
+  testID,
 }: ButtonInsideTexteProps) {
   const ButtonComponent = (href ? Link : Button) as React.ElementType
   const buttonLinkProps = { accessibilityRole, href, target }
@@ -55,24 +58,37 @@ export function ButtonInsideText({
       onClick={onClick}
       onDoubleClick={onDoubleClick}
       type={href ? undefined : type}
-      data-testid="button-inside-text"
+      color={color}
+      testID={testID || 'button-inside-text'}
       {...buttonLinkProps}>
       <ButtonInsideTextInner wording={wording} icon={Icon} color={color} typography={typography} />
     </ButtonComponent>
   )
 }
 
-const webStyle = {
-  border: 'none',
-  cursor: 'pointer',
-  outline: 'none',
-  textDecoration: 'none',
-  boxSizing: 'border-box',
-  backgroundColor: 'transparent',
-  width: 'fit-content',
-  margin: 0,
-  padding: 0,
-} as CSSObject
+const webStyle = ({
+  theme,
+  color,
+}: {
+  theme: DefaultTheme
+  color?: ButtonInsideTexteProps['color']
+}) =>
+  ({
+    border: 'none',
+    cursor: 'pointer',
+    outline: 'none',
+    textDecoration: 'none',
+    boxSizing: 'border-box',
+    backgroundColor: 'transparent',
+    width: 'fit-content',
+    margin: 0,
+    padding: 0,
+    ...getHoverStyle(color ?? theme.colors.primary),
+  } as CSSObject)
 
-const Button = styled.button<TouchableOpacityButtonProps>(webStyle)
-const Link = styled.a<TouchableOpacityButtonProps>(webStyle)
+const Button = styled.button.attrs<Pick<ButtonInsideTexteProps, 'testID'>>(({ testID }) => ({
+  ['data-testid']: testID,
+}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'color'>>(webStyle)
+const Link = styled.a.attrs<Pick<ButtonInsideTexteProps, 'testID'>>(({ testID }) => ({
+  ['data-testid']: testID,
+}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'color'>>(webStyle)

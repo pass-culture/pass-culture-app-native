@@ -62,7 +62,7 @@ Object {
                               style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                             >
                               <header
-                                class="sc-gWXbKe jVsLRG"
+                                class="sc-cCcXHH aZHDF"
                                 role="banner"
                               >
                                 <div
@@ -87,7 +87,7 @@ Object {
                                     >
                                       <button
                                         aria-label="Revenir en arrière"
-                                        class="sc-gKclnd KSjmK"
+                                        class="sc-gKclnd bvemhm"
                                         data-testid="Revenir en arrière"
                                         tabindex="0"
                                         title="Revenir en arrière"
@@ -299,7 +299,7 @@ Object {
                             style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <header
-                              class="sc-gWXbKe jVsLRG"
+                              class="sc-cCcXHH aZHDF"
                               role="banner"
                             >
                               <div
@@ -324,7 +324,7 @@ Object {
                                   >
                                     <button
                                       aria-label="Revenir en arrière"
-                                      class="sc-gKclnd KSjmK"
+                                      class="sc-gKclnd bvemhm"
                                       data-testid="Revenir en arrière"
                                       tabindex="0"
                                       title="Revenir en arrière"

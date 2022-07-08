@@ -20,7 +20,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="imageExclu"
-            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; user-select: none;"
+            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
             tabindex="0"
           />
         </div>
@@ -47,7 +47,7 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="imageExclu"
-          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; user-select: none;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
           tabindex="0"
         />
       </div>
