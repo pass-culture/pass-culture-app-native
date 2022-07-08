@@ -6,7 +6,7 @@ import { DomainsCredit, ExpenseDomain } from 'api/gen'
 import { CreditCeiling } from 'features/profile/components/CreditCeiling'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { AccordionItem } from 'ui/components/AccordionItem'
-import { DashedSeparator } from 'ui/components/DashedSeparator'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -77,10 +77,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
       )}
       <Spacer.Column numberOfSpaces={6} />
       {!props.isUserUnderageBeneficiary && (
-        <React.Fragment>
-          <DashedSeparator dashGap={4} dashLength={1} dashThickness={1} />
-          <CeilingsDescription title={title} description={description} />
-        </React.Fragment>
+        <CeilingsDescription title={title} description={description} />
       )}
       <Spacer.Column numberOfSpaces={2} />
     </GreyContainer>
@@ -89,13 +86,16 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
 
 const CeilingsDescription = (props: CeilingsDescriptionProps) => {
   return (
-    <AccordionItem
-      title={<Typo.ButtonText>{props.title}</Typo.ButtonText>}
-      accessibilityTitle={props.title}
-      titleStyle={accordionStyle.title}
-      bodyStyle={accordionStyle.body}>
-      <Description>{props.description}</Description>
-    </AccordionItem>
+    <React.Fragment>
+      <StyledSeparator />
+      <AccordionItem
+        title={<Typo.ButtonText>{props.title}</Typo.ButtonText>}
+        accessibilityTitle={props.title}
+        titleStyle={accordionStyle.title}
+        bodyStyle={accordionStyle.body}>
+        <Description>{props.description}</Description>
+      </AccordionItem>
+    </React.Fragment>
   )
 }
 const Title = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
@@ -107,3 +107,7 @@ const CeilingsRow = styled.View({
   flexDirection: 'row',
   alignItems: 'flex-start',
 })
+
+const StyledSeparator = styled(Separator).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))``
