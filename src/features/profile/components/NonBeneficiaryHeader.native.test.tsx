@@ -121,7 +121,7 @@ describe('<NonBeneficiaryHeader/>', () => {
           isEligibleForBeneficiaryUpgrade={true}
         />
       )
-      expect(queryByText(/Profite de 300€/)).toBeFalsy()
+      expect(queryByText(/Profite de 300€/)).toBeNull()
       expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
     })
 
@@ -137,7 +137,7 @@ describe('<NonBeneficiaryHeader/>', () => {
           isEligibleForBeneficiaryUpgrade={true}
         />
       )
-      expect(queryByTestId('eligibility-banner')).toBeFalsy()
+      expect(queryByTestId('eligibility-banner')).toBeNull()
     })
   })
 
@@ -156,7 +156,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         />
       )
       queryByTestId('identity-check-pending-badge')
-      expect(queryByTestId('eligibility-banner')).toBeFalsy()
+      expect(queryByTestId('eligibility-banner')).toBeNull()
     })
   })
 
@@ -205,10 +205,10 @@ describe('<NonBeneficiaryHeader/>', () => {
           subscriptionMessage={null}
         />
       )
-      expect(queryByTestId('subscription-message-badge')).toBeFalsy()
-      expect(queryByTestId('eligibility-banner')).toBeFalsy()
-      expect(queryByTestId('identity-check-pending-badge')).toBeFalsy()
-      expect(queryByTestId('younger-badge')).toBeFalsy()
+      expect(queryByTestId('subscription-message-badge')).toBeNull()
+      expect(queryByTestId('eligibility-banner')).toBeNull()
+      expect(queryByTestId('identity-check-pending-badge')).toBeNull()
+      expect(queryByTestId('younger-badge')).toBeNull()
     })
   })
 })

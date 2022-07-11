@@ -50,8 +50,8 @@ describe('<BookingEventChoices />', () => {
   it('should display only date step at beginning', () => {
     const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
-    expect(page.queryByTestId('HourStep')).toBeFalsy()
-    expect(page.queryByTestId('DuoStep')).toBeFalsy()
+    expect(page.queryByTestId('HourStep')).toBeNull()
+    expect(page.queryByTestId('DuoStep')).toBeNull()
   })
 
   it('should display date step and hour step', async () => {
@@ -68,7 +68,7 @@ describe('<BookingEventChoices />', () => {
     const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
-    expect(page.queryByTestId('DuoStep')).toBeFalsy()
+    expect(page.queryByTestId('DuoStep')).toBeNull()
   })
 
   it('should display date step and hour step and duo step', async () => {
@@ -137,7 +137,7 @@ describe('<BookingEventChoices />', () => {
     const hourBloc = page.getByTestId('HourChoice1')
     fireEvent.press(hourBloc)
 
-    expect(page.queryByTestId('DuoStep')).toBeFalsy()
+    expect(page.queryByTestId('DuoStep')).toBeNull()
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1 })
   })
 })

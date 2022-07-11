@@ -36,8 +36,8 @@ describe('NewOffer component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = initialSearchState
     expect(render(<NewOffer />).queryByText('Uniquement les nouveautés')).toBeTruthy()
-    expect(render(<NewOffer />).queryByText('Uniquement les nouveautés\xa0(1)')).toBeFalsy()
+    expect(render(<NewOffer />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, offerIsNew: true }
-    expect(render(<NewOffer />).queryByText('Uniquement les nouveautés\xa0(1)')).toBeTruthy()
+    expect(render(<NewOffer />).queryByTestId('titleCount')).toBeTruthy()
   })
 })

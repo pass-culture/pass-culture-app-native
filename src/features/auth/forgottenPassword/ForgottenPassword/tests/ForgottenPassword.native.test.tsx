@@ -60,7 +60,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(renderAPI.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeTruthy()
-    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
@@ -91,7 +91,7 @@ describe('<ForgottenPassword />', () => {
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 
@@ -117,7 +117,7 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordOnRecaptchaError'
       )
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 
@@ -144,7 +144,7 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordRequestResetError'
       )
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 

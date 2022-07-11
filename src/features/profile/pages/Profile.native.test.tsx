@@ -19,7 +19,7 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
-import { flushAllPromises, render, act, fireEvent, cleanup } from 'tests/utils'
+import { flushAllPromisesWithAct, render, act, fireEvent, cleanup } from 'tests/utils'
 
 import { Profile } from './Profile'
 
@@ -318,6 +318,6 @@ async function renderProfile(options: Options = defaultOptions) {
     </NavigationContainer>,
     { wrapper }
   )
-  await act(flushAllPromises)
+  await flushAllPromisesWithAct()
   return renderAPI
 }

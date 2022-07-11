@@ -14,7 +14,7 @@ import { analytics } from 'libs/firebase/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, flushAllPromises, fireEvent, render } from 'tests/utils'
+import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -116,7 +116,7 @@ describe('BookingDetails', () => {
     it('should not display offer link button if no url', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { queryByText } = renderBookingDetails(booking)
-      expect(queryByText("Accéder à l'offre")).toBeFalsy()
+      expect(queryByText("Accéder à l'offre")).toBeNull()
     })
 
     it('should display booking qr code if offer is physical', async () => {
@@ -277,7 +277,7 @@ describe('BookingDetails', () => {
       const renderAPI = renderBookingDetails(undefined, {
         dataUpdatedAt: 0,
       })
-      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeFalsy()
+      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeNull()
     })
   })
 
@@ -351,9 +351,7 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { getByTestId } = renderBookingDetails(booking)
       const scrollView = getByTestId('BookingDetailsScrollView')
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })

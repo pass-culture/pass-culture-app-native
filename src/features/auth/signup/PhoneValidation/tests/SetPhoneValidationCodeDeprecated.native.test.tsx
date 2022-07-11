@@ -20,10 +20,11 @@ import { EmptyResponse } from 'libs/fetch'
 import {
   act,
   fireEvent,
+  flushAllPromises,
+  flushAllPromisesWithAct,
   render,
   superFlushWithAct,
   useMutationFactory,
-  flushAllPromises,
 } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -117,7 +118,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
-      await act(flushAllPromises)
+      await flushAllPromisesWithAct()
       expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.primary)
     })
 
@@ -127,7 +128,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
       const continueButton = getByTestId('Continuer')
-      await act(flushAllPromises)
+      await flushAllPromisesWithAct()
       expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.greyLight)
     })
 

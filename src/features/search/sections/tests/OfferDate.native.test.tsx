@@ -62,15 +62,15 @@ describe('OfferDate component', () => {
 
     let component = toJSON()
     if (Array.isArray(component)) {
-      expect(component.includes('CalendarPicker')).toBeFalsy()
-      expect(component.includes('NoCalendar')).toBeTruthy()
+      expect(component).not.toContain('CalendarPicker')
+      expect(component).toContain('NoCalendar')
     }
 
     fireEvent.press(getByText('Date précise'))
     component = toJSON()
     if (Array.isArray(component)) {
-      expect(component.includes('CalendarPicker')).toBeTruthy()
-      expect(component.includes('NoCalendar')).toBeFalsy()
+      expect(component).toContain('CalendarPicker')
+      expect(component).not.toContain('NoCalendar')
     }
   })
 
@@ -89,16 +89,16 @@ describe('OfferDate component', () => {
 
     const withCalendar = toJSON()
     if (Array.isArray(withCalendar)) {
-      expect(withCalendar.includes('CalendarPicker')).toBeTruthy()
-      expect(withCalendar.includes('NoCalendar')).toBeFalsy()
+      expect(withCalendar).toContain('CalendarPicker')
+      expect(withCalendar).not.toContain('NoCalendar')
     }
 
     fireEvent.press(getByTestId('dateFilter'))
 
     const withoutCalendar = toJSON()
     if (Array.isArray(withoutCalendar)) {
-      expect(withoutCalendar.includes('CalendarPicker')).toBeTruthy()
-      expect(withoutCalendar.includes('NoCalendar')).toBeFalsy()
+      expect(withoutCalendar).toContain('CalendarPicker')
+      expect(withoutCalendar).not.toContain('NoCalendar')
     }
   })
 })

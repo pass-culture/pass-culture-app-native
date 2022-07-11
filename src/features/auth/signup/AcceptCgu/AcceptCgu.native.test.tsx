@@ -86,7 +86,7 @@ describe('<AcceptCgu/>', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(renderAPI.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeTruthy()
-    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on signup button", () => {
@@ -111,7 +111,7 @@ describe('<AcceptCgu/>', () => {
 
     await waitFor(() => {
       expect(props.signUp).toBeCalledWith('fakeToken')
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 
@@ -131,7 +131,7 @@ describe('<AcceptCgu/>', () => {
       expect(
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 
@@ -153,7 +153,7 @@ describe('<AcceptCgu/>', () => {
         'AcceptCguOnReCaptchaError'
       )
       expect(props.signUp).not.toBeCalled()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 
@@ -169,7 +169,7 @@ describe('<AcceptCgu/>', () => {
       expect(renderAPI.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeTruthy()
       expect(props.signUp).not.toBeCalled()
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
 })

@@ -132,7 +132,7 @@ describe('<GenericAchievementCard />', () => {
         activeIndex={1}
       />
     )
-    expect(queryByText(buttonText)).toBeFalsy()
+    expect(queryByText(buttonText)).toBeNull()
     expect(getByTestId('invisible-button-height')).toBeTruthy()
   })
 
@@ -152,7 +152,7 @@ describe('<GenericAchievementCard />', () => {
       />
     )
     expect(getByText(buttonText)).toBeTruthy()
-    expect(queryByTestId('invisible-button-height')).toBeFalsy()
+    expect(queryByTestId('invisible-button-height')).toBeNull()
   })
 
   it('should pause animation when not on active index', async () => {

@@ -8,7 +8,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises, superFlushWithAct, render, act, fireEvent } from 'tests/utils'
+import { flushAllPromisesWithAct, superFlushWithAct, render, fireEvent } from 'tests/utils'
 import { theme } from 'theme'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -24,9 +24,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 async function renderChangePassword() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const wrapper = render(reactQueryProviderHOC(<ChangePassword />))
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await flushAllPromisesWithAct()
   return wrapper
 }
 
@@ -139,7 +137,7 @@ describe('ChangePassword', () => {
 
     await fireEvent.changeText(currentPasswordInput, 'user')
     await waitForExpect(() => {
-      expect(queryByText('Mot de passe incorrect')).toBeFalsy()
+      expect(queryByText('Mot de passe incorrect')).toBeNull()
     })
   })
 })

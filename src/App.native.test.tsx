@@ -1,8 +1,7 @@
 import React from 'react'
-import { act } from 'react-test-renderer'
 
 import * as BatchLocalLib from 'libs/notifications'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 import { App } from './App'
 
@@ -25,8 +24,6 @@ describe('<App /> with mocked RootNavigator', () => {
 
 const renderApp = async () => {
   const wrapper = render(<App />)
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await flushAllPromisesWithAct()
   return wrapper
 }

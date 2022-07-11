@@ -16,7 +16,7 @@ describe('<TicketWithdrawal/>', () => {
     const { queryByTestId } = render(
       <TicketWithdrawal withdrawalType={WithdrawalTypeEnum.on_site} withdrawalDelay={0} />
     )
-    expect(queryByTestId('bicolor-email-sent')).toBeFalsy()
+    expect(queryByTestId('bicolor-email-sent')).toBeNull()
   })
 
   it('should display on site withdrawal delay when delay is specified', () => {
@@ -31,6 +31,6 @@ describe('<TicketWithdrawal/>', () => {
     const { queryByTestId } = render(
       <TicketWithdrawal withdrawalType={WithdrawalTypeEnum.on_site} withdrawalDelay={0} />
     )
-    expect(queryByTestId('withdrawal-info-delay')).toBeFalsy()
+    expect(queryByTestId('withdrawal-info-delay')).toBeNull()
   })
 })

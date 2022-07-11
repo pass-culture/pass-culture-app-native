@@ -35,8 +35,8 @@ describe('Date component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = { ...initialSearchState, date: null }
     expect(render(<DateSection />).queryByText('Date')).toBeTruthy()
-    expect(render(<DateSection />).queryByText('Date\xa0(1)')).toBeFalsy()
+    expect(render(<DateSection />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, date }
-    expect(render(<DateSection />).queryByText('Date\xa0(1)')).toBeTruthy()
+    expect(render(<DateSection />).queryByTestId('titleCount')).toBeTruthy()
   })
 })

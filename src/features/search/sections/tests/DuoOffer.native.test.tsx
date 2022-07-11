@@ -36,8 +36,8 @@ describe('DuoOffer component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = initialSearchState
     expect(render(<DuoOffer />).queryByText('Uniquement les offres duo')).toBeTruthy()
-    expect(render(<DuoOffer />).queryByText('Uniquement les offres duo\xa0(1)')).toBeFalsy()
+    expect(render(<DuoOffer />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, offerIsDuo: true }
-    expect(render(<DuoOffer />).queryByText('Uniquement les offres duo\xa0(1)')).toBeTruthy()
+    expect(render(<DuoOffer />).queryByTestId('titleCount')).toBeTruthy()
   })
 })

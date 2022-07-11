@@ -39,11 +39,11 @@ describe('Price component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = initialSearchState
     expect(render(<Price />).queryByText('Prix')).toBeTruthy()
-    expect(render(<Price />).queryByText('Prix\xa0(1)')).toBeFalsy()
+    expect(render(<Price />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, priceRange: [0, 200] }
-    expect(render(<Price />).queryByText('Prix\xa0(1)')).toBeTruthy()
+    expect(render(<Price />).queryByTestId('titleCount')).toBeTruthy()
     mockSearchState = { ...initialSearchState, priceRange: [20, 200] }
-    expect(render(<Price />).queryByText('Prix\xa0(1)')).toBeTruthy()
+    expect(render(<Price />).queryByTestId('titleCount')).toBeTruthy()
   })
 
   it('should be connected to section FreeOffer - FreeOffer is activated when priceRange is [Ø, 0]', () => {
@@ -109,7 +109,8 @@ describe('Price component for underage', () => {
 
   it('should have the indicator when the price range is changed', () => {
     mockSearchState = { ...initialSearchState, priceRange: [0, 20] }
-    expect(render(<Price />).queryByText('Prix\xa0(1)')).toBeTruthy()
+    expect(render(<Price />).queryByText('Prix')).toBeTruthy()
+    expect(render(<Price />).queryByTestId('titleCount')).toBeTruthy()
   })
 
   it('should be connected to section FreeOffer - FreeOffer is deactivated when priceRange is not [Ø, 0]', () => {

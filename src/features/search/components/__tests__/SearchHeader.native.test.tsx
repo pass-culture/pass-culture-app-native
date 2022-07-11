@@ -61,7 +61,7 @@ describe('SearchHeader component', () => {
   it('should not show search box without label if no search execution and focus is not on input', () => {
     const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={false} />)
 
-    expect(queryByTestId('searchBoxWithoutLabel')).toBeFalsy()
+    expect(queryByTestId('searchBoxWithoutLabel')).toBeNull()
   })
 
   it('should show search box without label if focus is on input', () => {
@@ -73,7 +73,7 @@ describe('SearchHeader component', () => {
   it('should not show search box with label if focus is on input', () => {
     const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={true} />)
 
-    expect(queryByTestId('searchBoxWithLabel')).toBeFalsy()
+    expect(queryByTestId('searchBoxWithLabel')).toBeNull()
   })
 
   it('should show search box without label if search execution', () => {
@@ -87,6 +87,6 @@ describe('SearchHeader component', () => {
     mockSearchState.showResults = true
     const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={true} />)
 
-    expect(queryByTestId('searchBoxWithLabel')).toBeFalsy()
+    expect(queryByTestId('searchBoxWithLabel')).toBeNull()
   })
 })

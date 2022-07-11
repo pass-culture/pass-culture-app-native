@@ -25,14 +25,14 @@ describe('TicketBody', () => {
         <TicketBody {...initialProps} subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE} />
       )
 
-      expect(queryByTestId('qr-code')).toBeFalsy()
+      expect(queryByTestId('qr-code')).toBeNull()
     })
   })
 
   describe('Withdrawal', () => {
     it("should not display withdrawal informations for legacy offer that doesn't withdrawal informations", () => {
       const { queryByTestId } = render(<TicketBody {...initialProps} withdrawalType={undefined} />)
-      expect(queryByTestId('withdrawal-info')).toBeFalsy()
+      expect(queryByTestId('withdrawal-info')).toBeNull()
     })
 
     describe('<NoTicket/> display', () => {

@@ -16,7 +16,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises, flushAllPromisesTimes, act, fireEvent, render } from 'tests/utils'
+import { flushAllPromisesWithAct, flushAllPromisesTimes, act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
@@ -273,7 +273,7 @@ describe('<BookingDetails />', () => {
 
       const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
 
-      expect(queryByTestId('DuoChoiceSelector')).toBeFalsy()
+      expect(queryByTestId('DuoChoiceSelector')).toBeNull()
     })
 
     it('should not display the Duo selector when the offer is duo but is an event', async () => {
@@ -292,7 +292,7 @@ describe('<BookingDetails />', () => {
 
       const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
 
-      expect(queryByTestId('DuoChoiceSelector')).toBeFalsy()
+      expect(queryByTestId('DuoChoiceSelector')).toBeNull()
     })
 
     it('should display the Duo selector when the offer is duo and not an event', async () => {
@@ -320,7 +320,7 @@ const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={stocks} />))
 
-  await act(flushAllPromises)
+  await flushAllPromisesWithAct()
 
   return renderAPI
 }

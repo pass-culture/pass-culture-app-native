@@ -23,7 +23,7 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should render non connected icon', async () => {
     const { queryByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: false })
-    expect(queryByTestId('bicolor-favorite-count')).toBeFalsy()
+    expect(queryByTestId('bicolor-favorite-count')).toBeNull()
   })
 
   it('should render connected icon', async () => {

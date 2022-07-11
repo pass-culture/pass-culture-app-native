@@ -38,8 +38,8 @@ describe('Hour component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = { ...initialSearchState, timeRange: null }
     expect(render(<HourSection />).queryByText('Heure')).toBeTruthy()
-    expect(render(<HourSection />).queryByText('Heure\xa0(1)')).toBeFalsy()
+    expect(render(<HourSection />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, timeRange }
-    expect(render(<HourSection />).queryByText('Heure\xa0(1)')).toBeTruthy()
+    expect(render(<HourSection />).queryByTestId('titleCount')).toBeTruthy()
   })
 })

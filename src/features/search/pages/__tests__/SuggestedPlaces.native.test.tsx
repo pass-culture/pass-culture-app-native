@@ -57,14 +57,14 @@ describe('SuggestedPlaces component', () => {
     mockPlaces = []
     mockIsLoading = false
     const { queryByText } = render(<SuggestedPlaces query="" />)
-    expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeFalsy()
+    expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeNull()
   })
 
   it('should not show empty component if the results are still loading', () => {
     mockPlaces = []
     mockIsLoading = true
     const { queryByText } = render(<SuggestedPlaces query="paris" />)
-    expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeFalsy()
+    expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeNull()
   })
 
   it(`should log analytics event ChooseLocation when clicking on pick place`, () => {

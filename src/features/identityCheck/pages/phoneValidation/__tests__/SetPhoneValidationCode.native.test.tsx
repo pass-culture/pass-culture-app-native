@@ -42,7 +42,7 @@ describe('SetPhoneValidationCode', () => {
   it("should have modal closed on render, and open modal when clicking on 'code non reçu'", async () => {
     const CodePage = renderSetPhoneValidationCode()
 
-    expect(CodePage.queryByText('Demander un autre code')).toBeFalsy()
+    expect(CodePage.queryByText('Demander un autre code')).toBeNull()
 
     fireEvent.press(CodePage.getByText('Code non reçu\u00a0?'))
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { METROPOLITAN_FRANCE } from 'features/auth/signup/PhoneValidation/components/constants'
 import { CountryPicker } from 'features/auth/signup/PhoneValidation/components/CountryPicker'
-import { act, flushAllPromises, render, fireEvent } from 'tests/utils'
+import { act, flushAllPromisesWithAct, render, fireEvent } from 'tests/utils'
 
 const onSelectCountry = jest.fn()
 
@@ -11,7 +11,7 @@ describe('<CountryPicker />', () => {
     const renderAPI = render(
       <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
     )
-    await act(flushAllPromises)
+    await flushAllPromisesWithAct()
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -19,7 +19,7 @@ describe('<CountryPicker />', () => {
     const { getByText, getByTestId } = render(
       <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
     )
-    await act(flushAllPromises)
+    await flushAllPromisesWithAct()
     fireEvent.press(getByTestId("Ouvrir la modale de choix de l'indicatif téléphonique"))
     fireEvent.press(getByText('Guadeloupe (+590)'))
 

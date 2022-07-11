@@ -106,7 +106,7 @@ describe('LocationFilter component', () => {
     const { queryByTestId } = renderLocationFilter()
 
     expect(queryByTestId('BicolorLocationBuilding')).toBeTruthy()
-    expect(queryByTestId('BicolorLocationPointer')).toBeFalsy()
+    expect(queryByTestId('BicolorLocationPointer')).toBeNull()
   })
 
   it('should show the pointer icon if a location is chosen', () => {
@@ -116,7 +116,7 @@ describe('LocationFilter component', () => {
       place: Kourou,
     }
     const { queryByTestId } = renderLocationFilter()
-    expect(queryByTestId('BicolorLocationBuilding')).toBeFalsy()
+    expect(queryByTestId('BicolorLocationBuilding')).toBeNull()
     expect(queryByTestId('BicolorLocationPointer')).toBeTruthy()
   })
 })

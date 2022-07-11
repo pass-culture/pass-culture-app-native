@@ -29,7 +29,7 @@ describe('<OfferDescription />', () => {
 
     await waitForExpect(() => {
       expect(getByText('En détails')).toBeTruthy()
-      expect(queryByText('Durée')).toBeFalsy()
+      expect(queryByText('Durée')).toBeNull()
     })
   })
 
@@ -42,7 +42,7 @@ describe('<OfferDescription />', () => {
     await waitForExpect(() => {
       expect(getByText('Durée')).toBeTruthy()
       expect(getByText('Author: photo credit author')).toBeTruthy()
-      expect(queryByText('En détails')).toBeFalsy()
+      expect(queryByText('En détails')).toBeNull()
     })
   })
 })

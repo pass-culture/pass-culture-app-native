@@ -41,7 +41,7 @@ describe('DeleteProfileSuccess component', () => {
 
   it('should not display reactivation button if account reactivation feature flag is deactivated', () => {
     const renderAPI = render(<DeleteProfileSuccess />)
-    expect(renderAPI.queryByText('Réactiver mon compte')).toBeFalsy()
+    expect(renderAPI.queryByText('Réactiver mon compte')).toBeNull()
   })
 
   it('should display reactivation button if account reactivation feature flag is activated', () => {

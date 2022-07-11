@@ -30,7 +30,7 @@ describe('Category component', () => {
       const searchGroup = key as SearchGroupNameEnum
       const label = result.current[searchGroup]
       if (searchGroup === SearchGroupNameEnum.NONE) {
-        expect(queryByText(label)).toBeFalsy()
+        expect(queryByText(label)).toBeNull()
       } else {
         expect(queryByText(label)).toBeTruthy()
       }
@@ -49,13 +49,13 @@ describe('Category component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = { ...initialSearchState, offerCategories: [] }
     expect(render(<Category />).queryByText('Catégories')).toBeTruthy()
-    expect(render(<Category />).queryByText('Catégories\xa0(')).toBeFalsy()
+    expect(render(<Category />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, offerCategories: [SearchGroupNameEnum.CINEMA] }
-    expect(render(<Category />).queryByText('Catégories\xa0(1)')).toBeTruthy()
+    expect(render(<Category />).queryByTestId('titleCount')?.children[0]).toContain('(1)')
     mockSearchState = {
       ...initialSearchState,
       offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.PRESSE],
     }
-    expect(render(<Category />).queryByText('Catégories\xa0(2)')).toBeTruthy()
+    expect(render(<Category />).queryByTestId('titleCount')?.children[0]).toContain('(2)')
   })
 })

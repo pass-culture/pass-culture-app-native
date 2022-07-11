@@ -6,8 +6,8 @@ import { activate } from './i18n'
 describe('i18n', () => {
   describe('t', () => {
     it('translates to french by default', () => {
-      act(async () => {
-        await activate('fr')
+      act(() => {
+        activate('fr')
       })
       expect(t`Welcome to pass Culture`).toEqual('Bienvenue à pass Culture')
     })

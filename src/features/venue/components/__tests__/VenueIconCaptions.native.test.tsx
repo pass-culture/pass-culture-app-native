@@ -39,7 +39,7 @@ describe('<VenueIconCaptions />', () => {
       />
     )
     expect(queryByLabelText('Distance depuis la localisation')).toBeTruthy()
-    expect(queryByLabelText('Activer la localisation')).toBeFalsy()
+    expect(queryByLabelText('Activer la localisation')).toBeNull()
 
     mockDistance = null
     rerender(
@@ -50,7 +50,7 @@ describe('<VenueIconCaptions />', () => {
       />
     )
     expect(queryByLabelText('Géolocalisation désactivée')).toBeTruthy()
-    expect(queryByLabelText('Distance depuis la localisation')).toBeFalsy()
+    expect(queryByLabelText('Distance depuis la localisation')).toBeNull()
   })
 
   it('should display a default label "Autre type de lieu" for venue type if type is null', async () => {
@@ -96,7 +96,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByText('10 km')).toBeFalsy()
+    expect(queryByText('10 km')).toBeNull()
     expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
   })
 
