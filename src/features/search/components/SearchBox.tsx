@@ -60,12 +60,21 @@ export const SearchBox: React.FC<Props> = ({
 
   const onPressArrowBack = useCallback(() => {
     if (onFocusState) onFocusState(false)
-    stagedDispatch({ type: 'SET_QUERY', payload: '' })
-    showResultsWithStagedSearch({
-      query: '',
-      showResults: false,
+    stagedDispatch({
+      type: 'SET_STATE',
+      payload: { locationFilter },
     })
-  }, [onFocusState, showResultsWithStagedSearch, stagedDispatch])
+    showResultsWithStagedSearch(
+      {
+        query: '',
+        showResults: false,
+        locationFilter,
+      },
+      {
+        reset: true,
+      }
+    )
+  }, [locationFilter, onFocusState, showResultsWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
