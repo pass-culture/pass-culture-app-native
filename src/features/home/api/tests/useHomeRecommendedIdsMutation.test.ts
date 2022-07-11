@@ -1,8 +1,9 @@
-import { renderHook } from '@testing-library/react-hooks'
+/* eslint-disable local-rules/no-react-query-provider-hoc */
 import * as reactQueryAPI from 'react-query'
 
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsMutation } from '../useHomeRecommendedIdsMutation'
 
@@ -12,7 +13,6 @@ describe('useHomeRecommendedIdsMutation', () => {
 
   it('should call useMutation', () => {
     renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -20,37 +20,33 @@ describe('useHomeRecommendedIdsMutation', () => {
   })
 
   it('should call fetch when mutate', async () => {
-    const { result, waitForNextUpdate } = renderHook(
-      () => useHomeRecommendedIdsMutation('http://passculture.reco'),
-      {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
     result.current.mutate({})
-    await waitForNextUpdate()
-    expect(mockFetch).toHaveBeenCalledWith('http://passculture.reco', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({}),
+
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith('http://passculture.reco', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
     })
   })
 
   it('should capture an exception when fetch call fails', async () => {
     mockFetch.mockRejectedValueOnce('some error')
-    const { result, waitForNextUpdate } = renderHook(
-      () => useHomeRecommendedIdsMutation('http://passculture.reco'),
-      {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
     result.current.mutate({})
-    await waitForNextUpdate()
-    expect(eventMonitoring.captureException).toHaveBeenCalled()
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureException).toHaveBeenCalled()
+    })
   })
 
   it('should return response body if fetch call succeeds', async () => {
@@ -63,15 +59,12 @@ describe('useHomeRecommendedIdsMutation', () => {
         status: 200,
       })
     )
-    const { result, waitForNextUpdate } = renderHook(
-      () => useHomeRecommendedIdsMutation('http://passculture.reco'),
-      {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
     result.current.mutate({})
-    await waitForNextUpdate()
-    expect(result.current.data).toEqual(body)
+    await waitFor(() => {
+      expect(result.current.data).toEqual(body)
+    })
   })
 })

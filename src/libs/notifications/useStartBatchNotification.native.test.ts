@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { BatchPush } from 'libs/react-native-batch'
+import { renderHook } from 'tests/utils'
 
 import { useStartBatchNotification } from './useStartBatchNotification'
 

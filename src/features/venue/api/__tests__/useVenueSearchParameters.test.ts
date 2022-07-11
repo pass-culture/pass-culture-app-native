@@ -1,10 +1,9 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { VenueResponse } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
 import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
 import { GeoCoordinates } from 'libs/geolocation'
+import { renderHook } from 'tests/utils'
 
 let mockPosition: GeoCoordinates | null = null
 jest.mock('libs/geolocation', () => ({

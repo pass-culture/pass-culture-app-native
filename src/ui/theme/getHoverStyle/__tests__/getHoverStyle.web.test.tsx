@@ -1,5 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
-
+import { renderHook } from 'tests/utils'
 import { theme } from 'theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 

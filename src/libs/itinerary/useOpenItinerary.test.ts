@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import * as Itinerary from 'libs/itinerary/useItinerary'
+import { renderHook } from 'tests/utils'
 
 import useOpenItinerary from './useOpenItinerary'
 

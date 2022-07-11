@@ -1,6 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
-
-import { act } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { ANIMATION_DELAY, useShowSkeleton } from '../useShowSkeleton'
 
@@ -25,7 +23,7 @@ describe('useShowSkeleton', () => {
     const { result, rerender } = renderHook(useShowSkeleton)
 
     expect(result.current).toBeTruthy()
-    await act(async () => await rerender())
+    await act(async () => await rerender(1))
 
     expect(result.current).toBeTruthy()
     await act(async () => {

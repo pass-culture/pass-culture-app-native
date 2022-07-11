@@ -1,9 +1,9 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
 import { useMarkedDates } from 'features/bookOffer/components/Calendar/useMarkedDates'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { renderHook } from 'tests/utils'
 
 const mockBookingState: BookingState = {
   offerId: undefined,

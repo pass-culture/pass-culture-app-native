@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 import * as styledComponentsNative from 'styled-components/native'
 
@@ -12,6 +11,7 @@ import {
   NOT_ELIGIBLE_YOUNGEST_AGE_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { analytics } from 'libs/firebase/analytics'
+import { renderHook } from 'tests/utils'
 
 import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'
 

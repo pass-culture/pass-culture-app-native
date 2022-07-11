@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { PhoneValidationRemainingAttemptsRequest } from 'api/gen'
@@ -6,6 +5,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { renderHook, waitFor } from 'tests/utils'
 
 const phoneValidationApiMock = jest.fn()
 const phoneValidationRemainingAttemptsAPIResponse: PhoneValidationRemainingAttemptsRequest = {
@@ -22,19 +22,20 @@ server.use(
 
 describe('usePhoneValidationRemainingAttempts', () => {
   it('calls the API and returns the data and isLastAttempt', async () => {
-    const { result, waitFor } = renderHook(usePhoneValidationRemainingAttempts, {
+    const { result } = renderHook(usePhoneValidationRemainingAttempts, {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await waitFor(() => !!result.current.remainingAttempts)
 
-    expect(result.current.remainingAttempts).toEqual(
-      phoneValidationRemainingAttemptsAPIResponse.remainingAttempts
-    )
-    expect(result.current.counterResetDatetime).toEqual(
-      phoneValidationRemainingAttemptsAPIResponse.counterResetDatetime
-    )
-    expect(result.current.isLastAttempt).toEqual(false)
-    expect(phoneValidationApiMock).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(result.current.remainingAttempts).toEqual(
+        phoneValidationRemainingAttemptsAPIResponse.remainingAttempts
+      )
+      expect(result.current.counterResetDatetime).toEqual(
+        phoneValidationRemainingAttemptsAPIResponse.counterResetDatetime
+      )
+      expect(result.current.isLastAttempt).toEqual(false)
+      expect(phoneValidationApiMock).toHaveBeenCalledTimes(1)
+    })
   })
 })

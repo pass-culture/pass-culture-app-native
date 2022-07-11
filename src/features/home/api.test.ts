@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+/* eslint-disable local-rules/no-react-query-provider-hoc */
 import { rest } from 'msw'
 
 import { processHomepageEntry } from 'features/home/contentful'
@@ -10,6 +10,7 @@ import {
 } from 'tests/fixtures/homepageEntries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { getEntries, BASE_URL, PARAMS, useHomepageModules } from './api'
 
@@ -33,8 +34,7 @@ describe('Home api calls', () => {
 
   describe('useHomepageModules', () => {
     it('calls the API and returns the data', async () => {
-      const { result, waitFor } = renderHook(useHomepageModules, {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      const { result } = renderHook(useHomepageModules, {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -46,8 +46,7 @@ describe('Home api calls', () => {
     })
 
     it('calls the API and returns the data with specified entryId', async () => {
-      const { result, waitFor } = renderHook(() => useHomepageModules(entryId), {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      const { result } = renderHook(() => useHomepageModules(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -59,8 +58,7 @@ describe('Home api calls', () => {
     })
 
     it('should log ConsultHome with specified entryId', async () => {
-      const { result, waitFor } = renderHook(() => useHomepageModules(entryId), {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      const { result } = renderHook(() => useHomepageModules(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 

@@ -1,9 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
 import waitForExpect from 'wait-for-expect'
 
 import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useItinerary } from 'libs/itinerary/useItinerary'
-import { superFlushWithAct } from 'tests/utils'
+import { renderHook, superFlushWithAct } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/itinerary/openGoogleMapsItinerary')

@@ -1,8 +1,7 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { analytics } from 'libs/firebase/analytics'
+import { renderHook } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
