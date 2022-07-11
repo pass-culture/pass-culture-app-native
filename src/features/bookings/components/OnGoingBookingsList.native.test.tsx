@@ -5,6 +5,7 @@ import { mocked } from 'ts-jest/utils'
 import { BookingsResponse, SubcategoriesResponseModel } from 'api/gen'
 import { useBookings } from 'features/bookings/api/queries'
 import { analytics } from 'libs/firebase/analytics'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { flushAllPromises, render } from 'tests/utils'
 
@@ -28,7 +29,12 @@ mockUseSubcategories.mockReturnValue({
   isLoading: false,
 } as UseQueryResult<SubcategoriesResponseModel, unknown>)
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
 describe('<OnGoingBookingsList /> - Analytics', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+
   const nativeEventMiddle = {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 400 }, // how far did we scroll
@@ -39,6 +45,46 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     contentOffset: { y: 900 },
     contentSize: { height: 1600 },
   }
+
+  describe('offline', () => {
+    it('should allow pull to refetch when netInfo.isConnected && netInfo.isInternetReachable', () => {
+      const refetch = jest.fn()
+      const loadingBookings = {
+        data: {
+          ended_bookings: [],
+          ongoing_bookings: [],
+        } as BookingsResponse,
+        isLoading: false,
+        isFetching: false,
+        refetch: refetch as unknown,
+      } as UseQueryResult<BookingsResponse, unknown>
+      mockUseBookings.mockReturnValueOnce(loadingBookings)
+      const { getByTestId } = render(<OnGoingBookingsList />)
+
+      const flatList = getByTestId('OnGoingBookingsList')
+      expect(flatList).toBeDefined()
+      expect(flatList.props.onRefresh).toBeDefined()
+    })
+    it('should not allow pull to refetch when !netInfo.isConnected or !netInfo.isInternetReachable', () => {
+      mockUseNetInfo.mockReturnValueOnce({ isConnected: true, isInternetReachable: false })
+      const refetch = jest.fn()
+      const loadingBookings = {
+        data: {
+          ended_bookings: [],
+          ongoing_bookings: [],
+        } as BookingsResponse,
+        isLoading: false,
+        isFetching: false,
+        refetch: refetch as unknown,
+      } as UseQueryResult<BookingsResponse, unknown>
+      mockUseBookings.mockReturnValueOnce(loadingBookings)
+      const { getByTestId } = render(<OnGoingBookingsList />)
+
+      const flatList = getByTestId('OnGoingBookingsList')
+      expect(flatList).toBeDefined()
+      expect(flatList.props.onRefresh).not.toBeDefined()
+    })
+  })
 
   describe('displays the placeholder', () => {
     it('when bookings are loading', () => {
