@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -11,7 +11,17 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
 
+
 export function PhoneValidationTooManySMSSent() {
+  const { counterResetDatetime } = usePhoneValidationRemainingAttempts()
+
+  const hoursUntilAllowedRetry = Math.max(0, timeDiffInHours(counterResetDatetime ?? new Date()))
+
+  const hoursLeftWording = plural(hoursUntilAllowedRetry, {
+    one: 'Tu pourras réessayer dans # heure.',
+    other: 'Tu pourras réessayer dans # heures.',
+  })
+
   return (
     <GenericInfoPage
       title={t`Réessaie plus tard`}
@@ -33,7 +43,7 @@ export function PhoneValidationTooManySMSSent() {
       ]}>
       <StyledBody>{t`Tu as dépassé le nombre de 5 demandes de code autorisées.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>{t`Tu pourras réessayer dans 12 heures.`}</StyledBody>
+      <StyledBody>{hoursLeftWording}</StyledBody>
     </GenericInfoPage>
   )
 }
