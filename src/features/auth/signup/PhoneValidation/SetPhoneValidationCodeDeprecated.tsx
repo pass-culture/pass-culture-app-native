@@ -119,7 +119,10 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
     if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
       navigate('PhoneValidationTooManyAttempts')
     } else if (content.code === 'TOO_MANY_SMS_SENT') {
-      navigate('PhoneValidationTooManySMSSent')
+      navigate('PhoneValidationTooManySMSSent', {
+        phoneNumber: route.params.phoneNumber,
+        countryCode: route.params.countryCode,
+      })
     } else {
       setErrorMessage(extractApiErrorMessage(err))
     }

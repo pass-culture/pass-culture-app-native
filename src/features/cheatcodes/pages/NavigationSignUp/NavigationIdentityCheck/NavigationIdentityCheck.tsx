@@ -65,7 +65,12 @@ export function NavigationIdentityCheck(): JSX.Element {
         />
         <LinkToComponent
           title={`Too many SMS sent`}
-          onPress={() => navigate('PhoneValidationTooManySMSSent')}
+          onPress={() =>
+            navigate('PhoneValidationTooManySMSSent', {
+              phoneNumber: '+33612345678',
+              countryCode: 'FR',
+            })
+          }
         />
 
         <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />

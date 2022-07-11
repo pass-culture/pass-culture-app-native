@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
@@ -7,6 +8,7 @@ import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidat
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
@@ -21,6 +23,16 @@ jest.mock('features/identityCheck/api/api', () => {
     }),
   }
 })
+
+const navigationProps = {
+  route: {
+    params: {
+      phoneNumber: '0612345678',
+      countryCode: 'FR',
+    },
+  },
+} as StackScreenProps<RootStackParamList, 'PhoneValidationTooManySMSSent'>
+
 const mockedPhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
 
 describe('PhoneValidationTooManySMSSent', () => {
@@ -41,21 +53,24 @@ describe('PhoneValidationTooManySMSSent', () => {
     expect(getByText('Tu pourras réessayer dans 7 heures.')).toBeTruthy()
   })
   it('should redirect to Home when clicking on homepage button', async () => {
-    const { getByText } = render(<PhoneValidationTooManySMSSent />)
+    const { getByText } = renderPhoneValidationTooManySMSSent()
 
     fireEvent.press(getByText("Retourner à l'accueil"))
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
   it('should redirect to SetPhoneValidationCode when clicking on second button', async () => {
-    const { getByText } = render(<PhoneValidationTooManySMSSent />)
+    const { getByText } = renderPhoneValidationTooManySMSSent()
 
     fireEvent.press(getByText("J'ai reçu mon code"))
 
-    expect(navigate).toBeCalledWith('SetPhoneValidationCode', undefined)
+    expect(navigate).toBeCalledWith('SetPhoneValidationCode', {
+      countryCode: 'FR',
+      phoneNumber: '0612345678',
+    })
   })
 })
 
 function renderPhoneValidationTooManySMSSent() {
-  return render(<PhoneValidationTooManySMSSent />)
+  return render(<PhoneValidationTooManySMSSent {...navigationProps} />)
 }
