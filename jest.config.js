@@ -38,7 +38,8 @@ module.exports = {
     '\\.native-snap$',
     '\\.web-snap$',
     '<rootDir>/node_modules/',
-    '<rootDir>/server/'
+    '<rootDir>/server/',
+    '.(?<!web|native|ios|android).(?:test|spec).tsx',
   ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,
