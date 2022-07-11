@@ -7,9 +7,11 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'
 
-const getIdentityCheckStep = (
+export const getIdentityCheckStep = (
   subscriptionStep: SubscriptionStep | null
 ): IdentityCheckStep | null => {
+  if (subscriptionStep === SubscriptionStep['phone-validation'])
+    return IdentityCheckStep.PHONE_VALIDATION
   if (subscriptionStep === SubscriptionStep['profile-completion']) return IdentityCheckStep.PROFILE
   if (subscriptionStep === SubscriptionStep['identity-check'])
     return IdentityCheckStep.IDENTIFICATION
