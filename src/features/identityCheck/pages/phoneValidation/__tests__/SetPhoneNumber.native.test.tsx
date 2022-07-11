@@ -6,7 +6,7 @@ import { ApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, flushAllPromises, render, waitFor } from 'tests/utils'
+import { fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -42,9 +42,7 @@ describe('SetPhoneNumber', () => {
     })
     const SetPhoneNumberPage = renderSetPhoneNumber()
 
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
     expect(SetPhoneNumberPage).toMatchSnapshot()
   })
 
@@ -66,9 +64,7 @@ describe('SetPhoneNumber', () => {
     })
     const SetPhoneNumberPage = renderSetPhoneNumber()
 
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
     expect(SetPhoneNumberPage).toMatchSnapshot()
   })
 

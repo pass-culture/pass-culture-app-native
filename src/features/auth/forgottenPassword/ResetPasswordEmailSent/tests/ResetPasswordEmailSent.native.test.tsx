@@ -7,7 +7,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { flushAllPromises, act, fireEvent, render, cleanup } from 'tests/utils'
+import { flushAllPromisesWithAct, act, fireEvent, render, cleanup } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'
 
@@ -102,8 +102,6 @@ async function renderInitialPage(initialScreenName: keyof StackParams) {
       </TestStack.Navigator>
     </NavigationContainer>
   )
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await flushAllPromisesWithAct()
   return renderAPI
 }

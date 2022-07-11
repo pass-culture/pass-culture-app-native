@@ -16,7 +16,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises, flushAllPromisesTimes, act, fireEvent, render } from 'tests/utils'
+import { flushAllPromisesWithAct, flushAllPromisesTimes, act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
@@ -320,9 +320,7 @@ const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={stocks} />))
 
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await flushAllPromisesWithAct()
 
   return renderAPI
 }

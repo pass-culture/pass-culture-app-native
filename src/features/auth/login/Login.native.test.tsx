@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { flushAllPromises, superFlushWithAct, act, fireEvent, render } from 'tests/utils'
+import { flushAllPromisesWithAct, superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { AuthContext } from '../AuthContext'
 
@@ -64,9 +64,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
@@ -90,9 +88,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
@@ -113,9 +109,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
@@ -136,9 +130,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalledTimes(1)
@@ -157,9 +149,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
@@ -179,9 +169,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
@@ -201,9 +189,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
@@ -219,9 +205,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
@@ -301,9 +285,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
       expect(
@@ -325,9 +307,7 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
     await superFlushWithAct()
 
     await waitForExpect(() => {

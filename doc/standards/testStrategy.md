@@ -24,7 +24,7 @@ If component is using timed function such as animation, snapshot will always dif
 it('should render privacy policy', async () => {
   jest.useFakeTimers()
   const renderAPI = render(<PrivacyPolicy />)
-  await act(flushAllPromises)
+  await flushAllPromisesWithAct()
 
   jest.advanceTimersByTime(1000)
 
@@ -60,7 +60,7 @@ it('should render modal correctly', async () => {
 it('should be hidden when the icon is not provided', () => {
   const { getByTestId } = render(<ModalHeader title="Testing modal header rendering" />)
   const rightIcon = queryByTestId('rightIcon')
-  expect(rightIcon).toBeFalsy()
+  expect(rightIcon).toBeNull()
 })
 ```
 
@@ -93,7 +93,7 @@ When calling `render`, you will get a `renderAPI` object
 
 These are tips to avoid `console` within your tests.
 
-- Use `queryBy` methods to test the inexistence of an element.
+- Use `queryBy` methods to test the inexistence of an element. Returns `null` if no match.
 - Use `getBy` methods when you know it's truthy
 - To avoid `act` warnings:
   - try to add `await superFlushWithAct()`, and pass a `number` greater than `10` _(default)_ to flush more promises

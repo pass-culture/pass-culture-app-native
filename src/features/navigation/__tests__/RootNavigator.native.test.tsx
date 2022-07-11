@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
-import { act, render, flushAllPromises } from 'tests/utils'
+import { render, flushAllPromisesWithAct } from 'tests/utils'
 
 import { RootNavigator } from '../RootNavigator'
 
@@ -101,8 +101,6 @@ async function renderRootNavigator() {
     </NavigationContainer>
   )
 
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await flushAllPromisesWithAct()
   return renderAPI
 }

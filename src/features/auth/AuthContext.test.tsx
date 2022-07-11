@@ -7,7 +7,7 @@ import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { LoggedInQueryKeys, useLogoutRoutine } from 'features/auth/AuthContext'
 import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
-import { act, flushAllPromises, render } from 'tests/utils'
+import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -25,9 +25,7 @@ describe('AuthContext', () => {
     it('should remove batch identifier', async () => {
       render(<TestLogoutComponent />)
 
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await waitForExpect(() => {
         expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(null)
@@ -37,9 +35,7 @@ describe('AuthContext', () => {
     it('should log analytics', async () => {
       render(<TestLogoutComponent />)
 
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await waitForExpect(() => {
         expect(analytics.logLogout).toBeCalledTimes(1)
@@ -49,9 +45,7 @@ describe('AuthContext', () => {
     it('should remove access token from async storage', async () => {
       render(<TestLogoutComponent />)
 
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await waitForExpect(() => {
         expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
@@ -61,9 +55,7 @@ describe('AuthContext', () => {
     it('should clear refresh token', async () => {
       render(<TestLogoutComponent />)
 
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await waitForExpect(() => {
         expect(mockClearRefreshToken).toHaveBeenCalled()
@@ -73,9 +65,7 @@ describe('AuthContext', () => {
     it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
       render(<TestLogoutComponent />)
 
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await waitForExpect(() => {
         expect(queryClient.removeQueries).toHaveBeenCalledWith(query)

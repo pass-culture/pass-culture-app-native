@@ -3,7 +3,7 @@ import React from 'react'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises, act, render } from 'tests/utils'
+import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 import { CheatCodes } from '../CheatCodes'
 
@@ -29,9 +29,7 @@ describe('CheatCodes component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const instance = renderCheatCodes()
 
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     expect(instance.toJSON()).toMatchSnapshot()
   })
@@ -46,9 +44,7 @@ describe('CheatCodes component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const instance = renderCheatCodes()
 
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
     buttonIsdisplayed
       ? expect(instance.queryByText('Check update')).toBeTruthy()
       : expect(instance.queryByText('Check update')).toBeNull()
@@ -59,9 +55,7 @@ describe('CheatCodes component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { queryByText } = renderCheatCodes()
 
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     expect(BatchUser.getInstallationID).toHaveBeenCalled()
     expect(queryByText(`Batch installation ID: ${installationID}`)).toBeTruthy()

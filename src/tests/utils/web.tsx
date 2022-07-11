@@ -60,6 +60,12 @@ export const useMutationFactory = (storageFunction: {
   }
 }
 
+export async function flushAllPromisesWithAct() {
+  await act(async () => {
+    await flushAllPromises()
+  })
+}
+
 export async function superFlushWithAct(times = 50) {
   await act(async () => {
     await flushAllPromisesTimes(times)

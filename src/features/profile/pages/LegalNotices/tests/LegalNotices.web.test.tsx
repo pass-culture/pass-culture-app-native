@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 import { UserProfileResponse } from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
-import { flushAllPromises, render, act, fireEvent } from 'tests/utils/web'
+import { flushAllPromisesWithAct, render, fireEvent } from 'tests/utils/web'
 
 import { LegalNotices } from '../LegalNotices'
 
@@ -20,9 +20,7 @@ jest.mock('features/profile/api', () => ({
 
 async function renderProfile() {
   const wrapper = render(<LegalNotices />)
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await flushAllPromisesWithAct()
   return wrapper
 }
 

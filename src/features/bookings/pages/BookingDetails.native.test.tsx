@@ -14,7 +14,7 @@ import { analytics } from 'libs/firebase/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, flushAllPromises, fireEvent, render } from 'tests/utils'
+import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -351,9 +351,7 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { getByTestId } = renderBookingDetails(booking)
       const scrollView = getByTestId('BookingDetailsScrollView')
-      await act(async () => {
-        await flushAllPromises()
-      })
+      await flushAllPromisesWithAct()
 
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })

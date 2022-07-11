@@ -1,9 +1,8 @@
 import React from 'react'
-import { act } from 'react-test-renderer'
 
 import { UserProfileResponse } from 'api/gen'
 import { IAuthContext, useAuthContext } from 'features/auth/AuthContext'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from '../RecreditBirthdayNotification'
 
@@ -38,9 +37,7 @@ describe('<RecreditBirthdayNotification />', () => {
   it('should have correct text', async () => {
     const { getByText } = render(<RecreditBirthdayNotification />)
 
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await flushAllPromisesWithAct()
 
     const recreditText = getByText(
       "Pour tes 15 ans, le Gouvernement vient d'ajouter 50\u00a0€ à ton crédit. Tu disposes maintenant de :"
