@@ -101,6 +101,8 @@ async function renderRootNavigator() {
     </NavigationContainer>
   )
 
-  await act(flushAllPromises)
+  await act(async () => {
+    await flushAllPromises()
+  })
   return renderAPI
 }

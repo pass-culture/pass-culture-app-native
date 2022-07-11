@@ -66,13 +66,13 @@ describe('<CulturalSurvey />', () => {
   it('should not display webview when another screen is displayed', async () => {
     mockUseCurrentRoute('Home')
     const renderAPI = await renderCulturalSurveyWithNavigation()
-    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
+    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeNull()
   })
 
   it('should display loading screen while user info is undefined and isLoading is true', async () => {
     mockUserProfileInfo({ user: undefined, isLoading: true })
     const renderAPI = await renderCulturalSurveyWithNavigation()
-    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
+    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeNull()
     expect(renderAPI.queryByTestId('Loading-Animation')).toBeTruthy()
   })
 

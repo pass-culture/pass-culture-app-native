@@ -102,6 +102,8 @@ async function renderInitialPage(initialScreenName: keyof StackParams) {
       </TestStack.Navigator>
     </NavigationContainer>
   )
-  await act(flushAllPromises)
+  await act(async () => {
+    await flushAllPromises()
+  })
   return renderAPI
 }

@@ -70,8 +70,8 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () 
     expect(
       page.queryByText('Cette réservation peut être annulée jusqu’au 6 janvier 2021, 00h00')
     ).toBeTruthy()
-    expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
-    expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeFalsy()
+    expect(page.queryByText(/Cette réservation est annulable/)).toBeNull()
+    expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeNull()
   })
 })
 
@@ -153,18 +153,18 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
 
 const expectNotCancellable = (page: RenderAPI) => {
   expect(page.queryByText('Cette réservation n’est pas annulable')).toBeTruthy()
-  expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
-  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeFalsy()
+  expect(page.queryByText(/Cette réservation est annulable/)).toBeNull()
+  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeNull()
 }
 
 const expectCancellable = (page: RenderAPI) => {
-  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeFalsy()
+  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeNull()
   expect(page.queryByText(/Cette réservation est annulable/)).toBeTruthy()
-  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeFalsy()
+  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeNull()
 }
 
 const expectCancellableBefore = (page: RenderAPI) => {
-  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeFalsy()
-  expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
+  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeNull()
+  expect(page.queryByText(/Cette réservation est annulable/)).toBeNull()
   expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeTruthy()
 }

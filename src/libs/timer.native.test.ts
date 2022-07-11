@@ -39,7 +39,9 @@ describe('Timer', () => {
       const myInspector = jest.fn((_elapstedTime: number) => false)
       renderHook(() => Timer.useTimer(1, myInspector))
 
-      act(() => jest.advanceTimersByTime(1000))
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
 
       expect(clearLocalIntervalMock).not.toBeCalled()
       // expect call with the result of currentTimestamp()-timer = 1 - 1 = 0
@@ -62,7 +64,9 @@ describe('Timer', () => {
       const {
         result: { current },
       } = renderHook(() => Timer.useTimer(Dates.currentTimestamp() - 1, () => false))
-      act(() => jest.advanceTimersByTime(1000))
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
       expect(current).toEqual(Timer.TIMER_NOT_INITIALIZED)
     })
   })

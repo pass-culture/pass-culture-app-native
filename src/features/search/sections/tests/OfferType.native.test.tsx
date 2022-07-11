@@ -50,9 +50,11 @@ describe('OfferType component', () => {
       }
       if (count === 0) {
         expect(render(<OfferType />).queryByText("Type d'offre")).toBeTruthy()
-        expect(render(<OfferType />).queryByText("Type d'offre\xa0(")).toBeFalsy()
+        expect(render(<OfferType />).queryByTestId('titleCount')).toBeNull()
       } else {
-        expect(render(<OfferType />).queryByText(`Type d'offre\xa0(${count})`)).toBeTruthy()
+        expect(render(<OfferType />).queryByTestId('titleCount')?.children[0]).toContain(
+          `(${count})`
+        )
       }
     }
   )

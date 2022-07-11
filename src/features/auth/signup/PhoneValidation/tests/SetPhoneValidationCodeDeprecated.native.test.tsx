@@ -117,7 +117,9 @@ describe('SetPhoneValidationCodeDeprecated', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
       expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.primary)
     })
 
@@ -127,7 +129,9 @@ describe('SetPhoneValidationCodeDeprecated', () => {
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
       const continueButton = getByTestId('Continuer')
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
       expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.greyLight)
     })
 

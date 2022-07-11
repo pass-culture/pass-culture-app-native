@@ -47,7 +47,7 @@ describe('OfferPartialDescription', () => {
       ...defaultParams,
       description: undefined,
     })
-    expect(queryByTestId('offerPartialDescriptionBody')).toBeFalsy()
+    expect(queryByTestId('offerPartialDescriptionBody')).toBeNull()
   })
   describe('SeeMore button', () => {
     const setupWithNoDataInDescriptionPage: Setup = (queryClient) => {
@@ -152,7 +152,7 @@ describe('OfferPartialDescription', () => {
           description: undefined,
           setup: setupWithNoDataInDescriptionPage,
         })
-        expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
+        expect(queryByTestId('offerSeeMoreContainer')).toBeNull()
       })
       it('when the description is small enough to be fully readable', () => {
         const lines = [
@@ -175,7 +175,7 @@ describe('OfferPartialDescription', () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
-        expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
+        expect(queryByTestId('offerSeeMoreContainer')).toBeNull()
       })
     })
   })

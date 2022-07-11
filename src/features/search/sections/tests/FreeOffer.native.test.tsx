@@ -36,8 +36,8 @@ describe('FreeOffer component', () => {
   it('should have the indicator of the filters in the title', () => {
     mockSearchState = initialSearchState
     expect(render(<FreeOffer />).queryByText('Uniquement les offres gratuites')).toBeTruthy()
-    expect(render(<FreeOffer />).queryByText('Uniquement les offres gratuites\xa0(1)')).toBeFalsy()
+    expect(render(<FreeOffer />).queryByTestId('titleCount')).toBeNull()
     mockSearchState = { ...initialSearchState, offerIsFree: true }
-    expect(render(<FreeOffer />).queryByText('Uniquement les offres gratuites\xa0(1)')).toBeTruthy()
+    expect(render(<FreeOffer />).queryByTestId('titleCount')).toBeTruthy()
   })
 })

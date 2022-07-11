@@ -11,7 +11,9 @@ describe('<CountryPicker />', () => {
     const renderAPI = render(
       <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
     )
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -19,7 +21,9 @@ describe('<CountryPicker />', () => {
     const { getByText, getByTestId } = render(
       <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
     )
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
     fireEvent.press(getByTestId("Ouvrir la modale de choix de l'indicatif téléphonique"))
     fireEvent.press(getByText('Guadeloupe (+590)'))
 

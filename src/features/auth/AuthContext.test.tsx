@@ -25,7 +25,9 @@ describe('AuthContext', () => {
     it('should remove batch identifier', async () => {
       render(<TestLogoutComponent />)
 
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
 
       await waitForExpect(() => {
         expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(null)
@@ -35,7 +37,9 @@ describe('AuthContext', () => {
     it('should log analytics', async () => {
       render(<TestLogoutComponent />)
 
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
 
       await waitForExpect(() => {
         expect(analytics.logLogout).toBeCalledTimes(1)
@@ -45,7 +49,9 @@ describe('AuthContext', () => {
     it('should remove access token from async storage', async () => {
       render(<TestLogoutComponent />)
 
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
 
       await waitForExpect(() => {
         expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
@@ -55,7 +61,9 @@ describe('AuthContext', () => {
     it('should clear refresh token', async () => {
       render(<TestLogoutComponent />)
 
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
 
       await waitForExpect(() => {
         expect(mockClearRefreshToken).toHaveBeenCalled()
@@ -65,7 +73,9 @@ describe('AuthContext', () => {
     it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
       render(<TestLogoutComponent />)
 
-      await act(flushAllPromises)
+      await act(async () => {
+        await flushAllPromises()
+      })
 
       await waitForExpect(() => {
         expect(queryClient.removeQueries).toHaveBeenCalledWith(query)

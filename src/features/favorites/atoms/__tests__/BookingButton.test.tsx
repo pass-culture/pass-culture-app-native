@@ -256,12 +256,12 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.InAppBooking) {
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).toBeCalledWith(offer)
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeNull()
+    expect(renderAPI.queryByText('Offre expirée')).toBeNull()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
   if (expectedCTA === ExpectedCTA.ExternalBooking) {
@@ -273,60 +273,60 @@ function favoriteBookingButtonTestRunner({
         offerId: offer.id,
       },
     })
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeNull()
+    expect(renderAPI.queryByText('Offre expirée')).toBeNull()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
   if (expectedCTA === ExpectedCTA.BookedOffer) {
     expect(onInAppBooking).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeTruthy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre expirée')).toBeNull()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
   if (expectedCTA === ExpectedCTA.ExpiredOffer) {
     expect(onInAppBooking).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeNull()
     expect(renderAPI.queryByText('Offre expirée')).toBeTruthy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
   if (expectedCTA === ExpectedCTA.ExhaustedOffer) {
     expect(onInAppBooking).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeNull()
+    expect(renderAPI.queryByText('Offre expirée')).toBeNull()
     expect(renderAPI.queryByText('Offre épuisée')).toBeTruthy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
   if (expectedCTA === ExpectedCTA.NotEnoughCredit) {
     expect(onInAppBooking).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeNull()
+    expect(renderAPI.queryByText('Offre expirée')).toBeNull()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
     expect(renderAPI.queryByText('Crédit insuffisant')).toBeTruthy()
     return
   }
   if (expectedCTA === ExpectedCTA.NoButton) {
     expect(onInAppBooking).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeNull()
+    expect(renderAPI.queryByText('Offre expirée')).toBeNull()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
   throw new Error('expectedCTA does not match any member of enum ExpectedCTA')

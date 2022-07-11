@@ -44,7 +44,7 @@ describe('SearchFilter component', () => {
 
   it('should not render section Radius if search everywhere or venue selected', () => {
     mockSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
-    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeFalsy()
+    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeNull()
 
     mockSearchState.locationFilter = { locationType: LocationType.AROUND_ME, aroundRadius: 100 }
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
@@ -62,7 +62,7 @@ describe('SearchFilter component', () => {
       locationType: LocationType.VENUE,
       venue: { ...Kourou, venueId: 4 },
     }
-    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeFalsy()
+    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeNull()
   })
 
   it('should not render Duo filter if user not beneficiary', () => {

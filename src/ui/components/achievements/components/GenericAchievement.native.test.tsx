@@ -94,7 +94,7 @@ describe('<GenericAchievement />', () => {
       screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
-    expect(queryByText('Tout passer')).toBeFalsy()
+    expect(queryByText('Tout passer')).toBeNull()
   })
 
   it('should trigger analytics with a custom name instead of Achievement1', async () => {

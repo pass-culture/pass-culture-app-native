@@ -162,29 +162,29 @@ describe('<OfferHeader />', () => {
       id: addFavoriteJsonResponseSnap.offer.id,
     })
 
-    await act(async () => {
-      fireEvent.press(getByTestId('icon-favorite'))
-    })
+    fireEvent.press(getByTestId('icon-favorite'))
     await waitForExpect(() => {
       expect(getByTestId('icon-favorite-filled')).toBeTruthy()
     })
     const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
-    expect(
-      mutateData.favorites?.find(
-        (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
-      )?.offer.id
-    ).toEqual(addFavoriteJsonResponseSnap.offer.id)
+    await waitForExpect(() => {
+      expect(
+        mutateData.favorites?.find(
+          (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
+        )?.offer.id
+      ).toEqual(addFavoriteJsonResponseSnap.offer.id)
 
-    expect(
-      (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
-        (f: FavoriteResponse) => f.id === 1000
-      )
-    ).toEqual({
-      ...addFavoriteJsonResponseSnap,
-      offer: {
-        ...addFavoriteJsonResponseSnap.offer,
-        date: addFavoriteJsonResponseSnap.offer.date,
-      },
+      expect(
+        (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
+          (f: FavoriteResponse) => f.id === 1000
+        )
+      ).toEqual({
+        ...addFavoriteJsonResponseSnap,
+        offer: {
+          ...addFavoriteJsonResponseSnap.offer,
+          date: addFavoriteJsonResponseSnap.offer.date,
+        },
+      })
     })
   })
 
@@ -202,7 +202,9 @@ describe('<OfferHeader />', () => {
       )?.offer.id
     ).toBe(undefined)
 
-    await act(async () => queryByTestId('icon-favorite'))
+    act(() => {
+      queryByTestId('icon-favorite')
+    })
     fireEvent.press(getByTestId('icon-favorite'))
 
     await waitForExpect(() => {
@@ -408,6 +410,8 @@ async function renderOfferHeader(options: Options = defaultOptions) {
     )
   )
   await superFlushWithAct(20)
-  await act(async () => wrapper.queryByTestId('offerHeaderName'))
+  act(() => {
+    wrapper.queryByTestId('offerHeaderName')
+  })
   return { ...wrapper, animatedValue }
 }

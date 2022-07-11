@@ -116,7 +116,7 @@ describe('BookingDetails', () => {
     it('should not display offer link button if no url', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { queryByText } = renderBookingDetails(booking)
-      expect(queryByText("Accéder à l'offre")).toBeFalsy()
+      expect(queryByText("Accéder à l'offre")).toBeNull()
     })
 
     it('should display booking qr code if offer is physical', async () => {
@@ -277,7 +277,7 @@ describe('BookingDetails', () => {
       const renderAPI = renderBookingDetails(undefined, {
         dataUpdatedAt: 0,
       })
-      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeFalsy()
+      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeNull()
     })
   })
 

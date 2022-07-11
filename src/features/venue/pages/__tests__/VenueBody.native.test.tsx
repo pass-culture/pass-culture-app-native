@@ -44,7 +44,7 @@ describe('<VenueBody />', () => {
 
   it('should not show venue banner in where section', async () => {
     const venue = await renderVenueBody(venueId)
-    expect(venue.queryByTestId('VenueBannerComponent')).toBeFalsy()
+    expect(venue.queryByTestId('VenueBannerComponent')).toBeNull()
   })
 
   it('should show withdrawalDetails', async () => {
@@ -57,7 +57,7 @@ describe('<VenueBody />', () => {
       data: { ...venueResponseSnap, withdrawalDetails: null },
     } as UseQueryResult<VenueResponse>)
     const venue = await renderVenueBody(venueId)
-    expect(venue.queryByText('Modalités de retrait')).toBeFalsy()
+    expect(venue.queryByText('Modalités de retrait')).toBeNull()
   })
 })
 

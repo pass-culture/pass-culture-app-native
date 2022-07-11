@@ -63,7 +63,7 @@ describe('<OfferBody />', () => {
     expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
 
     wrapper = await renderOfferBodyPage({ accessibility: {} })
-    expect(wrapper.queryByText('Accessibilité')).toBeFalsy()
+    expect(wrapper.queryByText('Accessibilité')).toBeNull()
   })
 
   it('should show withdrawalDetails', async () => {
@@ -79,12 +79,12 @@ describe('<OfferBody />', () => {
       { withdrawalDetails: 'How to withdraw' },
       { isBeneficiary: false }
     )
-    expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
+    expect(wrapper.queryByText('Modalités de retrait')).toBeNull()
   })
 
   it('should not show withdrawalDetails', async () => {
     const wrapper = await renderOfferBodyPage({ withdrawalDetails: undefined })
-    expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
+    expect(wrapper.queryByText('Modalités de retrait')).toBeNull()
   })
 
   it('should not show distance when no address and go to button', async () => {
@@ -101,8 +101,8 @@ describe('<OfferBody />', () => {
         isPermanent: true,
       },
     })
-    expect(wrapper.queryByText("Voir l'itinéraire")).toBeFalsy()
-    expect(wrapper.queryByText('Distance')).toBeFalsy()
+    expect(wrapper.queryByText("Voir l'itinéraire")).toBeNull()
+    expect(wrapper.queryByText('Distance')).toBeNull()
   })
 
   it('should request /native/v1/offers/reports if user is logged in', async () => {

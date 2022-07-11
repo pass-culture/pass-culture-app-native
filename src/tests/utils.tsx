@@ -1,7 +1,7 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 // eslint-disable-next-line no-restricted-imports
-import { render, RenderOptions } from '@testing-library/react-native'
+import { render, waitFor as defaultWaitFor } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
 import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
@@ -93,6 +93,13 @@ const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
   )
 }
 
+type RenderOptions = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  wrapper?: React.ComponentType<any>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  createNodeMock?: (element: React.ReactElement) => any
+}
+
 export type CustomRenderOptions = {
   theme?: Partial<DefaultTheme>
 } & RenderOptions
@@ -110,6 +117,12 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
       : ({ children }) => <DefaultWrapper theme={theme}>{children}</DefaultWrapper>,
     ...restOfOptions,
   })
+}
+
+export function waitFor(cb: () => void, opts = {}): Promise<void> {
+  // Default timeout was changed in the new version of @testing-library/react-native,
+  // but we need the old value for our tests (especially for navigation)
+  return defaultWaitFor(cb, { ...opts, timeout: 4500 })
 }
 
 // eslint-disable-next-line no-restricted-imports

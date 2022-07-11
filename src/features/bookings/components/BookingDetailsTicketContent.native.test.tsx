@@ -28,7 +28,7 @@ describe('BookingDetailsTicketContent', () => {
 
       getByText(booking.activationCode.code)
       // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
-      expect(queryByText(booking.token)).toBeFalsy()
+      expect(queryByText(booking.token)).toBeNull()
     })
 
     it('should display the access button offer when activationCodeFeatureEnabled is true', () => {
@@ -46,7 +46,7 @@ describe('BookingDetailsTicketContent', () => {
       )
       // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
       getByText(booking.token)
-      expect(queryByText(booking.activationCode.code)).toBeFalsy()
+      expect(queryByText(booking.activationCode.code)).toBeNull()
     })
 
     it('should display the access button offer when activationCodeFeatureEnabled is true', () => {
@@ -61,7 +61,7 @@ describe('BookingDetailsTicketContent', () => {
       const { queryByText } = render(
         <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={false} />
       )
-      expect(queryByText("Accéder à l'offre")).toBeFalsy()
+      expect(queryByText("Accéder à l'offre")).toBeNull()
     })
   })
 
@@ -104,7 +104,7 @@ describe('BookingDetailsTicketContent', () => {
           activationCodeFeatureEnabled={true}
         />
       )
-      expect(queryByTestId('ean')).toBeFalsy()
+      expect(queryByTestId('ean')).toBeNull()
     })
 
     it('should not display EAN when the offer is not a book', () => {
@@ -124,7 +124,7 @@ describe('BookingDetailsTicketContent', () => {
           activationCodeFeatureEnabled={true}
         />
       )
-      expect(queryByTestId('ean')).toBeFalsy()
+      expect(queryByTestId('ean')).toBeNull()
     })
   })
 })

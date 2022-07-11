@@ -64,7 +64,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
@@ -88,7 +90,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
@@ -109,7 +113,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
@@ -130,7 +136,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalledTimes(1)
@@ -149,7 +157,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
@@ -169,7 +179,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
@@ -189,7 +201,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
@@ -205,7 +219,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
@@ -285,7 +301,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
 
     await waitForExpect(() => {
       expect(
@@ -307,7 +325,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
+    await act(async () => {
+      await flushAllPromises()
+    })
     await superFlushWithAct()
 
     await waitForExpect(() => {

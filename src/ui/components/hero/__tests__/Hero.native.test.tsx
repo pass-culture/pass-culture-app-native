@@ -32,8 +32,8 @@ describe('HeroImage', () => {
         categoryId={CategoryIdEnum.CINEMA}
       />
     )
-    expect(queryByTestId('BackgroundPlaceholder')).toBeFalsy()
-    expect(queryByTestId('categoryIcon')).toBeFalsy()
-    expect(queryByTestId('imagePlaceholder')).toBeFalsy()
+    expect(queryByTestId('BackgroundPlaceholder')).toBeNull()
+    expect(queryByTestId('categoryIcon')).toBeNull()
+    expect(queryByTestId('imagePlaceholder')).toBeNull()
   })
 })

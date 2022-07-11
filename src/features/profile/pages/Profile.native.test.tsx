@@ -318,6 +318,8 @@ async function renderProfile(options: Options = defaultOptions) {
     </NavigationContainer>,
     { wrapper }
   )
-  await act(flushAllPromises)
+  await act(async () => {
+    await flushAllPromises()
+  })
   return renderAPI
 }

@@ -76,7 +76,7 @@ describe('Home component', () => {
     mockUserProfileInfo!.depositExpirationDate = '2020-02-16T17:16:04.735235'
     const { queryByText, getByText } = render(<Home />)
     expect(getByText('Ton crédit est expiré')).toBeTruthy()
-    expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeFalsy()
+    expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeNull()
   })
 
   it('should show the available credit to the user - not logged in', () => {
@@ -94,7 +94,7 @@ describe('Home component', () => {
 
   it('should not have code push button', async () => {
     const { queryByText } = render(<Home />)
-    expect(queryByText('Check update')).toBeFalsy()
+    expect(queryByText('Check update')).toBeNull()
   })
 
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
@@ -106,7 +106,7 @@ describe('Home component', () => {
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { queryByText } = render(<Home />)
-    expect(queryByText('CheatMenu')).toBeFalsy()
+    expect(queryByText('CheatMenu')).toBeNull()
   })
 
   it('should render offline page when not connected', () => {

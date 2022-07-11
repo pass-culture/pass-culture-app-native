@@ -39,7 +39,7 @@ describe('AccessibilityAtom', () => {
     const { queryByTestId } = render(
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={true} />
     )
-    expect(queryByTestId('invalidTestId')).toBeFalsy()
+    expect(queryByTestId('invalidTestId')).toBeNull()
     expect(queryByTestId('validTestId')).toBeTruthy()
   })
   it('should displat the invalidIcon when isValid is false', () => {
@@ -47,7 +47,7 @@ describe('AccessibilityAtom', () => {
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
     expect(queryByTestId('invalidTestId')).toBeTruthy()
-    expect(queryByTestId('validTestId')).toBeFalsy()
+    expect(queryByTestId('validTestId')).toBeNull()
   })
   it('uses sideSpace to overgrow textContainer', async () => {
     const { getByTestId } = render(

@@ -53,7 +53,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.stock.offer.isPermanent = false
     booking.confirmationDate = '2020-03-15T23:01:37.925926'
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
-    expect(queryByTestId('Annuler ma réservation')).toBeFalsy()
+    expect(queryByTestId('Annuler ma réservation')).toBeNull()
   })
 
   it('should call onCancel', () => {

@@ -51,7 +51,7 @@ describe('CheatCodes component', () => {
     })
     buttonIsdisplayed
       ? expect(instance.queryByText('Check update')).toBeTruthy()
-      : expect(instance.queryByText('Check update')).toBeFalsy()
+      : expect(instance.queryByText('Check update')).toBeNull()
     expect.assertions(1)
   })
 

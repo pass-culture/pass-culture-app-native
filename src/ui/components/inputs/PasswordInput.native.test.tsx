@@ -10,13 +10,13 @@ describe('<PasswordInput />', () => {
     const instance = render(<PasswordInput />)
 
     expect(instance.queryByLabelText('Afficher le mot de passe')).toBeTruthy()
-    expect(instance.queryByLabelText('Cacher le mot de passe')).toBeFalsy()
+    expect(instance.queryByLabelText('Cacher le mot de passe')).toBeNull()
 
     const switchPasswordVisibilityButton = instance.getByTestId('toggle-password-visibility')
 
     fireEvent.press(switchPasswordVisibilityButton)
     expect(instance.queryByLabelText('Cacher le mot de passe')).toBeTruthy()
-    expect(instance.queryByLabelText('Afficher le mot de passe')).toBeFalsy()
+    expect(instance.queryByLabelText('Afficher le mot de passe')).toBeNull()
   })
 
   it('should render ref correctly', () => {

@@ -30,13 +30,13 @@ describe('<Slider />', () => {
     it('should show one value if there are 1 value in the array values', () => {
       const { queryByText } = render(<Slider values={[100]} showValues={true} />)
       expect(queryByText('100')).toBeTruthy()
-      expect(queryByText('0 - 100')).toBeFalsy()
+      expect(queryByText('0 - 100')).toBeNull()
     })
 
     it('should not show values if showValues is false', () => {
       const { queryByText } = render(<Slider values={[100]} showValues={false} />)
-      expect(queryByText('100')).toBeFalsy()
-      expect(queryByText('0 - 100')).toBeFalsy()
+      expect(queryByText('100')).toBeNull()
+      expect(queryByText('0 - 100')).toBeNull()
     })
   })
 })
