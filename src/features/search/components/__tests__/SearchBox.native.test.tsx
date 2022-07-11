@@ -140,11 +140,19 @@ describe('SearchBox component', () => {
     await fireEvent(searchInput, 'onChangeText', 'Some text')
 
     await fireEvent.press(previousButton)
+
+    expect(mockStagedDispatch).toBeCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        locationFilter: mockStagedSearchState.locationFilter,
+      },
+    })
     expect(push).toBeCalledWith(
       ...getTabNavConfig('Search', {
-        ...mockStagedSearchState,
+        ...initialSearchState,
         query: '',
         showResults: false,
+        locationFilter: mockStagedSearchState.locationFilter,
       })
     )
   })
