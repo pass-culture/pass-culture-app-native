@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
@@ -7,6 +6,7 @@ import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptio
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { renderHook, waitFor } from 'tests/utils'
 
 const setError = jest.fn()
 jest.mock('features/auth/AuthContext')
@@ -28,11 +28,12 @@ describe('useNextSubscriptionStep', () => {
         stepperIncludesPhoneValidation: false,
         hasIdentityCheckPending: false,
       })
-      const { result, waitFor } = renderNextSubscriptionStepHook()
-      await waitFor(() => result.current.isLoading === false)
+      const { result } = renderNextSubscriptionStepHook()
 
-      expect(result.current.data?.nextSubscriptionStep).toBe(expectedSubscriptionStep)
-      expect(setError).not.toBeCalled()
+      await waitFor(() => {
+        expect(result.current.data?.nextSubscriptionStep).toBe(expectedSubscriptionStep)
+        expect(setError).not.toBeCalled()
+      })
     }
   )
 
@@ -43,11 +44,12 @@ describe('useNextSubscriptionStep', () => {
       stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
-    const { result, waitFor } = renderNextSubscriptionStepHook()
-    await waitFor(() => result.current.isLoading === false)
+    const { result } = renderNextSubscriptionStepHook()
 
-    expect(setError).not.toBeCalled()
-    expect(result.current.data).toBeUndefined()
+    await waitFor(() => {
+      expect(setError).not.toBeCalled()
+      expect(result.current.data).toBeUndefined()
+    })
   })
 
   it('should set error and return undefined if request fails', async () => {
@@ -56,11 +58,12 @@ describe('useNextSubscriptionStep', () => {
       setIsLoggedIn: jest.fn(),
     })
     mockNextStepRequestError()
-    const { result, waitFor } = renderNextSubscriptionStepHook()
-    await waitFor(() => result.current.isLoading === false)
+    const { result } = renderNextSubscriptionStepHook()
 
-    expect(setError).toBeCalledTimes(1)
-    expect(result.current.data).toBeUndefined()
+    await waitFor(() => {
+      expect(setError).toBeCalledTimes(1)
+      expect(result.current.data).toBeUndefined()
+    })
   })
 })
 

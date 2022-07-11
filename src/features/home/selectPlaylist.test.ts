@@ -1,10 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks'
 import shuffle from 'lodash.shuffle'
 
 import { UserProfileResponse, UserRole } from 'api/gen'
 import { HomepageEntry, Tag } from 'features/home/contentful'
 import { useSelectPlaylist } from 'features/home/selectPlaylist'
 import { adaptedHomepageEntry as entry } from 'tests/fixtures/homepageEntries'
+import { renderHook } from 'tests/utils'
 
 const defaultUser: Partial<UserProfileResponse> = { roles: [UserRole.BENEFICIARY] }
 const underageUser = { ...defaultUser, roles: [UserRole.UNDERAGE_BENEFICIARY] }

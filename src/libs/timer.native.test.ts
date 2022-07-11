@@ -1,8 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import * as Dates from 'libs/dates'
 import * as Timer from 'libs/timer'
-import { act } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 describe('Timer', () => {
   describe('Undefined start time', () => {

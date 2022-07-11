@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { mocked } from 'ts-jest/utils'
 
 import { LocationType } from 'features/search/enums'
@@ -7,6 +6,7 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { renderHook } from 'tests/utils'
 
 import { useFilterCount } from '../useFilterCount'
 

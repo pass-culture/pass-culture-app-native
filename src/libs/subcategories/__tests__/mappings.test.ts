@@ -1,5 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import {
   categoryIdMappingSnap,
   subcategoriesMappingSnap,
@@ -13,6 +11,7 @@ import {
   useSubcategoriesMapping,
 } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { renderHook } from 'tests/utils'
 
 const mockSubcategories = placeholderData.subcategories
 jest.mock('libs/subcategories/useSubcategories', () => ({

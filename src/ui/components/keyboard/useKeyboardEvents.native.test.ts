@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { Keyboard, KeyboardEvent, Platform, DeviceEventEmitter } from 'react-native'
+
+import { renderHook } from 'tests/utils'
 
 import { useKeyboardEvents } from './useKeyboardEvents'
 

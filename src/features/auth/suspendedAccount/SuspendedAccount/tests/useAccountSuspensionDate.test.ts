@@ -1,10 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { useAccountSuspensionDate } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { renderHook, waitFor } from 'tests/utils'
 
 const expectedResponse = { date: '2022-05-11T10:29:25.332786Z' }
 function simulateSuspensionDate200() {
@@ -26,10 +26,11 @@ function simulateSuspensionDateActiveAccount() {
 describe('useAccountSuspensionDate', () => {
   it('should return suspension date if it exists', async () => {
     simulateSuspensionDate200()
-    const { result, waitFor } = renderSuspensionDateHook()
+    const { result } = renderSuspensionDateHook()
 
-    await waitFor(() => result.current.data !== undefined)
-    expect(result.current.data?.date).toBe(expectedResponse.date)
+    await waitFor(() => {
+      expect(result.current.data?.date).toBe(expectedResponse.date)
+    })
   })
 
   it('should return undefined for unsuspended user', async () => {

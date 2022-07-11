@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
-import { fireEvent } from 'tests/utils/web'
+import { render, fireEvent } from 'tests/utils/web'
 import { Close } from 'ui/svg/icons/Close'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'

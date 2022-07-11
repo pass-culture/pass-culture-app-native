@@ -1,8 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useShowResults } from 'features/search/pages/useShowResults'
-import { waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 

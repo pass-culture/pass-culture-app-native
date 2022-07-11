@@ -1,5 +1,4 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
-import { act, renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import waitForExpect from 'wait-for-expect'
 
@@ -15,6 +14,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
@@ -27,6 +27,7 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to home if nextStep is null', async () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: () => undefined,
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
@@ -44,6 +45,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: () => undefined,
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
@@ -62,6 +64,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: () => undefined,
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
@@ -79,6 +82,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: () => undefined,
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
@@ -96,6 +100,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: () => undefined,
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
@@ -115,6 +120,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     const { result } = renderHook(useBeneficiaryValidationNavigation, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: () => undefined,
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
@@ -134,6 +140,7 @@ it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and m
 
   const { result } = renderHook(useBeneficiaryValidationNavigation, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
+    initialProps: () => undefined,
   })
   await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 

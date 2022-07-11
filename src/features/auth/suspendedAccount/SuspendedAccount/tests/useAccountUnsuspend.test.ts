@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import waitForExpect from 'wait-for-expect'
 
@@ -6,7 +5,7 @@ import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAcc
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { renderHook, superFlushWithAct } from 'tests/utils'
 
 const onSuccess = jest.fn()
 const onError = jest.fn()

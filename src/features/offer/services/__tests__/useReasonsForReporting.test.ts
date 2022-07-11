@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { OfferReportReasons } from 'api/gen'
@@ -7,6 +6,7 @@ import { offerReportReasonSnap } from 'features/offer/api/snaps/offerReportReaso
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useReasonsForReporting } from '../useReasonsForReporting'
 
@@ -29,16 +29,16 @@ describe('useReasonsForReporting hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     }))
-    const { result, waitFor } = renderHook(useReasonsForReporting, {
+    const { result } = renderHook(useReasonsForReporting, {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
     expect(result.current.isFetching).toEqual(true)
-    await waitFor(() => result.current.isSuccess)
 
-    expect(result.current.isSuccess).toEqual(true)
-    expect(result.current.data?.reasons.length).toEqual(offerReportReasonSnap.reasons.length)
+    await waitFor(() => {
+      expect(result.current.data?.reasons.length).toEqual(offerReportReasonSnap.reasons.length)
+    })
   })
 
   it('should return null when not logged in', async () => {
