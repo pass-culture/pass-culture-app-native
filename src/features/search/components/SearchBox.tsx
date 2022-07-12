@@ -132,7 +132,6 @@ export const SearchBox: React.FC<Props> = ({
           autoFocus={isFocus}
           inputHeight="regular"
           LeftIcon={MagnifyingGlassIcon}
-          // LeftIcon={() => <MagnifyingGlassIcon />}
           onSubmitEditing={onSubmitQuery}
           onPressRightIcon={resetQuery}
           setShouldAutocomplete={setShouldAutocomplete}

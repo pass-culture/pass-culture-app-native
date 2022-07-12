@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { forwardRef, useRef, useState } from 'react'
-import { Platform, TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -32,6 +32,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     onPressRightIcon,
     onPressLocationButton,
     locationLabel,
+    setShouldAutocomplete,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
@@ -41,20 +42,11 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
-    if (props.onFocusState) {
-      props.onFocusState(true)
-    }
+    if (setShouldAutocomplete) setShouldAutocomplete(true)
   }
 
   function onBlur() {
-    if (props.value === '' && Platform.OS === 'web') {
-      searchInput.current?.focus()
-      return
-    }
     setIsFocus(false)
-    if (props.onFocusState) {
-      props.onFocusState(false)
-    }
   }
 
   return (

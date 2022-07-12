@@ -11,7 +11,7 @@ const onPressLocationButton = jest.fn()
 
 describe('SearchInput component', () => {
   it('should render SearchInput', () => {
-    expect(render(<SearchInput onFocusState={() => {}} />)).toMatchSnapshot()
+    expect(render(<SearchInput />)).toMatchSnapshot()
   })
 
   it('should set value when user input some text', async () => {
