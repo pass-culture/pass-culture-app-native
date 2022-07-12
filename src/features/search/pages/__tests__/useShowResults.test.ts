@@ -15,18 +15,18 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 }))
 
 describe('useShowResults hook', () => {
-  it('should return true if search has results', async () => {
+  it('should show results when search has results', async () => {
     mockSearchState.showResults = true
-    const { result } = renderHook(() => useShowResults())
+    const { result } = renderHook(useShowResults)
 
     await waitFor(() => {
       expect(result.current).toBe(true)
     })
   })
 
-  it('should return false if search has no results', async () => {
+  it('should not show results when search has no results', async () => {
     mockSearchState.showResults = false
-    const { result } = renderHook(() => useShowResults())
+    const { result } = renderHook(useShowResults)
 
     await waitFor(() => {
       expect(result.current).toBe(false)
