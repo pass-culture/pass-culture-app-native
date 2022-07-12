@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchBox component should render SearchBox 1`] = `
-Array [
+<View
+  testID="searchBoxWithoutAutocomplete"
+>
   <View
     marginHorizontal={0}
     style={
@@ -86,6 +88,7 @@ Array [
       <TextInput
         accessible={false}
         autoCorrect={false}
+        autoFocus={false}
         editable={true}
         enablesReturnKeyAutomatically={true}
         nativeID="testUuidV4"
@@ -119,7 +122,7 @@ Array [
         value=""
       />
     </View>
-  </View>,
+  </View>
   <Text
     nativeID="testUuidV4"
     style={
@@ -132,6 +135,6 @@ Array [
   >
     Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
 "Entrée"
-  </Text>,
-]
+  </Text>
+</View>
 `;

@@ -28,7 +28,15 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 jest.mock('libs/firebase/analytics')
 
-jest.mock('features/auth/settings')
+const mockSettings = {
+  appEnableAutocomplete: true,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
@@ -45,47 +53,156 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
+jest.mock('react-instantsearch-hooks', () => ({
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+  useInfiniteHits: () => ({
+    hits: [],
+  }),
+}))
+
 describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
+  const setShouldAutocomplete = jest.fn
+  const setAutocompleteValue = jest.fn
 
   it('should render SearchHeader', () => {
-    expect(render(<SearchHeader searchInputID={searchInputID} />)).toMatchSnapshot()
+    expect(
+      render(
+        <SearchHeader
+          searchInputID={searchInputID}
+          appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+          shouldAutocomplete={false}
+          autocompleteValue=""
+          setShouldAutocomplete={setShouldAutocomplete}
+          setAutocompleteValue={setAutocompleteValue}
+        />
+      )
+    ).toMatchSnapshot()
   })
 
-  it('should show search box with label if no search execution and focus is not on input', () => {
-    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={false} />)
+  it('should show search box without autocomplete if autocomplete feature flag not activated', () => {
+    mockSettings.appEnableAutocomplete = false
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={false}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
+
+    expect(queryByTestId('searchBoxWithoutAutocomplete')).toBeTruthy()
+  })
+
+  it('should show search box with autocomplete if autocomplete feature flag activated', () => {
+    mockSettings.appEnableAutocomplete = true
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={false}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
+
+    expect(queryByTestId('searchBoxWithAutocomplete')).toBeTruthy()
+  })
+
+  it('should show search box with label if no search execution and autocomplete list not visible', () => {
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={false}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
   })
 
-  it('should not show search box without label if no search execution and focus is not on input', () => {
-    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={false} />)
+  it('should not show search box without label if no search execution and autocomplete list not visible', () => {
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={false}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeNull()
   })
 
-  it('should show search box without label if focus is on input', () => {
-    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={true} />)
+  it('should show search box without label if autocomplete list visible', () => {
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={true}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
   })
 
-  it('should not show search box with label if focus is on input', () => {
-    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={true} />)
+  it('should not show search box with label if autocomplete list visible', () => {
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={true}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     expect(queryByTestId('searchBoxWithLabel')).toBeNull()
   })
 
   it('should show search box without label if search execution', () => {
     mockSearchState.showResults = true
-    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={true} />)
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={true}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
   })
 
   it('should not show search box with label if search execution', () => {
     mockSearchState.showResults = true
-    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} isFocus={true} />)
+    const { queryByTestId } = render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        shouldAutocomplete={true}
+        autocompleteValue=""
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     expect(queryByTestId('searchBoxWithLabel')).toBeNull()
   })

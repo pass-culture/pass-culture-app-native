@@ -1,5 +1,7 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import algoliasearch from 'algoliasearch'
+import React, { useEffect, useState } from 'react'
+import { InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,20 +13,25 @@ import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
+import { env } from 'libs/environment'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 const searchInputID = uuidv4()
+const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 export function Search() {
   const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const showResults = useShowResults()
+  const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
   const { data: appSettings } = useAppSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
+  const [shouldAutocomplete, setShouldAutocomplete] = useState(false)
+  const [autocompleteValue, setAutocompleteValue] = useState<string>('')
   const showResultsForCategory = useShowResultsForCategory()
 
   useEffect(() => {
@@ -63,6 +70,10 @@ export function Search() {
             <SearchHeader
               searchInputID={searchInputID}
               appEnableAutocomplete={appEnableAutocomplete}
+              shouldAutocomplete={shouldAutocomplete}
+              setShouldAutocomplete={setShouldAutocomplete}
+              setAutocompleteValue={setAutocompleteValue}
+              autocompleteValue={autocompleteValue}
             />
             {bodySearch()}
           </InstantSearch>
@@ -71,6 +82,10 @@ export function Search() {
             <SearchHeader
               searchInputID={searchInputID}
               appEnableAutocomplete={appEnableAutocomplete}
+              shouldAutocomplete={shouldAutocomplete}
+              setShouldAutocomplete={setShouldAutocomplete}
+              setAutocompleteValue={setAutocompleteValue}
+              autocompleteValue={autocompleteValue}
             />
             {bodySearch()}
           </React.Fragment>

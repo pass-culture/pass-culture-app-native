@@ -27,7 +27,14 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 jest.mock('libs/firebase/analytics')
-jest.mock('features/auth/settings')
+const mockSettings = {
+  appEnableAutocomplete: true,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
@@ -49,20 +56,75 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
+jest.mock('react-instantsearch-hooks', () => ({
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+  useInfiniteHits: () => ({
+    hits: [],
+  }),
+}))
+
 describe('SearchDetails component', () => {
+  const setShouldAutocomplete = jest.fn
   it('should render SearchDetails', () => {
-    expect(render(<SearchDetails />)).toMatchSnapshot()
+    expect(
+      render(
+        <SearchDetails
+          shouldAutocomplete={true}
+          appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+          setShouldAutocomplete={setShouldAutocomplete}
+        />
+      )
+    ).toMatchSnapshot()
   })
 
-  it('should show results if search executed', () => {
+  it('should show results if search executed and autocomplete list display flag is false', () => {
     useRoute.mockReturnValueOnce({ params: { showResults: true } })
-    const { queryByTestId } = render(<SearchDetails />)
+    const { queryByTestId } = render(
+      <SearchDetails
+        shouldAutocomplete={false}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        setShouldAutocomplete={setShouldAutocomplete}
+      />
+    )
     expect(queryByTestId('searchResults')).toBeTruthy()
   })
 
-  it('should show recent searches and suggestions if search not executed', () => {
+  it('should not show results if search executed and autocomplete list display flag is true', () => {
+    useRoute.mockReturnValueOnce({ params: { showResults: true } })
+    const { queryByTestId } = render(
+      <SearchDetails
+        shouldAutocomplete={true}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        setShouldAutocomplete={setShouldAutocomplete}
+      />
+    )
+    expect(queryByTestId('searchResults')).toBeFalsy()
+  })
+
+  it('should show autocomplete list if search not executed and autocomplete list display flag is true', () => {
     useRoute.mockReturnValueOnce({ params: { showResults: false } })
-    const { queryByTestId } = render(<SearchDetails />)
-    expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
+    const { queryByTestId } = render(
+      <SearchDetails
+        shouldAutocomplete={true}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        setShouldAutocomplete={setShouldAutocomplete}
+      />
+    )
+    expect(queryByTestId('autocompleteList')).toBeTruthy()
+  })
+
+  it('should show autocomplete list if search executed and autocomplete list display flag is true', () => {
+    useRoute.mockReturnValueOnce({ params: { showResults: true } })
+    const { queryByTestId } = render(
+      <SearchDetails
+        shouldAutocomplete={true}
+        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
+        setShouldAutocomplete={setShouldAutocomplete}
+      />
+    )
+    expect(queryByTestId('autocompleteList')).toBeTruthy()
   })
 })

@@ -56,13 +56,33 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
+  const setShouldAutocomplete = jest.fn
+  const setAutocompleteValue = jest.fn
 
   it('should render SearchBox', () => {
-    expect(render(<SearchBox searchInputID={searchInputID} />)).toMatchSnapshot()
+    expect(
+      render(
+        <SearchBox
+          searchInputID={searchInputID}
+          isFocus={false}
+          shouldAutocomplete={false}
+          setShouldAutocomplete={setShouldAutocomplete}
+          setAutocompleteValue={setAutocompleteValue}
+        />
+      )
+    ).toMatchSnapshot()
   })
 
   it('should call logSearchQuery on submit', () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -80,8 +100,16 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should not show previous if no search executed and no focus on input', () => {
-    const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+  it('should not show previous if no search executed and no autocomplete list not visible', () => {
+    const { queryByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
     const previousButton = queryByTestId('previousButton')
 
     expect(previousButton).toBeFalsy()
@@ -89,21 +117,45 @@ describe('SearchBox component', () => {
 
   it('should show previous button if search executed', () => {
     mockSearchState.showResults = true
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
     const previousButton = getByTestId('previousButton')
 
     expect(previousButton).toBeTruthy()
   })
 
-  it('should show previous button if focus on input', () => {
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} isFocus={true} />)
+  it('should show previous button if autocomplete list visible', () => {
+    const { getByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={true}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
     const previousButton = getByTestId('previousButton')
 
     expect(previousButton).toBeTruthy()
   })
 
   it('should show the text type by the user', async () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={true}
+        shouldAutocomplete={true}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
 
     const searchInput = getByPlaceholderText('Offre, artiste...')
     await fireEvent(searchInput, 'onChangeText', 'Some text')
@@ -113,7 +165,13 @@ describe('SearchBox component', () => {
 
   it('should reset input when user click on reset icon', async () => {
     const { getByTestId, getByPlaceholderText } = render(
-      <SearchBox searchInputID={searchInputID} />
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
 
     const searchInput = getByPlaceholderText('Offre, artiste...')
@@ -132,7 +190,13 @@ describe('SearchBox component', () => {
 
   it('should reset input when user click on previous button', async () => {
     const { getByTestId, getByPlaceholderText } = render(
-      <SearchBox searchInputID={searchInputID} />
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
     const previousButton = getByTestId('previousButton')
 
@@ -158,7 +222,15 @@ describe('SearchBox component', () => {
   })
 
   it('should not execute a search if input is empty', () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={true}
+        shouldAutocomplete={true}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
@@ -167,7 +239,15 @@ describe('SearchBox component', () => {
   })
 
   it('should execute a search if input is not empty', () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        isFocus={true}
+        shouldAutocomplete={true}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -186,7 +266,14 @@ describe('SearchBox component', () => {
 
   it('should redirect on location page on location button click', async () => {
     const { getByTestId } = render(
-      <SearchBox searchInputID={searchInputID} showLocationButton={true} />
+      <SearchBox
+        searchInputID={searchInputID}
+        showLocationButton={true}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
     )
     const locationButton = getByTestId('locationButton')
     await fireEvent.press(locationButton)
