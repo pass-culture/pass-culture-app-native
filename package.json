@@ -185,7 +185,6 @@
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.0.0",
-    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/react-native": "10.1.1",
     "@types/amplitude-js": "^8.9.6",
     "@types/contentful-resolve-response": "^0.1.30",
