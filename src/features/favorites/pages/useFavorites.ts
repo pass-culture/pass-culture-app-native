@@ -140,12 +140,13 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
 const STALE_TIME_FAVORITES = 5 * 60 * 1000
 
 export function useFavorites() {
+  const netInfo = useNetInfo()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
     QueryKeys.FAVORITES,
     () => api.getnativev1mefavorites(),
-    { enabled: isLoggedIn, staleTime: STALE_TIME_FAVORITES }
+    { enabled: !!netInfo.isConnected && isLoggedIn, staleTime: STALE_TIME_FAVORITES }
   )
 }
 

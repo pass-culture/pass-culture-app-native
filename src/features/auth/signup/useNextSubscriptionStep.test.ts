@@ -5,6 +5,7 @@ import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } f
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { env } from 'libs/environment'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
@@ -14,7 +15,13 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
+jest.unmock('react-query')
 describe('useNextSubscriptionStep', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+
   it.each(Object.values(SubscriptionStep))(
     'should return expected step',
     async (expectedSubscriptionStep) => {
@@ -37,6 +44,21 @@ describe('useNextSubscriptionStep', () => {
   )
 
   it('should not fetch query if user is not logged in', async () => {
+    mockNextStepRequest({
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: SubscriptionStep['email-validation'],
+      stepperIncludesPhoneValidation: false,
+      hasIdentityCheckPending: false,
+    })
+    const { result, waitFor } = renderNextSubscriptionStepHook()
+    await waitFor(() => result.current.isLoading === false)
+
+    expect(setError).not.toBeCalled()
+    expect(result.current.data).toBeUndefined()
+  })
+
+  it('should not fetch query if user is logged in and not connected', async () => {
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['email-validation'],
