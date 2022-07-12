@@ -168,6 +168,7 @@ Array [
         <TextInput
           accessible={false}
           autoCorrect={false}
+          autoFocus={false}
           editable={true}
           enablesReturnKeyAutomatically={true}
           nativeID="testUuidV4"
