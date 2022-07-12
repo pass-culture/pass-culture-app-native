@@ -961,26 +961,30 @@ workflows:
             - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: PC-14926-rich-push
+            # tags:
+            #   only: /^(patch\/)?v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-translations
-            - test-native
+            # - test-translations
+            # - test-native
       - deploy-ios-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: PC-14926-rich-push
+            # tags:
+            #   only: /^(patch\/)?v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-translations
-            - test-native
+            # - test-translations
+            # - test-native
       - notify-hard-staging-release:
           filters:
             tags:
