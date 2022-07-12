@@ -5,12 +5,10 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
@@ -30,14 +28,11 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     accessibilityLabel,
     accessibilityDescribedBy,
     onPressRightIcon,
-    onPressLocationButton,
-    locationLabel,
+    children,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
   const searchInput = useRef<RNTextInput>(null)
-
-  const shouldShowLocationButton = !!onPressLocationButton
 
   function onFocus() {
     setIsFocus(true)
@@ -65,10 +60,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <StyledInputContainer
-        inputHeight={props.inputHeight}
-        isFocus={isFocus}
-        shouldShowLocationButton={shouldShowLocationButton}>
+      <StyledInputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
         <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (
           <React.Fragment>
@@ -91,16 +83,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           enablesReturnKeyAutomatically={true}
           {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
-        {shouldShowLocationButton ? (
-          <LocationButton
-            testID="locationButton"
-            wording={locationLabel || ''}
-            onPress={onPressLocationButton}
-            icon={LocationPointer}
-            buttonHeight="extraSmall"
-            ellipsizeMode="tail"
-          />
-        ) : null}
+        {children}
         {value.length > 0 && (
           <RightIconContainer
             onPress={onPressRightIcon}
@@ -132,15 +115,7 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
   selectionColor: theme.colors.greyDark,
 }))``
 
-const StyledInputContainer = styled(InputContainer)(
-  ({ shouldShowLocationButton }: { shouldShowLocationButton: boolean }) => ({
-    outlineOffset: 0,
-    borderRadius: getSpacing(6),
-    ...(shouldShowLocationButton ? { paddingRight: getSpacing(2) } : {}),
-  })
-)
-
-const LocationButton = styledButton(ButtonPrimary)({
-  // max width corresponds to the size of "Autour de moi" state.
-  maxWidth: 142,
+const StyledInputContainer = styled(InputContainer)({
+  outlineOffset: 0,
+  borderRadius: getSpacing(6),
 })

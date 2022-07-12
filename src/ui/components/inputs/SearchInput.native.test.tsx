@@ -7,7 +7,6 @@ jest.mock('features/auth/settings')
 
 const onChangeText = jest.fn()
 const onReset = jest.fn()
-const onPressLocationButton = jest.fn()
 
 describe('SearchInput component', () => {
   it('should render SearchInput', () => {
@@ -34,12 +33,5 @@ describe('SearchInput component', () => {
     await fireEvent.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
-  })
-
-  it('should display location button if onPressLocationButton props', () => {
-    const { queryByTestId } = render(<SearchInput onPressLocationButton={onPressLocationButton} />)
-    const locationButton = queryByTestId('locationButton')
-
-    expect(locationButton).toBeTruthy()
   })
 })
