@@ -67,11 +67,12 @@ describe('useNextSubscriptionStep', () => {
       stepperIncludesPhoneValidation: false,
       hasIdentityCheckPending: false,
     })
-    const { result, waitFor } = renderNextSubscriptionStepHook()
-    await waitFor(() => result.current.isLoading === false)
+    const { result } = renderNextSubscriptionStepHook()
 
-    expect(setError).not.toBeCalled()
-    expect(result.current.data).toBeUndefined()
+    await waitFor(() => {
+      expect(setError).not.toBeCalled()
+      expect(result.current.data).toBeUndefined()
+    })
   })
 
   it('should set error and return undefined if request fails', async () => {
