@@ -208,9 +208,10 @@ it('calls the API and returns the data', async () => {
   const { result, waitFor } = renderHook(useUserProfileInfo, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  await waitFor(() => result.current.data !== undefined)
-  expect(result.current.data).toEqual(userProfileAPIResponse)
-  expect(userProfileApiMock).toHaveBeenCalledTimes(1)
+  await waitFor(() => {
+    expect(result.current.data).toEqual(userProfileAPIResponse)
+    expect(userProfileApiMock).toHaveBeenCalledTimes(1)
+  })
 })
 ```
 
