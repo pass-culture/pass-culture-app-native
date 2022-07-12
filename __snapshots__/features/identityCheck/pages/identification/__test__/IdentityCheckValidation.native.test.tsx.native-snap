@@ -106,8 +106,17 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,15 +129,11 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
@@ -137,11 +142,8 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
+                "paddingHorizontal": 20,
+                "paddingTop": 20,
               },
             ]
           }
@@ -150,292 +152,281 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
             style={
               Array [
                 Object {
-                  "paddingHorizontal": 20,
-                  "paddingTop": 20,
+                  "alignItems": "center",
+                  "width": "100%",
                 },
               ]
             }
           >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Les informations extraites sont-elles correctes ?
+            </Text>
+          </View>
+        </View>
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            Object {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <View>
             <View
               style={
                 Array [
                   Object {
                     "alignItems": "center",
-                    "width": "100%",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
                   },
                 ]
               }
             >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Ton prénom
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
               <Text
                 style={
                   Array [
                     Object {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
-                      "textAlign": "center",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": 24,
+                    },
+                  ]
+                }
+                testID="validation-first-name"
+              >
+                John
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
                     },
                   ]
                 }
               >
-                Les informations extraites sont-elles correctes ?
+                Ton nom de famille
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": 24,
+                    },
+                  ]
+                }
+                testID="validation-name"
+              >
+                Doe
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Ta date de naissance
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": 24,
+                    },
+                  ]
+                }
+                testID="validation-birth-date"
+              >
+                28/01/1993
               </Text>
             </View>
           </View>
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
+        </RCTScrollView>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
               Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
+                "backgroundColor": "#ffffff",
+                "bottom": 0,
+                "left": 0,
+                "paddingBottom": 20,
                 "paddingHorizontal": 20,
-              }
-            }
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Ton prénom
-                </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
-                      },
-                    ]
-                  }
-                  testID="validation-first-name"
-                >
-                  John
-                </Text>
-                <View
-                  numberOfSpaces={5}
-                  style={
-                    Array [
-                      Object {
-                        "height": 20,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Ton nom de famille
-                </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
-                      },
-                    ]
-                  }
-                  testID="validation-name"
-                >
-                  Doe
-                </Text>
-                <View
-                  numberOfSpaces={5}
-                  style={
-                    Array [
-                      Object {
-                        "height": 20,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Ta date de naissance
-                </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
-                      },
-                    ]
-                  }
-                  testID="validation-birth-date"
-                >
-                  28/01/1993
-                </Text>
-              </View>
-            </View>
-          </RCTScrollView>
+                "paddingTop": 12,
+                "position": "absolute",
+                "right": 0,
+              },
+            ]
+          }
+        >
           <View
-            onLayout={[Function]}
+            accessibilityLabel="Valider mes informations"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "bottom": 0,
-                  "left": 0,
-                  "paddingBottom": 20,
-                  "paddingHorizontal": 20,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 0,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Valider mes informations"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
               }
-              testID="Valider mes informations"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Valider mes informations
-              </Text>
-            </View>
-            <View
-              customHeight={8}
-              enable={true}
+            }
+            testID="Valider mes informations"
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
                   },
                 ]
               }
-            />
+            >
+              Valider mes informations
+            </Text>
           </View>
+          <View
+            customHeight={8}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 8,
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>

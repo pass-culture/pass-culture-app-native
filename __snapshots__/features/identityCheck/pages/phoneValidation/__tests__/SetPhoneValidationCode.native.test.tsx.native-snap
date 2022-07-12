@@ -106,8 +106,17 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,15 +129,11 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
@@ -137,11 +142,8 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
+                "paddingHorizontal": 20,
+                "paddingTop": 20,
               },
             ]
           }
@@ -150,444 +152,433 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
             style={
               Array [
                 Object {
-                  "paddingHorizontal": 20,
-                  "paddingTop": 20,
+                  "alignItems": "center",
+                  "width": "100%",
                 },
               ]
             }
           >
-            <View
+            <Text
+              nativeID="testUuidV4"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
+              Valide ton numéro de téléphone
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "height": 20,
+                },
+              ]
+            }
+          />
+        </View>
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            Object {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <View>
+            <View
+              aria-labelledby="testUuidV4"
+            >
               <Text
-                nativeID="testUuidV4"
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
                       "textAlign": "center",
                     },
                   ]
                 }
               >
-                Valide ton numéro de téléphone
+                Saisis le code reçu au +33 6 12 34 56 78.
               </Text>
-            </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                Array [
-                  Object {
-                    "height": 20,
-                  },
-                ]
-              }
-            />
-          </View>
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
-              Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
-                "paddingHorizontal": 20,
-              }
-            }
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <View>
               <View
-                aria-labelledby="testUuidV4"
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "width": "100%",
+                    },
+                  ]
+                }
               >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Saisis le code reçu au +33 6 12 34 56 78.
-                </Text>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    Array [
-                      Object {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "maxWidth": 500,
                         "width": "100%",
                       },
                     ]
                   }
                 >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexDirection": "column",
-                          "maxWidth": 500,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    <View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "flex-end",
-                              "flexDirection": "row",
-                              "justifyContent": "space-between",
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Code de validation
-                        </Text>
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#696A6F",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                        >
-                          Format : 6 chiffres
-                        </Text>
-                      </View>
-                    </View>
+                  <View>
                     <View
-                      numberOfSpaces={2}
                       style={
                         Array [
                           Object {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      height="small"
-                      isDisabled={false}
-                      isError={false}
-                      isFocus={false}
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#90949D",
-                            "borderRadius": 22,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
+                            "alignItems": "flex-end",
                             "flexDirection": "row",
-                            "height": 40,
-                            "paddingBottom": 0,
-                            "paddingLeft": 17,
-                            "paddingRight": 17,
-                            "paddingTop": 0,
+                            "justifyContent": "space-between",
                             "width": "100%",
                           },
                         ]
                       }
-                      testID="styled-input-container"
                     >
-                      <TextInput
-                        aria-describedby="testUuidV4"
-                        aria-required={false}
-                        autoCapitalize="none"
-                        editable={true}
-                        keyboardType="number-pad"
-                        nativeID="testUuidV4"
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        onSubmitEditing={[Function]}
-                        placeholder="012345"
-                        placeholderTextColor="#696A6F"
-                        returnKeyType="next"
+                      <Text
                         style={
                           Array [
                             Object {
                               "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
                               "fontFamily": "Montserrat-Regular",
                               "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
+                              "lineHeight": 20,
                             },
                           ]
                         }
-                        textContentType="oneTimeCode"
-                      />
+                      >
+                        Code de validation
+                      </Text>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#696A6F",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        Format : 6 chiffres
+                      </Text>
                     </View>
                   </View>
-                </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    Array [
-                      Object {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexDirection": "row",
-                        "justifyContent": "flex-end",
-                      },
-                    ]
-                  }
-                >
                   <View
-                    accessibilityLabel="Code non reçu ?"
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                    numberOfSpaces={2}
                     style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderRadius": 0,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "marginTop": 0,
-                        "maxWidth": 500,
-                        "minHeight": 20,
-                        "opacity": 1,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "userSelect": "auto",
-                        "width": "auto",
-                      }
+                      Array [
+                        Object {
+                          "height": 8,
+                        },
+                      ]
                     }
-                    testID="Code non reçu ?"
+                  />
+                  <View
+                    height="small"
+                    isDisabled={false}
+                    isError={false}
+                    isFocus={false}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
+                          "borderRadius": 22,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="styled-input-container"
                   >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
+                    <TextInput
+                      aria-describedby="testUuidV4"
+                      aria-required={false}
+                      autoCapitalize="none"
+                      editable={true}
+                      keyboardType="number-pad"
+                      nativeID="testUuidV4"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      onSubmitEditing={[Function]}
+                      placeholder="012345"
+                      placeholderTextColor="#696A6F"
+                      returnKeyType="next"
                       style={
                         Array [
                           Object {
                             "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-Regular",
                             "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 8,
-                            "maxWidth": "100%",
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
                           },
                         ]
                       }
-                    >
-                      Code non reçu ?
-                    </Text>
+                      textContentType="oneTimeCode"
+                    />
                   </View>
                 </View>
-                <Modal
-                  accessibilityRole="none"
-                  animationType="none"
-                  aria-describedby="testUuidV4"
-                  aria-modal={true}
-                  deviceHeight={1334}
-                  deviceWidth={750}
-                  hardwareAccelerated={false}
-                  hideModalContentWhileAnimating={false}
-                  onBackdropPress={[Function]}
-                  onModalHide={[Function]}
-                  onModalWillHide={[Function]}
-                  onModalWillShow={[Function]}
-                  onRequestClose={[Function]}
-                  panResponderThreshold={4}
-                  scrollHorizontal={false}
-                  scrollOffset={0}
-                  scrollOffsetMax={0}
-                  scrollTo={null}
-                  statusBarTranslucent={true}
-                  supportedOrientations={
-                    Array [
-                      "portrait",
-                      "landscape",
-                    ]
-                  }
-                  swipeThreshold={100}
-                  testID="modal"
-                  transparent={true}
-                  visible={false}
-                />
               </View>
-            </View>
-          </RCTScrollView>
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "bottom": 0,
-                  "left": 0,
-                  "paddingBottom": 20,
-                  "paddingHorizontal": 20,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 0,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Continuer"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
-              }
-              testID="Continuer"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
+                numberOfSpaces={4}
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "justifyContent": "flex-end",
                     },
                   ]
                 }
               >
-                Continuer
-              </Text>
+                <View
+                  accessibilityLabel="Code non reçu ?"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 0,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginTop": 0,
+                      "maxWidth": 500,
+                      "minHeight": 20,
+                      "opacity": 1,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "userSelect": "auto",
+                      "width": "auto",
+                    }
+                  }
+                  testID="Code non reçu ?"
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="button-icon"
+                      width={20}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 8,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Code non reçu ?
+                  </Text>
+                </View>
+              </View>
+              <Modal
+                accessibilityRole="none"
+                animationType="none"
+                aria-describedby="testUuidV4"
+                aria-modal={true}
+                deviceHeight={1334}
+                deviceWidth={750}
+                hardwareAccelerated={false}
+                hideModalContentWhileAnimating={false}
+                onBackdropPress={[Function]}
+                onModalHide={[Function]}
+                onModalWillHide={[Function]}
+                onModalWillShow={[Function]}
+                onRequestClose={[Function]}
+                panResponderThreshold={4}
+                scrollHorizontal={false}
+                scrollOffset={0}
+                scrollOffsetMax={0}
+                scrollTo={null}
+                statusBarTranslucent={true}
+                supportedOrientations={
+                  Array [
+                    "portrait",
+                    "landscape",
+                  ]
+                }
+                swipeThreshold={100}
+                testID="modal"
+                transparent={true}
+                visible={false}
+              />
             </View>
-            <View
-              customHeight={8}
-              enable={true}
+          </View>
+        </RCTScrollView>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "bottom": 0,
+                "left": 0,
+                "paddingBottom": 20,
+                "paddingHorizontal": 20,
+                "paddingTop": 12,
+                "position": "absolute",
+                "right": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Continuer"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
+              }
+            }
+            testID="Continuer"
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
                   },
                 ]
               }
-            />
+            >
+              Continuer
+            </Text>
           </View>
+          <View
+            customHeight={8}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 8,
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>

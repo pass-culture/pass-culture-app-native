@@ -123,13 +123,30 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxDirection": "normal",
           "WebkitBoxFlex": 1,
+          "WebkitBoxOrient": "vertical",
           "WebkitFlexBasis": "0px",
+          "WebkitFlexDirection": "column",
           "WebkitFlexGrow": 1,
+          "alignItems": "center",
+          "backgroundColor": "rgba(255,255,255,1.00)",
+          "borderTopLeftRadius": "22px",
+          "borderTopRightRadius": "22px",
+          "display": "flex",
           "flexBasis": "0px",
+          "flexDirection": "column",
           "flexGrow": 1,
+          "height": "100%",
+          "msFlexAlign": "center",
+          "msFlexDirection": "column",
           "msFlexPositive": 1,
           "msFlexPreferredSize": "0px",
+          "overflowX": "scroll",
+          "overflowY": "scroll",
+          "paddingTop": "12px",
         }
       }
     >
@@ -137,52 +154,52 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
         className="css-view-1dbjc4n"
         style={
           Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "vertical",
-            "WebkitFlexDirection": "column",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderTopLeftRadius": "22px",
-            "borderTopRightRadius": "22px",
-            "display": "flex",
-            "flexDirection": "column",
-            "height": "100%",
-            "msFlexAlign": "center",
-            "msFlexDirection": "column",
-            "overflowX": "scroll",
-            "overflowY": "scroll",
-            "paddingTop": "12px",
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": "500px",
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+            "width": "100%",
           }
         }
       >
         <div
           className="css-view-1dbjc4n"
+          onScroll={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          onWheel={[Function]}
           style={
             Object {
+              "WebkitBoxDirection": "normal",
               "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
+              "WebkitBoxOrient": "vertical",
+              "WebkitFlexDirection": "column",
               "WebkitFlexGrow": 1,
               "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTransform": "translateZ(0px)",
+              "flexDirection": "column",
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": "500px",
+              "msFlexDirection": "column",
               "msFlexNegative": 1,
               "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-              "width": "100%",
+              "overflowX": "hidden",
+              "overflowY": "auto",
+              "transform": "translateZ(0px)",
             }
           }
         >
           <div
             className="css-view-1dbjc4n"
-            onScroll={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            onWheel={[Function]}
             style={
               Object {
                 "WebkitBoxDirection": "normal",
@@ -190,18 +207,13 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                 "WebkitBoxOrient": "vertical",
                 "WebkitFlexDirection": "column",
                 "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitOverflowScrolling": "touch",
-                "WebkitTransform": "translateZ(0px)",
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "flexShrink": 1,
                 "msFlexDirection": "column",
-                "msFlexNegative": 1,
                 "msFlexPositive": 1,
-                "overflowX": "hidden",
-                "overflowY": "auto",
-                "transform": "translateZ(0px)",
+                "paddingBottom": "0px",
+                "paddingLeft": "20px",
+                "paddingRight": "20px",
               }
             }
           >
@@ -209,18 +221,14 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "WebkitBoxDirection": "normal",
                   "WebkitBoxFlex": 1,
-                  "WebkitBoxOrient": "vertical",
-                  "WebkitFlexDirection": "column",
+                  "WebkitBoxPack": "center",
                   "WebkitFlexGrow": 1,
-                  "flexDirection": "column",
+                  "WebkitJustifyContent": "center",
                   "flexGrow": 1,
-                  "msFlexDirection": "column",
+                  "justifyContent": "center",
+                  "msFlexPack": "center",
                   "msFlexPositive": 1,
-                  "paddingBottom": "0px",
-                  "paddingLeft": "20px",
-                  "paddingRight": "20px",
                 }
               }
             >
@@ -228,14 +236,10 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "WebkitBoxFlex": 1,
-                    "WebkitBoxPack": "center",
-                    "WebkitFlexGrow": 1,
-                    "WebkitJustifyContent": "center",
-                    "flexGrow": 1,
-                    "justifyContent": "center",
-                    "msFlexPack": "center",
-                    "msFlexPositive": 1,
+                    "WebkitAlignSelf": "center",
+                    "alignSelf": "center",
+                    "msFlexItemAlign": "center",
+                    "msGridRowAlign": "center",
                   }
                 }
               >
@@ -243,168 +247,156 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitAlignSelf": "center",
-                      "alignSelf": "center",
-                      "msFlexItemAlign": "center",
-                      "msGridRowAlign": "center",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    style={
-                      Object {
-                        "height": "40px",
-                      }
-                    }
-                  />
-                  <div
-                    className="css-view-1dbjc4n"
-                  >
-                    <div
-                      className="css-text-901oao"
-                      dir="auto"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "WebkitAlignItems": "center",
-                      "WebkitBoxAlign": "center",
-                      "alignItems": "center",
-                      "msFlexAlign": "center",
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <h2
-                    aria-level={2}
-                    className="css-reset-4rbku5 css-text-901oao"
-                    dir="ltr"
-                    role="heading"
-                    style={
-                      Object {
-                        "color": "rgba(22,22,23,1.00)",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": "18px",
-                        "lineHeight": "22px",
-                        "textAlign": "center",
-                      }
-                    }
-                  >
-                    Identification
-                  </h2>
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "16px",
+                      "height": "40px",
                     }
                   }
                 />
                 <div
-                  className="css-text-901oao"
-                  dir="ltr"
-                  style={
-                    Object {
-                      "color": "rgba(105,106,111,1.00)",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "lineHeight": "20px",
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-                </div>
-                <div
                   className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "32px",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "backgroundColor": "rgba(255,255,255,1.00)",
-                "bottom": "0px",
-                "left": "0px",
-                "paddingBottom": "20px",
-                "paddingLeft": "20px",
-                "paddingRight": "20px",
-                "paddingTop": "12px",
-                "position": "absolute",
-                "right": "0px",
-              }
-            }
-          >
-            <button
-              className="sc-dkPtRN ffceOV sc-eCImPb idTzrf"
-              onClick={[Function]}
-              onDoubleClick={[Function]}
-              tabIndex={0}
-              type="button"
-            >
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitFlexShrink": 0,
-                    "flexShrink": 0,
-                    "msFlexNegative": 0,
-                  }
-                }
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  data-testid="button-icon"
                 >
                   <div
                     className="css-text-901oao"
                     dir="auto"
                   >
-                    button-icon-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
               </div>
               <div
-                className="css-text-901oao css-textMultiLine-cens5h"
-                dir="ltr"
+                className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "WebkitLineClamp": 1,
-                    "color": "rgba(255,255,255,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                    "marginLeft": "8px",
-                    "maxWidth": "100%",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "alignItems": "center",
+                    "msFlexAlign": "center",
+                    "width": "100%",
                   }
                 }
               >
-                Connexion avec ÉduConnect
+                <h2
+                  aria-level={2}
+                  className="css-reset-4rbku5 css-text-901oao"
+                  dir="ltr"
+                  role="heading"
+                  style={
+                    Object {
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": "18px",
+                      "lineHeight": "22px",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Identification
+                </h2>
               </div>
-            </button>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "height": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-text-901oao"
+                dir="ltr"
+                style={
+                  Object {
+                    "color": "rgba(105,106,111,1.00)",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": "15px",
+                    "lineHeight": "20px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "height": "32px",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "backgroundColor": "rgba(255,255,255,1.00)",
+              "bottom": "0px",
+              "left": "0px",
+              "paddingBottom": "20px",
+              "paddingLeft": "20px",
+              "paddingRight": "20px",
+              "paddingTop": "12px",
+              "position": "absolute",
+              "right": "0px",
+            }
+          }
+        >
+          <button
+            className="sc-dkPtRN ffceOV sc-eCImPb idTzrf"
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            tabIndex={0}
+            type="button"
+          >
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "height": "8px",
+                  "WebkitFlexShrink": 0,
+                  "flexShrink": 0,
+                  "msFlexNegative": 0,
                 }
               }
-            />
-          </div>
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="button-icon"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="ltr"
+              style={
+                Object {
+                  "WebkitLineClamp": 1,
+                  "color": "rgba(255,255,255,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                  "marginLeft": "8px",
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Connexion avec ÉduConnect
+            </div>
+          </button>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
         </div>
       </div>
     </div>

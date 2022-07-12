@@ -106,8 +106,17 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,54 +129,36 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
       >
-        <View
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            Object {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
           style={
             Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
-              },
+              Object {},
             ]
           }
         >
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
-              Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
-                "paddingHorizontal": 20,
-              }
-            }
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <View />
-          </RCTScrollView>
-        </View>
+          <View />
+        </RCTScrollView>
       </View>
     </View>
   </View>

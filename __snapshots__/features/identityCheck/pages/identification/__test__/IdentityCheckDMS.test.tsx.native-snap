@@ -106,8 +106,17 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,15 +129,11 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
@@ -137,11 +142,8 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
+                "paddingHorizontal": 20,
+                "paddingTop": 20,
               },
             ]
           }
@@ -150,361 +152,350 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "paddingHorizontal": 20,
-                  "paddingTop": 20,
+                  "alignItems": "center",
+                  "height": "100%",
                 },
               ]
             }
           >
             <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              fill="none"
+              height={156}
+              width={200}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
               style={
                 Array [
                   Object {
                     "alignItems": "center",
-                    "height": "100%",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <View
-                fill="none"
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Créer un dossier sur le site des Démarches Simplifiées
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   Array [
                     Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
                       "textAlign": "center",
                     },
                   ]
                 }
               >
-                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+                Créer un dossier sur le site des Démarches Simplifiées
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "paddingBottom": 40,
+                    "paddingLeft": 40,
+                    "paddingRight": 40,
+                    "paddingTop": 40,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Je suis de nationalité française"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Je suis de nationalité française"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 8,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Je suis de nationalité française
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Carte d’identité ou passeport.
               </Text>
               <View
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "paddingBottom": 40,
-                      "paddingLeft": 40,
-                      "paddingRight": 40,
-                      "paddingTop": 40,
+                      "alignItems": "center",
+                      "alignSelf": "stretch",
+                      "justifyContent": "center",
+                      "marginVertical": 24,
+                      "position": "relative",
                     },
                   ]
                 }
               >
                 <View
-                  accessibilityLabel="Je suis de nationalité française"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Je suis de nationalité française"
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      testID="button-icon"
-                      width={20}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 8,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Je suis de nationalité française
-                  </Text>
-                </View>
-                <Text
                   style={
                     Array [
                       Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "textAlign": "center",
+                        "backgroundColor": "#CBCDD2",
+                        "height": 1,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
                       },
                     ]
                   }
-                >
-                  Carte d’identité ou passeport.
-                </Text>
+                />
                 <View
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "alignSelf": "stretch",
-                        "justifyContent": "center",
-                        "marginVertical": 24,
-                        "position": "relative",
+                        "backgroundColor": "#ffffff",
+                        "paddingHorizontal": 10,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    ou
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Je suis de nationalité étrangère"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Je suis de nationalité étrangère"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
                       },
                     ]
                   }
                 >
                   <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#CBCDD2",
-                          "height": 1,
-                          "left": 0,
-                          "position": "absolute",
-                          "right": 0,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#ffffff",
-                          "paddingHorizontal": 10,
-                        },
-                      ]
-                    }
+                    height={20}
+                    testID="button-icon"
+                    width={20}
                   >
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      ou
+                    <Text>
+                      button-icon-SVG-Mock
                     </Text>
                   </View>
                 </View>
-                <View
-                  accessibilityLabel="Je suis de nationalité étrangère"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Je suis de nationalité étrangère"
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      testID="button-icon"
-                      width={20}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 8,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Je suis de nationalité étrangère
-                  </Text>
-                </View>
                 <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "textAlign": "center",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 8,
+                        "maxWidth": "100%",
                       },
                     ]
                   }
                 >
-                  Titre de séjour, carte d'identité ou passeport.
+                  Je suis de nationalité étrangère
                 </Text>
               </View>
-              <View
-                customHeight={8}
-                enable={true}
+              <Text
                 style={
                   Array [
                     Object {
-                      "height": 8,
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "textAlign": "center",
                     },
                   ]
                 }
-              />
+              >
+                Titre de séjour, carte d'identité ou passeport.
+              </Text>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>

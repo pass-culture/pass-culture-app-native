@@ -107,8 +107,17 @@ Array [
           Array [
             Array [
               Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderTopLeftRadius": 22,
+                "borderTopRightRadius": 22,
+                "display": "flex",
                 "flexBasis": 0,
+                "flexDirection": "column",
                 "flexGrow": 1,
+                "height": "100%",
+                "overflow": "scroll",
+                "paddingTop": 12,
               },
             ],
             Object {
@@ -121,405 +130,387 @@ Array [
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderTopLeftRadius": 22,
-                "borderTopRightRadius": 22,
-                "display": "flex",
-                "flexDirection": "column",
-                "height": "100%",
-                "overflow": "scroll",
-                "paddingTop": 12,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "maxWidth": 500,
+                "width": "100%",
               },
             ]
           }
         >
-          <View
+          <RCTScrollView
+            bottomChildrenViewHeight={0}
+            contentContainerStyle={
+              Object {
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "paddingBottom": 0,
+                "paddingHorizontal": 20,
+              }
+            }
+            keyboardShouldPersistTaps="handled"
+            onContentSizeChange={[Function]}
+            onLayout={[Function]}
             style={
               Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
+                Object {},
               ]
             }
           >
-            <RCTScrollView
-              bottomChildrenViewHeight={0}
-              contentContainerStyle={
-                Object {
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "paddingBottom": 0,
-                  "paddingHorizontal": 20,
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "height": "100%",
+                    },
+                  ]
                 }
-              }
-              keyboardShouldPersistTaps="handled"
-              onContentSizeChange={[Function]}
-              onLayout={[Function]}
-              style={
-                Array [
-                  Object {},
-                ]
-              }
-            >
-              <View>
+              >
                 <View
+                  numberOfSpaces={10}
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "height": "100%",
+                        "height": 40,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  fill="none"
+                  height={156}
+                  width={200}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    Array [
+                      Object {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 18,
+                        "lineHeight": 22,
+                        "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  <View
-                    numberOfSpaces={10}
-                    style={
-                      Array [
-                        Object {
-                          "height": 40,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    fill="none"
-                    height={156}
-                    width={200}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={6}
-                    style={
-                      Array [
-                        Object {
-                          "height": 24,
-                        },
-                      ]
-                    }
-                  />
+                  Vérification de l'identité
+                </Text>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    Array [
+                      Object {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Prends une photo de ta
                   <Text
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
-                          "textAlign": "center",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    Vérification de l'identité
+                     carte d'identité 
                   </Text>
-                  <View
-                    numberOfSpaces={6}
+                  ou de ton
+                  <Text
                     style={
                       Array [
                         Object {
-                          "height": 24,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  />
+                  >
+                     passeport 
+                  </Text>
+                  en cours de validité pour accéder à ton pass Culture.
+                </Text>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    Array [
+                      Object {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 4,
+                        "display": "flex",
+                        "paddingBottom": 8,
+                        "paddingHorizontal": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
+                >
                   <Text
                     style={
                       Array [
                         Object {
                           "color": "#696A6F",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "center",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
                         },
                       ]
                     }
                   >
-                    Prends une photo de ta
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                       carte d'identité 
-                    </Text>
-                    ou de ton
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                       passeport 
-                    </Text>
-                    en cours de validité pour accéder à ton pass Culture.
+                    Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
                   </Text>
                   <View
-                    numberOfSpaces={6}
+                    accessibilityLabel="Transmettre un document"
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "height": 24,
-                        },
-                      ]
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "opacity": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 2,
+                        "userSelect": "auto",
+                        "width": "100%",
+                      }
                     }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#F1F1F4",
-                          "borderRadius": 4,
-                          "display": "flex",
-                          "paddingBottom": 8,
-                          "paddingHorizontal": 16,
-                          "paddingTop": 16,
-                        },
-                      ]
-                    }
+                    testID="Transmettre un document"
                   >
-                    <Text
+                    <View
                       style={
                         Array [
                           Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "flexShrink": 0,
                           },
                         ]
                       }
                     >
-                      Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
-                    </Text>
-                    <View
-                      accessibilityLabel="Transmettre un document"
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderRadius": 24,
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                          "maxWidth": 500,
-                          "minHeight": 40,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 2,
-                          "userSelect": "auto",
-                          "width": "100%",
-                        }
-                      }
-                      testID="Transmettre un document"
-                    >
                       <View
-                        style={
-                          Array [
-                            Object {
-                              "flexShrink": 0,
-                            },
-                          ]
-                        }
+                        height={16}
+                        testID="button-icon"
+                        width={16}
                       >
-                        <View
-                          height={16}
-                          testID="button-icon"
-                          width={16}
-                        >
-                          <Text>
-                            button-icon-SVG-Mock
-                          </Text>
-                        </View>
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
                       </View>
-                      <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 12,
-                              "lineHeight": 20,
-                              "marginLeft": 4,
-                              "maxWidth": "100%",
-                            },
-                          ]
-                        }
-                      >
-                        Transmettre un document
-                      </Text>
                     </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 12,
+                            "lineHeight": 20,
+                            "marginLeft": 4,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      Transmettre un document
+                    </Text>
                   </View>
-                  <Modal
-                    accessibilityRole="none"
-                    animationType="none"
-                    aria-describedby="testUuidV4"
-                    aria-modal={true}
-                    deviceHeight={1334}
-                    deviceWidth={750}
-                    hardwareAccelerated={false}
-                    hideModalContentWhileAnimating={false}
-                    onBackdropPress={[Function]}
-                    onModalHide={[Function]}
-                    onModalWillHide={[Function]}
-                    onModalWillShow={[Function]}
-                    onRequestClose={[Function]}
-                    panResponderThreshold={4}
-                    scrollHorizontal={false}
-                    scrollOffset={0}
-                    scrollOffsetMax={0}
-                    scrollTo={null}
-                    statusBarTranslucent={true}
-                    supportedOrientations={
-                      Array [
-                        "portrait",
-                        "landscape",
-                      ]
-                    }
-                    swipeThreshold={100}
-                    testID="modal"
-                    transparent={true}
-                    visible={false}
-                  />
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                 </View>
-              </View>
-            </RCTScrollView>
-            <View
-              onLayout={[Function]}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "#ffffff",
-                    "bottom": 0,
-                    "left": 0,
-                    "paddingBottom": 20,
-                    "paddingHorizontal": 20,
-                    "paddingTop": 12,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Commencer la vérification"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
+                <Modal
+                  accessibilityRole="none"
+                  animationType="none"
+                  aria-describedby="testUuidV4"
+                  aria-modal={true}
+                  deviceHeight={1334}
+                  deviceWidth={750}
+                  hardwareAccelerated={false}
+                  hideModalContentWhileAnimating={false}
+                  onBackdropPress={[Function]}
+                  onModalHide={[Function]}
+                  onModalWillHide={[Function]}
+                  onModalWillShow={[Function]}
+                  onRequestClose={[Function]}
+                  panResponderThreshold={4}
+                  scrollHorizontal={false}
+                  scrollOffset={0}
+                  scrollOffsetMax={0}
+                  scrollTo={null}
+                  statusBarTranslucent={true}
+                  supportedOrientations={
+                    Array [
+                      "portrait",
+                      "landscape",
+                    ]
                   }
-                }
-                testID="Commencer la vérification"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                  swipeThreshold={100}
+                  testID="modal"
+                  transparent={true}
+                  visible={false}
+                />
+                <View
+                  numberOfSpaces={2}
                   style={
                     Array [
                       Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "height": 8,
                       },
                     ]
                   }
-                >
-                  Commencer la vérification
-                </Text>
+                />
               </View>
-              <View
-                customHeight={8}
-                enable={true}
+            </View>
+          </RCTScrollView>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "bottom": 0,
+                  "left": 0,
+                  "paddingBottom": 20,
+                  "paddingHorizontal": 20,
+                  "paddingTop": 12,
+                  "position": "absolute",
+                  "right": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Commencer la vérification"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Commencer la vérification"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "height": 8,
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
                     },
                   ]
                 }
-              />
+              >
+                Commencer la vérification
+              </Text>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>

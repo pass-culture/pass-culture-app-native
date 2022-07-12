@@ -15,9 +15,7 @@ export const CustomKeyboardAvoidingView = (props: Props) => {
   return (
     <Container>
       <StyledKeyboardAvoidingView keyboardVerticalOffset={appBarHeight + topSafeInset}>
-        <ChildrenContainer>
-          <CenteredWebContainer>{props.children}</CenteredWebContainer>
-        </ChildrenContainer>
+        <CenteredWebContainer>{props.children}</CenteredWebContainer>
       </StyledKeyboardAvoidingView>
     </Container>
   )
@@ -29,12 +27,9 @@ const Container = styled.View({
 
 const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
-})({
+})(({ theme }) => ({
   flexGrow: 1,
   flexBasis: 0,
-})
-
-const ChildrenContainer = styled.View(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
