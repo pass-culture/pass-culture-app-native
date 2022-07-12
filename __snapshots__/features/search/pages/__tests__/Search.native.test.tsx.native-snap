@@ -1,17 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search component should render Search 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+Array [
   <View
     height={96}
     position="absolute"
@@ -38,7 +28,7 @@ exports[`Search component should render Search 1`] = `
         undefined-SVG-Mock
       </Text>
     </View>
-  </View>
+  </View>,
   <View
     customHeight={16}
     enable={true}
@@ -49,7 +39,7 @@ exports[`Search component should render Search 1`] = `
         },
       ]
     }
-  />
+  />,
   <View
     style={
       Array [
@@ -298,7 +288,7 @@ exports[`Search component should render Search 1`] = `
       Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
 "Entrée"
     </Text>
-  </View>
+  </View>,
   <View
     style={
       Array [
@@ -1731,6 +1721,6 @@ exports[`Search component should render Search 1`] = `
         ]
       }
     />
-  </View>
-</View>
+  </View>,
+]
 `;
