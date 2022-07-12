@@ -47,17 +47,15 @@ export function Search() {
   }
 
   return (
-    <Container>
-      <Form.Flex>
-        <SearchHeader
-          paramsShowResults={params?.showResults}
-          searchInputID={searchInputID}
-          onFocusState={setIsFocus}
-          isFocus={isFocus}
-        />
-        {bodySearch()}
-      </Form.Flex>
-    </Container>
+    <Form.Flex>
+      <SearchHeader
+        paramsShowResults={params?.showResults}
+        searchInputID={searchInputID}
+        onFocusState={setIsFocus}
+        isFocus={isFocus}
+      />
+      {bodySearch()}
+    </Form.Flex>
   )
 }
 
