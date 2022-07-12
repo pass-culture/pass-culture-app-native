@@ -906,13 +906,12 @@ workflows:
       - deploy-soft-testing:
           filters:
             branches:
-              only:
-                - master
+              only: PC-16368
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-translations
-            - test-native
+            # - test-translations
+            # - test-native
       - transition-jira-ticket:
           filters:
             branches:
@@ -930,26 +929,30 @@ workflows:
 
       - deploy-android-testing-hard:
           filters:
-            tags:
-              only: /^testing\/v.*/
             branches:
-              ignore: /.*/
+              only: PC-16368
+            # tags:
+            #   only: /^testing\/v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-translations
-            - test-native
+            # - test-translations
+            # - test-native
       - deploy-ios-testing-hard:
           filters:
-            tags:
-              only: /^testing\/v.*/
             branches:
-              ignore: /.*/
+              only: PC-16368
+            # tags:
+            #   only: /^testing\/v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-translations
-            - test-native
+            # - test-translations
+            # - test-native
       - notify-hard-testing-release:
           filters:
             tags:
