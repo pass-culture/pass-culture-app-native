@@ -27,8 +27,7 @@ type CustomSearchInputProps = {
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
   onFocusState?: (focus: boolean) => void
-  onPressLocationButton?: () => void
-  locationLabel?: string
+  children?: React.ReactNode
 }
 
 export type RNTextInputProps = Pick<
@@ -93,8 +92,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     accessibilityDescribedBy: props.accessibilityDescribedBy,
     onPressRightIcon: props.onPressRightIcon,
     focusOutlineColor: props.focusOutlineColor,
-    onPressLocationButton: props.onPressLocationButton,
-    locationLabel: props.locationLabel,
+    children: props.children,
   }
 }
 
