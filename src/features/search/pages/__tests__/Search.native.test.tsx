@@ -23,6 +23,23 @@ const mockStagedSearchState: SearchState = {
   priceRange: [0, 20],
 }
 
+const mockSettings = {
+  appEnableAutocomplete: true,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
+jest.mock('react-instantsearch-hooks', () => ({
+  ...jest.requireActual('react-instantsearch-hooks'),
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+}))
+
 const mockDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
@@ -80,6 +97,25 @@ describe('Search component', () => {
     })
   })
 
+  it('should show autocomplete list when focus on input if autocomplete feature flag activated', async () => {
+    const { queryByTestId, getByPlaceholderText } = render(<Search />)
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onFocus')
+
+    expect(queryByTestId('autocompleteList')).toBeTruthy()
+  })
+
+  it('should not show autocomplete list when focus on input if autocomplete feature flag is not activated', async () => {
+    mockSettings.appEnableAutocomplete = false
+    const { queryByTestId, getByPlaceholderText } = render(<Search />)
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onFocus')
+
+    expect(queryByTestId('autocompleteList')).toBeFalsy()
+  })
+
   describe('When offline', () => {
     it('should display offline page', () => {
       mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
@@ -120,15 +156,6 @@ describe('Search component', () => {
     it('should show search box with label', () => {
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
-    })
-
-    it('should show view for recent searches and suggestions', async () => {
-      const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-      const searchInput = getByPlaceholderText('Offre, artiste...')
-      await fireEvent(searchInput, 'onFocus')
-
-      expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
     })
   })
 

@@ -1,8 +1,9 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
 import { SearchDetails } from 'features/search/components/SearchDetails'
@@ -22,7 +23,8 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const showResults = useShowResults()
-  const [isFocus, setIsFocus] = useState(false)
+  const { data: appSettings } = useAppSettings()
+  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
   const showResultsForCategory = useShowResultsForCategory()
 
   useEffect(() => {
@@ -30,7 +32,16 @@ export function Search() {
   }, [dispatch, params])
 
   const bodySearch = () => {
-    if (showResults || isFocus) return <SearchDetails />
+    // SearchDetails will integrate recent searches and suggestions
+    // To avoid blink effect when refreshing the view (due to dispatch delay), we also test params.showResults
+    if (showResults || shouldAutocomplete)
+      return (
+        <SearchDetails
+          shouldAutocomplete={shouldAutocomplete}
+          appEnableAutocomplete={appEnableAutocomplete}
+          setShouldAutocomplete={setShouldAutocomplete}
+        />
+      )
     return (
       <Container>
         <Spacer.Column numberOfSpaces={5} />
@@ -47,8 +58,23 @@ export function Search() {
   return (
     <Container>
       <Form.Flex>
-        <SearchHeader searchInputID={searchInputID} onFocusState={setIsFocus} isFocus={isFocus} />
-        {bodySearch()}
+        {appEnableAutocomplete ? (
+          <InstantSearch searchClient={searchClient} indexName={offersIndex}>
+            <SearchHeader
+              searchInputID={searchInputID}
+              appEnableAutocomplete={appEnableAutocomplete}
+            />
+            {bodySearch()}
+          </InstantSearch>
+        ) : (
+          <React.Fragment>
+            <SearchHeader
+              searchInputID={searchInputID}
+              appEnableAutocomplete={appEnableAutocomplete}
+            />
+            {bodySearch()}
+          </React.Fragment>
+        )}
       </Form.Flex>
     </Container>
   )
