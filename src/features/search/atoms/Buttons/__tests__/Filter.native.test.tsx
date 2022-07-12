@@ -21,7 +21,7 @@ describe('Filter component', () => {
 
   it('should navigate to Filter page on pressing', async () => {
     const { getByTestId } = render(<Filter />)
-    await fireEvent.press(getByTestId('FilterButton'))
+    await fireEvent.press(getByTestId('searchFilterButton'))
     expect(navigate).toHaveBeenCalledWith('SearchFilter', undefined)
   })
 })

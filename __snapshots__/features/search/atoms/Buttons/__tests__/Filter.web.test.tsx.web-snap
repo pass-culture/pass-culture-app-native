@@ -7,7 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        data-testid="FilterButton"
+        data-testid="searchFilterButton"
         style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
@@ -68,7 +68,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      data-testid="FilterButton"
+      data-testid="searchFilterButton"
       style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
     >

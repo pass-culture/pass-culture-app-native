@@ -20,7 +20,7 @@ exports[`Filter component should render correctly 1`] = `
       "userSelect": "auto",
     }
   }
-  testID="FilterButton"
+  testID="searchFilterButton"
 >
   <BVLinearGradient
     colors={
