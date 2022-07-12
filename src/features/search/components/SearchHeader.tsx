@@ -13,7 +13,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  paramsShowResults?: boolean
   searchInputID: string
   onFocusState?: (focus: boolean) => void
   isFocus?: boolean
@@ -69,15 +68,10 @@ const SearchBoxWithoutLabel = ({
   )
 }
 
-export const SearchHeader: React.FC<Props> = ({
-  paramsShowResults,
-  searchInputID,
-  onFocusState,
-  isFocus,
-}) => {
+export const SearchHeader: React.FC<Props> = ({ searchInputID, onFocusState, isFocus }) => {
   const showResults = useShowResults()
 
-  return !paramsShowResults && !showResults && !isFocus ? (
+  return !showResults && !isFocus ? (
     <SearchBoxWithLabel
       searchInputID={searchInputID}
       onFocusState={onFocusState}
