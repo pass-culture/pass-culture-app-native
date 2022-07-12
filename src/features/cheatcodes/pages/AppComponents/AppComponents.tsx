@@ -702,7 +702,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - OfferImage tall </Text>
         </AlignedText>
         <AlignedText>
-          <Badge label={1} />
+          <Badge value={1} />
           <Text> - Badge </Text>
         </AlignedText>
         <AlignedText>

@@ -28,7 +28,7 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
         <SectionRow
           type="navigable"
           title={endedBookingsLabel}
-          icon={() => <Badge label={endedBookings.length} />}
+          icon={() => <Badge value={endedBookings.length} />}
           navigateTo={{ screen: 'EndedBookings' }}
         />
       </EndedBookingsSectionWrapper>
