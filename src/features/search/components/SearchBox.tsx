@@ -7,16 +7,15 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { SearchMainInput } from 'features/search/components/SearchMainInput'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { useShowResults } from 'features/search/pages/useShowResults'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -110,21 +109,17 @@ export const SearchBox: React.FC<Props> = ({
             <ArrowPrevious />
           </StyledTouchableOpacity>
         ) : null}
-        <StyledSearchInput
+        <SearchMainInput
           searchInputID={searchInputID}
-          value={query}
-          onChangeText={setQuery}
-          placeholder={t`Offre, artiste...`}
-          autoFocus={isFocus}
-          inputHeight="regular"
-          LeftIcon={MagnifyingGlassIcon}
-          onSubmitEditing={onSubmitQuery}
-          onPressRightIcon={resetQuery}
+          query={query}
+          setQuery={setQuery}
+          isFocus={isFocus}
+          onSubmitQuery={onSubmitQuery}
+          resetQuery={resetQuery}
           onFocusState={onFocusState}
-          testID="searchInput"
-          onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
+          showLocationButton={showLocationButton}
           locationLabel={locationLabel}
-          nativeAutoFocus
+          onPressLocationButton={onPressLocationButton}
         />
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
@@ -135,20 +130,8 @@ export const SearchBox: React.FC<Props> = ({
   )
 }
 
-const StyledSearchInput = styled(SearchInput)({
-  outlineOffset: 0,
-})
-
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
-}))``
-
-const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
-}))``
-
-const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
 }))``
 
 const SearchInputContainer = styled.View<{ marginHorizontal: number }>(({ marginHorizontal }) => ({
