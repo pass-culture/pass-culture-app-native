@@ -211,9 +211,13 @@ const FilterContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const ScrollToTopContainer = styled(FilterContainer)({
+const ScrollToTopContainer = styled.View(({ theme }) => ({
+  alignSelf: 'center',
+  position: 'absolute',
   right: getSpacing(7),
-})
+  bottom: theme.tabBar.height + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
