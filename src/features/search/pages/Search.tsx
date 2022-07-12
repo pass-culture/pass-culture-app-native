@@ -30,9 +30,7 @@ export function Search() {
   }, [dispatch, params])
 
   const bodySearch = () => {
-    // SearchDetails will integrate recent searches and suggestions
-    // To avoid blink effect when refreshing the view (due to dispatch delay), we also test params.showResults
-    if (params?.showResults || showResults || isFocus) return <SearchDetails />
+    if (showResults || isFocus) return <SearchDetails />
     return (
       <Container>
         <Spacer.Column numberOfSpaces={5} />
