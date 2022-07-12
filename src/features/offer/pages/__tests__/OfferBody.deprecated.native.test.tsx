@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { analytics } from 'libs/firebase/analytics'
+import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { act, cleanup, fireEvent } from 'tests/utils'
 
 import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
@@ -33,7 +34,12 @@ jest.mock('features/offer/services/useReasonsForReporting', () => ({
   })),
 }))
 
+jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
 describe('<OfferBody />', () => {
+  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
   })
@@ -105,14 +111,20 @@ describe('<OfferBody />', () => {
     expect(wrapper.queryByText('Distance')).toBeNull()
   })
 
-  it('should request /native/v1/offers/reports if user is logged in', async () => {
+  it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
     await renderOfferBodyPage()
-    expect(api.getnativev1offersreports).toHaveBeenCalled()
+    expect(api.getnativev1offersreports).toBeCalled()
   })
 
-  it('should not request /native/v1/offers/reports if user is not logged in', async () => {
+  it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+    await renderOfferBodyPage()
+    expect(api.getnativev1offersreports).not.toBeCalled()
+  })
+
+  it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
     await renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
-    expect(api.getnativev1offersreports).not.toHaveBeenCalled()
+    expect(api.getnativev1offersreports).not.toBeCalled()
   })
 
   it('should log itinerary analytics', async () => {
@@ -120,6 +132,6 @@ describe('<OfferBody />', () => {
     act(() => {
       fireEvent.press(wrapper.getByText("Voir l'itinéraire"))
     })
-    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ offerId, from: 'offer' })
+    expect(analytics.logConsultItinerary).toBeCalledWith({ offerId, from: 'offer' })
   })
 })

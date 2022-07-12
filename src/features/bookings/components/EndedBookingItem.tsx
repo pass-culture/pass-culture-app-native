@@ -8,10 +8,12 @@ import { BookingCancellationReasons } from 'api/gen'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { analytics } from 'libs/firebase/analytics'
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Check } from 'ui/svg/icons/Check'
@@ -25,6 +27,8 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const categoryId = useCategoryId(stock.offer.subcategoryId)
   const queryClient = useQueryClient()
+  const netInfo = useNetInfo()
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
@@ -38,23 +42,31 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
-    // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData(
-      [QueryKeys.OFFER, offer.id],
-      mergeOfferData({
-        ...offer,
-        categoryId,
-        thumbUrl: offer.image?.url,
-        name: offer.name,
-        offerId: offer.id,
+    if (netInfo.isConnected) {
+      // We pre-populate the query-cache with the data from the search result for a smooth transition
+      queryClient.setQueryData(
+        [QueryKeys.OFFER, offer.id],
+        mergeOfferData({
+          ...offer,
+          categoryId,
+          thumbUrl: offer.image?.url,
+          name: offer.name,
+          offerId: offer.id,
+        })
+      )
+      analytics.logConsultOffer({ offerId: offer.id, from: 'endedbookings' })
+    } else {
+      showErrorSnackBar({
+        message: t`Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.`,
+        timeout: SNACK_BAR_TIME_OUT,
       })
-    )
-    analytics.logConsultOffer({ offerId: offer.id, from: 'endedbookings' })
+    }
   }
 
   return (
     <View {...getHeadingAttrs(3)}>
       <TouchableLink
+        enableNavigate={!!netInfo.isConnected}
         navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}

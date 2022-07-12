@@ -1353,6 +1353,7 @@ msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compt
 msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
+#: src/features/bookings/components/EndedBookingItem.tsx
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer."
 msgstr "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer."
