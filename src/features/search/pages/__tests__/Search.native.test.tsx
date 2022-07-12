@@ -133,17 +133,16 @@ describe('Search component', () => {
   })
 
   describe('When search executed', () => {
+    beforeAll(() => {
+      useRoute.mockReturnValue({ params: { showResults: true, query: 'la fnac' } })
+    })
+
     it('should show search box without label', () => {
-      useRoute.mockReturnValueOnce({ params: { showResults: true } })
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
     })
 
     it('should show search results', () => {
-      useRoute
-        .mockReturnValueOnce({ params: { showResults: true, query: 'la fnac' } })
-        .mockReturnValueOnce({ params: { showResults: true, query: 'la fnac' } })
-        .mockReturnValueOnce({ params: { showResults: true, query: 'la fnac' } })
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
     })
