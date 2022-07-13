@@ -168,8 +168,6 @@ describe('SetPhoneNumber', () => {
       )
     })
   })
-
-  // TODO(PC-14869): implement the check that modal is visible when going to SetPhoneValiditationCode then using GoBack
 })
 
 function renderSetPhoneNumber() {
