@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 
-const THIRTY_SECONDS = 30000
+const THIRTY_SECONDS = 15000
 
 export function OfflineModeContainer({ children }: { children: ReactNode }) {
   const netInfo = useNetInfo()
