@@ -52,7 +52,7 @@ describe('CulturalSurveysQuestions page', () => {
     expect(QuestionsPage).toMatchSnapshot()
   })
 
-  it('should navigate to next page when pressing Continuer', () => {
+  it('should navigate to next page when pressing Continuer', async () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)

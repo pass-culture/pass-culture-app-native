@@ -2073,6 +2073,11 @@ Array [
         </Text>
         <View
           accessibilityLabel="Générer le lien"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}

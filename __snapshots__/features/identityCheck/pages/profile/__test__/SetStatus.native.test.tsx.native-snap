@@ -823,6 +823,11 @@ exports[`<SetStatus/> should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Choisis ton statut"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={false}

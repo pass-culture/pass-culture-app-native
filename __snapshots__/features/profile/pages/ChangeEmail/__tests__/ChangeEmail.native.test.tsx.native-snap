@@ -650,6 +650,11 @@ Array [
         >
           <View
             accessibilityLabel="Enregistrer les modifications"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={false}
@@ -1308,6 +1313,11 @@ Array [
         >
           <View
             accessibilityLabel="Enregistrer les modifications"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={false}

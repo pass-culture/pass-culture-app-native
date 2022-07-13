@@ -1053,6 +1053,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       >
         <View
           accessibilityLabel="Signaler l'offre"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}

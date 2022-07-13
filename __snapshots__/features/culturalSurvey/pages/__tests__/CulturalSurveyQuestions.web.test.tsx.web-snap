@@ -633,15 +633,15 @@ Object {
         >
           <button
             aria-label="Continuer vers l'étape suivante"
-            class="sc-bdvvtL hhgmhh sc-dkPtRN kmXVLA"
+            class="sc-bdvvtL byXxOw sc-dkPtRN kmXVLA"
             data-testid="next-cultural-survey-question"
-            disabled=""
+            tabindex="0"
             type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="ltr"
-              style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
             </div>
@@ -1283,15 +1283,15 @@ Object {
       >
         <button
           aria-label="Continuer vers l'étape suivante"
-          class="sc-bdvvtL hhgmhh sc-dkPtRN kmXVLA"
+          class="sc-bdvvtL byXxOw sc-dkPtRN kmXVLA"
           data-testid="next-cultural-survey-question"
-          disabled=""
+          tabindex="0"
           type="button"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
             dir="ltr"
-            style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer
           </div>
