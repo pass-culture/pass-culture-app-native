@@ -91,7 +91,7 @@ describe('SearchBoxAutocomplete component', () => {
     )
   })
 
-  it('should not show previous if no search executed and no autocomplete list not visible', () => {
+  it('should not show previous button if no search executed and autocomplete list not visible', () => {
     const { queryByTestId } = render(
       <SearchBoxAutocomplete
         searchInputID={searchInputID}
@@ -235,5 +235,40 @@ describe('SearchBoxAutocomplete component', () => {
         priceRange: mockStagedSearchState.priceRange,
       })
     )
+  })
+
+  it('should redirect on location page on location button click', async () => {
+    const { getByTestId } = render(
+      <SearchBoxAutocomplete
+        searchInputID={searchInputID}
+        showLocationButton={true}
+        isFocus={false}
+        shouldAutocomplete={false}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
+    const locationButton = getByTestId('locationButton')
+    await fireEvent.press(locationButton)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
+  })
+
+  it('should not reset input when user click on previous button if autocomplete list is open', async () => {
+    const { getByTestId } = render(
+      <SearchBoxAutocomplete
+        searchInputID={searchInputID}
+        isFocus={false}
+        shouldAutocomplete={true}
+        setShouldAutocomplete={setShouldAutocomplete}
+        setAutocompleteValue={setAutocompleteValue}
+      />
+    )
+    const previousButton = getByTestId('previousButton')
+
+    await fireEvent.press(previousButton)
+
+    expect(mockStagedDispatch).not.toBeCalled()
+    expect(push).not.toBeCalled()
   })
 })

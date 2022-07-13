@@ -76,9 +76,8 @@ const SearchBoxWithoutLabel = ({
 
   return (
     <React.Fragment>
-      <HeaderBackgroundWrapperWithoutLabel maxHeight={top}>
-        <HeaderBackground />
-      </HeaderBackgroundWrapperWithoutLabel>
+      {top ? <HeaderBackground height={top} /> : null}
+      <Spacer.TopScreen />
       <SearchBoxContainer testID="searchBoxWithoutLabel">
         {appEnableAutocomplete ? (
           <SearchBoxAutocomplete
@@ -142,11 +141,7 @@ const SearchBoxContainer = styled.View({
   paddingHorizontal: getSpacing(6),
   zIndex: 1,
 })
-const HeaderBackgroundWrapperWithoutLabel = styled.View<{ maxHeight: number }>(({ maxHeight }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  maxHeight,
-}))
+
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.title4,
   color: theme.colors.white,
