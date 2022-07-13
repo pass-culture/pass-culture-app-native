@@ -3612,6 +3612,10 @@ msgstr "crédit photo"
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
+#: src/features/search/components/SearchAutocompleteItem.tsx
+msgid "dans"
+msgstr "dans"
+
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "date d'éligibilité"
 msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture."

@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    Object {
+      "paddingHorizontal": 24,
+      "paddingTop": 16,
+    }
+  }
+  data={
+    Array [
+      Object {
+        "_geoloc": Object {},
+        "objectID": "1",
+        "offer": Object {
+          "name": "Test1",
+          "searchGroupName": "MUSIQUE",
+        },
+      },
+      Object {
+        "_geoloc": Object {},
+        "objectID": "2",
+        "offer": Object {
+          "name": "Test2",
+          "searchGroupName": "MUSIQUE",
+        },
+      },
+    ]
+  }
+  getItem={[Function]}
+  getItemCount={[Function]}
+  keyExtractor={[Function]}
+  keyboardDismissMode="on-drag"
+  keyboardShouldPersistTaps="handled"
+  onContentSizeChange={[Function]}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  testID="autocompleteList"
+  viewabilityConfigCallbackPairs={Array []}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingBottom": 16,
+          }
+        }
+        testID="autocompleteItem"
+      >
+        <View
+          height={16}
+          width={16}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Test1
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             dans 
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="autocompleteItemWithCategory"
+          >
+            Musique
+          </Text>
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingBottom": 16,
+          }
+        }
+        testID="autocompleteItem"
+      >
+        <View
+          height={16}
+          width={16}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Test2
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             dans 
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="autocompleteItemWithCategory"
+          >
+            Musique
+          </Text>
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

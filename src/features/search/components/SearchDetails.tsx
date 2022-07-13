@@ -46,7 +46,7 @@ export type HitProps = {
   setShouldAutocomplete: (isShowAutocomplete: boolean) => void
 }
 
-function Hit({ hit, index, setShouldAutocomplete }: HitProps) {
+export function Hit({ hit, index, setShouldAutocomplete }: HitProps) {
   return (
     <SearchAutocompleteItem hit={hit} index={index} setShouldAutocomplete={setShouldAutocomplete} />
   )

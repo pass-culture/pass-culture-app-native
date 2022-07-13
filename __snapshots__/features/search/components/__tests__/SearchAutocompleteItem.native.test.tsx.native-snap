@@ -20,6 +20,7 @@ exports[`SearchAutocompleteItem component should render SearchAutocompleteItem 1
       "paddingBottom": 16,
     }
   }
+  testID="autocompleteItem"
 >
   <View
     height={16}
@@ -79,8 +80,9 @@ exports[`SearchAutocompleteItem component should render SearchAutocompleteItem 1
           },
         ]
       }
+      testID="autocompleteItemWithCategory"
     >
-      Cinéma
+      Musique
     </Text>
   </Text>
 </View>

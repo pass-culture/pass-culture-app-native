@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -22,7 +23,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldA
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const searchGroupName = hit.offer.searchGroupName as SearchGroupNameEnum
   const offerName = hit.offer.name
-  const offerIn = ' dans '
+  const offerIn = ' ' + t`dans` + ' '
   const offerSearchGroup = searchGroupLabelMapping[searchGroupName]
   const { searchState: stagedSearchState } = useStagedSearch()
   const { locationFilter } = stagedSearchState
@@ -48,14 +49,16 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldA
   }
 
   return (
-    <AutocompleteItemTouchable onPress={onPress}>
+    <AutocompleteItemTouchable testID="autocompleteItem" onPress={onPress}>
       <MagnifyingGlassIcon />
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Typo.Body>{offerName}</Typo.Body>
         {index < limitResultWithCategory && searchGroupName !== SearchGroupNameEnum.NONE ? (
           <React.Fragment>
             <OfferIn>{offerIn}</OfferIn>
-            <OfferSearchGroup>{offerSearchGroup}</OfferSearchGroup>
+            <OfferSearchGroup testID="autocompleteItemWithCategory">
+              {offerSearchGroup}
+            </OfferSearchGroup>
           </React.Fragment>
         ) : null}
       </StyledText>
