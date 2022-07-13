@@ -103,9 +103,8 @@ export const SearchBox: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer
-        marginHorizontal={params?.showResults || showResults || isFocus ? getSpacing(6) : 0}>
-        {params?.showResults || showResults || isFocus ? (
+      <SearchInputContainer marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}>
+        {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>

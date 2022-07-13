@@ -1,16 +1,20 @@
+import { useRoute } from '@react-navigation/native'
 import { useEffect, useRef, useState } from 'react'
 
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 
 export const useShowResults = () => {
   const timer = useRef<number>()
   const { searchState } = useSearch()
-  const [showResults, setShowResults] = useState<boolean>(searchState.showResults)
+  const { params } = useRoute<UseRouteType<'Search'>>()
+  const initialShowResults = params?.showResults || searchState.showResults // To avoid blink effect when refreshing the view (due to dispatch delay), we also test params.showResults
+  const [showResults, setShowResults] = useState<boolean>(initialShowResults)
   const { isLoading } = useSearchResults()
 
   useEffect(() => {
-    if (searchState.showResults) {
+    if (initialShowResults) {
       if (!isLoading) {
         setShowResults(true)
       } else {
@@ -28,7 +32,7 @@ export const useShowResults = () => {
         clearTimeout(timer.current)
       }
     }
-  }, [searchState.showResults, isLoading])
+  }, [initialShowResults, isLoading])
 
   return showResults
 }
