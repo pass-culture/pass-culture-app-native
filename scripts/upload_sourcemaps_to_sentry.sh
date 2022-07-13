@@ -12,11 +12,17 @@ create_sourcemaps(){
   mkdir -p "${SOURCEMAPS_DIR}"
 
   if [[ "$(uname -s)" = "Linux" ]]; then
-    HERMES_BIN="linux64-bin"
+    HERMES_OS_BIN="linux64-bin"
   else
-    HERMES_BIN="osx-bin"
+    HERMES_OS_BIN="osx-bin"
   fi
-
+  if [ -f "node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc" ]; then
+    # react-native v0.68 (current)
+    HERMES_BIN="node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc"
+  else
+    # react-native v0.69 or higher (keep only this condition when version is reached)
+    HERMES_BIN="node_modules/react-native/sdks/hermesc/${HERMES_OS_BIN}/hermesc"
+  fi
   npx react-native bundle \
     --platform "${APP_OS}" \
     --dev false \
@@ -26,7 +32,7 @@ create_sourcemaps(){
     --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
     --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map"
 
-  node_modules/hermes-engine/${HERMES_BIN}/hermesc \
+  "${HERMES_BIN}" \
     -O \
     -emit-binary \
     -output-source-map \
