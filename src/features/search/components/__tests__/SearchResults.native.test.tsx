@@ -11,9 +11,9 @@ jest.mock('react-query')
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useIsFocused: jest.fn(),
-  useRoute: jest.fn().mockImplementation(() => ({
+  useRoute: jest.fn().mockReturnValue({
     key: 'ksdqldkmqdmqdq',
-  })),
+  }),
 }))
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({

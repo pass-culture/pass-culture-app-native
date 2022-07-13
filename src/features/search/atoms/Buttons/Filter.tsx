@@ -28,7 +28,7 @@ export const Filter: React.FC = () => {
     <Container
       navigateTo={{ screen: 'SearchFilter' }}
       onPress={onPress}
-      {...accessibilityAndTestId(undefined, 'FilterButton')}>
+      {...accessibilityAndTestId(undefined, 'searchFilterButton')}>
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
