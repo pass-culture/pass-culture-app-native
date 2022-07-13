@@ -35,12 +35,15 @@ const SearchBoxWithLabel = ({
           <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
         </View>
         <Spacer.Column numberOfSpaces={2} />
-        <SearchBox
-          searchInputID={searchInputID}
-          onFocusState={onFocusState}
-          isFocus={isFocus}
-          showLocationButton={true}
-        />
+        <FloatingSearchBoxContainer>
+          <FloatingSearchBox
+            searchInputID={searchInputID}
+            onFocusState={onFocusState}
+            isFocus={isFocus}
+            showLocationButton={true}
+          />
+        </FloatingSearchBoxContainer>
+        <Spacer.Column numberOfSpaces={6} />
       </SearchBoxContainer>
     </React.Fragment>
   )
@@ -65,6 +68,7 @@ const SearchBoxWithoutLabel = ({
           accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
         />
       </SearchBoxContainer>
+      <Spacer.Column numberOfSpaces={1} />
     </React.Fragment>
   )
 }
@@ -94,8 +98,7 @@ export const SearchHeader: React.FC<Props> = ({
 
 const SearchBoxContainer = styled.View({
   alignSelf: 'center',
-  height: getSpacing(8),
-  marginVertical: getSpacing(6),
+  marginTop: getSpacing(6),
   position: 'relative',
   width: '100%',
   paddingHorizontal: getSpacing(6),
@@ -106,3 +109,13 @@ const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.title4,
   color: theme.colors.white,
 }))
+
+const FloatingSearchBoxContainer = styled.View({
+  position: 'relative',
+})
+
+const FloatingSearchBox = styled(SearchBox)({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+})
