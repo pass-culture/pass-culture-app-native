@@ -1,6 +1,6 @@
 import { plural, t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { Country, CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
@@ -55,11 +55,9 @@ export const SetPhoneNumber = () => {
   } = useModal(true)
   const phoneNumberInputErrorId = uuidv4()
 
-  useFocusEffect(
-    useCallback(() => {
-      showTipsModal()
-    }, [showTipsModal])
-  )
+  useEffect(() => {
+    showTipsModal()
+  }, [showTipsModal])
 
   function onChangeText(value: string) {
     setPhoneNumber(value)
