@@ -8,8 +8,6 @@ import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/Set
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 jest.mock('features/identityCheck/api/api', () => {
   const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
@@ -75,12 +73,12 @@ describe('SetPhoneNumber', () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
       const button = getByTestId('Continuer')
 
-      await waitFor(() => expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT))
+      await waitFor(() => expect(button).toBeDisabled())
 
       const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, '612345678')
 
-      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+      expect(button).toBeEnabled()
     })
 
     it.each([
@@ -92,12 +90,12 @@ describe('SetPhoneNumber', () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
       const button = getByTestId('Continuer')
 
-      await waitFor(() => expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT))
+      await waitFor(() => expect(button).toBeDisabled())
 
       const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, phoneNumber)
 
-      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      expect(button).toBeDisabled()
     })
 
     it('should navigate to SetPhoneValidationCode on /send_phone_validation_code request success', async () => {

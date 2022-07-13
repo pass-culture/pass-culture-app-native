@@ -1,3 +1,4 @@
+import '@testing-library/jest-native/extend-expect'
 import * as consoleFailTestModule from 'console-fail-test'
 import { toMatchDiffSnapshot } from 'snapshot-diff'
 

@@ -350,6 +350,11 @@ exports[`<SetAddress/> should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Continuer vers l'étape suivante"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={false}

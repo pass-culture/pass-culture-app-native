@@ -7,7 +7,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
-import { theme } from 'theme'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from '../ChangeEmail'
@@ -78,18 +77,17 @@ describe('<ChangeEmail/>', () => {
   })
 
   it.each`
-    password          | email                | backgroundColor           | isDisabled
-    ${'password>=12'} | ${'valid@email.com'} | ${theme.colors.primary}   | ${false}
-    ${'password>=12'} | ${'invalid@email'}   | ${theme.colors.greyLight} | ${true}
-    ${'password<12'}  | ${'valid@email.com'} | ${theme.colors.greyLight} | ${true}
-    ${'password>=12'} | ${''}                | ${theme.colors.greyLight} | ${true}
+    password          | email                | isDisabled
+    ${'password>=12'} | ${'valid@email.com'} | ${false}
+    ${'password>=12'} | ${'invalid@email'}   | ${true}
+    ${'password<12'}  | ${'valid@email.com'} | ${true}
+    ${'password>=12'} | ${''}                | ${true}
   `(
     'CTA "Enregistrer" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
-    async ({ password, email, backgroundColor }) => {
+    async ({ password, email, isDisabled }) => {
       const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
       const submitButton = getByTestId('Enregistrer')
-      const background = submitButton.props.style.backgroundColor
-      expect(background).toEqual(theme.colors.greyLight)
+      expect(submitButton).toBeDisabled()
 
       const passwordInput = getByPlaceholderText('Ton mot de passe')
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -97,8 +95,7 @@ describe('<ChangeEmail/>', () => {
       fireEvent.changeText(emailInput, email)
 
       await waitForExpect(() => {
-        const background = submitButton.props.style.backgroundColor
-        expect(background).toEqual(backgroundColor)
+        expect(submitButton)[isDisabled ? 'toBeDisabled' : 'toBeEnabled']()
       })
     }
   )
@@ -106,8 +103,7 @@ describe('<ChangeEmail/>', () => {
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer')
-    const background = submitButton.props.style.backgroundColor
-    expect(background).toEqual(theme.colors.greyLight)
+    expect(submitButton).toBeDisabled()
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -115,8 +111,7 @@ describe('<ChangeEmail/>', () => {
     fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
 
     await waitForExpect(() => {
-      const background = submitButton.props.style.backgroundColor
-      expect(background).toEqual(theme.colors.greyLight)
+      expect(submitButton).toBeDisabled()
 
       const errorMessage = queryByText("L'e-mail saisi est identique à votre e-mail actuel")
       expect(errorMessage).toBeTruthy()

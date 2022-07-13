@@ -379,6 +379,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Renvoyer l'email"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

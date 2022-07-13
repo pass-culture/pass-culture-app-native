@@ -16,7 +16,6 @@ import {
   superFlushWithAct,
   useMutationFactory,
 } from 'tests/utils'
-import { theme } from 'theme'
 
 jest.mock('react-query')
 
@@ -53,12 +52,12 @@ describe('SetPhoneNumber', () => {
 
       const button = getByTestId('Continuer')
 
-      expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
+      expect(button).toBeDisabled()
 
       const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, '612345678')
 
-      expect(button.props.style.backgroundColor).toEqual(theme.colors.primary)
+      expect(button).toBeEnabled()
     })
 
     it.each([
@@ -72,14 +71,12 @@ describe('SetPhoneNumber', () => {
 
       const button = getByTestId('Continuer')
 
-      expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
+      expect(button).toBeDisabled()
 
       const input = getByPlaceholderText('06 12 34 56 78')
       fireEvent.changeText(input, phoneNumber)
 
-      await waitForExpect(() =>
-        expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
-      )
+      await waitForExpect(() => expect(button).toBeDisabled())
     })
 
     it('should navigate to SetPhoneNumberCode on /send_phone_validation request success', async () => {

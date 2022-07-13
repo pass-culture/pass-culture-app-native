@@ -1835,6 +1835,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             >
                               <View
                                 accessibilityLabel="Signaler l'offre"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": false,
+                                  }
+                                }
                                 accessible={true}
                                 collapsable={false}
                                 focusable={true}
@@ -4254,6 +4259,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             >
                               <View
                                 accessibilityLabel="Signaler l'offre"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": false,
+                                  }
+                                }
                                 accessible={true}
                                 collapsable={false}
                                 focusable={true}

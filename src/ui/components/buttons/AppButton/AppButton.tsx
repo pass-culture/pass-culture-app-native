@@ -58,7 +58,8 @@ const _AppButton = <T extends AppButtonProps>({
       numberOfLines={numberOfLines}
       style={style as StyleProp<ViewStyle>}
       center={center}
-      backgroundColor={backgroundColor}>
+      backgroundColor={backgroundColor}
+      disabled={disabled}>
       <AppButtonInner
         loadingIndicator={LoadingIndicator}
         isLoading={isLoading}

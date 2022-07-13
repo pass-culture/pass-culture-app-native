@@ -2,7 +2,6 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
-import { theme } from 'theme'
 
 import { SetPassword } from './SetPassword'
 
@@ -18,17 +17,14 @@ describe('SetPassword Page', () => {
     const { getByPlaceholderText, getByTestId } = render(<SetPassword {...props} />)
 
     const continueButton = getByTestId('Continuer')
-
-    const background = continueButton.props.style.backgroundColor
-    expect(background).toEqual(theme.colors.greyLight)
+    expect(continueButton).toBeDisabled()
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
 
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
 
-    await waitFor(async () => {
-      const background = continueButton.props.style.backgroundColor
-      expect(background).toEqual(theme.colors.primary)
+    await waitFor(() => {
+      expect(continueButton).toBeEnabled()
     })
   })
 

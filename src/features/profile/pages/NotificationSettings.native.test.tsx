@@ -16,7 +16,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
-import { theme } from 'theme'
 
 import { NotificationSettings } from './NotificationSettings'
 
@@ -215,7 +214,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(10)
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
-        expect(saveButton?.props.style.backgroundColor).toEqual(theme.colors.primary)
+        expect(saveButton).toBeEnabled()
       })
 
       act(() => {
@@ -225,7 +224,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct()
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
-        expect(saveButton?.props.style.backgroundColor).toEqual(theme.colors.greyLight)
+        expect(saveButton).toBeDisabled()
       })
     })
 
@@ -259,7 +258,7 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
-        expect(saveButton?.props.style.backgroundColor).toEqual(theme.colors.primary)
+        expect(saveButton).toBeEnabled()
       })
 
       act(() => {
@@ -268,9 +267,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct()
       await waitForExpect(() => {
-        expect(getByTestId('Enregistrer').props.style.backgroundColor).toEqual(
-          theme.colors.greyLight
-        )
+        expect(getByTestId('Enregistrer')).toBeDisabled()
         expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
       })
     })
