@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { render } from 'tests/utils'
-import { theme } from 'theme'
 
 import { ShowResults } from '../ShowResults'
 
@@ -28,8 +27,7 @@ describe('<ShowResults />', () => {
       const { getByText, getByTestId } = render(<ShowResults />)
       getByText(expected)
 
-      const expectedColor = disabled ? theme.colors.greyLight : theme.colors.primary
-      expect(getByTestId(expected).props.style.backgroundColor).toBe(expectedColor)
+      expect(getByTestId(expected))[disabled ? 'toBeDisabled' : 'toBeEnabled']()
     }
   )
 })

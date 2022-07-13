@@ -41,9 +41,7 @@ describe('ChangePassword', () => {
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
     const continueButton = getByTestId('Enregistrer')
-
-    const background = continueButton.props.style.backgroundColor
-    expect(background).toEqual(theme.colors.primary)
+    expect(continueButton).toBeEnabled()
   })
 
   it('should display the matching error when the passwords dont match', async () => {

@@ -5,7 +5,6 @@ import { mocked } from 'ts-jest/utils'
 import { ReportOfferReason } from 'features/offer/components/ReportOfferReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
-import { theme } from 'theme'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
@@ -55,7 +54,7 @@ describe('<ReportOfferReason />', () => {
     it('should be disabled if no reason is selected', () => {
       const { getByTestId } = renderReportReason()
       const reportButton = getByTestId('report-button')
-      expect(reportButton.props.style.backgroundColor).toEqual(theme.colors.greyLight)
+      expect(reportButton).toBeDisabled()
     })
 
     it('should be enabled if a reason is selected', () => {
@@ -66,7 +65,7 @@ describe('<ReportOfferReason />', () => {
 
       fireEvent.press(radioButton)
 
-      expect(reportButton.props.style.backgroundColor).toEqual(theme.colors.primary)
+      expect(reportButton).toBeEnabled()
     })
 
     it('should show error snackbar on report offer mutation error', async () => {

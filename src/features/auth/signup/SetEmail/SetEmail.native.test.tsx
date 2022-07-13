@@ -2,7 +2,6 @@ import React from 'react'
 
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { fireEvent, render } from 'tests/utils'
-import { theme } from 'theme'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
@@ -14,7 +13,7 @@ describe('<SetEmail />', () => {
     const { getByTestId } = render(<SetEmail {...props} />)
 
     const button = getByTestId('Continuer')
-    expect(button.props.style.backgroundColor).toEqual(theme.colors.greyLight)
+    expect(button).toBeDisabled()
   })
 
   it('should enable validate button when email input is filled', async () => {
@@ -24,7 +23,7 @@ describe('<SetEmail />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     const button = getByTestId('Continuer')
-    expect(button.props.style.backgroundColor).toEqual(theme.colors.primary)
+    expect(button).toBeEnabled()
   })
 
   it('should call goToNextStep() on valid email with email and newsletter params', () => {

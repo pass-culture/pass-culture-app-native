@@ -31,8 +31,7 @@ describe('ReinitializePassword Page', () => {
     const continueButton = getByTestId('Continuer')
 
     await waitForExpect(async () => {
-      const background = continueButton.props.style.backgroundColor
-      expect(background).toEqual(theme.colors.primary)
+      expect(continueButton).toBeEnabled()
     })
   })
 

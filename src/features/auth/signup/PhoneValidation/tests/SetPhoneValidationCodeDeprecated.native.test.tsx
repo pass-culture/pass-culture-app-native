@@ -26,7 +26,6 @@ import {
   superFlushWithAct,
   useMutationFactory,
 } from 'tests/utils'
-import { theme } from 'theme'
 
 // eslint-disable-next-line local-rules/no-allow-console
 // allowConsole({ error: true })
@@ -119,7 +118,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
       await flushAllPromisesWithAct()
-      expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.primary)
+      expect(continueButton).toBeEnabled()
     })
 
     it.each([
@@ -129,7 +128,7 @@ describe('SetPhoneValidationCodeDeprecated', () => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
       const continueButton = getByTestId('Continuer')
       await flushAllPromisesWithAct()
-      expect(continueButton.props.style.backgroundColor).toEqual(theme.colors.greyLight)
+      expect(continueButton).toBeDisabled()
     })
 
     it('should display input error message if validate phone number request fails', async () => {

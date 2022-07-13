@@ -10,7 +10,6 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
-import { theme } from 'theme'
 
 import { ConsentSettings } from './ConsentSettings'
 
@@ -150,8 +149,7 @@ async function renderConsentSettings() {
 
   function expectSaveButtonEnabled() {
     const saveButton = renderAPI.getByTestId(SAVE_BUTTON_TEST_ID)
-    const background = saveButton.props.style.backgroundColor
-    expect(background).toEqual(theme.colors.primary)
+    expect(saveButton).toBeEnabled()
   }
 
   return {
