@@ -35,7 +35,6 @@ export function Search() {
     if (params?.showResults || showResults || isFocus) return <SearchDetails />
     return (
       <Container>
-        <Spacer.Column numberOfSpaces={5} />
         <CategoriesButtons onPressCategory={showResultsForCategory} />
         <Spacer.TabBar />
       </Container>

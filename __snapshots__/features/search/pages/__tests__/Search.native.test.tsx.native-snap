@@ -324,16 +324,6 @@ Array [
       ]
     }
   >
-    <View
-      numberOfSpaces={5}
-      style={
-        Array [
-          Object {
-            "height": 20,
-          },
-        ]
-      }
-    />
     <RCTScrollView
       ListHeaderComponent={
         Object {
@@ -347,6 +337,7 @@ Array [
           "inlineStyle": InlineStyle {
             "rules": Array [
               [Function],
+              "margin-top: 20px;",
               "padding-horizontal: 4px;",
               "padding-bottom: 16px;",
             ],
@@ -657,6 +648,7 @@ Array [
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
+                  "marginTop": 20,
                   "paddingBottom": 16,
                   "paddingHorizontal": 4,
                 },
