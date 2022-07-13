@@ -1,9 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
 import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
 import { storage } from 'libs/storage'
-import { waitFor } from 'tests/utils'
+import { waitFor, renderHook } from 'tests/utils'
 
 const dateNow = 1634806274417
 const ONE_YEAR = 365 * 24 * 60 * 60 * 1000

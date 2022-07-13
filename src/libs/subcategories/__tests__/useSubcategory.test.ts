@@ -1,7 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { SubcategoryIdEnum, CategoryIdEnum, SearchGroupNameEnum } from 'api/gen'
 import { useSubcategory } from 'libs/subcategories'
+import { renderHook } from 'tests/utils'
 
 describe('useSubcategory', () => {
   it.each`

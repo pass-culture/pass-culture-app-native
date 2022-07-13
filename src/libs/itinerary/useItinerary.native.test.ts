@@ -1,11 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { Alert, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
 import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useItinerary } from 'libs/itinerary/useItinerary'
-import { superFlushWithAct } from 'tests/utils'
+import { renderHook, superFlushWithAct } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const alertMock = jest.spyOn(Alert, 'alert')

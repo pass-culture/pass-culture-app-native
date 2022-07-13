@@ -1,8 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
 import { analytics } from 'libs/firebase/analytics/analytics'
 import { useInit } from 'libs/firebase/analytics/useInit'
+import { renderHook } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-02T00:00:01.000Z')
 const START_TWENTY_THREE_HOURS_IN_THE_PAST = new Date('2020-12-01T23:00:00.000Z')

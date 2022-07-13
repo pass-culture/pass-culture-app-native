@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
@@ -6,6 +5,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api')
 jest.mock('features/profile/utils')

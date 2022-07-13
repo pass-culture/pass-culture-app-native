@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { renderHook } from 'tests/utils'
 
 import { useGoBack } from '../useGoBack'
 

@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
@@ -17,7 +16,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor, superFlushWithAct } from 'tests/utils'
 
 import { useFavorites, useRemoveFavorite, useAddFavorite, useFavorite } from '../useFavorites'
 
@@ -78,7 +77,7 @@ describe('useFavorites hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
-    const { result, waitFor } = renderHook(useFavorites, {
+    const { result } = renderHook(useFavorites, {
       wrapper: (props) =>
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
@@ -89,12 +88,12 @@ describe('useFavorites hook', () => {
     })
 
     expect(result.current.isFetching).toEqual(true)
-    await waitFor(() => result.current.isSuccess)
 
-    expect(result.current.isSuccess).toEqual(true)
-    expect(result.current.data?.favorites.length).toEqual(
-      paginatedFavoritesResponseSnap.favorites.length
-    )
+    await waitFor(() => {
+      expect(result.current.data?.favorites.length).toEqual(
+        paginatedFavoritesResponseSnap.favorites.length
+      )
+    })
   })
 
   it('should fail to fetch when not logged in', async () => {

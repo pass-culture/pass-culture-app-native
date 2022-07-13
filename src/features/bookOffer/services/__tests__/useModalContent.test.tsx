@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { renderHook } from '@testing-library/react-hooks'
 import { Platform } from 'react-native'
 
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock as baseStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { renderHook } from 'tests/utils'
 
 import { useModalContent } from '../useModalContent'
 

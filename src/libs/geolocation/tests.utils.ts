@@ -1,5 +1,6 @@
-import { act } from '@testing-library/react-hooks'
 import { GeoPosition } from 'react-native-geolocation-service'
+
+import { act } from 'tests/utils'
 
 export const EiffelTourCoordinates = {
   latitude: 48.85,

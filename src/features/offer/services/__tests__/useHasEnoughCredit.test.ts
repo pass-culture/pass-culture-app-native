@@ -1,8 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
 import { ExpenseDomain, OfferResponse, UserProfileResponse } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { renderHook } from 'tests/utils'
 
 import { hasEnoughCredit, useHasEnoughCredit } from '../useHasEnoughCredit'
 

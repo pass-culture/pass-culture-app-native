@@ -1,5 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
-
+import { renderHook } from 'tests/utils'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 import { useSortedSearchCategories } from './useSortedSearchCategories'

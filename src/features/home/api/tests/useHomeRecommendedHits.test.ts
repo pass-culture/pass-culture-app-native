@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { UseMutationResult } from 'react-query'
 
 import {
@@ -8,6 +7,7 @@ import {
 } from 'features/home/api/useHomeRecommendedHits'
 import { RecommendationParametersFields } from 'features/home/contentful'
 import { env } from 'libs/environment'
+import { renderHook } from 'tests/utils'
 
 import * as algoliaRecommendedHitsAPI from '../useAlgoliaRecommendedHits'
 import * as recommendedIdsAPI from '../useHomeRecommendedIdsMutation'

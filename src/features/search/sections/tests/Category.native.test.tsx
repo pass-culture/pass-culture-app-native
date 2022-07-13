@@ -1,11 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks'
 import React from 'react'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, renderHook } from 'tests/utils'
 
 import { Category } from '../Category'
 

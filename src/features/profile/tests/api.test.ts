@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { UserProfileResponse } from 'api/gen'
@@ -7,6 +6,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 
@@ -49,22 +49,27 @@ jest.mock('libs/react-query/usePersistQuery', () => ({
 
 describe('useUserProfileInfo', () => {
   it('calls the API and returns the data', async () => {
-    const { result, waitFor } = renderHook(useUserProfileInfo, {
+    const { result } = renderHook(useUserProfileInfo, {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await waitFor(() => !result.current.isLoading)
-    expect(result.current.data).toEqual(userProfileAPIResponse)
-    expect(userProfileApiMock).toHaveBeenCalledTimes(1)
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(userProfileAPIResponse)
+      expect(userProfileApiMock).toHaveBeenCalledTimes(1)
+    })
   })
 
   it("doesn't call the api if the user isn't logged in", async () => {
     mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
-    const { result, waitFor } = renderHook(useUserProfileInfo, {
+    const { result } = renderHook(useUserProfileInfo, {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await waitFor(() => !result.current.isLoading)
-    expect(userProfileApiMock).not.toHaveBeenCalled()
+
+    await waitFor(() => {
+      expect(userProfileApiMock).not.toHaveBeenCalled()
+      expect(result.current.data).toBeUndefined()
+    })
   })
 })

@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { SearchParametersFields } from 'features/home/contentful'
@@ -6,6 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useParseSearchParameters } from 'libs/search'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { renderHook } from 'tests/utils'
 
 import { parseSearchParameters } from '../parseSearchParameters'
 

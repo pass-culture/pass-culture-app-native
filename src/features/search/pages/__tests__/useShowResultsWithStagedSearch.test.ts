@@ -1,10 +1,9 @@
-import { renderHook } from '@testing-library/react-hooks'
-
+import { push } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { renderHook } from 'tests/utils'
 
-import { push } from '../../../../../__mocks__/@react-navigation/native'
 import { usePushWithStagedSearch } from '../usePushWithStagedSearch'
 
 const mockSearchState = initialSearchState

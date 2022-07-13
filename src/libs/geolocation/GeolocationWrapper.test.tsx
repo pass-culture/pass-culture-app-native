@@ -1,10 +1,9 @@
-/* eslint-disable local-rules/independant-mocks */
-import { renderHook } from '@testing-library/react-hooks'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { renderHook } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './enums'
 import { GeolocationWrapper, useGeolocation } from './GeolocationWrapper'

@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -10,7 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { renderHook, superFlushWithAct } from 'tests/utils'
 
 import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
 

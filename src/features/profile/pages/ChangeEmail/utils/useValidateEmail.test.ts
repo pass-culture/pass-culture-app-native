@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from 'tests/utils'
 
 import { useIsCurrentUserEmail, useValidateEmail } from './useValidateEmail'
 
