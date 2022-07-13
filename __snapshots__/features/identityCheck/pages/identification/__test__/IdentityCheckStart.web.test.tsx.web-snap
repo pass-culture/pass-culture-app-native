@@ -5,199 +5,199 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-@@ -512,11 +512,11 @@
+@@ -498,11 +498,11 @@
+            class=\\"css-view-1dbjc4n\\"
+            style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
+          >
+            <div
               class=\\"css-view-1dbjc4n\\"
-              style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
+-             style=\\"max-height: 100%; max-width: 500px; padding-bottom: 24px; width: 100%;\\"
++             style=\\"flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;\\"
             >
               <div
                 class=\\"css-view-1dbjc4n\\"
--               style=\\"max-height: 100%; max-width: 500px; padding-bottom: 24px; width: 100%;\\"
-+               style=\\"flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;\\"
+                style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
               >
-                <div
-                  class=\\"css-view-1dbjc4n\\"
-                  style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
-                >
-@@ -528,96 +528,87 @@
+@@ -514,96 +514,87 @@
+                    class=\\"css-view-1dbjc4n\\"
+                    style=\\"align-items: center; height: 100%;\\"
+                  >
+                    <div
                       class=\\"css-view-1dbjc4n\\"
-                      style=\\"align-items: center; height: 100%;\\"
++                     style=\\"align-items: center; height: 100%;\\"
                     >
                       <div
-                        class=\\"css-view-1dbjc4n\\"
-+                       style=\\"align-items: center; height: 100%;\\"
-                      >
-                        <div
-+                         class=\\"css-view-1dbjc4n\\"
-+                         style=\\"height: 40px;\\"
-+                       />
++                       class=\\"css-view-1dbjc4n\\"
++                       style=\\"height: 40px;\\"
++                     />
++                     <div
++                       class=\\"css-view-1dbjc4n\\"
++                     >
 +                       <div
-+                         class=\\"css-view-1dbjc4n\\"
-+                       >
-+                         <div
-                            class=\\"css-text-901oao\\"
-                            dir=\\"auto\\"
-                          >
-                            undefined-SVG-Mock
-                          </div>
+                          class=\\"css-text-901oao\\"
+                          dir=\\"auto\\"
+                        >
+                          undefined-SVG-Mock
                         </div>
-                        <div
-                          class=\\"css-view-1dbjc4n\\"
-                          style=\\"height: 24px;\\"
-                        />
+                      </div>
+                      <div
+                        class=\\"css-view-1dbjc4n\\"
+                        style=\\"height: 24px;\\"
+                      />
+-                   <div
+-                     class=\\"css-view-1dbjc4n\\"
+-                     style=\\"margin-right: 8px; margin-left: 8px;\\"
+-                   >
+                      <h4
+                        aria-level=\\"4\\"
+                        class=\\"css-reset-4rbku5 css-text-901oao\\"
+                        dir=\\"ltr\\"
+                        role=\\"heading\\"
+                        style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;\\"
+                      >
+-                       Vérifie ton identité sur ton smartphone
++                       Vérification de l'identité
+                      </h4>
+                      <div
+                        class=\\"css-view-1dbjc4n\\"
+                        style=\\"height: 24px;\\"
+                      />
+                      <div
+                        class=\\"css-text-901oao\\"
+                        dir=\\"ltr\\"
+-                       style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
++                       style=\\"color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
+                      >
+-                       Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.
+-                     </div>
 -                     <div
 -                       class=\\"css-view-1dbjc4n\\"
--                       style=\\"margin-right: 8px; margin-left: 8px;\\"
--                     >
-                        <h4
-                          aria-level=\\"4\\"
-                          class=\\"css-reset-4rbku5 css-text-901oao\\"
+-                       style=\\"height: 8px;\\"
+-                     />
+-                     <div
+-                       class=\\"css-text-901oao\\"
++                       Prends une photo de ta
++                       <span
++                         class=\\"css-text-901oao css-textHasAncestor-16my406\\"
                           dir=\\"ltr\\"
-                          role=\\"heading\\"
-                          style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;\\"
+-                       style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
++                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
++                       >
++                          carte d'identité 
++                       </span>
++                       ou de ton
++                       <span
++                         class=\\"css-text-901oao css-textHasAncestor-16my406\\"
++                         dir=\\"ltr\\"
++                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
                         >
--                         Vérifie ton identité sur ton smartphone
-+                         Vérification de l'identité
-                        </h4>
-                        <div
-                          class=\\"css-view-1dbjc4n\\"
-                          style=\\"height: 24px;\\"
-                        />
+-                       Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
+-                     </div>
++                          passeport 
++                       </span>
++                       en cours de validité pour accéder à ton pass Culture.
+                      </div>
+                      <div
+                        class=\\"css-view-1dbjc4n\\"
+                        style=\\"height: 24px;\\"
+                      />
+-                   <button
+-                     class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
+-                     tabindex=\\"0\\"
+-                     type=\\"button\\"
+-                   >
+                      <div
+-                       class=\\"css-text-901oao css-textMultiLine-cens5h\\"
+-                       dir=\\"ltr\\"
+-                       style=\\"color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;\\"
+-                     >
+-                       Vérification par smartphone
+-                     </div>
+-                   </button>
+-                   <div
+                        class=\\"css-view-1dbjc4n\\"
+-                     style=\\"height: 32px;\\"
++                       style=\\"flex-basis: 0px; flex-grow: 1; flex-shrink: 1;\\"
+                      />
+                      <div
+                        class=\\"css-view-1dbjc4n\\"
+-                     style=\\"align-items: center; display: flex;\\"
++                       style=\\"background-color: rgb(241, 241, 244); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; padding: 16px 16px 8px 16px;\\"
+                      >
                         <div
                           class=\\"css-text-901oao\\"
                           dir=\\"ltr\\"
--                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
-+                         style=\\"color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
+-                       style=\\"color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;\\"
++                         style=\\"color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;\\"
                         >
--                         Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.
--                       </div>
--                       <div
--                         class=\\"css-view-1dbjc4n\\"
--                         style=\\"height: 8px;\\"
--                       />
--                       <div
--                         class=\\"css-text-901oao\\"
-+                         Prends une photo de ta
-+                         <span
-+                           class=\\"css-text-901oao css-textHasAncestor-16my406\\"
-                            dir=\\"ltr\\"
--                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
-+                           style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
-+                         >
-+                            carte d'identité 
-+                         </span>
-+                         ou de ton
-+                         <span
-+                           class=\\"css-text-901oao css-textHasAncestor-16my406\\"
-+                           dir=\\"ltr\\"
-+                           style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
-                          >
--                         Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
--                       </div>
-+                            passeport 
-+                         </span>
-+                         en cours de validité pour accéder à ton pass Culture.
+-                       Tu n'as pas de smartphone ?
++                         Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
                         </div>
-                        <div
-                          class=\\"css-view-1dbjc4n\\"
-                          style=\\"height: 24px;\\"
-                        />
--                     <button
--                       class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
--                       tabindex=\\"0\\"
--                       type=\\"button\\"
--                     >
-                        <div
--                         class=\\"css-text-901oao css-textMultiLine-cens5h\\"
--                         dir=\\"ltr\\"
--                         style=\\"color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;\\"
--                       >
--                         Vérification par smartphone
--                       </div>
--                     </button>
 -                     <div
-                          class=\\"css-view-1dbjc4n\\"
--                       style=\\"height: 32px;\\"
-+                         style=\\"flex-basis: 0px; flex-grow: 1; flex-shrink: 1;\\"
-                        />
-                        <div
-                          class=\\"css-view-1dbjc4n\\"
--                       style=\\"align-items: center; display: flex;\\"
-+                         style=\\"background-color: rgb(241, 241, 244); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; padding: 16px 16px 8px 16px;\\"
+-                       class=\\"css-view-1dbjc4n\\"
+-                       style=\\"height: 16px;\\"
+-                     />
+                        <button
+-                       class=\\"sc-dkPtRN dMotSY sc-iUKqMP fSscXR\\"
++                         class=\\"sc-dkPtRN fSwvKJ sc-bqiRlB lhIoLE\\"
+                          tabindex=\\"0\\"
+                          type=\\"button\\"
                         >
                           <div
-                            class=\\"css-text-901oao\\"
-                            dir=\\"ltr\\"
--                         style=\\"color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;\\"
-+                           style=\\"color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;\\"
-                          >
--                         Tu n'as pas de smartphone ?
-+                           Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
+                            class=\\"css-view-1dbjc4n\\"
+@@ -622,29 +613,45 @@
+                            </div>
                           </div>
--                       <div
--                         class=\\"css-view-1dbjc4n\\"
--                         style=\\"height: 16px;\\"
--                       />
-                          <button
--                         class=\\"sc-dkPtRN dMotSY sc-iUKqMP fSscXR\\"
-+                           class=\\"sc-dkPtRN fSwvKJ sc-bqiRlB lhIoLE\\"
-                            tabindex=\\"0\\"
-                            type=\\"button\\"
+                          <div
+                            class=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                            dir=\\"ltr\\"
+-                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;\\"
++                           style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 12px; line-height: 20px; margin-left: 4px; max-width: 100%;\\"
                           >
-                            <div
-                              class=\\"css-view-1dbjc4n\\"
-@@ -636,29 +627,45 @@
-                              </div>
-                            </div>
-                            <div
-                              class=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                              dir=\\"ltr\\"
--                           style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;\\"
-+                             style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 12px; line-height: 20px; margin-left: 4px; max-width: 100%;\\"
-                            >
--                           Identification par le site Démarches-Simplifiées
-+                             Transmettre un document
-                            </div>
-                          </button>
-+                       </div>
-                        <div
--                         class=\\"css-text-901oao\\"
-+                         class=\\"css-view-1dbjc4n\\"
-+                         style=\\"height: 8px;\\"
-+                       />
+-                         Identification par le site Démarches-Simplifiées
++                           Transmettre un document
+                          </div>
+                        </button>
 +                     </div>
+                      <div
+-                       class=\\"css-text-901oao\\"
++                       class=\\"css-view-1dbjc4n\\"
++                       style=\\"height: 8px;\\"
++                     />
 +                   </div>
 +                 </div>
 +               </div>
-+               <div
-+                 class=\\"css-view-1dbjc4n\\"
-+                 style=\\"background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;\\"
++             </div>
++             <div
++               class=\\"css-view-1dbjc4n\\"
++               style=\\"background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;\\"
++             >
++               <button
++                 class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
++                 tabindex=\\"0\\"
++                 type=\\"button\\"
 +               >
-+                 <button
-+                   class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
-+                   tabindex=\\"0\\"
-+                   type=\\"button\\"
-+                 >
-+                   <div
-+                     class=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                      dir=\\"ltr\\"
--                         style=\\"color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;\\"
-+                     style=\\"color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;\\"
-                    >
--                         Environ 10 jours
--                       </div>
-+                     Commencer la vérification
-                    </div>
-+                 </button>
-                  <div
-                    class=\\"css-view-1dbjc4n\\"
--                       style=\\"height: 24px;\\"
-+                   style=\\"height: 8px;\\"
-                  />
--                   </div>
++                 <div
++                   class=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                    dir=\\"ltr\\"
+-                       style=\\"color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;\\"
++                   style=\\"color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;\\"
+                  >
+-                       Environ 10 jours
+-                     </div>
++                   Commencer la vérification
+                  </div>
++               </button>
+                <div
+                  class=\\"css-view-1dbjc4n\\"
+-                     style=\\"height: 24px;\\"
++                 style=\\"height: 8px;\\"
+                />
 -                 </div>
-                </div>
+-               </div>
               </div>
             </div>
           </div>
-        </div>"
+        </div>
+        <div"
 `;

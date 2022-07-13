@@ -106,8 +106,17 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,15 +129,11 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
@@ -137,86 +142,72 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
+                "paddingHorizontal": 20,
+                "paddingTop": 20,
               },
             ]
           }
         >
-          <View
-            style={
-              Array [
-                Object {
-                  "paddingHorizontal": 20,
-                  "paddingTop": 20,
-                },
-              ]
+          <Text>
+            fixed top children
+          </Text>
+        </View>
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            Object {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
             }
-          >
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <View>
             <Text>
-              fixed top children
+              scroll children
             </Text>
           </View>
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
+        </RCTScrollView>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
               Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
+                "backgroundColor": "#ffffff",
+                "bottom": 0,
+                "left": 0,
+                "paddingBottom": 20,
                 "paddingHorizontal": 20,
-              }
-            }
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <View>
-              <Text>
-                scroll children
-              </Text>
-            </View>
-          </RCTScrollView>
+                "paddingTop": 12,
+                "position": "absolute",
+                "right": 0,
+              },
+            ]
+          }
+        >
+          <Text>
+            fixed bottom children
+          </Text>
           <View
-            onLayout={[Function]}
+            customHeight={8}
+            enable={true}
             style={
               Array [
                 Object {
-                  "backgroundColor": "#ffffff",
-                  "bottom": 0,
-                  "left": 0,
-                  "paddingBottom": 20,
-                  "paddingHorizontal": 20,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 0,
+                  "height": 8,
                 },
               ]
             }
-          >
-            <Text>
-              fixed bottom children
-            </Text>
-            <View
-              customHeight={8}
-              enable={true}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
-          </View>
+          />
         </View>
       </View>
     </View>

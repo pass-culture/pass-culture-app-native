@@ -123,13 +123,30 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxDirection": "normal",
           "WebkitBoxFlex": 1,
+          "WebkitBoxOrient": "vertical",
           "WebkitFlexBasis": "0px",
+          "WebkitFlexDirection": "column",
           "WebkitFlexGrow": 1,
+          "alignItems": "center",
+          "backgroundColor": "rgba(255,255,255,1.00)",
+          "borderTopLeftRadius": "22px",
+          "borderTopRightRadius": "22px",
+          "display": "flex",
           "flexBasis": "0px",
+          "flexDirection": "column",
           "flexGrow": 1,
+          "height": "100%",
+          "msFlexAlign": "center",
+          "msFlexDirection": "column",
           "msFlexPositive": 1,
           "msFlexPreferredSize": "0px",
+          "overflowX": "scroll",
+          "overflowY": "scroll",
+          "paddingTop": "12px",
         }
       }
     >
@@ -137,23 +154,18 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
         className="css-view-1dbjc4n"
         style={
           Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "vertical",
-            "WebkitFlexDirection": "column",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderTopLeftRadius": "22px",
-            "borderTopRightRadius": "22px",
-            "display": "flex",
-            "flexDirection": "column",
-            "height": "100%",
-            "msFlexAlign": "center",
-            "msFlexDirection": "column",
-            "overflowX": "scroll",
-            "overflowY": "scroll",
-            "paddingTop": "12px",
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": "500px",
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+            "width": "100%",
           }
         }
       >
@@ -161,18 +173,9 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": "500px",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-              "width": "100%",
+              "paddingLeft": "20px",
+              "paddingRight": "20px",
+              "paddingTop": "20px",
             }
           }
         >
@@ -180,9 +183,11 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             className="css-view-1dbjc4n"
             style={
               Object {
-                "paddingLeft": "20px",
-                "paddingRight": "20px",
-                "paddingTop": "20px",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "alignItems": "center",
+                "height": "100%",
+                "msFlexAlign": "center",
               }
             }
           >
@@ -190,318 +195,305 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
+                  "height": "20px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "20px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
                   "WebkitAlignItems": "center",
                   "WebkitBoxAlign": "center",
                   "alignItems": "center",
-                  "height": "100%",
                   "msFlexAlign": "center",
+                  "width": "100%",
                 }
               }
             >
-              <div
-                className="css-view-1dbjc4n"
+              <h2
+                aria-level={2}
+                className="css-reset-4rbku5 css-text-901oao"
+                dir="ltr"
+                role="heading"
                 style={
                   Object {
-                    "height": "20px",
+                    "color": "rgba(22,22,23,1.00)",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": "18px",
+                    "lineHeight": "22px",
+                    "textAlign": "center",
                   }
                 }
-              />
-              <div
-                className="css-view-1dbjc4n"
+              >
+                Créer un dossier sur le site des Démarches Simplifiées
+              </h2>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "20px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao"
+              dir="ltr"
+              style={
+                Object {
+                  "color": "rgba(105,106,111,1.00)",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                  "textAlign": "center",
+                }
+              }
+            >
+              La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "paddingBottom": "40px",
+                  "paddingLeft": "40px",
+                  "paddingRight": "40px",
+                  "paddingTop": "40px",
+                }
+              }
+            >
+              <a
+                className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
+                href="https://dmsfrenchcitizen"
+                onClick={[Function]}
+                onDoubleClick={[Function]}
+                tabIndex={0}
+                target="_blank"
               >
                 <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "20px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
-                    "alignItems": "center",
-                    "msFlexAlign": "center",
-                    "width": "100%",
-                  }
-                }
-              >
-                <h2
-                  aria-level={2}
-                  className="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
+                  className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "color": "rgba(22,22,23,1.00)",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": "18px",
-                      "lineHeight": "22px",
-                      "textAlign": "center",
+                      "WebkitFlexShrink": 0,
+                      "flexShrink": 0,
+                      "msFlexNegative": 0,
                     }
                   }
                 >
-                  Créer un dossier sur le site des Démarches Simplifiées
-                </h2>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "20px",
+                  <div
+                    className="css-view-1dbjc4n"
+                    data-testid="button-icon"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      button-icon-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 1,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                      "marginLeft": "8px",
+                      "maxWidth": "100%",
+                    }
                   }
-                }
-              />
+                >
+                  Je suis de nationalité française
+                </div>
+              </a>
               <div
                 className="css-text-901oao"
                 dir="ltr"
                 style={
                   Object {
                     "color": "rgba(105,106,111,1.00)",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
                     "textAlign": "center",
                   }
                 }
               >
-                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+                Carte d’identité ou passeport.
               </div>
               <div
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "WebkitBoxFlex": 1,
-                    "WebkitFlexBasis": "0px",
-                    "WebkitFlexGrow": 1,
-                    "WebkitFlexShrink": 1,
-                    "flexBasis": "0px",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "msFlexNegative": 1,
-                    "msFlexPositive": 1,
-                    "msFlexPreferredSize": "0px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "paddingBottom": "40px",
-                    "paddingLeft": "40px",
-                    "paddingRight": "40px",
-                    "paddingTop": "40px",
+                    "WebkitAlignItems": "center",
+                    "WebkitAlignSelf": "stretch",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxPack": "center",
+                    "WebkitJustifyContent": "center",
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "justifyContent": "center",
+                    "marginBottom": "24px",
+                    "marginTop": "24px",
+                    "msFlexAlign": "center",
+                    "msFlexItemAlign": "stretch",
+                    "msFlexPack": "center",
+                    "msGridRowAlign": "stretch",
+                    "position": "relative",
                   }
                 }
               >
-                <a
-                  className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
-                  href="https://dmsfrenchcitizen"
-                  onClick={[Function]}
-                  onDoubleClick={[Function]}
-                  tabIndex={0}
-                  target="_blank"
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    style={
-                      Object {
-                        "WebkitFlexShrink": 0,
-                        "flexShrink": 0,
-                        "msFlexNegative": 0,
-                      }
-                    }
-                  >
-                    <div
-                      className="css-view-1dbjc4n"
-                      data-testid="button-icon"
-                    >
-                      <div
-                        className="css-text-901oao"
-                        dir="auto"
-                      >
-                        button-icon-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="css-text-901oao css-textMultiLine-cens5h"
-                    dir="ltr"
-                    style={
-                      Object {
-                        "WebkitLineClamp": 1,
-                        "color": "rgba(22,22,23,1.00)",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": "15px",
-                        "lineHeight": "20px",
-                        "marginLeft": "8px",
-                        "maxWidth": "100%",
-                      }
-                    }
-                  >
-                    Je suis de nationalité française
-                  </div>
-                </a>
-                <div
-                  className="css-text-901oao"
-                  dir="ltr"
-                  style={
-                    Object {
-                      "color": "rgba(105,106,111,1.00)",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": "12px",
-                      "lineHeight": "16px",
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Carte d’identité ou passeport.
-                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitAlignItems": "center",
-                      "WebkitAlignSelf": "stretch",
-                      "WebkitBoxAlign": "center",
-                      "WebkitBoxPack": "center",
-                      "WebkitJustifyContent": "center",
-                      "alignItems": "center",
-                      "alignSelf": "stretch",
-                      "justifyContent": "center",
-                      "marginBottom": "24px",
-                      "marginTop": "24px",
-                      "msFlexAlign": "center",
-                      "msFlexItemAlign": "stretch",
-                      "msFlexPack": "center",
-                      "msGridRowAlign": "stretch",
-                      "position": "relative",
+                      "backgroundColor": "rgba(203,205,210,1.00)",
+                      "height": "1px",
+                      "left": "0px",
+                      "position": "absolute",
+                      "right": "0px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "paddingLeft": "10px",
+                      "paddingRight": "10px",
                     }
                   }
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    style={
-                      Object {
-                        "backgroundColor": "rgba(203,205,210,1.00)",
-                        "height": "1px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                      }
-                    }
-                  />
-                  <div
-                    className="css-view-1dbjc4n"
-                    style={
-                      Object {
-                        "backgroundColor": "rgba(255,255,255,1.00)",
-                        "paddingLeft": "10px",
-                        "paddingRight": "10px",
-                      }
-                    }
-                  >
-                    <div
-                      className="css-text-901oao"
-                      dir="ltr"
-                      style={
-                        Object {
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                          "textAlign": "center",
-                        }
-                      }
-                    >
-                      ou
-                    </div>
-                  </div>
-                </div>
-                <a
-                  className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
-                  href="https://dmsforeigncitizen"
-                  onClick={[Function]}
-                  onDoubleClick={[Function]}
-                  tabIndex={0}
-                  target="_blank"
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    style={
-                      Object {
-                        "WebkitFlexShrink": 0,
-                        "flexShrink": 0,
-                        "msFlexNegative": 0,
-                      }
-                    }
-                  >
-                    <div
-                      className="css-view-1dbjc4n"
-                      data-testid="button-icon"
-                    >
-                      <div
-                        className="css-text-901oao"
-                        dir="auto"
-                      >
-                        button-icon-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="css-text-901oao css-textMultiLine-cens5h"
+                    className="css-text-901oao"
                     dir="ltr"
                     style={
                       Object {
-                        "WebkitLineClamp": 1,
                         "color": "rgba(22,22,23,1.00)",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": "15px",
                         "lineHeight": "20px",
-                        "marginLeft": "8px",
-                        "maxWidth": "100%",
+                        "textAlign": "center",
                       }
                     }
                   >
-                    Je suis de nationalité étrangère
+                    ou
                   </div>
-                </a>
+                </div>
+              </div>
+              <a
+                className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
+                href="https://dmsforeigncitizen"
+                onClick={[Function]}
+                onDoubleClick={[Function]}
+                tabIndex={0}
+                target="_blank"
+              >
                 <div
-                  className="css-text-901oao"
-                  dir="ltr"
+                  className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "color": "rgba(105,106,111,1.00)",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": "12px",
-                      "lineHeight": "16px",
-                      "textAlign": "center",
+                      "WebkitFlexShrink": 0,
+                      "flexShrink": 0,
+                      "msFlexNegative": 0,
                     }
                   }
                 >
-                  Titre de séjour, carte d'identité ou passeport.
+                  <div
+                    className="css-view-1dbjc4n"
+                    data-testid="button-icon"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      button-icon-SVG-Mock
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 1,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                      "marginLeft": "8px",
+                      "maxWidth": "100%",
+                    }
+                  }
+                >
+                  Je suis de nationalité étrangère
+                </div>
+              </a>
               <div
-                className="css-view-1dbjc4n"
+                className="css-text-901oao"
+                dir="ltr"
                 style={
                   Object {
-                    "height": "8px",
+                    "color": "rgba(105,106,111,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                    "textAlign": "center",
                   }
                 }
-              />
+              >
+                Titre de séjour, carte d'identité ou passeport.
+              </div>
             </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "8px",
+                }
+              }
+            />
           </div>
         </div>
       </div>

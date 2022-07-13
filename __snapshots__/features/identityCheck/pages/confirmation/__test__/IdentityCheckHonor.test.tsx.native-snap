@@ -106,8 +106,17 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,15 +129,11 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
@@ -137,11 +142,8 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
+                "paddingHorizontal": 20,
+                "paddingTop": 20,
               },
             ]
           }
@@ -150,8 +152,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "paddingHorizontal": 20,
-                  "paddingTop": 20,
+                  "height": "100%",
                 },
               ]
             }
@@ -160,7 +161,45 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "height": "100%",
+                    "alignItems": "center",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Les informations que tu as renseignées sont-elles correctes ?
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "maxWidth": 500,
                   },
                 ]
               }
@@ -169,207 +208,159 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Les informations que tu as renseignées sont-elles correctes ?
-                </Text>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "maxWidth": 500,
+                      "paddingVertical": 16,
                     },
                   ]
                 }
               >
                 <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingVertical": 16,
-                      },
-                    ]
-                  }
+                  height={32}
+                  width={32}
                 >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
-                </Text>
-                <View
-                  reversed={true}
-                  style={
-                    Array [
-                      Object {
-                        "paddingVertical": 16,
-                        "transform": Array [
-                          Object {
-                            "rotate": "180deg",
-                          },
-                        ],
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
-                </Text>
-              </View>
-              <View
-                flex={2}
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 2,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "paddingVertical": 20,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Valider et continuer"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Valider et continuer"
-                >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 0,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Valider et continuer
+                  <Text>
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-              <View
-                customHeight={8}
-                enable={true}
+              <Text
                 style={
                   Array [
                     Object {
-                      "height": 8,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
                     },
                   ]
                 }
-              />
+              >
+                Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
+              </Text>
+              <View
+                reversed={true}
+                style={
+                  Array [
+                    Object {
+                      "paddingVertical": 16,
+                      "transform": Array [
+                        Object {
+                          "rotate": "180deg",
+                        },
+                      ],
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={32}
+                  width={32}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
+              </Text>
             </View>
+            <View
+              flex={2}
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 2,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "paddingVertical": 20,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Valider et continuer"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Valider et continuer"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Valider et continuer
+                </Text>
+              </View>
+            </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>

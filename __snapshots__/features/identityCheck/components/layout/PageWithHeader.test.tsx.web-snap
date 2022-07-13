@@ -123,13 +123,30 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxDirection": "normal",
           "WebkitBoxFlex": 1,
+          "WebkitBoxOrient": "vertical",
           "WebkitFlexBasis": "0px",
+          "WebkitFlexDirection": "column",
           "WebkitFlexGrow": 1,
+          "alignItems": "center",
+          "backgroundColor": "rgba(255,255,255,1.00)",
+          "borderTopLeftRadius": "22px",
+          "borderTopRightRadius": "22px",
+          "display": "flex",
           "flexBasis": "0px",
+          "flexDirection": "column",
           "flexGrow": 1,
+          "height": "100%",
+          "msFlexAlign": "center",
+          "msFlexDirection": "column",
           "msFlexPositive": 1,
           "msFlexPreferredSize": "0px",
+          "overflowX": "scroll",
+          "overflowY": "scroll",
+          "paddingTop": "12px",
         }
       }
     >
@@ -137,23 +154,18 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         className="css-view-1dbjc4n"
         style={
           Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "vertical",
-            "WebkitFlexDirection": "column",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderTopLeftRadius": "22px",
-            "borderTopRightRadius": "22px",
-            "display": "flex",
-            "flexDirection": "column",
-            "height": "100%",
-            "msFlexAlign": "center",
-            "msFlexDirection": "column",
-            "overflowX": "scroll",
-            "overflowY": "scroll",
-            "paddingTop": "12px",
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": "500px",
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+            "width": "100%",
           }
         }
       >
@@ -161,18 +173,45 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
+              "paddingLeft": "20px",
+              "paddingRight": "20px",
+              "paddingTop": "20px",
+            }
+          }
+        >
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            fixed top children
+          </div>
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          onScroll={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          onWheel={[Function]}
+          style={
+            Object {
+              "WebkitBoxDirection": "normal",
               "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
+              "WebkitBoxOrient": "vertical",
+              "WebkitFlexDirection": "column",
               "WebkitFlexGrow": 1,
               "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTransform": "translateZ(0px)",
+              "flexDirection": "column",
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": "500px",
+              "msFlexDirection": "column",
               "msFlexNegative": 1,
               "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-              "width": "100%",
+              "overflowX": "hidden",
+              "overflowY": "auto",
+              "transform": "translateZ(0px)",
             }
           }
         >
@@ -180,88 +219,18 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             className="css-view-1dbjc4n"
             style={
               Object {
-                "paddingLeft": "20px",
-                "paddingRight": "20px",
-                "paddingTop": "20px",
-              }
-            }
-          >
-            <div
-              className="css-text-901oao"
-              dir="auto"
-            >
-              fixed top children
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onScroll={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            onWheel={[Function]}
-            style={
-              Object {
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxFlex": 1,
                 "WebkitBoxOrient": "vertical",
                 "WebkitFlexDirection": "column",
                 "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitOverflowScrolling": "touch",
-                "WebkitTransform": "translateZ(0px)",
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "flexShrink": 1,
                 "msFlexDirection": "column",
-                "msFlexNegative": 1,
                 "msFlexPositive": 1,
-                "overflowX": "hidden",
-                "overflowY": "auto",
-                "transform": "translateZ(0px)",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxFlex": 1,
-                  "WebkitBoxOrient": "vertical",
-                  "WebkitFlexDirection": "column",
-                  "WebkitFlexGrow": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "msFlexDirection": "column",
-                  "msFlexPositive": 1,
-                  "paddingBottom": "0px",
-                  "paddingLeft": "20px",
-                  "paddingRight": "20px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-              >
-                scroll children
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "backgroundColor": "rgba(255,255,255,1.00)",
-                "bottom": "0px",
-                "left": "0px",
-                "paddingBottom": "20px",
+                "paddingBottom": "0px",
                 "paddingLeft": "20px",
                 "paddingRight": "20px",
-                "paddingTop": "12px",
-                "position": "absolute",
-                "right": "0px",
               }
             }
           >
@@ -269,17 +238,40 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               className="css-text-901oao"
               dir="auto"
             >
-              fixed bottom children
+              scroll children
             </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "height": "8px",
-                }
-              }
-            />
           </div>
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "backgroundColor": "rgba(255,255,255,1.00)",
+              "bottom": "0px",
+              "left": "0px",
+              "paddingBottom": "20px",
+              "paddingLeft": "20px",
+              "paddingRight": "20px",
+              "paddingTop": "12px",
+              "position": "absolute",
+              "right": "0px",
+            }
+          }
+        >
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            fixed bottom children
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
         </div>
       </div>
     </div>

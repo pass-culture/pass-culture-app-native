@@ -53,204 +53,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
-                >
-                  <form
-                    class="sc-llYSUQ jurclK"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; width: 100%;"
-                    >
-                      <h2
-                        aria-level="2"
-                        class="css-reset-4rbku5 css-text-901oao"
-                        dir="ltr"
-                        role="heading"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
-                      >
-                        Quelle est ton adresse ?
-                      </h2>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 20px;"
-                    />
-                    <label
-                      class="sc-ksdxgE lnHluM"
-                      dir="ltr"
-                      for="testUuidV4"
-                    >
-                      Entre ton adresse
-                    </label>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 8px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="styled-input-container"
-                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; outline-offset: 0px; padding: 0px 17px 0px 17px; width: 100%;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 4px;"
-                      />
-                      <input
-                        aria-describedby="testUuidV4"
-                        aria-label="Entrée pour l'adresse"
-                        autocapitalize="sentences"
-                        autocomplete="on"
-                        autocorrect="off"
-                        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                        data-testid="Entrée pour l'adresse"
-                        dir="ltr"
-                        enterkeyhint="next"
-                        id="testUuidV4"
-                        placeholder="Ex : 34 avenue de l'Opéra"
-                        spellcheck="false"
-                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                    <div
-                      id="testUuidV4"
-                      role="alert"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 8px;"
-                    />
-                  </form>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      role="radiogroup"
-                      style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
-                >
-                  <button
-                    aria-label="Continuer vers l'étape suivante"
-                    class="sc-dkPtRN fPOvak sc-gKclnd ecJASa"
-                    data-testid="Continuer vers l'étape suivante"
-                    disabled=""
-                    type="submit"
-                  >
-                    <div
-                      class="css-text-901oao css-textMultiLine-cens5h"
-                      dir="ltr"
-                      style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-                    >
-                      Continuer
-                    </div>
-                  </button>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="height: 8px;"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      style="display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 16px;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
-      >
-        <h1
-          aria-level="1"
-          class="css-reset-4rbku5 css-text-901oao"
-          dir="ltr"
-          role="heading"
-          style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
-        >
-          Profil
-        </h1>
-        <button
-          aria-label="Revenir en arrière"
-          class="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
-          data-testid="Revenir en arrière"
-          tabindex="0"
-          title="Revenir en arrière"
-          type="button"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            data-testid="icon-back"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              icon-back-SVG-Mock
-            </div>
-          </div>
-        </button>
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -368,6 +171,193 @@ Object {
                   style="height: 8px;"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
+      >
+        <h1
+          aria-level="1"
+          class="css-reset-4rbku5 css-text-901oao"
+          dir="ltr"
+          role="heading"
+          style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+        >
+          Profil
+        </h1>
+        <button
+          aria-label="Revenir en arrière"
+          class="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
+          data-testid="Revenir en arrière"
+          tabindex="0"
+          title="Revenir en arrière"
+          type="button"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="icon-back"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              icon-back-SVG-Mock
+            </div>
+          </div>
+        </button>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
+            >
+              <form
+                class="sc-llYSUQ jurclK"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; width: 100%;"
+                >
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                  >
+                    Quelle est ton adresse ?
+                  </h2>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 20px;"
+                />
+                <label
+                  class="sc-ksdxgE lnHluM"
+                  dir="ltr"
+                  for="testUuidV4"
+                >
+                  Entre ton adresse
+                </label>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 8px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; outline-offset: 0px; padding: 0px 17px 0px 17px; width: 100%;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 4px;"
+                  />
+                  <input
+                    aria-describedby="testUuidV4"
+                    aria-label="Entrée pour l'adresse"
+                    autocapitalize="sentences"
+                    autocomplete="on"
+                    autocorrect="off"
+                    class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    data-testid="Entrée pour l'adresse"
+                    dir="ltr"
+                    enterkeyhint="next"
+                    id="testUuidV4"
+                    placeholder="Ex : 34 avenue de l'Opéra"
+                    spellcheck="false"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  id="testUuidV4"
+                  role="alert"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 8px;"
+                />
+              </form>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  role="radiogroup"
+                  style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
+                />
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+            >
+              <button
+                aria-label="Continuer vers l'étape suivante"
+                class="sc-dkPtRN fPOvak sc-gKclnd ecJASa"
+                data-testid="Continuer vers l'étape suivante"
+                disabled=""
+                type="submit"
+              >
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                >
+                  Continuer
+                </div>
+              </button>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 8px;"
+              />
             </div>
           </div>
         </div>

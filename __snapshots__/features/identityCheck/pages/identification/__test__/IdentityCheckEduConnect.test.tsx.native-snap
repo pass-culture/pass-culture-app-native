@@ -106,8 +106,17 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
         Array [
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
               "flexBasis": 0,
+              "flexDirection": "column",
               "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 12,
             },
           ],
           Object {
@@ -120,254 +129,236 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
             },
           ]
         }
       >
-        <View
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            Object {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
           style={
             Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "maxWidth": 500,
-                "width": "100%",
-              },
+              Object {},
             ]
           }
         >
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
-              Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
-                "paddingHorizontal": 20,
-              }
-            }
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "justifyContent": "center",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignSelf": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    numberOfSpaces={10}
-                    style={
-                      Array [
-                        Object {
-                          "height": 40,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    fill="none"
-                    height={156}
-                    width={200}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Identification
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    Array [
-                      Object {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-                </Text>
-                <View
-                  numberOfSpaces={8}
-                  style={
-                    Array [
-                      Object {
-                        "height": 32,
-                      },
-                    ]
-                  }
-                />
-              </View>
-            </View>
-          </RCTScrollView>
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "bottom": 0,
-                  "left": 0,
-                  "paddingBottom": 20,
-                  "paddingHorizontal": 20,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 0,
-                },
-              ]
-            }
-          >
+          <View>
             <View
-              accessibilityLabel="Connexion avec ÉduConnect"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "flexGrow": 1,
+                    "justifyContent": "center",
+                  },
+                ]
               }
-              testID="Connexion avec ÉduConnect"
             >
               <View
                 style={
                   Array [
                     Object {
-                      "flexShrink": 0,
+                      "alignSelf": "center",
                     },
                   ]
                 }
               >
                 <View
-                  height={24}
-                  testID="button-icon"
-                  width={24}
+                  numberOfSpaces={10}
+                  style={
+                    Array [
+                      Object {
+                        "height": 40,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  fill="none"
+                  height={156}
+                  width={200}
                 >
                   <Text>
-                    button-icon-SVG-Mock
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 8,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Connexion avec ÉduConnect
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 18,
+                        "lineHeight": 22,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Identification
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
               </Text>
+              <View
+                numberOfSpaces={8}
+                style={
+                  Array [
+                    Object {
+                      "height": 32,
+                    },
+                  ]
+                }
+              />
             </View>
+          </View>
+        </RCTScrollView>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "bottom": 0,
+                "left": 0,
+                "paddingBottom": 20,
+                "paddingHorizontal": 20,
+                "paddingTop": 12,
+                "position": "absolute",
+                "right": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Connexion avec ÉduConnect"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
+              }
+            }
+            testID="Connexion avec ÉduConnect"
+          >
             <View
-              customHeight={8}
-              enable={true}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "flexShrink": 0,
                   },
                 ]
               }
-            />
+            >
+              <View
+                height={24}
+                testID="button-icon"
+                width={24}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 8,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Connexion avec ÉduConnect
+            </Text>
           </View>
+          <View
+            customHeight={8}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 8,
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>
