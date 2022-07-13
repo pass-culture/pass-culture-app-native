@@ -16,33 +16,45 @@ create_sourcemaps(){
   else
     HERMES_OS_BIN="osx-bin"
   fi
-  if [ -f "node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc" ]; then
+  if [[ -f "node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc" ]]; then
     # react-native v0.68 (current)
     HERMES_BIN="node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc"
   else
     # react-native v0.69 or higher (keep only this condition when version is reached)
     HERMES_BIN="node_modules/react-native/sdks/hermesc/${HERMES_OS_BIN}/hermesc"
   fi
-  npx react-native bundle \
-    --platform "${APP_OS}" \
-    --dev false \
-    --minify false \
-    --reset-cache \
-    --entry-file index.js \
-    --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
-    --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map"
 
-  "${HERMES_BIN}" \
-    -O \
-    -emit-binary \
-    -output-source-map \
-    -out="${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" \
-    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+  if [[ "${APP_OS}" = "android" ]]; then
+    npx react-native bundle \
+      --platform "${APP_OS}" \
+      --dev false \
+      --minify false \
+      --reset-cache \
+      --entry-file index.js \
+      --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
+      --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map"
 
-  node node_modules/react-native/scripts/compose-source-maps.js \
-    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
-    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
-    -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
+    "${HERMES_BIN}" \
+      -O \
+      -emit-binary \
+      -output-source-map \
+      -out="${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" \
+      "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+
+    node node_modules/react-native/scripts/compose-source-maps.js \
+      "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
+      "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
+      -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
+  else
+    npx react-native bundle \
+      --platform "${APP_OS}" \
+      --dev false \
+      --minify false \
+      --reset-cache \
+      --entry-file index.js \
+      --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
+      --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
+  fi
 }
 
 upload_sourcemaps(){
