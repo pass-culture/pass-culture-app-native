@@ -33,6 +33,7 @@ export const SearchBox: React.FC<Props> = ({
   onFocusState,
   isFocus,
   accessibleHiddenTitle,
+  ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -102,7 +103,9 @@ export const SearchBox: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}>
+      <SearchInputContainer
+        marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}
+        {...props}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
