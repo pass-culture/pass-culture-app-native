@@ -1,18 +1,38 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { timeDiffInHours } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
-export function PhoneValidationTooManySMSSent() {
+export type PhoneValidationTooManySMSSentProps = StackScreenProps<
+  RootStackParamList,
+  'PhoneValidationTooManySMSSent'
+>
+
+export function PhoneValidationTooManySMSSent({ route }: PhoneValidationTooManySMSSentProps) {
+  const { counterResetDatetime } = usePhoneValidationRemainingAttempts()
+
+  const hoursUntilAllowedRetry = Math.max(0, timeDiffInHours(counterResetDatetime ?? new Date()))
+
+  const hoursLeftWording = plural(hoursUntilAllowedRetry, {
+    one: 'Tu pourras réessayer dans # heure.',
+    other: 'Tu pourras réessayer dans # heures.',
+  })
+
   return (
     <GenericInfoPage
-      title={t`Trop de tentatives\u00a0!`}
+      title={t`Réessaie plus tard`}
       icon={UserBlocked}
       buttons={[
         <TouchableLink
@@ -21,10 +41,23 @@ export function PhoneValidationTooManySMSSent() {
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
         />,
+        <TouchableLink
+          key={2}
+          as={ButtonTertiaryWhite}
+          icon={PlainArrowPrevious}
+          wording={t`J'ai reçu mon code`}
+          navigateTo={{
+            screen: 'SetPhoneValidationCode',
+            params: {
+              phoneNumber: route.params.phoneNumber,
+              countryCode: route.params.countryCode,
+            },
+          }}
+        />,
       ]}>
-      <StyledBody>
-        {t`Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures\u00a0!`}
-      </StyledBody>
+      <StyledBody>{t`Tu as dépassé le nombre de 5 demandes de code autorisées.`}</StyledBody>
+      <Spacer.Column numberOfSpaces={5} />
+      <StyledBody>{hoursLeftWording}</StyledBody>
     </GenericInfoPage>
   )
 }

@@ -160,7 +160,12 @@ describe('SetPhoneNumber', () => {
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
-      await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
+      await waitFor(() =>
+        expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent', {
+          countryCode: 'FR',
+          phoneNumber: '612345678',
+        })
+      )
     })
   })
 

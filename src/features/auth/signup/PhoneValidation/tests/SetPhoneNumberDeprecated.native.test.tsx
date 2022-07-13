@@ -176,7 +176,10 @@ describe('SetPhoneNumber', () => {
       await act(async () => {
         useMutationCallbacks.onError(response)
       })
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
+      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent', {
+        countryCode: 'FR',
+        phoneNumber: '612345678',
+      })
     })
   })
 })

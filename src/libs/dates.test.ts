@@ -6,6 +6,7 @@ import {
   formatToSlashedFrenchDate,
   isTimestampExpired,
   formatToReadableFrenchDate,
+  timeDiffInHours,
 } from './dates'
 
 describe('currentTimestamp()', () => {
@@ -69,5 +70,20 @@ describe('dateDiffInFullYears()', () => {
 describe('formatToSlashedFrenchDate()', () => {
   it('should return the date in the slashed format', () => {
     expect(formatToSlashedFrenchDate('2020-06-01T00:00:00Z')).toBe('01/06/2020')
+  })
+})
+
+describe('timeDiffInHours', () => {
+  beforeAll(() => {
+    mockdate.set(new Date('2022-07-08T13:00:00Z'))
+  })
+  it('should return the correct superior hour difference between dates and mock date', () => {
+    expect(timeDiffInHours('2022-07-08T13:00:00Z')).toBe(0)
+    expect(timeDiffInHours('2022-07-08T13:30:00Z')).toBe(1)
+
+    expect(timeDiffInHours('2022-07-08T14:00:00Z')).toBe(1)
+    expect(timeDiffInHours('2022-07-08T14:30:00Z')).toBe(2)
+
+    expect(timeDiffInHours('2022-07-08T12:00:00Z')).toBe(-1)
   })
 })

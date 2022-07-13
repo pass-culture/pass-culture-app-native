@@ -1392,6 +1392,10 @@ msgstr "Informations personnelles"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+msgid "J'ai reçu mon code"
+msgstr "J'ai reçu mon code"
+
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
 msgstr "Je cherche"
@@ -2564,6 +2568,10 @@ msgstr "Revenir à l'étape précédente"
 msgid "Réactiver mon compte"
 msgstr "Réactiver mon compte"
 
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+msgid "Réessaie plus tard"
+msgstr "Réessaie plus tard"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
@@ -3031,7 +3039,6 @@ msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nou
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
@@ -3051,13 +3058,13 @@ msgstr "Tu as déjà signalé cette offre"
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+msgid "Tu as dépassé le nombre de 5 demandes de code autorisées."
+msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
+
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
-
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
-msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
-msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
 #: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
@@ -3915,6 +3922,10 @@ msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
 #: src/features/search/atoms/Buttons/Filter.tsx
 msgid "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
 msgstr "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
+
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
+msgstr "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
 
 #: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"

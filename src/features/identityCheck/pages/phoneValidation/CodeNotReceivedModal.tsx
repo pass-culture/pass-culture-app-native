@@ -1,6 +1,7 @@
 import { t, plural } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
+import { CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
@@ -21,6 +22,7 @@ export interface CodeNotReceivedModalProps {
   isVisible: boolean
   dismissModal: () => void
   phoneNumber: string
+  countryCode: CountryCode
 }
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
@@ -42,7 +44,10 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
       props.dismissModal()
       const { content } = error as ApiError
       if (content.code === 'TOO_MANY_SMS_SENT') {
-        navigate('PhoneValidationTooManySMSSent')
+        navigate('PhoneValidationTooManySMSSent', {
+          phoneNumber: props.phoneNumber,
+          countryCode: props.countryCode,
+        })
       } else {
         const message = extractApiErrorMessage(error)
         showErrorSnackBar({

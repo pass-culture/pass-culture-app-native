@@ -78,7 +78,7 @@ export const SetPhoneNumber = () => {
     onError: (error: ApiError | unknown) => {
       const { content } = error as ApiError
       if (content.code === 'TOO_MANY_SMS_SENT') {
-        navigate('PhoneValidationTooManySMSSent')
+        navigate('PhoneValidationTooManySMSSent', { phoneNumber, countryCode: country.cca2 })
       } else {
         const message = extractApiErrorMessage(error)
         setInvalidPhoneNumberMessage(message)

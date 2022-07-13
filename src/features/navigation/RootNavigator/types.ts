@@ -133,7 +133,7 @@ export type RootStackParamList = {
     params: TabParamList[TabRouteName]
   }
   PhoneValidationTooManyAttempts: undefined
-  PhoneValidationTooManySMSSent: undefined
+  PhoneValidationTooManySMSSent: { phoneNumber: string; countryCode: CountryCode }
   VerifyEligibility: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
