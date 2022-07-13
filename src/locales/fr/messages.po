@@ -247,6 +247,10 @@ msgstr "Aucun résultat"
 msgid "Aucune connexion internet. Réessaie plus tard"
 msgstr "Aucune connexion internet. Réessaie plus tard"
 
+#: src/features/bookings/components/NoBookingsView.tsx
+msgid "Aucune réservations en cours."
+msgstr "Aucune réservations en cours."
+
 #: src/features/bookings/helpers.ts
 #: src/features/search/components/CalendarPicker.web.tsx
 #: src/features/search/sections/OfferDate.tsx
@@ -1322,8 +1326,8 @@ msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
 msgstr "Il est possible que ce lieu soit désactivé ou n'existe pas."
 
 #: src/features/bookings/components/NoBookingsView.tsx
-msgid "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier."
-msgstr "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier."
+msgid "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier."
+msgstr "Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier."
 
 #: src/features/offer/pages/OfferNotFound.tsx
 msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
@@ -3129,10 +3133,6 @@ msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée av
 #: src/features/bookings/components/TicketBody/NoTicket/NoTicket.tsx
 msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 msgstr "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
-
-#: src/features/bookings/components/NoBookingsView.tsx
-msgid "Tu n’as pas de réservations en cours."
-msgstr "Tu n’as pas de réservations en cours."
 
 #: src/features/bookings/components/NoBookingsView.tsx
 msgid ""

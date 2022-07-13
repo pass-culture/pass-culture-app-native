@@ -27,11 +27,11 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     }
   />
   <View
-    numberOfSpaces={16}
+    numberOfSpaces={40}
     style={
       Array [
         Object {
-          "height": 64,
+          "height": 160,
         },
       ]
     }
@@ -63,7 +63,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       ]
     }
   >
-    Tu n’as pas de réservations en cours.
+    Aucune réservations en cours.
   </Text>
   <Text
     offline={true}
@@ -84,7 +84,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       ]
     }
   >
-    Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier.
+    Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.
   </Text>
   <View
     style={
@@ -98,11 +98,11 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     }
   />
   <View
-    numberOfSpaces={52}
+    numberOfSpaces={40}
     style={
       Array [
         Object {
-          "height": 208,
+          "height": 160,
         },
       ]
     }
@@ -148,6 +148,16 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     }
   />
   <View
+    numberOfSpaces={40}
+    style={
+      Array [
+        Object {
+          "height": 160,
+        },
+      ]
+    }
+  />
+  <View
     height={156}
     width={200}
   >
@@ -177,16 +187,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
 Découvre les offres disponibles
 sans attendre !
   </Text>
-  <View
-    numberOfSpaces={16}
-    style={
-      Array [
-        Object {
-          "height": 64,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [
@@ -258,11 +258,11 @@ sans attendre !
     }
   />
   <View
-    numberOfSpaces={8}
+    numberOfSpaces={40}
     style={
       Array [
         Object {
-          "height": 32,
+          "height": 160,
         },
       ]
     }
