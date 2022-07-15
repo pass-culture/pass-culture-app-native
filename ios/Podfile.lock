@@ -228,7 +228,7 @@ PODS:
     - libwebp/demux
   - libwebp/webp (1.2.1)
   - lottie-ios (3.2.3)
-  - lottie-react-native (5.0.1):
+  - lottie-react-native (5.1.3):
     - lottie-ios (~> 3.2.3)
     - React-Core
   - nanopb (2.30908.0):
@@ -475,7 +475,7 @@ PODS:
     - react-native-config/App (= 1.4.5)
   - react-native-config/App (1.4.5):
     - React-Core
-  - react-native-date-picker (4.1.3):
+  - react-native-date-picker (4.2.2):
     - React-Core
   - react-native-flipper (0.123.0):
     - React-Core
@@ -637,9 +637,9 @@ PODS:
   - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
-  - RNSentry (3.4.3):
+  - RNSentry (4.1.2):
     - React-Core
-    - Sentry (= 7.11.0)
+    - Sentry (= 7.20.0)
   - RNSVG (12.1.1):
     - React
   - SDWebImage (5.11.1):
@@ -648,9 +648,9 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.11.0):
-    - Sentry/Core (= 7.11.0)
-  - Sentry/Core (7.11.0)
+  - Sentry (7.20.0):
+    - Sentry/Core (= 7.20.0)
+  - Sentry/Core (7.20.0)
   - SocketRocket (0.6.0)
   - SSZipArchive (2.2.3)
   - Yoga (1.14.0)
@@ -989,7 +989,7 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: 6ff8327c15058e9e220f27f150431a50cd41c4cf
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 476ee3e89abb49e07f822b48323c51c57124b572
+  glog: 5337263514dd6f09803962437687240c5dc39aa4
   GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -998,14 +998,14 @@ SPEC CHECKSUMS:
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
-  lottie-react-native: a029a86e1689c86a07169c520ae770e84348cd20
+  lottie-react-native: a501112fa980529ccb80b9f3ee117a7f98c6af3a
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   Permission-Camera: 0db4fd6e1c556c1cf47f38b989a8084cea3ec3dd
   Permission-LocationWhenInUse: d98db702ec75e93a3ff94bc297d0b66ea04231e1
   Permission-Notifications: e247d69c22ae72770d1c5314ad6ccd1256c57c83
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
-  RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
+  RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
   RCTRequired: 3e917ea5377751094f38145fdece525aa90545a0
   RCTTypeSafety: c43c072a4bd60feb49a9570b0517892b4305c45e
   React: 176dd882de001854ced260fad41bb68a31aa4bd0
@@ -1021,7 +1021,7 @@ SPEC CHECKSUMS:
   React-logger: a0833912d93b36b791b7a521672d8ee89107aff1
   react-native-appsflyer: 530a07183bedd33e47c76ba2f5592d7b74caff1c
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
-  react-native-date-picker: dc87b284b1c94327a00d2d9da1514eed75b2ee85
+  react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
   react-native-flipper: 33bba1cad647f4d56403012993f201e10518b78c
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
@@ -1060,11 +1060,11 @@ SPEC CHECKSUMS:
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNReanimated: e7d8afaf8fed4b3bf1a46e06adb2e04a2b248f1c
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
-  RNSentry: 85f6525b5fe8d2ada065858026b338605b3c09da
+  RNSentry: b7b82fd671772dda9ae063af0b4873251aa04bdb
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 0c5cd63d714187b4a39c331c1f0eb04ba7868341
+  Sentry: 9e8ec837fa37e7b397f19f75542800461b138d0e
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 99652481fcd320aefa4a7ef90095b95acd181952
