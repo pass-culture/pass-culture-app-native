@@ -9,6 +9,7 @@ import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -52,7 +53,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom } = useCustomSafeInsets()
-  const { isSmallScreen, accessibilityRole } = useTheme()
+  const { isSmallScreen } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -112,7 +113,7 @@ export const AppModal: FunctionComponent<Props> = ({
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
       aria-describedby={titleId}
-      accessibilityRole={accessibilityRole.dialog}
+      accessibilityRole={AccessibilityRole.DIALOG}
       aria-modal={true}>
       <ModalContainer height={isSmallScreen ? windowHeight : modalHeight} testID="modalContainer">
         <ModalHeader

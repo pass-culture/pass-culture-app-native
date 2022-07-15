@@ -1,7 +1,8 @@
-export enum AccessibilityRoleEnum {
+export enum AccessibilityRole {
   BUTTON = 'button',
   CHECKBOX = 'checkbox',
   DIALOG = 'none',
+  GROUP = 'none',
   IMAGE = 'image',
   LINK = 'link',
   RADIO = 'radio',

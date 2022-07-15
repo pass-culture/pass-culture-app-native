@@ -7,7 +7,7 @@ import ReactNativeCountryPicker, {
   getAllCountries,
   Flag,
 } from 'react-native-country-picker-modal'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -19,6 +19,7 @@ import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ALLOWED_COUNTRY_CODES, FLAG_TYPE } from './constants'
@@ -38,7 +39,6 @@ async function getAllowedCountries() {
 }
 
 export const CountryPicker: React.FC<Props> = (props) => {
-  const { accessibilityRole } = useTheme()
   const { visible, showModal, hideModal } = useModal(false)
 
   const [countries, setCountries] = useState<Country[]>([])
@@ -67,7 +67,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
     return (
       <View {...getHeadingAttrs(2)}>
         <TouchableOpacity
-          accessibilityRole={accessibilityRole.radio}
+          accessibilityRole={AccessibilityRole.RADIO}
           accessibilityState={{ checked: selected }}
           key={item.cca2}
           testID={`country-selector-${item.cca2}`}

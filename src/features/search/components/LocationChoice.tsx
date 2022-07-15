@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
@@ -7,6 +7,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 type Props = {
   section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
@@ -19,7 +20,6 @@ type Props = {
 }
 
 export const LocationChoice: React.FC<Props> = (props) => {
-  const { accessibilityRole } = useTheme()
   const { section, onPress, arrowNext = false, testID, accessibilityDescribedBy } = props
   const { Icon, label, isSelected } = useLocationChoice(section)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
@@ -32,7 +32,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
   return (
     <Container
       onPress={onPress}
-      accessibilityRole={accessibilityRole.radio}
+      accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: selected }}
       testID={`locationChoice-${testID}`}>
       <FirstPart>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { AccessibilityRole, Platform, View } from 'react-native'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -13,6 +12,7 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { getSpacing } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
@@ -40,7 +40,7 @@ export const Category: React.FC = () => {
         />
       }
       accessibilityTitle={SectionTitle.Category}>
-      <BodyContainer aria-labelledby={titleID}>
+      <BodyContainer aria-labelledby={titleID} accessibilityRole={AccessibilityRole.GROUP}>
         <StyledUl>
           {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
             <Li key={category}>
@@ -57,9 +57,7 @@ export const Category: React.FC = () => {
   )
 }
 
-const BodyContainer = styled(View).attrs({
-  accessibilityRole: Platform.OS === 'web' ? ('group' as AccessibilityRole) : undefined,
-})({
+const BodyContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
   marginBottom: getSpacing(-3),

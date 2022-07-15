@@ -1,9 +1,10 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
@@ -14,11 +15,10 @@ interface Props {
 }
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
-  const { accessibilityRole } = useTheme()
   return (
     <StyledTouchableOpacity
       selected={selected}
-      accessibilityRole={accessibilityRole.checkbox}
+      accessibilityRole={AccessibilityRole.CHECKBOX}
       accessibilityState={{ checked: selected }}
       onPress={onPress}>
       {selected ? (

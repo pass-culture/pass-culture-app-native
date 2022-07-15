@@ -13,6 +13,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
@@ -37,7 +38,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
     moduleId,
   } = props
   const isDisabled = !url
-  const { appContentWidth, accessibilityRole } = useTheme()
+  const { appContentWidth } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = Math.min(
@@ -88,7 +89,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
       <Spacer.Row numberOfSpaces={6} />
       <StyledTouchableLink
         highlight
-        accessibilityRole={url ? accessibilityRole.link : undefined}
+        accessibilityRole={url ? AccessibilityRole.LINK : undefined}
         onPress={() => setShouldRedirect(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

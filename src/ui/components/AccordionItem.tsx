@@ -10,11 +10,12 @@ import {
   ScrollView,
   LayoutChangeEvent,
 } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useFunctionOnce } from 'libs/hooks'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -42,7 +43,6 @@ export const AccordionItem = ({
   titleStyle,
   bodyStyle,
 }: IAccordionItemProps) => {
-  const { accessibilityRole } = useTheme()
   const { tabBarHeight, top } = useCustomSafeInsets()
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
@@ -103,7 +103,7 @@ export const AccordionItem = ({
   return (
     <React.Fragment>
       <StyledTouchableOpacity
-        accessibilityRole={accessibilityRole.button}
+        accessibilityRole={AccessibilityRole.BUTTON}
         onPress={toggleListItem}
         onLayout={getPositionOfAccordionItem}
         accessibilityState={{ expanded: open }}

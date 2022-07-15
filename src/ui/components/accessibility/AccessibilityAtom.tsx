@@ -1,9 +1,10 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { ValidationMark as DefaultValidationMark } from 'ui/components/ValidationMark'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 interface Props {
@@ -17,7 +18,6 @@ export const AccessibilityAtom: React.FC<Props> = ({
   isAccessible,
   rightSpacingValue = 0,
 }) => {
-  const { accessibilityRole } = useTheme()
   const { Icon, wording } = getIconAndWording(handicap)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.standard,
@@ -26,7 +26,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
   const isAccessibleLabel = isAccessible ? t`Accessible` : t`Non accessible`
   return (
     <Container
-      accessibilityRole={accessibilityRole.image}
+      accessibilityRole={AccessibilityRole.IMAGE}
       rightSpacingValue={rightSpacingValue}
       testID="accessibilityAtomContainer"
       accessibilityLabel={`${wording} : ${isAccessibleLabel}`}>

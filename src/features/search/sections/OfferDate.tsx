@@ -12,6 +12,7 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -24,7 +25,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
   const { searchState, dispatch } = useStagedSearch()
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferDate)
-  const { isTouch, accessibilityRole } = useTheme()
+  const { isTouch } = useTheme()
   const titleID = uuidv4()
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
           {SectionTitle.OfferDate}
         </Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <View accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
+        <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
           <VerticalUl>
             <Li>
               <RadioButton

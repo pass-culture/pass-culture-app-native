@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { View } from 'react-native'
-import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
@@ -17,12 +16,12 @@ import { useProfileOptions } from 'features/identityCheck/utils/useProfileOption
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
 import { Spacer } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { Form } from 'ui/web/form/Form'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 export const SetSchoolType = () => {
-  const { accessibilityRole } = useTheme()
   const { schoolTypes, activities } = useProfileOptions()
 
   const { dispatch, profile } = useIdentityCheckContext()
@@ -56,7 +55,7 @@ export const SetSchoolType = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <View accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
+          <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
             <VerticalUl>
               {hasData &&
                 activitySchoolTypes.map((schoolTypeId) => {

@@ -8,7 +8,7 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { AccessibilityRole, Platform, View, ViewProps, ViewStyle } from 'react-native'
+import { Platform, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -18,6 +18,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -117,7 +118,11 @@ const _SnackBar = (props: SnackBarProps) => {
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
+        <SnackBarContainer
+          isVisible={isVisible}
+          marginTop={top}
+          accessibilityRole={AccessibilityRole.STATUS}
+          testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
           <Spacer.Flex flex={1}>
             <Text testID="snackbar-message" color={props.color}>
@@ -144,7 +149,7 @@ export const SnackBar = memo(_SnackBar)
   - On mobile : at the very top of the screen, with a full width
   - On tablet or desktop : below top menu on the right side of the screen, with a max width
 */
-const RootContainer = styled(View)(({ theme }) => ({
+const RootContainer = styled.View(({ theme }) => ({
   maxWidth: theme.isMobileViewport ? '100%' : getSpacing(100),
   position: 'absolute',
   top: theme.isMobileViewport ? 0 : theme.navTopHeight,
@@ -158,20 +163,20 @@ const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEn
   backgroundColor: props.backgroundColor,
 }))
 
-const SnackBarContainer = styled(View).attrs({
-  accessibilityRole: Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined,
-})<{ isVisible: boolean; marginTop: number }>(({ isVisible, marginTop }) => ({
-  marginTop,
-  flexDirection: 'row',
-  alignItems: 'center',
-  display: !isVisible && Platform.OS !== 'web' ? 'none' : 'flex',
-  paddingTop: isVisible ? getSpacing(2) - marginTop : 0,
-  paddingBottom: isVisible ? getSpacing(2) : 0,
-  paddingHorizontal: isVisible ? getSpacing(5) : 0,
-  width: isVisible ? undefined : 0,
-  height: isVisible ? undefined : 0,
-  overflow: 'hidden',
-}))
+const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>(
+  ({ isVisible, marginTop }) => ({
+    marginTop,
+    flexDirection: 'row',
+    alignItems: 'center',
+    display: !isVisible && Platform.OS !== 'web' ? 'none' : 'flex',
+    paddingTop: isVisible ? getSpacing(2) - marginTop : 0,
+    paddingBottom: isVisible ? getSpacing(2) : 0,
+    paddingHorizontal: isVisible ? getSpacing(5) : 0,
+    width: isVisible ? undefined : 0,
+    height: isVisible ? undefined : 0,
+    overflow: 'hidden',
+  })
+)
 
 const Text = styled(Typo.Body)<{ color: string }>((props) => ({
   color: props.color,

@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-raw-text */
 import React from 'react'
 import { Text } from 'react-native'
-import { useTheme } from 'styled-components/native'
+
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 export type Props = {
   accessibilityLabel?: string
@@ -18,10 +19,9 @@ const Container: React.FC<Props> = ({
   withSpaceAfter,
   children,
 }) => {
-  const { accessibilityRole } = useTheme()
   return (
     <Text
-      accessibilityRole={accessibilityRole.image}
+      accessibilityRole={AccessibilityRole.IMAGE}
       accessibilityLabel={accessibilityLabel}
       aria-hidden={!accessibilityLabel}>
       {withSpaceBefore && nonBreakingSpace}

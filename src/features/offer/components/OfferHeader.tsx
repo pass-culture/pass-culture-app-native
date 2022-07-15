@@ -23,6 +23,7 @@ import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 import { useShareOffer } from '../services/useShareOffer'
 
@@ -145,7 +146,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
             testID={t`Mettre en favoris`}
-            accessibilityRole={theme.accessibilityRole.checkbox}
+            accessibilityRole={AccessibilityRole.CHECKBOX}
             accessibilityState={{ checked: !!favorite }}
           />
           <Spacer.Row numberOfSpaces={6} />

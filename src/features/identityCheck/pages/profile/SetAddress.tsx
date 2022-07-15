@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -23,13 +23,13 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { Form } from 'ui/web/form/Form'
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
 export const SetAddress = () => {
-  const { accessibilityRole } = useTheme()
   const { data: settings } = useAppSettings()
   const { dispatch, profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -134,7 +134,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <AdressesContainer accessibilityRole={accessibilityRole.radiogroup}>
+          <AdressesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             {addresses.map((address, index) => (
               <AddressOption
                 label={address}

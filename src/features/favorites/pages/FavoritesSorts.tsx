@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { ScrollView, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
@@ -14,6 +14,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -28,7 +29,6 @@ const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
 export const FavoritesSorts: React.FC = () => {
-  const { accessibilityRole } = useTheme()
   const { goBack } = useGoBack(...getTabNavConfig('Favorites'))
   const {
     position,
@@ -78,7 +78,7 @@ export const FavoritesSorts: React.FC = () => {
           <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
-        <View accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
+        <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
           <VerticalUl>
             {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
               return (
