@@ -21,26 +21,26 @@ export function NoBookingsView() {
       {!netInfo.isConnected ? (
         <React.Fragment>
           <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(4)} />
+          <Spacer.Column numberOfSpaces={getSpacing(10)} />
           <StyledNoBookings />
-          <Explanation offline>{t`Tu n’as pas de réservations en cours.`}</Explanation>
+          <Explanation offline>{t`Aucune réservations en cours.`}</Explanation>
           <Explanation offline>
-            {t`Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier.`}
+            {t`Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.`}
           </Explanation>
           <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(13)} />
+          <Spacer.Column numberOfSpaces={getSpacing(10)} />
           <Spacer.Flex />
         </React.Fragment>
       ) : (
         <React.Fragment>
           <Spacer.Flex />
+          <Spacer.Column numberOfSpaces={getSpacing(10)} />
           <StyledNoBookings />
           <Explanation>
             {t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles
       sans attendre\u00a0!`}
           </Explanation>
-          <Spacer.Column numberOfSpaces={getSpacing(4)} />
           <ButtonContainer>
             <TouchableLink
               as={ButtonPrimary}
@@ -51,7 +51,7 @@ export function NoBookingsView() {
             />
           </ButtonContainer>
           <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(2)} />
+          <Spacer.Column numberOfSpaces={getSpacing(10)} />
           <EndedBookingsSection />
         </React.Fragment>
       )}
@@ -71,7 +71,7 @@ const Container = styled.View({
   marginBottom: getSpacing(10),
 })
 
-const ButtonContainer = styled.View({})
+const ButtonContainer = styled.View``
 
 const Explanation = styled(Typo.Body)<{ offline?: boolean }>(({ theme, offline }) => ({
   flex: 1,

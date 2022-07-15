@@ -48,7 +48,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "64px",
+        "height": "160px",
       }
     }
   />
@@ -88,7 +88,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       }
     }
   >
-    Tu n’as pas de réservations en cours.
+    Aucune réservations en cours.
   </div>
   <div
     className="css-text-901oao"
@@ -116,7 +116,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       }
     }
   >
-    Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte toi à internet pour vérifier.
+    Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.
   </div>
   <div
     className="css-view-1dbjc4n"
@@ -139,7 +139,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "208px",
+        "height": "160px",
       }
     }
   />
@@ -209,6 +209,14 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
   />
   <div
     className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "160px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
   >
     <div
       className="css-text-901oao"
@@ -247,14 +255,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
 Découvre les offres disponibles
 sans attendre !
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "64px",
-      }
-    }
-  />
   <div
     className="css-view-1dbjc4n"
   >
@@ -305,7 +305,7 @@ sans attendre !
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "32px",
+        "height": "160px",
       }
     }
   />
