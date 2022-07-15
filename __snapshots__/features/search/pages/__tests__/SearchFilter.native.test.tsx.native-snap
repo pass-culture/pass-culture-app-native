@@ -826,6 +826,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="accordionBodyContainer"
         >
           <View
+            accessibilityRole="none"
             aria-labelledby="testUuidV4"
             style={
               Array [
@@ -1926,6 +1927,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="accordionBodyContainer"
         >
           <View
+            accessibilityRole="none"
             aria-labelledby="testUuidV4"
             style={
               Array [
