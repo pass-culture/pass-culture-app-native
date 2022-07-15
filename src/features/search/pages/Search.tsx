@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import algoliasearch from 'algoliasearch'
 import React, { useEffect, useState } from 'react'
-import { InstantSearch } from 'react-instantsearch-hooks'
+import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -67,6 +67,7 @@ export function Search() {
       <Form.Flex>
         {appEnableAutocomplete ? (
           <InstantSearch searchClient={searchClient} indexName={offersIndex}>
+            <Configure restrictSearchableAttributes={['offer.name']} hitsPerPage={5} />
             <SearchHeader
               searchInputID={searchInputID}
               appEnableAutocomplete={appEnableAutocomplete}
