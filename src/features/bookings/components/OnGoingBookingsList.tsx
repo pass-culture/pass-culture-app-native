@@ -1,4 +1,4 @@
-import { plural } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -16,6 +16,7 @@ import {
   NumberOfBookingsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -35,13 +36,21 @@ export function OnGoingBookingsList() {
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
     ended_bookings: endedBookings = emptyBookings,
   } = bookings || {}
 
-  const onRefetch = netInfo.isConnected && netInfo.isInternetReachable ? refetch : undefined
+  const refetchOffline = useCallback(() => {
+    showErrorSnackBar({
+      message: t`Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  }, [showErrorSnackBar])
+
+  const onRefetch = netInfo.isConnected && netInfo.isInternetReachable ? refetch : refetchOffline
   const onGoingBookingsCount = ongoingBookings.length
   const hasBookings = onGoingBookingsCount > 0
   const hasEndedBookings = endedBookings.length > 0

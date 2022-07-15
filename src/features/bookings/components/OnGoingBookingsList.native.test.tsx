@@ -7,7 +7,9 @@ import { useBookings } from 'features/bookings/api/queries'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromises, render, act } from 'tests/utils'
+import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { bookingsSnap as mockBookings } from '../api/bookingsSnap'
 
@@ -32,6 +34,9 @@ mockUseSubcategories.mockReturnValue({
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
+jest.mock('ui/components/snackBar/SnackBarContext', () =>
+  jest.requireActual('ui/components/snackBar/__mocks__/SnackBarContext')
+)
 describe('<OnGoingBookingsList /> - Analytics', () => {
   mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
@@ -65,8 +70,8 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
       expect(flatList).toBeDefined()
       expect(flatList.props.onRefresh).toBeDefined()
     })
-    it('should not allow pull to refetch when !netInfo.isConnected or !netInfo.isInternetReachable', () => {
-      mockUseNetInfo.mockReturnValueOnce({ isConnected: true, isInternetReachable: false })
+    it('should show snack bar error when trying to pull to refetch with message "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."', async () => {
+      mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
       const refetch = jest.fn()
       const loadingBookings = {
         data: {
@@ -82,7 +87,14 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
       const flatList = getByTestId('OnGoingBookingsList')
       expect(flatList).toBeDefined()
-      expect(flatList.props.onRefresh).not.toBeDefined()
+
+      await act(async () => {
+        flatList.props.onRefresh()
+      })
+      expect(showErrorSnackBar).toBeCalledWith({
+        message: `Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 

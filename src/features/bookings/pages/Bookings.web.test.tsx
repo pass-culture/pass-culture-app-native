@@ -55,7 +55,10 @@ describe('Bookings', () => {
 const renderBookings = (bookings: BookingsResponse) => {
   jest
     .spyOn(Queries, 'useBookings')
-    .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
+    .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
+      BookingsResponse,
+      unknown
+    >)
 
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Bookings />))

@@ -1362,6 +1362,10 @@ msgstr "Impossible d'afficher le détail de l'offre. Connecte-toi à internet av
 msgid "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer."
 msgstr "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer."
 
+#: src/features/bookings/components/OnGoingBookingsList.tsx
+msgid "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."
+msgstr "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."
+
 #: src/features/search/components/SearchBox.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
