@@ -107,6 +107,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     // Only close autocomplete list if open
     if (shouldAutocomplete) {
       setShouldAutocomplete(false)
+      setAutocompleteValue('')
       // To force remove focus on search input
       Keyboard.dismiss()
       return
