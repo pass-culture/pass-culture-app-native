@@ -28,6 +28,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     accessibilityLabel,
     accessibilityDescribedBy,
     onPressRightIcon,
+    inputContainerStyle,
     children,
   } = customProps
   const { value = '' } = nativeProps
@@ -60,7 +61,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <StyledInputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
+      <StyledInputContainer
+        inputHeight={props.inputHeight}
+        isFocus={isFocus}
+        style={inputContainerStyle}>
         <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (
           <React.Fragment>

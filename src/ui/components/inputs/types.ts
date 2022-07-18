@@ -27,6 +27,7 @@ type CustomSearchInputProps = {
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
   onFocusState?: (focus: boolean) => void
+  inputContainerStyle?: ViewStyle
   children?: React.ReactNode
 }
 
@@ -92,6 +93,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     accessibilityDescribedBy: props.accessibilityDescribedBy,
     onPressRightIcon: props.onPressRightIcon,
     focusOutlineColor: props.focusOutlineColor,
+    inputContainerStyle: props.inputContainerStyle,
     children: props.children,
   }
 }

@@ -46,7 +46,7 @@ export const SearchMainInput: FunctionComponent<Props> = ({
   onPressLocationButton,
   ...props
 }) => (
-  <SearchInput
+  <StyledSearchInput
     placeholder="Offre, artiste..."
     value={query}
     onChangeText={setQuery}
@@ -69,8 +69,14 @@ export const SearchMainInput: FunctionComponent<Props> = ({
         ellipsizeMode="tail"
       />
     )}
-  </SearchInput>
+  </StyledSearchInput>
 )
+
+const StyledSearchInput = styled(SearchInput).attrs({
+  inputContainerStyle: {
+    flex: 1,
+  },
+})({})
 
 const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

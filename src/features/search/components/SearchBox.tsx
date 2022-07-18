@@ -100,13 +100,11 @@ export const SearchBox: React.FC<Props> = ({
   }
 
   return (
-    <React.Fragment>
+    <RowContainer>
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer
-        marginHorizontal={showResults || isFocus ? getSpacing(6) : 0}
-        {...props}>
+      <SearchInputContainer {...props}>
         {showResults || isFocus ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
@@ -129,20 +127,24 @@ export const SearchBox: React.FC<Props> = ({
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
           "Entrée"`}
       </HiddenAccessibleText>
-    </React.Fragment>
+    </RowContainer>
   )
 }
+
+const RowContainer = styled.View({
+  flexDirection: 'row',
+})
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const SearchInputContainer = styled.View<{ marginHorizontal: number }>(({ marginHorizontal }) => ({
+const SearchInputContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  marginHorizontal,
-}))
+  flex: 1,
+})
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
   marginRight: getSpacing(4),
