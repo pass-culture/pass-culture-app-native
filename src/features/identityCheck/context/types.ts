@@ -40,6 +40,7 @@ export interface IdentityCheckState {
 export type Action =
   | { type: 'INIT' }
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
+  | { type: 'SET_PHONE_NUMBER'; payload: PhoneNumber }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_STATUS'; payload: ActivityIdEnum | null }
   | { type: 'SET_HAS_SCHOOL_TYPES'; payload: boolean }

@@ -32,6 +32,8 @@ export const identityCheckReducer = (
       return initialIdentityCheckState
     case 'SET_STEP':
       return { ...state, step: action.payload }
+    case 'SET_PHONE_NUMBER':
+      return { ...state, phoneValidation: action.payload }
     case 'SET_NAME':
       return { ...state, profile: { ...state.profile, name: action.payload } }
     case 'SET_STATUS':
