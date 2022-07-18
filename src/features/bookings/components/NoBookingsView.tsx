@@ -17,30 +17,23 @@ export function NoBookingsView() {
 
   return (
     <Container>
+      <Spacer.Flex />
       {!netInfo.isConnected ? (
         <React.Fragment>
-          <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(10)} />
           <StyledNoBookings />
           <Explanation offline>{t`Aucune réservations en cours.`}</Explanation>
           <Explanation offline>
             {t`Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.`}
           </Explanation>
-          <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(10)} />
-          <Spacer.Flex />
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(10)} />
           <StyledNoBookings />
           <Explanation>
             {t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles
       sans attendre\u00a0!`}
           </Explanation>
-          <Spacer.Column numberOfSpaces={getSpacing(1)} />
           <ButtonContainer>
             <TouchableLink
               as={ButtonPrimary}
@@ -50,10 +43,9 @@ export function NoBookingsView() {
               buttonHeight="tall"
             />
           </ButtonContainer>
-          <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(8)} />
         </React.Fragment>
       )}
+      <Spacer.Flex />
     </Container>
   )
 }
@@ -73,8 +65,8 @@ const Container = styled.View({
 const ButtonContainer = styled.View``
 
 const Explanation = styled(Typo.Body)<{ offline?: boolean }>(({ theme, offline }) => ({
-  flex: 1,
   paddingHorizontal: getSpacing(offline ? 8 : 4),
+  paddingVertical: getSpacing(4),
   maxWidth: theme.contentPage.maxWidth,
   textAlign: 'center',
   color: theme.colors.greyDark,
