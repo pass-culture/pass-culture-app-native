@@ -31,7 +31,7 @@ export async function metasResponseInterceptor(
     return responseBuffer
   }
 
-  // TODO(kopax): remove me when PC-14035 is resolved : (404 GCP cloud storage issue, see with OPs)
+  // GCP return 404 when returning the index.html if not the base path, this fix it.
   res.statusCode = 200
 
   const html = responseBuffer.toString('utf8')
