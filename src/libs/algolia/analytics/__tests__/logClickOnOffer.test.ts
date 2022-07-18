@@ -19,7 +19,7 @@ describe('logClickOnOffer', () => {
     await logClickOnOffer('abc123')({ objectID: 'object123', position: 0 })
 
     expect(mockAlgoliaSearchInsights).toHaveBeenCalledWith('clickedObjectIDsAfterSearch', {
-      eventName: 'Product Clicked',
+      eventName: 'Offer Clicked',
       index: 'algoliaOffersIndexName',
       objectIDs: ['object123'],
       positions: [1],

@@ -20,7 +20,7 @@ export const logClickOnOffer =
     }
 
     AlgoliaSearchInsights('clickedObjectIDsAfterSearch', {
-      eventName: 'Product Clicked',
+      eventName: 'Offer Clicked',
       index: env.ALGOLIA_OFFERS_INDEX_NAME,
       queryID: currentQueryID,
       objectIDs: [objectID],
