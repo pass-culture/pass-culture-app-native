@@ -30,8 +30,6 @@ export const identityCheckReducer = (
   switch (action.type) {
     case 'INIT':
       return initialIdentityCheckState
-    case 'SET_STATE':
-      return { ...initialIdentityCheckState, ...action.payload }
     case 'SET_STEP':
       return { ...state, step: action.payload }
     case 'SET_NAME':

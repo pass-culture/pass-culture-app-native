@@ -39,7 +39,6 @@ export interface IdentityCheckState {
 
 export type Action =
   | { type: 'INIT' }
-  | { type: 'SET_STATE'; payload: Partial<IdentityCheckState> }
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_STATUS'; payload: ActivityIdEnum | null }
