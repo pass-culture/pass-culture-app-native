@@ -27,16 +27,6 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     }
   />
   <View
-    numberOfSpaces={40}
-    style={
-      Array [
-        Object {
-          "height": 160,
-        },
-      ]
-    }
-  />
-  <View
     height={156}
     width={200}
   >
@@ -50,14 +40,12 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       Array [
         Object {
           "color": "#696A6F",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
           "maxWidth": 500,
           "paddingHorizontal": 32,
+          "paddingVertical": 16,
           "textAlign": "center",
         },
       ]
@@ -71,14 +59,12 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       Array [
         Object {
           "color": "#696A6F",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
           "maxWidth": 500,
           "paddingHorizontal": 32,
+          "paddingVertical": 16,
           "textAlign": "center",
         },
       ]
@@ -86,27 +72,6 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
   >
     Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.
   </Text>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    numberOfSpaces={40}
-    style={
-      Array [
-        Object {
-          "height": 160,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [
@@ -148,16 +113,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     }
   />
   <View
-    numberOfSpaces={40}
-    style={
-      Array [
-        Object {
-          "height": 160,
-        },
-      ]
-    }
-  />
-  <View
     height={156}
     width={200}
   >
@@ -170,14 +125,12 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
       Array [
         Object {
           "color": "#696A6F",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
           "maxWidth": 500,
           "paddingHorizontal": 16,
+          "paddingVertical": 16,
           "textAlign": "center",
         },
       ]
@@ -187,16 +140,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
 Découvre les offres disponibles
 sans attendre !
   </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [
@@ -263,16 +206,6 @@ sans attendre !
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    numberOfSpaces={32}
-    style={
-      Array [
-        Object {
-          "height": 128,
         },
       ]
     }

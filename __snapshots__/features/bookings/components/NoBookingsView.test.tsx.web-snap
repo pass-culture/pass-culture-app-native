@@ -46,14 +46,6 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
   />
   <div
     className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "160px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
   >
     <div
       className="css-text-901oao"
@@ -67,23 +59,15 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     dir="ltr"
     style={
       Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
         "color": "rgba(105,106,111,1.00)",
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
         "fontFamily": "Montserrat-Regular",
         "fontSize": "15px",
         "lineHeight": "20px",
         "maxWidth": "500px",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
+        "paddingBottom": "16px",
         "paddingLeft": "32px",
         "paddingRight": "32px",
+        "paddingTop": "16px",
         "textAlign": "center",
       }
     }
@@ -95,54 +79,21 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     dir="ltr"
     style={
       Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
         "color": "rgba(105,106,111,1.00)",
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
         "fontFamily": "Montserrat-Regular",
         "fontSize": "15px",
         "lineHeight": "20px",
         "maxWidth": "500px",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
+        "paddingBottom": "16px",
         "paddingLeft": "32px",
         "paddingRight": "32px",
+        "paddingTop": "16px",
         "textAlign": "center",
       }
     }
   >
     Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "160px",
-      }
-    }
-  />
   <div
     className="css-view-1dbjc4n"
     style={
@@ -209,14 +160,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
   />
   <div
     className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "160px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
   >
     <div
       className="css-text-901oao"
@@ -230,23 +173,15 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     dir="ltr"
     style={
       Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
         "color": "rgba(105,106,111,1.00)",
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
         "fontFamily": "Montserrat-Regular",
         "fontSize": "15px",
         "lineHeight": "20px",
         "maxWidth": "500px",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
+        "paddingBottom": "16px",
         "paddingLeft": "16px",
         "paddingRight": "16px",
+        "paddingTop": "16px",
         "textAlign": "center",
       }
     }
@@ -255,14 +190,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
 Découvre les offres disponibles
 sans attendre !
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />
   <div
     className="css-view-1dbjc4n"
   >
@@ -306,14 +233,6 @@ sans attendre !
         "msFlexNegative": 1,
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "128px",
       }
     }
   />
