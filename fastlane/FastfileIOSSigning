@@ -4,7 +4,7 @@ platform :ios do
     # produce = création de l'app id (1 seule fois dans la vie de l'app)
 		# Si déjà fait, cette étape sera skippée
     produce(
-      app_identifier: ENV['IOS_APP_ID'],
+      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
       team_id: ENV['IOS_TEAM_ID'],
       app_name: ENV['IOS_APP_NAME'],
       skip_itc: true  # skip itunes connect (ancien nom de l'app store connect), si à false, l'app_id est également créé sur AppStoreConnect (pour la prod)
@@ -12,7 +12,7 @@ platform :ios do
     # match = génération des autorisations
 		# cette ligne: pour pouvoir builder en mode debug
     match(
-      app_identifier: ENV['IOS_APP_ID'],
+      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
       type: 'development',
       shallow_clone: true,
       clone_branch_directly: true,
@@ -20,7 +20,7 @@ platform :ios do
     )
     # cette ligne: pour pouvoir builder en mode release
     match(
-      app_identifier: ENV['IOS_APP_ID'],
+      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
       shallow_clone: true,
       clone_branch_directly: true,
       force_for_new_devices: true
@@ -33,14 +33,14 @@ platform :ios do
 
   lane :download_certificates do |options|
     match(
-      app_identifier: ENV['IOS_APP_ID'],
+      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
       type: 'development',
       shallow_clone: true,
       clone_branch_directly: true,
       readonly: true
     )
     match(
-      app_identifier: ENV['IOS_APP_ID'],
+      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
       shallow_clone: true,
       clone_branch_directly: true,
       readonly: true
