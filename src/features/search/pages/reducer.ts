@@ -33,6 +33,7 @@ export const initialSearchState: SearchState = {
   showResults: false,
   tags: [],
   timeRange: null,
+  autocomplete: null,
 }
 
 export type Action =

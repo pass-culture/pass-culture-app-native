@@ -38,6 +38,7 @@ export interface SearchState {
   timeRange: Range<number> | null
   tags: string[]
   query: string
+  autocomplete: true | null
 }
 
 export type PartialSearchState = Omit<SearchState, 'showResults'>

@@ -67,6 +67,7 @@ export const parseSearchParameters = (
     date: null,
     timeRange: null,
     query: '',
+    autocomplete: null,
   }
 }
 

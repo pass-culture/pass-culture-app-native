@@ -45,6 +45,7 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     timeRange: null,
     showResults: false,
     query: '',
+    autocomplete: null,
   }
 
   return params
