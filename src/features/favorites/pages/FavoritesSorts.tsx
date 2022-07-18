@@ -1,12 +1,13 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { ScrollView, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -28,7 +29,6 @@ const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
 export const FavoritesSorts: React.FC = () => {
-  const { accessibilityRole } = useTheme()
   const { goBack } = useGoBack(...getTabNavConfig('Favorites'))
   const {
     position,
@@ -78,7 +78,7 @@ export const FavoritesSorts: React.FC = () => {
           <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
-        <View accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
+        <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
           <VerticalUl>
             {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
               return (

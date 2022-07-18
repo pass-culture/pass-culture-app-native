@@ -1,6 +1,7 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
@@ -12,10 +13,9 @@ interface Props {
 }
 
 export const RadioButtonWithBorder = ({ label, description, selected, onPress }: Props) => {
-  const { accessibilityRole } = useTheme()
   return (
     <Label
-      accessibilityRole={accessibilityRole.radio}
+      accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: selected }}
       selected={selected}
       onPress={() => onPress(label)}>

@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
-import { View, Platform, AccessibilityRole } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { getSpacing } from 'ui/theme'
@@ -59,7 +60,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
       <HiddenAccessibleText nativeID={nativeID}>
         {t`Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial`}
       </HiddenAccessibleText>
-      <RulesContainer isVisible={visible}>
+      <RulesContainer isVisible={visible} accessibilityRole={AccessibilityRole.STATUS}>
         {!!visible && (
           <React.Fragment>
             <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
@@ -77,9 +78,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
   )
 }
 
-const RulesContainer = styled(View).attrs({
-  accessibilityRole: Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined,
-})<{ isVisible?: boolean }>(({ theme, isVisible }) => ({
+const RulesContainer = styled(View)<{ isVisible?: boolean }>(({ isVisible, theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
   maxWidth: theme.forms.maxWidth,

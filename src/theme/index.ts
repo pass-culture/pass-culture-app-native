@@ -3,8 +3,6 @@ import { Platform } from 'react-native'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { getSpacing, getSpacingString } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { AccessibilityRoleEnum } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { buttonHeights, ButtonHeightsType } from 'ui/theme/buttonHeights'
 // eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
@@ -33,17 +31,6 @@ interface Typography {
 }
 
 export interface AppThemeType {
-  accessibilityRole: {
-    button: AccessibilityRoleEnum
-    checkbox: AccessibilityRoleEnum
-    dialog: AccessibilityRoleEnum
-    image: AccessibilityRoleEnum
-    link: AccessibilityRoleEnum
-    radio: AccessibilityRoleEnum
-    radiogroup: AccessibilityRoleEnum
-    switch: AccessibilityRoleEnum
-    status: AccessibilityRoleEnum
-  }
   appContentWidth: number
   minScreenHeight: number
   appBarHeight: number
@@ -365,17 +352,6 @@ export interface AppThemeType {
 }
 
 export const theme: AppThemeType = {
-  accessibilityRole: {
-    button: AccessibilityRoleEnum.BUTTON,
-    checkbox: AccessibilityRoleEnum.CHECKBOX,
-    dialog: AccessibilityRoleEnum.DIALOG,
-    image: AccessibilityRoleEnum.IMAGE,
-    link: AccessibilityRoleEnum.LINK,
-    radio: AccessibilityRoleEnum.RADIO,
-    radiogroup: AccessibilityRoleEnum.RADIOGROUP,
-    switch: AccessibilityRoleEnum.SWITCH,
-    status: AccessibilityRoleEnum.STATUS,
-  },
   appContentWidth: getSpacing(100),
   minScreenHeight: getSpacing(133),
   appBarHeight: getSpacing(16),

@@ -3,12 +3,13 @@ import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
@@ -35,7 +36,6 @@ const useSelectCategory = (callback: () => void) => {
 }
 
 export const Categories: React.FC = () => {
-  const { accessibilityRole } = useTheme()
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -43,7 +43,7 @@ export const Categories: React.FC = () => {
   return (
     <Container>
       <PageHeader titleID={titleID} title={t`Catégories`} />
-      <StyledScrollView accessibilityRole={accessibilityRole.radiogroup} aria-labelledby={titleID}>
+      <StyledScrollView accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
         <VerticalUl>

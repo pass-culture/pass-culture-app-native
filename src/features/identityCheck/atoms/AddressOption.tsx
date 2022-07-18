@@ -1,6 +1,7 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
@@ -13,11 +14,10 @@ interface Props {
 }
 
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
-  const { accessibilityRole } = useTheme()
   return (
     <Container>
       <StyledTouchableOpacity
-        accessibilityRole={accessibilityRole.radio}
+        accessibilityRole={AccessibilityRole.RADIO}
         accessibilityState={{ checked: selected }}
         onPress={() => onPressOption(optionKey)}>
         <TextContainer>

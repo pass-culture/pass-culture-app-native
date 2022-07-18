@@ -7,9 +7,10 @@ import ReactNativeCountryPicker, {
   getAllCountries,
   Flag,
 } from 'react-native-country-picker-modal'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -38,7 +39,6 @@ async function getAllowedCountries() {
 }
 
 export const CountryPicker: React.FC<Props> = (props) => {
-  const { accessibilityRole } = useTheme()
   const { visible, showModal, hideModal } = useModal(false)
 
   const [countries, setCountries] = useState<Country[]>([])
@@ -67,7 +67,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
     return (
       <View {...getHeadingAttrs(2)}>
         <TouchableOpacity
-          accessibilityRole={accessibilityRole.radio}
+          accessibilityRole={AccessibilityRole.RADIO}
           accessibilityState={{ checked: selected }}
           key={item.cca2}
           testID={`country-selector-${item.cca2}`}

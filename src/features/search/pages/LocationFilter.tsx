@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -12,6 +12,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -23,7 +24,6 @@ import { VerticalUl } from 'ui/web/list/Ul'
 const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
-  const { accessibilityRole } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
@@ -72,7 +72,7 @@ export const LocationFilter: React.FC = () => {
       <Spacer.TopScreen />
       <ScrollView
         contentContainerStyle={contentContainerStyle}
-        accessibilityRole={accessibilityRole.radiogroup}
+        accessibilityRole={AccessibilityRole.RADIOGROUP}
         aria-labelledby={titleID}>
         <Spacer.Column numberOfSpaces={14} />
         <Spacer.Column numberOfSpaces={6} />

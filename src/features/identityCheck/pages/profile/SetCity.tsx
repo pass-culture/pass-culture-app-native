@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -12,6 +12,7 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
@@ -33,7 +34,6 @@ const exception = 'Failed to fetch data from API: https://geo.api.gouv.fr/commun
 const noPostalCodeFound = t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
 
 export const SetCity = () => {
-  const { accessibilityRole } = useTheme()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { dispatch, profile } = useIdentityCheckContext()
@@ -121,7 +121,7 @@ export const SetCity = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <CitiesContainer accessibilityRole={accessibilityRole.radiogroup}>
+          <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             <VerticalUl>
               {cities.map((city, index) => (
                 <Li key={city.name}>

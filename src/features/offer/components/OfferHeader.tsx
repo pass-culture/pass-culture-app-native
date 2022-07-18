@@ -16,6 +16,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
@@ -145,7 +146,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
             testID={t`Mettre en favoris`}
-            accessibilityRole={theme.accessibilityRole.checkbox}
+            accessibilityRole={AccessibilityRole.CHECKBOX}
             accessibilityState={{ checked: !!favorite }}
           />
           <Spacer.Row numberOfSpaces={6} />

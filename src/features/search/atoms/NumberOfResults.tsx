@@ -1,7 +1,7 @@
 import { plural } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { AccessibilityRole, Platform, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -9,6 +9,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationFilter } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -52,7 +53,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   if (!nbHits) return <React.Fragment></React.Fragment>
 
   return (
-    <Container>
+    <Container accessibilityRole={AccessibilityRole.STATUS}>
       {venueLabel ? (
         <View {...getHeadingAttrs(2)}>
           <Body>{resultsWithSuffix}</Body>
@@ -67,9 +68,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   )
 }
 
-const Container = styled(View).attrs({
-  accessibilityRole: Platform.OS === 'web' ? ('status' as AccessibilityRole) : undefined,
-})({
+const Container = styled.View({
   margin: getSpacing(6),
   marginBottom: getSpacing(4),
 })

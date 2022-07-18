@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -19,7 +20,7 @@ interface RadioButtonProps {
 }
 
 export function RadioButton(props: RadioButtonProps) {
-  const { isMobileViewport, accessibilityRole } = useTheme()
+  const { isMobileViewport } = useTheme()
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
   const StyledIcon =
     !!props.icon &&
@@ -31,7 +32,7 @@ export function RadioButton(props: RadioButtonProps) {
 
   return (
     <StyledTouchableOpacity
-      accessibilityRole={accessibilityRole.radio}
+      accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: props.isSelected }}
       accessibilityLabel={props.accessibilityLabel}
       onPress={() => props.onSelect(props.label)}

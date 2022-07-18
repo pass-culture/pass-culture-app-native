@@ -7,6 +7,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessPane, ContentTypes } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -37,7 +38,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
     moduleId,
   } = props
   const isDisabled = !url
-  const { appContentWidth, accessibilityRole } = useTheme()
+  const { appContentWidth } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = Math.min(
@@ -88,7 +89,7 @@ export const BusinessModule = (props: BusinessModuleProps) => {
       <Spacer.Row numberOfSpaces={6} />
       <StyledTouchableLink
         highlight
-        accessibilityRole={url ? accessibilityRole.link : undefined}
+        accessibilityRole={url ? AccessibilityRole.LINK : undefined}
         onPress={() => setShouldRedirect(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

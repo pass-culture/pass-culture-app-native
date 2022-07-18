@@ -55,7 +55,6 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
         name: IdentityCheckStep.PHONE_VALIDATION,
         icon: SmartphoneIcon,
         label: t`Numéro de téléphone`,
-        // TODO(PC-15247): use SetPhoneNumber when transitioning to new screen
         screens: ['SetPhoneNumber'],
       },
       ...steps,

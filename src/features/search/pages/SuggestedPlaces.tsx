@@ -3,12 +3,13 @@ import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
 import React from 'react'
 import { FlatList, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -35,12 +36,11 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 }
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
-  const { accessibilityRole } = useTheme()
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
 
   return (
     <ItemContainer
-      accessibilityRole={accessibilityRole.radio}
+      accessibilityRole={AccessibilityRole.RADIO}
       onPress={onPress}
       testID={keyExtractor(hit)}>
       <Icon />
@@ -58,7 +58,6 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
   query,
   accessibilityLabelledBy,
 }) => {
-  const { accessibilityRole } = useTheme()
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { dispatch } = useStagedSearch()
@@ -90,11 +89,11 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
         nbHits={filteredPlaces.length}
         show={filteredPlaces.length > 0 && !isLoading}
       />
-      <View accessibilityRole={accessibilityRole.status}>
+      <View accessibilityRole={AccessibilityRole.STATUS}>
         <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0 && !isLoading} />
       </View>
       <FlatList
-        accessibilityRole={accessibilityRole.radiogroup}
+        accessibilityRole={AccessibilityRole.RADIOGROUP}
         data={filteredPlaces}
         keyExtractor={keyExtractor}
         renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
@@ -108,14 +107,13 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
 }
 
 const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) => {
-  const { accessibilityRole } = useTheme()
   const numberOfResults = plural(nbHits, {
     one: '# résultat',
     other: '# résultats',
   })
 
   return (
-    <HiddenAccessibleText accessibilityRole={accessibilityRole.status}>
+    <HiddenAccessibleText accessibilityRole={AccessibilityRole.STATUS}>
       {show ? numberOfResults : ''}
     </HiddenAccessibleText>
   )
