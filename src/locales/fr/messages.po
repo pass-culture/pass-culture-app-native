@@ -2016,10 +2016,6 @@ msgstr "Offre à deux"
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
-#: src/features/search/components/SearchBox.tsx
-msgid "Offre, artiste..."
-msgstr "Offre, artiste..."
-
 #: src/features/venue/components/VenueOffers.tsx
 msgid "Offres"
 msgstr "Offres"
