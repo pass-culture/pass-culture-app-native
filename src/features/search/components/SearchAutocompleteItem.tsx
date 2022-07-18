@@ -27,7 +27,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldA
   const offerSearchGroup = searchGroupLabelMapping[searchGroupName]
   const { searchState: stagedSearchState } = useStagedSearch()
   const { locationFilter } = stagedSearchState
-  const showResultsWithStagedSearch = usePushWithStagedSearch()
+  const pushWithStagedSearch = usePushWithStagedSearch()
 
   const onPress = () => {
     setShouldAutocomplete(false)
@@ -37,7 +37,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldA
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const { priceRange } = stagedSearchState
-    showResultsWithStagedSearch({
+    pushWithStagedSearch({
       showResults: true,
       query: offerName,
       locationFilter,

@@ -50,7 +50,7 @@ export const SearchBox: React.FC<Props> = ({
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
-  const showResultsWithStagedSearch = usePushWithStagedSearch()
+  const pushWithStagedSearch = usePushWithStagedSearch()
 
   useEffect(() => {
     setQuery(params?.query || '')
@@ -58,17 +58,17 @@ export const SearchBox: React.FC<Props> = ({
 
   const resetQuery = useCallback(() => {
     setAutocompleteValue('')
-    showResultsWithStagedSearch({ query: '' })
+    pushWithStagedSearch({ query: '' })
     setQuery('')
     setShouldAutocomplete(false)
-  }, [setAutocompleteValue, setShouldAutocomplete, showResultsWithStagedSearch])
+  }, [setAutocompleteValue, setShouldAutocomplete, pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
     stagedDispatch({
       type: 'SET_STATE',
       payload: { locationFilter },
     })
-    showResultsWithStagedSearch(
+    pushWithStagedSearch(
       {
         query: '',
         showResults: false,
@@ -85,7 +85,7 @@ export const SearchBox: React.FC<Props> = ({
     locationFilter,
     setAutocompleteValue,
     setShouldAutocomplete,
-    showResultsWithStagedSearch,
+    pushWithStagedSearch,
     stagedDispatch,
   ])
 
@@ -102,7 +102,7 @@ export const SearchBox: React.FC<Props> = ({
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const { offerCategories, priceRange } = stagedSearchState
-    showResultsWithStagedSearch({
+    pushWithStagedSearch({
       showResults: true,
       query: queryText,
       locationFilter,
