@@ -6,8 +6,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { SearchMainInput } from 'features/search/components/SearchMainInput'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
@@ -18,6 +16,9 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+import { useLocationChoice } from './locationChoice.utils'
+import { SearchMainInput } from './SearchMainInput'
 
 type Props = {
   searchInputID: string
