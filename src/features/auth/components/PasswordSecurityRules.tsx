@@ -3,10 +3,10 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { getSpacing } from 'ui/theme'
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 type Props = {
   password: string

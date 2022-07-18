@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 interface Props {
   onPressOption: (optionKey: string) => void
   optionKey: string

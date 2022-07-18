@@ -9,6 +9,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -17,7 +18,6 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 

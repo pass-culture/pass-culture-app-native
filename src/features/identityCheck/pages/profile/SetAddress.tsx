@@ -13,6 +13,7 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,7 +24,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { Form } from 'ui/web/form/Form'
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`

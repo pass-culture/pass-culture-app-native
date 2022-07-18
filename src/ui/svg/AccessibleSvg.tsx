@@ -2,7 +2,7 @@ import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import Svg, { SvgProps } from 'react-native-svg'
 
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
 export const AccessibleSvg: React.FunctionComponent<SvgProps> = ({
   children,

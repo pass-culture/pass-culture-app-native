@@ -2,9 +2,9 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ValidationMark as DefaultValidationMark } from 'ui/components/ValidationMark'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 interface Props {

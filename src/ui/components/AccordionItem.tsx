@@ -13,9 +13,9 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFunctionOnce } from 'libs/hooks'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'

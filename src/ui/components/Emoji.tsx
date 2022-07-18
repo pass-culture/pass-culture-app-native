@@ -2,7 +2,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { AccessibilityRole } from 'ui/theme/accessibilityRole/accessibilityRole'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
 export type Props = {
   accessibilityLabel?: string
