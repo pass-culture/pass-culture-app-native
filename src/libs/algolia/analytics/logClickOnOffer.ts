@@ -6,23 +6,6 @@ import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { getCookiesConsent } from 'libs/trackingConsent/consent'
 
-type LogClickOnProductArgs = {
-  index: string
-  queryID: string
-  objectIDs: string[]
-  positions: number[]
-}
-
-const logClickOnProduct = ({ index, queryID, objectIDs, positions }: LogClickOnProductArgs) => {
-  AlgoliaSearchInsights('clickedObjectIDsAfterSearch', {
-    eventName: 'Product Clicked',
-    index,
-    queryID,
-    objectIDs,
-    positions,
-  })
-}
-
 export const logClickOnOffer =
   (currentQueryID?: string) =>
   async ({ objectID, position }: { objectID: string; position: number }) => {
@@ -36,7 +19,8 @@ export const logClickOnOffer =
       return
     }
 
-    logClickOnProduct({
+    AlgoliaSearchInsights('clickedObjectIDsAfterSearch', {
+      eventName: 'Product Clicked',
       index: env.ALGOLIA_OFFERS_INDEX_NAME,
       queryID: currentQueryID,
       objectIDs: [objectID],
