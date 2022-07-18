@@ -5,6 +5,24 @@ Why ?
 - Code consistency
 - Tests readability
 
+### Naming test files
+
+**Write `MyComponent.native.test.tsx` if**:
+
+- the tested file has a `.native` extension like `MyComponent.native.tsx`
+- the logic is common between native and web
+
+**Write `MyComponent.web.test.tsx` only if**:
+
+- the tested file has a `.web` extension like `MyComponent.web.tsx`.
+- the logic and/or design is different between web and native:
+- when using `Platform.OS !== web` or `Platform.OS === web`.
+- sometimes when using `isTouch` or `isNative`.
+
+**Write `MyComponent.test.ts` if there's no render**
+
+**Do not write `MyComponent.test.tsx` tests** because the compatibility between the web and native test libraries is not complete for the moment. **Writing a native only test, unless web-specific.**
+
 ### Key points
 
 - **Full page test**
