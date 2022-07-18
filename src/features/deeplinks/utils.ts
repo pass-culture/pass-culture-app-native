@@ -12,7 +12,7 @@ export function getLongDynamicLinkURI() {
 /**
  * @see https://firebase.google.com/docs/dynamic-links/create-manually
  * @param deepLink The deeplink targeted screen
- * @param deepLinkParams Firebase additional params https://firebase.google.com/docs/dynamic-links/create-manually#parameters or ofl URL if a string. TODO(kopax): remove string support once webapp migration is complete
+ * @param deepLinkParams Firebase additional params https://firebase.google.com/docs/dynamic-links/create-manually#parameters or ofl URL if a string.
  */
 export function generateLongFirebaseDynamicLink(
   deepLink: string,
