@@ -63,26 +63,25 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const inputRef = useRef<RNTextInput | null>(null)
   const { query, refine } = useSearchBox(props)
   const [value, setValue] = useState<string>(query)
-  const [debouncedValue, setDebouncedValue] = useState<string>(value)
-  const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
+  const debounceRefine = useRef(debounce(refine, SEARCH_DEBOUNCE_MS)).current
   const showResults = useShowResults()
   const pushWithStagedSearch = usePushWithStagedSearch()
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
   useEffect(() => {
-    if (query !== debouncedValue) {
-      refine(debouncedValue)
+    if (query !== value) {
+      debounceRefine(value)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedValue, refine])
+  }, [value, debounceRefine])
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
   useEffect(() => {
     // We bypass the state update if the input is focused to avoid concurrent
     // updates when typing.
-    if (!inputRef.current?.isFocused() && query !== debouncedValue && searchState.query === '') {
+    if (!inputRef.current?.isFocused() && query !== value && searchState.query === '') {
       setValue(query)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,7 +147,6 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
 
   const onChangeText = (value: string) => {
     setValue(value)
-    debouncedSetValue(value)
     setAutocompleteValue(value)
   }
 
