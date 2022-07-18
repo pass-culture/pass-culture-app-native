@@ -1,3 +1,5 @@
+import { Country } from 'react-native-country-picker-modal'
+
 import { ActivityIdEnum, IdentityCheckMethod, SchoolTypesIdEnum } from 'api/gen'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { SuggestedCity } from 'libs/place'
@@ -7,8 +9,14 @@ interface Name {
   lastName: string
 }
 
+interface PhoneNumber {
+  phoneNumber: string
+  countryCode: Country['cca2']
+}
+
 export interface IdentityCheckState {
   step: IdentityCheckStep | null
+  phoneValidation: PhoneNumber | null
   profile: {
     address: string | null
     city: SuggestedCity | null

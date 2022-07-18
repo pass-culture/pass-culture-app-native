@@ -2,6 +2,7 @@ import { IdentityCheckState, Action } from 'features/identityCheck/context/types
 
 export const initialIdentityCheckState: IdentityCheckState = {
   step: null,
+  phoneValidation: null,
   profile: {
     name: null,
     city: null,
