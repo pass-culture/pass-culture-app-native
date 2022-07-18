@@ -76,49 +76,36 @@ interface ServiceWorkerState {
   error?: Error
 }
 
-// TODO(kopax): remove me when PC-10931 is validated
-const log = (text: string, err?: Error) => {
-  if (__DEV__ || globalThis.window.location.origin === 'https://app.testing.passculture.team/') {
-    // eslint-disable-next-line no-console
-    err ? console.error(text, err) : console.log(text)
-  }
-}
-
 const useServiceWorkerReducer = (
   state: ServiceWorkerState,
   action: ServiceWorkerActionTypes
 ): ServiceWorkerState => {
   switch (action.type) {
     case 'SERVICE_WORKER_READY':
-      log('Service worker is ready.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_REGISTERED':
-      log('Service worker has been registered.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_CACHED':
-      log('Content has been cached for offline use.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_UPDATE_FOUND':
-      log('New content is downloading.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_UPDATE_READY':
-      log('New content is available; please refresh.')
       globalThis.window.pcupdate = true
       return {
         ...state,
@@ -126,13 +113,11 @@ const useServiceWorkerReducer = (
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_OFFLINE':
-      log('No internet connection found. App is running in offline mode.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
       }
     case 'SERVICE_WORKER_ERROR':
-      log('Error during service worker registration:', action.payload.error)
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
