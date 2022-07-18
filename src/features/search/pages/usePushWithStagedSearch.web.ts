@@ -9,11 +9,11 @@ import { SearchState } from 'features/search/types'
 
 export const usePushWithStagedSearch = () => {
   const { searchState: stagedSearchState } = useStagedSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { push } = useNavigation<UseNavigationType>()
 
   return useCallback(
     (partialSearchState?: Partial<SearchState>, options: { reset?: boolean } = {}) => {
-      navigate(
+      push(
         ...getTabNavConfig('Search', {
           ...stagedSearchState,
           ...(options.reset ? initialSearchState : {}),
@@ -21,6 +21,6 @@ export const usePushWithStagedSearch = () => {
         })
       )
     },
-    [navigate, stagedSearchState]
+    [push, stagedSearchState]
   )
 }
