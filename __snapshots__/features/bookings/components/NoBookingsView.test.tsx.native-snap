@@ -188,6 +188,16 @@ Découvre les offres disponibles
 sans attendre !
   </Text>
   <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
     style={
       Array [
         Object {},
@@ -258,11 +268,11 @@ sans attendre !
     }
   />
   <View
-    numberOfSpaces={40}
+    numberOfSpaces={32}
     style={
       Array [
         Object {
-          "height": 160,
+          "height": 128,
         },
       ]
     }

@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -41,6 +40,7 @@ export function NoBookingsView() {
       Découvre les offres disponibles
       sans attendre\u00a0!`}
           </Explanation>
+          <Spacer.Column numberOfSpaces={getSpacing(1)} />
           <ButtonContainer>
             <TouchableLink
               as={ButtonPrimary}
@@ -51,8 +51,7 @@ export function NoBookingsView() {
             />
           </ButtonContainer>
           <Spacer.Flex />
-          <Spacer.Column numberOfSpaces={getSpacing(10)} />
-          <EndedBookingsSection />
+          <Spacer.Column numberOfSpaces={getSpacing(8)} />
         </React.Fragment>
       )}
     </Container>

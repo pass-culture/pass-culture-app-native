@@ -257,9 +257,17 @@ sans attendre !
   </div>
   <div
     className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
   >
     <button
-      className="sc-gsDKAQ dUXwvx sc-gKclnd ecJASa"
+      className="sc-bdvvtL iUFPdc sc-dkPtRN kmXVLA"
       onClick={[Function]}
       onDoubleClick={[Function]}
       tabIndex={0}
@@ -305,7 +313,7 @@ sans attendre !
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "160px",
+        "height": "128px",
       }
     }
   />
