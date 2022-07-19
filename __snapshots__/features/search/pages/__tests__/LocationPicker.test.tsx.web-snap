@@ -301,7 +301,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
       />
       <input
         aria-describedby="testUuidV4"
-        aria-label="Barre de recherche des lieux"
+        aria-label="Recherche un lieu, une adresse"
         autoCapitalize="sentences"
         autoComplete="on"
         autoCorrect="off"
@@ -315,7 +315,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
         onFocus={[Function]}
         onKeyDown={[Function]}
         onSelect={[Function]}
-        placeholder="Saisir une adresse..."
+        placeholder="Saisis une adresse ou le nom d'un lieu"
         readOnly={false}
         spellCheck={false}
         style={

@@ -43,10 +43,10 @@ export const LocationPicker: React.FC = () => {
         <SearchInput
           value={value}
           onChangeText={onChangeText}
-          placeholder={t`Saisir une adresse...`}
+          placeholder={t`Saisis une adresse ou le nom d'un lieu`}
           autoFocus={true}
           inputHeight="regular"
-          accessibilityLabel={t`Barre de recherche des lieux`}
+          accessibilityLabel={t`Recherche un lieu, une adresse`}
           onPressRightIcon={resetSearch}
           accessibilityDescribedBy={accessibilityDescribedBy}
         />

@@ -302,10 +302,6 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#: src/features/search/pages/LocationPicker.tsx
-msgid "Barre de recherche des lieux"
-msgstr "Barre de recherche des lieux"
-
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Besoin d'un lien ?"
 msgstr "Besoin d'un lien ?"
@@ -2420,6 +2416,10 @@ msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
 #: src/features/search/pages/LocationPicker.tsx
+msgid "Recherche un lieu, une adresse"
+msgstr "Recherche un lieu, une adresse"
+
+#: src/features/search/pages/LocationPicker.tsx
 msgid "Recherche une adresse, un lieu..."
 msgstr "Recherche une adresse, un lieu..."
 
@@ -2663,10 +2663,6 @@ msgstr "Réserver l'offre {offerName}"
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/search/pages/LocationPicker.tsx
-msgid "Saisir une adresse..."
-msgstr "Saisir une adresse..."
-
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 msgid "Saisis le code envoyé par SMS au numéro"
 msgstr "Saisis le code envoyé par SMS au numéro"
@@ -2686,6 +2682,10 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité."
 msgstr "Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité."
+
+#: src/features/search/pages/LocationPicker.tsx
+msgid "Saisis une adresse ou le nom d'un lieu"
+msgstr "Saisis une adresse ou le nom d'un lieu"
 
 #: src/libs/parsers/venueType.ts
 msgid "Salle de concerts"

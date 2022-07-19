@@ -247,7 +247,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
         }
       />
       <TextInput
-        accessibilityLabel="Barre de recherche des lieux"
+        accessibilityLabel="Recherche un lieu, une adresse"
         accessible={true}
         aria-describedby="testUuidV4"
         autoCorrect={false}
@@ -257,7 +257,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
-        placeholder="Saisir une adresse..."
+        placeholder="Saisis une adresse ou le nom d'un lieu"
         placeholderTextColor="#696A6F"
         returnKeyType="search"
         selectionColor="#696A6F"
