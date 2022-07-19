@@ -229,7 +229,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
-                    "fontWeight": "bold",
                     "lineHeight": 20,
                   },
                 ]

@@ -396,7 +396,6 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
-                              "fontWeight": "bold",
                               "lineHeight": 20,
                             },
                           ]
