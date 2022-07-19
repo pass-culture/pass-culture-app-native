@@ -5,7 +5,7 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render } from 'tests/utils'
@@ -67,27 +67,16 @@ jest.mock('react-instantsearch-hooks', () => ({
 }))
 
 describe('SearchDetails component', () => {
-  const setShouldAutocomplete = jest.fn
   it('should render SearchDetails', () => {
     expect(
-      render(
-        <SearchDetails
-          shouldAutocomplete={true}
-          appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-          setShouldAutocomplete={setShouldAutocomplete}
-        />
-      )
+      render(<SearchDetails appEnableAutocomplete={mockSettings.appEnableAutocomplete} />)
     ).toMatchSnapshot()
   })
 
   it('should show results if search executed and autocomplete list display flag is false', () => {
-    useRoute.mockReturnValueOnce({ params: { showResults: true } })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { queryByTestId } = render(
-      <SearchDetails
-        shouldAutocomplete={false}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        setShouldAutocomplete={setShouldAutocomplete}
-      />
+      <SearchDetails appEnableAutocomplete={mockSettings.appEnableAutocomplete} />
     )
     expect(queryByTestId('searchResults')).toBeTruthy()
   })
@@ -95,11 +84,7 @@ describe('SearchDetails component', () => {
   it('should not show results if search executed and autocomplete list display flag is true', () => {
     useRoute.mockReturnValueOnce({ params: { showResults: true } })
     const { queryByTestId } = render(
-      <SearchDetails
-        shouldAutocomplete={true}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        setShouldAutocomplete={setShouldAutocomplete}
-      />
+      <SearchDetails appEnableAutocomplete={mockSettings.appEnableAutocomplete} />
     )
     expect(queryByTestId('searchResults')).toBeFalsy()
   })
@@ -107,11 +92,7 @@ describe('SearchDetails component', () => {
   it('should show autocomplete list if search not executed and autocomplete list display flag is true', () => {
     useRoute.mockReturnValueOnce({ params: { showResults: false } })
     const { queryByTestId } = render(
-      <SearchDetails
-        shouldAutocomplete={true}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        setShouldAutocomplete={setShouldAutocomplete}
-      />
+      <SearchDetails appEnableAutocomplete={mockSettings.appEnableAutocomplete} />
     )
     expect(queryByTestId('autocompleteList')).toBeTruthy()
   })
@@ -119,11 +100,7 @@ describe('SearchDetails component', () => {
   it('should show autocomplete list if search executed and autocomplete list display flag is true', () => {
     useRoute.mockReturnValueOnce({ params: { showResults: true } })
     const { queryByTestId } = render(
-      <SearchDetails
-        shouldAutocomplete={true}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        setShouldAutocomplete={setShouldAutocomplete}
-      />
+      <SearchDetails appEnableAutocomplete={mockSettings.appEnableAutocomplete} />
     )
     expect(queryByTestId('autocompleteList')).toBeTruthy()
   })

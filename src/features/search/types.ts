@@ -17,6 +17,12 @@ export type LocationFilter =
   | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
   | { locationType: LocationType.VENUE; venue: SuggestedVenue }
 
+export enum SearchView {
+  Landing,
+  Suggestions,
+  Results,
+}
+
 export interface SearchState {
   beginningDatetime: Date | null
   date: SelectedDate | null
@@ -38,7 +44,7 @@ export interface SearchState {
   timeRange: Range<number> | null
   tags: string[]
   query: string
-  autocomplete: true | null
+  view: SearchView
 }
 
 export type PartialSearchState = Omit<SearchState, 'showResults'>

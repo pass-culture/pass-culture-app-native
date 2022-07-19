@@ -24,17 +24,8 @@ jest.mock('react-instantsearch-hooks', () => ({
 
 describe('SearchAutocomplete component', () => {
   const ref = createRef<FlatList>()
-  const setShouldAutocomplete = jest.fn
 
   it('should render SearchAutocomplete', () => {
-    expect(
-      render(
-        <SearchAutocomplete
-          ref={ref}
-          hitComponent={Hit}
-          setShouldAutocomplete={setShouldAutocomplete}
-        />
-      )
-    ).toMatchSnapshot()
+    expect(render(<SearchAutocomplete ref={ref} hitComponent={Hit} />)).toMatchSnapshot()
   })
 })

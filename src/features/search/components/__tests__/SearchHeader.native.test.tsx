@@ -1,11 +1,12 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { SearchHeader } from 'features/search/components/SearchHeader'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render } from 'tests/utils'
@@ -65,8 +66,6 @@ jest.mock('react-instantsearch-hooks', () => ({
 
 describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
-  const setShouldAutocomplete = jest.fn
-  const setAutocompleteValue = jest.fn
 
   it('should render SearchHeader', () => {
     expect(
@@ -74,10 +73,6 @@ describe('SearchHeader component', () => {
         <SearchHeader
           searchInputID={searchInputID}
           appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-          shouldAutocomplete={false}
-          autocompleteValue=""
-          setShouldAutocomplete={setShouldAutocomplete}
-          setAutocompleteValue={setAutocompleteValue}
         />
       )
     ).toMatchSnapshot()
@@ -89,10 +84,6 @@ describe('SearchHeader component', () => {
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={false}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -105,10 +96,6 @@ describe('SearchHeader component', () => {
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={false}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -116,14 +103,11 @@ describe('SearchHeader component', () => {
   })
 
   it('should show search box with label if no search execution and autocomplete list not visible', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={false}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -131,14 +115,11 @@ describe('SearchHeader component', () => {
   })
 
   it('should not show search box without label if no search execution and autocomplete list not visible', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={false}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -150,10 +131,6 @@ describe('SearchHeader component', () => {
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={true}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -165,10 +142,6 @@ describe('SearchHeader component', () => {
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={true}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -181,10 +154,6 @@ describe('SearchHeader component', () => {
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={true}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 
@@ -197,10 +166,6 @@ describe('SearchHeader component', () => {
       <SearchHeader
         searchInputID={searchInputID}
         appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        shouldAutocomplete={true}
-        autocompleteValue=""
-        setShouldAutocomplete={setShouldAutocomplete}
-        setAutocompleteValue={setAutocompleteValue}
       />
     )
 

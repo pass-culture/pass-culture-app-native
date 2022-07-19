@@ -8,12 +8,11 @@ import { getSpacing } from 'ui/theme'
 
 type SearchAutocompleteProps = UseInfiniteHitsProps & {
   hitComponent: (props: HitProps) => JSX.Element
-  setShouldAutocomplete: (shouldAutocomplete: boolean) => void
 }
 
 export const SearchAutocomplete = forwardRef(
   <THit extends AlgoliaHit>(
-    { hitComponent: Item, setShouldAutocomplete, ...props }: SearchAutocompleteProps,
+    { hitComponent: Item, ...props }: SearchAutocompleteProps,
     ref: Ref<FlatList<THit>>
   ) => {
     const { hits } = useInfiniteHits(props)
@@ -28,13 +27,7 @@ export const SearchAutocomplete = forwardRef(
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         testID="autocompleteList"
-        renderItem={({ item, index }) => (
-          <Item
-            hit={item as unknown as THit}
-            index={index}
-            setShouldAutocomplete={setShouldAutocomplete}
-          />
-        )}
+        renderItem={({ item, index }) => <Item hit={item as unknown as THit} index={index} />}
       />
     )
   }

@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
+import { SearchView } from 'features/search/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
@@ -15,10 +16,9 @@ import { getSpacing, Typo } from 'ui/theme'
 type Props = {
   hit: AlgoliaHit
   index: number
-  setShouldAutocomplete: (shouldAutocomplete: boolean) => void
 }
 
-export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldAutocomplete }) => {
+export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index }) => {
   const limitResultWithCategory = 3
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const searchGroupName = hit.offer.searchGroupName as SearchGroupNameEnum
@@ -30,7 +30,6 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldA
   const pushWithStagedSearch = usePushWithStagedSearch()
 
   const onPress = () => {
-    setShouldAutocomplete(false)
     Keyboard.dismiss()
     // When we hit enter, we may have selected a category or a venue on the search landing page
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
@@ -43,6 +42,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index, setShouldA
       locationFilter,
       offerCategories: [searchGroupName],
       priceRange,
+      view: SearchView.Results,
     })
 
     analytics.logSearchQuery(offerName || '')

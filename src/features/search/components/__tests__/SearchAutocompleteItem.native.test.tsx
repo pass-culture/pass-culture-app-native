@@ -6,7 +6,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent } from 'tests/utils'
@@ -35,28 +35,18 @@ describe('SearchAutocompleteItem component', () => {
     _geoloc: {},
   }
 
-  const setShouldAutocomplete = jest.fn
-
   it('should render SearchAutocompleteItem', () => {
-    expect(
-      render(
-        <SearchAutocompleteItem index={0} hit={hit} setShouldAutocomplete={setShouldAutocomplete} />
-      )
-    ).toMatchSnapshot()
+    expect(render(<SearchAutocompleteItem index={0} hit={hit} />)).toMatchSnapshot()
   })
 
   it('should display the search group name if the hit is in the top three', () => {
-    const { getByTestId } = render(
-      <SearchAutocompleteItem index={0} hit={hit} setShouldAutocomplete={setShouldAutocomplete} />
-    )
+    const { getByTestId } = render(<SearchAutocompleteItem index={0} hit={hit} />)
 
     expect(getByTestId('autocompleteItemWithCategory')).toBeTruthy()
   })
 
   it('should not display the search group name if the hit is not in the top three', () => {
-    const { queryByText } = render(
-      <SearchAutocompleteItem index={3} hit={hit} setShouldAutocomplete={setShouldAutocomplete} />
-    )
+    const { queryByText } = render(<SearchAutocompleteItem index={3} hit={hit} />)
 
     const text = 'Test1'
 
@@ -64,9 +54,7 @@ describe('SearchAutocompleteItem component', () => {
   })
 
   it('should execute a search with the name of the selected offer on hit click', async () => {
-    const { getByTestId } = render(
-      <SearchAutocompleteItem index={0} hit={hit} setShouldAutocomplete={setShouldAutocomplete} />
-    )
+    const { getByTestId } = render(<SearchAutocompleteItem index={0} hit={hit} />)
     await fireEvent.press(getByTestId('autocompleteItem'))
 
     expect(push).toBeCalledWith(
@@ -77,6 +65,7 @@ describe('SearchAutocompleteItem component', () => {
         offerCategories: [hit.offer.searchGroupName],
         locationFilter: mockStagedSearchState.locationFilter,
         priceRange: mockStagedSearchState.priceRange,
+        view: SearchView.Results,
       })
     )
   })
@@ -91,11 +80,7 @@ describe('SearchAutocompleteItem component', () => {
     }
 
     const { queryByText } = render(
-      <SearchAutocompleteItem
-        index={0}
-        hit={hitWithNoneSearchGroup}
-        setShouldAutocomplete={setShouldAutocomplete}
-      />
+      <SearchAutocompleteItem index={0} hit={hitWithNoneSearchGroup} />
     )
 
     const text = 'Test1'

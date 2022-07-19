@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import algoliasearch from 'algoliasearch'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,8 +11,8 @@ import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
 import { SearchDetails } from 'features/search/components/SearchDetails'
 import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { useShowResults } from 'features/search/pages/useShowResults'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
+import { SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -26,29 +26,25 @@ export function Search() {
   const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
-  const showResults = useShowResults()
   const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
   const { data: appSettings } = useAppSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
-  const [shouldAutocomplete, setShouldAutocomplete] = useState(false)
-  const [autocompleteValue, setAutocompleteValue] = useState<string>('')
   const showResultsForCategory = useShowResultsForCategory()
 
   useEffect(() => {
-    dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params || { showResults: false } })
+    dispatch({
+      type: 'SET_STATE_FROM_NAVIGATE',
+      payload: params || { view: SearchView.Landing },
+    })
   }, [dispatch, params])
 
   const bodySearch = () => {
     // SearchDetails will integrate recent searches and suggestions
     // To avoid blink effect when refreshing the view (due to dispatch delay), we also test params.showResults
-    if (showResults || shouldAutocomplete)
-      return (
-        <SearchDetails
-          shouldAutocomplete={shouldAutocomplete}
-          appEnableAutocomplete={appEnableAutocomplete}
-          setShouldAutocomplete={setShouldAutocomplete}
-        />
-      )
+    if (params && params?.view !== SearchView.Landing) {
+      return <SearchDetails appEnableAutocomplete={appEnableAutocomplete} />
+    }
+
     return (
       <Container>
         <Spacer.Column numberOfSpaces={5} />
@@ -71,10 +67,6 @@ export function Search() {
             <SearchHeader
               searchInputID={searchInputID}
               appEnableAutocomplete={appEnableAutocomplete}
-              shouldAutocomplete={shouldAutocomplete}
-              setShouldAutocomplete={setShouldAutocomplete}
-              setAutocompleteValue={setAutocompleteValue}
-              autocompleteValue={autocompleteValue}
             />
             {bodySearch()}
           </InstantSearch>
@@ -83,10 +75,6 @@ export function Search() {
             <SearchHeader
               searchInputID={searchInputID}
               appEnableAutocomplete={appEnableAutocomplete}
-              shouldAutocomplete={shouldAutocomplete}
-              setShouldAutocomplete={setShouldAutocomplete}
-              setAutocompleteValue={setAutocompleteValue}
-              autocompleteValue={autocompleteValue}
             />
             {bodySearch()}
           </React.Fragment>

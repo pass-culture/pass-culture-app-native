@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
@@ -14,12 +14,12 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
-import { useShowResults } from 'features/search/pages/useShowResults'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -32,11 +32,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type Props = UseSearchBoxProps & {
   searchInputID: string
   showLocationButton?: boolean
-  isFocus: boolean
-  shouldAutocomplete: boolean
   accessibleHiddenTitle?: string
-  setShouldAutocomplete: (shouldAutocomplete: boolean) => void
-  setAutocompleteValue: (query: string) => void
 }
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -44,15 +40,11 @@ const SEARCH_DEBOUNCE_MS = 500
 export const SearchBoxAutocomplete: React.FC<Props> = ({
   searchInputID,
   showLocationButton,
-  isFocus,
   accessibleHiddenTitle,
-  setShouldAutocomplete,
-  shouldAutocomplete,
-  setAutocompleteValue,
   ...props
 }) => {
+  const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
   const accessibilityDescribedBy = uuidv4()
   const { locationFilter } = stagedSearchState
@@ -64,8 +56,10 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const { query, refine } = useSearchBox(props)
   const [value, setValue] = useState<string>(query)
   const debounceRefine = useRef(debounce(refine, SEARCH_DEBOUNCE_MS)).current
-  const showResults = useShowResults()
+  const showPreviousButton = params && params?.view !== SearchView.Landing
   const pushWithStagedSearch = usePushWithStagedSearch()
+
+  //console.log({ query })
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
@@ -81,32 +75,34 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   useEffect(() => {
     // We bypass the state update if the input is focused to avoid concurrent
     // updates when typing.
-    if (!inputRef.current?.isFocused() && query !== value && searchState.query === '') {
+    if (!inputRef.current?.isFocused() && query !== value && params?.query === '') {
       setValue(query)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
   useEffect(() => {
+    if (!params?.query) return
     // If the user select a value in autocomplete list it must be display in search input
-    onChangeText(searchState.query)
+    setValue(params.query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchState.query])
+  }, [params?.query])
 
   const resetQuery = useCallback(() => {
-    setAutocompleteValue('')
-    pushWithStagedSearch({ query: '' })
+    pushWithStagedSearch({ query: '', view: SearchView.Landing })
     setValue('')
-    setShouldAutocomplete(false)
     // To force remove focus on search input
     Keyboard.dismiss()
-  }, [setAutocompleteValue, setShouldAutocomplete, pushWithStagedSearch])
+  }, [pushWithStagedSearch])
 
   const onPressArrowBack = () => {
     // Only close autocomplete list if open
-    if (shouldAutocomplete) {
-      setShouldAutocomplete(false)
-      setAutocompleteValue('')
+    if (params?.view === SearchView.Suggestions) {
+      pushWithStagedSearch({
+        ...params,
+        view: SearchView.Results,
+      })
+
       // To force remove focus on search input
       Keyboard.dismiss()
       return
@@ -115,11 +111,9 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     stagedDispatch({ type: 'SET_QUERY', payload: '' })
     pushWithStagedSearch({
       query: '',
-      showResults: false,
+      view: SearchView.Landing,
     })
-    setShouldAutocomplete(false)
     setValue('')
-    setAutocompleteValue('')
   }
 
   const onPressLocationButton = useCallback(() => {
@@ -129,14 +123,13 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
     const queryText = event.nativeEvent.text
     if (queryText.length < 1 && Platform.OS !== 'android') return
-    setShouldAutocomplete(false)
     // When we hit enter, we may have selected a category or a venue on the search landing page
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const { offerCategories, priceRange } = stagedSearchState
     pushWithStagedSearch({
-      showResults: true,
+      view: SearchView.Results,
       query: queryText,
       locationFilter,
       offerCategories,
@@ -145,9 +138,12 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     analytics.logSearchQuery(queryText)
   }
 
-  const onChangeText = (value: string) => {
-    setValue(value)
-    setAutocompleteValue(value)
+  const onFocus = () => {
+    if (params?.view === SearchView.Suggestions) return
+    pushWithStagedSearch({
+      ...params,
+      view: SearchView.Suggestions,
+    })
   }
 
   return (
@@ -155,9 +151,8 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer
-        marginHorizontal={shouldAutocomplete || showResults ? getSpacing(6) : 0}>
-        {shouldAutocomplete || showResults ? (
+      <SearchInputContainer marginHorizontal={showPreviousButton ? getSpacing(6) : 0}>
+        {showPreviousButton ? (
           <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
@@ -165,14 +160,14 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
         <StyledSearchInput
           searchInputID={searchInputID}
           value={value}
-          onChangeText={onChangeText}
+          onChangeText={setValue}
           placeholder={t`Offre, artiste...`}
-          autoFocus={isFocus}
+          autoFocus={params?.view === SearchView.Suggestions}
           inputHeight="regular"
           LeftIcon={() => <MagnifyingGlassIcon />}
           onSubmitEditing={onSubmitQuery}
           onPressRightIcon={resetQuery}
-          setShouldAutocomplete={setShouldAutocomplete}
+          onFocus={onFocus}
           testID="searchInput"
           onPressLocationButton={showLocationButton ? onPressLocationButton : undefined}
           locationLabel={locationLabel}

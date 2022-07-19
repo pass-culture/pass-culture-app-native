@@ -5,18 +5,47 @@ exports[`SearchBox component should render SearchBox 1`] = `
   testID="searchBoxWithoutAutocomplete"
 >
   <View
-    marginHorizontal={0}
+    marginHorizontal={24}
     style={
       Array [
         Object {
           "alignItems": "center",
           "flexDirection": "row",
           "justifyContent": "center",
-          "marginHorizontal": 0,
+          "marginHorizontal": 24,
         },
       ]
     }
   >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": 16,
+          "opacity": 1,
+          "userSelect": "auto",
+        }
+      }
+      testID="previousButton"
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
     <View
       height="regular"
       isDisabled={false}

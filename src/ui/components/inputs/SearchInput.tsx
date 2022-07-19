@@ -32,7 +32,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     onPressRightIcon,
     onPressLocationButton,
     locationLabel,
-    setShouldAutocomplete,
+    onFocus: onFocusProp,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
@@ -42,7 +42,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
-    if (setShouldAutocomplete) setShouldAutocomplete(true)
+    if (onFocusProp) onFocusProp()
   }
 
   function onBlur() {

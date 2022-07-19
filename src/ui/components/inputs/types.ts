@@ -26,7 +26,7 @@ type CustomSearchInputProps = {
   onPressRightIcon?: () => void
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
-  setShouldAutocomplete?: (shouldAutocomplete: boolean) => void
+  onFocus?: () => void
   onPressLocationButton?: () => void
   locationLabel?: string
 }
@@ -95,7 +95,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     focusOutlineColor: props.focusOutlineColor,
     onPressLocationButton: props.onPressLocationButton,
     locationLabel: props.locationLabel,
-    setShouldAutocomplete: props.setShouldAutocomplete,
+    onFocus: props.onFocus,
   }
 }
 

@@ -84,7 +84,7 @@ export const screenParamsParser: ParamsParsers = {
     showResults: JSON.parse,
     tags: JSON.parse,
     timeRange: JSON.parse,
-    autocomplete: JSON.parse,
+    view: JSON.parse,
   },
 }
 
@@ -143,6 +143,6 @@ export const screenParamsStringifier: ParamsStringifiers = {
     showResults: JSON.stringify,
     tags: JSON.stringify,
     timeRange: JSON.stringify,
-    autocomplete: JSON.stringify,
+    view: JSON.stringify,
   },
 }
