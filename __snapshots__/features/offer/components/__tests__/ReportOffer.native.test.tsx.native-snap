@@ -4,7 +4,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
 <Modal
   accessibilityRole="none"
   animationType="none"
-  aria-describedby="testUuidV4"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -60,7 +60,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
   />
   <View
     accessibilityRole="none"
-    aria-describedby="testUuidV4"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -346,7 +346,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
 <Modal
   accessibilityRole="none"
   animationType="none"
-  aria-describedby="testUuidV4"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}

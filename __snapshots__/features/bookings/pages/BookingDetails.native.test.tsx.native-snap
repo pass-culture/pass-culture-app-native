@@ -920,7 +920,7 @@ exports[`BookingDetails should render correctly 1`] = `
   <Modal
     accessibilityRole="none"
     animationType="none"
-    aria-describedby="testUuidV4"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
@@ -951,7 +951,7 @@ exports[`BookingDetails should render correctly 1`] = `
   <Modal
     accessibilityRole="none"
     animationType="none"
-    aria-describedby="testUuidV4"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
