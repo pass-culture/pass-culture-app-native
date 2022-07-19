@@ -1,4 +1,6 @@
 import React from 'react'
+import { Platform } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
@@ -17,15 +19,22 @@ export function ButtonInsideText({
   testID,
 }: ButtonInsideTexteProps) {
   return (
-    <StyledTouchableOpacity
-      onPress={onPress as AppButtonEventNative}
-      onLongPress={onLongPress as AppButtonEventNative}
-      testID={testID}>
-      <ButtonInsideTextInner wording={wording} icon={Icon} color={color} typography={typography} />
-    </StyledTouchableOpacity>
+    <View>
+      <StyledTouchableOpacity
+        onPress={onPress as AppButtonEventNative}
+        onLongPress={onLongPress as AppButtonEventNative}
+        testID={testID}>
+        <ButtonInsideTextInner
+          wording={wording}
+          icon={Icon}
+          color={color}
+          typography={typography}
+        />
+      </StyledTouchableOpacity>
+    </View>
   )
 }
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
-  marginVertical: -getSpacing(1 / 3), // Hack for reset default TouchableOpacity margin vertical
+  top: getSpacing(Platform.OS === 'ios' ? 0.7 : 1), // Hack for reset default TouchableOpacity margin vertical
 })

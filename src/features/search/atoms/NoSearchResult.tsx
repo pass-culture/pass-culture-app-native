@@ -54,10 +54,10 @@ export const NoSearchResult: React.FC = () => {
       </DescriptionErrorTextContainer>
       <DescriptionErrorTextContainer>
         <DescriptionErrorText>
-          {t`Modifie ta recherche ou découvre toutes les offres` + ' '}
+          {t`Modifie ta recherche ou découvre toutes les offres`}
+          <Spacer.Row numberOfSpaces={1} />
+          <ButtonInsideText wording={t`autour de toi`} onPress={handlePressAroundMe} />
         </DescriptionErrorText>
-        <Spacer.Row numberOfSpaces={1} />
-        <ButtonInsideText wording={t`autour de toi`} onPress={handlePressAroundMe} />
       </DescriptionErrorTextContainer>
       <Spacer.Flex />
     </Container>

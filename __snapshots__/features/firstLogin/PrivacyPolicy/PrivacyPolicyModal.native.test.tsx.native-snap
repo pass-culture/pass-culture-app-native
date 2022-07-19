@@ -311,99 +311,101 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                     ]
                   }
                 />
-                <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "marginVertical": -1.5,
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                >
+                <View>
                   <View
-                    icon={
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
                       Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [
-                          [Function],
-                        ],
-                        "inlineStyle": InlineStyle {
-                          "rules": Array [
-                            "",
-                          ],
-                        },
-                        "render": [Function],
-                        "shouldForwardProp": undefined,
-                        "styledComponentId": "StyledNativeComponent",
-                        "target": [Function],
-                        "withComponent": [Function],
+                        "opacity": 1,
+                        "top": 3,
+                        "userSelect": "auto",
                       }
                     }
-                    style={
-                      Array [
-                        Object {
-                          "paddingLeft": 25,
-                        },
-                      ]
-                    }
-                    typography="ButtonText"
                   >
                     <View
-                      style={
-                        Array [
-                          Object {
-                            "left": 0,
-                            "position": "absolute",
+                      icon={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": Array [
+                            [Function],
+                          ],
+                          "inlineStyle": InlineStyle {
+                            "rules": Array [
+                              "",
+                            ],
                           },
-                        ]
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "width": 4,
-                            },
-                          ]
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
                         }
-                      />
-                    </View>
-                    <Text
+                      }
                       style={
                         Array [
                           Object {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "fontWeight": "bold",
-                            "lineHeight": 20,
+                            "paddingLeft": 25,
                           },
                         ]
                       }
                       typography="ButtonText"
                     >
-                      Politique des cookies
-                    </Text>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "left": 0,
+                              "position": "absolute",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "width": 4,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "fontWeight": "bold",
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                        typography="ButtonText"
+                      >
+                        Politique des cookies
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </Text>

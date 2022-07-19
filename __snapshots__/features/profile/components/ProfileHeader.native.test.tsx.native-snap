@@ -179,28 +179,20 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         ]
       }
     />
-    <View
+    <Text
       style={
         Array [
           Object {
-            "flexDirection": "row",
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
           },
         ]
       }
     >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Tu as déjà un compte ? 
+      Tu as déjà un compte ? 
+      <View>
         <View
           accessible={true}
           collapsable={false}
@@ -214,8 +206,8 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "marginVertical": -1.5,
               "opacity": 1,
+              "top": 3,
               "userSelect": "auto",
             }
           }
@@ -248,8 +240,8 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
             </Text>
           </View>
         </View>
-      </Text>
-    </View>
+      </View>
+    </Text>
     <View
       numberOfSpaces={7}
       style={
