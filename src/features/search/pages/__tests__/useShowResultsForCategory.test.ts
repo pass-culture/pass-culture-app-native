@@ -1,4 +1,4 @@
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -48,7 +48,7 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnum.SPECTACLE)
 
-    expect(push).toBeCalledWith('TabNavigator', {
+    expect(navigate).toBeCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,

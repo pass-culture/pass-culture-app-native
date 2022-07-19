@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
@@ -40,8 +40,8 @@ describe('NoSearchResult component', () => {
   it('should dispatch the right actions when pressing "autour de toi" - no location', () => {
     const button = render(<NoSearchResult />).getByText('autour de toi')
     fireEvent.press(button)
-    expect(push).toHaveBeenCalledTimes(1)
-    expect(push).toHaveBeenLastCalledWith('TabNavigator', {
+    expect(navigate).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenLastCalledWith('TabNavigator', {
       screen: 'Search',
       params: {
         ...initialSearchState,
@@ -57,8 +57,8 @@ describe('NoSearchResult component', () => {
     mockPosition = { latitude: 2, longitude: 40 }
     const button = render(<NoSearchResult />).getByText('autour de toi')
     fireEvent.press(button)
-    expect(push).toHaveBeenCalledTimes(1)
-    expect(push).toHaveBeenLastCalledWith('TabNavigator', {
+    expect(navigate).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenLastCalledWith('TabNavigator', {
       screen: 'Search',
       params: {
         ...initialSearchState,

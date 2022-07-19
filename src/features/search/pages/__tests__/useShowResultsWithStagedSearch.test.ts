@@ -1,4 +1,6 @@
-import { push } from '__mocks__/@react-navigation/native'
+import { Platform } from 'react-native'
+
+import { navigate as mockNavigate, push as mockPush } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -6,6 +8,7 @@ import { renderHook } from 'tests/utils'
 
 import { usePushWithStagedSearch } from '../usePushWithStagedSearch'
 
+const push = Platform.OS === 'web' ? mockPush : mockNavigate
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 let mockStagedSearchState = initialSearchState

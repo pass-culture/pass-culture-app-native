@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
@@ -68,7 +68,7 @@ describe('SearchBox component', () => {
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
-    expect(push).toBeCalledWith(
+    expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: 'jazzaza',
@@ -122,7 +122,7 @@ describe('SearchBox component', () => {
     const resetIcon = getByTestId('resetSearchInput')
     await fireEvent.press(resetIcon)
 
-    expect(push).toBeCalledWith(
+    expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...mockStagedSearchState,
         query: '',
@@ -147,7 +147,7 @@ describe('SearchBox component', () => {
         locationFilter: mockStagedSearchState.locationFilter,
       },
     })
-    expect(push).toBeCalledWith(
+    expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: '',
@@ -172,7 +172,7 @@ describe('SearchBox component', () => {
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
-    expect(push).toBeCalledWith(
+    expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: 'jazzaza',
