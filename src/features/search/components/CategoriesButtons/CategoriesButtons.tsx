@@ -1,4 +1,6 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
+
+import { analytics } from 'libs/firebase/analytics'
 
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
 import { OnCategoryPress, useSortedSearchCategories } from './useSortedSearchCategories'
@@ -9,7 +11,15 @@ type Props = {
 }
 
 export const CategoriesButtons: FunctionComponent<Props> = ({ onCategoryPress }) => {
-  const sortedCategories = useSortedSearchCategories(onCategoryPress)
+  const onPressWithAnalytics: OnCategoryPress = useCallback(
+    (pressedCategory) => {
+      onCategoryPress(pressedCategory)
+      analytics.logUseLandingCategory(pressedCategory)
+    },
+    [onCategoryPress]
+  )
+
+  const sortedCategories = useSortedSearchCategories(onPressWithAnalytics)
 
   return <CategoriesButtonsDisplay sortedCategories={sortedCategories} />
 }
