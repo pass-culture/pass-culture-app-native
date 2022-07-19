@@ -60,19 +60,18 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
       <HiddenAccessibleText nativeID={nativeID}>
         {t`Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial`}
       </HiddenAccessibleText>
-      <RulesContainer isVisible={visible} accessibilityRole={AccessibilityRole.STATUS}>
-        {!!visible && (
-          <React.Fragment>
-            <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
-            <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
-            <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />
-            <PasswordRule title={t`1 Chiffre`} isValidated={containsNumber(password)} />
-            <PasswordRule
-              title={t`1 Caractère spécial (!@#$%^&*...)`}
-              isValidated={containsSpecialCharacter(password)}
-            />
-          </React.Fragment>
-        )}
+      <RulesContainer
+        isVisible={visible}
+        accessibilityRole={AccessibilityRole.STATUS}
+        aria-atomic={false}>
+        <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
+        <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
+        <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />
+        <PasswordRule title={t`1 Chiffre`} isValidated={containsNumber(password)} />
+        <PasswordRule
+          title={t`1 Caractère spécial (!@#$%^&*...)`}
+          isValidated={containsSpecialCharacter(password)}
+        />
       </RulesContainer>
     </React.Fragment>
   )
@@ -81,6 +80,8 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
 const RulesContainer = styled(View)<{ isVisible?: boolean }>(({ isVisible, theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
+  height: isVisible ? undefined : '0',
+  overflow: isVisible ? undefined : 'hidden',
   maxWidth: theme.forms.maxWidth,
   paddingTop: isVisible ? getSpacing(2) : 0,
 }))
