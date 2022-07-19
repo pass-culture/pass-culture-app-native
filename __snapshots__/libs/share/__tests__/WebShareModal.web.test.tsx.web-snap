@@ -138,7 +138,7 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
                       <button
-                        class="sc-bdvvtL bQLkxd sc-gKclnd hejctC sc-gKclnd hejctC"
+                        class="sc-hKwDye huZUNX sc-gKclnd hejctC sc-gKclnd hejctC"
                         data-testid="Fermer la modale"
                         tabindex="0"
                         type="button"
@@ -200,7 +200,7 @@ Object {
                             >
                               <button
                                 aria-label="Copier le lien"
-                                class="sc-dkPtRN dMotSY sc-jRQBWg CQePl"
+                                class="sc-bdvvtL ixcPfN sc-cCcXHH jQczlt"
                                 data-testid="Copier le lien"
                                 tabindex="0"
                                 type="button"
@@ -234,12 +234,13 @@ Object {
                               class="css-view-1dbjc4n"
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
-                              <button
+                              <a
                                 aria-label="Ouvrir le gestionnaire mail"
-                                class="sc-dkPtRN dMotSY sc-jRQBWg CQePl"
+                                class="sc-gsDKAQ fDShHk sc-cCcXHH jQczlt"
                                 data-testid="Ouvrir le gestionnaire mail"
+                                href="mailto:?subject=Voici une super offre !&body=https://url.com/offer"
                                 tabindex="0"
-                                type="button"
+                                target="_blank"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -264,7 +265,7 @@ Object {
                                 >
                                   E-mail
                                 </div>
-                              </button>
+                              </a>
                             </div>
                           </div>
                           <div
@@ -280,13 +281,13 @@ Object {
                             style="height: 24px;"
                           />
                           <ul
-                            class="sc-iCfMLu sc-pVTFL iQwHgL gptxUi"
+                            class="sc-hBUSln sc-cidDSM cjntIJ cPyrmC"
                           >
                             <li>
-                              <button
-                                class="sc-bdvvtL bQLkxd sc-gsDKAQ gKzWop sc-gsDKAQ gKzWop"
-                                tabindex="0"
-                                type="button"
+                              <a
+                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!"
+                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -309,13 +310,13 @@ Object {
                                 >
                                   Facebook
                                 </div>
-                              </button>
+                              </a>
                             </li>
                             <li>
-                              <button
-                                class="sc-bdvvtL bQLkxd sc-gsDKAQ gKzWop sc-gsDKAQ gKzWop"
-                                tabindex="0"
-                                type="button"
+                              <a
+                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer"
+                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -338,13 +339,13 @@ Object {
                                 >
                                   Twitter
                                 </div>
-                              </button>
+                              </a>
                             </li>
                             <li>
-                              <button
-                                class="sc-bdvvtL bQLkxd sc-gsDKAQ gKzWop sc-gsDKAQ gKzWop"
-                                tabindex="0"
-                                type="button"
+                              <a
+                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                href="https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer"
+                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -367,13 +368,13 @@ Object {
                                 >
                                   WhatsApp
                                 </div>
-                              </button>
+                              </a>
                             </li>
                             <li>
-                              <button
-                                class="sc-bdvvtL bQLkxd sc-gsDKAQ gKzWop sc-gsDKAQ gKzWop"
-                                tabindex="0"
-                                type="button"
+                              <a
+                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                href="https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !"
+                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -396,7 +397,7 @@ Object {
                                 >
                                   Telegram
                                 </div>
-                              </button>
+                              </a>
                             </li>
                           </ul>
                           <div
@@ -404,7 +405,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            class="sc-dkPtRN bdAWvh sc-eCImPb idTzrf"
+                            class="sc-bdvvtL jVFBJw sc-jRQBWg kyMyBM"
                             tabindex="0"
                             type="button"
                           >

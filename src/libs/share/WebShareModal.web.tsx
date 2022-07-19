@@ -16,6 +16,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -42,39 +43,38 @@ export const WebShareModal = ({
     {
       label: t`Facebook`,
       icon: Facebook,
-      onPress: () =>
-        window.open(
+      externalNav: {
+        url:
           'https://www.facebook.com/sharer/sharer.php?' +
-            'u=' +
-            encodeURIComponent(url) +
-            '&quote=' +
-            encodeURIComponent(message)
-        ),
+          'u=' +
+          encodeURIComponent(url) +
+          '&quote=' +
+          encodeURIComponent(message),
+      },
     },
     {
       label: t`Twitter`,
       icon: Twitter,
-      onPress: () => window.open(`https://twitter.com/intent/tweet?text=${message}&url=${url}`),
+      externalNav: { url: `https://twitter.com/intent/tweet?text=${message}&url=${url}` },
     },
     {
       label: t`WhatsApp`,
       icon: WhatsApp,
-      onPress: () =>
-        window.open(
+      externalNav: {
+        url:
           (isDesktopDeviceDetectOnWeb
             ? 'https://api.whatsapp.com/send?text='
-            : 'whatsapp://send?text=') + encodeURIComponent(message + '\n' + url)
-        ),
+            : 'whatsapp://send?text=') + encodeURIComponent(message + '\n' + url),
+      },
     },
     {
       label: t`Telegram`,
       icon: Telegram,
-      onPress: () =>
-        window.open(
-          isDesktopDeviceDetectOnWeb
-            ? `https://telegram.me/share/msg?url=${url}&text=${message}`
-            : `tg://msg?text=${encodeURIComponent(message + '\n' + url)}`
-        ),
+      externalNav: {
+        url: isDesktopDeviceDetectOnWeb
+          ? `https://telegram.me/share/msg?url=${url}&text=${message}`
+          : `tg://msg?text=${encodeURIComponent(message + '\n' + url)}`,
+      },
     },
   ]
 
@@ -113,24 +113,24 @@ export const WebShareModal = ({
             />
           </NonSocialButtonsItem>
           <NonSocialButtonsItem>
-            <ButtonTertiaryBlack
+            <TouchableLink
+              as={ButtonTertiaryBlack}
+              externalNav={{ url: 'mailto:' + '' + '?subject=' + message + '&body=' + url }}
               wording="E-mail"
               accessibilityLabel={t`Ouvrir le gestionnaire mail`}
               icon={EmailFilled}
-              onPress={() => window.open('mailto:' + '' + '?subject=' + message + '&body=' + url)}
             />
           </NonSocialButtonsItem>
           {
             // A message app is only available on mobile or on MacOS device
             isMobileDeviceDetectOnWeb || isMacOsDeviceDetectOnWeb ? (
               <NonSocialButtonsItem>
-                <ButtonTertiaryBlack
+                <TouchableLink
+                  as={ButtonTertiaryBlack}
+                  externalNav={{ url: `sms:${chooseContact}?&body=${message}: ${url}` }}
                   wording="SMS"
                   accessibilityLabel={t`Ouvrir l'application de message`}
                   icon={SMSFilled}
-                  onPress={() => {
-                    location.href = `sms:${chooseContact}?&body=${message}: ${url}`
-                  }}
                 />
               </NonSocialButtonsItem>
             ) : null
