@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
@@ -24,7 +23,7 @@ jest.mock('@react-navigation/native', () => {
   }
 })
 
-const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
+const mockedUseIsUserUnderage = jest.mocked(useIsUserUnderage, true)
 
 jest.mock('features/auth/api', () => ({
   useDepositAmountsByAge: jest.fn(() => ({

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -17,9 +16,9 @@ jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/bookOffer/pages/BookingOfferWrapper')
 jest.mock('libs/address/useFormatFullAddress')
-const mockedUseBooking = mocked(useBooking)
-const mockedUseBookingOffer = mocked(useBookingOffer)
-const mockedUseBookingStock = mocked(useBookingStock)
+const mockedUseBooking = jest.mocked(useBooking)
+const mockedUseBookingOffer = jest.mocked(useBookingOffer)
+const mockedUseBookingStock = jest.mocked(useBookingStock)
 
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {

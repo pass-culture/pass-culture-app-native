@@ -3,7 +3,6 @@ const base = require('./jest.config')
 
 module.exports = {
   ...base,
-  preset: 'react-native-web',
   testEnvironment: 'jest-environment-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: [

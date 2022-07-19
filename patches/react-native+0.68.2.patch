@@ -1,0 +1,20 @@
+diff --git a/node_modules/react-native/jest/assetFileTransformer.js b/node_modules/react-native/jest/assetFileTransformer.js
+index b735796..2e131c5 100644
+--- a/node_modules/react-native/jest/assetFileTransformer.js
++++ b/node_modules/react-native/jest/assetFileTransformer.js
+@@ -20,12 +20,13 @@ module.exports = {
+   // the correct images are loaded for components. Essentially
+   // require('img1.png') becomes `Object { "testUri": 'path/to/img1.png' }` in
+   // the Jest snapshot.
+-  process: (_, filename) =>
+-    `module.exports = {
++  process: (_, filename) => ({
++    code: `module.exports = {
+       testUri:
+         ${JSON.stringify(
+           path.relative(__dirname, filename).replace(/\\/g, '/'),
+         )}
+     };`,
++  }),
+   getCacheKey: createCacheKeyFunction([__filename]),
+ };

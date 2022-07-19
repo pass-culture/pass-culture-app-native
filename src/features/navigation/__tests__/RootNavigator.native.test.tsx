@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
@@ -11,7 +10,7 @@ import { render, flushAllPromisesWithAct } from 'tests/utils'
 import { RootNavigator } from '../RootNavigator'
 
 jest.mock('features/forceUpdate/useMustUpdateApp')
-const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
+const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/profile/api') // for useUserProfileInfo()
 jest.mock('features/auth/AuthContext', () => ({
@@ -32,7 +31,7 @@ jest.mock('features/navigation/helpers', () => ({
 }))
 
 jest.mock('libs/splashscreen')
-const mockUseSplashScreenContext = mocked(useSplashScreenContext)
+const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {

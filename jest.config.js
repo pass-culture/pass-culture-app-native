@@ -32,6 +32,7 @@ module.exports = {
       '|react-native-geolocation-service' +
       '/(?!(lib)))',
   ],
+  testTimeout: 90000,
   testRegex: '(?<!.web).(?:test|spec).(?:tsx?|js)$',
   testPathIgnorePatterns: [
     '\\.snap$',

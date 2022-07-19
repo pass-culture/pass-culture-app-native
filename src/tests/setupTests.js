@@ -7,6 +7,8 @@ import { server } from 'tests/server'
 import { queryCache } from './reactQueryProviderHOC'
 import { flushAllPromises } from './utils'
 
+jest.useFakeTimers('legacy')
+
 global.expect.extend({ toMatchDiffSnapshot })
 
 const allowConsoleDefaultConfig = {
@@ -30,11 +32,12 @@ global.allowConsole({
 
 global.beforeAll(() => {
   server.listen()
-  consoleFailTestModule.cft({
-    testFramework: 'jest',
-    spyLibrary: 'jest',
-    console: allowConsoleRuntimeConfig,
-  })
+})
+
+consoleFailTestModule.cft({
+  testFramework: 'jest',
+  spyLibrary: 'jest',
+  console: allowConsoleRuntimeConfig,
 })
 
 global.afterAll(() => {

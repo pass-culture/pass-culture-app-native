@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
@@ -50,7 +49,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
 
 jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
-const mockedisUserUnderageBeneficiary = mocked(isUserUnderageBeneficiary, true)
+const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary, true)
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
