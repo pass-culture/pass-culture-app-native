@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchBox } from 'features/search/components/SearchBox'
-import { useShowResults } from 'features/search/pages/useShowResults'
+import { SearchView } from 'features/search/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -14,15 +16,9 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   searchInputID: string
-  onFocusState?: (focus: boolean) => void
-  isFocus?: boolean
 }
 
-const SearchBoxWithLabel = ({
-  searchInputID,
-  onFocusState,
-  isFocus,
-}: Omit<Props, 'paramsShowResults'>) => {
+const SearchBoxWithLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults'>) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -35,12 +31,7 @@ const SearchBoxWithLabel = ({
         </View>
         <Spacer.Column numberOfSpaces={2} />
         <FloatingSearchBoxContainer>
-          <FloatingSearchBox
-            searchInputID={searchInputID}
-            onFocusState={onFocusState}
-            isFocus={isFocus}
-            showLocationButton={true}
-          />
+          <FloatingSearchBox searchInputID={searchInputID} showLocationButton={true} />
         </FloatingSearchBoxContainer>
         <Spacer.Column numberOfSpaces={6} />
       </SearchBoxContainer>
@@ -48,11 +39,7 @@ const SearchBoxWithLabel = ({
   )
 }
 
-const SearchBoxWithoutLabel = ({
-  isFocus,
-  onFocusState,
-  searchInputID,
-}: Omit<Props, 'paramsShowResults'>) => {
+const SearchBoxWithoutLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults'>) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -62,8 +49,6 @@ const SearchBoxWithoutLabel = ({
       <SearchBoxContainer testID="searchBoxWithoutLabel">
         <SearchBox
           searchInputID={searchInputID}
-          onFocusState={onFocusState}
-          isFocus={isFocus}
           accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
         />
       </SearchBoxContainer>
@@ -72,21 +57,13 @@ const SearchBoxWithoutLabel = ({
   )
 }
 
-export const SearchHeader: React.FC<Props> = ({ searchInputID, onFocusState, isFocus }) => {
-  const showResults = useShowResults()
+export const SearchHeader: React.FC<Props> = ({ searchInputID }) => {
+  const { params } = useRoute<UseRouteType<'Search'>>()
 
-  return !showResults && !isFocus ? (
-    <SearchBoxWithLabel
-      searchInputID={searchInputID}
-      onFocusState={onFocusState}
-      isFocus={isFocus}
-    />
+  return params === undefined || params.view === SearchView.Landing ? (
+    <SearchBoxWithLabel searchInputID={searchInputID} />
   ) : (
-    <SearchBoxWithoutLabel
-      isFocus={isFocus}
-      onFocusState={onFocusState}
-      searchInputID={searchInputID}
-    />
+    <SearchBoxWithoutLabel searchInputID={searchInputID} />
   )
 }
 

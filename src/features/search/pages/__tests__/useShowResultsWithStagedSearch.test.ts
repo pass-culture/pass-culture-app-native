@@ -4,6 +4,7 @@ import { navigate as mockNavigate, push as mockPush } from '__mocks__/@react-nav
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { SearchView } from 'features/search/types'
 import { renderHook } from 'tests/utils'
 
 import { usePushWithStagedSearch } from '../usePushWithStagedSearch'
@@ -35,12 +36,12 @@ describe('useShowResultsWithStagedSearch', () => {
     }
   })
 
-  it('should set search state with staged search state', () => {
+  it('should navigate to search with staged search state', () => {
     const { result: resultCallback } = renderHook(usePushWithStagedSearch)
 
     resultCallback.current()
 
-    expect(push).toBeCalledWith('TabNavigator', {
+    expect(push).toHaveBeenCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,
@@ -55,35 +56,7 @@ describe('useShowResultsWithStagedSearch', () => {
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 300],
         query: 'Big flo et Oli',
-        showResults: false,
-        tags: [],
-        timeRange: null,
-      },
-      screen: 'Search',
-    })
-  })
-
-  it('should show results', () => {
-    const { result: resultCallback } = renderHook(usePushWithStagedSearch)
-
-    resultCallback.current()
-
-    expect(push).toHaveBeenLastCalledWith('TabNavigator', {
-      params: {
-        beginningDatetime: null,
-        date: null,
-        endingDatetime: null,
-        hitsPerPage: 20,
-        locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: ['SPECTACLE'],
-        offerIsDuo: false,
-        offerIsFree: false,
-        offerIsNew: false,
-        offerSubcategories: [],
-        offerTypes: { isDigital: false, isEvent: false, isThing: false },
-        priceRange: [0, 300],
-        query: 'Big flo et Oli',
-        showResults: false,
+        view: SearchView.Landing,
         tags: [],
         timeRange: null,
       },

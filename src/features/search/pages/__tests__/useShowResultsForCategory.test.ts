@@ -4,6 +4,7 @@ import { push as mockPush, navigate as mockNavigate } from '__mocks__/@react-nav
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { SearchView } from 'features/search/types'
 import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
@@ -66,7 +67,7 @@ describe('useShowResultsForCategory', () => {
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 300],
         query: 'Big flo et Oli',
-        showResults: true,
+        view: SearchView.Results,
         tags: [],
         timeRange: null,
       },

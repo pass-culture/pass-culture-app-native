@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { SearchView } from 'features/search/types'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -13,7 +14,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export function NoBookingsView() {
   const netInfo = useNetInfo()
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'bookings' })
-  const searchNavConfig = getTabNavConfig('Search', { showResults: true })
+  const searchNavConfig = getTabNavConfig('Search', { view: SearchView.Landing })
 
   return (
     <Container>

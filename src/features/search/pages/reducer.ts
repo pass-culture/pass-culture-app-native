@@ -6,7 +6,7 @@ import {
   MIN_PRICE,
   sortCategories,
 } from 'features/search/pages/reducer.helpers'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 
@@ -30,9 +30,9 @@ export const initialSearchState: SearchState = {
   },
   priceRange: [MIN_PRICE, MAX_PRICE],
   query: '',
-  showResults: false,
   tags: [],
   timeRange: null,
+  view: SearchView.Landing,
 }
 
 export type Action =
@@ -62,11 +62,11 @@ export type Action =
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
     case 'INIT':
-      return { ...initialSearchState, showResults: state.showResults }
+      return { ...initialSearchState, view: state.view }
     case 'SET_STATE':
       return { ...initialSearchState, ...action.payload }
     case 'SHOW_RESULTS':
-      return { ...state, showResults: action.payload }
+      return { ...state, view: action.payload ? SearchView.Results : SearchView.Landing }
     case 'SET_STATE_FROM_NAVIGATE':
       return {
         ...state,

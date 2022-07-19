@@ -18,7 +18,7 @@ type QueryProps = {
 
 type FocusProps = {
   isFocus?: boolean
-  onFocusState?: (focus: boolean) => void
+  onFocus?: () => void
 }
 
 type LocationProps = {
@@ -40,7 +40,7 @@ export const SearchMainInput: FunctionComponent<Props> = ({
   onSubmitQuery,
   resetQuery,
   isFocus = false,
-  onFocusState,
+  onFocus,
   showLocationButton = false,
   locationLabel,
   onPressLocationButton,
@@ -53,7 +53,7 @@ export const SearchMainInput: FunctionComponent<Props> = ({
     onSubmitEditing={onSubmitQuery}
     onPressRightIcon={resetQuery}
     autoFocus={isFocus}
-    onFocusState={onFocusState}
+    onFocus={onFocus}
     nativeAutoFocus
     LeftIcon={MagnifyingGlassIcon}
     inputHeight="regular"

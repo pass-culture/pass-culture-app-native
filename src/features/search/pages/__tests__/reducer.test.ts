@@ -4,7 +4,7 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
 import { Action, initialSearchState, searchReducer } from '../reducer'
@@ -25,15 +25,15 @@ describe('Search reducer', () => {
 
   const state = initialSearchState
   it('should handle INIT', () => {
-    let searchState = { showResults: false } as SearchState
+    let searchState = { view: SearchView.Landing } as SearchState
     expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
       ...initialSearchState,
-      showResults: false,
+      view: SearchView.Landing,
     })
-    searchState = { showResults: true } as SearchState
+    searchState = { view: SearchView.Results } as SearchState
     expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
       ...initialSearchState,
-      showResults: true,
+      view: SearchView.Results,
     })
   })
 
@@ -177,9 +177,9 @@ describe('Search reducer', () => {
 
   it('should handle SHOW_RESULTS', () => {
     let newState = searchReducer(state, { type: 'SHOW_RESULTS', payload: true })
-    expect(newState).toStrictEqual({ ...state, showResults: true })
+    expect(newState).toStrictEqual({ ...state, view: SearchView.Results })
     newState = searchReducer(newState, { type: 'SHOW_RESULTS', payload: false })
-    expect(newState).toStrictEqual({ ...state, showResults: false })
+    expect(newState).toStrictEqual({ ...state, view: SearchView.Landing })
   })
 
   it('should handle TOGGLE_OFFER_FREE', () => {

@@ -1,6 +1,7 @@
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useShowResults } from 'features/search/pages/useShowResults'
+import { SearchView } from 'features/search/types'
 import { renderHook, waitFor } from 'tests/utils'
 
 const mockSearchState = initialSearchState
@@ -15,7 +16,7 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 describe('useShowResults hook', () => {
   it('should show results when search has results', async () => {
-    mockSearchState.showResults = true
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
     const { result } = renderHook(useShowResults)
 
     await waitFor(() => {
@@ -24,7 +25,7 @@ describe('useShowResults hook', () => {
   })
 
   it('should not show results when search has no results', async () => {
-    mockSearchState.showResults = false
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: 'la fnac' } })
     const { result } = renderHook(useShowResults)
 
     await waitFor(() => {
@@ -34,12 +35,10 @@ describe('useShowResults hook', () => {
 
   describe("when URL's params ask to show results", () => {
     beforeAll(() => {
-      useRoute.mockReturnValue({ params: { showResults: true, query: 'la fnac' } })
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
     })
 
     it('should show results when params from URL ask for it', async () => {
-      mockSearchState.showResults = false
-
       const { result } = renderHook(useShowResults)
 
       await waitFor(() => {

@@ -29,6 +29,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     accessibilityDescribedBy,
     onPressRightIcon,
     inputContainerStyle,
+    onFocus: onFocusProp,
     children,
   } = customProps
   const { value = '' } = nativeProps
@@ -37,8 +38,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
-    if (props.onFocusState) {
-      props.onFocusState(true)
+    if (onFocusProp) {
+      onFocusProp()
     }
   }
 

@@ -14,7 +14,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
-import { useShowResults } from 'features/search/pages/useShowResults'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -31,16 +31,12 @@ const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 type Props = {
   searchInputID: string
   showLocationButton?: boolean
-  onFocusState?: (focus: boolean) => void
-  isFocus?: boolean
   accessibleHiddenTitle?: string
 }
 
 export const SearchBox: React.FC<Props> = ({
   searchInputID,
   showLocationButton,
-  onFocusState,
-  isFocus,
   accessibleHiddenTitle,
   ...props
 }) => {
@@ -49,13 +45,14 @@ export const SearchBox: React.FC<Props> = ({
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
   const [query, setQuery] = useState<string>(params?.query || '')
   const accessibilityDescribedBy = uuidv4()
-  const showResults = useShowResults()
   const { locationFilter } = stagedSearchState
   const { locationType } = locationFilter
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
   const pushWithStagedSearch = usePushWithStagedSearch()
+  const hasEditableSearchInput =
+    SearchView.Suggestions === params?.view || SearchView.Results === params?.view
 
   useEffect(() => {
     setQuery(params?.query || '')
@@ -68,7 +65,6 @@ export const SearchBox: React.FC<Props> = ({
   }, [pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
-    if (onFocusState) onFocusState(false)
     stagedDispatch({
       type: 'SET_STATE',
       payload: { locationFilter },
@@ -76,14 +72,14 @@ export const SearchBox: React.FC<Props> = ({
     pushWithStagedSearch(
       {
         query: '',
-        showResults: false,
+        view: SearchView.Landing,
         locationFilter,
       },
       {
         reset: true,
       }
     )
-  }, [locationFilter, onFocusState, pushWithStagedSearch, stagedDispatch])
+  }, [locationFilter, pushWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
@@ -99,16 +95,25 @@ export const SearchBox: React.FC<Props> = ({
       // price range depending on their available credit.
       const { offerCategories, priceRange } = stagedSearchState
       pushWithStagedSearch({
-        showResults: true,
         query: queryText,
         locationFilter,
         offerCategories,
         priceRange,
+        view: SearchView.Results,
       })
       analytics.logSearchQuery(queryText)
     },
     [locationFilter, pushWithStagedSearch, stagedSearchState]
   )
+
+  const onFocus = useCallback(() => {
+    if (hasEditableSearchInput) return
+
+    pushWithStagedSearch({
+      ...params,
+      view: SearchView.Suggestions,
+    })
+  }, [params, hasEditableSearchInput, pushWithStagedSearch])
 
   return (
     <RowContainer>
@@ -116,7 +121,7 @@ export const SearchBox: React.FC<Props> = ({
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
       <SearchInputContainer {...props}>
-        {showResults || isFocus ? (
+        {hasEditableSearchInput ? (
           <StyledTouchableOpacity
             testID="previousButton"
             onPress={onPressArrowBack}
@@ -128,10 +133,10 @@ export const SearchBox: React.FC<Props> = ({
           searchInputID={searchInputID}
           query={query}
           setQuery={setQuery}
-          isFocus={isFocus}
+          isFocus={params?.view === SearchView.Suggestions}
           onSubmitQuery={onSubmitQuery}
           resetQuery={resetQuery}
-          onFocusState={onFocusState}
+          onFocus={onFocus}
           showLocationButton={showLocationButton}
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}

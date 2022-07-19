@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -39,7 +40,7 @@ describe('<NoBookingsView />', () => {
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
     const button = renderAPI.getByText('Explorer les offres')
     await fireEvent.press(button)
-    expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { showResults: true }))
+    expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { view: SearchView.Landing }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
   })
 })

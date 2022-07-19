@@ -1,12 +1,12 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -72,7 +72,7 @@ describe('SearchBox component', () => {
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: 'jazzaza',
-        showResults: true,
+        view: SearchView.Results,
         offerCategories: mockStagedSearchState.offerCategories,
         locationFilter: mockStagedSearchState.locationFilter,
         priceRange: mockStagedSearchState.priceRange,
@@ -81,22 +81,24 @@ describe('SearchBox component', () => {
   })
 
   it('should not show previous if no search executed and no focus on input', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = queryByTestId('previousButton')
 
     expect(previousButton).toBeFalsy()
   })
 
-  it('should show previous button if search executed', () => {
-    mockSearchState.showResults = true
+  it('should show previous button when being on the search results view', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = getByTestId('previousButton')
 
     expect(previousButton).toBeTruthy()
   })
 
-  it('should show previous button if focus on input', () => {
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} isFocus={true} />)
+  it('should show previous button when being on the suggestions view', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
+    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = getByTestId('previousButton')
 
     expect(previousButton).toBeTruthy()
@@ -130,32 +132,36 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should reset input when user click on previous button', async () => {
-    const { getByTestId, getByPlaceholderText } = render(
-      <SearchBox searchInputID={searchInputID} />
-    )
-    const previousButton = getByTestId('previousButton')
+  it.each([[SearchView.Suggestions], [SearchView.Results]])(
+    'should reset input when user click on previous button',
+    async (view) => {
+      useRoute.mockReturnValueOnce({ params: { view } }).mockReturnValueOnce({ params: { view } })
+      const { getByTestId, getByPlaceholderText } = render(
+        <SearchBox searchInputID={searchInputID} />
+      )
+      const previousButton = getByTestId('previousButton')
 
-    const searchInput = getByPlaceholderText('Offre, artiste...')
-    await fireEvent(searchInput, 'onChangeText', 'Some text')
+      const searchInput = getByPlaceholderText('Offre, artiste...')
+      await fireEvent(searchInput, 'onChangeText', 'Some text')
 
-    await fireEvent.press(previousButton)
+      await fireEvent.press(previousButton)
 
-    expect(mockStagedDispatch).toBeCalledWith({
-      type: 'SET_STATE',
-      payload: {
-        locationFilter: mockStagedSearchState.locationFilter,
-      },
-    })
-    expect(navigate).toBeCalledWith(
-      ...getTabNavConfig('Search', {
-        ...initialSearchState,
-        query: '',
-        showResults: false,
-        locationFilter: mockStagedSearchState.locationFilter,
+      expect(mockStagedDispatch).toBeCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          locationFilter: mockStagedSearchState.locationFilter,
+        },
       })
-    )
-  })
+      expect(navigate).toBeCalledWith(
+        ...getTabNavConfig('Search', {
+          ...initialSearchState,
+          query: '',
+          view: SearchView.Landing,
+          locationFilter: mockStagedSearchState.locationFilter,
+        })
+      )
+    }
+  )
 
   it('should not execute a search if input is empty', () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
@@ -176,7 +182,7 @@ describe('SearchBox component', () => {
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: 'jazzaza',
-        showResults: true,
+        view: SearchView.Results,
         offerCategories: mockStagedSearchState.offerCategories,
         locationFilter: mockStagedSearchState.locationFilter,
         priceRange: mockStagedSearchState.priceRange,
@@ -193,4 +199,34 @@ describe('SearchBox component', () => {
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
   })
+
+  it('should display suggestions view when focusing search input', async () => {
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    await fireEvent(searchInput, 'onFocus')
+
+    expect(navigate).toBeCalledWith(
+      ...getTabNavConfig('Search', {
+        ...initialSearchState,
+        view: SearchView.Suggestions,
+        offerCategories: mockStagedSearchState.offerCategories,
+        locationFilter: mockStagedSearchState.locationFilter,
+        priceRange: mockStagedSearchState.priceRange,
+      })
+    )
+  })
+
+  it.each([[SearchView.Suggestions], [SearchView.Results]])(
+    'should stay on the current view when focusing search input and being on the suggestions or the results view',
+    async (view) => {
+      useRoute.mockReturnValueOnce({ params: { view } })
+      const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+      const searchInput = getByPlaceholderText('Offre, artiste...')
+
+      await fireEvent(searchInput, 'onFocus')
+
+      expect(navigate).not.toBeCalled()
+    }
+  )
 })

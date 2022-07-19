@@ -5,6 +5,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -46,7 +47,7 @@ const defaultParams = {
   offerTypes: { isDigital: false, isEvent: false, isThing: false },
   priceRange: [0, 300],
   query: '',
-  showResults: false,
+  view: SearchView.Landing,
   tags: [],
   timeRange: null,
 }
@@ -86,7 +87,7 @@ describe('<VenueOffers />', () => {
             venueId: 5543,
           },
         },
-        showResults: true,
+        view: SearchView.Results,
       },
       screen: 'Search',
     })

@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { SearchView } from 'features/search/types'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -11,7 +12,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'favorites' })
-  const searchNavConfig = getTabNavConfig('Search', { showResults: true })
+  const searchNavConfig = getTabNavConfig('Search', { view: SearchView.Landing })
 
   return (
     <Container>
