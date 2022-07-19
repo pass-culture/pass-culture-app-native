@@ -3,20 +3,20 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { analytics } from 'libs/firebase/analytics'
 
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
-import { OnCategoryPress, useSortedSearchCategories } from './useSortedSearchCategories'
+import { OnPressCategory, useSortedSearchCategories } from './useSortedSearchCategories'
 
 type Props = {
-  onCategoryPress: OnCategoryPress
+  onPressCategory: OnPressCategory
   children?: never
 }
 
-export const CategoriesButtons: FunctionComponent<Props> = ({ onCategoryPress }) => {
-  const onPressWithAnalytics: OnCategoryPress = useCallback(
+export const CategoriesButtons: FunctionComponent<Props> = ({ onPressCategory }) => {
+  const onPressWithAnalytics: OnPressCategory = useCallback(
     (pressedCategory) => {
-      onCategoryPress(pressedCategory)
+      onPressCategory(pressedCategory)
       analytics.logUseLandingCategory(pressedCategory)
     },
-    [onCategoryPress]
+    [onPressCategory]
   )
 
   const sortedCategories = useSortedSearchCategories(onPressWithAnalytics)

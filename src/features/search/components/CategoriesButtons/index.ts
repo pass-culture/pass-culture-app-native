@@ -1,2 +1,2 @@
 export * from './CategoriesButtons'
-export type { OnCategoryPress } from './useSortedSearchCategories'
+export type { OnPressCategory } from './useSortedSearchCategories'

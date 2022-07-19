@@ -33,7 +33,7 @@ export function Search() {
     if (showResults || isFocus) return <SearchDetails />
     return (
       <Container>
-        <CategoriesButtons onCategoryPress={showResultsForCategory} />
+        <CategoriesButtons onPressCategory={showResultsForCategory} />
         <Spacer.TabBar />
       </Container>
     )
