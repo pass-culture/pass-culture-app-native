@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
@@ -33,7 +32,7 @@ jest.mock('features/auth/AuthContext', () => ({
 }))
 
 jest.mock('react-query')
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

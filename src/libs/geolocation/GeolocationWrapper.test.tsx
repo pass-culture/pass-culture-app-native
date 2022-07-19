@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission'
@@ -13,9 +12,9 @@ import { GeolocationError } from './types'
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
-const mockGetPosition = mocked(getPosition)
-const mockCheckGeolocPermission = mocked(checkGeolocPermission)
-const mockRequestGeolocPermission = mocked(requestGeolocPermission)
+const mockGetPosition = jest.mocked(getPosition)
+const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
+const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
 function mockPermissionResult(state: GeolocPermissionState) {
   mockCheckGeolocPermission.mockResolvedValue(state)
   mockRequestGeolocPermission.mockResolvedValue(state)

@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -23,7 +22,7 @@ jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-const mockUseVenueOffers = mocked(useVenueOffers)
+const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()

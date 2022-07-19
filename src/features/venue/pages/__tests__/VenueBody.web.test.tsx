@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse } from 'api/gen'
@@ -21,7 +20,7 @@ jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-const mockedUseVenue = mocked(useVenue)
+const mockedUseVenue = jest.mocked(useVenue)
 
 const venueId = venueResponseSnap.id
 

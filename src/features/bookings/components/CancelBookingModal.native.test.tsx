@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
@@ -14,7 +13,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
 
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 const mockDismissModal = jest.fn()
 jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({

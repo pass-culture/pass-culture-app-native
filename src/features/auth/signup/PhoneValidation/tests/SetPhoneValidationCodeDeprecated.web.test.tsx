@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { useMutation, UseMutationResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -47,7 +46,7 @@ jest.mock('features/profile/api', () => ({
   })),
 }))
 
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
   onError: () => {},

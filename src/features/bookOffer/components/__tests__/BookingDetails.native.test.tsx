@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
@@ -46,7 +45,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),
   useBookingOffer: jest.fn(),
 }))
-const mockUseBookingOffer = mocked(useBookingOffer)
+const mockUseBookingOffer = jest.mocked(useBookingOffer)
 mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
 
 const mockShowErrorSnackBar = jest.fn()
@@ -61,7 +60,7 @@ const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
 
 jest.mock('features/profile/utils')
-const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
+const mockedUseIsUserUnderage = jest.mocked(useIsUserUnderage)
 
 const mockUseSubcategoriesMapping = jest.fn()
 jest.mock('libs/subcategories', () => ({

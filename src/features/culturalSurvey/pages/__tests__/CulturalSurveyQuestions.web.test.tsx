@@ -1,6 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
@@ -20,7 +19,7 @@ import { render, fireEvent } from 'tests/utils/web'
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 jest.mock('features/culturalSurvey/useCulturalSurvey')
-const mockedUseCulturalSurveyAnswersMutation = mocked(useCulturalSurveyAnswersMutation)
+const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
 
 const navigationProps = {
   route: {

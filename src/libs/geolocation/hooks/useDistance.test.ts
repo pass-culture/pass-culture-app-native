@@ -1,5 +1,4 @@
 /* eslint-disable local-rules/independant-mocks */
-import { mocked } from 'ts-jest/utils'
 
 import { IGeolocationContext, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -8,7 +7,7 @@ import { formatDistance } from 'libs/parsers'
 jest.mock('libs/parsers')
 
 jest.mock('libs/geolocation')
-const mockUseGeolocation = mocked(useGeolocation)
+const mockUseGeolocation = jest.mocked(useGeolocation)
 
 const position = { latitude: 90, longitude: 90 }
 const offerPosition = { lat: 31, long: 56 }
