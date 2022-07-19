@@ -715,7 +715,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-hGPBjI dQZwCy"
+              class="sc-kfPuZi gUPYLP"
               type="button"
             >
               <div
@@ -796,7 +796,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-gsDKAQ dRfsuw sc-cidDSM iUBxLC"
+                class="sc-gsDKAQ dRfsuw sc-jcFjpl jAwTyn"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -991,10 +991,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-fotOHu sc-jcFjpl fHUdDM iLzjWr"
+                  class="sc-fotOHu sc-caiLqq fHUdDM gFGgld"
                 >
                   <li
-                    class="sc-caiLqq jBFBin"
+                    class="sc-iUKqMP kLUouX"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -1063,7 +1063,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-caiLqq jBFBin"
+                    class="sc-iUKqMP kLUouX"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1132,7 +1132,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-caiLqq jBFBin"
+                    class="sc-iUKqMP kLUouX"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -1201,7 +1201,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-caiLqq jBFBin"
+                    class="sc-iUKqMP kLUouX"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"
@@ -2075,7 +2075,7 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <button
-            class="sc-hGPBjI dQZwCy"
+            class="sc-kfPuZi gUPYLP"
             type="button"
           >
             <div
@@ -2156,7 +2156,7 @@ Object {
             style="align-items: flex-start;"
           >
             <a
-              class="sc-gsDKAQ dRfsuw sc-cidDSM iUBxLC"
+              class="sc-gsDKAQ dRfsuw sc-jcFjpl jAwTyn"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
@@ -2351,10 +2351,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-fotOHu sc-jcFjpl fHUdDM iLzjWr"
+                class="sc-fotOHu sc-caiLqq fHUdDM gFGgld"
               >
                 <li
-                  class="sc-caiLqq jBFBin"
+                  class="sc-iUKqMP kLUouX"
                 >
                   <div
                     aria-label="Handicap visuel : Accessible"
@@ -2423,7 +2423,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-caiLqq jBFBin"
+                  class="sc-iUKqMP kLUouX"
                 >
                   <div
                     aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2492,7 +2492,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-caiLqq jBFBin"
+                  class="sc-iUKqMP kLUouX"
                 >
                   <div
                     aria-label="Handicap moteur : Non accessible"
@@ -2561,7 +2561,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-caiLqq jBFBin"
+                  class="sc-iUKqMP kLUouX"
                 >
                   <div
                     aria-label="Handicap auditif : Non accessible"
