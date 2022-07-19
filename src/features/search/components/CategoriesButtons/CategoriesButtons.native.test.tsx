@@ -7,18 +7,18 @@ import { CategoriesButtons } from './CategoriesButtons'
 
 describe('CategoriesButtons', () => {
   it('should display categories', () => {
-    const { queryAllByRole } = render(<CategoriesButtons onPressCategory={jest.fn()} />)
+    const { queryAllByRole } = render(<CategoriesButtons onCategoryPress={jest.fn()} />)
 
     expect(queryAllByRole('button').length).toEqual(13)
   })
 
   it('should call given callBack on press', () => {
-    const mockOnPressCategory = jest.fn()
-    const { getByText } = render(<CategoriesButtons onPressCategory={mockOnPressCategory} />)
+    const mockOnCategoryPress = jest.fn()
+    const { getByText } = render(<CategoriesButtons onCategoryPress={mockOnCategoryPress} />)
 
     const categoryButton = getByText('Spectacles')
     fireEvent.press(categoryButton)
 
-    expect(mockOnPressCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
+    expect(mockOnCategoryPress).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
   })
 })

@@ -1,11 +1,11 @@
 import { useCallback } from 'react'
 
-import { OnPressCategory } from 'features/search/components/CategoriesButtons'
+import { OnCategoryPress } from 'features/search/components/CategoriesButtons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 
 import { usePushWithStagedSearch } from './usePushWithStagedSearch'
 
-export const useShowResultsForCategory = (): OnPressCategory => {
+export const useShowResultsForCategory = (): OnCategoryPress => {
   const { dispatch: stagedDispatch } = useStagedSearch()
   const showResultsWithStagedSearch = usePushWithStagedSearch()
 

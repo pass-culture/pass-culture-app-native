@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react'
 
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
-import { OnPressCategory, useSortedSearchCategories } from './useSortedSearchCategories'
+import { OnCategoryPress, useSortedSearchCategories } from './useSortedSearchCategories'
 
 type Props = {
-  onPressCategory: OnPressCategory
+  onCategoryPress: OnCategoryPress
   children?: never
 }
 
-export const CategoriesButtons: FunctionComponent<Props> = ({ onPressCategory }) => {
-  const sortedCategories = useSortedSearchCategories(onPressCategory)
+export const CategoriesButtons: FunctionComponent<Props> = ({ onCategoryPress }) => {
+  const sortedCategories = useSortedSearchCategories(onCategoryPress)
 
   return <CategoriesButtonsDisplay sortedCategories={sortedCategories} />
 }

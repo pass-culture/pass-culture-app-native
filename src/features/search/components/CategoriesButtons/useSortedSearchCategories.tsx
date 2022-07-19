@@ -4,10 +4,10 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 
 import { ListCategoryButtonProps } from './CategoriesButtonsDisplay'
 
-export type OnPressCategory = (pressedCategory: SearchGroupNameEnum) => void
+export type OnCategoryPress = (pressedCategory: SearchGroupNameEnum) => void
 
 export const useSortedSearchCategories = (
-  onPressCategory: OnPressCategory
+  onCategoryPress: OnCategoryPress
 ): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
@@ -17,7 +17,7 @@ export const useSortedSearchCategories = (
       label: searchGroupLabelMapping[category.facetFilter],
       Icon: category.icon,
       onPress() {
-        onPressCategory(category.facetFilter)
+        onCategoryPress(category.facetFilter)
       },
     }))
     .sort((a, b) => a.label.localeCompare(b.label))
