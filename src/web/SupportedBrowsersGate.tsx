@@ -1,9 +1,14 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import * as DeviceDetect from 'react-device-detect'
-import { StyleSheet, ScrollView, View, Text } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
+import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 const browserVersion = Number(DeviceDetect.browserVersion)
 
@@ -21,21 +26,21 @@ export const SupportedBrowsersGate: React.FC = ({ children }) => {
 }
 
 const supportedBrowsers: Array<{
-  message: string
+  browser: string
   active: boolean
   version: number
 }> = [
-  { message: 'Facebook Messenger', active: isFacebookMessenger, version: 1 },
-  { message: 'Chrome', active: DeviceDetect.isChrome, version: 50 },
-  { message: 'Safari sur iOS', active: DeviceDetect.isMobileSafari, version: 12 },
-  { message: 'Safari sur macOS', active: DeviceDetect.isSafari, version: 10 },
-  { message: 'Firefox', active: DeviceDetect.isFirefox, version: 55 },
-  { message: 'Edge sur Windows', active: DeviceDetect.isEdge, version: 79 },
-  { message: 'Opera', active: DeviceDetect.isOpera && DeviceDetect.isDesktop, version: 80 },
-  { message: 'Samsung', active: DeviceDetect.isSamsungBrowser, version: 5 },
-  { message: 'Instagram', active: DeviceDetect.browserName === 'Instagram', version: 200 },
+  { browser: 'Facebook Messenger', active: isFacebookMessenger, version: 1 },
+  { browser: 'Chrome', active: DeviceDetect.isChrome, version: 50 },
+  { browser: 'Safari sur iOS', active: DeviceDetect.isMobileSafari, version: 12 },
+  { browser: 'Safari sur macOS', active: DeviceDetect.isSafari, version: 10 },
+  { browser: 'Firefox', active: DeviceDetect.isFirefox, version: 55 },
+  { browser: 'Edge sur Windows', active: DeviceDetect.isEdge, version: 79 },
+  { browser: 'Opera', active: DeviceDetect.isOpera && DeviceDetect.isDesktop, version: 80 },
+  { browser: 'Samsung', active: DeviceDetect.isSamsungBrowser, version: 5 },
+  { browser: 'Instagram', active: DeviceDetect.browserName === 'Instagram', version: 200 },
   {
-    message: 'Les navigateurs basés sur Chromium (autre que Chrome)',
+    browser: 'Les navigateurs basés sur Chromium (autre que Chrome)',
     active: DeviceDetect.isChromium,
     version: 0,
   },
@@ -52,88 +57,74 @@ function isBrowserSupported() {
 
 export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onPress }) => {
   return (
-    <ScrollView style={styles.page} contentContainerStyle={styles.pageContentContainer}>
-      <View style={styles.content}>
-        <Text
-          style={
-            styles.title
-          }>{`Oups ! Nous ne pouvons afficher correctement l'application car ton navigateur (${DeviceDetect.browserName} v${browserVersion}) n'est pas à jour.`}</Text>
-        <Text style={styles.text}>
-          {`Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale.`}
-        </Text>
-        <Text style={styles.text}>
-          {'Voici ceux que nous te conseillons pour profiter pleinement du pass Culture :'}
-        </Text>
-        <View style={styles.list}>
-          {supportedBrowsers.map(({ message, version }) => {
-            let displayedMessage = `- ${message}`
+    <ScrollView contentContainerStyle={contentContainerStyle}>
+      <Container>
+        <Title>
+          {t({
+            id: 'browser detect version',
+            values: {
+              browserName: DeviceDetect.browserName,
+              browserVersion,
+            },
+            message:
+              "Oups\u00a0! Nous ne pouvons afficher correctement l'application car ton navigateur ({browserName} v{browserVersion}) n'est pas à jour",
+          })}
+        </Title>
+        <Spacer.Column numberOfSpaces={5} />
+        <Typo.Body>
+          {t`Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale.`}
+        </Typo.Body>
+        <Spacer.Column numberOfSpaces={5} />
+        <Typo.Body>
+          {t`Voici ceux que nous te conseillons pour profiter pleinement du pass Culture\u00a0:`}
+        </Typo.Body>
+        <VerticalUl>
+          {supportedBrowsers.map(({ browser, version }) => {
+            let displayedMessage = `- ${browser}`
             if (version > 0) {
               displayedMessage += ` (version > ${version})`
             }
             return (
-              <Text key={message} style={[styles.text, styles.listItemText]}>
-                {displayedMessage}
-              </Text>
+              <Li key={browser}>
+                <StyledBody>{displayedMessage}</StyledBody>
+              </Li>
             )
           })}
-        </View>
-        <Text style={styles.smallText}>
-          {'Mets vite à jour ton navigateur en allant dans les paramètres.'}
-        </Text>
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-          <Text style={styles.buttonText}>
-            {"Sans mettre à jour mon navigateur, j'accède au pass Culture"}
-          </Text>
-        </TouchableOpacity>
-      </View>
+        </VerticalUl>
+        <Spacer.Column numberOfSpaces={5} />
+        <Typo.Caption>
+          {t`Mets vite à jour ton navigateur en allant dans les paramètres`}
+        </Typo.Caption>
+        <Spacer.Column numberOfSpaces={2} />
+        <ButtonPrimary
+          wording={t`J'accède au pass Culture sans mettre à jour mon navigateur`}
+          onPress={onPress}
+          buttonHeight="tall"
+          numberOfLines={2}
+        />
+      </Container>
     </ScrollView>
   )
 }
 
-const styles = StyleSheet.create({
-  page: {
-    width: '100%',
-    height: '100%',
-  },
-  pageContentContainer: {
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: { flexDirection: 'column', alignItems: 'center', maxWidth: 520, padding: 10 },
-  list: { flexDirection: 'column', paddingBottom: 10 },
-  listItemText: { paddingBottom: 6, textAlign: 'left' },
-  title: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 24,
-    paddingTop: 80,
-    paddingBottom: 16,
-    textAlign: 'center',
-  },
-  text: { fontFamily: 'Montserrat-Regular', fontSize: 15, paddingBottom: 8, textAlign: 'left' },
-  smallText: {
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
-    paddingBottom: 8,
-    textAlign: 'center',
-  },
-  // eslint-disable-next-line react-native/no-color-literals
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 24,
-    marginTop: 10,
-    padding: 10,
-    color: 'white',
-    backgroundColor: '#eb0055',
-    width: 300,
-    height: 50,
-  },
-  // eslint-disable-next-line react-native/no-color-literals
-  buttonText: {
-    fontFamily: 'Montserrat-Bold',
-    fontSize: 13,
-    color: 'white',
-    textAlign: 'center',
-  },
+const contentContainerStyle: ViewStyle = {
+  height: '100%',
+  width: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+}
+
+const Container = styled.View({
+  flexDirection: 'column',
+  alignItems: 'center',
+  maxWidth: 520,
+  padding: getSpacing(6),
+})
+
+const Title = styled(Typo.Title3)({
+  textAlign: 'center',
+})
+
+const StyledBody = styled(Typo.Body)({
+  padding: getSpacing(5),
 })
