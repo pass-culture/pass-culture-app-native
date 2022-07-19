@@ -103,6 +103,7 @@ const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
 
 const FloatingSearchBoxContainer = styled.View({
   position: 'relative',
+  zIndex: 1,
 })
 
 const FloatingSearchBox = styled(SearchBox)({
