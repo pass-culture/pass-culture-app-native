@@ -14,30 +14,41 @@ exports[`OffersModule component should render correctly - with black title 1`] =
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "marginHorizontal": 24,
+          "maxHeight": 68,
+          "overflow": "hidden",
         },
       ]
     }
   >
-    <Text
-      numberOfLines={2}
-      onDarkBackground={false}
+    <View
       style={
         Array [
           Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 20,
-            "lineHeight": 24,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginHorizontal": 24,
           },
         ]
       }
-      testID="playlistTitle"
     >
-      Module title
-    </Text>
+      <Text
+        numberOfLines={2}
+        onDarkBackground={false}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+            },
+          ]
+        }
+        testID="playlistTitle"
+      >
+        Module title
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}

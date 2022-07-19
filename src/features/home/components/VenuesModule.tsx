@@ -67,11 +67,11 @@ export const VenuesModule = ({
   }, [shouldModuleBeDisplayed])
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
-
   return (
     <PassPlaylist
       testID="offersModuleList"
       title={display.title}
+      subtitle={display.subtitle}
       data={hits || []}
       itemHeight={ITEM_HEIGHT}
       itemWidth={ITEM_WIDTH}

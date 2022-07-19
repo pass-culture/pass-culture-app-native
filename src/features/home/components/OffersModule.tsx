@@ -123,6 +123,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     <PassPlaylist
       testID="offersModuleList"
       title={display.title}
+      subtitle={display.subtitle}
       onDarkBackground={index === 0}
       data={hits}
       itemHeight={itemHeight}
