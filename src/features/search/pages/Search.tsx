@@ -33,7 +33,6 @@ export function Search() {
     if (showResults || isFocus) return <SearchDetails />
     return (
       <Container>
-        <Spacer.Column numberOfSpaces={5} />
         <CategoriesButtons onPressCategory={showResultsForCategory} />
         <Spacer.TabBar />
       </Container>
@@ -45,12 +44,10 @@ export function Search() {
   }
 
   return (
-    <Container>
-      <Form.Flex>
-        <SearchHeader searchInputID={searchInputID} onFocusState={setIsFocus} isFocus={isFocus} />
-        {bodySearch()}
-      </Form.Flex>
-    </Container>
+    <Form.Flex>
+      <SearchHeader searchInputID={searchInputID} onFocusState={setIsFocus} isFocus={isFocus} />
+      {bodySearch()}
+    </Form.Flex>
   )
 }
 
