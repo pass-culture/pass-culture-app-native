@@ -431,7 +431,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                     <Modal
                       accessibilityRole="none"
                       animationType="none"
-                      aria-describedby="testUuidV4"
+                      aria-labelledby="testUuidV4"
                       aria-modal={true}
                       deviceHeight={1334}
                       deviceWidth={750}
@@ -518,7 +518,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
               <Modal
                 accessibilityRole="none"
                 animationType="none"
-                aria-describedby="testUuidV4"
+                aria-labelledby="testUuidV4"
                 aria-modal={true}
                 deviceHeight={1334}
                 deviceWidth={750}
@@ -1171,7 +1171,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                     <Modal
                       accessibilityRole="none"
                       animationType="none"
-                      aria-describedby="testUuidV4"
+                      aria-labelledby="testUuidV4"
                       aria-modal={true}
                       deviceHeight={1334}
                       deviceWidth={750}
@@ -1258,7 +1258,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               <Modal
                 accessibilityRole="none"
                 animationType="none"
-                aria-describedby="testUuidV4"
+                aria-labelledby="testUuidV4"
                 aria-modal={true}
                 deviceHeight={1334}
                 deviceWidth={750}

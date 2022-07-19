@@ -29,7 +29,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
 }) => {
   const { bottom } = useSafeAreaInsets()
   const paddingBottom = Math.max(bottom, getSpacing(3))
-  const modalId = uuidv4()
+  const titleID = uuidv4()
   return (
     <React.Fragment>
       {!!visible && (
@@ -42,9 +42,10 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           onRequestClose={onCloseIconPress}>
           <ClicAwayArea onPress={onCloseIconPress} />
           <FlexSpacer />
-          <Container aria-describedby={modalId}>
+          <Container aria-labelledby={titleID}>
             <ModalHeader
               title={title}
+              titleID={titleID}
               boldTitle
               leftIconAccessibilityLabel={undefined}
               leftIcon={undefined}
@@ -53,7 +54,6 @@ export const AppInformationModal: FunctionComponent<Props> = ({
               rightIcon={Close}
               onRightIconPress={onCloseIconPress}
               numberOfLines={numberOfLinesTitle}
-              accessibilityDescribedBy={modalId}
             />
             <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
           </Container>

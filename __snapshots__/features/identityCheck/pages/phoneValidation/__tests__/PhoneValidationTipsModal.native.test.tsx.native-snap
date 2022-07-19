@@ -4,7 +4,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
-  aria-describedby="testUuidV4"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -60,7 +60,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
   />
   <View
     accessibilityRole="none"
-    aria-describedby="testUuidV4"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}

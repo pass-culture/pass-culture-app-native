@@ -14,14 +14,15 @@ import { ModalIconProps } from './types'
 
 type ModalHeaderProps = {
   title: string
+  titleID?: string
   boldTitle?: boolean
   numberOfLines?: number
   onLayout?: (event: LayoutChangeEvent) => void
-  accessibilityDescribedBy?: string
 } & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   title,
+  titleID,
   leftIcon,
   leftIconAccessibilityLabel = t`Revenir en arrière`,
   onLeftIconPress,
@@ -31,7 +32,6 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   boldTitle = false,
   numberOfLines = 2,
   onLayout,
-  accessibilityDescribedBy,
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   const LeftIcon =
@@ -56,7 +56,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         )}
       </LeftHeaderActionContainer>
       <TitleContainer>
-        <TitleComponent numberOfLines={numberOfLines} nativeID={accessibilityDescribedBy}>
+        <TitleComponent numberOfLines={numberOfLines} nativeID={titleID}>
           {title}
         </TitleComponent>
       </TitleContainer>

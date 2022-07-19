@@ -112,7 +112,7 @@ export const AppModal: FunctionComponent<Props> = ({
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
-      aria-describedby={titleId}
+      aria-labelledby={titleId}
       accessibilityRole={AccessibilityRole.DIALOG}
       aria-modal={true}>
       <ModalContainer height={isSmallScreen ? windowHeight : modalHeight} testID="modalContainer">
@@ -120,7 +120,7 @@ export const AppModal: FunctionComponent<Props> = ({
           title={title}
           numberOfLines={titleNumberOfLines}
           onLayout={updateHeaderHeight}
-          accessibilityDescribedBy={titleId}
+          titleID={titleId}
           {...iconProps}
         />
         <SpacerBetweenHeaderAndContent />

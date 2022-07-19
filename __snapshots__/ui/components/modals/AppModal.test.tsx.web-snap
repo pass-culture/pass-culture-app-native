@@ -1464,7 +1464,7 @@ Object {
                 tabindex="0"
               />
               <div
-                aria-describedby="testUuidV4"
+                aria-labelledby="testUuidV4"
                 aria-modal="true"
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
                 role="dialog"

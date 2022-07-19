@@ -27,7 +27,7 @@ Object {
           />
           <button
             aria-label="Revenir en arrière"
-            class="sc-bdvvtL fjQYVH"
+            class="sc-hKwDye jjbsBJ"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -104,7 +104,7 @@ Object {
           />
           <button
             aria-label="Partager"
-            class="sc-bdvvtL fjQYVH"
+            class="sc-hKwDye jjbsBJ"
             data-testid="Partager"
             tabindex="0"
             title="Partager"
@@ -191,7 +191,7 @@ Object {
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-bdvvtL fjQYVH"
+          class="sc-hKwDye jjbsBJ"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -268,7 +268,7 @@ Object {
         />
         <button
           aria-label="Partager"
-          class="sc-bdvvtL fjQYVH"
+          class="sc-hKwDye jjbsBJ"
           data-testid="Partager"
           tabindex="0"
           title="Partager"

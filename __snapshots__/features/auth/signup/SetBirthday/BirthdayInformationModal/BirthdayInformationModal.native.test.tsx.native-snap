@@ -48,7 +48,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
     }
   />
   <View
-    aria-describedby="testUuidV4"
+    aria-labelledby="testUuidV4"
     style={
       Array [
         Object {
