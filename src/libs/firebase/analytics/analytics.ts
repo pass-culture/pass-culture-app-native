@@ -126,6 +126,8 @@ export const analytics = {
   logReinitializeFilters: () => analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS),
   logUseFilter: (filter: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),
+  logUseLandingCategory: (categoryName: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName }),
   logSearchQuery: (query: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, { query }),
   logSearchScrollToPage: (page: number) =>

@@ -93,6 +93,7 @@ export enum AnalyticsEvent {
   SIGN_UP_TOO_YOUNG = 'SignUpTooYoung',
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
   USE_FILTER = 'UseFilter',
+  USE_LANDING_CATEGORY = 'UseLandingCategory',
   VENUE_CONTACT = 'VenueContact',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',

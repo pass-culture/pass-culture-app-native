@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SearchGroupNameEnum } from 'api/gen'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
@@ -20,5 +21,14 @@ describe('CategoriesButtons', () => {
     fireEvent.press(categoryButton)
 
     expect(mockOnPressCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
+  })
+
+  it('should log event on press', () => {
+    const { getByText } = render(<CategoriesButtons onPressCategory={jest.fn()} />)
+
+    const categoryButton = getByText('Spectacles')
+    fireEvent.press(categoryButton)
+
+    expect(analytics.logUseLandingCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
   })
 })
