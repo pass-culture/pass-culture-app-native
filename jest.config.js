@@ -17,7 +17,10 @@ module.exports = {
   setupFiles: ['<rootDir>/jest/jest.setup.ts', 'react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
-    '^.+\\.[jt]sx?$': 'babel-jest',
+    // @swc/jest is faster than babel-jest
+    // Read more: https://miyauchi.dev/posts/speeding-up-jest/
+    '^.+/((@)?react-native)/.+\\.(js|jsx)$': 'babel-jest',
+    "^.+\\.(t|j)sx?$": "@swc/jest",
   },
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native' +
