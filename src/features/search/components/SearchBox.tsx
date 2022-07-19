@@ -1,7 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
-import { NativeSyntheticEvent, Platform, TextInputSubmitEditingEventData } from 'react-native'
+import {
+  Insets,
+  NativeSyntheticEvent,
+  Platform,
+  TextInputSubmitEditingEventData,
+} from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -19,6 +24,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useLocationChoice } from './locationChoice.utils'
 import { SearchMainInput } from './SearchMainInput'
+
+const inset = 25 // arbitrary hitSlop zone inset for touchable
+const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 
 type Props = {
   searchInputID: string
@@ -106,7 +114,10 @@ export const SearchBox: React.FC<Props> = ({
       )}
       <SearchInputContainer {...props}>
         {showResults || isFocus ? (
-          <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
+          <StyledTouchableOpacity
+            testID="previousButton"
+            onPress={onPressArrowBack}
+            hitSlop={hitSlop}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
         ) : null}
@@ -147,5 +158,11 @@ const SearchInputContainer = styled.View({
 })
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100%',
+  width: 50,
   marginRight: getSpacing(4),
 })
