@@ -87,6 +87,7 @@ Array [
         Array [
           Object {
             "position": "relative",
+            "zIndex": 1,
           },
         ]
       }
