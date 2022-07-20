@@ -34,15 +34,13 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={5} />
         <LoginCta>
-          <Body>
-            {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
-            <TouchableLink
-              as={StyledButtonInsideText}
-              navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
-              wording={t`Connecte-toi`}
-              {...accessibilityAndTestId(t`Connecte-toi`)}
-            />
-          </Body>
+          {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
+          <TouchableLink
+            as={StyledButtonInsideText}
+            navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
+            wording={t`Connecte-toi`}
+            {...accessibilityAndTestId(t`Connecte-toi`)}
+          />
         </LoginCta>
         <Spacer.Column numberOfSpaces={7} />
       </HeaderContent>
@@ -60,10 +58,6 @@ const HeaderContent = styled.View({
   width: '100%',
 })
 
-const LoginCta = styled.View({
-  flexDirection: 'row',
-})
-
 const Description = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
@@ -73,7 +67,7 @@ const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) =>
   color: theme.colors.white,
 }))
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const LoginCta = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

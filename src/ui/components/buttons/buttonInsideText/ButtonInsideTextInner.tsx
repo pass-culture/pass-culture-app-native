@@ -63,6 +63,5 @@ const StyledText = styled.Text<{
   icon?: FunctionComponent<IconInterface>
 }>(({ theme, typography, color }) => ({
   ...(typography === 'Caption' ? theme.typography.caption : theme.typography.buttonText),
-  fontWeight: 'bold',
   color: color ?? theme.colors.primary,
 }))
