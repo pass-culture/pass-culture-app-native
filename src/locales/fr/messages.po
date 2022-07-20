@@ -1558,10 +1558,6 @@ msgstr ""
 "Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 
-#: src/features/profile/pages/NotificationSettings.tsx
-msgid "Le réglage est sauvegardé"
-msgstr "Le réglage est sauvegardé"
-
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
@@ -2131,6 +2127,11 @@ msgstr "Page introuvable !"
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Pages"
 msgstr "Pages"
+
+#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/NotificationSettings.tsx
+msgid "Paramètre enregistré"
+msgstr "Paramètre enregistré"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Paramètres UTM"

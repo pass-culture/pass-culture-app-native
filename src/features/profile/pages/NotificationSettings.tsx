@@ -109,7 +109,7 @@ export function NotificationSettings() {
   const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
     () => {
       showSuccessSnackBar({
-        message: t`Le réglage est sauvegardé`,
+        message: t`Paramètre enregistré`,
         timeout: 5000,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
