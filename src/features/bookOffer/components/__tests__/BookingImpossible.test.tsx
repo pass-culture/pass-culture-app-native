@@ -1,13 +1,12 @@
 import * as React from 'react'
 import { useMutation } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 
 import { BookingImpossible } from '../BookingImpossible'
 
 jest.mock('react-query')
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

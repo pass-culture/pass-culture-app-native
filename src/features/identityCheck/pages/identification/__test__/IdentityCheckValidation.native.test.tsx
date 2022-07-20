@@ -1,3 +1,5 @@
+import { setImmediate } from 'timers'
+
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'

@@ -1,5 +1,4 @@
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -9,8 +8,8 @@ import { renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
-const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
-const mockedIsUserExBeneificiary = mocked(isUserExBeneficiary)
+const mockedUseUserProfileInfo = jest.mocked(useUserProfileInfo)
+const mockedIsUserExBeneificiary = jest.mocked(isUserExBeneficiary)
 
 describe('useMaxPrice when no user', () => {
   beforeAll(() => {

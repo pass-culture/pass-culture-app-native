@@ -1,7 +1,6 @@
 /* eslint-disable local-rules/independant-mocks */
 import React from 'react'
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
@@ -13,8 +12,8 @@ import { render, fireEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from '../BeneficiaryRequestSent'
 
-const mockedUseAppSettings = mocked(useAppSettings, true)
-const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
+const mockedUseAppSettings = jest.mocked(useAppSettings, true)
+const mockedUseUserProfileInfo = jest.mocked(useUserProfileInfo)
 jest.mock('features/profile/api')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')

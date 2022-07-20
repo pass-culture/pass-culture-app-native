@@ -1,5 +1,3 @@
-import { mocked } from 'ts-jest/utils'
-
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -28,7 +26,7 @@ const sevenFilters = {
 } as SearchState
 
 jest.mock('features/search/utils/useMaxPrice')
-const mockedUseMaxPrice = mocked(useMaxPrice)
+const mockedUseMaxPrice = jest.mocked(useMaxPrice)
 
 describe('useFilterCount', () => {
   beforeAll(() => {

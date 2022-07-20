@@ -1,6 +1,5 @@
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
-import { mocked } from 'ts-jest/utils'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
@@ -18,7 +17,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 jest.mock('features/search/utils/useMaxPrice')
-const mockedUseMaxPrice = mocked(useMaxPrice)
+const mockedUseMaxPrice = jest.mocked(useMaxPrice)
 
 describe('Price component', () => {
   beforeEach(() => {

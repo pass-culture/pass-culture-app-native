@@ -1,3 +1,5 @@
+import { setImmediate } from 'timers'
+
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 // eslint-disable-next-line no-restricted-imports

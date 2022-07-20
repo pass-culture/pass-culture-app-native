@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -13,7 +12,7 @@ import { ChangeEmail } from '../ChangeEmail'
 
 jest.mock('features/profile/api')
 jest.mock('react-query')
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 const mockUseMutationSuccess = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({
@@ -35,7 +34,7 @@ const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
   }))
 }
 
-const mockedUseQuery = mocked(useQuery)
+const mockedUseQuery = jest.mocked(useQuery)
 const mockUseQueryWithoutExpirationTimestamp = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseQuery.mockImplementationOnce(() => ({}))

@@ -1,7 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
@@ -33,7 +32,7 @@ const navigationProps = {
   },
 } as StackScreenProps<RootStackParamList, 'PhoneValidationTooManySMSSent'>
 
-const mockedPhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
+const mockedPhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
 describe('PhoneValidationTooManySMSSent', () => {
   beforeAll(() => {
