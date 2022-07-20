@@ -6,7 +6,7 @@ import {
   Amount,
   ProgressBarContainer,
   StyledSubtitle,
-  Text,
+  StyledBody,
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
@@ -46,7 +46,7 @@ export function UnderageAccountCreated() {
         <Amount color={uniqueColors.brand}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <Text>{text}</Text>
+      <StyledBody>{text}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
         <TouchableLink

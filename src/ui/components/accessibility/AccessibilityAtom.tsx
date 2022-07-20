@@ -44,7 +44,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
       </Frame>
       <Spacer.Column numberOfSpaces={4} />
       <TextContainer testID={wording}>
-        <Text>{wording}</Text>
+        <StyledCaption>{wording}</StyledCaption>
       </TextContainer>
     </Container>
   )
@@ -70,7 +70,7 @@ const TextContainer = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const Text = styled(Typo.Caption)({ textAlign: 'center', paddingHorizontal: 1 })
+const StyledCaption = styled(Typo.Caption)({ textAlign: 'center', paddingHorizontal: 1 })
 
 const ValidationContainer = styled.View({
   position: 'absolute',

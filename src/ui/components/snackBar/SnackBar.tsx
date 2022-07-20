@@ -125,9 +125,9 @@ const _SnackBar = (props: SnackBarProps) => {
           testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
           <Spacer.Flex flex={1}>
-            <Text testID="snackbar-message" color={props.color}>
+            <StyledBody testID="snackbar-message" color={props.color}>
               {props.message}
-            </Text>
+            </StyledBody>
           </Spacer.Flex>
           <Touchable testID="snackbar-close" onPress={onClose}>
             <Close
@@ -178,7 +178,7 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
   })
 )
 
-const Text = styled(Typo.Body)<{ color: string }>((props) => ({
+const StyledBody = styled(Typo.Body)<{ color: string }>((props) => ({
   color: props.color,
   marginHorizontal: getSpacing(3),
   flexGrow: 0,
