@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -20,6 +21,7 @@ interface RadioButtonProps {
 }
 
 export function RadioButton(props: RadioButtonProps) {
+  const containerRef = useRef(null)
   const { isMobileViewport } = useTheme()
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
   const StyledIcon =
@@ -30,6 +32,7 @@ export function RadioButton(props: RadioButtonProps) {
       size: theme.icons.sizes.small,
     }))``
 
+  useArrowNavigationForRadioButton(containerRef)
   return (
     <StyledTouchableOpacity
       accessibilityRole={AccessibilityRole.RADIO}
@@ -38,7 +41,7 @@ export function RadioButton(props: RadioButtonProps) {
       onPress={() => props.onSelect(props.label)}
       marginVertical={props.marginVertical ?? 0}
       testID={props.testID}>
-      <LabelContainer>
+      <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
           <React.Fragment>
             <StyledIcon />
