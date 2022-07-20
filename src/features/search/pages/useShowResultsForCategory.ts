@@ -7,16 +7,16 @@ import { usePushWithStagedSearch } from './usePushWithStagedSearch'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
   const { dispatch: stagedDispatch } = useStagedSearch()
-  const showResultsWithStagedSearch = usePushWithStagedSearch()
+  const pushWithStagedSearch = usePushWithStagedSearch()
 
   return useCallback(
     (pressedCategory) => {
       stagedDispatch({ type: 'SET_CATEGORY', payload: [pressedCategory] })
-      showResultsWithStagedSearch({
+      pushWithStagedSearch({
         offerCategories: [pressedCategory],
         showResults: true,
       })
     },
-    [stagedDispatch, showResultsWithStagedSearch]
+    [stagedDispatch, pushWithStagedSearch]
   )
 }

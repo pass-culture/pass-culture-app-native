@@ -55,17 +55,17 @@ export const SearchBox: React.FC<Props> = ({
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
-  const showResultsWithStagedSearch = usePushWithStagedSearch()
+  const pushWithStagedSearch = usePushWithStagedSearch()
 
   useEffect(() => {
     setQuery(params?.query || '')
   }, [params?.query])
 
   const resetQuery = useCallback(() => {
-    showResultsWithStagedSearch({
+    pushWithStagedSearch({
       query: '',
     })
-  }, [showResultsWithStagedSearch])
+  }, [pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
     if (onFocusState) onFocusState(false)
@@ -73,7 +73,7 @@ export const SearchBox: React.FC<Props> = ({
       type: 'SET_STATE',
       payload: { locationFilter },
     })
-    showResultsWithStagedSearch(
+    pushWithStagedSearch(
       {
         query: '',
         showResults: false,
@@ -83,7 +83,7 @@ export const SearchBox: React.FC<Props> = ({
         reset: true,
       }
     )
-  }, [locationFilter, onFocusState, showResultsWithStagedSearch, stagedDispatch])
+  }, [locationFilter, onFocusState, pushWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
@@ -98,7 +98,7 @@ export const SearchBox: React.FC<Props> = ({
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
       const { offerCategories, priceRange } = stagedSearchState
-      showResultsWithStagedSearch({
+      pushWithStagedSearch({
         showResults: true,
         query: queryText,
         locationFilter,
@@ -107,7 +107,7 @@ export const SearchBox: React.FC<Props> = ({
       })
       analytics.logSearchQuery(queryText)
     },
-    [locationFilter, showResultsWithStagedSearch, stagedSearchState]
+    [locationFilter, pushWithStagedSearch, stagedSearchState]
   )
 
   return (

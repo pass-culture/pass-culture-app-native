@@ -17,7 +17,7 @@ export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const query = params?.query
-  const showResultsWithStagedSearch = usePushWithStagedSearch()
+  const pushWithStagedSearch = usePushWithStagedSearch()
 
   useEffect(() => {
     if (query) {
@@ -26,7 +26,7 @@ export const NoSearchResult: React.FC = () => {
   }, [query])
 
   const handlePressAroundMe = useCallback(() => {
-    showResultsWithStagedSearch(
+    pushWithStagedSearch(
       {
         locationFilter: position
           ? {
@@ -38,7 +38,7 @@ export const NoSearchResult: React.FC = () => {
       },
       { reset: true }
     )
-  }, [position, showResultsWithStagedSearch])
+  }, [position, pushWithStagedSearch])
 
   const errorMessage = query
     ? t`Pas de résultat trouvé pour` + ` "${query}"`
