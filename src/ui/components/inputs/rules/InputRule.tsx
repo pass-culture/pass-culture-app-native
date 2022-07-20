@@ -21,19 +21,20 @@ export const InputRule: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledView centered={centered}>
-      <Icon testID={`rule-icon-${testIdSuffix}`} />
-      <Spacer.Row numberOfSpaces={1} />
       <StyledCaption isValid={isValid} centered={centered}>
         {title}
       </StyledCaption>
+      <Spacer.Row numberOfSpaces={1} />
+      <Icon testID={`rule-icon-${testIdSuffix}`} />
     </StyledView>
   )
 }
 
 const StyledView = styled.View<{ centered?: boolean }>(({ centered, theme }) => ({
-  flexDirection: 'row',
+  flexDirection: 'row-reverse', // For accessibility purposes, we switch the title and the icon in the DOM so the VoiceOver restitution makes sense.
   maxWidth: theme.forms.maxWidth,
   alignItems: 'center',
+  justifyContent: 'flex-end',
   ...(centered ? {} : { width: '100%' }),
 }))
 

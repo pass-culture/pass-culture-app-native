@@ -11,7 +11,7 @@ type Props = {
   isValidated: boolean
 }
 
-export const PasswordRule: FunctionComponent<Props> = ({ title, isValidated }) => {
+const NotMemoizedPasswordRule: FunctionComponent<Props> = ({ title, isValidated }) => {
   const validationLabel = isValidated ? t`validé` : t`minimum`
   const accessibilityLabel = `${title} ${validationLabel}`
   const CheckWithLabel = styled(Check).attrs({
@@ -31,3 +31,5 @@ export const PasswordRule: FunctionComponent<Props> = ({ title, isValidated }) =
     />
   )
 }
+
+export const PasswordRule = React.memo(NotMemoizedPasswordRule)
