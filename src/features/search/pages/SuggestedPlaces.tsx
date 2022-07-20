@@ -18,6 +18,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -45,7 +46,7 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
       testID={keyExtractor(hit)}>
       <Icon />
       <Spacer.Row numberOfSpaces={4} />
-      <Text numberOfLines={2}>
+      <Text>
         <Typo.ButtonText>{hit.label}</Typo.ButtonText>
         <Spacer.Row numberOfSpaces={1} />
         <Typo.Body>{hit.info}</Typo.Body>
@@ -135,7 +136,13 @@ const ItemContainer = styled(TouchableOpacity)({
   alignItems: 'center',
 })
 
-const Text = styled.Text(({ theme }) => ({ color: theme.colors.black, flex: 1 }))
+const Text = styled.Text.attrs({
+  numberOfLines: 2,
+  ...getTextAttrs(),
+})(({ theme }) => ({
+  color: theme.colors.black,
+  flex: 1,
+}))
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
