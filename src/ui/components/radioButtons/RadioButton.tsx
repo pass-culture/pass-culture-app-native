@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -23,6 +24,7 @@ interface RadioButtonProps {
 export function RadioButton(props: RadioButtonProps) {
   const containerRef = useRef(null)
   const { isMobileViewport } = useTheme()
+  const [isFocus, setIsFocus] = useState(false)
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
   const StyledIcon =
     !!props.icon &&
@@ -32,13 +34,17 @@ export function RadioButton(props: RadioButtonProps) {
       size: theme.icons.sizes.small,
     }))``
 
+  const onPress = () => props.onSelect(props.label)
   useArrowNavigationForRadioButton(containerRef)
+  useSpaceBarAction(isFocus ? onPress : undefined)
   return (
     <StyledTouchableOpacity
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: props.isSelected }}
       accessibilityLabel={props.accessibilityLabel}
-      onPress={() => props.onSelect(props.label)}
+      onPress={onPress}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
       marginVertical={props.marginVertical ?? 0}
       testID={props.testID}>
       <LabelContainer ref={containerRef}>
