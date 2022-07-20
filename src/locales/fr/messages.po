@@ -1391,6 +1391,10 @@ msgstr "Information"
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
+#: src/web/SupportedBrowsersGate.tsx
+msgid "J'accède au pass Culture sans mettre à jour mon navigateur"
+msgstr "J'accède au pass Culture sans mettre à jour mon navigateur"
+
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 #: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 msgid "J'ai compris"
@@ -1717,6 +1721,10 @@ msgstr "Mes réservations terminées"
 msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
+#: src/web/SupportedBrowsersGate.tsx
+msgid "Mets vite à jour ton navigateur en allant dans les paramètres"
+msgstr "Mets vite à jour ton navigateur en allant dans les paramètres"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 #: src/features/offer/components/OfferHeader.tsx
 msgid "Mettre en favoris"
@@ -1921,6 +1929,10 @@ msgstr "Nous gardons toutes les informations personnelles que tu nous as transmi
 #: src/features/navigation/helpers/openUrl.ts
 msgid "Nous n'arrivons pas à ouvrir ce lien : {url}"
 msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
+
+#: src/web/SupportedBrowsersGate.tsx
+msgid "Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale."
+msgstr "Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale."
 
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Nous reviendrons vers toi dès que le service sera rétabli."
@@ -3432,6 +3444,10 @@ msgstr "Veux-tu vraiment supprimer ton compte ?"
 msgid "Victime de notre succès !"
 msgstr "Victime de notre succès !"
 
+#: src/web/SupportedBrowsersGate.tsx
+msgid "Voici ceux que nous te conseillons pour profiter pleinement du pass Culture :"
+msgstr "Voici ceux que nous te conseillons pour profiter pleinement du pass Culture :"
+
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "Voici les {steps} étapes que tu vas devoir suivre."
 msgstr "Voici les {steps} étapes que tu vas devoir suivre."
@@ -3566,6 +3582,10 @@ msgstr "avant le début de l’événement."
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "birthday notification text"
 msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :"
+
+#: src/web/SupportedBrowsersGate.tsx
+msgid "browser detect version"
+msgstr "Oups ! Nous ne pouvons afficher correctement l'application car ton navigateur ({browserName} v{browserVersion}) n'est pas à jour"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "c'est..."
