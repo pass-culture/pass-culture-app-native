@@ -19,20 +19,12 @@ const allowConsoleDefaultConfig = {
 let allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig)
 global.allowConsole = function (config = allowConsoleDefaultConfig) {
   allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig, config)
+  consoleFailTestModule.cft({
+    testFramework: 'jest',
+    spyLibrary: 'jest',
+    console: allowConsoleRuntimeConfig,
+  })
 }
-
-global.allowConsole({
-  debug: false,
-  error: false,
-  log: false,
-  warn: false,
-})
-
-consoleFailTestModule.cft({
-  testFramework: 'jest',
-  spyLibrary: 'jest',
-  console: allowConsoleRuntimeConfig,
-})
 
 global.beforeAll(() => {
   server.listen()

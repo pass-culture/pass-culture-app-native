@@ -337,9 +337,6 @@
     "ansi-regex": "^5.0.1",
     "nth-check": "^2.0.1"
   },
-  "jest": {
-    "preset": "react-native"
-  },
   "exports": {
     ".": "./index.js",
     "./jsx-dev-runtime": "./jsx-dev-runtime.js",
