@@ -36,6 +36,7 @@ consoleFailTestModule.cft({
 
 global.beforeAll(() => {
   server.listen()
+  jest.setTimeout(30000)
 })
 
 global.afterAll(() => {
