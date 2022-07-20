@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { Platform, Text } from 'react-native'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -46,7 +46,7 @@ export const HomeHeader: FunctionComponent = function () {
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
           style={{ top: getSpacing(3) + top }}>
-          <Text>{t`CheatMenu`}</Text>
+          <Body>{t`CheatMenu`}</Body>
         </CheatCodeButtonContainer>
       )}
 
@@ -84,4 +84,5 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   zIndex: theme.zIndex.cheatCodeButton,
   border: 1,
   padding: getSpacing(1),
+  borderColor: theme.colors.white,
 }))
