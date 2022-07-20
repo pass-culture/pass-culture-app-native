@@ -89,23 +89,26 @@ export const SearchBox: React.FC<Props> = ({
     navigate('LocationFilter')
   }, [navigate])
 
-  const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    const queryText = event.nativeEvent.text
-    if (queryText.length < 1 && Platform.OS !== 'android') return
-    // When we hit enter, we may have selected a category or a venue on the search landing page
-    // these are the two potentially 'staged' filters that we want to commit to the global search state.
-    // We also want to commit the price filter, as beneficiary users may have access to different offer
-    // price range depending on their available credit.
-    const { offerCategories, priceRange } = stagedSearchState
-    showResultsWithStagedSearch({
-      showResults: true,
-      query: queryText,
-      locationFilter,
-      offerCategories,
-      priceRange,
-    })
-    analytics.logSearchQuery(queryText)
-  }
+  const onSubmitQuery = useCallback(
+    (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+      const queryText = event.nativeEvent.text
+      if (queryText.length < 1 && Platform.OS !== 'android') return
+      // When we hit enter, we may have selected a category or a venue on the search landing page
+      // these are the two potentially 'staged' filters that we want to commit to the global search state.
+      // We also want to commit the price filter, as beneficiary users may have access to different offer
+      // price range depending on their available credit.
+      const { offerCategories, priceRange } = stagedSearchState
+      showResultsWithStagedSearch({
+        showResults: true,
+        query: queryText,
+        locationFilter,
+        offerCategories,
+        priceRange,
+      })
+      analytics.logSearchQuery(queryText)
+    },
+    [locationFilter, showResultsWithStagedSearch, stagedSearchState]
+  )
 
   return (
     <RowContainer>
