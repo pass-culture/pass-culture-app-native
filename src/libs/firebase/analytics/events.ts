@@ -17,7 +17,7 @@ export enum AnalyticsEvent {
   CAMPAIGN_TRACKER_ENABLED = 'CampaignTrackerEnabled',
   CANCEL_BOOKING = 'CancelBooking',
   CANCEL_SIGNUP = 'CancelSignup',
-  CHOOSE_LOCATION = 'ChooseLocation',
+  CHANGE_SEARCH_LOCATION = 'ChangeSearchLocation',
   CHOOSE_EDUCONNECT_METHOD = 'ChooseEduConnectMethod',
   CHOOSE_UBBLE_METHOD = 'ChooseUbbleMethod',
   CLICK_BOOK_OFFER = 'ClickBookOffer',

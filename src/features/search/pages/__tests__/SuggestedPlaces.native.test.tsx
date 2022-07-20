@@ -67,20 +67,20 @@ describe('SuggestedPlaces component', () => {
     expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeNull()
   })
 
-  it(`should log analytics event ChooseLocation when clicking on pick place`, () => {
+  it(`should log analytics event ChangeSearchLocation when clicking on pick place`, () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
     const { getByTestId } = render(<SuggestedPlaces query="paris" />)
 
     fireEvent.press(getByTestId(keyExtractor(mockPlaces[1])))
-    expect(analytics.logChooseLocation).toHaveBeenNthCalledWith(1, { type: 'place' })
+    expect(analytics.logChangeSearchLocation).toHaveBeenNthCalledWith(1, { type: 'place' })
   })
 
-  it(`should log analytics event ChooseLocation when clicking on pick venue`, () => {
+  it(`should log analytics event ChangeSearchLocation when clicking on pick venue`, () => {
     mockVenues = mockedSuggestedVenues
     mockIsLoading = false
     const { getByTestId } = render(<SuggestedPlaces query="paris" />)
 
     fireEvent.press(getByTestId(keyExtractor(mockVenues[1])))
-    expect(analytics.logChooseLocation).toHaveBeenNthCalledWith(1, { type: 'venue', venueId })
+    expect(analytics.logChangeSearchLocation).toHaveBeenNthCalledWith(1, { type: 'venue', venueId })
   })
 })

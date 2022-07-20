@@ -76,10 +76,10 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
 
   const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
     if (isVenue(hit) && hit.venueId) {
-      analytics.logChooseLocation({ type: 'venue', venueId: hit.venueId })
+      analytics.logChangeSearchLocation({ type: 'venue', venueId: hit.venueId })
       dispatch({ type: 'SET_LOCATION_VENUE', payload: hit })
     } else if (isPlace(hit) && hit.geolocation) {
-      analytics.logChooseLocation({ type: 'place' })
+      analytics.logChangeSearchLocation({ type: 'place' })
       dispatch({ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: hit } })
     }
     // we need to call goBack twice, first to LocationPicker
