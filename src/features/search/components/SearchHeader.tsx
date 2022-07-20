@@ -44,7 +44,7 @@ const SearchBoxWithoutLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults
 
   return (
     <React.Fragment>
-      {top ? <HeaderBackground height={top} /> : null}
+      {!!top && <HeaderBackground height={top} />}
       <Spacer.TopScreen />
       <SearchBoxContainer testID="searchBoxWithoutLabel">
         <SearchBox

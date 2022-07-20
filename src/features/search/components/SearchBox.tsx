@@ -121,14 +121,14 @@ export const SearchBox: React.FC<Props> = ({
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
       <SearchInputContainer {...props}>
-        {hasEditableSearchInput ? (
+        {!!hasEditableSearchInput && (
           <StyledTouchableOpacity
             testID="previousButton"
             onPress={onPressArrowBack}
             hitSlop={hitSlop}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
-        ) : null}
+        )}
         <SearchMainInput
           searchInputID={searchInputID}
           query={query}
