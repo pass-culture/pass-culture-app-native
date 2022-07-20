@@ -11,6 +11,7 @@ import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import {
   IdentityCheckRootStackParamList,
@@ -34,11 +35,11 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 
 const CODE_INPUT_LENGTH = 6
 
-export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) => {
-  const formattedPhoneNumber = formatPhoneNumber(
-    route.params.phoneNumber,
-    route.params.countryCode as CountryCode
-  )
+export const SetPhoneValidationCode = () => {
+  const { phoneValidation } = useIdentityCheckContext()
+  const formattedPhoneNumber = phoneValidation?.phoneNumber
+    ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
+    : ''
 
   const [codeInputState, setCodeInputState] = useState({
     code: '',
@@ -133,7 +134,6 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
               isVisible={isCodeNotReceivedModalVisible}
               dismissModal={hideModal}
               phoneNumber={formattedPhoneNumber}
-              countryCode={route.params.countryCode}
             />
           </View>
         </Form.MaxWidth>

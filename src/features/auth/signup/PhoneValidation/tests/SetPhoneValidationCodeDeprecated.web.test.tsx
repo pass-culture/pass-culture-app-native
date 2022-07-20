@@ -1,4 +1,3 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { useMutation, UseMutationResult } from 'react-query'
@@ -15,7 +14,6 @@ import { contactSupport } from 'features/auth/support.services'
 import * as IdentityCheckAPI from 'features/identityCheck/api/api'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { EmptyResponse } from 'libs/fetch'
 import {
   act,
@@ -45,6 +43,13 @@ jest.mock('features/profile/api', () => ({
       })
     ),
   })),
+}))
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: mockDispatch,
+    phoneValidation: { phoneNumber: '0612345678', countryCode: 'FR' },
+  }),
 }))
 
 const mockedUseMutation = mocked(useMutation)
@@ -222,36 +227,21 @@ describe('SetPhoneValidationCodeDeprecated', () => {
 })
 
 function renderSetPhoneValidationCode() {
-  const navigationProps = {
-    route: {
-      params: {
-        phoneNumber: '0612345678',
-        countryCode: 'FR',
-      },
-    },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
   return render(
     <SafeAreaProvider>
-      <SetPhoneValidationCodeDeprecated {...navigationProps} />
+      <SetPhoneValidationCodeDeprecated />
     </SafeAreaProvider>
   )
 }
 
 function renderModalWithFilledCodeInput(code: string) {
   const renderAPI = renderSetPhoneValidationCode()
-  const navigationProps = {
-    route: {
-      params: {
-        phoneNumber: '0612345678',
-        countryCode: 'FR',
-      },
-    },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
+
   const input = renderAPI.getByTestId('Entrée du code de confirmation')
   fireEvent.change(input, { target: { value: code } })
   renderAPI.rerender(
     <SafeAreaProvider>
-      <SetPhoneValidationCodeDeprecated {...navigationProps} />
+      <SetPhoneValidationCodeDeprecated />
     </SafeAreaProvider>
   )
   return renderAPI

@@ -52,12 +52,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         />
         <LinkToComponent
           title={'Old PhoneValidationCode'}
-          onPress={() =>
-            navigate('SetPhoneValidationCodeDeprecated', {
-              phoneNumber: '+33612345678',
-              countryCode: 'FR',
-            })
-          }
+          onPress={() => navigate('SetPhoneValidationCodeDeprecated')}
         />
         <LinkToComponent
           title={`Too many codes`}
@@ -65,12 +60,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         />
         <LinkToComponent
           title={`Too many SMS sent`}
-          onPress={() =>
-            navigate('PhoneValidationTooManySMSSent', {
-              phoneNumber: '+33612345678',
-              countryCode: 'FR',
-            })
-          }
+          onPress={() => navigate('PhoneValidationTooManySMSSent')}
         />
 
         <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
@@ -80,12 +70,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         />
         <LinkToComponent
           title={'New SetPhoneValidationCode'}
-          onPress={() =>
-            navigate('SetPhoneValidationCode', {
-              phoneNumber: '+33612345678',
-              countryCode: 'FR',
-            })
-          }
+          onPress={() => navigate('SetPhoneValidationCode')}
         />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckStart" />

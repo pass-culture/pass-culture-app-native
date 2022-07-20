@@ -1,5 +1,3 @@
-import { StackScreenProps } from '@react-navigation/stack'
-import { CountryCode } from 'libphonenumber-js'
 import React from 'react'
 import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
@@ -15,7 +13,6 @@ import { contactSupport } from 'features/auth/support.services'
 import * as IdentityCheckAPI from 'features/identityCheck/api/api'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { EmptyResponse } from 'libs/fetch'
 import {
   act,
@@ -46,6 +43,13 @@ jest.mock('features/profile/api', () => ({
     ),
   })),
 }))
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: mockDispatch,
+    phoneValidation: { phoneNumber: '0612345678', countryCode: 'FR' },
+  }),
+}))
 
 const mockedUseMutation = mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
@@ -53,21 +57,9 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
   onError: () => {},
 }
 
-const navigationProps = {
-  route: {
-    params: {
-      phoneNumber: '0612345678',
-      countryCode: 'FR',
-    },
-  },
-} as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
-
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-const formattedPhoneNumber = formatPhoneNumber(
-  navigationProps.route.params.phoneNumber,
-  navigationProps.route.params.countryCode as CountryCode
-).replace(/ /g, '\u00a0')
+const formattedPhoneNumber = formatPhoneNumber('0612345678', 'FR').replace(/ /g, '\u00a0')
 
 describe('SetPhoneValidationCodeDeprecated', () => {
   beforeEach(() => {
@@ -219,21 +211,14 @@ describe('SetPhoneValidationCodeDeprecated', () => {
 })
 
 function renderSetPhoneValidationCode() {
-  return render(<SetPhoneValidationCodeDeprecated {...navigationProps} />)
+  return render(<SetPhoneValidationCodeDeprecated />)
 }
 
 function renderModalWithFilledCodeInput(code: string) {
   const renderAPI = renderSetPhoneValidationCode()
-  const navigationProps = {
-    route: {
-      params: {
-        phoneNumber: '0612345678',
-        countryCode: 'FR',
-      },
-    },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCodeDeprecated'>
+
   const input = renderAPI.getByTestId('Entrée du code de confirmation')
   fireEvent.changeText(input, code)
-  renderAPI.rerender(<SetPhoneValidationCodeDeprecated {...navigationProps} />)
+  renderAPI.rerender(<SetPhoneValidationCodeDeprecated />)
   return renderAPI
 }

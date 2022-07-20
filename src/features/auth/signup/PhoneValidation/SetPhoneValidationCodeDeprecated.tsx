@@ -1,8 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
-import React, { useCallback, useState, useMemo, memo } from 'react'
+import React, { useCallback, useState, memo } from 'react'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -18,7 +17,8 @@ import {
   useSendPhoneValidationMutation,
   useValidatePhoneNumberMutation,
 } from 'features/identityCheck/api/api'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
@@ -45,21 +45,15 @@ const CODE_INPUT_LENGTH = 6
 
 const TIMER = 60
 
-type SetPhoneValidationCodeProps = StackScreenProps<
-  RootStackParamList,
-  'SetPhoneValidationCodeDeprecated'
->
-
-export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidationCodeComponent({
-  route,
-}: SetPhoneValidationCodeProps) {
+export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidationCodeComponent() {
   const [error, setError] = useState<Error | undefined>()
   const { appContentWidth } = useTheme()
   const { data: settings } = useAppSettings()
-  const formattedPhoneNumber = formatPhoneNumber(
-    route.params.phoneNumber,
-    route.params.countryCode as CountryCode
-  )
+  const { phoneValidation } = useIdentityCheckContext()
+  const formattedPhoneNumber = phoneValidation?.phoneNumber
+    ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
+    : ''
+
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('SetPhoneNumberDeprecated', undefined)
   const [codeInputState, setCodeInputState] = useState({
@@ -107,7 +101,7 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
         setValidationCodeRequestTimestamp(value as any)
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [route.params])
+    }, [])
   )
 
   async function onValidateSuccess() {
@@ -119,10 +113,7 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
     if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
       navigate('PhoneValidationTooManyAttempts')
     } else if (content.code === 'TOO_MANY_SMS_SENT') {
-      navigate('PhoneValidationTooManySMSSent', {
-        phoneNumber: route.params.phoneNumber,
-        countryCode: route.params.countryCode,
-      })
+      navigate('PhoneValidationTooManySMSSent')
     } else {
       setErrorMessage(extractApiErrorMessage(err))
     }
@@ -176,15 +167,11 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
     await amplitude().logEvent('young18_set_phone_validation_code_clicked_front')
   }
 
-  const validationCodeInformation = useMemo(
-    () =>
-      t`Saisis le code envoyé par SMS au numéro` +
-      ` ${formattedPhoneNumber}.` +
-      '\n' +
-      t`Attention tu n'as que 3 tentatives.`,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [route.params]
-  )
+  const validationCodeInformation =
+    t`Saisis le code envoyé par SMS au numéro` +
+    ` ${formattedPhoneNumber}.` +
+    '\n' +
+    t`Attention tu n'as que 3 tentatives.`
 
   if (error) {
     throw error

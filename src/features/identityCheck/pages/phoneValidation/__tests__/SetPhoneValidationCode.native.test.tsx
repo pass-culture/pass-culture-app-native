@@ -1,23 +1,19 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
-import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-const navigationProps = {
-  route: {
-    params: {
-      phoneNumber: '0612345678',
-      countryCode: 'FR',
-    },
-  },
-} as StackScreenProps<IdentityCheckRootStackParamList, 'SetPhoneValidationCode'>
-
 jest.mock('features/auth/settings')
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: mockDispatch,
+    phoneValidation: { phoneNumber: '0612345678', countryCode: 'FR' },
+  }),
+}))
 
 jest.mock('features/identityCheck/api/api', () => {
   const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
@@ -115,7 +111,7 @@ describe('SetPhoneValidationCode', () => {
 })
 
 function renderSetPhoneValidationCode() {
-  return render(<SetPhoneValidationCode {...navigationProps} />, {
+  return render(<SetPhoneValidationCode />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

@@ -128,12 +128,7 @@ describe('<CodeNotReceivedModal />', () => {
     const requestNewCodeButton = getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
-    await waitFor(() =>
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent', {
-        countryCode: 'FR',
-        phoneNumber: '+33612345678',
-      })
-    )
+    await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
   })
 })
 
@@ -143,7 +138,6 @@ function renderCodeNotReceivedModal(props?: Partial<CodeNotReceivedModalProps>) 
       isVisible
       dismissModal={jest.fn()}
       phoneNumber={'+33612345678'}
-      countryCode={'FR'}
       {...props}
     />,
     {

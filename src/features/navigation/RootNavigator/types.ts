@@ -1,7 +1,6 @@
 import { getStateFromPath, PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
-import type { CountryCode } from 'react-native-country-picker-modal'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 
@@ -27,9 +26,9 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckStepper: undefined
   // PhoneValidation
   SetPhoneNumber: undefined
-  SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
+  SetPhoneValidationCode: undefined
   SetPhoneNumberDeprecated: undefined
-  SetPhoneValidationCodeDeprecated: { phoneNumber: string; countryCode: CountryCode }
+  SetPhoneValidationCodeDeprecated: undefined
   // Profile
   SetName: undefined
   IdentityCheckCity: undefined
@@ -134,7 +133,7 @@ export type RootStackParamList = {
     params: TabParamList[TabRouteName]
   }
   PhoneValidationTooManyAttempts: undefined
-  PhoneValidationTooManySMSSent: { phoneNumber: string; countryCode: CountryCode }
+  PhoneValidationTooManySMSSent: undefined
   VerifyEligibility: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }

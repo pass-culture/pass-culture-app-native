@@ -78,13 +78,13 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
-    navigate('SetPhoneValidationCodeDeprecated', { phoneNumber, countryCode: country.cca2 })
+    navigate('SetPhoneValidationCodeDeprecated')
   }
 
   function onError(error: ApiError | unknown) {
     const { content } = error as ApiError
     if (content.code === 'TOO_MANY_SMS_SENT') {
-      navigate('PhoneValidationTooManySMSSent', { phoneNumber, countryCode: country.cca2 })
+      navigate('PhoneValidationTooManySMSSent')
     } else {
       const message = extractApiErrorMessage(error)
       setInvalidPhoneNumberMessage(message)

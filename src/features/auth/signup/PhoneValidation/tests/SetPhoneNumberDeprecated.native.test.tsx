@@ -91,10 +91,7 @@ describe('SetPhoneNumber', () => {
       await act(async () => {
         useMutationCallbacks.onSuccess()
       })
-      expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCodeDeprecated', {
-        countryCode: 'FR',
-        phoneNumber: '612345678',
-      })
+      expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCodeDeprecated')
     })
 
     it('should display input error message if validate phone number request fails', async () => {
@@ -173,10 +170,7 @@ describe('SetPhoneNumber', () => {
       await act(async () => {
         useMutationCallbacks.onError(response)
       })
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent', {
-        countryCode: 'FR',
-        phoneNumber: '612345678',
-      })
+      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
     })
   })
 })

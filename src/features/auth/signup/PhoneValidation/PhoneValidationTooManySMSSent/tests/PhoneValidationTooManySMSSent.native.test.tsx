@@ -1,4 +1,3 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
@@ -8,7 +7,6 @@ import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidat
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
@@ -23,15 +21,6 @@ jest.mock('features/identityCheck/api/api', () => {
     }),
   }
 })
-
-const navigationProps = {
-  route: {
-    params: {
-      phoneNumber: '0612345678',
-      countryCode: 'FR',
-    },
-  },
-} as StackScreenProps<RootStackParamList, 'PhoneValidationTooManySMSSent'>
 
 const mockedPhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
 
@@ -64,13 +53,10 @@ describe('PhoneValidationTooManySMSSent', () => {
 
     fireEvent.press(getByText("J'ai reçu mon code"))
 
-    expect(navigate).toBeCalledWith('SetPhoneValidationCode', {
-      countryCode: 'FR',
-      phoneNumber: '0612345678',
-    })
+    expect(navigate).toBeCalledWith('SetPhoneValidationCode', undefined)
   })
 })
 
 function renderPhoneValidationTooManySMSSent() {
-  return render(<PhoneValidationTooManySMSSent {...navigationProps} />)
+  return render(<PhoneValidationTooManySMSSent />)
 }

@@ -1,11 +1,9 @@
 import { plural, t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { timeDiffInHours } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -15,12 +13,7 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
 
-export type PhoneValidationTooManySMSSentProps = StackScreenProps<
-  RootStackParamList,
-  'PhoneValidationTooManySMSSent'
->
-
-export function PhoneValidationTooManySMSSent({ route }: PhoneValidationTooManySMSSentProps) {
+export function PhoneValidationTooManySMSSent() {
   const { counterResetDatetime } = usePhoneValidationRemainingAttempts()
 
   const hoursUntilAllowedRetry = Math.max(0, timeDiffInHours(counterResetDatetime ?? new Date()))
@@ -46,13 +39,7 @@ export function PhoneValidationTooManySMSSent({ route }: PhoneValidationTooManyS
           as={ButtonTertiaryWhite}
           icon={PlainArrowPrevious}
           wording={t`J'ai reçu mon code`}
-          navigateTo={{
-            screen: 'SetPhoneValidationCode',
-            params: {
-              phoneNumber: route.params.phoneNumber,
-              countryCode: route.params.countryCode,
-            },
-          }}
+          navigateTo={{ screen: 'SetPhoneValidationCode' }}
         />,
       ]}>
       <StyledBody>{t`Tu as dépassé le nombre de 5 demandes de code autorisées.`}</StyledBody>
