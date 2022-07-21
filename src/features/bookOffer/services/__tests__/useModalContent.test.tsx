@@ -136,4 +136,16 @@ describe('useModalContent', () => {
     expect(result.current.onLeftIconPress).not.toBeUndefined()
     expect(result.current.title).toBe('Détails de la réservation')
   })
+
+  it('shows modal AlreadyBooked when isEndedBooking is true', () => {
+    mockOffer = baseOffer
+    mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
+    mockStep = Step.CONFIRMATION
+
+    const { result } = renderHook(() => useModalContent(true))
+
+    expect((result.current.children as any).type.name).toBe('AlreadyBooked')
+    expect(result.current.onLeftIconPress).toBeUndefined()
+    expect(result.current.title).toBe('Réservation impossible')
+  })
 })

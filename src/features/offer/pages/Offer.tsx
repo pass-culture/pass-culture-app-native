@@ -1,5 +1,5 @@
-import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import { useFocusEffect, useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
@@ -50,7 +50,14 @@ export const Offer: FunctionComponent = () => {
     navigateTo,
     externalNav,
     showBookingModal,
+    isEndedBooking,
   } = useCtaWordingAndAction({ offerId }) || {}
+
+  useFocusEffect(
+    useCallback(() => {
+      dismissBookingOfferModal()
+    }, [dismissBookingOfferModal])
+  )
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
@@ -64,6 +71,7 @@ export const Offer: FunctionComponent = () => {
       showBookingOfferModal()
     }
   }
+
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
@@ -96,6 +104,7 @@ export const Offer: FunctionComponent = () => {
         visible={bookingOfferModalIsVisible}
         dismissModal={dismissBookingOfferModal}
         offerId={offerResponse.id}
+        isEndedBooking={isEndedBooking}
       />
     </Container>
   )

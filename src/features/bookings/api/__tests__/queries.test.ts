@@ -8,7 +8,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useOngoingOrEndedBooking } from '../queries'
+import { useOngoingOrEndedBooking, useEndedBookingFromOfferId } from '../queries'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
@@ -26,6 +26,31 @@ const mockUseNetInfo = useNetInfoDefault as jest.Mock
 describe('[API] booking queries', () => {
   mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
+  describe('[Method] useEndedBookingFromOfferId', () => {
+    it('should return an ended booking if existing', async () => {
+      const booking = bookingsSnap.ended_bookings[0]
+      const { result } = renderHook(() => useEndedBookingFromOfferId(booking.stock.offer.id), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => {
+        expect(result.current?.data?.id).toEqual(booking.id)
+        expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+      })
+    })
+    it('should not return an ended booking if not existing', async () => {
+      const unknownOfferId = 91919191
+      const { result } = renderHook(() => useEndedBookingFromOfferId(unknownOfferId), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => {
+        expect(result.current?.data).toEqual(null)
+      })
+    })
+  })
   describe('[Method] useOngoingOrEndedBooking', () => {
     it('should return ongoing_bookings when there is one', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
