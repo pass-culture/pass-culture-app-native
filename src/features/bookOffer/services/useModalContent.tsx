@@ -3,6 +3,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 
 import { CategoryIdEnum } from 'api/gen'
+import { AlreadyBooked } from 'features/bookOffer/components/AlreadyBooked'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
@@ -19,12 +20,12 @@ type ModalContent = {
   title: string
 } & ModalLeftIconProps
 
-export const useModalContent = (): ModalContent => {
+export const useModalContent = (isEndedBooking?: boolean): ModalContent => {
   const { bookingState, dispatch } = useBooking()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
 
-  if (!offer)
+  if (!offer) {
     return {
       children: <React.Fragment />,
       title: '',
@@ -32,7 +33,17 @@ export const useModalContent = (): ModalContent => {
       leftIcon: undefined,
       onLeftIconPress: undefined,
     }
+  }
 
+  if (isEndedBooking) {
+    return {
+      children: <AlreadyBooked offer={offer} />,
+      title: t`Réservation impossible`,
+      leftIconAccessibilityLabel: undefined,
+      leftIcon: undefined,
+      onLeftIconPress: undefined,
+    }
+  }
   const { isDigital, stocks } = offer
   const subcategory = mapping[offer.subcategoryId]
 
