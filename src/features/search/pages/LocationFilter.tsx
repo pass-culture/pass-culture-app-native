@@ -57,6 +57,7 @@ export const LocationFilter: React.FC = () => {
       setButtonsDisabled(true)
       dispatch({ type: 'SET_LOCATION_AROUND_ME' })
       goBack()
+      analytics.logChangeSearchLocation({ type: 'aroundMe' })
     }
   }
 

@@ -80,6 +80,13 @@ describe('LocationFilter component', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
   })
 
+  it('should log ChangeSearchLocation event when selecting Around Me', () => {
+    const { getByTestId } = renderLocationFilter()
+    fireEvent.press(getByTestId('locationChoice-aroundMe'))
+
+    expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'aroundMe' })
+  })
+
   it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
     mockPosition = null
     const { getByTestId } = renderLocationFilter()

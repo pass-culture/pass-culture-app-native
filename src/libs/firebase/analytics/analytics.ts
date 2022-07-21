@@ -201,7 +201,7 @@ export const analytics = {
   logVenueSeeMoreClicked: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
   logChangeSearchLocation: (
-    params: { type: 'place' | 'everywhere' } | { type: 'venue'; venueId: number }
+    params: { type: 'place' | 'everywhere' | 'aroundMe' } | { type: 'venue'; venueId: number }
   ) => analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, params),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
   logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
