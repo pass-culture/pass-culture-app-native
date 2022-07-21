@@ -21,7 +21,15 @@ platform :ios do
       output_name: "#{ENV['IOS_IPA_NAME']}",
       silent: true,
       export_method: ENV['EXPORT_METHOD'],
-      workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace")
+      workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace",
+      export_options: {
+        method: ENV['EXPORT_METHOD'],
+        teamId: ENV['IOS_TEAM_ID'],
+        provisioningProfiles: { 
+          ENV['IOS_APP_ID'] => ENV['IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE'],
+          'app.passculture.RichNotificationsExtension' =>  ENV['IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_RELEASE']
+        }
+      })
   end
   release_notes = %x[#{release_notes_command}]
   escaped_release_notes = release_notes.gsub("\"", "\\\"")
