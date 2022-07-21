@@ -1,14 +1,14 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { SearchResults } from 'features/search/components'
 import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
-import { SearchDetails } from 'features/search/components/SearchDetails'
 import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { useShowResults } from 'features/search/pages/useShowResults'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -21,7 +21,6 @@ export function Search() {
   const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
-  const showResults = useShowResults()
   const [isFocus, setIsFocus] = useState(false)
   const showResultsForCategory = useShowResultsForCategory()
 
@@ -30,7 +29,8 @@ export function Search() {
   }, [dispatch, params])
 
   const bodySearch = () => {
-    if (showResults || isFocus) return <SearchDetails />
+    if (params?.showResults) return <SearchResults />
+    if (isFocus) return <View testID="recentsSearchesAndSuggestions" />
     return (
       <Container>
         <CategoriesButtons onPressCategory={showResultsForCategory} />
