@@ -2277,6 +2277,10 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
+#: src/features/bookOffer/components/AlreadyBooked.tsx
+msgid "Pourquoi limiter les réservations ?"
+msgstr "Pourquoi limiter les réservations ?"
+
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Pourquoi saisir ma date de naissance ?"
 msgstr "Pourquoi saisir ma date de naissance ?"
@@ -2625,6 +2629,10 @@ msgstr "Réservation confirmée !"
 msgid "Réservation de l'offre"
 msgstr "Réservation de l'offre"
 
+#: src/features/bookOffer/services/useModalContent.tsx
+msgid "Réservation impossible"
+msgstr "Réservation impossible"
+
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Réservation introuvable | pass Culture"
 msgstr "Réservation introuvable | pass Culture"
@@ -2648,6 +2656,7 @@ msgstr "Réservations terminées"
 
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/favorites/atoms/BookingButton.tsx
+#: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Réserver"
 msgstr "Réserver"
@@ -3053,6 +3062,10 @@ msgstr "Tu as 18 ans..."
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
+
+#: src/features/bookOffer/components/AlreadyBooked.tsx
+msgid "Tu as déjà consommé l'offre :"
+msgstr "Tu as déjà consommé l'offre :"
 
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Tu as déjà signalé cette offre"
@@ -3461,6 +3474,7 @@ msgstr "Voir le ticket suivant"
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
+#: src/features/bookOffer/components/AlreadyBooked.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"
@@ -3840,6 +3854,10 @@ msgstr "tes réservations seront annulées et supprimées"
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
+
+#: src/features/bookOffer/components/AlreadyBooked.tsx
+msgid "tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
+msgstr "tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
 
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "tu n’auras plus accès au catalogue"

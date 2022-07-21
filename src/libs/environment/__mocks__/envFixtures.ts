@@ -14,6 +14,7 @@ export const env: Environment = {
   BATCH_AUTH_KEY: 'BATCH_AUTH_KEY',
   BATCH_SUBDOMAIN: 'BATCH_SUBDOMAIN',
   BATCH_VAPID_PUBLIC_KEY: 'BATCH_VAPID_PUBLIC_KEY',
+  BOOKING_LIMIT_EXCEEDED_URL: 'https://aide.passculture.app/hc/fr/articles/4411991975825',
   CGU_LINK: 'https://passculture.cgu',
   CONTENTFUL_ACCESS_TOKEN: 'accessToken',
   CONTENTFUL_ENVIRONMENT: 'environment',

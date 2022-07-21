@@ -144,6 +144,18 @@ describe('getCtaWordingAndAction', () => {
       expect(externalNav === undefined).toBeTruthy()
     })
 
+    it('CTA="Réserver" if offer is an ended booking', () => {
+      const { wording, onPress, showBookingModal, navigateTo, externalNav } = getCta(
+        {},
+        { isEndedBooking: true }
+      )
+      expect(wording).toEqual('Réserver')
+      expect(onPress).toBeTruthy()
+      expect(showBookingModal).toBeTruthy()
+      expect(navigateTo === undefined).toBeTruthy()
+      expect(externalNav === undefined).toBeTruthy()
+    })
+
     // offer price is 5
     it.each`
       isEvent  | hasEnoughCredit | expected                     | disabled | showBookingModal

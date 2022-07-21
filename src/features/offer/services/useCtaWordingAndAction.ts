@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useEndedBookingFromOfferId } from 'features/bookings/api/queries'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
@@ -26,6 +27,7 @@ interface Props {
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
   isUnderageBeneficiary: boolean
+  isEndedBooking?: boolean
 }
 interface ICTAWordingAndAction {
   showBookingModal?: boolean
@@ -33,6 +35,7 @@ interface ICTAWordingAndAction {
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
+  isEndedBooking?: boolean
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
@@ -44,9 +47,21 @@ export const getCtaWordingAndAction = ({
   hasEnoughCredit,
   bookedOffers,
   isUnderageBeneficiary,
+  isEndedBooking,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
+
+  if (isEndedBooking) {
+    return {
+      showBookingModal: true,
+      wording: t`Réserver`,
+      isEndedBooking,
+      onPress() {
+        return false
+      },
+    }
+  }
 
   if (isAlreadyBookedOffer) {
     return {
@@ -118,6 +133,7 @@ export const useCtaWordingAndAction = (props: {
   const hasEnoughCredit = useHasEnoughCredit(offerId)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const mapping = useSubcategoriesMapping()
+  const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
 
   if (!offer) return
 
@@ -137,6 +153,7 @@ export const useCtaWordingAndAction = (props: {
     subcategory: mapping[offer.subcategoryId],
     hasEnoughCredit,
     bookedOffers,
+    isEndedBooking: !!endedBooking,
     isUnderageBeneficiary,
   })
 }

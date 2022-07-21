@@ -12,6 +12,7 @@ export interface Environment {
   BATCH_AUTH_KEY: string
   BATCH_SUBDOMAIN: string
   BATCH_VAPID_PUBLIC_KEY: string
+  BOOKING_LIMIT_EXCEEDED_URL: string
   CGU_LINK: string
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
