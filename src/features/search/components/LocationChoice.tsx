@@ -21,11 +21,17 @@ type Props = {
   isSelected?: boolean
 }
 
-export const LocationChoice: React.FC<Props> = (props) => {
-  const { section, onPress, arrowNext = false, testID, accessibilityDescribedBy } = props
-  const { Icon, label, isSelected } = useLocationChoice(section)
+export const LocationChoice: React.FC<Props> = ({
+  section,
+  onPress,
+  arrowNext = false,
+  testID,
+  accessibilityDescribedBy,
+  isSelected,
+}) => {
+  const { Icon, label, isSelected: defaultIsSelected } = useLocationChoice(section)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color2: isSelected ? theme.colors.primary : theme.colors.secondary,
+    color2: defaultIsSelected ? theme.colors.primary : theme.colors.secondary,
     size: theme.icons.sizes.small,
   }))``
 
@@ -35,7 +41,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
   const [isFocus, setIsFocus] = useState(false)
   useSpaceBarAction(isFocus ? onPress : undefined)
 
-  const selected = props.isSelected ?? isSelected
+  const selected = isSelected ?? defaultIsSelected
 
   return (
     <Container
