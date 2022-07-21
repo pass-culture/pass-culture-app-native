@@ -191,9 +191,8 @@ describe('SearchBox component', () => {
   })
 
   it('should redirect on location page on location button click', async () => {
-    const { getByTestId } = render(
-      <SearchBox searchInputID={searchInputID} showLocationButton={true} />
-    )
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
+    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const locationButton = getByTestId('locationButton')
     await fireEvent.press(locationButton)
 

@@ -30,16 +30,10 @@ const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 
 type Props = {
   searchInputID: string
-  showLocationButton?: boolean
   accessibleHiddenTitle?: string
 }
 
-export const SearchBox: React.FC<Props> = ({
-  searchInputID,
-  showLocationButton,
-  accessibleHiddenTitle,
-  ...props
-}) => {
+export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitle, ...props }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
@@ -137,7 +131,7 @@ export const SearchBox: React.FC<Props> = ({
           onSubmitQuery={onSubmitQuery}
           resetQuery={resetQuery}
           onFocus={onFocus}
-          showLocationButton={showLocationButton}
+          showLocationButton={params?.view === SearchView.Landing}
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}
         />

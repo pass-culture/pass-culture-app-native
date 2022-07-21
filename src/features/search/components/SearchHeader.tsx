@@ -31,7 +31,7 @@ const SearchBoxWithLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults'>)
         </View>
         <Spacer.Column numberOfSpaces={2} />
         <FloatingSearchBoxContainer>
-          <FloatingSearchBox searchInputID={searchInputID} showLocationButton={true} />
+          <FloatingSearchBox searchInputID={searchInputID} />
         </FloatingSearchBoxContainer>
         <Spacer.Column numberOfSpaces={6} />
       </SearchBoxContainer>
