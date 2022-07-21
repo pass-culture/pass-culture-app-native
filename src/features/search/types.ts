@@ -45,5 +45,3 @@ export interface SearchState {
   query: string
   view: SearchView
 }
-
-export type PartialSearchState = Omit<SearchState, 'showResults'>

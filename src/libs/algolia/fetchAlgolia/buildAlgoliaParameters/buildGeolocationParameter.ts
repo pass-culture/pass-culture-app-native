@@ -1,11 +1,11 @@
 import { LocationType } from 'features/search/enums'
-import { PartialSearchState } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 
 import { RADIUS_FILTERS } from '../../enums'
 
 export const buildGeolocationParameter = (
-  locationFilter: PartialSearchState['locationFilter'],
+  locationFilter: SearchState['locationFilter'],
   userLocation: GeoCoordinates | null
 ): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   if (locationFilter.locationType === LocationType.VENUE) return
