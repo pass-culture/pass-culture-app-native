@@ -12,6 +12,7 @@ import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -63,6 +64,7 @@ export const LocationFilter: React.FC = () => {
     setButtonsDisabled(true)
     dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
     goBack()
+    analytics.logChangeSearchLocation({ type: 'everywhere' })
   }
 
   const locationChoiceErrorId = uuidv4()
