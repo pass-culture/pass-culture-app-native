@@ -9,10 +9,10 @@ export const useEnterKeyAction = (callback?: () => void) => {
           return callback && callback()
         }
       }
-      globalThis.addEventListener('keypress', handleEsc)
+      globalThis.addEventListener('keydown', handleEsc)
 
       return () => {
-        globalThis.removeEventListener('keypress', handleEsc)
+        globalThis.removeEventListener('keydown', handleEsc)
       }
     }, [callback])
   )

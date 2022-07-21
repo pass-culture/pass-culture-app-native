@@ -18,8 +18,6 @@ interface Props {
   accessibilityLabelledBy?: string
   disabled?: boolean
   toggle: () => void
-  // onFocus?: (e: NativeSyntheticEvent<TargetedEvent>) => void
-  // onBlur?: (e: NativeSyntheticEvent<TargetedEvent>) => void
 }
 
 const TOGGLE_WIDTH = getSpacing(7)
