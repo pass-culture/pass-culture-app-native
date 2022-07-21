@@ -299,6 +299,7 @@ exports[`LocationFilter component should render correctly 1`] = `
         accessibilityState={
           Object {
             "checked": false,
+            "disabled": false,
           }
         }
         accessible={true}
@@ -432,6 +433,7 @@ exports[`LocationFilter component should render correctly 1`] = `
         accessibilityState={
           Object {
             "checked": false,
+            "disabled": false,
           }
         }
         accessible={true}
@@ -567,6 +569,7 @@ exports[`LocationFilter component should render correctly 1`] = `
         accessibilityState={
           Object {
             "checked": true,
+            "disabled": false,
           }
         }
         accessible={true}

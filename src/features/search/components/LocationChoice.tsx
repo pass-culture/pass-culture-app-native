@@ -19,6 +19,7 @@ type Props = {
   accessibilityDescribedBy?: string
   // used by DeeplinksGeneratorForm
   isSelected?: boolean
+  disabled?: boolean
 }
 
 export const LocationChoice: React.FC<Props> = ({
@@ -28,6 +29,7 @@ export const LocationChoice: React.FC<Props> = ({
   testID,
   accessibilityDescribedBy,
   isSelected,
+  disabled = false,
 }) => {
   const { Icon, label, isSelected: defaultIsSelected } = useLocationChoice(section)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
@@ -48,6 +50,7 @@ export const LocationChoice: React.FC<Props> = ({
       onPress={onPress}
       onFocus={() => setIsFocus(true)}
       onBlur={() => setIsFocus(false)}
+      disabled={disabled}
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: selected }}
       testID={`locationChoice-${testID}`}>

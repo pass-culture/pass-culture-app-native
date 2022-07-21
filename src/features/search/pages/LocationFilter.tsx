@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -21,10 +20,9 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
-const DEBOUNCED_CALLBACK = 500
-
 export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const [areButtonsDisabled, setButtonsDisabled] = useState(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
   const {
@@ -35,11 +33,11 @@ export const LocationFilter: React.FC = () => {
     showGeolocPermissionModal,
   } = useGeolocation()
   const { dispatch } = useStagedSearch()
-  const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
 
   const onPressPickPlace = () => {
-    if (debouncedGoBack) debouncedGoBack.cancel()
+    setButtonsDisabled(true)
     navigate('LocationPicker')
+    setButtonsDisabled(false)
   }
 
   const onPressAroundMe = async () => {
@@ -50,19 +48,23 @@ export const LocationFilter: React.FC = () => {
       if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
         showGeolocPermissionModal()
       } else {
+        setButtonsDisabled(true)
         await requestGeolocPermission()
-        debouncedGoBack()
+        goBack()
       }
     } else {
+      setButtonsDisabled(true)
       dispatch({ type: 'SET_LOCATION_AROUND_ME' })
-      debouncedGoBack()
+      goBack()
     }
   }
 
   const onPressEverywhere = () => {
+    setButtonsDisabled(true)
     dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
-    debouncedGoBack()
+    goBack()
   }
+
   const locationChoiceErrorId = uuidv4()
   const titleID = uuidv4()
 
@@ -89,6 +91,7 @@ export const LocationFilter: React.FC = () => {
               section={LocationType.PLACE}
               arrowNext={true}
               onPress={onPressPickPlace}
+              disabled={areButtonsDisabled}
             />
             <Spacer.Column numberOfSpaces={6} />
           </Li>
@@ -97,6 +100,7 @@ export const LocationFilter: React.FC = () => {
               testID="aroundMe"
               section={LocationType.AROUND_ME}
               onPress={onPressAroundMe}
+              disabled={areButtonsDisabled}
               accessibilityDescribedBy={locationChoiceErrorId}
             />
             <InputError
@@ -112,6 +116,7 @@ export const LocationFilter: React.FC = () => {
               testID="everywhere"
               section={LocationType.EVERYWHERE}
               onPress={onPressEverywhere}
+              disabled={areButtonsDisabled}
             />
           </Li>
         </VerticalUl>
