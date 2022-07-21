@@ -54,7 +54,6 @@ export const SearchMainInput: FunctionComponent<Props> = ({
     onPressRightIcon={resetQuery}
     autoFocus={isFocus}
     onFocus={onFocus}
-    nativeAutoFocus
     LeftIcon={MagnifyingGlassIcon}
     inputHeight="regular"
     testID="searchInput"

@@ -109,15 +109,6 @@ describe('Search component', () => {
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
     })
-
-    it.skip('should show view for recent searches and suggestions', async () => {
-      const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-      const searchInput = getByPlaceholderText('Offre, artiste...')
-      await fireEvent(searchInput, 'onFocus')
-
-      expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
-    })
   })
 
   describe('When search executed', () => {
@@ -134,5 +125,12 @@ describe('Search component', () => {
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
     })
+  })
+
+  it('should show view for recent searches and suggestions when being on the suggestions view', async () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
+    const { queryByTestId } = render(<Search />)
+
+    await expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
   })
 })
