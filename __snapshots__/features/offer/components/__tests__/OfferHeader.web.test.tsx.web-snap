@@ -97,7 +97,7 @@ Object {
             aria-hidden="true"
             class="css-text-901oao css-textMultiLine-cens5h"
             data-testid="offerHeaderName"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); flex-shrink: 1; opacity: 0; text-align: center; white-space: pre-wrap;"
           >
             <span
@@ -330,7 +330,7 @@ Object {
           aria-hidden="true"
           class="css-text-901oao css-textMultiLine-cens5h"
           data-testid="offerHeaderName"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); flex-shrink: 1; opacity: 0; text-align: center; white-space: pre-wrap;"
         >
           <span

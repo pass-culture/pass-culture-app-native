@@ -7,11 +7,6 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
       "alignItems": "center",
       "height": "100%",
       "justifyContent": "center",
-    }
-  }
-  style={
-    Object {
-      "height": "100%",
       "width": "100%",
     }
   }
@@ -19,253 +14,298 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
   <View>
     <View
       style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "column",
-          "maxWidth": 520,
-          "padding": 10,
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "column",
+            "maxWidth": 520,
+            "paddingBottom": 24,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+          },
+        ]
       }
     >
       <Text
         style={
-          Object {
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 24,
-            "paddingBottom": 16,
-            "paddingTop": 80,
-            "textAlign": "center",
-          }
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+              "textAlign": "center",
+            },
+          ]
         }
       >
-        Oups ! Nous ne pouvons afficher correctement l'application car ton navigateur (none vNaN) n'est pas à jour.
+        Oups ! Nous ne pouvons afficher correctement l'application car ton navigateur (none vNaN) n'est pas à jour
       </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
       <Text
         style={
-          Object {
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "paddingBottom": 8,
-            "textAlign": "left",
-          }
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
         }
       >
         Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale.
       </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
       <Text
         style={
-          Object {
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "paddingBottom": 8,
-            "textAlign": "left",
-          }
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
         }
       >
-        Voici ceux que nous te conseillons pour profiter pleinement du pass Culture :
+        Voici ceux que nous te conseillons pour profiter pleinement du pass Culture :
       </Text>
-      <View
-        style={
-          Object {
-            "flexDirection": "column",
-            "paddingBottom": 10,
-          }
-        }
-      >
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Facebook Messenger (version &gt; 1)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Chrome (version &gt; 50)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Safari sur iOS (version &gt; 12)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Safari sur macOS (version &gt; 10)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Firefox (version &gt; 55)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Edge sur Windows (version &gt; 79)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Opera (version &gt; 80)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Samsung (version &gt; 5)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Instagram (version &gt; 200)
-        </Text>
-        <Text
-          style={
-            Array [
-              Object {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "paddingBottom": 8,
-                "textAlign": "left",
-              },
-              Object {
-                "paddingBottom": 6,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          - Les navigateurs basés sur Chromium (autre que Chrome)
-        </Text>
-      </View>
       <Text
         style={
-          Object {
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 12,
-            "paddingBottom": 8,
-            "textAlign": "center",
-          }
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
         }
       >
-        Mets vite à jour ton navigateur en allant dans les paramètres.
+        - Facebook Messenger (version &gt; 1)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Chrome (version &gt; 50)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Safari sur iOS (version &gt; 12)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Safari sur macOS (version &gt; 10)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Firefox (version &gt; 55)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Edge sur Windows (version &gt; 79)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Opera (version &gt; 80)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Samsung (version &gt; 5)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Instagram (version &gt; 200)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        - Les navigateurs basés sur Chromium (autre que Chrome)
       </Text>
       <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        Mets vite à jour ton navigateur en allant dans les paramètres
+      </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="J'accède au pass Culture sans mettre à jour mon navigateur"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -281,28 +321,39 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
-            "color": "white",
-            "height": 50,
+            "flexDirection": "row",
+            "height": "auto",
             "justifyContent": "center",
-            "marginTop": 10,
+            "maxWidth": 500,
+            "minHeight": 48,
             "opacity": 1,
-            "padding": 10,
+            "paddingBottom": 2,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 2,
             "userSelect": "auto",
-            "width": 300,
+            "width": "100%",
           }
         }
+        testID="J'accède au pass Culture sans mettre à jour mon navigateur"
       >
         <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
           style={
-            Object {
-              "color": "white",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 13,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
           }
         >
-          Sans mettre à jour mon navigateur, j'accède au pass Culture
+          J'accède au pass Culture sans mettre à jour mon navigateur
         </Text>
       </View>
     </View>

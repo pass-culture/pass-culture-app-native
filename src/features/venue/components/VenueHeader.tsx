@@ -11,6 +11,7 @@ import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
+import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { useShareVenue } from '../services/useShareVenue'
 
@@ -112,6 +113,7 @@ const Row = styled.View({
 
 const Title = styled(Animated.Text).attrs({
   numberOfLines: 1,
+  ...getTextAttrs(),
 })({
   flexShrink: 1,
   textAlign: 'center',

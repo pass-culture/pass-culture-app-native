@@ -232,7 +232,7 @@ exports[`Categories component should render correctly 1`] = `
             </div>
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style={
                 Object {
                   "WebkitClipPath": "inset(50%)",

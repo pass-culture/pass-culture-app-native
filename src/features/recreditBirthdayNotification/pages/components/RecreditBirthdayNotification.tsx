@@ -6,7 +6,7 @@ import {
   Amount,
   ProgressBarContainer,
   StyledSubtitle,
-  Text,
+  StyledBody,
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -84,7 +84,7 @@ export const RecreditBirthdayNotification = () => {
         <Amount color={uniqueColors.brand}>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <Text>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</Text>
+      <StyledBody>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
         <ButtonPrimary

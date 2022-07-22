@@ -108,7 +108,7 @@ Array [
             </div>
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style={
                 Object {
                   "WebkitClipPath": "inset(50%)",

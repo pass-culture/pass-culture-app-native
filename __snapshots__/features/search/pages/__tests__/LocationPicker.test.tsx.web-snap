@@ -125,7 +125,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
             </div>
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style={
                 Object {
                   "WebkitClipPath": "inset(50%)",
@@ -348,7 +348,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
   </div>
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     id="testUuidV4"
     style={
       Object {
@@ -373,7 +373,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
   />
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     role="status"
     style={
       Object {
