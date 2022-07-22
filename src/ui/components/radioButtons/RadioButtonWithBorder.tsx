@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 interface Props {
@@ -13,13 +14,16 @@ interface Props {
 }
 
 export const RadioButtonWithBorder = ({ label, description, selected, onPress }: Props) => {
+  const containerRef = useRef(null)
+  useArrowNavigationForRadioButton(containerRef)
+
   return (
     <Label
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: selected }}
       selected={selected}
       onPress={() => onPress(label)}>
-      <TextContainer>
+      <TextContainer ref={containerRef}>
         <ButtonText selected={selected}>{label}</ButtonText>
         {description ? <Caption>{description}</Caption> : null}
       </TextContainer>
