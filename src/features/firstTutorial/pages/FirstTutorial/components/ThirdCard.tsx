@@ -27,11 +27,11 @@ export function ThirdCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={GeolocationAnimation}
       buttonCallback={onGeolocationButtonPress}
-      buttonText={t`Activer la géolocalisation`}
+      buttonText={t`Utiliser ma position`}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={t`à portée de main\u00a0!`}
-      text={t`Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.`}
       title={t`Toute la culture`}
+      subTitle={t`près de chez toi`}
+      text={t`Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité.`}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

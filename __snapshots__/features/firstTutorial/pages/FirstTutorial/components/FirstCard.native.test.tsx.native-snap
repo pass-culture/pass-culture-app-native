@@ -83,16 +83,17 @@ exports[`FirstCard should render first card 1`] = `
       Le pass Culture
     </Text>
     <Text
-      fontSize={24}
+      fontSize={28}
       style={
         Array [
           Object {
             "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 24,
-            "lineHeight": 28,
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
           },
           Object {
+            "fontSize": 24,
             "textAlign": "center",
           },
         ]

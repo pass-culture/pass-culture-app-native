@@ -105,11 +105,6 @@ msgstr "Accéder à l'offre"
 msgid "Accéder à la billetterie"
 msgstr "Accéder à la billetterie"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
-msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
@@ -1614,6 +1609,10 @@ msgstr "Les réservations effectuées sur le pass Culture sont destinées à un 
 #: src/libs/parsers/venueType.ts
 msgid "Librairie"
 msgstr "Librairie"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
+msgid "Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
+msgstr "Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Lien de modification de l'email expiré"
@@ -3374,6 +3373,10 @@ msgstr "Uniquement les offres duo"
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
+msgid "Utiliser ma position"
+msgstr "Utiliser ma position"
+
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "Utilisé"
 msgstr "Utilisé"
@@ -3811,6 +3814,10 @@ msgstr "{day} à {hour}"
 msgid "profile expiration date for underage"
 msgstr "{day}"
 
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
+msgid "près de chez toi"
+msgstr "près de chez toi"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "quotidiennes"
 msgstr "quotidiennes"
@@ -4032,10 +4039,6 @@ msgstr "à dépenser dans l'application"
 #: src/ui/components/DotComponent.tsx
 msgid "à faire"
 msgstr "à faire"
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "à portée de main !"
-msgstr "à portée de main !"
 
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"

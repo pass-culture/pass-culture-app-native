@@ -74,9 +74,6 @@ export function SecondCard(props: AchievementCardKeyProps) {
     props.swiperRef?.current?.goToNext()
   }
 
-  const subtitle = t`et si tu as...`
-  const text = t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`
-
   const buttonAccessibilityLabel = t({
     values: {
       nextStep: (props.activeIndex || 0) + 2,
@@ -92,10 +89,10 @@ export function SecondCard(props: AchievementCardKeyProps) {
       buttonText={t`Continuer`}
       buttonAccessibilityLabel={buttonAccessibilityLabel}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={subtitle}
-      centerChild={centerChild}
-      text={text}
       title={t`Des offres pour tous`}
+      subTitle={t`et si tu as...`}
+      centerChild={centerChild}
+      text={t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

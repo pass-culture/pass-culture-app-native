@@ -260,16 +260,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Le pass Culture
                   </Text>
                   <Text
-                    fontSize={24}
+                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 24,
-                          "lineHeight": 28,
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
                         },
                         Object {
+                          "fontSize": 24,
                           "textAlign": "center",
                         },
                       ]
@@ -485,16 +486,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Des offres pour tous
                   </Text>
                   <Text
-                    fontSize={24}
+                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 24,
-                          "lineHeight": 28,
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
                         },
                         Object {
+                          "fontSize": 24,
                           "textAlign": "center",
                         },
                       ]
@@ -1062,22 +1064,23 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Toute la culture
                   </Text>
                   <Text
-                    fontSize={24}
+                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 24,
-                          "lineHeight": 28,
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
                         },
                         Object {
+                          "fontSize": 24,
                           "textAlign": "center",
                         },
                       ]
                     }
                   >
-                    à portée de main !
+                    près de chez toi
                   </Text>
                   <View
                     numberOfSpaces={4}
@@ -1102,7 +1105,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       ]
                     }
                   >
-                    Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.
+                    Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité.
                   </Text>
                 </View>
                 <View
@@ -1242,16 +1245,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Des nouveautés
                   </Text>
                   <Text
-                    fontSize={24}
+                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 24,
-                          "lineHeight": 28,
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 28,
+                          "lineHeight": 36,
                         },
                         Object {
+                          "fontSize": 24,
                           "textAlign": "center",
                         },
                       ]
