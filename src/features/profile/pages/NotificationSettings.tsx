@@ -16,7 +16,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
@@ -110,7 +110,7 @@ export function NotificationSettings() {
     () => {
       showSuccessSnackBar({
         message: t`Paramètre enregistré`,
-        timeout: 5000,
+        timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
       goBack()

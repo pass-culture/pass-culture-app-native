@@ -13,7 +13,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
@@ -55,7 +55,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
     })
     showSuccessSnackBar({
       message: t`Paramètre enregistré`,
-      timeout: 5000,
+      timeout: SNACK_BAR_TIME_OUT,
     })
     goBack()
   }
