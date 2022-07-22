@@ -17,6 +17,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -64,15 +65,20 @@ export const CountryPicker: React.FC<Props> = (props) => {
   const Item = ({ item }: { item: Country }) => {
     const itemTitle = `${item.name} (${formatCallingCode(item.callingCode[0])})`
     const selected = item.cca2 === country.cca2
+    const onPress = () => onSelect(item)
+    const [isFocus, setIsFocus] = useState(false)
     const containerRef = useRef(null)
     useArrowNavigationForRadioButton(containerRef)
+    useSpaceBarAction(isFocus ? onPress : undefined)
     return (
       <TouchableOpacity
         accessibilityRole={AccessibilityRole.RADIO}
         accessibilityState={{ checked: selected }}
         key={item.cca2}
         testID={`country-selector-${item.cca2}`}
-        onPress={() => onSelect(item)}>
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
+        onPress={onPress}>
         <CountryContainer ref={containerRef}>
           <Flag countryCode={item.cca2} withEmoji flagSize={25} />
           <Typo.Body>{itemTitle}</Typo.Body>

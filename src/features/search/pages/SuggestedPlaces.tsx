@@ -1,7 +1,7 @@
 import { plural, t } from '@lingui/macro'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -16,6 +16,7 @@ import { SuggestedVenue } from 'libs/venue'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -40,11 +41,15 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
   const containerRef = useRef(null)
+  const [isFocus, setIsFocus] = useState(false)
   useArrowNavigationForRadioButton(containerRef)
+  useSpaceBarAction(isFocus ? onPress : undefined)
 
   return (
     <ItemContainer
       accessibilityRole={AccessibilityRole.RADIO}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
       onPress={onPress}
       testID={keyExtractor(hit)}>
       <RefContainer ref={containerRef}>

@@ -46,6 +46,20 @@ describe('SuggestedPlaces component', () => {
     expect(mockGoBack).toBeCalledTimes(2)
   })
 
+  it('should trigger onPress when pressing Spacebar on focused place', () => {
+    mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
+    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
+
+    fireEvent.focus(getByTestId(keyExtractor(mockPlaces[1])))
+    fireEvent.keyDown(getByTestId(keyExtractor(mockPlaces[1])), { key: 'Spacebar' })
+
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
+      type: 'SET_LOCATION_PLACE',
+      payload: { aroundRadius: MAX_RADIUS, place: mockPlaces[1] },
+    })
+    expect(mockGoBack).toBeCalledTimes(2)
+  })
+
   it('should show empty component only when query is not empty and the results are not loading', () => {
     mockPlaces = []
     mockIsLoading = false
