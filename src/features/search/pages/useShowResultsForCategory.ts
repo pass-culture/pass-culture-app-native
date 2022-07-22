@@ -3,6 +3,8 @@ import { useCallback } from 'react'
 import { OnPressCategory } from 'features/search/components/CategoriesButtons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 
+import { SearchView } from '../types'
+
 import { usePushWithStagedSearch } from './usePushWithStagedSearch'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
@@ -14,7 +16,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
       stagedDispatch({ type: 'SET_CATEGORY', payload: [pressedCategory] })
       pushWithStagedSearch({
         offerCategories: [pressedCategory],
-        showResults: true,
+        view: SearchView.Results,
       })
     },
     [stagedDispatch, pushWithStagedSearch]

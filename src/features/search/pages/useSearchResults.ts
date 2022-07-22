@@ -1,11 +1,10 @@
 import { SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
-import omit from 'lodash.omit'
 import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
-import { PartialSearchState } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
@@ -16,17 +15,17 @@ import { useSearch, useStagedSearch } from './SearchWrapper'
 
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
-const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
+const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { position } = useGeolocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
-    [QueryKeys.SEARCH_RESULTS, partialSearchState],
+    [QueryKeys.SEARCH_RESULTS, searchState],
     async ({ pageParam: page = 0 }) =>
       await fetchOffer({
-        parameters: { page, ...partialSearchState },
+        parameters: { page, ...searchState },
         userLocation: position,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
@@ -50,10 +49,10 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
 
 export const useStagedSearchResults = () => {
   const { searchState } = useStagedSearch()
-  return useSearchInfiniteQuery(omit(searchState, ['showResults']) as PartialSearchState)
+  return useSearchInfiniteQuery(searchState)
 }
 
 export const useSearchResults = () => {
   const { searchState } = useSearch()
-  return useSearchInfiniteQuery(omit(searchState, ['showResults']) as PartialSearchState)
+  return useSearchInfiniteQuery(searchState)
 }

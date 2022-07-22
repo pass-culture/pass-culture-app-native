@@ -1,5 +1,6 @@
 import { VenueResponse } from 'api/gen'
 import { LocationType } from 'features/search/enums'
+import { SearchView } from 'features/search/types'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
 import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -34,7 +35,7 @@ describe('useVenueSearchParameters', () => {
       tags: [],
       date: null,
       timeRange: null,
-      showResults: false,
+      view: SearchView.Landing,
       query: '',
     })
   })

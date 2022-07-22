@@ -1,4 +1,4 @@
-import { PartialSearchState } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { GeoCoordinates } from 'libs/geolocation'
 
@@ -25,7 +25,7 @@ export const buildOfferSearchParameters = (
     priceRange = null,
     timeRange = null,
     tags = [],
-  }: PartialSearchState & { objectIds?: string[] },
+  }: SearchState & { objectIds?: string[] },
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
 ) => ({

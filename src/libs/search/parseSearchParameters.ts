@@ -1,7 +1,7 @@
 import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 import { sortCategories } from 'features/search/pages/reducer.helpers'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
@@ -62,11 +62,11 @@ export const parseSearchParameters = (
       isThing: parameters.isThing || false,
     },
     priceRange: _buildPriceRange({ priceMin, priceMax }),
-    showResults: false,
     tags: parameters.tags || [],
     date: null,
     timeRange: null,
     query: '',
+    view: SearchView.Landing,
   }
 }
 

@@ -7,6 +7,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -34,7 +35,7 @@ export const NoSearchResult: React.FC = () => {
               aroundRadius: MAX_RADIUS,
             }
           : { locationType: LocationType.EVERYWHERE },
-        showResults: true,
+        view: SearchView.Landing,
       },
       { reset: true }
     )

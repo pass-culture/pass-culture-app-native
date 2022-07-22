@@ -4,6 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { fireEvent, render } from 'tests/utils'
@@ -27,12 +28,12 @@ jest.mock('libs/geolocation', () => ({
 
 describe('NoSearchResult component', () => {
   it('should show the message depending on the query', () => {
-    useRoute.mockReturnValueOnce({ params: { showResults: true, query: '' } })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: '' } })
 
     let text = render(<NoSearchResult />).getByText('Pas de résultat trouvé.')
     expect(text).toBeTruthy()
 
-    useRoute.mockReturnValueOnce({ params: { showResults: true, query: 'ZZZZZZ' } })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: 'ZZZZZZ' } })
     text = render(<NoSearchResult />).getByText('Pas de résultat trouvé pour "ZZZZZZ"')
     expect(text).toBeTruthy()
   })
@@ -48,7 +49,7 @@ describe('NoSearchResult component', () => {
         locationFilter: {
           locationType: LocationType.EVERYWHERE,
         },
-        showResults: true,
+        view: SearchView.Landing,
       },
     })
   })
@@ -66,18 +67,20 @@ describe('NoSearchResult component', () => {
           locationType: LocationType.AROUND_ME,
           aroundRadius: MAX_RADIUS,
         },
-        showResults: true,
+        view: SearchView.Landing,
       },
     })
   })
 
   it('should log NoSearchResult with the query', () => {
-    useRoute.mockReturnValueOnce({ params: { showResults: true, query: '' } })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: '' } })
 
     render(<NoSearchResult />)
     expect(analytics.logNoSearchResult).not.toHaveBeenLastCalledWith('')
 
-    useRoute.mockReturnValueOnce({ params: { showResults: true, query: 'no result query' } })
+    useRoute.mockReturnValueOnce({
+      params: { view: SearchView.Landing, query: 'no result query' },
+    })
     render(<NoSearchResult />)
     expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('no result query')
     expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)

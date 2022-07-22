@@ -98,7 +98,6 @@ exports[`SearchBox component should render SearchBox 1`] = `
       <TextInput
         accessible={false}
         autoCorrect={false}
-        autoFocus={false}
         editable={true}
         enablesReturnKeyAutomatically={true}
         nativeID="testUuidV4"

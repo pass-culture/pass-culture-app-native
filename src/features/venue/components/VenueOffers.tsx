@@ -8,6 +8,7 @@ import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
+import { SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
@@ -57,7 +58,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
             },
           }
         : {}),
-      showResults: true,
+      view: SearchView.Results,
     })
   }, [params, venue])
   const searchNavConfig = {

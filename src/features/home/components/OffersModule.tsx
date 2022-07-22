@@ -10,6 +10,7 @@ import {
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -45,7 +46,11 @@ export const OffersModule = (props: OffersModuleProps) => {
   // When we navigate to the search page, we want to show 20 results per page,
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const searchParams = { ...parseSearchParameters(parameters), hitsPerPage: 20, showResults: true }
+  const searchParams = {
+    ...parseSearchParameters(parameters),
+    hitsPerPage: 20,
+    view: SearchView.Results,
+  }
   const searchTabConfig = getTabNavConfig('Search', searchParams)
   const moduleName = display.title || parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>

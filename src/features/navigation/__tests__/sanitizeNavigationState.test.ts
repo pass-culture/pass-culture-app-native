@@ -1,3 +1,5 @@
+import { SearchView } from 'features/search/types'
+
 import { sanitizeNavigationState } from '../sanitizeNavigationState'
 
 describe('sanitizeNavigationState', () => {
@@ -27,7 +29,7 @@ describe('sanitizeNavigationState', () => {
         name: 'TabNavigator',
         params: {
           screen: 'Search',
-          params: { locationFilter: { locationType: 'EVERYWHERE' }, showResults: true },
+          params: { locationFilter: { locationType: 'EVERYWHERE' }, view: SearchView.Results },
         },
         state: {
           routeNames: ['Home', 'Search'],

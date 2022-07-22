@@ -81,9 +81,9 @@ export const screenParamsParser: ParamsParsers = {
     offerTypes: JSON.parse,
     priceRange: JSON.parse,
     query: JSON.parse,
-    showResults: JSON.parse,
     tags: JSON.parse,
     timeRange: JSON.parse,
+    view: JSON.parse,
   },
 }
 
@@ -139,8 +139,8 @@ export const screenParamsStringifier: ParamsStringifiers = {
     offerTypes: JSON.stringify,
     priceRange: JSON.stringify,
     query: JSON.stringify,
-    showResults: JSON.stringify,
     tags: JSON.stringify,
     timeRange: JSON.stringify,
+    view: JSON.stringify,
   },
 }

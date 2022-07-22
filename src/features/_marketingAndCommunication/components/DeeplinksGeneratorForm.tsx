@@ -21,7 +21,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { LocationFilter } from 'features/search/types'
+import { LocationFilter, SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -60,7 +60,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           isSelected={selectedScreen === screenName}
           onSelect={() => {
             setSelectedScreen(screenName)
-            setScreenParams(screenName !== 'Search' ? {} : { showResults: 'true' })
+            setScreenParams(screenName !== 'Search' ? {} : { view: SearchView.Results })
           }}
         />
         <Spacer.Column numberOfSpaces={2} />
