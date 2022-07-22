@@ -7,10 +7,12 @@ import { v4 as uuidv4 } from 'uuid'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchResults } from 'features/search/components'
 import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
+import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem'
 import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
+import { AlgoliaHit } from 'libs/algolia'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { Spacer } from 'ui/theme'
@@ -53,3 +55,12 @@ export function Search() {
 }
 
 const Container = styled.View({ flex: 1 })
+
+export type HitProps = {
+  hit: AlgoliaHit
+  index: number
+}
+
+export function Hit({ hit, index }: HitProps) {
+  return <SearchAutocompleteItem hit={hit} index={index} />
+}
