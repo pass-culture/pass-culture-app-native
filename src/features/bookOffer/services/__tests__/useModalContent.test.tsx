@@ -137,7 +137,7 @@ describe('useModalContent', () => {
     expect(result.current.title).toBe('Détails de la réservation')
   })
 
-  it('shows modal AlreadyBooked when isEndedBooking is true', () => {
+  it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {
     mockOffer = baseOffer
     mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
     mockStep = Step.CONFIRMATION

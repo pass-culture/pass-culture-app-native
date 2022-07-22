@@ -147,7 +147,7 @@ describe('getCtaWordingAndAction', () => {
     it('CTA="Réserver" if offer is an ended booking', () => {
       const { wording, onPress, showBookingModal, navigateTo, externalNav } = getCta(
         {},
-        { isEndedBooking: true }
+        { isEndedUsedBooking: true }
       )
       expect(wording).toEqual('Réserver')
       expect(onPress).toBeTruthy()

@@ -13,17 +13,17 @@ import { BookingWrapper, useBooking } from './BookingOfferWrapper'
 interface Props {
   visible: boolean
   offerId: number
-  isEndedBooking?: boolean
+  isEndedUsedBooking?: boolean
 }
 
 export const BookingOfferModalComponent: React.FC<Props> = ({
   visible,
   offerId,
-  isEndedBooking,
+  isEndedUsedBooking,
 }) => {
   const { dismissModal, dispatch } = useBooking()
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
-    useModalContent(isEndedBooking)
+    useModalContent(isEndedUsedBooking)
 
   const modalLeftIconProps = {
     leftIcon,
