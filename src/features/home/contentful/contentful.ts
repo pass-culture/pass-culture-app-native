@@ -202,6 +202,7 @@ export interface DisplayParametersFields {
   title: string
   layout: Layout
   minOffers: number
+  subtitle?: string
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivityDisplayParameters/fields

@@ -25,29 +25,40 @@ Array [
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginHorizontal": 24,
+            "maxHeight": 68,
+            "overflow": "hidden",
           },
         ]
       }
     >
-      <Text
-        numberOfLines={2}
+      <View
         style={
           Array [
             Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginHorizontal": 24,
             },
           ]
         }
-        testID="playlistTitle"
       >
-        Offres
-      </Text>
+        <Text
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+              },
+            ]
+          }
+          testID="playlistTitle"
+        >
+          Offres
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={4}

@@ -19,6 +19,7 @@ type Props = Pick<
   'data' | 'itemWidth' | 'itemHeight' | 'testID' | 'keyExtractor' | 'renderItem' | 'onEndReached'
 > & {
   title: string
+  subtitle?: string
   TitleComponent?: ComponentType<ComponentProps<typeof DefaultTitle>>
   onPressSeeMore?: () => void
   coverUrl?: string | null
@@ -74,15 +75,22 @@ export const PassPlaylist = (props: Props) => {
       </React.Fragment>
     ) : null
   }
-
   return (
     <Container>
-      <Row>
-        <StyledTitleComponent testID="playlistTitle" onDarkBackground={props.onDarkBackground}>
-          {props.title}
-        </StyledTitleComponent>
-        {renderTitleSeeMore()}
-      </Row>
+      <TitleContainer>
+        <Row>
+          <StyledTitleComponent testID="playlistTitle" onDarkBackground={props.onDarkBackground}>
+            {props.title}
+          </StyledTitleComponent>
+          {renderTitleSeeMore()}
+        </Row>
+        {props.subtitle ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={1} />
+            <StyledSubtitle>{props.subtitle}</StyledSubtitle>
+          </React.Fragment>
+        ) : null}
+      </TitleContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Playlist
         testID="offersModuleList"
@@ -137,3 +145,17 @@ const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
 }))``
 
 const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+
+const StyledSubtitle = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
+  color: theme.colors.greyDark,
+  marginHorizontal: getSpacing(6),
+}))
+
+const TitleContainer = styled.View(({ theme }) => ({
+  // The size of the title block should not exceed two lines of title and one of subtitle
+  maxHeight:
+    parseInt(theme.typography.title3.lineHeight) * 2 +
+    getSpacing(1) +
+    parseInt(theme.typography.caption.lineHeight),
+  overflow: 'hidden',
+}))
