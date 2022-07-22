@@ -1709,6 +1709,7 @@ msgstr "Mes options"
 msgid "Mes réservations"
 msgstr "Mes réservations"
 
+#: src/features/bookOffer/components/AlreadyBooked.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Mes réservations terminées"
 msgstr "Mes réservations terminées"
@@ -3491,7 +3492,6 @@ msgstr "Voir le ticket suivant"
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
-#: src/features/bookOffer/components/AlreadyBooked.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"

@@ -27,7 +27,7 @@ interface Props {
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
   isUnderageBeneficiary: boolean
-  isEndedBooking?: boolean
+  isEndedUsedBooking?: boolean
 }
 interface ICTAWordingAndAction {
   showBookingModal?: boolean
@@ -35,7 +35,7 @@ interface ICTAWordingAndAction {
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
-  isEndedBooking?: boolean
+  isEndedUsedBooking?: boolean
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
@@ -47,16 +47,16 @@ export const getCtaWordingAndAction = ({
   hasEnoughCredit,
   bookedOffers,
   isUnderageBeneficiary,
-  isEndedBooking,
+  isEndedUsedBooking,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
 
-  if (isEndedBooking) {
+  if (isEndedUsedBooking) {
     return {
       showBookingModal: true,
       wording: t`Réserver`,
-      isEndedBooking,
+      isEndedUsedBooking,
       onPress() {
         return false
       },
@@ -153,7 +153,7 @@ export const useCtaWordingAndAction = (props: {
     subcategory: mapping[offer.subcategoryId],
     hasEnoughCredit,
     bookedOffers,
-    isEndedBooking: !!endedBooking,
+    isEndedUsedBooking: !!endedBooking?.dateUsed,
     isUnderageBeneficiary,
   })
 }

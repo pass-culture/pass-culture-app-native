@@ -50,7 +50,7 @@ export const Offer: FunctionComponent = () => {
     navigateTo,
     externalNav,
     showBookingModal,
-    isEndedBooking,
+    isEndedUsedBooking,
   } = useCtaWordingAndAction({ offerId }) || {}
 
   useFocusEffect(
@@ -104,7 +104,7 @@ export const Offer: FunctionComponent = () => {
         visible={bookingOfferModalIsVisible}
         dismissModal={dismissBookingOfferModal}
         offerId={offerResponse.id}
-        isEndedBooking={isEndedBooking}
+        isEndedUsedBooking={isEndedUsedBooking}
       />
     </Container>
   )

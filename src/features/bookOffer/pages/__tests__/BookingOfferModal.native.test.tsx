@@ -53,11 +53,13 @@ describe('<BookingOfferModalComponent />', () => {
     expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerId)
   })
 
-  it('should show AlreadyBooked when isEndedBooking is true', () => {
+  it('should show AlreadyBooked when isEndedUsedBooking is true', () => {
     const offerId = 30
     const renderAPI = render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={offerId} isEndedBooking />)
+      reactQueryProviderHOC(
+        <BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />
+      )
     )
     expect(renderAPI.queryByText("Tu as déjà consommé l'offre :")).toBeTruthy()
     expect(renderAPI.queryByTestId('external-link-booking-limit-exceeded')).toBeTruthy()
