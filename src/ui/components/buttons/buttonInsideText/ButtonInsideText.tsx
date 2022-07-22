@@ -1,6 +1,5 @@
 import React from 'react'
-import { Platform } from 'react-native'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
