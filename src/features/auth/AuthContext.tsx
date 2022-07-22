@@ -145,5 +145,6 @@ export const LoggedInQueryKeys: QueryKeys[] = [
   QueryKeys.RECOMMENDATION_OFFER_IDS,
   QueryKeys.REPORTED_OFFERS,
   QueryKeys.REPORT_OFFER_REASONS,
+  QueryKeys.NEXT_SUBSCRIPTION_STEP,
   QueryKeys.USER_PROFILE,
 ]
