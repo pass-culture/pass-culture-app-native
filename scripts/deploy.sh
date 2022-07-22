@@ -97,17 +97,17 @@ check_dependency
 
 check_environment $APP_ENV
 
-if [ $DEPLOY_TYPE == "hard" ]; then
+if [ "${DEPLOY_TYPE}" == "hard" ]; then
   echo -e "${BLUE}* * * * *"
   echo -e "👷  Hard-Deploy"
   echo -e "* * * * *${NO_COLOR}"
-  if [[ $APP_OS != "android" ]]; then
+  if [[ "${APP_OS}" = "ios" ]]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Fastlane 🍎  iOS $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
     bundle exec fastlane ios deploy --env "${APP_ENV}" --verbose
   fi
-  if [[ $APP_OS != "ios" ]]; then
+  if [[ "${APP_OS}" = "android" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo "Fastlane 🤖  Android $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
@@ -117,30 +117,23 @@ if [ $DEPLOY_TYPE == "hard" ]; then
   upload_sourcemaps "${APP_OS}" "${APP_ENV}"
 fi
 
-if [ $DEPLOY_TYPE == "soft" ]; then
+if [ "${DEPLOY_TYPE}" == "soft" ]; then
   echo -e "${CYAN}* * * * *"
   echo -e "🍦  Soft-Deploy"
   echo -e "* * * * *${NO_COLOR}"
 
-  if [[ $APP_OS != "android" ]]; then
+  if [[ "${APP_OS}" = "ios" ]]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Codepush 🍎  iOS ${APP_ENV}"
     echo -e "- - - - -${NO_COLOR}"
     bundle exec fastlane ios deploy codepush: --env "${APP_ENV}"
-    CODEPUSH_KEY="${CODEPUSH_KEY_IOS}"
   fi
-  if [[ $APP_OS != "ios" ]]; then
+  if [[ "${APP_OS}" = "android" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo -e "Codepush 🤖  Android ${APP_ENV}"
     echo -e "- - - - -${NO_COLOR}"
     bundle exec fastlane android deploy codepush: --env "${APP_ENV}"
-    CODEPUSH_KEY="${CODEPUSH_KEY_ANDROID}"
   fi
-
-  VERSION=`jq -r .version package.json`
-  CODEPUSH_LABEL=$(curl -sS "https://codepush.appcenter.ms/v0.1/public/codepush/update_check?deployment_key=${CODEPUSH_KEY}&app_version=${VERSION}" | jq -r '.update_info.label')
-
-  upload_sourcemaps "${APP_OS}" "${APP_ENV}" "${CODEPUSH_LABEL}"
 fi
 
 success "📦  Deploy succeeded."
