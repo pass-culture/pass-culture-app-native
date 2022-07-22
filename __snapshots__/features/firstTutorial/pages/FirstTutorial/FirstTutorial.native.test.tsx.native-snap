@@ -260,17 +260,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Le pass Culture
                   </Text>
                   <Text
-                    fontSize={28}
+                    fontSize={24}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
                         },
                         Object {
-                          "fontSize": 24,
+                          "fontFamily": "Montserrat-Black",
                           "textAlign": "center",
                         },
                       ]
@@ -486,17 +486,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Des offres pour tous
                   </Text>
                   <Text
-                    fontSize={28}
+                    fontSize={24}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
                         },
                         Object {
-                          "fontSize": 24,
+                          "fontFamily": "Montserrat-Black",
                           "textAlign": "center",
                         },
                       ]
@@ -1064,17 +1064,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Toute la culture
                   </Text>
                   <Text
-                    fontSize={28}
+                    fontSize={24}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
                         },
                         Object {
-                          "fontSize": 24,
+                          "fontFamily": "Montserrat-Black",
                           "textAlign": "center",
                         },
                       ]
@@ -1245,17 +1245,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Des nouveautés
                   </Text>
                   <Text
-                    fontSize={28}
+                    fontSize={24}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
                         },
                         Object {
-                          "fontSize": 24,
+                          "fontFamily": "Montserrat-Black",
                           "textAlign": "center",
                         },
                       ]

@@ -83,17 +83,17 @@ exports[`SecondCard should render second card 1`] = `
       Des offres pour tous
     </Text>
     <Text
-      fontSize={28}
+      fontSize={24}
       style={
         Array [
           Object {
             "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 28,
-            "lineHeight": 36,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
           },
           Object {
-            "fontSize": 24,
+            "fontFamily": "Montserrat-Black",
             "textAlign": "center",
           },
         ]
