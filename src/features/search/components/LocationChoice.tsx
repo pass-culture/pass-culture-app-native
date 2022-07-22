@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
@@ -6,6 +6,7 @@ import { LocationType } from 'features/search/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -31,11 +32,16 @@ export const LocationChoice: React.FC<Props> = (props) => {
   const containerRef = useRef(null)
   useArrowNavigationForRadioButton(containerRef)
 
+  const [isFocus, setIsFocus] = useState(false)
+  useSpaceBarAction(isFocus ? onPress : undefined)
+
   const selected = props.isSelected ?? isSelected
 
   return (
     <Container
       onPress={onPress}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: selected }}
       testID={`locationChoice-${testID}`}>
