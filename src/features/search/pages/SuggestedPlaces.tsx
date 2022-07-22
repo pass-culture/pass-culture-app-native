@@ -1,7 +1,7 @@
 import { plural, t } from '@lingui/macro'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
-import React from 'react'
+import React, { useRef } from 'react'
 import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -15,6 +15,7 @@ import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -38,19 +39,23 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
+  const containerRef = useRef(null)
+  useArrowNavigationForRadioButton(containerRef)
 
   return (
     <ItemContainer
       accessibilityRole={AccessibilityRole.RADIO}
       onPress={onPress}
       testID={keyExtractor(hit)}>
-      <Icon />
-      <Spacer.Row numberOfSpaces={4} />
-      <Text>
-        <Typo.ButtonText>{hit.label}</Typo.ButtonText>
-        <Spacer.Row numberOfSpaces={1} />
-        <Typo.Body>{hit.info}</Typo.Body>
-      </Text>
+      <RefContainer ref={containerRef}>
+        <Icon />
+        <Spacer.Row numberOfSpaces={4} />
+        <Text>
+          <Typo.ButtonText>{hit.label}</Typo.ButtonText>
+          <Spacer.Row numberOfSpaces={1} />
+          <Typo.Body>{hit.info}</Typo.Body>
+        </Text>
+      </RefContainer>
     </ItemContainer>
   )
 }
@@ -130,9 +135,12 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   )
 
 const ItemContainer = styled(TouchableOpacity)({
-  flexDirection: 'row',
   marginHorizontal: getSpacing(6),
   paddingVertical: getSpacing(4),
+})
+
+const RefContainer = styled.View({
+  flexDirection: 'row',
   alignItems: 'center',
 })
 

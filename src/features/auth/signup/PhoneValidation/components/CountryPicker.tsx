@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { useState, useEffect, ComponentProps } from 'react'
-import { ListRenderItem, LogBox, Platform, View } from 'react-native'
+import React, { useState, useEffect, useRef, ComponentProps } from 'react'
+import { ListRenderItem, LogBox, Platform } from 'react-native'
 import ReactNativeCountryPicker, {
   Country,
   CountryList,
@@ -16,11 +16,11 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ALLOWED_COUNTRY_CODES, FLAG_TYPE } from './constants'
 
@@ -61,35 +61,40 @@ export const CountryPicker: React.FC<Props> = (props) => {
     hideModal()
   }
 
-  const renderItem: ListRenderItem<Country> = ({ item }: { item: Country }) => {
+  const Item = ({ item }: { item: Country }) => {
     const itemTitle = `${item.name} (${formatCallingCode(item.callingCode[0])})`
     const selected = item.cca2 === country.cca2
+    const containerRef = useRef(null)
+    useArrowNavigationForRadioButton(containerRef)
     return (
-      <View {...getHeadingAttrs(2)}>
-        <TouchableOpacity
-          accessibilityRole={AccessibilityRole.RADIO}
-          accessibilityState={{ checked: selected }}
-          key={item.cca2}
-          testID={`country-selector-${item.cca2}`}
-          onPress={() => onSelect(item)}>
-          <CountryContainer>
-            <Flag countryCode={item.cca2} withEmoji flagSize={25} />
-            <Typo.Body>{itemTitle}</Typo.Body>
-            {!!selected && (
-              <IconContainer>
-                <ValidateIcon />
-              </IconContainer>
-            )}
-          </CountryContainer>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        accessibilityRole={AccessibilityRole.RADIO}
+        accessibilityState={{ checked: selected }}
+        key={item.cca2}
+        testID={`country-selector-${item.cca2}`}
+        onPress={() => onSelect(item)}>
+        <CountryContainer ref={containerRef}>
+          <Flag countryCode={item.cca2} withEmoji flagSize={25} />
+          <Typo.Body>{itemTitle}</Typo.Body>
+          {!!selected && (
+            <IconContainer>
+              <ValidateIcon />
+            </IconContainer>
+          )}
+        </CountryContainer>
+      </TouchableOpacity>
     )
+  }
+
+  const renderItem: ListRenderItem<Country> = ({ item }: { item: Country }) => {
+    return <Item item={item} />
   }
 
   const countryListFlatListProps: ReactNativeCountryListProps['flatListProps'] = {
     style: { height: 350 },
     renderItem,
     data: countries,
+    accessibilityRole: AccessibilityRole.RADIOGROUP,
   }
 
   return (
