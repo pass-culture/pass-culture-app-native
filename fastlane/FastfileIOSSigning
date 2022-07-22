@@ -4,7 +4,7 @@ platform :ios do
     # produce = création de l'app id (1 seule fois dans la vie de l'app)
 		# Si déjà fait, cette étape sera skippée
     produce(
-      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
+      app_identifier: ENV['IOS_APP_ID'],
       team_id: ENV['IOS_TEAM_ID'],
       app_name: ENV['IOS_APP_NAME'],
       skip_itc: true  # skip itunes connect (ancien nom de l'app store connect), si à false, l'app_id est également créé sur AppStoreConnect (pour la prod)
