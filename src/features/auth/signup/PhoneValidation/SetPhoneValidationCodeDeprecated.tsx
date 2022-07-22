@@ -289,7 +289,7 @@ const codeInputMask = '999999'
 const CodeInput = styled(MaskedTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.colors.greyDark,
 }))(({ theme }) => ({
-  fontSize: 20,
+  fontSize: getSpacing(5),
   marginLeft: getSpacing(4),
   color: theme.colors.black,
   textAlign: 'center',

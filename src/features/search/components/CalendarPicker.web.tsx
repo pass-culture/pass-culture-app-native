@@ -61,7 +61,7 @@ export const CalendarPicker: React.FC<Props> = ({
       todayTextColor: colors.primaryDark,
       dayTextColor: colors.black,
       selectedDayBackgroundColor: colors.primary,
-      textDayHeaderFontSize: 16,
+      textDayHeaderFontSize: getSpacing(4),
       textDayHeaderFontFamily: fontFamily.bold,
       textDayFontFamily: fontFamily.regular,
       textMonthFontFamily: fontFamily.regular,

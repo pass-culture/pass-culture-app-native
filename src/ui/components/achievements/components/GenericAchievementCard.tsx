@@ -194,9 +194,10 @@ const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',
 })
 
-const StyledSubTitle = styled(Typo.Title2)({
+const StyledSubTitle = styled(Typo.Title1)(({ theme }) => ({
   textAlign: 'center',
-})
+  fontSize: theme.typography.title2.fontSize,
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

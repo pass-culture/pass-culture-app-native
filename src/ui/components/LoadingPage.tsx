@@ -33,6 +33,5 @@ const StyledLottieView = styled(LottieView)({
 const LoadingText = styled(Typo.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
-  fontSize: 15,
   color: theme.colors.white,
 }))

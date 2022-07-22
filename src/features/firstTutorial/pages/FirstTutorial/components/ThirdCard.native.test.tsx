@@ -33,7 +33,7 @@ describe('ThirdCard', () => {
         </GenericAchievement>
       </GeolocationWrapper>
     )
-    fireEvent.press(getByText('Activer la géolocalisation'))
+    fireEvent.press(getByText('Utiliser ma position'))
     await waitFor(() => {
       expect(analytics.logHasActivateGeolocFromTutorial).toBeCalledTimes(0)
     })
@@ -54,7 +54,7 @@ describe('ThirdCard', () => {
         </GenericAchievement>
       </GeolocationWrapper>
     )
-    fireEvent.press(getByText('Activer la géolocalisation'))
+    fireEvent.press(getByText('Utiliser ma position'))
     await waitFor(() => {
       expect(analytics.logHasActivateGeolocFromTutorial).toBeCalledTimes(1)
     })
@@ -73,7 +73,7 @@ describe('ThirdCard', () => {
         />
       </GeolocationWrapper>
     )
-    fireEvent.press(getByText('Activer la géolocalisation'))
+    fireEvent.press(getByText('Utiliser ma position'))
     await waitFor(() => {
       expect(ref.current?.goToNext).toBeCalled()
     })
