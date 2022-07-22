@@ -8,6 +8,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -70,7 +71,10 @@ const IconContainer = styled.View(({ theme }) => ({
   minWidth: theme.icons.sizes.standard,
 }))
 
-const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })({
+const Title = styled(Animated.Text).attrs({
+  numberOfLines: 1,
+  ...getTextAttrs(),
+})({
   textAlign: 'center',
   flex: 5,
   marginHorizontal: getSpacing(3),

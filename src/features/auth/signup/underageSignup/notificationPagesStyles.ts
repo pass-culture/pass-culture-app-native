@@ -7,7 +7,7 @@ export const StyledSubtitle = styled(Typo.Title4).attrs(getNoHeadingAttrs())({
   textAlign: 'center',
 })
 
-export const Text = styled(Typo.Body)({
+export const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

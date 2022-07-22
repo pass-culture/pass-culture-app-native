@@ -63,7 +63,7 @@ const Instruction = ({ title, Icon }: InstructionProps) => {
   return (
     <InstructionContainer>
       <StyledIcon />
-      <Text>{title}</Text>
+      <StyledBody>{title}</StyledBody>
     </InstructionContainer>
   )
 }
@@ -74,5 +74,5 @@ const InstructionContainer = styled.View({
   paddingVertical: getSpacing(3),
 })
 
-const Text = styled(Typo.Body)({ paddingLeft: getSpacing(2) })
+const StyledBody = styled(Typo.Body)({ paddingLeft: getSpacing(2) })
 const Instructions = styled.View({ width: '100%', paddingVertical: getSpacing(6) })
