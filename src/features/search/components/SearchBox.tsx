@@ -46,7 +46,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   const { label: locationLabel } = useLocationChoice(section)
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
-    SearchView.Suggestions === params?.view || SearchView.Results === params?.view
+    params?.view === SearchView.Suggestions || params?.view === SearchView.Results
 
   useEffect(() => {
     setQuery(params?.query || '')
