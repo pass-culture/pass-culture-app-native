@@ -52,7 +52,7 @@ export function AfterChangeEmailValidationBuffer() {
     }
     delayedNavigate('Login')
     showSuccessSnackBar({
-      message: t`Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.`,
+      message: t`Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
   }
