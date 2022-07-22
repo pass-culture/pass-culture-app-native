@@ -3,13 +3,19 @@ import React from 'react'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { render, fireEvent } from 'tests/utils'
 
+const onChange = jest.fn()
+const name = 'testUnit'
+
 describe('<ControlledFilterSwitch />', () => {
   it('should call onChange with new value on toggle', () => {
-    const onChange = jest.fn()
-    const renderAPI = render(<ControlledFilterSwitch onChange={onChange} name="testUnit" />)
-    fireEvent.press(renderAPI.getByTestId('Interrupteur'))
+    const { getByTestId } = render(<ControlledFilterSwitch onChange={onChange} name={name} />)
+
+    const Switch = getByTestId('Interrupteur')
+
+    fireEvent.press(Switch)
     expect(onChange).toBeCalledWith(true)
-    fireEvent.press(renderAPI.getByTestId('Interrupteur'))
+
+    fireEvent.press(Switch)
     expect(onChange).toBeCalledWith(false)
   })
 })
