@@ -19,6 +19,13 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 jest.mock('features/navigation/helpers/usePreviousRoute')
 const mockedUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 
+const mockShowSuccessSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: mockShowSuccessSnackBar,
+  }),
+}))
+
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
@@ -98,6 +105,19 @@ describe('ConsentSettings', () => {
       const saveButton = getByText('Enregistrer')
       fireEvent.press(saveButton)
       expect(goBack).toHaveBeenCalled()
+    })
+  })
+
+  it('should show snackbar on press save', async () => {
+    const { getByTestId, getByText } = await renderConsentSettings()
+
+    const toggleButton = getByTestId('Interrupteur')
+    fireEvent.press(toggleButton)
+
+    await waitFor(() => {
+      const saveButton = getByText('Enregistrer')
+      fireEvent.press(saveButton)
+      expect(mockShowSuccessSnackBar).toHaveBeenCalled()
     })
   })
 
