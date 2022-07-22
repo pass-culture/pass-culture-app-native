@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useRef, useState } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -10,6 +11,8 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { useChangePasswordMutation } from 'features/auth/mutations'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -24,6 +27,7 @@ import { Form } from 'ui/web/form/Form'
 
 export function ChangePassword() {
   const { isMobileViewport, isTouch } = useTheme()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const [currentPassword, setCurrentPassword] = useState('')
@@ -61,6 +65,7 @@ export function ChangePassword() {
         message: t`Mot de passe modifié`,
         timeout: SNACK_BAR_TIME_OUT,
       })
+      navigate(...getTabNavConfig('Profile'))
       analytics.logHasChangedPassword('changePassword')
     },
     () => {

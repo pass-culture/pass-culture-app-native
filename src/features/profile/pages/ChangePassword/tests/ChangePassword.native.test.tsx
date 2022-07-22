@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { ChangePasswordRequest } from 'api/gen'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -73,7 +74,7 @@ describe('ChangePassword', () => {
     })
   })
 
-  it('display success snackbar when the password is updated', async () => {
+  it('should display success snackbar and navigate to Profile when the password is updated', async () => {
     server.use(
       rest.post<ChangePasswordRequest, EmptyResponse>(
         env.API_BASE_URL + '/native/v1/change_password',
@@ -104,6 +105,7 @@ describe('ChangePassword', () => {
         message: 'Mot de passe modifié',
         timeout: SNACK_BAR_TIME_OUT,
       })
+      expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
       expect(analytics.logHasChangedPassword).toBeCalledWith('changePassword')
     })
   })

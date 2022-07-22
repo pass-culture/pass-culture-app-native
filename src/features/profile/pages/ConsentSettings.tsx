@@ -13,6 +13,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
@@ -23,6 +24,7 @@ type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
 
 export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
+  const { showSuccessSnackBar } = useSnackBarContext()
   const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
 
@@ -50,6 +52,10 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
       } else {
         analytics.disableCollection()
       }
+    })
+    showSuccessSnackBar({
+      message: t`Paramètre enregistré`,
+      timeout: SNACK_BAR_TIME_OUT,
     })
     goBack()
   }
