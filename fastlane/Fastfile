@@ -27,7 +27,7 @@ platform :ios do
         teamId: ENV['IOS_TEAM_ID'],
         provisioningProfiles: { 
           ENV['IOS_APP_ID'] => ENV['IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE'],
-          'app.passculture.RichNotificationsExtension' =>  ENV['IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_RELEASE']
+          ENV['IOS_BATCH_ID'] =>  ENV['IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_RELEASE']
         }
       })
   end

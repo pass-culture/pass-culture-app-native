@@ -4,7 +4,7 @@ platform :ios do
     # produce = création de l'app id (1 seule fois dans la vie de l'app)
 		# Si déjà fait, cette étape sera skippée
     produce(
-      app_identifier: ENV['IOS_APP_ID'],
+      app_identifier: [ENV['IOS_APP_ID'], ENV['IOS_BATCH_ID']],
       team_id: ENV['IOS_TEAM_ID'],
       app_name: ENV['IOS_APP_NAME'],
       skip_itc: true  # skip itunes connect (ancien nom de l'app store connect), si à false, l'app_id est également créé sur AppStoreConnect (pour la prod)
@@ -12,7 +12,7 @@ platform :ios do
     # match = génération des autorisations
 		# cette ligne: pour pouvoir builder en mode debug
     match(
-      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
+      app_identifier: [ENV['IOS_APP_ID'], ENV['IOS_BATCH_ID']],
       type: 'development',
       shallow_clone: true,
       clone_branch_directly: true,
@@ -20,7 +20,7 @@ platform :ios do
     )
     # cette ligne: pour pouvoir builder en mode release
     match(
-      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
+      app_identifier: [ENV['IOS_APP_ID'], ENV['IOS_BATCH_ID']],
       shallow_clone: true,
       clone_branch_directly: true,
       force_for_new_devices: true
@@ -33,14 +33,14 @@ platform :ios do
 
   lane :download_certificates do |options|
     match(
-      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
+      app_identifier: [ENV['IOS_APP_ID'], ENV['IOS_BATCH_ID']],
       type: 'development',
       shallow_clone: true,
       clone_branch_directly: true,
       readonly: true
     )
     match(
-      app_identifier: [ENV['IOS_APP_ID'], 'app.passculture.RichNotificationsExtension'],
+      app_identifier: [ENV['IOS_APP_ID'], ENV['IOS_BATCH_ID']],
       shallow_clone: true,
       clone_branch_directly: true,
       readonly: true
@@ -51,9 +51,9 @@ platform :ios do
   # pour stocker les noms des provisioning profiles et ne pas avoir besoin d'utiliser match avant si j'ai besoin d'utiliser que gym (match fournit l'info)
   private_lane :update_provisioning_profile do |options|
     development_profile_env_name = "sigh_#{ENV['IOS_APP_ID']}_development_profile-name"
-    development_profile_env_name_batch = "sigh_app.passculture.RichNotificationsExtension_development_profile-name"
+    development_profile_env_name_batch = "sigh_#{ENV['IOS_BATCH_ID']}_development_profile-name"
     release_profile_env_name = "sigh_#{ENV['IOS_APP_ID']}_#{ENV['MATCH_TYPE']}_profile-name"    
-    release_profile_env_name_batch = "sigh_app.passculture.RichNotificationsExtension_#{ENV['MATCH_TYPE']}_profile-name"
+    release_profile_env_name_batch = "sigh_#{ENV['IOS_BATCH_ID']}_#{ENV['MATCH_TYPE']}_profile-name"
     sh "sed -i '' -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT='#{ENV[development_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
     sh "sed -i '' -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE='#{ENV[release_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
     sh "sed -i '' -e \"s/IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT=.*/IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT='#{ENV[development_profile_env_name_batch]}'/g\" ../.env.#{ENV['ENV']}"

@@ -36,6 +36,13 @@
 			remoteGlobalIDString = 169C9A40287D578800B42D1A;
 			remoteInfo = RichNotificationsExtension;
 		};
+		1BAA1D5F288AD87A00C2F536 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD2E04E3714A40F5958ADCD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 169C9A40287D578800B42D1A;
+			remoteInfo = RichNotificationsExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +76,7 @@
 		169C9A41287D578800B42D1A /* RichNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		169C9A43287D578800B42D1A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		169C9A45287D578800B42D1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BAA1D5B288AD86300C2F536 /* Batch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Batch.xcframework; path = Pods/Batch/Batch.xcframework; sourceTree = "<group>"; };
 		22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		364C381B59463043D7637B91 /* Pods-PassCulture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.release.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.release.xcconfig"; sourceTree = "<group>"; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 		77E58495325A4481BF007316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1BAA1D5B288AD86300C2F536 /* Batch.xcframework */,
 				784AD86B267B9F0B00A0EF45 /* TMXProfiling.xcframework */,
 				784AD86D267B9F0F00A0EF45 /* TMXProfilingConnections.xcframework */,
 				C3EB4C7EF21447BFA7F60E12 /* JavaScriptCore.framework */,
@@ -254,6 +263,7 @@
 			);
 			dependencies = (
 				169C9A47287D578800B42D1A /* PBXTargetDependency */,
+				1BAA1D60288AD87A00C2F536 /* PBXTargetDependency */,
 			);
 			name = PassCulture;
 			productName = PassCulture;
@@ -482,6 +492,11 @@
 			target = 169C9A40287D578800B42D1A /* RichNotificationsExtension */;
 			targetProxy = 169C9A46287D578800B42D1A /* PBXContainerItemProxy */;
 		};
+		1BAA1D60288AD87A00C2F536 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 169C9A40287D578800B42D1A /* RichNotificationsExtension */;
+			targetProxy = 1BAA1D5F288AD87A00C2F536 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -531,6 +546,7 @@
 		};
 		169C9A4A287D578900B42D1A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AC6F5229DD6B491FBEF3FD8 /* Pods-PassCulture.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -564,7 +580,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = app.passculture.RichNotificationsExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(IOS_BATCH_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT)";
 				SKIP_INSTALL = YES;
@@ -578,6 +594,7 @@
 		};
 		169C9A4B287D578900B42D1A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 364C381B59463043D7637B91 /* Pods-PassCulture.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -611,7 +628,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = app.passculture.RichNotificationsExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(IOS_BATCH_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(IOS_BATCH_PROVISIONING_PROFILE_SPECIFIER_RELEASE)";
 				SKIP_INSTALL = YES;
