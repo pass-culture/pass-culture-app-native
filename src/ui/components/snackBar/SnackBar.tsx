@@ -8,7 +8,7 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { Platform, ViewProps, ViewStyle } from 'react-native'
+import { View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -118,24 +118,22 @@ const _SnackBar = (props: SnackBarProps) => {
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <SnackBarContainer
-          isVisible={isVisible}
-          marginTop={top}
-          accessibilityRole={AccessibilityRole.STATUS}
-          testID="snackbar-container">
-          {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
-          <Spacer.Flex flex={1}>
-            <StyledBody testID="snackbar-message" color={props.color}>
-              {props.message}
-            </StyledBody>
-          </Spacer.Flex>
-          <Touchable testID="snackbar-close" onPress={onClose}>
-            <Close
-              color={props.color}
+        <View accessibilityRole={AccessibilityRole.STATUS} aria-relevant="additions">
+          <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
+            {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
+            <Spacer.Flex flex={1}>
+              <StyledBody testID="snackbar-message" color={props.color}>
+                {props.message}
+              </StyledBody>
+            </Spacer.Flex>
+            <Touchable
               accessibilityLabel={t`Supprimer le message\u00a0: ${props.message}`}
-            />
-          </Touchable>
-        </SnackBarContainer>
+              testID="snackbar-close"
+              onPress={onClose}>
+              <Close color={props.color} />
+            </Touchable>
+          </SnackBarContainer>
+        </View>
         {renderProgressBar()}
       </ColoredAnimatableView>
     </RootContainer>
@@ -168,13 +166,10 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
     marginTop,
     flexDirection: 'row',
     alignItems: 'center',
-    display: !isVisible && Platform.OS !== 'web' ? 'none' : 'flex',
-    paddingTop: isVisible ? getSpacing(2) - marginTop : 0,
-    paddingBottom: isVisible ? getSpacing(2) : 0,
-    paddingHorizontal: isVisible ? getSpacing(5) : 0,
-    width: isVisible ? undefined : 0,
-    height: isVisible ? undefined : 0,
-    overflow: 'hidden',
+    display: isVisible ? 'flex' : 'none',
+    paddingTop: getSpacing(2) - marginTop,
+    paddingBottom: getSpacing(2),
+    paddingHorizontal: getSpacing(5),
   })
 )
 
