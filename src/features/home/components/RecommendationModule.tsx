@@ -89,6 +89,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     <PassPlaylist
       testID="recommendationModuleList"
       title={displayParameters.title}
+      subtitle={displayParameters.subtitle}
       onDarkBackground={index === 0}
       data={hits || []}
       itemHeight={itemHeight}

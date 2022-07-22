@@ -554,57 +554,62 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
+                style="max-height: 68px; overflow-x: hidden; overflow-y: hidden;"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                  data-testid="playlistTitle"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
                 >
-                  Offres
-                </h2>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 16px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 12px;"
-                />
-                <div
-                  aria-label="Voir plus d’offres de la sélection Offres"
-                  class="css-view-1dbjc4n"
-                  data-testid="Voir plus d’offres de la sélection Offres"
-                  style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                    data-testid="playlistTitle"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                   >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
+                    Offres
+                  </h2>
                   <div
                     class="css-view-1dbjc4n"
-                    style="width: 8px;"
+                    style="width: 16px;"
                   />
                   <div
-                    class="css-text-901oao"
-                    dir="ltr"
-                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    class="css-view-1dbjc4n"
+                    style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 12px;"
+                  />
+                  <div
+                    aria-label="Voir plus d’offres de la sélection Offres"
+                    class="css-view-1dbjc4n"
+                    data-testid="Voir plus d’offres de la sélection Offres"
+                    style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                    tabindex="0"
                   >
-                    En voir plus
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 8px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      En voir plus
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2081,57 +2086,62 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
+              style="max-height: 68px; overflow-x: hidden; overflow-y: hidden;"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                data-testid="playlistTitle"
-                dir="ltr"
-                role="heading"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
               >
-                Offres
-              </h2>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 16px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 12px;"
-              />
-              <div
-                aria-label="Voir plus d’offres de la sélection Offres"
-                class="css-view-1dbjc4n"
-                data-testid="Voir plus d’offres de la sélection Offres"
-                style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                tabindex="0"
-              >
-                <div
-                  class="css-view-1dbjc4n"
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                  data-testid="playlistTitle"
+                  dir="ltr"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
+                  Offres
+                </h2>
                 <div
                   class="css-view-1dbjc4n"
-                  style="width: 8px;"
+                  style="width: 16px;"
                 />
                 <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  class="css-view-1dbjc4n"
+                  style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 12px;"
+                />
+                <div
+                  aria-label="Voir plus d’offres de la sélection Offres"
+                  class="css-view-1dbjc4n"
+                  data-testid="Voir plus d’offres de la sélection Offres"
+                  style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  tabindex="0"
                 >
-                  En voir plus
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 8px;"
+                  />
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    En voir plus
+                  </div>
                 </div>
               </div>
             </div>
