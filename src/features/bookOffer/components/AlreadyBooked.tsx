@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
+import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
@@ -11,6 +12,8 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
+  const { dismissModal } = useBooking()
+
   return (
     <Container>
       <Centered>{t`Tu as déjà consommé l'offre\u00a0:`}</Centered>
@@ -29,9 +32,9 @@ export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
       <Spacer.Column numberOfSpaces={getSpacing(3)} />
       <TouchableLink
         as={ButtonPrimary}
-        wording={t`Voir ma réservation`}
+        wording={t`Mes réservations terminées`}
         navigateTo={{ screen: 'EndedBookings' }}
-        navigateBeforeOnPress
+        onPress={dismissModal}
       />
     </Container>
   )
