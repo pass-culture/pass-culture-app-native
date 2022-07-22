@@ -26,6 +26,8 @@ const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
+const isWeb = Platform.OS === 'web'
+
 export function Slider(props: Props) {
   const sliderContainerRef = useRef<View>(null)
 
@@ -83,7 +85,7 @@ export function Slider(props: Props) {
     if (props.values) setValues(props.values)
 
     let leftCursor: Element, rightCursor: Element
-    if (Platform.OS === 'web') {
+    if (isWeb) {
       if (sliderContainerRef.current) {
         const htmlRef = sliderContainerRef.current as unknown as HTMLDivElement
         ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[data-testid="slider-control"]')
@@ -147,9 +149,10 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     width: getSpacing(7),
     borderRadius: getSpacing(7),
     borderColor: theme.colors.greySemiDark,
-    borderWidth: getSpacing(0.5),
     backgroundColor: theme.colors.white,
     shadowOpacity: 0,
+    borderWidth: getSpacing(0.5),
+    ...(isWeb ? { boxShadow: `0px 0px 0px 2px ${theme.colors.white}` } : {}),
   }
   const trackStyle = {
     height: 15,
