@@ -2873,8 +2873,8 @@ msgid "Titre de séjour, carte d'identité, ou passeport."
 msgstr "Titre de séjour, carte d'identité, ou passeport."
 
 #: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
-msgid "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
-msgstr "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
+msgid "Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
+msgstr "Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
@@ -2957,13 +2957,13 @@ msgstr "Ton inscription est en cours de vérification. Tu recevras une notificat
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
-#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-msgid "Ton mot de passe a été modifié !"
-msgstr "Ton mot de passe a été modifié !"
-
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Ton mot de passe actuel"
 msgstr "Ton mot de passe actuel"
+
+#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
+msgid "Ton mot de passe est modifié !"
+msgstr "Ton mot de passe est modifié !"
 
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton nom"
