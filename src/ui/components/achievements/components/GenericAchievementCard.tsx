@@ -40,6 +40,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
 }
 
 const SMALL_HEIGHT = 576
+const LINE_BREAK = '\n'
 export let didFadeIn = false
 
 // TODO(anoukhello): refactor this page with GenericInfoPageWhite component
@@ -119,8 +120,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
       <ContentContainer>
-        <StyledTitle>{props.title}</StyledTitle>
-        <StyledSubTitle>{props.subTitle}</StyledSubTitle>
+        <StyledTitle>{props.title + LINE_BREAK + props.subTitle}</StyledTitle>
         <Spacer.Column numberOfSpaces={4} />
         {!!props.centerChild && (
           <React.Fragment>
@@ -193,11 +193,6 @@ const StyledLottieView = styled(LottieView)({
 const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',
 })
-
-const StyledSubTitle = styled(Typo.Title2)(({ theme }) => ({
-  textAlign: 'center',
-  fontFamily: theme.typography.title1.fontFamily,
-}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

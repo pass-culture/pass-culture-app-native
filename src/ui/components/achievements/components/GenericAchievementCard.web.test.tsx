@@ -32,8 +32,8 @@ describe('<GenericAchievementCard />', () => {
       index: 0,
       lastIndex: 0,
     })
-    expect(getByText(title)).toBeTruthy()
-    expect(getByText(subTitle)).toBeTruthy()
+    expect(getByText(title, { exact: false })).toBeTruthy()
+    expect(getByText(subTitle, { exact: false })).toBeTruthy()
     expect(getByText(text)).toBeTruthy()
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
@@ -54,8 +54,8 @@ describe('<GenericAchievementCard />', () => {
       index: 0,
       lastIndex: 0,
     })
-    expect(getByText(title)).toBeTruthy()
-    expect(getByText(subTitle)).toBeTruthy()
+    expect(getByText(title, { exact: false })).toBeTruthy()
+    expect(getByText(subTitle, { exact: false })).toBeTruthy()
     expect(getByText(text)).toBeTruthy()
     const button = getByText(buttonText)
     expect(button).toBeTruthy()

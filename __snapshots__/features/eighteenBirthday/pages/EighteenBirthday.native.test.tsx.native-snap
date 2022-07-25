@@ -196,25 +196,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     }
                   >
                     Bonne nouvelle !
-                  </Text>
-                  <Text
-                    fontSize={24}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 24,
-                          "lineHeight": 28,
-                        },
-                        Object {
-                          "fontFamily": "Montserrat-Black",
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Tu as 18 ans...
+Tu as 18 ans...
                   </Text>
                   <View
                     numberOfSpaces={4}
