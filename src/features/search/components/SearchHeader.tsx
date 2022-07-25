@@ -70,7 +70,7 @@ const SearchBoxWithoutLabel = ({ searchInputID, appEnableAutocomplete }: Props) 
   )
 }
 
-export const SearchHeader = ({ searchInputID, appEnableAutocomplete }: Props) => {
+const SearchHeaderUnmemoized = ({ searchInputID, appEnableAutocomplete }: Props) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
 
   return params === undefined || params.view === SearchView.Landing ? (
@@ -85,6 +85,8 @@ export const SearchHeader = ({ searchInputID, appEnableAutocomplete }: Props) =>
     />
   )
 }
+
+export const SearchHeader = React.memo(SearchHeaderUnmemoized)
 
 const SearchBoxContainer = styled.View({
   marginTop: getSpacing(6),
