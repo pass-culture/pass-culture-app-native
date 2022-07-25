@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
@@ -14,50 +14,43 @@ export default {
   component: CategoriesButtonsDisplay,
 } as ComponentMeta<typeof CategoriesButtonsDisplay>
 
-const sortedCategories = [
-  {
-    label: 'Bibliothèque, médiathèque',
-    Icon: categoriesIcons.VideoGame,
-    onPress: action('Jeux'),
-  },
-  {
-    label: 'CD, vinyles, musique en ligne',
-    Icon: categoriesIcons.Music,
-    onPress: action('Musique'),
-  },
-  {
-    label: 'Cinéma',
-    Icon: categoriesIcons.Cinema,
-    onPress: action('Cinéma'),
-  },
-  {
-    label: 'Conférences, rencontres',
-    Icon: categoriesIcons.Book,
-    onPress: action('Livre'),
-  },
-  {
-    label: 'Théâtre',
-    Icon: categoriesIcons.Workshop,
-    onPress: action('Théâtre'),
-  },
-]
-
 const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-const Template = (Component: FunctionComponent) => {
-  const WrappedComponent: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
-    <Component>
-      <CategoriesButtonsDisplay {...props} />
-    </Component>
-  )
-  return WrappedComponent
-}
-
-export const Default = Template(BodyWrapper)
+export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+  <BodyWrapper>
+    <CategoriesButtonsDisplay {...props} />
+  </BodyWrapper>
+)
 Default.args = {
-  sortedCategories,
+  sortedCategories: [
+    {
+      label: 'Bibliothèque, médiathèque',
+      Icon: categoriesIcons.VideoGame,
+      onPress: action('Jeux'),
+    },
+    {
+      label: 'CD, vinyles, musique en ligne',
+      Icon: categoriesIcons.Music,
+      onPress: action('Musique'),
+    },
+    {
+      label: 'Cinéma',
+      Icon: categoriesIcons.Cinema,
+      onPress: action('Cinéma'),
+    },
+    {
+      label: 'Conférences, rencontres',
+      Icon: categoriesIcons.Book,
+      onPress: action('Livre'),
+    },
+    {
+      label: 'Théâtre',
+      Icon: categoriesIcons.Workshop,
+      onPress: action('Théâtre'),
+    },
+  ],
 }
 Default.parameters = {
   chromatic: {
