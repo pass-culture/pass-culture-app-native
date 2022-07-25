@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { theme } from 'theme'
 import { StoryViewport } from 'ui/storybook/StoryViewport'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
@@ -58,6 +59,17 @@ const Template = (Component: FunctionComponent) => {
 export const Default = Template(BodyWrapper)
 Default.args = {
   sortedCategories,
+}
+Default.parameters = {
+  chromatic: {
+    viewports: [
+      320,
+      theme.breakpoints.sm,
+      theme.breakpoints.md,
+      theme.breakpoints.lg,
+      theme.breakpoints.xl,
+    ],
+  },
 }
 
 export const OnSmallPhone = Template(StoryViewport.SmallPhone)
