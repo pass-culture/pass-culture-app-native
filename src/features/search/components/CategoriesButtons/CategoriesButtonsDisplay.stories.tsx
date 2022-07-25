@@ -4,7 +4,6 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
-import { StoryViewport } from 'ui/storybook/StoryViewport'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
 
@@ -70,24 +69,4 @@ Default.parameters = {
       theme.breakpoints.xl,
     ],
   },
-}
-
-export const OnSmallPhone = Template(StoryViewport.SmallPhone)
-OnSmallPhone.args = {
-  sortedCategories,
-}
-
-export const OnPhone = Template(StoryViewport.Phone)
-OnPhone.args = {
-  sortedCategories,
-}
-
-export const OnTablet = Template(StoryViewport.Tablet)
-OnTablet.args = {
-  sortedCategories,
-}
-
-export const OnDesktop = Template(StoryViewport.Desktop)
-OnDesktop.args = {
-  sortedCategories,
 }
