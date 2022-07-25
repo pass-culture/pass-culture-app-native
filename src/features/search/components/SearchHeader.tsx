@@ -57,7 +57,7 @@ const SearchBoxWithoutLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults
   )
 }
 
-export const SearchHeader: React.FC<Props> = ({ searchInputID }) => {
+const SearchHeaderUnmemoized: React.FC<Props> = ({ searchInputID }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
 
   return params === undefined || params.view === SearchView.Landing ? (
@@ -66,6 +66,8 @@ export const SearchHeader: React.FC<Props> = ({ searchInputID }) => {
     <SearchBoxWithoutLabel searchInputID={searchInputID} />
   )
 }
+
+export const SearchHeader = React.memo(SearchHeaderUnmemoized)
 
 const SearchBoxContainer = styled.View({
   marginTop: getSpacing(6),
