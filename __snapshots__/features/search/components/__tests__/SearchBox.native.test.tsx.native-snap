@@ -9,6 +9,7 @@ exports[`SearchBox component should render SearchBox 1`] = `
       },
     ]
   }
+  testID="searchBoxWithoutAutocomplete"
 >
   <View
     style={

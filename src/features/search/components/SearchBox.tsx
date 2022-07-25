@@ -114,7 +114,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   }, [params, hasEditableSearchInput, pushWithStagedSearch])
 
   return (
-    <RowContainer>
+    <RowContainer testID="searchBoxWithoutAutocomplete">
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
