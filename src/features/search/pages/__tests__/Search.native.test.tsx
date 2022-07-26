@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -8,6 +8,7 @@ import { Search } from 'features/search/pages/Search'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import * as useShowResultsForCategory from 'features/search/pages/useShowResultsForCategory'
 import { SearchState, SearchView } from 'features/search/types'
+import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -55,6 +56,8 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
+
+jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 describe('Search component', () => {
   mockUseNetInfo.mockReturnValue({ isConnected: true })
@@ -124,6 +127,17 @@ describe('Search component', () => {
     it('should show search results', () => {
       const { queryByTestId } = render(<Search />)
       expect(queryByTestId('searchResults')).toBeTruthy()
+    })
+
+    it('should navigate to the search filter page when pressing the search filter button', async () => {
+      const { getByTestId } = render(<Search />)
+
+      const searchFilterButton = getByTestId('searchFilterButton')
+      await fireEvent.press(searchFilterButton)
+
+      const screen = 'SearchFilter'
+      const params = undefined
+      expect(navigate).toHaveBeenCalledWith(screen, params)
     })
   })
 

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -18,7 +18,7 @@ type Props = {
   searchInputID: string
 }
 
-const SearchBoxWithLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults'>) => {
+const SearchBoxWithLabel: FunctionComponent<Props> = ({ searchInputID }) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -39,7 +39,7 @@ const SearchBoxWithLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults'>)
   )
 }
 
-const SearchBoxWithoutLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults'>) => {
+const SearchBoxWithoutLabel: FunctionComponent<Props> = ({ searchInputID }) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -57,7 +57,7 @@ const SearchBoxWithoutLabel = ({ searchInputID }: Omit<Props, 'paramsShowResults
   )
 }
 
-export const SearchHeader: React.FC<Props> = ({ searchInputID }) => {
+const SearchHeaderUnmemoized: FunctionComponent<Props> = ({ searchInputID }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
 
   return params === undefined || params.view === SearchView.Landing ? (
@@ -66,6 +66,8 @@ export const SearchHeader: React.FC<Props> = ({ searchInputID }) => {
     <SearchBoxWithoutLabel searchInputID={searchInputID} />
   )
 }
+
+export const SearchHeader = React.memo(SearchHeaderUnmemoized)
 
 const SearchBoxContainer = styled.View({
   marginTop: getSpacing(6),
