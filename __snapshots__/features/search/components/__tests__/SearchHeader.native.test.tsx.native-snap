@@ -60,6 +60,7 @@ Array [
           },
         ]
       }
+      testID="searchBoxWithAutocomplete"
     >
       <Text
         style={

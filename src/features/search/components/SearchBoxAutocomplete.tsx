@@ -1,27 +1,29 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { Fragment, useCallback, useEffect, useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
 import {
   Insets,
   NativeSyntheticEvent,
   Platform,
   TextInputSubmitEditingEventData,
+  TextInput as RNTextInput,
+  Keyboard,
 } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { FilterButton } from 'features/search/atoms/Buttons'
 import { LocationType } from 'features/search/enums'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { SearchView } from 'features/search/types'
-import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useLocationChoice } from './locationChoice.utils'
@@ -29,17 +31,21 @@ import { SearchMainInput } from './SearchMainInput'
 
 const inset = 25 // arbitrary hitSlop zone inset for touchable
 const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
+const SEARCH_DEBOUNCE_MS = 500
 
-type Props = {
+type Props = UseSearchBoxProps & {
   searchInputID: string
   accessibleHiddenTitle?: string
 }
 
-export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitle, ...props }) => {
+export const SearchBoxAutocomplete: React.FC<Props> = ({
+  searchInputID,
+  accessibleHiddenTitle,
+  ...props
+}) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
-  const { searchState } = useSearch()
   const [query, setQuery] = useState<string>(params?.query || '')
   const accessibilityDescribedBy = uuidv4()
   const { locationFilter } = stagedSearchState
@@ -47,22 +53,62 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
+  const inputRef = useRef<RNTextInput | null>(null)
+  const { query: autocompleteQuery, refine: setAutocompleteQuery } = useSearchBox(props)
+  const debounceSetAutocompleteQuery = useRef(
+    debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
+  ).current
+
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
     params?.view === SearchView.Suggestions || params?.view === SearchView.Results
-  const activeFilters = useFilterCount(searchState)
+
+  // Track when the value coming from the React state changes to synchronize
+  // it with InstantSearch.
+  useEffect(() => {
+    if (autocompleteQuery !== query) {
+      debounceSetAutocompleteQuery(query)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, debounceSetAutocompleteQuery])
+
+  // Track when the InstantSearch query changes to synchronize it with
+  // the React state.
+  useEffect(() => {
+    // We bypass the state update if the input is focused to avoid concurrent
+    // updates when typing.
+    if (!inputRef.current?.isFocused() && autocompleteQuery !== query) {
+      setQuery(autocompleteQuery)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autocompleteQuery])
 
   useEffect(() => {
-    setQuery(params?.query || '')
+    // If the user select a value in autocomplete list it must be display in search input
+    if (params?.query) setQuery(params.query)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.query])
 
   const resetQuery = useCallback(() => {
-    pushWithStagedSearch({
-      query: '',
-    })
+    pushWithStagedSearch({ query: '', view: SearchView.Landing })
+    setQuery('')
+    // To force remove focus on search input
+    Keyboard.dismiss()
   }, [pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
+    // Only close autocomplete list if open
+    if (params?.view === SearchView.Suggestions && params?.query !== '') {
+      pushWithStagedSearch({
+        ...params,
+        view: SearchView.Results,
+      })
+
+      // To force remove focus on search input
+      Keyboard.dismiss()
+      return
+    }
+
     stagedDispatch({
       type: 'SET_STATE',
       payload: { locationFilter },
@@ -77,7 +123,8 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
         reset: true,
       }
     )
-  }, [locationFilter, pushWithStagedSearch, stagedDispatch])
+    setQuery('')
+  }, [locationFilter, params, pushWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
@@ -105,16 +152,16 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   )
 
   const onFocus = useCallback(() => {
-    if (hasEditableSearchInput) return
+    if (params?.view === SearchView.Suggestions) return
 
     pushWithStagedSearch({
       ...params,
       view: SearchView.Suggestions,
     })
-  }, [params, hasEditableSearchInput, pushWithStagedSearch])
+  }, [params, pushWithStagedSearch])
 
   return (
-    <RowContainer testID="searchBoxWithoutAutocomplete">
+    <RowContainer testID="searchBoxWithAutocomplete">
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
@@ -139,12 +186,6 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}
         />
-        {params?.view === SearchView.Results && (
-          <Fragment>
-            <Spacer.Row numberOfSpaces={4} />
-            <FilterButton activeFilters={activeFilters} />
-          </Fragment>
-        )}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche

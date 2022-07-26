@@ -58,6 +58,35 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
+const mockSettings = {
+  appEnableAutocomplete: false,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
+jest.mock('react-instantsearch-hooks', () => ({
+  useSearchBox: () => ({
+    query: '',
+    refine: jest.fn,
+  }),
+  useInfiniteHits: () => ({
+    hits: [
+      {
+        objectID: '1',
+        offer: { name: 'Test1', searchGroupName: 'MUSIQUE' },
+        _geoloc: {},
+      },
+      {
+        objectID: '2',
+        offer: { name: 'Test2', searchGroupName: 'MUSIQUE' },
+        _geoloc: {},
+      },
+    ],
+  }),
+}))
 
 describe('Search component', () => {
   mockUseNetInfo.mockReturnValue({ isConnected: true })
@@ -72,6 +101,18 @@ describe('Search component', () => {
       type: 'SET_STATE_FROM_NAVIGATE',
       payload: {},
     })
+  })
+
+  it('should not show autocomplete list when focus on input if autocomplete feature flag is not activated', async () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
+
+    mockSettings.appEnableAutocomplete = false
+    const { queryByTestId, getByPlaceholderText } = render(<Search />)
+
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+    await fireEvent(searchInput, 'onFocus')
+
+    expect(queryByTestId('autocompleteList')).toBeFalsy()
   })
 
   describe('When offline', () => {
@@ -139,12 +180,5 @@ describe('Search component', () => {
       const params = undefined
       expect(navigate).toHaveBeenCalledWith(screen, params)
     })
-  })
-
-  it('should show view for recent searches and suggestions when being on the suggestions view', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-    const { queryByTestId } = render(<Search />)
-
-    await expect(queryByTestId('recentsSearchesAndSuggestions')).toBeTruthy()
   })
 })

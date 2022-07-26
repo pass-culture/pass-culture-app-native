@@ -1361,6 +1361,7 @@ msgid "Impossible de recharger tes réservations, connecte-toi à internet pour 
 msgstr "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."
 
 #: src/features/search/components/SearchBox.tsx
+#: src/features/search/components/SearchBoxAutocomplete.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
 "\"Entrée\""
@@ -2443,6 +2444,7 @@ msgstr "Recherche une adresse, un lieu..."
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
 
+#: src/features/search/components/SearchHeader.tsx
 #: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre, un titre, un lieu..."
 msgstr "Recherche une offre, un titre, un lieu..."
@@ -3641,6 +3643,10 @@ msgstr "crédit photo"
 #: src/features/profile/components/BeneficiaryHeader.tsx
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
+
+#: src/features/search/components/SearchAutocompleteItem.tsx
+msgid "dans"
+msgstr "dans"
 
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "date d'éligibilité"

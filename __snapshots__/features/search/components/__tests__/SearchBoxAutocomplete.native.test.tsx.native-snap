@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBox component should render SearchBox 1`] = `
+exports[`SearchBoxAutocomplete component should render SearchBoxAutocomplete 1`] = `
 <View
   style={
     Array [
@@ -9,7 +9,7 @@ exports[`SearchBox component should render SearchBox 1`] = `
       },
     ]
   }
-  testID="searchBoxWithoutAutocomplete"
+  testID="searchBoxWithAutocomplete"
 >
   <View
     style={
