@@ -7,8 +7,6 @@ import("FastfileCheck")
 import("FastfileEnvironment")
 import("FastfileIOSSigning")
 
-
-
 # iOS
 
 platform :ios do
@@ -40,11 +38,35 @@ platform :ios do
     )
   end
 
+  lane :upload_sentry_sourceMaps_soft do
+    sh "cd .. && \
+        export APPCENTER_ACCESS_TOKEN=#{ENV['IOS_APPCENTER_API_TOKEN']} && \
+        export BUILD=`jq -r .build package.json` && \
+        export VERSION=`jq -r .version package.json` && \
+        export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
+        npx sentry-cli react-native appcenter \
+            #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} \
+            ios ./build/CodePush \
+            --deployment #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
+            --dist ${BUILD}-ios \
+            --release-name ${VERSION}-ios+codepush:${CODEPUSH_LABEL}"
+  end
+
   lane :deploy do |options|
     if options[:codepush] then # @codepush
       release_notes = %x[#{release_notes_command}]
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
-      sh "cd .. && yarn appcenter codepush release-react --token #{ENV['IOS_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{escaped_release_notes}\" --disable-duplicate-release-error"
+      sh "cd .. && \
+      yarn appcenter codepush release-react \
+          --token #{ENV['IOS_APPCENTER_API_TOKEN']} \
+          --deployment-name #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
+          --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} \
+          --target-binary-version \"#{ENV['VERSION']}\" \
+          --description \"#{escaped_release_notes}\" \
+          --disable-duplicate-release-error \
+          --sourcemap-output \
+          --output-dir ./build"
+      upload_sentry_sourceMaps_soft
     else
       match(
         shallow_clone: true,
@@ -67,26 +89,29 @@ platform :ios do
 
 end
 
-#  Android
+# Android
 
 platform :android do
+
   lane :build do |options|
     gradle(
       task: ENV['ANDROID_GRADLE_TASK'],
       project_dir: ENV['ANDROID_PROJECT_DIR']
     )
   end
+
   private_lane :deploy_playStore do |options|
     UI.important("env: #{options[:env]}")
     supply(
       package_name: ENV['ANDROID_APP_ID'],
       aab: "android/app/build/outputs/bundle/productionRelease/app-production-release.aab",
-      skip_upload_metadata: true, 
+      skip_upload_metadata: true,
       skip_upload_apk: true,
-      skip_upload_images: true, 
+      skip_upload_images: true,
       skip_upload_screenshots: true
     )
   end
+
   lane :deploy_appCenter do |options|
     appcenter_upload(
       api_token: ENV['ANDROID_APPCENTER_API_TOKEN'],
@@ -99,11 +124,35 @@ platform :android do
     )
   end
 
+  lane :upload_sentry_sourceMaps_soft do
+    sh "cd .. && \
+        export APPCENTER_ACCESS_TOKEN=#{ENV['ANDROID_APPCENTER_API_TOKEN']} && \
+        export BUILD=`jq -r .build package.json` && \
+        export VERSION=`jq -r .version package.json` && \
+        export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
+        npx sentry-cli react-native appcenter \
+            #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} \
+            android ./build/CodePush \
+            --deployment #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
+            --dist ${BUILD}-android \
+            --release-name ${VERSION}-android+codepush:${CODEPUSH_LABEL}"
+  end
+
   lane :deploy do |options|
     if options[:codepush] then # @codepush
       release_notes = %x[#{release_notes_command}]
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
-      sh "cd .. && yarn appcenter codepush release-react --token #{ENV['ANDROID_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{escaped_release_notes}\" --disable-duplicate-release-error"
+      sh "cd .. && \
+        yarn appcenter codepush release-react \
+            --token #{ENV['ANDROID_APPCENTER_API_TOKEN']} \
+            --deployment-name #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
+            --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} \
+            --target-binary-version \"#{ENV['VERSION']}\" \
+            --description \"#{escaped_release_notes}\" \
+            --disable-duplicate-release-error \
+            --sourcemap-output \
+            --output-dir ./build"
+      upload_sentry_sourceMaps_soft
     else
       build
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
