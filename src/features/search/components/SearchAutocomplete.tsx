@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-hooks'
 import { FlatList } from 'react-native'
 
@@ -13,11 +13,9 @@ type Props = UseInfiniteHitsProps & {
 export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...props }) => {
   const { hits } = useInfiniteHits(props)
   const contentContainerStyle = { paddingHorizontal: getSpacing(6), paddingTop: getSpacing(4) }
-  const ref = useRef<FlatList<AlgoliaHit>>(null)
 
   return (
     <FlatList
-      ref={ref}
       contentContainerStyle={contentContainerStyle}
       data={hits as unknown as AlgoliaHit[]}
       keyExtractor={(item) => item.objectID}
