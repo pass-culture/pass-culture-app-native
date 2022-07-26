@@ -200,8 +200,9 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
-  logChooseLocation: (params: { type: 'place' } | { type: 'venue'; venueId: number }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_LOCATION, params),
+  logChangeSearchLocation: (
+    params: { type: 'place' | 'everywhere' | 'aroundMe' } | { type: 'venue'; venueId: number }
+  ) => analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, params),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
   logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
   logSendActivationMailAgain: (numberOfTimes: number) =>

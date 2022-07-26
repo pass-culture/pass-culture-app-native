@@ -4,17 +4,14 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
-import { analytics } from 'libs/firebase/analytics'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render } from 'tests/utils/web'
 
 const mockSearchState = initialSearchState
 const mockStagedDispatch = jest.fn()
-const venueId = mockedSuggestedVenues[1].venueId
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({
@@ -24,7 +21,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 let mockPlaces: SuggestedPlace[] = []
-let mockVenues: SuggestedVenue[] = []
+const mockVenues: SuggestedVenue[] = []
 
 let mockIsLoading = false
 jest.mock('libs/place', () => ({
@@ -79,22 +76,5 @@ describe('SuggestedPlaces component', () => {
     mockIsLoading = true
     const { queryByText } = render(<SuggestedPlaces query="paris" />)
     expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeFalsy()
-  })
-
-  it(`should log analytics event ChooseLocation when clicking on pick place`, () => {
-    mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
-    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
-
-    fireEvent.click(getByTestId(keyExtractor(mockPlaces[1])))
-    expect(analytics.logChooseLocation).toHaveBeenNthCalledWith(1, { type: 'place' })
-  })
-
-  it(`should log analytics event ChooseLocation when clicking on pick venue`, () => {
-    mockVenues = mockedSuggestedVenues
-    mockIsLoading = false
-    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
-
-    fireEvent.click(getByTestId(keyExtractor(mockVenues[1])))
-    expect(analytics.logChooseLocation).toHaveBeenNthCalledWith(1, { type: 'venue', venueId })
   })
 })

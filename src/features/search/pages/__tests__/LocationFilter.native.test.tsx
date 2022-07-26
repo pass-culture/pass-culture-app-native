@@ -2,6 +2,7 @@ import React from 'react'
 
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { analytics } from 'libs/firebase/analytics'
 import {
   GeolocPositionError,
   GeolocPermissionState,
@@ -79,6 +80,13 @@ describe('LocationFilter component', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
   })
 
+  it('should log ChangeSearchLocation event when selecting Around Me', () => {
+    const { getByTestId } = renderLocationFilter()
+    fireEvent.press(getByTestId('locationChoice-aroundMe'))
+
+    expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'aroundMe' })
+  })
+
   it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
     mockPosition = null
     const { getByTestId } = renderLocationFilter()
@@ -90,6 +98,13 @@ describe('LocationFilter component', () => {
     const { getByTestId } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
+  })
+
+  it('should log ChangeSearchLocation event when selecting Everywhere', () => {
+    const { getByTestId } = renderLocationFilter()
+    fireEvent.press(getByTestId('locationChoice-everywhere'))
+
+    expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'everywhere' })
   })
 
   it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
