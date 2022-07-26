@@ -84,9 +84,8 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   }, [autocompleteQuery])
 
   useEffect(() => {
-    if (!params?.query) return
     // If the user select a value in autocomplete list it must be display in search input
-    setQuery(params.query)
+    if (params?.query) setQuery(params.query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.query])
 

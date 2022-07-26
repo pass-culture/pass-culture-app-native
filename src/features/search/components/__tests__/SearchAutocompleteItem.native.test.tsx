@@ -48,9 +48,7 @@ describe('SearchAutocompleteItem component', () => {
   it('should not display the search group name if the hit is not in the top three', () => {
     const { queryByText } = render(<SearchAutocompleteItem index={3} hit={hit} />)
 
-    const text = 'Test1'
-
-    expect(queryByText(text)).toBeTruthy()
+    expect(queryByText(hit.offer.name)).toBeTruthy()
   })
 
   it('should execute a search with the name of the selected offer on hit click', async () => {
@@ -82,8 +80,6 @@ describe('SearchAutocompleteItem component', () => {
       <SearchAutocompleteItem index={0} hit={hitWithNoneSearchGroup} />
     )
 
-    const text = 'Test1'
-
-    expect(queryByText(text)).toBeTruthy()
+    expect(queryByText(hit.offer.name)).toBeTruthy()
   })
 })

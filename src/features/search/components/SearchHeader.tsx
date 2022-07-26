@@ -20,10 +20,7 @@ type Props = {
   appEnableAutocomplete: boolean
 }
 
-const SearchBoxWithLabel = ({
-  searchInputID,
-  appEnableAutocomplete,
-}: Omit<Props, 'paramsShowResults'>) => {
+const SearchBoxWithLabel = ({ searchInputID, appEnableAutocomplete }: Props) => {
   const { top } = useCustomSafeInsets()
 
   return (
@@ -48,10 +45,7 @@ const SearchBoxWithLabel = ({
   )
 }
 
-const SearchBoxWithoutLabel = ({
-  searchInputID,
-  appEnableAutocomplete,
-}: Omit<Props, 'paramsShowResults'>) => {
+const SearchBoxWithoutLabel = ({ searchInputID, appEnableAutocomplete }: Props) => {
   const { top } = useCustomSafeInsets()
 
   return (
