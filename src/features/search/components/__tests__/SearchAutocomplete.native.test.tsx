@@ -1,5 +1,4 @@
-import React, { createRef } from 'react'
-import { FlatList } from 'react-native'
+import React from 'react'
 
 import { SearchAutocomplete } from 'features/search/components/SearchAutocomplete'
 import { Hit } from 'features/search/pages/Search'
@@ -23,9 +22,7 @@ jest.mock('react-instantsearch-hooks', () => ({
 }))
 
 describe('SearchAutocomplete component', () => {
-  const ref = createRef<FlatList>()
-
   it('should render SearchAutocomplete', () => {
-    expect(render(<SearchAutocomplete ref={ref} hitComponent={Hit} />)).toMatchSnapshot()
+    expect(render(<SearchAutocomplete hitComponent={Hit} />)).toMatchSnapshot()
   })
 })

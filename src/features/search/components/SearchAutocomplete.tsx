@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react'
+import React, { useRef } from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-hooks'
 import { FlatList } from 'react-native'
 
@@ -6,31 +6,25 @@ import { HitProps } from 'features/search/pages/Search'
 import { AlgoliaHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
-type SearchAutocompleteProps = UseInfiniteHitsProps & {
+type Props = UseInfiniteHitsProps & {
   hitComponent: (props: HitProps) => JSX.Element
 }
 
-export const SearchAutocomplete = forwardRef(
-  <THit extends AlgoliaHit>(
-    { hitComponent: Item, ...props }: SearchAutocompleteProps,
-    ref: Ref<FlatList<THit>>
-  ) => {
-    const { hits } = useInfiniteHits(props)
-    const contentContainerStyle = { paddingHorizontal: getSpacing(6), paddingTop: getSpacing(4) }
+export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...props }) => {
+  const { hits } = useInfiniteHits(props)
+  const contentContainerStyle = { paddingHorizontal: getSpacing(6), paddingTop: getSpacing(4) }
+  const ref = useRef<FlatList<AlgoliaHit>>(null)
 
-    return (
-      <FlatList
-        ref={ref}
-        contentContainerStyle={contentContainerStyle}
-        data={hits as unknown as THit[]}
-        keyExtractor={(item) => item.objectID}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-        testID="autocompleteList"
-        renderItem={({ item, index }) => <Item hit={item as unknown as THit} index={index} />}
-      />
-    )
-  }
-)
-
-SearchAutocomplete.displayName = 'SearchAutocomplete'
+  return (
+    <FlatList
+      ref={ref}
+      contentContainerStyle={contentContainerStyle}
+      data={hits as unknown as AlgoliaHit[]}
+      keyExtractor={(item) => item.objectID}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
+      testID="autocompleteList"
+      renderItem={({ item, index }) => <Item hit={item as unknown as AlgoliaHit} index={index} />}
+    />
+  )
+}

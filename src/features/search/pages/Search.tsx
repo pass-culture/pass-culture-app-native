@@ -1,8 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import algoliasearch from 'algoliasearch'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
-import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -34,7 +33,6 @@ export function Search() {
   const showResultsForCategory = useShowResultsForCategory()
   const { data: appSettings } = useAppSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
-  const listRef = useRef<FlatList>(null)
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params || { view: SearchView.Landing } })
@@ -44,7 +42,7 @@ export function Search() {
     if (params?.view === SearchView.Suggestions)
       return (
         <React.Fragment>
-          {!!appEnableAutocomplete && <SearchAutocomplete ref={listRef} hitComponent={Hit} />}
+          {!!appEnableAutocomplete && <SearchAutocomplete hitComponent={Hit} />}
         </React.Fragment>
       )
     if (params?.view === SearchView.Results) return <SearchResults />
