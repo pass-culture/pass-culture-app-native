@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useContext, memo, useState } from 'react'
-import { Platform } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
+
+import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 
 import { SplashScreenContextInterface } from './types'
 
@@ -16,14 +17,14 @@ export const SplashScreenProvider = memo(function SplashScreenProvider(props: {
   children: JSX.Element
 }) {
   const [isSplashScreenHidden, setIsSplashScreenHidden] = useState<boolean>(false)
+  const showSkeleton = useShowSkeleton()
 
   const hideSplashScreen = useCallback(() => {
-    const timeout = Platform.OS === 'android' ? 6000 : 4000
-    setTimeout(() => {
+    if (!showSkeleton) {
       SplashScreen.hide()
       setIsSplashScreenHidden(true)
-    }, timeout)
-  }, [])
+    }
+  }, [showSkeleton])
 
   return (
     <SplashScreenContext.Provider value={{ isSplashScreenHidden, hideSplashScreen }}>
