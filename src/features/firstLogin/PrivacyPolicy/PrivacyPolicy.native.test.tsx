@@ -12,7 +12,7 @@ describe('<PrivacyPolicy />', () => {
   })
 
   it('should render privacy policy', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = render(<PrivacyPolicy />)
     await flushAllPromisesWithAct()
 

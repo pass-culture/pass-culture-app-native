@@ -29,7 +29,7 @@ const isAvailable = jest.spyOn(reactNativeInAppReview, 'isAvailable').mockImplem
 describe('<BookingConfirmation />', () => {
   const mockOfferId = 1337
   beforeEach(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     useRoute.mockImplementation(() => ({
       params: {
         offerId: mockOfferId,

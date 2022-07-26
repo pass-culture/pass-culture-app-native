@@ -15,7 +15,7 @@ jest.mock('features/venue/api/useVenue')
 
 describe('<VenueHeader />', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
   afterAll(() => {
     jest.useRealTimers()

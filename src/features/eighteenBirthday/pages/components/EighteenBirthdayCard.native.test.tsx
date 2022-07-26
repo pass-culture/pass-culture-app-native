@@ -27,7 +27,7 @@ const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 
 describe('<EighteenBirthdayCard />', () => {
   it('should render eighteen birthday card', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const firstTutorial = await renderEighteenBirthdayCard()
 
     act(() => {

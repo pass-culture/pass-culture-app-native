@@ -24,7 +24,7 @@ jest.mock('features/auth/settings')
 describe('<DatePickerSpinner />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   describe('- navigation -', () => {

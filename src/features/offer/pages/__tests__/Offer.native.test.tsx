@@ -5,7 +5,7 @@ import { renderOfferPage } from './renderOfferPageTestUtil'
 describe('<Offer />', () => {
   // fake timers are needed to avoid warning (because we use useTrackOfferSeenDuration)
   // See https://github.com/facebook/jest/issues/6434
-  beforeEach(() => jest.useFakeTimers())
+  beforeEach(() => jest.useFakeTimers('legacy'))
   afterEach(() => jest.useRealTimers())
 
   it('animates on scroll', async () => {

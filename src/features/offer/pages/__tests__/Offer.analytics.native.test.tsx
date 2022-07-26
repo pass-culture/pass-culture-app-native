@@ -8,7 +8,7 @@ import { offerId, renderOfferPage, renderOfferBodyPage } from './renderOfferPage
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   const trigger = (component: ReactTestInstance) => {

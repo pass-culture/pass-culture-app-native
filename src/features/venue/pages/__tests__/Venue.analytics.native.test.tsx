@@ -21,7 +21,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 describe('<VenueBody /> - Analytics', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   afterAll(() => {

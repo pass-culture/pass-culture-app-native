@@ -67,7 +67,7 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
 }))
 
 describe('<Favorite /> component', () => {
-  beforeEach(() => jest.useFakeTimers())
+  beforeEach(() => jest.useFakeTimers('legacy'))
   afterEach(async () => {
     jest.runOnlyPendingTimers()
     cleanup()

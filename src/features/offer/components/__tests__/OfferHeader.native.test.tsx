@@ -53,7 +53,7 @@ jest.mock('features/favorites/pages/useFavorites', () =>
 
 describe('<OfferHeader />', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   afterEach(async () => {
