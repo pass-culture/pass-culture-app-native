@@ -19,7 +19,7 @@ interface ModuleBannerProps {
 
 export function ModuleBanner(props: ModuleBannerProps) {
   return (
-    <TouchableLink navigateTo={props.navigateTo} testID={props.testID} highlight>
+    <StyledTouchableLink navigateTo={props.navigateTo} testID={props.testID} highlight>
       <ImageContainer>
         <ImageBackground source={BACKGROUND_IMAGE_SOURCE} testID="module-background">
           <Container>
@@ -32,9 +32,13 @@ export function ModuleBanner(props: ModuleBannerProps) {
           </Container>
         </ImageBackground>
       </ImageContainer>
-    </TouchableLink>
+    </StyledTouchableLink>
   )
 }
+
+const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.white,
+}))({})
 
 const ImageContainer = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
