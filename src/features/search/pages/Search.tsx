@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import algoliasearch from 'algoliasearch'
+import algoliasearch, { SearchClient } from 'algoliasearch'
 import React, { useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
@@ -23,7 +23,28 @@ import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 const searchInputID = uuidv4()
-const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
+const algoliaClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
+const searchClient: SearchClient = {
+  ...algoliaClient,
+  search(requests) {
+    if (requests.every(({ params }) => !params?.query)) {
+      return Promise.resolve({
+        results: requests.map(() => ({
+          hits: [],
+          nbHits: 0,
+          page: 0,
+          nbPages: 0,
+          hitsPerPage: 0,
+          processingTimeMS: 0,
+          exhaustiveNbHits: false,
+          query: '',
+          params: '',
+        })),
+      })
+    }
+    return algoliaClient.search(requests)
+  },
+}
 const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
 
 export function Search() {
