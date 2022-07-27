@@ -1,0 +1,40 @@
+diff --git a/node_modules/console-fail-test/src/environments/jest.js b/node_modules/console-fail-test/src/environments/jest.js
+index c25d3db..d5846e7 100644
+--- a/node_modules/console-fail-test/src/environments/jest.js
++++ b/node_modules/console-fail-test/src/environments/jest.js
+@@ -5,18 +5,27 @@ exports.getJestEnvironment = () => {
+     if (typeof afterEach === "undefined" || typeof beforeEach === "undefined" || typeof jest === "undefined") {
+         return undefined;
+     }
++    let afterEachCallback = () => {};
++    let beforeEachCallback = () => {};
++
++    afterEach(() => {
++        afterEachCallback();
++    });
++
++    beforeEach(() => {
++        beforeEachCallback();
++    });
++
+     return {
+         after(callback) {
+-            afterEach(() => {
+-                callback({
+-                    reportComplaint({ error }) {
+-                        throw error;
+-                    },
+-                });
+-            });
++            afterEachCallback = () => callback({
++                reportComplain({ error }) {
++                    throw error
++                }
++            })
+         },
+         before: (callback) => {
+-            beforeEach(callback);
++            beforeEachCallback = callback
+         },
+         filterMethodCalls: ({ methodCalls }) => methodCalls,
+     };
