@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -70,10 +70,7 @@ const SearchBoxWithoutLabel = ({ searchInputID, appEnableAutocomplete }: Props) 
   )
 }
 
-const SearchHeaderUnmemoized: FunctionComponent<Props> = ({
-  searchInputID,
-  appEnableAutocomplete,
-}) => {
+export const SearchHeader = ({ searchInputID, appEnableAutocomplete }: Props) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
 
   return params === undefined || params.view === SearchView.Landing ? (
@@ -88,8 +85,6 @@ const SearchHeaderUnmemoized: FunctionComponent<Props> = ({
     />
   )
 }
-
-export const SearchHeader = React.memo(SearchHeaderUnmemoized)
 
 const SearchBoxContainer = styled.View({
   marginTop: getSpacing(6),

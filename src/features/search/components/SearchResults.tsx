@@ -6,6 +6,7 @@ import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
+import { Filter } from 'features/search/atoms/Buttons'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -147,6 +148,12 @@ export const SearchResults: React.FC = () => {
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
+      {nbHits > 0 && (
+        <FilterContainer>
+          <Filter />
+          <Spacer.BottomScreen />
+        </FilterContainer>
+      )}
       <Container testID="searchResults">
         <FlatList
           ref={flatListRef}
@@ -197,6 +204,13 @@ const Separator = styled.View(({ theme }) => ({
   marginVertical: getSpacing(4),
 }))
 
+const FilterContainer = styled.View(({ theme }) => ({
+  alignSelf: 'center',
+  position: 'absolute',
+  bottom: theme.tabBar.height + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
+
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
@@ -216,6 +230,10 @@ function SearchResultsPlaceHolder() {
 
   return (
     <React.Fragment>
+      <FilterContainer>
+        <Filter />
+        <Spacer.BottomScreen />
+      </FilterContainer>
       <Container>
         <FlatList
           data={FAVORITE_LIST_PLACEHOLDER}
