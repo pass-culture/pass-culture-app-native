@@ -300,7 +300,7 @@ commands:
       - install_node_version
       - install_node_modules
       - run: |
-          yarn build:<< parameters.env >>
+          NODE_OPTIONS=--max-old-space-size=4096 yarn build:<< parameters.env >>
 
   push-to-bucket:
     description: Push the built decliweb to a cloudstorage bucket
