@@ -3,13 +3,14 @@ import { G, Path, Defs, RadialGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from '../types'
 
-const RADIAL_GRADIENT_1_ID = 'Instagram-RadialGradient1'
-const RADIAL_GRADIENT_2_ID = 'Instagram-RadialGradient2'
-
 const InstagramSvg = ({ color: _color, size, accessibilityLabel, testID }: AccessibleIcon) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  const { id: gradientId2, fill: gradientFill2 } = svgIdentifier()
+
   return (
     <AccessibleSvg
       width={size}
@@ -19,7 +20,7 @@ const InstagramSvg = ({ color: _color, size, accessibilityLabel, testID }: Acces
       viewBox="0 0 24 24">
       <Defs>
         <RadialGradient
-          id={RADIAL_GRADIENT_1_ID}
+          id={gradientId}
           cx="26.563%"
           cy="107.702%"
           r="99.843%"
@@ -32,7 +33,7 @@ const InstagramSvg = ({ color: _color, size, accessibilityLabel, testID }: Acces
           <Stop offset="100%" stopColor="#C837AB" />
         </RadialGradient>
         <RadialGradient
-          id={RADIAL_GRADIENT_2_ID}
+          id={gradientId2}
           cx="-16.751%"
           cy="7.204%"
           r="44.617%"
@@ -46,11 +47,11 @@ const InstagramSvg = ({ color: _color, size, accessibilityLabel, testID }: Acces
       </Defs>
       <G fillRule="nonzero" fill="none">
         <Path
-          fill={`url(#${RADIAL_GRADIENT_1_ID})`}
+          fill={gradientFill}
           d="M11.915 0c-4.973 0-6.427.005-6.71.029-1.02.085-1.655.247-2.347.594a4.757 4.757 0 00-1.369 1.01C.734 2.423.276 3.396.11 4.552c-.08.561-.103.676-.108 3.542-.002.956 0 2.213 0 3.9 0 5.007.005 6.471.03 6.755.082 1.001.237 1.63.567 2.32a5.027 5.027 0 003.252 2.676c.491.127 1.033.198 1.73.23.295.014 3.3.023 6.31.023 3.007 0 6.016-.004 6.303-.018.806-.039 1.274-.102 1.792-.237a4.994 4.994 0 003.252-2.682c.323-.672.487-1.326.561-2.274.017-.207.023-3.504.023-6.796 0-3.293-.007-6.583-.023-6.79-.075-.964-.24-1.612-.573-2.297a4.755 4.755 0 00-1.02-1.407c-.787-.759-1.751-1.22-2.9-1.387-.556-.081-.667-.105-3.514-.11h-3.876z"
         />
         <Path
-          fill={`url(#${RADIAL_GRADIENT_2_ID})`}
+          fill={gradientFill2}
           d="M11.915 0c-4.973 0-6.427.005-6.71.029-1.02.085-1.655.247-2.347.594a4.757 4.757 0 00-1.369 1.01C.734 2.423.276 3.396.11 4.552c-.08.561-.103.676-.108 3.542-.002.956 0 2.213 0 3.9 0 5.007.005 6.471.03 6.755.082 1.001.237 1.63.567 2.32a5.027 5.027 0 003.252 2.676c.491.127 1.033.198 1.73.23.295.014 3.3.023 6.31.023 3.007 0 6.016-.004 6.303-.018.806-.039 1.274-.102 1.792-.237a4.994 4.994 0 003.252-2.682c.323-.672.487-1.326.561-2.274.017-.207.023-3.504.023-6.796 0-3.293-.007-6.583-.023-6.79-.075-.964-.24-1.612-.573-2.297a4.755 4.755 0 00-1.02-1.407c-.787-.759-1.751-1.22-2.9-1.387-.556-.081-.667-.105-3.514-.11h-3.876z"
         />
         <Path
