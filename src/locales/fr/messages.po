@@ -1182,6 +1182,7 @@ msgstr "Fermer le calendrier"
 msgid "Festival"
 msgstr "Festival"
 
+#: src/features/search/atoms/Buttons/Filter.tsx
 #: src/features/search/pages/SearchFilter.tsx
 msgid "Filtrer"
 msgstr "Filtrer"
@@ -3938,10 +3939,6 @@ msgstr "{0}"
 msgid "{0} {EURO_SYMBOL}"
 msgstr "{0} {EURO_SYMBOL}"
 
-#: src/features/search/atoms/Buttons/FilterButton/FilterButton.tsx
-msgid "{activeFilters, plural, one {Voir tous les filtres : # filtre actif} other {Voir tous les filtres : # filtres actifs}}"
-msgstr "{activeFilters, plural, one {Voir tous les filtres : # filtre actif} other {Voir tous les filtres : # filtres actifs}}"
-
 #: src/features/search/atoms/TitleWithCount.tsx
 msgid "{count, plural, one {# sélectionné} other {# sélectionnés}}"
 msgstr "{count, plural, one {# sélectionné} other {# sélectionnés}}"
@@ -3973,6 +3970,10 @@ msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# ré
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
 msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
+
+#: src/features/search/atoms/Buttons/Filter.tsx
+msgid "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
+msgstr "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"

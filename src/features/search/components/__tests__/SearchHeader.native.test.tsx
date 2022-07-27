@@ -7,7 +7,6 @@ import { SearchHeader } from 'features/search/components/SearchHeader'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
-import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render } from 'tests/utils'
@@ -55,7 +54,6 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
-jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('react-instantsearch-hooks', () => ({
   useSearchBox: () => ({
     query: '',
