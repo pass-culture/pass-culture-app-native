@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -40,6 +40,15 @@ export const SetPhoneValidationCode = () => {
   const formattedPhoneNumber = phoneValidation?.phoneNumber
     ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
     : ''
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!phoneValidation) {
+        setTimeout(() => navigate('SetPhoneNumber'))
+      }
+    }, [phoneValidation, navigate])
+  )
 
   const [codeInputState, setCodeInputState] = useState({
     code: '',
@@ -47,7 +56,6 @@ export const SetPhoneValidationCode = () => {
   })
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { navigate } = useNavigation<UseNavigationType>()
   const titleID = uuidv4()
   const validationCodeInputErrorId = uuidv4()
 

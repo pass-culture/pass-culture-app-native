@@ -84,6 +84,14 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
 
+  useFocusEffect(
+    useCallback(() => {
+      if (!phoneValidation) {
+        setTimeout(() => navigate('SetPhoneNumberDeprecated'))
+      }
+    }, [phoneValidation, navigate])
+  )
+
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: onValidateSuccess,
     onError,
