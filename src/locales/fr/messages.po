@@ -537,14 +537,6 @@ msgstr "Cinéma - Salle de projections"
 msgid "Cinéma itinérant"
 msgstr "Cinéma itinérant"
 
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
-msgstr "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
-
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
-msgstr "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
-
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
@@ -1407,10 +1399,6 @@ msgstr "J'ai compris"
 msgid "J'ai reçu mon code"
 msgstr "J'ai reçu mon code"
 
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Je cherche"
-msgstr "Je cherche"
-
 #: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
 msgid "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
 msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
@@ -2093,10 +2081,6 @@ msgstr "Ouvrir le gestionnaire mail pour contacter le support"
 msgid "Ouvrir un onglet ÉduConnect"
 msgstr "Ouvrir un onglet ÉduConnect"
 
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Où"
-msgstr "Où"
-
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Où ?"
 msgstr "Où ?"
@@ -2469,10 +2453,6 @@ msgstr "Recherche une adresse, un lieu..."
 #: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
-
-#: src/features/search/atoms/Buttons/Search.tsx
-msgid "Rechercher"
-msgstr "Rechercher"
 
 #: src/features/navigation/TabBar/routes.ts
 msgid "Rechercher des offres"
