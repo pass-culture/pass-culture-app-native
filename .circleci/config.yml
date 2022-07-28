@@ -109,6 +109,26 @@ commands:
           paths:
             - .jest
 
+  new_unit_test_native:
+    description: New Unit Tests Native
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run:
+          name: Run tests with new config with JUnit as reporter
+          command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:ci:new
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - save_cache:
+          name: Save Tests cache
+          key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - .jest
+
   unit_test_web:
     description: Unit Tests Web
     steps:
@@ -467,6 +487,15 @@ jobs:
       - checkout
       - install_node_modules
       - unit_test_native
+      - sonarcloud-scanner
+
+  new-test-native:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - new_unit_test_native
       - sonarcloud-scanner
 
   test-web:
@@ -897,6 +926,10 @@ workflows:
           requires:
             - checkout-and-install-deps
       - test-native:
+          requires:
+            - checkout-and-install-deps
+          context: SonarCloud
+      - new-test-native:
           requires:
             - checkout-and-install-deps
           context: SonarCloud
