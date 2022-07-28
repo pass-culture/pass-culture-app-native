@@ -175,13 +175,6 @@ describe('Search reducer', () => {
     expect(newState.offerTypes).toStrictEqual({ isDigital: false, isThing: true, isEvent: false })
   })
 
-  it('should handle SHOW_RESULTS', () => {
-    let newState = searchReducer(state, { type: 'SHOW_RESULTS', payload: true })
-    expect(newState).toStrictEqual({ ...state, view: SearchView.Results })
-    newState = searchReducer(newState, { type: 'SHOW_RESULTS', payload: false })
-    expect(newState).toStrictEqual({ ...state, view: SearchView.Landing })
-  })
-
   it('should handle TOGGLE_OFFER_FREE', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_FREE' })
     expect(newState).toStrictEqual({ ...state, offerIsFree: true })
