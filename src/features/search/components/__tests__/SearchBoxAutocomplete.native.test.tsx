@@ -58,6 +58,7 @@ jest.mock('react-instantsearch-hooks', () => ({
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,
+    clear: jest.fn,
   }),
 }))
 
@@ -87,7 +88,7 @@ describe('SearchBoxAutocomplete component', () => {
     )
   })
 
-  it('should not show previous if no search executed and no focus on input', () => {
+  it('should not show previous button if no search executed and no focus on input', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
     const previousButton = queryByTestId('previousButton')
@@ -135,6 +136,7 @@ describe('SearchBoxAutocomplete component', () => {
       ...getTabNavConfig('Search', {
         ...mockStagedSearchState,
         query: '',
+        view: SearchView.Suggestions,
       })
     )
   })
@@ -233,5 +235,15 @@ describe('SearchBoxAutocomplete component', () => {
         locationFilter: mockStagedSearchState.locationFilter,
       })
     )
+  })
+
+  it('should stay on the current view when focusing search input and being on the suggestions', async () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
+    const { getByPlaceholderText } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    await fireEvent(searchInput, 'onFocus')
+
+    expect(navigate).not.toBeCalled()
   })
 })
