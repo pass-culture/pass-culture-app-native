@@ -242,6 +242,7 @@ export interface RecommendationParametersFields {
   isFree?: boolean
   isEvent?: boolean
   priceMax?: number
+  subcategories?: string[]
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields

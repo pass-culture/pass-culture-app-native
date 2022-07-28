@@ -9,6 +9,8 @@ import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
+import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 import { useAlgoliaRecommendedHits } from './useAlgoliaRecommendedHits'
 
@@ -23,7 +25,8 @@ export const getRecommendationEndpoint = (
 }
 
 export function getRecommendationParameters(
-  parameters: RecommendationParametersFields | undefined
+  parameters: RecommendationParametersFields | undefined,
+  subcategoryLabelMapping: SubcategoryLabelMapping
 ): RecommendedIdsRequest {
   if (!parameters) return {}
   return {
@@ -32,6 +35,9 @@ export function getRecommendationParameters(
     isEvent: parameters?.isEvent,
     price_max: parameters?.isFree ? 0 : parameters?.priceMax,
     start_date: parameters?.beginningDatetime,
+    subcategories: (parameters?.subcategories || []).map(
+      (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
+    ),
   }
 }
 
@@ -44,14 +50,18 @@ export const useHomeRecommendedHits = (
   const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
   const [recommendedIds, setRecommendedIds] = useState<string[]>()
   const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation(recommendationEndpoint)
+  const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   useEffect(() => {
     if (!recommendationEndpoint) return
-    const requestParameters = getRecommendationParameters(recommendationParameters)
+    const requestParameters = getRecommendationParameters(
+      recommendationParameters,
+      subcategoryLabelMapping
+    )
     getRecommendedIds(requestParameters, {
       onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
     })
-  }, [getRecommendedIds, recommendationParameters, recommendationEndpoint])
+  }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
   return useAlgoliaRecommendedHits(recommendedIds || [], moduleId)
 }
