@@ -10,7 +10,7 @@ import { render, fireEvent } from 'tests/utils'
 
 import { AccountCreated } from '../AccountCreated'
 
-const mockedUseUserProfileInfo = jest.mocked(useUserProfileInfo)
+const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 jest.mock('features/profile/api')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')

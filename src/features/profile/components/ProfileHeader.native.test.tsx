@@ -49,7 +49,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
 
 jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
-const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary, true)
+const mockedisUserUnderageBeneficiary = isUserUnderageBeneficiary as jest.Mock
 
 describe('ProfileHeader', () => {
   beforeEach(() => {

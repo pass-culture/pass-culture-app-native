@@ -12,8 +12,8 @@ import { render, fireEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from '../BeneficiaryRequestSent'
 
-const mockedUseAppSettings = jest.mocked(useAppSettings, true)
-const mockedUseUserProfileInfo = jest.mocked(useUserProfileInfo)
+const mockedUseAppSettings = useAppSettings as jest.Mock
+const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 jest.mock('features/profile/api')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')

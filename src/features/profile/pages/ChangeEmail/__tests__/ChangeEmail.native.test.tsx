@@ -12,7 +12,7 @@ import { ChangeEmail } from '../ChangeEmail'
 
 jest.mock('features/profile/api')
 jest.mock('react-query')
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const mockUseMutationSuccess = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({
@@ -34,7 +34,7 @@ const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
   }))
 }
 
-const mockedUseQuery = jest.mocked(useQuery)
+const mockedUseQuery = useQuery as jest.Mock
 const mockUseQueryWithoutExpirationTimestamp = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseQuery.mockImplementationOnce(() => ({}))

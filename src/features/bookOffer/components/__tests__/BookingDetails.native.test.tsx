@@ -45,7 +45,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),
   useBookingOffer: jest.fn(),
 }))
-const mockUseBookingOffer = jest.mocked(useBookingOffer)
+const mockUseBookingOffer = useBookingOffer as jest.Mock
 mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
 
 const mockShowErrorSnackBar = jest.fn()
@@ -60,7 +60,7 @@ const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
 
 jest.mock('features/profile/utils')
-const mockedUseIsUserUnderage = jest.mocked(useIsUserUnderage)
+const mockedUseIsUserUnderage = useIsUserUnderage as jest.Mock
 
 const mockUseSubcategoriesMapping = jest.fn()
 jest.mock('libs/subcategories', () => ({

@@ -14,7 +14,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ConfirmDeleteProfile } from '../ConfirmDeleteProfile'
 
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 
 jest.mock('react-query')
 

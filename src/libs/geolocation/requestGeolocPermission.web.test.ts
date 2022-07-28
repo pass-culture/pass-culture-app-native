@@ -5,14 +5,14 @@ jest.mock('libs/geolocation/requestGeolocPermission', () =>
   jest.requireActual('./requestGeolocPermission')
 )
 
-let mockQuery = jest.mocked(navigator.permissions.query)
-const mockGetCurrentPosition = jest.mocked(navigator.geolocation.getCurrentPosition)
+let mockQuery = navigator.permissions.query as jest.Mock
+const mockGetCurrentPosition = navigator.geolocation.getCurrentPosition as jest.Mock
 
 const initialNavigatorPermissions = { ...navigator.permissions }
 function resetNavigatorPermissions() {
   // @ts-expect-error : `permissions` is a read-only property
   global.navigator.permissions = initialNavigatorPermissions
-  mockQuery = jest.mocked(initialNavigatorPermissions.query)
+  mockQuery = initialNavigatorPermissions.query as jest.Mock
 }
 function mockNavigatorPermissionsUndefined() {
   // @ts-expect-error : `permissions` is a read-only property
@@ -80,9 +80,6 @@ function mockGetCurrentPositionSuccess() {
 function mockGetCurrentPositionError() {
   mockGetCurrentPosition.mockImplementationOnce((_successCallback, errorCallback) => {
     if (!errorCallback) return Promise.resolve(undefined)
-    return Promise.resolve(
-      // @ts-expect-error: object passed as param matches the type GeolocationPositioError
-      errorCallback({ code: 1, message: '' })
-    )
+    return Promise.resolve(errorCallback({ code: 1, message: '' }))
   })
 }

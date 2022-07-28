@@ -26,7 +26,7 @@ const sevenFilters = {
 } as SearchState
 
 jest.mock('features/search/utils/useMaxPrice')
-const mockedUseMaxPrice = jest.mocked(useMaxPrice)
+const mockedUseMaxPrice = useMaxPrice as jest.Mock
 
 describe('useFilterCount', () => {
   beforeAll(() => {

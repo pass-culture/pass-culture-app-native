@@ -6,7 +6,7 @@ import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { BookingImpossible } from '../BookingImpossible'
 
 jest.mock('react-query')
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -42,9 +42,7 @@ describe('<BookingImpossible />', () => {
     )
 
     mockedUseMutation
-      // @ts-expect-error ts(2345)
       .mockImplementationOnce(mockUseMutationNotifyWebappLinkSent)
-      // @ts-expect-error ts(2345)
       .mockImplementationOnce(useMutationFactory(useMutationAddFavoriteCallbacks))
 
     const { getByText } = render(<BookingImpossible />)

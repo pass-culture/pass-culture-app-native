@@ -31,7 +31,7 @@ jest.mock('features/identityCheck/api/api', () => {
   }
 })
 
-const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+const mockedUsePhoneValidationRemainingAttempts = usePhoneValidationRemainingAttempts as jest.Mock
 
 describe('<CodeNotReceivedModal />', () => {
   const mockFetch = jest.spyOn(global, 'fetch')

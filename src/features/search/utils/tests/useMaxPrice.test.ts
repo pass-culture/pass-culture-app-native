@@ -8,8 +8,8 @@ import { renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
-const mockedUseUserProfileInfo = jest.mocked(useUserProfileInfo)
-const mockedIsUserExBeneificiary = jest.mocked(isUserExBeneficiary)
+const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
+const mockedIsUserExBeneificiary = isUserExBeneficiary as jest.Mock
 
 describe('useMaxPrice when no user', () => {
   beforeAll(() => {

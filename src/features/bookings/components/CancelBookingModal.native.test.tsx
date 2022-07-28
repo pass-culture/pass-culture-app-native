@@ -13,7 +13,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
 
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const mockDismissModal = jest.fn()
 jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
@@ -121,7 +121,7 @@ describe('<CancelBookingModal />', () => {
       onSuccess: () => {},
       onError: () => {},
     }
-    // @ts-expect-error ts(2345)
+
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const response = {
       content: { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' },

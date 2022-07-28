@@ -22,7 +22,7 @@ jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = jest.mocked(useVenueOffers)
+const mockUseVenueOffers = useVenueOffers as jest.Mock
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()

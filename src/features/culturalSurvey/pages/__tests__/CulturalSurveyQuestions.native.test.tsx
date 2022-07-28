@@ -19,7 +19,7 @@ jest.mock('features/navigation/helpers')
 jest.mock('react-query')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
-const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
+const mockedUseCulturalSurveyAnswersMutation = useCulturalSurveyAnswersMutation as jest.Mock
 
 const navigationProps = {
   route: {

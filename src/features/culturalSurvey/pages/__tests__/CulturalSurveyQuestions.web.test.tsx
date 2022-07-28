@@ -19,7 +19,7 @@ import { render, fireEvent } from 'tests/utils/web'
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 jest.mock('features/culturalSurvey/useCulturalSurvey')
-const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
+const mockedUseCulturalSurveyAnswersMutation = useCulturalSurveyAnswersMutation as jest.Mock
 
 const navigationProps = {
   route: {

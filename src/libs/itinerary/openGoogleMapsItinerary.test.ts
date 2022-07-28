@@ -3,7 +3,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 
 jest.mock('features/navigation/helpers')
-const mockOpenUrl = jest.mocked(openUrl)
+const mockOpenUrl = openUrl as jest.Mock
 
 describe('openGoogleMapsItinerary()', () => {
   afterEach(jest.clearAllMocks)

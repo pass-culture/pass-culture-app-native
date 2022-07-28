@@ -27,7 +27,7 @@ jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
   onError: () => {},
@@ -35,7 +35,6 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 
 describe('<IdentityCheckHonor/>', () => {
   beforeEach(() => {
-    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementation(useMutationFactory(useMutationCallbacks))
   })
 

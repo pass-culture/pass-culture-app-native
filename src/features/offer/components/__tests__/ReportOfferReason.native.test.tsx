@@ -8,7 +8,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
 
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const mockDismissModal = jest.fn()
 
 const mockShowErrorSnackBar = jest.fn()
@@ -72,7 +72,6 @@ describe('<ReportOfferReason />', () => {
         onSuccess: () => {},
         onError: () => {},
       }
-      // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
 
       const { getByTestId } = renderReportReason()
@@ -94,7 +93,6 @@ describe('<ReportOfferReason />', () => {
         onSuccess: () => {},
         onError: () => {},
       }
-      // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
       const response = {
         content: { code: 'ERROR', message: "Une erreur s'est produite" },

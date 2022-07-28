@@ -17,7 +17,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 jest.mock('features/search/utils/useMaxPrice')
-const mockedUseMaxPrice = jest.mocked(useMaxPrice)
+const mockedUseMaxPrice = useMaxPrice as jest.Mock
 
 describe('Price component', () => {
   beforeEach(() => {

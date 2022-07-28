@@ -17,7 +17,7 @@ jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
   )
   return { DEFAULT_TAB_ROUTES, useTabNavigationContext: jest.fn() }
 })
-const mockedUseTabNavigationContext = jest.mocked(useTabNavigationContext)
+const mockedUseTabNavigationContext = useTabNavigationContext as jest.Mock
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),

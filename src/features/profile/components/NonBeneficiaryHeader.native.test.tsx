@@ -23,7 +23,7 @@ jest.mock('@react-navigation/native', () => {
   }
 })
 
-const mockedUseIsUserUnderage = jest.mocked(useIsUserUnderage, true)
+const mockedUseIsUserUnderage = useIsUserUnderage as jest.Mock
 
 jest.mock('features/auth/api', () => ({
   useDepositAmountsByAge: jest.fn(() => ({

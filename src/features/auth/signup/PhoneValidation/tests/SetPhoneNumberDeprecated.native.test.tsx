@@ -18,7 +18,7 @@ import {
 
 jest.mock('react-query')
 
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
   onError: () => {},
@@ -34,7 +34,6 @@ let mockedSendSetPhoneNumberCode = jest.fn()
 describe('SetPhoneNumber', () => {
   beforeEach(() => {
     mockedSendSetPhoneNumberCode = mockedUseMutation.mockImplementation(
-      // @ts-expect-error ts(2345)
       useMutationFactory(useMutationCallbacks)
     )
   })

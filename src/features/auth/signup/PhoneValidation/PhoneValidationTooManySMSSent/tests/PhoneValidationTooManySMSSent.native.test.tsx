@@ -32,7 +32,7 @@ const navigationProps = {
   },
 } as StackScreenProps<RootStackParamList, 'PhoneValidationTooManySMSSent'>
 
-const mockedPhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+const mockedPhoneValidationRemainingAttempts = usePhoneValidationRemainingAttempts as jest.Mock
 
 describe('PhoneValidationTooManySMSSent', () => {
   beforeAll(() => {

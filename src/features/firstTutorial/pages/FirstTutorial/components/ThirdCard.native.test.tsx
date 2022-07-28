@@ -10,7 +10,7 @@ import { GenericAchievement } from 'ui/components/achievements'
 
 import { ThirdCard } from './ThirdCard'
 
-const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
+const mockRequestGeolocPermission = requestGeolocPermission as jest.Mock
 
 describe('ThirdCard', () => {
   it('should render third card', () => {

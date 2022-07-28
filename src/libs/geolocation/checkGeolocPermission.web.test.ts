@@ -5,12 +5,12 @@ jest.mock('libs/geolocation/checkGeolocPermission', () =>
   jest.requireActual('./checkGeolocPermission')
 )
 
-let mockQuery = jest.mocked(navigator.permissions.query)
+let mockQuery = navigator.permissions.query as jest.Mock
 const initialNavigatorPermissions = { ...navigator.permissions }
 function resetNavigatorPermissions() {
   // @ts-expect-error : `permissions` is a read-only property
   global.navigator.permissions = initialNavigatorPermissions
-  mockQuery = jest.mocked(initialNavigatorPermissions.query)
+  mockQuery = initialNavigatorPermissions.query as jest.Mock
 }
 function mockNavigatorPermissionsUndefined() {
   // @ts-expect-error : `permissions` is a read-only property

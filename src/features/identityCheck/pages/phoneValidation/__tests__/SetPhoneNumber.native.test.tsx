@@ -20,7 +20,7 @@ jest.mock('features/identityCheck/api/api', () => {
   }
 })
 
-const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+const mockedUsePhoneValidationRemainingAttempts = usePhoneValidationRemainingAttempts as jest.Mock
 
 describe('SetPhoneNumber', () => {
   // FIXME(anoukhello): find a way to get snapshot with modal animation

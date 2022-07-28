@@ -10,7 +10,7 @@ import { render, flushAllPromisesWithAct } from 'tests/utils'
 import { RootNavigator } from '../RootNavigator'
 
 jest.mock('features/forceUpdate/useMustUpdateApp')
-const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
+const mockedUseMustUpdateApp = useMustUpdateApp as jest.Mock
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/profile/api') // for useUserProfileInfo()
 jest.mock('features/auth/AuthContext', () => ({
@@ -31,7 +31,7 @@ jest.mock('features/navigation/helpers', () => ({
 }))
 
 jest.mock('libs/splashscreen')
-const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
+const mockUseSplashScreenContext = useSplashScreenContext as jest.Mock
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {

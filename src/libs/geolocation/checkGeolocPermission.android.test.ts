@@ -21,7 +21,7 @@ jest.mock('react-native-permissions', () => ({
     },
   },
 }))
-const mockCheckMultiple = jest.mocked(checkMultiple)
+const mockCheckMultiple = checkMultiple as jest.Mock
 
 describe('checkGeolocPermission()', () => {
   Platform.OS = 'android'

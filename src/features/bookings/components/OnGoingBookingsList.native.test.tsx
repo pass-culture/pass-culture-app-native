@@ -17,7 +17,7 @@ import { OnGoingBookingsList } from './OnGoingBookingsList'
 jest.mock('react-query')
 
 jest.mock('features/bookings/api/queries')
-const mockUseBookings = jest.mocked(useBookings)
+const mockUseBookings = useBookings as jest.Mock
 mockUseBookings.mockReturnValue({
   data: mockBookings,
   isLoading: false,
@@ -25,7 +25,7 @@ mockUseBookings.mockReturnValue({
 } as UseQueryResult<BookingsResponse, unknown>)
 
 jest.mock('libs/subcategories/useSubcategories')
-const mockUseSubcategories = jest.mocked(useSubcategories)
+const mockUseSubcategories = useSubcategories as jest.Mock
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
 } as UseQueryResult<SubcategoriesResponseModel, unknown>)

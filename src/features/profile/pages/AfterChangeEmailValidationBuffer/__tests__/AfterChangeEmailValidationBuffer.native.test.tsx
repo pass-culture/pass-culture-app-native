@@ -10,7 +10,7 @@ import { AfterChangeEmailValidationBuffer } from '../AfterChangeEmailValidationB
 
 jest.mock('react-query')
 
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const mockUseMutationSuccess = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({

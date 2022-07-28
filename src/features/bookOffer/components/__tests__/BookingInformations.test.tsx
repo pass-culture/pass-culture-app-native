@@ -16,9 +16,9 @@ jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/bookOffer/pages/BookingOfferWrapper')
 jest.mock('libs/address/useFormatFullAddress')
-const mockedUseBooking = jest.mocked(useBooking)
-const mockedUseBookingOffer = jest.mocked(useBookingOffer)
-const mockedUseBookingStock = jest.mocked(useBookingStock)
+const mockedUseBooking = useBooking as jest.Mock
+const mockedUseBookingOffer = useBookingOffer as jest.Mock
+const mockedUseBookingStock = useBookingStock as jest.Mock
 
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {
@@ -44,7 +44,6 @@ describe('<BookingInformations />', () => {
   })
 
   it('should render event date section when event', async () => {
-    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
@@ -57,7 +56,6 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display free wording is free', async () => {
-    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
@@ -65,7 +63,7 @@ describe('<BookingInformations />', () => {
       stocks: [],
       venue: mockOffer.venue,
     })
-    // @ts-expect-error mock is not real type
+
     mockedUseBookingStock.mockReturnValueOnce({
       beginningDatetime: '2020-12-01T00:00:00Z',
       price: 0,
@@ -76,7 +74,6 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display unique price when quantity is unique', async () => {
-    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
@@ -94,7 +91,6 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display location when offer is not digital', async () => {
-    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
       name: 'mon nom',
@@ -107,7 +103,6 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {
-    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: true,
       subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
@@ -120,7 +115,6 @@ describe('<BookingInformations />', () => {
   })
 
   it('should not display expirationDate section when offer is digital and has no expirationDate', async () => {
-    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: true,
       subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
@@ -128,7 +122,7 @@ describe('<BookingInformations />', () => {
       stocks: [],
       venue: mockOffer.venue,
     })
-    // @ts-expect-error mock is not real type
+
     mockedUseBookingStock.mockReturnValueOnce({
       beginningDatetime: '2020-12-01T00:00:00Z',
       price: 0,

@@ -12,9 +12,9 @@ import { GeolocationError } from './types'
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
-const mockGetPosition = jest.mocked(getPosition)
-const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
-const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
+const mockGetPosition = getPosition as jest.Mock
+const mockCheckGeolocPermission = checkGeolocPermission as jest.Mock
+const mockRequestGeolocPermission = requestGeolocPermission as jest.Mock
 function mockPermissionResult(state: GeolocPermissionState) {
   mockCheckGeolocPermission.mockResolvedValue(state)
   mockRequestGeolocPermission.mockResolvedValue(state)

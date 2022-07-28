@@ -17,7 +17,7 @@ mockdate.set(new Date('2020-12-01T00:00:00Z'))
 jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/profile/utils')
-const mockedisUserExBeneficiary = jest.mocked(isUserExBeneficiary, true)
+const mockedisUserExBeneficiary = isUserExBeneficiary as jest.Mock
 
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when autoActivateDigitalBookings is true', () => {

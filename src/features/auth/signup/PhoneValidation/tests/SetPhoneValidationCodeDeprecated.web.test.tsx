@@ -46,7 +46,7 @@ jest.mock('features/profile/api', () => ({
   })),
 }))
 
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
   onError: () => {},
@@ -55,7 +55,6 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('SetPhoneValidationCodeDeprecated', () => {
   beforeEach(() => {
-    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
   })
 

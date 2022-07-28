@@ -32,7 +32,7 @@ jest.mock('features/auth/AuthContext', () => ({
 }))
 
 jest.mock('react-query')
-const mockedUseMutation = jest.mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -53,7 +53,6 @@ describe('<SuspendedAccount />', () => {
   })
 
   it('should log analytics and redirect to reactivation screen on success', async () => {
-    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const { getByTestId } = render(<SuspendedAccount />)
 
@@ -70,7 +69,6 @@ describe('<SuspendedAccount />', () => {
   })
 
   it('should log analytics and show error snackbar on error', async () => {
-    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const { getByTestId } = render(<SuspendedAccount />)
 

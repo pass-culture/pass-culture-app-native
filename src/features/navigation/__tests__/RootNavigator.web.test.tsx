@@ -12,7 +12,7 @@ import { render } from 'tests/utils/web'
 import { RootNavigator } from '../RootNavigator'
 
 jest.mock('features/forceUpdate/useMustUpdateApp')
-const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
+const mockedUseMustUpdateApp = useMustUpdateApp as jest.Mock
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/profile/api') // for useUserProfileInfo()
 jest.mock('features/auth/AuthContext', () => ({
@@ -29,10 +29,10 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 }))
 
 jest.mock('features/navigation/helpers')
-const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
+const mockUseCurrentRoute = useCurrentRoute as jest.Mock
 
 jest.mock('libs/splashscreen')
-const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
+const mockUseSplashScreenContext = useSplashScreenContext as jest.Mock
 
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })

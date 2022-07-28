@@ -22,7 +22,7 @@ jest.mock('react-native-permissions', () => ({
     LIMITED: 'limited',
   },
 }))
-const mockCheck = jest.mocked(check)
+const mockCheck = check as jest.Mock
 
 describe('checkGeolocPermission()', () => {
   Platform.OS = 'ios'
