@@ -2515,6 +2515,7 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
+#: src/ui/components/headers/BackButton.tsx
 #: src/ui/components/headers/PageHeader.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Retour"
@@ -2574,6 +2575,7 @@ msgstr "Revenir au ticket précédent"
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
+#: src/ui/components/headers/BackButton.tsx
 #: src/ui/components/headers/PageHeader.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Revenir en arrière"
