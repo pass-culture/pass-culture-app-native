@@ -128,6 +128,7 @@ describe('SearchBox component', () => {
       ...getTabNavConfig('Search', {
         ...mockStagedSearchState,
         query: '',
+        view: SearchView.Results,
       })
     )
   })

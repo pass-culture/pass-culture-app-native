@@ -2445,11 +2445,6 @@ msgstr "Recherche une adresse, un lieu..."
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
 
-#: src/features/search/components/SearchHeader.tsx
-#: src/features/search/components/SearchHeader.tsx
-msgid "Recherche une offre, un titre, un lieu..."
-msgstr "Recherche une offre, un titre, un lieu..."
-
 #: src/features/search/atoms/Buttons/Search.tsx
 msgid "Rechercher"
 msgstr "Rechercher"

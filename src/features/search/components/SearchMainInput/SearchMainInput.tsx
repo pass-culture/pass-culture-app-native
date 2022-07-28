@@ -1,5 +1,10 @@
-import React, { FunctionComponent } from 'react'
-import { NativeSyntheticEvent, TextInputSubmitEditingEventData } from 'react-native'
+import React, { forwardRef } from 'react'
+import {
+  Platform,
+  NativeSyntheticEvent,
+  TextInputSubmitEditingEventData,
+  TextInput as RNTextInput,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -34,42 +39,49 @@ type Props = QueryProps &
     children?: never
   }
 
-export const SearchMainInput: FunctionComponent<Props> = ({
-  query,
-  setQuery,
-  onSubmitQuery,
-  resetQuery,
-  isFocus = false,
-  onFocus,
-  showLocationButton = false,
-  locationLabel,
-  onPressLocationButton,
-  ...props
-}) => (
-  <StyledSearchInput
-    placeholder="Offre, artiste..."
-    value={query}
-    onChangeText={setQuery}
-    onSubmitEditing={onSubmitQuery}
-    onPressRightIcon={resetQuery}
-    autoFocus={isFocus}
-    onFocus={onFocus}
-    LeftIcon={MagnifyingGlassIcon}
-    inputHeight="regular"
-    testID="searchInput"
-    {...props}>
-    {!!showLocationButton && (
-      <LocationButton
-        testID="locationButton"
-        wording={locationLabel || ''}
-        onPress={onPressLocationButton}
-        icon={LocationPointer}
-        buttonHeight="extraSmall"
-        ellipsizeMode="tail"
-      />
-    )}
-  </StyledSearchInput>
-)
+export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMainInput(
+  {
+    query,
+    setQuery,
+    onSubmitQuery,
+    resetQuery,
+    isFocus = false,
+    onFocus,
+    showLocationButton = false,
+    locationLabel,
+    onPressLocationButton,
+    ...props
+  }: Props,
+  ref
+) {
+  return (
+    <StyledSearchInput
+      ref={ref}
+      placeholder="Offre, artiste..."
+      value={query}
+      onChangeText={setQuery}
+      onSubmitEditing={onSubmitQuery}
+      onPressRightIcon={resetQuery}
+      nativeAutoFocus={Platform.OS !== 'web'}
+      autoFocus={isFocus}
+      onFocus={onFocus}
+      LeftIcon={MagnifyingGlassIcon}
+      inputHeight="regular"
+      testID="searchInput"
+      {...props}>
+      {!!showLocationButton && (
+        <LocationButton
+          testID="locationButton"
+          wording={locationLabel || ''}
+          onPress={onPressLocationButton}
+          icon={LocationPointer}
+          buttonHeight="extraSmall"
+          ellipsizeMode="tail"
+        />
+      )}
+    </StyledSearchInput>
+  )
+})
 
 const StyledSearchInput = styled(SearchInput).attrs({
   inputContainerStyle: {

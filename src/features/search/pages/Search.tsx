@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import algoliasearch, { SearchClient } from 'algoliasearch'
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -47,33 +47,41 @@ const searchClient: SearchClient = {
 }
 const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
 
+type BodySearchProps = {
+  view?: SearchView
+  appEnableAutocomplete?: boolean
+}
+
+const BodySearch = memo(function BodySearch({ view, appEnableAutocomplete }: BodySearchProps) {
+  const showResultsForCategory = useShowResultsForCategory()
+
+  if (view === SearchView.Suggestions) {
+    return (
+      <React.Fragment>
+        {!!appEnableAutocomplete && <SearchAutocomplete hitComponent={Hit} />}
+      </React.Fragment>
+    )
+  } else if (view === SearchView.Results) {
+    return <SearchResults />
+  }
+  return (
+    <Container>
+      <CategoriesButtons onPressCategory={showResultsForCategory} />
+      <Spacer.TabBar />
+    </Container>
+  )
+})
+
 export function Search() {
   const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
-  const showResultsForCategory = useShowResultsForCategory()
   const { data: appSettings } = useAppSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params || { view: SearchView.Landing } })
   }, [dispatch, params])
-
-  const bodySearch = () => {
-    if (params?.view === SearchView.Suggestions)
-      return (
-        <React.Fragment>
-          {!!appEnableAutocomplete && <SearchAutocomplete hitComponent={Hit} />}
-        </React.Fragment>
-      )
-    if (params?.view === SearchView.Results) return <SearchResults />
-    return (
-      <Container>
-        <CategoriesButtons onPressCategory={showResultsForCategory} />
-        <Spacer.TabBar />
-      </Container>
-    )
-  }
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -88,7 +96,7 @@ export function Search() {
             searchInputID={searchInputID}
             appEnableAutocomplete={appEnableAutocomplete}
           />
-          {bodySearch()}
+          <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
         </InstantSearch>
       ) : (
         <React.Fragment>
@@ -96,7 +104,7 @@ export function Search() {
             searchInputID={searchInputID}
             appEnableAutocomplete={appEnableAutocomplete}
           />
-          {bodySearch()}
+          <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
         </React.Fragment>
       )}
     </Form.Flex>

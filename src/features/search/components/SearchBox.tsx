@@ -1,10 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState } from 'react'
+import omit from 'lodash.omit'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   Insets,
+  Keyboard,
   NativeSyntheticEvent,
   Platform,
+  TextInput as RNTextInput,
   TextInputSubmitEditingEventData,
 } from 'react-native'
 import styled from 'styled-components/native'
@@ -33,7 +36,7 @@ type Props = {
   accessibleHiddenTitle?: string
 }
 
-export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitle, ...props }) => {
+export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTitle }: Props) {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
@@ -47,18 +50,23 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
     params?.view === SearchView.Suggestions || params?.view === SearchView.Results
+  const inputRef = useRef<RNTextInput | null>(null)
 
   useEffect(() => {
     setQuery(params?.query || '')
   }, [params?.query])
 
   const resetQuery = useCallback(() => {
+    inputRef.current?.focus()
+    setQuery('')
     pushWithStagedSearch({
       query: '',
+      view: SearchView.Results,
     })
   }, [pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
+    Keyboard.dismiss()
     stagedDispatch({
       type: 'SET_STATE',
       payload: { locationFilter },
@@ -100,21 +108,22 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
     [locationFilter, pushWithStagedSearch, stagedSearchState]
   )
 
+  const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
   const onFocus = useCallback(() => {
     if (hasEditableSearchInput) return
 
     pushWithStagedSearch({
-      ...params,
+      ...paramsWithoutView,
       view: SearchView.Suggestions,
     })
-  }, [params, hasEditableSearchInput, pushWithStagedSearch])
+  }, [paramsWithoutView, hasEditableSearchInput, pushWithStagedSearch])
 
   return (
     <RowContainer testID="searchBoxWithoutAutocomplete">
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer {...props}>
+      <SearchInputContainer>
         {!!hasEditableSearchInput && (
           <StyledTouchableOpacity
             testID="previousButton"
@@ -124,6 +133,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
           </StyledTouchableOpacity>
         )}
         <SearchMainInput
+          ref={inputRef}
           searchInputID={searchInputID}
           query={query}
           setQuery={setQuery}
