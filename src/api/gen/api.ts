@@ -979,6 +979,31 @@ export enum HomepageLabelNameEnum {
   'NONE' = 'NONE',
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum HomepageLabelNameEnumv2 {
+  'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CINEMA' = 'CINEMA',
+  'CONCERT' = 'CONCERT',
+  'COURS' = 'COURS',
+  'FESTIVAL' = 'FESTIVAL',
+  'FILMS' = 'FILMS',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'JEUX' = 'JEUX',
+  'LIVRES' = 'LIVRES',
+  'MEDIAS' = 'MEDIAS',
+  'MUSEE' = 'MUSEE',
+  'MUSIQUE' = 'MUSIQUE',
+  'NONE' = 'NONE',
+  'PLATEFORME' = 'PLATEFORME',
+  'RENCONTRES' = 'RENCONTRES',
+  'SPECTACLES' = 'SPECTACLES',
+  'VISITES' = 'VISITES',
+}
+/**
  * @export
  * @interface HomepageLabelResponseModel
  */
@@ -991,6 +1016,22 @@ export interface HomepageLabelResponseModel {
   /**
    * @type {string}
    * @memberof HomepageLabelResponseModel
+   */
+  value?: string | null
+}
+/**
+ * @export
+ * @interface HomepageLabelResponseModelv2
+ */
+export interface HomepageLabelResponseModelv2 {
+  /**
+   * @type {HomepageLabelNameEnumv2}
+   * @memberof HomepageLabelResponseModelv2
+   */
+  name: HomepageLabelNameEnumv2
+  /**
+   * @type {string}
+   * @memberof HomepageLabelResponseModelv2
    */
   value?: string | null
 }
@@ -1452,6 +1493,16 @@ export enum OnlineOfflinePlatformChoicesEnum {
   'ONLINE_OR_OFFLINE' = 'ONLINE_OR_OFFLINE',
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum OnlineOfflinePlatformChoicesEnumv2 {
+  'OFFLINE' = 'OFFLINE',
+  'ONLINE' = 'ONLINE',
+  'ONLINE_OR_OFFLINE' = 'ONLINE_OR_OFFLINE',
+}
+/**
  * @export
  * @interface PaginatedFavoritesResponse
  */
@@ -1719,6 +1770,29 @@ export enum SearchGroupNameEnum {
   'NONE' = 'NONE',
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SearchGroupNameEnumv2 {
+  'ARTS_LOISIRS_CREATIFS' = 'ARTS_LOISIRS_CREATIFS',
+  'BIBLIOTHEQUES_MEDIATHEQUE' = 'BIBLIOTHEQUES_MEDIATHEQUE',
+  'CARTES_JEUNES' = 'CARTES_JEUNES',
+  'CD_VINYLE_MUSIQUE_EN_LIGNE' = 'CD_VINYLE_MUSIQUE_EN_LIGNE',
+  'CONCERTS_FESTIVALS' = 'CONCERTS_FESTIVALS',
+  'EVENEMENTS_EN_LIGNE' = 'EVENEMENTS_EN_LIGNE',
+  'FILMS_SERIES_CINEMA' = 'FILMS_SERIES_CINEMA',
+  'INSTRUMENTS' = 'INSTRUMENTS',
+  'JEUX_JEUX_VIDEOS' = 'JEUX_JEUX_VIDEOS',
+  'LIVRES' = 'LIVRES',
+  'MEDIA_PRESSE' = 'MEDIA_PRESSE',
+  'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
+  'NONE' = 'NONE',
+  'PLATEFORMES_EN_LIGNE' = 'PLATEFORMES_EN_LIGNE',
+  'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
+  'SPECTACLES' = 'SPECTACLES',
+}
+/**
  * @export
  * @interface SearchGroupResponseModel
  */
@@ -1731,6 +1805,22 @@ export interface SearchGroupResponseModel {
   /**
    * @type {string}
    * @memberof SearchGroupResponseModel
+   */
+  value?: string | null
+}
+/**
+ * @export
+ * @interface SearchGroupResponseModelv2
+ */
+export interface SearchGroupResponseModelv2 {
+  /**
+   * @type {SearchGroupNameEnumv2}
+   * @memberof SearchGroupResponseModelv2
+   */
+  name: SearchGroupNameEnumv2
+  /**
+   * @type {string}
+   * @memberof SearchGroupResponseModelv2
    */
   value?: string | null
 }
@@ -1769,11 +1859,11 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-   appEnableAutocomplete: boolean
-   /**
-    * @type {boolean}
-    * @memberof SettingsResponse
-    */
+  appEnableAutocomplete: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
   appEnableSearchHomepageRework: boolean
   /**
    * @type {boolean}
@@ -1915,11 +2005,111 @@ export interface SubcategoriesResponseModel {
   subcategories: Array<SubcategoryResponseModel>
 }
 /**
+ * @export
+ * @interface SubcategoriesResponseModelv2
+ */
+export interface SubcategoriesResponseModelv2 {
+  /**
+   * @type {Array<HomepageLabelResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  homepageLabels: Array<HomepageLabelResponseModelv2>
+  /**
+   * @type {Array<SearchGroupResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  searchGroups: Array<SearchGroupResponseModelv2>
+  /**
+   * @type {Array<SubcategoryResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  subcategories: Array<SubcategoryResponseModelv2>
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum SubcategoryIdEnum {
+  'ABO_BIBLIOTHEQUE' = 'ABO_BIBLIOTHEQUE',
+  'ABO_CONCERT' = 'ABO_CONCERT',
+  'ABO_JEU_VIDEO' = 'ABO_JEU_VIDEO',
+  'ABO_LIVRE_NUMERIQUE' = 'ABO_LIVRE_NUMERIQUE',
+  'ABO_LUDOTHEQUE' = 'ABO_LUDOTHEQUE',
+  'ABO_MEDIATHEQUE' = 'ABO_MEDIATHEQUE',
+  'ABO_MUSEE' = 'ABO_MUSEE',
+  'ABO_PLATEFORME_MUSIQUE' = 'ABO_PLATEFORME_MUSIQUE',
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
+  'ABO_PRATIQUE_ART' = 'ABO_PRATIQUE_ART',
+  'ABO_PRESSE_EN_LIGNE' = 'ABO_PRESSE_EN_LIGNE',
+  'ABO_SPECTACLE' = 'ABO_SPECTACLE',
+  'ACHAT_INSTRUMENT' = 'ACHAT_INSTRUMENT',
+  'ACTIVATION_EVENT' = 'ACTIVATION_EVENT',
+  'ACTIVATION_THING' = 'ACTIVATION_THING',
+  'APP_CULTURELLE' = 'APP_CULTURELLE',
+  'ATELIER_PRATIQUE_ART' = 'ATELIER_PRATIQUE_ART',
+  'AUTRE_SUPPORT_NUMERIQUE' = 'AUTRE_SUPPORT_NUMERIQUE',
+  'BON_ACHAT_INSTRUMENT' = 'BON_ACHAT_INSTRUMENT',
+  'CAPTATION_MUSIQUE' = 'CAPTATION_MUSIQUE',
+  'CARTE_CINE_ILLIMITE' = 'CARTE_CINE_ILLIMITE',
+  'CARTE_CINE_MULTISEANCES' = 'CARTE_CINE_MULTISEANCES',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CARTE_MUSEE' = 'CARTE_MUSEE',
+  'CINE_PLEIN_AIR' = 'CINE_PLEIN_AIR',
+  'CINE_VENTE_DISTANCE' = 'CINE_VENTE_DISTANCE',
+  'CONCERT' = 'CONCERT',
+  'CONCOURS' = 'CONCOURS',
+  'CONFERENCE' = 'CONFERENCE',
+  'DECOUVERTE_METIERS' = 'DECOUVERTE_METIERS',
+  'ESCAPE_GAME' = 'ESCAPE_GAME',
+  'EVENEMENT_CINE' = 'EVENEMENT_CINE',
+  'EVENEMENT_JEU' = 'EVENEMENT_JEU',
+  'EVENEMENT_MUSIQUE' = 'EVENEMENT_MUSIQUE',
+  'EVENEMENT_PATRIMOINE' = 'EVENEMENT_PATRIMOINE',
+  'FESTIVAL_CINE' = 'FESTIVAL_CINE',
+  'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
+  'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
+  'FESTIVAL_SPECTACLE' = 'FESTIVAL_SPECTACLE',
+  'JEU_EN_LIGNE' = 'JEU_EN_LIGNE',
+  'JEU_SUPPORT_PHYSIQUE' = 'JEU_SUPPORT_PHYSIQUE',
+  'LIVESTREAM_EVENEMENT' = 'LIVESTREAM_EVENEMENT',
+  'LIVESTREAM_MUSIQUE' = 'LIVESTREAM_MUSIQUE',
+  'LIVESTREAM_PRATIQUE_ARTISTIQUE' = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
+  'LIVRE_AUDIO_PHYSIQUE' = 'LIVRE_AUDIO_PHYSIQUE',
+  'LIVRE_NUMERIQUE' = 'LIVRE_NUMERIQUE',
+  'LIVRE_PAPIER' = 'LIVRE_PAPIER',
+  'LOCATION_INSTRUMENT' = 'LOCATION_INSTRUMENT',
+  'MATERIEL_ART_CREATIF' = 'MATERIEL_ART_CREATIF',
+  'MUSEE_VENTE_DISTANCE' = 'MUSEE_VENTE_DISTANCE',
+  'OEUVRE_ART' = 'OEUVRE_ART',
+  'PARTITION' = 'PARTITION',
+  'PLATEFORME_PRATIQUE_ARTISTIQUE' = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
+  'PRATIQUE_ART_VENTE_DISTANCE' = 'PRATIQUE_ART_VENTE_DISTANCE',
+  'PODCAST' = 'PODCAST',
+  'RENCONTRE_EN_LIGNE' = 'RENCONTRE_EN_LIGNE',
+  'RENCONTRE_JEU' = 'RENCONTRE_JEU',
+  'RENCONTRE' = 'RENCONTRE',
+  'SALON' = 'SALON',
+  'SEANCE_CINE' = 'SEANCE_CINE',
+  'SEANCE_ESSAI_PRATIQUE_ART' = 'SEANCE_ESSAI_PRATIQUE_ART',
+  'SPECTACLE_ENREGISTRE' = 'SPECTACLE_ENREGISTRE',
+  'SPECTACLE_REPRESENTATION' = 'SPECTACLE_REPRESENTATION',
+  'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
+  'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
+  'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
+  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+  'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
+  'VISITE_GUIDEE' = 'VISITE_GUIDEE',
+  'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
+  'VISITE' = 'VISITE',
+  'VOD' = 'VOD',
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubcategoryIdEnumv2 {
   'ABO_BIBLIOTHEQUE' = 'ABO_BIBLIOTHEQUE',
   'ABO_CONCERT' = 'ABO_CONCERT',
   'ABO_JEU_VIDEO' = 'ABO_JEU_VIDEO',
@@ -2033,6 +2223,47 @@ export interface SubcategoryResponseModel {
    * @memberof SubcategoryResponseModel
    */
   searchGroupName: SearchGroupNameEnum
+}
+/**
+ * @export
+ * @interface SubcategoryResponseModelv2
+ */
+export interface SubcategoryResponseModelv2 {
+  /**
+   * @type {string}
+   * @memberof SubcategoryResponseModelv2
+   */
+  appLabel: string
+  /**
+   * @type {CategoryIdEnum}
+   * @memberof SubcategoryResponseModelv2
+   */
+  categoryId: CategoryIdEnum
+  /**
+   * @type {HomepageLabelNameEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  homepageLabelName: HomepageLabelNameEnumv2
+  /**
+   * @type {SubcategoryIdEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  id: SubcategoryIdEnumv2
+  /**
+   * @type {boolean}
+   * @memberof SubcategoryResponseModelv2
+   */
+  isEvent: boolean
+  /**
+   * @type {OnlineOfflinePlatformChoicesEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2
+  /**
+   * @type {SearchGroupNameEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  searchGroupName: SearchGroupNameEnumv2
 }
 /**
  * @export
@@ -2843,6 +3074,22 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v1/subcategories`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_subcategories_v2 <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subcategoriesv2(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/subcategories/v2`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -3753,6 +4000,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_subcategories_v2 <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subcategoriesv2(basePath: string, options?: any): Promise<SubcategoriesResponseModelv2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategoriesv2(options)
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary next_subscription_step <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4302,6 +4560,16 @@ export class DefaultApi extends BaseAPI {
     */
   public async getnativev1subcategories(options?: any) {
     return DefaultApiFp(this, this.configuration).getnativev1subcategories(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_subcategories_v2 <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1subcategoriesv2(options?: any) {
+    return DefaultApiFp(this, this.configuration).getnativev1subcategoriesv2(this.basePath, options)
   }
   /**
     * 
