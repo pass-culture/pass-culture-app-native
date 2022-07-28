@@ -7,6 +7,7 @@ export interface Environment {
   AMPLITUDE_API_KEY?: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
+  APPLE_STORE_URL: string
   APPS_FLYER_DEV_KEY: string
   BATCH_API_KEY_WEB: string
   BATCH_AUTH_KEY: string
@@ -40,8 +41,10 @@ export interface Environment {
   FIREBASE_MESSAGINGSENDERID: string
   FIREBASE_PROJECTID: string
   FIREBASE_STORAGEBUCKET: string
+  GOOGLE_PLAY_STORE_URL: string
   IOS_APP_ID: string
   IOS_APP_STORE_ID: string
+  PASSCULTURE_DOWNLOAD_APP_URL: string
   PRIVACY_POLICY_LINK: string
   PUBLIC_URL: string
   RECOMMENDATION_ENDPOINT: string

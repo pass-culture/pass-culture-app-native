@@ -11,6 +11,7 @@ import {
   isMacOsDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
+import { WebShareModalProps } from 'libs/share/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -28,8 +29,6 @@ import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { getSpacingString, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
-
-import { WebShareModalProps } from './types'
 
 export const WebShareModal = ({
   visible,

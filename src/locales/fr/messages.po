@@ -2188,6 +2188,10 @@ msgstr "Paramètres firebase dynamic link"
 msgid "Paramètres marketing"
 msgstr "Paramètres marketing"
 
+#: src/libs/share/shareApp/shareAppContent.ts
+msgid "Partage l'application"
+msgstr "Partage l'application"
+
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
 msgid "Partager"
@@ -2196,6 +2200,10 @@ msgstr "Partager"
 #: src/features/offer/components/OfferHeader.tsx
 msgid "Partager l'offre"
 msgstr "Partager l'offre"
+
+#: src/libs/share/shareApp/ShareAppModal.tsx
+msgid "Partager le lien d’invitation"
+msgstr "Partager le lien d’invitation"
 
 #: src/features/venue/components/VenueHeader.tsx
 msgid "Partager le lieu"
@@ -2383,6 +2391,14 @@ msgstr "Profil"
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "Profite de ton crédit"
 msgstr "Profite de ton crédit"
+
+#: src/libs/share/shareApp/ShareAppModal.tsx
+msgid "Profite du pass Culture"
+msgstr "Profite du pass Culture"
+
+#: src/libs/share/shareApp/shareAppContent.ts
+msgid "Profite toi aussi de tous les bons plans du pass Culture"
+msgstr "Profite toi aussi de tous les bons plans du pass Culture"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Proposition d'adresse {0} : {address}"

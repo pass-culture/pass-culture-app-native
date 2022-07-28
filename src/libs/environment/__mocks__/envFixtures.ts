@@ -1,5 +1,4 @@
 import { Environment } from 'libs/environment/types'
-
 export const env: Environment = {
   ACCESSIBILITY_LINK: 'https://passculture.accessibility',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
@@ -9,6 +8,7 @@ export const env: Environment = {
   AMPLITUDE_API_KEY: 'amplitudeApiKey',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
+  APPLE_STORE_URL: 'https://apps.apple.com/fr/app/pass-culture/id1557887412',
   APPS_FLYER_DEV_KEY: 'appsFlyerDevKey',
   BATCH_API_KEY_WEB: 'BATCH_API_KEY_WEB',
   BATCH_AUTH_KEY: 'BATCH_AUTH_KEY',
@@ -44,8 +44,11 @@ export const env: Environment = {
   FIREBASE_MESSAGINGSENDERID: 'FIREBASE_MESSAGINGSENDERID',
   FIREBASE_PROJECTID: 'FIREBASE_PROJECTID',
   FIREBASE_STORAGEBUCKET: 'FIREBASE_STORAGEBUCKET',
+  GOOGLE_PLAY_STORE_URL:
+    'https://play.google.com/store/apps/details?id=app.passculture.webapp&hl=fr',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
+  PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
   PUBLIC_URL: 'https://web.example.com',
   RECOMMENDATION_ENDPOINT: 'https://recommmendation-endpoint',
