@@ -102,7 +102,7 @@ describe('ChangePassword', () => {
 
     await waitForExpect(() => {
       expect(showSuccessSnackBar).toBeCalledWith({
-        message: 'Mot de passe modifié',
+        message: 'Ton mot de passe est modifié',
         timeout: SNACK_BAR_TIME_OUT,
       })
       expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
