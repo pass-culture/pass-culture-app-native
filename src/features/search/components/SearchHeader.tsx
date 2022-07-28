@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { memo } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,73 +20,44 @@ type Props = {
   appEnableAutocomplete: boolean
 }
 
-const SearchBoxWithLabel = ({ searchInputID, appEnableAutocomplete }: Props) => {
+export const SearchHeader = memo(function SearchHeader({
+  searchInputID,
+  appEnableAutocomplete,
+}: Props) {
+  const { params } = useRoute<UseRouteType<'Search'>>()
   const { top } = useCustomSafeInsets()
 
+  const isLanding = params === undefined || params.view === SearchView.Landing
   return (
     <React.Fragment>
-      <HeaderBackground height={top + getSpacing(20)} />
       <Spacer.TopScreen />
-      <SearchBoxContainer testID="searchBoxWithLabel">
-        <View {...getHeadingAttrs(1)}>
-          <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
-        </View>
-        <Spacer.Column numberOfSpaces={2} />
-        <FloatingSearchBoxContainer>
+      {isLanding ? (
+        <HeaderBackground height={top + getSpacing(20)} />
+      ) : (
+        !!top && <HeaderBackground height={top} />
+      )}
+      <SearchBoxContainer testID={isLanding ? 'searchBoxWithLabel' : 'searchBoxWithoutLabel'}>
+        {!!isLanding && (
+          <React.Fragment>
+            <View {...getHeadingAttrs(1)}>
+              <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
+            </View>
+            <Spacer.Column numberOfSpaces={2} />
+          </React.Fragment>
+        )}
+        <FloatingSearchBoxContainer isLanding={isLanding}>
           {appEnableAutocomplete ? (
-            <FloatingSearchBoxAutocomplete searchInputID={searchInputID} />
+            <FloatingSearchBoxAutocomplete searchInputID={searchInputID} isLanding={isLanding} />
           ) : (
-            <FloatingSearchBox searchInputID={searchInputID} />
+            <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
           )}
         </FloatingSearchBoxContainer>
-        <Spacer.Column numberOfSpaces={6} />
+        {appEnableAutocomplete && isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
       </SearchBoxContainer>
+      {!isLanding && <Spacer.Column numberOfSpaces={1} />}
     </React.Fragment>
   )
-}
-
-const SearchBoxWithoutLabel = ({ searchInputID, appEnableAutocomplete }: Props) => {
-  const { top } = useCustomSafeInsets()
-
-  return (
-    <React.Fragment>
-      {!!top && <HeaderBackground height={top} />}
-      <Spacer.TopScreen />
-      <SearchBoxContainer testID="searchBoxWithoutLabel">
-        {appEnableAutocomplete ? (
-          <SearchBoxAutocomplete
-            searchInputID={searchInputID}
-            accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
-          />
-        ) : (
-          <SearchBox
-            searchInputID={searchInputID}
-            accessibleHiddenTitle={t`Recherche une offre, un titre, un lieu...`}
-          />
-        )}
-      </SearchBoxContainer>
-      <Spacer.Column numberOfSpaces={1} />
-    </React.Fragment>
-  )
-}
-
-const SearchHeaderUnmemoized = ({ searchInputID, appEnableAutocomplete }: Props) => {
-  const { params } = useRoute<UseRouteType<'Search'>>()
-
-  return params === undefined || params.view === SearchView.Landing ? (
-    <SearchBoxWithLabel
-      searchInputID={searchInputID}
-      appEnableAutocomplete={appEnableAutocomplete}
-    />
-  ) : (
-    <SearchBoxWithoutLabel
-      searchInputID={searchInputID}
-      appEnableAutocomplete={appEnableAutocomplete}
-    />
-  )
-}
-
-export const SearchHeader = React.memo(SearchHeaderUnmemoized)
+})
 
 const SearchBoxContainer = styled.View({
   marginTop: getSpacing(6),
@@ -99,19 +70,32 @@ const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const FloatingSearchBoxContainer = styled.View({
-  position: 'relative',
-  zIndex: 1,
-})
+const FloatingSearchBoxContainer = styled.View<{ isLanding?: boolean }>(({ isLanding }) =>
+  isLanding
+    ? {
+        position: 'relative',
+        zIndex: 1,
+      }
+    : {}
+)
 
-const FloatingSearchBox = styled(SearchBox)({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-})
+const FloatingSearchBox = styled(SearchBox)<{ isLanding?: boolean }>(({ isLanding }) =>
+  isLanding
+    ? {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+      }
+    : {}
+)
 
-const FloatingSearchBoxAutocomplete = styled(SearchBoxAutocomplete)({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-})
+const FloatingSearchBoxAutocomplete = styled(SearchBoxAutocomplete)<{ isLanding?: boolean }>(
+  ({ isLanding }) =>
+    isLanding
+      ? {
+          position: 'absolute',
+          left: 0,
+          right: 0,
+        }
+      : {}
+)

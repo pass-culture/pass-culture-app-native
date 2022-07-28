@@ -90,12 +90,15 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   }, [params?.query])
 
   const resetQuery = useCallback(() => {
+    inputRef.current?.focus()
     clear()
     setQuery('')
     pushWithStagedSearch({ query: '', view: SearchView.Suggestions })
-  }, [clear, pushWithStagedSearch])
+  }, [inputRef, clear, pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
+    // To force remove focus on search input
+    Keyboard.dismiss()
     // Only close autocomplete list if open
     if (params?.view === SearchView.Suggestions && params?.query !== '') {
       pushWithStagedSearch({
@@ -103,8 +106,6 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
         view: SearchView.Results,
       })
 
-      // To force remove focus on search input
-      Keyboard.dismiss()
       return
     }
 
@@ -174,6 +175,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
           </StyledTouchableOpacity>
         )}
         <SearchMainInput
+          ref={inputRef}
           searchInputID={searchInputID}
           query={query}
           setQuery={setQuery}
@@ -181,7 +183,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
           onSubmitQuery={onSubmitQuery}
           resetQuery={resetQuery}
           onFocus={onFocus}
-          showLocationButton={params?.view === SearchView.Landing}
+          showLocationButton={params === undefined || params.view === SearchView.Landing}
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}
         />
