@@ -7,6 +7,7 @@ import {
 } from 'features/home/api/useHomeRecommendedHits'
 import { RecommendationParametersFields } from 'features/home/contentful'
 import { env } from 'libs/environment'
+import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
 import * as algoliaRecommendedHitsAPI from '../useAlgoliaRecommendedHits'
@@ -66,8 +67,9 @@ describe('getRecommendationEndpoint', () => {
 })
 
 describe('getRecommendationParameters', () => {
+  const subcategoryLabelMapping = useSubcategoryLabelMapping()
   it('should return empty parameters when no parameters are provided', () => {
-    const result = getRecommendationParameters(undefined)
+    const result = getRecommendationParameters(undefined, subcategoryLabelMapping)
     expect(result).toEqual({})
   })
 
@@ -80,14 +82,19 @@ describe('getRecommendationParameters', () => {
       priceMax: 10,
       endingDatetime: '2022-05-08T00:00+02:00',
       beginningDatetime: '2022-09-08T00:00+02:00',
+      subcategories: ['Achat instrument'],
     }
-    const recommendationParameters = getRecommendationParameters(parameters)
+    const recommendationParameters = getRecommendationParameters(
+      parameters,
+      subcategoryLabelMapping
+    )
     expect(recommendationParameters).toEqual({
       categories: ['CINEMA', 'COURS', 'LIVRE'],
       end_date: '2022-05-08T00:00+02:00',
       start_date: '2022-09-08T00:00+02:00',
       price_max: 10,
       isEvent: true,
+      subcategories: ['ACHAT_INSTRUMENT'],
     })
   })
 })
