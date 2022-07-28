@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreditCeilingsModal/> should render correctly 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-credit-ceiling-information"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    aria-labelledby="testUuidV4"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 20,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 20,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Pourquoi cette limite ?
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+          Object {
+            "paddingBottom": 16,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Il est possible de dépenser jusqu’à 
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="creditText"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              300 € en biens physiques 
+            </Text>
+            mais 
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              300 € maximum en biens numériques 
+            </Text>
+            (presse en ligne, plateformes de streaming...).
+          </Text>
+          
+
+Cette limite a pour but d’encourager la 
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            diversification des pratiques culturelles.
+          </Text>
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;

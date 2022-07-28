@@ -13,6 +13,18 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "(livres, instruments de musique...)."
+msgstr "(livres, instruments de musique...)."
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "(presse en ligne, plateformes de streaming...) et"
+msgstr "(presse en ligne, plateformes de streaming...) et"
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "(presse en ligne, plateformes de streaming...)."
+msgstr "(presse en ligne, plateformes de streaming...)."
+
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "+"
 msgstr "+"
@@ -462,6 +474,10 @@ msgstr "Cette adresse e-mail est liée à un compte supprimé"
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "Cette limite a pour but d’encourager la"
+msgstr "Cette limite a pour but d’encourager la"
 
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "Cette réservation est annulable"
@@ -1311,6 +1327,10 @@ msgstr "Il est important que les informations de ton document soient parfaitemen
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "Il est possible de dépenser jusqu’à"
+msgstr "Il est possible de dépenser jusqu’à"
 
 #: src/features/venue/pages/VenueNotFound.tsx
 msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
@@ -2278,6 +2298,10 @@ msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton nu
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 msgid "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 msgstr "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "Pourquoi cette limite ?"
+msgstr "Pourquoi cette limite ?"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Pourquoi les biens numériques sont-ils limités ?"
@@ -3660,6 +3684,10 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "diversification des pratiques culturelles."
+msgstr "diversification des pratiques culturelles."
+
 #: src/libs/tileAccessibilityLabel.ts
 msgid "du type"
 msgstr "du type"
@@ -3732,6 +3760,11 @@ msgstr "Dossier mis à jour le : {day} à {hour}"
 #: src/libs/tileAccessibilityLabel.ts
 msgid "le"
 msgstr "le"
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "mais"
+msgstr "mais"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"
@@ -3958,6 +3991,11 @@ msgstr "{delayInMinutes} minutes"
 msgid "{delayInWeek} semaine"
 msgstr "{delayInWeek} semaine"
 
+#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "{digitalCeiling} maximum en biens numériques"
+msgstr "{digitalCeiling} maximum en biens numériques"
+
 #: src/features/bookings/pages/EndedBookings.tsx
 msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
 msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
@@ -3999,6 +4037,18 @@ msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation
 #: src/features/bookings/components/OnGoingBookingsList.tsx
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "{physicalCeiling} maximum en biens physiques"
+msgstr "{physicalCeiling} maximum en biens physiques"
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "{totalCeiling} en biens physiques"
+msgstr "{totalCeiling} en biens physiques"
+
+#: src/features/profile/components/CreditCeilingsModal.tsx
+msgid "{totalCeiling} en sorties"
+msgstr "{totalCeiling} en sorties"
 
 #: src/features/bookings/helpers.ts
 msgid "À activer"
