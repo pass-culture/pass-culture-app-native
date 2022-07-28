@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { memo, useContext, useEffect, useReducer } from 'react'
+import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -47,11 +47,12 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxPrice])
 
-  return (
-    <SearchContext.Provider value={{ searchState, stagedSearchState, dispatch, stagedDispatch }}>
-      {children}
-    </SearchContext.Provider>
+  const contextValue = useMemo(
+    () => ({ searchState, stagedSearchState, dispatch, stagedDispatch }),
+    [searchState, stagedSearchState, dispatch, stagedDispatch]
   )
+
+  return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>
 })
 
 export const useSearch = (): Pick<ISearchContext, 'searchState' | 'dispatch'> => {
