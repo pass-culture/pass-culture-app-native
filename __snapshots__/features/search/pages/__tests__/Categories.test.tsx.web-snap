@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -1281,11 +1292,11 @@
+@@ -1279,11 +1290,11 @@
               />
             </div>
           </li>
@@ -64,11 +64,11 @@ exports[`Categories component should match diff snapshot when new category is se
 -             aria-checked={true}
 +             aria-checked={false}
               className=\\"css-view-1dbjc4n\\"
-              data-testid=\\"FILMS_SERIES_CINEMA\\"
+              data-testid=\\"FILMS_SERIES_FILMS_SERIES_CINEMA\\"
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -1377,11 +1388,11 @@
+@@ -1375,11 +1386,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -1404,22 +1415,11 @@
+@@ -1402,22 +1413,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
