@@ -23,6 +23,10 @@ server.use(
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
 describe('[API] booking queries', () => {
   mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
