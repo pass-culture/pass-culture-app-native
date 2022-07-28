@@ -54,7 +54,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
-  const { query: autocompleteQuery, refine: setAutocompleteQuery } = useSearchBox(props)
+  const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
@@ -90,11 +90,10 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   }, [params?.query])
 
   const resetQuery = useCallback(() => {
-    pushWithStagedSearch({ query: '', view: SearchView.Landing })
+    clear()
     setQuery('')
-    // To force remove focus on search input
-    Keyboard.dismiss()
-  }, [pushWithStagedSearch])
+    pushWithStagedSearch({ query: '', view: SearchView.Suggestions })
+  }, [clear, pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
     // Only close autocomplete list if open

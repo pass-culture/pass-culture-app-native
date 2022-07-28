@@ -80,7 +80,7 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should not show previous if no search executed and no focus on input', () => {
+  it('should not show previous button if no search executed and no focus on input', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = queryByTestId('previousButton')
@@ -132,6 +132,15 @@ describe('SearchBox component', () => {
     )
   })
 
+  it('should not execute a search if input is empty', () => {
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
+
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
+
+    expect(navigate).not.toBeCalled()
+  })
+
   it.each([[SearchView.Suggestions], [SearchView.Results]])(
     'should reset input when user click on previous button',
     async (view) => {
@@ -162,15 +171,6 @@ describe('SearchBox component', () => {
       )
     }
   )
-
-  it('should not execute a search if input is empty', () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
-
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
-
-    expect(navigate).not.toBeCalled()
-  })
 
   it('should execute a search if input is not empty', () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
