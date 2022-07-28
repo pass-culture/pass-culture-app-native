@@ -27,8 +27,10 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer, Typo } from 'ui/theme'
+
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
+
 export function Navigation(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('CheatMenu', undefined)
@@ -39,6 +41,7 @@ export function Navigation(): JSX.Element {
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const venueId = useSomeVenueId()
   const { showInfoSnackBar } = useSnackBarContext()
+
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
     () => errorAsync(),
@@ -47,6 +50,7 @@ export function Navigation(): JSX.Element {
       enabled: false,
     }
   )
+
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
@@ -68,6 +72,7 @@ export function Navigation(): JSX.Element {
   if (screenError) {
     throw screenError
   }
+
   return (
     <ScrollView>
       <Spacer.TopScreen />
@@ -284,20 +289,24 @@ export function Navigation(): JSX.Element {
     </ScrollView>
   )
 }
+
 const ScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     backgroundColor: theme.colors.white,
   },
 }))``
+
 const StyledContainer = styled.View({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
+
 const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
   width: half ? '50%' : '100%',
   ...padding(2, 0.5),
 }))
+
 const CenteredText = styled(Typo.Caption)({
   width: '100%',
   textAlign: 'center',

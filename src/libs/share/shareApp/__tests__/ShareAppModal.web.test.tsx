@@ -22,7 +22,7 @@ describe('<ShareAppModal />', () => {
 
   it('should not display if visible false', () => {
     const renderAPI = render(<ShareAppModal visible={false} dismissModal={dismissModal} />)
-    expect(renderAPI).not.toBeInTheDocument
+    expect(renderAPI.container).toBeEmptyDOMElement()
   })
 
   it('should open the email on the email button click', () => {

@@ -136,7 +136,7 @@ Object {
                             >
                               <button
                                 aria-label="Copier le lien"
-                                class="sc-bdvvtL ixcPfN sc-cidDSM iUBxLC"
+                                class="sc-bdvvtL ixcPfN sc-cCcXHH jQczlt"
                                 data-testid="Copier le lien"
                                 tabindex="0"
                                 type="button"
@@ -172,7 +172,7 @@ Object {
                             >
                               <a
                                 aria-label="Ouvrir le gestionnaire mail"
-                                class="sc-gsDKAQ fDShHk sc-cidDSM iUBxLC"
+                                class="sc-gsDKAQ fDShHk sc-cCcXHH jQczlt"
                                 data-testid="Ouvrir le gestionnaire mail"
                                 href="mailto:?subject=Profite toi aussi de tous les bons plans du pass Culture&body=https://pass.culture.fr/nosapplications/"
                                 tabindex="0"
@@ -217,7 +217,7 @@ Object {
                             style="height: 24px;"
                           />
                           <ul
-                            class="sc-hBUSln sc-jcFjpl cjntIJ cBGiKb"
+                            class="sc-hBUSln sc-cidDSM cjntIJ cPyrmC"
                           >
                             <li>
                               <a

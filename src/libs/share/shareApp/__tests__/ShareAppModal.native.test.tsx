@@ -8,6 +8,6 @@ const dismissModal = jest.fn()
 describe('<ShareAppModal />', () => {
   it('should not render in native', () => {
     const renderAPI = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
-    expect(renderAPI).not.toBeInTheDocument
+    expect(renderAPI.toJSON()).toBeNull()
   })
 })

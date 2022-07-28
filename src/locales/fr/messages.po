@@ -2392,10 +2392,6 @@ msgstr "Profil"
 msgid "Profite de ton crédit"
 msgstr "Profite de ton crédit"
 
-#: src/libs/share/shareApp/ShareAppModal.tsx
-msgid "Profite du pass Culture"
-msgstr "Profite du pass Culture"
-
 #: src/libs/share/shareApp/shareAppContent.ts
 msgid "Profite toi aussi de tous les bons plans du pass Culture"
 msgstr "Profite toi aussi de tous les bons plans du pass Culture"
