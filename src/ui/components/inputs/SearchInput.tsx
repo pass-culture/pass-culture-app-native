@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
@@ -83,12 +82,12 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         />
         {children}
         {value.length > 0 && (
-          <RightIconContainer
+          <Touchable
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`, 'resetSearchInput')}
             type="reset">
             <Invalidate />
-          </RightIconContainer>
+          </Touchable>
         )}
       </StyledInputContainer>
     </React.Fragment>
@@ -98,12 +97,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
 const LeftIconContainer = styled.View({ flexShrink: 0 })
-
-const RightIconContainer = styledButton(Touchable)({
-  position: 'absolute',
-  right: getSpacing(1),
-  padding: getSpacing(2),
-})
 
 const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
