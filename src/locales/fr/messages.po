@@ -1807,10 +1807,6 @@ msgstr "Mot de passe actuel"
 msgid "Mot de passe incorrect"
 msgstr "Mot de passe incorrect"
 
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "Mot de passe modifié"
-msgstr "Mot de passe modifié"
-
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Mot de passe oublié"
@@ -2962,6 +2958,10 @@ msgstr "Ton mot de passe"
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Ton mot de passe actuel"
 msgstr "Ton mot de passe actuel"
+
+#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
+msgid "Ton mot de passe est modifié"
+msgstr "Ton mot de passe est modifié"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 msgid "Ton mot de passe est modifié !"
