@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/atoms'
 import { availableCategories } from 'features/search/utils/availableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
@@ -11,11 +11,11 @@ import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
 interface Props {
-  onChange: (selection: SearchGroupNameEnum[]) => void
+  onChange: (selection: SearchGroupNameEnumv2[]) => void
 }
 
 export const OfferCategoryChoices = (props: Props) => {
-  const [selection, setSelection] = useState<SearchGroupNameEnum[]>([] as SearchGroupNameEnum[])
+  const [selection, setSelection] = useState<SearchGroupNameEnumv2[]>([] as SearchGroupNameEnumv2[])
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   return (
@@ -24,7 +24,7 @@ export const OfferCategoryChoices = (props: Props) => {
         {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
           <Li key={category}>
             <SelectionLabel
-              label={searchGroupLabelMapping[category as SearchGroupNameEnum]}
+              label={searchGroupLabelMapping[category as SearchGroupNameEnumv2]}
               selected={selection.includes(facetFilter)}
               onPress={() => {
                 setSelection((prevSelection) => {

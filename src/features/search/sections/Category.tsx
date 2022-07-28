@@ -3,7 +3,7 @@ import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
@@ -23,7 +23,7 @@ export const Category: React.FC = () => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const titleID = uuidv4()
 
-  const onPress = (facetFilter: SearchGroupNameEnum) => () => {
+  const onPress = (facetFilter: SearchGroupNameEnumv2) => () => {
     dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
     logUseFilter()
   }
@@ -45,7 +45,7 @@ export const Category: React.FC = () => {
           {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
             <Li key={category}>
               <SelectionLabel
-                label={searchGroupLabelMapping[category as SearchGroupNameEnum]}
+                label={searchGroupLabelMapping[category as SearchGroupNameEnumv2]}
                 selected={offerCategories.includes(facetFilter)}
                 onPress={onPress(facetFilter)}
               />

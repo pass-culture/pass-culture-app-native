@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -23,12 +23,12 @@ const useSelectCategory = (callback: () => void) => {
   const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
 
   return {
-    isCategorySelected: (category: SearchGroupNameEnum) => {
-      const [selectedCategory] = [...searchState.offerCategories, SearchGroupNameEnum.NONE]
+    isCategorySelected: (category: SearchGroupNameEnumv2) => {
+      const [selectedCategory] = [...searchState.offerCategories, SearchGroupNameEnumv2.NONE]
       return selectedCategory === category
     },
-    selectCategory: (category: SearchGroupNameEnum) => () => {
-      const payload = category === SearchGroupNameEnum.NONE ? [] : [category]
+    selectCategory: (category: SearchGroupNameEnumv2) => () => {
+      const payload = category === SearchGroupNameEnumv2.NONE ? [] : [category]
       dispatch({ type: 'SET_CATEGORY', payload })
       debouncedCallback()
     },
@@ -47,7 +47,7 @@ export const Categories: React.FC = () => {
         <Spacer.Column numberOfSpaces={4} />
         <VerticalUl>
           {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
-            const searchGroup = category as SearchGroupNameEnum
+            const searchGroup = category as SearchGroupNameEnumv2
             return (
               <Li key={searchGroup}>
                 <RadioButton

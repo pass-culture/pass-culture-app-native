@@ -281,7 +281,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Beaux-Arts",
+            "label": "Arts & loisirs créatifs",
             "onPress": [Function],
           },
           Object {
@@ -301,7 +301,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Carte jeunes",
+            "label": "Bibliothèques, Médiathèques",
             "onPress": [Function],
           },
           Object {
@@ -321,7 +321,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Cinéma",
+            "label": "Cartes jeunes",
             "onPress": [Function],
           },
           Object {
@@ -341,7 +341,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Conférences, rencontres",
+            "label": "CD, vinyle, musique en ligne",
             "onPress": [Function],
           },
           Object {
@@ -361,7 +361,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Cours, ateliers",
+            "label": "Concerts & festivals",
             "onPress": [Function],
           },
           Object {
@@ -381,7 +381,47 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Films, séries",
+            "label": "Conférences & rencontres",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Événements en ligne",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Films, séries, cinéma",
             "onPress": [Function],
           },
           Object {
@@ -421,7 +461,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Jeux",
+            "label": "Jeux & jeux vidéos",
             "onPress": [Function],
           },
           Object {
@@ -441,7 +481,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Livre",
+            "label": "Livres",
             "onPress": [Function],
           },
           Object {
@@ -461,7 +501,7 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Musique",
+            "label": "Médias & presse",
             "onPress": [Function],
           },
           Object {
@@ -481,7 +521,27 @@ Array [
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Presse, médias",
+            "label": "Musées & visites culturelles",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Plateformes en ligne",
             "onPress": [Function],
           },
           Object {
@@ -502,26 +562,6 @@ Array [
               "withComponent": [Function],
             },
             "label": "Spectacles",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "label": "Visites, expositions",
             "onPress": [Function],
           },
         ]
@@ -647,7 +687,7 @@ Array [
                     ]
                   }
                 >
-                  Beaux-Arts
+                  Arts & loisirs créatifs
                 </Text>
               </View>
             </View>
@@ -698,6 +738,7 @@ Array [
                 }
               >
                 <View
+                  fill="#eb0055"
                   height={24}
                   width={24}
                 >
@@ -722,170 +763,7 @@ Array [
                     ]
                   }
                 >
-                  Carte jeunes
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderBottomColor": "#90949D",
-                    "borderBottomWidth": 1,
-                    "borderLeftColor": "#90949D",
-                    "borderLeftWidth": 1,
-                    "borderRadius": 4,
-                    "borderRightColor": "#90949D",
-                    "borderRightWidth": 1,
-                    "borderTopColor": "#90949D",
-                    "borderTopWidth": 1,
-                    "flexDirection": "row",
-                    "height": 72,
-                    "opacity": 1,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "userSelect": "auto",
-                  }
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 8,
-                        "textAlign": "left",
-                      },
-                    ]
-                  }
-                >
-                  Cinéma
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderBottomColor": "#90949D",
-                    "borderBottomWidth": 1,
-                    "borderLeftColor": "#90949D",
-                    "borderLeftWidth": 1,
-                    "borderRadius": 4,
-                    "borderRightColor": "#90949D",
-                    "borderRightWidth": 1,
-                    "borderTopColor": "#90949D",
-                    "borderTopWidth": 1,
-                    "flexDirection": "row",
-                    "height": 72,
-                    "opacity": 1,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "userSelect": "auto",
-                  }
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 8,
-                        "textAlign": "left",
-                      },
-                    ]
-                  }
-                >
-                  Conférences, rencontres
+                  Bibliothèques, Médiathèques
                 </Text>
               </View>
             </View>
@@ -973,7 +851,7 @@ Array [
                     ]
                   }
                 >
-                  Cours, ateliers
+                  Cartes jeunes
                 </Text>
               </View>
             </View>
@@ -1048,7 +926,333 @@ Array [
                     ]
                   }
                 >
-                  Films, séries
+                  CD, vinyle, musique en ligne
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Concerts & festivals
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Conférences & rencontres
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Événements en ligne
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Films, séries, cinéma
                 </Text>
               </View>
             </View>
@@ -1211,7 +1415,7 @@ Array [
                     ]
                   }
                 >
-                  Jeux
+                  Jeux & jeux vidéos
                 </Text>
               </View>
             </View>
@@ -1299,7 +1503,7 @@ Array [
                     ]
                   }
                 >
-                  Livre
+                  Livres
                 </Text>
               </View>
             </View>
@@ -1374,7 +1578,7 @@ Array [
                     ]
                   }
                 >
-                  Musique
+                  Médias & presse
                 </Text>
               </View>
             </View>
@@ -1462,10 +1666,98 @@ Array [
                     ]
                   }
                 >
-                  Presse, médias
+                  Musées & visites culturelles
                 </Text>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Plateformes en ligne
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 Array [
@@ -1538,94 +1830,6 @@ Array [
                   }
                 >
                   Spectacles
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderBottomColor": "#90949D",
-                    "borderBottomWidth": 1,
-                    "borderLeftColor": "#90949D",
-                    "borderLeftWidth": 1,
-                    "borderRadius": 4,
-                    "borderRightColor": "#90949D",
-                    "borderRightWidth": 1,
-                    "borderTopColor": "#90949D",
-                    "borderTopWidth": 1,
-                    "flexDirection": "row",
-                    "height": 72,
-                    "opacity": 1,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "userSelect": "auto",
-                  }
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 8,
-                        "textAlign": "left",
-                      },
-                    ]
-                  }
-                >
-                  Visites, expositions
                 </Text>
               </View>
             </View>

@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 
 import { push as mockPush, navigate as mockNavigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
@@ -32,25 +32,25 @@ describe('useShowResultsForCategory', () => {
       locationFilter: { locationType: LocationType.EVERYWHERE },
       priceRange: [0, 300],
       query: 'Big flo et Oli',
-      offerCategories: [SearchGroupNameEnum.SPECTACLE], // initialize mock data with expected categories because dispatch is also a mock and won't change the mocked state
+      offerCategories: [SearchGroupNameEnumv2.SPECTACLES], // initialize mock data with expected categories because dispatch is also a mock and won't change the mocked state
     }
   })
 
   it('should set category in staged search', () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
-    resultCallback.current(SearchGroupNameEnum.SPECTACLE)
+    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SET_CATEGORY',
-      payload: [SearchGroupNameEnum.SPECTACLE],
+      payload: [SearchGroupNameEnumv2.SPECTACLES],
     })
   })
 
   it('should set search state with staged search state and categories', () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
-    resultCallback.current(SearchGroupNameEnum.SPECTACLE)
+    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
     expect(navigate).toBeCalledWith('TabNavigator', {
       params: {
@@ -59,7 +59,7 @@ describe('useShowResultsForCategory', () => {
         endingDatetime: null,
         hitsPerPage: 20,
         locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: ['SPECTACLE'],
+        offerCategories: ['SPECTACLES'],
         offerIsDuo: false,
         offerIsFree: false,
         offerIsNew: false,

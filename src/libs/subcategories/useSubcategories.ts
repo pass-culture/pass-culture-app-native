@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { SubcategoriesResponseModel } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -11,9 +11,9 @@ const STALE_TIME_SUBCATEGORIES = 5 * 60 * 1000
 
 export const useSubcategories = () => {
   const netInfo = useNetInfo()
-  return useQuery<SubcategoriesResponseModel>(
+  return useQuery<SubcategoriesResponseModelv2>(
     QueryKeys.SUBCATEGORIES,
-    () => api.getnativev1subcategories(),
+    () => api.getnativev1subcategoriesv2(),
     { staleTime: STALE_TIME_SUBCATEGORIES, placeholderData, enabled: !!netInfo.isConnected }
   )
 }

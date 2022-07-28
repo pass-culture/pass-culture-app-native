@@ -1,15 +1,15 @@
 import {
   CategoryIdEnum,
-  HomepageLabelNameEnum,
-  SearchGroupNameEnum,
-  SubcategoryIdEnum,
-  SubcategoryResponseModel,
+  HomepageLabelNameEnumv2,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnumv2,
+  SubcategoryResponseModelv2,
 } from 'api/gen'
 
-export type Subcategory = Omit<SubcategoryResponseModel, 'id'>
-export type SubcategoriesMapping = Record<SubcategoryIdEnum, Subcategory>
-export type CategoryIdMapping = Record<SubcategoryIdEnum, CategoryIdEnum>
-export type HomeLabelMapping = Record<HomepageLabelNameEnum, string | null>
-export type CategoryHomeLabelMapping = Record<SubcategoryIdEnum, string | null>
-export type SearchGroupLabelMapping = Record<SearchGroupNameEnum, string>
-export type SubcategoryLabelMapping = Record<string, SubcategoryIdEnum>
+export type Subcategory = Omit<SubcategoryResponseModelv2, 'id'>
+export type SubcategoriesMapping = Record<SubcategoryIdEnumv2, Subcategory>
+export type CategoryIdMapping = Record<SubcategoryIdEnumv2, CategoryIdEnum>
+export type HomeLabelMapping = Record<HomepageLabelNameEnumv2, string | null>
+export type CategoryHomeLabelMapping = Record<SubcategoryIdEnumv2, string | null>
+export type SearchGroupLabelMapping = Record<SearchGroupNameEnumv2, string>
+export type SubcategoryLabelMapping = Record<string, SubcategoryIdEnumv2>

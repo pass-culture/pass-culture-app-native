@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum, SubcategoryIdEnum } from 'api/gen'
+import { SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
@@ -61,10 +61,10 @@ export const buildFacetFilters = ({
   return atLeastOneFacetFilter ? { facetFilters } : null
 }
 
-const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnum[]): string[] =>
+const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>
   searchGroups.map((searchGroup) => `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
 
-const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnum[]): string[] =>
+const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnumv2[]): string[] =>
   subcategoryIds.map((subcategoryId) => `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${subcategoryId}`)
 
 const buildObjectIdsPredicate = (objectIds: string[]): string[] =>

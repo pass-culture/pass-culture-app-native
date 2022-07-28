@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -513,11 +524,11 @@
+@@ -1279,11 +1290,11 @@
               />
             </div>
           </li>
@@ -64,11 +64,11 @@ exports[`Categories component should match diff snapshot when new category is se
 -             aria-checked={true}
 +             aria-checked={false}
               className=\\"css-view-1dbjc4n\\"
-              data-testid=\\"CINEMA\\"
+              data-testid=\\"FILMS_SERIES_CINEMA\\"
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -609,11 +620,11 @@
+@@ -1375,11 +1386,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -636,22 +647,11 @@
+@@ -1402,22 +1413,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -572,7 +572,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="CARTE_JEUNES"
+            data-testid="ARTS_LOISIRS_CREATIFS"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -673,7 +673,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Carte jeunes
+                  Arts & loisirs créatifs
                 </div>
               </div>
             </div>
@@ -700,7 +700,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="CINEMA"
+            data-testid="BIBLIOTHEQUES_MEDIATHEQUE"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -801,7 +801,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Cinéma
+                  Bibliothèques, Médiathèques
                 </div>
               </div>
             </div>
@@ -828,7 +828,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="VISITE"
+            data-testid="CARTES_JEUNES"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -929,7 +929,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Visites, expositions
+                  Cartes jeunes
                 </div>
               </div>
             </div>
@@ -956,7 +956,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="MUSIQUE"
+            data-testid="CD_VINYLE_MUSIQUE_EN_LIGNE"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1057,7 +1057,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Musique
+                  CD, vinyle, musique en ligne
                 </div>
               </div>
             </div>
@@ -1084,7 +1084,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="SPECTACLE"
+            data-testid="CONCERTS_FESTIVALS"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1185,7 +1185,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Spectacles
+                  Concerts & festivals
                 </div>
               </div>
             </div>
@@ -1212,7 +1212,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="COURS"
+            data-testid="RENCONTRES_CONFERENCES"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1313,7 +1313,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Cours, ateliers
+                  Conférences & rencontres
                 </div>
               </div>
             </div>
@@ -1340,7 +1340,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="LIVRE"
+            data-testid="EVENEMENTS_EN_LIGNE"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1441,7 +1441,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Livre
+                  Événements en ligne
                 </div>
               </div>
             </div>
@@ -1468,7 +1468,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="FILM"
+            data-testid="FILMS_SERIES_CINEMA"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1569,7 +1569,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Films, séries
+                  Films, séries, cinéma
                 </div>
               </div>
             </div>
@@ -1596,391 +1596,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="PRESSE"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="radio"
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "alignItems": "center",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginBottom": "12px",
-                "marginTop": "12px",
-                "minHeight": "24px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexDirection": "row",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexDirection": "row",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="ltr"
-                  style={
-                    Object {
-                      "WebkitLineClamp": 2,
-                      "color": "rgba(22,22,23,1.00)",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "15px",
-                      "lineHeight": "20px",
-                    }
-                  }
-                >
-                  Presse, médias
-                </div>
-              </div>
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.1,
-                  "WebkitFlexShrink": 1,
-                  "flexBasis": "0px",
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            />
-          </div>
-        </li>
-        <li>
-          <div
-            aria-checked={false}
-            className="css-view-1dbjc4n"
-            data-testid="JEU"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="radio"
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "alignItems": "center",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginBottom": "12px",
-                "marginTop": "12px",
-                "minHeight": "24px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexDirection": "row",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexDirection": "row",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="ltr"
-                  style={
-                    Object {
-                      "WebkitLineClamp": 2,
-                      "color": "rgba(22,22,23,1.00)",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "15px",
-                      "lineHeight": "20px",
-                    }
-                  }
-                >
-                  Jeux
-                </div>
-              </div>
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.1,
-                  "WebkitFlexShrink": 1,
-                  "flexBasis": "0px",
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            />
-          </div>
-        </li>
-        <li>
-          <div
-            aria-checked={false}
-            className="css-view-1dbjc4n"
-            data-testid="CONFERENCE"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="radio"
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "alignItems": "center",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "marginBottom": "12px",
-                "marginTop": "12px",
-                "minHeight": "24px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexDirection": "row",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexDirection": "row",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="ltr"
-                  style={
-                    Object {
-                      "WebkitLineClamp": 2,
-                      "color": "rgba(22,22,23,1.00)",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "15px",
-                      "lineHeight": "20px",
-                    }
-                  }
-                >
-                  Conférences, rencontres
-                </div>
-              </div>
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.1,
-                  "WebkitFlexShrink": 1,
-                  "flexBasis": "0px",
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            />
-          </div>
-        </li>
-        <li>
-          <div
-            aria-checked={false}
-            className="css-view-1dbjc4n"
-            data-testid="INSTRUMENT"
+            data-testid="INSTRUMENTS"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -2108,7 +1724,7 @@ exports[`Categories component should render correctly 1`] = `
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
-            data-testid="MATERIEL"
+            data-testid="JEUX_JEUX_VIDEOS"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -2209,7 +1825,647 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  Beaux-Arts
+                  Jeux & jeux vidéos
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 0.1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 0.1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+          </div>
+        </li>
+        <li>
+          <div
+            aria-checked={false}
+            className="css-view-1dbjc4n"
+            data-testid="LIVRES"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="radio"
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
+                "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexPack": "justify",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Livres
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 0.1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 0.1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+          </div>
+        </li>
+        <li>
+          <div
+            aria-checked={false}
+            className="css-view-1dbjc4n"
+            data-testid="MEDIA_PRESSE"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="radio"
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
+                "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexPack": "justify",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Médias & presse
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 0.1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 0.1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+          </div>
+        </li>
+        <li>
+          <div
+            aria-checked={false}
+            className="css-view-1dbjc4n"
+            data-testid="MUSEES_VISITES_CULTURELLES"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="radio"
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
+                "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexPack": "justify",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Musées & visites culturelles
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 0.1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 0.1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+          </div>
+        </li>
+        <li>
+          <div
+            aria-checked={false}
+            className="css-view-1dbjc4n"
+            data-testid="PLATEFORMES_EN_LIGNE"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="radio"
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
+                "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexPack": "justify",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Plateformes en ligne
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 0.1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 0.1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+          </div>
+        </li>
+        <li>
+          <div
+            aria-checked={false}
+            className="css-view-1dbjc4n"
+            data-testid="SPECTACLES"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="radio"
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
+                "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexPack": "justify",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Spectacles
                 </div>
               </div>
             </div>

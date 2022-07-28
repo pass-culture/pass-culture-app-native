@@ -3,7 +3,7 @@ import omit from 'lodash.omit'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
 import { LocationFilterChoice } from 'features/_marketingAndCommunication/atoms/LocationFilterChoice'
@@ -130,7 +130,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    function onChangeOfferCategories(categories: SearchGroupNameEnum[]) {
+    function onChangeOfferCategories(categories: SearchGroupNameEnumv2[]) {
       setScreenParams((prevPageParams) =>
         !categories.length
           ? omit(prevPageParams, name)

@@ -51,10 +51,10 @@ describe('Analytics - logUseFilter', () => {
 
   it('should log UseFilter once when selecting multiple categories', () => {
     const { getByText } = render(<Section.Category />)
-    fireEvent.press(getByText('Cinéma'))
+    fireEvent.press(getByText('Films, séries, cinéma'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category)
-    fireEvent.press(getByText('Jeux'))
-    fireEvent.press(getByText('Presse, médias'))
+    fireEvent.press(getByText('Jeux & jeux vidéos'))
+    fireEvent.press(getByText('Médias & presse'))
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
   it('should log UseFilter once when selecting multiple offer types', () => {

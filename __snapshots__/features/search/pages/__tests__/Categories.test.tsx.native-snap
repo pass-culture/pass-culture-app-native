@@ -59,7 +59,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessibilityRole=\\"radio\\"
           accessibilityState={
             Object {
-@@ -382,11 +391,11 @@
+@@ -950,11 +959,11 @@
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -72,7 +72,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -442,16 +451,16 @@
+@@ -1010,16 +1019,16 @@
                 ]
               }
             />
@@ -91,7 +91,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -470,20 +479,11 @@
+@@ -1038,20 +1047,11 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -441,7 +441,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="CARTE_JEUNES"
+        testID="ARTS_LOISIRS_CREATIFS"
       >
         <View
           flex={0.9}
@@ -490,7 +490,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Carte jeunes
+              Arts & loisirs créatifs
             </Text>
           </View>
         </View>
@@ -535,7 +535,102 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="CINEMA"
+        testID="BIBLIOTHEQUES_MEDIATHEQUE"
+      >
+        <View
+          flex={0.9}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            fill="#eb0055"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Bibliothèques, Médiathèques
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="CARTES_JEUNES"
       >
         <View
           flex={0.9}
@@ -584,7 +679,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Cinéma
+              Cartes jeunes
             </Text>
           </View>
         </View>
@@ -629,7 +724,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="VISITE"
+        testID="CD_VINYLE_MUSIQUE_EN_LIGNE"
       >
         <View
           flex={0.9}
@@ -678,7 +773,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Visites, expositions
+              CD, vinyle, musique en ligne
             </Text>
           </View>
         </View>
@@ -723,7 +818,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="MUSIQUE"
+        testID="CONCERTS_FESTIVALS"
       >
         <View
           flex={0.9}
@@ -772,7 +867,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Musique
+              Concerts & festivals
             </Text>
           </View>
         </View>
@@ -817,7 +912,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="SPECTACLE"
+        testID="RENCONTRES_CONFERENCES"
       >
         <View
           flex={0.9}
@@ -866,7 +961,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Spectacles
+              Conférences & rencontres
             </Text>
           </View>
         </View>
@@ -911,7 +1006,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="COURS"
+        testID="EVENEMENTS_EN_LIGNE"
       >
         <View
           flex={0.9}
@@ -960,7 +1055,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Cours, ateliers
+              Événements en ligne
             </Text>
           </View>
         </View>
@@ -1005,7 +1100,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="LIVRE"
+        testID="FILMS_SERIES_CINEMA"
       >
         <View
           flex={0.9}
@@ -1054,7 +1149,7 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Livre
+              Films, séries, cinéma
             </Text>
           </View>
         </View>
@@ -1099,383 +1194,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="FILM"
-      >
-        <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "width": 16,
-                },
-              ]
-            }
-          />
-          <View>
-            <Text
-              isSelected={false}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Films, séries
-            </Text>
-          </View>
-        </View>
-        <View
-          flex={0.1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="PRESSE"
-      >
-        <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "width": 16,
-                },
-              ]
-            }
-          />
-          <View>
-            <Text
-              isSelected={false}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Presse, médias
-            </Text>
-          </View>
-        </View>
-        <View
-          flex={0.1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="JEU"
-      >
-        <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "width": 16,
-                },
-              ]
-            }
-          />
-          <View>
-            <Text
-              isSelected={false}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Jeux
-            </Text>
-          </View>
-        </View>
-        <View
-          flex={0.1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="CONFERENCE"
-      >
-        <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "width": 16,
-                },
-              ]
-            }
-          />
-          <View>
-            <Text
-              isSelected={false}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Conférences, rencontres
-            </Text>
-          </View>
-        </View>
-        <View
-          flex={0.1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="INSTRUMENT"
+        testID="INSTRUMENTS"
       >
         <View
           flex={0.9}
@@ -1569,7 +1288,7 @@ exports[`Categories component should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="MATERIEL"
+        testID="JEUX_JEUX_VIDEOS"
       >
         <View
           flex={0.9}
@@ -1618,7 +1337,477 @@ exports[`Categories component should render correctly 1`] = `
                 ]
               }
             >
-              Beaux-Arts
+              Jeux & jeux vidéos
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="LIVRES"
+      >
+        <View
+          flex={0.9}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Livres
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="MEDIA_PRESSE"
+      >
+        <View
+          flex={0.9}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Médias & presse
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="MUSEES_VISITES_CULTURELLES"
+      >
+        <View
+          flex={0.9}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Musées & visites culturelles
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="PLATEFORMES_EN_LIGNE"
+      >
+        <View
+          flex={0.9}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Plateformes en ligne
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="SPECTACLES"
+      >
+        <View
+          flex={0.9}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Spectacles
             </Text>
           </View>
         </View>

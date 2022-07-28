@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 
 import { navigate as mockNavigate, push as mockPush } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
@@ -32,7 +32,7 @@ describe('useShowResultsWithStagedSearch', () => {
       locationFilter: { locationType: LocationType.EVERYWHERE },
       priceRange: [0, 300],
       query: 'Big flo et Oli',
-      offerCategories: [SearchGroupNameEnum.SPECTACLE],
+      offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
     }
   })
 
@@ -48,7 +48,7 @@ describe('useShowResultsWithStagedSearch', () => {
         endingDatetime: null,
         hitsPerPage: 20,
         locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: ['SPECTACLE'],
+        offerCategories: ['SPECTACLES'],
         offerIsDuo: false,
         offerIsFree: false,
         offerIsNew: false,

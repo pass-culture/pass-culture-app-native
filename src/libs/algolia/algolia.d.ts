@@ -9,7 +9,7 @@ interface Offer {
   prices?: number[]
   subcategoryId?: SubcategoryIdEnum
   thumbUrl?: string
-  searchGroupName?: SearchGroupNameEnum
+  searchGroupName?: SearchGroupNameEnumv2
 }
 
 export interface Geoloc {

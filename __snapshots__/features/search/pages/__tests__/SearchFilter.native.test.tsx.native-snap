@@ -895,7 +895,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Carte jeunes
+                Arts & loisirs créatifs
               </Text>
               <View
                 numberOfSpaces={5}
@@ -967,7 +967,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Cinéma
+                Bibliothèques, Médiathèques
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1039,7 +1039,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Visites, expositions
+                Cartes jeunes
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1111,7 +1111,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Musique
+                CD, vinyle, musique en ligne
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1183,7 +1183,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Spectacles
+                Concerts & festivals
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1255,7 +1255,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Cours, ateliers
+                Conférences & rencontres
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1327,7 +1327,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Livre
+                Événements en ligne
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1399,223 +1399,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Films, séries
-              </Text>
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "width": 20,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 40,
-                  "borderWidth": 2,
-                  "flexDirection": "row",
-                  "marginBottom": 12,
-                  "marginRight": 12,
-                  "maxWidth": 500,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-            >
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "width": 20,
-                    },
-                  ]
-                }
-              />
-              <Text
-                numberOfLines={1}
-                selected={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginVertical": 10,
-                    },
-                  ]
-                }
-              >
-                Presse, médias
-              </Text>
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "width": 20,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 40,
-                  "borderWidth": 2,
-                  "flexDirection": "row",
-                  "marginBottom": 12,
-                  "marginRight": 12,
-                  "maxWidth": 500,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-            >
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "width": 20,
-                    },
-                  ]
-                }
-              />
-              <Text
-                numberOfLines={1}
-                selected={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginVertical": 10,
-                    },
-                  ]
-                }
-              >
-                Jeux
-              </Text>
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "width": 20,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 40,
-                  "borderWidth": 2,
-                  "flexDirection": "row",
-                  "marginBottom": 12,
-                  "marginRight": 12,
-                  "maxWidth": 500,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-            >
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "width": 20,
-                    },
-                  ]
-                }
-              />
-              <Text
-                numberOfLines={1}
-                selected={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginVertical": 10,
-                    },
-                  ]
-                }
-              >
-                Conférences, rencontres
+                Films, séries, cinéma
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1759,7 +1543,367 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Beaux-Arts
+                Jeux & jeux vidéos
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                selected={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginVertical": 10,
+                    },
+                  ]
+                }
+              >
+                Livres
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                selected={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginVertical": 10,
+                    },
+                  ]
+                }
+              >
+                Médias & presse
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                selected={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginVertical": 10,
+                    },
+                  ]
+                }
+              >
+                Musées & visites culturelles
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                selected={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginVertical": 10,
+                    },
+                  ]
+                }
+              >
+                Plateformes en ligne
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                selected={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginVertical": 10,
+                    },
+                  ]
+                }
+              >
+                Spectacles
               </Text>
               <View
                 numberOfSpaces={5}

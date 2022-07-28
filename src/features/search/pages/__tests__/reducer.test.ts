@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
@@ -41,13 +41,13 @@ describe('Search reducer', () => {
     const parameters = {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
-        SearchGroupNameEnum.CINEMA,
-        SearchGroupNameEnum.MUSIQUE,
-        SearchGroupNameEnum.COURS,
-        SearchGroupNameEnum.FILM,
-        SearchGroupNameEnum.JEU,
-        SearchGroupNameEnum.CONFERENCE,
-        SearchGroupNameEnum.INSTRUMENT,
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+        SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+        SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE,
+        SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+        SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+        SearchGroupNameEnumv2.INSTRUMENTS,
       ],
       tags: [],
     }
@@ -61,7 +61,10 @@ describe('Search reducer', () => {
 
   it('should handle SET_STATE_FROM_NAVIGATE - MAX_PRICE', () => {
     const parameters = {
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.MUSIQUE],
+      offerCategories: [
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      ],
       priceRange: [30, 500],
     }
     const action: Action = {
@@ -70,7 +73,10 @@ describe('Search reducer', () => {
     }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.MUSIQUE],
+      offerCategories: [
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      ],
       priceRange: [30, MAX_PRICE],
     })
   })
@@ -138,27 +144,36 @@ describe('Search reducer', () => {
     // 1. Add JEUX_VIDEO
     let newState = searchReducer(state, {
       type: 'TOGGLE_CATEGORY',
-      payload: SearchGroupNameEnum.JEU,
+      payload: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     })
-    expect(newState).toStrictEqual({ ...state, offerCategories: [SearchGroupNameEnum.JEU] })
+    expect(newState).toStrictEqual({
+      ...state,
+      offerCategories: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
+    })
 
     // 2. Add CINEMA
     newState = searchReducer(newState, {
       type: 'TOGGLE_CATEGORY',
-      payload: SearchGroupNameEnum.CINEMA,
+      payload: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
     })
     expect(newState).toStrictEqual({
       ...state,
       // Note: the categories are sorted to later reuse react-query cache
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.JEU],
+      offerCategories: [
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+      ],
     })
 
     // 3. Remove JEUX_VIDEO
     newState = searchReducer(newState, {
       type: 'TOGGLE_CATEGORY',
-      payload: SearchGroupNameEnum.JEU,
+      payload: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     })
-    expect(newState).toStrictEqual({ ...state, offerCategories: [SearchGroupNameEnum.CINEMA] })
+    expect(newState).toStrictEqual({
+      ...state,
+      offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+    })
   })
 
   it('should handle OFFER_TYPE', () => {
@@ -256,9 +271,12 @@ describe('Search reducer', () => {
   })
 
   it('should handle SET_CATEGORY', () => {
-    const action: Action = { type: 'SET_CATEGORY', payload: [SearchGroupNameEnum.JEU] }
+    const action: Action = {
+      type: 'SET_CATEGORY',
+      payload: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
+    }
     let newState = searchReducer(state, action)
-    expect(newState.offerCategories).toStrictEqual([SearchGroupNameEnum.JEU])
+    expect(newState.offerCategories).toStrictEqual([SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS])
 
     newState = searchReducer(newState, { type: 'SET_CATEGORY', payload: [] })
     expect(newState.offerCategories).toStrictEqual([])
