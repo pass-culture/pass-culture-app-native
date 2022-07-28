@@ -29,6 +29,7 @@ import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
+import { NavigationProfile } from 'features/cheatcodes/pages/NavigationProfile'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -270,6 +271,11 @@ export const routes: Route[] = [
     component: NavigationNotScreensPages,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-not-screens-pages',
+  },
+  {
+    name: 'NavigationProfile',
+    component: NavigationProfile,
+    path: 'cheat-navigation-profile',
   },
   {
     name: 'NotificationSettings',

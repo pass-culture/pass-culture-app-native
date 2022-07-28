@@ -107,6 +107,7 @@ export type RootStackParamList = {
   Navigation: undefined
   NavigationAccountSuspension: undefined
   NavigationNotScreensPages: undefined
+  NavigationProfile: undefined
   NotificationSettings: undefined
   Offer: {
     id: number

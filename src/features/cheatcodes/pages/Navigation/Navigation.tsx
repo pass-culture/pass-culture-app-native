@@ -91,6 +91,9 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
+          <ButtonPrimary wording={'Profile 🎨'} onPress={() => navigate('NavigationProfile')} />
+        </Row>
+        <Row half>
           <ButtonPrimary
             wording={'Sentry'}
             onPress={() => {
@@ -105,9 +108,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary wording={'POC A/B testing'} onPress={() => navigate('ABTestingPOC')} />
-        </Row>
-        <Row half>
-          <ButtonPrimary wording={'Login'} onPress={() => navigate('Login')} />
         </Row>
         <Row half>
           <ButtonPrimary
@@ -171,18 +171,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
-            wording={'Réglages notifications'}
-            onPress={() => navigate('NotificationSettings')}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
-            wording={'Réglages cookies'}
-            onPress={() => navigate('ConsentSettings', { onGoBack: () => null })}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
             wording={`Distance to Eiffel Tower`}
             onPress={() => {
               Alert.alert(distanceToEiffelTower || 'Authorize geolocation first')
@@ -237,9 +225,6 @@ export function Navigation(): JSX.Element {
             wording={`Booking Confirmation`}
             onPress={() => navigate('BookingConfirmation', { offerId: 11224, bookingId: 1240 })}
           />
-        </Row>
-        <Row half>
-          <ButtonPrimary wording={`Modifier mon e-mail`} onPress={() => navigate('ChangeEmail')} />
         </Row>
         <Row half>
           <ButtonPrimary

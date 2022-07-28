@@ -75,15 +75,15 @@ const THIS_YEAR = new Date().getFullYear()
 const imageUrl =
   'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg'
 
-const domains_credit_v1 = {
+export const domains_credit_v1 = {
   all: { initial: 50000, remaining: 40000 },
-  physical: { initial: 30000, remaining: 10000 },
-  digital: { initial: 30000, remaining: 20000 },
+  physical: { initial: 20000, remaining: 10000 },
+  digital: { initial: 20000, remaining: 20000 },
 }
 
-const domains_credit_v2 = {
+export const domains_credit_v2 = {
   all: { initial: 30000, remaining: 10000 },
-  digital: { initial: 20000, remaining: 5000 },
+  digital: { initial: 10000, remaining: 5000 },
 }
 
 const domains_credit_underage = {
