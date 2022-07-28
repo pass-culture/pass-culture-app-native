@@ -41,6 +41,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(getByText('Copier'))
     expect(mockClipboardWriteText).toHaveBeenCalledWith('https://url.com/offer')
   })
+
   it('should open the email on the email button click', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('E-mail'))
@@ -49,6 +50,7 @@ describe('<WebShareModal/>', () => {
       undefined
     )
   })
+
   it('should open Facebook when sharing with Facebook', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Facebook'))
@@ -57,6 +59,7 @@ describe('<WebShareModal/>', () => {
       undefined
     )
   })
+
   it('should open Twitter when sharing with Twitter', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Twitter'))
@@ -65,6 +68,7 @@ describe('<WebShareModal/>', () => {
       undefined
     )
   })
+
   it('should open WhatsApp when sharing with WhatsApp', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('WhatsApp'))
@@ -73,6 +77,7 @@ describe('<WebShareModal/>', () => {
       undefined
     )
   })
+
   it('should open Telegram when sharing with Telegram', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Telegram'))
