@@ -9,6 +9,7 @@ import {
 } from 'features/cheatcodes/pages/AppComponents/AppComponents'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { CreditCeilingsModal } from 'features/profile/components/CreditCeilingsModal'
+import { ExpiredCreditModal } from 'features/profile/components/ExpiredCreditModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -28,6 +29,12 @@ export function NavigationProfile(): JSX.Element {
     visible: physicalCeilingModalVisible,
     showModal: showPhysicalCeilingModal,
     hideModal: hidePhysicalCeilingModal,
+  } = useModal(false)
+
+  const {
+    visible: expiredCreditModalVisible,
+    showModal: showExpiredCreditModal,
+    hideModal: hideExpiredCreditModal,
   } = useModal(false)
 
   return (
@@ -61,6 +68,13 @@ export function NavigationProfile(): JSX.Element {
             domainsCredit={domains_credit_v2}
             visible={ceilingModalVisible}
             hideModal={hideCeilingModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary wording={'Modal Crédit Expiré'} onPress={showExpiredCreditModal} />
+          <ExpiredCreditModal
+            visible={expiredCreditModalVisible}
+            hideModal={hideExpiredCreditModal}
           />
         </Row>
       </StyledContainer>

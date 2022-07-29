@@ -6,14 +6,12 @@ import { useDepositAmountsByAge } from 'features/auth/api'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { DOUBLE_LINE_BREAK as LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
   hideModal: () => void
 }
-
-const LINE_BREAK = '\n' + '\n'
-const SPACE = ' '
 
 export function BirthdayInformationModal({ visible, hideModal }: Props) {
   const { eighteenYearsOldDeposit, fifteenYearsOldDeposit } = useDepositAmountsByAge()
