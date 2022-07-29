@@ -175,19 +175,6 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                      "position": "relative",
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
                       "backgroundColor": "#ffffff",
                       "flexBasis": 0,
                       "flexDirection": "column",

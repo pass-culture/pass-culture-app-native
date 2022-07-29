@@ -56,39 +56,53 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     if (props.isEligibleForBeneficiaryUpgrade) {
       if (subscription?.nextSubscriptionStep) {
         return (
-          <View testID="eligibility-banner-container">
-            {!!eligibilityEndDatetime && (
-              <Caption>
-                {t({
-                  id: 'elibility deadline',
-                  values: {
-                    deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
-                  },
-                  message: `Tu es éligible jusqu'au {deadline}`,
-                })}
-              </Caption>
-            )}
-            {!!nextBeneficiaryValidationStepNavConfig && (
-              <ModuleBanner
-                navigateTo={nextBeneficiaryValidationStepNavConfig}
-                leftIcon={<ThumbUp />}
-                title={moduleBannerWording}
-                subTitle={t`à dépenser dans l'application`}
-                testID="eligibility-banner"
-              />
-            )}
-          </View>
+          <BannerContainer>
+            <View testID="eligibility-banner-container">
+              {!!eligibilityEndDatetime && (
+                <Caption>
+                  {t({
+                    id: 'elibility deadline',
+                    values: {
+                      deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
+                    },
+                    message: `Tu es éligible jusqu'au {deadline}`,
+                  })}
+                </Caption>
+              )}
+              {!!nextBeneficiaryValidationStepNavConfig && (
+                <ModuleBanner
+                  navigateTo={nextBeneficiaryValidationStepNavConfig}
+                  leftIcon={<ThumbUp />}
+                  title={moduleBannerWording}
+                  subTitle={t`à dépenser dans l'application`}
+                  testID="eligibility-banner"
+                />
+              )}
+            </View>
+          </BannerContainer>
         )
       }
       if (subscription?.hasIdentityCheckPending) {
-        return <IdentityCheckPendingBadge />
+        return (
+          <BannerContainer>
+            <IdentityCheckPendingBadge />
+          </BannerContainer>
+        )
       }
       if (props.subscriptionMessage) {
-        return <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+        return (
+          <BannerContainer>
+            <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+          </BannerContainer>
+        )
       }
     }
     if (eligibilityStartDatetime && eligibilityStartDatetime > today) {
-      return <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+      return (
+        <BannerContainer>
+          <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+        </BannerContainer>
+      )
     }
     return <React.Fragment />
   }
@@ -100,9 +114,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   return (
     <React.Fragment>
       <PageHeader title={t`Profil`} />
-      <BannerContainer>
-        <NonBeneficiaryBanner />
-      </BannerContainer>
+      <NonBeneficiaryBanner />
     </React.Fragment>
   )
 }
