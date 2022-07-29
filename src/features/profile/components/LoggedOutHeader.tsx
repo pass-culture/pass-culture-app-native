@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
+import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
+import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -10,7 +12,16 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
 export function LoggedOutHeader() {
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('dark-content', true)
+
+      return () => StatusBar.setBarStyle('light-content', true)
+    }, [])
+  )
+
   return (
     <Container>
       <Spacer.TopScreen />
