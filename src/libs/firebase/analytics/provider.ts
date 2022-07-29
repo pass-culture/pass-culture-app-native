@@ -19,7 +19,7 @@ export const analyticsProvider: AnalyticsProvider = {
   disableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   },
-  setDefaultEventParameters(params: Record<string, string> | undefined) {
+  setDefaultEventParameters(params: Record<string, unknown> | undefined) {
     // only apply on native devices, does not exist on the Web
     if (Platform.OS !== 'web') {
       firebaseAnalytics.setDefaultEventParameters(params)

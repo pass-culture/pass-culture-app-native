@@ -1,10 +1,19 @@
 import { useMutation } from 'react-query'
 
+import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface RecommendedIdsResponse {
   playlist_recommended_offers: string[]
+  params: {
+    reco_origin?: string
+    model_name?: string
+    model_version?: string
+    geo_located?: boolean
+    ab_test?: string
+    filtered?: boolean
+  }
 }
 
 export interface RecommendedIdsRequest {
@@ -33,6 +42,7 @@ export const useHomeRecommendedIdsMutation = (recommendationUrl: string) => {
           throw new Error('Failed to fetch recommendation')
         }
         const responseBody: RecommendedIdsResponse = await response.json()
+        analytics.setDefaultEventParameters(responseBody.params)
         return responseBody
       } catch (err) {
         eventMonitoring.captureException(new Error('Error with recommendation endpoint'), {
