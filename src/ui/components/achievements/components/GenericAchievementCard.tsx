@@ -14,6 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { useGrid } from 'ui/theme/grid'
 
 export type AchievementCardKeyProps = {
@@ -40,7 +41,6 @@ export type AchievementCardProps = AchievementCardKeyProps & {
 }
 
 const SMALL_HEIGHT = 576
-const LINE_BREAK = '\n'
 export let didFadeIn = false
 
 // TODO(anoukhello): refactor this page with GenericInfoPageWhite component

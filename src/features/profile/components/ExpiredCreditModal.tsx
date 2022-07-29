@@ -4,14 +4,12 @@ import styled from 'styled-components/native'
 
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { DOUBLE_LINE_BREAK as LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
   hideModal: () => void
 }
-
-const LINE_BREAK = '\n\n'
-const SPACE = ' '
 
 export function ExpiredCreditModal({ visible, hideModal }: Props) {
   return (

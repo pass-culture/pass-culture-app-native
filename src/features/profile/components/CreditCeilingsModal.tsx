@@ -6,15 +6,13 @@ import { DomainsCredit } from 'api/gen'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { DOUBLE_LINE_BREAK as LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
   domainsCredit: DomainsCredit
   visible: boolean
   hideModal: () => void
 }
-
-const LINE_BREAK = '\n\n'
-const SPACE = ' '
 
 const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
   const totalCeiling = formatToFrenchDecimal(domainsCredit.all.initial)
