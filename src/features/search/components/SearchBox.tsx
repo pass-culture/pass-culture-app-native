@@ -56,9 +56,13 @@ export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTit
     setQuery(params?.query || '')
   }, [params?.query])
 
+  useEffect(() => {
+    if (params?.view === SearchView.Results) {
+      inputRef.current?.focus()
+    }
+  }, [params?.query, params?.view])
+
   const resetQuery = useCallback(() => {
-    inputRef.current?.focus()
-    setQuery('')
     pushWithStagedSearch({
       query: '',
       view: SearchView.Results,
