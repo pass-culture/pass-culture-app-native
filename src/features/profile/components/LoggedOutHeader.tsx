@@ -8,6 +8,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
+import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export function LoggedOutHeader() {
@@ -39,6 +40,7 @@ export function LoggedOutHeader() {
             as={StyledButtonInsideText}
             navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
             wording={t`Connecte-toi`}
+            icon={Connect}
             {...accessibilityAndTestId(t`Connecte-toi`)}
           />
         </LoginCta>

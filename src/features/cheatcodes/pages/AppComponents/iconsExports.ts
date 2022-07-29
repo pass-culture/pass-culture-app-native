@@ -25,6 +25,7 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
+import { Connect } from 'ui/svg/icons/Connect'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
@@ -164,6 +165,7 @@ export const SecondaryAndBiggerIcons = {
 export const TertiaryAndSmallerIcons = {
   Again,
   ClockFilled,
+  Connect,
   Digital,
   Duplicate,
   EditPen,
