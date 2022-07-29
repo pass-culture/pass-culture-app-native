@@ -5,87 +5,173 @@ exports[`<SetName/> should render correctly 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "#eb0055",
         "display": "flex",
         "flexBasis": 0,
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
+        "paddingTop": 8,
       },
     ]
   }
 >
   <View
-    customHeight={16}
-    enable={true}
+    height={72}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 72,
         },
       ]
     }
   />
   <View
+    backgroundColor="#eb0055"
+    isAbsolutePosition={true}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "height": 64,
-          "justifyContent": "center",
+          "backgroundColor": "#eb0055",
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
         },
       ]
     }
   >
-    <Text
+    <View
+      customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
-            "color": "#ffffff",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 18,
-            "lineHeight": 22,
-            "textAlign": "center",
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
           },
         ]
       }
     >
-      Profil
-    </Text>
-    <View
-      accessibilityLabel="Revenir en arrière"
-      accessibilityRole="button"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "left": 12,
-          "opacity": 1,
-          "position": "absolute",
-          "userSelect": "auto",
-        }
-      }
-      testID="Revenir en arrière"
-    >
       <View
-        height={24}
-        testID="icon-back"
-        width={24}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
       >
-        <Text>
-          icon-back-SVG-Mock
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          color="#ffffff"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Profil
         </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </View>
@@ -632,33 +718,6 @@ exports[`<SetName/> should render correctly 1`] = `
           />
         </View>
       </View>
-    </View>
-  </View>
-  <View
-    height="100%"
-    style={
-      Array [
-        Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
-        },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
     </View>
   </View>
 </View>
