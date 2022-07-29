@@ -20,6 +20,13 @@ jest.mock('features/identityCheck/api/api', () => {
     }),
   }
 })
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: mockDispatch,
+    phoneValidation: { phoneNumber: undefined, countryCode: undefined },
+  }),
+}))
 
 const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
 
@@ -116,10 +123,7 @@ describe('SetPhoneNumber', () => {
       fireEvent.press(continueButton)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode', {
-          countryCode: 'FR',
-          phoneNumber: '612345678',
-        })
+        expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode')
       })
     })
 
@@ -158,12 +162,7 @@ describe('SetPhoneNumber', () => {
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
-      await waitFor(() =>
-        expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent', {
-          countryCode: 'FR',
-          phoneNumber: '612345678',
-        })
-      )
+      await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
     })
   })
 })

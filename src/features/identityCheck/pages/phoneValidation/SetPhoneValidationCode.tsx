@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,6 +11,7 @@ import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import {
   IdentityCheckRootStackParamList,
@@ -34,10 +35,19 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 
 const CODE_INPUT_LENGTH = 6
 
-export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) => {
-  const formattedPhoneNumber = formatPhoneNumber(
-    route.params.phoneNumber,
-    route.params.countryCode as CountryCode
+export const SetPhoneValidationCode = () => {
+  const { phoneValidation } = useIdentityCheckContext()
+  const formattedPhoneNumber = phoneValidation?.phoneNumber
+    ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
+    : ''
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!phoneValidation) {
+        setTimeout(() => navigate('SetPhoneNumber'))
+      }
+    }, [phoneValidation, navigate])
   )
 
   const [codeInputState, setCodeInputState] = useState({
@@ -46,7 +56,6 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
   })
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { navigate } = useNavigation<UseNavigationType>()
   const titleID = uuidv4()
   const validationCodeInputErrorId = uuidv4()
 
@@ -133,7 +142,6 @@ export const SetPhoneValidationCode = ({ route }: SetPhoneValidationCodeProps) =
               isVisible={isCodeNotReceivedModalVisible}
               dismissModal={hideModal}
               phoneNumber={formattedPhoneNumber}
-              countryCode={route.params.countryCode}
             />
           </View>
         </Form.MaxWidth>

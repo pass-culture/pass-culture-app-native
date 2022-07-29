@@ -14,6 +14,7 @@ import {
 } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -34,7 +35,8 @@ const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = () => {
   const titleID = uuidv4()
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const { dispatch, phoneValidation } = useIdentityCheckContext()
+  const [phoneNumber, setPhoneNumber] = useState(phoneValidation?.phoneNumber ?? '')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -70,13 +72,15 @@ export const SetPhoneNumber = () => {
 
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
-      navigate('SetPhoneValidationCode', { phoneNumber, countryCode: country.cca2 })
+      dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+      navigate('SetPhoneValidationCode')
       queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
     },
     onError: (error: ApiError | unknown) => {
+      dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
       const { content } = error as ApiError
       if (content.code === 'TOO_MANY_SMS_SENT') {
-        navigate('PhoneValidationTooManySMSSent', { phoneNumber, countryCode: country.cca2 })
+        navigate('PhoneValidationTooManySMSSent')
       } else {
         const message = extractApiErrorMessage(error)
         setInvalidPhoneNumberMessage(message)

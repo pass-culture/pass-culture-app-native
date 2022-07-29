@@ -2,6 +2,7 @@ import { IdentityCheckState, Action } from 'features/identityCheck/context/types
 
 export const initialIdentityCheckState: IdentityCheckState = {
   step: null,
+  phoneValidation: null,
   profile: {
     name: null,
     city: null,
@@ -29,10 +30,10 @@ export const identityCheckReducer = (
   switch (action.type) {
     case 'INIT':
       return initialIdentityCheckState
-    case 'SET_STATE':
-      return { ...initialIdentityCheckState, ...action.payload }
     case 'SET_STEP':
       return { ...state, step: action.payload }
+    case 'SET_PHONE_NUMBER':
+      return { ...state, phoneValidation: action.payload }
     case 'SET_NAME':
       return { ...state, profile: { ...state.profile, name: action.payload } }
     case 'SET_STATUS':
