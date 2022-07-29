@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
-import { StoryViewport } from 'ui/storybook/StoryViewport'
+import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
 
@@ -14,68 +14,52 @@ export default {
   component: CategoriesButtonsDisplay,
 } as ComponentMeta<typeof CategoriesButtonsDisplay>
 
-const sortedCategories = [
-  {
-    label: 'Bibliothèque, médiathèque',
-    Icon: categoriesIcons.VideoGame,
-    onPress: action('Jeux'),
-  },
-  {
-    label: 'CD, vinyles, musique en ligne',
-    Icon: categoriesIcons.Music,
-    onPress: action('Musique'),
-  },
-  {
-    label: 'Cinéma',
-    Icon: categoriesIcons.Cinema,
-    onPress: action('Cinéma'),
-  },
-  {
-    label: 'Conférences, rencontres',
-    Icon: categoriesIcons.Book,
-    onPress: action('Livre'),
-  },
-  {
-    label: 'Théâtre',
-    Icon: categoriesIcons.Workshop,
-    onPress: action('Théâtre'),
-  },
-]
-
 const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-const Template = (Component: FunctionComponent) => {
-  const WrappedComponent: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
-    <Component>
-      <CategoriesButtonsDisplay {...props} />
-    </Component>
-  )
-  return WrappedComponent
-}
-
-export const Default = Template(BodyWrapper)
+export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+  <BodyWrapper>
+    <CategoriesButtonsDisplay {...props} />
+  </BodyWrapper>
+)
 Default.args = {
-  sortedCategories,
+  sortedCategories: [
+    {
+      label: 'Bibliothèque, médiathèque',
+      Icon: categoriesIcons.VideoGame,
+      onPress: action('Jeux'),
+    },
+    {
+      label: 'CD, vinyles, musique en ligne',
+      Icon: categoriesIcons.Music,
+      onPress: action('Musique'),
+    },
+    {
+      label: 'Cinéma',
+      Icon: categoriesIcons.Cinema,
+      onPress: action('Cinéma'),
+    },
+    {
+      label: 'Conférences, rencontres',
+      Icon: categoriesIcons.Book,
+      onPress: action('Livre'),
+    },
+    {
+      label: 'Théâtre',
+      Icon: categoriesIcons.Workshop,
+      onPress: action('Théâtre'),
+    },
+  ],
 }
-
-export const OnSmallPhone = Template(StoryViewport.SmallPhone)
-OnSmallPhone.args = {
-  sortedCategories,
-}
-
-export const OnPhone = Template(StoryViewport.Phone)
-OnPhone.args = {
-  sortedCategories,
-}
-
-export const OnTablet = Template(StoryViewport.Tablet)
-OnTablet.args = {
-  sortedCategories,
-}
-
-export const OnDesktop = Template(StoryViewport.Desktop)
-OnDesktop.args = {
-  sortedCategories,
+Default.parameters = {
+  chromatic: {
+    viewports: [
+      320,
+      theme.breakpoints.sm,
+      theme.breakpoints.md,
+      theme.breakpoints.lg,
+      theme.breakpoints.xl,
+    ],
+  },
 }
