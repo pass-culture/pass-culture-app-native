@@ -46,7 +46,9 @@ export const PageHeaderNew: React.FC<Props> = ({
       {!!isAbsolutePosition && <SpacerAbsolutePosition height={height + top} />}
       <ColorContainer backgroundColor={backgroundColor} isAbsolutePosition={isAbsolutePosition}>
         <Spacer.TopScreen />
-        {background === 'gradient' && <HeaderBackground height="100%" position="absolute" />}
+        {background === 'gradient' && (
+          <HeaderBackground height="100%" width="100%" position="absolute" />
+        )}
         <Container size={size}>
           <Row>
             <ButtonContainer positionInHeader="left">
