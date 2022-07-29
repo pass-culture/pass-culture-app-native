@@ -486,12 +486,13 @@ jobs:
     steps:
       - checkout
       - install_node_modules
-      - unit_test_native
+      # - unit_test_native
       - sonarcloud-scanner
 
   new-test-native:
     executor: node
     working_directory: ~/pass-culture
+    resource_class: medium+
     steps:
       - checkout
       - install_node_modules
@@ -506,6 +507,7 @@ jobs:
       - checkout
       - install_node_modules
       - unit_test_web
+      - sonarcloud-scanner
 
   notify-hard-testing-release:
     executor: node
