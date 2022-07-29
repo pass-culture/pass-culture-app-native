@@ -62,7 +62,7 @@ export function ChangePassword() {
       setConfirmedPassword('')
       setShouldDisplayPasswordRules(false)
       showSuccessSnackBar({
-        message: t`Mot de passe modifié`,
+        message: t`Ton mot de passe est modifié`,
         timeout: SNACK_BAR_TIME_OUT,
       })
       navigate(...getTabNavConfig('Profile'))
