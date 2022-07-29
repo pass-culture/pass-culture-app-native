@@ -32,6 +32,13 @@ jest.mock('libs/timer', () => ({
 
 let mockedSendSetPhoneNumberCode = jest.fn()
 
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: jest.fn(),
+    phoneValidation: { phoneNumber: undefined, countryCode: undefined },
+  }),
+}))
+
 describe('SetPhoneNumber', () => {
   beforeEach(() => {
     mockedSendSetPhoneNumberCode = mockedUseMutation.mockImplementation(

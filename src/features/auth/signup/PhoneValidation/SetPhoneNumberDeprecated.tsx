@@ -11,6 +11,7 @@ import { Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { useSendPhoneValidationMutation } from 'features/identityCheck/api/api'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
@@ -43,7 +44,8 @@ const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const { dispatch, phoneValidation } = useIdentityCheckContext()
+  const [phoneNumber, setPhoneNumber] = useState(phoneValidation?.phoneNumber ?? '')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
     null | number
@@ -75,6 +77,7 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
   }, [])
 
   function onSuccess() {
+    dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
@@ -82,6 +85,7 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
   }
 
   function onError(error: ApiError | unknown) {
+    dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
     const { content } = error as ApiError
     if (content.code === 'TOO_MANY_SMS_SENT') {
       navigate('PhoneValidationTooManySMSSent')
