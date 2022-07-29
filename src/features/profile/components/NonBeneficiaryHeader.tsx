@@ -12,7 +12,7 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Subscripti
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { PageHeaderNew } from 'ui/components/headers/PageHeaderNew'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Typo } from 'ui/theme'
@@ -99,7 +99,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   return (
     <React.Fragment>
-      <PageHeaderNew title={t`Profil`} />
+      <PageHeader title={t`Profil`} />
       <BannerContainer>
         <NonBeneficiaryBanner />
       </BannerContainer>

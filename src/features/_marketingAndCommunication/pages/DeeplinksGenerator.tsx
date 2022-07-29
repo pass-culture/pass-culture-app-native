@@ -50,9 +50,13 @@ export const DeeplinksGenerator = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Envie de tout envie de lien\u00a0?`} />
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={18} />
+      <PageHeader
+        title={t`Envie de tout envie de lien\u00a0?`}
+        background="primary"
+        size="small"
+        withGoBackButton
+      />
+      <Spacer.Column numberOfSpaces={6} />
       <Row>
         <Left>
           <DeeplinksGeneratorForm onCreate={onGenerate} />

@@ -42,10 +42,15 @@ export const Categories: React.FC = () => {
   const titleID = uuidv4()
   return (
     <Container>
-      <PageHeader titleID={titleID} title={t`Catégories`} />
+      <PageHeader
+        titleID={titleID}
+        title={t`Catégories`}
+        background="primary"
+        size="small"
+        withGoBackButton
+      />
       <StyledScrollView accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
-        <Spacer.TopScreen />
-        <Spacer.Column numberOfSpaces={16} />
+        <Spacer.Column numberOfSpaces={4} />
         <VerticalUl>
           {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
             const searchGroup = category as SearchGroupNameEnum

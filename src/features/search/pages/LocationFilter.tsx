@@ -73,14 +73,18 @@ export const LocationFilter: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader titleID={titleID} title={t`Localisation`} />
-      <Spacer.TopScreen />
+      <PageHeader
+        titleID={titleID}
+        title={t`Localisation`}
+        background="primary"
+        size="small"
+        withGoBackButton
+      />
       <ScrollView
         contentContainerStyle={contentContainerStyle}
         accessibilityRole={AccessibilityRole.RADIOGROUP}
         aria-labelledby={titleID}>
-        <Spacer.Column numberOfSpaces={14} />
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={8} />
         <BannerContainer>
           <Banner
             title={t`Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation`}

@@ -11,9 +11,8 @@ export const UTMParameters = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title="UTM parameters" />
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={15} />
+      <PageHeader title="UTM parameters" background="primary" size="small" withGoBackButton />
+      <Spacer.Column numberOfSpaces={6} />
       <Container>
         <AlignedText>
           <Text>traffic_campaign: {campaign}</Text>

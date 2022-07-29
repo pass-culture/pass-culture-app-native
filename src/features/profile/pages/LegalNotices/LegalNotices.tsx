@@ -13,10 +13,9 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 export function LegalNotices() {
   return (
     <React.Fragment>
-      <PageHeader title={t`Mentions légales`} />
+      <PageHeader title={t`Mentions légales`} background="primary" size="small" withGoBackButton />
       <Container>
-        <Spacer.TopScreen />
-        <Spacer.Column numberOfSpaces={14} />
+        <Spacer.Column numberOfSpaces={2} />
         <Row
           title={t`Conditions Générales d’Utilisation`}
           type="clickable"

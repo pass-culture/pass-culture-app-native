@@ -5,11 +5,11 @@ import React from 'react'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
-import { PageHeaderNew } from './PageHeaderNew'
+import { PageHeader } from './PageHeader'
 
 export default {
   title: 'ui/Header',
-  component: PageHeaderNew,
+  component: PageHeader,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -17,9 +17,9 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof PageHeaderNew>
+} as ComponentMeta<typeof PageHeader>
 
-const Template: ComponentStory<typeof PageHeaderNew> = (props) => <PageHeaderNew {...props} />
+const Template: ComponentStory<typeof PageHeader> = (props) => <PageHeader {...props} />
 
 export const Default = Template.bind({})
 Default.args = {

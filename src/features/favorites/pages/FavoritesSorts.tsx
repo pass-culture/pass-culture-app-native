@@ -68,10 +68,9 @@ export const FavoritesSorts: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title={t`Trier`} />
+      <PageHeader title={t`Trier`} background="primary" size="small" withGoBackButton />
       <StyledScrollView>
-        <Spacer.TopScreen />
-        <Spacer.Column numberOfSpaces={16} />
+        <Spacer.Column numberOfSpaces={4} />
 
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
