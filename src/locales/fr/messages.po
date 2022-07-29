@@ -1795,6 +1795,7 @@ msgstr "Mois suivant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
+#: src/features/profile/components/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
@@ -2951,6 +2952,7 @@ msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
+#: src/features/profile/components/ExpiredCreditModal.tsx
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
@@ -3211,6 +3213,10 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "Tu peux aussi découvrir"
+msgstr "Tu peux aussi découvrir"
+
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
@@ -3246,6 +3252,10 @@ msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur
 #: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 msgid "Tu peux sélectionner une ou plusieurs réponses."
 msgstr "Tu peux sélectionner une ou plusieurs réponses."
+
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "Tu peux toujours"
+msgstr "Tu peux toujours"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
@@ -3684,6 +3694,10 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "de nos partenaires sur l'application et"
+msgstr "de nos partenaires sur l'application et"
+
 #: src/features/profile/components/CreditCeilingsModal.tsx
 msgid "diversification des pratiques culturelles."
 msgstr "diversification des pratiques culturelles."
@@ -3724,6 +3738,10 @@ msgstr "Profite de {deposit}"
 msgid "et si tu as..."
 msgstr "et si tu as..."
 
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "exclusives"
+msgstr "exclusives"
+
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
 msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
@@ -3761,6 +3779,10 @@ msgstr "Dossier mis à jour le : {day} à {hour}"
 msgid "le"
 msgstr "le"
 
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "les activités culturelles"
+msgstr "les activités culturelles"
+
 #: src/features/profile/components/CreditCeilingsModal.tsx
 #: src/features/profile/components/CreditCeilingsModal.tsx
 msgid "mais"
@@ -3792,6 +3814,7 @@ msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est e
 msgid "offerId is undefined"
 msgstr "offerId is undefined"
 
+#: src/features/profile/components/ExpiredCreditModal.tsx
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"
 msgstr "ou"
@@ -3872,6 +3895,14 @@ msgstr "réalisée"
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "réserver directement sur leur site."
+msgstr "réserver directement sur leur site."
+
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "réserver les offres gratuites"
+msgstr "réserver les offres gratuites"
+
 #: src/features/search/components/SearchResults.tsx
 msgid "search query"
 msgstr "pour {searchQuery}"
@@ -3904,6 +3935,10 @@ msgstr "spécialité"
 #: src/features/favorites/atoms/Favorite.tsx
 msgid "starting from date"
 msgstr "Dès le {date}"
+
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "sur le pass Culture."
+msgstr "sur le pass Culture."
 
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "sélectionné"
