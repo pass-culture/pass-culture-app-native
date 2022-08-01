@@ -7,7 +7,7 @@ import { ProfileHeader } from 'features/profile/components/headers/ProfileHeader
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { render } from 'tests/utils'
 
-jest.mock('./NonBeneficiaryHeader')
+jest.mock('features/profile/components/NonBeneficiaryHeader')
 
 const user: UserProfileResponse = {
   bookedOffers: {},

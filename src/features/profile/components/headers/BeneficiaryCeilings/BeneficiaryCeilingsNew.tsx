@@ -22,7 +22,7 @@ export function BeneficiaryCeilingsNew({
       {!!domainsCredit.digital && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <Row>
+          <Row testID="domains-credit-digital">
             <Typo.Body>{t`dont` + SPACE}</Typo.Body>
             <BodySecondary>
               {formatToFrenchDecimal(domainsCredit.digital.remaining) + SPACE}
@@ -32,7 +32,7 @@ export function BeneficiaryCeilingsNew({
         </React.Fragment>
       )}
       {!!domainsCredit.physical && (
-        <Row>
+        <Row testID="domains-credit-physical">
           <Typo.Body>{t`dont` + SPACE}</Typo.Body>
           <BodySecondary>
             {formatToFrenchDecimal(domainsCredit.physical.remaining) + SPACE}
