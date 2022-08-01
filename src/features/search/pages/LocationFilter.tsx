@@ -73,13 +73,7 @@ export const LocationFilter: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader
-        titleID={titleID}
-        title={t`Localisation`}
-        background="primary"
-        size="small"
-        withGoBackButton
-      />
+      <PageHeader titleID={titleID} title={t`Localisation`} background="primary" withGoBackButton />
       <ScrollView
         contentContainerStyle={contentContainerStyle}
         accessibilityRole={AccessibilityRole.RADIOGROUP}

@@ -13,7 +13,7 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 export function LegalNotices() {
   return (
     <React.Fragment>
-      <PageHeader title={t`Mentions légales`} background="primary" size="small" withGoBackButton />
+      <PageHeader title={t`Mentions légales`} background="primary" withGoBackButton />
       <Container>
         <Spacer.Column numberOfSpaces={2} />
         <Row

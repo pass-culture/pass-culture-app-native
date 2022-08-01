@@ -37,7 +37,6 @@ export const LocationPicker: React.FC = () => {
         titleID={titleID}
         title={t`Choisir un lieu`}
         background="primary"
-        size="small"
         withGoBackButton
       />
       <Spacer.Column numberOfSpaces={6} />

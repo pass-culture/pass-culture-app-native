@@ -114,7 +114,7 @@ export const OfferDescription = () => {
   return (
     <Container>
       <Helmet title={helmetTitle} />
-      <PageHeader title="Description" background="primary" size="small" withGoBackButton />
+      <PageHeader title="Description" background="primary" withGoBackButton />
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
         <FlatList

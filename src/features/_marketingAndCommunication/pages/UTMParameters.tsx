@@ -11,7 +11,7 @@ export const UTMParameters = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title="UTM parameters" background="primary" size="small" withGoBackButton />
+      <PageHeader title="UTM parameters" background="primary" withGoBackButton />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
         <AlignedText>

@@ -53,7 +53,6 @@ export const DeeplinksGenerator = () => {
       <PageHeader
         title={t`Envie de tout envie de lien\u00a0?`}
         background="primary"
-        size="small"
         withGoBackButton
       />
       <Spacer.Column numberOfSpaces={6} />

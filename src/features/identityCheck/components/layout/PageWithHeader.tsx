@@ -30,6 +30,7 @@ export const PageWithHeader = (props: Props) => {
       <PageHeader
         title={props.title}
         background="primary"
+        size="medium"
         onGoBack={props.onGoBack}
         withGoBackButton
       />

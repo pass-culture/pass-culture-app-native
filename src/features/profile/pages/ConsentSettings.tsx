@@ -66,7 +66,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         title={t`Paramètres de confidentialité`}
         onGoBack={route.params?.onGoBack}
         background="primary"
-        size="small"
         withGoBackButton
       />
       <Spacer.Column numberOfSpaces={6} />

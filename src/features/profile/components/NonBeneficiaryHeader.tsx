@@ -113,7 +113,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Profil`} />
+      <PageHeader title={t`Profil`} size="medium" />
       <NonBeneficiaryBanner />
     </React.Fragment>
   )

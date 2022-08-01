@@ -101,12 +101,7 @@ export function ChangeEmail() {
 
   return (
     <React.Fragment>
-      <PageHeader
-        title={t`Modifier mon e-mail`}
-        background="primary"
-        size="small"
-        withGoBackButton
-      />
+      <PageHeader title={t`Modifier mon e-mail`} background="primary" withGoBackButton />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}

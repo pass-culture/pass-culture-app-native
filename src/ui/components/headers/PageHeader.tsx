@@ -31,7 +31,7 @@ export const PageHeader: React.FC<Props> = ({
   title,
   titleID,
   position = 'relative',
-  size = 'medium',
+  size = 'small',
   background = 'white',
   withGoBackButton = false,
   onGoBack,

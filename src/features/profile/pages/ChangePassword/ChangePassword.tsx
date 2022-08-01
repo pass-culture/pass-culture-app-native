@@ -97,7 +97,7 @@ export function ChangePassword() {
 
   return (
     <Container>
-      <PageHeader title={t`Mot de passe`} background="primary" size="small" withGoBackButton />
+      <PageHeader title={t`Mot de passe`} background="primary" withGoBackButton />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}

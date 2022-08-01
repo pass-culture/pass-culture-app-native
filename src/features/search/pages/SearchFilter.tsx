@@ -49,7 +49,6 @@ export const SearchFilter: React.FC = () => {
         title={t`Filtrer`}
         RightComponent={ReinitializeFilters}
         background="primary"
-        size="small"
         withGoBackButton
       />
       <React.Fragment>

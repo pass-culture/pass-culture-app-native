@@ -147,7 +147,7 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Notifications`} background="primary" size="small" withGoBackButton />
+      <PageHeader title={t`Notifications`} background="primary" withGoBackButton />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Body>

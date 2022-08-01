@@ -42,13 +42,7 @@ export const Categories: React.FC = () => {
   const titleID = uuidv4()
   return (
     <Container>
-      <PageHeader
-        titleID={titleID}
-        title={t`Catégories`}
-        background="primary"
-        size="small"
-        withGoBackButton
-      />
+      <PageHeader titleID={titleID} title={t`Catégories`} background="primary" withGoBackButton />
       <StyledScrollView accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
         <Spacer.Column numberOfSpaces={4} />
         <VerticalUl>
