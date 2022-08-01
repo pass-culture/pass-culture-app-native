@@ -1,6 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TicketWithContent/> should render properly 1`] = `
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #eb0055;
+  text-decoration-color: #eb0055;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
 <div
   className="css-view-1dbjc4n"
   data-testid="three-shapes-ticket"
@@ -110,7 +156,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
       >
         <button
           aria-label="Copier le code"
-          className="sc-bdvvtL bbYvlI sc-gsDKAQ cvEfWt sc-gsDKAQ cvEfWt"
+          className="c0 c1 sc-gsDKAQ c1"
           disabled={false}
           onClick={[Function]}
           tabIndex="0"

@@ -3,14 +3,76 @@
 exports[`LocationFilter component should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c3 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
         style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <header
-          class="sc-gsDKAQ hFLWOJ"
+          class="c0"
           role="banner"
         >
           <div
@@ -39,7 +101,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="sc-bdvvtL bQLkxd"
+                    class="c1"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -143,7 +205,7 @@ Object {
               style="height: 24px;"
             />
             <ul
-              class="sc-dkPtRN sc-hKwDye kHsZXE dWdAkX"
+              class="c2 c3"
             >
               <li>
                 <div
@@ -342,13 +404,75 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c3 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <header
-        class="sc-gsDKAQ hFLWOJ"
+        class="c0"
         role="banner"
       >
         <div
@@ -377,7 +501,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-bdvvtL bQLkxd"
+                  class="c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -481,7 +605,7 @@ Object {
             style="height: 24px;"
           />
           <ul
-            class="sc-dkPtRN sc-hKwDye kHsZXE dWdAkX"
+            class="c2 c3"
           >
             <li>
               <div

@@ -3,14 +3,127 @@
 exports[`<IdentityCheckValidation /> should render IdentityCheckValidation component correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
         style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
       >
         <header
-          class="sc-gsDKAQ hFLWOJ"
+          class="c0"
           role="banner"
         >
           <div
@@ -39,7 +152,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="sc-bdvvtL bQLkxd"
+                    class="c1"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -202,7 +315,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-dkPtRN ffceOV sc-eCImPb idTzrf"
+                  class="c2 c3"
                   tabindex="0"
                   type="submit"
                 >
@@ -225,13 +338,126 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
     >
       <header
-        class="sc-gsDKAQ hFLWOJ"
+        class="c0"
         role="banner"
       >
         <div
@@ -260,7 +486,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-bdvvtL bQLkxd"
+                  class="c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -423,7 +649,7 @@ Object {
               style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
             >
               <button
-                class="sc-dkPtRN ffceOV sc-eCImPb idTzrf"
+                class="c2 c3"
                 tabindex="0"
                 type="submit"
               >

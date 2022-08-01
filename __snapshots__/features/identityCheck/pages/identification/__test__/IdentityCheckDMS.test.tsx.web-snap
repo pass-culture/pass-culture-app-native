@@ -1,6 +1,118 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IdentityCheckDMS /> should render correctly 1`] = `
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  background-color: transparent;
+}
+
 <div
   className="css-view-1dbjc4n"
   style={
@@ -27,7 +139,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
   }
 >
   <header
-    className="sc-gsDKAQ hFLWOJ"
+    className="c0"
     role="banner"
   >
     <div
@@ -130,7 +242,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="sc-bdvvtL bQLkxd"
+              className="c1"
               data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -417,7 +529,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               }
             >
               <a
-                className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
+                className="c2 c3"
                 href="https://dmsfrenchcitizen"
                 onClick={[Function]}
                 onDoubleClick={[Function]}
@@ -541,7 +653,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 </div>
               </div>
               <a
-                className="sc-hKwDye bdYInf sc-eCImPb ckCibG"
+                className="c2 c3"
                 href="https://dmsforeigncitizen"
                 onClick={[Function]}
                 onDoubleClick={[Function]}

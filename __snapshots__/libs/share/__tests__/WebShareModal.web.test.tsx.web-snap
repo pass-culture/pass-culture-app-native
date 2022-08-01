@@ -67,7 +67,258 @@ Object {
 exports[`<WebShareModal/> should render correctly when shown 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 320px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c7:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c7:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c7:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c7:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c7:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c4:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c4:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8:disabled {
+  background-color: #F1F1F4;
+}
+
+.c1 {
+  padding: 4px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c3 {
+  background-color: transparent;
+}
+
+.c6 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+  gap: 24px 0px;
+  width: 100%;
+}
+
+<body>
     <div />
     <div>
       <div
@@ -138,7 +389,7 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
                       <button
-                        class="sc-hKwDye huZUNX sc-gKclnd hejctC sc-gKclnd hejctC"
+                        class="c0 c1 sc-gKclnd c1"
                         data-testid="Fermer la modale"
                         tabindex="0"
                         type="button"
@@ -200,7 +451,7 @@ Object {
                             >
                               <button
                                 aria-label="Copier le lien"
-                                class="sc-bdvvtL ixcPfN sc-cidDSM iUBxLC"
+                                class="c2 c3"
                                 data-testid="Copier le lien"
                                 tabindex="0"
                                 type="button"
@@ -236,7 +487,7 @@ Object {
                             >
                               <a
                                 aria-label="Ouvrir le gestionnaire mail"
-                                class="sc-gsDKAQ fDShHk sc-cidDSM iUBxLC"
+                                class="c4 c3"
                                 data-testid="Ouvrir le gestionnaire mail"
                                 href="mailto:?subject=Voici une super offre !&body=https://url.com/offer"
                                 tabindex="0"
@@ -281,7 +532,7 @@ Object {
                             style="height: 24px;"
                           />
                           <ul
-                            class="sc-fotOHu sc-jcFjpl fHUdDM cBGiKb"
+                            class="c5 c6"
                           >
                             <li>
                               <a
@@ -405,7 +656,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            class="sc-bdvvtL jVFBJw sc-jRQBWg kyMyBM"
+                            class="c7 c8"
                             tabindex="0"
                             type="button"
                           >

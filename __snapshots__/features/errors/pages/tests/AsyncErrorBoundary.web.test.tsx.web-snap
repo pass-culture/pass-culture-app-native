@@ -3,7 +3,119 @@
 exports[`AsyncErrorBoundary component should render 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 24px;
+  padding-right: 24px;
+  min-height: 48px;
+  width: 100%;
+  background-color: #ffffff;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #ffffff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #eb0055;
+  text-decoration-color: #eb0055;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  z-index: 1;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
@@ -25,7 +137,7 @@ Object {
           </div>
         </div>
         <button
-          class="sc-hKwDye huZUNX sc-eCImPb clWlnA sc-eCImPb clWlnA"
+          class="c0 c1 sc-eCImPb c1"
           data-testid="Revenir en arrière"
           tabindex="0"
           type="button"
@@ -96,7 +208,7 @@ Object {
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <button
-              class="sc-bdvvtL ykksg sc-dkPtRN kmXVLA"
+              class="c2 c3"
               tabindex="0"
               type="button"
             >
@@ -121,7 +233,119 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 24px;
+  padding-right: 24px;
+  min-height: 48px;
+  width: 100%;
+  background-color: #ffffff;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #ffffff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #eb0055;
+  text-decoration-color: #eb0055;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  z-index: 1;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
@@ -142,7 +366,7 @@ Object {
         </div>
       </div>
       <button
-        class="sc-hKwDye huZUNX sc-eCImPb clWlnA sc-eCImPb clWlnA"
+        class="c0 c1 sc-eCImPb c1"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -213,7 +437,7 @@ Object {
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <button
-            class="sc-bdvvtL ykksg sc-dkPtRN kmXVLA"
+            class="c2 c3"
             tabindex="0"
             type="button"
           >

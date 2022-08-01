@@ -3,10 +3,50 @@
 exports[`AccessibleTabBar renders correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c0 {
+  z-index: 2;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: visible;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 > * {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<body>
     <div>
       <nav
-        class="sc-hiCibw dMJBgX"
+        class="c0"
         id="tabBarID"
         role="navigation"
       >
@@ -23,10 +63,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-fotOHu sc-gWXbKe fHUdDM ghmGjO"
+              class="c1 c2"
             >
               <li
-                class="sc-cCcXHH dNEwdj"
+                class="c3"
               >
                 <div
                   aria-current="page"
@@ -78,7 +118,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-cCcXHH dNEwdj"
+                class="c3"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -114,7 +154,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-cCcXHH dNEwdj"
+                class="c3"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -150,7 +190,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-cCcXHH dNEwdj"
+                class="c3"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -186,7 +226,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-cCcXHH dNEwdj"
+                class="c3"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -235,9 +275,49 @@ Object {
       </nav>
     </div>
   </body>,
-  "container": <div>
+  "container": .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c0 {
+  z-index: 2;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: visible;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 > * {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<div>
     <nav
-      class="sc-hiCibw dMJBgX"
+      class="c0"
       id="tabBarID"
       role="navigation"
     >
@@ -254,10 +334,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-fotOHu sc-gWXbKe fHUdDM ghmGjO"
+            class="c1 c2"
           >
             <li
-              class="sc-cCcXHH dNEwdj"
+              class="c3"
             >
               <div
                 aria-current="page"
@@ -309,7 +389,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-cCcXHH dNEwdj"
+              class="c3"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -345,7 +425,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-cCcXHH dNEwdj"
+              class="c3"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -381,7 +461,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-cCcXHH dNEwdj"
+              class="c3"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -417,7 +497,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-cCcXHH dNEwdj"
+              class="c3"
             >
               <div
                 class="css-view-1dbjc4n"

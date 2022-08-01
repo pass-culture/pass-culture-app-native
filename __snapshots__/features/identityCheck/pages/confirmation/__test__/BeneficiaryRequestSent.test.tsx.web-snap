@@ -1,6 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
+.c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #ffffff;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:focus-visible {
+  outline-color: #ffffff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c0:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #eb0055;
+  text-decoration-color: #eb0055;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1:disabled {
+  background-color: #F1F1F4;
+}
+
 <div
   className="css-view-1dbjc4n"
   style={
@@ -187,7 +253,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL erXCCw sc-dkPtRN kmXVLA"
+        className="c0 c1"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
