@@ -43,7 +43,6 @@ export type Action =
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
-  | { type: 'SHOW_RESULTS'; payload: boolean }
   | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnum[] }
   | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnum }
   | { type: 'TOGGLE_OFFER_FREE' }
@@ -65,8 +64,6 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return { ...initialSearchState, view: state.view }
     case 'SET_STATE':
       return { ...initialSearchState, ...action.payload }
-    case 'SHOW_RESULTS':
-      return { ...state, view: action.payload ? SearchView.Results : SearchView.Landing }
     case 'SET_STATE_FROM_NAVIGATE':
       return {
         ...state,

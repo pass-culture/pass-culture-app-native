@@ -41,11 +41,6 @@ describe('Favorites component', () => {
     expect(getByText('Connecte-toi pour profiter de cette fonctionnalité\u00a0!')).toBeTruthy()
   })
 
-  it('should show loading when not logged in', () => {
-    renderFavorites({ isLoggedIn: false })
-    expect(mockDispatch).not.toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
-  })
-
   it('should render offline page when not connected', () => {
     mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
     const renderAPI = renderFavorites({ isLoggedIn: true })

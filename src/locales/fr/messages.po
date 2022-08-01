@@ -537,14 +537,6 @@ msgstr "Cinéma - Salle de projections"
 msgid "Cinéma itinérant"
 msgstr "Cinéma itinérant"
 
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
-msgstr "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
-
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
-msgstr "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
-
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
@@ -1186,7 +1178,6 @@ msgstr "Fermer le calendrier"
 msgid "Festival"
 msgstr "Festival"
 
-#: src/features/search/atoms/Buttons/Filter.tsx
 #: src/features/search/pages/SearchFilter.tsx
 msgid "Filtrer"
 msgstr "Filtrer"
@@ -1407,10 +1398,6 @@ msgstr "J'ai compris"
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "J'ai reçu mon code"
 msgstr "J'ai reçu mon code"
-
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Je cherche"
-msgstr "Je cherche"
 
 #: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
 msgid "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
@@ -2094,10 +2081,6 @@ msgstr "Ouvrir le gestionnaire mail pour contacter le support"
 msgid "Ouvrir un onglet ÉduConnect"
 msgstr "Ouvrir un onglet ÉduConnect"
 
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "Où"
-msgstr "Où"
-
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Où ?"
 msgstr "Où ?"
@@ -2470,10 +2453,6 @@ msgstr "Recherche une adresse, un lieu..."
 #: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
-
-#: src/features/search/atoms/Buttons/Search.tsx
-msgid "Rechercher"
-msgstr "Rechercher"
 
 #: src/features/navigation/TabBar/routes.ts
 msgid "Rechercher des offres"
@@ -3986,6 +3965,10 @@ msgstr "{0}"
 msgid "{0} {EURO_SYMBOL}"
 msgstr "{0} {EURO_SYMBOL}"
 
+#: src/features/search/atoms/Buttons/FilterButton/FilterButton.tsx
+msgid "{activeFilters, plural, one {Voir tous les filtres : # filtre actif} other {Voir tous les filtres : # filtres actifs}}"
+msgstr "{activeFilters, plural, one {Voir tous les filtres : # filtre actif} other {Voir tous les filtres : # filtres actifs}}"
+
 #: src/features/search/atoms/TitleWithCount.tsx
 msgid "{count, plural, one {# sélectionné} other {# sélectionnés}}"
 msgstr "{count, plural, one {# sélectionné} other {# sélectionnés}}"
@@ -4017,10 +4000,6 @@ msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# ré
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
 msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
-
-#: src/features/search/atoms/Buttons/Filter.tsx
-msgid "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
-msgstr "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
