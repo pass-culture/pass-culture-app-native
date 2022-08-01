@@ -3,7 +3,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
+import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -161,10 +161,14 @@ describe('BookingDetails', () => {
     })
 
     it.each([
-      ['event', true],
-      ['physical', false],
-    ])('should display rules for a %s & non-digital offer', (type, isEvent) => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      ['event', true, WithdrawalTypeEnum.on_site],
+      ['physical', false, null],
+    ])('should display rules for a %s & non-digital offer', (type, isEvent, withdrawalType) => {
+      let booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      booking = {
+        ...booking,
+        stock: { ...booking.stock, offer: { ...booking.stock.offer, withdrawalType } },
+      }
       jest
         .spyOn(Helpers, 'getBookingProperties')
         .mockReturnValue({ isEvent, isDigital: false, isPhysical: !isEvent })

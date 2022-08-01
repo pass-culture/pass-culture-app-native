@@ -277,7 +277,7 @@ export function getOfferRules(
         'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.',
     })
   }
-  if (isPhysical || isEvent)
+  if (isPhysical || (isEvent && booking?.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site))
     return t`Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   return ''
 }
