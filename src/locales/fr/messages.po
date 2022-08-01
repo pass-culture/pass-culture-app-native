@@ -2380,6 +2380,10 @@ msgstr "Profil"
 msgid "Profite de ton crédit"
 msgstr "Profite de ton crédit"
 
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+msgid "Profite de ton crédit jusqu’au"
+msgstr "Profite de ton crédit jusqu’au"
+
 #: src/libs/share/shareApp/shareAppContent.ts
 msgid "Profite toi aussi de tous les bons plans du pass Culture"
 msgstr "Profite toi aussi de tous les bons plans du pass Culture"
@@ -3693,6 +3697,11 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+msgid "dont"
+msgstr "dont"
+
 #: src/libs/tileAccessibilityLabel.ts
 msgid "du type"
 msgstr "du type"
@@ -4085,3 +4094,11 @@ msgstr "à faire"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
+
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+msgid "€ pour les offres numériques"
+msgstr "€ pour les offres numériques"
+
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+msgid "€ pour les sorties"
+msgstr "€ pour les sorties"
