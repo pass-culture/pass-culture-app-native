@@ -35,16 +35,18 @@ export function BeneficiaryHeaderNew({
             <Spacer.Column numberOfSpaces={2} />
             {/* Use new ProgressBar instead */}
             <Typo.Hero>{convertCentsToEuros(domainsCredit?.all.remaining)}</Typo.Hero>
-            <Spacer.Column numberOfSpaces={2} />
             {/* Extract domain credit physical and digital informations into a new component with domainsCredit props */}
             {!!domainsCredit.digital && (
-              <Row>
-                <Typo.Body>{t`dont` + SPACE}</Typo.Body>
-                <BodySecondary>
-                  {convertCentsToEuros(domainsCredit.digital.remaining)}
-                </BodySecondary>
-                <Typo.Body>{t`€ pour les offres numériques`}</Typo.Body>
-              </Row>
+              <React.Fragment>
+                <Spacer.Column numberOfSpaces={2} />
+                <Row>
+                  <Typo.Body>{t`dont` + SPACE}</Typo.Body>
+                  <BodySecondary>
+                    {convertCentsToEuros(domainsCredit.digital.remaining)}
+                  </BodySecondary>
+                  <Typo.Body>{t`€ pour les offres numériques`}</Typo.Body>
+                </Row>
+              </React.Fragment>
             )}
             {!!domainsCredit.physical && (
               <Row>

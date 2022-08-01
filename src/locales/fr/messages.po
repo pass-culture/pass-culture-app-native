@@ -3697,14 +3697,6 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "de nos partenaires sur l'application et"
-msgstr "de nos partenaires sur l'application et"
-
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "diversification des pratiques culturelles."
-msgstr "diversification des pratiques culturelles."
-
 #: src/features/profile/components/BeneficiaryHeaderNew.tsx
 #: src/features/profile/components/BeneficiaryHeaderNew.tsx
 msgid "dont"
