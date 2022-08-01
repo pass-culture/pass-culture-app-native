@@ -1,31 +1,40 @@
 import { t } from '@lingui/macro'
+import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
+import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
 export function LoggedOutHeader() {
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('dark-content', true)
+
+      return () => StatusBar.setBarStyle('light-content', true)
+    }, [])
+  )
+
   return (
     <Container>
       <Spacer.TopScreen />
-      <HeaderBackground height="100%" />
       <Spacer.Column numberOfSpaces={6} />
       <HeaderContent>
-        <Title>{t`Profil`}</Title>
+        <Typo.Title4 {...getHeadingAttrs(1)}>{t`Profil`}</Typo.Title4>
         <Spacer.Column numberOfSpaces={7} />
         <Description>
           {t`Tu as entre 15 et 18 ans\u00a0? Crée-toi un compte pour bénéficier de ton crédit pass Culture`}
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <TouchableLink
-          as={ButtonPrimaryWhite}
+          as={ButtonPrimary}
           testID="S'inscrire"
           wording={t`S'inscrire`}
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
@@ -34,16 +43,16 @@ export function LoggedOutHeader() {
           }}
         />
         <Spacer.Column numberOfSpaces={5} />
-        <LoginCta>
+        <Typo.Body>
           {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
           <TouchableLink
-            as={StyledButtonInsideText}
+            as={ButtonInsideText}
             navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
             wording={t`Connecte-toi`}
             icon={Connect}
             {...accessibilityAndTestId(t`Connecte-toi`)}
           />
-        </LoginCta>
+        </Typo.Body>
         <Spacer.Column numberOfSpaces={7} />
       </HeaderContent>
     </Container>
@@ -60,19 +69,6 @@ const HeaderContent = styled.View({
   width: '100%',
 })
 
-const Description = styled(Typo.Body)(({ theme }) => ({
+const Description = styled(Typo.Body)({
   textAlign: 'center',
-  color: theme.colors.white,
-}))
-
-const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const LoginCta = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  color: theme.colors.white,
-}))``
+})
