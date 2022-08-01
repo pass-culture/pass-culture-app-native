@@ -13,18 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "(livres, instruments de musique...)."
-msgstr "(livres, instruments de musique...)."
-
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "(presse en ligne, plateformes de streaming...) et"
-msgstr "(presse en ligne, plateformes de streaming...) et"
-
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "(presse en ligne, plateformes de streaming...)."
-msgstr "(presse en ligne, plateformes de streaming...)."
-
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "+"
 msgstr "+"
@@ -476,8 +464,8 @@ msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
 
 #: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "Cette limite a pour but d’encourager la"
-msgstr "Cette limite a pour but d’encourager la"
+msgid "Cette limite a pour but d’encourager la diversification des pratiques culturelles."
+msgstr "Cette limite a pour but d’encourager la diversification des pratiques culturelles."
 
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "Cette réservation est annulable"
@@ -3225,8 +3213,8 @@ msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attenti
 msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
 #: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "Tu peux aussi découvrir"
-msgstr "Tu peux aussi découvrir"
+msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
+msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
@@ -3264,13 +3252,13 @@ msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur
 msgid "Tu peux sélectionner une ou plusieurs réponses."
 msgstr "Tu peux sélectionner une ou plusieurs réponses."
 
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "Tu peux toujours"
-msgstr "Tu peux toujours"
-
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
+
+#: src/features/profile/components/ExpiredCreditModal.tsx
+msgid "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
+msgstr "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
 
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement."
@@ -3705,14 +3693,6 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "de nos partenaires sur l'application et"
-msgstr "de nos partenaires sur l'application et"
-
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "diversification des pratiques culturelles."
-msgstr "diversification des pratiques culturelles."
-
 #: src/libs/tileAccessibilityLabel.ts
 msgid "du type"
 msgstr "du type"
@@ -3748,10 +3728,6 @@ msgstr "Profite de {deposit}"
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu as..."
 msgstr "et si tu as..."
-
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "exclusives"
-msgstr "exclusives"
 
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
@@ -3790,15 +3766,6 @@ msgstr "Dossier mis à jour le : {day} à {hour}"
 msgid "le"
 msgstr "le"
 
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "les activités culturelles"
-msgstr "les activités culturelles"
-
-#: src/features/profile/components/CreditCeilingsModal.tsx
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "mais"
-msgstr "mais"
-
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"
 msgstr "metteur en scène"
@@ -3825,7 +3792,6 @@ msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est e
 msgid "offerId is undefined"
 msgstr "offerId is undefined"
 
-#: src/features/profile/components/ExpiredCreditModal.tsx
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"
 msgstr "ou"
@@ -3906,14 +3872,6 @@ msgstr "réalisée"
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "réserver directement sur leur site."
-msgstr "réserver directement sur leur site."
-
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "réserver les offres gratuites"
-msgstr "réserver les offres gratuites"
-
 #: src/features/search/components/SearchResults.tsx
 msgid "search query"
 msgstr "pour {searchQuery}"
@@ -3946,10 +3904,6 @@ msgstr "spécialité"
 #: src/features/favorites/atoms/Favorite.tsx
 msgid "starting from date"
 msgstr "Dès le {date}"
-
-#: src/features/profile/components/ExpiredCreditModal.tsx
-msgid "sur le pass Culture."
-msgstr "sur le pass Culture."
 
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "sélectionné"
@@ -4037,11 +3991,6 @@ msgstr "{delayInMinutes} minutes"
 msgid "{delayInWeek} semaine"
 msgstr "{delayInWeek} semaine"
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "{digitalCeiling} maximum en biens numériques"
-msgstr "{digitalCeiling} maximum en biens numériques"
-
 #: src/features/bookings/pages/EndedBookings.tsx
 msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
 msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
@@ -4085,16 +4034,12 @@ msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# ré
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 
 #: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "{physicalCeiling} maximum en biens physiques"
-msgstr "{physicalCeiling} maximum en biens physiques"
+msgid "{totalCeiling} en biens physiques mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...)."
+msgstr "{totalCeiling} en biens physiques mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...)."
 
 #: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "{totalCeiling} en biens physiques"
-msgstr "{totalCeiling} en biens physiques"
-
-#: src/features/profile/components/CreditCeilingsModal.tsx
-msgid "{totalCeiling} en sorties"
-msgstr "{totalCeiling} en sorties"
+msgid "{totalCeiling} en sorties mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et {physicalCeiling} maximum en biens physiques (livres, instruments de musique...)."
+msgstr "{totalCeiling} en sorties mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et {physicalCeiling} maximum en biens physiques (livres, instruments de musique...)."
 
 #: src/features/bookings/helpers.ts
 msgid "À activer"

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK as LINE_BREAK, SPACE } from 'ui/theme/constants'
+import { DOUBLE_LINE_BREAK as LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
@@ -22,17 +22,11 @@ export function ExpiredCreditModal({ visible, hideModal }: Props) {
       <ModalChildrenContainer>
         <Spacer.Column numberOfSpaces={2} />
         <StyledBody>
-          {t`Ton crédit pass Culture est arrivé à expiration mais l’aventure continue\u00a0!` +
-            LINE_BREAK +
-            t`Tu peux toujours` +
-            SPACE}
-          <Typo.ButtonText>{t`réserver les offres gratuites` + SPACE}</Typo.ButtonText>
-          {t`ou` + SPACE}
-          <Typo.ButtonText>{t`exclusives` + SPACE}</Typo.ButtonText>
-          {t`sur le pass Culture.` + LINE_BREAK + t`Tu peux aussi découvrir` + SPACE}
-          <Typo.ButtonText>{t`les activités culturelles` + SPACE}</Typo.ButtonText>
-          {t`de nos partenaires sur l'application et` + SPACE}
-          <Typo.ButtonText>{t`réserver directement sur leur site.`}</Typo.ButtonText>
+          {t`Ton crédit pass Culture est arrivé à expiration mais l’aventure continue\u00a0!`}
+          {LINE_BREAK}
+          {t`Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture.`}
+          {LINE_BREAK}
+          {t`Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site.`}
         </StyledBody>
       </ModalChildrenContainer>
     </AppInformationModal>
