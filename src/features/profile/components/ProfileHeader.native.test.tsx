@@ -52,6 +52,10 @@ jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
 const mockedisUserUnderageBeneficiary = mocked(isUserUnderageBeneficiary, true)
 
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set('2021-07-01T00:00:00Z')
