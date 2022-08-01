@@ -14,9 +14,11 @@ import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/Cu
 import { navigateToHome } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
+import { BeneficiaryHeaderNew } from 'features/profile/components/BeneficiaryHeaderNew'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
@@ -655,7 +657,16 @@ export const AppComponents: FunctionComponent = () => {
           />
         </View>
       </AccordionItem>
-
+      <Divider />
+      {/* Your components */}
+      <AccordionItem title="New Beneficiary Header">
+        <BeneficiaryHeaderNew
+          firstName="Rosa"
+          lastName="Bonheur"
+          depositExpirationDate={formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}
+          domainsCredit={domains_credit_v1}
+        />
+      </AccordionItem>
       <Divider />
 
       {/* Your components */}

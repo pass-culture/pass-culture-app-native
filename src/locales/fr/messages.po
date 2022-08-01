@@ -3835,6 +3835,14 @@ msgstr "permanente"
 msgid "pour"
 msgstr "pour"
 
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+msgid "pour les offres numériques"
+msgstr "pour les offres numériques"
+
+#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+msgid "pour les sorties"
+msgstr "pour les sorties"
+
 #: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
 msgid "pour nous parler de tes activités culturelles préférées"
 msgstr "pour nous parler de tes activités culturelles préférées"
@@ -4104,11 +4112,3 @@ msgstr "à faire"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
-
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
-msgid "€ pour les offres numériques"
-msgstr "€ pour les offres numériques"
-
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
-msgid "€ pour les sorties"
-msgstr "€ pour les sorties"
