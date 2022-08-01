@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -19,17 +20,19 @@ export const HomeHeader: FunctionComponent = function () {
   const { data: userInfos } = useUserProfileInfo()
   const availableCredit = useAvailableCredit()
   const { top } = useCustomSafeInsets()
+  const { isLoggedIn } = useAuthContext()
 
-  const welcomeTitle = userInfos?.firstName
-    ? t({
-        id: 'hello name',
-        values: { name: userInfos?.firstName },
-        message: 'Bonjour {name}',
-      })
-    : t`Bienvenue\u00a0!`
+  const welcomeTitle =
+    userInfos?.firstName && isLoggedIn
+      ? t({
+          id: 'hello name',
+          values: { name: userInfos?.firstName },
+          message: 'Bonjour {name}',
+        })
+      : t`Bienvenue\u00a0!`
 
   let subtitle = t`Toute la culture à portée de main`
-  if (userInfos?.isBeneficiary && availableCredit) {
+  if (userInfos?.isBeneficiary && availableCredit && isLoggedIn) {
     subtitle = availableCredit.isExpired
       ? t`Ton crédit est expiré`
       : t({

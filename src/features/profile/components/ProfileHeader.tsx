@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers'
@@ -36,8 +37,10 @@ const getDisplayedExpirationDate = (expirationDate: Date, isUnderageBeneficiary:
 export function ProfileHeader(props: ProfileHeaderProps) {
   const { user } = props
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
+  const { isLoggedIn } = useAuthContext()
 
-  if (!user) {
+  // Not use user? because it's already tested here
+  if (!isLoggedIn || !user) {
     return <LoggedOutHeader />
   }
   const depositExpirationDate = user.depositExpirationDate

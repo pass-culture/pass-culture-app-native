@@ -36,6 +36,10 @@ const exBeneficiaryUser: UserProfileResponse = {
   depositExpirationDate: '2020-01-01T03:04:05',
 }
 
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set('2021-07-01T00:00:00Z')
