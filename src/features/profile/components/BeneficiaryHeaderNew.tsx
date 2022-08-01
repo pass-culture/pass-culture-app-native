@@ -3,7 +3,8 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { CreditInfo } from 'features/profile/components/CreditInfo'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -33,18 +34,17 @@ export function BeneficiaryHeaderNew({
         {!!domainsCredit && (
           <Fragment>
             <Spacer.Column numberOfSpaces={2} />
-            {/* Use new ProgressBar instead */}
-            <Typo.Hero>{convertCentsToEuros(domainsCredit?.all.remaining)}</Typo.Hero>
+            <CreditInfo totalCredit={domainsCredit.all} />
             {/* Extract domain credit physical and digital informations into a new component with domainsCredit props */}
             {!!domainsCredit.digital && (
               <React.Fragment>
-                <Spacer.Column numberOfSpaces={2} />
+                <Spacer.Column numberOfSpaces={6} />
                 <Row>
                   <Typo.Body>{t`dont` + SPACE}</Typo.Body>
                   <BodySecondary>
-                    {convertCentsToEuros(domainsCredit.digital.remaining)}
+                    {formatToFrenchDecimal(domainsCredit.digital.remaining) + SPACE}
                   </BodySecondary>
-                  <Typo.Body>{t`€ pour les offres numériques`}</Typo.Body>
+                  <Typo.Body>{t`pour les offres numériques`}</Typo.Body>
                 </Row>
               </React.Fragment>
             )}
@@ -52,9 +52,9 @@ export function BeneficiaryHeaderNew({
               <Row>
                 <Typo.Body>{t`dont` + SPACE}</Typo.Body>
                 <BodySecondary>
-                  {convertCentsToEuros(domainsCredit.physical.remaining)}
+                  {formatToFrenchDecimal(domainsCredit.physical.remaining) + SPACE}
                 </BodySecondary>
-                <Typo.Body>{t`€ pour les sorties`}</Typo.Body>
+                <Typo.Body>{t`pour les sorties`}</Typo.Body>
               </Row>
             )}
           </Fragment>
