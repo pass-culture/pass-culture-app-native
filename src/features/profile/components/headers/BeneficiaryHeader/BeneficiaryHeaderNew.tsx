@@ -3,9 +3,9 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
+import { CreditInfo } from 'features/profile/components/CreditInfo'
 import { BeneficiaryCeilingsNew } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew'
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -36,8 +36,7 @@ export function BeneficiaryHeaderNew({
         {!!domainsCredit && (
           <Fragment>
             <Spacer.Column numberOfSpaces={2} />
-            {/* Use new ProgressBar instead */}
-            <Typo.Hero>{convertCentsToEuros(domainsCredit?.all.remaining)}</Typo.Hero>
+            <CreditInfo totalCredit={domainsCredit.all} />
             <BeneficiaryCeilingsNew
               domainsCredit={domainsCredit}
               isUserUnderageBeneficiary={isUserUnderageBeneficiary}

@@ -463,7 +463,7 @@ msgstr "Cette adresse e-mail est liée à un compte supprimé"
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "Cette limite a pour but d’encourager la diversification des pratiques culturelles."
 msgstr "Cette limite a pour but d’encourager la diversification des pratiques culturelles."
 
@@ -908,7 +908,7 @@ msgstr "Distance maximum :"
 msgid "Distance minimum :"
 msgstr "Distance minimum :"
 
-#: src/features/profile/components/SubscriptionMessageBadge.tsx
+#: src/features/profile/components/headers/Badges/SubscriptionMessageBadge.tsx
 msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 
@@ -1307,7 +1307,7 @@ msgstr "Il est important que les informations de ton document soient parfaitemen
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "Il est possible de dépenser jusqu’à"
 msgstr "Il est possible de dépenser jusqu’à"
 
@@ -1770,8 +1770,7 @@ msgstr "Mois suivant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
-#: src/features/profile/components/ExhaustedCreditModal.tsx
-#: src/features/profile/components/ExpiredCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
@@ -2280,7 +2279,7 @@ msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton nu
 msgid "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 msgstr "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "Pourquoi cette limite ?"
 msgstr "Pourquoi cette limite ?"
 
@@ -2364,7 +2363,7 @@ msgstr "Profil"
 msgid "Profite de ton crédit"
 msgstr "Profite de ton crédit"
 
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/headers/BeneficiaryHeader/BeneficiaryHeaderNew.tsx
 msgid "Profite de ton crédit jusqu’au"
 msgstr "Profite de ton crédit jusqu’au"
 
@@ -2935,7 +2934,7 @@ msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
-#: src/features/profile/components/ExpiredCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
@@ -2943,7 +2942,7 @@ msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure con
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
 msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 
-#: src/features/profile/components/IdentityCheckPendingBadge.tsx
+#: src/features/profile/components/headers/Badges/IdentityCheckPendingBadge.tsx
 msgid "Ton inscription est en cours de traitement."
 msgstr "Ton inscription est en cours de traitement."
 
@@ -3200,11 +3199,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
-#: src/features/profile/components/ExhaustedCreditModal.tsx
-msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
-msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
-
-#: src/features/profile/components/ExpiredCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
 msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
 
@@ -3248,8 +3243,7 @@ msgstr "Tu peux sélectionner une ou plusieurs réponses."
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
-#: src/features/profile/components/ExhaustedCreditModal.tsx
-#: src/features/profile/components/ExpiredCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
 
@@ -3670,7 +3664,7 @@ msgstr "crédit valable jusqu'au"
 msgid "dans"
 msgstr "dans"
 
-#: src/features/profile/components/YoungerBadge.tsx
+#: src/features/profile/components/headers/Badges/YoungerBadge.tsx
 msgid "date d'éligibilité"
 msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture."
 
@@ -3686,8 +3680,8 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
 msgid "dont"
 msgstr "dont"
 
@@ -3755,7 +3749,7 @@ msgstr "intervenant"
 msgid "jour de fin de résa"
 msgstr "le {date}"
 
-#: src/features/profile/components/SubscriptionMessageBadge.tsx
+#: src/features/profile/components/headers/Badges/SubscriptionMessageBadge.tsx
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
 
@@ -3814,11 +3808,11 @@ msgstr "permanente"
 msgid "pour"
 msgstr "pour"
 
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
 msgid "pour les offres numériques"
 msgstr "pour les offres numériques"
 
-#: src/features/profile/components/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
 msgid "pour les sorties"
 msgstr "pour les sorties"
 
@@ -3846,11 +3840,11 @@ msgstr "prix"
 msgid "prix duo"
 msgstr "({price} x 2 places)"
 
-#: src/features/profile/components/ProfileHeader.tsx
+#: src/features/profile/components/headers/ProfileHeader/ProfileHeader.tsx
 msgid "profile expiration date"
 msgstr "{day} à {hour}"
 
-#: src/features/profile/components/ProfileHeader.tsx
+#: src/features/profile/components/headers/ProfileHeader/ProfileHeader.tsx
 msgid "profile expiration date for underage"
 msgstr "{day}"
 
@@ -4039,11 +4033,11 @@ msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "{totalCeiling} en biens physiques mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...)."
 msgstr "{totalCeiling} en biens physiques mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...)."
 
-#: src/features/profile/components/CreditCeilingsModal.tsx
+#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "{totalCeiling} en sorties mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et {physicalCeiling} maximum en biens physiques (livres, instruments de musique...)."
 msgstr "{totalCeiling} en sorties mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et {physicalCeiling} maximum en biens physiques (livres, instruments de musique...)."
 
