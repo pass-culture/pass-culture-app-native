@@ -3,7 +3,7 @@
 exports[`ForceUpdate display logic should display force update page when global variable is set 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c3 {
+  "baseElement": .c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12,18 +12,18 @@ Object {
   overflow: auto;
 }
 
-.c2 {
+.c3 {
   z-index: 2;
 }
 
-.c4 {
+.c5 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   overflow: visible;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33,7 +33,7 @@ Object {
   flex: 1;
 }
 
-.c5 > * {
+.c6 > * {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -43,7 +43,7 @@ Object {
   flex: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,10 +63,8 @@ Object {
   line-height: 20px;
   color: #870087;
   background-color: #ffffff;
-  z-index: 1;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -78,18 +76,10 @@ Object {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
 }
 
 .c0:focus {
-  -webkit-clip-path: none;
-  clip-path: none;
-  width: auto;
-  height: 44px;
+  height: 44px !important;
   margin: 8px;
   padding-left: 16px;
   padding-right: 16px;
@@ -100,18 +90,35 @@ Object {
   border-radius: 48px;
 }
 
+.c1 {
+  z-index: 1;
+  position: absolute;
+  overflow: hidden;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+}
+
+.c1:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  width: inherit;
+  height: inherit;
+}
+
 <body
     tabindex="-1"
   >
     <div>
       <a
-        class="c0"
+        class="c0 c1"
         href="#testUuidV4"
       >
         Accéder au menu de navigation
       </a>
       <main
-        class="c1"
+        class="c2"
         id="testUuidV4"
         role="main"
       >
@@ -149,7 +156,7 @@ Object {
         role="contentinfo"
       >
         <nav
-          class="c2"
+          class="c3"
           id="testUuidV4"
           role="navigation"
         >
@@ -166,10 +173,10 @@ Object {
                 style="width: 16px;"
               />
               <ul
-                class="c3 c4"
+                class="c4 c5"
               >
                 <li
-                  class="c5"
+                  class="c6"
                 >
                   <a
                     aria-current="page"
@@ -221,7 +228,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c5"
+                  class="c6"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -257,7 +264,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c5"
+                  class="c6"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -293,7 +300,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c5"
+                  class="c6"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -329,7 +336,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c5"
+                  class="c6"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -379,7 +386,7 @@ Object {
       </footer>
     </div>
   </body>,
-  "container": .c3 {
+  "container": .c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -388,18 +395,18 @@ Object {
   overflow: auto;
 }
 
-.c2 {
+.c3 {
   z-index: 2;
 }
 
-.c4 {
+.c5 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   overflow: visible;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -409,7 +416,7 @@ Object {
   flex: 1;
 }
 
-.c5 > * {
+.c6 > * {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -419,7 +426,7 @@ Object {
   flex: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -439,10 +446,8 @@ Object {
   line-height: 20px;
   color: #870087;
   background-color: #ffffff;
-  z-index: 1;
   -webkit-text-decoration: none;
   text-decoration: none;
-  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -454,18 +459,10 @@ Object {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
 }
 
 .c0:focus {
-  -webkit-clip-path: none;
-  clip-path: none;
-  width: auto;
-  height: 44px;
+  height: 44px !important;
   margin: 8px;
   padding-left: 16px;
   padding-right: 16px;
@@ -476,15 +473,32 @@ Object {
   border-radius: 48px;
 }
 
+.c1 {
+  z-index: 1;
+  position: absolute;
+  overflow: hidden;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+}
+
+.c1:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  width: inherit;
+  height: inherit;
+}
+
 <div>
     <a
-      class="c0"
+      class="c0 c1"
       href="#testUuidV4"
     >
       Accéder au menu de navigation
     </a>
     <main
-      class="c1"
+      class="c2"
       id="testUuidV4"
       role="main"
     >
@@ -522,7 +536,7 @@ Object {
       role="contentinfo"
     >
       <nav
-        class="c2"
+        class="c3"
         id="testUuidV4"
         role="navigation"
       >
@@ -539,10 +553,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="c3 c4"
+              class="c4 c5"
             >
               <li
-                class="c5"
+                class="c6"
               >
                 <a
                   aria-current="page"
@@ -594,7 +608,7 @@ Object {
                 </a>
               </li>
               <li
-                class="c5"
+                class="c6"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -630,7 +644,7 @@ Object {
                 </a>
               </li>
               <li
-                class="c5"
+                class="c6"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -666,7 +680,7 @@ Object {
                 </a>
               </li>
               <li
-                class="c5"
+                class="c6"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -702,7 +716,7 @@ Object {
                 </a>
               </li>
               <li
-                class="c5"
+                class="c6"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
