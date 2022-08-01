@@ -37,6 +37,12 @@ export function NavigationProfile(): JSX.Element {
     hideModal: hideExpiredCreditModal,
   } = useModal(false)
 
+  const {
+    visible: exhaustedCreditModalVisible,
+    showModal: showExhaustedCreditModal,
+    hideModal: hideExhaustedCreditModal,
+  } = useModal(false)
+
   return (
     <ScrollView>
       <Spacer.TopScreen />
@@ -75,6 +81,13 @@ export function NavigationProfile(): JSX.Element {
           <ExpiredCreditModal
             visible={expiredCreditModalVisible}
             hideModal={hideExpiredCreditModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary wording={'Modal Crédit Dépensé'} onPress={showExhaustedCreditModal} />
+          <ExpiredCreditModal
+            visible={exhaustedCreditModalVisible}
+            hideModal={hideExhaustedCreditModal}
           />
         </Row>
       </StyledContainer>
