@@ -9,18 +9,20 @@ import { getSpacing } from '../theme'
 
 interface HeaderBackgroundProps {
   height?: string | number
+  width?: string | number
   position?: 'absolute' | 'relative'
 }
 
 export const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
 
 function NotMemoizedHeaderBackground({
+  width,
   height = HEADER_BACKGROUND_DEFAULT_SIZE,
   position = 'absolute',
 }: HeaderBackgroundProps) {
   return (
-    <BackgroundContainer height={height} position={position}>
-      <HeaderBackgroundSvg height={height} />
+    <BackgroundContainer height={height} width={width} position={position}>
+      <HeaderBackgroundSvg height={height} width={width} />
     </BackgroundContainer>
   )
 }
@@ -37,7 +39,8 @@ const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, positi
 }))
 
 const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
-  const width = useTheme().appContentWidth + getSpacing(1)
+  const { appContentWidth } = useTheme()
+  const width = props.width || appContentWidth + getSpacing(1)
   const height = props.height || HEADER_BACKGROUND_DEFAULT_SIZE
   const { id: id1, fill: fill1 } = svgIdentifier()
   const { id: id2, fill: fill2 } = svgIdentifier()

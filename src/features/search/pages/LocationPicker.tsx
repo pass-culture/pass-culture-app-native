@@ -33,9 +33,13 @@ export const LocationPicker: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader titleID={titleID} title={t`Choisir un lieu`} />
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={18} />
+      <PageHeader
+        titleID={titleID}
+        title={t`Choisir un lieu`}
+        background="primary"
+        withGoBackButton
+      />
+      <Spacer.Column numberOfSpaces={6} />
       <StyledInput>
         <HiddenAccessibleText {...getHeadingAttrs(1)}>
           {t`Recherche une adresse, un lieu...`}

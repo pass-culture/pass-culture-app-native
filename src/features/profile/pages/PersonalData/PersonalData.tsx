@@ -24,10 +24,9 @@ export function PersonalData() {
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Informations personnelles`} />
-      <Spacer.TopScreen />
+      <PageHeader title={t`Informations personnelles`} background="primary" withGoBackButton />
       <Container>
-        <Spacer.Column numberOfSpaces={14} />
+        <Spacer.Column numberOfSpaces={2} />
         {!!user?.isBeneficiary && (
           <React.Fragment>
             <Row>

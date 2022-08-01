@@ -1,97 +1,124 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { BackButton } from 'ui/components/headers/BackButton'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
-import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { HeaderBackground } from 'ui/svg/HeaderBackground'
+import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { Header } from 'ui/web/global/Header'
 
 interface Props {
   title: string
   titleID?: string
+  position?: 'relative' | 'absolute'
+  // TODO(LucasBeneston): When we remove all primary or gradient header, remove this props
+  background?: 'white' | 'primary' | 'gradient'
+  size?: 'small' | 'medium'
+  withGoBackButton?: boolean
+  onGoBack?: () => void
   RightComponent?: React.FC
-  onGoBack?: () => void
 }
 
-interface HeaderIconProps {
-  onGoBack?: () => void
-}
+const smallHeight = getSpacing(12)
+const mediumHeight = getSpacing(14)
 
-const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
-  const { goBack } = useGoBack(...homeNavConfig)
-  return (
-    <Touchable onPress={onGoBack || goBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
-      <ArrowPrevious testID="icon-back" />
-      <HiddenAccessibleText>{t`Retour`}</HiddenAccessibleText>
-    </Touchable>
-  )
-}
-
-export const PageHeader: React.FC<Props> = (props) => {
-  const { title, titleID, RightComponent } = props
+export const PageHeader: React.FC<Props> = ({
+  title,
+  titleID,
+  position = 'relative',
+  size = 'small',
+  background = 'white',
+  withGoBackButton = false,
+  onGoBack,
+  RightComponent,
+}) => {
   const { onLayout } = useElementWidth()
-
+  const { top } = useCustomSafeInsets()
+  const height = size === 'small' ? smallHeight : mediumHeight
+  const backgroundColor = background === 'white' ? ColorsEnum.WHITE : ColorsEnum.PRIMARY
+  const color = background === 'white' ? ColorsEnum.BLACK : ColorsEnum.WHITE
+  const isAbsolutePosition = position === 'absolute' || !!withGoBackButton || !!RightComponent
   return (
     <Header>
-      <Container>
+      {!!isAbsolutePosition && <SpacerAbsolutePosition height={height + top} />}
+      <ColorContainer backgroundColor={backgroundColor} isAbsolutePosition={isAbsolutePosition}>
         <Spacer.TopScreen />
-        <Spacer.Column numberOfSpaces={2} />
-
-        <Row>
-          <ButtonContainer positionInHeader="left">
-            <HeaderIconBack onGoBack={props.onGoBack} />
-          </ButtonContainer>
-
-          <Title nativeID={titleID}>{title}</Title>
-
-          <ButtonContainer positionInHeader="right">
-            {!!RightComponent && (
-              <View onLayout={onLayout}>
-                <RightComponent />
-              </View>
-            )}
-          </ButtonContainer>
-        </Row>
-
-        <Spacer.Column numberOfSpaces={2} />
-      </Container>
+        {background === 'gradient' && (
+          <HeaderBackground height="100%" width="100%" position="absolute" />
+        )}
+        <Container size={size}>
+          <Row>
+            <ButtonContainer positionInHeader="left">
+              {!!withGoBackButton && <BackButton onGoBack={onGoBack} color={color} />}
+            </ButtonContainer>
+            <Title nativeID={titleID} color={color} size={size}>
+              {title}
+            </Title>
+            <ButtonContainer positionInHeader="right">
+              {!!RightComponent && (
+                <View onLayout={onLayout}>
+                  <RightComponent />
+                </View>
+              )}
+            </ButtonContainer>
+          </Row>
+        </Container>
+      </ColorContainer>
     </Header>
   )
 }
 
-const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  size: theme.icons.sizes.small,
-}))``
+const ColorContainer = styled.View<{ backgroundColor?: ColorsEnum; isAbsolutePosition?: boolean }>(
+  ({ backgroundColor, isAbsolutePosition, theme }) => ({
+    ...(isAbsolutePosition
+      ? {
+          zIndex: theme.zIndex.header,
+          position: 'absolute',
+          top: 0,
+        }
+      : {}),
+    width: '100%',
+    backgroundColor,
+  })
+)
 
-const Container = styled.View(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  width: '100%',
-  backgroundColor: theme.colors.primary,
-  zIndex: theme.zIndex.header,
+const SpacerAbsolutePosition = styled.View<{ height: number }>(({ height }) => ({
+  height,
 }))
 
-const Title = styled(Typo.Body).attrs(() => ({
+const Container = styled.View<{ size?: string }>(({ size }) => ({
+  alignItems: 'center',
+  ...(size === 'small'
+    ? {
+        height: smallHeight,
+        justifyContent: 'center',
+      }
+    : {
+        height: mediumHeight,
+        justifyContent: 'flex-end',
+        paddingBottom: getSpacing(3),
+      }),
+}))
+
+const Title = styled.Text.attrs(() => ({
   numberOfLines: 1,
   ...getHeadingAttrs(1),
-}))(({ theme }) => ({
-  color: theme.colors.white,
+}))<{ color: ColorsEnum; size?: string }>(({ theme, color, size }) => ({
+  ...(size === 'small' ? theme.typography.body : theme.typography.title4),
   textAlign: 'center',
+  color,
 }))
 
 const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
+  width: '100%',
 })
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(

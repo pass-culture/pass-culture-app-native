@@ -147,10 +147,9 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Notifications`} />
-      <Spacer.TopScreen />
+      <PageHeader title={t`Notifications`} background="primary" withGoBackButton />
       <ProfileContainer>
-        <Spacer.Column numberOfSpaces={18} />
+        <Spacer.Column numberOfSpaces={6} />
         <Typo.Body>
           {isLoggedIn
             ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`

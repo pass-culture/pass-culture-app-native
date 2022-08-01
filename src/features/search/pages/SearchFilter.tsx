@@ -45,11 +45,15 @@ export const SearchFilter: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title={t`Filtrer`} RightComponent={ReinitializeFilters} />
+      <PageHeader
+        title={t`Filtrer`}
+        RightComponent={ReinitializeFilters}
+        background="primary"
+        withGoBackButton
+      />
       <React.Fragment>
         <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>
-          <Spacer.TopScreen />
-          <Spacer.Column numberOfSpaces={16} />
+          <Spacer.Column numberOfSpaces={4} />
 
           {/* Localisation */}
           <Section.Location />

@@ -3,9 +3,8 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/atoms/layout/CustomKeyboardAvoidingView'
-import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
-import { Background } from 'ui/svg/Background'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
@@ -28,8 +27,13 @@ export const PageWithHeader = (props: Props) => {
 
   return (
     <Container>
-      <Spacer.TopScreen />
-      <PageHeader title={props.title} onGoBack={props.onGoBack} />
+      <PageHeader
+        title={props.title}
+        background="primary"
+        size="medium"
+        onGoBack={props.onGoBack}
+        withGoBackButton
+      />
       <CustomKeyboardAvoidingView>
         {props.fixedTopChildren ? (
           <FixedTopChildrenView>{props.fixedTopChildren}</FixedTopChildrenView>
@@ -49,16 +53,17 @@ export const PageWithHeader = (props: Props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
-      <Background />
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
-})
+  backgroundColor: theme.colors.primary,
+  paddingTop: getSpacing(2),
+}))
 
 const FixedTopChildrenView = styled.View({
   paddingHorizontal: getSpacing(5),

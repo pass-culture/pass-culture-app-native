@@ -3,12 +3,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
-import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 
 export function Bookings() {
   return (
     <Container>
-      <SvgPageHeader title={t`Mes réservations`} />
+      <PageHeader title={t`Mes réservations`} background="gradient" size="medium" />
       <OnGoingBookingsList />
     </Container>
   )

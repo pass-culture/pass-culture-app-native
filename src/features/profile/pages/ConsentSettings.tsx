@@ -62,9 +62,13 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <Container>
-      <PageHeader title={t`Paramètres de confidentialité`} onGoBack={route.params?.onGoBack} />
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={18} />
+      <PageHeader
+        title={t`Paramètres de confidentialité`}
+        onGoBack={route.params?.onGoBack}
+        background="primary"
+        withGoBackButton
+      />
+      <Spacer.Column numberOfSpaces={6} />
       <ProfileContainer>
         <StyledBody>
           {t`L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle.`}

@@ -12,7 +12,7 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Subscripti
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Typo } from 'ui/theme'
@@ -56,39 +56,53 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     if (props.isEligibleForBeneficiaryUpgrade) {
       if (subscription?.nextSubscriptionStep) {
         return (
-          <View testID="eligibility-banner-container">
-            {!!eligibilityEndDatetime && (
-              <Caption>
-                {t({
-                  id: 'elibility deadline',
-                  values: {
-                    deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
-                  },
-                  message: `Tu es éligible jusqu'au {deadline}`,
-                })}
-              </Caption>
-            )}
-            {!!nextBeneficiaryValidationStepNavConfig && (
-              <ModuleBanner
-                navigateTo={nextBeneficiaryValidationStepNavConfig}
-                leftIcon={<ThumbUp />}
-                title={moduleBannerWording}
-                subTitle={t`à dépenser dans l'application`}
-                testID="eligibility-banner"
-              />
-            )}
-          </View>
+          <BannerContainer>
+            <View testID="eligibility-banner-container">
+              {!!eligibilityEndDatetime && (
+                <Caption>
+                  {t({
+                    id: 'elibility deadline',
+                    values: {
+                      deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
+                    },
+                    message: `Tu es éligible jusqu'au {deadline}`,
+                  })}
+                </Caption>
+              )}
+              {!!nextBeneficiaryValidationStepNavConfig && (
+                <ModuleBanner
+                  navigateTo={nextBeneficiaryValidationStepNavConfig}
+                  leftIcon={<ThumbUp />}
+                  title={moduleBannerWording}
+                  subTitle={t`à dépenser dans l'application`}
+                  testID="eligibility-banner"
+                />
+              )}
+            </View>
+          </BannerContainer>
         )
       }
       if (subscription?.hasIdentityCheckPending) {
-        return <IdentityCheckPendingBadge />
+        return (
+          <BannerContainer>
+            <IdentityCheckPendingBadge />
+          </BannerContainer>
+        )
       }
       if (props.subscriptionMessage) {
-        return <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+        return (
+          <BannerContainer>
+            <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+          </BannerContainer>
+        )
       }
     }
     if (eligibilityStartDatetime && eligibilityStartDatetime > today) {
-      return <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+      return (
+        <BannerContainer>
+          <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+        </BannerContainer>
+      )
     }
     return <React.Fragment />
   }
@@ -99,10 +113,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   return (
     <React.Fragment>
-      <SvgPageHeader title={t`Profil`} />
-      <BannerContainer>
-        <NonBeneficiaryBanner />
-      </BannerContainer>
+      <PageHeader title={t`Profil`} size="medium" />
+      <NonBeneficiaryBanner />
     </React.Fragment>
   )
 }

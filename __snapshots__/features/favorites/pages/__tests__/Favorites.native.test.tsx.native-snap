@@ -13,19 +13,31 @@ exports[`Favorites component should render correctly 1`] = `
   }
 >
   <View
-    maxHeight={72}
+    backgroundColor="#eb0055"
+    isAbsolutePosition={false}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "maxHeight": 72,
+          "backgroundColor": "#eb0055",
+          "width": "100%",
         },
       ]
     }
   >
     <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
       height="100%"
-      position="relative"
+      position="absolute"
       style={
         Array [
           Object {
@@ -33,39 +45,103 @@ exports[`Favorites component should render correctly 1`] = `
             "height": "100%",
             "left": 0,
             "overflow": "hidden",
-            "position": "relative",
+            "position": "absolute",
             "right": 0,
             "top": 0,
             "zIndex": -1,
           },
         ]
       }
+      width="100%"
     >
       <View
         height="100%"
-        width={964}
+        width="100%"
       >
         <Text>
           undefined-SVG-Mock
         </Text>
       </View>
     </View>
-    <Text
+    <View
+      size="medium"
       style={
         Array [
           Object {
-            "bottom": 12,
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 18,
-            "lineHeight": 22,
-            "position": "absolute",
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
           },
         ]
       }
     >
-      Mes favoris
-    </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#ffffff"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Mes favoris
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
   </View>
   <View
     style={

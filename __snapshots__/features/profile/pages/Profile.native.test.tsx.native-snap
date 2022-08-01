@@ -69,73 +69,108 @@ exports[`Profile component should render correctly 1`] = `
           >
             <View>
               <View
-                maxHeight={72}
+                backgroundColor="#ffffff"
+                isAbsolutePosition={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "maxHeight": 72,
+                      "backgroundColor": "#ffffff",
+                      "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  height="100%"
-                  position="relative"
+                  customHeight={16}
+                  enable={true}
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "#eb0055",
-                        "height": "100%",
-                        "left": 0,
-                        "overflow": "hidden",
-                        "position": "relative",
-                        "right": 0,
-                        "top": 0,
-                        "zIndex": -1,
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "height": 56,
+                        "justifyContent": "flex-end",
+                        "paddingBottom": 12,
                       },
                     ]
                   }
                 >
                   <View
-                    height="100%"
-                    width={964}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      undefined-SVG-Mock
+                    <View
+                      positionInHeader="left"
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "flex-start",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      color="#161617"
+                      numberOfLines={1}
+                      size="medium"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 18,
+                            "lineHeight": 22,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Profil
                     </Text>
+                    <View
+                      positionInHeader="right"
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "flex-end",
+                            "paddingLeft": 12,
+                            "paddingRight": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                 </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "bottom": 12,
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "position": "absolute",
-                      },
-                    ]
-                  }
-                >
-                  Profil
-                </Text>
               </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                      "position": "relative",
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   Array [

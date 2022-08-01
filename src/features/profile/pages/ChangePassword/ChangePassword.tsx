@@ -97,13 +97,12 @@ export function ChangePassword() {
 
   return (
     <Container>
-      <PageHeader title={t`Mot de passe`} />
-      <Spacer.TopScreen />
+      <PageHeader title={t`Mot de passe`} background="primary" withGoBackButton />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
         keyboardShouldPersistTaps="handled">
-        <Spacer.Column numberOfSpaces={20} />
+        <Spacer.Column numberOfSpaces={8} />
         <Form.MaxWidth>
           <PasswordInput
             label={t`Mot de passe actuel`}

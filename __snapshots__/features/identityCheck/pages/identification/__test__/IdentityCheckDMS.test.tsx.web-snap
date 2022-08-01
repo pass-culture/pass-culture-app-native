@@ -12,6 +12,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
       "WebkitFlexDirection": "column",
       "WebkitFlexGrow": 1,
       "WebkitFlexShrink": 1,
+      "backgroundColor": "rgba(235,0,85,1.00)",
       "display": "flex",
       "flexBasis": "0px",
       "flexDirection": "column",
@@ -21,87 +22,204 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
       "msFlexNegative": 1,
       "msFlexPositive": 1,
       "msFlexPreferredSize": "0px",
+      "paddingTop": "8px",
     }
   }
 >
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitBoxPack": "center",
-        "WebkitFlexDirection": "row",
-        "WebkitJustifyContent": "center",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "height": "64px",
-        "justifyContent": "center",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "msFlexPack": "center",
-      }
-    }
+  <header
+    className="sc-gsDKAQ hFLWOJ"
+    role="banner"
   >
-    <h1
-      aria-level={1}
-      className="css-reset-4rbku5 css-text-901oao"
-      dir="ltr"
-      role="heading"
+    <div
+      className="css-view-1dbjc4n"
       style={
         Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "color": "rgba(255,255,255,1.00)",
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": "18px",
-          "lineHeight": "22px",
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-          "textAlign": "center",
+          "height": "72px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "backgroundColor": "rgba(235,0,85,1.00)",
+          "position": "absolute",
+          "top": "0px",
+          "width": "100%",
+          "zIndex": 1,
         }
       }
     >
-      Identification
-    </h1>
-    <button
-      aria-label="Revenir en arrière"
-      className="sc-bdvvtL bQLkxd sc-gsDKAQ jhgUIr sc-gsDKAQ jhgUIr"
-      data-testid="Revenir en arrière"
-      onClick={[MockFunction]}
-      tabIndex="0"
-      title="Revenir en arrière"
-      type="button"
-    >
       <div
         className="css-view-1dbjc4n"
-        data-testid="icon-back"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxPack": "end",
+            "WebkitJustifyContent": "flex-end",
+            "alignItems": "center",
+            "height": "56px",
+            "justifyContent": "flex-end",
+            "msFlexAlign": "center",
+            "msFlexPack": "end",
+            "paddingBottom": "12px",
+          }
+        }
       >
         <div
-          className="css-text-901oao"
-          dir="auto"
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitBoxAlign": "center",
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitBoxPack": "justify",
+              "WebkitFlexDirection": "row",
+              "WebkitJustifyContent": "space-between",
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "msFlexAlign": "center",
+              "msFlexDirection": "row",
+              "msFlexPack": "justify",
+              "width": "100%",
+            }
+          }
         >
-          icon-back-SVG-Mock
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxFlex": 1,
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "start",
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexDirection": "row",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "WebkitJustifyContent": "flex-start",
+                "alignItems": "center",
+                "flexBasis": "0px",
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexNegative": 1,
+                "msFlexPack": "start",
+                "msFlexPositive": 1,
+                "msFlexPreferredSize": "0px",
+                "paddingLeft": "12px",
+                "paddingRight": "12px",
+              }
+            }
+          >
+            <button
+              aria-label="Revenir en arrière"
+              className="sc-bdvvtL bQLkxd"
+              data-testid="Revenir en arrière"
+              onClick={[MockFunction]}
+              tabIndex="0"
+              title="Revenir en arrière"
+              type="button"
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="icon-back"
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  icon-back-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-text-901oao"
+                dir="ltr"
+                style={
+                  Object {
+                    "WebkitClipPath": "inset(50%)",
+                    "clipPath": "inset(50%)",
+                    "height": "1px",
+                    "overflowX": "hidden",
+                    "overflowY": "hidden",
+                    "width": "1px",
+                  }
+                }
+              >
+                Retour
+              </div>
+            </button>
+          </div>
+          <h1
+            aria-level={1}
+            className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+            dir="ltr"
+            role="heading"
+            style={
+              Object {
+                "WebkitLineClamp": 1,
+                "color": "rgba(255,255,255,1.00)",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": "18px",
+                "lineHeight": "22px",
+                "textAlign": "center",
+              }
+            }
+          >
+            Identification
+          </h1>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxFlex": 1,
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "end",
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexDirection": "row",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "WebkitJustifyContent": "flex-end",
+                "alignItems": "center",
+                "flexBasis": "0px",
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msFlexNegative": 1,
+                "msFlexPack": "end",
+                "msFlexPositive": 1,
+                "msFlexPreferredSize": "0px",
+                "paddingLeft": "12px",
+                "paddingRight": "12px",
+              }
+            }
+          />
         </div>
       </div>
-    </button>
-  </div>
+    </div>
+  </header>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -496,32 +614,6 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             />
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "bottom": "0px",
-        "height": "100%",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
-        "width": "100%",
-        "zIndex": -1,
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
       </div>
     </div>
   </div>

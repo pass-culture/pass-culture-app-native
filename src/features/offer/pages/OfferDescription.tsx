@@ -114,10 +114,9 @@ export const OfferDescription = () => {
   return (
     <Container>
       <Helmet title={helmetTitle} />
-      <PageHeader title="Description" />
+      <PageHeader title="Description" background="primary" withGoBackButton />
       <React.Fragment>
-        <Spacer.TopScreen />
-        <Spacer.Column numberOfSpaces={14} />
+        <Spacer.Column numberOfSpaces={2} />
         <FlatList
           testID="offer-description-list"
           data={getContentFromOffer(extraData, description, photoCredit)}

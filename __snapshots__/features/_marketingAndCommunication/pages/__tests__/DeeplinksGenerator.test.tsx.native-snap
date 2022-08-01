@@ -3,6 +3,18 @@
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 Array [
   <View
+    height={64}
+    style={
+      Array [
+        Object {
+          "height": 64,
+        },
+      ]
+    }
+  />,
+  <View
+    backgroundColor="#eb0055"
+    isAbsolutePosition={true}
     style={
       Array [
         Object {
@@ -27,148 +39,133 @@ Array [
       }
     />
     <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
+      size="small"
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
+            "height": 48,
+            "justifyContent": "center",
           },
         ]
       }
     >
       <View
-        positionInHeader="left"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Revenir en arrière"
-          accessibilityRole="button"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          positionInHeader="left"
           style={
-            Object {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
           }
-          testID="Revenir en arrière"
         >
           <View
-            height={24}
-            testID="icon-back"
-            width={24}
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
           >
-            <Text>
-              icon-back-SVG-Mock
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
             </Text>
           </View>
-          <Text
-            style={
-              Array [
-                Object {
-                  "display": "none",
-                },
-              ]
-            }
-          >
-            Retour
-          </Text>
         </View>
+        <Text
+          color="#ffffff"
+          numberOfLines={1}
+          size="small"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Envie de tout envie de lien ?
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
       </View>
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Envie de tout envie de lien ?
-      </Text>
-      <View
-        positionInHeader="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-      />
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>,
   <View
-    customHeight={16}
-    enable={true}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
-    numberOfSpaces={18}
-    style={
-      Array [
-        Object {
-          "height": 72,
+          "height": 24,
         },
       ]
     }

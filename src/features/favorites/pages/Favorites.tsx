@@ -7,7 +7,7 @@ import { FavoritesResults } from 'features/favorites/components/FavoritesResults
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { SvgPageHeader } from 'ui/components/headers/SvgPageHeader'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 
 export const Favorites: React.FC = () => {
   const netInfo = useNetInfo()
@@ -21,7 +21,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <Container>
-      <SvgPageHeader title={t`Mes favoris`} />
+      <PageHeader title={t`Mes favoris`} background="gradient" size="medium" />
       <FavoritesResults />
     </Container>
   )
