@@ -85,6 +85,7 @@ export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTit
         reset: true,
       }
     )
+    setQuery('')
   }, [locationFilter, pushWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
@@ -145,7 +146,7 @@ export const SearchBox = function SearchBox({ searchInputID, accessibleHiddenTit
           onSubmitQuery={onSubmitQuery}
           resetQuery={resetQuery}
           onFocus={onFocus}
-          showLocationButton={params?.view === SearchView.Landing}
+          showLocationButton={params === undefined || params?.view === SearchView.Landing}
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}
         />
