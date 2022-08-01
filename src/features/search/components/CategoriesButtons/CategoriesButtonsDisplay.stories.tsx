@@ -10,7 +10,7 @@ import { getSpacing } from 'ui/theme'
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
 
 export default {
-  title: 'ui/CategoriesButtons',
+  title: 'search/CategoriesButtons',
   component: CategoriesButtonsDisplay,
 } as ComponentMeta<typeof CategoriesButtonsDisplay>
 
