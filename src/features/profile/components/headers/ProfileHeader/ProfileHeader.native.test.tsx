@@ -3,7 +3,7 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse } from 'api/gen'
-import { ProfileHeader } from 'features/profile/components/ProfileHeader'
+import { ProfileHeader } from 'features/profile/components/headers/ProfileHeader/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { render } from 'tests/utils'
 
@@ -89,6 +89,7 @@ describe('ProfileHeader', () => {
     const ProfileHeaderComponent = render(<ProfileHeader user={notBeneficiaryUser} />)
     expect(ProfileHeaderComponent).toMatchSnapshot()
   })
+
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', () => {
     const ProfileHeaderComponent = render(<ProfileHeader user={exUnderageBeneficiaryUser} />)
     expect(ProfileHeaderComponent).toMatchSnapshot()

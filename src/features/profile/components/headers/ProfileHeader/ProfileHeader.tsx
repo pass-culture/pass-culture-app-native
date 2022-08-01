@@ -3,14 +3,13 @@ import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { BeneficiaryHeader } from 'features/profile/components/BeneficiaryHeader'
+import { ExBeneficiaryHeader } from 'features/profile/components/ExBeneficiaryHeader'
+import { LoggedOutHeader } from 'features/profile/components/LoggedOutHeader'
+import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers'
-
-import { BeneficiaryHeader } from './BeneficiaryHeader'
-import { ExBeneficiaryHeader } from './ExBeneficiaryHeader'
-import { LoggedOutHeader } from './LoggedOutHeader'
-import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
 type ProfileHeaderProps = {
   user?: UserProfileResponse

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ProfileBadge } from 'features/profile/components/ProfileBadge'
+import { ProfileBadge } from 'features/profile/components/headers/Badges/ProfileBadge'
 import { shouldOpenInbox } from 'features/profile/utils'
 import { render, fireEvent } from 'tests/utils'
 import { Clock } from 'ui/svg/icons/Clock'
@@ -13,12 +13,14 @@ describe('ProfileBadge', () => {
     const myComponent = render(<ProfileBadge message={'Tu as déposé ton dossier. Bravo'} />)
     expect(myComponent).toMatchSnapshot()
   })
+
   it('should render component correctly if icon is provided', () => {
     const myComponent = render(
       <ProfileBadge message={'Tu as déposé ton dossier. Bravo'} popOverIcon={Clock} />
     )
     expect(myComponent).toMatchSnapshot()
   })
+
   it('should show neither CTA Icon nor CTA message if no CTA message is provided', () => {
     const myComponent = render(
       <ProfileBadge
@@ -29,6 +31,7 @@ describe('ProfileBadge', () => {
     )
     expect(myComponent).toMatchSnapshot()
   })
+
   it('should show CTA Icon and CTA message if Icon, Message and Link are provided', () => {
     const myComponent = render(
       <ProfileBadge
@@ -41,6 +44,7 @@ describe('ProfileBadge', () => {
     )
     expect(myComponent).toMatchSnapshot()
   })
+
   it('should not show CTA if no link is provided', () => {
     const myComponent = render(
       <ProfileBadge
@@ -52,6 +56,7 @@ describe('ProfileBadge', () => {
     )
     expect(myComponent).toMatchSnapshot()
   })
+
   it('should call shouldOpenInbox with url onPress', () => {
     const { getByTestId } = render(
       <ProfileBadge

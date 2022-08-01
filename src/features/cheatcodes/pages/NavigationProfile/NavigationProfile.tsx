@@ -8,8 +8,8 @@ import {
   domains_credit_v2,
 } from 'features/cheatcodes/pages/AppComponents/AppComponents'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { CreditCeilingsModal } from 'features/profile/components/CreditCeilingsModal'
-import { ExpiredCreditModal } from 'features/profile/components/ExpiredCreditModal'
+import { CreditCeilingsModal } from 'features/profile/components/headers/Modals/CreditCeilingsModal'
+import { ExpiredCreditModal } from 'features/profile/components/headers/Modals/ExpiredCreditModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
