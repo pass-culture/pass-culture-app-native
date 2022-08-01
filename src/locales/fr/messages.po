@@ -1783,6 +1783,7 @@ msgstr "Mois suivant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
+#: src/features/profile/components/ExhaustedCreditModal.tsx
 #: src/features/profile/components/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
@@ -3122,6 +3123,10 @@ msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 
+#: src/features/profile/components/ExhaustedCreditModal.tsx
+msgid "Tu as dépensé tout ton crédit mais l’aventure continue !"
+msgstr "Tu as dépensé tout ton crédit mais l’aventure continue !"
+
 #: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
@@ -3216,6 +3221,10 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
+#: src/features/profile/components/ExhaustedCreditModal.tsx
+msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
+msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
+
 #: src/features/profile/components/ExpiredCreditModal.tsx
 msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
 msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
@@ -3260,6 +3269,7 @@ msgstr "Tu peux sélectionner une ou plusieurs réponses."
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
+#: src/features/profile/components/ExhaustedCreditModal.tsx
 #: src/features/profile/components/ExpiredCreditModal.tsx
 msgid "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
