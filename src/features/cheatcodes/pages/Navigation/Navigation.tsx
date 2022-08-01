@@ -19,8 +19,11 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
+import { shareApp } from 'libs/share/shareApp/shareApp'
+import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer, Typo } from 'ui/theme'
@@ -53,6 +56,17 @@ export function Navigation(): JSX.Element {
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
     }
+  }
+
+  const {
+    visible: shareAppModalVisible,
+    showModal: showShareAppModal,
+    hideModal: hideShareAppModal,
+  } = useModal(false)
+
+  const pressShareApp = () => {
+    shareApp()
+    showShareAppModal()
   }
 
   if (screenError) {
@@ -92,6 +106,10 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary wording={'Profile 🎨'} onPress={() => navigate('NavigationProfile')} />
+        </Row>
+        <Row half>
+          <ButtonPrimary wording={"Partage de l'app"} onPress={pressShareApp} />
+          <ShareAppModal visible={shareAppModalVisible} dismissModal={hideShareAppModal} />
         </Row>
         <Row half>
           <ButtonPrimary
