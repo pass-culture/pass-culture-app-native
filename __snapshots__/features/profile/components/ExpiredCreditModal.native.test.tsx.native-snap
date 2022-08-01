@@ -223,69 +223,14 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
           }
         >
           Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !
+          
 
-Tu peux toujours 
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            réserver les offres gratuites 
-          </Text>
-          ou 
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            exclusives 
-          </Text>
-          sur le pass Culture.
 
-Tu peux aussi découvrir 
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            les activités culturelles 
-          </Text>
-          de nos partenaires sur l'application et 
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            réserver directement sur leur site.
-          </Text>
+          Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture.
+          
+
+
+          Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site.
         </Text>
       </View>
     </View>

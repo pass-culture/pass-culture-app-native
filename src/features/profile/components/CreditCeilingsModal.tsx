@@ -25,19 +25,11 @@ const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
 
   return physicalCeiling ? (
     <Typo.Body testID="creditTextWithPhysicalCeiling">
-      <Typo.ButtonText>{t`${totalCeiling} en sorties` + SPACE}</Typo.ButtonText>
-      {t`mais` + SPACE}
-      <Typo.ButtonText>{t`${digitalCeiling} maximum en biens numériques` + SPACE}</Typo.ButtonText>
-      {t`(presse en ligne, plateformes de streaming...) et` + SPACE}
-      <Typo.ButtonText>{t`${physicalCeiling} maximum en biens physiques` + SPACE}</Typo.ButtonText>
-      {t`(livres, instruments de musique...).`}
+      {t`${totalCeiling} en sorties mais ${digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et ${physicalCeiling} maximum en biens physiques (livres, instruments de musique...).`}
     </Typo.Body>
   ) : (
     <Typo.Body testID="creditText">
-      <Typo.ButtonText>{t`${totalCeiling} en biens physiques` + SPACE}</Typo.ButtonText>
-      {t`mais` + SPACE}
-      <Typo.ButtonText>{t`${digitalCeiling} maximum en biens numériques` + SPACE}</Typo.ButtonText>
-      {t`(presse en ligne, plateformes de streaming...).`}
+      {t`${totalCeiling} en biens physiques mais ${digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...).`}
     </Typo.Body>
   )
 }
@@ -55,8 +47,8 @@ export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props
         <StyledBody>
           {t`Il est possible de dépenser jusqu’à` + SPACE}
           <CreditText domainsCredit={domainsCredit} />
-          {LINE_BREAK + t`Cette limite a pour but d’encourager la` + SPACE}
-          <Typo.ButtonText>{t`diversification des pratiques culturelles.`}</Typo.ButtonText>
+          {LINE_BREAK}
+          {t`Cette limite a pour but d’encourager la diversification des pratiques culturelles.`}
         </StyledBody>
       </ModalChildrenContainer>
     </AppInformationModal>
