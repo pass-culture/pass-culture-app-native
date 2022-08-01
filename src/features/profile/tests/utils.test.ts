@@ -1,6 +1,7 @@
 import { UserProfileResponse } from 'api/gen'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
+import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
@@ -16,16 +17,10 @@ jest.mock('react-native-email-link')
 jest.mock('features/navigation/helpers')
 jest.mock('features/home/services/useAvailableCredit')
 
-const domainsCredit = {
-  all: { initial: 50000, remaining: 40000 },
-  physical: { initial: 30000, remaining: 10000 },
-  digital: { initial: 30000, remaining: 20000 },
-}
-
 describe('profile utils', () => {
   describe('Compute credit', () => {
     it('should compute credit', () => {
-      expect(computeCredit(domainsCredit)).toEqual(40000)
+      expect(computeCredit(domains_credit_v1)).toEqual(40000)
     })
     it('should compute credit equal to zero when no domainsCredit', () => {
       expect(computeCredit(null)).toEqual(0)

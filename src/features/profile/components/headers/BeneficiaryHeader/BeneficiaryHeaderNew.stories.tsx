@@ -5,7 +5,7 @@ import React from 'react'
 import {
   domains_credit_v1,
   domains_credit_v2,
-} from 'features/cheatcodes/pages/AppComponents/AppComponents'
+} from 'features/profile/components/headers/fixtures/domainsCredit'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 
 import { BeneficiaryHeaderNew } from './BeneficiaryHeaderNew'

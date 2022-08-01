@@ -16,6 +16,11 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { SubscriptionMessageBadge } from 'features/profile/components/headers/Badges/SubscriptionMessageBadge'
 import { BeneficiaryHeaderNew } from 'features/profile/components/headers/BeneficiaryHeader/BeneficiaryHeaderNew'
+import {
+  domains_credit_underage,
+  domains_credit_v1,
+  domains_credit_v2,
+} from 'features/profile/components/headers/fixtures/domainsCredit'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -76,21 +81,6 @@ function onButtonPress() {
 const THIS_YEAR = new Date().getFullYear()
 const imageUrl =
   'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg'
-
-export const domains_credit_v1 = {
-  all: { initial: 50000, remaining: 40000 },
-  physical: { initial: 20000, remaining: 10000 },
-  digital: { initial: 20000, remaining: 20000 },
-}
-
-export const domains_credit_v2 = {
-  all: { initial: 30000, remaining: 10000 },
-  digital: { initial: 10000, remaining: 5000 },
-}
-
-const domains_credit_underage = {
-  all: { initial: 3000, remaining: 1000 },
-}
 
 const radioButtonItems = [
   { label: 'Default' },

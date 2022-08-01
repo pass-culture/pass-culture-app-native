@@ -1,22 +1,12 @@
 import React from 'react'
 
 import { BeneficiaryCeilingsNew } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew'
+import {
+  domains_credit_underage,
+  domains_credit_v1,
+  domains_credit_v2,
+} from 'features/profile/components/headers/fixtures/domainsCredit'
 import { render, waitFor } from 'tests/utils'
-
-const domains_credit_v1 = {
-  all: { initial: 50000, remaining: 40000 },
-  physical: { initial: 30000, remaining: 10000 },
-  digital: { initial: 30000, remaining: 20000 },
-}
-
-const domains_credit_v2 = {
-  all: { initial: 30000, remaining: 10000 },
-  digital: { initial: 20000, remaining: 5000 },
-}
-
-const domains_credit_underage = {
-  all: { initial: 3000, remaining: 1000 },
-}
 
 describe('BeneficiaryCeilingsNew', () => {
   it('should not return credits if domainsCredit is undefined', () => {
