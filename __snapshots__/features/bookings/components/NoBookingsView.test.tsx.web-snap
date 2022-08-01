@@ -115,6 +115,72 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
 `;
 
 exports[`<NoBookingsView /> should render online no bookings view when netInfo.isConnected is true 1`] = `
+.c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 24px;
+  padding-right: 24px;
+  min-height: 48px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c0:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1:disabled {
+  background-color: #F1F1F4;
+}
+
 <div
   className="css-view-1dbjc4n"
   style={
@@ -194,7 +260,7 @@ sans attendre !
     className="css-view-1dbjc4n"
   >
     <button
-      className="sc-bdvvtL iUFPdc sc-dkPtRN kmXVLA"
+      className="c0 c1"
       onClick={[Function]}
       onDoubleClick={[Function]}
       tabIndex={0}

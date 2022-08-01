@@ -3,10 +3,57 @@
 exports[`LegalNotices should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+<body>
     <div>
       <header
-        class="sc-iCfMLu hcfjHm"
+        class="c0"
         role="banner"
       >
         <div
@@ -35,7 +82,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-hKwDye huZUNX"
+                  class="c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -175,9 +222,56 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+<div>
     <header
-      class="sc-iCfMLu hcfjHm"
+      class="c0"
       role="banner"
     >
       <div
@@ -206,7 +300,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="sc-hKwDye huZUNX"
+                class="c1"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"

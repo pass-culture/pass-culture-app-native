@@ -3,14 +3,164 @@
 exports[`<SetCity/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c6:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c5 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
         style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
       >
         <header
-          class="sc-gsDKAQ hFLWOJ"
+          class="c0"
           role="banner"
         >
           <div
@@ -39,7 +189,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="sc-bdvvtL bQLkxd"
+                    class="c1"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -99,7 +249,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-llYSUQ jurclK"
+                  class="c2"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -120,7 +270,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-ksdxgE lnHluM"
+                    class="c3"
                     dir="ltr"
                     for="testUuidV4"
                   >
@@ -181,7 +331,7 @@ Object {
                     style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                   >
                     <ul
-                      class="sc-fotOHu sc-fFeiMQ fHUdDM ljkwOL"
+                      class="c4 c5"
                     />
                   </div>
                 </div>
@@ -192,7 +342,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-dkPtRN fPOvak sc-gKclnd ecJASa"
+                  class="c6 c7"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
@@ -216,13 +366,163 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c6:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c5 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
     >
       <header
-        class="sc-gsDKAQ hFLWOJ"
+        class="c0"
         role="banner"
       >
         <div
@@ -251,7 +551,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-bdvvtL bQLkxd"
+                  class="c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -311,7 +611,7 @@ Object {
               style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
             >
               <form
-                class="sc-llYSUQ jurclK"
+                class="c2"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -332,7 +632,7 @@ Object {
                   style="height: 20px;"
                 />
                 <label
-                  class="sc-ksdxgE lnHluM"
+                  class="c3"
                   dir="ltr"
                   for="testUuidV4"
                 >
@@ -393,7 +693,7 @@ Object {
                   style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                 >
                   <ul
-                    class="sc-fotOHu sc-fFeiMQ fHUdDM ljkwOL"
+                    class="c4 c5"
                   />
                 </div>
               </div>
@@ -404,7 +704,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l'étape suivante"
-                class="sc-dkPtRN fPOvak sc-gKclnd ecJASa"
+                class="c6 c7"
                 data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"

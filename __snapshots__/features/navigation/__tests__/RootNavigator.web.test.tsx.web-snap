@@ -3,18 +3,115 @@
 exports[`ForceUpdate display logic should display force update page when global variable is set 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
+  "baseElement": .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c2 {
+  z-index: 2;
+}
+
+.c4 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: visible;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 > * {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c0 {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 20px;
+  color: #870087;
+  background-color: #ffffff;
+  z-index: 1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.c0:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  width: auto;
+  height: 44px;
+  margin: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  outline-offset: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #870087;
+  border-radius: 48px;
+}
+
+<body
     tabindex="-1"
   >
     <div>
       <a
-        class="sc-jJoQJp gkkbQk"
+        class="c0"
         href="#testUuidV4"
       >
         Accéder au menu de navigation
       </a>
       <main
-        class="sc-ikJyIC TGYrY"
+        class="c1"
         id="testUuidV4"
         role="main"
       >
@@ -48,11 +145,11 @@ Object {
         </div>
       </main>
       <footer
-        class="sc-kLwhqv"
+        class=""
         role="contentinfo"
       >
         <nav
-          class="sc-giYglK wipPm"
+          class="c2"
           id="testUuidV4"
           role="navigation"
         >
@@ -69,10 +166,10 @@ Object {
                 style="width: 16px;"
               />
               <ul
-                class="sc-fotOHu sc-ezbkAF fHUdDM bwCtEb"
+                class="c3 c4"
               >
                 <li
-                  class="sc-bYoBSM cELGlA"
+                  class="c5"
                 >
                   <a
                     aria-current="page"
@@ -124,7 +221,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-bYoBSM cELGlA"
+                  class="c5"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -160,7 +257,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-bYoBSM cELGlA"
+                  class="c5"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -196,7 +293,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-bYoBSM cELGlA"
+                  class="c5"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -232,7 +329,7 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="sc-bYoBSM cELGlA"
+                  class="c5"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -282,15 +379,112 @@ Object {
       </footer>
     </div>
   </body>,
-  "container": <div>
+  "container": .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c2 {
+  z-index: 2;
+}
+
+.c4 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: visible;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 > * {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c0 {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 20px;
+  color: #870087;
+  background-color: #ffffff;
+  z-index: 1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.c0:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  width: auto;
+  height: 44px;
+  margin: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  outline-offset: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #870087;
+  border-radius: 48px;
+}
+
+<div>
     <a
-      class="sc-jJoQJp gkkbQk"
+      class="c0"
       href="#testUuidV4"
     >
       Accéder au menu de navigation
     </a>
     <main
-      class="sc-ikJyIC TGYrY"
+      class="c1"
       id="testUuidV4"
       role="main"
     >
@@ -324,11 +518,11 @@ Object {
       </div>
     </main>
     <footer
-      class="sc-kLwhqv"
+      class=""
       role="contentinfo"
     >
       <nav
-        class="sc-giYglK wipPm"
+        class="c2"
         id="testUuidV4"
         role="navigation"
       >
@@ -345,10 +539,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-fotOHu sc-ezbkAF fHUdDM bwCtEb"
+              class="c3 c4"
             >
               <li
-                class="sc-bYoBSM cELGlA"
+                class="c5"
               >
                 <a
                   aria-current="page"
@@ -400,7 +594,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bYoBSM cELGlA"
+                class="c5"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -436,7 +630,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bYoBSM cELGlA"
+                class="c5"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -472,7 +666,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bYoBSM cELGlA"
+                class="c5"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -508,7 +702,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bYoBSM cELGlA"
+                class="c5"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"

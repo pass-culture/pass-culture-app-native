@@ -3,7 +3,49 @@
 exports[`<VenueOffers /> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c0 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
@@ -346,7 +388,7 @@ Object {
         style="margin-right: 24px; margin-left: 24px;"
       >
         <button
-          class="sc-dlVxhl bQaNDa"
+          class="c0"
           type="button"
         >
           <div
@@ -369,7 +411,49 @@ Object {
       />
     </div>
   </body>,
-  "container": <div>
+  "container": .c0 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="height: 24px;"
@@ -711,7 +795,7 @@ Object {
       style="margin-right: 24px; margin-left: 24px;"
     >
       <button
-        class="sc-dlVxhl bQaNDa"
+        class="c0"
         type="button"
       >
         <div

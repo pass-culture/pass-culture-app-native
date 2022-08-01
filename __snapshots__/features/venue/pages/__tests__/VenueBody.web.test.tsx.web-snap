@@ -3,7 +3,175 @@
 exports[`<VenueBody /> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c3 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c3:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c3:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c2 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  background-color: transparent;
+}
+
+.c6 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: visible;
+}
+
+.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
@@ -272,7 +440,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-hKwDye huZUNX sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
+              class="c0 c1 sc-jRQBWg c1"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"
@@ -720,7 +888,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-kfPuZi gUPYLP"
+              class="c2"
               type="button"
             >
               <div
@@ -801,7 +969,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-gsDKAQ dRfsuw sc-jcFjpl jAwTyn"
+                class="c3 c4"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -996,10 +1164,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-fFeiMQ sc-caiLqq zMVrH gFGgld"
+                  class="c5 c6"
                 >
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="c7"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -1068,7 +1236,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="c7"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1137,7 +1305,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="c7"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -1206,7 +1374,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-iUKqMP kLUouX"
+                    class="c7"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"
@@ -1369,7 +1537,175 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c3 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c3:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c3:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c2 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  background-color: transparent;
+}
+
+.c6 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: visible;
+}
+
+.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       data-testid="venue-container"
@@ -1637,7 +1973,7 @@ Object {
           />
           <button
             aria-label="Géolocalisation désactivée"
-            class="sc-hKwDye huZUNX sc-jRQBWg dDPtLq sc-jRQBWg dDPtLq"
+            class="c0 c1 sc-jRQBWg c1"
             data-testid="iconLocation"
             tabindex="0"
             title="Géolocalisation désactivée"
@@ -2085,7 +2421,7 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <button
-            class="sc-kfPuZi gUPYLP"
+            class="c2"
             type="button"
           >
             <div
@@ -2166,7 +2502,7 @@ Object {
             style="align-items: flex-start;"
           >
             <a
-              class="sc-gsDKAQ dRfsuw sc-jcFjpl jAwTyn"
+              class="c3 c4"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
@@ -2361,10 +2697,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-fFeiMQ sc-caiLqq zMVrH gFGgld"
+                class="c5 c6"
               >
                 <li
-                  class="sc-iUKqMP kLUouX"
+                  class="c7"
                 >
                   <div
                     aria-label="Handicap visuel : Accessible"
@@ -2433,7 +2769,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-iUKqMP kLUouX"
+                  class="c7"
                 >
                   <div
                     aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2502,7 +2838,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-iUKqMP kLUouX"
+                  class="c7"
                 >
                   <div
                     aria-label="Handicap moteur : Non accessible"
@@ -2571,7 +2907,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-iUKqMP kLUouX"
+                  class="c7"
                 >
                   <div
                     aria-label="Handicap auditif : Non accessible"

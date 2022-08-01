@@ -3,10 +3,74 @@
 exports[`AppButton Component * inline property should use inline css style when true 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 16px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c0:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+<body>
     <div>
       <button
-        class="sc-bdvvtL koTsVe"
+        class="c0"
         tabindex="0"
         type="button"
       >
@@ -36,9 +100,73 @@ Object {
       </button>
     </div>
   </body>,
-  "container": <div>
+  "container": .c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 16px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c0:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+<div>
     <button
-      class="sc-bdvvtL koTsVe"
+      class="c0"
       tabindex="0"
       type="button"
     >

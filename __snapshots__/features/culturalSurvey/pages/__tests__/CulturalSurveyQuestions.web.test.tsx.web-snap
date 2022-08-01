@@ -3,7 +3,88 @@
 exports[`CulturalSurveysQuestions page should render the page with correct layout 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
@@ -128,7 +209,7 @@ Object {
               </div>
             </div>
             <ul
-              class="sc-eCImPb sc-jRQBWg GcfzH laaqIM"
+              class="c0 c1"
             >
               <li>
                 <div
@@ -633,7 +714,7 @@ Object {
         >
           <button
             aria-label="Continuer vers l'étape suivante"
-            class="sc-bdvvtL byXxOw sc-dkPtRN kmXVLA"
+            class="c2 c3"
             data-testid="next-cultural-survey-question"
             tabindex="0"
             type="button"
@@ -654,7 +735,88 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="align-self: center; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
@@ -778,7 +940,7 @@ Object {
             </div>
           </div>
           <ul
-            class="sc-eCImPb sc-jRQBWg GcfzH laaqIM"
+            class="c0 c1"
           >
             <li>
               <div
@@ -1283,7 +1445,7 @@ Object {
       >
         <button
           aria-label="Continuer vers l'étape suivante"
-          class="sc-bdvvtL byXxOw sc-dkPtRN kmXVLA"
+          class="c2 c3"
           data-testid="next-cultural-survey-question"
           tabindex="0"
           type="button"

@@ -3,7 +3,46 @@
 exports[`<VenueHeader /> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.5;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+<body>
     <div>
       <div
         class="css-view-1dbjc4n"
@@ -27,7 +66,7 @@ Object {
           />
           <button
             aria-label="Revenir en arrière"
-            class="sc-hKwDye jjbsBJ"
+            class="c0"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -104,7 +143,7 @@ Object {
           />
           <button
             aria-label="Partager"
-            class="sc-hKwDye jjbsBJ"
+            class="c0"
             data-testid="Partager"
             tabindex="0"
             title="Partager"
@@ -168,7 +207,46 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.5;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+<div>
     <div
       class="css-view-1dbjc4n"
       style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%; z-index: 1;"
@@ -191,7 +269,7 @@ Object {
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-hKwDye jjbsBJ"
+          class="c0"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -268,7 +346,7 @@ Object {
         />
         <button
           aria-label="Partager"
-          class="sc-hKwDye jjbsBJ"
+          class="c0"
           data-testid="Partager"
           tabindex="0"
           title="Partager"

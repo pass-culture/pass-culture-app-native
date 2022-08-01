@@ -3,10 +3,157 @@
 exports[`<ChangeEmail/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c6:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.c4 {
+  width: 100%;
+}
+
+.c5 {
+  max-width: 60px;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+<body>
     <div>
       <header
-        class="sc-gKclnd cFsFpL"
+        class="c0"
         role="banner"
       >
         <div
@@ -35,7 +182,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="sc-hKwDye huZUNX"
+                  class="c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -114,14 +261,14 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-llYSUQ jurclK"
+              class="c2"
             >
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-ksdxgE sc-cidDSM lnHluM NAmGA"
+                  class="c3 c4"
                   dir="ltr"
                   for="testUuidV4"
                 >
@@ -186,7 +333,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-ksdxgE sc-cidDSM lnHluM NAmGA"
+                  class="c3 c4"
                   dir="ltr"
                   for="testUuidV4"
                 >
@@ -241,7 +388,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-hKwDye huZUNX sc-jcFjpl ecZBUV sc-jcFjpl ecZBUV"
+                    class="c1 c5 sc-jcFjpl c5"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     title="Afficher le mot de passe"
@@ -274,7 +421,7 @@ Object {
               >
                 <button
                   aria-label="Enregistrer les modifications"
-                  class="sc-bdvvtL hhgmhh sc-jRQBWg kyMyBM"
+                  class="c6 c7"
                   data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
@@ -298,9 +445,156 @@ Object {
       </div>
     </div>
   </body>,
-  "container": <div>
+  "container": .c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c6:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c1:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c1:focus {
+  outline: auto;
+}
+
+.c1:disabled {
+  cursor: initial;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.c4 {
+  width: 100%;
+}
+
+.c5 {
+  max-width: 60px;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+<div>
     <header
-      class="sc-gKclnd cFsFpL"
+      class="c0"
       role="banner"
     >
       <div
@@ -329,7 +623,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="sc-hKwDye huZUNX"
+                class="c1"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -408,14 +702,14 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-llYSUQ jurclK"
+            class="c2"
           >
             <div
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-ksdxgE sc-cidDSM lnHluM NAmGA"
+                class="c3 c4"
                 dir="ltr"
                 for="testUuidV4"
               >
@@ -480,7 +774,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-ksdxgE sc-cidDSM lnHluM NAmGA"
+                class="c3 c4"
                 dir="ltr"
                 for="testUuidV4"
               >
@@ -535,7 +829,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-hKwDye huZUNX sc-jcFjpl ecZBUV sc-jcFjpl ecZBUV"
+                  class="c1 c5 sc-jcFjpl c5"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   title="Afficher le mot de passe"
@@ -568,7 +862,7 @@ Object {
             >
               <button
                 aria-label="Enregistrer les modifications"
-                class="sc-bdvvtL hhgmhh sc-jRQBWg kyMyBM"
+                class="c6 c7"
                 data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"
