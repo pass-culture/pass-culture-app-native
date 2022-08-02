@@ -27,16 +27,24 @@ export function BeneficiaryHeaderNew({
 }: BeneficiaryHeaderProps) {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const name = `${firstName} ${lastName}`
+
   const displayedExpirationDate = depositExpirationDate
     ? formatToSlashedFrenchDate(depositExpirationDate)
     : ''
+  const isDepositExpired = depositExpirationDate
+    ? new Date(depositExpirationDate) < new Date()
+    : false
+
+  const creditText = isDepositExpired
+    ? t`Ton crédit a expiré le`
+    : t`Profite de ton crédit jusqu’au`
 
   return (
     <Fragment>
       <PageHeader title={name} size="medium" />
       <Container>
         <Row>
-          <Typo.Body>{t`Profite de ton crédit jusqu’au` + SPACE}</Typo.Body>
+          <Typo.Body>{creditText + SPACE}</Typo.Body>
           <Typo.ButtonText>{displayedExpirationDate}</Typo.ButtonText>
         </Row>
         {!!domainsCredit && (
@@ -48,7 +56,7 @@ export function BeneficiaryHeaderNew({
               isUserUnderageBeneficiary={isUserUnderageBeneficiary}
             />
             <CreditExplanation
-              depositExpirationDate={depositExpirationDate}
+              isDepositExpired={isDepositExpired}
               isUserUnderageBeneficiary={isUserUnderageBeneficiary}
               domainsCredit={domainsCredit}
             />

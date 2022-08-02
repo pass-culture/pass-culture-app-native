@@ -2935,6 +2935,10 @@ msgstr "Ton compte est désactivé"
 msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 
+#: src/features/profile/components/headers/BeneficiaryHeader/BeneficiaryHeaderNew.tsx
+msgid "Ton crédit a expiré le"
+msgstr "Ton crédit a expiré le"
+
 #: src/features/home/components/HomeHeader.tsx
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"

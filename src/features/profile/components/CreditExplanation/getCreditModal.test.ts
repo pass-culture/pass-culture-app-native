@@ -2,10 +2,6 @@ import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/
 
 import { getCreditModal } from './getCreditModal'
 
-const dateInPast = '2022-08-01T18:00:00'
-const dateInFutur = new Date()
-dateInFutur.setDate(dateInFutur.getDate() + 1)
-
 const exhaustedCredit = { ...domains_credit_v1, all: { ...domains_credit_v1.all, remaining: 0 } }
 
 describe('getCreditModal()', () => {
@@ -13,7 +9,7 @@ describe('getCreditModal()', () => {
     const { creditModal } = getCreditModal({
       domainsCredit: domains_credit_v1,
       isUserUnderageBeneficiary: false,
-      depositExpirationDate: dateInPast,
+      isDepositExpired: true,
     })
 
     expect(creditModal?.name).toBe('ExpiredCreditModal')
@@ -23,6 +19,7 @@ describe('getCreditModal()', () => {
     const { creditModal } = getCreditModal({
       domainsCredit: exhaustedCredit,
       isUserUnderageBeneficiary: false,
+      isDepositExpired: false,
     })
 
     expect(creditModal?.name).toBe('ExhaustedCreditModal')
@@ -32,7 +29,7 @@ describe('getCreditModal()', () => {
     const { creditModal } = getCreditModal({
       domainsCredit: exhaustedCredit,
       isUserUnderageBeneficiary: false,
-      depositExpirationDate: dateInPast,
+      isDepositExpired: true,
     })
 
     expect(creditModal?.name).toBe('ExpiredCreditModal')
@@ -42,7 +39,7 @@ describe('getCreditModal()', () => {
     const { creditModal } = getCreditModal({
       domainsCredit: domains_credit_v1,
       isUserUnderageBeneficiary: false,
-      depositExpirationDate: dateInFutur.toISOString(),
+      isDepositExpired: false,
     })
 
     expect(creditModal?.name).toBe('CreditCeilingsModal')
@@ -52,7 +49,7 @@ describe('getCreditModal()', () => {
     const { creditModal } = getCreditModal({
       domainsCredit: domains_credit_v1,
       isUserUnderageBeneficiary: true,
-      depositExpirationDate: dateInFutur.toISOString(),
+      isDepositExpired: false,
     })
 
     expect(creditModal).toBeNull()
