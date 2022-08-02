@@ -8,7 +8,7 @@ import { ColorsEnum, UniqueColors } from './colors'
 import { Typo } from './typography'
 
 export default {
-  title: 'ui/Colors',
+  title: 'Fondations/Colors',
 }
 
 type RectangleProps = {

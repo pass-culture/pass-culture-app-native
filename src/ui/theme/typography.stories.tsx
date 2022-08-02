@@ -4,7 +4,7 @@ import React from 'react'
 import { Typo } from './typography'
 
 export default {
-  title: 'ui/Typo',
+  title: 'Fondations/Typo',
 }
 
 export const Hero: ComponentStory<typeof Typo.Hero> = ({ children }) => (
