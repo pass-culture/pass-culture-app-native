@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof QuickAccess>
 
 const caption = 'QuickAccess'
-const body = ' is a component that should only visible when giving focus'
+const body = ' is a component that should be visible only when giving focus'
 
 const Template: ComponentStory<typeof QuickAccess> = (args) => (
   <Fragment>
