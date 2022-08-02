@@ -181,7 +181,7 @@ export function BookingDetails() {
         <ViewWithPadding>
           <Spacer.Column numberOfSpaces={4} />
           <OfferRules>{offerRules}</OfferRules>
-          <Spacer.Column numberOfSpaces={8} />
+          <Spacer.Column numberOfSpaces={offerRules !== '' ? 8 : 2} />
           <BookingPropertiesSection booking={booking} />
           {!!shouldDisplayItineraryButton && (
             <React.Fragment>
