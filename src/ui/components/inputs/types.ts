@@ -4,27 +4,27 @@ import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-type CustomTextInputProps = {
-  isError?: boolean
+type InputProps = {
   label?: string
+  accessibilityDescribedBy?: string
+  focusOutlineColor?: ColorsEnum
+}
+
+type CustomTextInputProps = InputProps & {
+  isError?: boolean
   disabled?: boolean
   containerStyle?: ViewStyle
   isRequiredField?: boolean
-  accessibilityDescribedBy?: string
-  focusOutlineColor?: ColorsEnum
   leftComponent?: React.ReactElement
   rightLabel?: string
   showSoftInputOnFocus?: boolean
 }
 
-type CustomSearchInputProps = {
+type CustomSearchInputProps = InputProps & {
   inputHeight?: 'small' | 'regular' | 'tall'
   LeftIcon?: React.FC
-  label?: string
   accessibilityLabel?: string
-  accessibilityDescribedBy?: string
   onPressRightIcon?: () => void
-  focusOutlineColor?: ColorsEnum
   searchInputID?: string
   onFocus?: () => void
   inputContainerStyle?: ViewStyle
