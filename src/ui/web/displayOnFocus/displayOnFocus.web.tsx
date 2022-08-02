@@ -1,15 +1,14 @@
 import { ElementType } from 'react'
 import styled from 'styled-components'
 
+import { hiddenAccessibleStyle } from 'ui/components/HiddenAccessibleText'
+
 export const displayOnFocus = (Component: ElementType) => {
   return styled(Component)(({ theme }) => ({
     zIndex: theme.zIndex.floatingButton,
     position: 'absolute',
 
-    overflow: 'hidden',
-    clipPath: 'inset(50%)',
-    width: '1px',
-    height: '1px',
+    ...hiddenAccessibleStyle,
     '&:focus': {
       clipPath: 'none',
       width: 'inherit',

@@ -93,11 +93,11 @@ Object {
 .c1 {
   z-index: 1;
   position: absolute;
-  overflow: hidden;
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   width: 1px;
   height: 1px;
+  overflow: hidden;
 }
 
 .c1:focus {
@@ -476,11 +476,11 @@ Object {
 .c1 {
   z-index: 1;
   position: absolute;
-  overflow: hidden;
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   width: 1px;
   height: 1px;
+  overflow: hidden;
 }
 
 .c1:focus {
