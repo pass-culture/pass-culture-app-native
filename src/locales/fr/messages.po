@@ -3713,8 +3713,8 @@ msgid "durée"
 msgstr "durée"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
-msgid "elibility deadline"
-msgstr "Tu es éligible jusqu'au {deadline}"
+msgid "eligibility deadline"
+msgstr "Tu as jusqu’au {deadline} pour faire ta demande"
 
 #: src/ui/components/DotComponent.tsx
 msgid "en cours"
