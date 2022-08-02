@@ -61,11 +61,11 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
               {!!eligibilityEndDatetime && (
                 <Caption>
                   {t({
-                    id: 'elibility deadline',
+                    id: 'eligibility deadline',
                     values: {
                       deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
                     },
-                    message: `Tu es éligible jusqu'au {deadline}`,
+                    message: `Tu as jusqu’au {deadline} pour faire ta demande`,
                   })}
                 </Caption>
               )}
