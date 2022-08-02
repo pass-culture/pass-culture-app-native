@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
+import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { ProfileHeader } from 'features/profile/components/headers/ProfileHeader/ProfileHeader'
 import { render } from 'tests/utils/web'
 
@@ -12,11 +13,7 @@ const user: UserProfileResponse = {
   isBeneficiary: true,
   dateOfBirth: '2003-01-01',
   depositExpirationDate: '2023-02-09T11:17:14.786670',
-  domainsCredit: {
-    all: { initial: 50000, remaining: 40000 },
-    physical: { initial: 30000, remaining: 10000 },
-    digital: { initial: 30000, remaining: 20000 },
-  },
+  domainsCredit: domains_credit_v1,
   lastName: '93 HNMM 2',
   id: 1234,
   isEligibleForBeneficiaryUpgrade: false,

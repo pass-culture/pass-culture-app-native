@@ -3,6 +3,7 @@ import { rest } from 'msw'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/profile/api'
+import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -13,11 +14,7 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 const userProfileApiMock = jest.fn()
 const userProfileAPIResponse: UserProfileResponse = {
   bookedOffers: {},
-  domainsCredit: {
-    all: { initial: 50000, remaining: 40000 },
-    physical: { initial: 30000, remaining: 10000 },
-    digital: { initial: 30000, remaining: 20000 },
-  },
+  domainsCredit: domains_credit_v1,
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
