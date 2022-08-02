@@ -5,12 +5,18 @@ import {
   domains_credit_underage,
   domains_credit_v1,
   domains_credit_v2,
+  domains_exhausted_credit_v1,
 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { render, waitFor } from 'tests/utils'
 
 describe('BeneficiaryCeilings', () => {
-  it('should not return credits if domainsCredit is undefined', () => {
-    const renderAPI = render(<BeneficiaryCeilings isUserUnderageBeneficiary={false} />)
+  it('should not return credits if credit is exhausted', () => {
+    const renderAPI = render(
+      <BeneficiaryCeilings
+        domainsCredit={domains_exhausted_credit_v1}
+        isUserUnderageBeneficiary={false}
+      />
+    )
     expect(renderAPI.toJSON()).toBeNull()
   })
 
