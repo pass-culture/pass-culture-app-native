@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
-import { CreditProgressBar } from 'features/profile/components/CreditProgressBar'
+import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { Typo, Spacer } from 'ui/theme'
 

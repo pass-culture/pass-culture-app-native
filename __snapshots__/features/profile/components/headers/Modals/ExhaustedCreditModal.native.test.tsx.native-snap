@@ -122,7 +122,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
             ]
           }
         >
-          Mon crédit est expiré, que faire ?
+          Tu as dépensé tout ton crédit, que faire ?
         </Text>
       </View>
       <View

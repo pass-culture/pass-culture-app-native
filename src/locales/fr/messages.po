@@ -1442,6 +1442,10 @@ msgstr "Jeux / Jeux vidéos"
 msgid "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 
+#: src/features/profile/components/CreditExplanation/getCreditModal.ts
+msgid "J’ai dépensé tout mon crédit, que faire ?"
+msgstr "J’ai dépensé tout mon crédit, que faire ?"
+
 #: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
 msgstr "L'absence des services Google Play bloquent possiblement la géolocalisation"
@@ -1768,9 +1772,9 @@ msgstr "Mois précédent"
 msgid "Mois suivant"
 msgstr "Mois suivant"
 
+#: src/features/profile/components/CreditExplanation/getCreditModal.ts
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
-#: src/features/profile/components/ExhaustedCreditModal.tsx
 #: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
@@ -2280,6 +2284,7 @@ msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton nu
 msgid "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 msgstr "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 
+#: src/features/profile/components/CreditExplanation/getCreditModal.ts
 #: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "Pourquoi cette limite ?"
 msgstr "Pourquoi cette limite ?"
@@ -3102,9 +3107,13 @@ msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 
-#: src/features/profile/components/ExhaustedCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExhaustedCreditModal.tsx
 msgid "Tu as dépensé tout ton crédit mais l’aventure continue !"
 msgstr "Tu as dépensé tout ton crédit mais l’aventure continue !"
+
+#: src/features/profile/components/headers/Modals/ExhaustedCreditModal.tsx
+msgid "Tu as dépensé tout ton crédit, que faire ?"
+msgstr "Tu as dépensé tout ton crédit, que faire ?"
 
 #: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
@@ -3200,7 +3209,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
-#: src/features/profile/components/ExhaustedCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExhaustedCreditModal.tsx
 msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
 msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
 
@@ -3248,7 +3257,7 @@ msgstr "Tu peux sélectionner une ou plusieurs réponses."
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
-#: src/features/profile/components/ExhaustedCreditModal.tsx
+#: src/features/profile/components/headers/Modals/ExhaustedCreditModal.tsx
 #: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."

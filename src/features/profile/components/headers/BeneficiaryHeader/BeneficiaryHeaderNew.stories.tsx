@@ -6,7 +6,6 @@ import {
   domains_credit_v1,
   domains_credit_v2,
 } from 'features/profile/components/headers/fixtures/domainsCredit'
-import { formatToSlashedFrenchDate } from 'libs/dates'
 
 import { BeneficiaryHeaderNew } from './BeneficiaryHeaderNew'
 
@@ -26,7 +25,7 @@ const Template: ComponentStory<typeof BeneficiaryHeaderNew> = (props) => (
   <BeneficiaryHeaderNew {...props} />
 )
 
-const depositExpirationDate = formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')
+const depositExpirationDate = '2023-02-16T17:16:04.735235'
 
 export const WithDomainCreditV1 = Template.bind({})
 WithDomainCreditV1.args = {

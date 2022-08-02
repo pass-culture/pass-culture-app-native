@@ -9,6 +9,7 @@ import {
   domains_credit_v2,
 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { CreditCeilingsModal } from 'features/profile/components/headers/Modals/CreditCeilingsModal'
+import { ExhaustedCreditModal } from 'features/profile/components/headers/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/headers/Modals/ExpiredCreditModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -85,7 +86,7 @@ export function NavigationProfile(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary wording={'Modal Crédit Dépensé'} onPress={showExhaustedCreditModal} />
-          <ExpiredCreditModal
+          <ExhaustedCreditModal
             visible={exhaustedCreditModalVisible}
             hideModal={hideExhaustedCreditModal}
           />

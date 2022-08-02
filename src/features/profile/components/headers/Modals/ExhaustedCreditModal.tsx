@@ -14,7 +14,7 @@ type Props = {
 export function ExhaustedCreditModal({ visible, hideModal }: Props) {
   return (
     <AppInformationModal
-      title={t`Mon crédit est expiré, que faire\u00a0?`}
+      title={t`Tu as dépensé tout ton crédit, que faire\u00a0?`}
       numberOfLinesTitle={2}
       visible={visible}
       onCloseIconPress={hideModal}

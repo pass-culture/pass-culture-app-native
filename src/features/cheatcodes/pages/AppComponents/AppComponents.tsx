@@ -23,7 +23,6 @@ import {
 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
-import { formatToSlashedFrenchDate } from 'libs/dates'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
@@ -653,7 +652,7 @@ export const AppComponents: FunctionComponent = () => {
         <BeneficiaryHeaderNew
           firstName="Rosa"
           lastName="Bonheur"
-          depositExpirationDate={formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}
+          depositExpirationDate={'2023-02-16T17:16:04.735235'}
           domainsCredit={domains_credit_v1}
         />
       </AccordionItem>
