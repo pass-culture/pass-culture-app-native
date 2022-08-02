@@ -11,7 +11,7 @@ import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {
-  title: 'ui/icons',
+  title: 'Fondations/Icons',
 }
 
 export const SocialNetwork = Icons.bind({})

@@ -8,7 +8,7 @@ import { getSpacing } from 'ui/theme'
 import { Emoji } from './Emoji'
 
 export default {
-  title: 'ui',
+  title: 'Fondations',
 }
 
 export const Emojis: ComponentStory<React.FC> = () => {

@@ -7,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 import { CreditProgressBar } from './CreditProgressBar'
 
 export default {
-  title: 'ui/progressBars/CreditProgressBar',
+  title: 'Features/Profile/CreditProgressBar',
   component: CreditProgressBar,
 } as ComponentMeta<typeof CreditProgressBar>
 

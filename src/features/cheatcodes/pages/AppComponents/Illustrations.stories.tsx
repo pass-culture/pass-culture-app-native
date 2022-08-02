@@ -5,7 +5,7 @@ import {
 } from 'features/cheatcodes/pages/AppComponents/illustrationsExports'
 
 export default {
-  title: 'ui/illustrations',
+  title: 'Fondations/Illustrations',
 }
 
 export const Bicolors = Illustrations.bind({})
