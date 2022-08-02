@@ -4,27 +4,27 @@ import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-type CustomTextInputProps = {
-  isError?: boolean
+type InputProps = {
   label?: string
+  accessibilityDescribedBy?: string
+  focusOutlineColor?: ColorsEnum
+}
+
+type CustomTextInputProps = InputProps & {
+  isError?: boolean
   disabled?: boolean
   containerStyle?: ViewStyle
   isRequiredField?: boolean
-  accessibilityDescribedBy?: string
-  focusOutlineColor?: ColorsEnum
   leftComponent?: React.ReactElement
   rightLabel?: string
   showSoftInputOnFocus?: boolean
 }
 
-type CustomSearchInputProps = {
+type CustomSearchInputProps = InputProps & {
   inputHeight?: 'small' | 'regular' | 'tall'
   LeftIcon?: React.FC
-  label?: string
   accessibilityLabel?: string
-  accessibilityDescribedBy?: string
   onPressRightIcon?: () => void
-  focusOutlineColor?: ColorsEnum
   searchInputID?: string
   onFocus?: () => void
   inputContainerStyle?: ViewStyle
@@ -70,15 +70,21 @@ export type TextInputProps = CustomTextInputProps & RNTextInputProps
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
+function getInputProps<Props extends InputProps>(props: Props): InputProps {
+  return {
+    label: props.label,
+    accessibilityDescribedBy: props.accessibilityDescribedBy,
+    focusOutlineColor: props.focusOutlineColor,
+  }
+}
+
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
   return {
+    ...getInputProps(props),
     isError: props.isError,
-    label: props.label,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
     isRequiredField: props.isRequiredField,
-    accessibilityDescribedBy: props.accessibilityDescribedBy,
-    focusOutlineColor: props.focusOutlineColor,
     leftComponent: props.leftComponent,
     rightLabel: props.rightLabel,
   }
@@ -86,13 +92,11 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
   return {
+    ...getInputProps(props),
     inputHeight: props.inputHeight,
     LeftIcon: props.LeftIcon,
-    label: props.label,
     accessibilityLabel: props.accessibilityLabel,
-    accessibilityDescribedBy: props.accessibilityDescribedBy,
     onPressRightIcon: props.onPressRightIcon,
-    focusOutlineColor: props.focusOutlineColor,
     inputContainerStyle: props.inputContainerStyle,
     children: props.children,
     onFocus: props.onFocus,
