@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CreditInfo /> should render properly 1`] = `
-Array [
+<View
+  testID="credit-info"
+>
   <Text
     style={
       Array [
@@ -15,7 +17,7 @@ Array [
     }
   >
     250 €
-  </Text>,
+  </Text>
   <View
     numberOfSpaces={3}
     style={
@@ -25,7 +27,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     style={
       Array [
@@ -159,6 +161,6 @@ Array [
         useAngle={true}
       />
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

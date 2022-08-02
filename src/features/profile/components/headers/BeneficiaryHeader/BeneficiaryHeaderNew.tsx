@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
@@ -12,7 +12,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
-type BeneficiaryHeaderProps = {
+export type BeneficiaryHeaderProps = {
   firstName?: string | null
   lastName?: string | null
   domainsCredit?: DomainsCredit | null
@@ -40,7 +40,7 @@ export function BeneficiaryHeaderNew({
     : t`Profite de ton crédit jusqu’au`
 
   return (
-    <Fragment>
+    <React.Fragment>
       <PageHeader title={name} size="medium" />
       <Container>
         <Row>
@@ -48,22 +48,26 @@ export function BeneficiaryHeaderNew({
           <Typo.ButtonText>{displayedExpirationDate}</Typo.ButtonText>
         </Row>
         {!!domainsCredit && (
-          <Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <CreditInfo totalCredit={domainsCredit.all} />
-            <BeneficiaryCeilingsNew
-              domainsCredit={domainsCredit}
-              isUserUnderageBeneficiary={isUserUnderageBeneficiary}
-            />
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={3} />
+            {!isDepositExpired && (
+              <React.Fragment>
+                <CreditInfo totalCredit={domainsCredit.all} />
+                <BeneficiaryCeilingsNew
+                  domainsCredit={domainsCredit}
+                  isUserUnderageBeneficiary={isUserUnderageBeneficiary}
+                />
+              </React.Fragment>
+            )}
             <CreditExplanation
               isDepositExpired={isDepositExpired}
               isUserUnderageBeneficiary={isUserUnderageBeneficiary}
               domainsCredit={domainsCredit}
             />
-          </Fragment>
+          </React.Fragment>
         )}
       </Container>
-    </Fragment>
+    </React.Fragment>
   )
 }
 

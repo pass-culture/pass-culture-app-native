@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
@@ -12,11 +13,11 @@ type CreditInfoProps = {
 
 export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) {
   return (
-    <React.Fragment>
+    <View testID="credit-info">
       <Hero>{formatToFrenchDecimal(totalCredit.remaining)}</Hero>
       <Spacer.Column numberOfSpaces={3} />
       <CreditProgressBar progress={totalCredit.remaining / totalCredit.initial} />
-    </React.Fragment>
+    </View>
   )
 }
 

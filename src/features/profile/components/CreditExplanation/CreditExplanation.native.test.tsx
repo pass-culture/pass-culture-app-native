@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
-import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
+import {
+  domains_credit_v1,
+  domains_exhausted_credit_v1,
+} from 'features/profile/components/headers/fixtures/domainsCredit'
 import { fireEvent, render } from 'tests/utils'
-
-const exhaustedCredit = { ...domains_credit_v1, all: { ...domains_credit_v1.all, remaining: 0 } }
 
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
@@ -23,7 +24,7 @@ describe('<CreditExplanation/>', () => {
       <CreditExplanation
         isDepositExpired={false}
         isUserUnderageBeneficiary={false}
-        domainsCredit={exhaustedCredit}
+        domainsCredit={domains_exhausted_credit_v1}
       />
     )
     expect(renderAPI).toMatchSnapshot()
