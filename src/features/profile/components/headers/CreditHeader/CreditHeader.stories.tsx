@@ -7,11 +7,11 @@ import {
   domains_credit_v2,
 } from 'features/profile/components/headers/fixtures/domainsCredit'
 
-import { BeneficiaryHeaderNew } from './BeneficiaryHeaderNew'
+import { CreditHeader } from './CreditHeader'
 
 export default {
-  title: 'ui/BeneficiaryHeaderNew',
-  component: BeneficiaryHeaderNew,
+  title: 'ui/CreditHeader',
+  component: CreditHeader,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -19,11 +19,9 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof BeneficiaryHeaderNew>
+} as ComponentMeta<typeof CreditHeader>
 
-const Template: ComponentStory<typeof BeneficiaryHeaderNew> = (props) => (
-  <BeneficiaryHeaderNew {...props} />
-)
+const Template: ComponentStory<typeof CreditHeader> = (props) => <CreditHeader {...props} />
 
 const depositExpirationDate = '2023-02-16T17:16:04.735235'
 

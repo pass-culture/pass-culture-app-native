@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -336,7 +336,7 @@ Array [
 ]
 `;
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with exhausted credit 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly with exhausted credit 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -817,7 +817,7 @@ Array [
 ]
 `;
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with expired credit 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly with expired credit 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -1062,7 +1062,7 @@ Array [
 ]
 `;
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"

@@ -5,26 +5,26 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen/api'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
-import { BeneficiaryCeilingsNew } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew'
+import { BeneficiaryCeilings } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings'
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
-export type BeneficiaryHeaderProps = {
+export type CreditHeaderProps = {
   firstName?: string | null
   lastName?: string | null
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
 }
 
-export function BeneficiaryHeaderNew({
+export function CreditHeader({
   firstName,
   lastName,
   domainsCredit,
   depositExpirationDate,
-}: BeneficiaryHeaderProps) {
+}: CreditHeaderProps) {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const name = `${firstName} ${lastName}`
 
@@ -53,7 +53,7 @@ export function BeneficiaryHeaderNew({
             {!isDepositExpired && (
               <React.Fragment>
                 <CreditInfo totalCredit={domainsCredit.all} />
-                <BeneficiaryCeilingsNew
+                <BeneficiaryCeilings
                   domainsCredit={domainsCredit}
                   isUserUnderageBeneficiary={isUserUnderageBeneficiary}
                 />

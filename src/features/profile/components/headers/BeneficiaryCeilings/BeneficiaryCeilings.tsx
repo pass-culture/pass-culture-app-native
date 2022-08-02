@@ -12,7 +12,7 @@ type BeneficiaryCeilingsProps = {
   domainsCredit?: DomainsCredit | null
 }
 
-export function BeneficiaryCeilingsNew({
+export function BeneficiaryCeilings({
   isUserUnderageBeneficiary,
   domainsCredit,
 }: BeneficiaryCeilingsProps) {

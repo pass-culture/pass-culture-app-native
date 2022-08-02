@@ -15,7 +15,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { SubscriptionMessageBadge } from 'features/profile/components/headers/Badges/SubscriptionMessageBadge'
-import { BeneficiaryHeaderNew } from 'features/profile/components/headers/BeneficiaryHeader/BeneficiaryHeaderNew'
+import { CreditHeader } from 'features/profile/components/headers/CreditHeader/CreditHeader'
 import {
   domains_credit_underage,
   domains_credit_v1,
@@ -649,10 +649,10 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
       {/* Your components */}
       <AccordionItem title="New Beneficiary Header">
-        <BeneficiaryHeaderNew
+        <CreditHeader
           firstName="Rosa"
           lastName="Bonheur"
-          depositExpirationDate={'2023-02-16T17:16:04.735235'}
+          depositExpirationDate={'2022-02-16T17:16:04.735235'}
           domainsCredit={domains_credit_v1}
         />
       </AccordionItem>
