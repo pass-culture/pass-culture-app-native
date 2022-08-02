@@ -12,7 +12,7 @@ import {
 import { BeneficiaryCeilings } from './BeneficiaryCeilings'
 
 export default {
-  title: 'ui/BeneficiaryCeilings',
+  title: 'Features/Profile/BeneficiaryCeilings',
   component: BeneficiaryCeilings,
 } as ComponentMeta<typeof BeneficiaryCeilings>
 

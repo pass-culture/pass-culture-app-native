@@ -6,7 +6,7 @@ import { Bookstore } from 'ui/svg/icons/bicolor/Bookstore'
 import { CategoryButton } from './CategoryButton'
 
 export default {
-  title: 'search/CategoryButton',
+  title: 'Features/Search/CategoryButton',
   component: CategoryButton,
 } as ComponentMeta<typeof CategoryButton>
 
