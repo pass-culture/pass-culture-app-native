@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
 import { CreditInfo } from 'features/profile/components/CreditInfo'
-import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { BeneficiaryCeilingsNew } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew'
+import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -22,6 +23,7 @@ export function BeneficiaryHeaderNew({
   domainsCredit,
   depositExpirationDate,
 }: BeneficiaryHeaderProps) {
+  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const name = `${firstName} ${lastName}`
   return (
     <Fragment>
@@ -35,28 +37,10 @@ export function BeneficiaryHeaderNew({
           <Fragment>
             <Spacer.Column numberOfSpaces={2} />
             <CreditInfo totalCredit={domainsCredit.all} />
-            {/* Extract domain credit physical and digital informations into a new component with domainsCredit props */}
-            {!!domainsCredit.digital && (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={6} />
-                <Row>
-                  <Typo.Body>{t`dont` + SPACE}</Typo.Body>
-                  <BodySecondary>
-                    {formatToFrenchDecimal(domainsCredit.digital.remaining) + SPACE}
-                  </BodySecondary>
-                  <Typo.Body>{t`pour les offres numériques`}</Typo.Body>
-                </Row>
-              </React.Fragment>
-            )}
-            {!!domainsCredit.physical && (
-              <Row>
-                <Typo.Body>{t`dont` + SPACE}</Typo.Body>
-                <BodySecondary>
-                  {formatToFrenchDecimal(domainsCredit.physical.remaining) + SPACE}
-                </BodySecondary>
-                <Typo.Body>{t`pour les sorties`}</Typo.Body>
-              </Row>
-            )}
+            <BeneficiaryCeilingsNew
+              domainsCredit={domainsCredit}
+              isUserUnderageBeneficiary={isUserUnderageBeneficiary}
+            />
           </Fragment>
         )}
       </Container>
@@ -75,7 +59,3 @@ const Row = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
 })
-
-const BodySecondary = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
-}))

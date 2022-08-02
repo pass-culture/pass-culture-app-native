@@ -1,19 +1,12 @@
 import React from 'react'
 
+import {
+  domains_credit_v1,
+  domains_credit_v2,
+} from 'features/profile/components/headers/fixtures/domainsCredit'
 import { render } from 'tests/utils/web'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
-
-const domains_credit_v1 = {
-  all: { initial: 50000, remaining: 40000 },
-  physical: { initial: 30000, remaining: 10000 },
-  digital: { initial: 30000, remaining: 20000 },
-}
-
-const domains_credit_v2 = {
-  all: { initial: 30000, remaining: 10000 },
-  digital: { initial: 20000, remaining: 5000 },
-}
 
 jest.mock('features/profile/api')
 

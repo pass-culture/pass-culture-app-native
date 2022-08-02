@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ExpiredCreditModal } from 'features/profile/components/ExpiredCreditModal'
+import { ExpiredCreditModal } from 'features/profile/components/headers/Modals/ExpiredCreditModal'
 import { fireEvent, render } from 'tests/utils'
 
 const hideModalMock = jest.fn()

@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
-import { ProfileHeader } from 'features/profile/components/ProfileHeader'
+import { ProfileHeader } from 'features/profile/components/headers/ProfileHeader/ProfileHeader'
 import { render } from 'tests/utils/web'
 
 const user: UserProfileResponse = {

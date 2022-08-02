@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
-import { ProfileBadge } from 'features/profile/components/ProfileBadge'
+import { ProfileBadge } from 'features/profile/components/headers/Badges/ProfileBadge'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'

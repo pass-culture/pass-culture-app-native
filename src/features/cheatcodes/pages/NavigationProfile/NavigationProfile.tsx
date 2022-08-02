@@ -3,13 +3,13 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
+import { useGoBack } from 'features/navigation/useGoBack'
 import {
   domains_credit_v1,
   domains_credit_v2,
-} from 'features/cheatcodes/pages/AppComponents/AppComponents'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { CreditCeilingsModal } from 'features/profile/components/CreditCeilingsModal'
-import { ExpiredCreditModal } from 'features/profile/components/ExpiredCreditModal'
+} from 'features/profile/components/headers/fixtures/domainsCredit'
+import { CreditCeilingsModal } from 'features/profile/components/headers/Modals/CreditCeilingsModal'
+import { ExpiredCreditModal } from 'features/profile/components/headers/Modals/ExpiredCreditModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
