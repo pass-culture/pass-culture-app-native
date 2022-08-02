@@ -13,7 +13,7 @@ export const ShareAppModal = ({ visible, dismissModal }: ShareAppModalProps) => 
   return (
     <WebShareModal
       visible={visible}
-      headerTitle={t`Partager le lien d’invitation`}
+      headerTitle={t`Partage le lien d’invitation`}
       shareContent={shareAppContent}
       dismissModal={dismissModal}
     />

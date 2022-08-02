@@ -13,7 +13,7 @@ const url = isIos
   : env.PASSCULTURE_DOWNLOAD_APP_URL
 
 export const shareAppContent = {
-  title: t`Partage l'application`,
+  title: t`Partage le lien d’invitation`,
   message: t`Profite toi aussi de tous les bons plans du pass Culture`,
   url,
 }

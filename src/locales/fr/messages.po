@@ -2164,9 +2164,10 @@ msgstr "Paramètres firebase dynamic link"
 msgid "Paramètres marketing"
 msgstr "Paramètres marketing"
 
+#: src/libs/share/shareApp/ShareAppModal.tsx
 #: src/libs/share/shareApp/shareAppContent.ts
-msgid "Partage l'application"
-msgstr "Partage l'application"
+msgid "Partage le lien d’invitation"
+msgstr "Partage le lien d’invitation"
 
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
@@ -2176,10 +2177,6 @@ msgstr "Partager"
 #: src/features/offer/components/OfferHeader.tsx
 msgid "Partager l'offre"
 msgstr "Partager l'offre"
-
-#: src/libs/share/shareApp/ShareAppModal.tsx
-msgid "Partager le lien d’invitation"
-msgstr "Partager le lien d’invitation"
 
 #: src/features/venue/components/VenueHeader.tsx
 msgid "Partager le lieu"
