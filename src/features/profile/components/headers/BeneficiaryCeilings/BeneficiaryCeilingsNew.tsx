@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
@@ -18,36 +18,31 @@ export function BeneficiaryCeilingsNew({
 }: BeneficiaryCeilingsProps) {
   if (!domainsCredit || isUserUnderageBeneficiary) return <React.Fragment />
   return (
-    <Fragment>
+    <React.Fragment>
       {!!domainsCredit.digital && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <Row testID="domains-credit-digital">
-            <Typo.Body>{t`dont` + SPACE}</Typo.Body>
-            <BodySecondary>
-              {formatToFrenchDecimal(domainsCredit.digital.remaining) + SPACE}
-            </BodySecondary>
-            <Typo.Body>{t`pour les offres numériques`}</Typo.Body>
-          </Row>
+          <Typo.Body testID="domains-credit-digital">
+            {t`dont`}
+            {SPACE}
+            <BodySecondary>{formatToFrenchDecimal(domainsCredit.digital.remaining)}</BodySecondary>
+            {SPACE}
+            {t`pour les offres numériques`}
+          </Typo.Body>
         </React.Fragment>
       )}
       {!!domainsCredit.physical && (
-        <Row testID="domains-credit-physical">
-          <Typo.Body>{t`dont` + SPACE}</Typo.Body>
-          <BodySecondary>
-            {formatToFrenchDecimal(domainsCredit.physical.remaining) + SPACE}
-          </BodySecondary>
-          <Typo.Body>{t`pour les sorties`}</Typo.Body>
-        </Row>
+        <Typo.Body testID="domains-credit-physical">
+          {t`dont`}
+          {SPACE}
+          <BodySecondary>{formatToFrenchDecimal(domainsCredit.physical.remaining)}</BodySecondary>
+          {SPACE}
+          {t`pour les sorties`}
+        </Typo.Body>
       )}
-    </Fragment>
+    </React.Fragment>
   )
 }
-
-const Row = styled.View({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-})
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,

@@ -68,7 +68,8 @@ export function BeneficiaryHeaderNew({
 }
 
 const Container = styled.View(({ theme }) => ({
-  margin: getSpacing(6),
+  marginHorizontal: getSpacing(6),
+  marginVertical: getSpacing(3),
   padding: getSpacing(6),
   borderRadius: getSpacing(2),
   backgroundColor: theme.colors.greyLight,
