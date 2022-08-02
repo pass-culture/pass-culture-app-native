@@ -1,0 +1,1544 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
+Array [
+  <View
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Rosa Bonheur
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginHorizontal": 24,
+          "marginVertical": 12,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Profite de ton crédit jusqu’au 
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        03/08/2022
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
+    <View
+      testID="credit-info"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 38,
+              "lineHeight": 48,
+            },
+          ]
+        }
+      >
+        400 €
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          Array [
+            Object {
+              "height": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "borderRadius": 48,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 48,
+                "flexDirection": "row",
+                "height": 18,
+                "width": "100%",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <BVLinearGradient
+            angle={180}
+            colors={
+              Array [
+                451608661,
+                439484566,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 1,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderColor": "#ffffff",
+                  "borderRadius": 48,
+                  "borderWidth": 2,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+            useAngle={true}
+          />
+          <BVLinearGradient
+            colors={
+              Array [
+                872415231,
+                4294967295,
+                872415231,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderRadius": 48,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <BVLinearGradient
+            angle={90}
+            colors={
+              Array [
+                4293591125,
+                4281467030,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            progress={0.8}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderRadius": 48,
+                  "flexBasis": 0,
+                  "flexGrow": 0.8,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            testID="progress-bar"
+            useAngle={true}
+          />
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with exhausted credit 1`] = `
+Array [
+  <View
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Rosa Bonheur
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginHorizontal": 24,
+          "marginVertical": 12,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Profite de ton crédit jusqu’au 
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        03/08/2022
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
+    <View
+      testID="credit-info"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 38,
+              "lineHeight": 48,
+            },
+          ]
+        }
+      >
+        0 €
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          Array [
+            Object {
+              "height": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "borderRadius": 48,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 48,
+                "flexDirection": "row",
+                "height": 18,
+                "width": "100%",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <BVLinearGradient
+            angle={180}
+            colors={
+              Array [
+                451608661,
+                439484566,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 1,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderColor": "#ffffff",
+                  "borderRadius": 48,
+                  "borderWidth": 2,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+            useAngle={true}
+          />
+          <BVLinearGradient
+            colors={
+              Array [
+                872415231,
+                4294967295,
+                872415231,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderRadius": 48,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <BVLinearGradient
+            angle={90}
+            colors={
+              Array [
+                4293591125,
+                4281467030,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            progress={0}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderRadius": 48,
+                  "flexBasis": 0,
+                  "flexGrow": 0,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            testID="progress-bar"
+            useAngle={true}
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+      testID="domains-credit-digital"
+    >
+      dont
+       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        0 €
+      </Text>
+       
+      pour les offres numériques
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+      testID="domains-credit-physical"
+    >
+      dont
+       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        0 €
+      </Text>
+       
+      pour les sorties
+    </Text>
+    <View
+      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "flex-start",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="explanationButton"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#eb0055"
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        J’ai dépensé tout mon crédit, que faire ?
+      </Text>
+    </View>
+  </View>,
+]
+`;
+
+exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with expired credit 1`] = `
+Array [
+  <View
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Rosa Bonheur
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginHorizontal": 24,
+          "marginVertical": 12,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Ton crédit a expiré le 
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        01/08/2022
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Mon crédit est expiré, que faire ?"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "flex-start",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="explanationButton"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#eb0055"
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Mon crédit est expiré, que faire ?
+      </Text>
+    </View>
+  </View>,
+]
+`;
+
+exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
+Array [
+  <View
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Rosa Bonheur
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginHorizontal": 24,
+          "marginVertical": 12,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Profite de ton crédit jusqu’au 
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        03/08/2022
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
+    <View
+      testID="credit-info"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 38,
+              "lineHeight": 48,
+            },
+          ]
+        }
+      >
+        400 €
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          Array [
+            Object {
+              "height": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "borderRadius": 48,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 48,
+                "flexDirection": "row",
+                "height": 18,
+                "width": "100%",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <BVLinearGradient
+            angle={180}
+            colors={
+              Array [
+                451608661,
+                439484566,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 1,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderColor": "#ffffff",
+                  "borderRadius": 48,
+                  "borderWidth": 2,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+            useAngle={true}
+          />
+          <BVLinearGradient
+            colors={
+              Array [
+                872415231,
+                4294967295,
+                872415231,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderRadius": 48,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <BVLinearGradient
+            angle={90}
+            colors={
+              Array [
+                4293591125,
+                4281467030,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            progress={0.8}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "borderRadius": 48,
+                  "flexBasis": 0,
+                  "flexGrow": 0.8,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            testID="progress-bar"
+            useAngle={true}
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+      testID="domains-credit-digital"
+    >
+      dont
+       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        200 €
+      </Text>
+       
+      pour les offres numériques
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+      testID="domains-credit-physical"
+    >
+      dont
+       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        100 €
+      </Text>
+       
+      pour les sorties
+    </Text>
+    <View
+      accessibilityLabel="Pourquoi cette limite ?"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "flex-start",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="explanationButton"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#eb0055"
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Pourquoi cette limite ?
+      </Text>
+    </View>
+  </View>,
+]
+`;

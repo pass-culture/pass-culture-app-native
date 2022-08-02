@@ -1,8 +1,9 @@
-import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
+import {
+  domains_credit_v1,
+  domains_exhausted_credit_v1,
+} from 'features/profile/components/headers/fixtures/domainsCredit'
 
 import { getCreditModal } from './getCreditModal'
-
-const exhaustedCredit = { ...domains_credit_v1, all: { ...domains_credit_v1.all, remaining: 0 } }
 
 describe('getCreditModal()', () => {
   it('should return ExpiredCreditModal if deposit is expired', async () => {
@@ -17,7 +18,7 @@ describe('getCreditModal()', () => {
 
   it('should return ExhaustedCreditModal if deposit is exhausted', async () => {
     const { creditModal } = getCreditModal({
-      domainsCredit: exhaustedCredit,
+      domainsCredit: domains_exhausted_credit_v1,
       isUserUnderageBeneficiary: false,
       isDepositExpired: false,
     })
@@ -27,7 +28,7 @@ describe('getCreditModal()', () => {
 
   it('should return ExpiredCreditModal if deposit is expired AND deposit is exhausted', async () => {
     const { creditModal } = getCreditModal({
-      domainsCredit: exhaustedCredit,
+      domainsCredit: domains_exhausted_credit_v1,
       isUserUnderageBeneficiary: false,
       isDepositExpired: true,
     })

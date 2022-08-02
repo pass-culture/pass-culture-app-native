@@ -12,7 +12,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
-type BeneficiaryHeaderProps = {
+export type BeneficiaryHeaderProps = {
   firstName?: string | null
   lastName?: string | null
   domainsCredit?: DomainsCredit | null
