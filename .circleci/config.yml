@@ -112,10 +112,10 @@ commands:
   new_unit_test_native:
     description: New Unit Tests Native
     steps:
-      - restore_cache:
-          name: Restore Tests cache
-          keys:
-            - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
+      # - restore_cache:
+      #     name: Restore Tests cache
+      #     keys:
+      #       - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Run tests with new config with JUnit as reporter
           command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:ci:new
@@ -123,11 +123,11 @@ commands:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
           path: ./reports/junit/
-      - save_cache:
-          name: Save Tests cache
-          key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
-          paths:
-            - .jest
+      # - save_cache:
+      #     name: Save Tests cache
+      #     key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
+      #     paths:
+      #       - .jest
 
   unit_test_web:
     description: Unit Tests Web
