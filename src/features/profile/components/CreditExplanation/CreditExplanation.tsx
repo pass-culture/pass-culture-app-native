@@ -10,7 +10,7 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 interface Props {
   domainsCredit: DomainsCredit
   isUserUnderageBeneficiary: boolean
-  depositExpirationDate?: string
+  isDepositExpired: boolean
 }
 
 export const CreditExplanation: FunctionComponent<Props> = (props) => {
