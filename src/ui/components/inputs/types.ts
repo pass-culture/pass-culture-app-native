@@ -70,15 +70,21 @@ export type TextInputProps = CustomTextInputProps & RNTextInputProps
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
+function getInputProps<Props extends InputProps>(props: Props): InputProps {
+  return {
+    label: props.label,
+    accessibilityDescribedBy: props.accessibilityDescribedBy,
+    focusOutlineColor: props.focusOutlineColor,
+  }
+}
+
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
   return {
+    ...getInputProps(props),
     isError: props.isError,
-    label: props.label,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
     isRequiredField: props.isRequiredField,
-    accessibilityDescribedBy: props.accessibilityDescribedBy,
-    focusOutlineColor: props.focusOutlineColor,
     leftComponent: props.leftComponent,
     rightLabel: props.rightLabel,
   }
@@ -86,13 +92,11 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
   return {
+    ...getInputProps(props),
     inputHeight: props.inputHeight,
     LeftIcon: props.LeftIcon,
-    label: props.label,
     accessibilityLabel: props.accessibilityLabel,
-    accessibilityDescribedBy: props.accessibilityDescribedBy,
     onPressRightIcon: props.onPressRightIcon,
-    focusOutlineColor: props.focusOutlineColor,
     inputContainerStyle: props.inputContainerStyle,
     children: props.children,
     onFocus: props.onFocus,
