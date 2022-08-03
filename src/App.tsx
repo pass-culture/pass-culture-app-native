@@ -1,10 +1,10 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
-import { LogBox } from 'react-native'
+import { Button, LogBox, View } from 'react-native'
 import CodePush from 'react-native-code-push'
 
 // if __DEV__ import if you want to debug
@@ -107,6 +107,18 @@ const App: FunctionComponent = function () {
     </ABTestingProvider>
   )
 }
+
+// const Youpi = () => {
+//   const [show, setShow] = useState(false)
+
+//   return show ? (
+//     <App />
+//   ) : (
+//     <View style={{ padding: 100 }}>
+//       <Button title="SHOW" onPress={() => setShow(true)} />
+//     </View>
+//   )
+// }
 
 const config = env.ENV !== 'production' ? AutoImmediate : NextRestart
 const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)

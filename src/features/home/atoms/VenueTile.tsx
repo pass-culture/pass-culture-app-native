@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -33,7 +33,7 @@ const mergeVenueData =
     ...(prevData || {}),
   })
 
-export const VenueTile = (props: VenueTileProps) => {
+const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const { venue, width, height, userPosition } = props
   const queryClient = useQueryClient()
@@ -95,3 +95,5 @@ const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline(theme, theme.colors.black, isFocus),
 }))
+
+export const VenueTile = memo(UnmemoizedVenueTile)

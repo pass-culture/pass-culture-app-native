@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
@@ -18,7 +18,7 @@ export interface ExclusivityModuleProps extends ExclusivityPane {
   index: number
 }
 
-export const ExclusivityModule = ({
+const UnmemoizedExclusivityModule = ({
   title,
   alt,
   image,
@@ -75,6 +75,8 @@ export const ExclusivityModule = ({
     </Row>
   )
 }
+
+export const ExclusivityModule = memo(UnmemoizedExclusivityModule)
 
 const Row = styled.View({
   flexDirection: 'row',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -76,7 +76,7 @@ export const mergeOfferData =
     ...(prevData || {}),
   })
 
-export function OfferTile(props: OfferTileProps) {
+const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const {
     analyticsFrom,
     width,
@@ -160,3 +160,5 @@ const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   maxHeight: height,
   ...customFocusOutline(theme, theme.colors.black, isFocus),
 }))
+
+export const OfferTile = memo(UnmemoizedOfferTile)
