@@ -36,6 +36,8 @@ export type RNTextInputProps = Pick<
   /* react-native-web's TextInput supports the prop "disabled"
    * which adds the web property "disabled" (not focusable) to the input
    * https://github.com/necolas/react-native-web/commit/fc033a3161be76224d120dec7aab7009e9414fa7 */
+  | 'accessible'
+  | 'accessibilityLabel'
   | 'autoCapitalize'
   | 'autoComplete'
   | 'autoCorrect'
