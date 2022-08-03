@@ -108,7 +108,7 @@ Object {
                 </clippath>
                 <lineargradient
                   gradientUnits="userSpaceOnUse"
-                  id="__lottie_element_20"
+                  id="__lottie_element_15"
                   spreadMethod="pad"
                   x1="114"
                   x2="181"
@@ -128,18 +128,6 @@ Object {
                     stop-color="rgb(50,0,150)"
                   />
                 </lineargradient>
-                <filter
-                  height="300%"
-                  id="__lottie_element_23"
-                  width="300%"
-                  x="-100%"
-                  y="-100%"
-                >
-                  <fegaussianblur
-                    edgeMode="duplicate"
-                    stdDeviation="4.2299999999999995 4.2299999999999995"
-                  />
-                </filter>
               </defs>
               <g
                 clip-path="url(#__lottie_element_2)"
@@ -160,7 +148,6 @@ Object {
                   <path />
                 </g>
                 <g
-                  filter="url(#__lottie_element_23)"
                   opacity="1"
                   style="display: block;"
                   transform="matrix(0,0,0,0,128,128)"
@@ -182,7 +169,7 @@ Object {
                 >
                   <path
                     d=" M154.43,194.5 C146.18,194.5 139.5,201.18 139.5,209.43 C139.5,209.43 139.5,275.57 139.5,275.57 C139.5,283.82 146.18,290.5 154.43,290.5 C154.43,290.5 220.57,290.5 220.57,290.5 C228.82,290.5 235.5,283.82 235.5,275.57 C235.5,275.57 235.5,209.43 235.5,209.43 C235.5,201.18 228.82,194.5 220.57,194.5 C220.57,194.5 154.43,194.5 154.43,194.5z"
-                    fill="url(#__lottie_element_20)"
+                    fill="url(#__lottie_element_15)"
                     fill-opacity="1"
                   />
                   <g
@@ -193,7 +180,7 @@ Object {
                 <g
                   opacity="1"
                   style="display: block;"
-                  transform="matrix(0,-1.0136679410934448,1.0235216617584229,0,87.05913543701172,168.54739379882812)"
+                  transform="matrix(0.9718236327171326,-0.3052713871002197,0.30823883414268494,0.9707673192024231,76.79750061035156,101.38082885742188)"
                 >
                   <g
                     opacity="1"
@@ -245,7 +232,7 @@ Object {
                 <g
                   opacity="1"
                   style="display: block;"
-                  transform="matrix(1.019136905670166,0,0,1.0180292129516602,87.23241424560547,87.27366638183594)"
+                  transform="matrix(1.0013748407363892,0,0,1.0009866952896118,87.9455795288086,87.96099853515625)"
                 >
                   <g
                     opacity="1"
@@ -434,7 +421,7 @@ l’étendue du catalogue pass Culture.
               </clippath>
               <lineargradient
                 gradientUnits="userSpaceOnUse"
-                id="__lottie_element_20"
+                id="__lottie_element_15"
                 spreadMethod="pad"
                 x1="114"
                 x2="181"
@@ -454,18 +441,6 @@ l’étendue du catalogue pass Culture.
                   stop-color="rgb(50,0,150)"
                 />
               </lineargradient>
-              <filter
-                height="300%"
-                id="__lottie_element_23"
-                width="300%"
-                x="-100%"
-                y="-100%"
-              >
-                <fegaussianblur
-                  edgeMode="duplicate"
-                  stdDeviation="4.2299999999999995 4.2299999999999995"
-                />
-              </filter>
             </defs>
             <g
               clip-path="url(#__lottie_element_2)"
@@ -486,7 +461,6 @@ l’étendue du catalogue pass Culture.
                 <path />
               </g>
               <g
-                filter="url(#__lottie_element_23)"
                 opacity="1"
                 style="display: block;"
                 transform="matrix(0,0,0,0,128,128)"
@@ -508,7 +482,7 @@ l’étendue du catalogue pass Culture.
               >
                 <path
                   d=" M154.43,194.5 C146.18,194.5 139.5,201.18 139.5,209.43 C139.5,209.43 139.5,275.57 139.5,275.57 C139.5,283.82 146.18,290.5 154.43,290.5 C154.43,290.5 220.57,290.5 220.57,290.5 C228.82,290.5 235.5,283.82 235.5,275.57 C235.5,275.57 235.5,209.43 235.5,209.43 C235.5,201.18 228.82,194.5 220.57,194.5 C220.57,194.5 154.43,194.5 154.43,194.5z"
-                  fill="url(#__lottie_element_20)"
+                  fill="url(#__lottie_element_15)"
                   fill-opacity="1"
                 />
                 <g
@@ -519,7 +493,7 @@ l’étendue du catalogue pass Culture.
               <g
                 opacity="1"
                 style="display: block;"
-                transform="matrix(0,-1.0136679410934448,1.0235216617584229,0,87.05913543701172,168.54739379882812)"
+                transform="matrix(0.9718236327171326,-0.3052713871002197,0.30823883414268494,0.9707673192024231,76.79750061035156,101.38082885742188)"
               >
                 <g
                   opacity="1"
@@ -571,7 +545,7 @@ l’étendue du catalogue pass Culture.
               <g
                 opacity="1"
                 style="display: block;"
-                transform="matrix(1.019136905670166,0,0,1.0180292129516602,87.23241424560547,87.27366638183594)"
+                transform="matrix(1.0013748407363892,0,0,1.0009866952896118,87.9455795288086,87.96099853515625)"
               >
                 <g
                   opacity="1"
