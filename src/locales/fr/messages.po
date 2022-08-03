@@ -434,10 +434,6 @@ msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que t
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
-msgstr "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
-
 #: src/features/search/sections/OfferDate.tsx
 msgid "Ce week-end"
 msgstr "Ce week-end"
@@ -450,10 +446,6 @@ msgstr "Centre culturel"
 #: src/features/profile/pages/Profile.tsx
 msgid "Centre d'aide"
 msgstr "Centre d'aide"
-
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
-msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
 #: src/features/auth/login/Login.tsx
 msgid "Cette adresse e-mail est liée à un compte supprimé"
@@ -1513,10 +1505,6 @@ msgstr "La réservation est annulable jusqu'au {formattedConfirmationDate}"
 msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 msgstr "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
-msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
-
 #: src/libs/share/WebShareModal.web.tsx
 msgid "Le lien a été copié dans le presse-papier !"
 msgstr "Le lien a été copié dans le presse-papier !"
@@ -1773,8 +1761,6 @@ msgid "Mois suivant"
 msgstr "Mois suivant"
 
 #: src/features/profile/components/CreditExplanation/getCreditModal.ts
-#: src/features/profile/components/ExBeneficiaryHeader.tsx
-#: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
@@ -2285,14 +2271,6 @@ msgstr "Pour t’identifier, nous allons te demander de te connecter à EduConne
 #: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
 msgid "Pourquoi cette limite ?"
 msgstr "Pourquoi cette limite ?"
-
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Pourquoi les biens numériques sont-ils limités ?"
-msgstr "Pourquoi les biens numériques sont-ils limités ?"
-
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
-msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
 #: src/features/bookOffer/components/AlreadyBooked.tsx
 msgid "Pourquoi limiter les réservations ?"
@@ -2940,7 +2918,6 @@ msgstr "Ton crédit a expiré le"
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
@@ -3218,10 +3195,6 @@ msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires s
 msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
 msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx
-msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
-msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
-
 #: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
 msgid ""
 "Tu peux dès maintenant découvrir \n"
@@ -3229,10 +3202,6 @@ msgid ""
 msgstr ""
 "Tu peux dès maintenant découvrir \n"
 "l’étendue du catalogue pass Culture."
-
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Tu peux encore dépenser :"
-msgstr "Tu peux encore dépenser :"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Tu peux faire une nouvelle demande de modification dans ton profil."
@@ -3253,10 +3222,6 @@ msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur
 #: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 msgid "Tu peux sélectionner une ou plusieurs réponses."
 msgstr "Tu peux sélectionner une ou plusieurs réponses."
-
-#: src/features/profile/components/ExBeneficiaryHeader.tsx
-msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
-msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
 #: src/features/profile/components/headers/Modals/ExhaustedCreditModal.tsx
 #: src/features/profile/components/headers/Modals/ExpiredCreditModal.tsx
@@ -3651,10 +3616,6 @@ msgstr "carte d'identité"
 msgid "cette offre ?"
 msgstr "cette offre ?"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx
-msgid "credit expired on date"
-msgstr "crédit expiré le {deadline}"
-
 #: src/features/home/components/HomeHeader.tsx
 msgid "credit left on pass"
 msgstr "Tu as {credit} sur ton pass"
@@ -3675,6 +3636,10 @@ msgstr "crédit photo"
 #: src/features/profile/components/BeneficiaryHeader.tsx
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
+
+#: src/features/search/components/SearchAutocompleteItem.tsx
+msgid "dans"
+msgstr "dans"
 
 #: src/features/profile/components/headers/Badges/YoungerBadge.tsx
 msgid "date d'éligibilité"
