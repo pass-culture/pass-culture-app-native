@@ -23,6 +23,11 @@ export interface AlgoliaHit {
   objectID: string
 }
 
+export interface AlgoliaSuggestionHit {
+  objectID: string
+  query: string
+}
+
 export interface AlgoliaVenue {
   objectID: string
   city: string

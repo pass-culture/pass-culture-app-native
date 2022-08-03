@@ -15,7 +15,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -23,7 +23,7 @@ import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 const searchInputID = uuidv4()
-const algoliaClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
+const algoliaClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SUGGESTIONS_API_KEY)
 const searchClient: SearchClient = {
   ...algoliaClient,
   search(requests) {
@@ -45,7 +45,7 @@ const searchClient: SearchClient = {
     return algoliaClient.search(requests)
   },
 }
-const offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME
+const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 type BodySearchProps = {
   view?: SearchView
@@ -90,8 +90,8 @@ export function Search() {
   return (
     <Form.Flex>
       {appEnableAutocomplete ? (
-        <InstantSearch searchClient={searchClient} indexName={offersIndex}>
-          <Configure restrictSearchableAttributes={['offer.name']} hitsPerPage={5} />
+        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+          <Configure hitsPerPage={5} />
           <SearchHeader
             searchInputID={searchInputID}
             appEnableAutocomplete={appEnableAutocomplete}
@@ -114,10 +114,9 @@ export function Search() {
 const Container = styled.View({ flex: 1 })
 
 export type HitProps = {
-  hit: AlgoliaHit
-  index: number
+  hit: AlgoliaSuggestionHit
 }
 
-export function Hit({ hit, index }: HitProps) {
-  return <SearchAutocompleteItem hit={hit} index={index} />
+export function Hit({ hit }: HitProps) {
+  return <SearchAutocompleteItem hit={hit} />
 }

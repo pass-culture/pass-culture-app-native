@@ -1,2 +1,2 @@
-export type { AlgoliaHit, AlgoliaVenue, Geoloc } from './algolia.d'
+export type { AlgoliaHit, AlgoliaSuggestionHit, AlgoliaVenue, Geoloc } from './algolia.d'
 export * from './types'

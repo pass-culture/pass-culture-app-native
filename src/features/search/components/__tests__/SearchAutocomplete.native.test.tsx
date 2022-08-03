@@ -9,13 +9,11 @@ jest.mock('react-instantsearch-hooks', () => ({
     hits: [
       {
         objectID: '1',
-        offer: { name: 'Test1', searchGroupName: 'MUSIQUE' },
-        _geoloc: {},
+        query: 'cinéma',
       },
       {
         objectID: '2',
-        offer: { name: 'Test2', searchGroupName: 'MUSIQUE' },
-        _geoloc: {},
+        query: 'terrain',
       },
     ],
   }),
