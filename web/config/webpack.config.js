@@ -20,6 +20,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { DuplicatesPlugin } = require("inspectpack/plugin")
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
@@ -708,6 +709,23 @@ module.exports = function (webpackEnv) {
         new BundleAnalyzerPlugin({
           generateStatsFile: true
         }),
+      isEnvProduction && Boolean(process.env.SHOW_DUPLICATES_PLUGIN) &&
+        new DuplicatesPlugin({
+          // Emit compilation warning or error? (Default: `false`)
+          emitErrors: false,
+          // Handle all messages with handler function (`(report: string)`)
+          // Overrides `emitErrors` output.
+          emitHandler: undefined,
+          // List of packages that can be ignored. (Default: `[]`)
+          // - If a string, then a prefix match of `{$name}/` for each module.
+          // - If a regex, then `.test(pattern)` which means you should add slashes
+          //   where appropriate.
+          //
+          // **Note**: Uses posix paths for all matching (e.g., on windows `/` not `\`).
+          ignoredPackages: undefined,
+          // Display full duplicates information? (Default: `false`)
+          verbose: true
+        })
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
