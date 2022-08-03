@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -33,7 +33,7 @@ const mergeVenueData =
     ...(prevData || {}),
   })
 
-export const VenueTile = (props: VenueTileProps) => {
+const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const { venue, width, height, userPosition } = props
   const queryClient = useQueryClient()
@@ -77,6 +77,8 @@ export const VenueTile = (props: VenueTileProps) => {
     </View>
   )
 }
+
+export const VenueTile = memo(UnmemoizedVenueTile)
 
 const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
 

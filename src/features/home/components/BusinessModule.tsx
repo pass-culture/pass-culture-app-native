@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -23,7 +23,7 @@ export interface BusinessModuleProps extends BusinessPane {
   index: number
 }
 
-export const BusinessModule = (props: BusinessModuleProps) => {
+const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const {
     title,
@@ -122,6 +122,8 @@ export const BusinessModule = (props: BusinessModuleProps) => {
     </Row>
   )
 }
+
+export const BusinessModule = memo(UnmemoizedBusinessModule)
 
 const Row = styled.View({
   flexDirection: 'row',
