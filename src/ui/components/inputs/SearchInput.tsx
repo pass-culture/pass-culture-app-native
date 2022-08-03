@@ -28,6 +28,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     accessibilityDescribedBy,
     onPressRightIcon,
     inputContainerStyle,
+    isFocusable = true,
     onFocus: onFocusProp,
     children,
   } = customProps
@@ -76,7 +77,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           autoCorrect={false}
           returnKeyType={props.returnKeyType ?? 'search'}
           selectionColor={undefined}
-          accessible={true}
+          accessible={isFocusable}
           accessibilityLabel={accessibilityLabel}
           aria-describedby={accessibilityDescribedBy}
           enablesReturnKeyAutomatically={true}

@@ -26,6 +26,7 @@ type CustomSearchInputProps = InputProps & {
   accessibilityLabel?: string
   onPressRightIcon?: () => void
   searchInputID?: string
+  isFocusable?: boolean
   onFocus?: () => void
   inputContainerStyle?: ViewStyle
   children?: React.ReactNode
@@ -101,6 +102,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     onPressRightIcon: props.onPressRightIcon,
     inputContainerStyle: props.inputContainerStyle,
     children: props.children,
+    isFocusable: props.isFocusable,
     onFocus: props.onFocus,
   }
 }
