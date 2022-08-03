@@ -4,6 +4,8 @@ export interface Environment {
   ALGOLIA_OFFERS_INDEX_NAME: string
   ALGOLIA_SEARCH_API_KEY: string
   ALGOLIA_VENUES_INDEX_NAME: string
+  ALGOLIA_SUGGESTIONS_INDEX_NAME: string
+  ALGOLIA_SUGGESTIONS_API_KEY: string
   AMPLITUDE_API_KEY?: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
