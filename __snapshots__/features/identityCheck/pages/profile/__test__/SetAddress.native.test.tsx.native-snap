@@ -368,7 +368,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   Object {},
                 ]
               }
-              testID="Entrée pour l'adresse"
+              testID="searchInput"
               textContentType="addressState"
               value=""
             />
