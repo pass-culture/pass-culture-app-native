@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { getSpacing } from 'ui/theme'
 
 export const AutoScrollSwitch = ({

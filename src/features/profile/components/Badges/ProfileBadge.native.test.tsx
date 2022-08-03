@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ProfileBadge } from 'features/profile/components/headers/Badges/ProfileBadge'
+import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
 import { shouldOpenInbox } from 'features/profile/utils'
 import { render, fireEvent } from 'tests/utils'
 import { Clock } from 'ui/svg/icons/Clock'

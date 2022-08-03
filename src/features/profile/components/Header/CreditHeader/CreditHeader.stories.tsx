@@ -2,10 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import {
-  domains_credit_v1,
-  domains_credit_v2,
-} from 'features/profile/components/headers/fixtures/domainsCredit'
+import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
 
 import { CreditHeader } from './CreditHeader'
 

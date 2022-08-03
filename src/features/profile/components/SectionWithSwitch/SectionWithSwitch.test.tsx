@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { render } from 'tests/utils'
 
 const title = 'Partager ma position'

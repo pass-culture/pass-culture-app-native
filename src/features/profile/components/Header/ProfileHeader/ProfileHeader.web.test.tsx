@@ -2,8 +2,8 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
-import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
-import { ProfileHeader } from 'features/profile/components/headers/ProfileHeader/ProfileHeader'
+import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
+import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { render } from 'tests/utils/web'
 
 const user: UserProfileResponse = {

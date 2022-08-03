@@ -2,9 +2,9 @@ import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { CreditHeader } from 'features/profile/components/headers/CreditHeader/CreditHeader'
-import { LoggedOutHeader } from 'features/profile/components/LoggedOutHeader'
-import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
+import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
+import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
+import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 
 type ProfileHeaderProps = {
   user?: UserProfileResponse

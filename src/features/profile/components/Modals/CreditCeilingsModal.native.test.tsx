@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CreditCeilingsModal } from 'features/profile/components/headers/Modals/CreditCeilingsModal'
+import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { beneficiaryUser } from 'fixtures/user'
 import { fireEvent, render } from 'tests/utils'
 

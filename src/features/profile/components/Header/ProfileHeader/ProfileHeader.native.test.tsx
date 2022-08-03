@@ -3,12 +3,12 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse } from 'api/gen'
-import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
-import { ProfileHeader } from 'features/profile/components/headers/ProfileHeader/ProfileHeader'
+import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
+import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { render } from 'tests/utils'
 
-jest.mock('features/profile/components/NonBeneficiaryHeader')
+jest.mock('react-query')
 
 const user: UserProfileResponse = {
   bookedOffers: {},

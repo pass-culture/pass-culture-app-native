@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { BeneficiaryCeilings } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings'
+import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import {
   domains_credit_underage,
   domains_credit_v1,
   domains_credit_v2,
   domains_exhausted_credit_v1,
-} from 'features/profile/components/headers/fixtures/domainsCredit'
+} from 'features/profile/fixtures/domainsCredit'
 import { render, waitFor } from 'tests/utils'
 
 describe('BeneficiaryCeilings', () => {

@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { YoungerBadge } from 'features/profile/components/headers/Badges/YoungerBadge'
+import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { render } from 'tests/utils'
 
 jest.mock('features/auth/api')

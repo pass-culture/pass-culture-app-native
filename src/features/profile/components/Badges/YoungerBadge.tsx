@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { ProfileBadge } from 'features/profile/components/headers/Badges/ProfileBadge'
+import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { Clock } from 'ui/svg/icons/Clock'
 

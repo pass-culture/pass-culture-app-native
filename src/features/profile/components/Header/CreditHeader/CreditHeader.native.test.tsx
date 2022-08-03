@@ -3,11 +3,11 @@ import React from 'react'
 import {
   CreditHeader,
   CreditHeaderProps,
-} from 'features/profile/components/headers/CreditHeader/CreditHeader'
+} from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
-} from 'features/profile/components/headers/fixtures/domainsCredit'
+} from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { render } from 'tests/utils'
