@@ -2366,7 +2366,7 @@ msgstr "Profil"
 msgid "Profite de ton crédit"
 msgstr "Profite de ton crédit"
 
-#: src/features/profile/components/headers/BeneficiaryHeader/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/headers/CreditHeader/CreditHeader.tsx
 msgid "Profite de ton crédit jusqu’au"
 msgstr "Profite de ton crédit jusqu’au"
 
@@ -2932,7 +2932,7 @@ msgstr "Ton compte est désactivé"
 msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 
-#: src/features/profile/components/headers/BeneficiaryHeader/BeneficiaryHeaderNew.tsx
+#: src/features/profile/components/headers/CreditHeader/CreditHeader.tsx
 msgid "Ton crédit a expiré le"
 msgstr "Ton crédit a expiré le"
 
@@ -3696,8 +3696,8 @@ msgstr "de code de validation"
 msgid "de la catégorie"
 msgstr "de la catégorie"
 
-#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
-#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings.tsx
 msgid "dont"
 msgstr "dont"
 
@@ -3824,11 +3824,11 @@ msgstr "permanente"
 msgid "pour"
 msgstr "pour"
 
-#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings.tsx
 msgid "pour les offres numériques"
 msgstr "pour les offres numériques"
 
-#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew.tsx
+#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings.tsx
 msgid "pour les sorties"
 msgstr "pour les sorties"
 
@@ -3855,14 +3855,6 @@ msgstr "prix"
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"
 msgstr "({price} x 2 places)"
-
-#: src/features/profile/components/headers/ProfileHeader/ProfileHeader.tsx
-msgid "profile expiration date"
-msgstr "{day} à {hour}"
-
-#: src/features/profile/components/headers/ProfileHeader/ProfileHeader.tsx
-msgid "profile expiration date for underage"
-msgstr "{day}"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
 msgid "près de chez toi"

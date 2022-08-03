@@ -1,22 +1,28 @@
 import React from 'react'
 
-import { BeneficiaryCeilingsNew } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilingsNew'
+import { BeneficiaryCeilings } from 'features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings'
 import {
   domains_credit_underage,
   domains_credit_v1,
   domains_credit_v2,
+  domains_exhausted_credit_v1,
 } from 'features/profile/components/headers/fixtures/domainsCredit'
 import { render, waitFor } from 'tests/utils'
 
-describe('BeneficiaryCeilingsNew', () => {
-  it('should not return credits if domainsCredit is undefined', () => {
-    const renderAPI = render(<BeneficiaryCeilingsNew isUserUnderageBeneficiary={false} />)
+describe('BeneficiaryCeilings', () => {
+  it('should not return credits if credit is exhausted', () => {
+    const renderAPI = render(
+      <BeneficiaryCeilings
+        domainsCredit={domains_exhausted_credit_v1}
+        isUserUnderageBeneficiary={false}
+      />
+    )
     expect(renderAPI.toJSON()).toBeNull()
   })
 
   it('should not return credits if user underage beneficiary', () => {
     const renderAPI = render(
-      <BeneficiaryCeilingsNew domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={true} />
+      <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={true} />
     )
     expect(renderAPI.toJSON()).toBeNull()
   })
@@ -24,10 +30,7 @@ describe('BeneficiaryCeilingsNew', () => {
   describe('Domains credit v1', () => {
     it('should return physical and digital credits', async () => {
       const { queryByTestId } = render(
-        <BeneficiaryCeilingsNew
-          domainsCredit={domains_credit_v1}
-          isUserUnderageBeneficiary={false}
-        />
+        <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={false} />
       )
 
       const digitalCredit = queryByTestId('domains-credit-digital')
@@ -43,10 +46,7 @@ describe('BeneficiaryCeilingsNew', () => {
   describe('Domains credit v2', () => {
     it('should return only digital credits', async () => {
       const { queryByTestId } = render(
-        <BeneficiaryCeilingsNew
-          domainsCredit={domains_credit_v2}
-          isUserUnderageBeneficiary={false}
-        />
+        <BeneficiaryCeilings domainsCredit={domains_credit_v2} isUserUnderageBeneficiary={false} />
       )
 
       const digitalCredit = queryByTestId('domains-credit-digital')
@@ -62,7 +62,7 @@ describe('BeneficiaryCeilingsNew', () => {
   describe('Domains credit underage', () => {
     it('should not return credits if domains credit underage and is not user underage beneficiary', () => {
       const renderAPI = render(
-        <BeneficiaryCeilingsNew
+        <BeneficiaryCeilings
           domainsCredit={domains_credit_underage}
           isUserUnderageBeneficiary={false}
         />

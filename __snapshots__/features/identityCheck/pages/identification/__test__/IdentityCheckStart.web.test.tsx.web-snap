@@ -138,8 +138,8 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                       style=\\"height: 16px;\\"
 -                     />
                         <button
--                       class=\\"sc-dkPtRN dMotSY sc-jcFjpl jAwTyn\\"
-+                         class=\\"sc-dkPtRN fSwvKJ sc-bqiRlB lhIoLE\\"
+-                       class=\\"sc-dkPtRN dMotSY sc-caiLqq fGqtMB\\"
++                         class=\\"sc-dkPtRN fSwvKJ sc-ksdxgE bbBcdg\\"
                           tabindex=\\"0\\"
                           type=\\"button\\"
                         >

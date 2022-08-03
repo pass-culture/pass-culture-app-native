@@ -9,14 +9,14 @@ import { SPACE } from 'ui/theme/constants'
 
 type BeneficiaryCeilingsProps = {
   isUserUnderageBeneficiary: boolean
-  domainsCredit?: DomainsCredit | null
+  domainsCredit: DomainsCredit
 }
 
-export function BeneficiaryCeilingsNew({
+export function BeneficiaryCeilings({
   isUserUnderageBeneficiary,
   domainsCredit,
 }: BeneficiaryCeilingsProps) {
-  if (!domainsCredit || isUserUnderageBeneficiary) return <React.Fragment />
+  if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return <React.Fragment />
   return (
     <React.Fragment>
       {!!domainsCredit.digital && (

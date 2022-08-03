@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -157,15 +157,15 @@ Array [
           ]
         }
       >
-        03/08/2022
+        09/02/2023
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -332,11 +332,21 @@ Array [
         </View>
       </View>
     </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
   </View>,
 ]
 `;
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with exhausted credit 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly with exhausted credit 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -493,15 +503,15 @@ Array [
           ]
         }
       >
-        03/08/2022
+        09/02/2023
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -669,79 +679,15 @@ Array [
       </View>
     </View>
     <View
-      numberOfSpaces={6}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 24,
+            "height": 8,
           },
         ]
       }
     />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-      testID="domains-credit-digital"
-    >
-      dont
-       
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#320096",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        0 €
-      </Text>
-       
-      pour les offres numériques
-    </Text>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-      testID="domains-credit-physical"
-    >
-      dont
-       
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#320096",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        0 €
-      </Text>
-       
-      pour les sorties
-    </Text>
     <View
       accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
       accessible={true}
@@ -817,7 +763,7 @@ Array [
 ]
 `;
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with expired credit 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly with expired credit 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -978,11 +924,11 @@ Array [
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 8,
           },
         ]
       }
@@ -1062,7 +1008,7 @@ Array [
 ]
 `;
 
-exports[`BeneficiaryHeaderNew Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
+exports[`CreditHeader Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
 Array [
   <View
     backgroundColor="#ffffff"
@@ -1219,15 +1165,15 @@ Array [
           ]
         }
       >
-        03/08/2022
+        09/02/2023
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -1468,6 +1414,16 @@ Array [
        
       pour les sorties
     </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
     <View
       accessibilityLabel="Pourquoi cette limite ?"
       accessible={true}
