@@ -19,13 +19,15 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
-const paths = require('./paths')
-const getClientEnvironment = require('./env')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
+
+const paths = require('./paths')
+const getClientEnvironment = require('./env')
 
 const appPackageJson = require(paths.appPackageJson)
 
@@ -701,11 +703,10 @@ module.exports = function (webpackEnv) {
             name: isEnvDevelopment ? 'development' : env.raw.ENV,
             url: env.raw.APP_PUBLIC_URL,
           },
-          // debug: isEnvDevelopment,
-          // dryRun: isEnvDevelopment,
-          // -- for testing
-          // debug: true,
-          // dryRun: true,
+        }),
+      isEnvProduction && Boolean(process.env.BUNDLE_ANALYZER) &&
+        new BundleAnalyzerPlugin({
+          generateStatsFile: true
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
