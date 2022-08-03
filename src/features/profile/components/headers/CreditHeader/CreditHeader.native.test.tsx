@@ -15,8 +15,7 @@ import { render } from 'tests/utils'
 jest.mock('features/profile/api')
 
 const dateInPast = '2022-08-01T18:00:00'
-const dateInFuture = new Date()
-dateInFuture.setDate(dateInFuture.getDate() + 1)
+const dateInFuture = '2023-02-09T11:17:14.786670'
 
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
@@ -43,9 +42,7 @@ describe('CreditHeader', () => {
 
     it('should display deposit expiration date', () => {
       const { queryByText } = renderCreditHeader()
-      const depositExpirationDate = queryByText(
-        formatToSlashedFrenchDate(dateInFuture.toISOString())
-      )
+      const depositExpirationDate = queryByText(formatToSlashedFrenchDate(dateInFuture))
       expect(depositExpirationDate).toBeTruthy()
     })
 
@@ -105,7 +102,7 @@ const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
     <CreditHeader
       firstName="Rosa"
       lastName="Bonheur"
-      depositExpirationDate={dateInFuture.toISOString()}
+      depositExpirationDate={dateInFuture}
       domainsCredit={domains_credit_v1}
       {...props}
     />

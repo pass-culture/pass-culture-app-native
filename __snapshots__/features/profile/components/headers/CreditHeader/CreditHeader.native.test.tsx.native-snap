@@ -157,15 +157,15 @@ Array [
           ]
         }
       >
-        03/08/2022
+        09/02/2023
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -332,6 +332,16 @@ Array [
         </View>
       </View>
     </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
   </View>,
 ]
 `;
@@ -493,15 +503,15 @@ Array [
           ]
         }
       >
-        03/08/2022
+        09/02/2023
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -668,6 +678,16 @@ Array [
         </View>
       </View>
     </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
     <View
       accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
       accessible={true}
@@ -904,11 +924,11 @@ Array [
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 8,
           },
         ]
       }
@@ -1145,15 +1165,15 @@ Array [
           ]
         }
       >
-        03/08/2022
+        09/02/2023
       </Text>
     </View>
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -1394,6 +1414,16 @@ Array [
        
       pour les sorties
     </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
     <View
       accessibilityLabel="Pourquoi cette limite ?"
       accessible={true}

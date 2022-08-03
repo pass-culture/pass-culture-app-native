@@ -49,9 +49,9 @@ export function CreditHeader({
         </Row>
         {!!domainsCredit && (
           <React.Fragment>
-            <Spacer.Column numberOfSpaces={3} />
             {!isDepositExpired && (
               <React.Fragment>
+                <Spacer.Column numberOfSpaces={4} />
                 <CreditInfo totalCredit={domainsCredit.all} />
                 <BeneficiaryCeilings
                   domainsCredit={domainsCredit}
@@ -59,6 +59,7 @@ export function CreditHeader({
                 />
               </React.Fragment>
             )}
+            <Spacer.Column numberOfSpaces={2} />
             <CreditExplanation
               isDepositExpired={isDepositExpired}
               isUserUnderageBeneficiary={isUserUnderageBeneficiary}
