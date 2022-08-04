@@ -39,12 +39,14 @@ interface OnViewableItemsChangedProps {
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
-const ListHeaderComponent = () => (
+const UnmemoizedListHeaderComponent = () => (
   <ListHeaderContainer>
     <Spacer.TopScreen />
     <HomeHeader />
   </ListHeaderContainer>
 )
+
+const ListHeaderComponent = memo(UnmemoizedListHeaderComponent)
 
 const UnMemoizedModule = ({
   item,
