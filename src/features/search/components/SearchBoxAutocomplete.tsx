@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import omit from 'lodash.omit'
+import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
 import {
   Insets,
@@ -90,7 +91,6 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   useEffect(() => {
     // If the user select a value in autocomplete list it must be display in search input
     if (params?.query) setQuery(params.query)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.query])
 
   const resetQuery = useCallback(() => {
@@ -155,14 +155,15 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     [locationFilter, pushWithStagedSearch, stagedSearchState]
   )
 
+  const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
   const onFocus = useCallback(() => {
     if (params?.view === SearchView.Suggestions) return
 
     pushWithStagedSearch({
-      ...params,
+      ...paramsWithoutView,
       view: SearchView.Suggestions,
     })
-  }, [params, pushWithStagedSearch])
+  }, [params?.view, paramsWithoutView, pushWithStagedSearch])
 
   return (
     <RowContainer testID="searchBoxWithAutocomplete">
