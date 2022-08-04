@@ -3,7 +3,7 @@ import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-hooks
 import { FlatList } from 'react-native'
 
 import { HitProps } from 'features/search/pages/Search'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
 type Props = UseInfiniteHitsProps & {
@@ -17,12 +17,12 @@ export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...pro
   return (
     <FlatList
       contentContainerStyle={contentContainerStyle}
-      data={hits as unknown as AlgoliaHit[]}
+      data={hits as unknown as AlgoliaSuggestionHit[]}
       keyExtractor={(item) => item.objectID}
       keyboardShouldPersistTaps="handled"
       keyboardDismissMode="on-drag"
       testID="autocompleteList"
-      renderItem={({ item, index }) => <Item hit={item as unknown as AlgoliaHit} index={index} />}
+      renderItem={({ item }) => <Item hit={item as unknown as AlgoliaSuggestionHit} />}
     />
   )
 }

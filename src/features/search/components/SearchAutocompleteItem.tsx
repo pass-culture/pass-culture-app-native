@@ -1,30 +1,21 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnum } from 'api/gen'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { SearchView } from 'features/search/types'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
-import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
-  hit: AlgoliaHit
-  index: number
+  hit: AlgoliaSuggestionHit
 }
 
-export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index }) => {
-  const limitResultWithCategory = 3
-  const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  const searchGroupName = hit.offer.searchGroupName as SearchGroupNameEnum
-  const offerName = hit.offer.name
-  const offerIn = ' ' + t`dans` + ' '
-  const offerSearchGroup = searchGroupLabelMapping[searchGroupName]
+export const SearchAutocompleteItem: React.FC<Props> = ({ hit }) => {
+  const query = hit.query
   const { searchState: stagedSearchState } = useStagedSearch()
   const { locationFilter } = stagedSearchState
   const pushWithStagedSearch = usePushWithStagedSearch()
@@ -37,14 +28,13 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index }) => {
     // price range depending on their available credit.
     const { priceRange } = stagedSearchState
     pushWithStagedSearch({
-      query: offerName,
+      query,
       locationFilter,
-      offerCategories: [searchGroupName],
       priceRange,
       view: SearchView.Results,
     })
 
-    analytics.logSearchQuery(offerName || '')
+    analytics.logSearchQuery(query || '')
   }
 
   return (
@@ -53,15 +43,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, index }) => {
         <MagnifyingGlassIcon />
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
-        <Typo.Body>{offerName}</Typo.Body>
-        {index < limitResultWithCategory && searchGroupName !== SearchGroupNameEnum.NONE ? (
-          <React.Fragment>
-            <OfferIn>{offerIn}</OfferIn>
-            <OfferSearchGroup testID="autocompleteItemWithCategory">
-              {offerSearchGroup}
-            </OfferSearchGroup>
-          </React.Fragment>
-        ) : null}
+        <Typo.Body>{query}</Typo.Body>
       </StyledText>
     </AutocompleteItemTouchable>
   )
@@ -79,14 +61,6 @@ const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
   color: theme.colors.greyDark,
 }))``
-
-const OfferIn = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
-const OfferSearchGroup = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.primary,
-}))
 
 const StyledText = styled(Text)({
   marginLeft: getSpacing(2),

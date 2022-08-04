@@ -63,36 +63,7 @@ exports[`SearchAutocompleteItem component should render SearchAutocompleteItem 1
         ]
       }
     >
-      Test1
-    </Text>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-       dans 
-    </Text>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#eb0055",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-      testID="autocompleteItemWithCategory"
-    >
-      Musique
+      cinéma
     </Text>
   </Text>
 </View>

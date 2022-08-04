@@ -11,20 +11,12 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
   data={
     Array [
       Object {
-        "_geoloc": Object {},
         "objectID": "1",
-        "offer": Object {
-          "name": "Test1",
-          "searchGroupName": "MUSIQUE",
-        },
+        "query": "cinéma",
       },
       Object {
-        "_geoloc": Object {},
         "objectID": "2",
-        "offer": Object {
-          "name": "Test2",
-          "searchGroupName": "MUSIQUE",
-        },
+        "query": "terrain",
       },
     ]
   }
@@ -114,36 +106,7 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
               ]
             }
           >
-            Test1
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-             dans 
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="autocompleteItemWithCategory"
-          >
-            Musique
+            cinéma
           </Text>
         </Text>
       </View>
@@ -214,36 +177,7 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
               ]
             }
           >
-            Test2
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-             dans 
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="autocompleteItemWithCategory"
-          >
-            Musique
+            terrain
           </Text>
         </Text>
       </View>

@@ -31,55 +31,26 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 describe('SearchAutocompleteItem component', () => {
   const hit = {
     objectID: '1',
-    offer: { name: 'Test1', searchGroupName: SearchGroupNameEnum.MUSIQUE },
-    _geoloc: {},
+    query: 'cinéma',
   }
 
   it('should render SearchAutocompleteItem', () => {
-    expect(render(<SearchAutocompleteItem index={0} hit={hit} />)).toMatchSnapshot()
-  })
-
-  it('should display the search group name if the hit is in the top three', () => {
-    const { getByTestId } = render(<SearchAutocompleteItem index={0} hit={hit} />)
-
-    expect(getByTestId('autocompleteItemWithCategory')).toBeTruthy()
-  })
-
-  it('should not display the search group name if the hit is not in the top three', () => {
-    const { queryByText } = render(<SearchAutocompleteItem index={3} hit={hit} />)
-
-    expect(queryByText(hit.offer.name)).toBeTruthy()
+    expect(render(<SearchAutocompleteItem hit={hit} />)).toMatchSnapshot()
   })
 
   it('should execute a search with the name of the selected offer on hit click', async () => {
-    const { getByTestId } = render(<SearchAutocompleteItem index={0} hit={hit} />)
+    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} />)
     await fireEvent.press(getByTestId('autocompleteItem'))
 
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
-        query: hit.offer.name,
-        offerCategories: [hit.offer.searchGroupName],
+        query: hit.query,
+        offerCategories: mockStagedSearchState.offerCategories,
         locationFilter: mockStagedSearchState.locationFilter,
         priceRange: mockStagedSearchState.priceRange,
         view: SearchView.Results,
       })
     )
-  })
-
-  it('should not display the search group name if the hit is in the top three and search group name is NONE', () => {
-    const hitWithNoneSearchGroup = {
-      ...hit,
-      offer: {
-        ...hit.offer,
-        searchGroupName: SearchGroupNameEnum.NONE,
-      },
-    }
-
-    const { queryByText } = render(
-      <SearchAutocompleteItem index={0} hit={hitWithNoneSearchGroup} />
-    )
-
-    expect(queryByText(hit.offer.name)).toBeTruthy()
   })
 })
