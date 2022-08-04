@@ -73,6 +73,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 
   return (
     <AppModal
+      animationOutTiming={1}
       visible={visible}
       title={t`Tu es sur le point d'annuler`}
       leftIconAccessibilityLabel={undefined}
