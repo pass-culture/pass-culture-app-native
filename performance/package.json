@@ -1,0 +1,12 @@
+{
+  "name": "performance",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx ts-node startApp.ts"
+  },
+  "devDependencies": {
+    "@bam.tech/appium-helper": "^0.1.0-alpha.3",
+    "@perf-profiler/e2e": "^0.1.0-alpha.3",
+    "@perf-profiler/web-reporter": "^0.1.0-alpha.3"
+  }
+}
