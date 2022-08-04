@@ -1,8 +1,9 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { FlashList } from '@shopify/flash-list'
 import range from 'lodash/range'
 import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
-import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
+import { Dimensions, FlatList, ListRenderItem, ListRenderItemInfo, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
@@ -142,13 +143,15 @@ export const Playlist: FunctionComponent<Props> = ({
           <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      <FlatList
+      <FlashList
         onLayout={({ nativeEvent }) => {
           setPlaylistWidth(nativeEvent.layout.width)
         }}
         testID={testID}
         ref={flatListRef}
         scrollEnabled={isTouch}
+        drawDistance={Dimensions.get('window').width / 2 / 3}
+        estimatedItemSize={195}
         data={dataWithHeaderAndFooter}
         renderItem={renderItemWithHeaderAndFooter}
         keyExtractor={keyExtractorWithHeaderAndFooter}
@@ -177,7 +180,10 @@ function getItemSteps(nbOfItems: number, itemWidth: number, playlistWidth: numbe
   return { nbOfSteps: steps.length, steps }
 }
 
-const FlatListContainer = styled.View({ position: 'relative' })
+const FlatListContainer = styled.View({
+  position: 'relative',
+  width: '100%',
+})
 
 const HorizontalMargin = styled.View({
   width: getSpacing(6),

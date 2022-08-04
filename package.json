@@ -96,7 +96,7 @@
     "@sentry/react": "^7.6.0",
     "@sentry/react-native": "^4.1.2",
     "@sentry/tracing": "^7.6.0",
-    "@shopify/flash-list": "^1.2.0",
+    "@shopify/flash-list": "^1.2.1",
     "@typeform/embed-react": "^1.1.2",
     "algoliasearch": "^4.14.1",
     "amplitude-js": "^8.16.1",
