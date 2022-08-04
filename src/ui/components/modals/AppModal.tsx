@@ -16,6 +16,7 @@ import { ModalHeader } from './ModalHeader'
 import { ModalIconProps } from './types'
 
 type Props = {
+  animationOutTiming?: number
   title: string
   visible: boolean
   titleNumberOfLines?: number
@@ -28,6 +29,7 @@ type Props = {
 const modalStyles = { margin: 'auto' }
 
 export const AppModal: FunctionComponent<Props> = ({
+  animationOutTiming,
   title,
   visible,
   leftIconAccessibilityLabel,
@@ -103,6 +105,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   return (
     <StyledModal
+      animationOutTiming={animationOutTiming}
       style={modalStyles}
       supportedOrientations={['portrait', 'landscape']}
       statusBarTranslucent

@@ -43,6 +43,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
 
   return (
     <AppModal
+      animationOutTiming={1}
       visible={visible}
       title={title}
       {...modalLeftIconProps}
