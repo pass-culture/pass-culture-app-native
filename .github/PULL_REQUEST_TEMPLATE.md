@@ -7,7 +7,6 @@ I have:
 - [ ] Made sure my feature is working on the relevant real / virtual devices (native and web).
 - [ ] Written **unit tests** native (and web when implementation is different) for my feature.
 - [ ] Added a **screenshot** for UI tickets.
-- [ ] Added new reusable components to **AppComponents** page and communicate to the team on slack.
 - [ ] If my PR is a bugfix, I add the link of the "résolution de problème sur le bug" [on Notion](1)
 
 ## Screenshots
