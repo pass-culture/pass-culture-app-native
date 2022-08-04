@@ -32,7 +32,7 @@
   },
   "scripts": {
     "android": "react-native run-android --variant=developmentDebug",
-    "android:testing": "react-native run-android --variant=apptestingDebug",
+    "android:testing": "react-native run-android --variant=apptestingDebug --appId=app.passculture.testing",
     "android:staging": "react-native run-android --variant=stagingDebug",
     "android:prod": "react-native run-android --variant=productionDebug",
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",
