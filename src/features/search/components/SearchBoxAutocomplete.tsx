@@ -15,6 +15,7 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons'
 import { LocationType } from 'features/search/enums'
@@ -62,6 +63,8 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
+  const { data: appSettings } = useAppSettings()
+  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
 
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
@@ -97,14 +100,15 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     inputRef.current?.focus()
     clear()
     setQuery('')
-    pushWithStagedSearch({ query: '', view: SearchView.Suggestions })
-  }, [inputRef, clear, pushWithStagedSearch])
+    const view = appEnableAutocomplete ? SearchView.Suggestions : SearchView.Results
+    pushWithStagedSearch({ query: '', view })
+  }, [clear, appEnableAutocomplete, pushWithStagedSearch])
 
   const onPressArrowBack = useCallback(() => {
     // To force remove focus on search input
     Keyboard.dismiss()
     // Only close autocomplete list if open
-    if (params?.view === SearchView.Suggestions && params?.query !== '') {
+    if (params?.view === SearchView.Suggestions && params?.query !== '' && appEnableAutocomplete) {
       pushWithStagedSearch({
         ...params,
         view: SearchView.Results,
@@ -128,7 +132,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
       }
     )
     setQuery('')
-  }, [locationFilter, params, pushWithStagedSearch, stagedDispatch])
+  }, [appEnableAutocomplete, locationFilter, params, pushWithStagedSearch, stagedDispatch])
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
@@ -157,13 +161,21 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
   const onFocus = useCallback(() => {
-    if (params?.view === SearchView.Suggestions) return
+    if (params?.view === SearchView.Suggestions && appEnableAutocomplete) return
+
+    if (hasEditableSearchInput && !appEnableAutocomplete) return
 
     pushWithStagedSearch({
       ...paramsWithoutView,
       view: SearchView.Suggestions,
     })
-  }, [params?.view, paramsWithoutView, pushWithStagedSearch])
+  }, [
+    appEnableAutocomplete,
+    hasEditableSearchInput,
+    params?.view,
+    paramsWithoutView,
+    pushWithStagedSearch,
+  ])
 
   return (
     <RowContainer testID="searchBoxWithAutocomplete">
