@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { memo, useCallback } from 'react'
 import { View, PixelRatio } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
@@ -12,8 +12,10 @@ import {
   RATIO_HOME_IMAGE,
   RATIO_BUSINESS,
   Spacer,
+  Typo,
 } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 enum TileSize {
   M = LENGTH_M,
@@ -37,10 +39,12 @@ export const HomeBodyPlaceholder = () => (
   </View>
 )
 
-const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }> = ({
-  size,
-  numberOfTiles,
-}) => {
+const UnmemoizedOfferModulePlaceholder: React.FC<{
+  size: TileSize
+  numberOfTiles: number
+  title?: string
+  onDarkBackground?: boolean
+}> = ({ size, numberOfTiles, title, onDarkBackground }) => {
   const data = new Array(numberOfTiles)
     .fill(null)
     .map((_, index: number) => ({ key: index.toString() }))
@@ -52,7 +56,11 @@ const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }
       <Spacer.Row numberOfSpaces={6} />
       <View>
         <Spacer.Column numberOfSpaces={1} />
-        <ModuleTitlePlaceholder />
+        {title ? (
+          <StyledTitleComponent onDarkBackground={onDarkBackground}>{title}</StyledTitleComponent>
+        ) : (
+          <ModuleTitlePlaceholder />
+        )}
         <Spacer.Column numberOfSpaces={5} />
         <FlatList
           horizontal
@@ -66,11 +74,13 @@ const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }
   )
 }
 
+export const OfferModulePlaceholder = memo(UnmemoizedOfferModulePlaceholder)
+
 const ModuleTitlePlaceholder = () => (
   <SkeletonTile width={getSpacing(50)} height={getSpacing(4)} borderRadius={2} />
 )
 
-const OfferTilePlaceholder = ({ size }: { size: number }) => {
+const UnmemoizedOfferTilePlaceholder = ({ size }: { size: number }) => {
   const width = size * RATIO_HOME_IMAGE
   return (
     <View>
@@ -84,6 +94,8 @@ const OfferTilePlaceholder = ({ size }: { size: number }) => {
   )
 }
 
+export const OfferTilePlaceholder = memo(UnmemoizedOfferTilePlaceholder)
+
 const BasePlaceholder = ({ height, width }: { height: number; width: number }) => (
   <SkeletonTile borderRadius={BorderRadiusEnum.BORDER_RADIUS} height={height} width={width} />
 )
@@ -92,7 +104,7 @@ const TextPlaceholder = ({ width, height }: { width: number; height?: number }) 
   <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
 )
 
-const BusinessModulePlaceholder = () => {
+const UnmemoizedBusinessModulePlaceholder = () => {
   const { appContentWidth } = useTheme()
   const width = appContentWidth - 2 * MARGIN_DP
   const height = PixelRatio.roundToNearestPixel(width * RATIO_BUSINESS)
@@ -100,5 +112,13 @@ const BusinessModulePlaceholder = () => {
     <SkeletonTile height={height} width={width} borderRadius={BorderRadiusEnum.BORDER_RADIUS} />
   )
 }
+export const BusinessModulePlaceholder = memo(UnmemoizedBusinessModulePlaceholder)
 
 const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
+
+const StyledTitleComponent = styled(Typo.Title3).attrs({
+  numberOfLines: 2,
+  ...getHeadingAttrs(2),
+})<{ onDarkBackground?: boolean }>(({ onDarkBackground, theme }) => ({
+  color: onDarkBackground ? theme.colors.white : theme.colors.black,
+}))

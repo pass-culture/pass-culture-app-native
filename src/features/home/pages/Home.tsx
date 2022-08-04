@@ -1,11 +1,11 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState, FunctionComponent, memo } from 'react'
+import React, { useCallback, useState, FunctionComponent, memo } from 'react'
 import {
   FlatList,
   ScrollView,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Platform,
+  ViewToken,
 } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -29,8 +29,12 @@ import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
-import { Spinner } from 'ui/components/Spinner'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
+
+interface OnViewableItemsChangedProps {
+  viewableItems: ViewToken[]
+  changed: ViewToken[]
+}
 
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
@@ -46,15 +50,18 @@ const UnMemoizedModule = ({
   item,
   index,
   homeEntryId,
+  visible,
 }: {
   item: ProcessedModule
   index: number
   homeEntryId: string | undefined
+  visible: boolean
 }) => {
   if (isOfferModuleTypeguard(item))
     return (
       <OffersModule
         moduleId={item.moduleId}
+        visible={visible}
         search={item.search}
         display={item.display}
         cover={item instanceof OffersWithCover ? item.cover : null}
@@ -67,6 +74,7 @@ const UnMemoizedModule = ({
     return (
       <VenuesModule
         moduleId={item.moduleId}
+        visible={visible}
         display={item.display}
         search={item.search}
         homeEntryId={homeEntryId}
@@ -78,6 +86,7 @@ const UnMemoizedModule = ({
     return (
       <RecommendationModule
         moduleId={item.moduleId}
+        visible={visible}
         index={index}
         displayParameters={item.displayParameters}
         recommendationParameters={item.recommendationParameters}
@@ -89,6 +98,7 @@ const UnMemoizedModule = ({
     return (
       <ExclusivityModule
         moduleId={item.moduleId}
+        visible={visible}
         title={item.title}
         alt={item.alt}
         image={item.image}
@@ -100,7 +110,7 @@ const UnMemoizedModule = ({
     )
 
   if (item instanceof BusinessPane)
-    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} />
+    return <BusinessModule {...item} visible={visible} homeEntryId={homeEntryId} index={index} />
 
   return <React.Fragment></React.Fragment>
 }
@@ -109,63 +119,31 @@ const Module = memo(UnMemoizedModule)
 
 const renderModule = (
   { item, index }: { item: ProcessedModule; index: number },
-  homeEntryId: string | undefined
-) => <Module item={item} index={index} homeEntryId={homeEntryId} />
-
-const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
-  return (
-    <React.Fragment>
-      {!!isLoading && (
-        <FooterContainer>
-          <Spinner />
-        </FooterContainer>
-      )}
-      <Spacer.TabBar />
-    </React.Fragment>
-  )
-}
+  homeEntryId: string | undefined,
+  visible: boolean
+) => <Module item={item} index={index} homeEntryId={homeEntryId} visible={visible} />
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { homeEntryId: ABTestingEntryId } = useABTestingContext()
   const { modules, homeEntryId } = useHomepageModules(params?.entryId ?? ABTestingEntryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
+  const [visibleIdx, setVisibleIdx] = useState<number[]>([0])
   const showSkeleton = useShowSkeleton()
-  const initialNumToRender = 5
-  const maxToRenderPerBatch = 5
-  const [maxIndex, setMaxIndex] = useState(initialNumToRender)
-  const [isLoading, setIsLoading] = useState(false)
-  const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
+
+  const onViewableItemsChanged = useCallback(({ viewableItems }: OnViewableItemsChangedProps) => {
+    const visibleIndexes = viewableItems.map((item) => item.index || 0)
+
+    setVisibleIdx((indexes) => [...new Set([...indexes, ...visibleIndexes])].sort((a, b) => a - b))
+  }, [])
 
   const onScroll = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      if (isCloseToBottom(nativeEvent) && modulesToDisplay.length === modules.length)
-        logHasSeenAllModules()
+      if (isCloseToBottom(nativeEvent)) logHasSeenAllModules()
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [modules.length, modulesToDisplay.length]
+    [modules.length]
   )
-
-  const onEndReached = useCallback(() => {
-    if (Platform.OS === 'web') return
-    if (maxIndex < modules.length) {
-      setIsLoading(true)
-      setMaxIndex(maxIndex + maxToRenderPerBatch)
-    }
-  }, [modules.length, maxIndex])
-
-  useEffect(() => {
-    // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
-    const loadMore = setInterval(() => {
-      if (maxIndex < modules.length && isLoading) {
-        setMaxIndex(maxIndex + maxToRenderPerBatch)
-      } else {
-        setIsLoading(false)
-      }
-    }, 3000)
-
-    return () => clearInterval(loadMore)
-  }, [modules.length, isLoading, maxIndex])
 
   return (
     <Container>
@@ -188,16 +166,21 @@ export const OnlineHome: FunctionComponent = () => {
           testID="homeBodyScrollView"
           scrollEventThrottle={400}
           onScroll={onScroll}
-          data={modulesToDisplay}
-          renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
+          data={modules}
+          renderItem={({ item, index }) =>
+            renderModule({ item, index }, homeEntryId, visibleIdx.includes(index))
+          }
           keyExtractor={keyExtractor}
-          ListFooterComponent={<FooterComponent isLoading={isLoading} />}
+          ListFooterComponent={<Spacer.TabBar />}
           ListHeaderComponent={ListHeaderComponent}
-          initialNumToRender={initialNumToRender}
+          initialNumToRender={5}
           onEndReachedThreshold={1}
           removeClippedSubviews={false}
-          onEndReached={onEndReached}
-          onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
+          viewabilityConfig={{
+            itemVisiblePercentThreshold: 0,
+            waitForInteraction: false,
+          }}
+          onViewableItemsChanged={onViewableItemsChanged}
           bounces
         />
       </HomeBodyLoadingContainer>
@@ -223,11 +206,6 @@ const Container = styled.View({
   flexBasis: 1,
   flexGrow: 1,
   flexShrink: 0,
-})
-
-const FooterContainer = styled.View({
-  paddingTop: getSpacing(2),
-  paddingBottom: getSpacing(10),
 })
 
 const ListHeaderContainer = styled.View({

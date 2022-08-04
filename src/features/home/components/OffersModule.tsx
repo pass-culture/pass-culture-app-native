@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile, SeeMore } from 'features/home/atoms'
+import { OfferModulePlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import {
   SearchParametersFields,
   DisplayParametersFields,
@@ -19,6 +20,7 @@ import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
+import { LENGTH_L, LENGTH_M } from 'ui/theme'
 
 type OffersModuleProps = {
   search: SearchParametersFields[]
@@ -26,6 +28,7 @@ type OffersModuleProps = {
   moduleId: string
   cover: string | null
   index: number
+  visible: boolean
   homeEntryId: string | undefined
 }
 
@@ -123,6 +126,16 @@ export const OffersModule = (props: OffersModuleProps) => {
   }, [shouldModuleBeDisplayed])
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+
+  if (!props.visible)
+    return (
+      <OfferModulePlaceholder
+        title={display.title}
+        onDarkBackground={index === 0}
+        size={display.layout === 'two-items' ? LENGTH_M : LENGTH_L}
+        numberOfTiles={5}
+      />
+    )
 
   return (
     <PassPlaylist

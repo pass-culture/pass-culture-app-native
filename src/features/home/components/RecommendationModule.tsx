@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/atoms'
+import { OfferModulePlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import {
   ContentTypes,
   DisplayParametersFields,
@@ -17,11 +18,13 @@ import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+import { LENGTH_L, LENGTH_M } from 'ui/theme'
 
 type RecommendationModuleProps = {
   moduleId: string
   displayParameters: DisplayParametersFields
   index: number
+  visible: boolean
   recommendationParameters?: RecommendationParametersFields
   homeEntryId: string | undefined
 }
@@ -85,6 +88,14 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+  if (!props.visible)
+    return (
+      <OfferModulePlaceholder
+        size={displayParameters.layout === 'two-items' ? LENGTH_M : LENGTH_L}
+        numberOfTiles={5}
+        title={displayParameters.title}
+      />
+    )
   return (
     <PassPlaylist
       testID="recommendationModuleList"
