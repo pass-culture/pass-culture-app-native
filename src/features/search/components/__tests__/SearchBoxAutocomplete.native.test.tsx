@@ -95,7 +95,7 @@ describe('SearchBoxAutocomplete component', () => {
     )
   })
 
-  it('should not show previous button if no search executed and no focus on input', () => {
+  it('should not show previous button when being on the search landing view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
     const previousButton = queryByTestId('previousButton')
@@ -119,7 +119,7 @@ describe('SearchBoxAutocomplete component', () => {
     expect(previousButton).toBeTruthy()
   })
 
-  it('should show the text type by the user', async () => {
+  it('should show the text typed by the user', async () => {
     const { getByPlaceholderText } = render(<SearchBoxAutocomplete searchInputID={searchInputID} />)
 
     const searchInput = getByPlaceholderText('Offre, artiste...')
