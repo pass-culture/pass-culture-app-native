@@ -42,7 +42,7 @@ type Props = UseSearchBoxProps & {
   appEnableAutocomplete: boolean
 }
 
-export const SearchBoxAutocomplete: React.FC<Props> = ({
+export const SearchBox: React.FC<Props> = ({
   searchInputID,
   accessibleHiddenTitle,
   appEnableAutocomplete,
@@ -183,7 +183,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   ])
 
   return (
-    <RowContainer testID="searchBoxWithAutocomplete">
+    <RowContainer>
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}

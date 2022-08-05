@@ -13,7 +13,7 @@ import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render } from 'tests/utils'
 
-import { SearchBoxAutocomplete } from '../SearchBoxAutocomplete'
+import { SearchBox } from '../SearchBox'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -56,27 +56,26 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
-const mockRefine = jest.spyOn
 jest.mock('react-instantsearch-hooks', () => ({
   useSearchBox: () => ({
     query: '',
-    refine: mockRefine,
+    refine: jest.fn,
     clear: jest.fn,
   }),
 }))
 
-describe('SearchBoxAutocomplete component', () => {
+describe('SearchBox component', () => {
   const searchInputID = uuidv4()
 
-  it('should render SearchBoxAutocomplete', () => {
+  it('should render SearchBox', () => {
     expect(
-      render(<SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />)
+      render(<SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />)
     ).toMatchSnapshot()
   })
 
   it('should call logSearchQuery on submit', () => {
     const { getByPlaceholderText } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -98,7 +97,7 @@ describe('SearchBoxAutocomplete component', () => {
   it('should not show previous button when being on the search landing view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const previousButton = queryByTestId('previousButton')
 
@@ -108,7 +107,7 @@ describe('SearchBoxAutocomplete component', () => {
   it('should show previous button when being on the search results view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { getByTestId } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const previousButton = getByTestId('previousButton')
 
@@ -118,7 +117,7 @@ describe('SearchBoxAutocomplete component', () => {
   it('should show previous button when being on the suggestions view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
     const { getByTestId } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const previousButton = getByTestId('previousButton')
 
@@ -127,7 +126,7 @@ describe('SearchBoxAutocomplete component', () => {
 
   it('should show the text typed by the user', async () => {
     const { getByPlaceholderText } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
 
     const searchInput = getByPlaceholderText('Offre, artiste...')
@@ -138,7 +137,7 @@ describe('SearchBoxAutocomplete component', () => {
 
   it('should not execute a search if input is empty', () => {
     const { getByPlaceholderText } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -151,7 +150,7 @@ describe('SearchBoxAutocomplete component', () => {
     it('should redirect on results view when being on the suggestions view and query is defined', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'test' } })
       const { getByTestId } = render(
-        <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={true} />
+        <SearchBox searchInputID={searchInputID} appEnableAutocomplete={true} />
       )
 
       const previousButton = getByTestId('previousButton')
@@ -173,7 +172,7 @@ describe('SearchBoxAutocomplete component', () => {
     it('should reset input when user click on previous button being on the suggestions view and query is not defined', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: '' } })
       const { getByTestId } = render(
-        <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={true} />
+        <SearchBox searchInputID={searchInputID} appEnableAutocomplete={true} />
       )
       const previousButton = getByTestId('previousButton')
 
@@ -198,7 +197,7 @@ describe('SearchBoxAutocomplete component', () => {
     it('should stay on the current view when focusing search input and being on the suggestions', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
       const { getByPlaceholderText } = render(
-        <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={true} />
+        <SearchBox searchInputID={searchInputID} appEnableAutocomplete={true} />
       )
       const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -212,7 +211,7 @@ describe('SearchBoxAutocomplete component', () => {
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
         const { getByTestId } = render(
-          <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={true} />
+          <SearchBox searchInputID={searchInputID} appEnableAutocomplete={true} />
         )
 
         const resetIcon = getByTestId('resetSearchInput')
@@ -235,7 +234,7 @@ describe('SearchBoxAutocomplete component', () => {
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view } })
         const { getByPlaceholderText } = render(
-          <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+          <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
         )
         const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -250,7 +249,7 @@ describe('SearchBoxAutocomplete component', () => {
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
         const { getByTestId } = render(
-          <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+          <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
         )
 
         const resetIcon = getByTestId('resetSearchInput')
@@ -269,7 +268,7 @@ describe('SearchBoxAutocomplete component', () => {
 
   it('should execute a search if input is not empty', () => {
     const { getByPlaceholderText } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -290,7 +289,7 @@ describe('SearchBoxAutocomplete component', () => {
   it('should redirect on location page on location button click', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { getByTestId } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const locationButton = getByTestId('locationButton')
     await fireEvent.press(locationButton)
@@ -300,7 +299,7 @@ describe('SearchBoxAutocomplete component', () => {
 
   it('should display suggestions view when focusing search input and no search executed', async () => {
     const { getByPlaceholderText } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -320,7 +319,7 @@ describe('SearchBoxAutocomplete component', () => {
   it('should display the search filter button when showing results', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
     const { queryByTestId } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
 
     expect(queryByTestId('searchFilterButton')).toBeTruthy()
@@ -331,7 +330,7 @@ describe('SearchBoxAutocomplete component', () => {
     (view) => {
       useRoute.mockReturnValueOnce({ params: { view, query: 'la fnac' } })
       const { queryByTestId } = render(
-        <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+        <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
       )
 
       expect(queryByTestId('searchFilterButton')).toBeNull()
@@ -341,7 +340,7 @@ describe('SearchBoxAutocomplete component', () => {
   it('should display filter button with the number of active filters', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { getByTestId } = render(
-      <SearchBoxAutocomplete searchInputID={searchInputID} appEnableAutocomplete={false} />
+      <SearchBox searchInputID={searchInputID} appEnableAutocomplete={false} />
     )
 
     const filterButton = getByTestId('searchFilterBadge')
