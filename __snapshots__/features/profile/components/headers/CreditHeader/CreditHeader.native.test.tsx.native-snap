@@ -333,11 +333,11 @@ Array [
       </View>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -679,11 +679,11 @@ Array [
       </View>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -924,11 +924,11 @@ Array [
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -1415,11 +1415,11 @@ Array [
       pour les sorties
     </Text>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
