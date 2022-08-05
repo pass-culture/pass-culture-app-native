@@ -5,7 +5,6 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { SearchBox } from 'features/search/components/SearchBox'
 import { SearchBoxAutocomplete } from 'features/search/components/SearchBoxAutocomplete'
 import { SearchView } from 'features/search/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -46,13 +45,13 @@ export const SearchHeader = memo(function SearchHeader({
           </React.Fragment>
         )}
         <FloatingSearchBoxContainer isLanding={isLanding}>
-          {appEnableAutocomplete ? (
-            <FloatingSearchBoxAutocomplete searchInputID={searchInputID} isLanding={isLanding} />
-          ) : (
-            <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
-          )}
+          <FloatingSearchBoxAutocomplete
+            searchInputID={searchInputID}
+            isLanding={isLanding}
+            appEnableAutocomplete={appEnableAutocomplete}
+          />
         </FloatingSearchBoxContainer>
-        {appEnableAutocomplete && isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
+        {isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
       </SearchBoxContainer>
       {!isLanding && <Spacer.Column numberOfSpaces={1} />}
     </React.Fragment>
@@ -75,16 +74,6 @@ const FloatingSearchBoxContainer = styled.View<{ isLanding?: boolean }>(({ isLan
     ? {
         position: 'relative',
         zIndex: 1,
-      }
-    : {}
-)
-
-const FloatingSearchBox = styled(SearchBox)<{ isLanding?: boolean }>(({ isLanding }) =>
-  isLanding
-    ? {
-        position: 'absolute',
-        left: 0,
-        right: 0,
       }
     : {}
 )

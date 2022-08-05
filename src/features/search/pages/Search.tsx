@@ -89,24 +89,11 @@ export function Search() {
 
   return (
     <Form.Flex>
-      {appEnableAutocomplete ? (
-        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
-          <Configure hitsPerPage={5} />
-          <SearchHeader
-            searchInputID={searchInputID}
-            appEnableAutocomplete={appEnableAutocomplete}
-          />
-          <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
-        </InstantSearch>
-      ) : (
-        <React.Fragment>
-          <SearchHeader
-            searchInputID={searchInputID}
-            appEnableAutocomplete={appEnableAutocomplete}
-          />
-          <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
-        </React.Fragment>
-      )}
+      <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+        <Configure hitsPerPage={5} />
+        <SearchHeader searchInputID={searchInputID} appEnableAutocomplete={appEnableAutocomplete} />
+        <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
+      </InstantSearch>
     </Form.Flex>
   )
 }

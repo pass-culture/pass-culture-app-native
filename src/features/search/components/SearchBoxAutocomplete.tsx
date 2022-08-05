@@ -15,7 +15,6 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons'
 import { LocationType } from 'features/search/enums'
@@ -40,11 +39,13 @@ const SEARCH_DEBOUNCE_MS = 500
 type Props = UseSearchBoxProps & {
   searchInputID: string
   accessibleHiddenTitle?: string
+  appEnableAutocomplete: boolean
 }
 
 export const SearchBoxAutocomplete: React.FC<Props> = ({
   searchInputID,
   accessibleHiddenTitle,
+  appEnableAutocomplete,
   ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
@@ -63,8 +64,6 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appSettings } = useAppSettings()
-  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
 
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
@@ -74,7 +73,7 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
   useEffect(() => {
-    if (autocompleteQuery !== query) {
+    if (autocompleteQuery !== query && appEnableAutocomplete) {
       debounceSetAutocompleteQuery(query)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -95,6 +94,12 @@ export const SearchBoxAutocomplete: React.FC<Props> = ({
     // If the user select a value in autocomplete list it must be display in search input
     if (params?.query) setQuery(params.query)
   }, [params?.query])
+
+  useEffect(() => {
+    if (params?.view === SearchView.Results && !appEnableAutocomplete) {
+      inputRef.current?.focus()
+    }
+  }, [appEnableAutocomplete, params?.query, params?.view])
 
   const resetQuery = useCallback(() => {
     inputRef.current?.focus()
