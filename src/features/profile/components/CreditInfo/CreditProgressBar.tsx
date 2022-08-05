@@ -12,6 +12,9 @@ interface CreditProgressBarProps {
   colors: ColorsEnum[]
 }
 
+export const MINIMUM_PROGRESS_BAR_SIZE = 0.02
+const MINIMUM_PROGRESS_BAR_SIZE_SM = 0.07
+const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
 const PROGRESS_BAR_BORDER_RADIUS = getSpacing(12)
 
 const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({ colors, progress }) => {
@@ -40,10 +43,23 @@ const LinearGradientBar = styled(LinearGradient).attrs<Pick<CreditProgressBarPro
     useAngle: true,
     angle: 90,
   })
-)<Pick<CreditProgressBarProps, 'progress'>>(({ progress }) => ({
-  flex: progress,
-  borderRadius: PROGRESS_BAR_BORDER_RADIUS,
-}))
+)<Pick<CreditProgressBarProps, 'progress'>>(({ theme, progress }) => {
+  let flex
+  if (progress === 0) {
+    flex = progress
+  } else if (theme.appContentWidth < theme.breakpoints.sm) {
+    flex = Math.max(progress, MINIMUM_PROGRESS_BAR_SIZE_SM)
+  } else if (theme.appContentWidth < theme.breakpoints.md) {
+    flex = Math.max(progress, MINIMUM_PROGRESS_BAR_SIZE_MD)
+  } else {
+    flex = Math.max(progress, MINIMUM_PROGRESS_BAR_SIZE)
+  }
+
+  return {
+    flex,
+    borderRadius: PROGRESS_BAR_BORDER_RADIUS,
+  }
+})
 
 const BaseShadowGradient = styled(LinearGradient)({
   position: 'absolute',

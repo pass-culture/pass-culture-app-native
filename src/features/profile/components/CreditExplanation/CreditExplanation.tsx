@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 
 import { DomainsCredit } from 'api/gen'
 import { getCreditModal } from 'features/profile/components/CreditExplanation/getCreditModal'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -23,7 +23,7 @@ export const CreditExplanation: FunctionComponent<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <StyledButtonTertiary
+      <StyledButtonQuaternary
         icon={InfoPlain}
         wording={buttonTitle}
         onPress={showModal}
@@ -34,6 +34,6 @@ export const CreditExplanation: FunctionComponent<Props> = (props) => {
   )
 }
 
-const StyledButtonTertiary = styledButton(ButtonTertiary)({
+const StyledButtonQuaternary = styledButton(ButtonQuaternary)({
   justifyContent: 'flex-start',
 })

@@ -59,7 +59,7 @@ export function CreditHeader({
                 />
               </React.Fragment>
             )}
-            <Spacer.Column numberOfSpaces={2} />
+            <Spacer.Column numberOfSpaces={1} />
             <CreditExplanation
               isDepositExpired={isDepositExpired}
               isUserUnderageBeneficiary={isUserUnderageBeneficiary}

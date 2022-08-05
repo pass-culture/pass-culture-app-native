@@ -333,11 +333,11 @@ Array [
       </View>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -679,11 +679,11 @@ Array [
       </View>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -731,9 +731,9 @@ Array [
       >
         <View
           fill="#eb0055"
-          height={20}
+          height={16}
           testID="button-icon"
-          width={20}
+          width={16}
         >
           <Text>
             button-icon-SVG-Mock
@@ -748,9 +748,9 @@ Array [
             Object {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
+              "fontSize": 12,
               "lineHeight": 20,
-              "marginLeft": 8,
+              "marginLeft": 4,
               "maxWidth": "100%",
             },
           ]
@@ -924,11 +924,11 @@ Array [
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -976,9 +976,9 @@ Array [
       >
         <View
           fill="#eb0055"
-          height={20}
+          height={16}
           testID="button-icon"
-          width={20}
+          width={16}
         >
           <Text>
             button-icon-SVG-Mock
@@ -993,9 +993,9 @@ Array [
             Object {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
+              "fontSize": 12,
               "lineHeight": 20,
-              "marginLeft": 8,
+              "marginLeft": 4,
               "maxWidth": "100%",
             },
           ]
@@ -1415,11 +1415,11 @@ Array [
       pour les sorties
     </Text>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={1}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 4,
           },
         ]
       }
@@ -1467,9 +1467,9 @@ Array [
       >
         <View
           fill="#eb0055"
-          height={20}
+          height={16}
           testID="button-icon"
-          width={20}
+          width={16}
         >
           <Text>
             button-icon-SVG-Mock
@@ -1484,9 +1484,9 @@ Array [
             Object {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
+              "fontSize": 12,
               "lineHeight": 20,
-              "marginLeft": 8,
+              "marginLeft": 4,
               "maxWidth": "100%",
             },
           ]
