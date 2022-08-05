@@ -265,6 +265,9 @@ export function getOfferRules(
   const numberOfExternalBookings = booking?.externalBookings
     ? booking.externalBookings.length
     : undefined
+  const withdrawalTypeDisplay =
+    booking?.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ||
+    !booking?.stock.offer.withdrawalType
 
   if (hasActivationCode && activationCodeFeatureEnabled)
     return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
@@ -277,7 +280,7 @@ export function getOfferRules(
         'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.',
     })
   }
-  if (isPhysical || (isEvent && booking?.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site))
+  if (isPhysical || (isEvent && withdrawalTypeDisplay))
     return t`Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   return ''
 }

@@ -550,38 +550,51 @@ describe('getOfferRules', () => {
     )
   })
 
-  it('should return the correct message if isEvent and on site withdrawal type', () => {
-    const properties = {
-      hasActivationCode: false,
-      isDigital: false,
-      isPhysical: false,
-      isEvent: true,
+  it.each([WithdrawalTypeEnum.on_site, null])(
+    'should not return message if isEvent and %s withdrawal type',
+    (withdrawalType) => {
+      const properties = {
+        hasActivationCode: false,
+        isDigital: false,
+        isPhysical: false,
+        isEvent: true,
+      }
+      const newBooking = {
+        ...booking,
+        externalBookings: [],
+        stock: {
+          ...booking.stock,
+          offer: { ...booking.stock.offer, withdrawalType },
+        },
+      }
+      const offerRules = getOfferRules(properties, newBooking)
+      expect(offerRules).toEqual(
+        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+      )
     }
-    const newBooking = { ...booking, externalBookings: [] }
-    const offerRules = getOfferRules(properties, newBooking)
-    expect(offerRules).toEqual(
-      'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
-    )
-  })
+  )
 
-  it('should not return message if isEvent and not on site withdrawal type', () => {
-    const properties = {
-      hasActivationCode: false,
-      isDigital: false,
-      isPhysical: false,
-      isEvent: true,
+  it.each([WithdrawalTypeEnum.no_ticket, WithdrawalTypeEnum.by_email])(
+    'should not return message if isEvent and %s withdrawal type',
+    (withdrawalType) => {
+      const properties = {
+        hasActivationCode: false,
+        isDigital: false,
+        isPhysical: false,
+        isEvent: true,
+      }
+      const newBooking = {
+        ...booking,
+        externalBookings: [],
+        stock: {
+          ...booking.stock,
+          offer: { ...booking.stock.offer, withdrawalType },
+        },
+      }
+      const offerRules = getOfferRules(properties, newBooking)
+      expect(offerRules).toEqual('')
     }
-    const newBooking = {
-      ...booking,
-      externalBookings: [],
-      stock: {
-        ...booking.stock,
-        offer: { ...booking.stock.offer, withdrawalType: WithdrawalTypeEnum.no_ticket },
-      },
-    }
-    const offerRules = getOfferRules(properties, newBooking)
-    expect(offerRules).toEqual('')
-  })
+  )
 
   it('should return the correct message if externalBookingsInfos.length === 1', () => {
     const properties = {
