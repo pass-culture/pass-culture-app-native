@@ -56,11 +56,12 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
+const mockClear = jest.fn()
 jest.mock('react-instantsearch-hooks', () => ({
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,
-    clear: jest.fn,
+    clear: mockClear,
   }),
 }))
 
@@ -224,6 +225,7 @@ describe('SearchBox component', () => {
             view: SearchView.Suggestions,
           })
         )
+        expect(mockClear).toHaveBeenCalled()
       }
     )
   })
@@ -262,6 +264,7 @@ describe('SearchBox component', () => {
             view: SearchView.Results,
           })
         )
+        expect(mockClear).toHaveBeenCalled()
       }
     )
   })
