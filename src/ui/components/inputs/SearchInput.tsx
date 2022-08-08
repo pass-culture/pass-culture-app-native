@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { forwardRef, useRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -35,6 +35,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
   const searchInput = useRef<RNTextInput>(null)
+  const defaultKeyboardType = Platform.OS === 'web' ? 'web-search' : undefined
 
   function onFocus() {
     setIsFocus(true)
@@ -76,6 +77,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           onBlur={onBlur}
           autoCorrect={false}
           returnKeyType={props.returnKeyType ?? 'search'}
+          keyboardType={props.keyboardType ?? defaultKeyboardType}
           selectionColor={undefined}
           accessible={isFocusable}
           accessibilityLabel={accessibilityLabel}
