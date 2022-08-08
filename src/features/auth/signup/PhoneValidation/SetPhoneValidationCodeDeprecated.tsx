@@ -41,8 +41,6 @@ import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
-const CODE_INPUT_LENGTH = 6
-
 const TIMER = 60
 
 export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidationCodeComponent() {
@@ -136,7 +134,7 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
   function onChangeValue(value: string) {
     setCodeInputState({
       code: value,
-      isValid: !!value && value.length === CODE_INPUT_LENGTH,
+      isValid: !!value && hasCodeCorrectFormat(value),
     })
   }
 
@@ -296,6 +294,11 @@ const CodeInputContainer = styled.View({
   width: 240,
   marginHorizontal: 'auto',
 })
+
+const hasCodeCorrectFormat = (code: string) => {
+  // exactly 6 digits, no spaces
+  return !!code.match(/^\d{6}$/)
+}
 
 // returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
 export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {

@@ -33,8 +33,6 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
   'SetPhoneValidationCode'
 >
 
-const CODE_INPUT_LENGTH = 6
-
 export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useIdentityCheckContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
@@ -78,7 +76,7 @@ export const SetPhoneValidationCode = () => {
   const onChangeValue = (value: string) => {
     setCodeInputState({
       code: value,
-      isValid: !!value && value.length === CODE_INPUT_LENGTH,
+      isValid: !!value && hasCodeCorrectFormat(value),
     })
   }
 
@@ -151,11 +149,17 @@ export const SetPhoneValidationCode = () => {
           type="submit"
           wording={t`Continuer`}
           isLoading={isLoading}
+          disabled={!codeInputState.isValid}
           onPress={validateCode}
         />
       }
     />
   )
+}
+
+export const hasCodeCorrectFormat = (code: string) => {
+  // exactly 6 digits, no spaces
+  return !!code.match(/^\d{6}$/)
 }
 
 // returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces

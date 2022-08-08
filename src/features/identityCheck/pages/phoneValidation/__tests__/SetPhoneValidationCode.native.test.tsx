@@ -2,7 +2,10 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
-import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
+import {
+  hasCodeCorrectFormat,
+  SetPhoneValidationCode,
+} from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
@@ -33,6 +36,30 @@ describe('SetPhoneValidationCode', () => {
   it('should match snapshot', () => {
     const SetPhoneValidationCodePage = renderSetPhoneValidationCode()
     expect(SetPhoneValidationCodePage).toMatchSnapshot()
+  })
+
+  it.each(['111 111', '11111', 'BLABLA', '0909O9', '123456 ', ' 123456'])(
+    'should reject an ill-formatted code: %s',
+    (code) => {
+      const isValid = hasCodeCorrectFormat(code)
+      expect(isValid).toEqual(false)
+    }
+  )
+  it.each(['000000', '123456'])('should accept a well-formatted code: %s', (code) => {
+    const isValid = hasCodeCorrectFormat(code)
+    expect(isValid).toEqual(true)
+  })
+  it("should have 'Continue' button enabled according to code format", () => {
+    const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
+    const continueButton = getByTestId('Continuer')
+    expect(continueButton).toBeDisabled()
+
+    const input = getByPlaceholderText('012345')
+    fireEvent.changeText(input, '000000 ')
+    expect(continueButton).toBeDisabled()
+
+    fireEvent.changeText(input, '000000')
+    expect(continueButton).not.toBeDisabled()
   })
 
   it("should have modal closed on render, and open modal when clicking on 'code non reçu'", async () => {
