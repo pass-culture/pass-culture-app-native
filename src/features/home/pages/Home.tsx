@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState, FunctionComponent } from 'react'
+import React, { useCallback, useEffect, useState, FunctionComponent, memo } from 'react'
 import {
   FlatList,
   ScrollView,
@@ -42,10 +42,15 @@ const ListHeaderComponent = () => (
   </ListHeaderContainer>
 )
 
-const renderModule = (
-  { item, index }: { item: ProcessedModule; index: number },
+const UnmemoizedModule = ({
+  item,
+  index,
+  homeEntryId,
+}: {
+  item: ProcessedModule
+  index: number
   homeEntryId: string | undefined
-) => {
+}) => {
   if (isOfferModuleTypeguard(item))
     return (
       <OffersModule
@@ -99,6 +104,13 @@ const renderModule = (
 
   return <React.Fragment></React.Fragment>
 }
+
+const Module = memo(UnmemoizedModule)
+
+const renderModule = (
+  { item, index }: { item: ProcessedModule; index: number },
+  homeEntryId: string | undefined
+) => <Module item={item} index={index} homeEntryId={homeEntryId} />
 
 const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   return (

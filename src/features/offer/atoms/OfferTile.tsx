@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -76,7 +76,7 @@ export const mergeOfferData =
     ...(prevData || {}),
   })
 
-export function OfferTile(props: OfferTileProps) {
+const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const {
     analyticsFrom,
     width,
@@ -146,6 +146,8 @@ export function OfferTile(props: OfferTileProps) {
     </View>
   )
 }
+
+export const OfferTile = memo(UnmemoizedOfferTile)
 
 const IMAGE_CAPTION_HEIGHT = PixelRatio.roundToNearestPixel(MARGIN_DP)
 const MAX_OFFER_CAPTION_HEIGHT = getSpacing(18)

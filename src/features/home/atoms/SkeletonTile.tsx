@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { Animated, Easing, StyleSheet } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
@@ -36,7 +36,7 @@ const useWaveAnimation = (width: number) => {
 const start = { x: 0, y: 0 }
 const end = { x: 1, y: 0 }
 
-export function SkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
+function UnmemoizedSkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
   const translateX = useWaveAnimation(width)
   const { uniqueColors } = useTheme()
   const colors = [
@@ -64,6 +64,8 @@ export function SkeletonTile({ width, height, borderRadius, fullWidth }: Dimensi
     </BackgroundContainer>
   )
 }
+
+export const SkeletonTile = memo(UnmemoizedSkeletonTile)
 
 const BackgroundContainer = styled.View<DimensionProps>(
   ({ height, width, borderRadius, fullWidth, theme }) => ({

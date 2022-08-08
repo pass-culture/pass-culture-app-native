@@ -289,6 +289,7 @@
     "react-mobile-picker": "^0.1.13",
     "react-native-appsflyer": "^6.4.40",
     "react-native-flipper": "^0.123.0",
+    "react-native-flipper-performance-plugin": "^0.3.1",
     "react-native-svg-web": "^1.0.9",
     "react-native-web": "^0.17.5",
     "react-native-web-linear-gradient": "^1.1.2",
@@ -336,7 +337,8 @@
     "validator": "^13.7.0",
     "browserslist": "^4.16.5",
     "ansi-regex": "^5.0.1",
-    "nth-check": "^2.0.1"
+    "nth-check": "^2.0.1",
+    "react-devtools-core": "4.24.3"
   },
   "jest": {
     "preset": "react-native"
