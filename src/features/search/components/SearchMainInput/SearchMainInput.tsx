@@ -22,6 +22,7 @@ type QueryProps = {
 }
 
 type FocusProps = {
+  isFocusable?: boolean
   isFocus?: boolean
   onFocus?: () => void
 }

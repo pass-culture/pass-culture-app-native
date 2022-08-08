@@ -97,7 +97,7 @@ exports[`SearchBoxAutocomplete component should render SearchBoxAutocomplete 1`]
         }
       />
       <TextInput
-        accessible={false}
+        accessible={true}
         autoCorrect={false}
         autoFocus={false}
         editable={true}

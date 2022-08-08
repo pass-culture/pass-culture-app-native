@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import React from 'react'
+import { userEvent, screen } from '@storybook/testing-library'
+import React, { Fragment } from 'react'
 
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 import { SearchInput } from './SearchInput'
@@ -45,4 +47,20 @@ export const WithValue = Template.bind({})
 WithValue.args = {
   placeholder: 'Placeholder...',
   value: 'Value',
+}
+
+export const NotFocusable: ComponentStory<typeof SearchInput> = (args) => (
+  <Fragment>
+    <SearchInput {...args} />
+    <ButtonPrimary wording="This is button should be automatically focused" />
+  </Fragment>
+)
+NotFocusable.args = {
+  isFocusable: false,
+  placeholder: 'Placeholder...',
+}
+NotFocusable.play = async () => {
+  await screen.findAllByRole('button') // wait first render
+
+  userEvent.tab()
 }
