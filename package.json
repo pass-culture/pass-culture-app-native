@@ -7,7 +7,7 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.200.0",
+  "version": "1.200.0-culturalsurvey-cache-fix",
   "build": 10200000,
   "private": true,
   "engines": {
