@@ -1,9 +1,10 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
+import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -52,6 +53,10 @@ const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
 }
 
 export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props) {
+  useEffect(() => {
+    analytics.logConsultModalBeneficiaryCeilings()
+  }, [])
+
   return (
     <AppInformationModal
       title={t`Pourquoi cette limite\u00a0?`}

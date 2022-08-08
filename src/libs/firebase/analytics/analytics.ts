@@ -211,6 +211,12 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ERROR_SAVING_NEW_EMAIL, { code: errorCode }),
   logConsultDisclaimerValidationMail: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DISCLAIMER_VALIDATION_MAIL),
+  logConsultModalBeneficiaryCeilings: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_MODAL_BENEFICIARY_CEILINGS),
+  logConsultModalExpiredGrant: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_MODAL_EXPIRED_GRANT),
+  logConsultModalNoMoreCredit: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_MODAL_NO_MORE_CREDIT),
   logChooseEduConnectMethod: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD),
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
