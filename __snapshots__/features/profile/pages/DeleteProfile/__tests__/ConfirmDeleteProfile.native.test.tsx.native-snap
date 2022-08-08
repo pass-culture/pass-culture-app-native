@@ -142,6 +142,7 @@ Array [
             Object {
               "flexDirection": "row",
               "marginLeft": 12,
+              "marginTop": 0,
             },
           ]
         }
@@ -189,6 +190,7 @@ Array [
             Object {
               "flexDirection": "row",
               "marginLeft": 12,
+              "marginTop": 0,
             },
           ]
         }
@@ -236,6 +238,7 @@ Array [
             Object {
               "flexDirection": "row",
               "marginLeft": 12,
+              "marginTop": 0,
             },
           ]
         }

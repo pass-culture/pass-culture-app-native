@@ -109,7 +109,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       >
         <Text
           nativeID="testUuidV4"
-          numberOfLines={2}
+          numberOfLines={3}
           style={
             Array [
               Object {
@@ -217,20 +217,19 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "textAlign": "center",
               },
             ]
           }
         >
-          Tu as dépensé tout ton crédit mais l’aventure continue !
+          Pas de panique, l’aventure continue !
           
 
 
-          Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture.
+          Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
           
 
 
-          Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site.
+          Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site.
         </Text>
       </View>
     </View>

@@ -1380,7 +1380,7 @@ Array [
         200 €
       </Text>
        
-      pour les offres numériques
+      en offres numériques
     </Text>
     <Text
       style={
@@ -1412,7 +1412,7 @@ Array [
         100 €
       </Text>
        
-      pour les sorties
+      en offres physiques
     </Text>
     <View
       numberOfSpaces={1}

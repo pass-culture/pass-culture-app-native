@@ -27,7 +27,7 @@ export function BeneficiaryCeilings({
             {SPACE}
             <BodySecondary>{formatToFrenchDecimal(domainsCredit.digital.remaining)}</BodySecondary>
             {SPACE}
-            {t`pour les offres numériques`}
+            {t`en offres numériques`}
           </Typo.Body>
         </React.Fragment>
       )}
@@ -37,7 +37,7 @@ export function BeneficiaryCeilings({
           {SPACE}
           <BodySecondary>{formatToFrenchDecimal(domainsCredit.physical.remaining)}</BodySecondary>
           {SPACE}
-          {t`pour les sorties`}
+          {t`en offres physiques`}
         </Typo.Body>
       )}
     </React.Fragment>
