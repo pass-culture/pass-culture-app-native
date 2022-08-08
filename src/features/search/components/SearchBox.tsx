@@ -42,7 +42,11 @@ type Props = UseSearchBoxProps & {
   accessibleHiddenTitle?: string
 }
 
-export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitle, ...props }) => {
+export const SearchBox: React.FunctionComponent<Props> = ({
+  searchInputID,
+  accessibleHiddenTitle,
+  ...props
+}) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
@@ -56,6 +60,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
+  // An issue was opened to ask the integration of debounce directly in the lib : https://github.com/algolia/react-instantsearch/discussions/3555
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
@@ -73,6 +78,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
     if (autocompleteQuery !== query && appEnableAutocomplete) {
       debounceSetAutocompleteQuery(query)
     }
+    // avoid conflicts when local autocomplete query state is updating
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, debounceSetAutocompleteQuery])
 
@@ -84,6 +90,7 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
     if (!inputRef.current?.isFocused() && autocompleteQuery !== query) {
       setQuery(autocompleteQuery)
     }
+    // avoid conflicts when local query state is updating
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autocompleteQuery])
 
@@ -165,6 +172,9 @@ export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitl
   const onFocus = useCallback(() => {
     if (params?.view === SearchView.Suggestions && appEnableAutocomplete) return
 
+    // Avoid the redirection on suggestions view when user is on a results view
+    // (not useful in this case because we don't have suggestions)
+    // or suggestions view if it's the current view when feature flag desactivated
     if (hasEditableSearchInput && !appEnableAutocomplete) return
 
     pushWithStagedSearch({
