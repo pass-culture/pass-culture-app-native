@@ -107,40 +107,6 @@ describe('Search component', () => {
     })
   })
 
-  describe('With activated autocomplete', () => {
-    beforeAll(() => {
-      mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
-    })
-
-    it('should show autocomplete list when focus on input', async () => {
-      useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-
-      const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-      const searchInput = getByPlaceholderText('Offre, artiste...')
-      await act(async () => await fireEvent(searchInput, 'onFocus'))
-
-      expect(queryByTestId('autocompleteList')).toBeTruthy()
-    })
-  })
-
-  describe('With desactivated autocomplete', () => {
-    beforeAll(() => {
-      mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
-    })
-
-    it('should not show autocomplete list when focus on input', async () => {
-      useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-
-      const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-      const searchInput = getByPlaceholderText('Offre, artiste...')
-      await act(async () => await fireEvent(searchInput, 'onFocus'))
-
-      expect(queryByTestId('autocompleteList')).toBeFalsy()
-    })
-  })
-
   describe('When offline', () => {
     it('should display offline page', () => {
       mockUseNetInfo.mockReturnValueOnce({ isConnected: false })

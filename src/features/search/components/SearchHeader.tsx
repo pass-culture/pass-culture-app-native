@@ -16,13 +16,9 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   searchInputID: string
-  appEnableAutocomplete: boolean
 }
 
-export const SearchHeader = memo(function SearchHeader({
-  searchInputID,
-  appEnableAutocomplete,
-}: Props) {
+export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props) {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { top } = useCustomSafeInsets()
 
@@ -45,11 +41,7 @@ export const SearchHeader = memo(function SearchHeader({
           </React.Fragment>
         )}
         <FloatingSearchBoxContainer isLanding={isLanding}>
-          <FloatingSearchBox
-            searchInputID={searchInputID}
-            isLanding={isLanding}
-            appEnableAutocomplete={appEnableAutocomplete}
-          />
+          <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
         </FloatingSearchBoxContainer>
         {isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
       </SearchBoxContainer>

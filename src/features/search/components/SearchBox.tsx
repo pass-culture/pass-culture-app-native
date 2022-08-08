@@ -15,6 +15,7 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons'
 import { LocationType } from 'features/search/enums'
@@ -39,15 +40,9 @@ const SEARCH_DEBOUNCE_MS = 500
 type Props = UseSearchBoxProps & {
   searchInputID: string
   accessibleHiddenTitle?: string
-  appEnableAutocomplete: boolean
 }
 
-export const SearchBox: React.FC<Props> = ({
-  searchInputID,
-  accessibleHiddenTitle,
-  appEnableAutocomplete,
-  ...props
-}) => {
+export const SearchBox: React.FC<Props> = ({ searchInputID, accessibleHiddenTitle, ...props }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
@@ -64,6 +59,8 @@ export const SearchBox: React.FC<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
+  const { data: appSettings } = useAppSettings()
+  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
 
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
