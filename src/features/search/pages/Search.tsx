@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import algoliasearch, { SearchClient } from 'algoliasearch'
+import { SearchClient } from 'algoliasearch'
 import React, { memo, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
@@ -16,6 +16,7 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -23,9 +24,8 @@ import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 const searchInputID = uuidv4()
-const algoliaClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SUGGESTIONS_API_KEY)
 const searchClient: SearchClient = {
-  ...algoliaClient,
+  ...client,
   search(requests) {
     if (requests.every(({ params }) => !params?.query)) {
       return Promise.resolve({
@@ -42,7 +42,7 @@ const searchClient: SearchClient = {
         })),
       })
     }
-    return algoliaClient.search(requests)
+    return client.search(requests)
   },
 }
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
