@@ -38,7 +38,7 @@ const Template: ComponentStory<FunctionComponent> = () => (
       {body2}
     </Typo.Body>
     <RelativeWrapper>
-      <SomeComponentThatDisplayOnFocus type="button">{buttonText}</SomeComponentThatDisplayOnFocus>
+      <SomeComponentThatDisplayOnFocus>{buttonText}</SomeComponentThatDisplayOnFocus>
     </RelativeWrapper>
   </Fragment>
 )

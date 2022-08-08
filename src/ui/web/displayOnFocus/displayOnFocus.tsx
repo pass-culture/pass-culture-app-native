@@ -1,3 +1,4 @@
-import { ElementType } from 'react'
+import { ComponentType } from 'react'
 
-export const displayOnFocus = (Component: ElementType): ElementType => Component
+export const displayOnFocus = <Props,>(Component: ComponentType<Props>): ComponentType<Props> =>
+  Component
