@@ -479,6 +479,11 @@ PODS:
     - React-Core
   - react-native-flipper (0.123.0):
     - React-Core
+  - react-native-flipper-performance-plugin (0.3.1):
+    - React-Core
+    - react-native-flipper-performance-plugin/FBDefines (= 0.3.1)
+  - react-native-flipper-performance-plugin/FBDefines (0.3.1):
+    - React-Core
   - react-native-geolocation-service (5.3.0-beta.1):
     - React
   - react-native-get-random-values (1.7.1):
@@ -565,7 +570,7 @@ PODS:
   - RNBatchPush (1.0.0):
     - Batch
     - React
-  - RNCAsyncStorage (1.15.14):
+  - RNCAsyncStorage (1.17.7):
     - React-Core
   - RNDeviceInfo (8.4.8):
     - React-Core
@@ -637,9 +642,9 @@ PODS:
   - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
-  - RNSentry (4.1.2):
+  - RNSentry (4.2.2):
     - React-Core
-    - Sentry (= 7.20.0)
+    - Sentry (= 7.22.0)
   - RNSVG (12.1.1):
     - React
   - SDWebImage (5.11.1):
@@ -648,9 +653,9 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.20.0):
-    - Sentry/Core (= 7.20.0)
-  - Sentry/Core (7.20.0)
+  - Sentry (7.22.0):
+    - Sentry/Core (= 7.22.0)
+  - Sentry/Core (7.22.0)
   - SocketRocket (0.6.0)
   - SSZipArchive (2.2.3)
   - Yoga (1.14.0)
@@ -718,6 +723,7 @@ DEPENDENCIES:
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
+  - react-native-flipper-performance-plugin (from `../node_modules/react-native-flipper-performance-plugin`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
@@ -869,6 +875,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-date-picker"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
+  react-native-flipper-performance-plugin:
+    :path: "../node_modules/react-native-flipper-performance-plugin"
   react-native-geolocation-service:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-get-random-values:
@@ -1023,6 +1031,7 @@ SPEC CHECKSUMS:
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
   react-native-flipper: 33bba1cad647f4d56403012993f201e10518b78c
+  react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
@@ -1045,7 +1054,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: b960b687d2dfef0d3761fbb187e01812ebab8b23
   ReactCommon: 095366164a276d91ea704ce53cb03825c487a3f2
   RNBatchPush: 8b5ce832fcdb4f4ba94033f20e45df9157a73a5b
-  RNCAsyncStorage: ea6b5c280997b2b32a587793163b1f10e580c4f7
+  RNCAsyncStorage: d81ee5c3db1060afd49ea7045ad460eff82d2b7d
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBAnalytics: 774973f4b8aacd5e12a4d59754739af564e6b6ba
@@ -1060,11 +1069,11 @@ SPEC CHECKSUMS:
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNReanimated: e7d8afaf8fed4b3bf1a46e06adb2e04a2b248f1c
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
-  RNSentry: b7b82fd671772dda9ae063af0b4873251aa04bdb
+  RNSentry: f03937a2cf86c7029ba31fbbf5618c55d223cd62
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 9e8ec837fa37e7b397f19f75542800461b138d0e
+  Sentry: 30b51086ca9aac23337880152e95538f7e177f7f
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 99652481fcd320aefa4a7ef90095b95acd181952
