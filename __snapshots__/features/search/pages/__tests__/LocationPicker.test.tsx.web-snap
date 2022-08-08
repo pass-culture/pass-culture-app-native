@@ -390,7 +390,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
             "width": "inherit",
           }
         }
-        type="text"
+        type="search"
         value=""
       />
     </div>
