@@ -127,15 +127,16 @@ describe('SetPhoneValidationCodeDeprecated', () => {
 
     it.each([
       ['empty', '', true],
-      ['includes string', 's09453', false], // numeric input on the web will leave blank the input value
+      ['includes string', 's09453', true], // numeric input on the web will leave blank the input value, so this case never happens
       ['is too short', '54', true],
+      ['is correct', '123454', false],
     ])(
-      'should not enable continue button when "%s"',
-      async (_reason: string, codeTyped: string, isNumericInput: boolean) => {
+      'should disable button accordingly when "%s"',
+      async (_reason: string, codeTyped: string, shoudBeDisabled: boolean) => {
         const renderAPI = renderModalWithFilledCodeInput(codeTyped)
         const continueButton = renderAPI.getByTestId('Continuer')
         await waitForExpect(() => {
-          expect(continueButton).toHaveProperty('disabled', isNumericInput)
+          expect(continueButton).toHaveProperty('disabled', shoudBeDisabled)
         })
       }
     )
