@@ -43,7 +43,7 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
         <FloatingSearchBoxContainer isLanding={isLanding}>
           <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
         </FloatingSearchBoxContainer>
-        {isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
+        {!!isLanding && <Spacer.Column numberOfSpaces={6} />}
       </SearchBoxContainer>
       {!isLanding && <Spacer.Column numberOfSpaces={1} />}
     </React.Fragment>
