@@ -217,20 +217,19 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "textAlign": "center",
               },
             ]
           }
         >
-          Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !
+          Pas de panique, l’aventure continue !
           
 
 
-          Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture.
+          Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
           
 
 
-          Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site.
+          Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site.
         </Text>
       </View>
     </View>

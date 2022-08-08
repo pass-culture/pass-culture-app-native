@@ -455,10 +455,6 @@ msgstr "Cette adresse e-mail est liée à un compte supprimé"
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
 
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "Cette limite a pour but d’encourager la diversification des pratiques culturelles."
-msgstr "Cette limite a pour but d’encourager la diversification des pratiques culturelles."
-
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "Cette réservation est annulable"
 msgstr "Cette réservation est annulable"
@@ -1299,10 +1295,6 @@ msgstr "Il est important que les informations de ton document soient parfaitemen
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "Il est possible de dépenser jusqu’à"
-msgstr "Il est possible de dépenser jusqu’à"
-
 #: src/features/venue/pages/VenueNotFound.tsx
 msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
 msgstr "Il est possible que ce lieu soit désactivé ou n'existe pas."
@@ -1435,8 +1427,8 @@ msgid "J’accepte de recevoir les newsletters, bons plans et recommandations pe
 msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 
 #: src/features/profile/components/CreditExplanation/getCreditModal.ts
-msgid "J’ai dépensé tout mon crédit, que faire ?"
-msgstr "J’ai dépensé tout mon crédit, que faire ?"
+msgid "J’ai dépensé tout mon crédit, que faire ?"
+msgstr "J’ai dépensé tout mon crédit, que faire ?"
 
 #: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
@@ -1760,10 +1752,13 @@ msgstr "Mois précédent"
 msgid "Mois suivant"
 msgstr "Mois suivant"
 
-#: src/features/profile/components/CreditExplanation/getCreditModal.ts
 #: src/features/profile/components/Modals/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
+
+#: src/features/profile/components/CreditExplanation/getCreditModal.ts
+msgid "Mon crédit est expiré, que faire ?"
+msgstr "Mon crédit est expiré, que faire ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
@@ -2177,6 +2172,10 @@ msgstr "Partager ma position"
 msgid "Partout"
 msgstr "Partout"
 
+#: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
+msgid "Pas de panique, l’aventure continue !"
+msgstr "Pas de panique, l’aventure continue !"
+
 #: src/libs/network/OfflinePage.tsx
 msgid "Pas de réseau internet"
 msgstr "Pas de réseau internet"
@@ -2237,6 +2236,10 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
 msgstr "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
+
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+msgid "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :"
+msgstr "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :"
 
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
@@ -2918,10 +2921,6 @@ msgstr "Ton crédit a expiré le"
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
-#: src/features/profile/components/Modals/ExpiredCreditModal.tsx
-msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
-msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
-
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
 msgstr "Ton identité restera anonyme auprès des acteurs culturels."
@@ -3086,10 +3085,6 @@ msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédi
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 
 #: src/features/profile/components/Modals/ExhaustedCreditModal.tsx
-msgid "Tu as dépensé tout ton crédit mais l’aventure continue !"
-msgstr "Tu as dépensé tout ton crédit mais l’aventure continue !"
-
-#: src/features/profile/components/Modals/ExhaustedCreditModal.tsx
 msgid "Tu as dépensé tout ton crédit, que faire ?"
 msgstr "Tu as dépensé tout ton crédit, que faire ?"
 
@@ -3187,13 +3182,9 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
-#: src/features/profile/components/Modals/ExhaustedCreditModal.tsx
-msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
-msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site."
-
-#: src/features/profile/components/Modals/ExpiredCreditModal.tsx
-msgid "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
-msgstr "Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et réserver directement sur leur site."
+#: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
+msgid "Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site."
+msgstr "Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site."
 
 #: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
 msgid ""
@@ -3223,10 +3214,9 @@ msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur
 msgid "Tu peux sélectionner une ou plusieurs réponses."
 msgstr "Tu peux sélectionner une ou plusieurs réponses."
 
-#: src/features/profile/components/Modals/ExhaustedCreditModal.tsx
-#: src/features/profile/components/Modals/ExpiredCreditModal.tsx
-msgid "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
-msgstr "Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture."
+#: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
+msgid "Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture."
+msgstr "Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture."
 
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement."
@@ -3682,6 +3672,14 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
+#: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
+msgid "en offres numériques"
+msgstr "en offres numériques"
+
+#: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
+msgid "en offres physiques"
+msgstr "en offres physiques"
+
 #: src/features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader.tsx
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
@@ -3726,6 +3724,15 @@ msgstr "Dossier mis à jour le : {day} à {hour}"
 #: src/libs/tileAccessibilityLabel.ts
 msgid "le"
 msgstr "le"
+
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+msgid "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
+msgstr "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
+
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+msgid "maximum {physicalCeiling} en offres physiques : livre, instrument de musique..."
+msgstr "maximum {physicalCeiling} en offres physiques : livre, instrument de musique..."
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"
@@ -3776,14 +3783,6 @@ msgstr "permanente"
 #: src/libs/tileAccessibilityLabel.ts
 msgid "pour"
 msgstr "pour"
-
-#: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
-msgid "pour les offres numériques"
-msgstr "pour les offres numériques"
-
-#: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
-msgid "pour les sorties"
-msgstr "pour les sorties"
 
 #: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
 msgid "pour nous parler de tes activités culturelles préférées"
@@ -3877,6 +3876,18 @@ msgstr "tes réservations seront annulées et supprimées"
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
+
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+msgid "tout ton crédit en sorties : festival, concert, cinéma..."
+msgstr "tout ton crédit en sorties : festival, concert, cinéma..."
+
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+msgid "tout ton crédit pour les offres physiques : livre, instrument de musique..."
+msgstr "tout ton crédit pour les offres physiques : livre, instrument de musique..."
+
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+msgid "tout ton crédit pour les sorties : festival, concert, cinéma..."
+msgstr "tout ton crédit pour les sorties : festival, concert, cinéma..."
 
 #: src/features/bookOffer/components/AlreadyBooked.tsx
 msgid "tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
@@ -3993,14 +4004,6 @@ msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation
 #: src/features/bookings/components/OnGoingBookingsList.tsx
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
-
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "{totalCeiling} en biens physiques mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...)."
-msgstr "{totalCeiling} en biens physiques mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...)."
-
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "{totalCeiling} en sorties mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et {physicalCeiling} maximum en biens physiques (livres, instruments de musique...)."
-msgstr "{totalCeiling} en sorties mais {digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et {physicalCeiling} maximum en biens physiques (livres, instruments de musique...)."
 
 #: src/features/bookings/helpers.ts
 msgid "À activer"

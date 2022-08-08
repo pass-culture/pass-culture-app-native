@@ -194,7 +194,7 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
           Array [
             Object {
               "alignItems": "center",
-              "paddingTop": 20,
+              "paddingTop": 16,
             },
           ]
         }
@@ -217,32 +217,163 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "textAlign": "center",
               },
             ]
           }
         >
-          Il est possible de dépenser jusqu’à 
-          <Text
+          Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :
+        </Text>
+        <View
+          testID="creditText"
+        >
+          <View
+            spacing={5}
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 20,
                 },
               ]
             }
-            testID="creditText"
           >
-            300 € en biens physiques mais 300 € maximum en biens numériques (presse en ligne, plateformes de streaming...).
-          </Text>
-          
-
-
-          Cette limite a pour but d’encourager la diversification des pratiques culturelles.
-        </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              tout ton crédit pour les offres physiques : livre, instrument de musique...
+            </Text>
+          </View>
+          <View
+            spacing={5}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 20,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              tout ton crédit pour les sorties : festival, concert, cinéma...
+            </Text>
+          </View>
+          <View
+            spacing={5}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 20,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              maximum 300 € en offres numériques : presse en ligne, plateforme de streaming...
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   </View>

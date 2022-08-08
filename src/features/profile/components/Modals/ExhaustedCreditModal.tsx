@@ -1,10 +1,8 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
+import { ExpiredOrExhaustedCreditModalContent } from 'features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK as LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
@@ -15,29 +13,11 @@ export function ExhaustedCreditModal({ visible, hideModal }: Props) {
   return (
     <AppInformationModal
       title={t`Tu as dépensé tout ton crédit, que faire\u00a0?`}
-      numberOfLinesTitle={2}
+      numberOfLinesTitle={3}
       visible={visible}
       onCloseIconPress={hideModal}
       testIdSuffix="exhausted-credit">
-      <ModalChildrenContainer>
-        <Spacer.Column numberOfSpaces={2} />
-        <StyledBody>
-          {t`Tu as dépensé tout ton crédit mais l’aventure continue\u00a0!`}
-          {LINE_BREAK}
-          {t`Tu peux toujours réserver les offres gratuites ou exclusives sur le pass Culture.`}
-          {LINE_BREAK}
-          {t`Tu peux aussi découvrir les activités culturelles de nos partenaires sur l'application et les réserver directement sur leur site.`}
-        </StyledBody>
-      </ModalChildrenContainer>
+      <ExpiredOrExhaustedCreditModalContent />
     </AppInformationModal>
   )
 }
-
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
-
-const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(5),
-  alignItems: 'center',
-})

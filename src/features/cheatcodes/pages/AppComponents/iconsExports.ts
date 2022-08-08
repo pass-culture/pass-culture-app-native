@@ -68,6 +68,7 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Plus } from 'ui/svg/icons/Plus'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
+import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Share } from 'ui/svg/icons/Share'
@@ -150,7 +151,6 @@ export const SecondaryAndBiggerIcons = {
   ScrollToTop,
   SignOut,
   Share,
-
   Sun,
   Trash,
   Warning,
@@ -174,6 +174,7 @@ export const TertiaryAndSmallerIcons = {
   PhoneFilled,
   PlainArrowPrevious,
   Plus,
+  Question,
   SMSFilled,
   Validate,
 }

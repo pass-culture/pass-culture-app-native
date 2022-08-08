@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
+import { BulletListItem } from 'ui/components/BulletListItem'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK as LINE_BREAK, SPACE } from 'ui/theme/constants'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 type Props = {
   domainsCredit: DomainsCredit
@@ -15,7 +17,6 @@ type Props = {
 }
 
 const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
-  const totalCeiling = formatToFrenchDecimal(domainsCredit.all.initial)
   const digitalCeiling = domainsCredit.digital
     ? formatToFrenchDecimal(domainsCredit.digital.initial)
     : ''
@@ -24,13 +25,29 @@ const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
     : ''
 
   return physicalCeiling ? (
-    <Typo.Body testID="creditTextWithPhysicalCeiling">
-      {t`${totalCeiling} en sorties mais ${digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...) et ${physicalCeiling} maximum en biens physiques (livres, instruments de musique...).`}
-    </Typo.Body>
+    <Wrapper testID="creditTextWithPhysicalCeiling">
+      <StyledBulletListItem
+        text={t`tout ton crédit en sorties\u00a0: festival, concert, cinéma...`}
+      />
+      <StyledBulletListItem
+        text={t`maximum ${digitalCeiling} en offres numériques\u00a0: presse en ligne, plateforme de streaming...`}
+      />
+      <StyledBulletListItem
+        text={t`maximum ${physicalCeiling} en offres physiques\u00a0: livre, instrument de musique...`}
+      />
+    </Wrapper>
   ) : (
-    <Typo.Body testID="creditText">
-      {t`${totalCeiling} en biens physiques mais ${digitalCeiling} maximum en biens numériques (presse en ligne, plateformes de streaming...).`}
-    </Typo.Body>
+    <Wrapper testID="creditText">
+      <StyledBulletListItem
+        text={t`tout ton crédit pour les offres physiques\u00a0: livre, instrument de musique...`}
+      />
+      <StyledBulletListItem
+        text={t`tout ton crédit pour les sorties\u00a0: festival, concert, cinéma...`}
+      />
+      <StyledBulletListItem
+        text={t`maximum ${digitalCeiling} en offres numériques\u00a0: presse en ligne, plateforme de streaming...`}
+      />
+    </Wrapper>
   )
 }
 
@@ -44,22 +61,22 @@ export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props
       testIdSuffix="credit-ceiling-information">
       <ModalChildrenContainer>
         <Spacer.Column numberOfSpaces={2} />
-        <StyledBody>
-          {t`Il est possible de dépenser jusqu’à` + SPACE}
-          <CreditText domainsCredit={domainsCredit} />
-          {LINE_BREAK}
-          {t`Cette limite a pour but d’encourager la diversification des pratiques culturelles.`}
-        </StyledBody>
+        <Typo.Body>
+          {t`Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser\u00a0:`}
+        </Typo.Body>
+        <CreditText domainsCredit={domainsCredit} />
       </ModalChildrenContainer>
     </AppInformationModal>
   )
 }
 
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
+const Wrapper = Platform.OS === 'web' ? VerticalUl : View
 
 const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(5),
+  paddingTop: getSpacing(4),
   alignItems: 'center',
 })
+
+const StyledBulletListItem = styled(BulletListItem).attrs({
+  spacing: 5,
+})``

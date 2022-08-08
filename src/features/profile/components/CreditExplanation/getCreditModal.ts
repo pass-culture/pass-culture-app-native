@@ -18,13 +18,13 @@ export const getCreditModal = ({
 }: Props) => {
   if (isDepositExpired) {
     return {
-      buttonTitle: t`Mon crédit est expiré, que faire\u00a0?`,
+      buttonTitle: t`Mon crédit est expiré, que\u00a0faire\u00a0?`,
       creditModal: ExpiredCreditModal,
     }
   }
   if (domainsCredit.all.remaining === 0) {
     return {
-      buttonTitle: t`J’ai dépensé tout mon crédit, que faire\u00a0?`,
+      buttonTitle: t`J’ai dépensé tout mon crédit, que\u00a0faire\u00a0?`,
       creditModal: ExhaustedCreditModal,
     }
   }

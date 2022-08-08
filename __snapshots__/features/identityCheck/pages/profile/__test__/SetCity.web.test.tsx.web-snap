@@ -116,13 +116,6 @@ Object {
   background-color: #F1F1F4;
 }
 
-.c3 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -136,6 +129,13 @@ Object {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
 }
 
 .c2 {
@@ -479,13 +479,6 @@ Object {
   background-color: #F1F1F4;
 }
 
-.c3 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -499,6 +492,13 @@ Object {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c3 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
 }
 
 .c2 {
