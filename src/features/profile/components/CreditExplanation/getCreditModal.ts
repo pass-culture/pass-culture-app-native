@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
 
 import { DomainsCredit } from 'api/gen'
-import { CreditCeilingsModal } from 'features/profile/components/headers/Modals/CreditCeilingsModal'
-import { ExhaustedCreditModal } from 'features/profile/components/headers/Modals/ExhaustedCreditModal'
-import { ExpiredCreditModal } from 'features/profile/components/headers/Modals/ExpiredCreditModal'
+import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
+import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
+import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 
 interface Props {
   domainsCredit: DomainsCredit

@@ -1,7 +1,7 @@
 import { UserProfileResponse } from 'api/gen'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
-import { domains_credit_v1 } from 'features/profile/components/headers/fixtures/domainsCredit'
+import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'

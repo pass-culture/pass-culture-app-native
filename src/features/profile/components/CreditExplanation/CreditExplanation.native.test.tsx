@@ -4,7 +4,7 @@ import { CreditExplanation } from 'features/profile/components/CreditExplanation
 import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
-} from 'features/profile/components/headers/fixtures/domainsCredit'
+} from 'features/profile/fixtures/domainsCredit'
 import { fireEvent, render } from 'tests/utils'
 
 describe('<CreditExplanation/>', () => {

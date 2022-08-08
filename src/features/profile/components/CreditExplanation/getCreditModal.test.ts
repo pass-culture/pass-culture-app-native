@@ -1,7 +1,7 @@
 import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
-} from 'features/profile/components/headers/fixtures/domainsCredit'
+} from 'features/profile/fixtures/domainsCredit'
 
 import { getCreditModal } from './getCreditModal'
 

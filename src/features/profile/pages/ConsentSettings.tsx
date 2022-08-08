@@ -5,7 +5,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'

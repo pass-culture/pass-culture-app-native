@@ -13,15 +13,10 @@ import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/Cultu
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
-import { SubscriptionMessageBadge } from 'features/profile/components/headers/Badges/SubscriptionMessageBadge'
-import { CreditHeader } from 'features/profile/components/headers/CreditHeader/CreditHeader'
-import {
-  domains_credit_underage,
-  domains_credit_v1,
-  domains_credit_v2,
-} from 'features/profile/components/headers/fixtures/domainsCredit'
-import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
+import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
+import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
+import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -627,24 +622,6 @@ export const AppComponents: FunctionComponent = () => {
           <Button title="No key" onPress={() => setCallToActionIconString(undefined)} />
           <Button title="Unknown key" onPress={() => setCallToActionIconString('Blablou')} />
         </AlignedText>
-
-        <Spacer.Column numberOfSpaces={4} />
-        <View>
-          <BeneficiaryCeilings
-            domainsCredit={domains_credit_v1}
-            isUserUnderageBeneficiary={false}
-          />
-          <Spacer.Column numberOfSpaces={4} />
-          <BeneficiaryCeilings
-            domainsCredit={domains_credit_v2}
-            isUserUnderageBeneficiary={false}
-          />
-          <Spacer.Column numberOfSpaces={4} />
-          <BeneficiaryCeilings
-            domainsCredit={domains_credit_underage}
-            isUserUnderageBeneficiary={true}
-          />
-        </View>
       </AccordionItem>
       <Divider />
       {/* Your components */}
