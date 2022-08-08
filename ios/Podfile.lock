@@ -479,6 +479,11 @@ PODS:
     - React-Core
   - react-native-flipper (0.123.0):
     - React-Core
+  - react-native-flipper-performance-plugin (0.3.1):
+    - React-Core
+    - react-native-flipper-performance-plugin/FBDefines (= 0.3.1)
+  - react-native-flipper-performance-plugin/FBDefines (0.3.1):
+    - React-Core
   - react-native-geolocation-service (5.3.0-beta.1):
     - React
   - react-native-get-random-values (1.7.1):
@@ -718,6 +723,7 @@ DEPENDENCIES:
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
+  - react-native-flipper-performance-plugin (from `../node_modules/react-native-flipper-performance-plugin`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
@@ -869,6 +875,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-date-picker"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
+  react-native-flipper-performance-plugin:
+    :path: "../node_modules/react-native-flipper-performance-plugin"
   react-native-geolocation-service:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-get-random-values:
@@ -1023,6 +1031,7 @@ SPEC CHECKSUMS:
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
   react-native-flipper: 33bba1cad647f4d56403012993f201e10518b78c
+  react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
