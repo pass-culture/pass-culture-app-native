@@ -5,7 +5,7 @@ import { getCreditModal } from 'features/profile/components/CreditExplanation/ge
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
-import { InfoPlain } from 'ui/svg/icons/InfoPlain'
+import { Question } from 'ui/svg/icons/Question'
 
 interface Props {
   domainsCredit: DomainsCredit
@@ -24,7 +24,7 @@ export const CreditExplanation: FunctionComponent<Props> = (props) => {
   return (
     <React.Fragment>
       <StyledButtonQuaternary
-        icon={InfoPlain}
+        icon={Question}
         wording={buttonTitle}
         onPress={showModal}
         testID="explanationButton"
@@ -34,6 +34,9 @@ export const CreditExplanation: FunctionComponent<Props> = (props) => {
   )
 }
 
-const StyledButtonQuaternary = styledButton(ButtonQuaternary)({
+const StyledButtonQuaternary = styledButton(ButtonQuaternary).attrs({
+  numberOfLines: 2,
   justifyContent: 'flex-start',
+})({
+  textAlign: 'left',
 })

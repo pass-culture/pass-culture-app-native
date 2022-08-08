@@ -1427,8 +1427,8 @@ msgid "J’accepte de recevoir les newsletters, bons plans et recommandations pe
 msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 
 #: src/features/profile/components/CreditExplanation/getCreditModal.ts
-msgid "J’ai dépensé tout mon crédit, que faire ?"
-msgstr "J’ai dépensé tout mon crédit, que faire ?"
+msgid "J’ai dépensé tout mon crédit, que faire ?"
+msgstr "J’ai dépensé tout mon crédit, que faire ?"
 
 #: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
@@ -1752,10 +1752,13 @@ msgstr "Mois précédent"
 msgid "Mois suivant"
 msgstr "Mois suivant"
 
-#: src/features/profile/components/CreditExplanation/getCreditModal.ts
 #: src/features/profile/components/Modals/ExpiredCreditModal.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
+
+#: src/features/profile/components/CreditExplanation/getCreditModal.ts
+msgid "Mon crédit est expiré, que faire ?"
+msgstr "Mon crédit est expiré, que faire ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
@@ -3669,13 +3672,17 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings.tsx
+#: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
 msgid "en offres numériques"
 msgstr "en offres numériques"
 
-#: src/features/profile/components/headers/BeneficiaryCeilings/BeneficiaryCeilings.tsx
+#: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
 msgid "en offres physiques"
 msgstr "en offres physiques"
+
+#: src/features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader.tsx
+msgid "enjoy deposit"
+msgstr "Profite de {deposit}"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu as..."
@@ -3718,12 +3725,12 @@ msgstr "Dossier mis à jour le : {day} à {hour}"
 msgid "le"
 msgstr "le"
 
-#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
-#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
 msgid "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
 msgstr "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
 
-#: src/features/profile/components/headers/Modals/CreditCeilingsModal.tsx
+#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
 msgid "maximum {physicalCeiling} en offres physiques : livre, instrument de musique..."
 msgstr "maximum {physicalCeiling} en offres physiques : livre, instrument de musique..."
 

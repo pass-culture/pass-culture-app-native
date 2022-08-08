@@ -2,7 +2,7 @@
 
 exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] = `
 <View
-  accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+  accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
   accessible={true}
   collapsable={false}
   focusable={true}
@@ -19,14 +19,16 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
       "backgroundColor": "transparent",
       "borderRadius": 24,
       "flexDirection": "row",
+      "height": "auto",
       "justifyContent": "flex-start",
       "maxWidth": 500,
       "minHeight": 40,
       "opacity": 1,
       "paddingBottom": 2,
-      "paddingLeft": 2,
-      "paddingRight": 2,
+      "paddingLeft": 0,
+      "paddingRight": 0,
       "paddingTop": 2,
+      "textAlign": "left",
       "userSelect": "auto",
       "width": "100%",
     }
@@ -55,7 +57,7 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
   </View>
   <Text
     adjustsFontSizeToFit={false}
-    numberOfLines={1}
+    numberOfLines={2}
     style={
       Array [
         Object {
@@ -69,14 +71,14 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
       ]
     }
   >
-    J’ai dépensé tout mon crédit, que faire ?
+    J’ai dépensé tout mon crédit, que faire ?
   </Text>
 </View>
 `;
 
 exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = `
 <View
-  accessibilityLabel="Mon crédit est expiré, que faire ?"
+  accessibilityLabel="Mon crédit est expiré, que faire ?"
   accessible={true}
   collapsable={false}
   focusable={true}
@@ -93,14 +95,16 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
       "backgroundColor": "transparent",
       "borderRadius": 24,
       "flexDirection": "row",
+      "height": "auto",
       "justifyContent": "flex-start",
       "maxWidth": 500,
       "minHeight": 40,
       "opacity": 1,
       "paddingBottom": 2,
-      "paddingLeft": 2,
-      "paddingRight": 2,
+      "paddingLeft": 0,
+      "paddingRight": 0,
       "paddingTop": 2,
+      "textAlign": "left",
       "userSelect": "auto",
       "width": "100%",
     }
@@ -129,7 +133,7 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
   </View>
   <Text
     adjustsFontSizeToFit={false}
-    numberOfLines={1}
+    numberOfLines={2}
     style={
       Array [
         Object {
@@ -143,7 +147,7 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
       ]
     }
   >
-    Mon crédit est expiré, que faire ?
+    Mon crédit est expiré, que faire ?
   </Text>
 </View>
 `;
@@ -167,14 +171,16 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
       "backgroundColor": "transparent",
       "borderRadius": 24,
       "flexDirection": "row",
+      "height": "auto",
       "justifyContent": "flex-start",
       "maxWidth": 500,
       "minHeight": 40,
       "opacity": 1,
       "paddingBottom": 2,
-      "paddingLeft": 2,
-      "paddingRight": 2,
+      "paddingLeft": 0,
+      "paddingRight": 0,
       "paddingTop": 2,
+      "textAlign": "left",
       "userSelect": "auto",
       "width": "100%",
     }
@@ -203,7 +209,7 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
   </View>
   <Text
     adjustsFontSizeToFit={false}
-    numberOfLines={1}
+    numberOfLines={2}
     style={
       Array [
         Object {
