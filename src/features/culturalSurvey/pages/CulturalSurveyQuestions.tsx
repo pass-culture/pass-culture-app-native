@@ -76,6 +76,9 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     throw new Error('should have questions to show')
   }
   const onSuccess = () => {
+    dispatch({
+      type: 'FLUSH_ANSWERS',
+    })
     navigate('CulturalSurveyThanks')
   }
 

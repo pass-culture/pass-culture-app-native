@@ -61,7 +61,7 @@ describe('CulturalSurveysQuestions page', () => {
     })
   })
 
-  it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
+  it('should flush answers and navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
     mockUseGetNextQuestionReturnValue = {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
@@ -69,6 +69,7 @@ describe('CulturalSurveysQuestions page', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
+    expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
   })
 
