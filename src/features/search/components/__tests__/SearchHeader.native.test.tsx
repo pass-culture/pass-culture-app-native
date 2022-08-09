@@ -30,15 +30,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 jest.mock('libs/firebase/analytics')
 
-const mockSettings = {
-  appEnableAutocomplete: true,
-}
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
-
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
@@ -65,114 +56,55 @@ jest.mock('react-instantsearch-hooks', () => ({
   }),
 }))
 
+jest.mock('features/auth/settings')
+
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchHeader', () => {
-    expect(
-      render(
-        <SearchHeader
-          searchInputID={searchInputID}
-          appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-        />
-      )
-    ).toMatchSnapshot()
-  })
-
-  it('should show search box without autocomplete if autocomplete feature flag not activated', () => {
-    mockSettings.appEnableAutocomplete = false
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
-
-    expect(queryByTestId('searchBoxWithoutAutocomplete')).toBeTruthy()
-  })
-
-  it('should show search box with autocomplete if autocomplete feature flag activated', () => {
-    mockSettings.appEnableAutocomplete = true
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
-
-    expect(queryByTestId('searchBoxWithAutocomplete')).toBeTruthy()
+    expect(render(<SearchHeader searchInputID={searchInputID} />)).toMatchSnapshot()
   })
 
   it('should show search box with label if no search execution and focus is not on input', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
+    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
     expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
   })
 
   it('should not show search box without label if no search execution and focus is not on input', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
+    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeNull()
   })
 
   it('should show search box without label if focus is on input', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
+    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
   })
 
   it('should not show search box with label if focus is on input', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
+    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
     expect(queryByTestId('searchBoxWithLabel')).toBeNull()
   })
 
   it('should show search box without label if search execution', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
+    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
     expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
   })
 
   it('should not show search box with label if search execution', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
-    const { queryByTestId } = render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        appEnableAutocomplete={mockSettings.appEnableAutocomplete}
-      />
-    )
+    const { queryByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
     expect(queryByTestId('searchBoxWithLabel')).toBeNull()
   })

@@ -45,6 +45,7 @@ jest.mock('features/home/api', () => ({
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
+
 jest.mock('features/search/pages/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
@@ -61,16 +62,13 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
-const mockSettings = {
-  appEnableAutocomplete: false,
-}
+const mockSettings = jest.fn().mockReturnValue({ data: {} })
 jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
+  useAppSettings: jest.fn(() => mockSettings()),
 }))
 
 jest.mock('react-instantsearch-hooks', () => ({
+  ...jest.requireActual('react-instantsearch-hooks'),
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,
@@ -92,6 +90,7 @@ jest.mock('react-instantsearch-hooks', () => ({
 }))
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
+jest.mock('algoliasearch')
 
 describe('Search component', () => {
   mockUseNetInfo.mockReturnValue({ isConnected: true })
@@ -102,22 +101,10 @@ describe('Search component', () => {
 
   it('should handle coming from "See More" correctly', () => {
     render(<Search />)
-    expect(mockDispatch).toBeCalledWith({
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE_FROM_NAVIGATE',
       payload: {},
     })
-  })
-
-  it('should not show autocomplete list when focus on input if autocomplete feature flag is not activated', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-
-    mockSettings.appEnableAutocomplete = false
-    const { queryByTestId, getByPlaceholderText } = render(<Search />)
-
-    const searchInput = getByPlaceholderText('Offre, artiste...')
-    await fireEvent(searchInput, 'onFocus')
-
-    expect(queryByTestId('autocompleteList')).toBeFalsy()
   })
 
   describe('When offline', () => {
@@ -146,9 +133,9 @@ describe('Search component', () => {
       jest
         .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
         .mockReturnValueOnce(mockShowResultsForCategory)
-      const { getByText } = render(<Search />)
+      const { findByText } = render(<Search />)
 
-      const categoryButton = getByText('Spectacles')
+      const categoryButton = await findByText('Spectacles')
       await fireEvent.press(categoryButton)
 
       expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
@@ -176,9 +163,9 @@ describe('Search component', () => {
     })
 
     it('should navigate to the search filter page when pressing the search filter button', async () => {
-      const { getByTestId } = render(<Search />)
+      const { findByTestId } = render(<Search />)
 
-      const searchFilterButton = getByTestId('searchFilterButton')
+      const searchFilterButton = await findByTestId('searchFilterButton')
       await fireEvent.press(searchFilterButton)
 
       const screen = 'SearchFilter'
@@ -187,9 +174,9 @@ describe('Search component', () => {
     })
 
     it('should reinitialize the filters from the current one', async () => {
-      const { getByTestId } = render(<Search />)
+      const { findByTestId } = render(<Search />)
 
-      const searchFilterButton = getByTestId('searchFilterButton')
+      const searchFilterButton = await findByTestId('searchFilterButton')
       await fireEvent.press(searchFilterButton)
 
       expect(mockDispatchStagedSearch).toHaveBeenCalledWith({

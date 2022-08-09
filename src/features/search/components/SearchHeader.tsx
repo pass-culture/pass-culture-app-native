@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchBox } from 'features/search/components/SearchBox'
-import { SearchBoxAutocomplete } from 'features/search/components/SearchBoxAutocomplete'
 import { SearchView } from 'features/search/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
@@ -17,13 +16,9 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   searchInputID: string
-  appEnableAutocomplete: boolean
 }
 
-export const SearchHeader = memo(function SearchHeader({
-  searchInputID,
-  appEnableAutocomplete,
-}: Props) {
+export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props) {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { top } = useCustomSafeInsets()
 
@@ -46,13 +41,9 @@ export const SearchHeader = memo(function SearchHeader({
           </React.Fragment>
         )}
         <FloatingSearchBoxContainer isLanding={isLanding}>
-          {appEnableAutocomplete ? (
-            <FloatingSearchBoxAutocomplete searchInputID={searchInputID} isLanding={isLanding} />
-          ) : (
-            <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
-          )}
+          <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
         </FloatingSearchBoxContainer>
-        {appEnableAutocomplete && isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
+        {isLanding ? <Spacer.Column numberOfSpaces={6} /> : null}
       </SearchBoxContainer>
       {!isLanding && <Spacer.Column numberOfSpaces={1} />}
     </React.Fragment>
@@ -87,15 +78,4 @@ const FloatingSearchBox = styled(SearchBox)<{ isLanding?: boolean }>(({ isLandin
         right: 0,
       }
     : {}
-)
-
-const FloatingSearchBoxAutocomplete = styled(SearchBoxAutocomplete)<{ isLanding?: boolean }>(
-  ({ isLanding }) =>
-    isLanding
-      ? {
-          position: 'absolute',
-          left: 0,
-          right: 0,
-        }
-      : {}
 )

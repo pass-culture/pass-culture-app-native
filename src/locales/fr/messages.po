@@ -1345,7 +1345,6 @@ msgid "Impossible de recharger tes réservations, connecte-toi à internet pour 
 msgstr "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."
 
 #: src/features/search/components/SearchBox.tsx
-#: src/features/search/components/SearchBoxAutocomplete.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
 "\"Entrée\""

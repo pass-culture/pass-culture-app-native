@@ -68,9 +68,9 @@ Array [
             },
           ]
         }
-        testID="searchBoxWithoutAutocomplete"
       >
         <View
+          isLanding={false}
           style={
             Array [
               Object {
@@ -81,6 +81,7 @@ Array [
                 "flexShrink": 1,
                 "justifyContent": "center",
               },
+              Object {},
             ]
           }
         >

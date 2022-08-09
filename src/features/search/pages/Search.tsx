@@ -5,7 +5,6 @@ import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAppSettings } from 'features/auth/settings'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchResults } from 'features/search/components'
 import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
@@ -49,16 +48,15 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 type BodySearchProps = {
   view?: SearchView
-  appEnableAutocomplete?: boolean
 }
 
-const BodySearch = memo(function BodySearch({ view, appEnableAutocomplete }: BodySearchProps) {
+const BodySearch = memo(function BodySearch({ view }: BodySearchProps) {
   const showResultsForCategory = useShowResultsForCategory()
 
   if (view === SearchView.Suggestions) {
     return (
       <React.Fragment>
-        {!!appEnableAutocomplete && <SearchAutocomplete hitComponent={Hit} />}
+        <SearchAutocomplete hitComponent={Hit} />
       </React.Fragment>
     )
   } else if (view === SearchView.Results) {
@@ -76,8 +74,6 @@ export function Search() {
   const netInfo = useNetInfo()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
-  const { data: appSettings } = useAppSettings()
-  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params || { view: SearchView.Landing } })
@@ -89,24 +85,11 @@ export function Search() {
 
   return (
     <Form.Flex>
-      {appEnableAutocomplete ? (
-        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
-          <Configure hitsPerPage={5} />
-          <SearchHeader
-            searchInputID={searchInputID}
-            appEnableAutocomplete={appEnableAutocomplete}
-          />
-          <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
-        </InstantSearch>
-      ) : (
-        <React.Fragment>
-          <SearchHeader
-            searchInputID={searchInputID}
-            appEnableAutocomplete={appEnableAutocomplete}
-          />
-          <BodySearch view={params?.view} appEnableAutocomplete={appEnableAutocomplete} />
-        </React.Fragment>
-      )}
+      <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+        <Configure hitsPerPage={5} />
+        <SearchHeader searchInputID={searchInputID} />
+        <BodySearch view={params?.view} />
+      </InstantSearch>
     </Form.Flex>
   )
 }
