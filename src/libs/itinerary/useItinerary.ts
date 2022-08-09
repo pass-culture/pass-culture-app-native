@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Alert, AlertButton, Platform } from 'react-native'
 import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
@@ -19,7 +19,7 @@ enum BackupSolution {
 }
 
 export const useItinerary = (): UseItineraryResult => {
-  const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
+  const availableAppsRef = useRef<AppEnum[] | undefined>(undefined)
   const { showInfoSnackBar } = useSnackBarContext()
 
   const navigateToWithApp = async (
@@ -47,16 +47,16 @@ export const useItinerary = (): UseItineraryResult => {
     }
   }
   const navigateTo = (address: string) => {
-    if (availableApps === undefined) return
-    if (availableApps.length === 0) {
+    if (availableAppsRef.current === undefined) return
+    if (availableAppsRef.current.length === 0) {
       openGoogleMapsItinerary(address)
       return
     }
-    if (availableApps.length === 1) {
-      navigateToWithApp(address, availableApps[0], BackupSolution.GOOGLE_MAPS_WEB)
+    if (availableAppsRef.current.length === 1) {
+      navigateToWithApp(address, availableAppsRef.current[0], BackupSolution.GOOGLE_MAPS_WEB)
       return
     }
-    const alertButtons: AlertButton[] = availableApps.map((app) => ({
+    const alertButtons: AlertButton[] = availableAppsRef.current.map((app) => ({
       text: snakeCaseToUppercaseFirstLetter(app),
       onPress: () => navigateToWithApp(address, app, BackupSolution.SNACKBAR_ERROR),
     }))
@@ -78,10 +78,10 @@ export const useItinerary = (): UseItineraryResult => {
         const apps = appsKeys.filter(
           (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
         )
-        if (isMounted) setAvailableApps(apps)
+        if (isMounted) availableAppsRef.current = apps
       })
       .catch(() => {
-        setAvailableApps([])
+        availableAppsRef.current = []
       })
 
     return () => {
