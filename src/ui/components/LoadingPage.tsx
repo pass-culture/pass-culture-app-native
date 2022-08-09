@@ -1,12 +1,13 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
 import { Typo } from 'ui/theme'
-export const LoadingPage: FunctionComponent = () => {
+
+const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
     <Container>
       <Background />
@@ -15,6 +16,8 @@ export const LoadingPage: FunctionComponent = () => {
     </Container>
   )
 }
+
+export const LoadingPage = memo(UnmemoizedLoadingPage)
 
 const Container = styled.View({
   flexDirection: 'column',
