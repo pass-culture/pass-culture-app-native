@@ -93,6 +93,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
               },
             ]
           }
+          testID="Revenir en arrière"
         >
           <View
             accessibilityLabel="Revenir en arrière"

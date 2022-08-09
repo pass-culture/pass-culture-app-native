@@ -94,6 +94,7 @@ Array [
                 },
               ]
             }
+            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"

@@ -1,26 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "overflow": "hidden",
-      },
-    ]
-  }
->
+Array [
   <View
-    customHeight={16}
-    enable={true}
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
     style={
       Array [
         Object {
-          "height": 16,
+          "backgroundColor": "#ffffff",
+          "width": "100%",
         },
       ]
     }
-  />
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Profil
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
   <View
     numberOfSpaces={6}
     style={
@@ -30,7 +115,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         },
       ]
     }
-  />
+  />,
   <View
     style={
       Array [
@@ -42,30 +127,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       ]
     }
   >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 18,
-            "lineHeight": 22,
-          },
-        ]
-      }
-    >
-      Profil
-    </Text>
-    <View
-      numberOfSpaces={7}
-      style={
-        Array [
-          Object {
-            "height": 28,
-          },
-        ]
-      }
-    />
     <Text
       style={
         Array [
@@ -274,8 +335,8 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         ]
       }
     />
-  </View>
-</View>
+  </View>,
+]
 `;
 
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary 1`] = `
@@ -343,6 +404,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
             },
           ]
         }
+        testID="Revenir en arrière"
       />
       <Text
         color="#161617"
@@ -449,6 +511,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
             },
           ]
         }
+        testID="Revenir en arrière"
       />
       <Text
         color="#161617"

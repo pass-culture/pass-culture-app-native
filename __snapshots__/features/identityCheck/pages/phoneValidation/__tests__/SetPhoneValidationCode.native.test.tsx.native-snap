@@ -93,6 +93,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
               },
             ]
           }
+          testID="Revenir en arrière"
         >
           <View
             accessibilityLabel="Revenir en arrière"
