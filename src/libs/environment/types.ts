@@ -10,10 +10,6 @@ export interface Environment {
   API_BASE_URL: string
   APPLE_STORE_URL: string
   APPS_FLYER_DEV_KEY: string
-  BATCH_API_KEY_WEB: string
-  BATCH_AUTH_KEY: string
-  BATCH_SUBDOMAIN: string
-  BATCH_VAPID_PUBLIC_KEY: string
   BOOKING_LIMIT_EXCEEDED_URL: string
   CGU_LINK: string
   CONTENTFUL_ACCESS_TOKEN: string

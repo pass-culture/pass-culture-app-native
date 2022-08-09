@@ -24,7 +24,6 @@ import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
-import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled'
@@ -38,8 +37,6 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 globalThisShim()
 
 export function App() {
-  useStartBatchNotification()
-
   useEffect(() => {
     activate('fr')
   }, [])

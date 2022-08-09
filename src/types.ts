@@ -21,30 +21,6 @@ declare global {
       reset?: () => void
     }
     onUbbleReady?: () => void
-    batchSDK: (
-      type?:
-        | string
-        | ((api: {
-            getInstallationID: () => Promise<string>
-            setCustomUserID: (id: string) => void
-            ui: { show: (type: string) => void }
-          }) => void),
-      options?: {
-        apiKey?: string
-        subdomain?: string
-        authKey?: string
-        vapidPublicKey?: string
-        ui: {
-          native?: unknown
-          alert?: unknown
-        }
-        defaultIcon?: string
-        smallIcon?: string
-        sameOrigin?: boolean
-        useExistingServiceWorker?: boolean
-        dev?: boolean
-      }
-    ) => void
     pcupdate?: boolean
   }
 }
