@@ -342,7 +342,11 @@ function extractParams(params: Record<string, string>) {
   for (const [paramName, paramValue] of Object.entries(params)) {
     if (paramName in FDL_CONFIG) fdlParams[paramName] = paramValue
     else if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
-    else appParams[paramName] = paramValue
+    else {
+      appParams[paramName] = paramValue
+      // Force showResults for old versions compatibility
+      if (paramName === 'view') appParams['showResults'] = 'true'
+    }
   }
   return { appParams, marketingParams, fdlParams }
 }
