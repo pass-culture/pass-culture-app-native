@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { ExpiredOrExhaustedCreditModalContent } from 'features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent'
+import { analytics } from 'libs/firebase/analytics'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 
 type Props = {
@@ -10,6 +11,10 @@ type Props = {
 }
 
 export function ExhaustedCreditModal({ visible, hideModal }: Props) {
+  useEffect(() => {
+    analytics.logConsultModalNoMoreCredit()
+  }, [])
+
   return (
     <AppInformationModal
       title={t`Tu as dépensé tout ton crédit, que faire\u00a0?`}

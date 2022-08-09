@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
-import { fireEvent, render } from 'tests/utils'
+import { analytics } from 'libs/firebase/analytics'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -9,6 +10,14 @@ describe('<ExpiredCreditModal/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(<ExpiredCreditModal visible={true} hideModal={hideModalMock} />)
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should log analytics', async () => {
+    render(<ExpiredCreditModal visible={true} hideModal={hideModalMock} />)
+
+    await waitFor(() => {
+      expect(analytics.logConsultModalExpiredGrant).toBeCalled()
+    })
   })
 
   it('should display nothing if modal is not visible', () => {

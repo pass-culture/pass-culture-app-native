@@ -2,7 +2,8 @@ import React from 'react'
 
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { beneficiaryUser } from 'fixtures/user'
-import { fireEvent, render } from 'tests/utils'
+import { analytics } from 'libs/firebase/analytics'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -11,7 +12,7 @@ const domainsCreditWithPhysicalCeiling = beneficiaryUser.domainsCredit!
 const domainsCreditWithoutPhysicalCeiling = { ...beneficiaryUser.domainsCredit!, physical: null }
 
 describe('<CreditCeilingsModal/>', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const renderAPI = render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
@@ -20,6 +21,20 @@ describe('<CreditCeilingsModal/>', () => {
       />
     )
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should log analytics', async () => {
+    render(
+      <CreditCeilingsModal
+        domainsCredit={domainsCreditWithoutPhysicalCeiling}
+        visible={true}
+        hideModal={hideModalMock}
+      />
+    )
+
+    await waitFor(() => {
+      expect(analytics.logConsultModalBeneficiaryCeilings).toBeCalled()
+    })
   })
 
   it('should display nothing if modal is not visible', () => {
