@@ -139,7 +139,7 @@ describe('fetchOffer', () => {
         facetFilters: [
           ['offer.isEducational:false'],
           ['offer.isForbiddenToUnderage:false'],
-          ['offer.searchGroupName:LECON'],
+          ['offer.searchGroupNamev2:LECON'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
@@ -341,7 +341,7 @@ describe('fetchOffer', () => {
       })
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.searchGroupName:LECON']],
+        facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:LECON']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -352,7 +352,7 @@ describe('fetchOffer', () => {
 
     it('should fetch with facetFilters parameter when multiple categories are provided', () => {
       const query = 'searched query'
-      const offerCategories = ['SPECTACLE', 'LIVRE']
+      const offerCategories = ['SPECTACLES', 'LIVRES']
 
       fetchOffer({
         parameters: { ...baseParams, query, offerCategories } as SearchParametersQuery,
@@ -363,7 +363,7 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [
           ['offer.isEducational:false'],
-          ['offer.searchGroupName:SPECTACLE', 'offer.searchGroupName:LIVRE'],
+          ['offer.searchGroupNamev2:SPECTACLES', 'offer.searchGroupNamev2:LIVRES'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
@@ -1192,7 +1192,7 @@ describe('fetchOffer', () => {
 
     it('should fetch with all given search parameters', () => {
       const query = 'searched query'
-      const offerCategories = ['LECON', 'VISITE']
+      const offerCategories = ['LECON', 'MUSEES_VISITES_CULTURELLES']
       const offerTypes = {
         isDigital: true,
         isEvent: false,
@@ -1216,7 +1216,7 @@ describe('fetchOffer', () => {
         page: page,
         facetFilters: [
           ['offer.isEducational:false'],
-          ['offer.searchGroupName:LECON', 'offer.searchGroupName:VISITE'],
+          ['offer.searchGroupNamev2:LECON', 'offer.searchGroupNamev2:MUSEES_VISITES_CULTURELLES'],
           ['offer.isDigital:true'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -1231,7 +1231,7 @@ describe('fetchOffer', () => {
 
     it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
       const query = ''
-      const offerCategories = ['PRATIQUE', 'SPECTACLE']
+      const offerCategories = ['ARTS_LOISIRS_CREATIFS', 'SPECTACLES']
       const offerIsDuo = true
       const priceRange = [5, 40]
       const offerTypes = {
@@ -1257,7 +1257,7 @@ describe('fetchOffer', () => {
         page: 0,
         facetFilters: [
           ['offer.isEducational:false'],
-          ['offer.searchGroupName:PRATIQUE', 'offer.searchGroupName:SPECTACLE'],
+          ['offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS', 'offer.searchGroupNamev2:SPECTACLES'],
           ['offer.isEvent:true'],
           ['offer.isDuo:true'],
         ],

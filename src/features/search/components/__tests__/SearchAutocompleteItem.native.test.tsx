@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem'
 import { LocationType } from 'features/search/enums'
@@ -16,7 +16,7 @@ const venue: SuggestedVenue = mockedSuggestedVenues[0]
 const mockSearchState = initialSearchState
 const mockStagedSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnum.CINEMA],
+  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
 }

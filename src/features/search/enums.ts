@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen'
+import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -18,68 +18,76 @@ export enum LocationType {
 }
 
 type CategoryCriteria = {
-  [category in SearchGroupNameEnum]: {
+  [category in SearchGroupNameEnumv2]: {
     icon: React.FC<BicolorIconInterface>
-    facetFilter: SearchGroupNameEnum
+    facetFilter: SearchGroupNameEnumv2
   }
 }
 
 export const CATEGORY_CRITERIA: CategoryCriteria = {
-  [SearchGroupNameEnum.NONE]: {
+  [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
-    facetFilter: SearchGroupNameEnum.NONE,
+    facetFilter: SearchGroupNameEnumv2.NONE,
   },
-  [SearchGroupNameEnum.CARTE_JEUNES]: {
+  [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
+    icon: categoriesIcons.Palette,
+    facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+  },
+  [SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE]: {
+    icon: categoriesIcons.Bookstore,
+    facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+  },
+  [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
-    facetFilter: SearchGroupNameEnum.CARTE_JEUNES,
+    facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
   },
-  [SearchGroupNameEnum.CINEMA]: {
-    icon: categoriesIcons.Cinema,
-    facetFilter: SearchGroupNameEnum.CINEMA,
+  [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
+    icon: categoriesIcons.Disk,
+    facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
   },
-  [SearchGroupNameEnum.VISITE]: {
-    icon: categoriesIcons.Museum,
-    facetFilter: SearchGroupNameEnum.VISITE,
-  },
-  [SearchGroupNameEnum.MUSIQUE]: {
-    icon: categoriesIcons.Music,
-    facetFilter: SearchGroupNameEnum.MUSIQUE,
-  },
-  [SearchGroupNameEnum.SPECTACLE]: {
-    icon: categoriesIcons.Show,
-    facetFilter: SearchGroupNameEnum.SPECTACLE,
-  },
-  [SearchGroupNameEnum.COURS]: {
-    icon: categoriesIcons.Workshop,
-    facetFilter: SearchGroupNameEnum.COURS,
-  },
-  [SearchGroupNameEnum.LIVRE]: {
-    icon: categoriesIcons.Book,
-    facetFilter: SearchGroupNameEnum.LIVRE,
-  },
-  [SearchGroupNameEnum.FILM]: {
-    icon: categoriesIcons.Streaming,
-    facetFilter: SearchGroupNameEnum.FILM,
-  },
-  [SearchGroupNameEnum.PRESSE]: {
-    icon: categoriesIcons.Press,
-    facetFilter: SearchGroupNameEnum.PRESSE,
-  },
-  [SearchGroupNameEnum.JEU]: {
-    icon: categoriesIcons.VideoGame,
-    facetFilter: SearchGroupNameEnum.JEU,
-  },
-  [SearchGroupNameEnum.CONFERENCE]: {
+  [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
-    facetFilter: SearchGroupNameEnum.CONFERENCE,
+    facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
   },
-  [SearchGroupNameEnum.INSTRUMENT]: {
+  [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
+    icon: categoriesIcons.Microphone,
+    facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+  },
+  [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
+    icon: categoriesIcons.LiveEvent,
+    facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+  },
+  [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
+    icon: categoriesIcons.Cinema,
+    facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+  },
+  [SearchGroupNameEnumv2.INSTRUMENTS]: {
     icon: categoriesIcons.Instrument,
-    facetFilter: SearchGroupNameEnum.INSTRUMENT,
+    facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
   },
-  [SearchGroupNameEnum.MATERIEL]: {
-    icon: categoriesIcons.ArtsMaterial,
-    facetFilter: SearchGroupNameEnum.MATERIEL,
+  [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
+    icon: categoriesIcons.VideoGame,
+    facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+  },
+  [SearchGroupNameEnumv2.LIVRES]: {
+    icon: categoriesIcons.Book,
+    facetFilter: SearchGroupNameEnumv2.LIVRES,
+  },
+  [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
+    icon: categoriesIcons.Press,
+    facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
+  },
+  [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
+    icon: categoriesIcons.Museum,
+    facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+  },
+  [SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE]: {
+    icon: categoriesIcons.Numeric,
+    facetFilter: SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE,
+  },
+  [SearchGroupNameEnumv2.SPECTACLES]: {
+    icon: categoriesIcons.Show,
+    facetFilter: SearchGroupNameEnumv2.SPECTACLES,
   },
 }
 

@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import {
   MAX_PRICE,
@@ -43,8 +43,8 @@ export type Action =
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
-  | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnum[] }
-  | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnum }
+  | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnumv2[] }
+  | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnumv2 }
   | { type: 'TOGGLE_OFFER_FREE' }
   | { type: 'TOGGLE_OFFER_DUO' }
   | { type: 'TOGGLE_OFFER_NEW' }

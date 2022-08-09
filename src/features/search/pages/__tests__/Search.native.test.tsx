@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Search } from 'features/search/pages/Search'
@@ -19,7 +19,7 @@ const venue: SuggestedVenue = mockedSuggestedVenues[0]
 const mockSearchState = initialSearchState
 const mockStagedSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnum.CINEMA],
+  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
 }
@@ -138,7 +138,7 @@ describe('Search component', () => {
       const categoryButton = await findByText('Spectacles')
       await fireEvent.press(categoryButton)
 
-      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
+      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
     })
 
     it('should show search box with label', () => {

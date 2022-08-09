@@ -2,7 +2,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { BookingsResponse, SubcategoriesResponseModel } from 'api/gen'
+import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api/queries'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
@@ -29,7 +29,7 @@ jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
-} as UseQueryResult<SubcategoriesResponseModel, unknown>)
+} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfo = useNetInfoDefault as jest.Mock
@@ -116,7 +116,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     it('when subcategories are loading', () => {
       const loadingSubcategories = {
         isLoading: true,
-      } as UseQueryResult<SubcategoriesResponseModel, unknown>
+      } as UseQueryResult<SubcategoriesResponseModelv2, unknown>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
       const { queryByTestId } = render(<OnGoingBookingsList />)
 

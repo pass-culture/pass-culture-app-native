@@ -9,19 +9,19 @@ describe('useSortedSearchCategories', () => {
   it('should return all categories', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current.length).toEqual(13)
+    expect(result.current.length).toEqual(15)
   })
 
   it("should format category's label", () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current[11].label).toEqual('Spectacles')
+    expect(result.current[11].label).toEqual('Médias & presse')
   })
 
   it('should set icon for category', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current[11].Icon).toEqual(categoriesIcons.Show)
+    expect(result.current[11].Icon).toEqual(categoriesIcons.Press)
   })
 
   it('should sort search group names alphabetically', () => {
@@ -29,19 +29,21 @@ describe('useSortedSearchCategories', () => {
 
     const actualCategoriesLabels = result.current.map((category) => category.label)
     expect(actualCategoriesLabels).toEqual([
-      'Beaux-Arts',
-      'Carte jeunes',
-      'Cinéma',
-      'Conférences, rencontres',
-      'Cours, ateliers',
-      'Films, séries',
+      'Arts & loisirs créatifs',
+      'Bibliothèques, Médiathèques',
+      'Cartes jeunes',
+      'CD, vinyle, musique en ligne',
+      'Concerts & festivals',
+      'Conférences & rencontres',
+      'Événements en ligne',
+      'Films, séries, cinéma',
       'Instruments de musique',
-      'Jeux',
-      'Livre',
-      'Musique',
-      'Presse, médias',
+      'Jeux & jeux vidéos',
+      'Livres',
+      'Médias & presse',
+      'Musées & visites culturelles',
+      'Plateformes en ligne',
       'Spectacles',
-      'Visites, expositions',
     ])
   })
 })

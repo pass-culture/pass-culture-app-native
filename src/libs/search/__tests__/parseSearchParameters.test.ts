@@ -30,14 +30,14 @@ describe('src | components | parseSearchParameters', () => {
 
   it('should return parsed algolia parameters with mapped categories when provided', () => {
     const parameters = {
-      categories: ['Cinéma', 'Cours, ateliers', 'Livres'],
+      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
     } as SearchParametersFields
 
     const { result } = renderHook(() => useParseSearchParameters())
     const parsedParameters = result.current(parameters)
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
-      offerCategories: ['CINEMA', 'COURS', 'LIVRE'],
+      offerCategories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
     })
   })
 

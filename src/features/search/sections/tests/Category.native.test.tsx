@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
@@ -26,9 +26,9 @@ describe('Category component', () => {
     const { queryByText } = render(<Category />)
 
     Object.keys(CATEGORY_CRITERIA).forEach((key) => {
-      const searchGroup = key as SearchGroupNameEnum
+      const searchGroup = key as SearchGroupNameEnumv2
       const label = result.current[searchGroup]
-      if (searchGroup === SearchGroupNameEnum.NONE) {
+      if (searchGroup === SearchGroupNameEnumv2.NONE) {
         expect(queryByText(label)).toBeNull()
       } else {
         expect(queryByText(label)).toBeTruthy()
@@ -38,10 +38,10 @@ describe('Category component', () => {
 
   it('should dispatch TOGGLE_CATEGORY with correct facetFilter', () => {
     const { getByText } = render(<Category />)
-    fireEvent.press(getByText('Cinéma'))
+    fireEvent.press(getByText('Films, séries, cinéma'))
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'TOGGLE_CATEGORY',
-      payload: CATEGORY_CRITERIA.CINEMA.facetFilter,
+      payload: CATEGORY_CRITERIA.FILMS_SERIES_CINEMA.facetFilter,
     })
   })
 
@@ -49,11 +49,17 @@ describe('Category component', () => {
     mockSearchState = { ...initialSearchState, offerCategories: [] }
     expect(render(<Category />).queryByText('Catégories')).toBeTruthy()
     expect(render(<Category />).queryByTestId('titleCount')).toBeNull()
-    mockSearchState = { ...initialSearchState, offerCategories: [SearchGroupNameEnum.CINEMA] }
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+    }
     expect(render(<Category />).queryByTestId('titleCount')?.children[0]).toContain('(1)')
     mockSearchState = {
       ...initialSearchState,
-      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.PRESSE],
+      offerCategories: [
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.MEDIA_PRESSE,
+      ],
     }
     expect(render(<Category />).queryByTestId('titleCount')?.children[0]).toContain('(2)')
   })

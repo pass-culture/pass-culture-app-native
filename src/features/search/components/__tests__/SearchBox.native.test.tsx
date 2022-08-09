@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -20,7 +20,7 @@ const venue: SuggestedVenue = mockedSuggestedVenues[0]
 const mockSearchState = initialSearchState
 const mockStagedSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnum.CINEMA],
+  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
 }

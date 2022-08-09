@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 export const MIN_PRICE = 0
@@ -13,9 +13,10 @@ export const clampPrice = (priceRange: Range<number> | null | undefined): Range<
   return [min, max]
 }
 
-export const addOrRemove = (array: SearchGroupNameEnum[], element: SearchGroupNameEnum) => {
+export const addOrRemove = (array: SearchGroupNameEnumv2[], element: SearchGroupNameEnumv2) => {
   if (array.includes(element)) return array.filter((el) => el !== element)
   return [...array, element]
 }
 
-export const sortCategories = (a: SearchGroupNameEnum, b: SearchGroupNameEnum) => a.localeCompare(b)
+export const sortCategories = (a: SearchGroupNameEnumv2, b: SearchGroupNameEnumv2) =>
+  a.localeCompare(b)

@@ -20,7 +20,7 @@ const venueId = 5959
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
 const sevenFilters = {
-  offerCategories: ['CINEMA', 'PRESSE'], // 2
+  offerCategories: ['FILMS_SERIES_CINEMA', 'MEDIA_PRESSE'], // 2
   offerTypes: twoOfferTypes, // 2
   offerIsNew: true, // 1
   timeRange, // 1
