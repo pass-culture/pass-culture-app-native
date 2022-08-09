@@ -157,7 +157,7 @@ Array [
               }
             />
             <TextInput
-              accessible={true}
+              accessible={false}
               autoCorrect={false}
               autoFocus={false}
               editable={true}
