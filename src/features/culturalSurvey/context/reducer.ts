@@ -32,6 +32,11 @@ export const culturalSurveyReducer: React.Reducer<CulturalSurveyState, Action> =
         answers: answers,
       }
     }
+    case 'FLUSH_ANSWERS':
+      return {
+        ...state,
+        answers: [],
+      }
     default:
       return { ...state }
   }

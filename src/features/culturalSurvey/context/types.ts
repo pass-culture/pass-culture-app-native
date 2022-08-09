@@ -25,3 +25,6 @@ export type Action =
         answers: CulturalSurveyAnswerEnum[]
       }
     }
+  | {
+      type: 'FLUSH_ANSWERS'
+    }
