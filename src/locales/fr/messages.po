@@ -896,10 +896,6 @@ msgstr "Distance maximum :"
 msgid "Distance minimum :"
 msgstr "Distance minimum :"
 
-#: src/features/profile/components/Badges/SubscriptionMessageBadge.tsx
-msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
-msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
-
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/DuoChoiceSelector.tsx
 msgid "Duo"
@@ -2920,6 +2916,10 @@ msgstr "Ton crédit a expiré le"
 #: src/features/home/components/HomeHeader.tsx
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
+
+#: src/features/profile/components/Badges/SubscriptionMessageBadge.tsx
+msgid "Ton dossier est déposé. Nous avons bien reçu ton dossier et sommes en train de l’analyser !"
+msgstr "Ton dossier est déposé. Nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
