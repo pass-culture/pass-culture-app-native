@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -20,6 +21,7 @@ interface Props {
   background?: 'white' | 'primary' | 'gradient'
   size?: 'small' | 'medium'
   withGoBackButton?: boolean
+  goBackAccessibilityLabel?: string
   onGoBack?: () => void
   RightComponent?: React.FC
 }
@@ -34,6 +36,7 @@ export const PageHeader: React.FC<Props> = ({
   size = 'small',
   background = 'white',
   withGoBackButton = false,
+  goBackAccessibilityLabel = t`Revenir en arrière`,
   onGoBack,
   RightComponent,
 }) => {
@@ -53,7 +56,7 @@ export const PageHeader: React.FC<Props> = ({
         )}
         <Container size={size}>
           <Row>
-            <ButtonContainer positionInHeader="left">
+            <ButtonContainer positionInHeader="left" testID={goBackAccessibilityLabel}>
               {!!withGoBackButton && <BackButton onGoBack={onGoBack} color={color} />}
             </ButtonContainer>
             <Title nativeID={titleID} color={color} size={size}>
