@@ -30,6 +30,13 @@ jest.mock('features/identityCheck/api/api', () => {
   }
 })
 
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
+}))
+
 describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
@@ -114,7 +121,7 @@ describe('SetPhoneValidationCode', () => {
       expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
     })
   })
-  it('should navigate to IdentityCheckStepper if validation succeeds', async () => {
+  it('should call navigateToNextScreen if validation succeeds', async () => {
     mockFetch.mockResolvedValueOnce(
       new Response(JSON.stringify({}), {
         headers: {
@@ -132,7 +139,7 @@ describe('SetPhoneValidationCode', () => {
     fireEvent.press(continueButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
+      expect(mockNavigateToNextScreen).toHaveBeenCalled()
     })
   })
 })

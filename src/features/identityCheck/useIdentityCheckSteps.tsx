@@ -55,7 +55,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
         name: IdentityCheckStep.PHONE_VALIDATION,
         icon: SmartphoneIcon,
         label: t`Numéro de téléphone`,
-        screens: ['SetPhoneNumber'],
+        screens: ['SetPhoneNumber', 'SetPhoneValidationCode'],
       },
       ...steps,
     ]

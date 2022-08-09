@@ -13,6 +13,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import {
   IdentityCheckRootStackParamList,
   UseNavigationType,
@@ -38,6 +39,7 @@ export const SetPhoneValidationCode = () => {
   const formattedPhoneNumber = phoneValidation?.phoneNumber
     ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
     : ''
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { navigate } = useNavigation<UseNavigationType>()
 
   useFocusEffect(
@@ -61,7 +63,7 @@ export const SetPhoneValidationCode = () => {
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: () => {
-      navigate('IdentityCheckStepper')
+      navigateToNextScreen()
     },
     onError: (err: unknown | ApiError) => {
       const { content } = err as ApiError

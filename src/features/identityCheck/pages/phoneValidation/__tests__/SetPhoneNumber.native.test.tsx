@@ -28,6 +28,13 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
   }),
 }))
 
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
+}))
+
 const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
 
 describe('SetPhoneNumber', () => {
@@ -105,7 +112,7 @@ describe('SetPhoneNumber', () => {
       expect(button).toBeDisabled()
     })
 
-    it('should navigate to SetPhoneValidationCode on /send_phone_validation_code request success', async () => {
+    it('should call navigateToNextScreen on /send_phone_validation_code request success', async () => {
       mockFetch.mockResolvedValueOnce(
         new Response(JSON.stringify({}), {
           headers: {
@@ -123,7 +130,7 @@ describe('SetPhoneNumber', () => {
       fireEvent.press(continueButton)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode')
+        expect(mockNavigateToNextScreen).toHaveBeenCalled()
       })
     })
 
