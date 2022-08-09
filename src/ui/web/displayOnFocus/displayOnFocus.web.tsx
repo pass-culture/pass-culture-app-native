@@ -1,10 +1,10 @@
-import { ElementType } from 'react'
-import styled from 'styled-components'
+import { ComponentType } from 'react'
 
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { hiddenAccessibleStyle } from 'ui/components/HiddenAccessibleText'
 
-export const displayOnFocus = (Component: ElementType) => {
-  return styled(Component)(({ theme }) => ({
+export const displayOnFocus = <Props,>(Component: ComponentType<Props>) => {
+  return styledButton(Component)(({ theme }) => ({
     zIndex: theme.zIndex.floatingButton,
     position: 'absolute',
 

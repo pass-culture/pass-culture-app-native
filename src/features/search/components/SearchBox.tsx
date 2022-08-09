@@ -208,6 +208,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           searchInputID={searchInputID}
           query={query}
           setQuery={setQuery}
+          isFocusable={false}
           isFocus={params?.view === SearchView.Suggestions}
           onSubmitQuery={onSubmitQuery}
           resetQuery={resetQuery}

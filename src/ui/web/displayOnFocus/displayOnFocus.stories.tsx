@@ -20,15 +20,13 @@ const RelativeWrapper = styled.div({
   position: 'relative',
 })
 
-const SomeNormalComponent = displayOnFocus(
-  styled.button({
-    disblay: 'flex',
-    '&:focus': {
-      width: '90vw !important', // exemple to override style of displayOnFocus:focus
-      outline: 'royalblue solid 1px',
-    },
-  })
-)
+const SomeNormalComponent = styled.button({
+  disblay: 'flex',
+  '&:focus': {
+    width: '90vw !important', // exemple to override style of displayOnFocus:focus
+    outline: 'royalblue solid 1px',
+  },
+})
 
 const SomeComponentThatDisplayOnFocus = displayOnFocus(SomeNormalComponent)
 
@@ -40,7 +38,7 @@ const Template: ComponentStory<FunctionComponent> = () => (
       {body2}
     </Typo.Body>
     <RelativeWrapper>
-      <SomeComponentThatDisplayOnFocus type="button">{buttonText}</SomeComponentThatDisplayOnFocus>
+      <SomeComponentThatDisplayOnFocus>{buttonText}</SomeComponentThatDisplayOnFocus>
     </RelativeWrapper>
   </Fragment>
 )
