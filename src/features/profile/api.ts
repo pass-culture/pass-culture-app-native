@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { api } from 'api/api'
 import { UserProfileResponse, UserProfileUpdateRequest } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 
@@ -54,7 +54,7 @@ const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
 
 export function useUserProfileInfo(options = {}) {
   const { isLoggedIn } = useAuthContext()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
 
   return usePersistQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
     enabled: !!netInfo.isConnected && isLoggedIn,

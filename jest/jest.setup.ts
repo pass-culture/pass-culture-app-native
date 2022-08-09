@@ -79,6 +79,9 @@ jest.mock('libs/react-native-device-info/getUniqueId')
 
 jest.mock('libs/keychain')
 
+/* See the corresponding mock in libs/network/__mocks__ */
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.mock('features/search/pages/SearchWrapper')
 
 jest.mock('features/favorites/pages/FavoritesWrapper')

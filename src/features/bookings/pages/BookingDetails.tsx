@@ -24,7 +24,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { eventMonitoring, ScreenError } from 'libs/monitoring'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -45,7 +45,7 @@ const emptyBookings: Booking[] = []
 
 export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const {
     status,

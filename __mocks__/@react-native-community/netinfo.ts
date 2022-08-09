@@ -5,3 +5,7 @@ export const useNetInfo: typeof actualUseNetInfo = jest.fn().mockReturnValue({
   isConnected: true,
   type: 'cellular',
 })
+
+export enum NetInfoStateType {
+  unknown = 'unknown',
+}

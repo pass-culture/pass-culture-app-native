@@ -5,7 +5,7 @@ import { useIsUserUnderage } from 'features/profile/utils'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 
@@ -13,7 +13,7 @@ export const useVenueOffers = (venueId: number) => {
   const transformHits = useTransformOfferHits()
   const params = useVenueSearchParameters(venueId)
   const isUserUnderage = useIsUserUnderage()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
 
   const { setCurrentQueryID } = useSearchAnalyticsState()
 

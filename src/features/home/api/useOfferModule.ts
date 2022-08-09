@@ -12,7 +12,7 @@ import {
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 
@@ -33,7 +33,7 @@ export const useOfferModule = ({
   const parseSearchParameters = useParseSearchParameters()
   const isUserUnderage = useIsUserUnderage()
   const { data: user } = useUserProfileInfo()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
   const { data, refetch } = useQuery(

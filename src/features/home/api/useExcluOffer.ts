@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useExcluOffer = (id: number) => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
 
   return useQuery(
     [QueryKeys.OFFER, id],

@@ -14,6 +14,7 @@ jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => (
 jest.mock('libs/i18n', () => ({
   activate: jest.fn(),
 }))
+jest.unmock('libs/network/NetInfoWrapper')
 
 describe('<App /> with mocked RootNavigator', () => {
   it('should call startBatchNotification() to optin to notifications', async () => {

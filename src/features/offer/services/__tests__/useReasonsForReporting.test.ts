@@ -4,15 +4,17 @@ import { OfferReportReasons } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { offerReportReasonSnap } from 'features/offer/api/snaps/offerReportReasonSnap'
 import { env } from 'libs/environment'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useReasonsForReporting } from '../useReasonsForReporting'
 
-jest.mock('libs/network/useNetInfo')
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 server.use(
   rest.get<OfferReportReasons>(
@@ -25,6 +27,7 @@ describe('useReasonsForReporting hook', () => {
   afterEach(jest.resetAllMocks)
 
   it('should retrieve reasons for reporting data when logged in', async () => {
+    mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -42,6 +45,7 @@ describe('useReasonsForReporting hook', () => {
   })
 
   it('should return null when not logged in', async () => {
+    mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

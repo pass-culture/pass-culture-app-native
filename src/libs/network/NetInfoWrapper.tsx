@@ -1,12 +1,17 @@
 import { t } from '@lingui/macro'
 // eslint-disable-next-line no-restricted-imports
-import { useNetInfo } from '@react-native-community/netinfo'
-import { useEffect } from 'react'
+import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
+import React, { createContext, memo, useContext, useEffect } from 'react'
+import { Platform } from 'react-native'
 
+import { useNetInfo } from 'libs/network/useNetInfo'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function NetInfoWrapper({ children }: { children: JSX.Element }) {
-  // use the raw useNetInfo here which is null at start
+export const NetInfoWrapper = memo(function NetInfoWrapper({
+  children,
+}: {
+  children: JSX.Element
+}) {
   const networkInfo = useNetInfo()
   const { showInfoSnackBar } = useSnackBarContext()
 
@@ -20,5 +25,18 @@ export function NetInfoWrapper({ children }: { children: JSX.Element }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkInfo.isConnected])
 
-  return children
+  return <NetInfoContext.Provider value={networkInfo}>{children}</NetInfoContext.Provider>
+})
+
+const isWeb = Platform.OS === 'web'
+
+const NetInfoContext = createContext<NetInfoState>({
+  type: NetInfoStateType.unknown,
+  isConnected: isWeb ? true : null,
+  isInternetReachable: isWeb ? true : null,
+  details: null,
+} as NetInfoState)
+
+export function useNetInfoContext(): NetInfoState {
+  return useContext(NetInfoContext)
 }

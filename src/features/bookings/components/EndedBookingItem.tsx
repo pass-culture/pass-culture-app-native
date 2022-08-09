@@ -8,7 +8,7 @@ import { BookingCancellationReasons } from 'api/gen'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { analytics } from 'libs/firebase/analytics'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -27,7 +27,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const categoryId = useCategoryId(stock.offer.subcategoryId)
   const queryClient = useQueryClient()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)

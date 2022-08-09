@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render } from 'tests/utils/web'
@@ -16,10 +16,10 @@ jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('BicolorFavoriteCount component', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render non connected icon', async () => {
     const { queryByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: false })
@@ -55,7 +55,7 @@ describe('BicolorFavoriteCount component', () => {
   })
 
   it('should not show nbFavorites within badge when offline', async () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = await renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
     expect(renderAPI.queryByTestId('bicolor-favorite-count')).toBeFalsy()
   })

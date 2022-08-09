@@ -5,14 +5,14 @@ import { QueryFunction } from 'react-query/types/core/types'
 import waitForExpect from 'wait-for-expect'
 
 import { eventMonitoring } from 'libs/monitoring'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, superFlushWithAct } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 type TestData = {
   id: number
@@ -44,7 +44,7 @@ describe('usePersistQuery', () => {
 
   const queryFn: QueryFunction<TestData[]> = async () => onlineData
 
-  mockUseNetInfo.mockReturnValue({ isConnected: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(async () => {
     await AsyncStorage.removeItem(queryKey)

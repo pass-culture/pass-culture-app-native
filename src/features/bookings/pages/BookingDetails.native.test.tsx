@@ -12,7 +12,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/firebase/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -49,7 +49,7 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -63,7 +63,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 allowConsole({ error: true }) // we allow it just for 1 test which is error throwing when no booking is found 404
 
 describe('BookingDetails', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(jest.restoreAllMocks)
 
@@ -221,7 +221,7 @@ describe('BookingDetails', () => {
   })
 
   it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const booking = bookingsSnap.ongoing_bookings[0]
     const { getByText } = renderBookingDetails(booking)
 

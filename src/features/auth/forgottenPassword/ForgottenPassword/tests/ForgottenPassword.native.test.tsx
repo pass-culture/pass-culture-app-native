@@ -1,11 +1,10 @@
-// eslint-disable-next-line no-restricted-imports
-import * as netInfoModule from '@react-native-community/netinfo'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { captureMonitoringError } from 'libs/monitoring'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
@@ -16,6 +15,8 @@ jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
 
 jest.mock('libs/monitoring')
+
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 beforeEach(() => {
   simulateConnectedNetwork()
@@ -187,15 +188,15 @@ describe('<ForgottenPassword />', () => {
 })
 
 function simulateNoNetwork() {
-  jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
+  mockUseNetInfoContext.mockReturnValue({
     isConnected: false,
-  } as netInfoModule.NetInfoState)
+  })
 }
 
 function simulateConnectedNetwork() {
-  jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
+  mockUseNetInfoContext.mockReturnValue({
     isConnected: true,
-  } as netInfoModule.NetInfoState)
+  })
 }
 
 function renderForgottenPassword() {

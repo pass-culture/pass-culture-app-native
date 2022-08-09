@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SuggestedCity } from 'libs/place'
 import { fetchCities } from 'libs/place/fetchCities'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,7 +19,7 @@ export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 const STALE_TIME_CITIES = 5 * 60 * 1000
 
 export const useCities = (postalCode: string) => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   return useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
     staleTime: STALE_TIME_CITIES,
     enabled: !!netInfo.isConnected && postalCode.length >= 5,

@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { analytics } from 'libs/firebase/analytics'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { act, cleanup, fireEvent } from 'tests/utils'
 
 import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
@@ -35,10 +35,10 @@ jest.mock('features/offer/services/useReasonsForReporting', () => ({
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('<OfferBody />', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
@@ -117,7 +117,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
     await renderOfferBodyPage()
     expect(api.getnativev1offersreports).not.toBeCalled()
   })

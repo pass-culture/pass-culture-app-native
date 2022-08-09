@@ -5,7 +5,7 @@ import { mocked } from 'ts-jest/utils'
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api/queries'
 import { analytics } from 'libs/firebase/analytics'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { flushAllPromises, render, act } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
@@ -32,13 +32,13 @@ mockUseSubcategories.mockReturnValue({
 } as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 jest.mock('ui/components/snackBar/SnackBarContext', () =>
   jest.requireActual('ui/components/snackBar/__mocks__/SnackBarContext')
 )
 describe('<OnGoingBookingsList /> - Analytics', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   const nativeEventMiddle = {
     layoutMeasurement: { height: 1000 },
@@ -71,7 +71,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
       expect(flatList.props.onRefresh).toBeDefined()
     })
     it('should show snack bar error when trying to pull to refetch with message "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."', async () => {
-      mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
       const refetch = jest.fn()
       const loadingBookings = {
         data: {

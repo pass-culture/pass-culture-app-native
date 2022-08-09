@@ -9,7 +9,7 @@ import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSecti
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import {
   BookingHitPlaceholder,
@@ -30,7 +30,7 @@ const emptyBookings: Booking[] = []
 const ANIMATION_DURATION = 700
 
 export function OnGoingBookingsList() {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()

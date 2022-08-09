@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { useNetInfo } from 'libs/network/useNetInfo'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 
 export const Favorites: React.FC = () => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
   if (!netInfo.isConnected) {
