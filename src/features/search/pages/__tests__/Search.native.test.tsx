@@ -101,7 +101,7 @@ describe('Search component', () => {
 
   it('should handle coming from "See More" correctly', () => {
     render(<Search />)
-    expect(mockDispatch).toBeCalledWith({
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE_FROM_NAVIGATE',
       payload: {},
     })
@@ -138,7 +138,7 @@ describe('Search component', () => {
       const categoryButton = await findByText('Spectacles')
       await fireEvent.press(categoryButton)
 
-      expect(mockShowResultsForCategory).toBeCalledWith(SearchGroupNameEnum.SPECTACLE)
+      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnum.SPECTACLE)
     })
 
     it('should show search box with label', () => {
@@ -170,7 +170,7 @@ describe('Search component', () => {
 
       const screen = 'SearchFilter'
       const params = undefined
-      expect(navigate).toBeCalledWith(screen, params)
+      expect(navigate).toHaveBeenCalledWith(screen, params)
     })
 
     it('should reinitialize the filters from the current one', async () => {
@@ -179,7 +179,7 @@ describe('Search component', () => {
       const searchFilterButton = await findByTestId('searchFilterButton')
       await fireEvent.press(searchFilterButton)
 
-      expect(mockDispatchStagedSearch).toBeCalledWith({
+      expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: mockSearchState,
       })
