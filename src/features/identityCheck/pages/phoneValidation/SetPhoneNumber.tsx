@@ -16,6 +16,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -41,6 +42,7 @@ export const SetPhoneNumber = () => {
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
   const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
@@ -73,7 +75,7 @@ export const SetPhoneNumber = () => {
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
       dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
-      navigate('SetPhoneValidationCode')
+      navigateToNextScreen()
       queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
     },
     onError: (error: ApiError | unknown) => {
