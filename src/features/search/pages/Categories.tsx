@@ -23,7 +23,7 @@ const useSelectCategory = (callback: () => void) => {
   const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
 
   return {
-    isCategorySelected: (category: SearchGroupNameEnumv2) => {
+    isCategorySelected(category: SearchGroupNameEnumv2) {
       const [selectedCategory] = [...searchState.offerCategories, SearchGroupNameEnumv2.NONE]
       return selectedCategory === category
     },
