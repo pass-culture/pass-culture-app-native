@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import moment from 'moment'
+import { format } from 'date-fns'
 import React from 'react'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { DateData, Theme } from 'react-native-calendars/src/types'
@@ -77,7 +77,7 @@ const RNCalendarTheme = {
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
-  const minDate = getMinAvailableDate(markedDates) || moment(new Date()).format('YYYY-MM-DD')
+  const minDate = getMinAvailableDate(markedDates) || format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
 
   return (
