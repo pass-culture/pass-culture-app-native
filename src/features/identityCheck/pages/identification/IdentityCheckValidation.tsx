@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import moment from 'moment'
+import { parse, format } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -16,7 +16,7 @@ export function IdentityCheckValidation() {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const birthDate = identification.birthDate
-    ? moment(identification.birthDate, 'YYYY-MM-DD').format('DD/MM/YYYY')
+    ? format(parse(identification.birthDate, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy')
     : ''
 
   const navigateToNextEduConnectStep = async () => {

@@ -196,3 +196,17 @@ index d85e6a9..14505be 100644
            {monthYear}
          </Text>
          {renderWeekDaysNames()}
+diff --git a/node_modules/react-native-calendars/src/momentResolver.js b/node_modules/react-native-calendars/src/momentResolver.js
+index ed4d962..8551a2d 100644
+--- a/node_modules/react-native-calendars/src/momentResolver.js
++++ b/node_modules/react-native-calendars/src/momentResolver.js
+@@ -1,8 +1,5 @@
+ let moment;
+ // Moment is an optional dependency
+ export const getMoment = () => {
+-    if (!moment) {
+-        moment = require('moment');
+-    }
+-    return moment;
++    throw new Error('react-native-calendars was patch-package to remove moment. See PC-16720')
+ };

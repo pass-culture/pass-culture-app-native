@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import moment from 'moment'
+import { format } from 'date-fns'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Picker from 'react-mobile-picker'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
@@ -70,7 +70,7 @@ export const CalendarPicker: React.FC<Props> = ({
     [fontFamily, colors]
   )
 
-  const minDate = moment(new Date()).format('YYYY-MM-DD')
+  const minDate = format(new Date(), 'yyyy-MM-dd')
   const ref = useRef<Node>(null)
   const [markedDates, setMarkedDates] = useState<{
     [name: string]: { selected: boolean; accessibilityLabel: string }
@@ -161,7 +161,7 @@ export const CalendarPicker: React.FC<Props> = ({
           <RNCalendar
             minDate={minDate}
             style={RN_CALENDAR_STYLE}
-            current={moment(selectedDate).format('YYYY-MM-DD')}
+            current={format(selectedDate, 'yyyy-MM-dd')}
             firstDay={1}
             enableSwipeMonths={true}
             renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
