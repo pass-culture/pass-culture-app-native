@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { BackButton } from 'ui/components/headers/BackButton'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
-import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -18,8 +17,7 @@ interface Props {
   title: string
   titleID?: string
   position?: 'relative' | 'absolute'
-  // TODO(LucasBeneston): When we remove all primary or gradient header, remove this props
-  background?: 'white' | 'primary' | 'gradient'
+  background?: 'white' | 'primary'
   size?: 'small' | 'medium'
   withGoBackButton?: boolean
   goBackAccessibilityLabel?: string
@@ -41,27 +39,24 @@ export const PageHeader: React.FC<Props> = ({
   onGoBack,
   RightComponent,
 }) => {
+  const isWhiteBackground = background === 'white'
   useFocusEffect(
     React.useCallback(() => {
-      StatusBar.setBarStyle(background === 'white' ? 'dark-content' : 'light-content', true)
-      return () =>
-        StatusBar.setBarStyle(background === 'white' ? 'light-content' : 'dark-content', true)
-    }, [background])
+      StatusBar.setBarStyle(isWhiteBackground ? 'dark-content' : 'light-content', true)
+      return () => StatusBar.setBarStyle(isWhiteBackground ? 'light-content' : 'dark-content', true)
+    }, [isWhiteBackground])
   )
   const { onLayout } = useElementWidth()
   const { top } = useCustomSafeInsets()
   const height = size === 'small' ? smallHeight : mediumHeight
-  const backgroundColor = background === 'white' ? ColorsEnum.WHITE : ColorsEnum.PRIMARY
-  const color = background === 'white' ? ColorsEnum.BLACK : ColorsEnum.WHITE
+  const backgroundColor = isWhiteBackground ? ColorsEnum.WHITE : ColorsEnum.PRIMARY
+  const color = isWhiteBackground ? ColorsEnum.BLACK : ColorsEnum.WHITE
   const isAbsolutePosition = position === 'absolute' || !!withGoBackButton || !!RightComponent
   return (
     <Header>
       {!!isAbsolutePosition && <SpacerAbsolutePosition height={height + top} />}
       <ColorContainer backgroundColor={backgroundColor} isAbsolutePosition={isAbsolutePosition}>
         <Spacer.TopScreen />
-        {background === 'gradient' && (
-          <HeaderBackground height="100%" width="100%" position="absolute" />
-        )}
         <Container size={size}>
           <Row>
             <ButtonContainer positionInHeader="left" testID={goBackAccessibilityLabel}>
