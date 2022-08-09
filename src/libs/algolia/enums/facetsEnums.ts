@@ -8,7 +8,7 @@ export enum FACETS_ENUM {
   OFFER_IS_EDUCATIONAL = 'offer.isEducational',
   OFFER_IS_THING = 'offer.isThing',
   OFFER_PRICES = 'offer.prices',
-  OFFER_SEARCH_GROUP_NAME = 'offer.searchGroupName',
+  OFFER_SEARCH_GROUP_NAME = 'offer.searchGroupNamev2',
   OFFER_SUB_CATEGORY = 'offer.subcategoryId',
   OFFER_STOCKS_DATE_CREATED = 'offer.stocksDateCreated',
   OFFER_ID_FORBIDDEN_TO_UNDERAGE = 'offer.isForbiddenToUnderage',
