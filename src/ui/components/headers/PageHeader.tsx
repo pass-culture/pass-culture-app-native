@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
+import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
-import { View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BackButton } from 'ui/components/headers/BackButton'
@@ -40,6 +41,13 @@ export const PageHeader: React.FC<Props> = ({
   onGoBack,
   RightComponent,
 }) => {
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle(background === 'white' ? 'dark-content' : 'light-content', true)
+      return () =>
+        StatusBar.setBarStyle(background === 'white' ? 'light-content' : 'dark-content', true)
+    }, [background])
+  )
   const { onLayout } = useElementWidth()
   const { top } = useCustomSafeInsets()
   const height = size === 'small' ? smallHeight : mediumHeight

@@ -21,7 +21,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title={t`Mes favoris`} background="gradient" size="medium" />
+      <PageHeader title={t`Mes favoris`} size="medium" />
       <FavoritesResults />
     </Container>
   )

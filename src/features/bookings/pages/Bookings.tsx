@@ -8,7 +8,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 export function Bookings() {
   return (
     <Container>
-      <PageHeader title={t`Mes réservations`} background="gradient" size="medium" />
+      <PageHeader title={t`Mes réservations`} size="medium" />
       <OnGoingBookingsList />
     </Container>
   )
