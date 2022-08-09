@@ -73,6 +73,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           price={getDisplayPrice(item.offer.prices)}
           isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
+          moduleId={moduleId}
           width={width}
           height={height}
         />
