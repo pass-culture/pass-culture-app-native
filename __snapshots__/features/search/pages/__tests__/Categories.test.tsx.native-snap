@@ -59,7 +59,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessibilityRole=\\"radio\\"
           accessibilityState={
             Object {
-@@ -950,11 +959,11 @@
+@@ -947,11 +956,11 @@
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -72,7 +72,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -1010,16 +1019,16 @@
+@@ -1007,16 +1016,16 @@
                 ]
               }
             />
@@ -91,7 +91,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -1038,20 +1047,11 @@
+@@ -1035,20 +1044,11 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
