@@ -564,10 +564,6 @@ msgstr "Comment ça marche ?"
 msgid "Complété"
 msgstr "Complété"
 
-#: src/features/cheatcodes/pages/CheatMenu/CheatMenu.tsx
-msgid "Composants"
-msgstr "Composants"
-
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Compte 15-17 créé !"
 msgstr "Compte 15-17 créé !"
@@ -1810,10 +1806,6 @@ msgstr "Musique - Salle de concerts"
 msgid "Musée"
 msgstr "Musée"
 
-#: src/features/cheatcodes/pages/CheatMenu/CheatMenu.tsx
-msgid "Navigation"
-msgstr "Navigation"
-
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "Ne pas annuler"
 msgstr "Ne pas annuler"
@@ -2536,6 +2528,7 @@ msgstr "Revenir au ticket précédent"
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/BackButton.tsx
+#: src/ui/components/headers/PageHeader.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Revenir en arrière"
 msgstr "Revenir en arrière"
