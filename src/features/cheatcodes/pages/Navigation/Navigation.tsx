@@ -71,37 +71,37 @@ export function Navigation(): JSX.Element {
 
   return (
     <React.Fragment>
-      <PageHeader title={`Navigation`} withGoBackButton />
+      <PageHeader title="Navigation" withGoBackButton />
       <ScrollView>
         <StyledContainer>
           <Row half>
             <CheatCodesButton />
           </Row>
           <Row half>
-            <ButtonPrimary wording={'SignUp 🎨'} onPress={() => navigate('NavigationSignUp')} />
+            <ButtonPrimary wording="SignUp 🎨" onPress={() => navigate('NavigationSignUp')} />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Cultural Survey 🎨'}
+              wording="Cultural Survey 🎨"
               onPress={() => navigate('NavigationCulturalSurvey')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Account Management 🎨'}
+              wording="Account Management 🎨"
               onPress={() => navigate('NavigationAccountSuspension')}
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording={'Profile 🎨'} onPress={() => navigate('NavigationProfile')} />
+            <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
-            <ButtonPrimary wording={"Partage de l'app"} onPress={pressShareApp} />
+            <ButtonPrimary wording="Partage de l'app" onPress={pressShareApp} />
             <ShareAppModal visible={shareAppModalVisible} dismissModal={hideShareAppModal} />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Sentry'}
+              wording="Sentry"
               onPress={() => {
                 const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
                 eventMonitoring.captureException(new Error(message))
@@ -113,11 +113,11 @@ export function Navigation(): JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording={'POC A/B testing'} onPress={() => navigate('ABTestingPOC')} />
+            <ButtonPrimary wording="POC A/B testing" onPress={() => navigate('ABTestingPOC')} />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Reset mdp lien expiré'}
+              wording="Reset mdp lien expiré"
               onPress={() =>
                 navigate('ResetPasswordExpiredLink', {
                   email: 'john@wick.com',
@@ -127,7 +127,7 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Reset mdp email envoyé'}
+              wording="Reset mdp email envoyé"
               onPress={() =>
                 navigate('ResetPasswordEmailSent', {
                   email: 'jean.dupont@gmail.com',
@@ -137,19 +137,19 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'First Tutorial'}
+              wording="First Tutorial"
               onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording={'Cultural Survey'} onPress={() => navigate('CulturalSurvey')} />
+            <ButtonPrimary wording="Cultural Survey" onPress={() => navigate('CulturalSurvey')} />
           </Row>
           <Row half>
             <ButtonPrimary wording="Venue" onPress={() => navigate('Venue', { id: venueId })} />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Erreur rendering'}
+              wording="Erreur rendering"
               onPress={() => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
@@ -171,13 +171,13 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Eighteen Birthday'}
+              wording="Eighteen Birthday"
               onPress={() => navigate('EighteenBirthday')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Distance to Eiffel Tower`}
+              wording="Distance to Eiffel Tower"
               onPress={() => {
                 Alert.alert(distanceToEiffelTower || 'Authorize geolocation first')
               }}
@@ -186,13 +186,13 @@ export function Navigation(): JSX.Element {
           <Row half>
             <LandscapePositionPage isVisible={isLandscapeVisible} />
             <ButtonPrimary
-              wording={'Tu es en paysage !'}
+              wording="Tu es en paysage !"
               onPress={() => setIsLandscapeVisible(true)}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Maintenance Page`}
+              wording="Maintenance Page"
               onPress={() =>
                 setScreenError(
                   new ScreenError('Test maintenance page', () => (
@@ -204,64 +204,64 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`ForceUpdate Page`}
+              wording="ForceUpdate Page"
               onPress={() => setScreenError(new ScreenError('Test force update page', ForceUpdate))}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Beneficiary request sent`}
+              wording="Beneficiary request sent"
               onPress={() => navigate('BeneficiaryRequestSent')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Pages non écrans`}
+              wording="Pages non écrans"
               onPress={() => navigate('NavigationNotScreensPages')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Offre inexistante`}
+              wording="Offre inexistante"
               onPress={() => navigate('Offer', { id: 0, from: 'search' })}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Booking Confirmation`}
+              wording="Booking Confirmation"
               onPress={() => navigate('BookingConfirmation', { offerId: 11224, bookingId: 1240 })}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Change e-mail lien expiré'}
+              wording="Change e-mail lien expiré"
               onPress={() => navigate('ChangeEmailExpiredLink')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Générateur de deeplinks'}
+              wording="Générateur de deeplinks"
               onPress={() => navigate('DeeplinksGenerator')}
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording={'UTM parameters'} onPress={() => navigate('UTMParameters')} />
+            <ButtonPrimary wording="UTM parameters" onPress={() => navigate('UTMParameters')} />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={`Notification rechargement crédit`}
+              wording="Notification rechargement crédit"
               onPress={() => navigate('RecreditBirthdayNotification')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Underage account created'}
+              wording="Underage account created"
               onPress={() => navigate('UnderageAccountCreated')}
             />
           </Row>
           <Row half>
             <ButtonPrimary
-              wording={'Contentful KO error'}
+              wording="Contentful KO error"
               onPress={() =>
                 setScreenError(
                   new ScreenError(

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -11,16 +12,16 @@ export const CheatMenu: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container>
-      <PageHeader title={`Cheater Zone`} withGoBackButton />
+      <PageHeader title="Cheater Zone" withGoBackButton />
       <Spacer.Flex />
       <React.Fragment>
         <Spacer.Column numberOfSpaces={8} />
         <CheatTouchableOpacity onPress={() => navigate('AppComponents')}>
-          <Typo.Body>{`Composants`}</Typo.Body>
+          <Typo.Body>Composants</Typo.Body>
         </CheatTouchableOpacity>
         <Spacer.Column numberOfSpaces={8} />
         <CheatTouchableOpacity onPress={() => navigate('Navigation')}>
-          <Typo.Body>{`Navigation`}</Typo.Body>
+          <Typo.Body>Navigation</Typo.Body>
         </CheatTouchableOpacity>
       </React.Fragment>
       <Spacer.Flex />

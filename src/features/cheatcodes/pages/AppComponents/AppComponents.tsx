@@ -115,7 +115,7 @@ export const AppComponents: FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title={`App components`} withGoBackButton />
+      <PageHeader title="App components" withGoBackButton />
       <StyledScrollView>
         <Divider />
 
