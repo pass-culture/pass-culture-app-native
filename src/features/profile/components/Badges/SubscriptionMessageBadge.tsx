@@ -48,7 +48,7 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
         callToActionLink={props.subscriptionMessage?.callToAction?.callToActionLink}
         message={
           props.subscriptionMessage?.userMessage ||
-          t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!`
+          t`Ton dossier est déposé. Nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!`
         }
         testID="subscription-message-badge"
       />
