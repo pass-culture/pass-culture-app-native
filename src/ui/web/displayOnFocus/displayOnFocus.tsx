@@ -1,4 +1,6 @@
-import { ComponentType } from 'react'
+import { ComponentType, FunctionComponent } from 'react'
 
-export const displayOnFocus = <Props,>(Component: ComponentType<Props>): ComponentType<Props> =>
-  Component
+const NeverRender: FunctionComponent = () => null
+
+export const displayOnFocus = <Props,>(_Component: ComponentType<Props>): ComponentType<Props> =>
+  NeverRender
