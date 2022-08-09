@@ -11,7 +11,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -34,7 +34,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   dismissModal,
   booking,
 }) => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { data: user } = useUserProfileInfo()
   const refundRule = getRefundRule(booking, user)
   const { navigate } = useNavigation<UseNavigationType>()

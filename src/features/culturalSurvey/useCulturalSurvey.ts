@@ -5,7 +5,7 @@ import { CulturalSurveyAnswersRequest, CulturalSurveyQuestionsResponse } from 'a
 import { useAppSettings } from 'features/auth/settings'
 import { shouldShowCulturalSurvey } from 'features/culturalSurvey/helpers/utils'
 import { useUserProfileInfo } from 'features/profile/api'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_CULTURAL_SURVEY_QUESTIONS = 5 * 60 * 1000
@@ -13,7 +13,7 @@ const STALE_TIME_CULTURAL_SURVEY_QUESTIONS = 5 * 60 * 1000
 export function useCulturalSurveyQuestions() {
   const { data: user } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const shouldRequestCulturalSurveyQuestions =
     shouldShowCulturalSurvey(user) && settings?.enableNativeCulturalSurvey
 

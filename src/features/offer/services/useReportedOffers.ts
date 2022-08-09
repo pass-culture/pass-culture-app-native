@@ -3,13 +3,13 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { UserReportedOffersResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_REPORTED_OFFERS = 5 * 60 * 1000
 
 export const useReportedOffers = () => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<UserReportedOffersResponse>(

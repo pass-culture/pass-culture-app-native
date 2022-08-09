@@ -4,7 +4,7 @@ import { useQuery, UseQueryOptions, UseQueryResult, QueryKey } from 'react-query
 import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 
 function useGetPersistData<TData, TQueryKey>(queryKey: TQueryKey) {
   const [persistData, setPersistData] = useState<TData | undefined>()
@@ -51,7 +51,7 @@ export function usePersistQuery<
   queryFn: QueryFunction<TQueryFnData, TQueryKey>,
   options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey'>
 ): UsePersistQueryResult<TData, TError> {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const persistData = useGetPersistData(queryKey)
 
   const query = useQuery<TQueryFnData, TError, TData, TQueryKey>(queryKey, queryFn, {

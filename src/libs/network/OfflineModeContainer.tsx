@@ -2,13 +2,13 @@ import { t } from '@lingui/macro'
 import React, { ReactNode, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 const THIRTY_SECONDS = 15000
 
 export function OfflineModeContainer({ children }: { children: ReactNode }) {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const [show, setShow] = useState(!netInfo.isConnected)
   const isInternetReachable = useRef(netInfo.isInternetReachable)
 

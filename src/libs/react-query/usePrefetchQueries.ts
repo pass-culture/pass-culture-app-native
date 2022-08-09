@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { getEntries } from 'features/home/api'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 
@@ -16,7 +16,7 @@ const prefetchQueries = async () => {
 }
 
 export const usePrefetchQueries = () => {
-  const { isConnected } = useNetInfo()
+  const { isConnected } = useNetInfoContext()
   useEffect(() => {
     if (isConnected) {
       prefetchQueries()

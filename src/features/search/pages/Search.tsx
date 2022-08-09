@@ -17,8 +17,8 @@ import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { useNetInfo } from 'libs/network/useNetInfo'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
@@ -71,7 +71,7 @@ const BodySearch = memo(function BodySearch({ view }: BodySearchProps) {
 })
 
 export function Search() {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
 

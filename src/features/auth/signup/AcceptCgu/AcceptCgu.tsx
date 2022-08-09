@@ -8,7 +8,7 @@ import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -20,7 +20,7 @@ import { Spacer, Typo } from 'ui/theme'
 
 export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  const networkInfo = useNetInfo()
+  const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
 
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)

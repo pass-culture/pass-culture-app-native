@@ -17,8 +17,8 @@ import { env } from 'libs/environment'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { useNetInfo } from 'libs/network/useNetInfo'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -258,7 +258,7 @@ const OnlineProfile: React.FC = () => {
 }
 
 export const Profile: React.FC = () => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   if (netInfo.isConnected) {
     return <OnlineProfile />
   }

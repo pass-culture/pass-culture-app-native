@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { Properties } from 'libs/place'
 import { buildPlaceUrl } from 'libs/place/buildUrl'
 import * as fetchAddresses from 'libs/place/fetchAddresses'
@@ -47,10 +47,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('<SetAddress/>', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   it('should render correctly', () => {
     const renderAPI = renderSetAddresse()

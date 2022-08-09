@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useFavoritesCount } from 'features/favorites/pages/useFavorites'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
@@ -25,7 +25,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
     showTabBar,
     tabBar: { showLabels },
   } = useTheme()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
   const { data: favoritesCount } = useFavoritesCount()
   const scale = useScaleFavoritesAnimation(favoritesCount)

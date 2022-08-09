@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import { BookingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { env } from 'libs/environment'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
@@ -21,14 +21,14 @@ server.use(
 )
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
 describe('[API] booking queries', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true, isInternetReachable: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   describe('[Method] useEndedBookingFromOfferId', () => {
     it('should return an ended booking if existing', async () => {

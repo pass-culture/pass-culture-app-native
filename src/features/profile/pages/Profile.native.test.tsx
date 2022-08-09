@@ -18,7 +18,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { flushAllPromisesWithAct, render, act, fireEvent, cleanup } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -91,10 +91,10 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('Profile component', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
@@ -109,7 +109,7 @@ describe('Profile component', () => {
   })
 
   it('should render offline page when not connected', async () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = await renderProfile()
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
   })

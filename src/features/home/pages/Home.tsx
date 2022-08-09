@@ -27,8 +27,8 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useABTestingContext } from 'libs/ABTesting'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { useNetInfo } from 'libs/network/useNetInfo'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -207,7 +207,7 @@ export const OnlineHome: FunctionComponent = () => {
 }
 
 export const Home: FunctionComponent = () => {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   if (netInfo.isConnected) {
     return <OnlineHome />
   }

@@ -3,12 +3,12 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { NextSubscriptionStepResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export function useNextSubscriptionStep(setError?: (error: Error) => void) {
   const { isLoggedIn } = useAuthContext()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   return useQuery<NextSubscriptionStepResponse | undefined>(
     QueryKeys.NEXT_SUBSCRIPTION_STEP,
     async () => {

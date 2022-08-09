@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
 export const TabBarContainer = ({ children }: { children: React.ReactNode }) => {
   const { bottom } = useCustomSafeInsets()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   return (
     <MainContainer>
       <RowContainer>

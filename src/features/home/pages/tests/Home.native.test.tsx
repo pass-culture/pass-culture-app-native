@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { useNetInfo as useNetInfoDefault } from 'libs/network/useNetInfo'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { Home } from '../Home'
@@ -28,14 +28,14 @@ jest.mock('features/home/api', () => ({
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfo = useNetInfoDefault as jest.Mock
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
 describe('Home component', () => {
-  mockUseNetInfo.mockReturnValue({ isConnected: true })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(jest.clearAllMocks)
   beforeEach(() => {
@@ -114,7 +114,7 @@ describe('Home component', () => {
   })
 
   it('should render offline page when not connected', () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = render(<Home />)
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
   })

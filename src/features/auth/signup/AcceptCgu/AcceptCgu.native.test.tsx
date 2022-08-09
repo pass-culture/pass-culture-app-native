@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-restricted-imports
-import * as netInfoModule from '@react-native-community/netinfo'
 import React from 'react'
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
@@ -10,6 +8,7 @@ import { contactSupport } from 'features/auth/support.services'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
+import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 
@@ -19,16 +18,17 @@ jest.mock('features/auth/settings')
 jest.mock('libs/monitoring')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 function simulateNoNetwork() {
-  jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
+  mockUseNetInfoContext.mockReturnValue({
     isConnected: false,
-  } as netInfoModule.NetInfoState)
+  })
 }
 
 function simulateConnectedNetwork() {
-  jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
+  mockUseNetInfoContext.mockReturnValue({
     isConnected: true,
-  } as netInfoModule.NetInfoState)
+  })
 }
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }

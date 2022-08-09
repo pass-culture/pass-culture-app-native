@@ -10,7 +10,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface FavoriteMutationContext {
@@ -140,7 +140,7 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
 const STALE_TIME_FAVORITES = 5 * 60 * 1000
 
 export function useFavorites() {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
@@ -152,7 +152,7 @@ export function useFavorites() {
 
 export function useFavoritesCount() {
   const { isLoggedIn } = useAuthContext()
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
 
   return useQuery(QueryKeys.FAVORITES_COUNT, () => api.getnativev1mefavoritescount(), {
     enabled: !!netInfo.isConnected && isLoggedIn,

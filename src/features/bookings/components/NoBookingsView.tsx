@@ -5,14 +5,14 @@ import styled from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
-import { useNetInfo } from 'libs/network/useNetInfo'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function NoBookingsView() {
-  const netInfo = useNetInfo()
+  const netInfo = useNetInfoContext()
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'bookings' })
   const searchNavConfig = getTabNavConfig('Search', { view: SearchView.Landing })
 
