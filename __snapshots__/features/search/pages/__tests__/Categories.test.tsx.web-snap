@@ -64,7 +64,7 @@ exports[`Categories component should match diff snapshot when new category is se
 -             aria-checked={true}
 +             aria-checked={false}
               className=\\"css-view-1dbjc4n\\"
-              data-testid=\\"FILMS_SERIES_FILMS_SERIES_CINEMA\\"
+              data-testid=\\"FILMS_SERIES_CINEMA\\"
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
