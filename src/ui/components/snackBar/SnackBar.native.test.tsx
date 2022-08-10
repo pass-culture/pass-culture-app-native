@@ -65,15 +65,20 @@ describe('SnackBar Component', () => {
 
       getByTestId('snackbar-message')
     })
-    it('should not render the empty container when visible=false', () => {
-      const { getByTestId } = render(renderHelperSnackBar(false, { message: 'message' }))
+    it('should render the content container when visible=false only if already rendered', async () => {
+      const { queryByTestId, rerender } = render(
+        renderHelperSnackBar(false, { message: 'message' }, 0)
+      )
+      expect(queryByTestId('snackbar-container')).toBeNull()
 
-      const container = getByTestId('snackbar-container')
+      rerender(renderHelperSnackBar(true, { message: 'message' }, 1))
+      expect(queryByTestId('snackbar-container')).toBeTruthy()
 
-      expect(container.props.style[0].display).toEqual('none')
+      rerender(renderHelperSnackBar(false, { message: 'message' }, 2))
+      expect(queryByTestId('snackbar-container')).toBeTruthy()
     })
-    it('should render the illustration icon when provided', () => {
-      const { getByTestId } = render(renderHelperSnackBar(false, { message: 'message' }))
+    it('should render the illustration icon when provided when visible', () => {
+      const { getByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
 
       getByTestId('snackbar-icon')
     })

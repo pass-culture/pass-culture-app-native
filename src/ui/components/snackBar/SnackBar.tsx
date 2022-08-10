@@ -8,7 +8,7 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { View, ViewProps, ViewStyle } from 'react-native'
+import { Platform, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -43,6 +43,7 @@ export type SnackBarProps = {
 }
 
 const _SnackBar = (props: SnackBarProps) => {
+  const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
   const containerRef: RefType = useRef(null)
@@ -74,6 +75,10 @@ const _SnackBar = (props: SnackBarProps) => {
 
   // Visibility effect
   useEffect(() => {
+    if (props.visible || isVisible) {
+      firstRender.current = false
+    }
+
     if (props.refresher <= 0) {
       return
     }
@@ -110,6 +115,8 @@ const _SnackBar = (props: SnackBarProps) => {
     )
   }
 
+  // If in web, always display snackbar content. Else, don't display until needed, then keep mounted (using firstRender)
+  const renderContent = Platform.OS === 'web' || !firstRender.current || isVisible
   return (
     <RootContainer>
       <ColoredAnimatableView
@@ -118,22 +125,24 @@ const _SnackBar = (props: SnackBarProps) => {
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <View accessibilityRole={AccessibilityRole.STATUS} aria-relevant="additions">
-          <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
-            {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
-            <Spacer.Flex flex={1}>
-              <StyledBody testID="snackbar-message" color={props.color}>
-                {props.message}
-              </StyledBody>
-            </Spacer.Flex>
-            <Touchable
-              accessibilityLabel={t`Supprimer le message\u00a0: ${props.message}`}
-              testID="snackbar-close"
-              onPress={onClose}>
-              <Close color={props.color} />
-            </Touchable>
-          </SnackBarContainer>
-        </View>
+        {!!renderContent && (
+          <View accessibilityRole={AccessibilityRole.STATUS} aria-relevant="additions">
+            <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
+              {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
+              <Spacer.Flex flex={1}>
+                <StyledBody testID="snackbar-message" color={props.color}>
+                  {props.message}
+                </StyledBody>
+              </Spacer.Flex>
+              <Touchable
+                accessibilityLabel={t`Supprimer le message\u00a0: ${props.message}`}
+                testID="snackbar-close"
+                onPress={onClose}>
+                <Close color={props.color} />
+              </Touchable>
+            </SnackBarContainer>
+          </View>
+        )}
         {renderProgressBar()}
       </ColoredAnimatableView>
     </RootContainer>
@@ -180,6 +189,8 @@ const StyledBody = styled(Typo.Body)<{ color: string }>((props) => ({
   flexWrap: 'wrap',
 }))
 
-const Close = styled(DefaultClose).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
-}))``
+const Close = memo(
+  styled(DefaultClose).attrs(({ theme }) => ({
+    size: theme.icons.sizes.smaller,
+  }))``
+)

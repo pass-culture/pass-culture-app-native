@@ -2191,7 +2191,7 @@ msgstr "Patrimoine et tourisme"
 msgid "Permanent"
 msgstr "Permanent"
 
-#: src/features/landscapePosition/LandscapePositionPage.tsx
+#: src/features/landscapePosition/LandscapePositionPage.web.tsx
 msgid "Place ton téléphone ou ta tablette à la verticale pour afficher l’application."
 msgstr "Place ton téléphone ou ta tablette à la verticale pour afficher l’application."
 
@@ -2995,8 +2995,8 @@ msgstr "Ton status | Profil"
 msgid "Ton établissement | Profil"
 msgstr "Ton établissement | Profil"
 
-#: src/features/landscapePosition/LandscapePositionPage.tsx
-#: src/features/landscapePosition/LandscapePositionPage.tsx
+#: src/features/landscapePosition/LandscapePositionPage.web.tsx
+#: src/features/landscapePosition/LandscapePositionPage.web.tsx
 msgid "Tourne-moi"
 msgstr "Tourne-moi"
 
