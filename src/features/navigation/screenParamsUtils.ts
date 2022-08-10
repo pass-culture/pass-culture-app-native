@@ -84,6 +84,7 @@ export const screenParamsParser: ParamsParsers = {
     tags: JSON.parse,
     timeRange: JSON.parse,
     view: JSON.parse,
+    noFocus: JSON.parse,
   },
 }
 
@@ -142,5 +143,6 @@ export const screenParamsStringifier: ParamsStringifiers = {
     tags: JSON.stringify,
     timeRange: JSON.stringify,
     view: JSON.stringify,
+    noFocus: JSON.stringify,
   },
 }

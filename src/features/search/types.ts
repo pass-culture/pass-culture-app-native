@@ -44,4 +44,5 @@ export interface SearchState {
   tags: string[]
   query: string
   view: SearchView
+  noFocus?: boolean
 }

@@ -46,9 +46,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22',
     })
   })
 })
