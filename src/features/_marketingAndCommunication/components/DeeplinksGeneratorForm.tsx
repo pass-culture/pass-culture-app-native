@@ -67,6 +67,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
                 : {
                     view: SearchView.Results,
                     locationFilter: { locationType: LocationType.EVERYWHERE },
+                    noFocus: true,
                   }
             )
           }}

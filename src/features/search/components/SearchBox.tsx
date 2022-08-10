@@ -100,10 +100,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   }, [params?.query])
 
   useEffect(() => {
-    if (params?.view === SearchView.Results && !appEnableAutocomplete) {
+    if (!params?.noFocus && params?.view === SearchView.Results && !appEnableAutocomplete) {
       inputRef.current?.focus()
     }
-  }, [appEnableAutocomplete, params?.query, params?.view])
+  }, [appEnableAutocomplete, params?.query, params?.view, params?.noFocus])
 
   const resetQuery = useCallback(() => {
     inputRef.current?.focus()
