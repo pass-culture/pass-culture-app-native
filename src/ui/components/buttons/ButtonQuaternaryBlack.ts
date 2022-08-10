@@ -24,12 +24,11 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
       size: theme.buttons.quaternaryBlack.iconSize,
     })``
 
-    const Title = styled(Typo.ButtonText)({
+    const Title = styled(Typo.Caption)({
       maxWidth: '100%',
       color: disabled
         ? theme.buttons.disabled.quaternaryBlack.textColor
         : theme.buttons.quaternaryBlack.textColor,
-      fontSize: getSpacing(3),
       marginLeft: icon
         ? theme.buttons.quaternaryBlack.marginLeftWithIcon
         : theme.buttons.quaternaryBlack.marginLeft,
@@ -37,10 +36,10 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
 
     return {
       ...rest,
-      icon: Icon,
-      title: Title,
-      loadingIndicator: LoadingIndicator,
       inlineHeight: getSpacing(5),
+      icon: Icon,
+      loadingIndicator: LoadingIndicator,
+      title: Title,
       hoverUnderlineColor: theme.buttons.quaternaryBlack.textColor,
     }
   }

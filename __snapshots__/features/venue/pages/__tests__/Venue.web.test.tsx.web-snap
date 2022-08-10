@@ -644,7 +644,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="c1 c2 sc-iAKWXU c2"
+                class="c1 c2 sc-iUKqMP c2"
                 data-testid="iconLocation"
                 tabindex="0"
                 title="Géolocalisation désactivée"
@@ -2383,7 +2383,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="c1 c2 sc-iAKWXU c2"
+              class="c1 c2 sc-iUKqMP c2"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"

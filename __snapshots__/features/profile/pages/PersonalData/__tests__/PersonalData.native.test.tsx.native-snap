@@ -368,9 +368,9 @@ Array [
               Array [
                 Object {
                   "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
+                  "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
-                  "lineHeight": 20,
+                  "lineHeight": 16,
                   "marginLeft": 4,
                   "maxWidth": "100%",
                 },
@@ -572,9 +572,9 @@ Array [
               Array [
                 Object {
                   "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
+                  "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
-                  "lineHeight": 20,
+                  "lineHeight": 16,
                   "marginLeft": 4,
                   "maxWidth": "100%",
                 },

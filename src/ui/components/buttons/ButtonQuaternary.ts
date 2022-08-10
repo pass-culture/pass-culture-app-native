@@ -24,12 +24,11 @@ export const ButtonQuaternary = styledButton(AppButton).attrs<BaseButtonProps>(
       size: theme.buttons.quaternary.iconSize,
     })``
 
-    const Title = styled(Typo.ButtonText)({
+    const Title = styled(Typo.Caption)({
       maxWidth: '100%',
       color: disabled
         ? theme.buttons.disabled.quaternary.textColor
         : theme.buttons.quaternary.textColor,
-      fontSize: getSpacing(3),
       marginLeft: icon
         ? theme.buttons.quaternary.marginLeftWithIcon
         : theme.buttons.quaternary.marginLeft,
