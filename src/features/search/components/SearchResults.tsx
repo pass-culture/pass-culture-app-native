@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
+import { SearchResultsFilters } from 'features/search/components/SearchResultsFilters'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/firebase/analytics'
@@ -147,6 +148,7 @@ export const SearchResults: React.FC = () => {
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
+      <SearchResultsFilters />
       <Container testID="searchResults">
         <FlatList
           ref={flatListRef}
