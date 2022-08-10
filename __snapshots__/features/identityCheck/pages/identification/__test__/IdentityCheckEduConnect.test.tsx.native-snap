@@ -93,6 +93,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               },
             ]
           }
+          testID="Revenir en arrière"
         >
           <View
             accessibilityLabel="Revenir en arrière"

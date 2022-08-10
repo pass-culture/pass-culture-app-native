@@ -132,6 +132,7 @@ exports[`Profile component should render correctly 1`] = `
                           },
                         ]
                       }
+                      testID="Revenir en arrière"
                     />
                     <Text
                       color="#161617"

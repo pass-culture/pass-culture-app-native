@@ -13,12 +13,12 @@ exports[`Favorites component should render correctly 1`] = `
   }
 >
   <View
-    backgroundColor="#eb0055"
+    backgroundColor="#ffffff"
     isAbsolutePosition={false}
     style={
       Array [
         Object {
-          "backgroundColor": "#eb0055",
+          "backgroundColor": "#ffffff",
           "width": "100%",
         },
       ]
@@ -35,34 +35,6 @@ exports[`Favorites component should render correctly 1`] = `
         ]
       }
     />
-    <View
-      height="100%"
-      position="absolute"
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#eb0055",
-            "height": "100%",
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": -1,
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        height="100%"
-        width="100%"
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
     <View
       size="medium"
       style={
@@ -104,15 +76,16 @@ exports[`Favorites component should render correctly 1`] = `
               },
             ]
           }
+          testID="Revenir en arrière"
         />
         <Text
-          color="#ffffff"
+          color="#161617"
           numberOfLines={1}
           size="medium"
           style={
             Array [
               Object {
-                "color": "#ffffff",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,

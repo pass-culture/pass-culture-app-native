@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -194,11 +194,11 @@
+@@ -195,11 +195,11 @@
         />
         <View
           accessibilityRole=\\"radio\\"
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -254,16 +254,16 @@
+@@ -255,16 +255,16 @@
                 ]
               }
             />
@@ -37,7 +37,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -282,11 +282,20 @@
+@@ -283,11 +283,20 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -59,7 +59,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessibilityRole=\\"radio\\"
           accessibilityState={
             Object {
-@@ -947,11 +956,11 @@
+@@ -948,11 +957,11 @@
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -72,7 +72,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -1007,16 +1016,16 @@
+@@ -1008,16 +1017,16 @@
                 ]
               }
             />
@@ -91,7 +91,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -1035,20 +1044,11 @@
+@@ -1036,20 +1045,11 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -204,6 +204,7 @@ exports[`Categories component should render correctly 1`] = `
               },
             ]
           }
+          testID="Revenir en arrière"
         >
           <View
             accessibilityLabel="Revenir en arrière"

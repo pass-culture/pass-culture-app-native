@@ -66,6 +66,7 @@ Array [
               },
             ]
           }
+          testID="Revenir en arrière"
         />
         <Text
           color="#161617"
@@ -412,6 +413,7 @@ Array [
               },
             ]
           }
+          testID="Revenir en arrière"
         />
         <Text
           color="#161617"
@@ -831,6 +833,7 @@ Array [
               },
             ]
           }
+          testID="Revenir en arrière"
         />
         <Text
           color="#161617"
@@ -1078,6 +1081,7 @@ Array [
               },
             ]
           }
+          testID="Revenir en arrière"
         />
         <Text
           color="#161617"

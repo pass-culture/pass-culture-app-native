@@ -6,10 +6,9 @@ import waitForExpect from 'wait-for-expect'
 import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
+import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { render, fireEvent } from 'tests/utils'
-
-import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
 jest.mock('react-query')
 
@@ -18,9 +17,8 @@ jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native')
   return {
     ...actualNav,
-    useNavigation: () => ({
-      navigate: mockedNavigate,
-    }),
+    useNavigation: () => ({ navigate: mockedNavigate }),
+    useFocusEffect: jest.fn(),
   }
 })
 
