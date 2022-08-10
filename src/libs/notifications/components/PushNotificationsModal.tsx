@@ -25,7 +25,6 @@ export const PushNotificationsModal: React.FC<Props> = ({
     onCloseIconPress={onDismiss}
     testIdSuffix="notifications-permission-modal">
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={5} />
       <BicolorLocationPointer />
       <Spacer.Column numberOfSpaces={10} />
       <InformationText>

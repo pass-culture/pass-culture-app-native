@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { Modal } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -27,8 +26,6 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   onCloseIconPress,
   testIdSuffix,
 }) => {
-  const { bottom } = useSafeAreaInsets()
-  const paddingBottom = Math.max(bottom, getSpacing(3))
   const titleID = uuidv4()
   return (
     <React.Fragment>
@@ -55,7 +52,8 @@ export const AppInformationModal: FunctionComponent<Props> = ({
               onRightIconPress={onCloseIconPress}
               numberOfLines={numberOfLinesTitle}
             />
-            <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
+            <Spacer.Column numberOfSpaces={6} />
+            <Content>{children}</Content>
           </Container>
           <FlexSpacer />
         </Modal>
@@ -79,7 +77,8 @@ const Container = styled.View(({ theme }) => ({
   alignItems: 'center',
   alignSelf: 'center',
   borderRadius: getSpacing(4),
-  padding: getSpacing(5),
+  padding: getSpacing(6),
+  paddingBottom: getSpacing(8),
   width: theme.isMobileViewport
     ? theme.appContentWidth - getSpacing(8)
     : theme.breakpoints.sm - getSpacing(3),

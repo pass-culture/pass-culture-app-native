@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreditCeilingsModal/> should render correctly 1`] = `
+exports[`GeolocationActivationModal should render properly 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
-  testID="modal-credit-ceiling-information"
+  testID="modal-geoloc-permission-modal"
   transparent={true}
   visible={true}
 >
@@ -122,7 +122,7 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
             ]
           }
         >
-          Pourquoi cette limite ?
+          Paramètres de localisation
         </Text>
       </View>
       <View
@@ -197,179 +197,124 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
       }
     >
       <View
+        height={85}
+        testID="BicolorLocationPointer"
+        width={85}
+      >
+        <Text>
+          BicolorLocationPointer-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={10}
         style={
           Array [
             Object {
-              "alignItems": "center",
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
             },
           ]
         }
       >
+        Retrouve toutes les offres autour de chez toi en activant les données de localisation.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Activer la géolocalisation"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Activer la géolocalisation"
+      >
         <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
           style={
             Array [
               Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
               },
             ]
           }
         >
-          Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :
+          Activer la géolocalisation
         </Text>
-        <View
-          testID="creditText"
-        >
-          <View
-            spacing={5}
-            style={
-              Array [
-                Object {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 20,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "height": 20,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              tout ton crédit pour les offres physiques : livre, instrument de musique...
-            </Text>
-          </View>
-          <View
-            spacing={5}
-            style={
-              Array [
-                Object {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 20,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "height": 20,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              tout ton crédit pour les sorties : festival, concert, cinéma...
-            </Text>
-          </View>
-          <View
-            spacing={5}
-            style={
-              Array [
-                Object {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 20,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "height": 20,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              maximum 300 € en offres numériques : presse en ligne, plateforme de streaming...
-            </Text>
-          </View>
-        </View>
       </View>
     </View>
   </View>

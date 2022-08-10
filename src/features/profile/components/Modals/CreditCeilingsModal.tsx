@@ -8,7 +8,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 type Props = {
@@ -65,7 +65,6 @@ export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props
       onCloseIconPress={hideModal}
       testIdSuffix="credit-ceiling-information">
       <ModalChildrenContainer>
-        <Spacer.Column numberOfSpaces={2} />
         <Typo.Body>
           {t`Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser\u00a0:`}
         </Typo.Body>
@@ -78,7 +77,6 @@ export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props
 const Wrapper = Platform.OS === 'web' ? VerticalUl : View
 
 const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(4),
   alignItems: 'center',
 })
 

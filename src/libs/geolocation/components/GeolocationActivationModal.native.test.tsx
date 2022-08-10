@@ -9,13 +9,25 @@ const hideGeolocPermissionModal = jest.fn()
 const onPressGeolocPermissionModalButton = jest.fn()
 
 let mockPermissionState = GeolocPermissionState.GRANTED
-jest.mock('../../GeolocationWrapper', () => ({
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
   }),
 }))
 
 describe('GeolocationActivationModal', () => {
+  it('should render properly', () => {
+    mockPermissionState = GeolocPermissionState.DENIED
+    const renderAPI = render(
+      <GeolocationActivationModal
+        hideGeolocPermissionModal={hideGeolocPermissionModal}
+        isGeolocPermissionModalVisible={true}
+        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
+      />
+    )
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should open settings to activate geoloc and log event deeplinkEnableLocation', () => {
     mockPermissionState = GeolocPermissionState.DENIED
     const renderAPI = render(
