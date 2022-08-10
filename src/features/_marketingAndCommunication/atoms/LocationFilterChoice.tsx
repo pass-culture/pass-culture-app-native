@@ -8,7 +8,7 @@ import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 interface Props {
-  onChange: (locationFilter: LocationFilter | null) => void
+  onChange: (locationFilter: LocationFilter) => void
 }
 
 export const LocationFilterChoice = (props: Props) => {
@@ -21,7 +21,7 @@ export const LocationFilterChoice = (props: Props) => {
 
   const onPressEverywhere = () => {
     setSelected(LocationType.EVERYWHERE)
-    props.onChange(null)
+    props.onChange({ locationType: LocationType.EVERYWHERE })
   }
 
   return (

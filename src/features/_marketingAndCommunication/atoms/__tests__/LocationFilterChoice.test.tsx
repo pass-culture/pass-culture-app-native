@@ -5,7 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { render, fireEvent } from 'tests/utils'
 
 describe('<LocationFilterChoice />', () => {
-  it('should call onChange with LocationType.AROUND_ME or null', () => {
+  it('should call onChange with LocationType.AROUND_ME or EVERYWHERE', () => {
     const onChange = jest.fn()
     const renderAPI = render(<LocationFilterChoice onChange={onChange} />)
 
@@ -16,6 +16,8 @@ describe('<LocationFilterChoice />', () => {
     })
 
     fireEvent.press(renderAPI.getByText('Partout'))
-    expect(onChange).toHaveBeenNthCalledWith(2, null)
+    expect(onChange).toHaveBeenNthCalledWith(2, {
+      locationType: LocationType.EVERYWHERE,
+    })
   })
 })

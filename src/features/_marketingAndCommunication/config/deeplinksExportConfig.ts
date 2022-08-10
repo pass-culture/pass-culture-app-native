@@ -22,7 +22,7 @@ export type ParamConfig = {
     | 'locationFilter'
   required?: boolean
   description: string
-  serverValidator?: (value: string) => Promise<unknown>
+  serverValidator?: (value: unknown) => Promise<unknown>
 }
 
 type ScreenConfig<Screen extends ScreensUsedByMarketing> = {
@@ -37,7 +37,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: `Identifiant unique de l'offre.`,
-      serverValidator: (value: string) => api.getnativev1offerofferId(Number(value)),
+      serverValidator: (value: unknown) => api.getnativev1offerofferId(Number(value)),
     },
   },
   Venue: {
@@ -45,7 +45,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: `Identifiant unique de lieu.`,
-      serverValidator: (value: string) => api.getnativev1venuevenueId(Number(value)),
+      serverValidator: (value: unknown) => api.getnativev1venuevenueId(Number(value)),
     },
   },
   Home: {

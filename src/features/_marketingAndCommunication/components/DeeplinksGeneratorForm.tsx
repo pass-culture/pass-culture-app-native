@@ -20,6 +20,7 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
+import { LocationType } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
@@ -47,7 +48,7 @@ interface Props {
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const { appContentWidth, isMobileViewport } = useTheme()
   const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Home')
-  const [screenParams, setScreenParams] = useState<Record<string, string>>({})
+  const [screenParams, setScreenParams] = useState<Record<string, unknown>>({})
 
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -60,7 +61,14 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           isSelected={selectedScreen === screenName}
           onSelect={() => {
             setSelectedScreen(screenName)
-            setScreenParams(screenName !== 'Search' ? {} : { view: SearchView.Results })
+            setScreenParams(
+              screenName !== 'Search'
+                ? {}
+                : {
+                    view: SearchView.Results,
+                    locationFilter: { locationType: LocationType.EVERYWHERE },
+                  }
+            )
           }}
         />
         <Spacer.Column numberOfSpaces={2} />
@@ -70,7 +78,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   }
 
   const renderScreenParam = (name: string, config: ParamConfig) => {
-    function validate(value: string) {
+    function validate(value: unknown) {
       if (config.serverValidator) {
         config.serverValidator(value).catch((error) => {
           showErrorSnackBar({
@@ -104,7 +112,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     }
 
     function onBlurValidate() {
-      const value: string = screenParams[name]
+      const value: unknown = screenParams[name]
       !!value && validate(value)
     }
 
@@ -262,7 +270,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     let firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
 
     if (selectedScreen === 'Search' && appParams.URL) {
-      universalLink = appParams.URL
+      universalLink = appParams.URL as string
       firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
     }
 
@@ -335,10 +343,10 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   )
 }
 
-function extractParams(params: Record<string, string>) {
-  const appParams: Record<string, string> = {}
-  const marketingParams: Record<string, string> = {}
-  const fdlParams: Record<string, string> = {}
+function extractParams(params: Record<string, unknown>) {
+  const appParams: Record<string, unknown> = {}
+  const marketingParams: Record<string, unknown> = {}
+  const fdlParams: Record<string, unknown> = {}
   for (const [paramName, paramValue] of Object.entries(params)) {
     if (paramName in FDL_CONFIG) fdlParams[paramName] = paramValue
     else if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
