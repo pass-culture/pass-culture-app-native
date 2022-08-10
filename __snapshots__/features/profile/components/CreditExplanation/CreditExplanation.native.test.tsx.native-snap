@@ -45,7 +45,7 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
     }
   >
     <View
-      fill="#eb0055"
+      fill="#161617"
       height={16}
       testID="button-icon"
       width={16}
@@ -61,10 +61,10 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
     style={
       Array [
         Object {
-          "color": "#eb0055",
-          "fontFamily": "Montserrat-Bold",
+          "color": "#161617",
+          "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
-          "lineHeight": 20,
+          "lineHeight": 16,
           "marginLeft": 4,
           "maxWidth": "100%",
         },
@@ -121,7 +121,7 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
     }
   >
     <View
-      fill="#eb0055"
+      fill="#161617"
       height={16}
       testID="button-icon"
       width={16}
@@ -137,10 +137,10 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
     style={
       Array [
         Object {
-          "color": "#eb0055",
-          "fontFamily": "Montserrat-Bold",
+          "color": "#161617",
+          "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
-          "lineHeight": 20,
+          "lineHeight": 16,
           "marginLeft": 4,
           "maxWidth": "100%",
         },
@@ -197,7 +197,7 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
     }
   >
     <View
-      fill="#eb0055"
+      fill="#161617"
       height={16}
       testID="button-icon"
       width={16}
@@ -213,10 +213,10 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
     style={
       Array [
         Object {
-          "color": "#eb0055",
-          "fontFamily": "Montserrat-Bold",
+          "color": "#161617",
+          "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
-          "lineHeight": 20,
+          "lineHeight": 16,
           "marginLeft": 4,
           "maxWidth": "100%",
         },

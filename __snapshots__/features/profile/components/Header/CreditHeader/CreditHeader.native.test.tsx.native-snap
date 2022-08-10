@@ -734,7 +734,7 @@ Array [
         }
       >
         <View
-          fill="#eb0055"
+          fill="#161617"
           height={16}
           testID="button-icon"
           width={16}
@@ -750,10 +750,10 @@ Array [
         style={
           Array [
             Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginLeft": 4,
               "maxWidth": "100%",
             },
@@ -982,7 +982,7 @@ Array [
         }
       >
         <View
-          fill="#eb0055"
+          fill="#161617"
           height={16}
           testID="button-icon"
           width={16}
@@ -998,10 +998,10 @@ Array [
         style={
           Array [
             Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginLeft": 4,
               "maxWidth": "100%",
             },
@@ -1476,7 +1476,7 @@ Array [
         }
       >
         <View
-          fill="#eb0055"
+          fill="#161617"
           height={16}
           testID="button-icon"
           width={16}
@@ -1492,10 +1492,10 @@ Array [
         style={
           Array [
             Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginLeft": 4,
               "maxWidth": "100%",
             },

@@ -276,9 +276,9 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
           Array [
             Object {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
+              "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginLeft": 4,
               "maxWidth": "100%",
             },
