@@ -26,7 +26,7 @@ export const SetStatus = () => {
   const [selectedStatus, setSelectedStatus] = useState<ActivityIdEnum | null>(
     profile.status || null
   )
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen, isSavingCheckpoint } = useIdentityCheckNavigation()
   const titleID = uuidv4()
 
   // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration, remplacer filteredActivities par activities
@@ -87,6 +87,7 @@ export const SetStatus = () => {
           accessibilityLabel={
             !selectedStatus ? t`Choisis ton statut` : t`Continuer vers l'étape suivante`
           }
+          isLoading={isSavingCheckpoint}
           disabled={!selectedStatus}
         />
       }
