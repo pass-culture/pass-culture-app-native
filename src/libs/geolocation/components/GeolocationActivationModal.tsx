@@ -4,13 +4,12 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
+import { GeolocPermissionState } from 'libs/geolocation/enums'
+import { useGeolocation } from 'libs/geolocation/GeolocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Spacer, Typo } from 'ui/theme'
-
-import { GeolocPermissionState } from '../enums'
-import { useGeolocation } from '../GeolocationWrapper'
 
 type Props = {
   hideGeolocPermissionModal: () => void

@@ -56,10 +56,10 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
           "borderRadius": 16,
-          "paddingBottom": 20,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 20,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
           "width": 928,
         },
       ]
@@ -176,15 +176,22 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       </View>
     </View>
     <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
       style={
         Array [
           Object {
             "alignItems": "center",
             "maxWidth": 500,
             "width": "100%",
-          },
-          Object {
-            "paddingBottom": 16,
           },
         ]
       }
@@ -194,21 +201,10 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
           Array [
             Object {
               "alignItems": "center",
-              "paddingTop": 20,
             },
           ]
         }
       >
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <Text
           style={
             Array [
