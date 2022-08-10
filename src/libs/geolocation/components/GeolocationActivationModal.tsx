@@ -42,7 +42,6 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       onCloseIconPress={hideGeolocPermissionModal}
       testIdSuffix="geoloc-permission-modal">
       <React.Fragment>
-        <Spacer.Column numberOfSpaces={5} />
         {/** Special case where theme.icons.sizes is not used */}
         <BicolorLocationPointer size={85} />
         <Spacer.Column numberOfSpaces={10} />
@@ -51,15 +50,17 @@ export const GeolocationActivationModal: React.FC<Props> = ({
         </InformationText>
         <Spacer.Column numberOfSpaces={4} />
         <InformationText>{informationText}</InformationText>
-        <Spacer.Column numberOfSpaces={6} />
         {isNative ? (
-          <ButtonPrimary
-            wording={callToActionMessage}
-            onPress={() => {
-              analytics.logOpenLocationSettings()
-              onPressGeolocPermissionModalButton()
-            }}
-          />
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={6} />
+            <ButtonPrimary
+              wording={callToActionMessage}
+              onPress={() => {
+                analytics.logOpenLocationSettings()
+                onPressGeolocPermissionModalButton()
+              }}
+            />
+          </React.Fragment>
         ) : null}
       </React.Fragment>
     </AppInformationModal>

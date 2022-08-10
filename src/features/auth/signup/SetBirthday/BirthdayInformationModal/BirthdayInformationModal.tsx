@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK as LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -56,6 +56,5 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(5),
   alignItems: 'center',
 })

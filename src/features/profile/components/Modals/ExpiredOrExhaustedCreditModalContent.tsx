@@ -2,13 +2,12 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK as LINE_BREAK } from 'ui/theme/constants'
 
 export function ExpiredOrExhaustedCreditModalContent() {
   return (
     <ModalChildrenContainer>
-      <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>
         {t`Pas de panique, l’aventure continue\u00a0!`}
         {LINE_BREAK}
@@ -21,6 +20,5 @@ export function ExpiredOrExhaustedCreditModalContent() {
 }
 
 const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(5),
   alignItems: 'center',
 })
