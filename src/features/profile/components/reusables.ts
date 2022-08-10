@@ -7,7 +7,7 @@ export const ProfileContainer = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
   flexDirection: 'column',
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
 }))
 
 export const GreyContainer = styled.View(({ theme }) => ({

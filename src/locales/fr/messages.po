@@ -264,15 +264,15 @@ msgstr "Autoriser l'utilisation des outils pour réaliser des statistiques de na
 msgid "Autoriser les notifications"
 msgstr "Autoriser les notifications"
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Autoriser l’envoi d’e-mails"
 msgstr "Autoriser l’envoi d’e-mails"
 
-#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Autoriser l’utilisation de mes données de navigation"
 msgstr "Autoriser l’utilisation de mes données de navigation"
 
@@ -1015,15 +1015,15 @@ msgstr "En voir plus"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-#: src/features/profile/pages/ConsentSettings.tsx
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer"
 msgstr "Enregistrer"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-#: src/features/profile/pages/ConsentSettings.tsx
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer les modifications"
 msgstr "Enregistrer les modifications"
 
@@ -1396,11 +1396,11 @@ msgstr "Je suis de nationalité étrangère"
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
 msgstr "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 msgstr "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 
@@ -1425,7 +1425,7 @@ msgstr "J’ai dépensé tout mon crédit, que faire ?"
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
 msgstr "L'absence des services Google Play bloquent possiblement la géolocalisation"
 
-#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
@@ -1859,7 +1859,7 @@ msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D
 msgid "Notification rechargement anniversaire"
 msgstr "Notification rechargement anniversaire"
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Notifications"
 msgstr "Notifications"
@@ -2090,8 +2090,8 @@ msgstr "Page introuvable !"
 msgid "Pages"
 msgstr "Pages"
 
-#: src/features/profile/pages/ConsentSettings.tsx
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Paramètre enregistré"
 msgstr "Paramètre enregistré"
 
@@ -2104,7 +2104,7 @@ msgid "Paramètres applicatifs"
 msgstr "Paramètres applicatifs"
 
 #: src/features/navigation/RootNavigator/routes.ts
-#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
@@ -2208,7 +2208,7 @@ msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
 
@@ -2228,7 +2228,7 @@ msgstr "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la frau
 msgid "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :"
 msgstr "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :"
 
-#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
@@ -2465,7 +2465,7 @@ msgstr "Respect de ta vie privée"
 msgid "Reste informé des actualités du pass Culture en activant les notifications."
 msgstr "Reste informé des actualités du pass Culture en activant les notifications."
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
@@ -3108,7 +3108,7 @@ msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facile
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 
@@ -3289,7 +3289,7 @@ msgid "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la va
 msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 
 #: src/api/apiHelpers.ts
-#: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"

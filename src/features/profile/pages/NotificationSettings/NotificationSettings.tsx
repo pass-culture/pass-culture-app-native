@@ -7,21 +7,18 @@ import styled from 'styled-components/native'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/profile/api'
+import { useUpdateProfileMutation, useUserProfileInfo } from 'features/profile/api'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
-
-import { useUpdateProfileMutation } from '../api'
-import { ProfileContainer } from '../components/reusables'
 
 type State = {
   allowEmails: boolean | undefined
@@ -146,32 +143,28 @@ export function NotificationSettings() {
   const pushSwitchEnabled = Boolean(state.pushPermission === 'granted' && state.allowPush)
 
   return (
-    <React.Fragment>
-      <PageHeader title={t`Notifications`} background="primary" withGoBackButton />
-      <ProfileContainer>
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Body>
-          {isLoggedIn
-            ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`
-            : t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `}
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={4} />
-        <Separator />
-        <Spacer.Column numberOfSpaces={4} />
-        <StyledCaption>
-          {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
-        </StyledCaption>
-        <Form.Flex>
-          <SectionWithSwitch
-            title={t`Autoriser l’envoi d’e-mails`}
-            active={allowEmails}
-            toggle={toggleEmails}
-            disabled={!isLoggedIn}
-          />
-          <Separator />
-        </Form.Flex>
+    <PageProfileSection title={t`Notifications`}>
+      <Typo.Body>
+        {isLoggedIn
+          ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`
+          : t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `}
+      </Typo.Body>
+      <Spacer.Column numberOfSpaces={4} />
+      <Separator />
+      <Spacer.Column numberOfSpaces={4} />
+      <StyledCaption>
+        {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
+      </StyledCaption>
+      <Form.Flex>
+        <SectionWithSwitch
+          title={t`Autoriser l’envoi d’e-mails`}
+          active={allowEmails}
+          toggle={toggleEmails}
+          disabled={!isLoggedIn}
+        />
         {Platform.OS === 'ios' && (
           <React.Fragment>
+            <Separator />
             <Spacer.Column numberOfSpaces={4} />
             <StyledCaption>
               {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
@@ -184,25 +177,27 @@ export function NotificationSettings() {
             />
           </React.Fragment>
         )}
-        <Spacer.Flex flex={1} />
         {!!isLoggedIn && (
-          <ButtonPrimary
-            wording={t`Enregistrer`}
-            accessibilityLabel={t`Enregistrer les modifications`}
-            isLoading={isUpdating}
-            disabled={!state.emailTouched && !state.pushTouched}
-            onPress={submitProfile}
-            center
-          />
+          <React.Fragment>
+            <Spacer.Flex />
+            <ButtonPrimary
+              wording={t`Enregistrer`}
+              accessibilityLabel={t`Enregistrer les modifications`}
+              isLoading={isUpdating}
+              disabled={!state.emailTouched && !state.pushTouched}
+              onPress={submitProfile}
+              center
+            />
+            <Spacer.BottomScreen />
+          </React.Fragment>
         )}
-        <Spacer.Column numberOfSpaces={8} />
-      </ProfileContainer>
+      </Form.Flex>
       <PushNotificationsModal
         visible={isNotificationsModalVisible}
         onRequestPermission={onRequestNotificationPermissionFromModal}
         onDismiss={hideNotificationsModal}
       />
-    </React.Fragment>
+    </PageProfileSection>
   )
 }
 

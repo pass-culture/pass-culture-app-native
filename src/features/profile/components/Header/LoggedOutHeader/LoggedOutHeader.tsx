@@ -17,9 +17,9 @@ export function LoggedOutHeader() {
       <PageHeader title={t`Profil`} size="medium" />
       <Spacer.Column numberOfSpaces={6} />
       <ContentContainer>
-        <Description>
+        <StyledBody>
           {t`Tu as entre 15 et 18 ans\u00a0? Crée-toi un compte pour bénéficier de ton crédit pass Culture`}
-        </Description>
+        </StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <TouchableLink
           as={ButtonPrimary}
@@ -31,7 +31,7 @@ export function LoggedOutHeader() {
           }}
         />
         <Spacer.Column numberOfSpaces={5} />
-        <Typo.Body>
+        <StyledBody>
           {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
           <TouchableLink
             as={ButtonInsideText}
@@ -40,19 +40,19 @@ export function LoggedOutHeader() {
             icon={Connect}
             {...accessibilityAndTestId(t`Connecte-toi`)}
           />
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={7} />
+        </StyledBody>
       </ContentContainer>
+      <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
 
 const ContentContainer = styled.View({
   alignItems: 'center',
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
   width: '100%',
 })
 
-const Description = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

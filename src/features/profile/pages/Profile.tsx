@@ -115,7 +115,7 @@ const OnlineProfile: React.FC = () => {
       testID="profile-scrollview">
       <ProfileHeader user={user} />
       <ProfileContainer>
-        <Spacer.Column numberOfSpaces={getSpacing(1)} />
+        <Spacer.Column numberOfSpaces={4} />
         <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           <VerticalUl>
             {!!isLoggedIn && (

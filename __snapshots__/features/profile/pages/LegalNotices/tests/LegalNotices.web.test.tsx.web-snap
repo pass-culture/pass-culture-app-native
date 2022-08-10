@@ -128,11 +128,11 @@ Object {
       </header>
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-right: 16px; padding-left: 16px;"
+        style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-right: 24px; padding-left: 24px;"
       >
         <div
           class="css-view-1dbjc4n"
-          style="height: 8px;"
+          style="height: 24px;"
         />
         <a
           class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -141,7 +141,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+            style="align-items: center; flex-direction: row; justify-content: space-between;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -177,7 +177,7 @@ Object {
         </a>
         <div
           class="css-view-1dbjc4n"
-          style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
+          style="background-color: rgb(241, 241, 244); height: 1px; margin-top: 16px; margin-bottom: 16px; width: 100%;"
         />
         <a
           class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -186,7 +186,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+            style="align-items: center; flex-direction: row; justify-content: space-between;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -220,6 +220,10 @@ Object {
             />
           </div>
         </a>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
       </div>
     </div>
   </body>,
@@ -347,11 +351,11 @@ Object {
     </header>
     <div
       class="css-view-1dbjc4n"
-      style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-right: 16px; padding-left: 16px;"
+      style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-right: 24px; padding-left: 24px;"
     >
       <div
         class="css-view-1dbjc4n"
-        style="height: 8px;"
+        style="height: 24px;"
       />
       <a
         class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -360,7 +364,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          style="align-items: center; flex-direction: row; justify-content: space-between;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -396,7 +400,7 @@ Object {
       </a>
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
+        style="background-color: rgb(241, 241, 244); height: 1px; margin-top: 16px; margin-bottom: 16px; width: 100%;"
       />
       <a
         class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -405,7 +409,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          style="align-items: center; flex-direction: row; justify-content: space-between;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -439,6 +443,10 @@ Object {
           />
         </div>
       </a>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
     </div>
   </div>,
   "debug": [Function],
