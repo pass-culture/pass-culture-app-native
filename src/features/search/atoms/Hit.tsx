@@ -89,7 +89,9 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
             )}
           </Row>
           <Spacer.Column numberOfSpaces={1} />
-          <Body>{searchGroupLabel}</Body>
+          <Body ellipsizeMode="tail" numberOfLines={1}>
+            {searchGroupLabel}
+          </Body>
           {!!formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Caption>{formattedPrice}</Typo.Caption>
