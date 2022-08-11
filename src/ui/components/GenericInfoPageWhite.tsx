@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { RootNavigateParams } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
@@ -78,11 +79,16 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
     })
   }, [subtitleComponent])
 
-  useEffect(() => {
-    if (animation && animationRef.current) {
-      animationRef.current.play(0, 62)
+  const showAnimation = useCallback(() => {
+    const lottieAnimation = animationRef.current
+    if (animation && lottieAnimation) {
+      lottieAnimation.play(0, 62)
     }
-  }, [animationRef, animation])
+  }, [animation])
+
+  const onAppBecomeActive = () => showAnimation()
+  useAppStateChange(onAppBecomeActive, undefined)
+  useEffect(() => showAnimation(), [showAnimation])
 
   return (
     <React.Fragment>
