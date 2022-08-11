@@ -24,25 +24,26 @@ export const IdentityCheckHonor = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { refetch } = useUserProfileInfo()
+  const { refetch: fetchUser, isLoading: isUserProfileLoading } = useUserProfileInfo()
 
-  const { mutate: postHonorStatement, isLoading } = usePostHonorStatement({
-    onSuccess: () => {
+  const { mutate: postHonorStatement, isLoading: isPostingHonorStatement } = usePostHonorStatement({
+    onSuccess: async () => {
       queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
-      refetch()
-        .then(({ data: userProfile }) => {
-          if (userProfile?.domainsCredit?.all?.initial) {
-            navigate('UnderageAccountCreated')
-          } else {
-            navigateToNextScreen()
-          }
+      let userProfile
+      try {
+        const { data } = await fetchUser()
+        userProfile = data
+      } catch (error) {
+        showErrorSnackBar({
+          message: extractApiErrorMessage(error),
+          timeout: SNACK_BAR_TIME_OUT,
         })
-        .catch((error) => {
-          showErrorSnackBar({
-            message: extractApiErrorMessage(error),
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-        })
+      }
+      if (userProfile?.domainsCredit?.all?.initial) {
+        navigate('UnderageAccountCreated')
+      } else {
+        navigateToNextScreen()
+      }
     },
     onError: (error) =>
       showErrorSnackBar({
@@ -76,7 +77,7 @@ export const IdentityCheckHonor = () => {
               type="submit"
               onPress={postHonorStatement}
               wording={t`Valider et continuer`}
-              isLoading={isLoading}
+              isLoading={isPostingHonorStatement || isUserProfileLoading}
             />
           </ButtonContainer>
           <Spacer.BottomScreen />
