@@ -123,6 +123,12 @@ export function NavigationIdentityCheck(): JSX.Element {
             onPress={() => navigate('VerifyEligibility')}
           />
         </Row>
+        <Row half>
+          <ButtonPrimary
+            wording="Beneficiary request sent"
+            onPress={() => navigate('BeneficiaryRequestSent')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
       <FastEduconnectConnectionRequestModal

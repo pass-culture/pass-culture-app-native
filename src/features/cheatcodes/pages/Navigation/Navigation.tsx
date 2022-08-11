@@ -215,12 +215,6 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Beneficiary request sent"
-              onPress={() => navigate('BeneficiaryRequestSent')}
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
               wording="Pages non écrans"
               onPress={() => navigate('NavigationNotScreensPages')}
             />
