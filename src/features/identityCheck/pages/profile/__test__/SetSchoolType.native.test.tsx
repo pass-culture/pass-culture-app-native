@@ -3,8 +3,9 @@ import React from 'react'
 import { ActivityIdEnum } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
-import { render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/auth/api')
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
@@ -12,6 +13,13 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
     dispatch: jest.fn(),
     ...mockState,
   })),
+}))
+
+let mockIsSavingCheckpoint = false
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    isSavingCheckpoint: mockIsSavingCheckpoint,
+  }),
 }))
 
 jest.mock('features/identityCheck/utils/useProfileOptions')
@@ -43,5 +51,17 @@ describe('<SetSchoolType />', () => {
 
     const renderAPI = render(<SetSchoolType />)
     expect(renderAPI).toMatchSnapshot()
+  })
+  it('should not display "Continuer" if isSavingCheckpoint is true', async () => {
+    mockUseIdentityCheckContext.mockImplementationOnce(() => ({
+      dispatch: jest.fn(),
+      ...mockState,
+      profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT },
+    }))
+    mockIsSavingCheckpoint = true
+    const { queryByText, getByText } = render(<SetSchoolType />)
+
+    fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
+    expect(queryByText('Continuer')).toBeFalsy()
   })
 })
