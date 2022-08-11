@@ -29,6 +29,7 @@ import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { BatchUser } from 'libs/react-native-batch'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -130,6 +131,9 @@ export const OnlineHome: FunctionComponent = () => {
   const { homeEntryId: ABTestingEntryId } = useABTestingContext()
   const { modules, homeEntryId } = useHomepageModules(params?.entryId ?? ABTestingEntryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
+  const trackEventHasSeenAllModules = useFunctionOnce(() =>
+    BatchUser.trackEvent('has_seen_all_the_homepage')
+  )
   const showSkeleton = useShowSkeleton()
   const initialNumToRender = 5
   const maxToRenderPerBatch = 5
@@ -139,8 +143,10 @@ export const OnlineHome: FunctionComponent = () => {
 
   const onScroll = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      if (isCloseToBottom(nativeEvent) && modulesToDisplay.length === modules.length)
+      if (isCloseToBottom(nativeEvent) && modulesToDisplay.length === modules.length) {
+        trackEventHasSeenAllModules()
         logHasSeenAllModules()
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length, modulesToDisplay.length]

@@ -10,6 +10,7 @@ import { OfferWebHead } from 'features/offer/components/OfferWebHead'
 import { useCtaWordingAndAction } from 'features/offer/services/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { BatchUser } from 'libs/react-native-batch'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
@@ -22,6 +23,7 @@ import { OfferBody } from './OfferBody'
 
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
+  const trackEventHasSeenOffer = useFunctionOnce(() => BatchUser.trackEvent('has_seen_offer'))
   const offerId = route.params && route.params.id
 
   const { bottom } = useCustomSafeInsets()
@@ -55,7 +57,9 @@ export const Offer: FunctionComponent = () => {
 
   useFocusEffect(
     useCallback(() => {
+      trackEventHasSeenOffer()
       dismissBookingOfferModal()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dismissBookingOfferModal])
   )
 
