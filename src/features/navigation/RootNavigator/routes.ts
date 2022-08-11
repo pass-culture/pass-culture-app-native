@@ -35,7 +35,6 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
-import { LandscapePositionPage } from 'features/landscapePosition/LandscapePositionPage'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
@@ -354,11 +353,6 @@ export const routes: Route[] = [
     options: { title: t`Email création de compte expiré` },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  {
-    name: 'LandscapePositionPage',
-    component: LandscapePositionPage,
-    path: 'position-paysage',
-  },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
