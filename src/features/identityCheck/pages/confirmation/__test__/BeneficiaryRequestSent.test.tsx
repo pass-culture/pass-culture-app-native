@@ -53,7 +53,7 @@ describe('<BeneficiaryRequestSent />', () => {
 
     expect(navigateFromRef).not.toBeCalled()
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
+    expect(navigate).toBeCalledWith('CulturalSurveyIntro', undefined)
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user does not need to fill cultural survey', () => {
@@ -66,35 +66,5 @@ describe('<BeneficiaryRequestSent />', () => {
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
     expect(navigate).not.toBeCalledWith('CulturalSurvey', undefined)
-  })
-
-  it('should show specific body message when retention is on and cultural survey is off', () => {
-    mockedUseAppSettings.mockReturnValueOnce({
-      data: { enableIdCheckRetention: true },
-      isLoading: false,
-    } as UseQueryResult<SettingsResponse, unknown>)
-
-    mockedUseUserProfileInfo.mockReturnValue({
-      data: { needsToFillCulturalSurvey: false },
-    } as UseQueryResult<UserProfileResponse>)
-
-    const { getByText } = render(<BeneficiaryRequestSent />)
-    getByText(
-      "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application\u00a0!"
-    )
-  })
-
-  it('should show specific body message when retention is on and cultural survey is on', () => {
-    mockedUseAppSettings.mockReturnValueOnce({
-      data: { enableIdCheckRetention: true },
-      isLoading: false,
-    } as UseQueryResult<SettingsResponse, unknown>)
-    mockedUseUserProfileInfo.mockReturnValue({
-      data: { needsToFillCulturalSurvey: true },
-    } as UseQueryResult<UserProfileResponse>)
-    const { getByText } = render(<BeneficiaryRequestSent />)
-    getByText(
-      'Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!'
-    )
   })
 })

@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
@@ -17,20 +16,15 @@ import { Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { data: user } = useUserProfileInfo()
-  const { data: settings } = useAppSettings()
   const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
-  const body = settings?.enableIdCheckRetention
-    ? t`Tu recevras une réponse par e-mail sous 5 jours ouvrés.`
-    : t`Tu recevras un e-mail lorsque ta demande sera validée.`
+  const body = t`Tu recevras un e-mail lorsque ta demande sera validée.`
 
   let inTheMeantime = ''
   if (shouldNavigateToCulturalSurvey) {
     inTheMeantime = t`En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!`
-  } else if (settings?.enableIdCheckRetention) {
-    inTheMeantime = t`En attendant, tu peux découvrir l'application\u00a0!`
   }
 
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
