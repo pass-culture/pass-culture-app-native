@@ -170,15 +170,85 @@ Array [
           "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "paddingBottom": 22,
-          "paddingHorizontal": 20,
-          "paddingLeft": 22,
-          "paddingRight": 22,
-          "paddingTop": 0,
+          "paddingHorizontal": 24,
         },
       ]
     }
   >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      Prénom et nom
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Rosa Bonheur
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      Adresse e-mail
+    </Text>
     <View
       numberOfSpaces={2}
       style={
@@ -193,193 +263,100 @@ Array [
       style={
         Array [
           Object {
-            "paddingVertical": 16,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        Prénom et nom
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
       <Text
         style={
           Array [
             Object {
               "color": "#161617",
+              "flexShrink": 1,
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
+              "marginRight": 8,
             },
           ]
         }
       >
-        Rosa Bonheur
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "paddingVertical": 16,
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        Adresse e-mail
+        rosa.bonheur@gmail.com
       </Text>
       <View
-        numberOfSpaces={2}
+        accessibilityLabel="Modifier"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 0,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginTop": 0,
+            "maxWidth": 500,
+            "minHeight": 20,
+            "opacity": 1,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "userSelect": "auto",
+            "width": "auto",
+          }
         }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
-        }
+        testID="Modifier e-mail"
       >
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginRight": 8,
+                "flexShrink": 0,
               },
             ]
           }
         >
-          rosa.bonheur@gmail.com
-        </Text>
-        <View
-          accessibilityLabel="Modifier"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 0,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginTop": 0,
-              "maxWidth": 500,
-              "minHeight": 20,
-              "opacity": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "userSelect": "auto",
-              "width": "auto",
-            }
-          }
-          testID="Modifier e-mail"
-        >
           <View
-            style={
-              Array [
-                Object {
-                  "flexShrink": 0,
-                },
-              ]
-            }
+            fill="#eb0055"
+            height={16}
+            testID="button-icon"
+            width={16}
           >
-            <View
-              fill="#eb0055"
-              height={16}
-              testID="button-icon"
-              width={16}
-            >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
-            </View>
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
           </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                  "marginLeft": 4,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Modifier
-          </Text>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Modifier
+        </Text>
       </View>
     </View>
     <View
@@ -388,66 +365,82 @@ Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
+            "marginVertical": 16,
             "width": "100%",
           },
         ]
       }
     />
-    <View
+    <Text
       style={
         Array [
           Object {
-            "paddingVertical": 16,
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
           },
         ]
       }
     >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        Numéro de téléphone
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        +33685974563
-      </Text>
-    </View>
+      Numéro de téléphone
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      +33685974563
+    </Text>
     <View
       style={
         Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
+            "marginVertical": 16,
             "width": "100%",
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      Mot de passe
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
           },
         ]
       }
@@ -456,7 +449,8 @@ Array [
       style={
         Array [
           Object {
-            "paddingVertical": 16,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
@@ -465,125 +459,90 @@ Array [
         style={
           Array [
             Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginRight": 8,
             },
           ]
         }
       >
-        Mot de passe
+        ************
       </Text>
       <View
-        numberOfSpaces={2}
+        accessibilityLabel="Modifier"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 0,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginTop": 0,
+            "maxWidth": 500,
+            "minHeight": 20,
+            "opacity": 1,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "userSelect": "auto",
+            "width": "auto",
+          }
         }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
-        }
+        testID="Modifier mot de passe"
       >
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#161617",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginRight": 8,
+                "flexShrink": 0,
               },
             ]
           }
         >
-          ************
-        </Text>
-        <View
-          accessibilityLabel="Modifier"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 0,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginTop": 0,
-              "maxWidth": 500,
-              "minHeight": 20,
-              "opacity": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "userSelect": "auto",
-              "width": "auto",
-            }
-          }
-          testID="Modifier mot de passe"
-        >
           <View
-            style={
-              Array [
-                Object {
-                  "flexShrink": 0,
-                },
-              ]
-            }
+            fill="#eb0055"
+            height={16}
+            testID="button-icon"
+            width={16}
           >
-            <View
-              fill="#eb0055"
-              height={16}
-              testID="button-icon"
-              width={16}
-            >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
-            </View>
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
           </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                  "marginLeft": 4,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Modifier
-          </Text>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Modifier
+        </Text>
       </View>
     </View>
     <View
@@ -592,7 +551,18 @@ Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
+            "marginVertical": 16,
             "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
           },
         ]
       }
@@ -629,11 +599,7 @@ Array [
               "flexDirection": "row",
               "justifyContent": "space-between",
             },
-            Array [
-              Object {
-                "paddingVertical": 24,
-              },
-            ],
+            undefined,
           ]
         }
       >
@@ -705,6 +671,16 @@ Array [
         </View>
       </View>
     </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
   </View>,
 ]
 `;

@@ -121,7 +121,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "paddingHorizontal": 20,
+          "paddingHorizontal": 24,
           "width": "100%",
         },
       ]
@@ -221,6 +221,7 @@ Array [
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
+            "textAlign": "center",
           },
         ]
       }
@@ -325,17 +326,17 @@ Array [
         </View>
       </View>
     </Text>
-    <View
-      numberOfSpaces={7}
-      style={
-        Array [
-          Object {
-            "height": 28,
-          },
-        ]
-      }
-    />
   </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
 ]
 `;
 

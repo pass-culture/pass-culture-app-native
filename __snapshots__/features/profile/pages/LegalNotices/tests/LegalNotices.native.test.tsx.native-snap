@@ -170,17 +170,17 @@ Array [
           "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "paddingHorizontal": 16,
+          "paddingHorizontal": 24,
         },
       ]
     }
   >
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={6}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 24,
           },
         ]
       }
@@ -217,11 +217,7 @@ Array [
               "flexDirection": "row",
               "justifyContent": "space-between",
             },
-            Array [
-              Object {
-                "paddingVertical": 16,
-              },
-            ],
+            undefined,
           ]
         }
       >
@@ -288,6 +284,7 @@ Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
+            "marginVertical": 16,
             "width": "100%",
           },
         ]
@@ -325,11 +322,7 @@ Array [
               "flexDirection": "row",
               "justifyContent": "space-between",
             },
-            Array [
-              Object {
-                "paddingVertical": 16,
-              },
-            ],
+            undefined,
           ]
         }
       >
@@ -390,6 +383,16 @@ Array [
         />
       </View>
     </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
   </View>,
 ]
 `;

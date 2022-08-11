@@ -3,10 +3,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/profile/api'
-import { ProfileContainer } from 'features/profile/components/reusables'
+import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/firebase/analytics'
-import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -23,80 +22,67 @@ export function PersonalData() {
   }
 
   return (
-    <React.Fragment>
-      <PageHeader title={t`Informations personnelles`} background="primary" withGoBackButton />
-      <Container>
-        <Spacer.Column numberOfSpaces={2} />
-        {!!user?.isBeneficiary && (
-          <React.Fragment>
-            <Row>
-              <RowTitle>{t`Prénom et nom`}</RowTitle>
-              <Spacer.Column numberOfSpaces={2} />
-              <Typo.Body>{fullname}</Typo.Body>
-            </Row>
-            <Separator />
-          </React.Fragment>
-        )}
-        <Row>
-          <RowTitle>{t`Adresse e-mail`}</RowTitle>
+    <PageProfileSection title={t`Informations personnelles`}>
+      {!!user?.isBeneficiary && (
+        <React.Fragment>
+          <RowTitle>{t`Prénom et nom`}</RowTitle>
           <Spacer.Column numberOfSpaces={2} />
-          <EditContainer>
-            <EditText>{user?.email}</EditText>
-            <EditButton
-              navigateTo={{ screen: 'ChangeEmail' }}
-              onPress={onEmailChange}
-              wording={t`Modifier`}
-              testID="Modifier e-mail"
-            />
-          </EditContainer>
-        </Row>
-        <Separator />
-        {!!user?.isBeneficiary && (
-          <React.Fragment>
-            <Row>
-              <RowTitle>{t`Numéro de téléphone`}</RowTitle>
-              <Spacer.Column numberOfSpaces={2} />
-              <Typo.Body>{user?.phoneNumber}</Typo.Body>
-            </Row>
-            <Separator />
-          </React.Fragment>
-        )}
-        <Row>
-          <RowTitle>{t`Mot de passe`}</RowTitle>
-          <Spacer.Column numberOfSpaces={2} />
-          <EditContainer>
-            <EditText>{'*'.repeat(12)}</EditText>
-            <EditButton
-              navigateTo={{ screen: 'ChangePassword' }}
-              wording={t`Modifier`}
-              testID="Modifier mot de passe"
-            />
-          </EditContainer>
-        </Row>
-        <Separator />
-        <StyledSectionRow
-          title={t`Supprimer mon compte`}
-          type="navigable"
-          navigateTo={{ screen: 'ConfirmDeleteProfile' }}
-          onPress={analytics.logAccountDeletion}
-          icon={Trash}
+          <Typo.Body>{fullname}</Typo.Body>
+          <StyledSeparator />
+        </React.Fragment>
+      )}
+
+      <RowTitle>{t`Adresse e-mail`}</RowTitle>
+      <Spacer.Column numberOfSpaces={2} />
+      <EditContainer>
+        <EditText>{user?.email}</EditText>
+        <EditButton
+          navigateTo={{ screen: 'ChangeEmail' }}
+          onPress={onEmailChange}
+          wording={t`Modifier`}
+          testID="Modifier e-mail"
         />
-      </Container>
-    </React.Fragment>
+      </EditContainer>
+
+      <StyledSeparator />
+
+      {!!user?.isBeneficiary && (
+        <React.Fragment>
+          <RowTitle>{t`Numéro de téléphone`}</RowTitle>
+          <Spacer.Column numberOfSpaces={2} />
+          <Typo.Body>{user?.phoneNumber}</Typo.Body>
+          <StyledSeparator />
+        </React.Fragment>
+      )}
+
+      <RowTitle>{t`Mot de passe`}</RowTitle>
+      <Spacer.Column numberOfSpaces={2} />
+      <EditContainer>
+        <EditText>{'*'.repeat(12)}</EditText>
+        <EditButton
+          navigateTo={{ screen: 'ChangePassword' }}
+          wording={t`Modifier`}
+          testID="Modifier mot de passe"
+        />
+      </EditContainer>
+
+      <StyledSeparator />
+
+      <Spacer.Column numberOfSpaces={2} />
+      <SectionRow
+        title={t`Supprimer mon compte`}
+        type="navigable"
+        navigateTo={{ screen: 'ConfirmDeleteProfile' }}
+        onPress={analytics.logAccountDeletion}
+        icon={Trash}
+        iconSize={SECTION_ROW_ICON_SIZE}
+      />
+    </PageProfileSection>
   )
 }
 
-const Container = styled(ProfileContainer)({
-  padding: getSpacing(5.5),
-  paddingTop: 0,
-})
-
-const Row = styled.View({
-  paddingVertical: getSpacing(4),
-})
-
-const StyledSectionRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
-  paddingVertical: getSpacing(6),
+const StyledSeparator = styled(Separator)({
+  marginVertical: getSpacing(4),
 })
 
 const EditContainer = styled.View({
