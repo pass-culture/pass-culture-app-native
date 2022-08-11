@@ -1307,7 +1307,7 @@ msgstr "Il est possible que cette page soit désactivée ou n'existe pas."
 msgid "Il ne peut être associé qu’à un seul compte"
 msgstr "Il ne peut être associé qu’à un seul compte"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
 msgstr "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
 
@@ -1454,11 +1454,11 @@ msgstr "L'offre n'a pas été ajoutée à tes favoris"
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
 msgstr "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
 msgstr "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
 
@@ -1550,7 +1550,7 @@ msgstr "Les données qu’on conserve :"
 msgid "Les informations extraites sont-elles correctes ?"
 msgstr "Les informations extraites sont-elles correctes ?"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 msgstr "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 
@@ -1990,8 +1990,8 @@ msgstr "Offre épuisée"
 msgid "Offres"
 msgstr "Offres"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Oh non !"
 msgstr "Oh non !"
 
@@ -2022,8 +2022,8 @@ msgstr "Oups, cette offre n’est plus disponible !"
 
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/home/components/NoContentError.tsx
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 #: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
@@ -2065,7 +2065,7 @@ msgstr "POC A/B Testing"
 msgid "Page d'accueil"
 msgstr "Page d'accueil"
 
-#: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
+#: src/features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect.tsx
 msgid "Page erreur :"
 msgstr "Page erreur :"
 
@@ -2379,7 +2379,7 @@ msgstr "Quelques conseils"
 msgid "Questionnaire culturel"
 msgstr "Questionnaire culturel"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Qui est-ce ?"
 msgstr "Qui est-ce ?"
 
@@ -2432,7 +2432,7 @@ msgstr "Rechercher une offre"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Refais une demande en vérifiant ton identité avec ta pièce d’identité."
 msgstr "Refais une demande en vérifiant ton identité avec ta pièce d’identité."
 
@@ -2476,9 +2476,9 @@ msgstr "Retour"
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
-#: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
+#: src/features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 #: src/features/navigation/PageNotFound.tsx
@@ -2566,7 +2566,7 @@ msgstr "Réessaie plus tard"
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Réessayer de m'identifier"
 msgstr "Réessayer de m'identifier"
 
@@ -2803,7 +2803,7 @@ msgstr "Sélectionne ton statut"
 msgid "Sélectionné"
 msgstr "Sélectionné"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
@@ -3289,7 +3289,7 @@ msgstr "Une erreur est survenue"
 msgid "Une erreur est survenue lors de la mise à jour de votre profil"
 msgstr "Une erreur est survenue lors de la mise à jour de votre profil"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Une erreur s'est produite pendant le chargement"
 msgstr "Une erreur s'est produite pendant le chargement"
 
@@ -3528,7 +3528,7 @@ msgid "Vérifie ton identité sur ton smartphone"
 msgstr "Vérifie ton identité sur ton smartphone"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 

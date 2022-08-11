@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
-import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
+import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
+import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { render } from 'tests/utils'
 
