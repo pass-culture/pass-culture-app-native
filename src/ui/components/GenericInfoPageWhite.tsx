@@ -79,16 +79,15 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
     })
   }, [subtitleComponent])
 
-  const showAnimation = useCallback(() => {
+  const playAnimation = useCallback(() => {
     const lottieAnimation = animationRef.current
     if (animation && lottieAnimation) {
       lottieAnimation.play(0, 62)
     }
   }, [animation])
 
-  const onAppBecomeActive = () => showAnimation()
-  useAppStateChange(onAppBecomeActive, undefined)
-  useEffect(() => showAnimation(), [showAnimation])
+  useAppStateChange(playAnimation, undefined)
+  useEffect(playAnimation, [playAnimation])
 
   return (
     <React.Fragment>

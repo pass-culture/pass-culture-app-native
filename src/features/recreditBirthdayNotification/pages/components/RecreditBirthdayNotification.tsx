@@ -58,14 +58,13 @@ export const RecreditBirthdayNotification = () => {
     analytics.logScreenView('BirthdayNotification')
   }, [])
 
-  const showAnimation = useCallback(() => {
+  const playAnimation = useCallback(() => {
     const lottieAnimation = animationRef.current
     if (lottieAnimation) lottieAnimation.play(0, 62)
   }, [animationRef])
 
-  const onAppBecomeActive = () => showAnimation()
-  useAppStateChange(onAppBecomeActive, undefined)
-  useEffect(() => showAnimation, [showAnimation])
+  useAppStateChange(playAnimation, undefined)
+  useEffect(playAnimation, [playAnimation])
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>

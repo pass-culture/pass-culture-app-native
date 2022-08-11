@@ -75,7 +75,13 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         ) : (
           !!animation && (
             <React.Fragment>
-              <StyledLottieView source={animation} autoPlay loop={false} size={ANIMATION_SIZE} />
+              <StyledLottieView
+                source={animation}
+                autoPlay
+                loop={false}
+                size={ANIMATION_SIZE}
+                progress={1}
+              />
               <Spacer.Column numberOfSpaces={spacingMatrix.afterLottieAnimation} />
             </React.Fragment>
           )

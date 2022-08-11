@@ -75,7 +75,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
     )
   }
 
-  const showAnimation = useCallback(() => {
+  const playAnimation = useCallback(() => {
     const lottieAnimation = animationRef.current
     if (!lottieAnimation) return
     if (props.index === props.activeIndex) {
@@ -89,9 +89,8 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
     }
   }, [props.activeIndex, props.index, props.pauseAnimationOnRenderAtFrame])
 
-  const onAppBecomeActive = () => showAnimation()
-  useAppStateChange(onAppBecomeActive, undefined)
-  useEffect(() => showAnimation(), [showAnimation])
+  useAppStateChange(playAnimation, undefined)
+  useEffect(playAnimation, [playAnimation])
 
   didFadeIn = false
   useEffect(() => {
