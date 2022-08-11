@@ -1144,6 +1144,10 @@ msgstr "Fermer la modale de propositions d'identifications avec ÉduConnect ou D
 msgid "Fermer la modale et refuser la collecte des données"
 msgstr "Fermer la modale et refuser la collecte des données"
 
+#: src/features/cookies/pages/CookiesConsentModal.tsx
+msgid "Fermer la modale et refuser les cookies"
+msgstr "Fermer la modale et refuser les cookies"
+
 #: src/features/identityCheck/components/DMSModal.tsx
 msgid "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
 msgstr "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
@@ -2457,6 +2461,7 @@ msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
+#: src/features/cookies/pages/CookiesConsentModal.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
