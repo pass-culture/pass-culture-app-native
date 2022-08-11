@@ -18,9 +18,11 @@ jest.mock('features/profile/utils')
 jest.mock('features/identityCheck/pages/profile/utils')
 
 const mockNavigateToNextScreen = jest.fn()
+let mockIsSavingCheckpoint = false
 jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
   useIdentityCheckNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
+    isSavingCheckpoint: mockIsSavingCheckpoint,
   }),
 }))
 
@@ -64,5 +66,12 @@ describe('<SetStatus/>', () => {
 
     fireEvent.press(getByText(SchoolTypesSnap.activities[0].label))
     expect(activityHasSchoolTypes).toHaveBeenCalled()
+  })
+  it('should not display "Continuer" if isSavingCheckpoint is true', async () => {
+    mockIsSavingCheckpoint = true
+    const { queryByText, getByText } = render(<SetStatus />)
+
+    fireEvent.press(getByText(SchoolTypesSnap.activities[1].label))
+    expect(queryByText('Continuer')).toBeFalsy()
   })
 })

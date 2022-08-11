@@ -28,7 +28,7 @@ export const SetSchoolType = () => {
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(
     profile.schoolType || null
   )
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen, isSavingCheckpoint } = useIdentityCheckNavigation()
 
   const onPressContinue = async () => {
     if (!selectedSchoolTypeId) return
@@ -86,6 +86,7 @@ export const SetSchoolType = () => {
           accessibilityLabel={
             !selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer vers l'étape suivante`
           }
+          isLoading={isSavingCheckpoint}
           disabled={!selectedSchoolTypeId}
         />
       }
