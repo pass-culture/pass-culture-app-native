@@ -2521,11 +2521,6 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@bam.tech/react-native-batch@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@bam.tech/react-native-batch/-/react-native-batch-6.0.2.tgz#d54ec8fdde994b5dc9d3357a1ef0cea80ecfa34e"
-  integrity sha512-6N4kt85FWm1XLPAJGXJd4dxYQ9fSygtm2y6o92wtVvA8qKwSRp/VvxrtWxLaSsGDCV8PqFU0x0/FUkuhTnEQvw==
-
 "@bam.tech/react-native-config@^1.4.5":
   version "1.4.5"
   resolved "https://registry.yarnpkg.com/@bam.tech/react-native-config/-/react-native-config-1.4.5.tgz#ede68c61b102992225f9da1ffcc4ac6de1ec22f7"
@@ -2535,6 +2530,11 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@base2/pretty-print-object/-/pretty-print-object-1.0.1.tgz#371ba8be66d556812dc7fb169ebc3c08378f69d4"
   integrity sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==
+
+"@batch.com/react-native-plugin@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@batch.com/react-native-plugin/-/react-native-plugin-8.0.2.tgz#3c10bc157feeffb39f8db7f5fa92c4e4ba94f29d"
+  integrity sha512-hd49XbShhHn4yndLfo7MYrNBVtrdfgWqOvtlKveUlG5kI+1eF/klmBjCdSR+2auLamwtYX4YZJb1imjm7XYr6g==
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
