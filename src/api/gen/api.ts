@@ -1864,7 +1864,7 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  appEnableSearchHomepageRework: boolean
+  appEnableCategoryFilterPage: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse
@@ -1885,11 +1885,6 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   enableFrontImageResizing: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  enableIdCheckRetention: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse
