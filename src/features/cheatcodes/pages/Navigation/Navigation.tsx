@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
+import { CookiesConsentModal } from 'features/cookies/pages/CookiesConsentModal'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { Maintenance } from 'features/maintenance/Maintenance'
@@ -63,6 +64,12 @@ export function Navigation(): JSX.Element {
     showShareAppModal()
   }
 
+  const {
+    visible: cookiesConsentModalVisible,
+    showModal: showCookiesConsentModal,
+    hideModal: hideCookiesConsentModal,
+  } = useModal(false)
+
   if (screenError) {
     throw screenError
   }
@@ -94,8 +101,15 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Partage de l'app" onPress={pressShareApp} />
+            <ButtonPrimary wording="Partage de l'app 📱" onPress={pressShareApp} />
             <ShareAppModal visible={shareAppModalVisible} dismissModal={hideShareAppModal} />
+          </Row>
+          <Row half>
+            <ButtonPrimary wording="Cookies consent 🍪" onPress={() => showCookiesConsentModal()} />
+            <CookiesConsentModal
+              visible={cookiesConsentModalVisible}
+              hideModal={hideCookiesConsentModal}
+            />
           </Row>
           <Row half>
             <ButtonPrimary
