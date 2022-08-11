@@ -35,9 +35,7 @@ async function readString(storageKey: StorageKey): Promise<string | null> {
   }
 }
 
-async function readMultiString(
-  storageKeys: StorageKey[]
-): Promise<readonly [string, string | null][]> {
+async function readMultiString(storageKeys: StorageKey[]): Promise<[string, string | null][]> {
   try {
     return await AsyncStorage.multiGet(storageKeys)
   } catch (error) {

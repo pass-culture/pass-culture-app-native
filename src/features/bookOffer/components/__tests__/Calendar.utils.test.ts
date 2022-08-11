@@ -1,4 +1,4 @@
-import range from 'lodash.range'
+import range from 'lodash/range'
 import timezoneMock, { TimeZone } from 'timezone-mock'
 
 import { getDatesInMonth } from 'features/bookOffer/components/Calendar/Calendar.utils'

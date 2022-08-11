@@ -316,16 +316,6 @@ module.exports = function (webpackEnv) {
         'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
         'react-native-appsflyer': path.join(paths.appSrc, 'libs/react-native-appsflyer'),
 
-        //// Those package use bad default import from package.json (for ex: using package.json browser field instead of module)
-        //// See https://github.com/webpack/webpack/issues/4674 for details
-        // remove when issue is resolved https://github.com/bvaughn/react-error-boundary/issues/114
-        'react-error-boundary': path.join(paths.appNodeModules, 'react-error-boundary/dist/react-error-boundary.esm.js'),
-        // remove when issue is resolved https://github.com/algolia/algoliasearch-client-javascript/issues/1421
-        'algoliasearch': path.join(paths.appNodeModules, 'algoliasearch/dist/algoliasearch.esm.browser.js'),
-        // remove when issue is resolved https://github.com/callstack/react-theme-provider/issues/141
-        'deepmerge': path.join(paths.appNodeModules, 'deepmerge/dist/cjs.js'),
-
-
         // /**
         //  * These will replace react navigation entirely.
         //  * Toggle to switch the routing.
