@@ -22,7 +22,20 @@ jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
   }),
 }))
 
-jest.mock('features/identityCheck/utils/useProfileOptions')
+const mockSchoolTypes = SchoolTypesSnap.school_types
+const mockActivities = SchoolTypesSnap.activities
+jest.mock('features/identityCheck/api/api', () => {
+  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+  return {
+    ...ActualIdentityCheckAPI,
+    useProfileOptions: jest.fn(() => {
+      return {
+        schoolTypes: mockSchoolTypes,
+        activities: mockActivities,
+      }
+    }),
+  }
+})
 
 const mockUseIdentityCheckContext = useIdentityCheckContext as jest.Mock
 
