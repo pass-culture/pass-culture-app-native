@@ -16,6 +16,11 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 
+const allowedDomains = [
+  'https://educonnect.education.gouv.fr',
+  // environnement hors production
+  'https://pr4.educonnect.phm.education.gouv.fr',
+]
 export function useIdentificationUrl() {
   const { data: subscription } = useNextSubscriptionStep()
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
@@ -145,4 +150,10 @@ export const useProfileOptions = () => {
   const schoolTypes = data?.school_types
   const activities = data?.activities
   return { schoolTypes, activities }
+}
+
+export const logoutFromEduConnectIfAllowed = (logoutUrl: string | undefined) => {
+  if (logoutUrl && allowedDomains.find((domain) => new RegExp(`^${domain}`, 'i').test(logoutUrl))) {
+    globalThis.window.open(logoutUrl)
+  }
 }
