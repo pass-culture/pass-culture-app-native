@@ -688,7 +688,7 @@ msgstr "Contacter le service"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -1370,7 +1370,7 @@ msgstr "J'accède au pass Culture sans mettre à jour mon navigateur"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 msgid "J'ai reçu mon code"
 msgstr "J'ai reçu mon code"
 
@@ -2044,7 +2044,7 @@ msgstr "Ouvrir le gestionnaire mail"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
-#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Ouvrir le gestionnaire mail pour contacter le support"
 msgstr "Ouvrir le gestionnaire mail pour contacter le support"
@@ -2470,7 +2470,6 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 msgid "Retour"
 msgstr "Retour"
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
@@ -2478,9 +2477,10 @@ msgstr "Retour"
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
-#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
@@ -2557,7 +2557,7 @@ msgstr "Revenir à l'étape précédente"
 msgid "Réactiver mon compte"
 msgstr "Réactiver mon compte"
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 msgid "Réessaie plus tard"
 msgstr "Réessaie plus tard"
 
@@ -3035,7 +3035,7 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
@@ -3059,11 +3059,11 @@ msgstr "Tu as déjà signalé cette offre"
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 msgid "Tu as dépassé le nombre de 5 demandes de code autorisées."
 msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
 
-#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 
@@ -3958,7 +3958,7 @@ msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# ré
 msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
 msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
 msgstr "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
 
