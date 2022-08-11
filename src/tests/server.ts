@@ -137,7 +137,6 @@ function requestSettingsSuccess(
     proDisableEventsQrcode: false,
     enableUserProfiling: false,
     enableUnderageGeneralisation: false,
-    enableIdCheckRetention: false,
     objectStorageUrl: 'https://localhost',
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
@@ -145,7 +144,7 @@ function requestSettingsSuccess(
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,
     allowAccountUnsuspension: false,
-    appEnableSearchHomepageRework: false,
+    appEnableCategoryFilterPage: false,
     accountUnsuspensionLimit: 60,
     appEnableAutocomplete: true,
   }
