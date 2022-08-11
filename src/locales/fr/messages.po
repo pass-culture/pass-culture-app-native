@@ -687,8 +687,8 @@ msgid "Contacter le service"
 msgstr "Contacter le service"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
+#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -2042,9 +2042,9 @@ msgid "Ouvrir le gestionnaire mail"
 msgstr "Ouvrir le gestionnaire mail"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
+#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Ouvrir le gestionnaire mail pour contacter le support"
 msgstr "Ouvrir le gestionnaire mail pour contacter le support"
@@ -2470,7 +2470,6 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 msgid "Retour"
 msgstr "Retour"
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
@@ -2479,6 +2478,7 @@ msgstr "Retour"
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
+#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 #: src/features/navigation/PageNotFound.tsx
@@ -3035,7 +3035,7 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
@@ -3063,7 +3063,7 @@ msgstr "Tu as déjà un compte ?"
 msgid "Tu as dépassé le nombre de 5 demandes de code autorisées."
 msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
 
-#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
+#: src/features/identityCheck/pages/errors/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 
