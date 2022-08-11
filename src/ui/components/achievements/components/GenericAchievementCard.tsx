@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, RefObject, useEffect, useMemo } from 'react'
+import React, { FunctionComponent, RefObject, useCallback, useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
@@ -70,12 +71,11 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
         activeIndex={props.activeIndex}
         lastIndex={props.lastIndex}
         
-Those props are provided by the GenericAchievementCard and must be passed down to the GenericAchievementCard from within your custom Card component!`
+      Those props are provided by the GenericAchievementCard and must be passed down to the GenericAchievementCard from within your custom Card component!`
     )
   }
 
-  didFadeIn = false
-  useEffect(() => {
+  const playAnimation = useCallback(() => {
     const lottieAnimation = animationRef.current
     if (!lottieAnimation) return
     if (props.index === props.activeIndex) {
@@ -87,8 +87,12 @@ Those props are provided by the GenericAchievementCard and must be passed down t
         lottieAnimation.pause()
       }
     }
-  }, [props.pauseAnimationOnRenderAtFrame, animationRef, props.index, props.activeIndex])
+  }, [props.activeIndex, props.index, props.pauseAnimationOnRenderAtFrame])
 
+  useAppStateChange(playAnimation, undefined)
+  useEffect(playAnimation, [playAnimation])
+
+  didFadeIn = false
   useEffect(() => {
     const button = animatedButtonRef?.current
     if (button?.fadeIn) {

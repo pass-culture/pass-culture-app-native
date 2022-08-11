@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import {
@@ -12,6 +12,7 @@ import {
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useUserProfileInfo, useResetRecreditAmountToShow } from 'features/profile/api'
+import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -57,11 +58,13 @@ export const RecreditBirthdayNotification = () => {
     analytics.logScreenView('BirthdayNotification')
   }, [])
 
-  useEffect(() => {
-    if (animationRef.current) {
-      animationRef.current.play(0, 62)
-    }
+  const playAnimation = useCallback(() => {
+    const lottieAnimation = animationRef.current
+    if (lottieAnimation) lottieAnimation.play(0, 62)
   }, [animationRef])
+
+  useAppStateChange(playAnimation, undefined)
+  useEffect(playAnimation, [playAnimation])
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
