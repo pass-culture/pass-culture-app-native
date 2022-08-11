@@ -38,7 +38,7 @@
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",
     "ios:staging": "react-native run-ios --scheme PassCulture-Staging",
     "ios:prod": "react-native run-ios --scheme PassCulture-Production",
-    "build": "node web/scripts/build.js",
+    "build": "SHOW_DUPLICATES_PLUGIN=${SHOW_DUPLICATES_PLUGIN:-true} node web/scripts/build.js",
     "build:development": "ENV=development yarn build",
     "build:testing": "ENV=testing yarn build",
     "build:staging": "ENV=staging yarn build",
