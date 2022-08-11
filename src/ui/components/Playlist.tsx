@@ -1,6 +1,6 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import range from 'lodash.range'
+import range from 'lodash/range'
 import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'

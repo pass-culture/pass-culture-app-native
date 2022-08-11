@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import noop from 'lodash.noop'
+import noop from 'lodash/noop'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
