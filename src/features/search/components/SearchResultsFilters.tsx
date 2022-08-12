@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
@@ -18,22 +19,28 @@ export const SearchResultsFilters: React.FunctionComponent = () => {
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
   const { label: locationLabel } = useLocationChoice(section)
+  const { data: appSettings } = useAppSettings()
+  // use for filters buttons on search results view
+  const appEnableCategoryFilterPage = appSettings?.appEnableCategoryFilterPage ?? false
 
   const onPressLocationButton = useCallback(() => {
     navigate('LocationFilter')
   }, [navigate])
 
-  return (
+  return appEnableCategoryFilterPage ? (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-
       <FiltersContainer>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <ButtonSecondary wording={locationLabel} onPress={onPressLocationButton} />
+          <ButtonSecondary
+            wording={locationLabel}
+            onPress={onPressLocationButton}
+            testID="locationButton"
+          />
         </ScrollView>
       </FiltersContainer>
     </React.Fragment>
-  )
+  ) : null
 }
 
 const FiltersContainer = styled.View({
