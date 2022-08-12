@@ -6,7 +6,6 @@ import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useOffer } from 'features/offer/api/useOffer'
 import { OfferHeader } from 'features/offer/components'
-import { OfferWebHead } from 'features/offer/components/OfferWebHead'
 import { useCtaWordingAndAction } from 'features/offer/services/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -74,11 +73,11 @@ export const Offer: FunctionComponent = () => {
 
   return (
     <Container>
-      <OfferWebHead offer={offerResponse} />
       <OfferHeader
         title={offerResponse.name}
         headerTransition={headerTransition}
         offerId={offerResponse.id}
+        description={offerResponse.description ?? undefined}
       />
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (

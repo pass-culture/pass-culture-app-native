@@ -29,6 +29,8 @@ interface HeaderIconProps {
   testID: string
 }
 
+export const HEADER_ICON_WIDTH = getSpacing(10)
+
 const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
@@ -67,9 +69,9 @@ export const HeaderIcon = (props: HeaderIconProps) => {
 }
 
 const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
-  width: getSpacing(10),
+  width: HEADER_ICON_WIDTH,
   aspectRatio: '1',
-  borderRadius: getSpacing(10),
+  borderRadius: HEADER_ICON_WIDTH,
   backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',

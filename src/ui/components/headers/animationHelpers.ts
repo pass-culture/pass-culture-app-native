@@ -56,3 +56,18 @@ export const useHeaderTransition = ({ listener }: Props = {}) => {
 
   return { headerTransition, onScroll }
 }
+
+export function favoriteAnimateIcon(animatedValue: Animated.Value): void {
+  Animated.sequence([
+    Animated.timing(animatedValue, {
+      toValue: 1.3,
+      duration: 200,
+      useNativeDriver: false,
+    }),
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: false,
+    }),
+  ]).start()
+}
