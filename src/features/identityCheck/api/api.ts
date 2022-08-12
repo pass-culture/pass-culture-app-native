@@ -5,12 +5,12 @@ import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
-import { MaintenancePageType, ProfileUpdateRequest } from 'api/gen'
+import { MaintenancePageType, ProfileUpdateRequest, ProfileOptionsResponse } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckState } from 'features/identityCheck/context/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { env, WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys, QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -128,4 +128,27 @@ export function usePhoneValidationRemainingAttempts() {
   )
   const isLastAttempt = phoneValidationRemainingAttempts?.remainingAttempts === 1
   return { ...phoneValidationRemainingAttempts, isLastAttempt }
+}
+
+const STALE_TIME_PROFILE_OPTIONS = 5 * 60 * 1000
+
+export function useProfileOptionsResponse() {
+  return useQuery<ProfileOptionsResponse>(
+    QueryKeys.SCHOOL_TYPES,
+    () => api.getnativev1subscriptionprofileOptions(),
+    { staleTime: STALE_TIME_PROFILE_OPTIONS }
+  )
+}
+
+export const useProfileOptions = () => {
+  const { data } = useProfileOptionsResponse()
+  const schoolTypes = data?.school_types
+  const activities = data?.activities
+  return { schoolTypes, activities }
+}
+
+export const logoutFromEduConnectIfAllowed = (logoutUrl: string | undefined) => {
+  if (logoutUrl && new RegExp(`^${env.EDUCONNECT_ALLOWED_DOMAIN}`, 'i').test(logoutUrl)) {
+    globalThis.window.open(logoutUrl)
+  }
 }

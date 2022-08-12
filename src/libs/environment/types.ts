@@ -23,6 +23,7 @@ export interface Environment {
   DSM_URL: string
   DMS_FRENCH_CITIZEN_URL: string
   DMS_FOREIGN_CITIZEN_URL: string
+  EDUCONNECT_ALLOWED_DOMAIN: string
   ENABLE_WHY_DID_YOU_RENDER: boolean
   ENV: string
   FAQ_LINK: string

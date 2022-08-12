@@ -11,6 +11,7 @@ import { Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { useSendPhoneValidationMutation } from 'features/identityCheck/api/api'
+import { CountryPicker, METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -30,8 +31,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
-import { CountryPicker, METROPOLITAN_FRANCE } from './components'
-
 const TIMER = 60
 
 function getPlaceholder(countryCode: CountryCode): string {
@@ -41,6 +40,7 @@ function getPlaceholder(countryCode: CountryCode): string {
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
+// TODO(PC-16822): delete deprecated page
 export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()

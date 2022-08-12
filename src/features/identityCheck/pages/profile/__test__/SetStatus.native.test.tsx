@@ -13,7 +13,6 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
   useIdentityCheckContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
 }))
 jest.mock('react-query')
-jest.mock('features/identityCheck/utils/useProfileOptions')
 jest.mock('features/profile/utils')
 jest.mock('features/identityCheck/pages/profile/utils')
 
@@ -25,6 +24,21 @@ jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
     isSavingCheckpoint: mockIsSavingCheckpoint,
   }),
 }))
+
+const mockSchoolTypes = SchoolTypesSnap.school_types
+const mockActivities = SchoolTypesSnap.activities
+jest.mock('features/identityCheck/api/api', () => {
+  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+  return {
+    ...ActualIdentityCheckAPI,
+    useProfileOptions: jest.fn(() => {
+      return {
+        schoolTypes: mockSchoolTypes,
+        activities: mockActivities,
+      }
+    }),
+  }
+})
 
 const mockUseIsUserUnderage = useIsUserUnderage as jest.Mock
 
