@@ -10,17 +10,12 @@ import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptio
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckState } from 'features/identityCheck/context/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { env, WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys, QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 
-const allowedDomains = [
-  'https://educonnect.education.gouv.fr',
-  // environnement hors production
-  'https://pr4.educonnect.phm.education.gouv.fr',
-]
 export function useIdentificationUrl() {
   const { data: subscription } = useNextSubscriptionStep()
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
@@ -153,7 +148,7 @@ export const useProfileOptions = () => {
 }
 
 export const logoutFromEduConnectIfAllowed = (logoutUrl: string | undefined) => {
-  if (logoutUrl && allowedDomains.find((domain) => new RegExp(`^${domain}`, 'i').test(logoutUrl))) {
+  if (logoutUrl && new RegExp(`^${env.EDUCONNECT_ALLOWED_DOMAIN}`, 'i').test(logoutUrl)) {
     globalThis.window.open(logoutUrl)
   }
 }
