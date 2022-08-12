@@ -115,6 +115,7 @@ export const SetPhoneValidationCode = () => {
                 keyboardType="number-pad"
                 label={t`Code de validation`}
                 rightLabel={t`Format\u00a0: 6 chiffres`}
+                value={codeInputState.code}
                 onChangeText={onChangeValue}
                 placeholder={'012345'}
                 textContentType="oneTimeCode"

@@ -467,6 +467,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   aria-describedby="testUuidV4"
                   aria-required={true}
                   editable={true}
+                  isEmpty={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
@@ -477,11 +478,11 @@ exports[`<SetName/> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
+                        "fontFamily": "Montserrat-Italic",
                         "fontSize": 15,
                         "height": "100%",
                         "paddingBottom": 0,
@@ -602,6 +603,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   aria-describedby="testUuidV4"
                   aria-required={true}
                   editable={true}
+                  isEmpty={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
@@ -612,11 +614,11 @@ exports[`<SetName/> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
+                        "fontFamily": "Montserrat-Italic",
                         "fontSize": 15,
                         "height": "100%",
                         "paddingBottom": 0,

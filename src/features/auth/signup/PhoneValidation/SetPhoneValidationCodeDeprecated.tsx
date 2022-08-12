@@ -204,6 +204,8 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
             <Spacer.Column numberOfSpaces={6} />
             <CodeInputContainer>
               <CodeInput
+                value={codeInputState.code}
+                isEmpty={!codeInputState.code}
                 onChangeText={(_text, rawText) => {
                   onChangeValue(rawText ?? '')
                 }}
@@ -280,13 +282,13 @@ const codeInputPlaceholder = '000000'
 const codeInputMask = '999999'
 
 const CodeInput = styled(MaskedTextInput).attrs(({ theme }) => ({
-  placeholderTextColor: theme.colors.greyDark,
-}))(({ theme }) => ({
+  placeholderTextColor: theme.typography.placeholder.color,
+}))<{ isEmpty: boolean }>(({ theme, isEmpty }) => ({
   fontSize: getSpacing(5),
   marginLeft: getSpacing(4),
   color: theme.colors.black,
   textAlign: 'center',
-  fontFamily: 'Montserrat-Regular',
+  fontFamily: isEmpty ? theme.fontFamily.italic : theme.fontFamily.regular,
   letterSpacing: getSpacing(4),
 }))
 

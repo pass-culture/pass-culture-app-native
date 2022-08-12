@@ -180,9 +180,10 @@ Object {
 }
 
 .c5 {
-  font-family: Montserrat-Regular;
+  font-family: Montserrat-Italic;
   font-size: 15px;
-  color: #161617;
+  line-height: 20px;
+  color: #696A6F;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -205,9 +206,10 @@ Object {
 }
 
 .c8 {
-  font-family: Montserrat-Regular;
+  font-family: Montserrat-Italic;
   font-size: 15px;
-  color: #161617;
+  line-height: 20px;
+  color: #696A6F;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -230,9 +232,10 @@ Object {
 }
 
 .c9 {
-  font-family: Montserrat-Regular;
+  font-family: Montserrat-Italic;
   font-size: 15px;
-  color: #161617;
+  line-height: 20px;
+  color: #696A6F;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -1889,9 +1892,10 @@ Object {
 }
 
 .c5 {
-  font-family: Montserrat-Regular;
+  font-family: Montserrat-Italic;
   font-size: 15px;
-  color: #161617;
+  line-height: 20px;
+  color: #696A6F;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -1914,9 +1918,10 @@ Object {
 }
 
 .c8 {
-  font-family: Montserrat-Regular;
+  font-family: Montserrat-Italic;
   font-size: 15px;
-  color: #161617;
+  line-height: 20px;
+  color: #696A6F;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -1939,9 +1944,10 @@ Object {
 }
 
 .c9 {
-  font-family: Montserrat-Regular;
+  font-family: Montserrat-Italic;
   font-size: 15px;
-  color: #161617;
+  line-height: 20px;
+  color: #696A6F;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;

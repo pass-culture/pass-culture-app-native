@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -29,8 +29,10 @@ export function DropDown({
   ariaLabel,
   isError = false,
 }: Props) {
+  const [isEmpty, setIsEmpty] = useState(true)
   const onChangeDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     onChange(event.target.value)
+    setIsEmpty(!event.target.value)
   }
 
   const dropDownInputID = uuidv4()
@@ -46,6 +48,7 @@ export function DropDown({
           role="listbox"
           id={dropDownInputID}
           onChange={onChangeDate}
+          isEmpty={isEmpty}
           noBorderRadiusRight={noBorderRadiusRight}
           noBorderRadiusLeft={noBorderRadiusLeft}
           isError={isError}>
@@ -89,19 +92,24 @@ const noBorderRadius = getSpacingString(1)
 type SelectProps = {
   noBorderRadiusRight: boolean
   noBorderRadiusLeft: boolean
+  isEmpty: boolean
   isError: boolean
 }
 
 const StyledSelect = styled.select<SelectProps>`
-  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft, isError }) => {
+  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft, isEmpty, isError }) => {
     const borderRadiusLeft = noBorderRadiusLeft ? noBorderRadius : `${theme.borderRadius.button}px`
     const borderRadiusRight = noBorderRadiusRight
       ? noBorderRadius
       : `${theme.borderRadius.button}px`
+    const { fontFamily, fontSize, color, lineHeight } = isEmpty
+      ? theme.typography.placeholder
+      : theme.typography.body
     return `
-    font-family: ${theme.fontFamily.regular};
-    font-size: ${getSpacingString(3.75)};
-    color: ${theme.colors.black};
+    font-family: ${fontFamily};
+    font-size: ${fontSize}px;
+    line-height: ${lineHeight};
+    color: ${color};
     width: 100%;
     padding-right: ${getSpacingString(4)};
     padding-left: ${getSpacingString(4)};
@@ -114,7 +122,6 @@ const StyledSelect = styled.select<SelectProps>`
     cursor: pointer;
     background-color: ${theme.colors.white};
     appearance: none;
-
     &:focus-visible, :active {
       border-color: ${theme.colors.primary};
     }

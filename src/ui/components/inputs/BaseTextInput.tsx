@@ -3,7 +3,6 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
 import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { RNTextInputProps } from './types'
@@ -23,7 +22,9 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
      * text input of type password (with secureTextEntry set to True) has not the
      * correct fontFamily despite the style
      */
-    inputRef.current.setNativeProps({ style: { fontFamily: 'Montserrat-Regular' } })
+    props.secureTextEntry &&
+      props.value &&
+      inputRef.current.setNativeProps({ style: { fontFamily: 'Montserrat-Regular' } })
 
     /** FEATURE HACK for : autoFocus with keyboard display on Android
      * Why / issue : on Android with react-navigation used, the inputs are focused without
@@ -51,6 +52,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
       autoFocus={nativeAutoFocus ? autoFocus : undefined}
       editable={!props.disabled}
       testID={props.testID}
+      isEmpty={!props.value}
       placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
       ref={(ref) => {
@@ -68,14 +70,16 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
 })
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
-  placeholderTextColor: theme.colors.greyDark,
+  placeholderTextColor: theme.typography.placeholder.color,
   ...getTextAttrs(),
-}))(({ theme }) => ({
-  flex: 1,
-  padding: 0,
-  color: theme.colors.black,
-  fontFamily: theme.fontFamily.regular,
-  fontSize: getSpacing(3.75),
-  height: '100%',
-  ...(Platform.OS === 'web' && { width: 'inherit' }),
-}))
+}))<{ isEmpty: boolean }>(({ theme, isEmpty }) => {
+  const inputStyle = isEmpty ? theme.typography.placeholder : theme.typography.body
+  return {
+    flex: 1,
+    padding: 0,
+    height: '100%',
+    ...inputStyle,
+    lineHeight: undefined,
+    ...(Platform.OS === 'web' && { width: 'inherit' }),
+  }
+})
