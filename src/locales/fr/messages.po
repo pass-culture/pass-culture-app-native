@@ -512,7 +512,7 @@ msgstr "Choisis une date dans le futur"
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/features/auth/signup/PhoneValidation/components/CountryPicker.tsx
+#: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
 msgid "Choix de l'indicatif téléphonique"
 msgstr "Choix de l'indicatif téléphonique"
 
@@ -1128,7 +1128,7 @@ msgstr "Favoris"
 msgid "Fermer la modale"
 msgstr "Fermer la modale"
 
-#: src/features/auth/signup/PhoneValidation/components/CountryPicker.tsx
+#: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
 msgid "Fermer la modale de choix de l'indicatif téléphonique"
 msgstr "Fermer la modale de choix de l'indicatif téléphonique"
 
@@ -2033,7 +2033,7 @@ msgstr "Oups !"
 msgid "Ouvrir l'application de message"
 msgstr "Ouvrir l'application de message"
 
-#: src/features/auth/signup/PhoneValidation/components/CountryPicker.tsx
+#: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
 msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { METROPOLITAN_FRANCE } from 'features/auth/signup/PhoneValidation/components/constants'
-import { CountryPicker } from 'features/auth/signup/PhoneValidation/components/CountryPicker'
+import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
+import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { act, flushAllPromisesWithAct, render, fireEvent } from 'tests/utils'
 
 const onSelectCountry = jest.fn()
