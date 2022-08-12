@@ -76,3 +76,6 @@ self.addEventListener('message', (event) => {
     self.skipWaiting()
   }
 })
+
+// This will add batch sdk service worker
+self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
