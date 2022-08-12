@@ -45,4 +45,5 @@ export interface SearchState {
   query: string
   view: SearchView
   noFocus?: boolean
+  previousView?: SearchView
 }
