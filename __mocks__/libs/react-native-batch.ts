@@ -10,5 +10,5 @@ export const BatchUser = {
 }
 
 export const BatchPush = {
-  registerForRemoteNotifications: jest.fn(),
+  requestNotificationAuthorization: jest.fn(),
 }

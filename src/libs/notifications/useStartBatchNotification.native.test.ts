@@ -4,8 +4,8 @@ import { renderHook } from 'tests/utils'
 import { useStartBatchNotification } from './useStartBatchNotification'
 
 describe('startBatchNotification', () => {
-  it('should call BatchPush.registerForRemoteNotifications', () => {
+  it('should call BatchPush.requestNotificationAuthorization', () => {
     renderHook(useStartBatchNotification)
-    expect(BatchPush.registerForRemoteNotifications).toHaveBeenCalled()
+    expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalled()
   })
 })

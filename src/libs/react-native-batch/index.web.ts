@@ -17,5 +17,5 @@ export const BatchUser = {
 }
 
 export const BatchPush = {
-  registerForRemoteNotifications() {},
+  requestNotificationAuthorization() {},
 }
