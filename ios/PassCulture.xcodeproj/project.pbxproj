@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C1955A99E745B9B354F57A /* AppDelegate.m */; };
+		1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */; };
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		030D8707D3F8414C91A9D78A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PassCulture/AppDelegate.h; sourceTree = "<group>"; };
+		1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Italic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		364C381B59463043D7637B91 /* Pods-PassCulture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.release.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.release.xcconfig"; sourceTree = "<group>"; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		68415A3080844E43A0AB50B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */,
 				72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */,
 				90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */,
 				F423851ED1194E90940E001F /* Montserrat-Regular.ttf */,
@@ -240,6 +243,7 @@
 				8FEB737BACB244CF8BB8C051 /* SplashScreen.storyboard in Resources */,
 				98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */,
 				F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */,
+				1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */,
 				6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */,
 				94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */,
 				3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */,

@@ -55,11 +55,12 @@ export interface AppThemeType {
   }
   forms: { maxWidth: number }
   fontFamily: {
-    medium: string
-    black: string
-    bold: string
     regular: string
+    italic: string
+    medium: string
     semiBold: string
+    bold: string
+    black: string
   }
   outline: {
     width: number
@@ -104,6 +105,7 @@ export interface AppThemeType {
     buttonText: Typography
     body: Typography
     caption: Typography
+    placeholder: Typography
   }
   colors: {
     accent: ColorsEnum
@@ -369,11 +371,12 @@ export const theme: AppThemeType = {
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
   fontFamily: {
-    medium: 'Montserrat-Medium',
-    black: 'Montserrat-Black',
-    bold: 'Montserrat-Bold',
     regular: 'Montserrat-Regular',
+    italic: 'Montserrat-Italic',
+    medium: 'Montserrat-Medium',
     semiBold: 'Montserrat-SemiBold',
+    bold: 'Montserrat-Bold',
+    black: 'Montserrat-Black',
   },
   forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
   controlComponent: {
@@ -461,6 +464,12 @@ export const theme: AppThemeType = {
       fontSize: getSpacing(3),
       lineHeight: getSpacingString(4),
       color: ColorsEnum.BLACK,
+    },
+    placeholder: {
+      fontFamily: 'Montserrat-Italic',
+      fontSize: getSpacing(3.75),
+      lineHeight: getSpacingString(5),
+      color: ColorsEnum.GREY_DARK,
     },
   },
   colors: {
