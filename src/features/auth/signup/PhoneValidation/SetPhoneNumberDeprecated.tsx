@@ -40,6 +40,7 @@ function getPlaceholder(countryCode: CountryCode): string {
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
+// TODO(PC-16822): delete deprecated page
 export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()

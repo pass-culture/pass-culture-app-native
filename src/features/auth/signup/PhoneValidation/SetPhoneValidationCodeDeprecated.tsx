@@ -43,6 +43,7 @@ import { Form } from 'ui/web/form/Form'
 
 const TIMER = 60
 
+// TODO(PC-16822): delete deprecated page
 export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidationCodeComponent() {
   const [error, setError] = useState<Error | undefined>()
   const { appContentWidth } = useTheme()

@@ -38,6 +38,7 @@ const getNavConfigForNextSubscriptionStep = (
     maintenancePageType,
     stepperIncludesPhoneValidation,
   } = nextSubscriptionStep
+  // TODO(PC-16822): remove this case as deprecated page does not exist anymore
   if (!stepperIncludesPhoneValidation && nextStep === SubscriptionStep['phone-validation']) {
     // TODO(PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
     return { screen: 'SetPhoneNumberDeprecated' }
