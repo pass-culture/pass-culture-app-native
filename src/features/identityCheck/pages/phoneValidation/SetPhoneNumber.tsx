@@ -123,6 +123,7 @@ export const SetPhoneNumber = () => {
                 isError={false}
                 keyboardType="number-pad"
                 label={t`Numéro de téléphone`}
+                value={phoneNumber}
                 onChangeText={onChangeText}
                 placeholder={getPlaceholder(country.cca2)}
                 textContentType="telephoneNumber"

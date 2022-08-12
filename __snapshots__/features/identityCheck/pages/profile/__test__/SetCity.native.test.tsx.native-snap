@@ -343,6 +343,7 @@ exports[`<SetCity/> should render correctly 1`] = `
               autoCorrect={false}
               editable={true}
               enablesReturnKeyAutomatically={true}
+              isEmpty={true}
               keyboardType="number-pad"
               nativeID="testUuidV4"
               onBlur={[Function]}
@@ -355,11 +356,11 @@ exports[`<SetCity/> should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#696A6F",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
+                    "fontFamily": "Montserrat-Italic",
                     "fontSize": 15,
                     "height": "100%",
                     "paddingBottom": 0,

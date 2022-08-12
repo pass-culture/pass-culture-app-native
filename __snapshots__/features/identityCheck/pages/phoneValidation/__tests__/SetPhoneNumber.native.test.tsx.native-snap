@@ -561,6 +561,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                       aria-required={false}
                       autoCapitalize="none"
                       editable={true}
+                      isEmpty={true}
                       keyboardType="number-pad"
                       nativeID="testUuidV4"
                       onBlur={[Function]}
@@ -573,11 +574,11 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                       style={
                         Array [
                           Object {
-                            "color": "#161617",
+                            "color": "#696A6F",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
+                            "fontFamily": "Montserrat-Italic",
                             "fontSize": 15,
                             "height": "100%",
                             "paddingBottom": 0,
@@ -588,6 +589,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                         ]
                       }
                       textContentType="telephoneNumber"
+                      value=""
                     />
                   </View>
                 </View>
@@ -1361,6 +1363,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       aria-required={false}
                       autoCapitalize="none"
                       editable={true}
+                      isEmpty={true}
                       keyboardType="number-pad"
                       nativeID="testUuidV4"
                       onBlur={[Function]}
@@ -1373,11 +1376,11 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       style={
                         Array [
                           Object {
-                            "color": "#161617",
+                            "color": "#696A6F",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
+                            "fontFamily": "Montserrat-Italic",
                             "fontSize": 15,
                             "height": "100%",
                             "paddingBottom": 0,
@@ -1388,6 +1391,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         ]
                       }
                       textContentType="telephoneNumber"
+                      value=""
                     />
                   </View>
                 </View>

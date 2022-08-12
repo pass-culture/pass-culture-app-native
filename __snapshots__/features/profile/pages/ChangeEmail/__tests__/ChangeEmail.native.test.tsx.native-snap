@@ -406,6 +406,7 @@ Array [
               autoComplete="email"
               disabled={true}
               editable={false}
+              isEmpty={true}
               keyboardType="email-address"
               maxLength={120}
               nativeID="testUuidV4"
@@ -418,11 +419,11 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#696A6F",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
+                    "fontFamily": "Montserrat-Italic",
                     "fontSize": 15,
                     "height": "100%",
                     "paddingBottom": 0,
@@ -543,6 +544,7 @@ Array [
               autoCapitalize="none"
               disabled={true}
               editable={false}
+              isEmpty={true}
               nativeID="testUuidV4"
               onBlur={[Function]}
               onChangeText={[Function]}
@@ -554,11 +556,11 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#696A6F",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
+                    "fontFamily": "Montserrat-Italic",
                     "fontSize": 15,
                     "height": "100%",
                     "paddingBottom": 0,
@@ -1066,6 +1068,7 @@ Array [
               autoComplete="email"
               disabled={false}
               editable={true}
+              isEmpty={true}
               keyboardType="email-address"
               maxLength={120}
               nativeID="testUuidV4"
@@ -1078,11 +1081,11 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#696A6F",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
+                    "fontFamily": "Montserrat-Italic",
                     "fontSize": 15,
                     "height": "100%",
                     "paddingBottom": 0,
@@ -1204,6 +1207,7 @@ Array [
               autoCapitalize="none"
               disabled={false}
               editable={true}
+              isEmpty={true}
               nativeID="testUuidV4"
               onBlur={[Function]}
               onChangeText={[Function]}
@@ -1215,11 +1219,11 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#696A6F",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
+                    "fontFamily": "Montserrat-Italic",
                     "fontSize": 15,
                     "height": "100%",
                     "paddingBottom": 0,

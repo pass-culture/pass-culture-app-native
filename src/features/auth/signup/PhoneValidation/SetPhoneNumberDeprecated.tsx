@@ -156,6 +156,7 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
                 autoCapitalize="none"
                 isError={false}
                 keyboardType="number-pad"
+                value={phoneNumber}
                 onChangeText={onChangeText}
                 placeholder={getPlaceholder(country.cca2)}
                 textContentType="telephoneNumber"

@@ -5,7 +5,37 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -378,11 +378,11 @@
+@@ -351,11 +351,11 @@
+                  aria-describedby=\\"testUuidV4\\"
+                  aria-required={true}
+                  autoCapitalize=\\"none\\"
+                  autoComplete=\\"email\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  keyboardType=\\"email-address\\"
+                  maxLength={120}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function onEmailChange]}
+@@ -364,26 +364,26 @@
+                  placeholderTextColor=\\"#696A6F\\"
+                  returnKeyType=\\"next\\"
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -18,7 +48,38 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
             </View>
             <View
               numberOfSpaces={6}
-@@ -520,11 +520,11 @@
+@@ -488,11 +488,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  autoCapitalize=\\"none\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function bound dispatchAction]}
+                  onFocus={[Function onFocus]}
+                  onSubmitEditing={[Function _callee3]}
+@@ -501,15 +501,15 @@
+                  returnKeyType=\\"next\\"
+                  secureTextEntry={true}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
+@@ -522,11 +522,11 @@
                       },
                     ]
                   }
@@ -31,7 +92,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   numberOfSpaces={2}
                   style={
                     Array [
-@@ -676,27 +676,27 @@
+@@ -678,27 +678,27 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -62,7 +123,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -715,11 +715,11 @@
+@@ -717,11 +717,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -103,7 +164,37 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -378,12 +378,73 @@
+@@ -351,11 +351,11 @@
+                  aria-describedby=\\"testUuidV4\\"
+                  aria-required={true}
+                  autoCapitalize=\\"none\\"
+                  autoComplete=\\"email\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  keyboardType=\\"email-address\\"
+                  maxLength={120}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function onEmailChange]}
+@@ -364,27 +364,88 @@
+                  placeholderTextColor=\\"#696A6F\\"
+                  returnKeyType=\\"next\\"
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -178,7 +269,38 @@ exports[`<Login/> should show email error message WHEN signin has failed because
             <View
               numberOfSpaces={6}
               style={
-@@ -520,11 +581,11 @@
+@@ -488,11 +549,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  autoCapitalize=\\"none\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function bound dispatchAction]}
+                  onFocus={[Function onFocus]}
+                  onSubmitEditing={[Function _callee3]}
+@@ -501,15 +562,15 @@
+                  returnKeyType=\\"next\\"
+                  secureTextEntry={true}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
+@@ -522,11 +583,11 @@
                       },
                     ]
                   }
@@ -293,7 +415,37 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -378,11 +441,11 @@
+@@ -351,11 +414,11 @@
+                  aria-describedby=\\"testUuidV4\\"
+                  aria-required={true}
+                  autoCapitalize=\\"none\\"
+                  autoComplete=\\"email\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  keyboardType=\\"email-address\\"
+                  maxLength={120}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function onEmailChange]}
+@@ -364,26 +427,26 @@
+                  placeholderTextColor=\\"#696A6F\\"
+                  returnKeyType=\\"next\\"
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -306,7 +458,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
             </View>
             <View
               numberOfSpaces={6}
-@@ -461,18 +524,18 @@
+@@ -462,18 +525,18 @@
                 }
               />
               <View
@@ -327,7 +479,38 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -520,11 +583,11 @@
+@@ -488,11 +551,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  autoCapitalize=\\"none\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function bound dispatchAction]}
+                  onFocus={[Function onFocus]}
+                  onSubmitEditing={[Function _callee3]}
+@@ -501,15 +564,15 @@
+                  returnKeyType=\\"next\\"
+                  secureTextEntry={true}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
+@@ -522,11 +585,11 @@
                       },
                     ]
                   }
@@ -340,7 +523,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   numberOfSpaces={2}
                   style={
                     Array [
-@@ -676,27 +739,27 @@
+@@ -678,27 +741,27 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -371,7 +554,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -715,11 +778,11 @@
+@@ -717,11 +780,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -486,7 +669,37 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -378,11 +441,11 @@
+@@ -351,11 +414,11 @@
+                  aria-describedby=\\"testUuidV4\\"
+                  aria-required={true}
+                  autoCapitalize=\\"none\\"
+                  autoComplete=\\"email\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  keyboardType=\\"email-address\\"
+                  maxLength={120}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function onEmailChange]}
+@@ -364,26 +427,26 @@
+                  placeholderTextColor=\\"#696A6F\\"
+                  returnKeyType=\\"next\\"
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -499,7 +712,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
             </View>
             <View
               numberOfSpaces={6}
-@@ -461,18 +524,18 @@
+@@ -462,18 +525,18 @@
                 }
               />
               <View
@@ -520,7 +733,38 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -520,11 +583,11 @@
+@@ -488,11 +551,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  autoCapitalize=\\"none\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function bound dispatchAction]}
+                  onFocus={[Function onFocus]}
+                  onSubmitEditing={[Function _callee3]}
+@@ -501,15 +564,15 @@
+                  returnKeyType=\\"next\\"
+                  secureTextEntry={true}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
+@@ -522,11 +585,11 @@
                       },
                     ]
                   }
@@ -533,7 +777,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   numberOfSpaces={2}
                   style={
                     Array [
-@@ -676,27 +739,27 @@
+@@ -678,27 +741,27 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -564,7 +808,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -715,11 +778,11 @@
+@@ -717,11 +780,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -679,7 +923,37 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -378,11 +441,11 @@
+@@ -351,11 +414,11 @@
+                  aria-describedby=\\"testUuidV4\\"
+                  aria-required={true}
+                  autoCapitalize=\\"none\\"
+                  autoComplete=\\"email\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  keyboardType=\\"email-address\\"
+                  maxLength={120}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function onEmailChange]}
+@@ -364,26 +427,26 @@
+                  placeholderTextColor=\\"#696A6F\\"
+                  returnKeyType=\\"next\\"
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -692,7 +966,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
             </View>
             <View
               numberOfSpaces={6}
-@@ -461,18 +524,18 @@
+@@ -462,18 +525,18 @@
                 }
               />
               <View
@@ -713,7 +987,38 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -520,11 +583,11 @@
+@@ -488,11 +551,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  autoCapitalize=\\"none\\"
+                  editable={true}
+-                 isEmpty={true}
++                 isEmpty={false}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function bound dispatchAction]}
+                  onFocus={[Function onFocus]}
+                  onSubmitEditing={[Function _callee3]}
+@@ -501,15 +564,15 @@
+                  returnKeyType=\\"next\\"
+                  secureTextEntry={true}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#161617\\",
+                        \\"flexBasis\\": 0,
+                        \\"flexGrow\\": 1,
+                        \\"flexShrink\\": 1,
+-                       \\"fontFamily\\": \\"Montserrat-Italic\\",
++                       \\"fontFamily\\": \\"Montserrat-Regular\\",
+                        \\"fontSize\\": 15,
+                        \\"height\\": \\"100%\\",
+                        \\"paddingBottom\\": 0,
+                        \\"paddingLeft\\": 0,
+                        \\"paddingRight\\": 0,
+@@ -522,11 +585,11 @@
                       },
                     ]
                   }
@@ -726,7 +1031,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   numberOfSpaces={2}
                   style={
                     Array [
-@@ -676,27 +739,27 @@
+@@ -678,27 +741,27 @@
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
@@ -757,7 +1062,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -715,11 +778,11 @@
+@@ -717,11 +780,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
