@@ -60,29 +60,27 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   {
     name: 'SetPhoneNumberDeprecated',
     component: SetPhoneNumberDeprecated,
-    path: 'creation-compte/telephone',
+    path: 'validation-telephone/numero-cheatcodes-only',
     options: { title: t`Ton numéro de téléphone` },
     secure: true,
   },
   {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
-    // TODO(PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
-    path: 'validation-telephone/numero-cheatcodes-only',
+    path: 'creation-compte/telephone',
     options: { title: t`Ton numéro de téléphone` },
     secure: true,
   },
   {
     name: 'SetPhoneValidationCode',
     component: SetPhoneValidationCode,
-    // TODO(PC-15247): exchange "path" names between Deprecated and New to maintain consistency in productio,.
-    path: 'validation-telephone/code-cheatcodes-only',
+    path: 'creation-compte/code-de-validation-telephone',
     options: { title: t`Validation du numéro de téléphone` },
   },
   {
     name: 'SetPhoneValidationCodeDeprecated',
     component: SetPhoneValidationCodeDeprecated,
-    path: 'creation-compte/code-de-validation-telephone',
+    path: 'validation-telephone/code-cheatcodes-only',
     options: { title: t`Validation téléphone` },
   },
   // Profile
