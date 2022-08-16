@@ -996,10 +996,6 @@ msgstr "Email modification mot de passe expiré"
 msgid "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 
-#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
-msgid "En attendant, tu peux découvrir l'application !"
-msgstr "En attendant, tu peux découvrir l'application !"
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -3221,10 +3217,6 @@ msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Tu recevras un e-mail lorsque ta demande sera validée."
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
-
-#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
-msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
-msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 
 #: src/features/bookings/components/TicketBody/ticketBodyMessages.ts
 msgid "Tu vas recevoir ton billet par e-mail"
