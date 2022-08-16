@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchResultsFilters } from 'features/search/components/SearchResultsFilters'
-import { fireEvent, render } from 'tests/utils'
+import { render } from 'tests/utils'
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
 jest.mock('features/auth/settings', () => ({
@@ -23,14 +22,6 @@ describe('SearchResultsFilters component', () => {
       const { queryByTestId } = render(<SearchResultsFilters />)
 
       expect(queryByTestId('locationButton')).toBeTruthy()
-    })
-
-    it('should redirect on location page on location button click', async () => {
-      const { getByTestId } = render(<SearchResultsFilters />)
-      const locationButton = getByTestId('locationButton')
-      await fireEvent.press(locationButton)
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
     })
   })
 
