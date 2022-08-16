@@ -4,6 +4,7 @@ import React from 'react'
 import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -11,7 +12,6 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-import { Header } from 'ui/web/global/Header'
 
 interface Props {
   title: string
@@ -137,3 +137,10 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
     flex: 1,
   })
 )
+
+const Header: React.FC = styled.View.attrs({
+  accessibilityRole: AccessibilityRole.HEADER,
+})({
+  width: '100%',
+  position: 'static',
+})
