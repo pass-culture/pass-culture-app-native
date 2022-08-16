@@ -77,5 +77,7 @@ self.addEventListener('message', (event) => {
   }
 })
 
-// This will add batch sdk service worker
-self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
+// This allow the web app to trigger skipWaiting when a new SW version is available
+self.addEventListener('install', () => {
+  self.skipWaiting()
+})
