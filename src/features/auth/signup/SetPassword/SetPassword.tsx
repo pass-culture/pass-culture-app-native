@@ -9,9 +9,9 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const [password, setPassword] = useState('')

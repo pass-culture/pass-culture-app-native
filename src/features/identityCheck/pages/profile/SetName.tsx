@@ -8,12 +8,12 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 export const SetName = () => {
   const { dispatch, profile } = useIdentityCheckContext()

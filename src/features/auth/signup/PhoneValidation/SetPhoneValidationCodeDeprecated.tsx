@@ -30,6 +30,7 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -39,7 +40,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 const TIMER = 60
 

@@ -19,8 +19,8 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { Form } from 'ui/components/Form'
 import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 const searchInputID = uuidv4()
 const searchClient: SearchClient = {

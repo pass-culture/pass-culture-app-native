@@ -8,11 +8,11 @@ import { useReasonsForReporting } from 'features/offer/services/useReasonsForRep
 import { useReportOfferMutation } from 'features/offer/services/useReportOffer'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 interface Props {
   dismissModal: () => void

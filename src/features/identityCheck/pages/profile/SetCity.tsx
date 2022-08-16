@@ -17,6 +17,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Li } from 'ui/components/Li'
@@ -25,7 +26,6 @@ import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 

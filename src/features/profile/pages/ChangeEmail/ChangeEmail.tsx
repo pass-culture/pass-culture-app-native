@@ -21,6 +21,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -29,7 +30,6 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 export function ChangeEmail() {
   const { isMobileViewport, isTouch } = useTheme()

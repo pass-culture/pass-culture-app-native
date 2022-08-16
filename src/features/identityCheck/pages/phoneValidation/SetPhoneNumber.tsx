@@ -26,12 +26,12 @@ import { useSafeState } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 

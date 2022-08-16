@@ -3,6 +3,7 @@ export enum AccessibilityRole {
   CHECKBOX = 'checkbox',
   DIALOG = 'none',
   FOOTER = 'none',
+  FORM = 'none',
   GROUP = 'none',
   HEADER = 'header',
   HEADING = 'none',

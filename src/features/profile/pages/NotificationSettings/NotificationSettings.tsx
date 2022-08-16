@@ -13,12 +13,12 @@ import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 type State = {
   allowEmails: boolean | undefined

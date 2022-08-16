@@ -7,10 +7,10 @@ import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useReportOfferMutation } from 'features/offer/services/useReportOffer'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 interface Props {
   dismissModal: () => void
