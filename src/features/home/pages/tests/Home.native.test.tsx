@@ -5,6 +5,7 @@ import { UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { BatchUser } from 'libs/react-native-batch'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { Home } from '../Home'
@@ -138,9 +139,11 @@ describe('Home component - Analytics', () => {
 
     scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
+    expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage')
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', () => {
