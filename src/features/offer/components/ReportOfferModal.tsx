@@ -45,7 +45,7 @@ export const ReportOfferModal: FunctionComponent<Props> = (props) => {
         props.dismissModal()
         setReportStep(ReportSteps.REPORT_OFFER_DESCRIPTION)
       }}>
-      <ModalContent>{childrenProps.children}</ModalContent>
+      <ModalContent testID="report-offer-modal">{childrenProps.children}</ModalContent>
     </AppModal>
   )
 }

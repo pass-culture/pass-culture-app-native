@@ -329,6 +329,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                   },
                 ]
               }
+              testID="report-offer-modal"
             >
               <Text>
                 Composant modale

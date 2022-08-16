@@ -1,9 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { OfferBody } from 'features/offer/pages/OfferBody'
 import { analytics } from 'libs/firebase/analytics'
-import { cleanup, fireEvent, render } from 'tests/utils'
+import { act, cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/profile/api')
@@ -19,24 +21,30 @@ describe('<OfferBody />', () => {
   afterEach(cleanup)
 
   const onScroll = jest.fn()
-
-  const offerId = 1
+  const offerId = offerResponseSnap.id
 
   it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
-    const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
-
-    const reportOfferButton = await OfferBodyComponent.findByTestId('report-offer-body')
+    const { findByTestId, queryByTestId } = render(
+      <OfferBody offerId={offerId} onScroll={onScroll} />
+    )
+    const reportOfferButton = await findByTestId('report-offer-button')
 
     fireEvent.press(reportOfferButton)
-    expect(OfferBodyComponent).toMatchSnapshot()
+
+    await act(async () => {
+      await waitForExpect(() => expect(queryByTestId('report-offer-modal')).toBeTruthy())
+    })
   })
 
   it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
     const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
-
     const venueBannerComponent = await OfferBodyComponent.findByTestId('VenueBannerComponent')
 
     fireEvent.press(venueBannerComponent)
-    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
+
+    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+      venueId: offerResponseSnap.venue.id,
+      from: 'offer',
+    })
   })
 })

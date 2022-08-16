@@ -1870,7 +1870,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "width": "auto",
                                   }
                                 }
-                                testID="report-offer-body"
+                                testID="report-offer-button"
                               >
                                 <View
                                   style={
@@ -4294,7 +4294,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "width": "auto",
                                   }
                                 }
-                                testID="report-offer-body"
+                                testID="report-offer-button"
                               >
                                 <View
                                   style={

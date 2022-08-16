@@ -11,19 +11,9 @@ import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/AuthContext', () => ({ useAuthContext: jest.fn() }))
-
-// TODO(LucasBeneston): Maybe create only one mockOffer and use it with everywhere (useOffer, etc.)
-const mockOffer = offerResponseSnap
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => ({
-    data: mockOffer,
-  }),
-}))
+jest.mock('features/offer/api/useOffer')
 
 const url = getOfferUrl(offerResponseSnap.id)
 const title = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
@@ -40,22 +30,24 @@ describe('<OfferHeader />', () => {
 
   describe('Icons', () => {
     it('should render all icons', async () => {
-      const offerHeader = await renderOfferHeader()
+      const offerHeader = await renderOfferHeader({ isLoggedIn: false })
       expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
       expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
       expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
     })
   })
 
-  it('should goBack when we press on the back button', async () => {
-    const { getByTestId } = await renderOfferHeader()
-    fireEvent.press(getByTestId('icon-back'))
-    expect(mockGoBack).toBeCalledTimes(1)
+  describe('Navigation', () => {
+    it('should goBack when we press on the back button', async () => {
+      const { getByTestId } = await renderOfferHeader({ isLoggedIn: false })
+      fireEvent.press(getByTestId('icon-back'))
+      expect(mockGoBack).toBeCalledTimes(1)
+    })
   })
 
   describe('Animation', () => {
     it('should fully display the title at the end of the animation', async () => {
-      const { animatedValue, getByTestId } = await renderOfferHeader()
+      const { animatedValue, getByTestId } = await renderOfferHeader({ isLoggedIn: false })
       const offerHeaderName = getByTestId('offerHeaderName')
       expect(offerHeaderName.props['aria-hidden']).toBeTruthy()
       expect(offerHeaderName.props.style.opacity).toBe(0)
@@ -80,7 +72,7 @@ describe('<OfferHeader />', () => {
     it('should call Share with the right arguments on IOS', async () => {
       Platform.OS = 'ios'
       const share = jest.spyOn(Share, 'share')
-      const { getByTestId } = await renderOfferHeader()
+      const { getByTestId } = await renderOfferHeader({ isLoggedIn: false })
 
       fireEvent.press(getByTestId('icon-share'))
 
@@ -94,7 +86,7 @@ describe('<OfferHeader />', () => {
     it('should call Share with the right arguments on Android', async () => {
       Platform.OS = 'android'
       const share = jest.spyOn(Share, 'share')
-      const { getByTestId } = await renderOfferHeader()
+      const { getByTestId } = await renderOfferHeader({ isLoggedIn: false })
 
       fireEvent.press(getByTestId('icon-share'))
 
@@ -106,9 +98,11 @@ describe('<OfferHeader />', () => {
     })
   })
 
+  describe('Favorite', () => {})
+
   describe('Analytics', () => {
     it('should log OfferVenue once when clicking on the Share button', async () => {
-      const { getByTestId } = await renderOfferHeader()
+      const { getByTestId } = await renderOfferHeader({ isLoggedIn: false })
 
       fireEvent.press(getByTestId('icon-share'))
 
@@ -117,8 +111,8 @@ describe('<OfferHeader />', () => {
   })
 })
 
-async function renderOfferHeader(isLoggedIn?: boolean) {
-  mockedUseAuthContext.mockReturnValue({ isLoggedIn: isLoggedIn ?? true })
+async function renderOfferHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
+  mockedUseAuthContext.mockReturnValue({ isLoggedIn })
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
