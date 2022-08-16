@@ -1,15 +1,18 @@
 import { plural, t } from '@lingui/macro'
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ActivityIndicator } from 'react-native'
+import { FlatList, ActivityIndicator, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
+import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
-import { SearchResultsFilters } from 'features/search/components/SearchResultsFilters'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { LocationType } from 'features/search/enums'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -41,11 +44,22 @@ export const SearchResults: React.FC = () => {
     isFetchingNextPage,
   } = useSearchResults()
   const { searchState } = useSearch()
+  const { dispatch } = useStagedSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
+
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { locationFilter } = searchState
+  const { locationType } = locationFilter
+  // PLACE and VENUE belong to the same section
+  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { label: locationLabel } = useLocationChoice(section)
+  const { data: appSettings } = useAppSettings()
+  // Feature flag use to manage display filters buttons on search results view
+  const appEnableCategoryFilterPage = appSettings?.appEnableCategoryFilterPage ?? false
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -77,6 +91,11 @@ export const SearchResults: React.FC = () => {
     ),
     [searchState.query]
   )
+
+  const redirectFilters = useCallback(() => {
+    dispatch({ type: 'SET_STATE', payload: searchState })
+    navigate('SearchFilter')
+  }, [dispatch, navigate, searchState])
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
@@ -148,7 +167,20 @@ export const SearchResults: React.FC = () => {
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
-      <SearchResultsFilters />
+      {!!appEnableCategoryFilterPage && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={2} />
+          <FiltersContainer>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ButtonSecondary
+                wording={locationLabel}
+                testID="locationButton"
+                onPress={redirectFilters}
+              />
+            </ScrollView>
+          </FiltersContainer>
+        </React.Fragment>
+      )}
       <Container testID="searchResults">
         <FlatList
           ref={flatListRef}
@@ -210,6 +242,11 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
 }))
+
+const FiltersContainer = styled.View({
+  flexDirection: 'row',
+  marginLeft: getSpacing(6),
+})
 
 function SearchResultsPlaceHolder() {
   const renderItem = useCallback(() => <HitPlaceholder />, [])

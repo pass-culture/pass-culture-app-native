@@ -1,21 +1,16 @@
-import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/firebase/analytics'
-import { render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 import { SearchResults } from '../SearchResults'
 
 jest.mock('react-query')
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useIsFocused: jest.fn(),
-  useRoute: jest.fn().mockReturnValue({
-    key: 'ksdqldkmqdmqdq',
-  }),
-}))
+
 const mockSearchState = initialSearchState
+const mockDispatchStagedSearch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -23,7 +18,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
   useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatchStagedSearch,
   }),
 }))
 
@@ -43,13 +38,18 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
+const mockSettings = jest.fn().mockReturnValue({ data: {} })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
+
 describe('SearchResults component', () => {
   it('should render correctly', () => {
-    expect(render(<SearchResults />, { wrapper: NavigationContainer })).toMatchSnapshot()
+    expect(render(<SearchResults />)).toMatchSnapshot()
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', () => {
-    const { getByTestId } = render(<SearchResults />, { wrapper: NavigationContainer })
+    const { getByTestId } = render(<SearchResults />)
     const flatlist = getByTestId('searchResultsFlatlist')
 
     mockData.pages.push({ hits: [], page: 1, nbHits: 0 })
@@ -65,9 +65,46 @@ describe('SearchResults component', () => {
 
   it('should not log SearchScrollToPage when hitting the bottom of the page if no more results', () => {
     mockHasNextPage = false
-    const { getByTestId } = render(<SearchResults />, { wrapper: NavigationContainer })
+    const { getByTestId } = render(<SearchResults />)
     const flatlist = getByTestId('searchResultsFlatlist')
     flatlist.props.onEndReached()
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
+  })
+
+  describe('When feature flag filter activated', () => {
+    beforeAll(() => {
+      mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
+    })
+
+    it('should display location button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('locationButton')).toBeTruthy()
+    })
+
+    it('should redirect on filters page on location button click', async () => {
+      const { getByTestId } = render(<SearchResults />)
+      const locationButton = getByTestId('locationButton')
+      await fireEvent.press(locationButton)
+
+      expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: mockSearchState,
+      })
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+    })
+  })
+
+  describe('When feature flag filter desactivated', () => {
+    beforeAll(() => {
+      mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
+    })
+
+    it('should not display location button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('locationButton')).toBeNull()
+    })
   })
 })
