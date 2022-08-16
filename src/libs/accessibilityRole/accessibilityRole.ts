@@ -5,6 +5,7 @@ export enum AccessibilityRole {
   FOOTER = 'none',
   GROUP = 'none',
   HEADER = 'header',
+  HEADING = 'none',
   IMAGE = 'image',
   LINK = 'link',
   MAIN = 'none',

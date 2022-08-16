@@ -5,6 +5,7 @@ export enum AccessibilityRole {
   FOOTER = 'contentinfo',
   GROUP = 'group',
   HEADER = 'banner',
+  HEADING = 'heading',
   IMAGE = 'image',
   LINK = 'link',
   MAIN = 'main',

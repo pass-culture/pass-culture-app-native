@@ -4,7 +4,7 @@ describe('getNoHeadingAttrs()', () => {
   it('should return accessibility attribute with no values', () => {
     expect(getNoHeadingAttrs()).toEqual({
       accessibilityRole: undefined,
-      'aria-level': undefined,
+      accessibilityLevel: undefined,
       dir: 'ltr',
     })
   })

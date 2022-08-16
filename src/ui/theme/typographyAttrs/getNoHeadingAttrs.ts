@@ -6,7 +6,7 @@ export const getNoHeadingAttrs = () => ({
   ...(Platform.OS === 'web'
     ? {
         accessibilityRole: undefined,
-        'aria-level': undefined,
+        accessibilityLevel: undefined,
         ...getTextAttrs(),
       }
     : {}),
