@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/atoms'
 import { availableCategories } from 'features/search/utils/availableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 interface Props {
   onChange: (selection: SearchGroupNameEnumv2[]) => void
@@ -53,6 +52,6 @@ const BodyContainer = styled.View({
   marginRight: getSpacing(-3),
 })
 
-const StyledUl = webStyled(Ul)({
+const StyledUl = styled(Ul)({
   flexWrap: 'wrap',
 })

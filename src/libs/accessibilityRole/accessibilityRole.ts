@@ -8,6 +8,8 @@ export enum AccessibilityRole {
   HEADING = 'none',
   IMAGE = 'image',
   LINK = 'link',
+  LIST = 'list',
+  LISTITEM = 'none',
   MAIN = 'none',
   NAVIGATION = 'none',
   RADIO = 'radio',

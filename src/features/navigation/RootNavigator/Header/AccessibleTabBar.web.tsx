@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import nativeStyled from 'styled-components/native'
 
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -7,8 +8,8 @@ import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRoute
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 
 export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { tabRoutes } = useTabNavigationContext()
@@ -43,16 +44,11 @@ const AccessibleTabBarContainer = styled.nav.attrs({ role: 'navigation' })(({ th
   zIndex: theme.zIndex.tabBar,
 }))
 
-const StyledUl = styled(Ul)({
+const StyledUl = nativeStyled(Ul)({
   flex: 1,
   overflow: 'visible',
 })
 
-const LinkContainer = styled(Li)({
-  display: 'flex',
+const LinkContainer = nativeStyled(Li)({
   flex: 1,
-  '> *': {
-    display: 'flex',
-    flex: 1,
-  },
 })

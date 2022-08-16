@@ -8,8 +8,8 @@ import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 type Props = {
   domainsCredit: DomainsCredit

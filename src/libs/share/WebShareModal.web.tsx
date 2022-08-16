@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 // We are in a .web file, with a specific behavior depending on the device
@@ -14,10 +13,12 @@ import { SocialButton } from 'libs/share/SocialButton'
 import { WebShareModalProps } from 'libs/share/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { Ul } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -27,8 +28,6 @@ import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { getSpacingString, Spacer } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 export const WebShareModal = ({
   visible,
@@ -168,7 +167,7 @@ const NonSocialButtonsItem = styled.View({
   justifyContent: 'center',
 })
 
-const SocialButtonsContainer = webStyled(Ul)({
+const SocialButtonsContainer = styled(Ul)({
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(100px,1fr))',
   gap: `${getSpacingString(6)} 0px`,

@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SelectionLabel } from 'features/search/atoms'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 interface Props {
   onChange: ({
@@ -58,6 +57,6 @@ const BodyContainer = styled.View({
   marginRight: getSpacing(-3),
 })
 
-const StyledUl = webStyled(Ul)({
+const StyledUl = styled(Ul)({
   flexWrap: 'wrap',
 })

@@ -13,11 +13,11 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { useIsUserUnderage } from 'features/profile/utils'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Li } from 'ui/components/Li'
 import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
+import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 export const SetStatus = () => {
   const { activities } = useProfileOptions()

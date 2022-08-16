@@ -17,9 +17,9 @@ import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()

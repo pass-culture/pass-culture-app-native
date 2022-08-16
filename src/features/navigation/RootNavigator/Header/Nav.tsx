@@ -6,9 +6,9 @@ import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRoute
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { theme } from 'theme'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 import { NavItem } from './NavItem'
 

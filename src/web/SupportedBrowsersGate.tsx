@@ -6,9 +6,9 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 const browserVersion = Number(DeviceDetect.browserVersion)
 

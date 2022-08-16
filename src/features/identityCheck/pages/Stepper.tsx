@@ -18,14 +18,14 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { VerticalUl } from 'ui/components/Ul'
 import { Background } from 'ui/svg/Background'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 export const IdentityCheckStepper = () => {
   const theme = useTheme()

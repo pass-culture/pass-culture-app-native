@@ -15,11 +15,11 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { VerticalUl } from 'ui/components/Ul'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 export function ConfirmDeleteProfile() {
   const { navigate } = useNavigation<UseNavigationType>()
