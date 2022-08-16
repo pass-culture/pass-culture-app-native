@@ -10,11 +10,6 @@ import { fireEvent, render } from 'tests/utils/web'
 import { VenueHeader } from '../VenueHeader'
 
 describe('<VenueHeader />', () => {
-  it('should render correctly', async () => {
-    const renderAPI = await renderVenueHeader()
-    expect(renderAPI).toMatchSnapshot()
-  })
-
   it('should render back icon', async () => {
     const venueHeader = await renderVenueHeader()
     expect(venueHeader.queryByTestId('icon-back')).toBeTruthy()

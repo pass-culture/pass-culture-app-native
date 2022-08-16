@@ -61,11 +61,6 @@ describe('<OfferHeader />', () => {
     }))
   )
 
-  it('should render correctly', async () => {
-    const renderAPI = await renderOfferHeader({ isLoggedIn: true })
-    expect(renderAPI).toMatchSnapshot()
-  })
-
   it('should render all the icons - loggedIn', async () => {
     const offerHeader = await renderOfferHeader({ isLoggedIn: true })
     expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()

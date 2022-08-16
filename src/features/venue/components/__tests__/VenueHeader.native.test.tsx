@@ -21,11 +21,6 @@ describe('<VenueHeader />', () => {
     jest.useRealTimers()
   })
 
-  it('should render correctly', async () => {
-    const { toJSON } = await renderVenueHeader()
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should render all icons', async () => {
     const venueHeader = await renderVenueHeader()
     expect(venueHeader.queryByTestId('icon-back')).toBeTruthy()
