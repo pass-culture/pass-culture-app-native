@@ -1,6 +1,6 @@
 import { plural, t } from '@lingui/macro'
-import isEqual from 'lodash.isequal'
-import uniqWith from 'lodash.uniqwith'
+import isEqual from 'lodash/isEqual'
+import uniqWith from 'lodash/uniqWith'
 import React, { useRef, useState } from 'react'
 import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'

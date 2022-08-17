@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
-import omit from 'lodash.omit'
+import debounce from 'lodash/debounce'
+import omit from 'lodash/omit'
 import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
 import {

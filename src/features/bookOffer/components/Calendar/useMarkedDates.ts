@@ -1,4 +1,4 @@
-import groupBy from 'lodash.groupby'
+import groupBy from 'lodash/groupBy'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'

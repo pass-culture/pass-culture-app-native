@@ -1,5 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
-import flatten from 'lodash.flatten'
+import flatten from 'lodash/flatten'
 import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
 

@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash.clonedeep'
+import cloneDeep from 'lodash/cloneDeep'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 

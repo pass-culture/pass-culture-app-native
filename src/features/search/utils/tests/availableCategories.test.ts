@@ -1,4 +1,4 @@
-import omit from 'lodash.omit'
+import omit from 'lodash/omit'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'

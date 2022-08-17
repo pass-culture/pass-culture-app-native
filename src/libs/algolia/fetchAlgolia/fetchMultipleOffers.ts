@@ -1,4 +1,4 @@
-import flatten from 'lodash.flatten'
+import flatten from 'lodash/flatten'
 
 import { SearchState } from 'features/search/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'

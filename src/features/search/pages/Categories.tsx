@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'

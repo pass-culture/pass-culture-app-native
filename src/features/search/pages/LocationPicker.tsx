@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
