@@ -758,7 +758,7 @@ jobs:
   deploy-web-testing:
     executor: gcp
     working_directory: ~/pass-culture
-    resource_class: medium+
+    resource_class: large
     steps:
       - checkout
       - copy_assetlinks:
@@ -787,7 +787,7 @@ jobs:
   deploy-web-staging:
     executor: gcp
     working_directory: ~/pass-culture
-    resource_class: medium+
+    resource_class: large
     steps:
       - checkout
       - copy_assetlinks:
@@ -807,7 +807,7 @@ jobs:
   deploy-web-integration:
     executor: gcp
     working_directory: ~/pass-culture
-    resource_class: medium+
+    resource_class: large
     steps:
       - checkout
       - install_node_modules
@@ -825,7 +825,7 @@ jobs:
   deploy-web-prod:
     executor: gcp
     working_directory: ~/pass-culture
-    resource_class: medium+
+    resource_class: large
     steps:
       - checkout
       - copy_assetlinks:
