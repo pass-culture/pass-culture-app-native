@@ -330,13 +330,6 @@ module.exports = function (webpackEnv) {
         'lodash.debounce': path.join(paths.appNodeModules, 'lodash/debounce'),
         'lodash.toarray': path.join(paths.appNodeModules, 'lodash/toArray'),
 
-        // /**
-        //  * These will replace react navigation entirely.
-        //  * Toggle to switch the routing.
-        //  */
-        // '@react-navigation/native$': '@pass-culture/react-navigation-to-react-router-adapter/src/native',
-        // '@react-navigation/stack$': '@pass-culture/react-navigation-to-react-router-adapter/src/stack',
-
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
