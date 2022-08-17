@@ -6,12 +6,12 @@ import { FlatList, ActivityIndicator, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
+import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
-import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
@@ -45,7 +45,7 @@ export const SearchResults: React.FC = () => {
     isFetchingNextPage,
   } = useSearchResults()
   const { searchState } = useSearch()
-  const { dispatch } = useStagedSearch()
+  const { dispatch: stagedDispatch } = useStagedSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
@@ -56,8 +56,7 @@ export const SearchResults: React.FC = () => {
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const { data: appSettings } = useAppSettings()
-  // Feature flag use to manage display filters buttons on search results view
-  const appEnableCategoryFilterPage = appSettings?.appEnableCategoryFilterPage ?? false
+  const filtersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -91,9 +90,9 @@ export const SearchResults: React.FC = () => {
   )
 
   const redirectFilters = useCallback(() => {
-    dispatch({ type: 'SET_STATE', payload: searchState })
+    stagedDispatch({ type: 'SET_STATE', payload: searchState })
     navigate('SearchFilter')
-  }, [dispatch, navigate, searchState])
+  }, [stagedDispatch, navigate, searchState])
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
@@ -165,16 +164,19 @@ export const SearchResults: React.FC = () => {
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
-      {!!appEnableCategoryFilterPage && (
+      {!!filtersButtonsDisplay && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <FiltersContainer>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <ButtonSecondary
-                wording={locationLabel}
-                testID="locationButton"
-                onPress={redirectFilters}
-              />
+              <ButtonContainer>
+                <ButtonSecondary
+                  wording={locationLabel}
+                  testID="locationButton"
+                  onPress={redirectFilters}
+                />
+              </ButtonContainer>
+              <Spacer.Row numberOfSpaces={2} />
             </ScrollView>
           </FiltersContainer>
         </React.Fragment>
@@ -242,7 +244,6 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
 }))
 
 const FiltersContainer = styled.View({
-  flexDirection: 'row',
   marginLeft: getSpacing(6),
 })
 

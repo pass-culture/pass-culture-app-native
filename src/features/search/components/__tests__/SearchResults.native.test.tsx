@@ -82,7 +82,7 @@ describe('SearchResults component', () => {
       expect(queryByTestId('locationButton')).toBeTruthy()
     })
 
-    it('should redirect on filters page on location button click', async () => {
+    it('should update the temporary search state by actual search state', async () => {
       const { getByTestId } = render(<SearchResults />)
       const locationButton = getByTestId('locationButton')
       await fireEvent.press(locationButton)
@@ -91,6 +91,12 @@ describe('SearchResults component', () => {
         type: 'SET_STATE',
         payload: mockSearchState,
       })
+    })
+
+    it('should redirect on filters page on location button click', async () => {
+      const { getByTestId } = render(<SearchResults />)
+      const locationButton = getByTestId('locationButton')
+      await fireEvent.press(locationButton)
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
     })
