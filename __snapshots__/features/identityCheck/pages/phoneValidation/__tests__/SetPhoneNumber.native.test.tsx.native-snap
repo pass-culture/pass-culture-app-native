@@ -560,6 +560,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                       aria-describedby="testUuidV4"
                       aria-required={false}
                       autoCapitalize="none"
+                      autoComplete="off"
                       editable={true}
                       isEmpty={true}
                       keyboardType="number-pad"
@@ -589,7 +590,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                         ]
                       }
                       testID="Entrée pour le numéro de téléphone"
-                      textContentType="telephoneNumber"
+                      textContentType="none"
                       value=""
                     />
                   </View>
@@ -1363,6 +1364,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       aria-describedby="testUuidV4"
                       aria-required={false}
                       autoCapitalize="none"
+                      autoComplete="off"
                       editable={true}
                       isEmpty={true}
                       keyboardType="number-pad"
@@ -1392,7 +1394,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         ]
                       }
                       testID="Entrée pour le numéro de téléphone"
-                      textContentType="telephoneNumber"
+                      textContentType="none"
                       value=""
                     />
                   </View>
