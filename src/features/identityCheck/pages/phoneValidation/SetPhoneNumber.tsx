@@ -2,7 +2,7 @@ import { plural, t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { Country, CountryCode } from 'react-native-country-picker-modal'
+import { Country } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -66,11 +66,6 @@ export const SetPhoneNumber = () => {
     setPhoneNumber(value)
   }
 
-  function getPlaceholder(countryCode: CountryCode): string {
-    if (countryCode === 'NC') return '654 321'
-    return '06 12 34 56 78'
-  }
-
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
       dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
@@ -124,7 +119,6 @@ export const SetPhoneNumber = () => {
                 label={t`Numéro de téléphone`}
                 value={phoneNumber}
                 onChangeText={onChangeText}
-                placeholder={getPlaceholder(country.cca2)}
                 textContentType="telephoneNumber"
                 onSubmitEditing={() => {
                   // do nothing yet

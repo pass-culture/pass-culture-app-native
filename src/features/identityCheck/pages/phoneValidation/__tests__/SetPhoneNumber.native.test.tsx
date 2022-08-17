@@ -84,12 +84,12 @@ describe('SetPhoneNumber', () => {
     const mockFetch = jest.spyOn(global, 'fetch')
 
     it('should enable the button when the phone number is valid', async () => {
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
+      const { getByTestId } = renderSetPhoneNumber()
       const button = getByTestId('Continuer')
 
       await waitFor(() => expect(button).toBeDisabled())
 
-      const input = getByPlaceholderText('06 12 34 56 78')
+      const input = getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
 
       expect(button).toBeEnabled()
@@ -101,12 +101,12 @@ describe('SetPhoneNumber', () => {
       '62435463579', // too long (max 10)
       '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
+      const { getByTestId } = renderSetPhoneNumber()
       const button = getByTestId('Continuer')
 
       await waitFor(() => expect(button).toBeDisabled())
 
-      const input = getByPlaceholderText('06 12 34 56 78')
+      const input = getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, phoneNumber)
 
       expect(button).toBeDisabled()
@@ -122,10 +122,10 @@ describe('SetPhoneNumber', () => {
         })
       )
 
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
+      const { getByTestId } = renderSetPhoneNumber()
 
       const continueButton = getByTestId('Continuer')
-      const input = getByPlaceholderText('06 12 34 56 78')
+      const input = getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
@@ -141,10 +141,10 @@ describe('SetPhoneNumber', () => {
           message: 'Le numéro est invalide.',
         })
       )
-      const { getByTestId, getByPlaceholderText, getByText } = renderSetPhoneNumber()
+      const { getByTestId, getByText } = renderSetPhoneNumber()
 
       const continueButton = getByTestId('Continuer')
-      const input = getByPlaceholderText('06 12 34 56 78')
+      const input = getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '600000000')
 
       fireEvent.press(continueButton)
@@ -162,10 +162,10 @@ describe('SetPhoneNumber', () => {
         })
       )
 
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
+      const { getByTestId } = renderSetPhoneNumber()
 
       const continueButton = getByTestId('Continuer')
-      const input = getByPlaceholderText('06 12 34 56 78')
+      const input = getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
