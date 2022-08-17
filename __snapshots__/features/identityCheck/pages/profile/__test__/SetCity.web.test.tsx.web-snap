@@ -165,7 +165,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
@@ -237,7 +237,6 @@ Object {
                   />
                   <label
                     class="c1"
-                    dir="ltr"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -494,7 +493,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
@@ -566,7 +565,6 @@ Object {
                 />
                 <label
                   class="c1"
-                  dir="ltr"
                   for="testUuidV4"
                 >
                   Indique ton code postal et choisis ta ville

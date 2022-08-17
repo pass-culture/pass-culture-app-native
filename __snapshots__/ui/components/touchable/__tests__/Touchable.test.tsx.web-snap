@@ -48,7 +48,7 @@ exports[`<Touchable /> should render correctly 1`] = `
 >
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
   >
     Touchable content
   </div>
@@ -103,7 +103,7 @@ exports[`<Touchable /> should render correctly on custom type 1`] = `
 >
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
   >
     Touchable content
   </div>

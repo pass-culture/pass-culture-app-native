@@ -5,7 +5,6 @@ describe('getNoHeadingAttrs()', () => {
     expect(getNoHeadingAttrs()).toEqual({
       accessibilityRole: undefined,
       accessibilityLevel: undefined,
-      dir: 'ltr',
     })
   })
 })

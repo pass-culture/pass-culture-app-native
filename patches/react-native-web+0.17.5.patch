@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-web/dist/cjs/exports/Image/index.js b/node_modules/react-native-web/dist/cjs/exports/Image/index.js
-index 945174e..559ad3e 100644
+index 945174e..eaf3f4b 100644
 --- a/node_modules/react-native-web/dist/cjs/exports/Image/index.js
 +++ b/node_modules/react-native-web/dist/cjs/exports/Image/index.js
 @@ -188,6 +188,7 @@ var Image = /*#__PURE__*/React.forwardRef(function (props, ref) {
@@ -20,8 +20,34 @@ index 945174e..559ad3e 100644
      }, backgroundSize != null && {
        backgroundSize: backgroundSize
      }],
+diff --git a/node_modules/react-native-web/dist/cjs/exports/Text/index.js b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+index 36ad30c..e91e233 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/Text/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+@@ -110,7 +110,7 @@ var Text = /*#__PURE__*/React.forwardRef(function (props, forwardedRef) {
+   supportedProps.dir = dir; // 'auto' by default allows browsers to infer writing direction (root elements only)
+ 
+   if (!hasTextAncestor) {
+-    supportedProps.dir = dir != null ? dir : 'auto';
++    supportedProps.dir = dir != null ? dir : 'ltr';
+   }
+ 
+   if (onClick || onPress) {
+diff --git a/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js b/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
+index e93533a..227312b 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
+@@ -365,7 +365,7 @@ var TextInput = /*#__PURE__*/React.forwardRef(function (props, forwardedRef) {
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+   supportedProps.classList = classList; // 'auto' by default allows browsers to infer writing direction
+ 
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   supportedProps.enterKeyHint = returnKeyType;
+   supportedProps.onBlur = handleBlur;
+   supportedProps.onChange = handleChange;
 diff --git a/node_modules/react-native-web/dist/exports/Image/index.js b/node_modules/react-native-web/dist/exports/Image/index.js
-index 5c25ebf..b9ab20d 100644
+index 5c25ebf..f360c47 100644
 --- a/node_modules/react-native-web/dist/exports/Image/index.js
 +++ b/node_modules/react-native-web/dist/exports/Image/index.js
 @@ -175,6 +175,7 @@ var Image = /*#__PURE__*/React.forwardRef(function (props, ref) {
@@ -42,6 +68,32 @@ index 5c25ebf..b9ab20d 100644
      }, backgroundSize != null && {
        backgroundSize: backgroundSize
      }],
+diff --git a/node_modules/react-native-web/dist/exports/Text/index.js b/node_modules/react-native-web/dist/exports/Text/index.js
+index 034bbd1..62490b6 100644
+--- a/node_modules/react-native-web/dist/exports/Text/index.js
++++ b/node_modules/react-native-web/dist/exports/Text/index.js
+@@ -98,7 +98,7 @@ var Text = /*#__PURE__*/React.forwardRef(function (props, forwardedRef) {
+   supportedProps.dir = dir; // 'auto' by default allows browsers to infer writing direction (root elements only)
+ 
+   if (!hasTextAncestor) {
+-    supportedProps.dir = dir != null ? dir : 'auto';
++    supportedProps.dir = dir != null ? dir : 'ltr';
+   }
+ 
+   if (onClick || onPress) {
+diff --git a/node_modules/react-native-web/dist/exports/TextInput/index.js b/node_modules/react-native-web/dist/exports/TextInput/index.js
+index d55b552..1d968da 100644
+--- a/node_modules/react-native-web/dist/exports/TextInput/index.js
++++ b/node_modules/react-native-web/dist/exports/TextInput/index.js
+@@ -350,7 +350,7 @@ var TextInput = /*#__PURE__*/React.forwardRef(function (props, forwardedRef) {
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+   supportedProps.classList = classList; // 'auto' by default allows browsers to infer writing direction
+ 
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   supportedProps.enterKeyHint = returnKeyType;
+   supportedProps.onBlur = handleBlur;
+   supportedProps.onChange = handleChange;
 diff --git a/node_modules/react-native-web/src/exports/Image/index.js b/node_modules/react-native-web/src/exports/Image/index.js
 index 7cbde9f..5cc166c 100644
 --- a/node_modules/react-native-web/src/exports/Image/index.js
@@ -63,3 +115,29 @@ index 7cbde9f..5cc166c 100644
              backgroundSize != null && { backgroundSize }
            ]}
            suppressHydrationWarning={true}
+diff --git a/node_modules/react-native-web/src/exports/Text/index.js b/node_modules/react-native-web/src/exports/Text/index.js
+index a2a74ce..a70df07 100644
+--- a/node_modules/react-native-web/src/exports/Text/index.js
++++ b/node_modules/react-native-web/src/exports/Text/index.js
+@@ -121,7 +121,7 @@ const Text: React.AbstractComponent<TextProps, HTMLElement & PlatformMethods> =
+     supportedProps.dir = dir;
+     // 'auto' by default allows browsers to infer writing direction (root elements only)
+     if (!hasTextAncestor) {
+-      supportedProps.dir = dir != null ? dir : 'auto';
++      supportedProps.dir = dir != null ? dir : 'ltr';
+     }
+ 
+     if (onClick || onPress) {
+diff --git a/node_modules/react-native-web/src/exports/TextInput/index.js b/node_modules/react-native-web/src/exports/TextInput/index.js
+index a37dd8c..61df3b3 100644
+--- a/node_modules/react-native-web/src/exports/TextInput/index.js
++++ b/node_modules/react-native-web/src/exports/TextInput/index.js
+@@ -339,7 +339,7 @@ const TextInput: React.AbstractComponent<
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+   supportedProps.classList = classList;
+   // 'auto' by default allows browsers to infer writing direction
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   supportedProps.enterKeyHint = returnKeyType;
+   supportedProps.onBlur = handleBlur;
+   supportedProps.onChange = handleChange;

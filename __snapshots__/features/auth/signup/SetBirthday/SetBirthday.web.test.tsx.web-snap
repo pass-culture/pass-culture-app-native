@@ -274,7 +274,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   button-icon-SVG-Mock
                 </div>
@@ -307,7 +307,6 @@ Object {
               >
                 <label
                   class="c2"
-                  dir="ltr"
                   for="testUuidV4"
                 >
                   Jour
@@ -590,7 +589,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -613,7 +612,6 @@ Object {
               >
                 <label
                   class="c2"
-                  dir="ltr"
                   for="testUuidV4"
                 >
                   Mois
@@ -744,7 +742,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -767,7 +765,6 @@ Object {
               >
                 <label
                   class="c2"
-                  dir="ltr"
                   for="testUuidV4"
                 >
                   Année
@@ -1658,7 +1655,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -1972,7 +1969,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 button-icon-SVG-Mock
               </div>
@@ -2005,7 +2002,6 @@ Object {
             >
               <label
                 class="c2"
-                dir="ltr"
                 for="testUuidV4"
               >
                 Jour
@@ -2288,7 +2284,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -2311,7 +2307,6 @@ Object {
             >
               <label
                 class="c2"
-                dir="ltr"
                 for="testUuidV4"
               >
                 Mois
@@ -2442,7 +2437,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -2465,7 +2460,6 @@ Object {
             >
               <label
                 class="c2"
-                dir="ltr"
                 for="testUuidV4"
               >
                 Année
@@ -3356,7 +3350,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -3622,7 +3616,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   button-icon-SVG-Mock
                 </div>
@@ -3650,7 +3644,6 @@ Object {
             >
               <label
                 class="c2"
-                dir="ltr"
                 for="testUuidV4"
               >
                 Date de naissance
@@ -4820,7 +4813,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 button-icon-SVG-Mock
               </div>
@@ -4848,7 +4841,6 @@ Object {
           >
             <label
               class="c2"
-              dir="ltr"
               for="testUuidV4"
             >
               Date de naissance

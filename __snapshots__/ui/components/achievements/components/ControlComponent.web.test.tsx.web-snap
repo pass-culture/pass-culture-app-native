@@ -62,7 +62,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             arrowNext-SVG-Mock
           </div>
@@ -128,7 +128,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           arrowNext-SVG-Mock
         </div>
@@ -251,7 +251,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             arrowPrevious-SVG-Mock
           </div>
@@ -317,7 +317,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           arrowPrevious-SVG-Mock
         </div>
@@ -440,7 +440,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             arrowPrevious-SVG-Mock
           </div>
@@ -506,7 +506,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           arrowPrevious-SVG-Mock
         </div>

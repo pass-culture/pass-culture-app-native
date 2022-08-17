@@ -3,7 +3,6 @@ import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { ColorsEnum, UniqueColors } from './colors'
 import { useGrid } from './grid'
@@ -14,7 +13,7 @@ interface CustomTextProps {
 }
 export type TextProps = CustomTextProps & RNTextProps
 
-const Hero = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
+const Hero = styled(RNText)(({ theme }) => ({
   ...theme.typography.hero,
 }))
 
@@ -63,20 +62,18 @@ const Title4 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-lev
   ...theme.typography.title4,
 }))
 
-const ButtonText = styled(RNText).attrs(getTextAttrs())<{ shrink?: boolean }>(
-  ({ shrink, theme }) => ({
-    fontFamily: theme.typography.buttonText.fontFamily,
-    fontSize: theme.typography.buttonText.fontSize,
-    color: theme.typography.buttonText.color,
-    ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
-  })
-)
+const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => ({
+  fontFamily: theme.typography.buttonText.fontFamily,
+  fontSize: theme.typography.buttonText.fontSize,
+  color: theme.typography.buttonText.color,
+  ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
+}))
 
-const Body = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
+const Body = styled(RNText)(({ theme }) => ({
   ...theme.typography.body,
 }))
 
-const Caption = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
+const Caption = styled(RNText)(({ theme }) => ({
   ...theme.typography.caption,
 }))
 

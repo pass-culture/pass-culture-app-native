@@ -3,7 +3,6 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 export type Props = {
   accessibilityLabel?: string
@@ -24,8 +23,7 @@ const Container: React.FC<Props> = ({
     <Text
       accessibilityRole={AccessibilityRole.IMAGE}
       accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}
-      {...getTextAttrs()}>
+      aria-hidden={!accessibilityLabel}>
       {withSpaceBefore && nonBreakingSpace}
       {children}
       {withSpaceAfter && nonBreakingSpace}

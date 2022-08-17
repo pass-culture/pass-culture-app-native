@@ -173,7 +173,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
@@ -250,7 +250,6 @@ Object {
               >
                 <label
                   class="c1 c2"
-                  dir="ltr"
                   for="testUuidV4"
                 >
                   <div
@@ -316,7 +315,6 @@ Object {
               >
                 <label
                   class="c1 c2"
-                  dir="ltr"
                   for="testUuidV4"
                 >
                   <div
@@ -381,7 +379,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -596,7 +594,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     icon-back-SVG-Mock
                   </div>
@@ -673,7 +671,6 @@ Object {
             >
               <label
                 class="c1 c2"
-                dir="ltr"
                 for="testUuidV4"
               >
                 <div
@@ -739,7 +736,6 @@ Object {
             >
               <label
                 class="c1 c2"
-                dir="ltr"
                 for="testUuidV4"
               >
                 <div
@@ -804,7 +800,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>

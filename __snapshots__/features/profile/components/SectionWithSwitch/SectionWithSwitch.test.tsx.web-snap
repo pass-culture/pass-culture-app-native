@@ -66,18 +66,18 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
     >
       <label
         className=\\"sc-bdvvtL gQnzaU\\"
-@@ -67,10 +77,18 @@
+@@ -65,11 +75,18 @@
+          \\"flexDirection\\": \\"row\\",
           \\"msFlexAlign\\": \\"center\\",
           \\"msFlexDirection\\": \\"row\\",
         }
       }
-    >
++   >
 +     <label
 +       className=\\"sc-bdvvtL sc-gsDKAQ gQnzaU kBdLMI\\"
-+       dir=\\"ltr\\"
 +       htmlFor=\\"testUuidV4\\"
 +       id=\\"testUuidV4\\"
-+     >
+      >
 +       Partager ma position
 +     </label>
       <div

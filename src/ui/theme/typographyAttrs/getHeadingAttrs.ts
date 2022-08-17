@@ -1,7 +1,6 @@
 import { Platform } from 'react-native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 export const getHeadingAttrs = (level: HeadingLevel) => {
@@ -9,7 +8,6 @@ export const getHeadingAttrs = (level: HeadingLevel) => {
     ? {
         accessibilityRole: AccessibilityRole.HEADING,
         accessibilityLevel: level,
-        ...getTextAttrs(),
       }
     : {}
 }

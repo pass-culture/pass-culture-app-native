@@ -36,7 +36,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   arrow-next-SVG-Mock
                 </div>
@@ -99,7 +99,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 arrow-next-SVG-Mock
               </div>

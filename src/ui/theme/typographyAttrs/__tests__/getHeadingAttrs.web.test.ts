@@ -16,7 +16,6 @@ describe('getHeadingAttrs()', () => {
       expect(getHeadingAttrs(headingLevel)).toEqual({
         accessibilityRole: AccessibilityRole.HEADING,
         accessibilityLevel,
-        dir: 'ltr',
       })
     }
   )

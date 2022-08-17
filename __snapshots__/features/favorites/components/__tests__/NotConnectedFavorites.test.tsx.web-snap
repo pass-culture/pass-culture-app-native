@@ -173,7 +173,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -209,7 +209,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   >
     <div
       className="css-text-901oao"
-      dir="auto"
+      dir="ltr"
     >
       undefined-SVG-Mock
     </div>
@@ -284,7 +284,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       >
         <span
           className="css-text-901oao css-textHasAncestor-16my406"
-          dir="ltr"
           style={
             Object {
               "color": "rgba(255,255,255,1.00)",

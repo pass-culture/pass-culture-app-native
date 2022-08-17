@@ -61,7 +61,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               dot-icon-SVG-Mock
             </div>
@@ -127,7 +127,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             dot-icon-SVG-Mock
           </div>
@@ -250,7 +250,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               dot-icon-SVG-Mock
             </div>
@@ -316,7 +316,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             dot-icon-SVG-Mock
           </div>

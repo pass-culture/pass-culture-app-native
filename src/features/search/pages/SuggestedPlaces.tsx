@@ -20,7 +20,6 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -151,7 +150,6 @@ const RefContainer = styled.View({
 
 const Text = styled.Text.attrs({
   numberOfLines: 2,
-  ...getTextAttrs(),
 })(({ theme }) => ({
   color: theme.colors.black,
   flex: 1,

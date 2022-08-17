@@ -24,7 +24,6 @@ import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
 
 import { useShareOffer } from '../services/useShareOffer'
 
@@ -204,7 +203,6 @@ const Row = styled.View({
 
 const Title = styled(Animated.Text).attrs({
   numberOfLines: 2,
-  ...getTextAttrs(),
 })(({ theme }) => ({
   flexShrink: 1,
   textAlign: 'center',

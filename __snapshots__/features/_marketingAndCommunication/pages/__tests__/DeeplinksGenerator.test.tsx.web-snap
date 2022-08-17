@@ -164,7 +164,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
@@ -537,7 +537,7 @@ Array [
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -959,7 +959,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -1507,7 +1507,7 @@ Array [
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -1815,7 +1815,7 @@ Array [
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -2564,7 +2564,7 @@ Array [
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>

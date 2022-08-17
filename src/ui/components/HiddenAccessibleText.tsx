@@ -1,8 +1,6 @@
 import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
-
 export const hiddenAccessibleStyle = {
   clipPath: 'inset(50%)',
   width: '1px',
@@ -10,6 +8,6 @@ export const hiddenAccessibleStyle = {
   overflow: 'hidden',
 }
 
-export const HiddenAccessibleText = styled(Text).attrs(getTextAttrs())(
+export const HiddenAccessibleText = styled(Text)(
   Platform.OS === 'web' ? hiddenAccessibleStyle : { display: 'none' }
 )

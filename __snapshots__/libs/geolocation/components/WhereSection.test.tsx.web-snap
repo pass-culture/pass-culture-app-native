@@ -94,7 +94,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           BicolorLocationBuilding-SVG-Mock
         </div>
@@ -150,7 +150,7 @@ Array [
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -329,7 +329,7 @@ Array [
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             button-icon-SVG-Mock
           </div>
@@ -435,7 +435,7 @@ exports[`WhereSection should render correctly 2`] = `
 +       >
 +         <div
 +           className=\\"css-text-901oao\\"
-+           dir=\\"auto\\"
++           dir=\\"ltr\\"
 +         >
 +           BicolorLocationBuilding-SVG-Mock
 +         </div>
@@ -491,7 +491,7 @@ exports[`WhereSection should render correctly 2`] = `
 +     >
 +       <div
 +         className=\\"css-text-901oao\\"
-+         dir=\\"auto\\"
++         dir=\\"ltr\\"
 +       >
 +         undefined-SVG-Mock
 +       </div>

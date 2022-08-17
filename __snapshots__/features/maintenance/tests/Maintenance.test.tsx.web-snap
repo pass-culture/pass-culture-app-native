@@ -42,7 +42,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -95,7 +95,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -169,7 +169,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -228,7 +228,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -281,7 +281,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -355,7 +355,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>

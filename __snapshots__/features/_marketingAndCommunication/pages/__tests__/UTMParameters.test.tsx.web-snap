@@ -164,7 +164,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
@@ -276,7 +276,7 @@ Array [
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         traffic_campaign: 
       </div>
@@ -307,7 +307,7 @@ Array [
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         traffic_medium: 
       </div>
@@ -338,7 +338,7 @@ Array [
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         traffic_source: 
       </div>
@@ -369,7 +369,7 @@ Array [
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         campaign_date: 
       </div>

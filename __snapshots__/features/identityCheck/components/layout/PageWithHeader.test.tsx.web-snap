@@ -189,7 +189,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
@@ -345,7 +345,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             fixed top children
           </div>
@@ -400,7 +400,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           >
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               scroll children
             </div>
@@ -424,7 +424,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             fixed bottom children
           </div>
