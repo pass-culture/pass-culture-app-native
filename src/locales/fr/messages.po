@@ -1160,7 +1160,7 @@ msgstr "Fermer la modale de propositions d'identifications avec ÉduConnect ou D
 msgid "Fermer la modale et refuser la collecte des données"
 msgstr "Fermer la modale et refuser la collecte des données"
 
-#: src/features/cookies/pages/CookiesConsentHome.tsx
+#: src/features/cookies/atoms/CloseButton.tsx
 msgid "Fermer la modale et refuser les cookies"
 msgstr "Fermer la modale et refuser les cookies"
 
@@ -3051,6 +3051,10 @@ msgstr "Ton établissement | Profil"
 #: src/features/cookies/components/HomeButtons.tsx
 msgid "Tout accepter"
 msgstr "Tout accepter"
+
+#: src/features/cookies/atoms/CloseButton.tsx
+msgid "Tout fermer"
+msgstr "Tout fermer"
 
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"

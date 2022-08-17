@@ -136,77 +136,37 @@ exports[`<CookiesConsentHome/> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
               "width": "100%",
             },
           ]
         }
-        testID="modalHeader"
       >
         <View
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
-                "flexBasis": 0,
+                "alignItems": "center",
+                "display": "flex",
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.8,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "zIndex": 1,
-              },
-            ]
-          }
-        >
-          <Text
-            nativeID="testUuidV4"
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Avec ou sans cookies ?
-          </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-start",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
+                "marginBottom": 12,
+                "width": "100%",
               },
             ]
           }
         >
           <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel="Fermer la modale et refuser les cookies"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
@@ -220,27 +180,64 @@ exports[`<CookiesConsentHome/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "alignItems": "center",
+                "flexDirection": "row",
                 "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
                 "userSelect": "auto",
               }
             }
             testID="Fermer la modale et refuser les cookies"
           >
             <View
+              fill="#696A6F"
               height={20}
-              testID="rightIcon"
               width={20}
             >
               <Text>
-                rightIcon-SVG-Mock
+                undefined-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "width": 4,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Tout fermer
+            </Text>
           </View>
         </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Avec ou sans cookies ?
+        </Text>
       </View>
       <View
         style={
