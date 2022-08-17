@@ -10,6 +10,10 @@ export async function getInitialURL(): Promise<string> {
   if (dynamicLinkUrl) {
     return dynamicLinkUrl.url
   }
+  // Little break for react-navigation loading
+  // Issue opened to remove it : https://github.com/react-navigation/react-navigation/issues/10752
+  // TODO(PC-16812): https://passculture.atlassian.net/browse/PC-16812
+  await new Promise((r) => setTimeout(r, 500))
   const url = await BatchPush.getInitialURL()
   if (url) {
     return url
