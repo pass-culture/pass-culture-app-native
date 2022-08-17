@@ -6,7 +6,6 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -63,7 +62,7 @@ export const SetName = () => {
             textContentType="username"
             isRequiredField
             accessibilityDescribedBy={firstNameInputErrorId}
-            {...accessibilityAndTestId(t`Entrée pour le prénom`)}
+            testID={t`Entrée pour le prénom`}
           />
           <InputError
             visible={firstNameHasError}
@@ -80,7 +79,7 @@ export const SetName = () => {
             textContentType="username"
             isRequiredField
             accessibilityDescribedBy={lastNameInputErrorId}
-            {...accessibilityAndTestId(t`Entrée pour le nom`)}
+            testID={t`Entrée pour le nom`}
           />
           <InputError
             visible={lastNameHasError}

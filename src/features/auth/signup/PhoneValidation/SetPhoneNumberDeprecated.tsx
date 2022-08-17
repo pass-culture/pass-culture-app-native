@@ -14,7 +14,6 @@ import { useSendPhoneValidationMutation } from 'features/identityCheck/api/api'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
 import { currentTimestamp } from 'libs/dates'
 import { useSafeState } from 'libs/hooks'
@@ -163,7 +162,7 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
                 onSubmitEditing={requestSendPhoneValidationCode}
                 accessibilityDescribedBy={phoneNumberInputErrorId}
                 leftComponent={LeftCountryPicker}
-                {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
+                testID={t`Entrée pour le numéro de téléphone`}
               />
             </InputContainer>
             <InputError

@@ -104,7 +104,6 @@ export const SetCity = () => {
             label={t`Indique ton code postal et choisis ta ville`}
             placeholder={t`Ex\u00a0: 75017`}
             textContentType="postalCode"
-            accessibilityLabel={t`Entrée pour le code postal`}
             onPressRightIcon={resetSearch}
             keyboardType="number-pad"
             accessibilityDescribedBy={postalCodeInputErrorId}

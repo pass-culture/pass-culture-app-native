@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 
@@ -26,7 +25,7 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     textContentType="emailAddress"
     value={email}
     maxLength={120}
-    {...accessibilityAndTestId(t`Entrée pour l'email`)}
+    testID={t`Entrée pour l'email`}
     {...inputProps}
     ref={forwardedRef}
   />

@@ -117,7 +117,6 @@ export const SetAddress = () => {
             label={label}
             placeholder={t`Ex\u00a0: 34 avenue de l'Opéra`}
             textContentType="addressState"
-            accessibilityLabel={t`Entrée pour l'adresse`}
             accessibilityDescribedBy={adressInputErrorId}
             onPressRightIcon={resetSearch}
             returnKeyType="next"

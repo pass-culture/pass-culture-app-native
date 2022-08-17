@@ -18,7 +18,6 @@ import {
   IdentityCheckRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -121,7 +120,7 @@ export const SetPhoneValidationCode = () => {
                 textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
                 accessibilityDescribedBy={validationCodeInputErrorId}
-                {...accessibilityAndTestId(t`Entrée pour le code reçu par sms`)}
+                testID={t`Entrée pour le code reçu par sms`}
               />
             </InputContainer>
             <InputError
