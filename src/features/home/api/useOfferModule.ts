@@ -1,4 +1,4 @@
-import uniqBy from 'lodash.uniqby'
+import uniqBy from 'lodash/uniqBy'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 

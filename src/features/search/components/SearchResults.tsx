@@ -1,6 +1,6 @@
 import { plural, t } from '@lingui/macro'
 import { useIsFocused } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'

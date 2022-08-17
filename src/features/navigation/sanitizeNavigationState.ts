@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash.clonedeep'
+import cloneDeep from 'lodash/cloneDeep'
 
 function limitStateSize(newState: Record<string, unknown>) {
   if (newState.index !== undefined && newState.routes) {

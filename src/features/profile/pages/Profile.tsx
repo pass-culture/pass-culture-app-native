@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, ScrollView } from 'react-native'
 import webStyled from 'styled-components'

@@ -1,5 +1,5 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { createRef, ElementType, useEffect, useState } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'

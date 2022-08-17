@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { useCallback, useRef } from 'react'
 import { View } from 'react-native'
 import { DateData } from 'react-native-calendars/src/types'

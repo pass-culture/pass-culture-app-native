@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'

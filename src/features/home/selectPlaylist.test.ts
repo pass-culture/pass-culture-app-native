@@ -1,4 +1,4 @@
-import shuffle from 'lodash.shuffle'
+import shuffle from 'lodash/shuffle'
 
 import { UserProfileResponse, UserRole } from 'api/gen'
 import { HomepageEntry, Tag } from 'features/home/contentful'

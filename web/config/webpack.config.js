@@ -325,6 +325,10 @@ module.exports = function (webpackEnv) {
         // remove when issue is resolved https://github.com/callstack/react-theme-provider/issues/141
         'deepmerge': path.join(paths.appNodeModules, 'deepmerge/dist/cjs.js'),
 
+        // Due to https://github.com/pass-culture/pass-culture-app-native/pull/3418
+        // remove when https://github.com/getsentry/sentry-react-native/issues/2409 is resolved
+        'lodash.debounce': path.join(paths.appNodeModules, 'lodash/debounce'),
+        'lodash.toarray': path.join(paths.appNodeModules, 'lodash/toArray'),
 
         // /**
         //  * These will replace react navigation entirely.

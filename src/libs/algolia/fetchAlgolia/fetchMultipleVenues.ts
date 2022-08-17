@@ -1,4 +1,4 @@
-import flatten from 'lodash.flatten'
+import flatten from 'lodash/flatten'
 
 import { VenuesSearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
