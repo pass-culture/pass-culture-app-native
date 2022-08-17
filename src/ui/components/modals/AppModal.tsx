@@ -8,6 +8,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
+import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -181,25 +182,11 @@ const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => 
   }
 })
 
+const MAX_HEIGHT = 650
 const ModalContainer = styled.View<{ height: number }>(({ height, theme }) => {
-  const { isDesktopViewport, appContentWidth, colors } = theme
-  return {
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    backgroundColor: colors.white,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    maxHeight: 650,
+  return appModalContainerStyle({
+    theme,
     height,
-    width: '100%',
-    borderTopStartRadius: getSpacing(4),
-    borderTopEndRadius: getSpacing(4),
-    padding: MODAL_PADDING,
-    maxWidth: isDesktopViewport ? getSpacing(130) : appContentWidth,
-    borderBottomStartRadius: isDesktopViewport ? getSpacing(4) : 0,
-    borderBottomEndRadius: isDesktopViewport ? getSpacing(4) : 0,
-    borderBottomRightRadius: isDesktopViewport ? 20 : 0,
-    borderBottomLeftRadius: isDesktopViewport ? 20 : 0,
-  }
+    maxHeight: MAX_HEIGHT,
+  })
 })

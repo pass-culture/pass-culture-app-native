@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
-import { CookiesConsentHome } from 'features/cookies/pages/CookiesConsentHome'
+import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { Maintenance } from 'features/maintenance/Maintenance'
@@ -106,7 +106,7 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary wording="Cookies consent 🍪" onPress={() => showCookiesConsentModal()} />
-            <CookiesConsentHome
+            <CookiesConsent
               visible={cookiesConsentModalVisible}
               hideModal={hideCookiesConsentModal}
             />

@@ -44,7 +44,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 520px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-width: 520px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -212,7 +212,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 400px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 400px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -440,7 +440,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -608,7 +608,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -776,7 +776,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -987,7 +987,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1181,7 +1181,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1349,7 +1349,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1516,7 +1516,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1728,7 +1728,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1915,7 +1915,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2083,7 +2083,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2251,7 +2251,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2419,7 +2419,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2580,7 +2580,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"

@@ -301,7 +301,7 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#: src/features/cookies/pages/CookiesConsentHome.tsx
+#: src/features/cookies/pages/CookiesConsent.tsx
 msgid "Avec ou sans cookies ?"
 msgstr "Avec ou sans cookies ?"
 
@@ -499,7 +499,7 @@ msgstr "Charte de protection des données personnelles"
 msgid "CheatMenu"
 msgstr "CheatMenu"
 
-#: src/features/cookies/components/HomeButtons.tsx
+#: src/features/cookies/components/CookiesConsentButtons.tsx
 msgid "Choisir les cookies"
 msgstr "Choisir les cookies"
 
@@ -1160,10 +1160,6 @@ msgstr "Fermer la modale de propositions d'identifications avec ÉduConnect ou D
 msgid "Fermer la modale et refuser la collecte des données"
 msgstr "Fermer la modale et refuser la collecte des données"
 
-#: src/features/cookies/atoms/CloseButton.tsx
-msgid "Fermer la modale et refuser les cookies"
-msgstr "Fermer la modale et refuser les cookies"
-
 #: src/features/identityCheck/components/DMSModal.tsx
 msgid "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
 msgstr "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
@@ -1565,7 +1561,7 @@ msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permetten
 msgid "Les conséquences :"
 msgstr "Les conséquences :"
 
-#: src/features/cookies/components/HomeContent.tsx
+#: src/features/cookies/components/CookiesConsentExplanations.tsx
 msgid "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 
@@ -2912,7 +2908,7 @@ msgstr "Ton adresse | Profil"
 msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 
-#: src/features/cookies/components/HomeContent.tsx
+#: src/features/cookies/components/CookiesConsentExplanations.tsx
 msgid "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."
 msgstr "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."
 
@@ -3047,20 +3043,16 @@ msgstr "Ton status | Profil"
 msgid "Ton établissement | Profil"
 msgstr "Ton établissement | Profil"
 
+#: src/features/cookies/components/CookiesConsentButtons.tsx
 #: src/features/cookies/components/CookiesSettings.tsx
-#: src/features/cookies/components/HomeButtons.tsx
 msgid "Tout accepter"
 msgstr "Tout accepter"
-
-#: src/features/cookies/atoms/CloseButton.tsx
-msgid "Tout fermer"
-msgstr "Tout fermer"
 
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
 msgstr "Tout passer"
 
-#: src/features/cookies/components/HomeButtons.tsx
+#: src/features/cookies/components/CookiesConsentButtons.tsx
 msgid "Tout refuser"
 msgstr "Tout refuser"
 
@@ -3218,7 +3210,7 @@ msgstr ""
 "Découvre les offres disponibles\n"
 "sans attendre !"
 
-#: src/features/cookies/components/HomeContent.tsx
+#: src/features/cookies/components/CookiesConsentExplanations.tsx
 msgid "Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies."
 msgstr "Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies."
 

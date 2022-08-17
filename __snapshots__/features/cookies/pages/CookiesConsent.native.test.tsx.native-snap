@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CookiesConsentHome/> should render correctly 1`] = `
+exports[`<CookiesConsent/> should render correctly 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
@@ -136,118 +136,87 @@ exports[`<CookiesConsentHome/> should render correctly 1`] = `
         style={
           Array [
             Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
               "width": "100%",
             },
           ]
         }
+        testID="modalHeader"
       >
         <View
           style={
             Array [
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "marginBottom": 12,
-                "width": "100%",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.8,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "zIndex": 1,
               },
             ]
           }
         >
-          <View
+          <Text
+            nativeID="testUuidV4"
+            numberOfLines={2}
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "textAlign": "center",
                 },
               ]
             }
-          />
-          <View
-            accessibilityLabel="Fermer la modale et refuser les cookies"
-            accessibilityRole="button"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Fermer la modale et refuser les cookies"
           >
-            <View
-              fill="#696A6F"
-              height={20}
-              width={20}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={1}
-              style={
-                Array [
-                  Object {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Tout fermer
-            </Text>
-          </View>
+            Avec ou sans cookies ?
+          </Text>
         </View>
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Avec ou sans cookies ?
-        </Text>
         <View
-          numberOfSpaces={5}
           style={
             Array [
               Object {
-                "height": 20,
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
               },
             ]
           }
         />
       </View>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
       <RCTScrollView>
         <View>
           <Text
@@ -325,21 +294,12 @@ exports[`<CookiesConsentHome/> should render correctly 1`] = `
         </View>
       </RCTScrollView>
       <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <View
         style={
           Array [
             Object {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
+              "marginTop": 20,
               "width": "100%",
             },
           ]
@@ -350,123 +310,146 @@ exports[`<CookiesConsentHome/> should render correctly 1`] = `
             Array [
               Object {
                 "flexDirection": "row",
-                "maxWidth": 500,
                 "width": "100%",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Tout refuser"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Tout refuser"
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Tout refuser
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={5}
             style={
               Array [
                 Object {
-                  "width": 20,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Tout refuser"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Tout refuser"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Tout refuser
+              </Text>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
                 },
               ]
             }
           />
           <View
-            accessibilityLabel="Tout accepter"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
             }
-            testID="Tout accepter"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
+              accessibilityLabel="Tout accepter"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
               }
+              testID="Tout accepter"
             >
-              Tout accepter
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Tout accepter
+              </Text>
+            </View>
           </View>
         </View>
         <View

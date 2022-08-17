@@ -12,26 +12,31 @@ interface Props {
   onPressChooseCookies: () => void
 }
 
-export const HomeButtons = ({
+export const CookiesConsentButtons = ({
   onPressAcceptAll,
   onPressDeclineAll,
   onPressChooseCookies,
-}: Props) => {
-  return (
-    <React.Fragment>
+}: Props) => (
+  <React.Fragment>
+    <Container>
       <Row>
         <ButtonPrimary wording={t`Tout refuser`} onPress={onPressDeclineAll} />
-        <Spacer.Row numberOfSpaces={5} />
+      </Row>
+      <Spacer.Row numberOfSpaces={2} />
+      <Row>
         <ButtonPrimary wording={t`Tout accepter`} onPress={onPressAcceptAll} />
       </Row>
-      <Spacer.Column numberOfSpaces={5} />
-      <ButtonSecondary wording={t`Choisir les cookies`} onPress={onPressChooseCookies} />
-    </React.Fragment>
-  )
-}
+    </Container>
+    <Spacer.Column numberOfSpaces={5} />
+    <ButtonSecondary wording={t`Choisir les cookies`} onPress={onPressChooseCookies} />
+  </React.Fragment>
+)
 
-const Row = styled.View(({ theme }) => ({
+const Container = styled.View({
   flexDirection: 'row',
-  maxWidth: theme.contentPage.maxWidth,
   width: '100%',
-}))
+})
+
+const Row = styled.View({
+  flex: 1,
+})
