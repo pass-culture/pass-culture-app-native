@@ -492,6 +492,7 @@ exports[`<SetName/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="Entrée pour le prénom"
                   textContentType="username"
                   value=""
                 />
@@ -628,6 +629,7 @@ exports[`<SetName/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="Entrée pour le nom"
                   textContentType="username"
                   value=""
                 />

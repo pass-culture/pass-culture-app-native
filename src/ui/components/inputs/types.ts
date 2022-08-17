@@ -23,7 +23,6 @@ type CustomTextInputProps = InputProps & {
 type CustomSearchInputProps = InputProps & {
   inputHeight?: 'small' | 'regular' | 'tall'
   LeftIcon?: React.FC
-  accessibilityLabel?: string
   onPressRightIcon?: () => void
   searchInputID?: string
   isFocusable?: boolean
@@ -98,7 +97,6 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     ...getInputProps(props),
     inputHeight: props.inputHeight,
     LeftIcon: props.LeftIcon,
-    accessibilityLabel: props.accessibilityLabel,
     onPressRightIcon: props.onPressRightIcon,
     inputContainerStyle: props.inputContainerStyle,
     children: props.children,
@@ -109,6 +107,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
 
 export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
   return {
+    accessibilityLabel: props.accessibilityLabel,
     autoCapitalize: props.autoCapitalize,
     autoComplete: props.autoComplete,
     autoCorrect: props.autoCorrect,
@@ -130,6 +129,7 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     selectionColor: props.selectionColor,
     selectTextOnFocus: props.selectTextOnFocus,
     textContentType: props.textContentType,
+    testID: props.testID,
     value: props.value,
     nativeAutoFocus: props.nativeAutoFocus,
   }

@@ -456,6 +456,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                           },
                         ]
                       }
+                      testID="Entrée pour le code reçu par sms"
                       textContentType="oneTimeCode"
                       value=""
                     />
