@@ -20,7 +20,6 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
 import { useSafeState } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
@@ -132,7 +131,7 @@ export const SetPhoneNumber = () => {
                 }}
                 accessibilityDescribedBy={phoneNumberInputErrorId}
                 leftComponent={LeftCountryPicker}
-                {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
+                testID={t`Entrée pour le numéro de téléphone`}
               />
             </InputContainer>
             <InputError

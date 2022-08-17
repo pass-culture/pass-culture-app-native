@@ -1031,10 +1031,6 @@ msgstr "Entre ton adresse"
 msgid "Entrée du code de confirmation"
 msgstr "Entrée du code de confirmation"
 
-#: src/features/identityCheck/pages/profile/SetAddress.tsx
-msgid "Entrée pour l'adresse"
-msgstr "Entrée pour l'adresse"
-
 #: src/ui/components/inputs/DateInput/atoms/DateInputDesktop.web.tsx
 msgid "Entrée pour l'année de la date de naissance"
 msgstr "Entrée pour l'année de la date de naissance"
@@ -1042,10 +1038,6 @@ msgstr "Entrée pour l'année de la date de naissance"
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
-
-#: src/features/identityCheck/pages/profile/SetCity.tsx
-msgid "Entrée pour le code postal"
-msgstr "Entrée pour le code postal"
 
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneValidationCode.tsx
 msgid "Entrée pour le code reçu par sms"

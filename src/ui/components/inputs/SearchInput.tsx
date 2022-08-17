@@ -24,7 +24,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const {
     LeftIcon,
     label,
-    accessibilityLabel,
     accessibilityDescribedBy,
     onPressRightIcon,
     inputContainerStyle,
@@ -80,7 +79,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           keyboardType={props.keyboardType ?? defaultKeyboardType}
           selectionColor={undefined}
           accessible={isFocusable}
-          accessibilityLabel={accessibilityLabel}
           aria-describedby={accessibilityDescribedBy}
           enablesReturnKeyAutomatically={true}
           testID={'searchInput'}
