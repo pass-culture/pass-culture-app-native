@@ -1,9 +1,8 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React,  from 'react'
 
 import { CloseButton } from 'features/cookies/atoms/CloseButton'
-import { CookieConsentModal } from 'features/cookies/components/CookieConsentModal'
-import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
+import { CookiesConsentModal } from 'features/cookies/components/CookiesConsentModal'
 import { HomeButtons } from 'features/cookies/components/HomeButtons'
 import { HomeContent } from 'features/cookies/components/HomeContent'
 
@@ -12,10 +11,9 @@ interface CookiesConsentModalProps {
   hideModal: () => void
 }
 
-export const CookiesConsentModal = ({ visible, hideModal }: CookiesConsentModalProps) => {
-  const [showSettings, setShowSettings] = useState(false)
+export const CookiesConsentHome = ({ visible, hideModal }: CookiesConsentModalProps) => {
   return (
-    <CookieConsentModal
+    <CookiesConsentModal
       visible={visible}
       title={t`Avec ou sans cookies\u00a0?`}
       onClosePress={hideModal}
@@ -23,14 +21,11 @@ export const CookiesConsentModal = ({ visible, hideModal }: CookiesConsentModalP
       fixedBottomChildren={
         <HomeButtons
           onPressAcceptAll={hideModal}
-          onPressDeclineAll={() => {
-            setShowSettings(false)
-            hideModal()
-          }}
-          onPressChooseCookies={() => setShowSettings(true)}
+          onPressDeclineAll={hideModal}
+          onPressChooseCookies={hideModal}
         />
       }>
-      {showSettings ? <CookiesSettings /> : <HomeContent />}
-    </CookieConsentModal>
+      <HomeContent />
+    </CookiesConsentModal>
   )
 }

@@ -22,6 +22,7 @@ export const ModalHeader = ({ title, onGoBackPress, rightButton }: Props) => {
         </ButtonContainer>
       ) : null}
       <StyledTitle4>{title}</StyledTitle4>
+      <Spacer.Column numberOfSpaces={5} />
     </Container>
   )
 }

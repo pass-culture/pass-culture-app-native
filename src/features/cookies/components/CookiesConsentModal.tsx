@@ -21,7 +21,7 @@ type Props = {
 // Without this, the margin is recomputed with arbitraty values
 const modalStyles = { margin: 'auto' }
 
-export const CookieConsentModal: FunctionComponent<Props> = ({
+export const CookiesConsentModal: FunctionComponent<Props> = ({
   title,
   visible,
   children,
@@ -51,15 +51,12 @@ export const CookieConsentModal: FunctionComponent<Props> = ({
       aria-modal={true}>
       <ModalContainer windowHeight={windowHeight}>
         <ModalHeader title={title} onGoBackPress={onGoBackPress} rightButton={headerRigthButton} />
-        {!!children && (
-          <ChildrenContainer>
-            <ScrollView>{children}</ScrollView>
-          </ChildrenContainer>
-        )}
+        {!!children && <ScrollView>{children}</ScrollView>}
         {!!fixedBottomChildren && (
-          <ChildrenContainer>
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={5} />
             <FixedBottomChildrenView>{fixedBottomChildren}</FixedBottomChildrenView>
-          </ChildrenContainer>
+          </React.Fragment>
         )}
         <Spacer.BottomScreen />
       </ModalContainer>
@@ -112,8 +109,3 @@ const FixedBottomChildrenView = styled.View(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
 }))
-
-const ChildrenContainer = styled.View({
-  marginTop: getSpacing(5),
-  width: '100%',
-})
