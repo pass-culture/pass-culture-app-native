@@ -18,8 +18,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons'
-import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useLocationType } from 'features/search/pages/useLocationType'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { SearchView } from 'features/search/types'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
@@ -53,10 +53,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { searchState } = useSearch()
   const [query, setQuery] = useState<string>(params?.query || '')
   const accessibilityDescribedBy = uuidv4()
-  const { locationFilter } = stagedSearchState
-  const { locationType } = locationFilter
-  // PLACE and VENUE belong to the same section
-  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { locationFilter, section } = useLocationType(stagedSearchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)

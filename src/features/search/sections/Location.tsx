@@ -9,6 +9,7 @@ import { Section } from 'features/search/atoms/Sections'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useLocationType } from 'features/search/pages/useLocationType'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -17,11 +18,9 @@ import { Typo, Spacer } from 'ui/theme'
 
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useStagedSearch()
-  const { locationType } = searchState.locationFilter
+  const { searchState: stagedSearchState } = useStagedSearch()
 
-  // PLACE and VENUE belong to the same section
-  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { locationType, section } = useLocationType(stagedSearchState)
   const { Icon, label } = useLocationChoice(section)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
 

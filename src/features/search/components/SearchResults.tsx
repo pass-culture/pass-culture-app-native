@@ -13,6 +13,7 @@ import { useLocationChoice } from 'features/search/components/locationChoice.uti
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -52,10 +53,7 @@ export const SearchResults: React.FC = () => {
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const { locationFilter } = searchState
-  const { locationType } = locationFilter
-  // PLACE and VENUE belong to the same section
-  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const { data: appSettings } = useAppSettings()
   // Feature flag use to manage display filters buttons on search results view
