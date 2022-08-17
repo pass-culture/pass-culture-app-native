@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,7 +20,7 @@ import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 const useSelectCategory = () => {
-  const { searchState, dispatch } = useStagedSearch()
+  const { searchState, dispatch } = useSearch()
 
   return {
     isCategorySelected(category: SearchGroupNameEnumv2) {
