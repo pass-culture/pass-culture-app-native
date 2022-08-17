@@ -143,8 +143,11 @@ describe('SearchBox component', () => {
       mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
     })
 
-    it('should redirect on results view when being on the suggestions view and query is defined', async () => {
-      useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'test' } })
+    it('should redirect on results view when being on the suggestions view and press back button and previous view is results view', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { view: SearchView.Suggestions, previousView: SearchView.Results },
+      })
+
       const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
       const previousButton = getByTestId('previousButton')
@@ -154,8 +157,8 @@ describe('SearchBox component', () => {
       expect(navigate).toBeCalledWith(
         ...getTabNavConfig('Search', {
           ...initialSearchState,
-          query: 'test',
           view: SearchView.Results,
+          previousView: SearchView.Results,
           offerCategories: mockStagedSearchState.offerCategories,
           locationFilter: mockStagedSearchState.locationFilter,
           priceRange: mockStagedSearchState.priceRange,
@@ -163,28 +166,31 @@ describe('SearchBox component', () => {
       )
     })
 
-    it('should reset input when user click on previous button being on the suggestions view and query is not defined', async () => {
-      useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: '' } })
-      const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-      const previousButton = getByTestId('previousButton')
+    it.each([[undefined], [SearchView.Landing]])(
+      'should redirect on landing view when being on the suggestions view and press back button and previous view is %s view',
+      async (previousView) => {
+        useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, previousView } })
+        const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+        const previousButton = getByTestId('previousButton')
 
-      await fireEvent.press(previousButton)
+        await fireEvent.press(previousButton)
 
-      expect(mockStagedDispatch).toBeCalledWith({
-        type: 'SET_STATE',
-        payload: {
-          locationFilter: mockStagedSearchState.locationFilter,
-        },
-      })
-      expect(navigate).toBeCalledWith(
-        ...getTabNavConfig('Search', {
-          ...initialSearchState,
-          query: '',
-          view: SearchView.Landing,
-          locationFilter: mockStagedSearchState.locationFilter,
+        expect(mockStagedDispatch).toBeCalledWith({
+          type: 'SET_STATE',
+          payload: {
+            locationFilter: mockStagedSearchState.locationFilter,
+          },
         })
-      )
-    })
+        expect(navigate).toBeCalledWith(
+          ...getTabNavConfig('Search', {
+            ...initialSearchState,
+            query: '',
+            view: SearchView.Landing,
+            locationFilter: mockStagedSearchState.locationFilter,
+          })
+        )
+      }
+    )
 
     it('should stay on the current view when focusing search input and being on the suggestions', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })

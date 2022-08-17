@@ -117,7 +117,12 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // To force remove focus on search input
     Keyboard.dismiss()
     // Only close autocomplete list if open
-    if (params?.view === SearchView.Suggestions && params?.query !== '' && appEnableAutocomplete) {
+    const previousView = params?.previousView ? params?.previousView : SearchView.Landing
+    if (
+      params?.view === SearchView.Suggestions &&
+      previousView !== SearchView.Landing &&
+      appEnableAutocomplete
+    ) {
       pushWithStagedSearch({
         ...params,
         view: SearchView.Results,
@@ -180,6 +185,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     pushWithStagedSearch({
       ...paramsWithoutView,
       view: SearchView.Suggestions,
+      previousView: params?.view,
     })
   }, [
     appEnableAutocomplete,
