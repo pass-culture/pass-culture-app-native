@@ -70,12 +70,12 @@ export const useStagedSearch = (): Pick<ISearchContext, 'searchState' | 'dispatc
 
 export const useCommit = (): { commit: () => void } => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { dispatch } = useSearch()
   const { searchState: stagedSearchState } = useStagedSearch()
 
   return {
     commit() {
-      dispatch({ type: 'SET_STATE', payload: { ...stagedSearchState, view: SearchView.Results } })
+      // ReinitializeFilters when pressed will call SET_STATE and use initialSearchState.view,
+      // so we force it until full removal of searchState
       navigate(...getTabNavConfig('Search', { ...stagedSearchState, view: SearchView.Results }))
     },
   }
