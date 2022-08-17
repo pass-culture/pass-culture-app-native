@@ -120,9 +120,7 @@ export const SetPhoneNumber = () => {
                 value={phoneNumber}
                 onChangeText={onChangeText}
                 textContentType="telephoneNumber"
-                onSubmitEditing={() => {
-                  // do nothing yet
-                }}
+                onSubmitEditing={requestSendPhoneValidationCode}
                 accessibilityDescribedBy={phoneNumberInputErrorId}
                 leftComponent={LeftCountryPicker}
                 testID={t`Entrée pour le numéro de téléphone`}
