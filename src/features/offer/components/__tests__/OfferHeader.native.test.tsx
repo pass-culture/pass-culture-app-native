@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
-import { Animated, Share, Platform } from 'react-native'
+import { Animated } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
@@ -12,7 +12,6 @@ import {
 } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { getOfferUrl } from 'features/offer/services/useShareOffer'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
@@ -66,20 +65,8 @@ describe('<OfferHeader />', () => {
     }))
   )
 
-  it('should render correctly', async () => {
-    const { toJSON } = await renderOfferHeader({ isLoggedIn: true })
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should render all the icons - loggedIn', async () => {
+  it('should render all the icons', async () => {
     const offerHeader = await renderOfferHeader({ isLoggedIn: true })
-    expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
-  })
-
-  it('should render all the icons - not loggedIn', async () => {
-    const offerHeader = await renderOfferHeader({ isLoggedIn: false })
     expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
@@ -99,47 +86,10 @@ describe('<OfferHeader />', () => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
       jest.advanceTimersByTime(100)
     })
-    await waitForExpect(() =>
+    await waitForExpect(() => {
       expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeFalsy()
-    )
-    await waitForExpect(() => expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1))
-  })
-
-  it('should call Share with the right arguments on IOS', async () => {
-    Platform.OS = 'ios'
-    const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
-
-    fireEvent.press(getByTestId('icon-share'))
-    expect(share).toHaveBeenCalledTimes(1)
-    const url = getOfferUrl(116656)
-    const message =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
-    const title = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
-
-    expect(share).toHaveBeenCalledWith(
-      { message, title, url },
-      { dialogTitle: title, subject: title }
-    )
-  })
-
-  it('should call Share with the right arguments on Android', async () => {
-    Platform.OS = 'android'
-    const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
-
-    fireEvent.press(getByTestId('icon-share'))
-    expect(share).toHaveBeenCalledTimes(1)
-    const url = getOfferUrl(116656)
-    const messageWithUrl =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
-      url
-    const title = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
-
-    expect(share).toHaveBeenCalledWith(
-      { message: messageWithUrl, title, url },
-      { dialogTitle: title, subject: title }
-    )
+      expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
+    })
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {

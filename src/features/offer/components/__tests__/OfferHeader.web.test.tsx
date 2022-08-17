@@ -61,20 +61,8 @@ describe('<OfferHeader />', () => {
     }))
   )
 
-  it('should render correctly', async () => {
-    const renderAPI = await renderOfferHeader({ isLoggedIn: true })
-    expect(renderAPI).toMatchSnapshot()
-  })
-
-  it('should render all the icons - loggedIn', async () => {
+  it('should render all the icons', async () => {
     const offerHeader = await renderOfferHeader({ isLoggedIn: true })
-    expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
-  })
-
-  it('should render all the icons - not loggedIn', async () => {
-    const offerHeader = await renderOfferHeader({ isLoggedIn: false })
     expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
