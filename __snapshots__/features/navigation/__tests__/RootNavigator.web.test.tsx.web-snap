@@ -3,58 +3,8 @@
 exports[`ForceUpdate display logic should display force update page when global variable is set 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c3 {
+  "baseElement": .c2 {
   z-index: 2;
-}
-
-.c5 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: visible;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c6 > * {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
 .c0 {
@@ -118,9 +68,10 @@ Object {
         Accéder au menu de navigation
       </a>
       <main
-        class="c2"
+        class="css-view-1dbjc4n"
         id="testUuidV4"
         role="main"
+        style="display: flex; flex-direction: column; flex-grow: 1;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -152,11 +103,11 @@ Object {
         </div>
       </main>
       <footer
-        class=""
+        class="css-view-1dbjc4n"
         role="contentinfo"
       >
         <nav
-          class="c3"
+          class="c2"
           id="testUuidV4"
           role="navigation"
         >
@@ -173,10 +124,14 @@ Object {
                 style="width: 16px;"
               />
               <ul
-                class="c4 c5"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="list"
+                style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
               >
                 <li
-                  class="c6"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <a
                     aria-current="page"
@@ -228,7 +183,9 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c6"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -264,7 +221,9 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c6"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -300,7 +259,9 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c6"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -336,7 +297,9 @@ Object {
                   </a>
                 </li>
                 <li
-                  class="c6"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <a
                     class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -386,58 +349,8 @@ Object {
       </footer>
     </div>
   </body>,
-  "container": .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c3 {
+  "container": .c2 {
   z-index: 2;
-}
-
-.c5 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: visible;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c6 > * {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
 .c0 {
@@ -498,9 +411,10 @@ Object {
       Accéder au menu de navigation
     </a>
     <main
-      class="c2"
+      class="css-view-1dbjc4n"
       id="testUuidV4"
       role="main"
+      style="display: flex; flex-direction: column; flex-grow: 1;"
     >
       <div
         class="css-view-1dbjc4n"
@@ -532,11 +446,11 @@ Object {
       </div>
     </main>
     <footer
-      class=""
+      class="css-view-1dbjc4n"
       role="contentinfo"
     >
       <nav
-        class="c3"
+        class="c2"
         id="testUuidV4"
         role="navigation"
       >
@@ -553,10 +467,14 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="c4 c5"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="list"
+              style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
             >
               <li
-                class="c6"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <a
                   aria-current="page"
@@ -608,7 +526,9 @@ Object {
                 </a>
               </li>
               <li
-                class="c6"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -644,7 +564,9 @@ Object {
                 </a>
               </li>
               <li
-                class="c6"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -680,7 +602,9 @@ Object {
                 </a>
               </li>
               <li
-                class="c6"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -716,7 +640,9 @@ Object {
                 </a>
               </li>
               <li
-                class="c6"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"

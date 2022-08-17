@@ -133,15 +133,6 @@ Object {
   text-decoration: none;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
 .c5 {
   background-color: transparent;
 }
@@ -195,19 +186,6 @@ Object {
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c7 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: visible;
-}
-
-.c8 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 <body>
@@ -644,7 +622,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="c1 c2 sc-iUKqMP c2"
+                class="c1 c2 sc-iJKOTD c2"
                 data-testid="iconLocation"
                 tabindex="0"
                 title="Géolocalisation désactivée"
@@ -1125,15 +1103,15 @@ Object {
                 class="css-view-1dbjc4n"
                 style="height: 24px;"
               />
-              <h2
-                aria-level="2"
+              <h4
+                aria-level="4"
                 class="css-reset-4rbku5 css-text-901oao"
                 dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Où ?
-              </h2>
+              </h4>
               <div
                 class="css-view-1dbjc4n"
                 style="height: 16px;"
@@ -1378,10 +1356,14 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="c6 c7"
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="list"
+                    style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
                   >
                     <li
-                      class="c8"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
                         aria-label="Handicap visuel : Accessible"
@@ -1450,7 +1432,9 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="c8"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
                         aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1519,7 +1503,9 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="c8"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
                         aria-label="Handicap moteur : Non accessible"
@@ -1588,7 +1574,9 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="c8"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
                         aria-label="Handicap auditif : Non accessible"
@@ -1888,15 +1876,6 @@ Object {
   text-decoration: none;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
 .c5 {
   background-color: transparent;
 }
@@ -1950,19 +1929,6 @@ Object {
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c7 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: visible;
-}
-
-.c8 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 <div>
@@ -2398,7 +2364,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="c1 c2 sc-iUKqMP c2"
+              class="c1 c2 sc-iJKOTD c2"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"
@@ -2879,15 +2845,15 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 24px;"
             />
-            <h2
-              aria-level="2"
+            <h4
+              aria-level="4"
               class="css-reset-4rbku5 css-text-901oao"
               dir="ltr"
               role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Où ?
-            </h2>
+            </h4>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
@@ -3132,10 +3098,14 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="c6 c7"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="list"
+                  style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
                 >
                   <li
-                    class="c8"
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="listitem"
+                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -3204,7 +3174,9 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="c8"
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="listitem"
+                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -3273,7 +3245,9 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="c8"
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="listitem"
+                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -3342,7 +3316,9 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="c8"
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="listitem"
+                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"

@@ -5,7 +5,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-@@ -576,11 +576,11 @@
+@@ -579,11 +579,11 @@
             class=\\"css-view-1dbjc4n\\"
             style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
           >
@@ -18,7 +18,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                 class=\\"css-view-1dbjc4n\\"
                 style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
               >
-@@ -592,96 +592,87 @@
+@@ -595,96 +595,87 @@
                     class=\\"css-view-1dbjc4n\\"
                     style=\\"align-items: center; height: 100%;\\"
                   >
@@ -102,7 +102,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                         style=\\"height: 24px;\\"
                       />
 -                   <button
--                     class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
+-                     class=\\"sc-gsDKAQ QReDp sc-hKwDye jHnKrb\\"
 -                     tabindex=\\"0\\"
 -                     type=\\"button\\"
 -                   >
@@ -138,14 +138,14 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                       style=\\"height: 16px;\\"
 -                     />
                         <button
--                       class=\\"sc-dkPtRN dMotSY sc-iAKWXU gGSojj\\"
-+                         class=\\"sc-dkPtRN fSwvKJ sc-bqiRlB lhIoLE\\"
+-                       class=\\"sc-gsDKAQ fDShHk sc-ezbkAF fZQzH\\"
++                         class=\\"sc-gsDKAQ cAnJJZ sc-iqseJM iIctML\\"
                           tabindex=\\"0\\"
                           type=\\"button\\"
                         >
                           <div
                             class=\\"css-view-1dbjc4n\\"
-@@ -700,29 +691,45 @@
+@@ -703,29 +694,45 @@
                             </div>
                           </div>
                           <div
@@ -173,7 +173,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +               style=\\"background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;\\"
 +             >
 +               <button
-+                 class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
++                 class=\\"sc-gsDKAQ QReDp sc-hKwDye jHnKrb\\"
 +                 tabindex=\\"0\\"
 +                 type=\\"button\\"
 +               >

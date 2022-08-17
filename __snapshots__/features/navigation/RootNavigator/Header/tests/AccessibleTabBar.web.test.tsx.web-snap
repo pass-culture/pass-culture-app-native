@@ -3,44 +3,8 @@
 exports[`AccessibleTabBar renders correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c0 {
+  "baseElement": .c0 {
   z-index: 2;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: visible;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c3 > * {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 <body>
@@ -63,10 +27,14 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="c1 c2"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="list"
+              style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
             >
               <li
-                class="c3"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   aria-current="page"
@@ -118,7 +86,9 @@ Object {
                 </div>
               </li>
               <li
-                class="c3"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -154,7 +124,9 @@ Object {
                 </div>
               </li>
               <li
-                class="c3"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -190,7 +162,9 @@ Object {
                 </div>
               </li>
               <li
-                class="c3"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -226,7 +200,9 @@ Object {
                 </div>
               </li>
               <li
-                class="c3"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -275,44 +251,8 @@ Object {
       </nav>
     </div>
   </body>,
-  "container": .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c0 {
+  "container": .c0 {
   z-index: 2;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: visible;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c3 > * {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 <div>
@@ -334,10 +274,14 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="c1 c2"
+            class="css-reset-4rbku5 css-view-1dbjc4n"
+            role="list"
+            style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
           >
             <li
-              class="c3"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 aria-current="page"
@@ -389,7 +333,9 @@ Object {
               </div>
             </li>
             <li
-              class="c3"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -425,7 +371,9 @@ Object {
               </div>
             </li>
             <li
-              class="c3"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -461,7 +409,9 @@ Object {
               </div>
             </li>
             <li
-              class="c3"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -497,7 +447,9 @@ Object {
               </div>
             </li>
             <li
-              class="c3"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-view-1dbjc4n"

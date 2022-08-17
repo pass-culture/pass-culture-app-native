@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search component should render Search 1`] = `
-Array [
+<View
+  accessibilityRole="none"
+  style={
+    Array [
+      Object {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     customHeight={16}
     enable={true}
@@ -12,7 +23,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     height={16}
     position="absolute"
@@ -39,7 +50,7 @@ Array [
         undefined-SVG-Mock
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     style={
       Array [
@@ -210,7 +221,7 @@ Array [
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     numberOfSpaces={1}
     style={
@@ -220,7 +231,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     style={
       Array [
@@ -1849,6 +1860,6 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

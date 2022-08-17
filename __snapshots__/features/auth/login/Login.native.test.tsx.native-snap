@@ -5,138 +5,138 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -351,11 +351,11 @@
-                  aria-describedby=\\"testUuidV4\\"
-                  aria-required={true}
-                  autoCapitalize=\\"none\\"
-                  autoComplete=\\"email\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  keyboardType=\\"email-address\\"
-                  maxLength={120}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function onEmailChange]}
-@@ -364,15 +364,15 @@
-                  placeholderTextColor=\\"#696A6F\\"
-                  returnKeyType=\\"next\\"
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -380,11 +380,11 @@
-                      },
-                    ]
-                  }
-                  testID=\\"Entrée pour l'email\\"
-                  textContentType=\\"emailAddress\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
-                />
+@@ -362,11 +362,11 @@
+                    aria-describedby=\\"testUuidV4\\"
+                    aria-required={true}
+                    autoCapitalize=\\"none\\"
+                    autoComplete=\\"email\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    keyboardType=\\"email-address\\"
+                    maxLength={120}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function onEmailChange]}
+@@ -375,15 +375,15 @@
+                    placeholderTextColor=\\"#696A6F\\"
+                    returnKeyType=\\"next\\"
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -391,11 +391,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Entrée pour l'email\\"
+                    textContentType=\\"emailAddress\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
               </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-@@ -489,11 +489,11 @@
-                testID=\\"styled-input-container\\"
-              >
-                <TextInput
-                  autoCapitalize=\\"none\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function bound dispatchAction]}
-                  onFocus={[Function onFocus]}
-                  onSubmitEditing={[Function _callee3]}
-@@ -502,15 +502,15 @@
-                  returnKeyType=\\"next\\"
-                  secureTextEntry={true}
+              <View
+                numberOfSpaces={6}
+@@ -500,11 +500,11 @@
+                  testID=\\"styled-input-container\\"
+                >
+                  <TextInput
+                    autoCapitalize=\\"none\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function bound dispatchAction]}
+                    onFocus={[Function onFocus]}
+                    onSubmitEditing={[Function _callee3]}
+@@ -513,15 +513,15 @@
+                    returnKeyType=\\"next\\"
+                    secureTextEntry={true}
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -534,11 +534,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Mot de passe\\"
+                    textContentType=\\"password\\"
+-                   value=\\"\\"
++                   value=\\"mypassword\\"
+                  />
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+@@ -690,27 +690,27 @@
+              />
+              <View
+                accessibilityLabel=\\"Se connecter\\"
+                accessibilityState={
+                  Object {
+-                   \\"disabled\\": true,
++                   \\"disabled\\": false,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+-               focusable={false}
++               focusable={true}
+                onClick={[Function onClick]}
+                onResponderGrant={[Function onResponderGrant]}
+                onResponderMove={[Function onResponderMove]}
+                onResponderRelease={[Function onResponderRelease]}
+                onResponderTerminate={[Function onResponderTerminate]}
+                onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+                onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+                style={
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+-                   \\"backgroundColor\\": \\"#F1F1F4\\",
++                   \\"backgroundColor\\": \\"#eb0055\\",
+                    \\"borderRadius\\": 24,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"justifyContent\\": \\"center\\",
+                    \\"maxWidth\\": 500,
+                    \\"minHeight\\": 40,
+@@ -729,11 +729,11 @@
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
                   style={
                     Array [
                       Object {
 -                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
++                       \\"color\\": \\"#ffffff\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
                         \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -523,11 +523,11 @@
-                      },
-                    ]
-                  }
-                  testID=\\"Mot de passe\\"
-                  textContentType=\\"password\\"
--                 value=\\"\\"
-+                 value=\\"mypassword\\"
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-@@ -679,27 +679,27 @@
-            />
-            <View
-              accessibilityLabel=\\"Se connecter\\"
-              accessibilityState={
-                Object {
--                 \\"disabled\\": true,
-+                 \\"disabled\\": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
--             focusable={false}
-+             focusable={true}
-              onClick={[Function onClick]}
-              onResponderGrant={[Function onResponderGrant]}
-              onResponderMove={[Function onResponderMove]}
-              onResponderRelease={[Function onResponderRelease]}
-              onResponderTerminate={[Function onResponderTerminate]}
-              onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-              onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-              style={
-                Object {
-                  \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#F1F1F4\\",
-+                 \\"backgroundColor\\": \\"#eb0055\\",
-                  \\"borderRadius\\": 24,
-                  \\"flexDirection\\": \\"row\\",
-                  \\"justifyContent\\": \\"center\\",
-                  \\"maxWidth\\": 500,
-                  \\"minHeight\\": 40,
-@@ -718,11 +718,11 @@
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
--                     \\"color\\": \\"#696A6F\\",
-+                     \\"color\\": \\"#ffffff\\",
-                      \\"fontFamily\\": \\"Montserrat-Bold\\",
-                      \\"fontSize\\": 15,
-                      \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\","
+                        \\"lineHeight\\": 20,
+                        \\"marginLeft\\": 0,
+                        \\"maxWidth\\": \\"100%\\","
 `;
 
 exports[`<Login/> should show email error message WHEN signin has failed because of invalid e-mail format 1`] = `
@@ -144,177 +144,177 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 - First value
 + Second value
 
-@@ -322,18 +322,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -351,11 +351,11 @@
-                  aria-describedby=\\"testUuidV4\\"
-                  aria-required={true}
-                  autoCapitalize=\\"none\\"
-                  autoComplete=\\"email\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  keyboardType=\\"email-address\\"
-                  maxLength={120}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function onEmailChange]}
-@@ -364,15 +364,15 @@
-                  placeholderTextColor=\\"#696A6F\\"
-                  returnKeyType=\\"next\\"
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -380,12 +380,73 @@
-                      },
-                    ]
+@@ -333,18 +333,18 @@
                   }
-                  testID=\\"Entrée pour l'email\\"
-                  textContentType=\\"emailAddress\\"
--                 value=\\"\\"
-+                 value=\\"not_valid_email@gmail\\"
-+               />
-+             </View>
-+           </View>
-+           <View
-+             numberOfSpaces={2}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"height\\": 8,
-+                 },
-+               ]
-+             }
-+             testID=\\"input-error-top-spacer\\"
-+           />
-+           <View
-+             style={
-+               Array [
-+                 Object {
-+                   \\"alignItems\\": \\"center\\",
-+                   \\"flexDirection\\": \\"row-reverse\\",
-+                   \\"justifyContent\\": \\"flex-end\\",
-+                   \\"maxWidth\\": 500,
-+                   \\"width\\": \\"100%\\",
-+                 },
-+               ]
-+             }
-+           >
-+             <Text
-+               isValid={false}
-+               style={
-+                 Array [
-+                   Object {
-+                     \\"color\\": \\"#b60025\\",
-+                     \\"flexShrink\\": 1,
-+                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                     \\"fontSize\\": 12,
-+                     \\"lineHeight\\": 16,
-+                     \\"paddingLeft\\": 4,
-+                   },
-+                 ]
-+               }
-+             >
-+               L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr
-+             </Text>
-+             <View
-+               numberOfSpaces={1}
-+               style={
-+                 Array [
-+                   Object {
-+                     \\"width\\": 4,
-+                   },
-+                 ]
-+               }
-              />
-+             <View
-+               height={16}
-+               testID=\\"rule-icon-warn\\"
-+               width={16}
-+             >
-+               <Text>
-+                 rule-icon-warn-SVG-Mock
-+               </Text>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-@@ -489,11 +550,11 @@
-                testID=\\"styled-input-container\\"
-              >
-                <TextInput
-                  autoCapitalize=\\"none\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function bound dispatchAction]}
-                  onFocus={[Function onFocus]}
-                  onSubmitEditing={[Function _callee3]}
-@@ -502,15 +563,15 @@
-                  returnKeyType=\\"next\\"
-                  secureTextEntry={true}
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -523,11 +584,11 @@
-                      },
-                    ]
-                  }
-                  testID=\\"Mot de passe\\"
-                  textContentType=\\"password\\"
--                 value=\\"\\"
-+                 value=\\"mypassword\\"
                 />
                 <View
-                  numberOfSpaces={2}
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
                   style={
-                    Array ["
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -362,11 +362,11 @@
+                    aria-describedby=\\"testUuidV4\\"
+                    aria-required={true}
+                    autoCapitalize=\\"none\\"
+                    autoComplete=\\"email\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    keyboardType=\\"email-address\\"
+                    maxLength={120}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function onEmailChange]}
+@@ -375,15 +375,15 @@
+                    placeholderTextColor=\\"#696A6F\\"
+                    returnKeyType=\\"next\\"
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -391,12 +391,73 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Entrée pour l'email\\"
+                    textContentType=\\"emailAddress\\"
+-                   value=\\"\\"
++                   value=\\"not_valid_email@gmail\\"
++                 />
++               </View>
++             </View>
++             <View
++               numberOfSpaces={2}
++               style={
++                 Array [
++                   Object {
++                     \\"height\\": 8,
++                   },
++                 ]
++               }
++               testID=\\"input-error-top-spacer\\"
++             />
++             <View
++               style={
++                 Array [
++                   Object {
++                     \\"alignItems\\": \\"center\\",
++                     \\"flexDirection\\": \\"row-reverse\\",
++                     \\"justifyContent\\": \\"flex-end\\",
++                     \\"maxWidth\\": 500,
++                     \\"width\\": \\"100%\\",
++                   },
++                 ]
++               }
++             >
++               <Text
++                 isValid={false}
++                 style={
++                   Array [
++                     Object {
++                       \\"color\\": \\"#b60025\\",
++                       \\"flexShrink\\": 1,
++                       \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                       \\"fontSize\\": 12,
++                       \\"lineHeight\\": 16,
++                       \\"paddingLeft\\": 4,
++                     },
++                   ]
++                 }
++               >
++                 L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr
++               </Text>
++               <View
++                 numberOfSpaces={1}
++                 style={
++                   Array [
++                     Object {
++                       \\"width\\": 4,
++                     },
++                   ]
++                 }
+                />
++               <View
++                 height={16}
++                 testID=\\"rule-icon-warn\\"
++                 width={16}
++               >
++                 <Text>
++                   rule-icon-warn-SVG-Mock
++                 </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+@@ -500,11 +561,11 @@
+                  testID=\\"styled-input-container\\"
+                >
+                  <TextInput
+                    autoCapitalize=\\"none\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function bound dispatchAction]}
+                    onFocus={[Function onFocus]}
+                    onSubmitEditing={[Function _callee3]}
+@@ -513,15 +574,15 @@
+                    returnKeyType=\\"next\\"
+                    secureTextEntry={true}
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -534,11 +595,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Mot de passe\\"
+                    textContentType=\\"password\\"
+-                   value=\\"\\"
++                   value=\\"mypassword\\"
+                  />
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array ["
 `;
 
 exports[`<Login/> should show error message and error inputs WHEN signin has failed because of network failure 1`] = `
@@ -322,254 +322,254 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -244,10 +244,73 @@
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-+             numberOfSpaces={5}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"height\\": 20,
-+                 },
-+               ]
-+             }
-+             testID=\\"input-error-top-spacer\\"
-+           />
-+           <View
-+             centered={true}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"alignItems\\": \\"center\\",
-+                   \\"flexDirection\\": \\"row-reverse\\",
-+                   \\"justifyContent\\": \\"flex-end\\",
-+                   \\"maxWidth\\": 500,
-+                 },
-+               ]
-+             }
-+           >
-+             <Text
-+               centered={true}
-+               isValid={false}
+@@ -255,10 +255,73 @@
+                  },
+                ]
+              }
+            >
+              <View
++               numberOfSpaces={5}
 +               style={
 +                 Array [
 +                   Object {
-+                     \\"color\\": \\"#b60025\\",
-+                     \\"flexShrink\\": 1,
-+                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                     \\"fontSize\\": 12,
-+                     \\"lineHeight\\": 16,
-+                     \\"paddingLeft\\": 4,
-+                     \\"textAlign\\": \\"center\\",
++                     \\"height\\": 20,
 +                   },
 +                 ]
 +               }
-+             >
-+               Erreur réseau. Tu peux réessayer une fois la connexion réétablie
-+             </Text>
-+             <View
-+               numberOfSpaces={1}
-+               style={
-+                 Array [
-+                   Object {
-+                     \\"width\\": 4,
-+                   },
-+                 ]
-+               }
++               testID=\\"input-error-top-spacer\\"
 +             />
 +             <View
-+               height={16}
-+               testID=\\"rule-icon-warn\\"
-+               width={16}
++               centered={true}
++               style={
++                 Array [
++                   Object {
++                     \\"alignItems\\": \\"center\\",
++                     \\"flexDirection\\": \\"row-reverse\\",
++                     \\"justifyContent\\": \\"flex-end\\",
++                     \\"maxWidth\\": 500,
++                   },
++                 ]
++               }
 +             >
-+               <Text>
-+                 rule-icon-warn-SVG-Mock
++               <Text
++                 centered={true}
++                 isValid={false}
++                 style={
++                   Array [
++                     Object {
++                       \\"color\\": \\"#b60025\\",
++                       \\"flexShrink\\": 1,
++                       \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                       \\"fontSize\\": 12,
++                       \\"lineHeight\\": 16,
++                       \\"paddingLeft\\": 4,
++                       \\"textAlign\\": \\"center\\",
++                     },
++                   ]
++                 }
++               >
++                 Erreur réseau. Tu peux réessayer une fois la connexion réétablie
 +               </Text>
++               <View
++                 numberOfSpaces={1}
++                 style={
++                   Array [
++                     Object {
++                       \\"width\\": 4,
++                     },
++                   ]
++                 }
++               />
++               <View
++                 height={16}
++                 testID=\\"rule-icon-warn\\"
++                 width={16}
++               >
++                 <Text>
++                   rule-icon-warn-SVG-Mock
++                 </Text>
++               </View>
 +             </View>
-+           </View>
-+           <View
-              numberOfSpaces={7}
-              style={
-                Array [
-                  Object {
-                    \\"height\\": 28,
-@@ -322,18 +385,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
++             <View
+                numberOfSpaces={7}
                 style={
                   Array [
                     Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -351,11 +414,11 @@
-                  aria-describedby=\\"testUuidV4\\"
-                  aria-required={true}
-                  autoCapitalize=\\"none\\"
-                  autoComplete=\\"email\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  keyboardType=\\"email-address\\"
-                  maxLength={120}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function onEmailChange]}
-@@ -364,15 +427,15 @@
-                  placeholderTextColor=\\"#696A6F\\"
-                  returnKeyType=\\"next\\"
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -380,11 +443,11 @@
-                      },
-                    ]
+                      \\"height\\": 28,
+@@ -333,18 +396,18 @@
                   }
-                  testID=\\"Entrée pour l'email\\"
-                  textContentType=\\"emailAddress\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
-                />
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-@@ -463,18 +526,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -489,11 +552,11 @@
-                testID=\\"styled-input-container\\"
-              >
-                <TextInput
-                  autoCapitalize=\\"none\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function bound dispatchAction]}
-                  onFocus={[Function onFocus]}
-                  onSubmitEditing={[Function _callee3]}
-@@ -502,15 +565,15 @@
-                  returnKeyType=\\"next\\"
-                  secureTextEntry={true}
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -523,11 +586,11 @@
-                      },
-                    ]
-                  }
-                  testID=\\"Mot de passe\\"
-                  textContentType=\\"password\\"
--                 value=\\"\\"
-+                 value=\\"mypassword\\"
                 />
                 <View
-                  numberOfSpaces={2}
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
                   style={
                     Array [
-@@ -679,27 +742,27 @@
-            />
-            <View
-              accessibilityLabel=\\"Se connecter\\"
-              accessibilityState={
-                Object {
--                 \\"disabled\\": true,
-+                 \\"disabled\\": false,
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -362,11 +425,11 @@
+                    aria-describedby=\\"testUuidV4\\"
+                    aria-required={true}
+                    autoCapitalize=\\"none\\"
+                    autoComplete=\\"email\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    keyboardType=\\"email-address\\"
+                    maxLength={120}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function onEmailChange]}
+@@ -375,15 +438,15 @@
+                    placeholderTextColor=\\"#696A6F\\"
+                    returnKeyType=\\"next\\"
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -391,11 +454,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Entrée pour l'email\\"
+                    textContentType=\\"emailAddress\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
+              </View>
+              <View
+                numberOfSpaces={6}
+@@ -474,18 +537,18 @@
+                  }
+                />
+                <View
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
+                  style={
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -500,11 +563,11 @@
+                  testID=\\"styled-input-container\\"
+                >
+                  <TextInput
+                    autoCapitalize=\\"none\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function bound dispatchAction]}
+                    onFocus={[Function onFocus]}
+                    onSubmitEditing={[Function _callee3]}
+@@ -513,15 +576,15 @@
+                    returnKeyType=\\"next\\"
+                    secureTextEntry={true}
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -534,11 +597,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Mot de passe\\"
+                    textContentType=\\"password\\"
+-                   value=\\"\\"
++                   value=\\"mypassword\\"
+                  />
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+@@ -690,27 +753,27 @@
+              />
+              <View
+                accessibilityLabel=\\"Se connecter\\"
+                accessibilityState={
+                  Object {
+-                   \\"disabled\\": true,
++                   \\"disabled\\": false,
+                  }
                 }
-              }
-              accessible={true}
-              collapsable={false}
--             focusable={false}
-+             focusable={true}
-              onClick={[Function onClick]}
-              onResponderGrant={[Function onResponderGrant]}
-              onResponderMove={[Function onResponderMove]}
-              onResponderRelease={[Function onResponderRelease]}
-              onResponderTerminate={[Function onResponderTerminate]}
-              onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-              onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-              style={
-                Object {
-                  \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#F1F1F4\\",
-+                 \\"backgroundColor\\": \\"#eb0055\\",
-                  \\"borderRadius\\": 24,
-                  \\"flexDirection\\": \\"row\\",
-                  \\"justifyContent\\": \\"center\\",
-                  \\"maxWidth\\": 500,
-                  \\"minHeight\\": 40,
-@@ -718,11 +781,11 @@
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+                accessible={true}
+                collapsable={false}
+-               focusable={false}
++               focusable={true}
+                onClick={[Function onClick]}
+                onResponderGrant={[Function onResponderGrant]}
+                onResponderMove={[Function onResponderMove]}
+                onResponderRelease={[Function onResponderRelease]}
+                onResponderTerminate={[Function onResponderTerminate]}
+                onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+                onStartShouldSetResponder={[Function onStartShouldSetResponder]}
                 style={
-                  Array [
-                    Object {
--                     \\"color\\": \\"#696A6F\\",
-+                     \\"color\\": \\"#ffffff\\",
-                      \\"fontFamily\\": \\"Montserrat-Bold\\",
-                      \\"fontSize\\": 15,
-                      \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\","
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+-                   \\"backgroundColor\\": \\"#F1F1F4\\",
++                   \\"backgroundColor\\": \\"#eb0055\\",
+                    \\"borderRadius\\": 24,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"justifyContent\\": \\"center\\",
+                    \\"maxWidth\\": 500,
+                    \\"minHeight\\": 40,
+@@ -729,11 +792,11 @@
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#ffffff\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": 15,
+                        \\"lineHeight\\": 20,
+                        \\"marginLeft\\": 0,
+                        \\"maxWidth\\": \\"100%\\","
 `;
 
 exports[`<Login/> should show error message and error inputs WHEN signin has failed because of wrong credentials 1`] = `
@@ -577,254 +577,254 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -244,10 +244,73 @@
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-+             numberOfSpaces={5}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"height\\": 20,
-+                 },
-+               ]
-+             }
-+             testID=\\"input-error-top-spacer\\"
-+           />
-+           <View
-+             centered={true}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"alignItems\\": \\"center\\",
-+                   \\"flexDirection\\": \\"row-reverse\\",
-+                   \\"justifyContent\\": \\"flex-end\\",
-+                   \\"maxWidth\\": 500,
-+                 },
-+               ]
-+             }
-+           >
-+             <Text
-+               centered={true}
-+               isValid={false}
+@@ -255,10 +255,73 @@
+                  },
+                ]
+              }
+            >
+              <View
++               numberOfSpaces={5}
 +               style={
 +                 Array [
 +                   Object {
-+                     \\"color\\": \\"#b60025\\",
-+                     \\"flexShrink\\": 1,
-+                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                     \\"fontSize\\": 12,
-+                     \\"lineHeight\\": 16,
-+                     \\"paddingLeft\\": 4,
-+                     \\"textAlign\\": \\"center\\",
++                     \\"height\\": 20,
 +                   },
 +                 ]
 +               }
-+             >
-+               E-mail ou mot de passe incorrect
-+             </Text>
-+             <View
-+               numberOfSpaces={1}
-+               style={
-+                 Array [
-+                   Object {
-+                     \\"width\\": 4,
-+                   },
-+                 ]
-+               }
++               testID=\\"input-error-top-spacer\\"
 +             />
 +             <View
-+               height={16}
-+               testID=\\"rule-icon-warn\\"
-+               width={16}
++               centered={true}
++               style={
++                 Array [
++                   Object {
++                     \\"alignItems\\": \\"center\\",
++                     \\"flexDirection\\": \\"row-reverse\\",
++                     \\"justifyContent\\": \\"flex-end\\",
++                     \\"maxWidth\\": 500,
++                   },
++                 ]
++               }
 +             >
-+               <Text>
-+                 rule-icon-warn-SVG-Mock
++               <Text
++                 centered={true}
++                 isValid={false}
++                 style={
++                   Array [
++                     Object {
++                       \\"color\\": \\"#b60025\\",
++                       \\"flexShrink\\": 1,
++                       \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                       \\"fontSize\\": 12,
++                       \\"lineHeight\\": 16,
++                       \\"paddingLeft\\": 4,
++                       \\"textAlign\\": \\"center\\",
++                     },
++                   ]
++                 }
++               >
++                 E-mail ou mot de passe incorrect
 +               </Text>
++               <View
++                 numberOfSpaces={1}
++                 style={
++                   Array [
++                     Object {
++                       \\"width\\": 4,
++                     },
++                   ]
++                 }
++               />
++               <View
++                 height={16}
++                 testID=\\"rule-icon-warn\\"
++                 width={16}
++               >
++                 <Text>
++                   rule-icon-warn-SVG-Mock
++                 </Text>
++               </View>
 +             </View>
-+           </View>
-+           <View
-              numberOfSpaces={7}
-              style={
-                Array [
-                  Object {
-                    \\"height\\": 28,
-@@ -322,18 +385,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
++             <View
+                numberOfSpaces={7}
                 style={
                   Array [
                     Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -351,11 +414,11 @@
-                  aria-describedby=\\"testUuidV4\\"
-                  aria-required={true}
-                  autoCapitalize=\\"none\\"
-                  autoComplete=\\"email\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  keyboardType=\\"email-address\\"
-                  maxLength={120}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function onEmailChange]}
-@@ -364,15 +427,15 @@
-                  placeholderTextColor=\\"#696A6F\\"
-                  returnKeyType=\\"next\\"
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -380,11 +443,11 @@
-                      },
-                    ]
+                      \\"height\\": 28,
+@@ -333,18 +396,18 @@
                   }
-                  testID=\\"Entrée pour l'email\\"
-                  textContentType=\\"emailAddress\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
-                />
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-@@ -463,18 +526,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -489,11 +552,11 @@
-                testID=\\"styled-input-container\\"
-              >
-                <TextInput
-                  autoCapitalize=\\"none\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function bound dispatchAction]}
-                  onFocus={[Function onFocus]}
-                  onSubmitEditing={[Function _callee3]}
-@@ -502,15 +565,15 @@
-                  returnKeyType=\\"next\\"
-                  secureTextEntry={true}
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -523,11 +586,11 @@
-                      },
-                    ]
-                  }
-                  testID=\\"Mot de passe\\"
-                  textContentType=\\"password\\"
--                 value=\\"\\"
-+                 value=\\"mypassword\\"
                 />
                 <View
-                  numberOfSpaces={2}
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
                   style={
                     Array [
-@@ -679,27 +742,27 @@
-            />
-            <View
-              accessibilityLabel=\\"Se connecter\\"
-              accessibilityState={
-                Object {
--                 \\"disabled\\": true,
-+                 \\"disabled\\": false,
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -362,11 +425,11 @@
+                    aria-describedby=\\"testUuidV4\\"
+                    aria-required={true}
+                    autoCapitalize=\\"none\\"
+                    autoComplete=\\"email\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    keyboardType=\\"email-address\\"
+                    maxLength={120}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function onEmailChange]}
+@@ -375,15 +438,15 @@
+                    placeholderTextColor=\\"#696A6F\\"
+                    returnKeyType=\\"next\\"
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -391,11 +454,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Entrée pour l'email\\"
+                    textContentType=\\"emailAddress\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
+              </View>
+              <View
+                numberOfSpaces={6}
+@@ -474,18 +537,18 @@
+                  }
+                />
+                <View
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
+                  style={
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -500,11 +563,11 @@
+                  testID=\\"styled-input-container\\"
+                >
+                  <TextInput
+                    autoCapitalize=\\"none\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function bound dispatchAction]}
+                    onFocus={[Function onFocus]}
+                    onSubmitEditing={[Function _callee3]}
+@@ -513,15 +576,15 @@
+                    returnKeyType=\\"next\\"
+                    secureTextEntry={true}
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -534,11 +597,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Mot de passe\\"
+                    textContentType=\\"password\\"
+-                   value=\\"\\"
++                   value=\\"mypassword\\"
+                  />
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+@@ -690,27 +753,27 @@
+              />
+              <View
+                accessibilityLabel=\\"Se connecter\\"
+                accessibilityState={
+                  Object {
+-                   \\"disabled\\": true,
++                   \\"disabled\\": false,
+                  }
                 }
-              }
-              accessible={true}
-              collapsable={false}
--             focusable={false}
-+             focusable={true}
-              onClick={[Function onClick]}
-              onResponderGrant={[Function onResponderGrant]}
-              onResponderMove={[Function onResponderMove]}
-              onResponderRelease={[Function onResponderRelease]}
-              onResponderTerminate={[Function onResponderTerminate]}
-              onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-              onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-              style={
-                Object {
-                  \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#F1F1F4\\",
-+                 \\"backgroundColor\\": \\"#eb0055\\",
-                  \\"borderRadius\\": 24,
-                  \\"flexDirection\\": \\"row\\",
-                  \\"justifyContent\\": \\"center\\",
-                  \\"maxWidth\\": 500,
-                  \\"minHeight\\": 40,
-@@ -718,11 +781,11 @@
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+                accessible={true}
+                collapsable={false}
+-               focusable={false}
++               focusable={true}
+                onClick={[Function onClick]}
+                onResponderGrant={[Function onResponderGrant]}
+                onResponderMove={[Function onResponderMove]}
+                onResponderRelease={[Function onResponderRelease]}
+                onResponderTerminate={[Function onResponderTerminate]}
+                onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+                onStartShouldSetResponder={[Function onStartShouldSetResponder]}
                 style={
-                  Array [
-                    Object {
--                     \\"color\\": \\"#696A6F\\",
-+                     \\"color\\": \\"#ffffff\\",
-                      \\"fontFamily\\": \\"Montserrat-Bold\\",
-                      \\"fontSize\\": 15,
-                      \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\","
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+-                   \\"backgroundColor\\": \\"#F1F1F4\\",
++                   \\"backgroundColor\\": \\"#eb0055\\",
+                    \\"borderRadius\\": 24,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"justifyContent\\": \\"center\\",
+                    \\"maxWidth\\": 500,
+                    \\"minHeight\\": 40,
+@@ -729,11 +792,11 @@
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#ffffff\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": 15,
+                        \\"lineHeight\\": 20,
+                        \\"marginLeft\\": 0,
+                        \\"maxWidth\\": \\"100%\\","
 `;
 
 exports[`<Login/> should show specific error message when signin rate limit is exceeded 1`] = `
@@ -832,252 +832,252 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 - First value
 + Second value
 
-@@ -244,10 +244,73 @@
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-+             numberOfSpaces={5}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"height\\": 20,
-+                 },
-+               ]
-+             }
-+             testID=\\"input-error-top-spacer\\"
-+           />
-+           <View
-+             centered={true}
-+             style={
-+               Array [
-+                 Object {
-+                   \\"alignItems\\": \\"center\\",
-+                   \\"flexDirection\\": \\"row-reverse\\",
-+                   \\"justifyContent\\": \\"flex-end\\",
-+                   \\"maxWidth\\": 500,
-+                 },
-+               ]
-+             }
-+           >
-+             <Text
-+               centered={true}
-+               isValid={false}
+@@ -255,10 +255,73 @@
+                  },
+                ]
+              }
+            >
+              <View
++               numberOfSpaces={5}
 +               style={
 +                 Array [
 +                   Object {
-+                     \\"color\\": \\"#b60025\\",
-+                     \\"flexShrink\\": 1,
-+                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                     \\"fontSize\\": 12,
-+                     \\"lineHeight\\": 16,
-+                     \\"paddingLeft\\": 4,
-+                     \\"textAlign\\": \\"center\\",
++                     \\"height\\": 20,
 +                   },
 +                 ]
 +               }
-+             >
-+               Nombre de tentatives dépassé. Réessaye dans 1 minute
-+             </Text>
-+             <View
-+               numberOfSpaces={1}
-+               style={
-+                 Array [
-+                   Object {
-+                     \\"width\\": 4,
-+                   },
-+                 ]
-+               }
++               testID=\\"input-error-top-spacer\\"
 +             />
 +             <View
-+               height={16}
-+               testID=\\"rule-icon-warn\\"
-+               width={16}
++               centered={true}
++               style={
++                 Array [
++                   Object {
++                     \\"alignItems\\": \\"center\\",
++                     \\"flexDirection\\": \\"row-reverse\\",
++                     \\"justifyContent\\": \\"flex-end\\",
++                     \\"maxWidth\\": 500,
++                   },
++                 ]
++               }
 +             >
-+               <Text>
-+                 rule-icon-warn-SVG-Mock
++               <Text
++                 centered={true}
++                 isValid={false}
++                 style={
++                   Array [
++                     Object {
++                       \\"color\\": \\"#b60025\\",
++                       \\"flexShrink\\": 1,
++                       \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                       \\"fontSize\\": 12,
++                       \\"lineHeight\\": 16,
++                       \\"paddingLeft\\": 4,
++                       \\"textAlign\\": \\"center\\",
++                     },
++                   ]
++                 }
++               >
++                 Nombre de tentatives dépassé. Réessaye dans 1 minute
 +               </Text>
++               <View
++                 numberOfSpaces={1}
++                 style={
++                   Array [
++                     Object {
++                       \\"width\\": 4,
++                     },
++                   ]
++                 }
++               />
++               <View
++                 height={16}
++                 testID=\\"rule-icon-warn\\"
++                 width={16}
++               >
++                 <Text>
++                   rule-icon-warn-SVG-Mock
++                 </Text>
++               </View>
 +             </View>
-+           </View>
-+           <View
-              numberOfSpaces={7}
-              style={
-                Array [
-                  Object {
-                    \\"height\\": 28,
-@@ -322,18 +385,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
++             <View
+                numberOfSpaces={7}
                 style={
                   Array [
                     Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -351,11 +414,11 @@
-                  aria-describedby=\\"testUuidV4\\"
-                  aria-required={true}
-                  autoCapitalize=\\"none\\"
-                  autoComplete=\\"email\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  keyboardType=\\"email-address\\"
-                  maxLength={120}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function onEmailChange]}
-@@ -364,15 +427,15 @@
-                  placeholderTextColor=\\"#696A6F\\"
-                  returnKeyType=\\"next\\"
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -380,11 +443,11 @@
-                      },
-                    ]
+                      \\"height\\": 28,
+@@ -333,18 +396,18 @@
                   }
-                  testID=\\"Entrée pour l'email\\"
-                  textContentType=\\"emailAddress\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
-                />
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-@@ -463,18 +526,18 @@
-                }
-              />
-              <View
-                height=\\"small\\"
-                isDisabled={false}
--               isError={false}
-+               isError={true}
-                isFocus={false}
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#90949D\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -489,11 +552,11 @@
-                testID=\\"styled-input-container\\"
-              >
-                <TextInput
-                  autoCapitalize=\\"none\\"
-                  editable={true}
--                 isEmpty={true}
-+                 isEmpty={false}
-                  nativeID=\\"testUuidV4\\"
-                  onBlur={[Function onBlur]}
-                  onChangeText={[Function bound dispatchAction]}
-                  onFocus={[Function onFocus]}
-                  onSubmitEditing={[Function _callee3]}
-@@ -502,15 +565,15 @@
-                  returnKeyType=\\"next\\"
-                  secureTextEntry={true}
-                  style={
-                    Array [
-                      Object {
--                       \\"color\\": \\"#696A6F\\",
-+                       \\"color\\": \\"#161617\\",
-                        \\"flexBasis\\": 0,
-                        \\"flexGrow\\": 1,
-                        \\"flexShrink\\": 1,
--                       \\"fontFamily\\": \\"Montserrat-Italic\\",
-+                       \\"fontFamily\\": \\"Montserrat-Regular\\",
-                        \\"fontSize\\": 15,
-                        \\"height\\": \\"100%\\",
-                        \\"paddingBottom\\": 0,
-                        \\"paddingLeft\\": 0,
-                        \\"paddingRight\\": 0,
-@@ -523,11 +586,11 @@
-                      },
-                    ]
-                  }
-                  testID=\\"Mot de passe\\"
-                  textContentType=\\"password\\"
--                 value=\\"\\"
-+                 value=\\"mypassword\\"
                 />
                 <View
-                  numberOfSpaces={2}
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
                   style={
                     Array [
-@@ -679,27 +742,27 @@
-            />
-            <View
-              accessibilityLabel=\\"Se connecter\\"
-              accessibilityState={
-                Object {
--                 \\"disabled\\": true,
-+                 \\"disabled\\": false,
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -362,11 +425,11 @@
+                    aria-describedby=\\"testUuidV4\\"
+                    aria-required={true}
+                    autoCapitalize=\\"none\\"
+                    autoComplete=\\"email\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    keyboardType=\\"email-address\\"
+                    maxLength={120}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function onEmailChange]}
+@@ -375,15 +438,15 @@
+                    placeholderTextColor=\\"#696A6F\\"
+                    returnKeyType=\\"next\\"
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -391,11 +454,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Entrée pour l'email\\"
+                    textContentType=\\"emailAddress\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
+              </View>
+              <View
+                numberOfSpaces={6}
+@@ -474,18 +537,18 @@
+                  }
+                />
+                <View
+                  height=\\"small\\"
+                  isDisabled={false}
+-                 isError={false}
++                 isError={true}
+                  isFocus={false}
+                  style={
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#90949D\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -500,11 +563,11 @@
+                  testID=\\"styled-input-container\\"
+                >
+                  <TextInput
+                    autoCapitalize=\\"none\\"
+                    editable={true}
+-                   isEmpty={true}
++                   isEmpty={false}
+                    nativeID=\\"testUuidV4\\"
+                    onBlur={[Function onBlur]}
+                    onChangeText={[Function bound dispatchAction]}
+                    onFocus={[Function onFocus]}
+                    onSubmitEditing={[Function _callee3]}
+@@ -513,15 +576,15 @@
+                    returnKeyType=\\"next\\"
+                    secureTextEntry={true}
+                    style={
+                      Array [
+                        Object {
+-                         \\"color\\": \\"#696A6F\\",
++                         \\"color\\": \\"#161617\\",
+                          \\"flexBasis\\": 0,
+                          \\"flexGrow\\": 1,
+                          \\"flexShrink\\": 1,
+-                         \\"fontFamily\\": \\"Montserrat-Italic\\",
++                         \\"fontFamily\\": \\"Montserrat-Regular\\",
+                          \\"fontSize\\": 15,
+                          \\"height\\": \\"100%\\",
+                          \\"paddingBottom\\": 0,
+                          \\"paddingLeft\\": 0,
+                          \\"paddingRight\\": 0,
+@@ -534,11 +597,11 @@
+                        },
+                      ]
+                    }
+                    testID=\\"Mot de passe\\"
+                    textContentType=\\"password\\"
+-                   value=\\"\\"
++                   value=\\"mypassword\\"
+                  />
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+@@ -690,27 +753,27 @@
+              />
+              <View
+                accessibilityLabel=\\"Se connecter\\"
+                accessibilityState={
+                  Object {
+-                   \\"disabled\\": true,
++                   \\"disabled\\": false,
+                  }
                 }
-              }
-              accessible={true}
-              collapsable={false}
--             focusable={false}
-+             focusable={true}
-              onClick={[Function onClick]}
-              onResponderGrant={[Function onResponderGrant]}
-              onResponderMove={[Function onResponderMove]}
-              onResponderRelease={[Function onResponderRelease]}
-              onResponderTerminate={[Function onResponderTerminate]}
-              onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-              onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-              style={
-                Object {
-                  \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#F1F1F4\\",
-+                 \\"backgroundColor\\": \\"#eb0055\\",
-                  \\"borderRadius\\": 24,
-                  \\"flexDirection\\": \\"row\\",
-                  \\"justifyContent\\": \\"center\\",
-                  \\"maxWidth\\": 500,
-                  \\"minHeight\\": 40,
-@@ -718,11 +781,11 @@
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+                accessible={true}
+                collapsable={false}
+-               focusable={false}
++               focusable={true}
+                onClick={[Function onClick]}
+                onResponderGrant={[Function onResponderGrant]}
+                onResponderMove={[Function onResponderMove]}
+                onResponderRelease={[Function onResponderRelease]}
+                onResponderTerminate={[Function onResponderTerminate]}
+                onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+                onStartShouldSetResponder={[Function onStartShouldSetResponder]}
                 style={
-                  Array [
-                    Object {
--                     \\"color\\": \\"#696A6F\\",
-+                     \\"color\\": \\"#ffffff\\",
-                      \\"fontFamily\\": \\"Montserrat-Bold\\",
-                      \\"fontSize\\": 15,
-                      \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\","
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+-                   \\"backgroundColor\\": \\"#F1F1F4\\",
++                   \\"backgroundColor\\": \\"#eb0055\\",
+                    \\"borderRadius\\": 24,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"justifyContent\\": \\"center\\",
+                    \\"maxWidth\\": 500,
+                    \\"minHeight\\": 40,
+@@ -729,11 +792,11 @@
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+-                       \\"color\\": \\"#696A6F\\",
++                       \\"color\\": \\"#ffffff\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": 15,
+                        \\"lineHeight\\": 20,
+                        \\"marginLeft\\": 0,
+                        \\"maxWidth\\": \\"100%\\","
 `;

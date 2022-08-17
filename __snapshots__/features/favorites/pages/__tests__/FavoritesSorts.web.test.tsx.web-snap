@@ -3,7 +3,7 @@
 exports[`FavoritesSorts component should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c4 {
+  "baseElement": .c1 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -39,40 +39,40 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c1:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c1:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c1:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c1:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c1:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c2:disabled {
   background-color: #F1F1F4;
 }
 
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -86,52 +86,29 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 <body>
@@ -141,8 +118,9 @@ Object {
         style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <header
-          class="c0"
+          class="css-view-1dbjc4n"
           role="banner"
+          style="position: static; width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -171,7 +149,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c1"
+                    class="c0"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -233,8 +211,8 @@ Object {
                 class="css-view-1dbjc4n"
                 style="height: 48px;"
               />
-              <h2
-                aria-level="2"
+              <h4
+                aria-level="4"
                 class="css-reset-4rbku5 css-text-901oao"
                 dir="ltr"
                 id="testUuidV4"
@@ -242,7 +220,7 @@ Object {
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Trier par
-              </h2>
+              </h4>
             </div>
             <div
               aria-labelledby="testUuidV4"
@@ -250,9 +228,15 @@ Object {
               role="radiogroup"
             >
               <ul
-                class="c2 c3"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="list"
+                style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px;"
               >
-                <li>
+                <li
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item;"
+                >
                   <div
                     aria-checked="true"
                     aria-label="Trier par Ajouté récemment"
@@ -298,7 +282,11 @@ Object {
                     role="alert"
                   />
                 </li>
-                <li>
+                <li
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item;"
+                >
                   <div
                     aria-checked="false"
                     aria-label="Trier par Prix croissant"
@@ -333,7 +321,11 @@ Object {
                     role="alert"
                   />
                 </li>
-                <li>
+                <li
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
+                  style="display: list-item;"
+                >
                   <div
                     aria-checked="false"
                     aria-label="Trier par Proximité géographique"
@@ -377,7 +369,7 @@ Object {
           style="padding: 20px 20px 20px 20px;"
         >
           <button
-            class="c4 c5"
+            class="c1 c2"
             tabindex="0"
             type="button"
           >
@@ -393,7 +385,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c4 {
+  "container": .c1 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -429,40 +421,40 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c1:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c1:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c1:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c1:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c1:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c2:disabled {
   background-color: #F1F1F4;
 }
 
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -476,52 +468,29 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 <div>
@@ -530,8 +499,9 @@ Object {
       style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <header
-        class="c0"
+        class="css-view-1dbjc4n"
         role="banner"
+        style="position: static; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -560,7 +530,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c1"
+                  class="c0"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -622,8 +592,8 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 48px;"
             />
-            <h2
-              aria-level="2"
+            <h4
+              aria-level="4"
               class="css-reset-4rbku5 css-text-901oao"
               dir="ltr"
               id="testUuidV4"
@@ -631,7 +601,7 @@ Object {
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Trier par
-            </h2>
+            </h4>
           </div>
           <div
             aria-labelledby="testUuidV4"
@@ -639,9 +609,15 @@ Object {
             role="radiogroup"
           >
             <ul
-              class="c2 c3"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="list"
+              style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px;"
             >
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   aria-checked="true"
                   aria-label="Trier par Ajouté récemment"
@@ -687,7 +663,11 @@ Object {
                   role="alert"
                 />
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   aria-checked="false"
                   aria-label="Trier par Prix croissant"
@@ -722,7 +702,11 @@ Object {
                   role="alert"
                 />
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   aria-checked="false"
                   aria-label="Trier par Proximité géographique"
@@ -766,7 +750,7 @@ Object {
         style="padding: 20px 20px 20px 20px;"
       >
         <button
-          class="c4 c5"
+          class="c1 c2"
           tabindex="0"
           type="button"
         >

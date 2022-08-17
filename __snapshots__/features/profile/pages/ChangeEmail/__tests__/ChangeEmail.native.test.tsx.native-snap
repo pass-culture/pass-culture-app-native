@@ -3,161 +3,173 @@
 exports[`<ChangeEmail/> should render and log correctly when an email change is already in progress 1`] = `
 Array [
   <View
-    height={64}
+    accessibilityRole="header"
     style={
       Array [
         Object {
-          "height": 64,
-        },
-      ]
-    }
-  />,
-  <View
-    backgroundColor="#eb0055"
-    isAbsolutePosition={true}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#eb0055",
-          "position": "absolute",
-          "top": 0,
+          "position": "static",
           "width": "100%",
-          "zIndex": 1,
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      height={64}
       style={
         Array [
           Object {
-            "height": 16,
+            "height": 64,
           },
         ]
       }
     />
     <View
-      size="small"
+      backgroundColor="#eb0055"
+      isAbsolutePosition={true}
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
+            "backgroundColor": "#eb0055",
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
           },
         ]
       }
     >
       <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="small"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
+              "height": 48,
+              "justifyContent": "center",
             },
           ]
         }
       >
         <View
-          positionInHeader="left"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "justifyContent": "space-between",
+                "width": "100%",
               },
             ]
           }
-          testID="Revenir en arrière"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            positionInHeader="left"
             style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
             <View
-              height={24}
-              testID="icon-back"
-              width={24}
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Revenir en arrière"
             >
-              <Text>
-                icon-back-SVG-Mock
+              <View
+                height={24}
+                testID="icon-back"
+                width={24}
+              >
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Retour
               </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
           </View>
+          <Text
+            color="#ffffff"
+            numberOfLines={1}
+            size="small"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Modifier mon e-mail
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
         </View>
-        <Text
-          color="#ffffff"
-          numberOfLines={1}
-          size="small"
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Modifier mon e-mail
-        </Text>
-        <View
-          positionInHeader="right"
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>,
@@ -309,293 +321,367 @@ Array [
         }
       >
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
                 "maxWidth": 500,
                 "width": "100%",
               },
             ]
           }
         >
-          <View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Nouvel e-mail
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Obligatoire
-              </Text>
-            </View>
-          </View>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            height="small"
-            isDisabled={true}
-            isError={false}
-            isFocus={false}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
                   "width": "100%",
                 },
               ]
             }
-            testID="styled-input-container"
           >
-            <TextInput
-              aria-describedby="testUuidV4"
-              aria-required={true}
-              autoCapitalize="none"
-              autoComplete="email"
-              disabled={true}
-              editable={false}
-              isEmpty={true}
-              keyboardType="email-address"
-              maxLength={120}
-              nativeID="testUuidV4"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="tonadresse@email.com"
-              placeholderTextColor="#696A6F"
-              returnKeyType="next"
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Italic",
-                    "fontSize": 15,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  },
-                ]
-              }
-              testID="Entrée pour l'email"
-              textContentType="emailAddress"
-              value=""
-            />
-          </View>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "maxWidth": 500,
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
+            <View>
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Mot de passe
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Obligatoire
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Nouvel e-mail
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
             </View>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              Array [
-                Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            height="small"
-            isDisabled={true}
-            isError={false}
-            isFocus={false}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-              ]
-            }
-            testID="styled-input-container"
-          >
-            <TextInput
-              aria-describedby="testUuidV4"
-              autoCapitalize="none"
-              disabled={true}
-              editable={false}
-              isEmpty={true}
-              nativeID="testUuidV4"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="Ton mot de passe"
-              placeholderTextColor="#696A6F"
-              returnKeyType="next"
-              secureTextEntry={true}
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Italic",
-                    "fontSize": 15,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  },
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-              testID="Mot de passe"
-              textContentType="password"
-              value=""
-            />
             <View
               numberOfSpaces={2}
               style={
                 Array [
                   Object {
-                    "width": 8,
+                    "height": 8,
                   },
                 ]
               }
             />
             <View
-              accessibilityLabel="Afficher le mot de passe"
-              accessibilityRole="button"
+              height="small"
+              isDisabled={true}
+              isError={false}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                ]
+              }
+              testID="styled-input-container"
+            >
+              <TextInput
+                aria-describedby="testUuidV4"
+                aria-required={true}
+                autoCapitalize="none"
+                autoComplete="email"
+                disabled={true}
+                editable={false}
+                isEmpty={true}
+                keyboardType="email-address"
+                maxLength={120}
+                nativeID="testUuidV4"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="tonadresse@email.com"
+                placeholderTextColor="#696A6F"
+                returnKeyType="next"
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Italic",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ]
+                }
+                testID="Entrée pour l'email"
+                textContentType="emailAddress"
+                value=""
+              />
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Mot de passe
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              height="small"
+              isDisabled={true}
+              isError={false}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                ]
+              }
+              testID="styled-input-container"
+            >
+              <TextInput
+                aria-describedby="testUuidV4"
+                autoCapitalize="none"
+                disabled={true}
+                editable={false}
+                isEmpty={true}
+                nativeID="testUuidV4"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Ton mot de passe"
+                placeholderTextColor="#696A6F"
+                returnKeyType="next"
+                secureTextEntry={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Italic",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+                testID="Mot de passe"
+                textContentType="password"
+                value=""
+              />
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Afficher le mot de passe"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "flex-end",
+                    "maxWidth": 60,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="toggle-password-visibility"
+              >
+                <View
+                  fill="#161617"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            flex={1}
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
+          <View
+            paddingBottom={16}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "paddingBottom": 16,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Enregistrer les modifications"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               collapsable={false}
-              focusable={true}
+              focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -605,105 +691,43 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "flex-end",
-                  "maxWidth": 60,
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
                   "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
                   "userSelect": "auto",
+                  "width": "100%",
                 }
               }
-              testID="toggle-password-visibility"
+              testID="Enregistrer"
             >
-              <View
-                fill="#161617"
-                height={24}
-                width={24}
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
+                Enregistrer
+              </Text>
             </View>
-          </View>
-        </View>
-        <View
-          flex={1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-        <View
-          paddingBottom={16}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "paddingBottom": 16,
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="Enregistrer les modifications"
-            accessibilityState={
-              Object {
-                "disabled": true,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#F1F1F4",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Enregistrer"
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Enregistrer
-            </Text>
           </View>
         </View>
         <View
@@ -725,161 +749,173 @@ Array [
 exports[`<ChangeEmail/> should render correctly 1`] = `
 Array [
   <View
-    height={64}
+    accessibilityRole="header"
     style={
       Array [
         Object {
-          "height": 64,
-        },
-      ]
-    }
-  />,
-  <View
-    backgroundColor="#eb0055"
-    isAbsolutePosition={true}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#eb0055",
-          "position": "absolute",
-          "top": 0,
+          "position": "static",
           "width": "100%",
-          "zIndex": 1,
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      height={64}
       style={
         Array [
           Object {
-            "height": 16,
+            "height": 64,
           },
         ]
       }
     />
     <View
-      size="small"
+      backgroundColor="#eb0055"
+      isAbsolutePosition={true}
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
+            "backgroundColor": "#eb0055",
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
           },
         ]
       }
     >
       <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="small"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
+              "height": 48,
+              "justifyContent": "center",
             },
           ]
         }
       >
         <View
-          positionInHeader="left"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "justifyContent": "space-between",
+                "width": "100%",
               },
             ]
           }
-          testID="Revenir en arrière"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            positionInHeader="left"
             style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
             <View
-              height={24}
-              testID="icon-back"
-              width={24}
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Revenir en arrière"
             >
-              <Text>
-                icon-back-SVG-Mock
+              <View
+                height={24}
+                testID="icon-back"
+                width={24}
+              >
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Retour
               </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
           </View>
+          <Text
+            color="#ffffff"
+            numberOfLines={1}
+            size="small"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Modifier mon e-mail
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
         </View>
-        <Text
-          color="#ffffff"
-          numberOfLines={1}
-          size="small"
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Modifier mon e-mail
-        </Text>
-        <View
-          positionInHeader="right"
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>,
@@ -971,295 +1007,369 @@ Array [
         }
       >
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
                 "maxWidth": 500,
                 "width": "100%",
               },
             ]
           }
         >
-          <View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Nouvel e-mail
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Obligatoire
-              </Text>
-            </View>
-          </View>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            height="small"
-            isDisabled={false}
-            isError={false}
-            isFocus={false}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
                   "width": "100%",
                 },
               ]
             }
-            testID="styled-input-container"
           >
-            <TextInput
-              aria-describedby="testUuidV4"
-              aria-required={true}
-              autoCapitalize="none"
-              autoComplete="email"
-              disabled={false}
-              editable={true}
-              isEmpty={true}
-              keyboardType="email-address"
-              maxLength={120}
-              nativeID="testUuidV4"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="tonadresse@email.com"
-              placeholderTextColor="#696A6F"
-              returnKeyType="next"
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Italic",
-                    "fontSize": 15,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  },
-                ]
-              }
-              testID="Entrée pour l'email"
-              textContentType="emailAddress"
-              value=""
-            />
-          </View>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "maxWidth": 500,
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
+            <View>
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Mot de passe
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Obligatoire
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Nouvel e-mail
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
             </View>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              Array [
-                Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            height="small"
-            isDisabled={false}
-            isError={false}
-            isFocus={false}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-              ]
-            }
-            testID="styled-input-container"
-          >
-            <TextInput
-              aria-describedby="testUuidV4"
-              autoCapitalize="none"
-              disabled={false}
-              editable={true}
-              isEmpty={true}
-              nativeID="testUuidV4"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="Ton mot de passe"
-              placeholderTextColor="#696A6F"
-              returnKeyType="next"
-              secureTextEntry={true}
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Italic",
-                    "fontSize": 15,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  },
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-              testID="Mot de passe"
-              textContentType="password"
-              value=""
-            />
             <View
               numberOfSpaces={2}
               style={
                 Array [
                   Object {
-                    "width": 8,
+                    "height": 8,
                   },
                 ]
               }
             />
             <View
-              accessibilityLabel="Afficher le mot de passe"
-              accessibilityRole="button"
+              height="small"
+              isDisabled={false}
+              isError={false}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                ]
+              }
+              testID="styled-input-container"
+            >
+              <TextInput
+                aria-describedby="testUuidV4"
+                aria-required={true}
+                autoCapitalize="none"
+                autoComplete="email"
+                disabled={false}
+                editable={true}
+                isEmpty={true}
+                keyboardType="email-address"
+                maxLength={120}
+                nativeID="testUuidV4"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="tonadresse@email.com"
+                placeholderTextColor="#696A6F"
+                returnKeyType="next"
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Italic",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ]
+                }
+                testID="Entrée pour l'email"
+                textContentType="emailAddress"
+                value=""
+              />
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Mot de passe
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              height="small"
+              isDisabled={false}
+              isError={false}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                ]
+              }
+              testID="styled-input-container"
+            >
+              <TextInput
+                aria-describedby="testUuidV4"
+                autoCapitalize="none"
+                disabled={false}
+                editable={true}
+                isEmpty={true}
+                nativeID="testUuidV4"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Ton mot de passe"
+                placeholderTextColor="#696A6F"
+                returnKeyType="next"
+                secureTextEntry={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Italic",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+                testID="Mot de passe"
+                textContentType="password"
+                value=""
+              />
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Afficher le mot de passe"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "flex-end",
+                    "maxWidth": 60,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="toggle-password-visibility"
+              >
+                <View
+                  fill="#161617"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            flex={1}
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
+          <View
+            paddingBottom={16}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "paddingBottom": 16,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Enregistrer les modifications"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               collapsable={false}
-              focusable={true}
+              focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1269,105 +1379,43 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "flex-end",
-                  "maxWidth": 60,
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
                   "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
                   "userSelect": "auto",
+                  "width": "100%",
                 }
               }
-              testID="toggle-password-visibility"
+              testID="Enregistrer"
             >
-              <View
-                fill="#161617"
-                height={24}
-                width={24}
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
+                Enregistrer
+              </Text>
             </View>
-          </View>
-        </View>
-        <View
-          flex={1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-        <View
-          paddingBottom={16}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "paddingBottom": 16,
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="Enregistrer les modifications"
-            accessibilityState={
-              Object {
-                "disabled": true,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#F1F1F4",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Enregistrer"
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Enregistrer
-            </Text>
           </View>
         </View>
         <View
