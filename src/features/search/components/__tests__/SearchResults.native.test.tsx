@@ -82,9 +82,10 @@ describe('SearchResults component', () => {
       expect(queryByTestId('locationButton')).toBeTruthy()
     })
 
-    it('should update the temporary search state by actual search state', async () => {
+    it('should update the staged search state with the actual search state', async () => {
       const { getByTestId } = render(<SearchResults />)
       const locationButton = getByTestId('locationButton')
+
       await fireEvent.press(locationButton)
 
       expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
@@ -93,9 +94,10 @@ describe('SearchResults component', () => {
       })
     })
 
-    it('should redirect on filters page on location button click', async () => {
+    it('should redirect to the filters page when clicking on the location button', async () => {
       const { getByTestId } = render(<SearchResults />)
       const locationButton = getByTestId('locationButton')
+
       await fireEvent.press(locationButton)
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
