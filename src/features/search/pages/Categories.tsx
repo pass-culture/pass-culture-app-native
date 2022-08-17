@@ -11,11 +11,16 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { Again } from 'ui/svg/icons/Again'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
+
 const DEBOUNCED_CALLBACK = 200
 
 const useSelectCategory = (callback: () => void) => {
@@ -63,6 +68,10 @@ export const Categories: React.FC = () => {
           })}
         </VerticalUl>
       </StyledScrollView>
+      <BottomButtonsContainer>
+        <ResetButton wording="Réinitialiser" icon={Again} />
+        <SearchButton wording="Rechercher" />
+      </BottomButtonsContainer>
     </Container>
   )
 }
@@ -74,5 +83,22 @@ const Container = styled.View(({ theme }) => ({
 
 const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
-  paddingHorizontal: getSpacing(4),
+  paddingHorizontal: getSpacing(6),
+})
+
+const BottomButtonsContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'center',
+  padding: getSpacing(6),
+  paddingTop: getSpacing(2),
+})
+
+const ResetButton = styledButton(ButtonQuaternaryBlack)({
+  width: 'auto',
+  marginRight: getSpacing(4),
+})
+
+const SearchButton = styledButton(ButtonPrimary)({
+  flexGrow: 1,
+  width: 'auto',
 })
