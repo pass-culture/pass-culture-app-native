@@ -1,7 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash/debounce'
-import React, { useRef } from 'react'
+import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -21,11 +19,8 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
-const DEBOUNCED_CALLBACK = 200
-
-const useSelectCategory = (callback: () => void) => {
+const useSelectCategory = () => {
   const { searchState, dispatch } = useStagedSearch()
-  const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
 
   return {
     isCategorySelected(category: SearchGroupNameEnumv2) {
@@ -35,14 +30,12 @@ const useSelectCategory = (callback: () => void) => {
     selectCategory: (category: SearchGroupNameEnumv2) => () => {
       const payload = category === SearchGroupNameEnumv2.NONE ? [] : [category]
       dispatch({ type: 'SET_CATEGORY', payload })
-      debouncedCallback()
     },
   }
 }
 
 export const Categories: React.FC = () => {
-  const { goBack } = useNavigation()
-  const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
+  const { isCategorySelected, selectCategory } = useSelectCategory()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const titleID = uuidv4()
   return (
