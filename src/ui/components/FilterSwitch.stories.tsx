@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { Spacer } from 'ui/components/spacer/Spacer'
 
 import FilterSwitch from './FilterSwitch'
 
@@ -51,6 +52,7 @@ export const SwitchWithLabel: ComponentStory<typeof FilterSwitch> = (props) => {
   return (
     <StyledView>
       <InputLabel htmlFor={checkboxID}>{switchLabel}</InputLabel>
+      <Spacer.Row numberOfSpaces={5} />
       <FilterSwitch
         {...props}
         active={active}

@@ -1225,15 +1225,20 @@ Object {
                 id="testUuidV4"
                 style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1;"
                 >
-                  Modalités de retrait
-                </h2>
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  >
+                    Modalités de retrait
+                  </h2>
+                </div>
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accordionArrow"
@@ -1324,15 +1329,20 @@ Object {
                 id="testUuidV4"
                 style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1;"
                 >
-                  Accessibilité
-                </h2>
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  >
+                    Accessibilité
+                  </h2>
+                </div>
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accordionArrow"
@@ -1667,15 +1677,20 @@ Object {
                 id="testUuidV4"
                 style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1;"
                 >
-                  Contact
-                </h2>
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  >
+                    Contact
+                  </h2>
+                </div>
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accordionArrow"
@@ -2964,15 +2979,20 @@ Object {
               id="testUuidV4"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="ltr"
-                role="heading"
-                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1;"
               >
-                Modalités de retrait
-              </h2>
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="ltr"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                >
+                  Modalités de retrait
+                </h2>
+              </div>
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
@@ -3063,15 +3083,20 @@ Object {
               id="testUuidV4"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="ltr"
-                role="heading"
-                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1;"
               >
-                Accessibilité
-              </h2>
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="ltr"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                >
+                  Accessibilité
+                </h2>
+              </div>
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
@@ -3406,15 +3431,20 @@ Object {
               id="testUuidV4"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="ltr"
-                role="heading"
-                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1;"
               >
-                Contact
-              </h2>
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="ltr"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                >
+                  Contact
+                </h2>
+              </div>
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
