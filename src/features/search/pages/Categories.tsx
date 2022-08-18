@@ -1,26 +1,26 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash/debounce'
-import React, { useRef } from 'react'
+import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { Again } from 'ui/svg/icons/Again'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
-const DEBOUNCED_CALLBACK = 200
 
-const useSelectCategory = (callback: () => void) => {
-  const { searchState, dispatch } = useStagedSearch()
-  const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
+const useSelectCategory = () => {
+  const { searchState, dispatch } = useSearch()
 
   return {
     isCategorySelected(category: SearchGroupNameEnumv2) {
@@ -30,14 +30,12 @@ const useSelectCategory = (callback: () => void) => {
     selectCategory: (category: SearchGroupNameEnumv2) => () => {
       const payload = category === SearchGroupNameEnumv2.NONE ? [] : [category]
       dispatch({ type: 'SET_CATEGORY', payload })
-      debouncedCallback()
     },
   }
 }
 
 export const Categories: React.FC = () => {
-  const { goBack } = useNavigation()
-  const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
+  const { isCategorySelected, selectCategory } = useSelectCategory()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const titleID = uuidv4()
   return (
@@ -63,6 +61,10 @@ export const Categories: React.FC = () => {
           })}
         </VerticalUl>
       </StyledScrollView>
+      <BottomButtonsContainer>
+        <ResetButton wording="Réinitialiser" icon={Again} />
+        <SearchButton wording="Rechercher" />
+      </BottomButtonsContainer>
     </Container>
   )
 }
@@ -74,5 +76,22 @@ const Container = styled.View(({ theme }) => ({
 
 const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
-  paddingHorizontal: getSpacing(4),
+  paddingHorizontal: getSpacing(6),
+})
+
+const BottomButtonsContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'center',
+  padding: getSpacing(6),
+  paddingTop: getSpacing(2),
+})
+
+const ResetButton = styledButton(ButtonQuaternaryBlack)({
+  width: 'auto',
+  marginRight: getSpacing(4),
+})
+
+const SearchButton = styledButton(ButtonPrimary)({
+  flexGrow: 1,
+  width: 'auto',
 })

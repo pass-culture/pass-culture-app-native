@@ -109,7 +109,7 @@ describe('SearchResults component', () => {
 
       await fireEvent.press(categoryButton)
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
     })
 
     it('should display category button', () => {

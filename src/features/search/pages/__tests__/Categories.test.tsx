@@ -9,7 +9,7 @@ import { Categories } from '../Categories'
 const mockSearchState = initialSearchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useStagedSearch: () => ({
+  useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
   }),
