@@ -102,6 +102,21 @@ describe('SearchResults component', () => {
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
     })
+
+    it('should redirect to the filters page when clicking on the category button', async () => {
+      const { getByTestId } = render(<SearchResults />)
+      const categoryButton = getByTestId('categoryButton')
+
+      await fireEvent.press(categoryButton)
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+    })
+
+    it('should display category button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('categoryButton')).toBeTruthy()
+    })
   })
 
   describe('When feature flag filter desactivated', () => {
@@ -110,6 +125,12 @@ describe('SearchResults component', () => {
     })
 
     it('should not display location button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('locationButton')).toBeNull()
+    })
+
+    it('should not display category button', () => {
       const { queryByTestId } = render(<SearchResults />)
 
       expect(queryByTestId('locationButton')).toBeNull()
