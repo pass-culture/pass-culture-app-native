@@ -8,7 +8,7 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Lock as LockIcon } from 'ui/svg/icons/Lock'
-import { getShadow, getSpacing, Spacer } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
@@ -50,7 +50,6 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
   return (
     <FilterSwitchContainer>
-      <Spacer.Row numberOfSpaces={5} />
       <HiddenAccessibleText>{hiddenText}</HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}

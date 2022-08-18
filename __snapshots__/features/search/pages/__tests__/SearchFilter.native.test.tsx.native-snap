@@ -2796,6 +2796,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          <View
             style={
               Array [
                 Object {
@@ -2805,16 +2815,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            <View
-              numberOfSpaces={5}
-              style={
-                Array [
-                  Object {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 Array [
@@ -2974,6 +2974,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          <View
             style={
               Array [
                 Object {
@@ -2983,16 +2993,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            <View
-              numberOfSpaces={5}
-              style={
-                Array [
-                  Object {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 Array [
@@ -3152,6 +3152,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          <View
             style={
               Array [
                 Object {
@@ -3161,16 +3171,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            <View
-              numberOfSpaces={5}
-              style={
-                Array [
-                  Object {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 Array [
@@ -3330,6 +3330,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          <View
             style={
               Array [
                 Object {
@@ -3339,16 +3349,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            <View
-              numberOfSpaces={5}
-              style={
-                Array [
-                  Object {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 Array [
@@ -3533,6 +3533,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          <View
             style={
               Array [
                 Object {
@@ -3542,16 +3552,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            <View
-              numberOfSpaces={5}
-              style={
-                Array [
-                  Object {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 Array [

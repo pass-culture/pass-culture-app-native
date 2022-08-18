@@ -84,5 +84,5 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
         className=\\"css-view-1dbjc4n\\"
         style={
           Object {
-            \\"WebkitAlignItems\\": \\"center\\","
+            \\"width\\": \\"20px\\","
 `;
