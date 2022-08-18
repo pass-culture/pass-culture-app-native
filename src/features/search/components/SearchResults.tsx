@@ -63,6 +63,7 @@ export const SearchResults: React.FC = () => {
   const { data: appSettings } = useAppSettings()
   const filtersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
   const offerCategories = params?.offerCategories ?? []
+  const categoryIsSelected = offerCategories.length > 0
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categoryLabel = searchGroupLabelMapping[offerCategories[0]] ?? 'Catégories'
 
@@ -193,8 +194,8 @@ export const SearchResults: React.FC = () => {
                   label={categoryLabel}
                   testID="categoryButton"
                   onPress={redirectFilters}
-                  Icon={offerCategories.length > 0 ? Check : undefined}
-                  color={offerCategories.length > 0 ? theme.colors.primary : undefined}
+                  Icon={categoryIsSelected ? Check : undefined}
+                  color={categoryIsSelected ? theme.colors.primary : undefined}
                 />
               </ButtonContainer>
               <Spacer.Row numberOfSpaces={6} />
