@@ -10,6 +10,7 @@ import {
   handleGeneratedApiResponse,
   NeedsAuthenticationResponse,
   refreshAccessToken,
+  RefreshTokenExpiredResponse,
   safeFetch,
 } from '../apiHelpers'
 import { DefaultApi } from '../gen'
@@ -76,6 +77,16 @@ describe('[api] helpers', () => {
       const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
 
       expect(response).toEqual(NeedsAuthenticationResponse)
+    })
+
+    it('forces user to login when refresh token is expired', async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
+      // mock refresh access token response
+      mockFetch.mockRejectedValue(new ApiError(401, 'unauthorized'))
+
+      const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
+
+      expect(response).toEqual(RefreshTokenExpiredResponse)
     })
 
     it('regenerates the access token and fetch the real url after when the access token is expired', async () => {
@@ -321,7 +332,16 @@ describe('[api] helpers', () => {
 
       const error = new Error(NeedsAuthenticationResponse.statusText)
       expect(eventMonitoring.captureException).toBeCalledWith(error)
-      expect(navigateFromRef).toBeCalledWith('Login')
+      expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(result).toEqual({})
+    })
+
+    it('should navigate to login with displayForcedLoginHelpMessage param when refresh token is expired', async () => {
+      const response = await respondWith('', 401, 'RefreshTokenExpired')
+
+      const result = await handleGeneratedApiResponse(response)
+
+      expect(navigateFromRef).toHaveBeenCalledWith('Login', { displayForcedLoginHelpMessage: true })
       expect(result).toEqual({})
     })
   })
