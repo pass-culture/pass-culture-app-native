@@ -1,14 +1,15 @@
 import { plural, t } from '@lingui/macro'
-import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ActivityIndicator, ScrollView } from 'react-native'
+import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
+import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/SingleFilterButton'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
@@ -18,9 +19,12 @@ import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { theme } from 'theme'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import { Check } from 'ui/svg/icons/Check'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -52,11 +56,16 @@ export const SearchResults: React.FC = () => {
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
+  const { params } = useRoute<UseRouteType<'Search'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const { data: appSettings } = useAppSettings()
   const filtersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
+  const offerCategories = params?.offerCategories ?? []
+  const categoryIsSelected = offerCategories.length > 0
+  const searchGroupLabelMapping = useSearchGroupLabelMapping()
+  const categoryLabel = searchGroupLabelMapping[offerCategories[0]] ?? 'Catégories'
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -167,18 +176,31 @@ export const SearchResults: React.FC = () => {
       {!!filtersButtonsDisplay && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <FiltersContainer>
+          <View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <Spacer.Row numberOfSpaces={6} />
               <ButtonContainer>
-                <ButtonSecondary
-                  wording={locationLabel}
+                <SingleFilterButton
+                  label={locationLabel}
                   testID="locationButton"
                   onPress={redirectFilters}
+                  Icon={Check}
+                  color={theme.colors.primary}
                 />
               </ButtonContainer>
               <Spacer.Row numberOfSpaces={2} />
+              <ButtonContainer>
+                <SingleFilterButton
+                  label={categoryLabel}
+                  testID="categoryButton"
+                  onPress={redirectFilters}
+                  Icon={categoryIsSelected ? Check : undefined}
+                  color={categoryIsSelected ? theme.colors.primary : undefined}
+                />
+              </ButtonContainer>
+              <Spacer.Row numberOfSpaces={6} />
             </ScrollView>
-          </FiltersContainer>
+          </View>
         </React.Fragment>
       )}
       <Container testID="searchResults">
@@ -242,10 +264,6 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
 }))
-
-const FiltersContainer = styled.View({
-  marginLeft: getSpacing(6),
-})
 
 function SearchResultsPlaceHolder() {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
