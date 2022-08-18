@@ -103,6 +103,10 @@ export const SearchResults: React.FC = () => {
     navigate('SearchFilter')
   }, [stagedDispatch, navigate, searchState])
 
+  const redirectToCategoryFilterPage = useCallback(() => {
+    navigate('SearchCategories')
+  }, [navigate])
+
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,7 +197,7 @@ export const SearchResults: React.FC = () => {
                 <SingleFilterButton
                   label={categoryLabel}
                   testID="categoryButton"
-                  onPress={redirectFilters}
+                  onPress={redirectToCategoryFilterPage}
                   Icon={categoryIsSelected ? Check : undefined}
                   color={categoryIsSelected ? theme.colors.primary : undefined}
                 />
