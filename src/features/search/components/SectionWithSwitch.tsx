@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { InlineSection, TitleWithCount } from 'features/search/atoms'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { Spacer } from 'ui/theme'
 
 interface Props {
   active?: boolean
@@ -27,6 +28,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
       }
       subtitle={subtitle}
       subtitleID={subtitleID}>
+      <Spacer.Row numberOfSpaces={5} />
       <FilterSwitch
         checkboxID={checkboxID}
         active={active}

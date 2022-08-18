@@ -15,15 +15,16 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFunctionOnce } from 'libs/hooks'
+import FilterSwitch, { FilterSwitchProps } from 'ui/components/FilterSwitch'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
-import { getSpacing, Typo } from '../theme'
+import { getSpacing, Spacer, Typo } from '../theme'
 
-interface IAccordionItemProps {
+interface AccordionItemProps {
   scrollViewRef?: MutableRefObject<ScrollView | null>
   title: JSX.Element | string
   accessibilityTitle?: string
@@ -32,6 +33,7 @@ interface IAccordionItemProps {
   onOpenOnce?: () => void
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
+  switchProps?: FilterSwitchProps
 }
 
 export const AccordionItem = ({
@@ -42,7 +44,8 @@ export const AccordionItem = ({
   onOpenOnce,
   titleStyle,
   bodyStyle,
-}: IAccordionItemProps) => {
+  switchProps,
+}: AccordionItemProps) => {
   const { tabBarHeight, top } = useCustomSafeInsets()
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
@@ -109,7 +112,15 @@ export const AccordionItem = ({
         accessibilityState={{ expanded: open }}
         aria-controls={accordionBodyId}>
         <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
-          <Title>{title}</Title>
+          <SwitchContainer>
+            {!!switchProps && (
+              <React.Fragment>
+                <FilterSwitch {...switchProps} />
+                <Spacer.Row numberOfSpaces={2} />
+              </React.Fragment>
+            )}
+            <Title>{title}</Title>
+          </SwitchContainer>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
             <ArrowNext />
           </Animated.View>
@@ -150,6 +161,12 @@ const StyledView = styled.View<{ hidden: boolean }>(({ hidden }) => ({
   paddingHorizontal: getSpacing(6),
   paddingTop: 0,
 }))
+
+const SwitchContainer = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+})
 
 const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1 })<{
   isFocus?: boolean

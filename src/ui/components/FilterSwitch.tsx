@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
@@ -8,10 +8,10 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Lock as LockIcon } from 'ui/svg/icons/Lock'
-import { getShadow, getSpacing, Spacer } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
-interface Props {
+export interface FilterSwitchProps {
   active: boolean
   checkboxID?: string
   accessibilityDescribedBy?: string
@@ -24,7 +24,7 @@ const TOGGLE_WIDTH = getSpacing(7)
 const TOGGLE_PATH_START = 2
 const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
-const FilterSwitch: React.FC<Props> = (props: Props) => {
+const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const [isFocus, setIsFocus] = useState(false)
   const { toggle, active = false, disabled = false, checkboxID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
@@ -50,7 +50,6 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
   return (
     <FilterSwitchContainer>
-      <Spacer.Row numberOfSpaces={5} />
       <HiddenAccessibleText>{hiddenText}</HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
@@ -118,8 +117,8 @@ const Lock = styled(LockIcon).attrs(({ theme }) => ({
 }))``
 
 const propsAreEqual = (
-  prevProps: Readonly<React.PropsWithChildren<Props>>,
-  nextProps: Readonly<React.PropsWithChildren<Props>>
+  prevProps: Readonly<React.PropsWithChildren<FilterSwitchProps>>,
+  nextProps: Readonly<React.PropsWithChildren<FilterSwitchProps>>
 ) =>
   prevProps.active === nextProps.active &&
   prevProps.disabled === nextProps.disabled &&

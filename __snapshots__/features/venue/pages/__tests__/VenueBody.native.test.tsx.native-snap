@@ -2101,23 +2101,37 @@ exports[`<VenueBody /> should render correctly 1`] = `
           ]
         }
       >
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#161617",
+                "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 0.9,
+                "flexDirection": "row",
+                "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
               },
             ]
           }
         >
-          Modalités de retrait
-        </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                },
+              ]
+            }
+          >
+            Modalités de retrait
+          </Text>
+        </View>
         <View
           collapsable={false}
           style={
@@ -2275,23 +2289,37 @@ exports[`<VenueBody /> should render correctly 1`] = `
           ]
         }
       >
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#161617",
+                "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 0.9,
+                "flexDirection": "row",
+                "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
               },
             ]
           }
         >
-          Accessibilité
-        </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                },
+              ]
+            }
+          >
+            Accessibilité
+          </Text>
+        </View>
         <View
           collapsable={false}
           style={
@@ -2900,23 +2928,37 @@ exports[`<VenueBody /> should render correctly 1`] = `
           ]
         }
       >
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#161617",
+                "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 0.9,
+                "flexDirection": "row",
+                "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
               },
             ]
           }
         >
-          Contact
-        </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                },
+              ]
+            }
+          >
+            Contact
+          </Text>
+        </View>
         <View
           collapsable={false}
           style={

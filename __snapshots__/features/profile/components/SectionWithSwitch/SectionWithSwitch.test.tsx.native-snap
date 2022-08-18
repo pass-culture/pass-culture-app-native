@@ -70,8 +70,8 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
 +       Partager ma position
 +     </Text>
       <View
+        numberOfSpaces={5}
         style={
           Array [
-            Object {
-              \\"alignItems\\": \\"center\\","
+            Object {"
 `;

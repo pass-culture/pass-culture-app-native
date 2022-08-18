@@ -53,6 +53,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
             {toggleLabel}
           </ToggleLabel>
         ) : null}
+        <Spacer.Row numberOfSpaces={5} />
         <FilterSwitch
           checkboxID={checkboxID}
           active={active}

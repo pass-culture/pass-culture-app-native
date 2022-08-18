@@ -538,6 +538,16 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     >
                       <View
+                        numberOfSpaces={5}
+                        style={
+                          Array [
+                            Object {
+                              "width": 20,
+                            },
+                          ]
+                        }
+                      />
+                      <View
                         style={
                           Array [
                             Object {
@@ -547,16 +557,6 @@ exports[`Profile component should render correctly 1`] = `
                           ]
                         }
                       >
-                        <View
-                          numberOfSpaces={5}
-                          style={
-                            Array [
-                              Object {
-                                "width": 20,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           style={
                             Array [
