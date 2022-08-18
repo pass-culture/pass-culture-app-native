@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { FilterButton } from 'features/search/atoms/Buttons'
+import { FilterButton } from 'features/search/atoms/Buttons/FilterButton/FilterButton'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'

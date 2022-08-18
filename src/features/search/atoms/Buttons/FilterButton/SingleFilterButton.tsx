@@ -10,7 +10,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-export type SearchFilterButtonProps = {
+export type SingleFilterButtonProps = {
   label: string
   Icon?: FunctionComponent<IconInterface>
   color?: ColorsEnum
@@ -19,7 +19,7 @@ export type SearchFilterButtonProps = {
   children?: never
 }
 
-export const SearchFilterButton: FunctionComponent<SearchFilterButtonProps> = ({
+export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
   label,
   Icon,
   color,
@@ -31,7 +31,7 @@ export const SearchFilterButton: FunctionComponent<SearchFilterButtonProps> = ({
   if (Icon) {
     StyledIcon = styled(Icon).attrs(({ theme }) => ({
       size: theme.icons.sizes.extraSmall,
-      color: color ? color : theme.colors.black,
+      color: color ?? theme.colors.black,
     }))({})
   }
 
@@ -48,10 +48,13 @@ const TouchableContainer = styledButton(Touchable)<{ color?: ColorsEnum }>(({ th
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '6px 16px',
+  paddingLeft: getSpacing(4),
+  paddingRight: getSpacing(4),
+  paddingTop: getSpacing(1.5),
+  paddingBottom: getSpacing(1.5),
   height: getSpacing(8),
-  borderColor: color ? color : theme.colors.black,
-  borderWidth: '1px',
+  borderColor: color ?? theme.colors.black,
+  borderWidth: getSpacing(0.25),
   borderRadius: theme.borderRadius.button,
   ...(Platform.OS === 'web'
     ? {
@@ -60,12 +63,12 @@ const TouchableContainer = styledButton(Touchable)<{ color?: ColorsEnum }>(({ th
         },
       }
     : {}),
-  ...getHoverStyle(color ? color : theme.colors.black),
+  ...getHoverStyle(color ?? theme.colors.black),
 }))
 
 const Label = styled(Typo.Caption)<{ color?: ColorsEnum }>(({ theme, color }) => ({
   flex: 1,
   marginLeft: getSpacing(1),
   textAlign: 'left',
-  color: color ? color : theme.colors.black,
+  color: color ?? theme.colors.black,
 }))
