@@ -4,7 +4,7 @@ import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { useGeolocation } from 'libs/geolocation'
 
@@ -70,13 +70,13 @@ export const useStagedSearch = (): Pick<ISearchContext, 'searchState' | 'dispatc
 
 export const useCommit = (): { commit: () => void } => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { dispatch } = useSearch()
   const { searchState: stagedSearchState } = useStagedSearch()
 
   return {
     commit() {
-      dispatch({ type: 'SET_STATE', payload: stagedSearchState })
-      navigate(...getTabNavConfig('Search', stagedSearchState))
+      // ReinitializeFilters when pressed will call SET_STATE and use initialSearchState.view,
+      // so we force it until full removal of searchState
+      navigate(...getTabNavConfig('Search', { ...stagedSearchState, view: SearchView.Results }))
     },
   }
 }
