@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { fireEvent, render } from 'tests/utils'
 
@@ -30,12 +29,15 @@ describe('Categories component', () => {
     expect(getByText('Jeux & jeux vidéos')).toBeTruthy()
   })
 
-  it('should match diff snapshot when new category is selected', () => {
-    const allSelected = renderCategories().toJSON()
+  it("should change the selected category filter when pressing on another filter's checkbox", () => {
+    const { getByText } = renderCategories()
 
-    mockSearchState.offerCategories = [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]
-    const cinemaSelected = renderCategories().toJSON()
-    expect(cinemaSelected).toMatchDiffSnapshot(allSelected)
+    const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
+    fireEvent.press(someCategoryFilterCheckbox)
+
+    expect(someCategoryFilterCheckbox).toHaveProp('isSelected', true)
+    const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
+    expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', false)
   })
 
   it('should set the selected category filter on navigate when one is set', () => {
