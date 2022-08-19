@@ -74,7 +74,7 @@ export const safeFetch = async (
   const accessTokenStatus = getAccessTokenStatus(token)
 
   if (accessTokenStatus === 'unknown') {
-    return Promise.resolve(NeedsAuthenticationResponse)
+    return NeedsAuthenticationResponse
   }
 
   // If the token is expired, we refresh it before calling the backend
@@ -82,12 +82,12 @@ export const safeFetch = async (
     try {
       const { result: newAccessToken, error } = await refreshAccessToken(api)
       if (error === REFRESH_TOKEN_IS_EXPIRED_ERROR) {
-        return Promise.resolve(RefreshTokenExpiredResponse)
+        return RefreshTokenExpiredResponse
       }
 
       if (error) {
         eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-        return Promise.resolve(NeedsAuthenticationResponse)
+        return NeedsAuthenticationResponse
       }
 
       runtimeOptions = {
@@ -102,7 +102,7 @@ export const safeFetch = async (
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
       eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-      return Promise.resolve(NeedsAuthenticationResponse)
+      return NeedsAuthenticationResponse
     }
   }
 
