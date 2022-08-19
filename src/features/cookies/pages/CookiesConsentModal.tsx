@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
+import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -19,7 +20,8 @@ export const CookiesConsentModal = ({ visible, hideModal }: CookiesConsentModalP
       onLeftIconPress={undefined}
       rightIconAccessibilityLabel={t`Fermer la modale et refuser les cookies`}
       rightIcon={Close}
-      onRightIconPress={hideModal}
-    />
+      onRightIconPress={hideModal}>
+      <CookiesSettings />
+    </AppModal>
   )
 }
