@@ -8,6 +8,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useSafeState } from 'libs/hooks'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -19,23 +20,20 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
-const useSelectCategory = () => {
-  const { searchState, dispatch } = useSearch()
-
-  return {
-    isCategorySelected(category: SearchGroupNameEnumv2) {
-      const [selectedCategory] = [...searchState.offerCategories, SearchGroupNameEnumv2.NONE]
-      return selectedCategory === category
-    },
-    selectCategory: (category: SearchGroupNameEnumv2) => () => {
-      const payload = category === SearchGroupNameEnumv2.NONE ? [] : [category]
-      dispatch({ type: 'SET_CATEGORY', payload })
-    },
-  }
-}
-
 export const Categories: React.FC = () => {
-  const { isCategorySelected, selectCategory } = useSelectCategory()
+  const { searchState } = useSearch()
+  const [selectedCategory, setSelectedCategory] = useSafeState<SearchGroupNameEnumv2>(
+    searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE
+  )
+
+  const selectCategory = (category: SearchGroupNameEnumv2) => () => {
+    setSelectedCategory(category)
+  }
+
+  const isCategorySelected = (category: SearchGroupNameEnumv2) => {
+    return selectedCategory === category
+  }
+
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const titleID = uuidv4()
   return (
