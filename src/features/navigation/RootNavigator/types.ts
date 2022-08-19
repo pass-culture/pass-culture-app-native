@@ -102,6 +102,7 @@ export type RootStackParamList = {
   FraudulentAccount: undefined
   Login?: {
     preventCancellation?: boolean
+    displayForcedLoginHelpMessage?: boolean
   }
   Navigation: undefined
   NavigationAccountSuspension: undefined

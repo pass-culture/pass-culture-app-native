@@ -14,8 +14,8 @@ import Package from '../../package.json'
 
 import { DefaultApi } from './gen'
 
-function navigateToLogin() {
-  navigateFromRef('Login')
+function navigateToLogin(params?: Record<string, unknown>) {
+  navigateFromRef('Login', params)
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
@@ -34,6 +34,11 @@ export const NeedsAuthenticationResponse = {
   status: 401,
   statusText: 'NeedsAuthenticationResponse',
 } as Response
+
+export const RefreshTokenExpiredResponse = new Response('', {
+  status: 401,
+  statusText: 'RefreshTokenExpired',
+})
 
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
@@ -69,17 +74,20 @@ export const safeFetch = async (
   const accessTokenStatus = getAccessTokenStatus(token)
 
   if (accessTokenStatus === 'unknown') {
-    return Promise.resolve(NeedsAuthenticationResponse)
+    return NeedsAuthenticationResponse
   }
 
   // If the token is expired, we refresh it before calling the backend
   if (accessTokenStatus === 'expired') {
     try {
       const { result: newAccessToken, error } = await refreshAccessToken(api)
+      if (error === REFRESH_TOKEN_IS_EXPIRED_ERROR) {
+        return RefreshTokenExpiredResponse
+      }
 
       if (error) {
         eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-        return Promise.resolve(NeedsAuthenticationResponse)
+        return NeedsAuthenticationResponse
       }
 
       runtimeOptions = {
@@ -94,7 +102,7 @@ export const safeFetch = async (
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
       eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-      return Promise.resolve(NeedsAuthenticationResponse)
+      return NeedsAuthenticationResponse
     }
   }
 
@@ -186,6 +194,14 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   ) {
     eventMonitoring.captureException(new Error(NeedsAuthenticationResponse.statusText))
     navigateToLogin()
+    return {}
+  }
+
+  if (
+    response.status === RefreshTokenExpiredResponse.status &&
+    response.statusText === RefreshTokenExpiredResponse.statusText
+  ) {
+    navigateToLogin({ displayForcedLoginHelpMessage: true })
     return {}
   }
 

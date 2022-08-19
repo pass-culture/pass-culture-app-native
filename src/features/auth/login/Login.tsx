@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useCallback, useState } from 'react'
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -29,6 +29,7 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Key } from 'ui/svg/icons/Key'
@@ -58,10 +59,20 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
   const culturalSurveyRoute = useCulturalSurveyRoute()
+  const { showInfoSnackBar } = useSnackBarContext()
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
+
+  useEffect(() => {
+    if (params?.displayForcedLoginHelpMessage) {
+      showInfoSnackBar({
+        message:
+          'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.',
+      })
+    }
+  }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
 
   function onEmailChange(mail: string) {
     if (emailErrorMessage) {
