@@ -1,13 +1,17 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useSafeState } from 'libs/hooks'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -19,23 +23,32 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
-const useSelectCategory = () => {
-  const { searchState, dispatch } = useSearch()
-
-  return {
-    isCategorySelected(category: SearchGroupNameEnumv2) {
-      const [selectedCategory] = [...searchState.offerCategories, SearchGroupNameEnumv2.NONE]
-      return selectedCategory === category
-    },
-    selectCategory: (category: SearchGroupNameEnumv2) => () => {
-      const payload = category === SearchGroupNameEnumv2.NONE ? [] : [category]
-      dispatch({ type: 'SET_CATEGORY', payload })
-    },
-  }
-}
-
 export const Categories: React.FC = () => {
-  const { isCategorySelected, selectCategory } = useSelectCategory()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState, dispatch } = useSearch()
+  const [selectedCategory, setSelectedCategory] = useSafeState<SearchGroupNameEnumv2>(
+    searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE
+  )
+
+  const selectCategory = (category: SearchGroupNameEnumv2) => () => {
+    setSelectedCategory(category)
+  }
+
+  const isCategorySelected = (category: SearchGroupNameEnumv2) => {
+    return selectedCategory === category
+  }
+
+  const onSearchPress = () => {
+    const payload = selectedCategory === SearchGroupNameEnumv2.NONE ? [] : [selectedCategory]
+    dispatch({ type: 'SET_CATEGORY', payload })
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        offerCategories: payload,
+      })
+    )
+  }
+
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const titleID = uuidv4()
   return (
@@ -63,7 +76,7 @@ export const Categories: React.FC = () => {
       </StyledScrollView>
       <BottomButtonsContainer>
         <ResetButton wording="Réinitialiser" icon={Again} />
-        <SearchButton wording="Rechercher" />
+        <SearchButton wording="Rechercher" onPress={onSearchPress} />
       </BottomButtonsContainer>
     </Container>
   )
