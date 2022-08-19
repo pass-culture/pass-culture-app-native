@@ -26,7 +26,11 @@ export interface AlgoliaHit {
 export interface AlgoliaSuggestionHit {
   objectID: string
   query: string
-  _highlightResult?: HighlightResult
+  _highlightResult?: HighlightResultAttribute
+}
+
+export interface HighlightResultAttribute {
+  query: HighlightResult
 }
 
 export interface HighlightResult {

@@ -62,6 +62,7 @@ exports[`SearchAutocompleteItem component should render SearchAutocompleteItem 1
           },
         ]
       }
+      testID="highlightedText"
     >
       cinéma
     </Text>

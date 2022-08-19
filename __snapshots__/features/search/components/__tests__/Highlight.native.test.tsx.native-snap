@@ -13,7 +13,7 @@ Array [
         },
       ]
     }
-    testID="bodyTypo"
+    testID="highlightedText"
   >
     guerre
   </Text>,
@@ -28,39 +28,9 @@ Array [
         },
       ]
     }
-    testID="buttonTextTypo"
+    testID="nonHighlightedText"
   >
-     
-  </Text>,
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-        },
-      ]
-    }
-    testID="bodyTypo"
-  >
-    et
-  </Text>,
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 15,
-          "lineHeight": 20,
-        },
-      ]
-    }
-    testID="buttonTextTypo"
-  >
-     youpi matin
+     et youpi matin
   </Text>,
 ]
 `;

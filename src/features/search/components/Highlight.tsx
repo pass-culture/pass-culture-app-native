@@ -17,9 +17,9 @@ export const HighlightPart: FunctionComponent<HighlightPartProps> = ({
   isHighlighted,
 }) => {
   return isHighlighted ? (
-    <Typo.Body testID="bodyTypo">{children}</Typo.Body>
+    <Typo.Body testID="highlightedText">{children}</Typo.Body>
   ) : (
-    <Typo.ButtonText testID="buttonTextTypo">{children}</Typo.ButtonText>
+    <Typo.ButtonText testID="nonHighlightedText">{children}</Typo.ButtonText>
   )
 }
 
