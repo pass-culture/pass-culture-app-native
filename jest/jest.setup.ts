@@ -64,7 +64,7 @@ jest.mock('libs/firebase/shims/app/index.web')
 jest.mock('libs/campaign')
 
 /* No need to actually fetch Firebase's remote config in tests */
-jest.mock('libs/remoteConfig/remoteConfig.services')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 /* Flipper only using during manual debbuging */
 jest.mock('react-native-flipper')

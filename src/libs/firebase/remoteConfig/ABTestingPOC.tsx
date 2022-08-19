@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useRemoteConfigContext } from 'libs/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ABTestingPOC: React.FC = () => {

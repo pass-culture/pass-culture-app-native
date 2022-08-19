@@ -25,11 +25,11 @@ import { RecommendationPane, ProcessedModule } from 'features/home/contentful/mo
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchUser } from 'libs/react-native-batch'
-import { useRemoteConfigContext } from 'libs/remoteConfig'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
