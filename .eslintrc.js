@@ -202,7 +202,7 @@ module.exports = {
           '.android.tsx',
           '.ios.ts',
           '.ios.tsx',
-          '.mjs'
+          '.mjs',
         ],
       },
       alias: {
