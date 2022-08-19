@@ -24,7 +24,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
       pauseAnimationOnRenderAtFrame={62}
       subTitle="Tu as 18 ans..."
       text={`Tu pourras bénéficier des ${deposit} offerts par le Gouvernement dès que tu auras vérifié ton identité`}
-      title="Bonne nouvelle\u00a0!"
+      title={'Bonne nouvelle\u00a0!'}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}
