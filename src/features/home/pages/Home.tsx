@@ -24,12 +24,12 @@ import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/co
 import { RecommendationPane, ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { useABTestingContext } from 'libs/ABTesting'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchUser } from 'libs/react-native-batch'
+import { useRemoteConfigContext } from 'libs/remoteConfig'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -128,8 +128,9 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { homeEntryId: ABTestingEntryId } = useABTestingContext()
-  const { modules, homeEntryId } = useHomepageModules(params?.entryId ?? ABTestingEntryId) || {}
+  const { homeEntryId: remoteConfigHomeEntryId } = useRemoteConfigContext()
+  const { modules, homeEntryId } =
+    useHomepageModules(params?.entryId ?? remoteConfigHomeEntryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent('has_seen_all_the_homepage')

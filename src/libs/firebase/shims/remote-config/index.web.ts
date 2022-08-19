@@ -1,6 +1,6 @@
 import { getRemoteConfig } from 'firebase/remote-config'
 
-import { DEFAULT_REMOTE_CONFIG } from 'libs/ABTesting/ABTesting.constants'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/remoteConfig/remoteConfig.constants'
 
 import initializeApp from '../firebase-init'
 

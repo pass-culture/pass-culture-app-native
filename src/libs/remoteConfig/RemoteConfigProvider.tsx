@@ -1,26 +1,28 @@
 import React, { memo, createContext, useContext, useEffect, useState } from 'react'
 
-import { DEFAULT_REMOTE_CONFIG } from './ABTesting.constants'
-import { abTesting } from './ABTesting.services'
-import { CustomRemoteConfig } from './ABTesting.types'
+import { DEFAULT_REMOTE_CONFIG } from './remoteConfig.constants'
+import { remoteConfig } from './remoteConfig.services'
+import { CustomRemoteConfig } from './remoteConfig.types'
 
 const Context = createContext<CustomRemoteConfig>(DEFAULT_REMOTE_CONFIG)
 
-export function useABTestingContext() {
+export function useRemoteConfigContext() {
   return useContext<CustomRemoteConfig>(Context)
 }
 
-export const ABTestingProvider = memo(function ABTestingProvider(props: { children: JSX.Element }) {
+export const RemoteConfigProvider = memo(function RemoteConfigProvider(props: {
+  children: JSX.Element
+}) {
   const [contextValue, setContextValue] = useState<CustomRemoteConfig>(DEFAULT_REMOTE_CONFIG)
 
   useEffect(() => {
-    abTesting
+    remoteConfig
       .configure()
       .then(async () => {
-        const isNewConfigRetrieved = await abTesting.refresh()
+        const isNewConfigRetrieved = await remoteConfig.refresh()
         if (isNewConfigRetrieved) {
-          const abTestingParams = abTesting.getValues()
-          setContextValue(abTestingParams)
+          const remoteConfigParams = remoteConfig.getValues()
+          setContextValue(remoteConfigParams)
         }
       })
       .catch(() => {

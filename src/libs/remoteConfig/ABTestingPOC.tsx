@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useABTestingContext } from 'libs/ABTesting'
+import { useRemoteConfigContext } from 'libs/remoteConfig'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ABTestingPOC: React.FC = () => {
-  const { test_param } = useABTestingContext()
+  const { test_param } = useRemoteConfigContext()
 
   const message = `test_param value is ${test_param}`
   const instructionsText =

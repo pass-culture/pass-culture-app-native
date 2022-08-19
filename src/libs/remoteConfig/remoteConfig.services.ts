@@ -1,9 +1,9 @@
 import firebaseRemoteConfig from 'libs/firebase/shims/remote-config'
 
-import { DEFAULT_REMOTE_CONFIG } from './ABTesting.constants'
-import { CustomRemoteConfig, GenericRemoteConfig } from './ABTesting.types'
+import { DEFAULT_REMOTE_CONFIG } from './remoteConfig.constants'
+import { CustomRemoteConfig, GenericRemoteConfig } from './remoteConfig.types'
 
-export const abTesting = {
+export const remoteConfig = {
   async configure() {
     await firebaseRemoteConfig().setDefaults(DEFAULT_REMOTE_CONFIG as GenericRemoteConfig)
   },

@@ -58,7 +58,7 @@ import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
-import { ABTestingPOC } from 'libs/ABTesting/ABTestingPOC'
+import { ABTestingPOC } from 'libs/remoteConfig/ABTestingPOC'
 
 import { Route } from './types'
 

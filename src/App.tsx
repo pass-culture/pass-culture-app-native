@@ -21,7 +21,6 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
-import { ABTestingProvider } from 'libs/ABTesting'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { campaignTracker } from 'libs/campaign'
@@ -36,6 +35,7 @@ import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+import { RemoteConfigProvider } from 'libs/remoteConfig'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
 import { theme } from 'theme'
@@ -69,7 +69,7 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <ABTestingProvider>
+    <RemoteConfigProvider>
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
           <ReactQueryClientProvider>
@@ -107,7 +107,7 @@ const App: FunctionComponent = function () {
           </ReactQueryClientProvider>
         </SafeAreaProvider>
       </ThemeProvider>
-    </ABTestingProvider>
+    </RemoteConfigProvider>
   )
 }
 
