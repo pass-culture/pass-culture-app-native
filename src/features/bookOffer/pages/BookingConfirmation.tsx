@@ -55,7 +55,7 @@ export function BookingConfirmation() {
 
   return (
     <GenericInfoPage
-      title={'Réservation confirmée\u00a0!'}
+      title="Réservation confirmée&nbsp;!"
       icon={TicketBooked}
       buttons={[
         <ButtonPrimaryWhite

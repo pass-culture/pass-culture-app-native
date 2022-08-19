@@ -87,7 +87,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
       title="Des offres pour tous"
       subTitle="et si tu as..."
       centerChild={centerChild}
-      text={'de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.'}
+      text="de 15 à 18 ans&nbsp;: le Gouvernement offre un crédit à dépenser dans l’application."
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}
