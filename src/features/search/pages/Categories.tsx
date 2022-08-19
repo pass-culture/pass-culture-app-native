@@ -1,10 +1,13 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -21,7 +24,8 @@ import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 export const Categories: React.FC = () => {
-  const { searchState } = useSearch()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState, dispatch } = useSearch()
   const [selectedCategory, setSelectedCategory] = useSafeState<SearchGroupNameEnumv2>(
     searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE
   )
@@ -32,6 +36,17 @@ export const Categories: React.FC = () => {
 
   const isCategorySelected = (category: SearchGroupNameEnumv2) => {
     return selectedCategory === category
+  }
+
+  const onSearchPress = () => {
+    const payload = selectedCategory === SearchGroupNameEnumv2.NONE ? [] : [selectedCategory]
+    dispatch({ type: 'SET_CATEGORY', payload })
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        offerCategories: payload,
+      })
+    )
   }
 
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -61,7 +76,7 @@ export const Categories: React.FC = () => {
       </StyledScrollView>
       <BottomButtonsContainer>
         <ResetButton wording="Réinitialiser" icon={Again} />
-        <SearchButton wording="Rechercher" />
+        <SearchButton wording="Rechercher" onPress={onSearchPress} />
       </BottomButtonsContainer>
     </Container>
   )
