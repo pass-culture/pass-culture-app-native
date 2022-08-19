@@ -1,8 +1,8 @@
-import { plural } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { Booking } from 'features/bookings/components/types'
+import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'

@@ -1,8 +1,9 @@
-import { t, plural } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
 
 import { useCommit } from 'features/search/pages/SearchWrapper'
 import { useStagedSearchResults } from 'features/search/pages/useSearchResults'
+import { plural } from 'libs/plural'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 const formatNbHits = (nbHits: number) => {

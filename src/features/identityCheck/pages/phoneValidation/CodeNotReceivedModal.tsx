@@ -1,4 +1,4 @@
-import { t, plural } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
@@ -11,6 +11,7 @@ import {
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

@@ -1,7 +1,7 @@
-import { plural } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { plural } from 'libs/plural'
 import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
