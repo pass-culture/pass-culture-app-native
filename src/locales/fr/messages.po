@@ -205,6 +205,10 @@ msgstr "Assure-toi d'indiquer ton numéro de téléphone personnel"
 msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Assurer la sécurité, prévenir la fraude et corriger les bugs"
+msgstr "Assurer la sécurité, prévenir la fraude et corriger les bugs"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 msgid "Attends"
@@ -446,6 +450,14 @@ msgstr "Centre culturel"
 #: src/features/profile/pages/Profile.tsx
 msgid "Centre d'aide"
 msgstr "Centre d'aide"
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser."
+msgstr "Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser."
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir les tendances et ainsi améliorer les résultats qui te sont proposés."
+msgstr "Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir les tendances et ainsi améliorer les résultats qui te sont proposés."
 
 #: src/features/auth/login/Login.tsx
 msgid "Cette adresse e-mail est liée à un compte supprimé"
@@ -1004,6 +1016,10 @@ msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité."
+msgstr "En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité."
+
 #: src/features/home/atoms/SeeMore.tsx
 #: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
@@ -1015,6 +1031,10 @@ msgstr "En voir plus"
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer"
 msgstr "Enregistrer"
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Enregistrer des statistiques de navigation"
+msgstr "Enregistrer des statistiques de navigation"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
@@ -1366,6 +1386,10 @@ msgstr "J'ai compris"
 msgid "J'ai reçu mon code"
 msgstr "J'ai reçu mon code"
 
+#: src/features/cookies/components/CookiesSettings.tsx
+msgid "Je choisis mes cookies"
+msgstr "Je choisis mes cookies"
+
 #: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
 msgid "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
 msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
@@ -1676,6 +1700,10 @@ msgstr "Mes réservations"
 msgid "Mes réservations terminées"
 msgstr "Mes réservations terminées"
 
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Mesurer l'efficacité de nos publicités"
+msgstr "Mesurer l'efficacité de nos publicités"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
@@ -1876,6 +1904,10 @@ msgstr "Nous avons eu un problème pour trouver la ville associée à ton code p
 msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application."
+msgstr "Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application."
+
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité."
 msgstr "Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité."
@@ -1883,6 +1915,10 @@ msgstr "Nous gardons toutes les informations personnelles que tu nous as transmi
 #: src/features/navigation/helpers/openUrl.ts
 msgid "Nous n'arrivons pas à ouvrir ce lien : {url}"
 msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture."
+msgstr "Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture."
 
 #: src/web/SupportedBrowsersGate.tsx
 msgid "Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale."
@@ -2182,6 +2218,10 @@ msgstr "Patrimoine et tourisme"
 #: src/features/bookings/helpers.ts
 msgid "Permanent"
 msgstr "Permanent"
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Personnaliser ta navigation"
+msgstr "Personnaliser ta navigation"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Place-toi dans un lieu bien éclairé"
@@ -2678,6 +2718,10 @@ msgstr "Salle de concerts"
 msgid "Salle de projections"
 msgstr "Salle de projections"
 
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées."
+msgstr "Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées."
+
 #: src/features/auth/login/Login.tsx
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
@@ -2713,6 +2757,10 @@ msgstr "Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
+msgstr "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 msgid "Si tu n’arrives pas à valider ton code tu peux"
@@ -2984,6 +3032,10 @@ msgstr "Ton status | Profil"
 msgid "Ton établissement | Profil"
 msgstr "Ton établissement | Profil"
 
+#: src/features/cookies/components/CookiesSettings.tsx
+msgid "Tout accepter"
+msgstr "Tout accepter"
+
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
 msgstr "Tout passer"
@@ -3123,6 +3175,10 @@ msgstr "Tu ne peux pas choisir une date dans le futur"
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
+
+#: src/features/cookies/components/cookiesInfo.ts
+msgid "Tu ne verras pas de publicité de tiers sur notre site ou sur notre application."
+msgstr "Tu ne verras pas de publicité de tiers sur notre site ou sur notre application."
 
 #: src/features/bookings/components/TicketBody/NoTicket/NoTicket.tsx
 msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
@@ -3984,6 +4040,10 @@ msgstr "À activer"
 #: src/features/offer/components/OfferIconCaptions.tsx
 msgid "À deux !"
 msgstr "À deux !"
+
+#: src/features/cookies/components/CookiesSettings.tsx
+msgid "À quoi servent tes cookies et tes données ?"
+msgstr "À quoi servent tes cookies et tes données ?"
 
 #: src/features/bookings/helpers.ts
 msgid "À retirer avant le {dateLimit}"
