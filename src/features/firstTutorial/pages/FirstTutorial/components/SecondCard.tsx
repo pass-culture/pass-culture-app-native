@@ -25,34 +25,34 @@ export function SecondCard(props: AchievementCardKeyProps) {
         <TagAndSubtitleContainer>
           <SlantTag
             text={depositAmountsByAge.fifteenYearsOldDeposit.replace(' ', '')}
-            testID={t`Aide financière 15 ans`}
+            testID="Aide financière 15 ans"
             width={tagWidth}
             height={tagHeight}
           />
           <Spacer.Column numberOfSpaces={1} />
-          <Subtitle>{t`15 ans`}</Subtitle>
+          <StyledCaption>15 ans</StyledCaption>
         </TagAndSubtitleContainer>
         <Spacer.Flex flex={0.25} />
         <TagAndSubtitleContainer>
           <SlantTag
             text={depositAmountsByAge.sixteenYearsOldDeposit.replace(' ', '')}
-            testID={t`Aide financière 16 ans`}
+            testID="Aide financière 16 ans"
             width={tagWidth}
             height={tagHeight}
           />
           <Spacer.Column numberOfSpaces={1} />
-          <Subtitle>{t`16 ans`}</Subtitle>
+          <StyledCaption>16 ans</StyledCaption>
         </TagAndSubtitleContainer>
         <Spacer.Flex flex={0.25} />
         <TagAndSubtitleContainer>
           <SlantTag
             text={depositAmountsByAge.seventeenYearsOldDeposit.replace(' ', '')}
-            testID={t`Aide financière 17 ans`}
+            testID="Aide financière 17 ans"
             width={tagWidth}
             height={tagHeight}
           />
           <Spacer.Column numberOfSpaces={1} />
-          <Subtitle>{t`17 ans`}</Subtitle>
+          <StyledCaption>17 ans</StyledCaption>
         </TagAndSubtitleContainer>
         <Spacer.Flex flex={0.25} />
         <TagAndSubtitleContainer>
@@ -63,7 +63,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
             height={tagHeight}
           />
           <Spacer.Column numberOfSpaces={1} />
-          <Subtitle>{t`18 ans`}</Subtitle>
+          <StyledCaption>18 ans</StyledCaption>
         </TagAndSubtitleContainer>
         <Spacer.Flex flex={0.5} />
       </StyledPricesContainer>
@@ -74,25 +74,20 @@ export function SecondCard(props: AchievementCardKeyProps) {
     props.swiperRef?.current?.goToNext()
   }
 
-  const buttonAccessibilityLabel = t({
-    values: {
-      nextStep: (props.activeIndex || 0) + 2,
-      totalSteps: (props.lastIndex || 3) + 1,
-    },
-    message: "Continuer vers l'étape {nextStep} sur {totalSteps}",
-  })
+  const nextStep = (props.activeIndex || 0) + 2
+  const totalSteps = (props.lastIndex || 3) + 1
 
   return (
     <GenericAchievementCard
       animation={TutorialOffers}
       buttonCallback={onButtonPress}
-      buttonText={t`Continuer`}
-      buttonAccessibilityLabel={buttonAccessibilityLabel}
+      buttonText="Continuer"
+      buttonAccessibilityLabel={`Continuer vers l'étape ${nextStep} sur ${totalSteps}`}
       pauseAnimationOnRenderAtFrame={62}
-      title={t`Des offres pour tous`}
-      subTitle={t`et si tu as...`}
+      title="Des offres pour tous"
+      subTitle="et si tu as..."
       centerChild={centerChild}
-      text={t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`}
+      text="de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application."
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}
@@ -111,7 +106,7 @@ const TagAndSubtitleContainer = styled.View({
   flexDirection: 'column',
 })
 
-const Subtitle = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.black,
   alignSelf: 'center',
 }))

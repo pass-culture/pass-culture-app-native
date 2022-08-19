@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
@@ -107,15 +106,10 @@ export const IdentityCheckStepper = () => {
           <Spacer.TopScreen />
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
-          <Title>{t`C’est très rapide\u00a0!`}</Title>
+          <StyledTitle3>{'C’est très rapide\u00a0!'}</StyledTitle3>
           <Spacer.Column numberOfSpaces={2} />
+          <StyledBody>Voici les {steps.length} étapes que tu vas devoir suivre</StyledBody>
 
-          <StyledBody>
-            {t({
-              id: 'Voici les {steps} étapes que tu vas devoir suivre.',
-              values: { steps: steps.length },
-            })}
-          </StyledBody>
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
           <VerticalUl>
@@ -144,7 +138,7 @@ export const IdentityCheckStepper = () => {
 
           <ButtonTertiaryWhite
             icon={Invalidate}
-            wording={t`Abandonner`}
+            wording="Abandonner"
             onPress={showQuitIdentityCheckModal}
           />
         </Container>
@@ -162,7 +156,7 @@ export const IdentityCheckStepper = () => {
   )
 }
 
-const Title = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))

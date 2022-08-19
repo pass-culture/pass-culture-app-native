@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { Platform } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
@@ -16,11 +15,8 @@ export function getVenueUrl(id: number) {
 }
 
 const getShareContentFromVenue = (venue: VenueResponse) => {
-  const message = t({
-    id: 'share venue message',
-    values: { name: venue.publicName || venue.name },
-    message: 'Retrouve "{name}" sur le pass Culture',
-  })
+  const venueName = venue.publicName || venue.name
+  const message = `Retrouve "${venueName}" sur le pass Culture`
 
   const url = getVenueUrl(venue.id)
 

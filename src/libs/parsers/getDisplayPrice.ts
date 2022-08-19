@@ -23,23 +23,19 @@ const getPricePerPlace = (prices: number[]): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
   if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0])}`
   const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
-  return t`Dès ${formatToFrenchDecimal(sortedPrices[0])}`
+  return `Dès ${formatToFrenchDecimal(sortedPrices[0])}`
 }
 
 export const getDisplayPrice = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return t`Gratuit`
+  if (prices.includes(0)) return 'Gratuit'
   return getPricePerPlace(prices)
 }
 
 export const getDisplayPriceWithDuoMention = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return t`Gratuit`
-  return t({
-    id: 'price per place',
-    values: { price: getPricePerPlace(prices) },
-    message: '{price} / place',
-  })
+  if (prices.includes(0)) return 'Gratuit'
+  return `${getPricePerPlace(prices)} / place`
 }
 
 export const getFavoriteDisplayPrice = ({

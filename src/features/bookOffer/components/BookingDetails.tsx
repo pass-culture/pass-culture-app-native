@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
@@ -26,16 +25,15 @@ import { useBookOfferMutation } from '../services/useBookOfferMutation'
 import { BookingInformations } from './BookingInformations'
 import { CancellationDetails } from './CancellationDetails'
 
-const disclaimer = t`Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.`
-
 interface Props {
   stocks: OfferStockResponse[]
 }
 
 const errorCodeToMessage: Record<string, string> = {
-  INSUFFICIENT_CREDIT: t`Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!`,
-  ALREADY_BOOKED: t`Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!`,
-  STOCK_NOT_BOOKABLE: t`Oups, cette offre n’est plus disponible\u00a0!`,
+  INSUFFICIENT_CREDIT:
+    'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!',
+  ALREADY_BOOKED: 'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!',
+  STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
 }
 
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
@@ -72,7 +70,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       }
     },
     onError: (error) => {
-      let message = t`En raison d’une erreur technique, l’offre n’a pas pu être réservée`
+      let message = 'En raison d’une erreur technique, l’offre n’a pas pu être réservée'
 
       if (isApiError(error)) {
         const { content } = error as { content: { code: string } }
@@ -107,11 +105,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const onPressBookOffer = () => mutate({ quantity, stockId: selectedStock.id })
 
-  const deductedAmount = t({
-    id: 'montant déduit',
-    values: { price: formattedPriceWithEuro },
-    message: '{price} seront déduits de ton crédit pass Culture',
-  })
+  const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
@@ -119,7 +113,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   return (
     <Container>
-      <Banner title={disclaimer} />
+      <Banner title="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente." />
       <Spacer.Column numberOfSpaces={4} />
 
       <BookingInformations />
@@ -145,7 +139,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
       <ButtonPrimary
         disabled={!isStockBookable}
-        wording={t`Confirmer la réservation`}
+        wording="Confirmer la réservation"
         onPress={onPressBookOffer}
         accessibilityDescribedBy={accessibilityDescribedBy}
       />
