@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
@@ -23,23 +22,13 @@ export const HomeHeader: FunctionComponent = function () {
   const { isLoggedIn } = useAuthContext()
 
   const welcomeTitle =
-    userInfos?.firstName && isLoggedIn
-      ? t({
-          id: 'hello name',
-          values: { name: userInfos?.firstName },
-          message: 'Bonjour {name}',
-        })
-      : t`Bienvenue\u00a0!`
+    userInfos?.firstName && isLoggedIn ? `Bonjour ${userInfos.firstName}` : 'Bienvenue\u00a0!'
 
-  let subtitle = t`Toute la culture à portée de main`
+  let subtitle = 'Toute la culture à portée de main'
   if (userInfos?.isBeneficiary && availableCredit && isLoggedIn) {
     subtitle = availableCredit.isExpired
-      ? t`Ton crédit est expiré`
-      : t({
-          id: 'credit left on pass',
-          values: { credit: formatToFrenchDecimal(availableCredit.amount) },
-          message: 'Tu as {credit} sur ton pass',
-        })
+      ? 'Ton crédit est expiré'
+      : `Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`
   }
 
   return (
@@ -49,7 +38,7 @@ export const HomeHeader: FunctionComponent = function () {
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
           style={{ top: getSpacing(3) + top }}>
-          <Body>{t`CheatMenu`}</Body>
+          <Body>CheatMenu</Body>
         </CheatCodeButtonContainer>
       )}
 

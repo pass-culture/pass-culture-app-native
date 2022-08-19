@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components/native'
 
@@ -44,7 +43,7 @@ export const RecreditBirthdayNotification = () => {
       },
       onError: () => {
         showErrorSnackBar({
-          message: t`Une erreur est survenue`,
+          message: 'Une erreur est survenue',
         })
       },
     })
@@ -66,15 +65,11 @@ export const RecreditBirthdayNotification = () => {
   useAppStateChange(playAnimation, undefined)
   useEffect(playAnimation, [playAnimation])
 
+  const recreditMessage = `Pour tes ${age} ans, le Gouvernement vient d'ajouter ${creditedAmount} à ton crédit. Tu disposes maintenant de :`
+
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
-      <StyledSubtitle testID={'recreditMessage'}>
-        {t({
-          id: 'birthday notification text',
-          values: { creditedAmount, age },
-          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :`,
-        })}
-      </StyledSubtitle>
+    <GenericInfoPageWhite animation={TutorialPassLogo} title={'Bonne nouvelle\u00a0!'}>
+      <StyledSubtitle testID={'recreditMessage'}>{recreditMessage}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
@@ -87,11 +82,11 @@ export const RecreditBirthdayNotification = () => {
         <Amount color={uniqueColors.brand}>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</StyledBody>
+      <StyledBody>Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
         <ButtonPrimary
-          wording={t`Continuer`}
+          wording="Continuer"
           onPress={onPressContinue}
           isLoading={isResetRecreditAmountToShowLoading}
         />

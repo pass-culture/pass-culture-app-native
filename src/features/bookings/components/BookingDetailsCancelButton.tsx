@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,6 +8,7 @@ import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 import { Booking } from './types'
 
@@ -30,8 +30,8 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   if (properties.hasActivationCode && props.activationCodeFeatureEnabled) {
     return (
       <ButtonSecondary
-        testID={'Terminer'}
-        wording={t`Terminer`}
+        testID="Terminer"
+        wording="Terminer"
         onPress={props.onTerminate}
         fullWidth={props.fullWidth}
       />
@@ -40,8 +40,8 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
 
   const renderButton = (
     <ButtonSecondary
-      testID={'Annuler ma réservation'}
-      wording={t`Annuler ma réservation`}
+      testID="Annuler ma réservation"
+      wording="Annuler ma réservation"
       onPress={props.onCancel}
       fullWidth={props.fullWidth}
     />
@@ -54,39 +54,30 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
       false
     )
     if (isStillCancellable) {
+      const stillCancellableText = `La réservation est annulable jusqu'au\u00a0${formattedConfirmationDate}`
       return (
         <React.Fragment>
           {renderButton}
           <Spacer.Column numberOfSpaces={4} />
-          <CancellationCaption>
-            {t`La réservation est annulable jusqu'au\u00a0${formattedConfirmationDate}`}
-          </CancellationCaption>
+          <StyledCaption>{stillCancellableText}</StyledCaption>
         </React.Fragment>
       )
     } else if (isExBeneficiary) {
-      return (
-        <CancellationCaption>
-          {t({
-            id: 'not cancellable because expired for ex beneficiary',
-            values: { date: formattedConfirmationDate },
-            message:
-              'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le {date}',
-          })}
-        </CancellationCaption>
-      )
+      const isExBeneficiaryText =
+        'Ton crédit est expiré.' +
+        LINE_BREAK +
+        `Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le ${formattedConfirmationDate}`
+      return <StyledCaption>{isExBeneficiaryText}</StyledCaption>
     } else {
-      return (
-        <CancellationCaption>
-          {t`Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a0${formattedConfirmationDate}`}
-        </CancellationCaption>
-      )
+      const otherBookingStatusTexte = `Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a0${formattedConfirmationDate}`
+      return <StyledCaption>{otherBookingStatusTexte}</StyledCaption>
     }
   }
 
   return renderButton
 }
 
-const CancellationCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

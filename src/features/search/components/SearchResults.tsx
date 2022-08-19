@@ -31,7 +31,6 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeh
 import { Check } from 'ui/svg/icons/Check'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -172,7 +171,7 @@ export const SearchResults: React.FC = () => {
     one: '# résultat',
     other: '# résultats',
   })
-  const searchStateQuery = searchState.query.length > 0 ? `${SPACE} pour ${searchState.query}` : ''
+  const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
   return (

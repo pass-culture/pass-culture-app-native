@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
@@ -15,21 +14,8 @@ export function FirstCard(props: AchievementCardKeyProps) {
 
   const currentStep = (props.activeIndex || 0) + 1
   const totalSteps = (props.lastIndex || 3) + 1
-  const helmetTitle =
-    t({
-      values: {
-        currentStep,
-        totalSteps,
-      },
-      message: 'Étape {currentStep} sur {totalSteps} | Tutorial "Comment ça marche"',
-    }) + ' | pass Culture'
-  const buttonAccessibilityLabel = t({
-    values: {
-      nextStep: currentStep + 1,
-      totalSteps,
-    },
-    message: "Continuer vers l'étape {nextStep} sur {totalSteps}",
-  })
+  const helmetTitle = `Étape ${currentStep} sur ${totalSteps} | Tutorial "Comment ça marche" | pass Culture`
+  const buttonAccessibilityLabel = `Continuer vers l'étape ${currentStep + 1} sur ${totalSteps}`
 
   return (
     <React.Fragment>
@@ -37,12 +23,12 @@ export function FirstCard(props: AchievementCardKeyProps) {
       <GenericAchievementCard
         animation={TutorialPassLogo}
         buttonCallback={onButtonPress}
-        buttonText={t`Continuer`}
+        buttonText="Continuer"
         buttonAccessibilityLabel={buttonAccessibilityLabel}
         pauseAnimationOnRenderAtFrame={62}
-        title={t`Le pass Culture`}
-        subTitle={t`c'est...`}
-        text={t`une initiative du Gouvernement financée par le ministère de la Culture.`}
+        title="Le pass Culture"
+        subTitle="c'est..."
+        text="une initiative du Gouvernement financée par le ministère de la Culture."
         swiperRef={props.swiperRef}
         name={props.name}
         index={props.index}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -25,11 +24,7 @@ const ExpirationDate: React.FC<{
 }> = ({ autoActivateDigitalBookings, expirationDate }) => {
   if (!autoActivateDigitalBookings || !expirationDate) return <React.Fragment></React.Fragment>
 
-  const activationText = t({
-    id: 'activation message',
-    values: { date: formatToFrenchDate(expirationDate) },
-    message: 'À activer avant le {date}',
-  })
+  const activationText = `À activer avant le ${formatToFrenchDate(expirationDate)}`
 
   return <Item Icon={Calendar} message={activationText} />
 }
@@ -59,16 +54,12 @@ export const BookingInformations: React.FC = () => {
       <Typo.Caption>{fullAddress}</Typo.Caption>
     </StyledAddress>
   )
-  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : t`Gratuit`
+  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : 'Gratuit'
 
   if (mapping[offer.subcategoryId].isEvent) {
     const subtext =
       stock.price > 0 && quantity === 2
-        ? t({
-            id: 'prix duo',
-            values: { price: formatToFrenchDecimal(stock.price) },
-            message: '({price} x 2 places)',
-          })
+        ? `(${formatToFrenchDecimal(stock.price)} x 2 places)`
         : undefined
 
     return (

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -15,17 +14,12 @@ type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
 }
 
-const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) =>
-  lastUpdatedDate
-    ? t({
-        id: 'last update',
-        values: {
-          day: formatToSlashedFrenchDate(new Date(lastUpdatedDate).toISOString()),
-          hour: formatToHour(new Date(lastUpdatedDate)),
-        },
-        message: 'Dossier mis à jour le\u00a0: {day} à {hour}',
-      })
-    : undefined
+const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) => {
+  if (!lastUpdatedDate) return
+  const day = formatToSlashedFrenchDate(new Date(lastUpdatedDate).toISOString())
+  const hour = formatToHour(new Date(lastUpdatedDate))
+  return `Dossier mis à jour le\u00a0: ${day} à ${hour}`
+}
 
 export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
   return (
@@ -49,7 +43,7 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
         callToActionLink={props.subscriptionMessage?.callToAction?.callToActionLink}
         message={
           props.subscriptionMessage?.userMessage ||
-          t`Ton dossier est déposé. Nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!`
+          'Ton dossier est déposé. Nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!'
         }
         testID="subscription-message-badge"
       />

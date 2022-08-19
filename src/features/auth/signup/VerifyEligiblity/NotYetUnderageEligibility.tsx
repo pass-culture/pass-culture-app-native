@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
@@ -15,28 +14,21 @@ import { Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
+  const formatedDate = formatToReadableFrenchDate(props.route.params.eligibilityStartDatetime)
+  const NotYetUnderageEligibilityText = `Reviens à partir du ${formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture.`
   return (
     <GenericInfoPage
-      title={t`C'est pour bientôt\u00a0!`}
+      title="C'est pour bientôt\u00a0!"
       icon={CalendarIllustration}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l'accueil"
           navigateTo={navigateToHomeConfig}
         />,
       ]}>
-      <StyledBody>
-        {t({
-          id: 'reviens a partir du',
-          values: {
-            formatedDate: formatToReadableFrenchDate(props.route.params.eligibilityStartDatetime),
-          },
-          message:
-            'Reviens à partir du {formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture.',
-        })}
-      </StyledBody>
+      <StyledBody>{NotYetUnderageEligibilityText}</StyledBody>
     </GenericInfoPage>
   )
 }

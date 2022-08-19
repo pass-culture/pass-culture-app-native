@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
@@ -50,34 +49,32 @@ export function BookingConfirmation() {
 
   useShowReview()
 
+  const amountLeftText = `Il te reste encore ${formatToFrenchDecimal(
+    amountLeft
+  )} à dépenser sur le pass\u00a0!`
+
   return (
     <GenericInfoPage
-      title={t`Réservation confirmée\u00a0!`}
+      title="Réservation confirmée\u00a0!"
       icon={TicketBooked}
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          wording={t`Voir ma réservation`}
+          wording="Voir ma réservation"
           onPress={displayBookingDetails}
         />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l'accueil"
           navigateTo={navigateToHomeConfig}
           onPress={trackBooking}
         />,
       ]}>
-      <StyledBody>
-        {t({
-          id: 'credit left to spend',
-          values: { credit: formatToFrenchDecimal(amountLeft) },
-          message: 'Il te reste encore {credit} à dépenser sur le pass\u00a0!',
-        })}
-      </StyledBody>
+      <StyledBody>{amountLeftText}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
-        {t`Tu peux retrouver toutes les informations concernant ta réservation sur l’application`}
+        Tu peux retrouver toutes les informations concernant ta réservation sur l’application
       </StyledBody>
     </GenericInfoPage>
   )
