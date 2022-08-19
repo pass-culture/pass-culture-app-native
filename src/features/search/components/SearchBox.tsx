@@ -56,6 +56,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { locationFilter, section } = useLocationType(stagedSearchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
+  // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
   // An issue was opened to ask the integration of debounce directly in the lib : https://github.com/algolia/react-instantsearch/discussions/3555
   const debounceSetAutocompleteQuery = useRef(

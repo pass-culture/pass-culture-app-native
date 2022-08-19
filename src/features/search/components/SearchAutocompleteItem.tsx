@@ -2,13 +2,14 @@ import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Highlight } from 'features/search/components/Highlight'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   hit: AlgoliaSuggestionHit
@@ -43,7 +44,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit }) => {
         <MagnifyingGlassIcon />
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
-        <Typo.Body>{query}</Typo.Body>
+        <Highlight hit={hit} attribute="query" />
       </StyledText>
     </AutocompleteItemTouchable>
   )
