@@ -70,6 +70,16 @@ describe('Categories component', () => {
       screen: 'Search',
     })
   })
+
+  it('should select default filter when pressing the reset button', () => {
+    const { getByText } = renderCategories()
+
+    const button = getByText('Réinitialiser')
+    fireEvent.press(button)
+    const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
+
+    expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
+  })
 })
 
 function renderCategories() {
