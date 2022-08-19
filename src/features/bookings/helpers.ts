@@ -1,4 +1,4 @@
-import { plural, t } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
 import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
@@ -9,6 +9,7 @@ import {
   isToday,
   isTomorrow,
 } from 'libs/parsers'
+import { plural } from 'libs/plural'
 
 import { Booking } from './components/types'
 

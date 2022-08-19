@@ -1,4 +1,4 @@
-import { plural, t } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -10,6 +10,7 @@ import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { plural } from 'libs/plural'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import {
   BookingHitPlaceholder,

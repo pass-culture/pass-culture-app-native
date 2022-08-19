@@ -36,24 +36,6 @@ function HelloWorld({ name: string }) {
 }
 ```
 
-For plural, you can use:
-
-```tsx
-import { Text } from 'react-native'
-import { plural } from '@lingui/macro'
-
-function ShowResultsText({ count: number }) {
-  return (
-    <Text>
-      {plural(count, {
-        one: 'Afficher # résultat',
-        other: 'Afficher les # résultats',
-      })}
-    </Text>
-  )
-}
-```
-
 ## v3 migration note
 
 V3 brings the `plural` into our application, but it also brings two new non blocking bugs :
