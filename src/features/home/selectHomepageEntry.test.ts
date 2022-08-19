@@ -2,7 +2,7 @@ import shuffle from 'lodash/shuffle'
 
 import { UserProfileResponse, UserRole } from 'api/gen'
 import { HomepageEntry, Tag } from 'features/home/contentful'
-import { useSelectPlaylist } from 'features/home/selectPlaylist'
+import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { adaptedHomepageEntry as entry } from 'tests/fixtures/homepageEntries'
 import { renderHook } from 'tests/utils'
 
@@ -41,44 +41,44 @@ const allPlaylists = [
   entryWithId,
 ]
 
-describe('useSelectPlaylist', () => {
+describe('useSelectHomepageEntry', () => {
   describe('underage users', () => {
     beforeEach(() => {
       mockedUser = underageUser
     })
 
     it('should retrieve the playlist with the entryId', () => {
-      const { result } = renderHook(() => useSelectPlaylist(entryId))
+      const { result } = renderHook(() => useSelectHomepageEntry(entryId))
       const playlist = result.current(shuffle(allPlaylists))
       expect(playlist).toStrictEqual(entryWithId)
     })
 
     it('should retrieve the playlist tagged master+userunderage if available', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlist = result.current(shuffle(allPlaylists))
       expect(playlist).toStrictEqual(entryUnderageMaster)
     })
 
     it('should retrieve the playlist tagged master and no usergrandpublic if no tag userunderage available', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = [entryAll, entryAllMaster, entryMaster, entryOther, entryWithId]
       expect(result.current(shuffle(playlists))).toStrictEqual(entryMaster)
     })
 
     it('should retrieve the only playlist tagged master if no tag userunderage available', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = [entryAll, entryMaster, entryOther, entryWithId]
       expect(result.current(shuffle(playlists))).toStrictEqual(entryMaster)
     })
 
     it('should retrieve the first userunderage playlist even if no playlist tagged master', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = [entryUnderage, entryAll, entryOther, entryWithId]
       expect(result.current(shuffle(playlists))).toStrictEqual(entryUnderage)
     })
 
     it('should retrieve the first playlist if no playlist tagged master or userunderage', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = shuffle([entryAll, entryOther, entryWithId])
       expect(result.current(playlists)).toStrictEqual(playlists[0])
     })
@@ -90,19 +90,19 @@ describe('useSelectPlaylist', () => {
     })
 
     it('should retrieve the playlist with the entryId', () => {
-      const { result } = renderHook(() => useSelectPlaylist(entryId))
+      const { result } = renderHook(() => useSelectHomepageEntry(entryId))
       const playlist = result.current(shuffle(allPlaylists))
       expect(playlist).toStrictEqual(entryWithId)
     })
 
     it('should retrieve the playlist tagged master+usergrandpublic if available', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlist = result.current(shuffle(allPlaylists))
       expect(playlist).toStrictEqual(entryAllMaster)
     })
 
     it('should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = [
         entryUnderageMaster,
         entryUnderage,
@@ -115,13 +115,13 @@ describe('useSelectPlaylist', () => {
     })
 
     it('should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = shuffle([entryUnderage, entryAll, entryOther, entryWithId])
       expect(result.current(playlists)).toStrictEqual(entryAll)
     })
 
     it('should retrieve the first playlist if no playlist tagged master or usergrandpublic', () => {
-      const { result } = renderHook(useSelectPlaylist)
+      const { result } = renderHook(useSelectHomepageEntry)
       const playlists = shuffle([entryUnderage, entryOther, entryWithId])
       expect(result.current(playlists)).toStrictEqual(playlists[0])
     })
