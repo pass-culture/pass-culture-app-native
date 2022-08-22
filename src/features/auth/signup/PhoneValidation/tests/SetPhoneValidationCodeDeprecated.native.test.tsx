@@ -47,7 +47,10 @@ const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: () => ({
     dispatch: mockDispatch,
-    phoneValidation: { phoneNumber: '0612345678', countryCode: 'FR' },
+    phoneValidation: {
+      phoneNumber: '0612345678',
+      country: { callingCodes: ['33'], countryCode: 'FR' },
+    },
   }),
 }))
 

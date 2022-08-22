@@ -11,7 +11,10 @@ interface Name {
 
 interface PhoneNumber {
   phoneNumber: string
-  countryCode: Country['cca2']
+  country: {
+    callingCodes: Country['callingCode']
+    countryCode: Country['cca2']
+  }
 }
 
 export interface IdentityCheckState {

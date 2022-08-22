@@ -2,7 +2,7 @@ import { plural, t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { Country } from 'react-native-country-picker-modal'
+import { Country, CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -16,6 +16,7 @@ import { CountryPicker, METROPOLITAN_FRANCE } from 'features/identityCheck/compo
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -42,7 +43,7 @@ export const SetPhoneNumber = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
+  const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber, country.cca2))
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
 
@@ -68,12 +69,24 @@ export const SetPhoneNumber = () => {
 
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
-      dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+      dispatch({
+        type: 'SET_PHONE_NUMBER',
+        payload: {
+          phoneNumber,
+          country: { countryCode: country.cca2, callingCodes: country.callingCode },
+        },
+      })
       navigateToNextScreen()
       queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
     },
     onError: (error: ApiError | unknown) => {
-      dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+      dispatch({
+        type: 'SET_PHONE_NUMBER',
+        payload: {
+          phoneNumber,
+          country: { countryCode: country.cca2, callingCodes: country.callingCode },
+        },
+      })
       const { content } = error as ApiError
       if (content.code === 'TOO_MANY_SMS_SENT') {
         navigate('PhoneValidationTooManySMSSent')
@@ -88,7 +101,7 @@ export const SetPhoneNumber = () => {
     const callingCode = country.callingCode[0]
     if (isContinueButtonEnabled && callingCode) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = `+${callingCode}${formatPhoneNumber(phoneNumber)}`
+      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
@@ -170,18 +183,13 @@ export const SetPhoneNumber = () => {
   )
 }
 
-/**
- * 6 to 10 digits
- */
-function isPhoneNumberValid(word: string) {
-  return word.match(/^\d{6,10}$/)
-}
-
-function formatPhoneNumber(phoneNumber: string) {
-  if (phoneNumber.startsWith('0')) {
-    return phoneNumber.substring(1)
+function isPhoneNumberValid(number: string, countryCode: CountryCode) {
+  if (countryCode === 'NC') {
+    // 6 digits that can be separated by whitespace, "." or "-".
+    return number.match(/^\d{3}(?:[\s.-]*)\d{3}$/)
   }
-  return phoneNumber
+  // 9 digits, 10 if the first is a "0" that can be separated by whitespace, "." or "-".
+  return number.match(/^(?:0)?\s*[1-9](?:[\s.-]*\d{2}){4}$/)
 }
 
 const RemainingAttemptsContainer = styled.View({

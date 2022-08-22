@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
+import { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -13,6 +13,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
+import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import {
   IdentityCheckRootStackParamList,
@@ -36,7 +37,10 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useIdentityCheckContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
-    ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
+    ? formatPhoneNumberForDisplay(
+        phoneValidation?.phoneNumber,
+        phoneValidation?.country.countryCode as CountryCode
+      )
     : ''
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -141,7 +145,6 @@ export const SetPhoneValidationCode = () => {
             <CodeNotReceivedModal
               isVisible={isCodeNotReceivedModalVisible}
               dismissModal={hideModal}
-              phoneNumber={formattedPhoneNumber}
             />
           </View>
         </Form.MaxWidth>
@@ -162,12 +165,6 @@ export const SetPhoneValidationCode = () => {
 export const hasCodeCorrectFormat = (code: string) => {
   // exactly 6 digits, no spaces
   return !!code.match(/^\d{6}$/)
-}
-
-// returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
-export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {
-  const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
-  return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0') || ''
 }
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

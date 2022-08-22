@@ -31,6 +31,16 @@ jest.mock('features/identityCheck/api/api', () => {
     }),
   }
 })
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: mockDispatch,
+    phoneValidation: {
+      phoneNumber: '0612345678',
+      country: { callingCodes: ['33'], countryCode: 'FR' },
+    },
+  }),
+}))
 
 const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
 
@@ -133,16 +143,8 @@ describe('<CodeNotReceivedModal />', () => {
 })
 
 function renderCodeNotReceivedModal(props?: Partial<CodeNotReceivedModalProps>) {
-  return render(
-    <CodeNotReceivedModal
-      isVisible
-      dismissModal={jest.fn()}
-      phoneNumber={'+33612345678'}
-      {...props}
-    />,
-    {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
-  )
+  return render(<CodeNotReceivedModal isVisible dismissModal={jest.fn()} {...props} />, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
 }

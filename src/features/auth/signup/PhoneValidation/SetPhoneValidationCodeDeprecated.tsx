@@ -50,7 +50,10 @@ export const SetPhoneValidationCodeDeprecated = memo(function SetPhoneValidation
   const { data: settings } = useAppSettings()
   const { phoneValidation } = useIdentityCheckContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
-    ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
+    ? formatPhoneNumber(
+        phoneValidation?.phoneNumber,
+        phoneValidation?.country.countryCode as CountryCode
+      )
     : ''
 
   const { navigate } = useNavigation<UseNavigationType>()
