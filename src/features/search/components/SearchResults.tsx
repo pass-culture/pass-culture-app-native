@@ -204,6 +204,7 @@ export const SearchResults: React.FC = () => {
               </ButtonContainer>
               <Spacer.Row numberOfSpaces={6} />
             </ScrollView>
+            <Spacer.Column numberOfSpaces={4} />
           </View>
         </React.Fragment>
       )}
