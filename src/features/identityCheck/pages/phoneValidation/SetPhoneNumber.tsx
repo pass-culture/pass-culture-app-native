@@ -2,7 +2,7 @@ import { plural, t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { Country } from 'react-native-country-picker-modal'
+import { Country, CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -42,7 +42,7 @@ export const SetPhoneNumber = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber))
+  const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber, country.cca2))
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
 
@@ -169,18 +169,21 @@ export const SetPhoneNumber = () => {
   )
 }
 
-/**
- * 6 to 10 digits
- */
-function isPhoneNumberValid(word: string) {
-  return word.match(/^\d{6,10}$/)
+function isPhoneNumberValid(number: string, countryCode: CountryCode) {
+  if (countryCode === 'NC') {
+    // 6 digits that can be separated by whitespace, "." or "-".
+    return number.match(/^\d{3}(?:[\s.-]*)\d{3}$/)
+  }
+  // 9 digits, 10 if the first is a "0" that can be separated by whitespace, "." or "-".
+  return number.match(/^(?:0)?\s*[1-9](?:[\s.-]*\d{2}){4}$/)
 }
 
 function formatPhoneNumber(phoneNumber: string) {
-  if (phoneNumber.startsWith('0')) {
-    return phoneNumber.substring(1)
+  const preformattedNumber = phoneNumber.replaceAll(/[\s.-]*/g, '')
+  if (preformattedNumber.startsWith('0')) {
+    return preformattedNumber.substring(1)
   }
-  return phoneNumber
+  return preformattedNumber
 }
 
 const RemainingAttemptsContainer = styled.View({
