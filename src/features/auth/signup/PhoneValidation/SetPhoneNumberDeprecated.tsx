@@ -76,7 +76,13 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
   }, [])
 
   function onSuccess() {
-    dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+    dispatch({
+      type: 'SET_PHONE_NUMBER',
+      payload: {
+        phoneNumber,
+        country: { countryCode: country.cca2, callingCodes: country.callingCode },
+      },
+    })
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
@@ -84,7 +90,13 @@ export const SetPhoneNumberDeprecated = memo(function SetPhoneNumberComponent() 
   }
 
   function onError(error: ApiError | unknown) {
-    dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+    dispatch({
+      type: 'SET_PHONE_NUMBER',
+      payload: {
+        phoneNumber,
+        country: { countryCode: country.cca2, callingCodes: country.callingCode },
+      },
+    })
     const { content } = error as ApiError
     if (content.code === 'TOO_MANY_SMS_SENT') {
       navigate('PhoneValidationTooManySMSSent')

@@ -16,6 +16,7 @@ import { CountryPicker, METROPOLITAN_FRANCE } from 'features/identityCheck/compo
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -100,7 +101,7 @@ export const SetPhoneNumber = () => {
     const callingCode = country.callingCode[0]
     if (isContinueButtonEnabled && callingCode) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = formatPhoneNumber(phoneNumber, country)
+      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
@@ -188,14 +189,6 @@ function isPhoneNumberValid(number: string, countryCode: CountryCode) {
   }
   // 9 digits, 10 if the first is a "0" that can be separated by whitespace, "." or "-".
   return number.match(/^(?:0)?\s*[1-9](?:[\s.-]*\d{2}){4}$/)
-}
-
-function formatPhoneNumber(phoneNumber: string, country: Country) {
-  let preformattedNumber = phoneNumber.replaceAll(/[\s.-]*/g, '')
-  if (preformattedNumber.startsWith('0')) {
-    preformattedNumber = preformattedNumber.substring(1)
-  }
-  return `+${country.callingCode}${preformattedNumber}`
 }
 
 const RemainingAttemptsContainer = styled.View({
