@@ -218,8 +218,6 @@ const CalendarPickerWrapperDesktop = styled.View(({ theme }) => ({
 }))
 
 const CalendarButtonWrapper = styled.View({
-  margin: 10,
-  marginBottom: 0,
   alignItems: 'center',
   alignSelf: 'stretch',
 })

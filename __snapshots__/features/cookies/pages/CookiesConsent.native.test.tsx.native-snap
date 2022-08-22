@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<DMSModal/> should render correctly 1`] = `
+exports[`<CookiesConsent/> should render correctly 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
@@ -10,7 +10,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
   deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
-  onBackdropPress={[MockFunction]}
+  onBackdropPress={[Function]}
   onModalHide={[Function]}
   onModalWillHide={[Function]}
   onModalWillShow={[Function]}
@@ -28,7 +28,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
     ]
   }
   swipeThreshold={100}
-  testID="modal"
+  testID="cookieModal"
   transparent={true}
   visible={true}
 >
@@ -67,7 +67,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
     deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
-    onBackdropPress={[MockFunction]}
+    onBackdropPress={[Function]}
     onModalHide={[Function]}
     onModalWillHide={[Function]}
     onModalWillShow={[Function]}
@@ -105,7 +105,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
       style={
         Array [
           Object {
@@ -120,9 +119,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
             "borderTopRightRadius": 20,
             "borderTopStartRadius": 16,
             "flexDirection": "column",
-            "height": 428,
             "justifyContent": "center",
-            "maxHeight": 650,
+            "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,
             "paddingLeft": 24,
@@ -132,10 +130,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
           },
         ]
       }
-      testID="modalContainer"
+      windowHeight={1334}
     >
       <View
-        onLayout={[Function]}
         style={
           Array [
             Object {
@@ -192,7 +189,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
               ]
             }
           >
-            Transmettre un document
+            Avec ou sans cookies ?
           </Text>
         </View>
         <View
@@ -208,44 +205,10 @@ exports[`<DMSModal/> should render correctly 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityRole="button"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
-            }
-            testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
-          >
-            <View
-              height={20}
-              testID="rightIcon"
-              width={20}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
-        </View>
+        />
       </View>
       <View
+        numberOfSpaces={5}
         style={
           Array [
             Object {
@@ -254,53 +217,117 @@ exports[`<DMSModal/> should render correctly 1`] = `
           ]
         }
       />
+      <RCTScrollView>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
+          </Text>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies.
+          </Text>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
+          </Text>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+        </View>
+      </RCTScrollView>
       <View
-        backdropColor="#00000080"
-        paddingBottom={8}
         style={
           Array [
             Object {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "marginTop": 20,
               "width": "100%",
             },
           ]
         }
       >
-        <RCTScrollView
-          contentContainerStyle={Object {}}
-          onContentSizeChange={[Function]}
-          scrollEnabled={true}
-          testID="modalScrollView"
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "width": "100%",
+              },
+            ]
+          }
         >
-          <View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
-            </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
             <View
-              numberOfSpaces={8}
-              style={
-                Array [
-                  Object {
-                    "height": 32,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityLabel="Je suis de nationalité française"
+              accessibilityLabel="Tout refuser"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -314,182 +341,192 @@ exports[`<DMSModal/> should render correctly 1`] = `
               style={
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#eb0055",
                   "borderRadius": 24,
                   "flexDirection": "row",
-                  "justifyContent": "flex-start",
+                  "justifyContent": "center",
                   "maxWidth": 500,
                   "minHeight": 40,
                   "opacity": 1,
                   "paddingBottom": 2,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
                   "paddingTop": 2,
                   "userSelect": "auto",
                   "width": "100%",
                 }
               }
-              testID="Je suis de nationalité française"
+              testID="Tout refuser"
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
+                      "color": "#ffffff",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 8,
+                      "marginLeft": 0,
                       "maxWidth": "100%",
                     },
                   ]
                 }
               >
-                Je suis de nationalité française
+                Tout refuser
               </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Carte d’identité ou passeport.
-            </Text>
-            <View
-              numberOfSpaces={8}
-              style={
-                Array [
-                  Object {
-                    "height": 32,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityLabel="Je suis de nationalité étrangère"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
-              }
-              testID="Je suis de nationalité étrangère"
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 8,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Je suis de nationalité étrangère
-              </Text>
-            </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Titre de séjour, carte d'identité, ou passeport.
-            </Text>
-            <View
-              numberOfSpaces={4}
-              style={
-                Array [
-                  Object {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
           </View>
-        </RCTScrollView>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Tout accepter"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Tout accepter"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Tout accepter
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "height": 20,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Choisir les cookies"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderColor": "#eb0055",
+              "borderRadius": 24,
+              "borderWidth": 2,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Choisir les cookies"
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Choisir les cookies
+          </Text>
+        </View>
       </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </Modal>
