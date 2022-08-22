@@ -36,7 +36,7 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useIdentityCheckContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
-    ? formatPhoneNumber(
+    ? formatPhoneNumberForDisplay(
         phoneValidation?.phoneNumber,
         phoneValidation?.country.countryCode as CountryCode
       )
@@ -167,7 +167,7 @@ export const hasCodeCorrectFormat = (code: string) => {
 }
 
 // returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
-export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {
+export const formatPhoneNumberForDisplay = (phoneNumber: string, countryCode: CountryCode) => {
   const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
   return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0') || ''
 }
