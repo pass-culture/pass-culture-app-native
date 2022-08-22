@@ -7,7 +7,7 @@ version: 2.1
 executors:
   node:
     docker:
-      - image: cimg/node:16.13
+      - image: cimg/node:18.7.0
 
   android:
     docker:
@@ -300,7 +300,7 @@ commands:
       - install_node_version
       - install_node_modules
       - run: |
-          NODE_OPTIONS=--max-old-space-size=4096 yarn build:<< parameters.env >>
+          NODE_OPTIONS='--max-old-space-size=4096 --openssl-legacy-provider' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:<< parameters.env >>
 
   push-to-bucket:
     description: Push the built decliweb to a cloudstorage bucket

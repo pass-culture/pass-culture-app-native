@@ -697,7 +697,7 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-      isEnvProduction &&
+      isEnvProduction && Boolean(process.env.UPLOAD_SOURCEMAPS_TO_SENTRY) &&
         new SentryWebpackPlugin({
           include: paths.appBuild,
           rewrite: true,

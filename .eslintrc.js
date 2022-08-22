@@ -171,6 +171,7 @@ module.exports = {
           '.android.tsx',
           '.ios.ts',
           '.ios.tsx',
+          '.mjs'
         ],
       },
       alias: {
@@ -187,7 +188,7 @@ module.exports = {
           ['web', './src/web'],
           ['__mocks__', './__mocks__'],
         ],
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.mjs'],
       },
     },
     'import/ignore': ['node_modules'],
