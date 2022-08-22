@@ -301,10 +301,6 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#: src/features/cookies/pages/CookiesConsent.tsx
-msgid "Avec ou sans cookies ?"
-msgstr "Avec ou sans cookies ?"
-
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Besoin d'un lien ?"
 msgstr "Besoin d'un lien ?"
@@ -1051,6 +1047,7 @@ msgstr "Enregistrer des statistiques de navigation"
 msgid "Enregistrer les modifications"
 msgstr "Enregistrer les modifications"
 
+#: src/features/cookies/components/useCookiesModalContent.tsx
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Enregistrer mes choix"
 msgstr "Enregistrer mes choix"
@@ -2514,6 +2511,7 @@ msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
+#: src/features/cookies/components/useCookiesModalContent.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
@@ -2606,6 +2604,7 @@ msgid "Revenir à l'accueil"
 msgstr "Revenir à l'accueil"
 
 #: src/features/bookOffer/services/useModalContent.tsx
+#: src/features/cookies/components/useCookiesModalContent.tsx
 #: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
@@ -2634,6 +2633,10 @@ msgstr "Réessayer de m'identifier"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Réglages de notifications"
 msgstr "Réglages de notifications"
+
+#: src/features/cookies/components/useCookiesModalContent.tsx
+msgid "Réglages des cookies"
+msgstr "Réglages des cookies"
 
 #: src/features/search/atoms/Buttons/ReinitializeFilters.tsx
 msgid "Réinitialiser"
