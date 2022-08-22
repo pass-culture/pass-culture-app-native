@@ -10,6 +10,13 @@ export const ProfileContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
 }))
 
+export const ScrollableProfileContainer = styled.ScrollView(({ theme }) => ({
+  flex: 1,
+  flexDirection: 'column',
+  backgroundColor: theme.colors.white,
+  paddingHorizontal: getSpacing(6),
+}))
+
 export const GreyContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
   borderRadius: 6,

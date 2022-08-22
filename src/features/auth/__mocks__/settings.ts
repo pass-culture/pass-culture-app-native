@@ -23,6 +23,7 @@ export const mockDefaultSettings: SettingsResponse = {
   accountCreationMinimumAge: 15,
   allowAccountUnsuspension: false,
   accountUnsuspensionLimit: 60,
+  appEnableCookiesV2: false,
 }
 
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(

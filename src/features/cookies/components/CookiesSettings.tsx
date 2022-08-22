@@ -12,6 +12,7 @@ import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Separator } from 'ui/components/Separator'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
@@ -28,7 +29,8 @@ export const CookiesSettings = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4>{t`À quoi servent tes cookies et tes données\u00a0?`}</Typo.Title4>
+      <Typo.Title4
+        {...getHeadingAttrs(2)}>{t`À quoi servent tes cookies et tes données\u00a0?`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
         <StyledCaption>{t`Je choisis mes cookies`}</StyledCaption>

@@ -4,8 +4,10 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -21,6 +23,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
 
 export const ConsentSettings: FunctionComponent<Props> = () => {
+  const { data: settings } = useAppSettings()
   const { goBack } = useNavigation()
   const { showSuccessSnackBar } = useSnackBarContext()
   const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
@@ -58,7 +61,9 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
     goBack()
   }
 
-  return (
+  return settings?.appEnableCookiesV2 ? (
+    <NewConsentSettings />
+  ) : (
     <PageProfileSection title={t`Paramètres de confidentialité`}>
       <StyledBody>
         {t`L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle.`}

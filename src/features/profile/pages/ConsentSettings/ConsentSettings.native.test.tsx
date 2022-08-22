@@ -13,6 +13,7 @@ import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
 
 import { ConsentSettings } from './ConsentSettings'
 
+jest.mock('features/auth/settings')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
