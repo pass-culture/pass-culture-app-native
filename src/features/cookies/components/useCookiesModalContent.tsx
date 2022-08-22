@@ -3,7 +3,7 @@ import React from 'react'
 
 import { CookiesConsentButtons } from 'features/cookies/components/CookiesConsentButtons'
 import { CookiesConsentExplanations } from 'features/cookies/components/CookiesConsentExplanations'
-import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
+import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -29,7 +29,7 @@ export const useCookiesModalContent = ({ cookiesStep, setCookiesStep, hideModal 
   const pickChildren = (step: CookiesSteps): ReportOfferModalContent => {
     if (step === CookiesSteps.COOKIES_SETTINGS) {
       return {
-        children: <CookiesSettings />,
+        children: <CookiesDetails />,
         leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),

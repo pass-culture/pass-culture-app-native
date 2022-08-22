@@ -1566,6 +1566,10 @@ msgstr "Les conséquences :"
 msgid "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 
+#: src/features/cookies/pages/CookiesDetails.tsx
+msgid "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
+msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
+
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Les données qu’on conserve :"
 msgstr "Les données qu’on conserve :"
@@ -2048,6 +2052,7 @@ msgstr ""
 msgid "On est super triste de te voir partir."
 msgstr "On est super triste de te voir partir."
 
+#: src/features/cookies/pages/CookiesDetails.tsx
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "On te redemandera bien sûr ton consentement si notre politique évolue."
 msgstr "On te redemandera bien sûr ton consentement si notre politique évolue."
@@ -2253,6 +2258,7 @@ msgstr "Plus tard"
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
+#: src/features/cookies/pages/CookiesDetails.tsx
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Politique de gestion des cookies"
 msgstr "Politique de gestion des cookies"
@@ -2282,6 +2288,7 @@ msgstr "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu 
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
+#: src/features/cookies/pages/CookiesDetails.tsx
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Pour plus d’informations, nous t’invitons à consulter notre"
 msgstr "Pour plus d’informations, nous t’invitons à consulter notre"
@@ -2440,6 +2447,10 @@ msgstr "Questionnaire culturel"
 #: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Qui est-ce ?"
 msgstr "Qui est-ce ?"
+
+#: src/features/cookies/pages/CookiesDetails.tsx
+msgid "Qu’est-ce que les cookies ?"
+msgstr "Qu’est-ce que les cookies ?"
 
 #: src/features/search/sections/titles.ts
 msgid "Rayon"
@@ -2933,6 +2944,7 @@ msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 
 #: src/features/cookies/components/CookiesConsentExplanations.tsx
+#: src/features/cookies/pages/CookiesDetails.tsx
 msgid "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."
 msgstr "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."
 
@@ -3180,6 +3192,7 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
+#: src/features/cookies/pages/CookiesDetails.tsx
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Tu as la main dessus"
 msgstr "Tu as la main dessus"
