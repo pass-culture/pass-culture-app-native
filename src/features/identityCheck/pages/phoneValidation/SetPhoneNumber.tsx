@@ -88,7 +88,7 @@ export const SetPhoneNumber = () => {
     const callingCode = country.callingCode[0]
     if (isContinueButtonEnabled && callingCode) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = `+${callingCode}${formatPhoneNumber(phoneNumber)}`
+      const phoneNumberWithPrefix = formatPhoneNumber(phoneNumber, country)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
@@ -178,12 +178,12 @@ function isPhoneNumberValid(number: string, countryCode: CountryCode) {
   return number.match(/^(?:0)?\s*[1-9](?:[\s.-]*\d{2}){4}$/)
 }
 
-function formatPhoneNumber(phoneNumber: string) {
-  const preformattedNumber = phoneNumber.replaceAll(/[\s.-]*/g, '')
+function formatPhoneNumber(phoneNumber: string, country: Country) {
+  let preformattedNumber = phoneNumber.replaceAll(/[\s.-]*/g, '')
   if (preformattedNumber.startsWith('0')) {
-    return preformattedNumber.substring(1)
+    preformattedNumber = preformattedNumber.substring(1)
   }
-  return preformattedNumber
+  return `+${country.callingCode}${preformattedNumber}`
 }
 
 const RemainingAttemptsContainer = styled.View({
