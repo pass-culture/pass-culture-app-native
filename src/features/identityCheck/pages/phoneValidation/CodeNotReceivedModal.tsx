@@ -8,6 +8,8 @@ import {
   usePhoneValidationRemainingAttempts,
   useSendPhoneValidationMutation,
 } from 'features/identityCheck/api/api'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
@@ -20,10 +22,10 @@ import { Spacer, Typo } from 'ui/theme'
 export interface CodeNotReceivedModalProps {
   isVisible: boolean
   dismissModal: () => void
-  phoneNumber: string
 }
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
+  const { phoneValidation } = useIdentityCheckContext()
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -53,6 +55,15 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
     },
   })
 
+  async function requestSendPhoneValidationCode() {
+    const callingCode = phoneValidation?.country.callingCodes[0]
+    const phoneNumber = phoneValidation?.phoneNumber
+    if (callingCode && phoneNumber) {
+      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
+      sendPhoneValidationCode(phoneNumberWithPrefix)
+    }
+  }
+
   return (
     <AppModal
       visible={props.isVisible}
@@ -76,9 +87,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             type="submit"
-            onPress={() => {
-              sendPhoneValidationCode(props.phoneNumber)
-            }}
+            onPress={requestSendPhoneValidationCode}
             wording={t`Demander un autre code`}
             isLoading={isLoading}
           />

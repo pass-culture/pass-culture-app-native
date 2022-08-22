@@ -144,7 +144,6 @@ export const SetPhoneValidationCode = () => {
             <CodeNotReceivedModal
               isVisible={isCodeNotReceivedModalVisible}
               dismissModal={hideModal}
-              phoneNumber={formattedPhoneNumber}
             />
           </View>
         </Form.MaxWidth>
