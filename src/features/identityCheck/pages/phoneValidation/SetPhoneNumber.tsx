@@ -68,12 +68,24 @@ export const SetPhoneNumber = () => {
 
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
-      dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+      dispatch({
+        type: 'SET_PHONE_NUMBER',
+        payload: {
+          phoneNumber,
+          country: { countryCode: country.cca2, callingCodes: country.callingCode },
+        },
+      })
       navigateToNextScreen()
       queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
     },
     onError: (error: ApiError | unknown) => {
-      dispatch({ type: 'SET_PHONE_NUMBER', payload: { phoneNumber, countryCode: country.cca2 } })
+      dispatch({
+        type: 'SET_PHONE_NUMBER',
+        payload: {
+          phoneNumber,
+          country: { countryCode: country.cca2, callingCodes: country.callingCode },
+        },
+      })
       const { content } = error as ApiError
       if (content.code === 'TOO_MANY_SMS_SENT') {
         navigate('PhoneValidationTooManySMSSent')

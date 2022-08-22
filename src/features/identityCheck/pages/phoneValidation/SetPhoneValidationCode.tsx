@@ -36,7 +36,10 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useIdentityCheckContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
-    ? formatPhoneNumber(phoneValidation?.phoneNumber, phoneValidation?.countryCode as CountryCode)
+    ? formatPhoneNumber(
+        phoneValidation?.phoneNumber,
+        phoneValidation?.country.countryCode as CountryCode
+      )
     : ''
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { navigate } = useNavigation<UseNavigationType>()
