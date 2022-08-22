@@ -468,7 +468,8 @@ Array [
             Array [
               Object {
                 "float": "left",
-                "marginRight": 6,
+                "marginBottom": -3,
+                "paddingRight": 4,
               },
             ]
           }
@@ -781,7 +782,8 @@ Array [
             Array [
               Object {
                 "float": "left",
-                "marginRight": 6,
+                "marginBottom": -3,
+                "paddingRight": 4,
               },
             ]
           }
@@ -1094,7 +1096,8 @@ Array [
             Array [
               Object {
                 "float": "left",
-                "marginRight": 6,
+                "marginBottom": -3,
+                "paddingRight": 4,
               },
             ]
           }
@@ -1401,7 +1404,8 @@ Array [
         Array [
           Object {
             "float": "left",
-            "marginRight": 6,
+            "marginBottom": -3,
+            "paddingRight": 4,
           },
         ]
       }

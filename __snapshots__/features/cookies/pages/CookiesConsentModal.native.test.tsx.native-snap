@@ -741,7 +741,8 @@ exports[`<CookiesConsentModal/> should render correctly 1`] = `
                       Array [
                         Object {
                           "float": "left",
-                          "marginRight": 6,
+                          "marginBottom": -3,
+                          "paddingRight": 4,
                         },
                       ]
                     }
@@ -1054,7 +1055,8 @@ exports[`<CookiesConsentModal/> should render correctly 1`] = `
                       Array [
                         Object {
                           "float": "left",
-                          "marginRight": 6,
+                          "marginBottom": -3,
+                          "paddingRight": 4,
                         },
                       ]
                     }
@@ -1367,7 +1369,8 @@ exports[`<CookiesConsentModal/> should render correctly 1`] = `
                       Array [
                         Object {
                           "float": "left",
-                          "marginRight": 6,
+                          "marginBottom": -3,
+                          "paddingRight": 4,
                         },
                       ]
                     }
@@ -1674,7 +1677,8 @@ exports[`<CookiesConsentModal/> should render correctly 1`] = `
                   Array [
                     Object {
                       "float": "left",
-                      "marginRight": 6,
+                      "marginBottom": -3,
+                      "paddingRight": 4,
                     },
                   ]
                 }

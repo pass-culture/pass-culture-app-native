@@ -105,7 +105,8 @@ const AcceptAllContainer = styled.View({
 
 const IconContainer = styled.View({
   float: 'left',
-  marginRight: getSpacing(1.5),
+  paddingRight: getSpacing(1),
+  marginBottom: -getSpacing(0.75),
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
