@@ -20,7 +20,17 @@ export const remoteConfig = {
     const parameters = firebaseRemoteConfig().getAll()
     return {
       test_param: parameters.test_param.asString() as CustomRemoteConfig['test_param'],
-      homeEntryId: parameters.homeEntryId.asString() as CustomRemoteConfig['homeEntryId'],
+      homeEntryIdNotConnected:
+        parameters.homeEntryIdNotConnected.asString() as CustomRemoteConfig['homeEntryIdNotConnected'],
+      homeEntryIdGeneral:
+        parameters.homeEntryIdGeneral.asString() as CustomRemoteConfig['homeEntryIdGeneral'],
+      homeEntryIdWithoutBooking_18:
+        parameters.homeEntryIdWithoutBooking_18.asString() as CustomRemoteConfig['homeEntryIdWithoutBooking_18'],
+      homeEntryIdWithoutBooking_15_17:
+        parameters.homeEntryIdWithoutBooking_15_17.asString() as CustomRemoteConfig['homeEntryIdWithoutBooking_15_17'],
+      homeEntryId_18: parameters.homeEntryId_18.asString() as CustomRemoteConfig['homeEntryId_18'],
+      homeEntryId_15_17:
+        parameters.homeEntryId_15_17.asString() as CustomRemoteConfig['homeEntryId_15_17'],
     }
   },
 }

@@ -1,6 +1,11 @@
 export type CustomRemoteConfig = {
   test_param: 'A' | 'B'
-  homeEntryId: ''
+  homeEntryIdNotConnected: string
+  homeEntryIdGeneral: string
+  homeEntryIdWithoutBooking_18: string
+  homeEntryIdWithoutBooking_15_17: string
+  homeEntryId_18: string
+  homeEntryId_15_17: string
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
