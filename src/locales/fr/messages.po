@@ -877,10 +877,6 @@ msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles�
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
-#: src/features/bookOffer/components/BookingDetails.tsx
-msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
-msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
-
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité."
 msgstr "En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité."
@@ -1770,10 +1766,6 @@ msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
 msgid "Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture."
 msgstr "Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture."
 
-#: src/web/SupportedBrowsersGate.tsx
-msgid "Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale."
-msgstr "Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale."
-
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Nous reviendrons vers toi dès que le service sera rétabli."
 msgstr "Nous reviendrons vers toi dès que le service sera rétabli."
@@ -2067,10 +2059,6 @@ msgstr "Patrimoine / tourisme"
 #: src/libs/parsers/venueType.ts
 msgid "Patrimoine et tourisme"
 msgstr "Patrimoine et tourisme"
-
-#: src/features/bookings/helpers.ts
-msgid "Permanent"
-msgstr "Permanent"
 
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Personnaliser ta navigation"
@@ -2995,10 +2983,6 @@ msgstr "Tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plu
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
 msgstr "Tu ne peux pas choisir une date dans le futur"
-
-#: src/features/bookings/components/BookingDetailsCancelButton.tsx
-msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
-msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Tu ne verras pas de publicité de tiers sur notre site ou sur notre application."
