@@ -1,14 +1,13 @@
 import { Platform } from 'react-native'
 
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 export const getHeadingAttrs = (level: HeadingLevel) => {
   return Platform.OS === 'web'
     ? {
-        accessibilityRole: 'header',
-        'aria-level': level,
-        ...getTextAttrs(),
+        accessibilityRole: AccessibilityRole.HEADING,
+        accessibilityLevel: level,
       }
     : {}
 }

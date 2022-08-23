@@ -69,7 +69,7 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>

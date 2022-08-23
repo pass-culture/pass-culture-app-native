@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 interface Props {
   onChange: (locationFilter: LocationFilter) => void

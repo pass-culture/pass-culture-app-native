@@ -3,7 +3,7 @@
 exports[`LegalNotices should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
+  "baseElement": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -17,44 +17,37 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
 }
 
 <body>
     <div>
       <header
-        class="c0"
+        class="css-view-1dbjc4n"
         role="banner"
+        style="position: static; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -83,7 +76,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c1"
+                  class="c0"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -95,7 +88,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
@@ -148,7 +141,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 undefined-SVG-Mock
               </div>
@@ -193,7 +186,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 undefined-SVG-Mock
               </div>
@@ -227,7 +220,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c1 {
+  "container": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -241,43 +234,36 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
 <div>
     <header
-      class="c0"
+      class="css-view-1dbjc4n"
       role="banner"
+      style="position: static; width: 100%;"
     >
       <div
         class="css-view-1dbjc4n"
@@ -306,7 +292,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="c1"
+                class="c0"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -318,7 +304,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     icon-back-SVG-Mock
                   </div>
@@ -371,7 +357,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               undefined-SVG-Mock
             </div>
@@ -416,7 +402,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               undefined-SVG-Mock
             </div>

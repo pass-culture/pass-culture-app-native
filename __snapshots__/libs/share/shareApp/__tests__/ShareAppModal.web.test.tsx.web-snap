@@ -64,7 +64,7 @@ Object {
   text-decoration: none;
 }
 
-.c7 {
+.c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -97,31 +97,31 @@ Object {
   box-sizing: border-box;
 }
 
-.c7:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c7:focus-visible {
+.c5:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c7:active {
+.c5:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c7:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c7:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -226,7 +226,7 @@ Object {
   text-decoration: none;
 }
 
-.c8:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
@@ -234,24 +234,8 @@ Object {
   padding: 4px;
 }
 
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
 .c3 {
   background-color: transparent;
-}
-
-.c6 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
-  gap: 24px 0px;
-  width: 100%;
 }
 
 <body>
@@ -336,7 +320,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             rightIcon-SVG-Mock
                           </div>
@@ -402,7 +386,7 @@ Object {
                                   >
                                     <div
                                       class="css-text-901oao"
-                                      dir="auto"
+                                      dir="ltr"
                                     >
                                       button-icon-SVG-Mock
                                     </div>
@@ -439,7 +423,7 @@ Object {
                                   >
                                     <div
                                       class="css-text-901oao"
-                                      dir="auto"
+                                      dir="ltr"
                                     >
                                       button-icon-SVG-Mock
                                     </div>
@@ -468,9 +452,15 @@ Object {
                             style="height: 24px;"
                           />
                           <ul
-                            class="c5 c6"
+                            class="css-reset-4rbku5 css-view-1dbjc4n"
+                            role="list"
+                            style="display: grid; flex-direction: row; gap: 24px 0px; grid-template-columns: repeat(auto-fill, minmax(100px,1fr)); overflow-x: auto; overflow-y: auto; padding-left: 0px; width: 100%;"
                           >
-                            <li>
+                            <li
+                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              role="listitem"
+                              style="display: list-item;"
+                            >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
                                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpass.culture.fr%2Fnosapplications%2F&quote=Profite%20toi%20aussi%20de%20tous%20les%20bons%20plans%20du%20pass%20Culture"
@@ -481,7 +471,7 @@ Object {
                                 >
                                   <div
                                     class="css-text-901oao"
-                                    dir="auto"
+                                    dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
@@ -499,7 +489,11 @@ Object {
                                 </div>
                               </a>
                             </li>
-                            <li>
+                            <li
+                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              role="listitem"
+                              style="display: list-item;"
+                            >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
                                 href="https://twitter.com/intent/tweet?text=Profite toi aussi de tous les bons plans du pass Culture&url=https://pass.culture.fr/nosapplications/"
@@ -510,7 +504,7 @@ Object {
                                 >
                                   <div
                                     class="css-text-901oao"
-                                    dir="auto"
+                                    dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
@@ -528,7 +522,11 @@ Object {
                                 </div>
                               </a>
                             </li>
-                            <li>
+                            <li
+                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              role="listitem"
+                              style="display: list-item;"
+                            >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
                                 href="https://api.whatsapp.com/send?text=Profite%20toi%20aussi%20de%20tous%20les%20bons%20plans%20du%20pass%20Culture%0Ahttps%3A%2F%2Fpass.culture.fr%2Fnosapplications%2F"
@@ -539,7 +537,7 @@ Object {
                                 >
                                   <div
                                     class="css-text-901oao"
-                                    dir="auto"
+                                    dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
@@ -557,7 +555,11 @@ Object {
                                 </div>
                               </a>
                             </li>
-                            <li>
+                            <li
+                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              role="listitem"
+                              style="display: list-item;"
+                            >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
                                 href="https://telegram.me/share/msg?url=https://pass.culture.fr/nosapplications/&text=Profite toi aussi de tous les bons plans du pass Culture"
@@ -568,7 +570,7 @@ Object {
                                 >
                                   <div
                                     class="css-text-901oao"
-                                    dir="auto"
+                                    dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
@@ -592,7 +594,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            class="c7 c8"
+                            class="c5 c6"
                             tabindex="0"
                             type="button"
                           >

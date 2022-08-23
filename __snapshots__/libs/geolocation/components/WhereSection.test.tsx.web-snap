@@ -10,8 +10,8 @@ Array [
       }
     }
   />,
-  <h2
-    aria-level={2}
+  <h4
+    aria-level={4}
     className="css-reset-4rbku5 css-text-901oao"
     dir="ltr"
     role="heading"
@@ -25,7 +25,7 @@ Array [
     }
   >
     Où ?
-  </h2>,
+  </h4>,
   <div
     className="css-view-1dbjc4n"
     style={
@@ -94,7 +94,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           BicolorLocationBuilding-SVG-Mock
         </div>
@@ -150,7 +150,7 @@ Array [
     >
       <div
         className="css-text-901oao"
-        dir="auto"
+        dir="ltr"
       >
         undefined-SVG-Mock
       </div>
@@ -329,7 +329,7 @@ Array [
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             button-icon-SVG-Mock
           </div>
@@ -435,7 +435,7 @@ exports[`WhereSection should render correctly 2`] = `
 +       >
 +         <div
 +           className=\\"css-text-901oao\\"
-+           dir=\\"auto\\"
++           dir=\\"ltr\\"
 +         >
 +           BicolorLocationBuilding-SVG-Mock
 +         </div>
@@ -491,7 +491,7 @@ exports[`WhereSection should render correctly 2`] = `
 +     >
 +       <div
 +         className=\\"css-text-901oao\\"
-+         dir=\\"auto\\"
++         dir=\\"ltr\\"
 +       >
 +         undefined-SVG-Mock
 +       </div>

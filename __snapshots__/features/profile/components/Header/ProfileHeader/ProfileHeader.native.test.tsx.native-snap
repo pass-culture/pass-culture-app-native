@@ -3,106 +3,118 @@
 exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 Array [
   <View
-    backgroundColor="#ffffff"
-    isAbsolutePosition={false}
+    accessibilityRole="header"
     style={
       Array [
         Object {
-          "backgroundColor": "#ffffff",
+          "position": "static",
           "width": "100%",
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      backgroundColor="#ffffff"
+      isAbsolutePosition={false}
       style={
         Array [
           Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      size="medium"
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "height": 56,
-            "justifyContent": "flex-end",
-            "paddingBottom": 12,
+            "backgroundColor": "#ffffff",
+            "width": "100%",
           },
         ]
       }
     >
       <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="medium"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
+              "height": 56,
+              "justifyContent": "flex-end",
+              "paddingBottom": 12,
             },
           ]
         }
       >
         <View
-          positionInHeader="left"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="Revenir en arrière"
-        />
-        <Text
-          color="#161617"
-          numberOfLines={1}
-          size="medium"
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
-                "textAlign": "center",
+                "justifyContent": "space-between",
+                "width": "100%",
               },
             ]
           }
         >
-          Profil
-        </Text>
-        <View
-          positionInHeader="right"
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-        />
+          <View
+            positionInHeader="left"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          />
+          <Text
+            color="#161617"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Profil
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
+        </View>
       </View>
     </View>
   </View>,
@@ -342,106 +354,118 @@ Array [
 
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary 1`] = `
 <View
-  backgroundColor="#ffffff"
-  isAbsolutePosition={false}
+  accessibilityRole="header"
   style={
     Array [
       Object {
-        "backgroundColor": "#ffffff",
+        "position": "static",
         "width": "100%",
       },
     ]
   }
 >
   <View
-    customHeight={16}
-    enable={true}
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
     style={
       Array [
         Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    size="medium"
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "height": 56,
-          "justifyContent": "flex-end",
-          "paddingBottom": 12,
+          "backgroundColor": "#ffffff",
+          "width": "100%",
         },
       ]
     }
   >
     <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
           },
         ]
       }
     >
       <View
-        positionInHeader="left"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-        testID="Revenir en arrière"
-      />
-      <Text
-        color="#161617"
-        numberOfLines={1}
-        size="medium"
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
-              "textAlign": "center",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
-        Profil
-      </Text>
-      <View
-        positionInHeader="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-      />
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Profil
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
   </View>
 </View>
@@ -449,106 +473,118 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
 
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is not beneficiary 1`] = `
 <View
-  backgroundColor="#ffffff"
-  isAbsolutePosition={false}
+  accessibilityRole="header"
   style={
     Array [
       Object {
-        "backgroundColor": "#ffffff",
+        "position": "static",
         "width": "100%",
       },
     ]
   }
 >
   <View
-    customHeight={16}
-    enable={true}
+    backgroundColor="#ffffff"
+    isAbsolutePosition={false}
     style={
       Array [
         Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    size="medium"
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "height": 56,
-          "justifyContent": "flex-end",
-          "paddingBottom": 12,
+          "backgroundColor": "#ffffff",
+          "width": "100%",
         },
       ]
     }
   >
     <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      size="medium"
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "height": 56,
+            "justifyContent": "flex-end",
+            "paddingBottom": 12,
           },
         ]
       }
     >
       <View
-        positionInHeader="left"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-        testID="Revenir en arrière"
-      />
-      <Text
-        color="#161617"
-        numberOfLines={1}
-        size="medium"
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
-              "textAlign": "center",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
-        Profil
-      </Text>
-      <View
-        positionInHeader="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-      />
+        <View
+          positionInHeader="left"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        />
+        <Text
+          color="#161617"
+          numberOfLines={1}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Profil
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
   </View>
 </View>

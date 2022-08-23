@@ -3,7 +3,7 @@
 exports[`ConfirmDeleteProfile component should render confirm delete profile 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c4 {
+  "baseElement": .c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -22,6 +22,67 @@ Object {
   min-height: 40px;
   width: 100%;
   background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -56,72 +117,11 @@ Object {
 .c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c4:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 40px;
-  width: 100%;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c6:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c6:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c6:active {
-  outline: none;
-  opacity: 0.7;
-}
-
-.c6:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c6:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -165,26 +165,11 @@ Object {
   text-decoration: none;
 }
 
-.c5:disabled {
+.c3:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c7 {
+.c5 {
   background-color: transparent;
 }
 
@@ -198,7 +183,7 @@ Object {
 <body>
     <div>
       <button
-        class="c0 c1 sc-caiLqq c1"
+        class="c0 c1 sc-iJKOTD c1"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -208,7 +193,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             undefined-SVG-Mock
           </div>
@@ -231,7 +216,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               undefined-SVG-Mock
             </div>
@@ -262,9 +247,15 @@ Object {
             Les conséquences :
           </div>
           <ul
-            class="c2 c3"
+            class="css-reset-4rbku5 css-view-1dbjc4n"
+            role="list"
+            style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px;"
           >
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="flex-direction: row; margin-left: 12px; margin-top: 0px;"
@@ -278,7 +269,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -293,7 +284,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="flex-direction: row; margin-left: 12px; margin-top: 0px;"
@@ -307,7 +302,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -322,7 +317,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="flex-direction: row; margin-left: 12px; margin-top: 0px;"
@@ -336,7 +335,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -379,7 +378,7 @@ Object {
             style="margin-top: 12px;"
           >
             <button
-              class="c4 c5"
+              class="c2 c3"
               tabindex="0"
               type="button"
             >
@@ -396,7 +395,7 @@ Object {
               style="height: 16px;"
             />
             <a
-              class="c6 c7"
+              class="c4 c5"
               href="https://passculture-delete-account.faq"
               tabindex="0"
               target="_blank"
@@ -411,7 +410,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     button-icon-SVG-Mock
                   </div>
@@ -434,7 +433,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c4 {
+  "container": .c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -453,6 +452,67 @@ Object {
   min-height: 40px;
   width: 100%;
   background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -487,72 +547,11 @@ Object {
 .c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c4:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 40px;
-  width: 100%;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c6:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c6:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c6:active {
-  outline: none;
-  opacity: 0.7;
-}
-
-.c6:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c6:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -596,26 +595,11 @@ Object {
   text-decoration: none;
 }
 
-.c5:disabled {
+.c3:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c7 {
+.c5 {
   background-color: transparent;
 }
 
@@ -628,7 +612,7 @@ Object {
 
 <div>
     <button
-      class="c0 c1 sc-caiLqq c1"
+      class="c0 c1 sc-iJKOTD c1"
       data-testid="Revenir en arrière"
       tabindex="0"
       type="button"
@@ -638,7 +622,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -661,7 +645,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             undefined-SVG-Mock
           </div>
@@ -692,9 +676,15 @@ Object {
           Les conséquences :
         </div>
         <ul
-          class="c2 c3"
+          class="css-reset-4rbku5 css-view-1dbjc4n"
+          role="list"
+          style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px;"
         >
-          <li>
+          <li
+            class="css-reset-4rbku5 css-view-1dbjc4n"
+            role="listitem"
+            style="display: list-item;"
+          >
             <div
               class="css-view-1dbjc4n"
               style="flex-direction: row; margin-left: 12px; margin-top: 0px;"
@@ -708,7 +698,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -723,7 +713,11 @@ Object {
               </div>
             </div>
           </li>
-          <li>
+          <li
+            class="css-reset-4rbku5 css-view-1dbjc4n"
+            role="listitem"
+            style="display: list-item;"
+          >
             <div
               class="css-view-1dbjc4n"
               style="flex-direction: row; margin-left: 12px; margin-top: 0px;"
@@ -737,7 +731,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -752,7 +746,11 @@ Object {
               </div>
             </div>
           </li>
-          <li>
+          <li
+            class="css-reset-4rbku5 css-view-1dbjc4n"
+            role="listitem"
+            style="display: list-item;"
+          >
             <div
               class="css-view-1dbjc4n"
               style="flex-direction: row; margin-left: 12px; margin-top: 0px;"
@@ -766,7 +764,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -809,7 +807,7 @@ Object {
           style="margin-top: 12px;"
         >
           <button
-            class="c4 c5"
+            class="c2 c3"
             tabindex="0"
             type="button"
           >
@@ -826,7 +824,7 @@ Object {
             style="height: 16px;"
           />
           <a
-            class="c6 c7"
+            class="c4 c5"
             href="https://passculture-delete-account.faq"
             tabindex="0"
             target="_blank"
@@ -841,7 +839,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   button-icon-SVG-Mock
                 </div>

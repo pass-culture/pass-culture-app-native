@@ -10,11 +10,11 @@ import { analytics } from 'libs/firebase/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const DEFAULT_SELECTED_DATE = new Date(

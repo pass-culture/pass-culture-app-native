@@ -49,7 +49,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
   >
     <div
       className="css-text-901oao"
-      dir="auto"
+      dir="ltr"
     >
       undefined-SVG-Mock
     </div>
@@ -229,7 +229,7 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
   >
     <div
       className="css-text-901oao"
-      dir="auto"
+      dir="ltr"
     >
       undefined-SVG-Mock
     </div>

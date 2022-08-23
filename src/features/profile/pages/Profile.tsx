@@ -3,7 +3,6 @@ import { useFocusEffect } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, ScrollView } from 'react-native'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -21,9 +20,11 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputError } from 'ui/components/inputs/InputError'
+import { Li } from 'ui/components/Li'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
+import { Ul, VerticalUl } from 'ui/components/Ul'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -35,8 +36,6 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
-import { Li } from 'ui/web/list/Li'
-import { Ul, VerticalUl } from 'ui/web/list/Ul'
 
 import Package from '../../../../package.json'
 
@@ -289,7 +288,7 @@ const NetworkRowContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const StyledUl = webStyled(Ul)({
+const StyledUl = styled(Ul)({
   flex: 1,
   justifyContent: 'space-between',
 })

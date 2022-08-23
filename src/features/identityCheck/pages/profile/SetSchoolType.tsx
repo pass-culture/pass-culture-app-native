@@ -15,11 +15,11 @@ import {
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Form } from 'ui/components/Form'
+import { Li } from 'ui/components/Li'
 import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
+import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 export const SetSchoolType = () => {
   const { schoolTypes, activities } = useProfileOptions()

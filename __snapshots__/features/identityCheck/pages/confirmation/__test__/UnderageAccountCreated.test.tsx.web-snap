@@ -271,7 +271,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             progress-bar-icon-SVG-Mock
           </div>

@@ -3,7 +3,7 @@
 exports[`<IdentityCheckValidation /> should render IdentityCheckValidation component correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c2 {
+  "baseElement": .c1 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -36,36 +36,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c1:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c1:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c1:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c1:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c1:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -79,41 +79,33 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c2:disabled {
   background-color: #F1F1F4;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
 }
 
 <body>
@@ -123,8 +115,9 @@ Object {
         style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
       >
         <header
-          class="c0"
+          class="css-view-1dbjc4n"
           role="banner"
+          style="position: static; width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -153,7 +146,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c1"
+                    class="c0"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -165,7 +158,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
@@ -316,7 +309,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="c2 c3"
+                  class="c1 c2"
                   tabindex="0"
                   type="submit"
                 >
@@ -339,7 +332,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c2 {
+  "container": .c1 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -372,36 +365,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c1:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c1:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c1:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c1:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c1:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -415,41 +408,33 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c2:disabled {
   background-color: #F1F1F4;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
 }
 
 <div>
@@ -458,8 +443,9 @@ Object {
       style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
     >
       <header
-        class="c0"
+        class="css-view-1dbjc4n"
         role="banner"
+        style="position: static; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -488,7 +474,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c1"
+                  class="c0"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -500,7 +486,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
@@ -651,7 +637,7 @@ Object {
               style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
             >
               <button
-                class="c2 c3"
+                class="c1 c2"
                 tabindex="0"
                 type="submit"
               >

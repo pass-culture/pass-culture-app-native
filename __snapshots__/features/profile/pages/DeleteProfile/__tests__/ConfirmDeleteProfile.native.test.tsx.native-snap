@@ -137,148 +137,193 @@ Array [
         Les conséquences :
       </Text>
       <View
+        accessibilityRole="list"
         style={
           Array [
             Object {
-              "flexDirection": "row",
-              "marginLeft": 12,
-              "marginTop": 0,
+              "flexDirection": "column",
+              "paddingLeft": 0,
             },
           ]
         }
       >
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "height": 20,
-                "justifyContent": "center",
+                "display": "flex",
               },
             ]
           }
         >
           <View
-            borderColor="#161617"
-            fillColor="#161617"
-            height={3}
-            width={3}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              tes réservations seront annulées et supprimées
             </Text>
           </View>
         </View>
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-              },
-            ]
-          }
-        >
-          tes réservations seront annulées et supprimées
-        </Text>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "flexDirection": "row",
-              "marginLeft": 12,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "height": 20,
-                "justifyContent": "center",
+                "display": "flex",
               },
             ]
           }
         >
           <View
-            borderColor="#161617"
-            fillColor="#161617"
-            height={3}
-            width={3}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
             </Text>
           </View>
         </View>
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-              },
-            ]
-          }
-        >
-          si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
-        </Text>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "flexDirection": "row",
-              "marginLeft": 12,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "height": 20,
-                "justifyContent": "center",
+                "display": "flex",
               },
             ]
           }
         >
           <View
-            borderColor="#161617"
-            fillColor="#161617"
-            height={3}
-            width={3}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              tu n’auras plus accès au catalogue
             </Text>
           </View>
         </View>
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-              },
-            ]
-          }
-        >
-          tu n’auras plus accès au catalogue
-        </Text>
       </View>
       <View
         numberOfSpaces={5}

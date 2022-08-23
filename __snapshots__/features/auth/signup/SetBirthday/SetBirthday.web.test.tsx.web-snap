@@ -3,7 +3,7 @@
 exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
+  "baseElement": .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -35,36 +35,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c0:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c0:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #eb0055;
   text-decoration-color: #eb0055;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c10 {
+.c9 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -97,71 +97,56 @@ Object {
   box-sizing: border-box;
 }
 
-.c10:disabled {
+.c9:disabled {
   cursor: initial;
   background: none;
 }
 
-.c10:focus-visible {
+.c9:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c10:active {
+.c9:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c10:hover {
+.c9:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c10:hover:disabled {
+.c9:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c11:disabled {
+.c10:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
+.c1 {
   background-color: transparent;
 }
 
-.c3 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-}
-
-.c4 {
+.c3 {
   width: 100%;
   position: relative;
 }
 
-.c7 {
+.c6 {
   padding-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -179,7 +164,7 @@ Object {
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   font-family: Montserrat-Italic;
   font-size: 15px;
   line-height: 20px;
@@ -200,12 +185,12 @@ Object {
   appearance: none;
 }
 
-.c5:focus-visible,
-.c5:active {
+.c4:focus-visible,
+.c4:active {
   border-color: #eb0055;
 }
 
-.c8 {
+.c7 {
   font-family: Montserrat-Italic;
   font-size: 15px;
   line-height: 20px;
@@ -226,12 +211,12 @@ Object {
   appearance: none;
 }
 
-.c8:focus-visible,
-.c8:active {
+.c7:focus-visible,
+.c7:active {
   border-color: #eb0055;
 }
 
-.c9 {
+.c8 {
   font-family: Montserrat-Italic;
   font-size: 15px;
   line-height: 20px;
@@ -252,19 +237,21 @@ Object {
   appearance: none;
 }
 
-.c9:focus-visible,
-.c9:active {
+.c8:focus-visible,
+.c8:active {
   border-color: #eb0055;
 }
 
-.c6 {
+.c5 {
   font-family: 'Arial',sans-serif;
 }
 
 <body>
     <div>
       <form
-        class="c0"
+        class="css-view-1dbjc4n"
+        role="form"
+        style="max-width: 500px; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -272,7 +259,7 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-            class="c1 c2"
+            class="c0 c1"
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -287,7 +274,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   button-icon-SVG-Mock
                 </div>
@@ -319,8 +306,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c3"
-                  dir="ltr"
+                  class="c2"
                   for="testUuidV4"
                 >
                   Jour
@@ -330,24 +316,24 @@ Object {
                   style="height: 8px;"
                 />
                 <div
-                  class="c4"
+                  class="c3"
                 >
                   <select
                     aria-label="Entrée pour le jour de la date de naissance"
-                    class="c5"
+                    class="c4"
                     data-testid="select-Jour"
                     id="testUuidV4"
                     role="listbox"
                   >
                     <option
-                      class="c6"
+                      class="c5"
                       role="option"
                       value=""
                     >
                       JJ
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1"
@@ -355,7 +341,7 @@ Object {
                       1
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2"
@@ -363,7 +349,7 @@ Object {
                       2
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="3"
@@ -371,7 +357,7 @@ Object {
                       3
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="4"
@@ -379,7 +365,7 @@ Object {
                       4
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="5"
@@ -387,7 +373,7 @@ Object {
                       5
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="6"
@@ -395,7 +381,7 @@ Object {
                       6
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="7"
@@ -403,7 +389,7 @@ Object {
                       7
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="8"
@@ -411,7 +397,7 @@ Object {
                       8
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="9"
@@ -419,7 +405,7 @@ Object {
                       9
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="10"
@@ -427,7 +413,7 @@ Object {
                       10
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="11"
@@ -435,7 +421,7 @@ Object {
                       11
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="12"
@@ -443,7 +429,7 @@ Object {
                       12
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="13"
@@ -451,7 +437,7 @@ Object {
                       13
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="14"
@@ -459,7 +445,7 @@ Object {
                       14
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="15"
@@ -467,7 +453,7 @@ Object {
                       15
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="16"
@@ -475,7 +461,7 @@ Object {
                       16
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="17"
@@ -483,7 +469,7 @@ Object {
                       17
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="18"
@@ -491,7 +477,7 @@ Object {
                       18
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="19"
@@ -499,7 +485,7 @@ Object {
                       19
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="20"
@@ -507,7 +493,7 @@ Object {
                       20
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="21"
@@ -515,7 +501,7 @@ Object {
                       21
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="22"
@@ -523,7 +509,7 @@ Object {
                       22
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="23"
@@ -531,7 +517,7 @@ Object {
                       23
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="24"
@@ -539,7 +525,7 @@ Object {
                       24
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="25"
@@ -547,7 +533,7 @@ Object {
                       25
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="26"
@@ -555,7 +541,7 @@ Object {
                       26
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="27"
@@ -563,7 +549,7 @@ Object {
                       27
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="28"
@@ -571,7 +557,7 @@ Object {
                       28
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="29"
@@ -579,7 +565,7 @@ Object {
                       29
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="30"
@@ -587,7 +573,7 @@ Object {
                       30
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="31"
@@ -596,14 +582,14 @@ Object {
                     </option>
                   </select>
                   <div
-                    class="c7"
+                    class="c6"
                   >
                     <div
                       class="css-view-1dbjc4n"
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -625,8 +611,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c3"
-                  dir="ltr"
+                  class="c2"
                   for="testUuidV4"
                 >
                   Mois
@@ -636,24 +621,24 @@ Object {
                   style="height: 8px;"
                 />
                 <div
-                  class="c4"
+                  class="c3"
                 >
                   <select
                     aria-label="Entrée pour le mois de la date de naissance"
-                    class="c8"
+                    class="c7"
                     data-testid="select-Mois"
                     id="testUuidV4"
                     role="listbox"
                   >
                     <option
-                      class="c6"
+                      class="c5"
                       role="option"
                       value=""
                     >
                       MM
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Janvier"
@@ -661,7 +646,7 @@ Object {
                       Janvier
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Février"
@@ -669,7 +654,7 @@ Object {
                       Février
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Mars"
@@ -677,7 +662,7 @@ Object {
                       Mars
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Avril"
@@ -685,7 +670,7 @@ Object {
                       Avril
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Mai"
@@ -693,7 +678,7 @@ Object {
                       Mai
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Juin"
@@ -701,7 +686,7 @@ Object {
                       Juin
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Juillet"
@@ -709,7 +694,7 @@ Object {
                       Juillet
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Août"
@@ -717,7 +702,7 @@ Object {
                       Août
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Septembre"
@@ -725,7 +710,7 @@ Object {
                       Septembre
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Octobre"
@@ -733,7 +718,7 @@ Object {
                       Octobre
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Novembre"
@@ -741,7 +726,7 @@ Object {
                       Novembre
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="Décembre"
@@ -750,14 +735,14 @@ Object {
                     </option>
                   </select>
                   <div
-                    class="c7"
+                    class="c6"
                   >
                     <div
                       class="css-view-1dbjc4n"
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -779,8 +764,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c3"
-                  dir="ltr"
+                  class="c2"
                   for="testUuidV4"
                 >
                   Année
@@ -790,24 +774,24 @@ Object {
                   style="height: 8px;"
                 />
                 <div
-                  class="c4"
+                  class="c3"
                 >
                   <select
                     aria-label="Entrée pour l'année de la date de naissance"
-                    class="c9"
+                    class="c8"
                     data-testid="select-Année"
                     id="testUuidV4"
                     role="listbox"
                   >
                     <option
-                      class="c6"
+                      class="c5"
                       role="option"
                       value=""
                     >
                       AAAA
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2006"
@@ -815,7 +799,7 @@ Object {
                       2006
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2005"
@@ -823,7 +807,7 @@ Object {
                       2005
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2004"
@@ -831,7 +815,7 @@ Object {
                       2004
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2003"
@@ -839,7 +823,7 @@ Object {
                       2003
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2002"
@@ -847,7 +831,7 @@ Object {
                       2002
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2001"
@@ -855,7 +839,7 @@ Object {
                       2001
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="2000"
@@ -863,7 +847,7 @@ Object {
                       2000
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1999"
@@ -871,7 +855,7 @@ Object {
                       1999
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1998"
@@ -879,7 +863,7 @@ Object {
                       1998
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1997"
@@ -887,7 +871,7 @@ Object {
                       1997
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1996"
@@ -895,7 +879,7 @@ Object {
                       1996
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1995"
@@ -903,7 +887,7 @@ Object {
                       1995
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1994"
@@ -911,7 +895,7 @@ Object {
                       1994
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1993"
@@ -919,7 +903,7 @@ Object {
                       1993
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1992"
@@ -927,7 +911,7 @@ Object {
                       1992
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1991"
@@ -935,7 +919,7 @@ Object {
                       1991
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1990"
@@ -943,7 +927,7 @@ Object {
                       1990
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1989"
@@ -951,7 +935,7 @@ Object {
                       1989
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1988"
@@ -959,7 +943,7 @@ Object {
                       1988
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1987"
@@ -967,7 +951,7 @@ Object {
                       1987
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1986"
@@ -975,7 +959,7 @@ Object {
                       1986
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1985"
@@ -983,7 +967,7 @@ Object {
                       1985
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1984"
@@ -991,7 +975,7 @@ Object {
                       1984
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1983"
@@ -999,7 +983,7 @@ Object {
                       1983
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1982"
@@ -1007,7 +991,7 @@ Object {
                       1982
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1981"
@@ -1015,7 +999,7 @@ Object {
                       1981
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1980"
@@ -1023,7 +1007,7 @@ Object {
                       1980
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1979"
@@ -1031,7 +1015,7 @@ Object {
                       1979
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1978"
@@ -1039,7 +1023,7 @@ Object {
                       1978
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1977"
@@ -1047,7 +1031,7 @@ Object {
                       1977
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1976"
@@ -1055,7 +1039,7 @@ Object {
                       1976
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1975"
@@ -1063,7 +1047,7 @@ Object {
                       1975
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1974"
@@ -1071,7 +1055,7 @@ Object {
                       1974
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1973"
@@ -1079,7 +1063,7 @@ Object {
                       1973
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1972"
@@ -1087,7 +1071,7 @@ Object {
                       1972
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1971"
@@ -1095,7 +1079,7 @@ Object {
                       1971
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1970"
@@ -1103,7 +1087,7 @@ Object {
                       1970
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1969"
@@ -1111,7 +1095,7 @@ Object {
                       1969
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1968"
@@ -1119,7 +1103,7 @@ Object {
                       1968
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1967"
@@ -1127,7 +1111,7 @@ Object {
                       1967
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1966"
@@ -1135,7 +1119,7 @@ Object {
                       1966
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1965"
@@ -1143,7 +1127,7 @@ Object {
                       1965
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1964"
@@ -1151,7 +1135,7 @@ Object {
                       1964
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1963"
@@ -1159,7 +1143,7 @@ Object {
                       1963
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1962"
@@ -1167,7 +1151,7 @@ Object {
                       1962
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1961"
@@ -1175,7 +1159,7 @@ Object {
                       1961
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1960"
@@ -1183,7 +1167,7 @@ Object {
                       1960
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1959"
@@ -1191,7 +1175,7 @@ Object {
                       1959
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1958"
@@ -1199,7 +1183,7 @@ Object {
                       1958
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1957"
@@ -1207,7 +1191,7 @@ Object {
                       1957
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1956"
@@ -1215,7 +1199,7 @@ Object {
                       1956
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1955"
@@ -1223,7 +1207,7 @@ Object {
                       1955
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1954"
@@ -1231,7 +1215,7 @@ Object {
                       1954
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1953"
@@ -1239,7 +1223,7 @@ Object {
                       1953
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1952"
@@ -1247,7 +1231,7 @@ Object {
                       1952
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1951"
@@ -1255,7 +1239,7 @@ Object {
                       1951
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1950"
@@ -1263,7 +1247,7 @@ Object {
                       1950
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1949"
@@ -1271,7 +1255,7 @@ Object {
                       1949
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1948"
@@ -1279,7 +1263,7 @@ Object {
                       1948
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1947"
@@ -1287,7 +1271,7 @@ Object {
                       1947
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1946"
@@ -1295,7 +1279,7 @@ Object {
                       1946
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1945"
@@ -1303,7 +1287,7 @@ Object {
                       1945
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1944"
@@ -1311,7 +1295,7 @@ Object {
                       1944
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1943"
@@ -1319,7 +1303,7 @@ Object {
                       1943
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1942"
@@ -1327,7 +1311,7 @@ Object {
                       1942
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1941"
@@ -1335,7 +1319,7 @@ Object {
                       1941
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1940"
@@ -1343,7 +1327,7 @@ Object {
                       1940
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1939"
@@ -1351,7 +1335,7 @@ Object {
                       1939
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1938"
@@ -1359,7 +1343,7 @@ Object {
                       1938
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1937"
@@ -1367,7 +1351,7 @@ Object {
                       1937
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1936"
@@ -1375,7 +1359,7 @@ Object {
                       1936
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1935"
@@ -1383,7 +1367,7 @@ Object {
                       1935
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1934"
@@ -1391,7 +1375,7 @@ Object {
                       1934
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1933"
@@ -1399,7 +1383,7 @@ Object {
                       1933
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1932"
@@ -1407,7 +1391,7 @@ Object {
                       1932
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1931"
@@ -1415,7 +1399,7 @@ Object {
                       1931
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1930"
@@ -1423,7 +1407,7 @@ Object {
                       1930
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1929"
@@ -1431,7 +1415,7 @@ Object {
                       1929
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1928"
@@ -1439,7 +1423,7 @@ Object {
                       1928
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1927"
@@ -1447,7 +1431,7 @@ Object {
                       1927
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1926"
@@ -1455,7 +1439,7 @@ Object {
                       1926
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1925"
@@ -1463,7 +1447,7 @@ Object {
                       1925
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1924"
@@ -1471,7 +1455,7 @@ Object {
                       1924
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1923"
@@ -1479,7 +1463,7 @@ Object {
                       1923
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1922"
@@ -1487,7 +1471,7 @@ Object {
                       1922
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1921"
@@ -1495,7 +1479,7 @@ Object {
                       1921
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1920"
@@ -1503,7 +1487,7 @@ Object {
                       1920
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1919"
@@ -1511,7 +1495,7 @@ Object {
                       1919
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1918"
@@ -1519,7 +1503,7 @@ Object {
                       1918
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1917"
@@ -1527,7 +1511,7 @@ Object {
                       1917
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1916"
@@ -1535,7 +1519,7 @@ Object {
                       1916
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1915"
@@ -1543,7 +1527,7 @@ Object {
                       1915
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1914"
@@ -1551,7 +1535,7 @@ Object {
                       1914
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1913"
@@ -1559,7 +1543,7 @@ Object {
                       1913
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1912"
@@ -1567,7 +1551,7 @@ Object {
                       1912
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1911"
@@ -1575,7 +1559,7 @@ Object {
                       1911
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1910"
@@ -1583,7 +1567,7 @@ Object {
                       1910
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1909"
@@ -1591,7 +1575,7 @@ Object {
                       1909
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1908"
@@ -1599,7 +1583,7 @@ Object {
                       1908
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1907"
@@ -1607,7 +1591,7 @@ Object {
                       1907
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1906"
@@ -1615,7 +1599,7 @@ Object {
                       1906
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1905"
@@ -1623,7 +1607,7 @@ Object {
                       1905
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1904"
@@ -1631,7 +1615,7 @@ Object {
                       1904
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1903"
@@ -1639,7 +1623,7 @@ Object {
                       1903
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1902"
@@ -1647,7 +1631,7 @@ Object {
                       1902
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1901"
@@ -1655,7 +1639,7 @@ Object {
                       1901
                     </option>
                     <option
-                      class="c6"
+                      class="c5"
                       data-testid="select-option"
                       role="option"
                       value="1900"
@@ -1664,14 +1648,14 @@ Object {
                     </option>
                   </select>
                   <div
-                    class="c7"
+                    class="c6"
                   >
                     <div
                       class="css-view-1dbjc4n"
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
@@ -1694,7 +1678,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="c10 c11"
+            class="c9 c10"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -1715,7 +1699,7 @@ Object {
       </form>
     </div>
   </body>,
-  "container": .c1 {
+  "container": .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1747,36 +1731,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c0:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c0:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #eb0055;
   text-decoration-color: #eb0055;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c10 {
+.c9 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1809,71 +1793,56 @@ Object {
   box-sizing: border-box;
 }
 
-.c10:disabled {
+.c9:disabled {
   cursor: initial;
   background: none;
 }
 
-.c10:focus-visible {
+.c9:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c10:active {
+.c9:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c10:hover {
+.c9:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c10:hover:disabled {
+.c9:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c11:disabled {
+.c10:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
+.c1 {
   background-color: transparent;
 }
 
-.c3 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-}
-
-.c4 {
+.c3 {
   width: 100%;
   position: relative;
 }
 
-.c7 {
+.c6 {
   padding-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1891,7 +1860,7 @@ Object {
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   font-family: Montserrat-Italic;
   font-size: 15px;
   line-height: 20px;
@@ -1912,12 +1881,12 @@ Object {
   appearance: none;
 }
 
-.c5:focus-visible,
-.c5:active {
+.c4:focus-visible,
+.c4:active {
   border-color: #eb0055;
 }
 
-.c8 {
+.c7 {
   font-family: Montserrat-Italic;
   font-size: 15px;
   line-height: 20px;
@@ -1938,12 +1907,12 @@ Object {
   appearance: none;
 }
 
-.c8:focus-visible,
-.c8:active {
+.c7:focus-visible,
+.c7:active {
   border-color: #eb0055;
 }
 
-.c9 {
+.c8 {
   font-family: Montserrat-Italic;
   font-size: 15px;
   line-height: 20px;
@@ -1964,18 +1933,20 @@ Object {
   appearance: none;
 }
 
-.c9:focus-visible,
-.c9:active {
+.c8:focus-visible,
+.c8:active {
   border-color: #eb0055;
 }
 
-.c6 {
+.c5 {
   font-family: 'Arial',sans-serif;
 }
 
 <div>
     <form
-      class="c0"
+      class="css-view-1dbjc4n"
+      role="form"
+      style="max-width: 500px; width: 100%;"
     >
       <div
         class="css-view-1dbjc4n"
@@ -1983,7 +1954,7 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-          class="c1 c2"
+          class="c0 c1"
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -1998,7 +1969,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 button-icon-SVG-Mock
               </div>
@@ -2030,8 +2001,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c3"
-                dir="ltr"
+                class="c2"
                 for="testUuidV4"
               >
                 Jour
@@ -2041,24 +2011,24 @@ Object {
                 style="height: 8px;"
               />
               <div
-                class="c4"
+                class="c3"
               >
                 <select
                   aria-label="Entrée pour le jour de la date de naissance"
-                  class="c5"
+                  class="c4"
                   data-testid="select-Jour"
                   id="testUuidV4"
                   role="listbox"
                 >
                   <option
-                    class="c6"
+                    class="c5"
                     role="option"
                     value=""
                   >
                     JJ
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1"
@@ -2066,7 +2036,7 @@ Object {
                     1
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2"
@@ -2074,7 +2044,7 @@ Object {
                     2
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="3"
@@ -2082,7 +2052,7 @@ Object {
                     3
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="4"
@@ -2090,7 +2060,7 @@ Object {
                     4
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="5"
@@ -2098,7 +2068,7 @@ Object {
                     5
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="6"
@@ -2106,7 +2076,7 @@ Object {
                     6
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="7"
@@ -2114,7 +2084,7 @@ Object {
                     7
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="8"
@@ -2122,7 +2092,7 @@ Object {
                     8
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="9"
@@ -2130,7 +2100,7 @@ Object {
                     9
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="10"
@@ -2138,7 +2108,7 @@ Object {
                     10
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="11"
@@ -2146,7 +2116,7 @@ Object {
                     11
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="12"
@@ -2154,7 +2124,7 @@ Object {
                     12
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="13"
@@ -2162,7 +2132,7 @@ Object {
                     13
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="14"
@@ -2170,7 +2140,7 @@ Object {
                     14
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="15"
@@ -2178,7 +2148,7 @@ Object {
                     15
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="16"
@@ -2186,7 +2156,7 @@ Object {
                     16
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="17"
@@ -2194,7 +2164,7 @@ Object {
                     17
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="18"
@@ -2202,7 +2172,7 @@ Object {
                     18
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="19"
@@ -2210,7 +2180,7 @@ Object {
                     19
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="20"
@@ -2218,7 +2188,7 @@ Object {
                     20
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="21"
@@ -2226,7 +2196,7 @@ Object {
                     21
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="22"
@@ -2234,7 +2204,7 @@ Object {
                     22
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="23"
@@ -2242,7 +2212,7 @@ Object {
                     23
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="24"
@@ -2250,7 +2220,7 @@ Object {
                     24
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="25"
@@ -2258,7 +2228,7 @@ Object {
                     25
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="26"
@@ -2266,7 +2236,7 @@ Object {
                     26
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="27"
@@ -2274,7 +2244,7 @@ Object {
                     27
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="28"
@@ -2282,7 +2252,7 @@ Object {
                     28
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="29"
@@ -2290,7 +2260,7 @@ Object {
                     29
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="30"
@@ -2298,7 +2268,7 @@ Object {
                     30
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="31"
@@ -2307,14 +2277,14 @@ Object {
                   </option>
                 </select>
                 <div
-                  class="c7"
+                  class="c6"
                 >
                   <div
                     class="css-view-1dbjc4n"
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -2336,8 +2306,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c3"
-                dir="ltr"
+                class="c2"
                 for="testUuidV4"
               >
                 Mois
@@ -2347,24 +2316,24 @@ Object {
                 style="height: 8px;"
               />
               <div
-                class="c4"
+                class="c3"
               >
                 <select
                   aria-label="Entrée pour le mois de la date de naissance"
-                  class="c8"
+                  class="c7"
                   data-testid="select-Mois"
                   id="testUuidV4"
                   role="listbox"
                 >
                   <option
-                    class="c6"
+                    class="c5"
                     role="option"
                     value=""
                   >
                     MM
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Janvier"
@@ -2372,7 +2341,7 @@ Object {
                     Janvier
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Février"
@@ -2380,7 +2349,7 @@ Object {
                     Février
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Mars"
@@ -2388,7 +2357,7 @@ Object {
                     Mars
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Avril"
@@ -2396,7 +2365,7 @@ Object {
                     Avril
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Mai"
@@ -2404,7 +2373,7 @@ Object {
                     Mai
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Juin"
@@ -2412,7 +2381,7 @@ Object {
                     Juin
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Juillet"
@@ -2420,7 +2389,7 @@ Object {
                     Juillet
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Août"
@@ -2428,7 +2397,7 @@ Object {
                     Août
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Septembre"
@@ -2436,7 +2405,7 @@ Object {
                     Septembre
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Octobre"
@@ -2444,7 +2413,7 @@ Object {
                     Octobre
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Novembre"
@@ -2452,7 +2421,7 @@ Object {
                     Novembre
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="Décembre"
@@ -2461,14 +2430,14 @@ Object {
                   </option>
                 </select>
                 <div
-                  class="c7"
+                  class="c6"
                 >
                   <div
                     class="css-view-1dbjc4n"
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -2490,8 +2459,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c3"
-                dir="ltr"
+                class="c2"
                 for="testUuidV4"
               >
                 Année
@@ -2501,24 +2469,24 @@ Object {
                 style="height: 8px;"
               />
               <div
-                class="c4"
+                class="c3"
               >
                 <select
                   aria-label="Entrée pour l'année de la date de naissance"
-                  class="c9"
+                  class="c8"
                   data-testid="select-Année"
                   id="testUuidV4"
                   role="listbox"
                 >
                   <option
-                    class="c6"
+                    class="c5"
                     role="option"
                     value=""
                   >
                     AAAA
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2006"
@@ -2526,7 +2494,7 @@ Object {
                     2006
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2005"
@@ -2534,7 +2502,7 @@ Object {
                     2005
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2004"
@@ -2542,7 +2510,7 @@ Object {
                     2004
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2003"
@@ -2550,7 +2518,7 @@ Object {
                     2003
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2002"
@@ -2558,7 +2526,7 @@ Object {
                     2002
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2001"
@@ -2566,7 +2534,7 @@ Object {
                     2001
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="2000"
@@ -2574,7 +2542,7 @@ Object {
                     2000
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1999"
@@ -2582,7 +2550,7 @@ Object {
                     1999
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1998"
@@ -2590,7 +2558,7 @@ Object {
                     1998
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1997"
@@ -2598,7 +2566,7 @@ Object {
                     1997
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1996"
@@ -2606,7 +2574,7 @@ Object {
                     1996
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1995"
@@ -2614,7 +2582,7 @@ Object {
                     1995
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1994"
@@ -2622,7 +2590,7 @@ Object {
                     1994
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1993"
@@ -2630,7 +2598,7 @@ Object {
                     1993
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1992"
@@ -2638,7 +2606,7 @@ Object {
                     1992
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1991"
@@ -2646,7 +2614,7 @@ Object {
                     1991
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1990"
@@ -2654,7 +2622,7 @@ Object {
                     1990
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1989"
@@ -2662,7 +2630,7 @@ Object {
                     1989
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1988"
@@ -2670,7 +2638,7 @@ Object {
                     1988
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1987"
@@ -2678,7 +2646,7 @@ Object {
                     1987
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1986"
@@ -2686,7 +2654,7 @@ Object {
                     1986
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1985"
@@ -2694,7 +2662,7 @@ Object {
                     1985
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1984"
@@ -2702,7 +2670,7 @@ Object {
                     1984
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1983"
@@ -2710,7 +2678,7 @@ Object {
                     1983
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1982"
@@ -2718,7 +2686,7 @@ Object {
                     1982
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1981"
@@ -2726,7 +2694,7 @@ Object {
                     1981
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1980"
@@ -2734,7 +2702,7 @@ Object {
                     1980
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1979"
@@ -2742,7 +2710,7 @@ Object {
                     1979
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1978"
@@ -2750,7 +2718,7 @@ Object {
                     1978
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1977"
@@ -2758,7 +2726,7 @@ Object {
                     1977
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1976"
@@ -2766,7 +2734,7 @@ Object {
                     1976
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1975"
@@ -2774,7 +2742,7 @@ Object {
                     1975
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1974"
@@ -2782,7 +2750,7 @@ Object {
                     1974
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1973"
@@ -2790,7 +2758,7 @@ Object {
                     1973
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1972"
@@ -2798,7 +2766,7 @@ Object {
                     1972
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1971"
@@ -2806,7 +2774,7 @@ Object {
                     1971
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1970"
@@ -2814,7 +2782,7 @@ Object {
                     1970
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1969"
@@ -2822,7 +2790,7 @@ Object {
                     1969
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1968"
@@ -2830,7 +2798,7 @@ Object {
                     1968
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1967"
@@ -2838,7 +2806,7 @@ Object {
                     1967
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1966"
@@ -2846,7 +2814,7 @@ Object {
                     1966
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1965"
@@ -2854,7 +2822,7 @@ Object {
                     1965
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1964"
@@ -2862,7 +2830,7 @@ Object {
                     1964
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1963"
@@ -2870,7 +2838,7 @@ Object {
                     1963
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1962"
@@ -2878,7 +2846,7 @@ Object {
                     1962
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1961"
@@ -2886,7 +2854,7 @@ Object {
                     1961
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1960"
@@ -2894,7 +2862,7 @@ Object {
                     1960
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1959"
@@ -2902,7 +2870,7 @@ Object {
                     1959
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1958"
@@ -2910,7 +2878,7 @@ Object {
                     1958
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1957"
@@ -2918,7 +2886,7 @@ Object {
                     1957
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1956"
@@ -2926,7 +2894,7 @@ Object {
                     1956
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1955"
@@ -2934,7 +2902,7 @@ Object {
                     1955
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1954"
@@ -2942,7 +2910,7 @@ Object {
                     1954
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1953"
@@ -2950,7 +2918,7 @@ Object {
                     1953
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1952"
@@ -2958,7 +2926,7 @@ Object {
                     1952
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1951"
@@ -2966,7 +2934,7 @@ Object {
                     1951
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1950"
@@ -2974,7 +2942,7 @@ Object {
                     1950
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1949"
@@ -2982,7 +2950,7 @@ Object {
                     1949
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1948"
@@ -2990,7 +2958,7 @@ Object {
                     1948
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1947"
@@ -2998,7 +2966,7 @@ Object {
                     1947
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1946"
@@ -3006,7 +2974,7 @@ Object {
                     1946
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1945"
@@ -3014,7 +2982,7 @@ Object {
                     1945
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1944"
@@ -3022,7 +2990,7 @@ Object {
                     1944
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1943"
@@ -3030,7 +2998,7 @@ Object {
                     1943
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1942"
@@ -3038,7 +3006,7 @@ Object {
                     1942
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1941"
@@ -3046,7 +3014,7 @@ Object {
                     1941
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1940"
@@ -3054,7 +3022,7 @@ Object {
                     1940
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1939"
@@ -3062,7 +3030,7 @@ Object {
                     1939
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1938"
@@ -3070,7 +3038,7 @@ Object {
                     1938
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1937"
@@ -3078,7 +3046,7 @@ Object {
                     1937
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1936"
@@ -3086,7 +3054,7 @@ Object {
                     1936
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1935"
@@ -3094,7 +3062,7 @@ Object {
                     1935
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1934"
@@ -3102,7 +3070,7 @@ Object {
                     1934
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1933"
@@ -3110,7 +3078,7 @@ Object {
                     1933
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1932"
@@ -3118,7 +3086,7 @@ Object {
                     1932
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1931"
@@ -3126,7 +3094,7 @@ Object {
                     1931
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1930"
@@ -3134,7 +3102,7 @@ Object {
                     1930
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1929"
@@ -3142,7 +3110,7 @@ Object {
                     1929
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1928"
@@ -3150,7 +3118,7 @@ Object {
                     1928
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1927"
@@ -3158,7 +3126,7 @@ Object {
                     1927
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1926"
@@ -3166,7 +3134,7 @@ Object {
                     1926
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1925"
@@ -3174,7 +3142,7 @@ Object {
                     1925
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1924"
@@ -3182,7 +3150,7 @@ Object {
                     1924
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1923"
@@ -3190,7 +3158,7 @@ Object {
                     1923
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1922"
@@ -3198,7 +3166,7 @@ Object {
                     1922
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1921"
@@ -3206,7 +3174,7 @@ Object {
                     1921
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1920"
@@ -3214,7 +3182,7 @@ Object {
                     1920
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1919"
@@ -3222,7 +3190,7 @@ Object {
                     1919
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1918"
@@ -3230,7 +3198,7 @@ Object {
                     1918
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1917"
@@ -3238,7 +3206,7 @@ Object {
                     1917
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1916"
@@ -3246,7 +3214,7 @@ Object {
                     1916
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1915"
@@ -3254,7 +3222,7 @@ Object {
                     1915
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1914"
@@ -3262,7 +3230,7 @@ Object {
                     1914
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1913"
@@ -3270,7 +3238,7 @@ Object {
                     1913
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1912"
@@ -3278,7 +3246,7 @@ Object {
                     1912
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1911"
@@ -3286,7 +3254,7 @@ Object {
                     1911
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1910"
@@ -3294,7 +3262,7 @@ Object {
                     1910
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1909"
@@ -3302,7 +3270,7 @@ Object {
                     1909
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1908"
@@ -3310,7 +3278,7 @@ Object {
                     1908
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1907"
@@ -3318,7 +3286,7 @@ Object {
                     1907
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1906"
@@ -3326,7 +3294,7 @@ Object {
                     1906
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1905"
@@ -3334,7 +3302,7 @@ Object {
                     1905
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1904"
@@ -3342,7 +3310,7 @@ Object {
                     1904
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1903"
@@ -3350,7 +3318,7 @@ Object {
                     1903
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1902"
@@ -3358,7 +3326,7 @@ Object {
                     1902
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1901"
@@ -3366,7 +3334,7 @@ Object {
                     1901
                   </option>
                   <option
-                    class="c6"
+                    class="c5"
                     data-testid="select-option"
                     role="option"
                     value="1900"
@@ -3375,14 +3343,14 @@ Object {
                   </option>
                 </select>
                 <div
-                  class="c7"
+                  class="c6"
                 >
                   <div
                     class="css-view-1dbjc4n"
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -3405,7 +3373,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="c10 c11"
+          class="c9 c10"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"
@@ -3482,7 +3450,7 @@ Object {
 exports[`<SetBirthday /> touch device should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
+  "baseElement": .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3514,36 +3482,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c0:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c0:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #eb0055;
   text-decoration-color: #eb0055;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 {
+.c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3576,69 +3544,56 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c3:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c3:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c3:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c4:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
+.c1 {
   background-color: transparent;
 }
 
-.c3 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-}
-
 <body>
     <div>
       <form
-        class="c0"
+        class="css-view-1dbjc4n"
+        role="form"
+        style="max-width: 500px; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -3646,7 +3601,7 @@ Object {
         >
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-            class="c1 c2"
+            class="c0 c1"
             data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -3661,7 +3616,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   button-icon-SVG-Mock
                 </div>
@@ -3688,8 +3643,7 @@ Object {
               style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
             >
               <label
-                class="c3"
-                dir="ltr"
+                class="c2"
                 for="testUuidV4"
               >
                 Date de naissance
@@ -4673,7 +4627,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="c4 c5"
+            class="c3 c4"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -4694,7 +4648,7 @@ Object {
       </form>
     </div>
   </body>,
-  "container": .c1 {
+  "container": .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -4726,36 +4680,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c0:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c0:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #eb0055;
   text-decoration-color: #eb0055;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 {
+.c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -4788,68 +4742,55 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c3:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c3:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c3:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c4:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
+.c1 {
   background-color: transparent;
 }
 
-.c3 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-}
-
 <div>
     <form
-      class="c0"
+      class="css-view-1dbjc4n"
+      role="form"
+      style="max-width: 500px; width: 100%;"
     >
       <div
         class="css-view-1dbjc4n"
@@ -4857,7 +4798,7 @@ Object {
       >
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
-          class="c1 c2"
+          class="c0 c1"
           data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -4872,7 +4813,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 button-icon-SVG-Mock
               </div>
@@ -4899,8 +4840,7 @@ Object {
             style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
           >
             <label
-              class="c3"
-              dir="ltr"
+              class="c2"
               for="testUuidV4"
             >
               Date de naissance
@@ -5884,7 +5824,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="c4 c5"
+          class="c3 c4"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"

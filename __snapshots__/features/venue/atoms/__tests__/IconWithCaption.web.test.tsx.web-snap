@@ -19,7 +19,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               Cinéma - Salle de projections-SVG-Mock
             </div>
@@ -55,7 +55,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             Cinéma - Salle de projections-SVG-Mock
           </div>

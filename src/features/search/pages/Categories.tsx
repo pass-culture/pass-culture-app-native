@@ -17,11 +17,11 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { VerticalUl } from 'ui/components/Ul'
 import { Again } from 'ui/svg/icons/Again'
 import { getSpacing, Spacer } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 export const Categories: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()

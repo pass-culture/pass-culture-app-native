@@ -2,135 +2,95 @@
 
 exports[`<SetBirthday /> should render correctly 1`] = `
 <View
+  accessibilityRole="none"
   style={
     Array [
       Object {
-        "alignItems": "center",
+        "maxWidth": 500,
         "width": "100%",
       },
     ]
   }
 >
   <View
-    accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance ?"
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 2,
-        "paddingRight": 2,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
-    }
-    testID="Pour quelle raison ?"
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        fill="#eb0055"
-        height={20}
-        testID="button-icon"
-        width={20}
-      >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#eb0055",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Pour quelle raison ?
-    </Text>
-  </View>
-  <View
-    numberOfSpaces={2}
     style={
       Array [
         Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "flex-start",
-          "display": "flex",
-          "flexDirection": "column",
-          "maxWidth": 500,
+          "alignItems": "center",
           "width": "100%",
         },
       ]
     }
   >
     <View
+      accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance ?"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "alignItems": "flex-end",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
       }
+      testID="Pour quelle raison ?"
     >
-      <Text
-        htmlFor="testUuidV4"
+      <View
         style={
           Array [
             Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "flexShrink": 0,
             },
           ]
         }
       >
-        Date de naissance
+        <View
+          fill="#eb0055"
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Pour quelle raison ?
       </Text>
     </View>
     <View
@@ -144,166 +104,218 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <View
-      height="small"
-      isDisabled={false}
-      isError={false}
-      isFocus={false}
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 22,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "height": 40,
-            "paddingBottom": 0,
-            "paddingLeft": 17,
-            "paddingRight": 17,
-            "paddingTop": 0,
+            "alignItems": "flex-start",
+            "display": "flex",
+            "flexDirection": "column",
+            "maxWidth": 500,
             "width": "100%",
           },
         ]
       }
-      testID="styled-input-container"
     >
-      <Text
-        nativeID="testUuidV4"
+      <View
         style={
           Array [
             Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "alignItems": "flex-end",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
-        1 décembre 2006
-      </Text>
+        <Text
+          htmlFor="testUuidV4"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Date de naissance
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        height="small"
+        isDisabled={false}
+        isError={false}
+        isFocus={false}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderColor": "#90949D",
+              "borderRadius": 22,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "height": 40,
+              "paddingBottom": 0,
+              "paddingLeft": 17,
+              "paddingRight": 17,
+              "paddingTop": 0,
+              "width": "100%",
+            },
+          ]
+        }
+        testID="styled-input-container"
+      >
+        <Text
+          nativeID="testUuidV4"
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          1 décembre 2006
+        </Text>
+      </View>
     </View>
-  </View>
-  <View
-    numberOfSpaces={5}
-    style={
-      Array [
-        Object {
-          "height": 20,
-        },
-      ]
-    }
-  />
-  <RNDatePicker
-    androidVariant="nativeAndroid"
-    aria-describedby="testUuidV4"
-    cancelText="Cancel"
-    confirmText="Confirm"
-    date={1164931200000}
-    locale="fr-FR"
-    maximumDate={1167523200000}
-    minimumDate={-2208988800000}
-    minuteInterval={1}
-    mode="date"
-    onChange={[Function]}
-    onDateChange={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "height": 216,
-          "width": 310,
-        },
-        Array [
-          Object {
-            "width": "100%",
-          },
-        ],
-      ]
-    }
-    testID="date-picker-spinner-native"
-    textColor="#161617"
-    theme="auto"
-    title="Select date"
-  />
-  <View
-    numberOfSpaces={2}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Continuer"
-    accessibilityState={
-      Object {
-        "disabled": true,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#F1F1F4",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
-    }
-    testID="date-picker-submit-button"
-  >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
+      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "height": 20,
           },
         ]
       }
-    >
-      Continuer
-    </Text>
-  </View>
-  <View
-    numberOfSpaces={5}
-    style={
-      Array [
+    />
+    <RNDatePicker
+      androidVariant="nativeAndroid"
+      aria-describedby="testUuidV4"
+      cancelText="Cancel"
+      confirmText="Confirm"
+      date={1164931200000}
+      locale="fr-FR"
+      maximumDate={1167523200000}
+      minimumDate={-2208988800000}
+      minuteInterval={1}
+      mode="date"
+      onChange={[Function]}
+      onDateChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "height": 216,
+            "width": 310,
+          },
+          Array [
+            Object {
+              "width": "100%",
+            },
+          ],
+        ]
+      }
+      testID="date-picker-spinner-native"
+      textColor="#161617"
+      theme="auto"
+      title="Select date"
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Continuer"
+      accessibilityState={
         Object {
-          "height": 20,
-        },
-      ]
-    }
-  />
+          "disabled": true,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="date-picker-submit-button"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Continuer
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;

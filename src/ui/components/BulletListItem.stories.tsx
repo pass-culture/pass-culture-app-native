@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { VerticalUl } from 'ui/web/list/Ul'
+import { VerticalUl } from 'ui/components/Ul'
 
 import { BulletListItem } from './BulletListItem'
 

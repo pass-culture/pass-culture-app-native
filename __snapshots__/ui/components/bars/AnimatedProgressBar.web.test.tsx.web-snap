@@ -19,7 +19,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               progress-bar-icon-SVG-Mock
             </div>
@@ -53,7 +53,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             progress-bar-icon-SVG-Mock
           </div>

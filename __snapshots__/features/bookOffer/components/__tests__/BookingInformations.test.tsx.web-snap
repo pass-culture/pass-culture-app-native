@@ -36,7 +36,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -121,7 +121,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -206,7 +206,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -296,7 +296,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -381,7 +381,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -466,7 +466,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -499,7 +499,6 @@ Array [
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
-        dir="ltr"
         style={
           Object {
             "color": "rgba(22,22,23,1.00)",
@@ -569,7 +568,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -659,7 +658,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -744,7 +743,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -777,7 +776,6 @@ Array [
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
-        dir="ltr"
         style={
           Object {
             "color": "rgba(22,22,23,1.00)",
@@ -847,7 +845,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -937,7 +935,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1022,7 +1020,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1107,7 +1105,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1140,7 +1138,6 @@ Array [
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
-        dir="ltr"
         style={
           Object {
             "color": "rgba(22,22,23,1.00)",
@@ -1210,7 +1207,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1300,7 +1297,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1385,7 +1382,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1475,7 +1472,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1560,7 +1557,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1645,7 +1642,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>
@@ -1678,7 +1675,6 @@ Array [
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
-        dir="ltr"
         style={
           Object {
             "color": "rgba(22,22,23,1.00)",
@@ -1748,7 +1744,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
         >
           undefined-SVG-Mock
         </div>

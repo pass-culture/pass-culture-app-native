@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PageWithHeader/> should render correctly 1`] = `
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -15,37 +15,29 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
 }
 
 <div
@@ -74,8 +66,14 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   }
 >
   <header
-    className="c0"
+    className="css-view-1dbjc4n"
     role="banner"
+    style={
+      Object {
+        "position": "static",
+        "width": "100%",
+      }
+    }
   >
     <div
       className="css-view-1dbjc4n"
@@ -178,7 +176,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c1"
+              className="c0"
               data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -191,7 +189,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
@@ -347,7 +345,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             fixed top children
           </div>
@@ -402,7 +400,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           >
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               scroll children
             </div>
@@ -426,7 +424,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             fixed bottom children
           </div>

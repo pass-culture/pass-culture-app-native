@@ -14,162 +14,174 @@ exports[`LocationFilter component should render correctly 1`] = `
   }
 >
   <View
-    height={64}
+    accessibilityRole="header"
     style={
       Array [
         Object {
-          "height": 64,
-        },
-      ]
-    }
-  />
-  <View
-    backgroundColor="#eb0055"
-    isAbsolutePosition={true}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#eb0055",
-          "position": "absolute",
-          "top": 0,
+          "position": "static",
           "width": "100%",
-          "zIndex": 1,
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      height={64}
       style={
         Array [
           Object {
-            "height": 16,
+            "height": 64,
           },
         ]
       }
     />
     <View
-      size="small"
+      backgroundColor="#eb0055"
+      isAbsolutePosition={true}
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
+            "backgroundColor": "#eb0055",
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
           },
         ]
       }
     >
       <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="small"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
+              "height": 48,
+              "justifyContent": "center",
             },
           ]
         }
       >
         <View
-          positionInHeader="left"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "justifyContent": "space-between",
+                "width": "100%",
               },
             ]
           }
-          testID="Revenir en arrière"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            positionInHeader="left"
             style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
             <View
-              height={24}
-              testID="icon-back"
-              width={24}
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Revenir en arrière"
             >
-              <Text>
-                icon-back-SVG-Mock
+              <View
+                height={24}
+                testID="icon-back"
+                width={24}
+              >
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Retour
               </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
           </View>
+          <Text
+            color="#ffffff"
+            nativeID="testUuidV4"
+            numberOfLines={1}
+            size="small"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Localisation
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
         </View>
-        <Text
-          color="#ffffff"
-          nativeID="testUuidV4"
-          numberOfLines={1}
-          size="small"
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Localisation
-        </Text>
-        <View
-          positionInHeader="right"
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>
@@ -283,397 +295,442 @@ exports[`LocationFilter component should render correctly 1`] = `
         }
       />
       <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-            "marginHorizontal": 16,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="locationChoice-pickPlace"
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
-            }
-          />
-          <View
-            height={24}
-            testID="BicolorLocationPointer"
-            width={24}
-          >
-            <Text>
-              BicolorLocationPointer-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginRight": 0,
-                  "paddingHorizontal": 8,
-                },
-              ]
-            }
-          >
-            <Text
-              isSelected={false}
-              numberOfLines={3}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Choisir un lieu
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "height": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={6}
+        accessibilityRole="list"
         style={
           Array [
             Object {
-              "height": 24,
+              "flexDirection": "column",
+              "paddingLeft": 0,
             },
           ]
         }
-      />
-      <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-            "marginHorizontal": 16,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="locationChoice-aroundMe"
       >
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "display": "flex",
               },
             ]
           }
         >
           <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
+            accessibilityRole="radio"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
             }
-          />
-          <View
-            height={24}
-            width={24}
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginHorizontal": 16,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="locationChoice-pickPlace"
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginRight": 0,
-                  "paddingHorizontal": 8,
-                },
-              ]
-            }
-          >
-            <Text
-              aria-describedby="testUuidV4"
-              isSelected={false}
-              numberOfLines={3}
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
             >
-              Autour de moi
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "height": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={8}
-            style={
-              Array [
-                Object {
-                  "width": 32,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": true,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-            "marginHorizontal": 16,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="locationChoice-everywhere"
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
-            }
-          />
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginRight": 0,
-                  "paddingHorizontal": 8,
-                },
-              ]
-            }
-          >
-            <Text
-              isSelected={true}
-              numberOfLines={3}
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "width": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                height={24}
+                testID="BicolorLocationPointer"
+                width={24}
+              >
+                <Text>
+                  BicolorLocationPointer-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "width": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 0,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  isSelected={false}
+                  numberOfLines={3}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Choisir un lieu
+                </Text>
+              </View>
+            </View>
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": "100%",
                   },
                 ]
               }
             >
-              Partout
-            </Text>
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
           </View>
           <View
-            height={24}
-            testID="validateIcon"
-            width={24}
-          >
-            <Text>
-              validateIcon-SVG-Mock
-            </Text>
-          </View>
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
         </View>
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "height": "100%",
+                "display": "flex",
               },
             ]
           }
-        />
+        >
+          <View
+            accessibilityRole="radio"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginHorizontal": 16,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="locationChoice-aroundMe"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "width": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "width": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 0,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  aria-describedby="testUuidV4"
+                  isSelected={false}
+                  numberOfLines={3}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Autour de moi
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={8}
+                style={
+                  Array [
+                    Object {
+                      "width": 32,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="radio"
+            accessibilityState={
+              Object {
+                "checked": true,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginHorizontal": 16,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="locationChoice-everywhere"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "width": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "width": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 0,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  isSelected={true}
+                  numberOfLines={3}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Partout
+                </Text>
+              </View>
+              <View
+                height={24}
+                testID="validateIcon"
+                width={24}
+              >
+                <Text>
+                  validateIcon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": "100%",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
       </View>
     </View>
   </RCTScrollView>

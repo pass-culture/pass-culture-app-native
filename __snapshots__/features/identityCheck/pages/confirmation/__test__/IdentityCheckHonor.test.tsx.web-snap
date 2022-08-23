@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IdentityCheckHonor/> should render correctly 1`] = `
-.c2 {
+.c1 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -34,36 +34,36 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c1:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c1:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c1:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c1:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c1:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -77,41 +77,33 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c2:disabled {
   background-color: #F1F1F4;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
 }
 
 <div
@@ -140,8 +132,14 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
   }
 >
   <header
-    className="c0"
+    className="css-view-1dbjc4n"
     role="banner"
+    style={
+      Object {
+        "position": "static",
+        "width": "100%",
+      }
+    }
   >
     <div
       className="css-view-1dbjc4n"
@@ -244,7 +242,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c1"
+              className="c0"
               data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -257,7 +255,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
@@ -492,7 +490,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -529,7 +527,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -578,7 +576,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               }
             >
               <button
-                className="c2 c3"
+                className="c1 c2"
                 onClick={[Function]}
                 onDoubleClick={[Function]}
                 tabIndex={0}

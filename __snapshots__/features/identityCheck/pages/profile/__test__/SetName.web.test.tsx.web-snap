@@ -3,7 +3,7 @@
 exports[`<SetName/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
+  "baseElement": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -17,40 +17,32 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c5 {
+.c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -83,63 +75,48 @@ Object {
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c3:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:focus-visible {
+.c3:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c5:active {
+.c3:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c5:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c5:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c6:disabled {
+.c4:disabled {
   background-color: #F1F1F4;
 }
 
-.c3 {
+.c1 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c4 {
-  width: 100%;
-}
-
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   width: 100%;
-  max-width: 500px;
 }
 
 <body>
@@ -149,8 +126,9 @@ Object {
         style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
       >
         <header
-          class="c0"
+          class="css-view-1dbjc4n"
           role="banner"
+          style="position: static; width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -179,7 +157,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c1"
+                    class="c0"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -191,7 +169,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
@@ -266,7 +244,9 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="c2"
+                    class="css-view-1dbjc4n"
+                    role="form"
+                    style="max-width: 500px; width: 100%;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -281,7 +261,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -313,8 +293,7 @@ Object {
                       style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                     >
                       <label
-                        class="c3 c4"
-                        dir="ltr"
+                        class="c1 c2"
                         for="testUuidV4"
                       >
                         <div
@@ -378,8 +357,7 @@ Object {
                       style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                     >
                       <label
-                        class="c3 c4"
-                        dir="ltr"
+                        class="c1 c2"
                         for="testUuidV4"
                       >
                         <div
@@ -443,7 +421,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="c5 c6"
+                  class="c3 c4"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
@@ -467,7 +445,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c1 {
+  "container": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -481,40 +459,32 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c5 {
+.c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -547,63 +517,48 @@ Object {
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c3:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:focus-visible {
+.c3:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c5:active {
+.c3:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c5:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c5:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c6:disabled {
+.c4:disabled {
   background-color: #F1F1F4;
 }
 
-.c3 {
+.c1 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c4 {
-  width: 100%;
-}
-
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   width: 100%;
-  max-width: 500px;
 }
 
 <div>
@@ -612,8 +567,9 @@ Object {
       style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
     >
       <header
-        class="c0"
+        class="css-view-1dbjc4n"
         role="banner"
+        style="position: static; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -642,7 +598,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c1"
+                  class="c0"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -654,7 +610,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
@@ -729,7 +685,9 @@ Object {
                 style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
               >
                 <form
-                  class="c2"
+                  class="css-view-1dbjc4n"
+                  role="form"
+                  style="max-width: 500px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -744,7 +702,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -776,8 +734,7 @@ Object {
                     style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                   >
                     <label
-                      class="c3 c4"
-                      dir="ltr"
+                      class="c1 c2"
                       for="testUuidV4"
                     >
                       <div
@@ -841,8 +798,7 @@ Object {
                     style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                   >
                     <label
-                      class="c3 c4"
-                      dir="ltr"
+                      class="c1 c2"
                       for="testUuidV4"
                     >
                       <div
@@ -906,7 +862,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l'étape suivante"
-                class="c5 c6"
+                class="c3 c4"
                 data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"

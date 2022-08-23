@@ -310,1244 +310,1366 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         </Text>
       </View>
       <View
+        accessibilityRole="list"
         style={
           Array [
             Object {
-              "paddingBottom": 12,
+              "flexDirection": "column",
+              "paddingLeft": 0,
             },
           ]
         }
       >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Participé à un festival,-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                fill="#696A6F"
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Participé à un festival,-CulturalSurveyAnswer"
               >
-                Participé à un festival,
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                à une avant-première
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="#696A6F"
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Participé à un festival,
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    à une avant-première
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Assisté à un spectacle-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Assisté à un spectacle-CulturalSurveyAnswer"
               >
-                Assisté à un spectacle
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Pièce de théâtre, cirque, danse...
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Assisté à un spectacle
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Pièce de théâtre, cirque, danse...
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Allé à la bibliothèque-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Allé à la bibliothèque-CulturalSurveyAnswer"
               >
-                Allé à la bibliothèque
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                ou à la médiathèque
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Allé à la bibliothèque
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    ou à la médiathèque
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Participé à un jeu-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Participé à un jeu-CulturalSurveyAnswer"
               >
-                Participé à un jeu
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                escape game, jeu concours
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Participé à un jeu
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    escape game, jeu concours
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Allé à un concert-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Allé à un concert-CulturalSurveyAnswer"
               >
-                Allé à un concert
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Allé à un concert
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Allé au cinéma-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Allé au cinéma-CulturalSurveyAnswer"
               >
-                Allé au cinéma
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Allé au cinéma
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Visité un musée,-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Visité un musée,-CulturalSurveyAnswer"
               >
-                Visité un musée,
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                un monument, une exposition...
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Visité un musée,
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    un monument, une exposition...
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Participé à une conférence,-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Participé à une conférence,-CulturalSurveyAnswer"
               >
-                Participé à une conférence,
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                rencontre ou découverte des métiers de la culture
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Participé à une conférence,
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    rencontre ou découverte des métiers de la culture
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Pris un cours-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "alignContent": "center",
-                    "marginLeft": 16,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
               <View
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Pris un cours-CulturalSurveyAnswer"
               >
-                Pris un cours
-              </Text>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                danse, théâtre, musique, dessin
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Pris un cours
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    danse, théâtre, musique, dessin
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <BVLinearGradient
-          angle={175}
-          colors={
-            Array [
-              4291546578,
-              4291546578,
-            ]
-          }
-          endPoint={
-            Object {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            Object {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+        </View>
+        <View
+          accessibilityRole="none"
           style={
             Array [
               Object {
-                "borderRadius": 8,
+                "display": "flex",
               },
             ]
           }
-          useAngle={true}
         >
           <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 7,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 1,
-                "marginLeft": 1,
-                "marginRight": 1,
-                "marginTop": 1,
-                "minHeight": 72,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "paddingBottom": 12,
+                },
+              ]
             }
-            testID="Aucune de ces sorties culturelles-CulturalSurveyAnswer"
           >
-            <View
+            <BVLinearGradient
+              angle={175}
+              colors={
+                Array [
+                  4291546578,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
               style={
                 Array [
                   Object {
-                    "flexShrink": 1,
-                    "marginLeft": 16,
-                    "marginRight": 40,
+                    "borderRadius": 8,
                   },
                 ]
               }
+              useAngle={true}
             >
-              <Text
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 7,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": 1,
+                    "marginLeft": 1,
+                    "marginRight": 1,
+                    "marginTop": 1,
+                    "minHeight": 72,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
+                testID="Aucune de ces sorties culturelles-CulturalSurveyAnswer"
               >
-                Aucune de ces sorties culturelles
-              </Text>
-            </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                        "marginLeft": 16,
+                        "marginRight": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Aucune de ces sorties culturelles
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
           </View>
-        </BVLinearGradient>
+        </View>
       </View>
     </View>
   </RCTScrollView>

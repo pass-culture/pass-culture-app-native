@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,9 +10,9 @@ import { SearchState } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AccordionItem } from 'ui/components/AccordionItem'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 type OfferTypes = keyof SearchState['offerTypes']
 
@@ -70,6 +69,6 @@ const BodyContainer = styled.View({
   marginRight: getSpacing(-3),
 })
 
-const StyledUl = webStyled(Ul)({
+const StyledUl = styled(Ul)({
   flexWrap: 'wrap',
 })

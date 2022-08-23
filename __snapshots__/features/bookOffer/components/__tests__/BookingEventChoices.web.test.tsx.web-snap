@@ -83,8 +83,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 16px;"
         />
-        <h2
-          aria-level="2"
+        <h4
+          aria-level="4"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="DateStep"
           dir="ltr"
@@ -92,7 +92,7 @@ Object {
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           Date
-        </h2>
+        </h4>
         <div
           class="css-view-1dbjc4n"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -122,8 +122,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 24px;"
         />
-        <h2
-          aria-level="2"
+        <h4
+          aria-level="4"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="HourStep"
           dir="ltr"
@@ -131,7 +131,7 @@ Object {
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           Heure
-        </h2>
+        </h4>
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"
@@ -159,8 +159,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 24px;"
         />
-        <h2
-          aria-level="2"
+        <h4
+          aria-level="4"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="DuoStep"
           dir="ltr"
@@ -168,7 +168,7 @@ Object {
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           Nombre de place
-        </h2>
+        </h4>
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"
@@ -198,7 +198,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -213,7 +213,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -268,7 +268,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -278,7 +278,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
@@ -406,8 +406,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 16px;"
       />
-      <h2
-        aria-level="2"
+      <h4
+        aria-level="4"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="DateStep"
         dir="ltr"
@@ -415,7 +415,7 @@ Object {
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Date
-      </h2>
+      </h4>
       <div
         class="css-view-1dbjc4n"
         style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -445,8 +445,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 24px;"
       />
-      <h2
-        aria-level="2"
+      <h4
+        aria-level="4"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="HourStep"
         dir="ltr"
@@ -454,7 +454,7 @@ Object {
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Heure
-      </h2>
+      </h4>
       <div
         class="css-view-1dbjc4n"
         style="height: 8px;"
@@ -482,8 +482,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 24px;"
       />
-      <h2
-        aria-level="2"
+      <h4
+        aria-level="4"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="DuoStep"
         dir="ltr"
@@ -491,7 +491,7 @@ Object {
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Nombre de place
-      </h2>
+      </h4>
       <div
         class="css-view-1dbjc4n"
         style="height: 8px;"
@@ -521,7 +521,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -536,7 +536,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -591,7 +591,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
@@ -601,7 +601,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>

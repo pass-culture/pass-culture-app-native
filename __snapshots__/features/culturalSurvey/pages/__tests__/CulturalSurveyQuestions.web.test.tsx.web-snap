@@ -3,7 +3,7 @@
 exports[`CulturalSurveysQuestions page should render the page with correct layout 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c2 {
+  "baseElement": .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -36,52 +36,37 @@ Object {
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c0:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c0:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c0:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c1:disabled {
   background-color: #F1F1F4;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c1 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 <body>
@@ -111,7 +96,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 icon-back-SVG-Mock
               </div>
@@ -209,9 +194,15 @@ Object {
               </div>
             </div>
             <ul
-              class="c0 c1"
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="list"
+              style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px;"
             >
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -235,7 +226,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -264,7 +255,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -288,7 +283,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -317,7 +312,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -341,7 +340,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -370,7 +369,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -394,7 +397,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -423,7 +426,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -447,7 +454,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -469,7 +476,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -493,7 +504,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -515,7 +526,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -539,7 +554,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -568,7 +583,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -592,7 +611,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -621,7 +640,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -645,7 +668,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                           >
                             undefined-SVG-Mock
                           </div>
@@ -674,7 +697,11 @@ Object {
                   </div>
                 </div>
               </li>
-              <li>
+              <li
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                role="listitem"
+                style="display: list-item;"
+              >
                 <div
                   class="css-view-1dbjc4n"
                   style="padding-bottom: 12px;"
@@ -714,7 +741,7 @@ Object {
         >
           <button
             aria-label="Continuer vers l'étape suivante"
-            class="c2 c3"
+            class="c0 c1"
             data-testid="next-cultural-survey-question"
             tabindex="0"
             type="button"
@@ -735,7 +762,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c2 {
+  "container": .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -768,52 +795,37 @@ Object {
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c0:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c0:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c0:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c1:disabled {
   background-color: #F1F1F4;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
-.c1 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 <div>
@@ -842,7 +854,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               icon-back-SVG-Mock
             </div>
@@ -940,9 +952,15 @@ Object {
             </div>
           </div>
           <ul
-            class="c0 c1"
+            class="css-reset-4rbku5 css-view-1dbjc4n"
+            role="list"
+            style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px;"
           >
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -966,7 +984,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -995,7 +1013,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1019,7 +1041,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1048,7 +1070,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1072,7 +1098,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1101,7 +1127,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1125,7 +1155,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1154,7 +1184,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1178,7 +1212,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1200,7 +1234,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1224,7 +1262,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1246,7 +1284,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1270,7 +1312,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1299,7 +1341,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1323,7 +1369,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1352,7 +1398,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1376,7 +1426,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                         >
                           undefined-SVG-Mock
                         </div>
@@ -1405,7 +1455,11 @@ Object {
                 </div>
               </div>
             </li>
-            <li>
+            <li
+              class="css-reset-4rbku5 css-view-1dbjc4n"
+              role="listitem"
+              style="display: list-item;"
+            >
               <div
                 class="css-view-1dbjc4n"
                 style="padding-bottom: 12px;"
@@ -1445,7 +1499,7 @@ Object {
       >
         <button
           aria-label="Continuer vers l'étape suivante"
-          class="c2 c3"
+          class="c0 c1"
           data-testid="next-cultural-survey-question"
           tabindex="0"
           type="button"

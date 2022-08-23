@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Li } from 'ui/components/Li'
 import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing, Typo } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
 
 // Use with Ul or VerticalUl to be accessible in web
 export const BulletListItem = ({ text, spacing }: { text: string; spacing?: number }) => {

@@ -223,151 +223,184 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
           testID="creditText"
         >
           <View
-            spacing={5}
+            accessibilityRole="none"
             style={
               Array [
                 Object {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 20,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
+              spacing={5}
               style={
                 Array [
                   Object {
-                    "height": 20,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 20,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                tout ton crédit pour les offres physiques : livre, instrument de musique...
+              </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              tout ton crédit pour les offres physiques : livre, instrument de musique...
-            </Text>
           </View>
           <View
-            spacing={5}
+            accessibilityRole="none"
             style={
               Array [
                 Object {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 20,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
+              spacing={5}
               style={
                 Array [
                   Object {
-                    "height": 20,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 20,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                tout ton crédit pour les sorties : festival, concert, cinéma...
+              </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              tout ton crédit pour les sorties : festival, concert, cinéma...
-            </Text>
           </View>
           <View
-            spacing={5}
+            accessibilityRole="none"
             style={
               Array [
                 Object {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 20,
+                  "display": "flex",
                 },
               ]
             }
           >
             <View
+              spacing={5}
               style={
                 Array [
                   Object {
-                    "height": 20,
-                    "justifyContent": "center",
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 20,
                   },
                 ]
               }
             >
               <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                maximum 300 € en offres numériques : presse en ligne, plateforme de streaming...
+              </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              maximum 300 € en offres numériques : presse en ligne, plateforme de streaming...
-            </Text>
           </View>
         </View>
       </View>

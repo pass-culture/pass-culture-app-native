@@ -3,7 +3,7 @@
 exports[`<SetAddress/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
+  "baseElement": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -17,40 +17,32 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c4 {
+.c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -83,59 +75,44 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c2:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c2:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c2:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c2:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c2:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c3:disabled {
   background-color: #F1F1F4;
 }
 
-.c3 {
+.c1 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
 }
 
 <body>
@@ -145,8 +122,9 @@ Object {
         style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
       >
         <header
-          class="c0"
+          class="css-view-1dbjc4n"
           role="banner"
+          style="position: static; width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -175,7 +153,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c1"
+                    class="c0"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -187,7 +165,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
@@ -235,7 +213,9 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="c2"
+                  class="css-view-1dbjc4n"
+                  role="form"
+                  style="max-width: 500px; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -256,8 +236,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="c3"
-                    dir="ltr"
+                    class="c1"
                     for="testUuidV4"
                   >
                     Entre ton adresse
@@ -323,7 +302,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="c4 c5"
+                  class="c2 c3"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
@@ -347,7 +326,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c1 {
+  "container": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -361,40 +340,32 @@ Object {
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c4 {
+.c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -427,59 +398,44 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c2:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c2:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c2:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c2:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c2:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c3:disabled {
   background-color: #F1F1F4;
 }
 
-.c3 {
+.c1 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
 }
 
 <div>
@@ -488,8 +444,9 @@ Object {
       style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
     >
       <header
-        class="c0"
+        class="css-view-1dbjc4n"
         role="banner"
+        style="position: static; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -518,7 +475,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c1"
+                  class="c0"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -530,7 +487,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
@@ -578,7 +535,9 @@ Object {
               style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
             >
               <form
-                class="c2"
+                class="css-view-1dbjc4n"
+                role="form"
+                style="max-width: 500px; width: 100%;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -599,8 +558,7 @@ Object {
                   style="height: 20px;"
                 />
                 <label
-                  class="c3"
-                  dir="ltr"
+                  class="c1"
                   for="testUuidV4"
                 >
                   Entre ton adresse
@@ -666,7 +624,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l'étape suivante"
-                class="c4 c5"
+                class="c2 c3"
                 data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"

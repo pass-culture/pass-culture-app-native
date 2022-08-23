@@ -36,10 +36,10 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
+import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { VerticalUl } from 'ui/web/list/Ul'
 
 type CulturalSurveyQuestionsProps = StackScreenProps<
   CulturalSurveyRootStackParamList,

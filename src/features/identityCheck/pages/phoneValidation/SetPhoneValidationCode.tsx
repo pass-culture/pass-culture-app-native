@@ -22,12 +22,12 @@ import {
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
-import { Form } from 'ui/web/form/Form'
 
 export type SetPhoneValidationCodeProps = StackScreenProps<
   IdentityCheckRootStackParamList,

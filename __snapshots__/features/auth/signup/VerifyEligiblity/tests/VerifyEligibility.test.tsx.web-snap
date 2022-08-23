@@ -208,7 +208,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             undefined-SVG-Mock
           </div>
@@ -230,7 +230,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             undefined-SVG-Mock
           </div>
@@ -449,7 +449,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           >
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               button-icon-SVG-Mock
             </div>

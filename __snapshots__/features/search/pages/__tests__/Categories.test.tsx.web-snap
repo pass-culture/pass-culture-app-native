@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Categories component should render correctly 1`] = `
-.c4 {
+.c1 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -19,6 +19,68 @@ exports[`Categories component should render correctly 1`] = `
   padding-right: 2px;
   min-height: 40px;
   width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c1:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c1:focus-visible {
+  outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c1:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -53,8 +115,8 @@ exports[`Categories component should render correctly 1`] = `
 .c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
 }
 
 .c4:hover:disabled {
@@ -62,77 +124,15 @@ exports[`Categories component should render correctly 1`] = `
   text-decoration: none;
 }
 
-.c7 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #eb0055;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c7:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c7:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c7:active {
-  outline: none;
-  opacity: 0.7;
-}
-
-.c7:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c7:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c8:disabled {
+.c5:disabled {
   background-color: #F1F1F4;
 }
 
-.c5 {
+.c2 {
   background-color: transparent;
 }
 
-.c1 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -146,60 +146,37 @@ exports[`Categories component should render correctly 1`] = `
   padding: 0;
 }
 
-.c1:active {
+.c0:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c1:focus {
+.c0:focus {
   outline: auto;
 }
 
-.c1:disabled {
+.c0:disabled {
   cursor: initial;
 }
 
-.c1:hover {
+.c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  overflow: auto;
-}
-
 .c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c6 {
   width: auto;
   margin-right: 16px;
 }
 
-.c9 {
+.c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -226,8 +203,14 @@ exports[`Categories component should render correctly 1`] = `
   }
 >
   <header
-    className="c0"
+    className="css-view-1dbjc4n"
     role="banner"
+    style={
+      Object {
+        "position": "static",
+        "width": "100%",
+      }
+    }
   >
     <div
       className="css-view-1dbjc4n"
@@ -329,7 +312,7 @@ exports[`Categories component should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c1"
+              className="c0"
               data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -342,7 +325,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
@@ -465,9 +448,30 @@ exports[`Categories component should render correctly 1`] = `
         }
       />
       <ul
-        className="c2 c3"
+        className="css-reset-4rbku5 css-view-1dbjc4n"
+        role="list"
+        style={
+          Object {
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "vertical",
+            "WebkitFlexDirection": "column",
+            "flexDirection": "column",
+            "msFlexDirection": "column",
+            "overflowX": "auto",
+            "overflowY": "auto",
+            "paddingLeft": "0px",
+          }
+        }
       >
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={true}
             className="css-view-1dbjc4n"
@@ -543,7 +547,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -598,7 +602,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -606,7 +610,15 @@ exports[`Categories component should render correctly 1`] = `
             </div>
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -682,7 +694,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -734,7 +746,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -810,7 +830,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -862,7 +882,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -938,7 +966,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -990,7 +1018,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1066,7 +1102,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1118,7 +1154,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1194,7 +1238,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1246,7 +1290,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1322,7 +1374,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1374,7 +1426,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1450,7 +1510,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1502,7 +1562,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1578,7 +1646,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1630,7 +1698,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1706,7 +1782,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1758,7 +1834,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1834,7 +1918,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -1886,7 +1970,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -1962,7 +2054,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -2014,7 +2106,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -2090,7 +2190,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -2142,7 +2242,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -2218,7 +2326,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -2270,7 +2378,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -2346,7 +2462,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -2398,7 +2514,15 @@ exports[`Categories component should render correctly 1`] = `
             />
           </div>
         </li>
-        <li>
+        <li
+          className="css-reset-4rbku5 css-view-1dbjc4n"
+          role="listitem"
+          style={
+            Object {
+              "display": "list-item",
+            }
+          }
+        >
           <div
             aria-checked={false}
             className="css-view-1dbjc4n"
@@ -2474,7 +2598,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                 >
                   undefined-SVG-Mock
                 </div>
@@ -2550,7 +2674,7 @@ exports[`Categories component should render correctly 1`] = `
     }
   >
     <button
-      className="c4 c5 c6"
+      className="c1 c2 c3"
       onClick={[Function]}
       onDoubleClick={[Function]}
       tabIndex={0}
@@ -2572,7 +2696,7 @@ exports[`Categories component should render correctly 1`] = `
         >
           <div
             className="css-text-901oao"
-            dir="auto"
+            dir="ltr"
           >
             button-icon-SVG-Mock
           </div>
@@ -2597,7 +2721,7 @@ exports[`Categories component should render correctly 1`] = `
       </div>
     </button>
     <button
-      className="c7 c8 c9"
+      className="c4 c5 c6"
       onClick={[Function]}
       onDoubleClick={[Function]}
       tabIndex={0}

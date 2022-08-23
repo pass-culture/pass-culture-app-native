@@ -26,7 +26,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 undefined-SVG-Mock
               </div>
@@ -63,7 +63,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
               >
                 iconPrice-SVG-Mock
               </div>
@@ -111,7 +111,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               undefined-SVG-Mock
             </div>
@@ -148,7 +148,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
             >
               iconPrice-SVG-Mock
             </div>

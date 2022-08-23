@@ -3,8 +3,6 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTextAttrs } from 'ui/theme/typographyAttrs/getTextAttrs'
-
 import { RNTextInputProps } from './types'
 
 export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function BaseTextInput(
@@ -71,7 +69,6 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.typography.placeholder.color,
-  ...getTextAttrs(),
 }))<{ isEmpty: boolean }>(({ theme, isEmpty }) => {
   const inputStyle = isEmpty ? theme.typography.placeholder : theme.typography.body
   return {

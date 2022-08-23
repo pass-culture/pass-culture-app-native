@@ -1,13 +1,12 @@
 import React from 'react'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OfferAccessibilityResponse } from 'api/gen'
 import { AccessibilityAtom } from 'ui/components/accessibility/AccessibilityAtom'
 import { HandicapCategory } from 'ui/components/accessibility/AccessibilityAtom.service'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
   visualDisability,
@@ -47,11 +46,11 @@ const Row = styled.View(({ theme }) => ({
   justifyContent: theme.isMobileViewport ? 'space-between' : 'space-around',
 }))
 
-const StyledUl = webStyled(Ul)({
+const StyledUl = styled(Ul)({
   flex: 1,
   overflow: 'visible',
 })
 
-const StyledLi = webStyled(Li)({
+const StyledLi = styled(Li)({
   flex: 1,
 })

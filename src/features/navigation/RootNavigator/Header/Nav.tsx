@@ -1,13 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { theme } from 'theme'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 import { NavItem } from './NavItem'
 
@@ -21,7 +22,11 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
 
   return (
-    <NavItemsContainer maxWidth={maxWidth} navHeight={height} noShadow={noShadow}>
+    <NavItemsContainer
+      accessibilityRole={AccessibilityRole.NAVIGATION}
+      maxWidth={maxWidth}
+      navHeight={height}
+      noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => (
           <StyledLi key={`key-tab-nav-${route.name}`}>
@@ -44,7 +49,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   )
 }
 
-const NavItemsContainer = styled.nav.attrs({ role: 'navigation' })<{
+const NavItemsContainer = styled.View<{
   maxWidth?: number
   navHeight?: number
   noShadow?: boolean
@@ -70,4 +75,5 @@ const NavItemsContainer = styled.nav.attrs({ role: 'navigation' })<{
 
 const StyledLi = styled(Li)({
   display: 'flex',
+  flexDirection: 'row',
 })
