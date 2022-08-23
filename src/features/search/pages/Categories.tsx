@@ -38,6 +38,10 @@ export const Categories: React.FC = () => {
     return selectedCategory === category
   }
 
+  const onResetPress = () => {
+    setSelectedCategory(SearchGroupNameEnumv2.NONE)
+  }
+
   const onSearchPress = () => {
     const payload = selectedCategory === SearchGroupNameEnumv2.NONE ? [] : [selectedCategory]
     dispatch({ type: 'SET_CATEGORY', payload })
@@ -75,7 +79,7 @@ export const Categories: React.FC = () => {
         </VerticalUl>
       </StyledScrollView>
       <BottomButtonsContainer>
-        <ResetButton wording="Réinitialiser" icon={Again} />
+        <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
         <SearchButton wording="Rechercher" onPress={onSearchPress} />
       </BottomButtonsContainer>
     </Container>
