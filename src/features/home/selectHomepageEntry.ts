@@ -2,9 +2,17 @@ import omit from 'lodash/omit'
 import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useUserHasBookings } from 'features/bookings/helpers'
 import { HomepageEntry, TagId } from 'features/home/contentful'
+import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
-import { isUserUnderageBeneficiary } from 'features/profile/utils'
+import {
+  isUserBeneficiary18,
+  isUserUnderage,
+  isUserUnderageBeneficiary,
+} from 'features/profile/utils'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 
 const scoreHomepageByTags = (
   homepageEntry: HomepageEntry,
@@ -22,7 +30,17 @@ const scoreHomepageByTags = (
 
 // this creates a selector to pick the adequate homepage to show
 export const useSelectHomepageEntry = (homepageEntryId?: string) => {
+  const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
+  const userHasBookings = useUserHasBookings()
+  const {
+    homeEntryIdNotConnected,
+    homeEntryIdGeneral,
+    homeEntryIdWithoutBooking_18,
+    homeEntryIdWithoutBooking_15_17,
+    homeEntryId_18,
+    homeEntryId_15_17,
+  } = useRemoteConfigContext()
 
   return useCallback(
     (homepageEntries: HomepageEntry[]): HomepageEntry | undefined => {
@@ -40,8 +58,57 @@ export const useSelectHomepageEntry = (homepageEntryId?: string) => {
         .filter(({ score }) => score > 0)
         .sort((a, b) => b.score - a.score)
 
-      return scoredEntries.length ? omit(scoredEntries[0], 'score') : firstHomepageEntry
+      const defaultHomepageEntry = scoredEntries.length
+        ? omit(scoredEntries[0], 'score')
+        : firstHomepageEntry
+
+      if (!isLoggedIn || !user) {
+        return (
+          homepageEntries.find(({ sys }) => sys.id === homeEntryIdNotConnected) ||
+          defaultHomepageEntry
+        )
+      }
+
+      if (isUserUnderage(user)) {
+        if (userHasBookings) {
+          return (
+            homepageEntries.find(({ sys }) => sys.id === homeEntryId_15_17) || defaultHomepageEntry
+          )
+        }
+        return (
+          homepageEntries.find(({ sys }) => sys.id === homeEntryIdWithoutBooking_15_17) ||
+          defaultHomepageEntry
+        )
+      }
+
+      const credit = getAvailableCredit(user)
+      if (user?.eligibility === 'age-18' || (isUserBeneficiary18(user) && !credit.isExpired)) {
+        if (userHasBookings) {
+          return (
+            homepageEntries.find(({ sys }) => sys.id === homeEntryId_18) || defaultHomepageEntry
+          )
+        }
+        return (
+          homepageEntries.find(({ sys }) => sys.id === homeEntryIdWithoutBooking_18) ||
+          defaultHomepageEntry
+        )
+      }
+
+      return (
+        homepageEntries.find(({ sys }) => sys.id === homeEntryIdGeneral) || defaultHomepageEntry
+      )
     },
-    [user, homepageEntryId]
+    [
+      user,
+      homepageEntryId,
+      homeEntryIdNotConnected,
+      homeEntryIdGeneral,
+      homeEntryIdWithoutBooking_18,
+      homeEntryIdWithoutBooking_15_17,
+      homeEntryId_18,
+      homeEntryId_15_17,
+      isLoggedIn,
+      userHasBookings,
+    ]
   )
 }

@@ -33,7 +33,7 @@ export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined)
   return !!hasUserUnderageRole
 }
 
-const isUserUnderage = (user?: UserProfileResponse) =>
+export const isUserUnderage = (user?: UserProfileResponse) =>
   user?.eligibility === EligibilityType.underage
 
 export const useIsUserUnderage = () => {

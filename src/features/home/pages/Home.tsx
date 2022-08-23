@@ -25,7 +25,6 @@ import { RecommendationPane, ProcessedModule } from 'features/home/contentful/mo
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -128,9 +127,7 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { homeEntryId: remoteConfigHomeEntryId } = useRemoteConfigContext()
-  const { modules, homeEntryId } =
-    useHomepageModules(params?.entryId ?? remoteConfigHomeEntryId) || {}
+  const { modules, homeEntryId } = useHomepageModules(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent('has_seen_all_the_homepage')
