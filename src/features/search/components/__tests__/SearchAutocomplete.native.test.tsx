@@ -10,10 +10,26 @@ jest.mock('react-instantsearch-hooks', () => ({
       {
         objectID: '1',
         query: 'cinéma',
+        _highlightResult: {
+          query: {
+            value: '<mark>cinéma</mark>',
+            matchLevel: 'full',
+            fullyHighlighted: true,
+            matchedWords: ['cinéma'],
+          },
+        },
       },
       {
         objectID: '2',
-        query: 'terrain',
+        query: 'cinéma itinérant',
+        _highlightResult: {
+          query: {
+            value: '<mark>cinéma</mark> itinérant',
+            matchLevel: 'full',
+            fullyHighlighted: false,
+            matchedWords: ['cinéma'],
+          },
+        },
       },
     ],
   }),

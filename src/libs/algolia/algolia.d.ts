@@ -26,6 +26,18 @@ export interface AlgoliaHit {
 export interface AlgoliaSuggestionHit {
   objectID: string
   query: string
+  _highlightResult?: HighlightResultAttribute
+}
+
+export interface HighlightResultAttribute {
+  query: HighlightResult
+}
+
+export interface HighlightResult {
+  fullyHighlighted: boolean
+  matchLevel: string
+  matchedWords: string[]
+  value: string
 }
 
 export interface AlgoliaVenue {

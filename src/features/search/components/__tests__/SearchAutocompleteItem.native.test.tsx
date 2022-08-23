@@ -32,6 +32,14 @@ describe('SearchAutocompleteItem component', () => {
   const hit = {
     objectID: '1',
     query: 'cinéma',
+    _highlightResult: {
+      query: {
+        value: '<mark>cinéma</mark>',
+        matchLevel: 'full',
+        fullyHighlighted: true,
+        matchedWords: ['cinéma'],
+      },
+    },
   }
 
   it('should render SearchAutocompleteItem', () => {

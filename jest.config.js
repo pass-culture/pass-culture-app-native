@@ -30,6 +30,7 @@ module.exports = {
       '|@react-native-firebase/remote-config' +
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
+      '|instantsearch.js' +
       '/(?!(lib)))',
   ],
   testRegex: '(?<!.web).(?:test|spec).(?:tsx?|js)$',
