@@ -10,13 +10,13 @@ const scoreHomepageByTags = (
   homepageEntry: HomepageEntry,
   user?: UserProfileResponse
 ): HomepageEntry & { score: number } => {
-  const isUnderage = isUserUnderageBeneficiary(user)
+  const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const tags: TagId[] = homepageEntry.metadata.tags.map(({ sys }) => sys.id)
 
   let score = 0
   if (tags.includes('master')) score += 5
-  if (tags.includes('userunderage')) score += isUnderage ? 3 : -3
-  if (tags.includes('usergrandpublic')) score += isUnderage ? -1 : 1
+  if (tags.includes('userunderage')) score += isUnderageBeneficiary ? 3 : -3
+  if (tags.includes('usergrandpublic')) score += isUnderageBeneficiary ? -1 : 1
   return { ...homepageEntry, score }
 }
 
