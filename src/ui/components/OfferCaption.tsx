@@ -3,6 +3,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Typo, GUTTER_DP } from 'ui/theme'
 
 interface OfferCaptionProps {
@@ -20,8 +21,8 @@ export const OfferCaption = (props: OfferCaptionProps) => {
   return (
     <CaptionContainer imageWidth={imageWidth}>
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
-      {!!date && <StyledCaption numberOfLines={1}>{date}</StyledCaption>}
-      <StyledCaption testID="priceIsDuo">
+      {!!date && <GreyDarkCaption numberOfLines={1}>{date}</GreyDarkCaption>}
+      <GreyDarkCaption testID="priceIsDuo">
         {isDuo && isBeneficiary
           ? t({
               id: 'price',
@@ -29,7 +30,7 @@ export const OfferCaption = (props: OfferCaptionProps) => {
               message: '{price} - Duo',
             })
           : price}
-      </StyledCaption>
+      </GreyDarkCaption>
     </CaptionContainer>
   )
 }
@@ -37,8 +38,4 @@ export const OfferCaption = (props: OfferCaptionProps) => {
 const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
   maxWidth: imageWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
-}))
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
 }))

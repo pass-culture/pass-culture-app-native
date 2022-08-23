@@ -19,6 +19,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -32,7 +33,7 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 import { Li } from 'ui/web/list/Li'
 import { Ul, VerticalUl } from 'ui/web/list/Ul'
@@ -244,7 +245,7 @@ const OnlineProfile: React.FC = () => {
         )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <StyledCaption>{t`Version` + `\u00a0${Package.version}`}</StyledCaption>
+          <GreyDarkCaption>{t`Version` + `\u00a0${Package.version}`}</GreyDarkCaption>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />
@@ -270,10 +271,6 @@ const paddingVertical = getSpacing(4)
 const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   paddingVertical,
 })
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),

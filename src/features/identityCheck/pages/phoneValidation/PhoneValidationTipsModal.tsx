@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
@@ -92,7 +93,6 @@ const Info = styled(Typo.Body)({
   flex: 1,
 })
 
-const Subtitle = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const Subtitle = styled(GreyDarkCaption)({
   flex: 1,
-}))
+})

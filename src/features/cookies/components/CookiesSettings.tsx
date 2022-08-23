@@ -7,6 +7,7 @@ import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookieCategoriesEnum, useCookiesContext } from 'features/cookies/CookiesContext'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Separator } from 'ui/components/Separator'
@@ -33,7 +34,7 @@ export const CookiesSettings = () => {
         {...getHeadingAttrs(2)}>{t`À quoi servent tes cookies et tes données\u00a0?`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
-        <StyledCaption>{t`Je choisis mes cookies`}</StyledCaption>
+        <GreyDarkCaption>{t`Je choisis mes cookies`}</GreyDarkCaption>
         <AcceptAllContainer>
           <StyledInputLabel htmlFor={checkboxID}>{t`Tout accepter`}</StyledInputLabel>
           <Spacer.Row numberOfSpaces={2} />
@@ -82,17 +83,13 @@ export const CookiesSettings = () => {
 }
 
 const InfoCaption: React.FC = ({ children }) => (
-  <StyledCaption>
+  <GreyDarkCaption>
     <IconContainer>
       <StyledInfo />
     </IconContainer>
     {children}
-  </StyledCaption>
+  </GreyDarkCaption>
 )
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const ChoiceContainer = styled.View({
   flexDirection: 'row',

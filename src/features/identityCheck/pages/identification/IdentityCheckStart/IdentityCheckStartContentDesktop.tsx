@@ -6,6 +6,7 @@ import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -53,7 +54,7 @@ export function IdentityCheckStartContentDesktop({
           onPress={showDMSModal}
           icon={ExternalFilledIcon}
         />
-        <StyledCaption>{t`Environ 10 jours`}</StyledCaption>
+        <GreyDarkCaption>{t`Environ 10 jours`}</GreyDarkCaption>
       </DMSInformationContainer>
       <DMSModal visible={visible} hideModal={hideModal} />
       <Spacer.Column numberOfSpaces={6} />
@@ -70,10 +71,6 @@ const Title = styled(Typo.Title4)({ textAlign: 'center' })
 const Body = styled(Typo.Body)({ textAlign: 'center' })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

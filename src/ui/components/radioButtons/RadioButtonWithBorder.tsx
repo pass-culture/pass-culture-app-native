@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
+
 interface Props {
   selected: boolean
   description?: string | null
@@ -31,7 +33,7 @@ export const RadioButtonWithBorder = ({ label, description, selected, onPress }:
       onPress={onPressFn}>
       <TextContainer ref={containerRef}>
         <ButtonText selected={selected}>{label}</ButtonText>
-        {description ? <Caption>{description}</Caption> : null}
+        {description ? <GreyDarkCaption>{description}</GreyDarkCaption> : null}
       </TextContainer>
       {selected ? (
         <IconContainer>
@@ -70,8 +72,4 @@ const IconContainer = styled.View({
 
 const ButtonText = styled(Typo.ButtonText)<{ selected: boolean }>(({ selected, theme }) => ({
   color: selected ? theme.colors.primary : theme.colors.black,
-}))
-
-const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
 }))

@@ -3,7 +3,6 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
-import styled from 'styled-components/native'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -14,6 +13,7 @@ import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -152,9 +152,9 @@ export function NotificationSettings() {
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledCaption>
+      <GreyDarkCaption>
         {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
-      </StyledCaption>
+      </GreyDarkCaption>
       <Form.Flex>
         <SectionWithSwitch
           title={t`Autoriser l’envoi d’e-mails`}
@@ -166,9 +166,9 @@ export function NotificationSettings() {
           <React.Fragment>
             <Separator />
             <Spacer.Column numberOfSpaces={4} />
-            <StyledCaption>
+            <GreyDarkCaption>
               {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
-            </StyledCaption>
+            </GreyDarkCaption>
             <SectionWithSwitch
               title={t`Autoriser les notifications marketing`}
               active={pushSwitchEnabled}
@@ -200,10 +200,6 @@ export function NotificationSettings() {
     </PageProfileSection>
   )
 }
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const getInitialSwitchesState = (
   subscriptions?: NotificationSubscriptions

@@ -35,6 +35,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
@@ -170,7 +171,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
       <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
         <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
         <CaptionContainer>
-          <GreyCaption>{pageSubtitle}</GreyCaption>
+          <GreyDarkCaption>{pageSubtitle}</GreyDarkCaption>
         </CaptionContainer>
         <VerticalUl>
           {culturalSurveyQuestion?.answers.map((answer) => (
@@ -233,10 +234,6 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>(
 const CheckboxContainer = styled.View({
   paddingBottom: getSpacing(3),
 })
-
-const GreyCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const CaptionContainer = styled.View({
   paddingTop: getSpacing(2),

@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -52,7 +53,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
         )}
         <DescriptionContainer>
           <Typo.ButtonText>{props?.title}</Typo.ButtonText>
-          {!!props.subtitle && <GreyCaption>{props?.subtitle}</GreyCaption>}
+          {!!props.subtitle && <GreyDarkCaption>{props?.subtitle}</GreyDarkCaption>}
         </DescriptionContainer>
         {!!selected && (
           <ValidateIconContainer>
@@ -79,10 +80,6 @@ const AnswerContainer = styled(TouchableOpacity).attrs({
   margin: getSpacing(0.25),
   borderRadius: getSpacing(1.8),
   minHeight: getSpacing(18),
-}))
-
-const GreyCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
 }))
 
 const DescriptionContainer = styled.View({

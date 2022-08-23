@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
@@ -46,7 +47,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <StyledCaption>{t`Carte d’identité ou passeport.`}</StyledCaption>
+    <GreyDarkCaption>{t`Carte d’identité ou passeport.`}</GreyDarkCaption>
     <Spacer.Column numberOfSpaces={8} />
     <TouchableLink
       as={ButtonTertiaryBlack}
@@ -56,15 +57,11 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <StyledCaption>{t`Titre de séjour, carte d'identité, ou passeport.`}</StyledCaption>
+    <GreyDarkCaption>{t`Titre de séjour, carte d'identité, ou passeport.`}</GreyDarkCaption>
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>
 )
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

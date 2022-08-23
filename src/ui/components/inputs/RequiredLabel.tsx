@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { InputCaption } from 'ui/components/inputs/InputCaption'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 
 export function RequiredLabel() {
-  return <InputCaption>{t`Obligatoire`}</InputCaption>
+  return <GreyDarkCaption>{t`Obligatoire`}</GreyDarkCaption>
 }

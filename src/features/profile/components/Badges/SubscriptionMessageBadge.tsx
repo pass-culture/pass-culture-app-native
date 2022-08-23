@@ -1,14 +1,14 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Clock } from 'ui/svg/icons/Clock'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
@@ -31,9 +31,9 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
     <React.Fragment>
       {!!props.subscriptionMessage?.updatedAt && (
         <React.Fragment>
-          <Caption>
+          <GreyDarkCaption>
             {formatDateToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
-          </Caption>
+          </GreyDarkCaption>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
@@ -55,7 +55,3 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
     </React.Fragment>
   )
 }
-
-const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))

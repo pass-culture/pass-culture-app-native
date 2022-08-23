@@ -14,6 +14,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
@@ -79,7 +80,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
         <Spacer.Column numberOfSpaces={8} />
         <BottomContentContainer>
           <WarningContainer>
-            <WarningMessage>{t`Attention, il te reste\u00a0:` + ' '}</WarningMessage>
+            <GreyDarkCaption>{t`Attention, il te reste\u00a0:` + ' '}</GreyDarkCaption>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording}
             </WarningRemainingAttempts>
@@ -108,10 +109,6 @@ const BottomContentContainer = styled.View({
 const WarningContainer = styled.View({
   flexDirection: 'row',
 })
-
-const WarningMessage = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const WarningRemainingAttempts = styled(Typo.Caption)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({

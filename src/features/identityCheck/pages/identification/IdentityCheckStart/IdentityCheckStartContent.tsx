@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
@@ -34,7 +35,7 @@ export function IdentityCheckStartContent() {
       <Spacer.Column numberOfSpaces={6} />
       <Spacer.Flex />
       <DMSInformationContainer>
-        <Caption>{t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`}</Caption>
+        <GreyDarkCaption>{t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`}</GreyDarkCaption>
         <ButtonQuaternaryBlack
           wording={t`Transmettre un document`}
           onPress={showDMSModal}
@@ -64,10 +65,6 @@ const Body = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const Bold = styled(Typo.Body)(({ theme }) => ({ fontFamily: theme.fontFamily.bold }))
-
-const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const DMSInformationContainer = styled.View(({ theme }) => ({
   display: 'flex',
