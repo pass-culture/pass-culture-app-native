@@ -26,6 +26,7 @@ import { useSafeState } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
@@ -163,11 +164,11 @@ export const SetPhoneNumber = () => {
       fixedBottomChildren={
         <BottomContentContainer>
           <RemainingAttemptsContainer>
-            <GreyCaption>{t`Il te reste` + ' '}</GreyCaption>
+            <GreyDarkCaption>{t`Il te reste` + ' '}</GreyDarkCaption>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording + ' '}
             </WarningRemainingAttempts>
-            <GreyCaption>{t`de code de validation`}</GreyCaption>
+            <GreyDarkCaption>{t`de code de validation`}</GreyDarkCaption>
           </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
@@ -195,10 +196,6 @@ function isPhoneNumberValid(number: string, countryCode: CountryCode) {
 const RemainingAttemptsContainer = styled.View({
   flexDirection: 'row',
 })
-
-const GreyCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,

@@ -147,6 +147,7 @@ function requestSettingsSuccess(
     appEnableCategoryFilterPage: false,
     accountUnsuspensionLimit: 60,
     appEnableAutocomplete: true,
+    appEnableCookiesV2: false,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {

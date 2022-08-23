@@ -3,9 +3,9 @@ import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
-import { InputCaption } from 'ui/components/inputs/InputCaption'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Spacer, Typo } from 'ui/theme'
@@ -41,7 +41,8 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
 
   const RightLabel = () => {
     if (isRequiredField) return <RequiredLabel />
-    if (customProps.rightLabel) return <InputCaption>{t`${customProps.rightLabel}`}</InputCaption>
+    if (customProps.rightLabel)
+      return <GreyDarkCaption>{t`${customProps.rightLabel}`}</GreyDarkCaption>
     return <React.Fragment />
   }
 

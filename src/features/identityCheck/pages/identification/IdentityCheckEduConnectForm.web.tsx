@@ -8,6 +8,7 @@ import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Info } from 'ui/svg/icons/Info'
@@ -41,9 +42,9 @@ export const IdentityCheckEduConnectForm = () => {
               <Info />
               <Spacer.Row numberOfSpaces={2} />
 
-              <StyledCaption>
+              <GreyDarkCaption>
                 {t`Un souci pour accéder à la page\u00a0? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.`}
-              </StyledCaption>
+              </GreyDarkCaption>
             </HavingTroubleContainer>
 
             <Spacer.Column numberOfSpaces={8} />
@@ -80,10 +81,6 @@ const JustifiedText = styled(Typo.Body)(({ theme }) => ({
 
 const JustifiedHeader = styled(Typo.ButtonText)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.greyDark,
-}))
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

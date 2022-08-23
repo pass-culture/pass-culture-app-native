@@ -4,6 +4,7 @@ import { Animated, Easing, TouchableWithoutFeedback, Platform } from 'react-nati
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useElementHeight } from 'ui/hooks/useElementHeight'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -123,7 +124,6 @@ const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const Credit = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const Credit = styled(GreyDarkCaption)({
   marginTop: getSpacing(6),
-}))
+})

@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Spacer, Typo } from 'ui/theme'
 
 export const CookiesConsentExplanations = () => (
@@ -10,11 +10,7 @@ export const CookiesConsentExplanations = () => (
     <Spacer.Column numberOfSpaces={4} />
     <Typo.Body>{t`Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies.`}</Typo.Body>
     <Spacer.Column numberOfSpaces={4} />
-    <StyledCaption>{t`Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.`}</StyledCaption>
+    <GreyDarkCaption>{t`Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.`}</GreyDarkCaption>
     <Spacer.Column numberOfSpaces={4} />
   </React.Fragment>
 )
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))

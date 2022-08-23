@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -56,7 +57,7 @@ export function RadioButton(props: RadioButtonProps) {
         )}
         <View>
           <Label isSelected={props.isSelected}>{props.label}</Label>
-          {!!props.description && <Subtitle>{props.description}</Subtitle>}
+          {!!props.description && <GreyDarkCaption>{props.description}</GreyDarkCaption>}
         </View>
       </LabelContainer>
       <Spacer.Flex flex={0.1}>{!!props.isSelected && <ValidateIconPrimary />}</Spacer.Flex>
@@ -75,10 +76,6 @@ const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
-}))
-
-const Subtitle = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
 }))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{ marginVertical: number }>(

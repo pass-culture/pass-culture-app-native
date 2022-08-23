@@ -12,12 +12,13 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Check } from 'ui/svg/icons/Check'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingItemTitle } from './BookingItemTitle'
@@ -79,7 +80,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
             <EndedReasonAndDate>
               {endedBookingReason}
               <Spacer.Row numberOfSpaces={1} />
-              <DateLabel>{endedBookingDateLabel}</DateLabel>
+              <GreyDarkCaption>{endedBookingDateLabel}</GreyDarkCaption>
             </EndedReasonAndDate>
           </AttributesView>
         </ItemContainer>
@@ -104,10 +105,6 @@ const EndedReasonAndDate = styled.View({
   flex: 1,
   alignItems: 'center',
 })
-
-const DateLabel = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,

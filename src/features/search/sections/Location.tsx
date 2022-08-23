@@ -12,6 +12,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer } from 'ui/theme'
@@ -51,9 +52,9 @@ export const Location: React.FC = () => {
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <Caption nativeID={captionId}>
+          <GreyDarkCaption nativeID={captionId}>
             {t`Seules les sorties et offres physiques seront affichées`}
-          </Caption>
+          </GreyDarkCaption>
         </React.Fragment>
       ) : null}
     </Section>
@@ -70,10 +71,6 @@ const LocationContentContainer = styled(TouchableOpacity)({
 const Label = styled(Typo.ButtonText)({
   flexShrink: 1,
 })
-
-const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

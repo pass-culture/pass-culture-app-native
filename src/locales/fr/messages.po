@@ -1051,6 +1051,10 @@ msgstr "Enregistrer des statistiques de navigation"
 msgid "Enregistrer les modifications"
 msgstr "Enregistrer les modifications"
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Enregistrer mes choix"
+msgstr "Enregistrer mes choix"
+
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Entre ton adresse"
 msgstr "Entre ton adresse"
@@ -1637,6 +1641,10 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation."
+msgstr "L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation."
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 msgid ""
 "L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !\n"
@@ -2043,6 +2051,10 @@ msgstr ""
 msgid "On est super triste de te voir partir."
 msgstr "On est super triste de te voir partir."
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "On te redemandera bien sûr ton consentement si notre politique évolue."
+msgstr "On te redemandera bien sûr ton consentement si notre politique évolue."
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "On y va !"
@@ -2141,6 +2153,7 @@ msgstr "Paramètres applicatifs"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
@@ -2243,6 +2256,10 @@ msgstr "Plus tard"
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Politique de gestion des cookies"
+msgstr "Politique de gestion des cookies"
+
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Politique des cookies"
@@ -2267,6 +2284,10 @@ msgstr "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu 
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
+
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Pour plus d’informations, nous t’invitons à consulter notre"
+msgstr "Pour plus d’informations, nous t’invitons à consulter notre"
 
 #: src/features/bookings/helpers.ts
 msgid "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
@@ -2912,6 +2933,10 @@ msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 msgid "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."
 msgstr "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment."
+msgstr "Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment."
+
 #: src/features/bookings/atoms/TicketCode.web.tsx
 msgid "Ton code a été copié dans le presse-papier !"
 msgstr "Ton code a été copié dans le presse-papier !"
@@ -3152,6 +3177,10 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Tu as la main dessus"
+msgstr "Tu as la main dessus"
+
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
 msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
@@ -3237,6 +3266,10 @@ msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attent
 #: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
 msgid "Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site."
 msgstr "Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site."
+
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Tu peux choisir d’accepter ou non l’activation de leur suivi."
+msgstr "Tu peux choisir d’accepter ou non l’activation de leur suivi."
 
 #: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
 msgid ""

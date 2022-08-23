@@ -4,14 +4,17 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -21,6 +24,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
 
 export const ConsentSettings: FunctionComponent<Props> = () => {
+  const { data: settings } = useAppSettings()
   const { goBack } = useNavigation()
   const { showSuccessSnackBar } = useSnackBarContext()
   const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
@@ -58,14 +62,16 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
     goBack()
   }
 
-  return (
+  return settings?.appEnableCookiesV2 ? (
+    <NewConsentSettings />
+  ) : (
     <PageProfileSection title={t`Paramètres de confidentialité`}>
       <StyledBody>
         {t`L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle.`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <MoreInformationContainer>
-        <StyledCaption>
+        <GreyDarkCaption>
           {t`Pour plus d'informations, nous t'invitons à consulter notre`}
           <Spacer.Row numberOfSpaces={1} />
           <TouchableLink
@@ -75,7 +81,7 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
             icon={ExternalSiteFilled}
             typography="Caption"
           />
-        </StyledCaption>
+        </GreyDarkCaption>
       </MoreInformationContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
@@ -98,10 +104,6 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.black,
-}))
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
 }))
 
 const MoreInformationContainer = styled.View({

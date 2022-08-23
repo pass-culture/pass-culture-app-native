@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 export const Ean: FunctionComponent<Props> = ({ isbn }) => (
   <EANContainer testID="ean">
     <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
-    <DarkGreyCaption>{isbn}</DarkGreyCaption>
+    <GreyDarkCaption>{isbn}</GreyDarkCaption>
   </EANContainer>
 )
 
@@ -21,7 +22,3 @@ const EANContainer = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
 })
-
-const DarkGreyCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
