@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -83,7 +84,7 @@ export const CookiesSettings = () => {
 }
 
 const InfoCaption: React.FC = ({ children }) => (
-  <InfoCaptionContainer>
+  <View>
     <IconContainer>
       <StyledInfo />
     </IconContainer>
@@ -91,7 +92,7 @@ const InfoCaption: React.FC = ({ children }) => (
       <IconSpacer />
       {children}
     </GreyDarkCaption>
-  </InfoCaptionContainer>
+  </View>
 )
 
 const ChoiceContainer = styled.View({
@@ -134,5 +135,3 @@ const StyledAccordionItem = styled(AccordionItem).attrs({
     paddingHorizontal: 0,
   },
 })``
-
-const InfoCaptionContainer = styled.View({})

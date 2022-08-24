@@ -695,25 +695,12 @@ Array [
               ]
             }
           />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
+          <View>
             <View
               style={
                 Array [
                   Object {
-                    "float": "left",
-                    "marginBottom": -3,
-                    "paddingRight": 4,
+                    "position": "absolute",
                   },
                 ]
               }
@@ -728,8 +715,30 @@ Array [
                 </Text>
               </View>
             </View>
-            Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées.
-          </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées.
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -1009,25 +1018,12 @@ Array [
               ]
             }
           />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
+          <View>
             <View
               style={
                 Array [
                   Object {
-                    "float": "left",
-                    "marginBottom": -3,
-                    "paddingRight": 4,
+                    "position": "absolute",
                   },
                 ]
               }
@@ -1042,8 +1038,30 @@ Array [
                 </Text>
               </View>
             </View>
-            Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
-          </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -1323,25 +1341,12 @@ Array [
               ]
             }
           />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
+          <View>
             <View
               style={
                 Array [
                   Object {
-                    "float": "left",
-                    "marginBottom": -3,
-                    "paddingRight": 4,
+                    "position": "absolute",
                   },
                 ]
               }
@@ -1356,8 +1361,30 @@ Array [
                 </Text>
               </View>
             </View>
-            En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
-          </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -1631,25 +1658,12 @@ Array [
           </Text>
         </View>
       </View>
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
+      <View>
         <View
           style={
             Array [
               Object {
-                "float": "left",
-                "marginBottom": -3,
-                "paddingRight": 4,
+                "position": "absolute",
               },
             ]
           }
@@ -1664,8 +1678,30 @@ Array [
             </Text>
           </View>
         </View>
-        Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
-      </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
+        </Text>
+      </View>
       <View
         numberOfSpaces={4}
         style={
