@@ -10,8 +10,8 @@ Array [
       }
     }
   />,
-  <h4
-    aria-level={4}
+  <h2
+    aria-level={2}
     className="css-reset-4rbku5 css-text-901oao"
     dir="ltr"
     role="heading"
@@ -25,7 +25,7 @@ Array [
     }
   >
     Où ?
-  </h4>,
+  </h2>,
   <div
     className="css-view-1dbjc4n"
     style={

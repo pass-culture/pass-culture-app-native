@@ -10,6 +10,7 @@ import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NewConsentSettings = () => (
   <PageProfileSection title={t`Paramètres de confidentialité`} scrollable>
@@ -23,7 +24,7 @@ export const NewConsentSettings = () => (
     <Spacer.Column numberOfSpaces={8} />
     <CookiesSettings />
     <Spacer.Column numberOfSpaces={4} />
-    <Typo.Title4>{t`Tu as la main dessus`}</Typo.Title4>
+    <Typo.Title4 {...getHeadingAttrs(2)}>{t`Tu as la main dessus`}</Typo.Title4>
     <Spacer.Column numberOfSpaces={4} />
     <Typo.Body>
       {t`Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.`}

@@ -50,14 +50,14 @@ const StyledTitle2 = styled(RNText)<{
   fontSize: fontSize ?? theme.typography.title2.fontSize,
 }))
 
-const Title3 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-level': ariaLevel }) =>
-  getHeadingAttrs(ariaLevel ?? 3)
+const Title3 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
+  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 3)
 )(({ theme }) => ({
   ...theme.typography.title3,
 }))
 
-const Title4 = styled(RNText).attrs<{ 'aria-level': HeadingLevel }>(({ 'aria-level': ariaLevel }) =>
-  getHeadingAttrs(ariaLevel ?? 4)
+const Title4 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
+  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 4)
 )(({ theme }) => ({
   ...theme.typography.title4,
 }))
