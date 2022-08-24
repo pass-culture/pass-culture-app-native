@@ -21,11 +21,11 @@ export const CookiesSettings = () => {
 
   const hasAcceptedAll = Object.values(cookiesChoice).every((choice) => choice === true)
   const toggleAll = () => {
-    setCookiesChoice((prev) => ({
-      customization: !prev.customization,
-      performance: !prev.performance,
-      marketing: !prev.marketing,
-    }))
+    setCookiesChoice({
+      customization: !hasAcceptedAll,
+      performance: !hasAcceptedAll,
+      marketing: !hasAcceptedAll,
+    })
   }
 
   return (

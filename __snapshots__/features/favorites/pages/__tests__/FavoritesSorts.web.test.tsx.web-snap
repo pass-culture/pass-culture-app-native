@@ -211,8 +211,8 @@ Object {
                 class="css-view-1dbjc4n"
                 style="height: 48px;"
               />
-              <h4
-                aria-level="4"
+              <h2
+                aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao"
                 dir="ltr"
                 id="testUuidV4"
@@ -220,7 +220,7 @@ Object {
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Trier par
-              </h4>
+              </h2>
             </div>
             <div
               aria-labelledby="testUuidV4"
@@ -592,8 +592,8 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 48px;"
             />
-            <h4
-              aria-level="4"
+            <h2
+              aria-level="2"
               class="css-reset-4rbku5 css-text-901oao"
               dir="ltr"
               id="testUuidV4"
@@ -601,7 +601,7 @@ Object {
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Trier par
-            </h4>
+            </h2>
           </div>
           <div
             aria-labelledby="testUuidV4"

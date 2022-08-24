@@ -189,7 +189,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               ]
             }
           >
-            Avec ou sans cookies ?
+            Respect de ta vie privée
           </Text>
         </View>
         <View

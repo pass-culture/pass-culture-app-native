@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useCookiesModalContent hook description should display the CookiesDescription and not show back button if first step 1`] = `<CookiesConsentExplanations />`;
+
+exports[`useCookiesModalContent hook description should display the CookiesSettings and show back button if second step 1`] = `<CookiesDetails />`;
