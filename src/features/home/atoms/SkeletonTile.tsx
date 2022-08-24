@@ -10,6 +10,7 @@ interface DimensionProps {
   width: number
   borderRadius: number
   fullWidth?: boolean
+  animated?: boolean
 }
 
 const useWaveAnimation = (width: number) => {
@@ -36,7 +37,13 @@ const useWaveAnimation = (width: number) => {
 const start = { x: 0, y: 0 }
 const end = { x: 1, y: 0 }
 
-function UnmemoizedSkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
+function UnmemoizedSkeletonTile({
+  width,
+  height,
+  borderRadius,
+  fullWidth,
+  animated = true,
+}: DimensionProps) {
   const translateX = useWaveAnimation(width)
   const { uniqueColors } = useTheme()
   const colors = [
@@ -51,16 +58,18 @@ function UnmemoizedSkeletonTile({ width, height, borderRadius, fullWidth }: Dime
       width={width}
       borderRadius={borderRadius}
       fullWidth={fullWidth}>
-      <AnimatedLinearGradient
-        start={start}
-        end={end}
-        colors={colors}
-        style={{
-          borderRadius,
-          ...(StyleSheet.absoluteFill as unknown as Record<string, unknown>),
-          transform: [{ translateX }],
-        }}
-      />
+      {!!animated && (
+        <AnimatedLinearGradient
+          start={start}
+          end={end}
+          colors={colors}
+          style={{
+            borderRadius,
+            ...(StyleSheet.absoluteFill as unknown as Record<string, unknown>),
+            transform: [{ translateX }],
+          }}
+        />
+      )}
     </BackgroundContainer>
   )
 }
