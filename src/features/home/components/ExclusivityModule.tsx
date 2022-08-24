@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
 import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityModule.utils'
+import { BusinessModulePlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { ContentTypes, ExclusivityPane } from 'features/home/contentful'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/firebase/analytics'
@@ -15,6 +16,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 export interface ExclusivityModuleProps extends ExclusivityPane {
   homeEntryId: string | undefined
+  visible: boolean
   index: number
 }
 
@@ -27,6 +29,7 @@ const UnmemoizedExclusivityModule = ({
   display,
   homeEntryId,
   index,
+  visible,
 }: ExclusivityModuleProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const { data: offer } = useExcluOffer(id)
@@ -50,6 +53,14 @@ const UnmemoizedExclusivityModule = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
+
+  if (!visible)
+    return (
+      <PlaceholderContainer>
+        <Spacer.Row numberOfSpaces={6} />
+        <BusinessModulePlaceholder />
+      </PlaceholderContainer>
+    )
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
@@ -100,3 +111,5 @@ const Image = styled(FastImage)(({ theme }) => ({
   maxHeight: LENGTH_XL,
   height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
 }))
+
+const PlaceholderContainer = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })

@@ -152,10 +152,11 @@ export class BusinessPane {
   }
 }
 
-export type ProcessedModule =
+export type ProcessedModule = (
   | Offers
   | ExclusivityPane
   | BusinessPane
   | OffersWithCover
   | RecommendationPane
   | VenuesModule
+) & { visible?: boolean }

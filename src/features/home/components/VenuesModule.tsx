@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useVenueModule } from 'features/home/api/useVenueModule'
 import { VenueTile } from 'features/home/atoms/VenueTile'
+import { OfferModulePlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import {
   ContentTypes,
   DisplayParametersFields,
@@ -12,10 +13,11 @@ import { useGeolocation } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
-import { LENGTH_S } from 'ui/theme'
+import { LENGTH_M, LENGTH_S } from 'ui/theme'
 
 type VenuesModuleProps = {
   moduleId: string
+  visible: boolean
   display: DisplayParametersFields
   search: VenuesSearchParametersFields[]
   homeEntryId: string | undefined
@@ -32,6 +34,7 @@ export const VenuesModule = ({
   display,
   search,
   index,
+  visible,
   homeEntryId,
 }: VenuesModuleProps) => {
   const { position } = useGeolocation()
@@ -66,7 +69,18 @@ export const VenuesModule = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
+  if (!visible)
+    return (
+      <OfferModulePlaceholder
+        size={LENGTH_M}
+        numberOfTiles={5}
+        title={display.title}
+        animated={false}
+      />
+    )
+
   if (!shouldModuleBeDisplayed) return <React.Fragment />
+
   return (
     <PassPlaylist
       testID="offersModuleList"

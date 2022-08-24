@@ -4,6 +4,7 @@ import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { BusinessModulePlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { BusinessPane, ContentTypes } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -21,6 +22,7 @@ import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessM
 export interface BusinessModuleProps extends BusinessPane {
   homeEntryId: string | undefined
   index: number
+  visible: boolean
 }
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -36,6 +38,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     index,
     targetNotConnectedUsersOnly,
     moduleId,
+    visible,
   } = props
   const isDisabled = !url
   const { appContentWidth } = useTheme()
@@ -81,6 +84,14 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
+
+  if (!visible)
+    return (
+      <PlaceholderContainer>
+        <Spacer.Row numberOfSpaces={6} />
+        <BusinessModulePlaceholder />
+      </PlaceholderContainer>
+    )
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
@@ -193,3 +204,5 @@ const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   color: theme.colors.white,
   size: theme.icons.sizes.small,
 }))``
+
+const PlaceholderContainer = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
