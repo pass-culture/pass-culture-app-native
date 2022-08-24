@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { ScrollView, useWindowDimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -60,7 +60,7 @@ export const CookiesConsentModal: FunctionComponent<Props> = ({
       <ModalContainer windowHeight={windowHeight}>
         <ModalHeader title={title} titleID={titleId} {...iconProps} />
         <Spacer.Column numberOfSpaces={5} />
-        {!!children && <ScrollView>{children}</ScrollView>}
+        {!!children && <StyledScrollView>{children}</StyledScrollView>}
         <FixedBottomChildrenView>{fixedBottomChildren}</FixedBottomChildrenView>
         <Spacer.BottomScreen />
       </ModalContainer>
@@ -88,6 +88,13 @@ const ModalContainer = styled.View<{ windowHeight: number }>(({ windowHeight, th
     desktopMaxHeight,
     maxHeight: windowHeight,
   })
+})
+
+const SCROLLBAR_SPACING = getSpacing(4)
+// Hack to shift the scrollbar
+const StyledScrollView = styled.ScrollView({
+  paddingHorizontal: SCROLLBAR_SPACING,
+  marginHorizontal: -SCROLLBAR_SPACING,
 })
 
 const FixedBottomChildrenView = styled.View(({ theme }) => ({
