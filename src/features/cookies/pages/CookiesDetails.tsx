@@ -9,6 +9,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = () => {
   return (
@@ -23,7 +24,7 @@ export const CookiesDetails = () => {
       <Spacer.Column numberOfSpaces={8} />
       <CookiesSettings />
       <Spacer.Column numberOfSpaces={8} />
-      <Typo.Title4>{t`Tu as la main dessus`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Tu as la main dessus`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
         {t`Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.`}
