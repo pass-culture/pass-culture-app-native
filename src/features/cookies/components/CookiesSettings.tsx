@@ -83,12 +83,15 @@ export const CookiesSettings = () => {
 }
 
 const InfoCaption: React.FC = ({ children }) => (
-  <GreyDarkCaption>
+  <InfoCaptionContainer>
     <IconContainer>
       <StyledInfo />
     </IconContainer>
-    {children}
-  </GreyDarkCaption>
+    <GreyDarkCaption>
+      <IconSpacer />
+      {children}
+    </GreyDarkCaption>
+  </InfoCaptionContainer>
 )
 
 const ChoiceContainer = styled.View({
@@ -102,10 +105,13 @@ const AcceptAllContainer = styled.View({
   alignItems: 'center',
 })
 
+const SPACER_BETWEEN_ICON_AND_TEXT = getSpacing(1)
+const IconSpacer = styled.View(({ theme }) => ({
+  width: theme.icons.sizes.extraSmall + SPACER_BETWEEN_ICON_AND_TEXT,
+}))
+
 const IconContainer = styled.View({
-  float: 'left',
-  paddingRight: getSpacing(1),
-  marginBottom: -getSpacing(0.75),
+  position: 'absolute',
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
@@ -128,3 +134,5 @@ const StyledAccordionItem = styled(AccordionItem).attrs({
     paddingHorizontal: 0,
   },
 })``
+
+const InfoCaptionContainer = styled.View({})
