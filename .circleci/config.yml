@@ -463,6 +463,7 @@ jobs:
   test-native:
     executor: node
     working_directory: ~/pass-culture
+    resource_class: large
     steps:
       - checkout
       - install_node_modules
