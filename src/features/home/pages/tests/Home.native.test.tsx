@@ -136,7 +136,7 @@ describe('Home component - Analytics', () => {
   }
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', () => {
-    mockModules = [{} as ProcessedModule]
+    mockModules = [{}, {}, {}] as ProcessedModule[]
     const { getByTestId } = render(<Home />)
     const scrollView = getByTestId('homeBodyScrollView')
 
@@ -150,7 +150,7 @@ describe('Home component - Analytics', () => {
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', () => {
-    mockModules = [{} as ProcessedModule]
+    mockModules = [{}, {}, {}] as ProcessedModule[]
     const { getByTestId } = render(<Home />)
     const scrollView = getByTestId('homeBodyScrollView')
 

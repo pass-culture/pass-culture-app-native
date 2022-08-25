@@ -142,13 +142,12 @@ export const OnlineHome: FunctionComponent = () => {
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent('has_seen_all_the_homepage')
   )
-  const [visibleIdx, setVisibleIdx] = useState<number[]>([0])
+  const [visibleIdx, setVisibleIdx] = useState<number[]>([0, 1, 2])
   const showSkeleton = useShowSkeleton()
 
   const onViewableItemsChanged = useCallback(({ viewableItems }: OnViewableItemsChangedProps) => {
-    const visibleIndexes = viewableItems.map((item) => item.index || 0)
-
-    setVisibleIdx((indexes) => [...new Set([...indexes, ...visibleIndexes])].sort((a, b) => a - b))
+    const maxVisibleIdx = Math.max(...viewableItems.map((item) => item.index || 0))
+    setVisibleIdx((indexes) => [...Array(Math.max(...indexes, maxVisibleIdx) + 1).keys()])
   }, [])
 
   const onScroll = useCallback(
