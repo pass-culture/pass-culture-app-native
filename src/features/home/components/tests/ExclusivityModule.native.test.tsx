@@ -22,6 +22,7 @@ const props: ExclusivityModuleProps = {
   display: { isGeolocated: false, aroundRadius: undefined, title: '' },
   homeEntryId: 'abcd',
   index: 1,
+  visible: true,
 }
 
 const mockPosition = {
@@ -45,6 +46,11 @@ describe('ExclusivityModule component', () => {
   it('should render correctly', () => {
     const { toJSON } = renderExclusivityModule(props)
     expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should render Skeleton if module is not viewable or viewed by user', () => {
+    const { getByTestId } = renderExclusivityModule({ ...props, visible: false })
+    expect(getByTestId('skeleton')).toBeTruthy()
   })
 
   it('should navigate to the offer when clicking on the image', () => {

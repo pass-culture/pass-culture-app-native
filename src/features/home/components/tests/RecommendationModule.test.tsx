@@ -28,6 +28,7 @@ describe('RecommendationModule', () => {
         index={1}
         moduleId={'abcd'}
         homeEntryId={'xyz'}
+        visible
       />
     )
 
@@ -48,6 +49,7 @@ describe('RecommendationModule', () => {
         index={1}
         moduleId={'abcd'}
         homeEntryId={'xyz'}
+        visible
       />
     )
 

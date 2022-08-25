@@ -38,6 +38,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <div
         className="css-view-1dbjc4n"
+        data-testid="skeleton"
         style={
           Object {
             "backgroundColor": "rgba(221,221,221,1.00)",
@@ -138,6 +139,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -182,6 +184,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -226,6 +229,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -295,6 +299,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -339,6 +344,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -383,6 +389,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -452,6 +459,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -496,6 +504,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -540,6 +549,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -609,6 +619,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -653,6 +664,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -697,6 +709,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -787,6 +800,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <div
         className="css-view-1dbjc4n"
+        data-testid="skeleton"
         style={
           Object {
             "backgroundColor": "rgba(221,221,221,1.00)",
@@ -887,6 +901,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -931,6 +946,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -975,6 +991,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1044,6 +1061,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1088,6 +1106,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1132,6 +1151,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1201,6 +1221,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1245,6 +1266,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1289,6 +1311,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1358,6 +1381,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1402,6 +1426,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1446,6 +1471,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1515,6 +1541,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1559,6 +1586,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1603,6 +1631,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1683,6 +1712,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     />
     <div
       className="css-view-1dbjc4n"
+      data-testid="skeleton"
       style={
         Object {
           "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1760,6 +1790,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <div
         className="css-view-1dbjc4n"
+        data-testid="skeleton"
         style={
           Object {
             "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1860,6 +1891,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1904,6 +1936,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -1948,6 +1981,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2017,6 +2051,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2061,6 +2096,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2105,6 +2141,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2174,6 +2211,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2218,6 +2256,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2262,6 +2301,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2331,6 +2371,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2375,6 +2416,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2419,6 +2461,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2488,6 +2531,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2532,6 +2576,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2576,6 +2621,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2666,6 +2712,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <div
         className="css-view-1dbjc4n"
+        data-testid="skeleton"
         style={
           Object {
             "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2766,6 +2813,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2810,6 +2858,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2854,6 +2903,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2923,6 +2973,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -2967,6 +3018,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3011,6 +3063,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3080,6 +3133,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3124,6 +3178,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3168,6 +3223,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3237,6 +3293,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             >
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3281,6 +3338,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",
@@ -3325,6 +3383,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="skeleton"
                 style={
                   Object {
                     "backgroundColor": "rgba(221,221,221,1.00)",

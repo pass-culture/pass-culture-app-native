@@ -29,6 +29,7 @@ const props = {
   position: null,
   homeEntryId: 'fakeEntryId',
   index: 1,
+  visible: true,
 }
 
 const nativeEventEnd = {
@@ -55,6 +56,11 @@ describe('OffersModule component', () => {
   it('should render with white title if first module displayed', async () => {
     const component = render(<OffersModule {...props} index={0} />)
     expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(theme.colors.white)
+  })
+
+  it('should render Skeleton if module is not viewable or viewed by user', () => {
+    const { getAllByTestId } = render(<OffersModule {...props} index={1} visible={false} />)
+    expect(getAllByTestId('skeleton').length).toBeGreaterThan(0)
   })
 })
 

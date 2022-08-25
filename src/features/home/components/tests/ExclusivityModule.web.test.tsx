@@ -19,6 +19,7 @@ const props: ExclusivityModuleProps = {
   display: { isGeolocated: false, aroundRadius: undefined, title: '' },
   homeEntryId: 'abcd',
   index: 1,
+  visible: true,
 }
 
 const mockPosition = {

@@ -35,6 +35,7 @@ const props: BusinessModuleProps = {
   leftIcon: undefined,
   homeEntryId: 'abcd',
   index: 1,
+  visible: true,
 }
 
 describe('BusinessModule component', () => {

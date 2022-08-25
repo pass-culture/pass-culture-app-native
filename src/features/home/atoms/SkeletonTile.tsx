@@ -57,7 +57,8 @@ function UnmemoizedSkeletonTile({
       height={height}
       width={width}
       borderRadius={borderRadius}
-      fullWidth={fullWidth}>
+      fullWidth={fullWidth}
+      testID="skeleton">
       {!!animated && (
         <AnimatedLinearGradient
           start={start}

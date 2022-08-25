@@ -17,11 +17,17 @@ const props = {
   search: [],
   homeEntryId: 'fakeEntryId',
   index: 1,
+  visible: true,
 }
 
 describe('VenuesModule component', () => {
   it('should render correctly', () => {
     const component = render(<VenuesModule {...props} />)
     expect(component).toMatchSnapshot()
+  })
+
+  it('should render Skeleton if module is not viewable or viewed by user', () => {
+    const { getAllByTestId } = render(<VenuesModule {...props} visible={false} />)
+    expect(getAllByTestId('skeleton').length).toBeGreaterThan(0)
   })
 })

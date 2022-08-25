@@ -381,6 +381,7 @@ exports[`Favorites component should render correctly 1`] = `
                   },
                 ]
               }
+              testID="skeleton"
               width={80}
             >
               <BVLinearGradient
@@ -472,6 +473,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -539,6 +541,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -605,6 +608,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -671,6 +675,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -737,6 +742,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -818,6 +824,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -898,6 +905,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -999,6 +1007,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -1066,6 +1075,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -1132,6 +1142,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -1198,6 +1209,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -1264,6 +1276,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -1345,6 +1358,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -1425,6 +1439,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -1526,6 +1541,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -1593,6 +1609,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -1659,6 +1676,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -1725,6 +1743,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -1791,6 +1810,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -1872,6 +1892,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -1952,6 +1973,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -2053,6 +2075,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -2120,6 +2143,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -2186,6 +2210,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -2252,6 +2277,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -2318,6 +2344,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -2399,6 +2426,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -2479,6 +2507,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -2580,6 +2609,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -2647,6 +2677,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -2713,6 +2744,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -2779,6 +2811,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -2845,6 +2878,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -2926,6 +2960,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -3006,6 +3041,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -3107,6 +3143,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -3174,6 +3211,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -3240,6 +3278,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -3306,6 +3345,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -3372,6 +3412,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -3453,6 +3494,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -3533,6 +3575,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -3634,6 +3677,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -3701,6 +3745,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -3767,6 +3812,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -3833,6 +3879,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -3899,6 +3946,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -3980,6 +4028,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -4060,6 +4109,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -4161,6 +4211,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -4228,6 +4279,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -4294,6 +4346,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -4360,6 +4413,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -4426,6 +4480,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -4507,6 +4562,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -4587,6 +4643,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -4688,6 +4745,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -4755,6 +4813,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -4821,6 +4880,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -4887,6 +4947,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -4953,6 +5014,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -5034,6 +5096,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -5114,6 +5177,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -5215,6 +5279,7 @@ exports[`Favorites component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="skeleton"
                 width={64}
               >
                 <BVLinearGradient
@@ -5282,6 +5347,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={240}
                 >
                   <BVLinearGradient
@@ -5348,6 +5414,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={120}
                 >
                   <BVLinearGradient
@@ -5414,6 +5481,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -5480,6 +5548,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={32}
                 >
                   <BVLinearGradient
@@ -5561,6 +5630,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient
@@ -5641,6 +5711,7 @@ exports[`Favorites component should render correctly 1`] = `
                       },
                     ]
                   }
+                  testID="skeleton"
                   width={160}
                 >
                   <BVLinearGradient

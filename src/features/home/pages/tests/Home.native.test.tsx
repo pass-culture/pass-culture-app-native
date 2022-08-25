@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -21,9 +22,10 @@ jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: mockUserProfileInfo })),
 }))
 
+let mockModules: ProcessedModule[] = []
 jest.mock('features/home/api', () => ({
   useHomepageModules: () => ({
-    modules: [],
+    modules: mockModules,
     homeEntryId: 'fakeEntryId',
   }),
 }))
@@ -134,6 +136,7 @@ describe('Home component - Analytics', () => {
   }
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', () => {
+    mockModules = [{} as ProcessedModule]
     const { getByTestId } = render(<Home />)
     const scrollView = getByTestId('homeBodyScrollView')
 
@@ -142,17 +145,18 @@ describe('Home component - Analytics', () => {
     expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
-    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(mockModules.length)
     expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage')
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', () => {
+    mockModules = [{} as ProcessedModule]
     const { getByTestId } = render(<Home />)
     const scrollView = getByTestId('homeBodyScrollView')
 
     // 1st scroll to bottom => trigger
     scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
-    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(mockModules.length)
 
     jest.clearAllMocks()
 

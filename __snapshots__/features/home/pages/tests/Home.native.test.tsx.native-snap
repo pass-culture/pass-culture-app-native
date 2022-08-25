@@ -24,11 +24,7 @@ exports[`Home component should render correctly without login modal 1`] = `
     }
   >
     <RCTScrollView
-      ListFooterComponent={
-        <FooterComponent
-          isLoading={false}
-        />
-      }
+      ListFooterComponent={<TabBarSpacer />}
       ListHeaderComponent={[Function]}
       bounces={true}
       data={Array []}
@@ -37,7 +33,6 @@ exports[`Home component should render correctly without login modal 1`] = `
       initialNumToRender={5}
       keyExtractor={[Function]}
       onContentSizeChange={[Function]}
-      onEndReached={[Function]}
       onEndReachedThreshold={1}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
@@ -45,12 +40,29 @@ exports[`Home component should render correctly without login modal 1`] = `
       onScroll={[Function]}
       onScrollBeginDrag={[Function]}
       onScrollEndDrag={[Function]}
+      onViewableItemsChanged={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={400}
       stickyHeaderIndices={Array []}
       testID="homeBodyScrollView"
-      viewabilityConfigCallbackPairs={Array []}
+      viewabilityConfig={
+        Object {
+          "itemVisiblePercentThreshold": 0,
+          "waitForInteraction": false,
+        }
+      }
+      viewabilityConfigCallbackPairs={
+        Array [
+          Object {
+            "onViewableItemsChanged": [Function],
+            "viewabilityConfig": Object {
+              "itemVisiblePercentThreshold": 0,
+              "waitForInteraction": false,
+            },
+          },
+        ]
+      }
     >
       <View>
         <View
