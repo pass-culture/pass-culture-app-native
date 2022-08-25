@@ -16,11 +16,11 @@ export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
 
   return (
     <Container>
-      <Centered>{t`Tu as déjà consommé l'offre\u00a0:`}</Centered>
+      <Centered>{t`Tu as déjà réservé\u00a0:`}</Centered>
       <Bold>{offer.name}</Bold>
       <Spacer.Column numberOfSpaces={getSpacing(1)} />
       <Centered>
-        {t`tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article.`}
+        {t`Tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article.`}
       </Centered>
       <Spacer.Column numberOfSpaces={getSpacing(1)} />
       <ExternalLink
