@@ -85,11 +85,18 @@ export function Search() {
 
   return (
     <Form.Flex>
-      <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
-        <Configure hitsPerPage={5} />
-        <SearchHeader searchInputID={searchInputID} />
-        <BodySearch view={params?.view} />
-      </InstantSearch>
+      {env.ENV !== 'integration' ? (
+        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+          <Configure hitsPerPage={5} />
+          <SearchHeader searchInputID={searchInputID} />
+          <BodySearch view={params?.view} />
+        </InstantSearch>
+      ) : (
+        <React.Fragment>
+          <SearchHeader searchInputID={searchInputID} />
+          <BodySearch view={params?.view} />
+        </React.Fragment>
+      )}
     </Form.Flex>
   )
 }
