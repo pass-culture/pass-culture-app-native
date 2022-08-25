@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -83,12 +84,15 @@ export const CookiesSettings = () => {
 }
 
 const InfoCaption: React.FC = ({ children }) => (
-  <GreyDarkCaption>
+  <View>
     <IconContainer>
       <StyledInfo />
     </IconContainer>
-    {children}
-  </GreyDarkCaption>
+    <GreyDarkCaption>
+      <IconSpacer />
+      {children}
+    </GreyDarkCaption>
+  </View>
 )
 
 const ChoiceContainer = styled.View({
@@ -102,10 +106,13 @@ const AcceptAllContainer = styled.View({
   alignItems: 'center',
 })
 
+const SPACER_BETWEEN_ICON_AND_TEXT = getSpacing(1)
+const IconSpacer = styled.View(({ theme }) => ({
+  width: theme.icons.sizes.extraSmall + SPACER_BETWEEN_ICON_AND_TEXT,
+}))
+
 const IconContainer = styled.View({
-  float: 'left',
-  paddingRight: getSpacing(1),
-  marginBottom: -getSpacing(0.75),
+  position: 'absolute',
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({

@@ -217,7 +217,16 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           ]
         }
       />
-      <RCTScrollView>
+      <RCTScrollView
+        style={
+          Array [
+            Object {
+              "marginHorizontal": -16,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
         <View>
           <Text
             style={
