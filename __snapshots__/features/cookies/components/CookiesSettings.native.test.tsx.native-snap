@@ -492,7 +492,7 @@ Array [
               ]
             }
           />
-          Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées.
+          Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
         </Text>
       </View>
     </View>
@@ -762,7 +762,7 @@ Array [
           ]
         }
       >
-        Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir les tendances et ainsi améliorer les résultats qui te sont proposés.
+        Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.
       </Text>
       <View
         numberOfSpaces={4}

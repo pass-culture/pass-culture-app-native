@@ -13,11 +13,11 @@ export const cookiesInfo: {
   [CookieCategoriesEnum.customization]: {
     title: t`Personnaliser ta navigation`,
     description: t`Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser.`,
-    caption: t`Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées.`,
+    caption: t`Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.`,
   },
   [CookieCategoriesEnum.performance]: {
     title: t`Enregistrer des statistiques de navigation`,
-    description: t`Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir les tendances et ainsi améliorer les résultats qui te sont proposés.`,
+    description: t`Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés.`,
     caption: t`Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.`,
   },
   [CookieCategoriesEnum.marketing]: {
