@@ -23,6 +23,7 @@ interface Props {
   goBackAccessibilityLabel?: string
   onGoBack?: () => void
   RightComponent?: React.FC
+  testID?: string
 }
 
 const smallHeight = getSpacing(12)
@@ -38,6 +39,7 @@ export const PageHeader: React.FC<Props> = ({
   goBackAccessibilityLabel = t`Revenir en arrière`,
   onGoBack,
   RightComponent,
+  testID,
 }) => {
   const isWhiteBackground = background === 'white'
   useFocusEffect(
@@ -55,7 +57,10 @@ export const PageHeader: React.FC<Props> = ({
   return (
     <Header>
       {!!isAbsolutePosition && <SpacerAbsolutePosition height={height + top} />}
-      <ColorContainer backgroundColor={backgroundColor} isAbsolutePosition={isAbsolutePosition}>
+      <ColorContainer
+        backgroundColor={backgroundColor}
+        isAbsolutePosition={isAbsolutePosition}
+        testID={testID}>
         <Spacer.TopScreen />
         <Container size={size}>
           <Row>
