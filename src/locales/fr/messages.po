@@ -3149,8 +3149,8 @@ msgid "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.ap
 msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 
 #: src/features/bookOffer/components/AlreadyBooked.tsx
-msgid "Tu as déjà consommé l'offre :"
-msgstr "Tu as déjà consommé l'offre :"
+msgid "Tu as déjà réservé :"
+msgstr "Tu as déjà réservé :"
 
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Tu as déjà signalé cette offre"
@@ -3228,6 +3228,10 @@ msgstr "Tu n'as pas reçu le sms ?"
 #: src/libs/network/OfflinePage.tsx
 msgid "Tu n'es pas connecté à internet."
 msgstr "Tu n'es pas connecté à internet."
+
+#: src/features/bookOffer/components/AlreadyBooked.tsx
+msgid "Tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
+msgstr "Tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
 
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
@@ -3985,10 +3989,6 @@ msgstr "tout ton crédit pour les offres physiques : livre, instrument de musiq
 #: src/features/profile/components/Modals/CreditCeilingsModal.tsx
 msgid "tout ton crédit pour les sorties : festival, concert, cinéma..."
 msgstr "tout ton crédit pour les sorties : festival, concert, cinéma..."
-
-#: src/features/bookOffer/components/AlreadyBooked.tsx
-msgid "tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
-msgstr "tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n'hésite pas à consulter notre article."
 
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "tu n’auras plus accès au catalogue"
