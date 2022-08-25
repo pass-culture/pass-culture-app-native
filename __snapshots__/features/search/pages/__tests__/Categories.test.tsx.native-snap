@@ -48,6 +48,7 @@ exports[`Categories component should render correctly 1`] = `
           },
         ]
       }
+      testID="pageHeader"
     >
       <View
         customHeight={16}
@@ -188,6 +189,7 @@ exports[`Categories component should render correctly 1`] = `
   <RCTScrollView
     accessibilityRole="radiogroup"
     aria-labelledby="testUuidV4"
+    isModal={false}
     style={
       Array [
         Object {
@@ -207,6 +209,7 @@ exports[`Categories component should render correctly 1`] = `
             },
           ]
         }
+        testID="topSpacerCategoryList"
       />
       <View
         accessibilityRole="list"
@@ -1913,14 +1916,14 @@ exports[`Categories component should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <View
+    isModal={false}
     style={
       Array [
         Object {
           "flexDirection": "row",
           "justifyContent": "center",
           "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
+          "paddingHorizontal": 24,
           "paddingTop": 8,
         },
       ]

@@ -222,6 +222,7 @@ exports[`Categories component should render correctly 1`] = `
     />
     <div
       className="css-view-1dbjc4n"
+      data-testid="pageHeader"
       style={
         Object {
           "backgroundColor": "rgba(235,0,85,1.00)",
@@ -441,6 +442,7 @@ exports[`Categories component should render correctly 1`] = `
     >
       <div
         className="css-view-1dbjc4n"
+        data-testid="topSpacerCategoryList"
         style={
           Object {
             "height": "16px",

@@ -82,6 +82,27 @@ describe('Categories component', () => {
 
     expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
   })
+
+  it('should not display page header when page is a modal', () => {
+    const { queryByTestId } = render(<Categories dismissModal={jest.fn()} />)
+
+    expect(queryByTestId('pageHeader')).toBeFalsy()
+  })
+
+  it('should not display categories list top spacer when page is a modal', () => {
+    const { queryByTestId } = render(<Categories dismissModal={jest.fn()} />)
+
+    expect(queryByTestId('topSpacerCategoryList')).toBeFalsy()
+  })
+
+  it('should close the modal when pressing the search button', async () => {
+    const { getByText, queryByTestId } = render(<Categories dismissModal={jest.fn()} />)
+
+    const button = getByText('Rechercher')
+    fireEvent.press(button)
+
+    expect(queryByTestId('categoriesModal')).toBeFalsy()
+  })
 })
 
 function renderCategories() {

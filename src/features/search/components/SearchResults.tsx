@@ -2,7 +2,8 @@ import { plural, t } from '@lingui/macro'
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
+import { FlatList, ActivityIndicator, ScrollView, View, Platform } from 'react-native'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -13,6 +14,7 @@ import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/S
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
+import { CategoriesModal } from 'features/search/pages/CategoriesModal'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
@@ -20,9 +22,9 @@ import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { theme } from 'theme'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
+import { useModal } from 'ui/components/modals/useModal'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { Check } from 'ui/svg/icons/Check'
 import { More } from 'ui/svg/icons/More'
@@ -66,6 +68,14 @@ export const SearchResults: React.FC = () => {
   const categoryIsSelected = offerCategories.length > 0
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categoryLabel = searchGroupLabelMapping[offerCategories[0]] ?? 'Catégories'
+  const {
+    visible: cancelCategoriesModalVisible,
+    showModal: showCancelCategoriesModal,
+    hideModal: hideCategoriesModal,
+  } = useModal(false)
+  const theme = useTheme()
+  const { isDesktopViewport } = theme
+  const filterPageIsModal = Platform.OS === 'web' && isDesktopViewport
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -104,8 +114,13 @@ export const SearchResults: React.FC = () => {
   }, [stagedDispatch, navigate, searchState])
 
   const redirectToCategoryFilterPage = useCallback(() => {
+    if (filterPageIsModal) {
+      showCancelCategoriesModal()
+      return
+    }
+
     navigate('SearchCategories')
-  }, [navigate])
+  }, [filterPageIsModal, navigate, showCancelCategoriesModal])
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
@@ -240,6 +255,7 @@ export const SearchResults: React.FC = () => {
           <Spacer.BottomScreen />
         </ScrollToTopContainer>
       )}
+      <CategoriesModal visible={cancelCategoriesModalVisible} dismissModal={hideCategoriesModal} />
     </React.Fragment>
   )
 }
