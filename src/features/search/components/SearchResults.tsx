@@ -1,4 +1,4 @@
-import { plural, t } from '@lingui/macro'
+import { plural } from '@lingui/macro'
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -6,6 +6,7 @@ import { FlatList, ActivityIndicator, ScrollView, View, Platform } from 'react-n
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
@@ -61,6 +62,8 @@ export const SearchResults: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
+  const { data: appSettings } = useAppSettings()
+  const filtersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
   const offerCategories = params?.offerCategories ?? []
   const categoryIsSelected = offerCategories.length > 0
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -73,6 +76,31 @@ export const SearchResults: React.FC = () => {
   const theme = useTheme()
   const { isDesktopViewport } = theme
   const filterPageIsModal = Platform.OS === 'web' && isDesktopViewport
+
+  const minPrice: number | undefined = params?.minPrice
+    ? +params?.minPrice.replace(',', '.')
+    : undefined
+  const maxPrice: number | undefined = params?.maxPrice
+    ? +params?.maxPrice.replace(',', '.')
+    : undefined
+  let priceLabel = 'Prix'
+  const priceIsEntered = minPrice !== undefined || maxPrice !== undefined
+
+  if (priceIsEntered) {
+    if (
+      (minPrice === 0 && maxPrice === 0) ||
+      (minPrice === undefined && maxPrice === 0) ||
+      (maxPrice === undefined && minPrice === 0)
+    ) {
+      priceLabel = 'Gratuit'
+    } else if (minPrice && minPrice > 0 && maxPrice && maxPrice > 0) {
+      priceLabel = `${minPrice}€ - ${maxPrice}€`
+    } else if (minPrice && minPrice >= 0) {
+      priceLabel = `>= ${minPrice}€`
+    } else {
+      priceLabel = `<= ${maxPrice}€`
+    }
+  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -119,6 +147,10 @@ export const SearchResults: React.FC = () => {
     navigate('SearchCategories')
   }, [filterPageIsModal, navigate, showCancelCategoriesModal])
 
+  const redirectToPriceFilterPage = useCallback(() => {
+    navigate('SearchPrice')
+  }, [navigate])
+
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -144,7 +176,7 @@ export const SearchResults: React.FC = () => {
               <ButtonSecondary
                 mediumWidth
                 icon={More}
-                wording={t`Afficher plus de résultats`}
+                wording="Afficher plus de résultats"
                 onPress={() => {
                   const button = (
                     flatListRef.current?.getNativeScrollRef() as unknown as HTMLElement
@@ -170,25 +202,18 @@ export const SearchResults: React.FC = () => {
     one: '# résultat',
     other: '# résultats',
   })
-  const searchStateQuery =
-    searchState.query.length > 0
-      ? SPACE +
-        t({
-          id: 'search query',
-          values: { searchQuery: searchState.query },
-          message: 'pour {searchQuery}',
-        })
-      : ''
+  const searchStateQuery = searchState.query.length > 0 ? `${SPACE} pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
       <AutoScrollSwitch
-        title={t`Activer le chargement automatique des résultats`}
+        title="Activer le chargement automatique des résultats"
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
+
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
         <View>
@@ -213,6 +238,20 @@ export const SearchResults: React.FC = () => {
                 color={categoryIsSelected ? theme.colors.primary : undefined}
               />
             </ButtonContainer>
+            {!!filtersButtonsDisplay && (
+              <React.Fragment>
+                <Spacer.Row numberOfSpaces={2} />
+                <ButtonContainer>
+                  <SingleFilterButton
+                    label={priceLabel.replaceAll('.', ',')}
+                    testID="priceButton"
+                    onPress={redirectToPriceFilterPage}
+                    Icon={priceIsEntered ? Check : undefined}
+                    color={priceIsEntered ? theme.colors.primary : undefined}
+                  />
+                </ButtonContainer>
+              </React.Fragment>
+            )}
             <Spacer.Row numberOfSpaces={6} />
           </ScrollView>
           <Spacer.Column numberOfSpaces={4} />

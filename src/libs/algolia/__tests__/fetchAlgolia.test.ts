@@ -2,6 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchParametersQuery } from 'libs/algolia/types'
 
 import { Range } from '../../typesUtils/typeHelpers'
@@ -809,6 +810,84 @@ describe('fetchOffer', () => {
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 50']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with minimum price when it is provided', () => {
+      const query = 'searched query'
+      const minPrice = '5'
+
+      fetchOffer({
+        parameters: { ...baseParams, query, minPrice } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 5 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with 0 when minimum price is not provided', () => {
+      const query = 'searched query'
+
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with maximum price when it is provided', () => {
+      const query = 'searched query'
+      const maxPrice = '25'
+
+      fetchOffer({
+        parameters: { ...baseParams, query, maxPrice } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 25']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it.each([MAX_PRICE])('should fetch with %s when maximum price is not provided', () => {
+      const query = 'searched query'
+
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [[`offer.prices: 0 TO ${MAX_PRICE}`]],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve: offerAttributesToRetrieve,

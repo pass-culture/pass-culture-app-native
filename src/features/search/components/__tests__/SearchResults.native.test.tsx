@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
@@ -71,7 +71,7 @@ describe('SearchResults component', () => {
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
   })
 
-  it('should display location button', () => {
+  it('should display location filter button', () => {
     const { queryByTestId } = render(<SearchResults />)
 
     expect(queryByTestId('locationButton')).toBeTruthy()
@@ -107,7 +107,7 @@ describe('SearchResults component', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
   })
 
-  it('should display category button', () => {
+  it('should display category filter button', () => {
     const { queryByTestId } = render(<SearchResults />)
 
     expect(queryByTestId('categoryButton')).toBeTruthy()
@@ -127,11 +127,60 @@ describe('SearchResults component', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
     })
+
+    it('should display price filter button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('priceButton')).toBeTruthy()
+    })
+
+    it('should display "Gratuit" in the prices filter button when minimum and maximum prices are 0', () => {
+      useRoute.mockReturnValueOnce({ params: { minPrice: '0', maxPrice: '0' } })
+      const { getByText } = render(<SearchResults />)
+
+      expect(getByText('Gratuit')).toBeTruthy()
+    })
+
+    it('should display a price range in the prices filter button when minimum and maximum prices entered and are not 0', () => {
+      useRoute.mockReturnValueOnce({ params: { minPrice: '5', maxPrice: '20' } })
+      const { getByText } = render(<SearchResults />)
+
+      expect(getByText('5€ - 20€')).toBeTruthy()
+    })
+
+    it('should display only the minimum price in the prices filter button when minimum price entered', () => {
+      useRoute.mockReturnValueOnce({ params: { minPrice: '5' } })
+      const { getByText } = render(<SearchResults />)
+
+      expect(getByText('>= 5€')).toBeTruthy()
+    })
+
+    it('should display only the maximum price in the prices filter button when maximum price entered', () => {
+      useRoute.mockReturnValueOnce({ params: { maxPrice: '5' } })
+      const { getByText } = render(<SearchResults />)
+
+      expect(getByText('<= 5€')).toBeTruthy()
+    })
+
+    it('should redirect to the filters page when clicking on the prices filter button', async () => {
+      const { getByTestId } = render(<SearchResults />)
+      const priceButton = getByTestId('priceButton')
+
+      await fireEvent.press(priceButton)
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchPrice')
+    })
   })
 
   describe('When feature flag filter desactivated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
+    })
+
+    it('should not display price filter button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('priceButton')).toBeNull()
     })
   })
 })
