@@ -5,7 +5,12 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
-import { CookieCategoriesEnum, useCookiesContext } from 'features/cookies/CookiesContext'
+import {
+  allOptionalCookies,
+  CookieCategoriesEnum,
+  COOKIES_BY_CATEGORY,
+} from 'features/cookies/cookiesPolicy'
+import { useCookies } from 'features/cookies/useCookies'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -18,15 +23,27 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
-  const { cookiesChoice, setCookiesChoice } = useCookiesContext()
+  const { cookiesChoice, setCookiesChoice } = useCookies()
+  const hasAcceptedAll = cookiesChoice.accepted === allOptionalCookies
 
-  const hasAcceptedAll = Object.values(cookiesChoice).every((choice) => choice === true)
+  // console.log({ hasAcceptedAll })
+  // console.log('cookiesChoice.accepted', cookiesChoice.accepted)
+  // console.log('allOptionalCookies', allOptionalCookies)
+
   const toggleAll = () => {
-    setCookiesChoice({
-      customization: !hasAcceptedAll,
-      performance: !hasAcceptedAll,
-      marketing: !hasAcceptedAll,
-    })
+    if (hasAcceptedAll) {
+      setCookiesChoice({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: [],
+        refused: allOptionalCookies,
+      })
+    } else {
+      setCookiesChoice({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: allOptionalCookies,
+        refused: [],
+      })
+    }
   }
 
   return (
@@ -52,12 +69,10 @@ export const CookiesSettings = () => {
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
               switchProps={{
-                active: isEssential ? true : cookiesChoice[cookie],
+                active: isEssential ? true : hasAcceptedAll,
                 disabled: isEssential,
-                toggle: () =>
-                  isEssential
-                    ? null
-                    : setCookiesChoice((prev) => ({ ...prev, [cookie]: !cookiesChoice[cookie] })),
+                // TODO(LucasBeneston): active this toggle
+                toggle: () => (isEssential ? null : false),
               }}>
               <React.Fragment>
                 <Typo.Body>{info.description}</Typo.Body>

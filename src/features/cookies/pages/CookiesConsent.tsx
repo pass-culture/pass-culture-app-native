@@ -5,6 +5,8 @@ import {
   CookiesSteps,
   useCookiesModalContent,
 } from 'features/cookies/components/useCookiesModalContent'
+import { allOptionalCookies, COOKIES_BY_CATEGORY } from 'features/cookies/cookiesPolicy'
+import { useCookies } from 'features/cookies/useCookies'
 
 interface Props {
   visible: boolean
@@ -12,8 +14,43 @@ interface Props {
 }
 
 export const CookiesConsent = ({ visible, hideModal }: Props) => {
+  const { setCookiesChoice } = useCookies()
   const [cookiesStep, setCookiesStep] = useState(CookiesSteps.COOKIES_CONSENT)
-  const { childrenProps } = useCookiesModalContent({ cookiesStep, setCookiesStep, hideModal })
+
+  const acceptAll = () => {
+    setCookiesChoice({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted: allOptionalCookies,
+      refused: [],
+    })
+    hideModal()
+  }
+
+  const declineAll = () => {
+    setCookiesChoice({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted: [],
+      refused: allOptionalCookies,
+    })
+    hideModal()
+  }
+
+  const customChoice = () => {
+    setCookiesChoice({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted: [],
+      refused: allOptionalCookies,
+    })
+    hideModal()
+  }
+
+  const { childrenProps } = useCookiesModalContent({
+    cookiesStep,
+    setCookiesStep,
+    acceptAll,
+    declineAll,
+    customChoice,
+  })
 
   return (
     <CookiesConsentModal

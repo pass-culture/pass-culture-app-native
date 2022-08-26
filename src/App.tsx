@@ -13,7 +13,6 @@ import 'intl'
 import 'intl/locale-data/jsonp/en'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
-import { CookiesContextProvider } from 'features/cookies/CookiesContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -82,19 +81,17 @@ const App: FunctionComponent = function () {
                         <I18nProvider i18n={i18n}>
                           <SnackBarProvider>
                             <NetInfoWrapper>
-                              <CookiesContextProvider>
-                                <CulturalSurveyContextProvider>
-                                  <IdentityCheckContextProvider>
-                                    <SplashScreenProvider>
-                                      <OfflineModeContainer>
-                                        <ScreenErrorProvider>
-                                          <AppNavigationContainer />
-                                        </ScreenErrorProvider>
-                                      </OfflineModeContainer>
-                                    </SplashScreenProvider>
-                                  </IdentityCheckContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </CookiesContextProvider>
+                              <CulturalSurveyContextProvider>
+                                <IdentityCheckContextProvider>
+                                  <SplashScreenProvider>
+                                    <OfflineModeContainer>
+                                      <ScreenErrorProvider>
+                                        <AppNavigationContainer />
+                                      </ScreenErrorProvider>
+                                    </OfflineModeContainer>
+                                  </SplashScreenProvider>
+                                </IdentityCheckContextProvider>
+                              </CulturalSurveyContextProvider>
                             </NetInfoWrapper>
                           </SnackBarProvider>
                         </I18nProvider>
