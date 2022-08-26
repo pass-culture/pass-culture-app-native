@@ -67,28 +67,25 @@ describe('Search reducer', () => {
       ],
       priceRange: [30, 500],
     }
+  it('should handle SET_MIN_PRICE', () => {
     const action: Action = {
-      type: 'SET_STATE_FROM_NAVIGATE',
-      payload: parameters as Partial<SearchState>,
+      type: 'SET_MIN_PRICE',
+      payload: '30',
     }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
-      offerCategories: [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-      ],
-      priceRange: [30, MAX_PRICE],
+      minPrice: '30',
     })
   })
 
-  it('should handle PRICE_RANGE', () => {
+  it('should handle SET_MAX_PRICE', () => {
     const action: Action = {
-      type: 'PRICE_RANGE',
-      payload: [30, 200] as SearchState['priceRange'],
+      type: 'SET_MAX_PRICE',
+      payload: '200',
     }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
-      priceRange: [30, 200],
+      maxPrice: '200',
     })
   })
 

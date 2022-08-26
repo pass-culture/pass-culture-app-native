@@ -40,6 +40,8 @@ export type Action =
   | { type: 'SET_STATE'; payload: Partial<SearchState> }
   | { type: 'SET_STATE_FROM_NAVIGATE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
+  | { type: 'SET_MIN_PRICE'; payload: string }
+  | { type: 'SET_MAX_PRICE'; payload: string }
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
@@ -72,6 +74,10 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
+    case 'SET_MIN_PRICE':
+      return { ...state, minPrice: action.payload }
+    case 'SET_MAX_PRICE':
+      return { ...state, maxPrice: action.payload }
     case 'RADIUS':
       if ('aroundRadius' in state.locationFilter) {
         return {
