@@ -16,7 +16,9 @@ export enum CookiesSteps {
 interface Props {
   cookiesStep: number
   setCookiesStep: (number: CookiesSteps) => void
-  hideModal: () => void
+  acceptAll: () => void
+  declineAll: () => void
+  customChoice: () => void
 }
 
 type ReportOfferModalContent = {
@@ -25,7 +27,13 @@ type ReportOfferModalContent = {
   fixedBottomChildren: JSX.Element
 } & ModalLeftIconProps
 
-export const useCookiesModalContent = ({ cookiesStep, setCookiesStep, hideModal }: Props) => {
+export const useCookiesModalContent = ({
+  cookiesStep,
+  setCookiesStep,
+  acceptAll,
+  declineAll,
+  customChoice,
+}: Props) => {
   const pickChildren = (step: CookiesSteps): ReportOfferModalContent => {
     if (step === CookiesSteps.COOKIES_SETTINGS) {
       return {
@@ -34,7 +42,7 @@ export const useCookiesModalContent = ({ cookiesStep, setCookiesStep, hideModal 
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),
         fixedBottomChildren: (
-          <ButtonPrimary wording={t`Enregistrer mes choix`} onPress={() => null} />
+          <ButtonPrimary wording={t`Enregistrer mes choix`} onPress={customChoice} />
         ),
         title: t`Réglages des cookies`,
       }
@@ -43,8 +51,8 @@ export const useCookiesModalContent = ({ cookiesStep, setCookiesStep, hideModal 
       children: <CookiesConsentExplanations />,
       fixedBottomChildren: (
         <CookiesConsentButtons
-          onPressAcceptAll={hideModal}
-          onPressDeclineAll={hideModal}
+          onPressAcceptAll={acceptAll}
+          onPressDeclineAll={declineAll}
           onPressChooseCookies={() => setCookiesStep(CookiesSteps.COOKIES_SETTINGS)}
         />
       ),
