@@ -58,7 +58,6 @@ msgid "Abandonner"
 msgstr "Abandonner"
 
 #: src/features/auth/components/QuitSignupModal.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
 msgid "Abandonner l'inscription"
@@ -208,15 +207,6 @@ msgstr "Assure-toi que toutes les informations que tu nous transmets sont correc
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Assurer la sécurité, prévenir la fraude et corriger les bugs"
 msgstr "Assurer la sécurité, prévenir la fraude et corriger les bugs"
-
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Attends"
-msgstr "Attends"
-
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Attention tu n'as que 3 tentatives."
-msgstr "Attention tu n'as que 3 tentatives."
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
@@ -632,11 +622,6 @@ msgstr "Confirmation de réservation"
 msgid "Confirme ton e-mail"
 msgstr "Confirme ton e-mail"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Confirme ton numéro"
-msgstr "Confirme ton numéro"
-
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Confirmer la réservation"
 msgstr "Confirmer la réservation"
@@ -703,15 +688,12 @@ msgid "Contacter le service"
 msgstr "Contacter le service"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
@@ -741,7 +723,6 @@ msgstr "Continuer la vérification"
 msgid "Continuer vers l'étape"
 msgstr "Continuer vers l'étape"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
@@ -1056,10 +1037,6 @@ msgstr "Enregistrer mes choix"
 msgid "Entre ton adresse"
 msgstr "Entre ton adresse"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Entrée du code de confirmation"
-msgstr "Entrée du code de confirmation"
-
 #: src/ui/components/inputs/DateInput/atoms/DateInputDesktop.web.tsx
 msgid "Entrée pour l'année de la date de naissance"
 msgstr "Entrée pour l'année de la date de naissance"
@@ -1084,7 +1061,6 @@ msgstr "Entrée pour le mois de la date de naissance"
 msgid "Entrée pour le nom"
 msgstr "Entrée pour le nom"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 msgid "Entrée pour le numéro de téléphone"
 msgstr "Entrée pour le numéro de téléphone"
@@ -2092,7 +2068,6 @@ msgid "Ouvrir le gestionnaire mail"
 msgstr "Ouvrir le gestionnaire mail"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
@@ -2308,10 +2283,6 @@ msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
-
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated.tsx
-msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
-msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
@@ -2584,7 +2555,6 @@ msgstr "Revenir au ticket précédent"
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
@@ -2602,10 +2572,6 @@ msgstr "Revenir en arrière"
 #: src/features/search/components/ScrollToTopButton.tsx
 msgid "Revenir en haut"
 msgstr "Revenir en haut"
-
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Revenir sur l'écran d'envoi de SMS"
-msgstr "Revenir sur l'écran d'envoi de SMS"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
@@ -2632,7 +2598,6 @@ msgstr "Réactiver mon compte"
 msgid "Réessaie plus tard"
 msgstr "Réessaie plus tard"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
 msgstr "Réessayer"
@@ -2728,10 +2693,6 @@ msgstr "Réserver l'offre {offerName}"
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Saisis le code envoyé par SMS au numéro"
-msgstr "Saisis le code envoyé par SMS au numéro"
-
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneValidationCode.tsx
 msgid "Saisis le code reçu au"
 msgstr "Saisis le code reçu au"
@@ -2803,10 +2764,6 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
 msgstr "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
-
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Si tu n’arrives pas à valider ton code tu peux"
-msgstr "Si tu n’arrives pas à valider ton code tu peux"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
@@ -3056,7 +3013,6 @@ msgstr "Ton nouveau mot de passe"
 
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Ton numéro de téléphone"
 msgstr "Ton numéro de téléphone"
 
@@ -3220,10 +3176,6 @@ msgstr "Tu es sur le point d'archiver"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Tu n'as pas de smartphone ?"
 msgstr "Tu n'as pas de smartphone ?"
-
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated.tsx
-msgid "Tu n'as pas reçu le sms ?"
-msgstr "Tu n'as pas reçu le sms ?"
 
 #: src/libs/network/OfflinePage.tsx
 msgid "Tu n'es pas connecté à internet."
@@ -3482,10 +3434,6 @@ msgstr "Validation de l'identification"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Validation du numéro de téléphone"
 msgstr "Validation du numéro de téléphone"
-
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Validation téléphone"
-msgstr "Validation téléphone"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Validation téléphone - Trop d'essais"
