@@ -254,12 +254,6 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="BeneficiaryAccountCreated"
-              onPress={() => navigate('BeneficiaryAccountCreated')}
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
               wording="Contentful KO error"
               onPress={() =>
                 setScreenError(
