@@ -16,6 +16,11 @@ export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary
 }
 
+export function isUserBeneficiary18(user: UserProfileResponse): boolean {
+  const hasBeneficiary18Role = user.roles?.find((role) => role === UserRole.BENEFICIARY)
+  return !!hasBeneficiary18Role
+}
+
 export function isUserExBeneficiary(user: UserProfileResponse): boolean {
   const credit = getAvailableCredit(user)
   const isExBeneficiary = user.isBeneficiary && credit.isExpired
