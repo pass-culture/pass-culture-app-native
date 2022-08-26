@@ -117,6 +117,16 @@ describe('SearchResults component', () => {
 
       expect(queryByTestId('categoryButton')).toBeTruthy()
     })
+
+    it('should not display categories list from a modal when clicking on the category button', async () => {
+      const { getByTestId, queryByTestId } = render(<SearchResults />)
+
+      const categoryButton = getByTestId('categoryButton')
+
+      await fireEvent.press(categoryButton)
+
+      expect(queryByTestId('categoriesModal')).toBeFalsy()
+    })
   })
 
   describe('When feature flag filter desactivated', () => {
