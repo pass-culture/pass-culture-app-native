@@ -1,8 +1,9 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { FlashList, ListRenderItem, ListRenderItemInfo } from '@shopify/flash-list'
 import range from 'lodash/range'
 import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
-import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
+import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
@@ -45,6 +46,9 @@ const defaultProps = {
   keyExtractor: defaultKeyExtractor,
 }
 
+const isWeb = Platform.OS === 'web' ? true : undefined
+type ListType<T> = T extends boolean ? FlatList : FlashList<any>
+
 export const Playlist: FunctionComponent<Props> = ({
   data,
   itemWidth,
@@ -61,7 +65,10 @@ export const Playlist: FunctionComponent<Props> = ({
 
   const [playlistWidth, setPlaylistWidth] = useState(0)
   const [playlistStepIndex, setPlaylistStepIndex] = useState(0)
-  const flatListRef = useRef<FlatList>(null)
+  const listRef = useRef<ListType<typeof isWeb>>(null)
+
+  // We use FlatLists in web because we don't have performance issues
+  const ListComponent = isWeb ? FlatList : FlashList
 
   // We have to include these dummy objects for header and footer in the data array
   // in order to have the correct array length available for the scroll functions and renderItem
@@ -98,11 +105,11 @@ export const Playlist: FunctionComponent<Props> = ({
   const displayItems = useCallback(
     function (direction: Direction) {
       setPlaylistStepIndex((previousStepIndex) => {
-        if (!flatListRef.current) return previousStepIndex
+        if (!listRef.current) return previousStepIndex
         let stepIndex = 0
         if (direction === 'previous') stepIndex = Math.max(previousStepIndex - 1, 0)
         if (direction === 'next') stepIndex = Math.min(previousStepIndex + 1, nbOfSteps - 1)
-        flatListRef.current.scrollToIndex({ index: steps[stepIndex], viewPosition: 0 })
+        listRef.current.scrollToIndex({ index: steps[stepIndex], viewPosition: 0 })
         return stepIndex
       })
     },
@@ -110,14 +117,20 @@ export const Playlist: FunctionComponent<Props> = ({
   )
 
   const renderItemWithHeaderAndFooter: ListRenderItem<any> = useCallback(
-    function ({ item, index, separators }) {
+    function ({ item, index }) {
       if (renderHeader && index === 0) {
         return renderHeader({ height: itemHeight, width: itemWidth })
       }
       if (renderFooter && index === nbOfItems - 1) {
         return renderFooter({ height: itemHeight, width: itemWidth })
       }
-      return renderItem({ item, index, separators, width: itemWidth, height: itemHeight })
+      return renderItem({
+        item,
+        index,
+        width: itemWidth,
+        height: itemHeight,
+        target: 'Cell',
+      })
     },
     [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight]
   )
@@ -142,13 +155,15 @@ export const Playlist: FunctionComponent<Props> = ({
           <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      <FlatList
+      <ListComponent
         onLayout={({ nativeEvent }) => {
           setPlaylistWidth(nativeEvent.layout.width)
         }}
         testID={testID}
-        ref={flatListRef}
+        ref={listRef}
         scrollEnabled={isTouch}
+        drawDistance={useWindowDimensions().width / 4}
+        estimatedItemSize={itemWidth}
         data={dataWithHeaderAndFooter}
         renderItem={renderItemWithHeaderAndFooter}
         keyExtractor={keyExtractorWithHeaderAndFooter}
@@ -177,7 +192,10 @@ function getItemSteps(nbOfItems: number, itemWidth: number, playlistWidth: numbe
   return { nbOfSteps: steps.length, steps }
 }
 
-const FlatListContainer = styled.View({ position: 'relative' })
+const FlatListContainer = styled.View({
+  position: 'relative',
+  width: '100%',
+})
 
 const HorizontalMargin = styled.View({
   width: getSpacing(6),

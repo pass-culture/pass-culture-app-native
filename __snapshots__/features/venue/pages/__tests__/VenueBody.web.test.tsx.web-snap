@@ -599,7 +599,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="position: relative;"
+              style="position: relative; width: 100%;"
             >
               <div
                 class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
@@ -2130,7 +2130,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="position: relative;"
+            style="position: relative; width: 100%;"
           >
             <div
               class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
