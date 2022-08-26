@@ -19,18 +19,13 @@ export const remoteConfig = {
   getValues(): CustomRemoteConfig {
     const parameters = firebaseRemoteConfig().getAll()
     return {
-      test_param: parameters.test_param.asString() as CustomRemoteConfig['test_param'],
-      homeEntryIdNotConnected:
-        parameters.homeEntryIdNotConnected.asString() as CustomRemoteConfig['homeEntryIdNotConnected'],
-      homeEntryIdGeneral:
-        parameters.homeEntryIdGeneral.asString() as CustomRemoteConfig['homeEntryIdGeneral'],
-      homeEntryIdWithoutBooking_18:
-        parameters.homeEntryIdWithoutBooking_18.asString() as CustomRemoteConfig['homeEntryIdWithoutBooking_18'],
-      homeEntryIdWithoutBooking_15_17:
-        parameters.homeEntryIdWithoutBooking_15_17.asString() as CustomRemoteConfig['homeEntryIdWithoutBooking_15_17'],
-      homeEntryId_18: parameters.homeEntryId_18.asString() as CustomRemoteConfig['homeEntryId_18'],
-      homeEntryId_15_17:
-        parameters.homeEntryId_15_17.asString() as CustomRemoteConfig['homeEntryId_15_17'],
+      test_param: parameters.test_param.asString(),
+      homeEntryIdNotConnected: parameters.homeEntryIdNotConnected.asString(),
+      homeEntryIdGeneral: parameters.homeEntryIdGeneral.asString(),
+      homeEntryIdWithoutBooking_18: parameters.homeEntryIdWithoutBooking_18.asString(),
+      homeEntryIdWithoutBooking_15_17: parameters.homeEntryIdWithoutBooking_15_17.asString(),
+      homeEntryId_18: parameters.homeEntryId_18.asString(),
+      homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
     }
   },
 }
