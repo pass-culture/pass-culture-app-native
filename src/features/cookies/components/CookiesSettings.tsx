@@ -24,24 +24,26 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
   const { cookiesChoice, setCookiesChoice } = useCookies()
-  const hasAcceptedAll = cookiesChoice.accepted === allOptionalCookies
-
-  // console.log({ hasAcceptedAll })
-  // console.log('cookiesChoice.accepted', cookiesChoice.accepted)
-  // console.log('allOptionalCookies', allOptionalCookies)
+  const hasAcceptedAll = cookiesChoice.consent.accepted === allOptionalCookies
 
   const toggleAll = () => {
     if (hasAcceptedAll) {
       setCookiesChoice({
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: [],
-        refused: allOptionalCookies,
+        ...cookiesChoice,
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [],
+          refused: allOptionalCookies,
+        },
       })
     } else {
       setCookiesChoice({
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: allOptionalCookies,
-        refused: [],
+        ...cookiesChoice,
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: allOptionalCookies,
+          refused: [],
+        },
       })
     }
   }

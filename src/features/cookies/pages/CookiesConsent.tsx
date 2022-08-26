@@ -14,33 +14,34 @@ interface Props {
 }
 
 export const CookiesConsent = ({ visible, hideModal }: Props) => {
-  const { setCookiesChoice } = useCookies()
+  const { cookiesChoice, setCookiesChoice } = useCookies()
   const [cookiesStep, setCookiesStep] = useState(CookiesSteps.COOKIES_CONSENT)
 
   const acceptAll = () => {
     setCookiesChoice({
-      mandatory: COOKIES_BY_CATEGORY.essential,
-      accepted: allOptionalCookies,
-      refused: [],
+      ...cookiesChoice,
+      consent: {
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: allOptionalCookies,
+        refused: [],
+      },
     })
     hideModal()
   }
 
   const declineAll = () => {
     setCookiesChoice({
-      mandatory: COOKIES_BY_CATEGORY.essential,
-      accepted: [],
-      refused: allOptionalCookies,
+      ...cookiesChoice,
+      consent: {
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: [],
+        refused: allOptionalCookies,
+      },
     })
     hideModal()
   }
 
   const customChoice = () => {
-    setCookiesChoice({
-      mandatory: COOKIES_BY_CATEGORY.essential,
-      accepted: [],
-      refused: allOptionalCookies,
-    })
     hideModal()
   }
 
