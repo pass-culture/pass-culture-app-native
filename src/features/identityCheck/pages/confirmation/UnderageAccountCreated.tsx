@@ -10,6 +10,8 @@ import {
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
+import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
@@ -24,8 +26,12 @@ import { Spacer } from 'ui/theme'
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
   const { uniqueColors } = useTheme()
+  const { data: user } = useUserProfileInfo()
+  const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
 
-  const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
+  const text = isUnderageBeneficiary
+    ? t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
+    : t`Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
 
   useEnterKeyAction(navigateToHome)
 
