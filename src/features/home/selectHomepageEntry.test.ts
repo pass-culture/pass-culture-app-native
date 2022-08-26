@@ -8,6 +8,7 @@ import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { adaptedHomepageEntry as defaultHomeEntry } from 'tests/fixtures/homepageEntries'
 import { renderHook } from 'tests/utils'
@@ -99,15 +100,26 @@ const mockUseUserHasBookings = useUserHasBookings as jest.MockedFunction<typeof 
 jest.mock('features/home/services/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
 
+const defaultRemoteConfig: CustomRemoteConfig = {
+  test_param: 'A',
+  homeEntryIdNotConnected: 'homeEntryIdNotConnected',
+  homeEntryIdGeneral: 'homeEntryIdGeneral',
+  homeEntryIdWithoutBooking_18: 'homeEntryIdWithoutBooking_18',
+  homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
+  homeEntryId_18: 'homeEntryId_18',
+  homeEntryId_15_17: 'homeEntryId_15_17',
+}
+
 describe('useSelectHomepageEntry', () => {
-  afterEach(jest.clearAllMocks)
   it('should not return anything when no homepageEntries retrieved from contentful', () => {
+    mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry())
     const homepageEntry = result.current([])
     expect(homepageEntry).toBeUndefined()
   })
 
   it('should return home entry corresponding to id provided', () => {
+    mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry(homeEntryId))
     const homepageEntry = result.current(shuffle(homepageEntries))
     expect(homepageEntry).toBe(homeEntryWithId)
@@ -140,6 +152,7 @@ describe('useSelectHomepageEntry', () => {
         credit: Credit
         expectedHomepageEntry: HomepageEntry
       }) => {
+        mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
         mockUseAuthContext.mockReturnValueOnce({ isLoggedIn, setIsLoggedIn: jest.fn() })
         mockUseUserProfileInfo.mockReturnValueOnce(
           user as unknown as UsePersistQueryResult<UserProfileResponse, unknown>
