@@ -9,6 +9,10 @@ import {
   StyledBody,
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
+import {
+  shouldShowCulturalSurvey,
+  useCulturalSurveyRoute,
+} from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
@@ -28,6 +32,8 @@ export function BeneficiaryAccountCreated() {
   const { uniqueColors } = useTheme()
   const { data: user } = useUserProfileInfo()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
+  const culturalSurveyRoute = useCulturalSurveyRoute()
+  const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
   const text = isUnderageBeneficiary
     ? t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
@@ -58,7 +64,9 @@ export function BeneficiaryAccountCreated() {
         <TouchableLink
           as={ButtonPrimary}
           wording={t`Je découvre les offres`}
-          navigateTo={navigateToHomeConfig}
+          navigateTo={
+            shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
+          }
         />
       </ButtonContainer>
     </GenericInfoPageWhite>
