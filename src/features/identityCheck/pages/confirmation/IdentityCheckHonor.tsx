@@ -40,7 +40,7 @@ export const IdentityCheckHonor = () => {
         })
       }
       if (userProfile?.domainsCredit?.all?.initial) {
-        navigate('UnderageAccountCreated')
+        navigate('BeneficiaryAccountCreated')
       } else {
         navigateToNextScreen()
       }

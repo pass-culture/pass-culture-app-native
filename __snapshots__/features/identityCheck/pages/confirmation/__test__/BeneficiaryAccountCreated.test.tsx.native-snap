@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UnderageAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
+exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
 <View
   style={
     Array [
@@ -334,7 +334,7 @@ exports[`<UnderageAccountCreated/> should render correctly for 18 year-old benef
 </View>
 `;
 
-exports[`<UnderageAccountCreated/> should render correctly for underage beneficiaries 1`] = `
+exports[`<BeneficiaryAccountCreated/> should render correctly for underage beneficiaries 1`] = `
 <View
   style={
     Array [

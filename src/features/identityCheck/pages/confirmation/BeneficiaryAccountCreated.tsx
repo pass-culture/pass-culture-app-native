@@ -23,7 +23,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { Spacer } from 'ui/theme'
 
-export function UnderageAccountCreated() {
+export function BeneficiaryAccountCreated() {
   const maxPrice = useMaxPrice()
   const { uniqueColors } = useTheme()
   const { data: user } = useUserProfileInfo()

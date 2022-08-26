@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UnderageAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
+exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
 .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -445,7 +445,7 @@ exports[`<UnderageAccountCreated/> should render correctly for 18 year-old benef
 </div>
 `;
 
-exports[`<UnderageAccountCreated/> should render correctly for underage beneficiaries 1`] = `
+exports[`<BeneficiaryAccountCreated/> should render correctly for underage beneficiaries 1`] = `
 .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;

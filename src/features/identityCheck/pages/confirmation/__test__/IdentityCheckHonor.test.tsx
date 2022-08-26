@@ -59,7 +59,7 @@ describe('<IdentityCheckHonor/>', () => {
     })
   })
 
-  it('should navigate to UnderageAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
+  it('should navigate to BeneficiaryAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
     mockUserProfile = beneficiaryUser
 
     const { getByText } = render(<IdentityCheckHonor />)
@@ -72,7 +72,7 @@ describe('<IdentityCheckHonor/>', () => {
     })
     await waitForExpect(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('UnderageAccountCreated')
+      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
 })

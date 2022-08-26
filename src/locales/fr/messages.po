@@ -369,7 +369,7 @@ msgid "Billet à retirer sur place dès demain"
 msgstr "Billet à retirer sur place dès demain"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
-#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
@@ -571,8 +571,8 @@ msgid "Complété"
 msgstr "Complété"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Compte 15-17 créé !"
-msgstr "Compte 15-17 créé !"
+msgid "Compte bénéficiaire créé !"
+msgstr "Compte bénéficiaire créé !"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Compte créé !"
@@ -1375,7 +1375,7 @@ msgstr "Je choisis mes cookies"
 msgid "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
 msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
 
-#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "Je découvre les offres"
 msgstr "Je découvre les offres"
 
@@ -3104,6 +3104,10 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 
+#: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
+msgid "Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
+msgstr "Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
+
 #: src/features/bookOffer/components/AlreadyBooked.tsx
 msgid "Tu as déjà réservé :"
 msgstr "Tu as déjà réservé :"
@@ -3144,7 +3148,7 @@ msgstr "Tu as jusqu'au {formattedDate} pour réactiver ton compte."
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 
-#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
@@ -4024,7 +4028,7 @@ msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
 msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
 msgstr "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
 
-#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
 msgstr "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
 

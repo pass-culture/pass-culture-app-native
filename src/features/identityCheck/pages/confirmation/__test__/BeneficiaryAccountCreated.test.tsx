@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { UnderageAccountCreated } from 'features/identityCheck/pages/confirmation/UnderageAccountCreated'
+import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')
@@ -14,14 +14,14 @@ jest.mock('features/profile/utils', () => {
   }
 })
 
-describe('<UnderageAccountCreated/>', () => {
+describe('<BeneficiaryAccountCreated/>', () => {
   it('should render correctly for underage beneficiaries', () => {
-    const renderAPI = render(<UnderageAccountCreated />)
+    const renderAPI = render(<BeneficiaryAccountCreated />)
     expect(renderAPI).toMatchSnapshot()
   })
   it('should render correctly for 18 year-old beneficiaries', () => {
     mockIsUserUnderageBeneficiary = false
-    const renderAPI = render(<UnderageAccountCreated />)
+    const renderAPI = render(<BeneficiaryAccountCreated />)
     expect(renderAPI).toMatchSnapshot()
   })
 })

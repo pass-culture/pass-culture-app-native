@@ -254,8 +254,8 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Underage account created"
-              onPress={() => navigate('UnderageAccountCreated')}
+              wording="BeneficiaryAccountCreated"
+              onPress={() => navigate('BeneficiaryAccountCreated')}
             />
           </Row>
           <Row half>
