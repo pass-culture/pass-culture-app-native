@@ -17,7 +17,7 @@ const defaultSearchParameters = {
   priceRange: [0, 300],
 }
 
-describe('src | components | parseSearchParameters', () => {
+describe('parseSearchParameters', () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   it('should return default parameters when no parameters are provided', () => {
