@@ -33,16 +33,8 @@ export const useBeneficiaryValidationNavigation = (setError: (error: Error) => v
 const getNavConfigForNextSubscriptionStep = (
   nextSubscriptionStep: NextSubscriptionStepResponse
 ): NextStepNavConfig => {
-  const {
-    nextSubscriptionStep: nextStep,
-    maintenancePageType,
-    stepperIncludesPhoneValidation,
-  } = nextSubscriptionStep
-  // TODO(PC-16822): remove this case as deprecated page does not exist anymore
-  if (!stepperIncludesPhoneValidation && nextStep === SubscriptionStep['phone-validation']) {
-    // TODO(PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
-    return { screen: 'SetPhoneNumberDeprecated' }
-  } else if (nextStep === SubscriptionStep.maintenance) {
+  const { nextSubscriptionStep: nextStep, maintenancePageType } = nextSubscriptionStep
+  if (nextStep === SubscriptionStep.maintenance) {
     return {
       screen: 'IdentityCheckUnavailable',
       params: {

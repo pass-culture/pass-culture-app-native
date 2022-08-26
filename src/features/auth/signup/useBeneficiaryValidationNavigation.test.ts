@@ -36,7 +36,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
   })
 
-  it('should navigate to PhoneValidation if nextStep is phone-validation', async () => {
+  it('should navigate to Stepper if nextStep is phone-validation', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['phone-validation'],
@@ -49,9 +49,8 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    // TODO(PC-15247): replace SetPhoneNumberDeprecated with SetPhoneNumber
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('SetPhoneNumberDeprecated', undefined)
+      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
     })
   })
 
