@@ -18,17 +18,26 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   const [cookiesStep, setCookiesStep] = useState(CookiesSteps.COOKIES_CONSENT)
 
   const acceptAll = () => {
-    setCookiesChoice(acceptAllCookies)
+    setCookiesChoice({
+      ...cookiesChoice,
+      consent: acceptAllCookies,
+    })
     hideModal()
   }
 
   const declineAll = () => {
-    setCookiesChoice(declineAllCookies)
+    setCookiesChoice({
+      ...cookiesChoice,
+      consent: declineAllCookies,
+    })
     hideModal()
   }
 
   const customChoice = () => {
-    setCookiesChoice(cookiesChoice)
+    setCookiesChoice({
+      ...cookiesChoice,
+      consent: cookiesChoice.consent,
+    })
     hideModal()
   }
 

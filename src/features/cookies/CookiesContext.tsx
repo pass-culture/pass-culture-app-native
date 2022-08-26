@@ -1,4 +1,5 @@
 import React, { createContext, memo, useContext, useEffect, useMemo, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   CookieCategories,
@@ -9,22 +10,31 @@ import { storage } from 'libs/storage'
 
 type ChangeableCategories = Omit<CookieCategories, CookieCategoriesEnum.essential>
 
+interface CookiesConsent {
+  consent: ChangeableCategories
+  deviceId?: string
+}
+
 interface CookiesState {
-  cookiesChoice: ChangeableCategories
-  setCookiesChoice: React.Dispatch<React.SetStateAction<ChangeableCategories>>
+  cookiesChoice: CookiesConsent
+  setCookiesChoice: React.Dispatch<React.SetStateAction<CookiesConsent>>
 }
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 
 export const getCookiesChoice = async () =>
-  await storage.readObject<ChangeableCategories>(COOKIES_CONSENT_KEY)
+  await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
 export const CookiesContextProvider = memo(function CookiesContextProvider({
   children,
 }: {
   children: JSX.Element
 }) {
-  const [cookiesChoice, setCookiesChoice] = useState<ChangeableCategories>(declineAllCookies)
+  const deviceId = uuidv4()
+  const [cookiesChoice, setCookiesChoice] = useState<CookiesConsent>({
+    consent: declineAllCookies,
+    deviceId,
+  })
 
   useEffect(() => {
     getCookiesChoice().then((value) => {
@@ -45,7 +55,10 @@ export const CookiesContextProvider = memo(function CookiesContextProvider({
 })
 
 const CookiesContext = createContext<CookiesState>({
-  cookiesChoice: declineAllCookies,
+  cookiesChoice: {
+    consent: declineAllCookies,
+    deviceId: undefined,
+  },
   setCookiesChoice: () => null,
 })
 

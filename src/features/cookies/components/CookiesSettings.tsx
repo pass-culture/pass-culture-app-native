@@ -21,12 +21,15 @@ export const CookiesSettings = () => {
   const checkboxID = uuidv4()
   const { cookiesChoice, setCookiesChoice } = useCookiesContext()
 
-  const hasAcceptedAll = Object.values(cookiesChoice).every((choice) => choice === true)
+  const hasAcceptedAll = Object.values(cookiesChoice.consent).every((choice) => choice === true)
   const toggleAll = () => {
     setCookiesChoice({
-      customization: !hasAcceptedAll,
-      performance: !hasAcceptedAll,
-      marketing: !hasAcceptedAll,
+      ...cookiesChoice,
+      consent: {
+        customization: !hasAcceptedAll,
+        performance: !hasAcceptedAll,
+        marketing: !hasAcceptedAll,
+      },
     })
   }
 
@@ -53,12 +56,18 @@ export const CookiesSettings = () => {
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
               switchProps={{
-                active: isEssential ? true : cookiesChoice[cookie],
+                active: isEssential ? true : cookiesChoice.consent[cookie],
                 disabled: isEssential,
                 toggle: () =>
                   isEssential
                     ? null
-                    : setCookiesChoice((prev) => ({ ...prev, [cookie]: !cookiesChoice[cookie] })),
+                    : setCookiesChoice((prev) => ({
+                        ...prev,
+                        consent: {
+                          ...prev.consent,
+                          [cookie]: !cookiesChoice.consent[cookie],
+                        },
+                      })),
               }}>
               <React.Fragment>
                 <Typo.Body>{info.description}</Typo.Body>
