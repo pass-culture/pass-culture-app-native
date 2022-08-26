@@ -78,11 +78,7 @@ export const IdentityCheckStepper = () => {
         .then(({ data: userProfile }) => {
           const credit = userProfile ? getAvailableCredit(userProfile) : null
           if (credit?.amount !== undefined && !credit?.isExpired) {
-            if (credit.amount < 30000 && credit.amount > 0) {
-              navigate('BeneficiaryAccountCreated')
-            } else if (credit.amount === 30000 || credit.amount === 0) {
-              navigate('AccountCreated')
-            }
+            navigate('BeneficiaryAccountCreated')
           }
         })
         .catch((error) => {

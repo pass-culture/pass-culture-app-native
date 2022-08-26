@@ -54,18 +54,7 @@ jest.mock('react-query')
 
 describe('Stepper navigation', () => {
   beforeEach(jest.clearAllMocks)
-  it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is lower than 300 euros', async () => {
-    mockNextSubscriptionStep = {
-      ...mockStep,
-      nextSubscriptionStep: null,
-    }
-    render(<IdentityCheckStepper />)
-    await superFlushWithAct()
-    await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
-    })
-  })
-  it('should navigate to AccountCreated when next_step is null and initialCredit is 300 euros', async () => {
+  it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
     mockNextSubscriptionStep = {
       ...mockStep,
       nextSubscriptionStep: null,
@@ -77,7 +66,7 @@ describe('Stepper navigation', () => {
     render(<IdentityCheckStepper />)
     await superFlushWithAct()
     await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledWith('AccountCreated')
+      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
   it('should stay on stepper when next_step is null initialCredit is not between 0 and 300 euros', async () => {
