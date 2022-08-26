@@ -456,8 +456,8 @@ msgid "Ces cookies nous permettent, en fonction de ta navigation, de te proposer
 msgstr "Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser."
 
 #: src/features/cookies/components/cookiesInfo.ts
-msgid "Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir les tendances et ainsi améliorer les résultats qui te sont proposés."
-msgstr "Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir les tendances et ainsi améliorer les résultats qui te sont proposés."
+msgid "Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés."
+msgstr "Ces cookies sont là pour nous aider à améliorer notre service grâce à des statistiques anonymes sur l’usage du pass Culture. Nous regardons par exemple les mots que tu tapes dans la barre de recherche pour définir des tendances et ainsi améliorer les résultats qui te sont proposés."
 
 #: src/features/auth/login/Login.tsx
 msgid "Cette adresse e-mail est liée à un compte supprimé"
@@ -2761,8 +2761,8 @@ msgid "Salle de projections"
 msgstr "Salle de projections"
 
 #: src/features/cookies/components/cookiesInfo.ts
-msgid "Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées."
-msgstr "Sans ces cookies nous ne pourrons pas te proposer des recommandations adaptées."
+msgid "Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées."
+msgstr "Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées."
 
 #: src/features/auth/login/Login.tsx
 #: src/features/favorites/components/NotConnectedFavorites.tsx
