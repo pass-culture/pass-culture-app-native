@@ -60,6 +60,10 @@ export function NavigationSignUp(): JSX.Element {
         />
         <LinkToComponent title={'Account Created'} onPress={() => navigate('AccountCreated')} />
         <LinkToComponent
+          title={'BeneficiaryAccountCreated'}
+          onPress={() => navigate('BeneficiaryAccountCreated')}
+        />
+        <LinkToComponent
           title={"C'est pour bientôt"}
           onPress={() =>
             navigate('NotYetUnderageEligibility', {

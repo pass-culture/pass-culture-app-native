@@ -3,9 +3,9 @@ import { t } from '@lingui/macro'
 import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
-import { UnderageAccountCreated } from 'features/identityCheck/pages/confirmation/UnderageAccountCreated'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/IdentityCheckDMS'
@@ -181,10 +181,10 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     secure: true,
   },
   {
-    name: 'UnderageAccountCreated',
-    component: UnderageAccountCreated,
-    path: 'creation-compte/confirmation-15-17',
-    options: { title: t`Compte 15-17 créé\u00a0!` },
+    name: 'BeneficiaryAccountCreated',
+    component: BeneficiaryAccountCreated,
+    path: 'creation-compte/confirmation-beneficiaire',
+    options: { title: t`Compte bénéficiaire créé\u00a0!` },
     secure: true,
   },
   // Errors
