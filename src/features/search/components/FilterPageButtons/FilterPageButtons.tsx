@@ -8,7 +8,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
-  isModal: boolean
+  isModal?: boolean
   onResetPress: () => void
   onSearchPress: () => void
   children?: never
