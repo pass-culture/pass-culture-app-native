@@ -47,14 +47,6 @@ export function NavigationIdentityCheck(): JSX.Element {
       <StyledContainer>
         <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
         <LinkToComponent
-          title={`Old PhoneValidation`}
-          onPress={() => navigate('SetPhoneNumberDeprecated')}
-        />
-        <LinkToComponent
-          title={'Old PhoneValidationCode'}
-          onPress={() => navigate('SetPhoneValidationCodeDeprecated')}
-        />
-        <LinkToComponent
           title={`Too many codes`}
           onPress={() => navigate('PhoneValidationTooManyAttempts')}
         />

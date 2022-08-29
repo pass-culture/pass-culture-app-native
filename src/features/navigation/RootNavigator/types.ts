@@ -27,8 +27,6 @@ export type IdentityCheckRootStackParamList = {
   // PhoneValidation
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined
-  SetPhoneNumberDeprecated: undefined
-  SetPhoneValidationCodeDeprecated: undefined
   // Profile
   SetName: undefined
   IdentityCheckCity: undefined

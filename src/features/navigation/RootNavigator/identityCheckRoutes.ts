@@ -1,7 +1,5 @@
 import { t } from '@lingui/macro'
 
-import { SetPhoneNumberDeprecated } from 'features/auth/signup/PhoneValidation/SetPhoneNumberDeprecated'
-import { SetPhoneValidationCodeDeprecated } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeDeprecated'
 import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -58,13 +56,6 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   },
   // Phone Validation
   {
-    name: 'SetPhoneNumberDeprecated',
-    component: SetPhoneNumberDeprecated,
-    path: 'validation-telephone/numero-cheatcodes-only',
-    options: { title: t`Ton numéro de téléphone` },
-    secure: true,
-  },
-  {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
     path: 'creation-compte/telephone',
@@ -76,12 +67,6 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: SetPhoneValidationCode,
     path: 'creation-compte/code-de-validation-telephone',
     options: { title: t`Validation du numéro de téléphone` },
-  },
-  {
-    name: 'SetPhoneValidationCodeDeprecated',
-    component: SetPhoneValidationCodeDeprecated,
-    path: 'validation-telephone/code-cheatcodes-only',
-    options: { title: t`Validation téléphone` },
   },
   // Profile
   {
