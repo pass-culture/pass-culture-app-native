@@ -1,9 +1,9 @@
 import mockdate from 'mockdate'
 
-import { allOptionalCookies, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { COOKIES_CONSENT_KEY, useCookies } from 'features/cookies/useCookies'
 import { storage } from 'libs/storage'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const deviceId = 'testUuidV4'
 const Today = new Date(2022, 9, 29)
@@ -20,7 +20,7 @@ describe('useCookies', () => {
       expect(cookiesChoice.consent).toEqual({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: [],
-        refused: allOptionalCookies,
+        refused: ALL_OPTIONAL_COOKIES,
       })
     })
 
@@ -48,7 +48,7 @@ describe('useCookies', () => {
           choiceDatetime: Today,
           consent: {
             mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: allOptionalCookies,
+            accepted: ALL_OPTIONAL_COOKIES,
             refused: [],
           },
         })
@@ -60,7 +60,7 @@ describe('useCookies', () => {
         choiceDatetime: Today,
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: allOptionalCookies,
+          accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         },
       })
@@ -78,7 +78,7 @@ describe('useCookies', () => {
           choiceDatetime: Today,
           consent: {
             mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: allOptionalCookies,
+            accepted: ALL_OPTIONAL_COOKIES,
             refused: [],
           },
         })
@@ -92,7 +92,7 @@ describe('useCookies', () => {
         choiceDatetime: Today.toISOString(),
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: allOptionalCookies,
+          accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         },
       })
@@ -100,28 +100,29 @@ describe('useCookies', () => {
   })
 
   // FIXME(LucasBeneston): fix this test
-  it.skip('should restore state from the storage', () => {
+  it('should restore state from the storage', async () => {
     storage.saveObject(COOKIES_CONSENT_KEY, {
       deviceId,
       choiceDatetime: Today,
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: allOptionalCookies,
+        accepted: ALL_OPTIONAL_COOKIES,
         refused: [],
       },
     })
 
     const { result } = renderHook(useCookies)
-    const { cookiesChoice } = result.current
 
-    expect(cookiesChoice).toEqual({
-      deviceId,
-      choiceDatetime: Today.toISOString(),
-      consent: {
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: allOptionalCookies,
-        refused: [],
-      },
+    await waitFor(() => {
+      expect(result.current.cookiesChoice).toEqual({
+        deviceId,
+        choiceDatetime: Today.toISOString(),
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      })
     })
   })
 })

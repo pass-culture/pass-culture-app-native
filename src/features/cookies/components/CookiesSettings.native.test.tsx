@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 
 describe('<CookiesSettings/>', () => {
   it('should render correctly', async () => {
@@ -19,9 +19,12 @@ describe('<CookiesSettings/>', () => {
     })
 
     essentialToggle && fireEvent.press(essentialToggle)
-    expect(essentialToggle?.props.accessibilityState).toEqual({
-      disabled: true,
-      checked: true,
+
+    await waitFor(() => {
+      expect(essentialToggle?.props.accessibilityState).toEqual({
+        disabled: true,
+        checked: true,
+      })
     })
   })
 })

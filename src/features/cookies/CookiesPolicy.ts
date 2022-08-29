@@ -24,9 +24,9 @@ export enum CookieNameEnum {
   APPSFLYER,
 }
 
-type Cookies = CookieNameEnum[]
+export type Cookies = CookieNameEnum[]
 
-interface CookieCategories {
+export interface CookieCategories {
   mandatory: Cookies
   accepted: Cookies
   refused: Cookies
@@ -77,7 +77,7 @@ export const COOKIES_BY_CATEGORY: Record<CookieCategoriesEnum, Cookies> = {
   [CookieCategoriesEnum.marketing]: [CookieNameEnum.APPSFLYER],
 }
 
-export const allOptionalCookies = [
+export const ALL_OPTIONAL_COOKIES = [
   ...COOKIES_BY_CATEGORY.customization,
   ...COOKIES_BY_CATEGORY.performance,
   ...COOKIES_BY_CATEGORY.marketing,

@@ -1,11 +1,16 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
+import { useCookies } from 'features/cookies/useCookies'
+import {
+  CookiesChoiceByCategory,
+  useCookiesChoiceByCategory,
+} from 'features/cookies/useCookiesChoiceByCategory'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -18,9 +23,35 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
+  const { cookiesChoice } = useCookies()
+  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice.consent)
+  const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
+    customization: false,
+    performance: false,
+    marketing: false,
+  })
 
-  // TODO(LucasBeneston): active this toggle
-  const toggleAll = () => null
+  useEffect(() => {
+    setSettingsCookiesChoice({
+      customization: cookiesChoiceByCategory.customization,
+      performance: cookiesChoiceByCategory.performance,
+      marketing: cookiesChoiceByCategory.marketing,
+    })
+  }, [
+    cookiesChoiceByCategory.customization,
+    cookiesChoiceByCategory.marketing,
+    cookiesChoiceByCategory.performance,
+  ])
+
+  const hasAcceptedAll = Object.values(settingsCookiesChoice).every((choice) => choice === true)
+
+  const toggleAll = () => {
+    setSettingsCookiesChoice({
+      customization: !hasAcceptedAll,
+      performance: !hasAcceptedAll,
+      marketing: !hasAcceptedAll,
+    })
+  }
 
   return (
     <React.Fragment>
@@ -32,7 +63,7 @@ export const CookiesSettings = () => {
         <AcceptAllContainer>
           <StyledInputLabel htmlFor={checkboxID}>{t`Tout accepter`}</StyledInputLabel>
           <Spacer.Row numberOfSpaces={2} />
-          <FilterSwitch active={false} checkboxID={checkboxID} toggle={toggleAll} />
+          <FilterSwitch active={hasAcceptedAll} checkboxID={checkboxID} toggle={toggleAll} />
         </AcceptAllContainer>
       </ChoiceContainer>
       <Spacer.Row numberOfSpaces={4} />
@@ -45,10 +76,15 @@ export const CookiesSettings = () => {
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
               switchProps={{
-                active: false,
+                active: isEssential ? true : settingsCookiesChoice[cookie],
                 disabled: isEssential,
-                // TODO(LucasBeneston): active this toggle
-                toggle: () => null,
+                toggle: () =>
+                  isEssential
+                    ? null
+                    : setSettingsCookiesChoice((prev) => ({
+                        ...prev,
+                        [cookie]: !settingsCookiesChoice[cookie],
+                      })),
               }}>
               <React.Fragment>
                 <Typo.Body>{info.description}</Typo.Body>

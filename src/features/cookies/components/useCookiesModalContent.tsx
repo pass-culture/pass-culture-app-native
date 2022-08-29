@@ -3,7 +3,9 @@ import React from 'react'
 
 import { CookiesConsentButtons } from 'features/cookies/components/CookiesConsentButtons'
 import { CookiesConsentExplanations } from 'features/cookies/components/CookiesConsentExplanations'
+import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
+import { useCookies } from 'features/cookies/useCookies'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -16,9 +18,7 @@ export enum CookiesSteps {
 interface Props {
   cookiesStep: number
   setCookiesStep: (number: CookiesSteps) => void
-  acceptAll: () => void
-  declineAll: () => void
-  customChoice: () => void
+  hideModal: () => void
 }
 
 type ReportOfferModalContent = {
@@ -27,13 +27,39 @@ type ReportOfferModalContent = {
   fixedBottomChildren: JSX.Element
 } & ModalLeftIconProps
 
-export const useCookiesModalContent = ({
-  cookiesStep,
-  setCookiesStep,
-  acceptAll,
-  declineAll,
-  customChoice,
-}: Props) => {
+export const useCookiesModalContent = ({ cookiesStep, setCookiesStep, hideModal }: Props) => {
+  const { cookiesChoice, setCookiesChoice } = useCookies()
+
+  const acceptAll = () => {
+    setCookiesChoice({
+      ...cookiesChoice,
+      choiceDatetime: new Date(),
+      consent: {
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: ALL_OPTIONAL_COOKIES,
+        refused: [],
+      },
+    })
+    hideModal()
+  }
+
+  const declineAll = () => {
+    setCookiesChoice({
+      ...cookiesChoice,
+      choiceDatetime: new Date(),
+      consent: {
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: [],
+        refused: ALL_OPTIONAL_COOKIES,
+      },
+    })
+    hideModal()
+  }
+
+  const customChoice = () => {
+    hideModal()
+  }
+
   const pickChildren = (step: CookiesSteps): ReportOfferModalContent => {
     if (step === CookiesSteps.COOKIES_SETTINGS) {
       return {

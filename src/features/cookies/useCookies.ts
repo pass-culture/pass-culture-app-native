@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import {
-  allOptionalCookies,
+  ALL_OPTIONAL_COOKIES,
   CookiesConsent,
   COOKIES_BY_CATEGORY,
 } from 'features/cookies/CookiesPolicy'
@@ -19,7 +19,7 @@ export const useCookies = () => {
     consent: {
       mandatory: COOKIES_BY_CATEGORY.essential,
       accepted: [],
-      refused: allOptionalCookies,
+      refused: ALL_OPTIONAL_COOKIES,
     },
     deviceId,
     choiceDatetime: undefined,
