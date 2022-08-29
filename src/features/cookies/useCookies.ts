@@ -22,6 +22,7 @@ export const useCookies = () => {
       refused: allOptionalCookies,
     },
     deviceId,
+    choiceDatetime: undefined,
   })
 
   useEffect(() => {

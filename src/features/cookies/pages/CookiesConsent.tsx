@@ -20,6 +20,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   const acceptAll = () => {
     setCookiesChoice({
       ...cookiesChoice,
+      choiceDatetime: new Date(),
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: allOptionalCookies,
@@ -32,6 +33,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   const declineAll = () => {
     setCookiesChoice({
       ...cookiesChoice,
+      choiceDatetime: new Date(),
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: [],
