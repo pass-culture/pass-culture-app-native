@@ -2,7 +2,7 @@ import shuffle from 'lodash/shuffle'
 
 import { EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserHasBookings } from 'features/bookings/helpers'
+import { useUserHasBookings } from 'features/bookings/api'
 import { HomepageEntry, Tag } from 'features/home/contentful'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -94,7 +94,7 @@ jest.mock('features/bookings/api/queries', () => ({
   useBookings: jest.fn(() => ({ ended_bookings: [], ongoing_bookings: [] })),
 }))
 
-jest.mock('features/bookings/helpers')
+jest.mock('features/bookings/api')
 const mockUseUserHasBookings = useUserHasBookings as jest.MockedFunction<typeof useUserHasBookings>
 
 jest.mock('features/home/services/useAvailableCredit')

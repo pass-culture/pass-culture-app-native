@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserHasBookings } from 'features/bookings/helpers'
+import { useUserHasBookings } from 'features/bookings/api'
 import { HomepageEntry, TagId } from 'features/home/contentful'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'

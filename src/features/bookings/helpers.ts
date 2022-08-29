@@ -2,7 +2,6 @@ import { plural, t } from '@lingui/macro'
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
 import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
-import { useBookings } from 'features/bookings/api/queries'
 import { getLocationLabel } from 'features/bookings/getLocationLabel'
 import {
   formatToCompleteFrenchDate,
@@ -308,11 +307,4 @@ export function formatSecondsToString(delay: number) {
 
   const delayInWeek = delay / 60 / 60 / 24 / 7
   return t`${delayInWeek} semaine`
-}
-
-export function useUserHasBookings() {
-  const { data: bookings } = useBookings()
-  const { ongoing_bookings: ongoingBookings = [], ended_bookings: endedBookings = [] } =
-    bookings || {}
-  return ongoingBookings.length > 0 || endedBookings.length > 0
 }
