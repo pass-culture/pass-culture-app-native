@@ -5,7 +5,7 @@ import {
   allOptionalCookies,
   CookiesConsent,
   COOKIES_BY_CATEGORY,
-} from 'features/cookies/cookiesPolicy'
+} from 'features/cookies/CookiesPolicy'
 import { storage } from 'libs/storage'
 
 export const COOKIES_CONSENT_KEY = 'cookies_consent'

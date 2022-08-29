@@ -5,12 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
-import {
-  allOptionalCookies,
-  CookieCategoriesEnum,
-  COOKIES_BY_CATEGORY,
-} from 'features/cookies/cookiesPolicy'
-import { useCookies } from 'features/cookies/useCookies'
+import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -23,30 +18,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
-  const { cookiesChoice, setCookiesChoice } = useCookies()
-  const hasAcceptedAll = cookiesChoice.consent.accepted === allOptionalCookies
 
-  const toggleAll = () => {
-    if (hasAcceptedAll) {
-      setCookiesChoice({
-        ...cookiesChoice,
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: [],
-          refused: allOptionalCookies,
-        },
-      })
-    } else {
-      setCookiesChoice({
-        ...cookiesChoice,
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: allOptionalCookies,
-          refused: [],
-        },
-      })
-    }
-  }
+  // TODO(LucasBeneston): active this toggle
+  const toggleAll = () => null
 
   return (
     <React.Fragment>
@@ -58,7 +32,7 @@ export const CookiesSettings = () => {
         <AcceptAllContainer>
           <StyledInputLabel htmlFor={checkboxID}>{t`Tout accepter`}</StyledInputLabel>
           <Spacer.Row numberOfSpaces={2} />
-          <FilterSwitch active={hasAcceptedAll} checkboxID={checkboxID} toggle={toggleAll} />
+          <FilterSwitch active={false} checkboxID={checkboxID} toggle={toggleAll} />
         </AcceptAllContainer>
       </ChoiceContainer>
       <Spacer.Row numberOfSpaces={4} />
@@ -71,10 +45,10 @@ export const CookiesSettings = () => {
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
               switchProps={{
-                active: isEssential ? true : hasAcceptedAll,
+                active: false,
                 disabled: isEssential,
                 // TODO(LucasBeneston): active this toggle
-                toggle: () => (isEssential ? null : false),
+                toggle: () => null,
               }}>
               <React.Fragment>
                 <Typo.Body>{info.description}</Typo.Body>

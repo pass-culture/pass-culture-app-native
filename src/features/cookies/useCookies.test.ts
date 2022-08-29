@@ -1,4 +1,4 @@
-import { allOptionalCookies, COOKIES_BY_CATEGORY } from 'features/cookies/cookiesPolicy'
+import { allOptionalCookies, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { COOKIES_CONSENT_KEY, useCookies } from 'features/cookies/useCookies'
 import { storage } from 'libs/storage'
 import { act, renderHook } from 'tests/utils'

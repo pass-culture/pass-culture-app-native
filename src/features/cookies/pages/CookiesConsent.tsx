@@ -5,7 +5,7 @@ import {
   CookiesSteps,
   useCookiesModalContent,
 } from 'features/cookies/components/useCookiesModalContent'
-import { allOptionalCookies, COOKIES_BY_CATEGORY } from 'features/cookies/cookiesPolicy'
+import { allOptionalCookies, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/useCookies'
 
 interface Props {
