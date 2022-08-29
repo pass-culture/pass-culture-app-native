@@ -23,7 +23,7 @@ The commits of the PR won't be on master, but are still useful for PR readiness 
   │       │      |                  Not capitalized. No period at the end.
   │       │      |
   │       │      └─⫸ PR Scope: Hierarchical scope. Not capitalized, but snakeCase. For instance:
-  │       │           app, core, themeProvider... > identityCheck, eac, booking, search... > useSelectPlaylist...
+  │       │           app, core, themeProvider... > identityCheck, eac, booking, search... > useSelectHomepageEntry...
   │       │
   │       └─⫸ PR Type: build, ci, docs, feat, fix, perf, refactor or test.
   |            See https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type

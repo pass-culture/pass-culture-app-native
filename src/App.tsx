@@ -21,13 +21,13 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
-import { ABTestingProvider } from 'libs/ABTesting'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
@@ -69,7 +69,7 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <ABTestingProvider>
+    <RemoteConfigProvider>
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
           <ReactQueryClientProvider>
@@ -107,7 +107,7 @@ const App: FunctionComponent = function () {
           </ReactQueryClientProvider>
         </SafeAreaProvider>
       </ThemeProvider>
-    </ABTestingProvider>
+    </RemoteConfigProvider>
   )
 }
 

@@ -10,7 +10,7 @@ import {
   HomepageEntry,
   ContentTypes,
 } from 'features/home/contentful'
-import { useSelectPlaylist } from 'features/home/selectPlaylist'
+import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
@@ -35,23 +35,30 @@ export async function getEntries() {
   }
 }
 
-export function useHomepageModules(paramsEntryId?: string) {
-  const selectPlaylist = useSelectPlaylist(paramsEntryId)
-  const { data: entries } = useQuery<HomepageEntry[]>(QueryKeys.HOMEPAGE_MODULES, getEntries, {
-    staleTime: STALE_TIME_CONTENTFUL,
-  })
+export function useHomepageModules(paramsHomepageEntryId?: string) {
+  const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
+  // this fetches all homepages available in contentful
+  const { data: homepageEntries } = useQuery<HomepageEntry[]>(
+    QueryKeys.HOMEPAGE_MODULES,
+    getEntries,
+    {
+      staleTime: STALE_TIME_CONTENTFUL,
+    }
+  )
 
-  const entry = selectPlaylist(entries || [])
-  const entryId = entry?.sys.id
+  const homepageEntry = selectHomepageEntry(homepageEntries || [])
+  const homepageEntryId = homepageEntry?.sys.id
 
   useEffect(() => {
-    if (entryId) analytics.logConsultHome({ entryId })
-  }, [entryId])
+    if (homepageEntryId) analytics.logConsultHome({ entryId: homepageEntryId })
+  }, [homepageEntryId])
 
   return useMemo(
     () =>
-      entry ? { modules: processHomepageEntry(entry), homeEntryId: entryId } : { modules: [] },
+      homepageEntry
+        ? { modules: processHomepageEntry(homepageEntry), homeEntryId: homepageEntryId }
+        : { modules: [] },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [entryId]
+    [homepageEntryId]
   )
 }
