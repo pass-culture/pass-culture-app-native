@@ -580,7 +580,6 @@ msgstr "Compte créé !"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/navigation/RootNavigator/routes.ts
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
@@ -2024,7 +2023,7 @@ msgstr ""
 "On est ravi de te revoir !\n"
 "Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture."
 
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "On est super triste de te voir partir."
 msgstr "On est super triste de te voir partir."
 
@@ -2525,7 +2524,6 @@ msgstr "Retour"
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 #: src/features/venue/pages/VenueNotFound.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Retourner à l'accueil"
@@ -2590,7 +2588,7 @@ msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Réactiver mon compte"
 msgstr "Réactiver mon compte"
 
@@ -2921,7 +2919,7 @@ msgstr "Ton code postal | Profil"
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Ton compte a été désactivé"
 msgstr "Ton compte a été désactivé"
 
@@ -3100,10 +3098,6 @@ msgstr "Trop de tentatives !"
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
-msgid "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
-msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
-
 #: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
@@ -3157,7 +3151,7 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. D�
 msgid "Tu as la main dessus"
 msgstr "Tu as la main dessus"
 
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
 msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
 
@@ -3396,10 +3390,6 @@ msgid "Une erreur s’est produite, veuillez passer par une autre application de
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
-msgid "Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé."
-msgstr "Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé."
-
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
 msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
 

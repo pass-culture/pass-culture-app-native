@@ -143,7 +143,6 @@ function requestSettingsSuccess(
     isWebappV2Enabled: false,
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,
-    allowAccountUnsuspension: false,
     appEnableCategoryFilterPage: false,
     accountUnsuspensionLimit: 60,
     appEnableAutocomplete: true,

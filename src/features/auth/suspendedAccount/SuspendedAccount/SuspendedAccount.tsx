@@ -1,14 +1,13 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { useAccountSuspensionDate } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate'
 import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
-import { PageNotFound } from 'features/navigation/PageNotFound'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers'
@@ -54,14 +53,6 @@ export const SuspendedAccount = () => {
     unsuspendAccount()
   }
 
-  useFocusEffect(
-    useCallback(() => {
-      if (!settings?.allowAccountUnsuspension) {
-        navigateToHome()
-      }
-    }, [settings])
-  )
-
   const unsuspensionDelay = settings?.accountUnsuspensionLimit || 60
   let formattedDate = ''
 
@@ -71,7 +62,7 @@ export const SuspendedAccount = () => {
     formattedDate = formatToCompleteFrenchDateTime(reactivationDeadline, false)
   }
 
-  return settings?.allowAccountUnsuspension ? (
+  return (
     <GenericInfoPage
       title={t`Ton compte est désactivé`}
       icon={ProfileDeletionIllustration}
@@ -98,8 +89,6 @@ export const SuspendedAccount = () => {
         {t`Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.`}
       </StyledBody>
     </GenericInfoPage>
-  ) : (
-    <PageNotFound />
   )
 }
 

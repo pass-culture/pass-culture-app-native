@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
-import { useAppSettings } from 'features/auth/settings'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
@@ -49,7 +48,6 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
-  const { data: settings } = useAppSettings()
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
@@ -89,7 +87,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           return
         }
 
-        if (settings?.allowAccountUnsuspension && accountState !== AccountState.ACTIVE) {
+        if (accountState !== AccountState.ACTIVE) {
           setIsLoading(false)
           return navigate('SuspensionScreen')
         }
@@ -116,7 +114,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       props.doNotNavigateOnSigninSuccess,
       setErrorMessage,
       setIsLoading,
-      settings?.allowAccountUnsuspension,
     ]
   )
 

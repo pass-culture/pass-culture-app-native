@@ -2,15 +2,11 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { navigateToHome, navigateToHomeConfig, openUrl } from 'features/navigation/helpers'
+import { navigateToHomeConfig, openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { FraudulentAccount } from '../FraudulentAccount'
-
-const mockSettings = {
-  allowAccountUnsuspension: true,
-}
 
 jest.mock('features/navigation/helpers')
 
@@ -19,11 +15,6 @@ jest.mock('features/auth/AuthContext', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('<FraudulentAccount />', () => {
@@ -51,15 +42,6 @@ describe('<FraudulentAccount />', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
       expect(mockSignOut).toBeCalledTimes(1)
-    })
-  })
-
-  it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountUnsuspension = false
-    render(<FraudulentAccount />)
-
-    await waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 })

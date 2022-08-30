@@ -63,8 +63,73 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
   text-decoration: none;
 }
 
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:focus-visible {
+  outline-color: #ffffff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c1:disabled {
   background-color: #F1F1F4;
+}
+
+.c3 {
+  background-color: transparent;
 }
 
 <div
@@ -189,7 +254,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         }
       }
     >
-      Compte désactivé
+      Ton compte a été désactivé
     </h1>
     <div
       className="css-view-1dbjc4n"
@@ -212,7 +277,15 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         }
       }
     >
-      Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app
+      <span
+        aria-hidden={true}
+        className="css-text-901oao css-textHasAncestor-16my406"
+        role="img"
+      >
+        😢
+         
+      </span>
+      On est super triste de te voir partir.
     </div>
     <div
       className="css-view-1dbjc4n"
@@ -235,7 +308,30 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         }
       }
     >
-      Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé.
+      Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "16px",
+        }
+      }
+    />
+    <div
+      className="css-text-901oao"
+      dir="ltr"
+      style={
+        Object {
+          "color": "rgba(255,255,255,1.00)",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": "15px",
+          "lineHeight": "20px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
     </div>
     <div
       className="css-view-1dbjc4n"
@@ -283,6 +379,61 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
           }
         >
           Retourner à l'accueil
+        </div>
+      </button>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <button
+        className="c2 c3"
+        onClick={[Function]}
+        onDoubleClick={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitFlexShrink": 0,
+              "flexShrink": 0,
+              "msFlexNegative": 0,
+            }
+          }
+        >
+          <div
+            className="css-view-1dbjc4n"
+            data-testid="button-icon"
+          >
+            <div
+              className="css-text-901oao"
+              dir="ltr"
+            >
+              button-icon-SVG-Mock
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(255,255,255,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginLeft": "8px",
+              "maxWidth": "100%",
+            }
+          }
+        >
+          Réactiver mon compte
         </div>
       </button>
     </div>
