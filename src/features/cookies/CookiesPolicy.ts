@@ -26,15 +26,15 @@ export enum CookieNameEnum {
 
 export type Cookies = CookieNameEnum[]
 
-export interface CookieCategories {
+export interface Consent {
   mandatory: Cookies
   accepted: Cookies
   refused: Cookies
 }
 
 export interface CookiesConsent {
-  consent: CookieCategories
-  deviceId: string
+  consent?: Consent
+  deviceId?: string
   choiceDatetime?: Date
 }
 

@@ -1,11 +1,11 @@
 import {
-  CookieCategories,
+  Consent,
   CookieCategoriesEnum,
   COOKIES_BY_CATEGORY,
   Cookies,
 } from 'features/cookies/CookiesPolicy'
 
-type CookiesChoice = Omit<CookieCategories, 'mandatory'>
+type CookiesChoice = Omit<Consent, 'mandatory'>
 
 export type CookiesChoiceByCategory = {
   [CookieCategoriesEnum.marketing]: boolean
@@ -14,27 +14,19 @@ export type CookiesChoiceByCategory = {
 }
 
 export const useCookiesChoiceByCategory = (
-  cookiesChoice: CookiesChoice
+  cookiesChoice?: CookiesChoice
 ): CookiesChoiceByCategory => {
-  if (cookiesChoice.accepted.length !== 0 && cookiesChoice.refused.length !== 0) {
-    const hasAcceptedCookies = (cookiesByCategory: Cookies) =>
-      Object.values(cookiesByCategory).every((cookie) => cookiesChoice.accepted.includes(cookie))
+  if (!cookiesChoice)
     return {
-      marketing: hasAcceptedCookies(COOKIES_BY_CATEGORY.marketing),
-      performance: hasAcceptedCookies(COOKIES_BY_CATEGORY.performance),
-      customization: hasAcceptedCookies(COOKIES_BY_CATEGORY.customization),
+      marketing: false,
+      performance: false,
+      customization: false,
     }
-  }
-  if (cookiesChoice.accepted.length !== 0) {
-    return {
-      marketing: true,
-      performance: true,
-      customization: true,
-    }
-  }
+  const hasAcceptedCookies = (cookiesByCategory: Cookies) =>
+    Object.values(cookiesByCategory).every((cookie) => cookiesChoice.accepted.includes(cookie))
   return {
-    marketing: false,
-    performance: false,
-    customization: false,
+    marketing: hasAcceptedCookies(COOKIES_BY_CATEGORY.marketing),
+    performance: hasAcceptedCookies(COOKIES_BY_CATEGORY.performance),
+    customization: hasAcceptedCookies(COOKIES_BY_CATEGORY.customization),
   }
 }

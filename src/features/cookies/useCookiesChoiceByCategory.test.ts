@@ -2,7 +2,7 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { useCookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 
 describe('useCookiesChoiceByCategory', () => {
-  it('should past all cookies choice by category to false when refused all', () => {
+  it('should have every categories disabled when refusing all cookies', () => {
     const cookiesChoice = {
       refused: ALL_OPTIONAL_COOKIES,
       accepted: [],
@@ -17,7 +17,7 @@ describe('useCookiesChoiceByCategory', () => {
     })
   })
 
-  it('should past all cookies choice by category to true when accepted all', () => {
+  it('should have every categories enabled when accepting all cookies', () => {
     const cookiesChoice = {
       refused: [],
       accepted: ALL_OPTIONAL_COOKIES,
@@ -32,7 +32,7 @@ describe('useCookiesChoiceByCategory', () => {
     })
   })
 
-  it('Should past cookies choice by category to different choice when accept and refuse some cookies', () => {
+  it('Should have cookies choice by category to different choice when accepting and refusing different cookies', () => {
     const cookiesChoice = {
       refused: COOKIES_BY_CATEGORY.marketing,
       accepted: [...COOKIES_BY_CATEGORY.performance, ...COOKIES_BY_CATEGORY.customization],

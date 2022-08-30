@@ -13,29 +13,11 @@ describe('useCookies', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 
   describe('state', () => {
-    it('should have all cookies consent refused by default', () => {
+    it('should be undefined by default', () => {
       const { result } = renderHook(useCookies)
       const { cookiesChoice } = result.current
 
-      expect(cookiesChoice.consent).toEqual({
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: [],
-        refused: ALL_OPTIONAL_COOKIES,
-      })
-    })
-
-    it('should set device ID', () => {
-      const { result } = renderHook(useCookies)
-      const { cookiesChoice } = result.current
-
-      expect(cookiesChoice.deviceId).toEqual(deviceId)
-    })
-
-    it('should not set choiceDateTime by default', () => {
-      const { result } = renderHook(useCookies)
-      const { cookiesChoice } = result.current
-
-      expect(cookiesChoice.choiceDatetime).toEqual(undefined)
+      expect(cookiesChoice).toBeUndefined()
     })
 
     it('should write state', () => {
@@ -99,7 +81,6 @@ describe('useCookies', () => {
     })
   })
 
-  // FIXME(LucasBeneston): fix this test
   it('should restore state from the storage', async () => {
     storage.saveObject(COOKIES_CONSENT_KEY, {
       deviceId,

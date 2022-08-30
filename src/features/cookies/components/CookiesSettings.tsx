@@ -24,7 +24,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
   const { cookiesChoice } = useCookies()
-  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice.consent)
+  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice?.consent)
   const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
     customization: false,
     performance: false,
@@ -76,6 +76,7 @@ export const CookiesSettings = () => {
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
               switchProps={{
+                testID: cookie,
                 active: isEssential ? true : settingsCookiesChoice[cookie],
                 disabled: isEssential,
                 toggle: () =>

@@ -1,30 +1,22 @@
 import React from 'react'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
-import { render, fireEvent, waitFor } from 'tests/utils'
+import { render } from 'tests/utils'
 
 describe('<CookiesSettings/>', () => {
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const renderAPI = render(<CookiesSettings />)
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should disable and keep checked essential cookies switch', async () => {
-    const { getAllByTestId } = render(<CookiesSettings />)
+  it('should disable and checked essential cookies switch', () => {
+    const { getByTestId } = render(<CookiesSettings />)
 
-    const essentialToggle = getAllByTestId('Interrupteur').pop()
-    expect(essentialToggle?.props.accessibilityState).toEqual({
+    const essentialToggle = getByTestId('Interrupteur-essential')
+
+    expect(essentialToggle.props.accessibilityState).toEqual({
       disabled: true,
       checked: true,
-    })
-
-    essentialToggle && fireEvent.press(essentialToggle)
-
-    await waitFor(() => {
-      expect(essentialToggle?.props.accessibilityState).toEqual({
-        disabled: true,
-        checked: true,
-      })
     })
   })
 })

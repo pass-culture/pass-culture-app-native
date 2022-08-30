@@ -4,14 +4,18 @@ import {
 } from 'features/cookies/components/useCookiesModalContent'
 
 const setCookiesStep = jest.fn()
-const hideModal = jest.fn()
+const acceptAll = jest.fn()
+const declineAll = jest.fn()
+const customChoice = jest.fn()
 
 describe('useCookiesModalContent hook description', () => {
   it('should display the CookiesDescription and not show back button if first step', () => {
     const { childrenProps } = useCookiesModalContent({
       cookiesStep: CookiesSteps.COOKIES_CONSENT,
       setCookiesStep,
-      hideModal,
+      acceptAll,
+      declineAll,
+      customChoice,
     })
     expect(childrenProps.children).toMatchSnapshot()
     expect(childrenProps.leftIcon).toBeUndefined()
@@ -21,7 +25,9 @@ describe('useCookiesModalContent hook description', () => {
     const { childrenProps } = useCookiesModalContent({
       cookiesStep: CookiesSteps.COOKIES_SETTINGS,
       setCookiesStep,
-      hideModal,
+      acceptAll,
+      declineAll,
+      customChoice,
     })
     expect(childrenProps.leftIcon).not.toBeUndefined()
     expect(childrenProps.children).toMatchSnapshot()
