@@ -332,6 +332,7 @@
     "query-string": "^7.1.*",
     "react-is": "16.7.0",
     "react-devtools-core": "4.24.3",
+    "recyclerlistview": "4.1.2",
     "tslib": "2.3.*",
     "validator": "^13.7.0"
   },
