@@ -463,7 +463,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       ]
     }
   >
-    Conditions d'annulation
+    Conditions d’annulation
   </Text>
   <View
     numberOfSpaces={2}
@@ -1038,7 +1038,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       ]
     }
   >
-    Conditions d'annulation
+    Conditions d’annulation
   </Text>
   <View
     numberOfSpaces={2}

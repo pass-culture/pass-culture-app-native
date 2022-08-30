@@ -21,15 +21,7 @@ export const OfferCaption = (props: OfferCaptionProps) => {
     <CaptionContainer imageWidth={imageWidth}>
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       {!!date && <GreyDarkCaption numberOfLines={1}>{date}</GreyDarkCaption>}
-      <GreyDarkCaption testID="priceIsDuo">
-        {isDuo && isBeneficiary
-          ? t({
-              id: 'price',
-              values: { price },
-              message: '{price} - Duo',
-            })
-          : price}
-      </GreyDarkCaption>
+      <GreyDarkCaption testID="priceIsDuo">{priceText}</GreyDarkCaption>
     </CaptionContainer>
   )
 }
