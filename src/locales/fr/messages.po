@@ -115,18 +115,6 @@ msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "Aide financière 15 ans"
-msgstr "Aide financière 15 ans"
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "Aide financière 16 ans"
-msgstr "Aide financière 16 ans"
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "Aide financière 17 ans"
-msgstr "Aide financière 17 ans"
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Aide financière 18 ans"
 msgstr "Aide financière 18 ans"
 
@@ -182,10 +170,6 @@ msgstr "Attention, il te reste :"
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Au nom de"
 msgstr "Au nom de"
-
-#: src/features/search/pages/SuggestedPlaces.tsx
-msgid "Aucun lieu ne correspond à ta recherche"
-msgstr "Aucun lieu ne correspond à ta recherche"
 
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Aucun résultat"
@@ -1333,10 +1317,6 @@ msgstr "La géolocalisation est temporairement inutilisable"
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées"
 msgstr "La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées"
-
-#: src/features/bookings/components/BookingDetailsCancelButton.tsx
-msgid "La réservation est annulable jusqu'au {formattedConfirmationDate}"
-msgstr "La réservation est annulable jusqu'au {formattedConfirmationDate}"
 
 #: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
@@ -2873,10 +2853,6 @@ msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de no
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
-msgid "Tu as 18 ans..."
-msgstr "Tu as 18 ans..."
-
 #: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
@@ -3376,18 +3352,6 @@ msgstr "avec moi"
 msgid "avec toi."
 msgstr "avec toi."
 
-#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
-msgid "birthday notification text"
-msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :"
-
-#: src/web/SupportedBrowsersGate.tsx
-msgid "browser detect version"
-msgstr "Oups ! Nous ne pouvons afficher correctement l'application car ton navigateur ({browserName} v{browserVersion}) n'est pas à jour"
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
-msgid "c'est..."
-msgstr "c'est..."
-
 #: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "carte d'identité"
 msgstr "carte d'identité"
@@ -3459,25 +3423,13 @@ msgstr "en offres numériques"
 msgid "en offres physiques"
 msgstr "en offres physiques"
 
-#: src/features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader.tsx
-msgid "enjoy deposit"
-msgstr "Profite de {deposit}"
-
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
 msgid "et"
 msgstr "et"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "et si tu as..."
-msgstr "et si tu as..."
-
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
 msgid "expirée ou perdue"
 msgstr "expirée ou perdue"
-
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
-msgid "financialHelpMessage"
-msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
 
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
@@ -3583,21 +3535,9 @@ msgstr "quotidiennes"
 msgid "réalisée"
 msgstr "réalisée"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx
-msgid "réservation annulable jusqu'au"
-msgstr "Cette réservation peut être annulée jusqu’au {date}"
-
 #: src/libs/share/shareApp/shareAppContent.ts
 msgid "share app"
 msgstr "Profite toi aussi de tous les bons plans du pass Culture : {url}"
-
-#: src/features/offer/services/useShareOffer.ts
-msgid "share offer message"
-msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
-
-#: src/features/venue/services/useShareVenue.ts
-msgid "share venue message"
-msgstr "Retrouve \"{name}\" sur le pass Culture"
 
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"

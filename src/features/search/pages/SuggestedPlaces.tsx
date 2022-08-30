@@ -122,7 +122,7 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
-      <DescriptionErrorText aria-live="assertive">{t`Aucun lieu ne correspond à ta recherche`}</DescriptionErrorText>
+      <StyledBody aria-live="assertive">Aucun lieu ne correspond à ta recherche</StyledBody>
     </DescriptionErrorTextContainer>
   ) : (
     <React.Fragment />
@@ -156,7 +156,7 @@ const DescriptionErrorTextContainer = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
+const StyledBody = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
 
 const LocationBuilding = styled(DefaultLocationBuilding).attrs(({ theme }) => ({
   color: theme.colors.primary,
