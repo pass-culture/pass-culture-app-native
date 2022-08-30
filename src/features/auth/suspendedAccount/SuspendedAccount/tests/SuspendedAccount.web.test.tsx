@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { queriesToInvalidateOnUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, useMutationFactory } from 'tests/utils/web'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -13,19 +13,10 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SuspendedAccount } from '../SuspendedAccount'
 
-const mockSettings = {
-  allowAccountUnsuspension: true,
-}
-
 jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate', () => ({
   useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
 }))
 jest.mock('features/navigation/helpers')
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
@@ -100,15 +91,6 @@ describe('<SuspendedAccount />', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
       expect(mockSignOut).toBeCalledTimes(1)
-    })
-  })
-
-  it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountUnsuspension = false
-    render(<SuspendedAccount />)
-
-    await waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 })

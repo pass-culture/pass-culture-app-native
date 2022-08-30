@@ -21,7 +21,6 @@ export const mockDefaultSettings: SettingsResponse = {
   enableNativeEacIndividual: false,
   enableUnderageGeneralisation: false,
   accountCreationMinimumAge: 15,
-  allowAccountUnsuspension: false,
   accountUnsuspensionLimit: 60,
   appEnableCookiesV2: false,
 }

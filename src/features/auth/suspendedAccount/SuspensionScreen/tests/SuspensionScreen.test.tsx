@@ -7,10 +7,6 @@ import { render } from 'tests/utils'
 
 import { SuspensionScreen } from '../SuspensionScreen'
 
-const mockSettings = {
-  allowAccountUnsuspension: true,
-}
-
 const mockSuspensionStatus = { status: AccountState.SUSPENDED_UPON_USER_REQUEST }
 jest.mock('features/auth/suspendedAccount/SuspensionScreen/useAccountSuspensionStatus', () => ({
   useAccountSuspensionStatus: jest.fn(() => ({ data: mockSuspensionStatus })),
@@ -22,11 +18,8 @@ jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend',
   useAccountUnsuspend: jest.fn(() => ({ mutate: jest.fn() })),
 }))
 jest.mock('features/navigation/helpers')
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
+jest.mock('features/auth/settings')
+
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
@@ -76,15 +69,6 @@ describe('<SuspensionsScreen />', () => {
     unmount()
     await waitForExpect(() => {
       expect(mockSignOut).not.toBeCalled()
-    })
-  })
-
-  it('should redirect to home if feature is disabled', async () => {
-    mockSettings.allowAccountUnsuspension = false
-    render(<SuspensionScreen />)
-
-    await waitForExpect(() => {
-      expect(navigateToHome).toBeCalled()
     })
   })
 })

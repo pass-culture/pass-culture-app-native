@@ -1854,11 +1854,6 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  allowAccountUnsuspension: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   appEnableAutocomplete: boolean
   /**
    * @type {boolean}

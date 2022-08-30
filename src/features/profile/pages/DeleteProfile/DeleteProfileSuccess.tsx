@@ -4,32 +4,47 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { DeleteProfileSuccessV2 } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccessV2'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { Emoji } from 'ui/components/Emoji'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
   const { data: settings } = useAppSettings()
-  return settings?.allowAccountUnsuspension ? (
-    <DeleteProfileSuccessV2 />
-  ) : (
+  const reactivationLimit = settings?.accountUnsuspensionLimit
+  return (
     <GenericInfoPage
-      title={t`Compte désactivé`}
+      title={t`Ton compte a été désactivé`}
       icon={ProfileDeletionIllustration}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording={t`Retourner à l'accueil`}
-          navigateTo={navigateToHomeConfig}
+          navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
+        />,
+        <TouchableLink
+          key={2}
+          as={ButtonTertiaryWhite}
+          wording={t`Réactiver mon compte`}
+          onPress={() => analytics.logAccountReactivation('deleteprofilesuccess')}
+          icon={Again}
+          navigateTo={{ screen: 'Login' }}
         />,
       ]}>
-      <StyledBody>{t`Tu as 30 jours pour te rétracter par e-mail à\u00a0: support@passculture.app`}</StyledBody>
+      <StyledBody>
+        <Emoji.CryingFace withSpaceAfter />
+        {t`On est super triste de te voir partir.`}
+      </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{t`Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé.`}</StyledBody>
+      <StyledBody>{t`Tu as ${reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.`}</StyledBody>
+      <Spacer.Column numberOfSpaces={4} />
+      <StyledBody>{t`Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.`}</StyledBody>
     </GenericInfoPage>
   )
 }
