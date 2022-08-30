@@ -63,6 +63,7 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
+import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Plus } from 'ui/svg/icons/Plus'
@@ -145,6 +146,7 @@ export const SecondaryAndBiggerIcons = {
   More,
   OfferEvent,
   OrderPrice,
+  OtherOffer,
   Profile,
   ProfileDeletion,
   Quote,
