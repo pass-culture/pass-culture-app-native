@@ -15,39 +15,29 @@ interface Props {
 
 export const CookiesConsent = ({ visible, hideModal }: Props) => {
   const [cookiesStep, setCookiesStep] = useState(CookiesSteps.COOKIES_CONSENT)
-  const { cookiesChoice, setCookiesChoice } = useCookies()
+  const { setCookiesConsent } = useCookies()
 
   const acceptAll = useCallback(() => {
-    setCookiesChoice({
-      ...cookiesChoice,
-      choiceDatetime: new Date(),
-      consent: {
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: ALL_OPTIONAL_COOKIES,
-        refused: [],
-      },
+    setCookiesConsent({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted: ALL_OPTIONAL_COOKIES,
+      refused: [],
     })
     hideModal()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cookiesChoice])
+  }, [hideModal, setCookiesConsent])
 
   const declineAll = useCallback(() => {
-    setCookiesChoice({
-      ...cookiesChoice,
-      choiceDatetime: new Date(),
-      consent: {
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: [],
-        refused: ALL_OPTIONAL_COOKIES,
-      },
+    setCookiesConsent({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted: [],
+      refused: ALL_OPTIONAL_COOKIES,
     })
     hideModal()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cookiesChoice])
+  }, [hideModal, setCookiesConsent])
 
-  const customChoice = () => {
+  const customChoice = useCallback(() => {
     hideModal()
-  }
+  }, [hideModal])
 
   const { childrenProps } = useCookiesModalContent({
     cookiesStep,

@@ -10,6 +10,7 @@ import { render, fireEvent } from 'tests/utils'
 const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
+const deviceId = 'testUuidV4'
 
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
@@ -27,6 +28,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(acceptAllButton)
 
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual({
+        deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
@@ -54,6 +56,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(acceptAllButton)
 
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual({
+        deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,

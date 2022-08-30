@@ -33,9 +33,9 @@ export interface Consent {
 }
 
 export interface CookiesConsent {
-  consent?: Consent
-  deviceId?: string
-  choiceDatetime?: Date
+  consent: Consent
+  deviceId: string
+  choiceDatetime: Date
 }
 
 export enum CookieCategoriesEnum {
