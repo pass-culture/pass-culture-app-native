@@ -3,10 +3,10 @@ import React from 'react'
 
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
-import { COOKIES_CONSENT_KEY } from 'features/cookies/useCookies'
 import { storage } from 'libs/storage'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, flushAllPromisesWithAct } from 'tests/utils'
 
+const COOKIES_CONSENT_KEY = 'cookies_consent'
 const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
@@ -26,6 +26,8 @@ describe('<CookiesConsent/>', () => {
       const acceptAllButton = getByText('Tout accepter')
 
       fireEvent.press(acceptAllButton)
+
+      await flushAllPromisesWithAct()
 
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual({
         deviceId,
@@ -54,6 +56,8 @@ describe('<CookiesConsent/>', () => {
       const acceptAllButton = getByText('Tout refuser')
 
       fireEvent.press(acceptAllButton)
+
+      await flushAllPromisesWithAct()
 
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual({
         deviceId,

@@ -23,8 +23,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
-  const { cookiesChoice } = useCookies()
-  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice?.consent)
+  const { cookiesConsent } = useCookies()
+  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)
   const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
     customization: false,
     performance: false,

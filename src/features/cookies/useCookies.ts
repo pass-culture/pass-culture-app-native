@@ -4,10 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 import { Consent, CookiesConsent } from 'features/cookies/CookiesPolicy'
 import { storage } from 'libs/storage'
 
-export const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies_consent'
 
-export const getCookiesChoice = async () =>
-  await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
+const getCookiesChoice = async () => await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
 export const useCookies = () => {
   const [cookiesConsent, setCookiesConsent] = useState<Consent>()
@@ -21,12 +20,14 @@ export const useCookies = () => {
   }, [])
 
   useEffect(() => {
-    const deviceId = uuidv4()
     if (cookiesConsent) {
-      storage.saveObject(COOKIES_CONSENT_KEY, {
-        deviceId,
-        choiceDatetime: new Date(),
-        consent: cookiesConsent,
+      getCookiesChoice().then((value) => {
+        const deviceId = value?.deviceId ?? uuidv4()
+        storage.saveObject(COOKIES_CONSENT_KEY, {
+          deviceId,
+          choiceDatetime: new Date(),
+          consent: cookiesConsent,
+        })
       })
     }
   }, [cookiesConsent])

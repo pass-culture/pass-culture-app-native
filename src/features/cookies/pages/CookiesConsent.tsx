@@ -36,6 +36,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   }, [hideModal, setCookiesConsent])
 
   const customChoice = useCallback(() => {
+    alert('cette fonctionnalité sera faite PC-16598')
     hideModal()
   }, [hideModal])
 

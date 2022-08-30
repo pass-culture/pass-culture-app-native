@@ -1,10 +1,12 @@
 import mockdate from 'mockdate'
 
+import { v4 } from '__mocks__/uuid'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { COOKIES_CONSENT_KEY, useCookies } from 'features/cookies/useCookies'
+import { useCookies } from 'features/cookies/useCookies'
 import { storage } from 'libs/storage'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
 
+const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
@@ -21,7 +23,7 @@ describe('useCookies', () => {
     })
 
     it('should write state', () => {
-      const { result, rerender } = renderHook(useCookies)
+      const { result } = renderHook(useCookies)
       const { setCookiesConsent } = result.current
 
       act(() => {
@@ -30,7 +32,6 @@ describe('useCookies', () => {
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         })
-        rerender(1)
       })
 
       expect(result.current.cookiesConsent).toEqual({
@@ -39,31 +40,11 @@ describe('useCookies', () => {
         refused: [],
       })
     })
-
-    it('should write state 2 drop me', () => {
-      const { result, rerender } = renderHook(useCookies)
-      const { setCookiesConsent } = result.current
-
-      act(() => {
-        setCookiesConsent({
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: [],
-          refused: ALL_OPTIONAL_COOKIES,
-        })
-        rerender(1)
-      })
-
-      expect(result.current.cookiesConsent).toEqual({
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: [],
-        refused: ALL_OPTIONAL_COOKIES,
-      })
-    })
   })
 
   describe('storage', () => {
-    it('should write state in the storage', async () => {
-      const { result, rerender } = renderHook(useCookies)
+    it('should save cookies consent in the storage', async () => {
+      const { result } = renderHook(useCookies)
       const { setCookiesConsent } = result.current
 
       act(() => {
@@ -72,11 +53,10 @@ describe('useCookies', () => {
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         })
-        rerender(1)
       })
+      await flushAllPromisesWithAct()
 
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
-
       expect(cookiesConsent).toEqual({
         deviceId,
         choiceDatetime: Today.toISOString(),
@@ -88,7 +68,7 @@ describe('useCookies', () => {
       })
     })
 
-    it('should restore state from the storage', async () => {
+    it('should restore cookies consent from the storage', async () => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
         deviceId,
         choiceDatetime: Today,
@@ -108,6 +88,38 @@ describe('useCookies', () => {
           refused: [],
         })
       })
+    })
+  })
+
+  it('should set once device ID per device', async () => {
+    v4.mockReturnValueOnce('testUuidV4-first')
+    v4.mockReturnValueOnce('testUuidV4-second')
+    const { result } = renderHook(useCookies)
+    const { setCookiesConsent } = result.current
+
+    act(() => {
+      setCookiesConsent({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: ALL_OPTIONAL_COOKIES,
+        refused: [],
+      })
+      setCookiesConsent({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: [],
+        refused: ALL_OPTIONAL_COOKIES,
+      })
+    })
+    await flushAllPromisesWithAct()
+
+    const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+    expect(cookiesConsent).toEqual({
+      deviceId: 'testUuidV4-first',
+      choiceDatetime: Today.toISOString(),
+      consent: {
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted: [],
+        refused: ALL_OPTIONAL_COOKIES,
+      },
     })
   })
 })

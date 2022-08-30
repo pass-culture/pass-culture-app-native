@@ -1,4 +1,4 @@
-export enum CookieNameEnum {
+enum CookieNameEnum {
   GOOGLE_ANALYTICS,
   AMPLITUDE,
   ALGOLIA,
