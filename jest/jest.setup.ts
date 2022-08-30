@@ -107,3 +107,19 @@ jest.mock('@batch.com/react-native-plugin', () =>
 jest.mock('libs/react-native-batch', () => jest.requireActual('__mocks__/libs/react-native-batch'))
 
 jest.unmock('react-native-modal')
+
+jest.mock('@shopify/flash-list', () => {
+  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
+  class MockFlashList extends ActualFlashList {
+    componentDidMount() {
+      super.componentDidMount()
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props.onLayout({
+        nativeEvent: { layout: { height: 250, width: 800 } },
+      })
+    }
+  }
+  return {
+    ...jest.requireActual('@shopify/flash-list'),
+    FlashList: MockFlashList,
+  }
+})
