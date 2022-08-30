@@ -44,7 +44,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
-    'react/no-unescaped-entities': 'off',
     'react-native/no-raw-text': [
       'error',
       {

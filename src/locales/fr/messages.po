@@ -175,10 +175,6 @@ msgstr "Assure-toi que toutes les informations que tu nous transmets sont correc
 msgid "Assurer la sécurité, prévenir la fraude et corriger les bugs"
 msgstr "Assurer la sécurité, prévenir la fraude et corriger les bugs"
 
-#: src/features/bookOffer/components/BookingDetails.tsx
-msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
-msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
-
 #: src/features/identityCheck/pages/phoneValidation/CodeNotReceivedModal.tsx
 msgid "Attention, il te reste :"
 msgstr "Attention, il te reste :"
@@ -249,10 +245,6 @@ msgstr "Autre type de lieu"
 msgid "Autres"
 msgstr "Autres"
 
-#: src/features/bookings/helpers.ts
-msgid "Avant dernier jour pour retirer"
-msgstr "Avant dernier jour pour retirer"
-
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Besoin d'un lien ?"
 msgstr "Besoin d'un lien ?"
@@ -312,9 +304,7 @@ msgstr "Billet à retirer sur place dès aujourd'hui"
 msgid "Billet à retirer sur place dès demain"
 msgstr "Billet à retirer sur place dès demain"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 #: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
-#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
@@ -531,10 +521,6 @@ msgstr "Confirmation de réservation"
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Confirme ton e-mail"
 msgstr "Confirme ton e-mail"
-
-#: src/features/bookOffer/components/BookingDetails.tsx
-msgid "Confirmer la réservation"
-msgstr "Confirmer la réservation"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
@@ -2116,10 +2102,6 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour plus d’informations, nous t’invitons à consulter notre"
 msgstr "Pour plus d’informations, nous t’invitons à consulter notre"
 
-#: src/features/bookings/helpers.ts
-msgid "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-msgstr "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-
 #: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 msgid "Pour que la validation de ton numéro de téléphone se passe au mieux :"
 msgstr "Pour que la validation de ton numéro de téléphone se passe au mieux :"
@@ -2935,10 +2917,6 @@ msgstr "Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton
 msgid "Tu as jusqu'au {formattedDate} pour réactiver ton compte."
 msgstr "Tu as jusqu'au {formattedDate} pour réactiver ton compte."
 
-#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
-msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
-msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
-
 #: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
@@ -3686,46 +3664,6 @@ msgstr "{0}"
 #: src/libs/parsers/getDisplayPrice.ts
 msgid "{0} {EURO_SYMBOL}"
 msgstr "{0} {EURO_SYMBOL}"
-
-#: src/features/search/atoms/Buttons/FilterButton/FilterButton.tsx
-msgid "{activeFilters, plural, one {Voir tous les filtres : # filtre actif} other {Voir tous les filtres : # filtres actifs}}"
-msgstr "{activeFilters, plural, one {Voir tous les filtres : # filtre actif} other {Voir tous les filtres : # filtres actifs}}"
-
-#: src/features/search/atoms/TitleWithCount.tsx
-msgid "{count, plural, one {# sélectionné} other {# sélectionnés}}"
-msgstr "{count, plural, one {# sélectionné} other {# sélectionnés}}"
-
-#: src/features/bookings/helpers.ts
-msgid "{delayInDay} jours"
-msgstr "{delayInDay} jours"
-
-#: src/features/bookings/helpers.ts
-msgid "{delayInHour} heure"
-msgstr "{delayInHour} heure"
-
-#: src/features/bookings/helpers.ts
-msgid "{delayInHour} heures"
-msgstr "{delayInHour} heures"
-
-#: src/features/bookings/helpers.ts
-msgid "{delayInMinutes} minutes"
-msgstr "{delayInMinutes} minutes"
-
-#: src/features/bookings/helpers.ts
-msgid "{delayInWeek} semaine"
-msgstr "{delayInWeek} semaine"
-
-#: src/features/bookings/pages/EndedBookings.tsx
-msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
-msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
-
-#: src/features/favorites/atoms/BicolorFavoriteCount.tsx
-msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
-msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
-
-#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
-msgid "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
-msgstr "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure.} other {Tu pourras réessayer dans # heures.}}"
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"

@@ -37,7 +37,7 @@ export const CancellationDetails: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getHeadingAttrs(2)}>Conditions d'annulation</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Conditions d’annulation</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Caption>{message}</Typo.Caption>
     </React.Fragment>
