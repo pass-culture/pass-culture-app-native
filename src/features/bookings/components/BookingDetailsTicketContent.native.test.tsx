@@ -11,11 +11,11 @@ describe('BookingDetailsTicketContent', () => {
   const booking = {
     ...originalBooking,
     activationCode: { code: 'someCode' },
+    completedUrl: 'https://example.com',
     stock: {
       ...originalBooking.stock,
       offer: {
         ...originalBooking.stock.offer,
-        url: 'https://example.com',
       },
     },
   }

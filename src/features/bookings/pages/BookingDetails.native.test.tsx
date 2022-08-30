@@ -85,7 +85,7 @@ describe('BookingDetails', () => {
 
   it('should render correctly', async () => {
     const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
-    booking.stock.offer.url = 'https://example.com'
+    booking.completedUrl = 'https://example.com'
     const { toJSON } = renderBookingDetails(booking)
     expect(toJSON()).toMatchSnapshot()
   })
@@ -100,13 +100,13 @@ describe('BookingDetails', () => {
     it('should display offer link button if offer is digital and open url on press', async () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
-      booking.stock.offer.url = 'https://example.com'
+      booking.completedUrl = 'https://example.com'
 
       const { getByText } = renderBookingDetails(booking)
       const offerButton = getByText("Accéder à l'offre")
       await fireEvent.press(offerButton)
 
-      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url, {
+      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.completedUrl, {
         analyticsData: {
           offerId: booking.stock.offer.id,
         },

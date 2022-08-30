@@ -27,10 +27,10 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   activationCodeFeatureEnabled,
   externalBookings,
 }) => {
+  const { completedUrl } = booking
   const { offer, beginningDatetime } = booking.stock
   const {
     id: offerId,
-    url: offerUrl,
     name: offerName,
     subcategoryId: offerSubcategory,
     extraData,
@@ -52,12 +52,12 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     <TicketCode withdrawalType={withdrawalType || undefined} code={booking.activationCode.code} />
   )
 
-  const accessExternalOfferButton = offerUrl ? (
+  const accessExternalOfferButton = completedUrl ? (
     <TouchableLink
       as={ButtonWithLinearGradient}
       wording={t`Accéder à l'offre`}
       icon={ExternalSite}
-      externalNav={{ url: offerUrl, params: { analyticsData: { offerId } } }}
+      externalNav={{ url: completedUrl, params: { analyticsData: { offerId } } }}
     />
   ) : null
 
