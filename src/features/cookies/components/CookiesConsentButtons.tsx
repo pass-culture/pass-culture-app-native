@@ -32,10 +32,11 @@ export const CookiesConsentButtons = ({
   </React.Fragment>
 )
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
+  maxWidth: theme.contentPage.maxWidth,
   flexDirection: 'row',
   width: '100%',
-})
+}))
 
 const Row = styled.View({
   flex: 1,

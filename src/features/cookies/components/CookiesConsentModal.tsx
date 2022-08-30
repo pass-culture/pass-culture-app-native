@@ -9,6 +9,7 @@ import { appModalContainerStyle } from 'ui/components/modals/appModalContainerSt
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ModalIconProps } from 'ui/components/modals/types'
 import { getSpacing, Spacer } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   title: string
@@ -31,6 +32,11 @@ export const CookiesConsentModal: FunctionComponent<Props> = ({
   children,
   fixedBottomChildren,
 }) => {
+  const { top } = useCustomSafeInsets()
+  const { height, width: windowWidth } = useWindowDimensions()
+  const windowHeight = height - top
+  const titleId = uuidv4()
+
   const iconProps = {
     rightIconAccessibilityLabel,
     rightIcon,
@@ -39,10 +45,6 @@ export const CookiesConsentModal: FunctionComponent<Props> = ({
     leftIcon,
     onLeftIconPress,
   } as ModalIconProps
-
-  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
-
-  const titleId = uuidv4()
 
   return (
     <StyledModal

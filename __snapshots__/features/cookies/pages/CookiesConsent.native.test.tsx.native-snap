@@ -6,7 +6,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
   animationType="none"
   aria-labelledby="testUuidV4"
   aria-modal={true}
-  deviceHeight={1334}
+  deviceHeight={1318}
   deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
@@ -48,7 +48,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       Object {
         "backgroundColor": "black",
         "bottom": 0,
-        "height": 1334,
+        "height": 1318,
         "left": 0,
         "opacity": 0,
         "position": "absolute",
@@ -63,7 +63,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
-    deviceHeight={1334}
+    deviceHeight={1318}
     deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
@@ -120,7 +120,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             "borderTopStartRadius": 16,
             "flexDirection": "column",
             "justifyContent": "center",
-            "maxHeight": 1334,
+            "maxHeight": 1318,
             "maxWidth": 960,
             "paddingBottom": 32,
             "paddingLeft": 24,
@@ -130,7 +130,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           },
         ]
       }
-      windowHeight={1334}
+      windowHeight={1318}
     >
       <View
         style={
@@ -319,6 +319,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             Array [
               Object {
                 "flexDirection": "row",
+                "maxWidth": 500,
                 "width": "100%",
               },
             ]
