@@ -9,17 +9,17 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
 export const useParseSearchParameters = () => {
   const { position } = useGeolocation()
-  const priceMax = useMaxPrice()
+  const defaultPriceMax = useMaxPrice()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   return useCallback(
     (parameters: SearchParametersFields): Partial<SearchState> | undefined =>
       parseSearchParameters(
-        { ...parameters, priceMin: 0, priceMax },
+        { ...parameters, priceMin: 0, priceMax: parameters.priceMax ?? defaultPriceMax },
         position,
         subcategoryLabelMapping
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [!position, priceMax, subcategoryLabelMapping]
+    [!position, defaultPriceMax, subcategoryLabelMapping]
   )
 }
