@@ -121,7 +121,7 @@ exports[`LocationFilter component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}

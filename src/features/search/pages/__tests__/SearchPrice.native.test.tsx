@@ -68,7 +68,7 @@ describe('SearchPrice component', () => {
     expect(maxPriceInput.props.value).toStrictEqual('9,99')
   })
 
-  it.skip('should navigate on search results when pressing previous button', async () => {
+  it('should navigate on search results when pressing previous button', async () => {
     const { getByTestId } = render(<SearchPrice />)
 
     const previousButton = getByTestId('backButton')

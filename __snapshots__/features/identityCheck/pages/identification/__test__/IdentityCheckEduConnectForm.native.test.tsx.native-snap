@@ -125,7 +125,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}
