@@ -113,7 +113,7 @@ describe('<ChangeEmail/>', () => {
     await waitForExpect(() => {
       expect(submitButton).toBeDisabled()
 
-      const errorMessage = queryByText("L'e-mail saisi est identique à votre e-mail actuel")
+      const errorMessage = queryByText("L'e-mail saisi est identique à ton e-mail actuel")
       expect(errorMessage).toBeTruthy()
     })
   })

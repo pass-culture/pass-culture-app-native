@@ -28,7 +28,7 @@ describe('useValidateEmail function', () => {
   it('should return an error message if the new email is the same than the new one ', () => {
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
     expect(result.current.emailErrorMessage).toEqual(
-      "L'e-mail saisi est identique à votre e-mail actuel"
+      "L'e-mail saisi est identique à ton e-mail actuel"
     )
     expect(result.current.isEmailValid).toEqual(false)
   })

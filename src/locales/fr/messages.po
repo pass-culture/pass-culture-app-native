@@ -1433,8 +1433,8 @@ msgid "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.pia
 msgstr "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
 
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
-msgid "L'e-mail saisi est identique à votre e-mail actuel"
-msgstr "L'e-mail saisi est identique à votre e-mail actuel"
+msgid "L'e-mail saisi est identique à ton e-mail actuel"
+msgstr "L'e-mail saisi est identique à ton e-mail actuel"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
 msgid "L'historique n'a pas pu supprimer les données locales: {0}"
@@ -2854,6 +2854,10 @@ msgstr "Ta date de naissance"
 msgid "Ta pièce d’identité a bien été transmise !"
 msgstr "Ta pièce d’identité a bien été transmise !"
 
+#: src/features/bookings/pages/BookingDetails.tsx
+msgid "Ta réservation \"{nameCanceledBooking}\" a été annulée"
+msgstr "Ta réservation \"{nameCanceledBooking}\" a été annulée"
+
 #: src/libs/share/WebShareModal.web.tsx
 msgid "Telegram"
 msgstr "Telegram"
@@ -3354,8 +3358,8 @@ msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
 #: src/features/identityCheck/api/api.ts
-msgid "Une erreur est survenue lors de la mise à jour de votre profil"
-msgstr "Une erreur est survenue lors de la mise à jour de votre profil"
+msgid "Une erreur est survenue lors de la mise à jour de ton profil"
+msgstr "Une erreur est survenue lors de la mise à jour de ton profil"
 
 #: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Une erreur s'est produite pendant le chargement"
@@ -3546,10 +3550,6 @@ msgstr "Voir toutes les offres"
 #: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
 msgid "Votre lien"
 msgstr "Votre lien"
-
-#: src/features/bookings/pages/BookingDetails.tsx
-msgid "Votre réservation {nameCanceledBooking} a été annulée"
-msgstr "Votre réservation {nameCanceledBooking} a été annulée"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
 msgid "Vous devez d'abord générer un lien"
