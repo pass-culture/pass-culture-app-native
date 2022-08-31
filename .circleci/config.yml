@@ -1,5 +1,13 @@
 version: 2.1
 
+
+
+###################
+#  ORBS
+###################
+orbs:
+  slack: circleci/slack@4.2
+
 ###################
 #  EXECUTORS
 ###################
@@ -95,30 +103,73 @@ commands:
       - restore_cache:
           name: Restore Tests cache
           keys:
-            - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
-      - run:
-          name: Run tests with JUnit as reporter
-          command: yarn test:unit:ci
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+            - jest-cache-{{ arch }}
+      - when:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: yarn test:unit:ci
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - unless:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: yarn test:unit:ci --changedSince=master
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
           path: ./reports/junit/
-      - save_cache:
-          name: Save Tests cache
-          key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
-          paths:
-            - .jest
+      - when:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - save_cache:
+                name: Save Tests cache
+                key: jest-cache-{{ arch }}-{{ epoch }}
+                paths:
+                  - .jest
 
   unit_test_web:
     description: Unit Tests Web
     steps:
-      - run:
-          name: Run tests with JUnit as reporter
-          command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-web-{{ arch }}
+      - when:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - unless:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci --changedSince=master
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
           path: ./reports/junit/
+      - when:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - save_cache:
+                name: Save Tests cache
+                key: jest-cache-web-{{ arch }}-{{ epoch }}
+                paths:
+                  - .jest
 
   install_ruby_version:
     description: Install ruby version with rvm
@@ -391,6 +442,19 @@ commands:
               yarn --cwd server deploy:<<parameters.env>>
             fi
 
+  notify-slack:
+    description: Send notification to Slack
+    parameters:
+      channel:
+        type: string
+      template:
+        type: string
+        default: FAIL_TEMPLATE_2
+    steps:
+      - slack/notify:
+          event: fail
+          channel: << parameters.channel >>
+
 ###################
 #  JOBS
 ###################
@@ -462,6 +526,12 @@ jobs:
       - checkout
       - install_node_modules
       - unit_test_native
+      - when:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - notify-slack:
+                channel: shérif
       - sonarcloud-scanner
 
   test-web:
@@ -472,6 +542,12 @@ jobs:
       - checkout
       - install_node_modules
       - unit_test_web
+      - when:
+          condition:
+            equal: ["master", << pipeline.git.branch >>]
+          steps:
+            - notify-slack:
+                channel: shérif
 
   notify-hard-testing-release:
     executor: node
@@ -885,19 +961,14 @@ workflows:
           requires:
             - checkout-and-install-proxy-deps
           context: SonarCloud
-      - test-lint-and-types:
-          requires:
-            - checkout-and-install-deps
-      - test-translations:
-          requires:
-            - checkout-and-install-deps
+      - test-lint-and-types
+      - test-translations
       - test-native:
-          requires:
-            - checkout-and-install-deps
-          context: SonarCloud
+          context:
+            - SonarCloud
+            - Slack
       - test-web:
-          requires:
-            - checkout-and-install-deps
+          context: Slack
       - deploy-soft-testing:
           filters:
             branches:
