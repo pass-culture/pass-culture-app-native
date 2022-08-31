@@ -232,7 +232,7 @@ commands:
             echo "CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING" >> .env.staging
             echo "BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_STAGING" >> .env.staging
             echo "BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_STAGING" >> .env.staging
-            echo "CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_STAGING" >> .env.staging
+            echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_STAGING" >> .env.staging
             echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.staging
 
   setup_integration_secrets:
@@ -241,7 +241,7 @@ commands:
       - run:
           name: Setup secrets env variables
           command: |
-            echo "CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_STAGING" >> .env.integration
+            echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_STAGING" >> .env.integration
             echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.integration
 
   setup_production_secrets:
@@ -254,7 +254,7 @@ commands:
             echo "CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION" >> .env.production
             echo "BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_PRODUCTION" >> .env.production
             echo "BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_PRODUCTION" >> .env.production
-            echo "CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_PRODUCTION" >> .env.production
+            echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_PRODUCTION" >> .env.production
             echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.production
 
   install_cocoapods:
