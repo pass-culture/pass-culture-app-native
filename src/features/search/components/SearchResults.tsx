@@ -6,7 +6,6 @@ import { FlatList, ActivityIndicator, ScrollView, View, Platform } from 'react-n
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
@@ -62,8 +61,6 @@ export const SearchResults: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
-  const { data: appSettings } = useAppSettings()
-  const filtersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
   const offerCategories = params?.offerCategories ?? []
   const categoryIsSelected = offerCategories.length > 0
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -192,37 +189,35 @@ export const SearchResults: React.FC = () => {
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
-      {!!filtersButtonsDisplay && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
-          <View>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <Spacer.Row numberOfSpaces={6} />
-              <ButtonContainer>
-                <SingleFilterButton
-                  label={locationLabel}
-                  testID="locationButton"
-                  onPress={redirectFilters}
-                  Icon={Check}
-                  color={theme.colors.primary}
-                />
-              </ButtonContainer>
-              <Spacer.Row numberOfSpaces={2} />
-              <ButtonContainer>
-                <SingleFilterButton
-                  label={categoryLabel}
-                  testID="categoryButton"
-                  onPress={redirectToCategoryFilterPage}
-                  Icon={categoryIsSelected ? Check : undefined}
-                  color={categoryIsSelected ? theme.colors.primary : undefined}
-                />
-              </ButtonContainer>
-              <Spacer.Row numberOfSpaces={6} />
-            </ScrollView>
-            <Spacer.Column numberOfSpaces={4} />
-          </View>
-        </React.Fragment>
-      )}
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={2} />
+        <View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <Spacer.Row numberOfSpaces={6} />
+            <ButtonContainer>
+              <SingleFilterButton
+                label={locationLabel}
+                testID="locationButton"
+                onPress={redirectFilters}
+                Icon={Check}
+                color={theme.colors.primary}
+              />
+            </ButtonContainer>
+            <Spacer.Row numberOfSpaces={2} />
+            <ButtonContainer>
+              <SingleFilterButton
+                label={categoryLabel}
+                testID="categoryButton"
+                onPress={redirectToCategoryFilterPage}
+                Icon={categoryIsSelected ? Check : undefined}
+                color={categoryIsSelected ? theme.colors.primary : undefined}
+              />
+            </ButtonContainer>
+            <Spacer.Row numberOfSpaces={6} />
+          </ScrollView>
+          <Spacer.Column numberOfSpaces={4} />
+        </View>
+      </React.Fragment>
       <Container testID="searchResults">
         <FlatList
           ref={flatListRef}
