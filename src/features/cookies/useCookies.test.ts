@@ -118,6 +118,62 @@ describe('useCookies', () => {
           },
         })
       })
+
+      it('can set user ID before giving cookies consent', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent, setUserId } = result.current
+        await act(async () => setUserId(userId))
+
+        act(() => {
+          setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+        await flushAllPromisesWithAct()
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual({
+          userId,
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+      })
+
+      it('should overwrite user ID when setting another user ID', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent, setUserId } = result.current
+        act(() => {
+          setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+        await flushAllPromisesWithAct()
+        await act(async () => setUserId(userId))
+
+        const secondUserId = 5678
+        await act(async () => setUserId(secondUserId))
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual({
+          userId: secondUserId,
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+      })
     })
   })
 

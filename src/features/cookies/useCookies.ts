@@ -23,9 +23,9 @@ export const useCookies = () => {
   useEffect(() => {
     if (cookiesConsent) {
       getCookiesChoice().then((value) => {
-        const deviceId = value?.deviceId ?? uuidv4()
         storage.saveObject(COOKIES_CONSENT_KEY, {
-          deviceId,
+          userId: value?.userId,
+          deviceId: value?.deviceId ?? uuidv4(),
           choiceDatetime: new Date(),
           consent: cookiesConsent,
         })
