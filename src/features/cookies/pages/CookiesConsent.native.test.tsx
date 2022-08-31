@@ -12,6 +12,12 @@ const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 const deviceId = 'testUuidV4'
 
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: jest.fn(), push: jest.fn() }),
+  useFocusEffect: jest.fn(),
+}))
+
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 

@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { useEffect } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -27,18 +28,20 @@ export const CookiesSettings = ({
   const { cookiesConsent } = useCookies()
   const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)
 
-  useEffect(() => {
-    setSettingsCookiesChoice({
-      customization: cookiesChoiceByCategory.customization,
-      performance: cookiesChoiceByCategory.performance,
-      marketing: cookiesChoiceByCategory.marketing,
-    })
-  }, [
-    setSettingsCookiesChoice,
-    cookiesChoiceByCategory.customization,
-    cookiesChoiceByCategory.marketing,
-    cookiesChoiceByCategory.performance,
-  ])
+  useFocusEffect(
+    useCallback(() => {
+      setSettingsCookiesChoice({
+        customization: cookiesChoiceByCategory.customization,
+        performance: cookiesChoiceByCategory.performance,
+        marketing: cookiesChoiceByCategory.marketing,
+      })
+    }, [
+      setSettingsCookiesChoice,
+      cookiesChoiceByCategory.customization,
+      cookiesChoiceByCategory.marketing,
+      cookiesChoiceByCategory.performance,
+    ])
+  )
 
   const hasAcceptedAll = Object.values(settingsCookiesChoice).every((choice) => choice === true)
 
