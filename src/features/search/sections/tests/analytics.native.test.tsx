@@ -48,15 +48,6 @@ describe('Analytics - logUseFilter', () => {
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
-
-  it('should log UseFilter once when selecting multiple categories', () => {
-    const { getByText } = render(<Section.Category />)
-    fireEvent.press(getByText('Films, séries, cinéma'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category)
-    fireEvent.press(getByText('Jeux & jeux vidéos'))
-    fireEvent.press(getByText('Médias & presse'))
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
   it('should log UseFilter once when selecting multiple offer types', () => {
     const { getByText } = render(<Section.OfferType />)
     fireEvent.press(getByText('Offre numérique'))

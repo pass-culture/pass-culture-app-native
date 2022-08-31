@@ -1,69 +1,52 @@
-import React from 'react'
-import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
+import { useNavigation } from '@react-navigation/native'
+import React, { useCallback } from 'react'
+import { Platform } from 'react-native'
+import { useTheme } from 'styled-components'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
-import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { FilterRow } from 'features/search/atoms/FilterRow'
+import { CategoriesModal } from 'features/search/pages/CategoriesModal'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
-import { availableCategories } from 'features/search/utils/availableCategories'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { AccordionItem } from 'ui/components/AccordionItem'
-import { Li } from 'ui/components/Li'
-import { Ul } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
+import { useModal } from 'ui/components/modals/useModal'
+import { All } from 'ui/svg/icons/bicolor/All'
 
 export const Category: React.FC = () => {
-  const { searchState, dispatch } = useStagedSearch()
+  const { searchState } = useSearch()
   const { offerCategories } = searchState
   const logUseFilter = useLogFilterOnce(SectionTitle.Category)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  const titleID = uuidv4()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const {
+    visible: categoriesModalVisible,
+    showModal: showCategoriesModal,
+    hideModal: hideCategoriesModal,
+  } = useModal(false)
+  const theme = useTheme()
+  const { isDesktopViewport } = theme
+  const filterPageIsModal = Platform.OS === 'web' && isDesktopViewport
 
-  const onPress = (facetFilter: SearchGroupNameEnumv2) => () => {
-    dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
+  const onPress = useCallback(() => {
     logUseFilter()
-  }
+    if (filterPageIsModal) {
+      showCategoriesModal()
+      return
+    }
+
+    navigate('SearchCategories')
+  }, [filterPageIsModal, logUseFilter, navigate, showCategoriesModal])
 
   return (
-    <AccordionItem
-      defaultOpen={true}
-      title={
-        <TitleWithCount
-          titleID={titleID}
-          title={SectionTitle.Category}
-          count={offerCategories.length}
-          ariaLive="polite"
-        />
-      }
-      accessibilityTitle={SectionTitle.Category}>
-      <BodyContainer aria-labelledby={titleID} accessibilityRole={AccessibilityRole.GROUP}>
-        <StyledUl>
-          {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
-            <Li key={category}>
-              <SelectionLabel
-                label={searchGroupLabelMapping[category as SearchGroupNameEnumv2]}
-                selected={offerCategories.includes(facetFilter)}
-                onPress={onPress(facetFilter)}
-              />
-            </Li>
-          ))}
-        </StyledUl>
-      </BodyContainer>
-    </AccordionItem>
+    <React.Fragment>
+      <FilterRow
+        icon={All}
+        title="Catégorie"
+        description={searchGroupLabelMapping[offerCategories?.[0]]}
+        onPress={onPress}
+      />
+      <CategoriesModal visible={categoriesModalVisible} dismissModal={hideCategoriesModal} />
+    </React.Fragment>
   )
 }
-
-const BodyContainer = styled.View({
-  flexWrap: 'wrap',
-  flexDirection: 'row',
-  marginBottom: getSpacing(-3),
-  marginRight: getSpacing(-3),
-})
-
-const StyledUl = styled(Ul)({
-  flex: 1,
-  flexWrap: 'wrap',
-})

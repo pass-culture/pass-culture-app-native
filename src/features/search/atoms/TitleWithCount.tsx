@@ -33,7 +33,7 @@ export const TitleWithCount: React.FC<{
   )
 }
 
-const Title = styled(Typo.Title4).attrs(getNoHeadingAttrs())``
+const Title = styled(Typo.ButtonText).attrs(getNoHeadingAttrs())``
 
 const RedTitle = styled.Text(({ theme }) => ({
   color: theme.colors.primary,

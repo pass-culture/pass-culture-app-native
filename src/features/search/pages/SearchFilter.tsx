@@ -57,7 +57,7 @@ export const SearchFilter: React.FC = () => {
 
           {/* Localisation */}
           <Section.Location />
-          <Spacer.Column numberOfSpaces={6} />
+          <Spacer.Column numberOfSpaces={4} />
           <Separator />
 
           {/* Rayon */}
@@ -71,45 +71,45 @@ export const SearchFilter: React.FC = () => {
           )}
 
           {/* Catégories */}
+          <Spacer.Column numberOfSpaces={4} />
           <Section.Category />
-          <Spacer.Column numberOfSpaces={2} />
+          <Spacer.Column numberOfSpaces={4} />
           <Separator />
 
           {/* Type d'offre */}
           <Section.OfferType />
-          <Spacer.Column numberOfSpaces={2} />
           <Separator />
-          <Spacer.Column numberOfSpaces={6} />
+          <Spacer.Column numberOfSpaces={4} />
 
           {/* Prix */}
           <Section.Price />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(4)} />
 
           {/* Uniquement les offres gratuites */}
           <Section.FreeOffer />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(4)} />
 
           {/* Uniquement les offres duo */}
           {!!profile?.isBeneficiary && (
             <React.Fragment>
               <Section.DuoOffer />
-              <Separator marginVertical={getSpacing(6)} />
+              <Separator marginVertical={getSpacing(4)} />
             </React.Fragment>
           )}
 
           {/* Uniquement les nouveautés */}
           <Section.NewOffer />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(4)} />
 
           {/* Date */}
           <Section.Date />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(4)} />
 
           {/* Date de l'offre */}
           {!!searchState.date && (
             <React.Fragment>
               <Section.OfferDate setScrollEnabled={setScrollEnabled} />
-              <Separator marginVertical={getSpacing(6)} />
+              <Separator marginVertical={getSpacing(4)} />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
           )}
@@ -120,7 +120,7 @@ export const SearchFilter: React.FC = () => {
           {/*Créneau horaire */}
           {!!searchState.timeRange && (
             <React.Fragment>
-              <Separator marginVertical={getSpacing(6)} />
+              <Separator marginVertical={getSpacing(4)} />
               <Section.TimeSlot />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
