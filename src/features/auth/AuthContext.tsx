@@ -6,6 +6,7 @@ import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
 import { useResetContexts } from 'features/auth/useResetContexts'
+import { setUserIdToCookiesConsent } from 'features/cookies/useCookies'
 import { useAppStateChange } from 'libs/appState'
 import { analytics, LoginRoutineMethod } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
@@ -66,6 +67,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
       if (getAccessTokenStatus(accessToken) === 'valid') {
         setIsLoggedIn(true)
         connectUserToBatchAndFirebase(accessToken)
+        setUserIdToCookiesConsent(accessToken)
       }
     } catch (err) {
       eventMonitoring.captureException(err)
@@ -105,6 +107,7 @@ export function useLoginRoutine() {
 
   return async (response: SigninResponse, method: LoginRoutineMethod) => {
     connectUserToBatchAndFirebase(response.accessToken)
+    setUserIdToCookiesConsent(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     analytics.logLogin({ method })
