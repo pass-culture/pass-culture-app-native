@@ -1,16 +1,14 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
+import { CookiesSettingsProps } from 'features/cookies/pages/CookiesDetails'
 import { useCookies } from 'features/cookies/useCookies'
-import {
-  CookiesChoiceByCategory,
-  useCookiesChoiceByCategory,
-} from 'features/cookies/useCookiesChoiceByCategory'
+import { useCookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -21,15 +19,13 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const CookiesSettings = () => {
+export const CookiesSettings = ({
+  settingsCookiesChoice,
+  setSettingsCookiesChoice,
+}: CookiesSettingsProps) => {
   const checkboxID = uuidv4()
   const { cookiesConsent } = useCookies()
   const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)
-  const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
-    customization: false,
-    performance: false,
-    marketing: false,
-  })
 
   useEffect(() => {
     setSettingsCookiesChoice({
@@ -38,6 +34,7 @@ export const CookiesSettings = () => {
       marketing: cookiesChoiceByCategory.marketing,
     })
   }, [
+    setSettingsCookiesChoice,
     cookiesChoiceByCategory.customization,
     cookiesChoiceByCategory.marketing,
     cookiesChoiceByCategory.performance,

@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
+import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { env } from 'libs/environment'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -11,7 +12,12 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const CookiesDetails = () => {
+export interface CookiesSettingsProps {
+  settingsCookiesChoice: CookiesChoiceByCategory
+  setSettingsCookiesChoice: React.Dispatch<React.SetStateAction<CookiesChoiceByCategory>>
+}
+
+export const CookiesDetails = (props: CookiesSettingsProps) => {
   return (
     <React.Fragment>
       <AccordionContainer>
@@ -22,7 +28,7 @@ export const CookiesDetails = () => {
         </StyledAccordionItem>
       </AccordionContainer>
       <Spacer.Column numberOfSpaces={8} />
-      <CookiesSettings />
+      <CookiesSettings {...props} />
       <Spacer.Column numberOfSpaces={8} />
       <Typo.Title4 {...getHeadingAttrs(2)}>{t`Tu as la main dessus`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />

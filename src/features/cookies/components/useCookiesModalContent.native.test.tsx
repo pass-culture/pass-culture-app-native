@@ -3,7 +3,13 @@ import {
   useCookiesModalContent,
 } from 'features/cookies/components/useCookiesModalContent'
 
+const settingsCookiesChoice = {
+  customization: false,
+  performance: false,
+  marketing: false,
+}
 const setCookiesStep = jest.fn()
+const setSettingsCookiesChoice = jest.fn()
 const acceptAll = jest.fn()
 const declineAll = jest.fn()
 const customChoice = jest.fn()
@@ -12,7 +18,9 @@ describe('useCookiesModalContent hook description', () => {
   it('should display the CookiesDescription and not show back button if first step', () => {
     const { childrenProps } = useCookiesModalContent({
       cookiesStep: CookiesSteps.COOKIES_CONSENT,
+      settingsCookiesChoice,
       setCookiesStep,
+      setSettingsCookiesChoice,
       acceptAll,
       declineAll,
       customChoice,
@@ -24,7 +32,9 @@ describe('useCookiesModalContent hook description', () => {
   it('should display the CookiesSettings and show back button if second step', () => {
     const { childrenProps } = useCookiesModalContent({
       cookiesStep: CookiesSteps.COOKIES_SETTINGS,
+      settingsCookiesChoice,
       setCookiesStep,
+      setSettingsCookiesChoice,
       acceptAll,
       declineAll,
       customChoice,
