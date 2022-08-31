@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { forwardRef, useRef, useState } from 'react'
-import { Platform, TextInput as RNTextInput } from 'react-native'
+import { Insets, Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -13,6 +13,9 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
 import { getCustomSearchInputProps, getRNTextInputProps, SearchInputProps } from './types'
+
+const inset = 10 // arbitrary hitSlop zone inset for touchable
+const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 
 const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInputProps> = (
   props,
@@ -86,6 +89,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         {children}
         {value.length > 0 && (
           <Touchable
+            hitSlop={hitSlop}
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`, 'resetSearchInput')}
             type="reset">

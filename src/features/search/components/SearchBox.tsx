@@ -2,10 +2,9 @@ import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import omit from 'lodash/omit'
-import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-hooks'
 import {
-  Insets,
   NativeSyntheticEvent,
   Platform,
   TextInputSubmitEditingEventData,
@@ -27,14 +26,12 @@ import { analytics } from 'libs/firebase/analytics'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useLocationChoice } from './locationChoice.utils'
 import { SearchMainInput } from './SearchMainInput'
 
-const inset = 25 // arbitrary hitSlop zone inset for touchable
-const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
@@ -200,10 +197,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       )}
       <SearchInputContainer {...props}>
         {!!hasEditableSearchInput && (
-          <StyledTouchableOpacity
-            testID="previousButton"
-            onPress={onPressArrowBack}
-            hitSlop={hitSlop}>
+          <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
             <ArrowPrevious />
           </StyledTouchableOpacity>
         )}
@@ -221,12 +215,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           locationLabel={locationLabel}
           onPressLocationButton={onPressLocationButton}
         />
-        {params?.view === SearchView.Results && (
-          <Fragment>
-            <Spacer.Row numberOfSpaces={4} />
-            <FilterButton activeFilters={activeFilters} />
-          </Fragment>
-        )}
+        {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
@@ -256,7 +245,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '100%',
-  width: 50,
-  marginRight: getSpacing(4),
+  width: getSpacing(10),
+  height: getSpacing(10),
+  marginRight: getSpacing(2),
 })
