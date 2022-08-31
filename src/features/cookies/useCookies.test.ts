@@ -8,6 +8,7 @@ import { act, flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
+const userId = 1234
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 
@@ -86,6 +87,35 @@ describe('useCookies', () => {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
+        })
+      })
+    })
+
+    describe('user ID', () => {
+      it('can set user ID', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent, setUserId } = result.current
+        act(() => {
+          setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+        await flushAllPromisesWithAct()
+
+        await act(async () => setUserId(userId))
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual({
+          userId,
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
         })
       })
     })
