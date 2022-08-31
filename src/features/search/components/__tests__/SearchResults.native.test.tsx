@@ -71,79 +71,67 @@ describe('SearchResults component', () => {
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
   })
 
+  it('should display location button', () => {
+    const { queryByTestId } = render(<SearchResults />)
+
+    expect(queryByTestId('locationButton')).toBeTruthy()
+  })
+
+  it('should update the staged search state with the actual search state', async () => {
+    const { getByTestId } = render(<SearchResults />)
+    const locationButton = getByTestId('locationButton')
+
+    await fireEvent.press(locationButton)
+
+    expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: mockSearchState,
+    })
+  })
+
+  it('should redirect to the filters page when clicking on the location button', async () => {
+    const { getByTestId } = render(<SearchResults />)
+    const locationButton = getByTestId('locationButton')
+
+    await fireEvent.press(locationButton)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+  })
+
+  it('should redirect to the filters page when clicking on the category button', async () => {
+    const { getByTestId } = render(<SearchResults />)
+    const categoryButton = getByTestId('categoryButton')
+
+    await fireEvent.press(categoryButton)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
+  })
+
+  it('should display category button', () => {
+    const { queryByTestId } = render(<SearchResults />)
+
+    expect(queryByTestId('categoryButton')).toBeTruthy()
+  })
+
+  it('should not display categories list from a modal when clicking on the category button', async () => {
+    const { getByTestId, queryByTestId } = render(<SearchResults />)
+
+    const categoryButton = getByTestId('categoryButton')
+
+    await fireEvent.press(categoryButton)
+
+    expect(queryByTestId('categoriesModal')).toBeFalsy()
+  })
+
   describe('When feature flag filter activated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
-    })
-
-    it('should display location button', () => {
-      const { queryByTestId } = render(<SearchResults />)
-
-      expect(queryByTestId('locationButton')).toBeTruthy()
-    })
-
-    it('should update the staged search state with the actual search state', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const locationButton = getByTestId('locationButton')
-
-      await fireEvent.press(locationButton)
-
-      expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: mockSearchState,
-      })
-    })
-
-    it('should redirect to the filters page when clicking on the location button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const locationButton = getByTestId('locationButton')
-
-      await fireEvent.press(locationButton)
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
-    })
-
-    it('should redirect to the filters page when clicking on the category button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const categoryButton = getByTestId('categoryButton')
-
-      await fireEvent.press(categoryButton)
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
-    })
-
-    it('should display category button', () => {
-      const { queryByTestId } = render(<SearchResults />)
-
-      expect(queryByTestId('categoryButton')).toBeTruthy()
-    })
-
-    it('should not display categories list from a modal when clicking on the category button', async () => {
-      const { getByTestId, queryByTestId } = render(<SearchResults />)
-
-      const categoryButton = getByTestId('categoryButton')
-
-      await fireEvent.press(categoryButton)
-
-      expect(queryByTestId('categoriesModal')).toBeFalsy()
     })
   })
 
   describe('When feature flag filter desactivated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
-    })
-
-    it('should not display location button', () => {
-      const { queryByTestId } = render(<SearchResults />)
-
-      expect(queryByTestId('locationButton')).toBeNull()
-    })
-
-    it('should not display category button', () => {
-      const { queryByTestId } = render(<SearchResults />)
-
-      expect(queryByTestId('locationButton')).toBeNull()
     })
   })
 })
