@@ -4,8 +4,10 @@ import { Alert } from 'react-native'
 export type StorageKey =
   | 'access_token'
   | 'campaign_date'
+  | 'cookies_consent'
   | 'first_time_review_has_been_requested'
   | 'has_accepted_cookie'
+  | 'has_seen_birthday_notification_card'
   | 'has_seen_eligible_card'
   | 'has_seen_tutorials'
   | 'phone_validation_code_asked_at'
@@ -14,7 +16,6 @@ export type StorageKey =
   | 'traffic_campaign'
   | 'traffic_medium'
   | 'traffic_source'
-  | 'has_seen_birthday_notification_card'
 
 export const storage = {
   clear,

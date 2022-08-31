@@ -1,11 +1,16 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
-import { CookieCategoriesEnum, useCookiesContext } from 'features/cookies/CookiesContext'
+import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
+import { useCookies } from 'features/cookies/useCookies'
+import {
+  CookiesChoiceByCategory,
+  useCookiesChoiceByCategory,
+} from 'features/cookies/useCookiesChoiceByCategory'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -18,11 +23,30 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesSettings = () => {
   const checkboxID = uuidv4()
-  const { cookiesChoice, setCookiesChoice } = useCookiesContext()
+  const { cookiesConsent } = useCookies()
+  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)
+  const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
+    customization: false,
+    performance: false,
+    marketing: false,
+  })
 
-  const hasAcceptedAll = Object.values(cookiesChoice).every((choice) => choice === true)
+  useEffect(() => {
+    setSettingsCookiesChoice({
+      customization: cookiesChoiceByCategory.customization,
+      performance: cookiesChoiceByCategory.performance,
+      marketing: cookiesChoiceByCategory.marketing,
+    })
+  }, [
+    cookiesChoiceByCategory.customization,
+    cookiesChoiceByCategory.marketing,
+    cookiesChoiceByCategory.performance,
+  ])
+
+  const hasAcceptedAll = Object.values(settingsCookiesChoice).every((choice) => choice === true)
+
   const toggleAll = () => {
-    setCookiesChoice({
+    setSettingsCookiesChoice({
       customization: !hasAcceptedAll,
       performance: !hasAcceptedAll,
       marketing: !hasAcceptedAll,
@@ -52,12 +76,16 @@ export const CookiesSettings = () => {
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
               switchProps={{
-                active: isEssential ? true : cookiesChoice[cookie],
+                testID: cookie,
+                active: isEssential ? true : settingsCookiesChoice[cookie],
                 disabled: isEssential,
                 toggle: () =>
                   isEssential
                     ? null
-                    : setCookiesChoice((prev) => ({ ...prev, [cookie]: !cookiesChoice[cookie] })),
+                    : setSettingsCookiesChoice((prev) => ({
+                        ...prev,
+                        [cookie]: !settingsCookiesChoice[cookie],
+                      })),
               }}>
               <React.Fragment>
                 <Typo.Body>{info.description}</Typo.Body>

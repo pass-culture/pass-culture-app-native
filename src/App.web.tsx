@@ -10,7 +10,6 @@ import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
-import { CookiesContextProvider } from 'features/cookies/CookiesContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -64,18 +63,16 @@ export function App() {
                         <SearchWrapper>
                           <I18nProvider i18n={i18n}>
                             <SnackBarProvider>
-                              <CookiesContextProvider>
-                                <CulturalSurveyContextProvider>
-                                  <IdentityCheckContextProvider>
-                                    <AppWebHead />
-                                    <ScreenErrorProvider>
-                                      <Suspense fallback={<LoadingPage />}>
-                                        <AppNavigationContainer />
-                                      </Suspense>
-                                    </ScreenErrorProvider>
-                                  </IdentityCheckContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </CookiesContextProvider>
+                              <CulturalSurveyContextProvider>
+                                <IdentityCheckContextProvider>
+                                  <AppWebHead />
+                                  <ScreenErrorProvider>
+                                    <Suspense fallback={<LoadingPage />}>
+                                      <AppNavigationContainer />
+                                    </Suspense>
+                                  </ScreenErrorProvider>
+                                </IdentityCheckContextProvider>
+                              </CulturalSurveyContextProvider>
                             </SnackBarProvider>
                           </I18nProvider>
                         </SearchWrapper>

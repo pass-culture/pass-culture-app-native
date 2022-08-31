@@ -468,7 +468,7 @@ Array [
                 "userSelect": "auto",
               }
             }
-            testID="Interrupteur"
+            testID="Interrupteur-customization"
           >
             <View
               active={false}
@@ -791,7 +791,7 @@ Array [
                 "userSelect": "auto",
               }
             }
-            testID="Interrupteur"
+            testID="Interrupteur-performance"
           >
             <View
               active={false}
@@ -1114,7 +1114,7 @@ Array [
                 "userSelect": "auto",
               }
             }
-            testID="Interrupteur"
+            testID="Interrupteur-marketing"
           >
             <View
               active={false}
@@ -1437,7 +1437,7 @@ Array [
                 "userSelect": "auto",
               }
             }
-            testID="Interrupteur"
+            testID="Interrupteur-essential"
           >
             <View
               active={true}

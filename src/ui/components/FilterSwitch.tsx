@@ -18,6 +18,7 @@ export interface FilterSwitchProps {
   accessibilityLabelledBy?: string
   disabled?: boolean
   toggle: () => void
+  testID?: string
 }
 
 const TOGGLE_WIDTH = getSpacing(7)
@@ -26,7 +27,7 @@ const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
 const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const [isFocus, setIsFocus] = useState(false)
-  const { toggle, active = false, disabled = false, checkboxID } = props
+  const { toggle, active = false, disabled = false, checkboxID, testID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
   const marginLeft = animatedValue.interpolate({
@@ -48,6 +49,8 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   useSpaceBarAction(isFocus ? toggle : undefined)
 
+  const testId = testID ? `Interrupteur-${testID}` : 'Interrupteur'
+
   return (
     <FilterSwitchContainer>
       <HiddenAccessibleText>{hiddenText}</HiddenAccessibleText>
@@ -60,7 +63,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         aria-labelledby={props.accessibilityLabelledBy}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
-        testID="Interrupteur">
+        testID={testId}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
             {!!disabled && <Lock />}
