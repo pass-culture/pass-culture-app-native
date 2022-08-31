@@ -52,11 +52,13 @@ exports[`Search component should render Search 1`] = `
     </View>
   </View>
   <View
+    isLanding={false}
     style={
       Array [
         Object {
           "marginTop": 24,
-          "paddingHorizontal": 24,
+          "paddingLeft": 16,
+          "paddingRight": 24,
           "zIndex": 1,
         },
       ]

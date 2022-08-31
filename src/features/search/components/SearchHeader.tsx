@@ -43,7 +43,10 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
       ) : (
         !!top && <HeaderBackground height={top} />
       )}
-      <SearchBoxContainer testID={isLanding ? 'searchBoxWithLabel' : 'searchBoxWithoutLabel'}>
+      <SearchBoxContainer
+        view={params?.view}
+        testID={isLanding ? 'searchBoxWithLabel' : 'searchBoxWithoutLabel'}
+        isLanding={isLanding}>
         {!!isLanding && (
           <React.Fragment>
             <View {...getHeadingAttrs(1)}>
@@ -68,11 +71,20 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
   )
 })
 
-const SearchBoxContainer = styled.View({
-  marginTop: getSpacing(6),
-  paddingHorizontal: getSpacing(6),
-  zIndex: 1,
-})
+const SearchBoxContainer = styled.View<{ isLanding: boolean; view?: SearchView }>(
+  ({ isLanding, view }) => ({
+    marginTop: getSpacing(6),
+    zIndex: 1,
+    ...(isLanding
+      ? {
+          paddingHorizontal: getSpacing(6),
+        }
+      : {
+          paddingLeft: getSpacing(4),
+          paddingRight: getSpacing(view === SearchView.Results ? 4 : 6),
+        }),
+  })
+)
 
 const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiary))({
   margin: getSpacing(1),

@@ -6,6 +6,7 @@ import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { Badge } from 'ui/components/Badge'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   activeFilters: number
@@ -25,17 +26,27 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
   }, [dispatch, searchState])
 
   return (
-    <TouchableLink
+    <StyledTouchableLink
       navigateTo={{ screen: 'SearchFilter' }}
       onPress={reinitFilters}
       testID="searchFilterButton"
       accessibilityLabel={accessibilityLabel}
       title={accessibilityLabel}>
-      <FilterIconDefault />
+      <FilterIconDefault size={24} />
       {activeFilters > 0 && <FloatingBadge value={activeFilters} testID="searchFilterBadge" />}
-    </TouchableLink>
+    </StyledTouchableLink>
   )
 }
+
+const StyledTouchableLink = styled(TouchableLink)({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginLeft: getSpacing(2),
+  width: getSpacing(10),
+  height: getSpacing(10),
+})
 
 const FloatingBadge = styled(Badge)({
   position: 'absolute',
