@@ -19,7 +19,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { getSpacing, Spacer } from 'ui/theme'
 
 // 3 integers max separate by a dot or point with 2 decimals max
-const priceRegex = /^\d\d{0,2}(?:(?:[,.]){1}\d{0,2})?$/
+const priceRegex = /^\d{1,3}(?:[,.]\d{0,2})?$/
 
 export const SearchPrice: FunctionComponent = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Price)

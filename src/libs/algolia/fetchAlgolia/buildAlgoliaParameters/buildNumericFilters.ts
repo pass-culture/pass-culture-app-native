@@ -1,5 +1,6 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { clampPrice, MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
@@ -58,16 +59,14 @@ const buildOfferPriceRangePredicate = ({
 }: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice'>):
   | FiltersArray[0]
   | undefined => {
-  const formatMinPrice = minPrice ? +minPrice.replace(',', '.') : 0
-  const formatMaxPrice = maxPrice ? +maxPrice.replace(',', '.') : MAX_PRICE
-  let formatPriceRange: Range<number> = [formatMinPrice, formatMaxPrice]
-  if (priceRange) {
-    formatPriceRange = priceRange
-  }
-
   if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICES} = 0`]
+
+  const formatMinPrice = getPriceAsNumber(minPrice) || 0
+  const formatMaxPrice = getPriceAsNumber(maxPrice) || MAX_PRICE
+  const formatPriceRange: Range<number> = priceRange || [formatMinPrice, formatMaxPrice]
   if (formatPriceRange)
     return [`${FACETS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
+
   return [`${FACETS_ENUM.OFFER_PRICES}: 0 TO 300`]
 }
 

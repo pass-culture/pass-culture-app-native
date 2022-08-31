@@ -18,6 +18,8 @@ import { CategoriesModal } from 'features/search/pages/CategoriesModal'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
+import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
+import { getPriceLabel } from 'features/search/utils/getPriceLabel'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
@@ -77,30 +79,10 @@ export const SearchResults: React.FC = () => {
   const { isDesktopViewport } = theme
   const filterPageIsModal = Platform.OS === 'web' && isDesktopViewport
 
-  const minPrice: number | undefined = params?.minPrice
-    ? +params?.minPrice.replace(',', '.')
-    : undefined
-  const maxPrice: number | undefined = params?.maxPrice
-    ? +params?.maxPrice.replace(',', '.')
-    : undefined
-  let priceLabel = 'Prix'
+  const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
+  const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
   const priceIsEntered = minPrice !== undefined || maxPrice !== undefined
-
-  if (priceIsEntered) {
-    if (
-      (minPrice === 0 && maxPrice === 0) ||
-      (minPrice === undefined && maxPrice === 0) ||
-      (maxPrice === undefined && minPrice === 0)
-    ) {
-      priceLabel = 'Gratuit'
-    } else if (minPrice && minPrice > 0 && maxPrice && maxPrice > 0) {
-      priceLabel = `${minPrice}€ - ${maxPrice}€`
-    } else if (minPrice && minPrice >= 0) {
-      priceLabel = `>= ${minPrice}€`
-    } else {
-      priceLabel = `<= ${maxPrice}€`
-    }
-  }
+  const priceLabel = getPriceLabel(minPrice, maxPrice)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
