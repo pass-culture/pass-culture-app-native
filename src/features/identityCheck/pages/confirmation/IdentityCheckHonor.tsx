@@ -5,6 +5,7 @@ import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
+import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { usePostHonorStatement } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
@@ -39,7 +40,8 @@ export const IdentityCheckHonor = () => {
           timeout: SNACK_BAR_TIME_OUT,
         })
       }
-      if (userProfile?.domainsCredit?.all?.initial) {
+      const credit = userProfile ? getAvailableCredit(userProfile) : null
+      if (credit?.amount !== undefined && !credit?.isExpired) {
         navigate('BeneficiaryAccountCreated')
       } else {
         navigateToNextScreen()
