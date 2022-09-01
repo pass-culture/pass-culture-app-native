@@ -8,19 +8,16 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSafeState } from 'libs/hooks'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
-import { Again } from 'ui/svg/icons/Again'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
@@ -95,10 +92,11 @@ export const Categories: FunctionComponent<Props> = ({ dismissModal }) => {
           })}
         </VerticalUl>
       </StyledScrollView>
-      <BottomButtonsContainer isModal={isModal}>
-        <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
-        <SearchButton wording="Rechercher" onPress={onSearchPress} />
-      </BottomButtonsContainer>
+      <FilterPageButtons
+        isModal={isModal}
+        onResetPress={onResetPress}
+        onSearchPress={onSearchPress}
+      />
     </Container>
   )
 }
@@ -112,21 +110,3 @@ const StyledScrollView = styled(ScrollView)<{ isModal: boolean }>(({ isModal }) 
   flexGrow: 1,
   ...(!isModal ? { paddingHorizontal: getSpacing(6) } : {}),
 }))
-
-const BottomButtonsContainer = styled.View<{ isModal: boolean }>(({ isModal }) => ({
-  flexDirection: 'row',
-  justifyContent: 'center',
-  ...(!isModal ? { paddingHorizontal: getSpacing(6) } : {}),
-  paddingTop: getSpacing(2),
-  ...(!isModal ? { paddingBottom: getSpacing(6) } : {}),
-}))
-
-const ResetButton = styledButton(ButtonQuaternaryBlack)({
-  width: 'auto',
-  marginRight: getSpacing(4),
-})
-
-const SearchButton = styledButton(ButtonPrimary)({
-  flexGrow: 1,
-  width: 'auto',
-})
