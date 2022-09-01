@@ -1,19 +1,19 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSafeState } from 'libs/hooks'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -54,6 +54,11 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }
 
+  const onResetPress = () => {
+    setSelectedMinPrice('')
+    setSelectedMaxPrice('')
+  }
+
   const onChangeMinPrice = (price: string) => {
     if (priceRegex.test(price) || price === '') {
       setSelectedMinPrice(price)
@@ -89,40 +94,42 @@ export const SearchPrice: FunctionComponent = () => {
       />
       <Spacer.Column numberOfSpaces={6} />
       {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
-      <StyledScrollView keyboardShouldPersistTaps="handled">
-        <TextInput
-          autoComplete="off" // disable autofill on android
-          autoCapitalize="none"
-          isError={false}
-          keyboardType="numeric"
-          label="Prix minimum (en €)"
-          value={selectedMinPrice}
-          onChangeText={onChangeMinPrice}
-          textContentType="none" // disable autofill on iOS
-          accessibilityDescribedBy={minPriceInputId}
-          testID="Entrée pour le prix minimum"
-          placeholder="0"
-        />
-        <Spacer.Column numberOfSpaces={6} />
-        <TextInput
-          autoComplete="off" // disable autofill on android
-          autoCapitalize="none"
-          isError={false}
-          keyboardType="numeric"
-          label="Prix maximum (en €)"
-          value={selectedMaxPrice}
-          onChangeText={onChangeMaxPrice}
-          textContentType="none" // disable autofill on iOS
-          accessibilityDescribedBy={maxPriceInputId}
-          testID="Entrée pour le prix maximum"
-          rightLabel={`max : ${MAX_PRICE} €`}
-          placeholder={`${MAX_PRICE}`}
-        />
+      <StyledScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={getScrollViewContentContainerStyle()}>
+        <Form.MaxWidth>
+          <TextInput
+            autoComplete="off" // disable autofill on android
+            autoCapitalize="none"
+            isError={false}
+            keyboardType="numeric"
+            label="Prix minimum (en €)"
+            value={selectedMinPrice}
+            onChangeText={onChangeMinPrice}
+            textContentType="none" // disable autofill on iOS
+            accessibilityDescribedBy={minPriceInputId}
+            testID="Entrée pour le prix minimum"
+            placeholder="0"
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <TextInput
+            autoComplete="off" // disable autofill on android
+            autoCapitalize="none"
+            isError={false}
+            keyboardType="numeric"
+            label="Prix maximum (en €)"
+            value={selectedMaxPrice}
+            onChangeText={onChangeMaxPrice}
+            textContentType="none" // disable autofill on iOS
+            accessibilityDescribedBy={maxPriceInputId}
+            testID="Entrée pour le prix maximum"
+            rightLabel={`max : ${MAX_PRICE} €`}
+            placeholder={`${MAX_PRICE}`}
+          />
+        </Form.MaxWidth>
       </StyledScrollView>
 
-      <BottomButtonsContainer>
-        <SearchButton wording="Rechercher" onPress={onSearchPress} />
-      </BottomButtonsContainer>
+      <FilterPageButtons onSearchPress={onSearchPress} onResetPress={onResetPress} />
     </Container>
   )
 }
@@ -132,19 +139,12 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
+const getScrollViewContentContainerStyle = (): StyleProp<ViewStyle> => ({
+  flexDirection: 'column',
+  alignItems: 'center',
+})
+
 const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
   paddingHorizontal: getSpacing(6),
-})
-
-const BottomButtonsContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'center',
-  padding: getSpacing(6),
-  paddingTop: getSpacing(2),
-})
-
-const SearchButton = styledButton(ButtonPrimary)({
-  flexGrow: 1,
-  width: 'auto',
 })
