@@ -6,7 +6,7 @@ import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
 import { useResetContexts } from 'features/auth/useResetContexts'
-import { setUserIdToCookiesConsent } from 'features/cookies/useCookies'
+import { useCookies } from 'features/cookies/useCookies'
 import { useAppStateChange } from 'libs/appState'
 import { analytics, LoginRoutineMethod } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
@@ -21,14 +21,22 @@ export interface IAuthContext {
   setIsLoggedIn: (isLoggedIn: boolean) => void
 }
 
-const connectUserToBatchAndFirebase = (accessToken: string | null) => {
-  if (!accessToken) return
-  const userId = getUserIdFromAccesstoken(accessToken)
-  if (userId) {
-    BatchUser.editor().setIdentifier(userId.toString()).save()
-    analytics.setUserId(userId)
-    eventMonitoring.setUser({ id: userId.toString() })
-  }
+const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
+  const { setUserId } = useCookies()
+  return useCallback(
+    (accessToken) => {
+      if (!accessToken) return
+
+      const userId = getUserIdFromAccesstoken(accessToken)
+      if (userId) {
+        BatchUser.editor().setIdentifier(userId.toString()).save()
+        analytics.setUserId(userId)
+        eventMonitoring.setUser({ id: userId.toString() })
+        setUserId(userId)
+      }
+    },
+    [setUserId]
+  )
 }
 
 export const AuthContext = React.createContext<IAuthContext>({
@@ -43,6 +51,7 @@ export function useAuthContext(): IAuthContext {
 export const AuthWrapper = memo(function AuthWrapper({ children }: { children: JSX.Element }) {
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
@@ -66,8 +75,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 
       if (getAccessTokenStatus(accessToken) === 'valid') {
         setIsLoggedIn(true)
-        connectUserToBatchAndFirebase(accessToken)
-        setUserIdToCookiesConsent(accessToken)
+        connectServicesRequiringUserId(accessToken)
       }
     } catch (err) {
       eventMonitoring.captureException(err)
@@ -75,7 +83,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [connectServicesRequiringUserId])
 
   useEffect(() => {
     readTokenAndConnectUser()
@@ -98,6 +106,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()
   const resetContexts = useResetContexts()
+  const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
 
   /**
    * Executes the minimal set of instructions required to proceed to the login
@@ -106,8 +115,7 @@ export function useLoginRoutine() {
    */
 
   return async (response: SigninResponse, method: LoginRoutineMethod) => {
-    connectUserToBatchAndFirebase(response.accessToken)
-    setUserIdToCookiesConsent(response.accessToken)
+    connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     analytics.logLogin({ method })
@@ -115,6 +123,7 @@ export function useLoginRoutine() {
     resetContexts()
   }
 }
+
 export function useLogoutRoutine(): () => Promise<void> {
   const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()

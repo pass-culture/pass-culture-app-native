@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Consent, CookiesConsent } from 'features/cookies/CookiesPolicy'
-import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { storage } from 'libs/storage'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
@@ -45,17 +44,5 @@ export const useCookies = () => {
     cookiesConsent,
     setCookiesConsent,
     setUserId,
-  }
-}
-
-export const setUserIdToCookiesConsent = async (accessToken: string | null) => {
-  if (!accessToken) return
-  const userId = getUserIdFromAccesstoken(accessToken)
-  if (userId) {
-    const cookiesChoice = await getCookiesChoice()
-    await storage.saveObject('cookies_consent', {
-      ...cookiesChoice,
-      userId,
-    })
   }
 }
