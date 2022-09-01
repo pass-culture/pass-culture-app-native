@@ -17,8 +17,6 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
-import { shareApp } from 'libs/share/shareApp/shareApp'
-import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -51,17 +49,6 @@ export function Navigation(): JSX.Element {
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
     }
-  }
-
-  const {
-    visible: shareAppModalVisible,
-    showModal: showShareAppModal,
-    hideModal: hideShareAppModal,
-  } = useModal(false)
-
-  const pressShareApp = () => {
-    shareApp()
-    showShareAppModal()
   }
 
   const {
@@ -101,8 +88,10 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Partage de l'app 📱" onPress={pressShareApp} />
-            <ShareAppModal visible={shareAppModalVisible} dismissModal={hideShareAppModal} />
+            <ButtonPrimary
+              wording="Partage de l'app 📱"
+              onPress={() => navigate('ShareAppModal')}
+            />
           </Row>
           <Row half>
             <ButtonPrimary wording="Cookies consent 🍪" onPress={() => showCookiesConsentModal()} />

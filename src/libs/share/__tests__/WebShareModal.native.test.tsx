@@ -1,13 +1,18 @@
 import React from 'react'
 
-import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
+import { WebShareModal } from 'libs/share/WebShareModal'
 import { render } from 'tests/utils'
 
-const dismissModal = jest.fn()
+const defaultProps = {
+  visible: true,
+  headerTitle: "Partager l'offre",
+  shareContent: { message: 'Voici une super offre !', url: 'https://url.com/offer' },
+  dismissModal: jest.fn(),
+}
 
 describe('<WebShareModal />', () => {
   it('should not render in native', () => {
-    const renderAPI = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const renderAPI = render(<WebShareModal {...defaultProps} />)
     expect(renderAPI.toJSON()).toBeNull()
   })
 })

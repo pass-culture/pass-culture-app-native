@@ -1,13 +1,20 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as Share from 'libs/share/shareApp/shareApp'
 import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
 import { render } from 'tests/utils'
 
-const dismissModal = jest.fn()
+const shareApp = jest.spyOn(Share, 'shareApp')
 
 describe('<ShareAppModal />', () => {
-  it('should not render in native', () => {
-    const renderAPI = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
-    expect(renderAPI.toJSON()).toBeNull()
+  it('should goBack to previous page and display native share modal', async () => {
+    render(<ShareAppModal />)
+
+    await waitForExpect(async () => {
+      expect(mockGoBack).toBeCalled()
+      expect(shareApp).toBeCalled()
+    })
   })
 })

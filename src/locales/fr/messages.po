@@ -2149,6 +2149,10 @@ msgstr "Paramètres firebase dynamic link"
 msgid "Paramètres marketing"
 msgstr "Paramètres marketing"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Partage l'app"
+msgstr "Partage l'app"
+
 #: src/libs/share/shareApp/ShareAppModal.tsx
 #: src/libs/share/shareApp/shareAppContent.ts
 msgid "Partage le lien d’invitation"
