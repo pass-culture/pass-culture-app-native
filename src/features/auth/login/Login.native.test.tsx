@@ -3,6 +3,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
@@ -66,8 +67,8 @@ describe('<Login/>', () => {
     await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
-      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
-      expect(analytics.setUserId).toHaveBeenCalledWith(111)
+      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
+      expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
       expect(navigateToHome).toBeCalledTimes(1)
       expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
       expect(mockStagedSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
@@ -327,10 +328,10 @@ describe('<Login/>', () => {
     fireEvent.changeText(emailInput, 'email@gmail.com')
     fireEvent.changeText(passwordInput, 'mypassword')
 
-    await waitForExpect(() => {
-      const enabledButtonSnapshot = renderAPI.toJSON()
-      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
-    })
+    await flushAllPromisesWithAct()
+
+    const enabledButtonSnapshot = renderAPI.toJSON()
+    expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
   })
 })
 

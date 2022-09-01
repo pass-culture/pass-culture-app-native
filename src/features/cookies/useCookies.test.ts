@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
 
+import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { v4 } from '__mocks__/uuid'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/useCookies'
@@ -86,6 +87,91 @@ describe('useCookies', () => {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
+        })
+      })
+    })
+
+    describe('user ID', () => {
+      it('can set user ID', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent, setUserId } = result.current
+        act(() => {
+          setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+        await flushAllPromisesWithAct()
+
+        await act(async () => setUserId(FAKE_USER_ID))
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual({
+          userId: FAKE_USER_ID,
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+      })
+
+      it('can set user ID before giving cookies consent', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent, setUserId } = result.current
+        await act(async () => setUserId(FAKE_USER_ID))
+
+        act(() => {
+          setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+        await flushAllPromisesWithAct()
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual({
+          userId: FAKE_USER_ID,
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+      })
+
+      it('should overwrite user ID when setting another user ID', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent, setUserId } = result.current
+        act(() => {
+          setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+        await flushAllPromisesWithAct()
+        await act(async () => setUserId(FAKE_USER_ID))
+
+        const secondUserId = 5678
+        await act(async () => setUserId(secondUserId))
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual({
+          userId: secondUserId,
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
         })
       })
     })

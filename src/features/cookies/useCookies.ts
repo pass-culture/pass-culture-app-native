@@ -22,9 +22,9 @@ export const useCookies = () => {
   useEffect(() => {
     if (cookiesConsent) {
       getCookiesChoice().then((value) => {
-        const deviceId = value?.deviceId ?? uuidv4()
         storage.saveObject(COOKIES_CONSENT_KEY, {
-          deviceId,
+          userId: value?.userId,
+          deviceId: value?.deviceId ?? uuidv4(),
           choiceDatetime: new Date(),
           consent: cookiesConsent,
         })
@@ -32,8 +32,17 @@ export const useCookies = () => {
     }
   }, [cookiesConsent])
 
+  const setUserId = async (userId: number): Promise<void> => {
+    const cookiesChoice = await getCookiesChoice()
+    await storage.saveObject(COOKIES_CONSENT_KEY, {
+      ...cookiesChoice,
+      userId,
+    })
+  }
+
   return {
     cookiesConsent,
     setCookiesConsent,
+    setUserId,
   }
 }
