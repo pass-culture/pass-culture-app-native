@@ -80,4 +80,28 @@ describe('SearchPrice component', () => {
       screen: 'Search',
     })
   })
+
+  it('should reset minimum price when pressing reset button', async () => {
+    const { getByPlaceholderText, getByText } = render(<SearchPrice />)
+
+    const minPriceInput = getByPlaceholderText('0')
+    await fireEvent(minPriceInput, 'onChangeText', '5')
+
+    const resetButton = getByText('Réinitialiser')
+    await fireEvent.press(resetButton)
+
+    expect(minPriceInput.props.value).toStrictEqual('')
+  })
+
+  it('should reset maximum price when pressing reset button', async () => {
+    const { getByPlaceholderText, getByText } = render(<SearchPrice />)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    await fireEvent(maxPriceInput, 'onChangeText', '20')
+
+    const resetButton = getByText('Réinitialiser')
+    await fireEvent.press(resetButton)
+
+    expect(maxPriceInput.props.value).toStrictEqual('')
+  })
 })
