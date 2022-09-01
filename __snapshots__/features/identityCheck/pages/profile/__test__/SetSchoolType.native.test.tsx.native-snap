@@ -125,7 +125,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}
@@ -1062,7 +1062,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}

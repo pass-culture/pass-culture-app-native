@@ -243,7 +243,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
             <button
               aria-label="Revenir en arrière"
               className="c0"
-              data-testid="Revenir en arrière"
+              data-testid="backButton"
               onClick={[Function]}
               tabIndex="0"
               title="Revenir en arrière"

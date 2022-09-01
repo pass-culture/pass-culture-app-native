@@ -125,7 +125,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}
@@ -953,7 +953,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}

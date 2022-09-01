@@ -125,7 +125,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Revenir en arrière"
+              testID="backButton"
             >
               <View
                 height={24}

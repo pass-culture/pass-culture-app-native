@@ -71,7 +71,7 @@ describe('SearchResults component', () => {
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
   })
 
-  it('should display location button', () => {
+  it('should display location filter button', () => {
     const { queryByTestId } = render(<SearchResults />)
 
     expect(queryByTestId('locationButton')).toBeTruthy()
@@ -107,7 +107,7 @@ describe('SearchResults component', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
   })
 
-  it('should display category button', () => {
+  it('should display category filter button', () => {
     const { queryByTestId } = render(<SearchResults />)
 
     expect(queryByTestId('categoryButton')).toBeTruthy()
@@ -127,11 +127,32 @@ describe('SearchResults component', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
     })
+
+    it('should display price filter button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('priceButton')).toBeTruthy()
+    })
+
+    it('should redirect to the filters page when clicking on the prices filter button', async () => {
+      const { getByTestId } = render(<SearchResults />)
+      const priceButton = getByTestId('priceButton')
+
+      await fireEvent.press(priceButton)
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchPrice')
+    })
   })
 
   describe('When feature flag filter desactivated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
+    })
+
+    it('should not display price filter button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('priceButton')).toBeNull()
     })
   })
 })

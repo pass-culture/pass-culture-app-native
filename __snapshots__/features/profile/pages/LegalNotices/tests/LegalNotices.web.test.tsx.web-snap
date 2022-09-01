@@ -77,7 +77,7 @@ Object {
                 <button
                   aria-label="Revenir en arrière"
                   class="c0"
-                  data-testid="Revenir en arrière"
+                  data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
                   type="button"
@@ -293,7 +293,7 @@ Object {
               <button
                 aria-label="Revenir en arrière"
                 class="c0"
-                data-testid="Revenir en arrière"
+                data-testid="backButton"
                 tabindex="0"
                 title="Revenir en arrière"
                 type="button"

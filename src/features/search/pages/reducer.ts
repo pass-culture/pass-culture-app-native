@@ -1,16 +1,11 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
-import {
-  MAX_PRICE,
-  MAX_RADIUS,
-  MIN_PRICE,
-  sortCategories,
-} from 'features/search/pages/reducer.helpers'
+import { MAX_RADIUS, sortCategories } from 'features/search/pages/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 
-import { addOrRemove, clampPrice } from './reducer.helpers'
+import { addOrRemove } from './reducer.helpers'
 
 export const initialSearchState: SearchState = {
   beginningDatetime: null,
@@ -28,7 +23,7 @@ export const initialSearchState: SearchState = {
     isEvent: false,
     isThing: false,
   },
-  priceRange: [MIN_PRICE, MAX_PRICE],
+  priceRange: null,
   query: '',
   tags: [],
   timeRange: null,
@@ -40,6 +35,8 @@ export type Action =
   | { type: 'SET_STATE'; payload: Partial<SearchState> }
   | { type: 'SET_STATE_FROM_NAVIGATE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
+  | { type: 'SET_MIN_PRICE'; payload: string }
+  | { type: 'SET_MAX_PRICE'; payload: string }
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
@@ -68,10 +65,13 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         ...action.payload,
-        priceRange: clampPrice(action.payload.priceRange),
       }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
+    case 'SET_MIN_PRICE':
+      return { ...state, minPrice: action.payload }
+    case 'SET_MAX_PRICE':
+      return { ...state, maxPrice: action.payload }
     case 'RADIUS':
       if ('aroundRadius' in state.locationFilter) {
         return {

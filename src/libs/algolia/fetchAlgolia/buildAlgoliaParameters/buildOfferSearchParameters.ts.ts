@@ -25,6 +25,8 @@ export const buildOfferSearchParameters = (
     priceRange = null,
     timeRange = null,
     tags = [],
+    minPrice = '',
+    maxPrice = '',
   }: SearchState & { objectIds?: string[] },
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
@@ -47,6 +49,8 @@ export const buildOfferSearchParameters = (
     offerIsNew,
     priceRange,
     timeRange,
+    minPrice,
+    maxPrice,
   }),
   ...buildGeolocationParameter(locationFilter, userLocation),
 })

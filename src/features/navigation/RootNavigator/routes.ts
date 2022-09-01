@@ -57,6 +57,7 @@ import { Categories as SearchCategories } from 'features/search/pages/Categories
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
+import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { Venue } from 'features/venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
@@ -326,6 +327,12 @@ export const routes: Route[] = [
     component: SearchCategories,
     path: 'recherche/categories',
     options: { title: t`Recherche par catégorie` },
+  },
+  {
+    name: 'SearchPrice',
+    component: SearchPrice,
+    path: 'recherche/prix',
+    options: { title: t`Recherche par prix` },
   },
   {
     name: 'SearchFilter',

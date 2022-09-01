@@ -108,10 +108,6 @@ msgstr "Accéder à la billetterie"
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
-#: src/features/search/components/SearchResults.tsx
-msgid "Activer le chargement automatique des résultats"
-msgstr "Activer le chargement automatique des résultats"
-
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Actualiser la page"
 msgstr "Actualiser la page"
@@ -137,10 +133,6 @@ msgstr "Afficher le mot de passe"
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
-
-#: src/features/search/components/SearchResults.tsx
-msgid "Afficher plus de résultats"
-msgstr "Afficher plus de résultats"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Aide financière 15 ans"
@@ -2447,6 +2439,10 @@ msgstr "Recherche par catégorie"
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Recherche par prix"
+msgstr "Recherche par prix"
+
 #: src/features/search/pages/LocationPicker.tsx
 msgid "Recherche un lieu, une adresse"
 msgstr "Recherche un lieu, une adresse"
@@ -3878,10 +3874,6 @@ msgstr "réalisée"
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
-
-#: src/features/search/components/SearchResults.tsx
-msgid "search query"
-msgstr "pour {searchQuery}"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"

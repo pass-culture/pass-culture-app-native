@@ -19,7 +19,9 @@ interface HeaderIconProps {
 export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <Touchable onPress={onGoBack || goBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
+    <Touchable
+      onPress={onGoBack || goBack}
+      {...accessibilityAndTestId(t`Revenir en arrière`, 'backButton')}>
       <ArrowPrevious testID="icon-back" color={color} />
       <HiddenAccessibleText>{t`Retour`}</HiddenAccessibleText>
     </Touchable>

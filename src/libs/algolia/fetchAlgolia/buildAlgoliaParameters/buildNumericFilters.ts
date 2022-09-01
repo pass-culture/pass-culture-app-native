@@ -1,5 +1,6 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { clampPrice } from 'features/search/pages/reducer.helpers'
+import { clampPrice, MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
@@ -15,6 +16,8 @@ export const buildNumericFilters = ({
   offerIsNew,
   priceRange,
   timeRange,
+  minPrice,
+  maxPrice,
 }: Pick<
   SearchParametersQuery,
   | 'beginningDatetime'
@@ -24,10 +27,17 @@ export const buildNumericFilters = ({
   | 'offerIsNew'
   | 'priceRange'
   | 'timeRange'
+  | 'minPrice'
+  | 'maxPrice'
 >): null | {
   numericFilters: FiltersArray
 } => {
-  const priceRangePredicate = buildOfferPriceRangePredicate({ offerIsFree, priceRange })
+  const priceRangePredicate = buildOfferPriceRangePredicate({
+    offerIsFree,
+    priceRange,
+    minPrice,
+    maxPrice,
+  })
   const datePredicate = buildDatePredicate({ date, timeRange })
   const newestOffersPredicate = buildNewestOffersPredicate(offerIsNew)
   const homepageDatePredicate = buildHomepageDatePredicate({ beginningDatetime, endingDatetime })
@@ -44,9 +54,19 @@ export const buildNumericFilters = ({
 const buildOfferPriceRangePredicate = ({
   offerIsFree,
   priceRange,
-}: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange'>): FiltersArray[0] | undefined => {
+  minPrice,
+  maxPrice,
+}: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice'>):
+  | FiltersArray[0]
+  | undefined => {
   if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICES} = 0`]
-  if (priceRange) return [`${FACETS_ENUM.OFFER_PRICES}: ${clampPrice(priceRange).join(' TO ')}`]
+
+  const formatMinPrice = getPriceAsNumber(minPrice) || 0
+  const formatMaxPrice = getPriceAsNumber(maxPrice) || MAX_PRICE
+  const formatPriceRange: Range<number> = priceRange || [formatMinPrice, formatMaxPrice]
+  if (formatPriceRange)
+    return [`${FACETS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
+
   return [`${FACETS_ENUM.OFFER_PRICES}: 0 TO 300`]
 }
 

@@ -46,4 +46,6 @@ export interface SearchState {
   view: SearchView
   noFocus?: boolean
   previousView?: SearchView
+  minPrice?: string
+  maxPrice?: string
 }

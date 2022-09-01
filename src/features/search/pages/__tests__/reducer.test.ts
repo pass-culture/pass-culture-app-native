@@ -3,7 +3,6 @@ import mockdate from 'mockdate'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
@@ -55,29 +54,6 @@ describe('Search reducer', () => {
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
-      priceRange: [0, MAX_PRICE],
-    })
-  })
-
-  it('should handle SET_STATE_FROM_NAVIGATE - MAX_PRICE', () => {
-    const parameters = {
-      offerCategories: [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-      ],
-      priceRange: [30, 500],
-    }
-    const action: Action = {
-      type: 'SET_STATE_FROM_NAVIGATE',
-      payload: parameters as Partial<SearchState>,
-    }
-    expect(searchReducer(state, action)).toStrictEqual({
-      ...initialSearchState,
-      offerCategories: [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-      ],
-      priceRange: [30, MAX_PRICE],
     })
   })
 
@@ -89,6 +65,28 @@ describe('Search reducer', () => {
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       priceRange: [30, 200],
+    })
+  })
+
+  it('should handle SET_MIN_PRICE', () => {
+    const action: Action = {
+      type: 'SET_MIN_PRICE',
+      payload: '30',
+    }
+    expect(searchReducer(state, action)).toStrictEqual({
+      ...initialSearchState,
+      minPrice: '30',
+    })
+  })
+
+  it('should handle SET_MAX_PRICE', () => {
+    const action: Action = {
+      type: 'SET_MAX_PRICE',
+      payload: '200',
+    }
+    expect(searchReducer(state, action)).toStrictEqual({
+      ...initialSearchState,
+      maxPrice: '200',
     })
   })
 

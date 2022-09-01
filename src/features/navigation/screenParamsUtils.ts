@@ -87,6 +87,8 @@ export const screenParamsParser: ParamsParsers = {
     view: JSON.parse,
     noFocus: JSON.parse,
     previousView: JSON.parse,
+    minPrice: JSON.parse,
+    maxPrice: JSON.parse,
   },
 }
 
@@ -147,5 +149,7 @@ export const screenParamsStringifier: ParamsStringifiers = {
     view: JSON.stringify,
     noFocus: JSON.stringify,
     previousView: JSON.stringify,
+    minPrice: JSON.stringify,
+    maxPrice: JSON.stringify,
   },
 }
