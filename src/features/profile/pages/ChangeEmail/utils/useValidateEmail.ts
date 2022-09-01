@@ -19,7 +19,7 @@ export function useValidateEmail(email: string): useValidateEmailReturn {
     }
   if (isCurrentUserEmail)
     return {
-      emailErrorMessage: t`L'e-mail saisi est identique à votre e-mail actuel`,
+      emailErrorMessage: t`L'e-mail saisi est identique à ton e-mail actuel`,
       isEmailValid: false,
     }
   return { emailErrorMessage: null, isEmailValid: true }

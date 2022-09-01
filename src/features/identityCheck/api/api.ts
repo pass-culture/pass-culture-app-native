@@ -85,7 +85,7 @@ export function usePatchProfile() {
     {
       onError: () =>
         showErrorSnackBar({
-          message: t`Une erreur est survenue lors de la mise à jour de votre profil`,
+          message: t`Une erreur est survenue lors de la mise à jour de ton profil`,
           timeout: SNACK_BAR_TIME_OUT,
         }),
     }

@@ -84,7 +84,7 @@ export function BookingDetails() {
   if (cancellationConsultedBooking.length > 0) {
     const nameCanceledBooking = cancellationConsultedBooking[0].stock.offer.name
     showInfoSnackBar({
-      message: t`Votre réservation ${nameCanceledBooking} a été annulée`,
+      message: t`Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate('EndedBookings')
