@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
@@ -10,6 +11,8 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { act, fireEvent, render, useMutationFactory } from 'tests/utils'
 
 jest.mock('react-query')
+
+mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
 let mockUserProfile: UserProfileResponse = nonBeneficiaryUser
 jest.mock('features/profile/api', () => ({
@@ -60,7 +63,7 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   it('should navigate to BeneficiaryAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
-    mockUserProfile = beneficiaryUser
+    mockUserProfile = { ...beneficiaryUser, depositExpirationDate: '2021-12-01T00:00:00.000Z' }
 
     const { getByText } = render(<IdentityCheckHonor />)
 
@@ -73,6 +76,23 @@ describe('<IdentityCheckHonor/>', () => {
     await waitForExpect(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
+    })
+  })
+
+  it("should navigate to next Screen if user's credit is expired (non beneficiary)", async () => {
+    mockUserProfile = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
+
+    const { getByText } = render(<IdentityCheckHonor />)
+
+    const button = getByText('Valider et continuer')
+    fireEvent.press(button)
+
+    await act(async () => {
+      useMutationCallbacks.onSuccess()
+    })
+
+    await waitForExpect(() => {
+      expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
     })
   })
 })

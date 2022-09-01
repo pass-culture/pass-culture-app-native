@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
-import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { hasOngoingCredit } from 'features/home/services/useAvailableCredit'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
@@ -24,7 +24,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { VerticalUl } from 'ui/components/Ul'
 import { Background } from 'ui/svg/Background'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const IdentityCheckStepper = () => {
@@ -76,8 +76,8 @@ export const IdentityCheckStepper = () => {
     if (subscription?.nextSubscriptionStep === null) {
       refetch()
         .then(({ data: userProfile }) => {
-          const credit = userProfile ? getAvailableCredit(userProfile) : null
-          if (credit?.amount !== undefined && !credit?.isExpired) {
+          const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
+          if (hasUserOngoingCredit) {
             navigate('BeneficiaryAccountCreated')
           }
         })
