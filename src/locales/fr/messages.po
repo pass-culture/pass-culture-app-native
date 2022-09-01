@@ -2898,6 +2898,10 @@ msgstr "Ton adresse | Profil"
 msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 
+#: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
+msgid "Ton choix a bien été enregistré."
+msgstr "Ton choix a bien été enregistré."
+
 #: src/features/cookies/components/CookiesConsentExplanations.tsx
 #: src/features/cookies/pages/CookiesDetails.tsx
 msgid "Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment."

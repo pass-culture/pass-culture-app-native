@@ -5,12 +5,12 @@ import { render } from 'tests/utils'
 
 describe('<CookiesSettings/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<CookiesSettings />)
+    const renderAPI = renderCookiesSettings()
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should disable and checked essential cookies switch', () => {
-    const { getByTestId } = render(<CookiesSettings />)
+  it('should disable and check essential cookies switch', () => {
+    const { getByTestId } = renderCookiesSettings()
 
     const essentialToggle = getByTestId('Interrupteur-essential')
 
@@ -20,3 +20,15 @@ describe('<CookiesSettings/>', () => {
     })
   })
 })
+
+const renderCookiesSettings = () =>
+  render(
+    <CookiesSettings
+      settingsCookiesChoice={{
+        marketing: false,
+        performance: false,
+        customization: false,
+      }}
+      setSettingsCookiesChoice={() => null}
+    />
+  )

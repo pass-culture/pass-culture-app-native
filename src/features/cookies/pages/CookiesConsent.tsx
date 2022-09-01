@@ -6,7 +6,9 @@ import {
   useCookiesModalContent,
 } from 'features/cookies/components/useCookiesModalContent'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
 import { useCookies } from 'features/cookies/useCookies'
+import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 
 interface Props {
   visible: boolean
@@ -15,6 +17,11 @@ interface Props {
 
 export const CookiesConsent = ({ visible, hideModal }: Props) => {
   const [cookiesStep, setCookiesStep] = useState(CookiesSteps.COOKIES_CONSENT)
+  const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
+    customization: false,
+    performance: false,
+    marketing: false,
+  })
   const { setCookiesConsent } = useCookies()
 
   const acceptAll = useCallback(() => {
@@ -36,13 +43,20 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   }, [hideModal, setCookiesConsent])
 
   const customChoice = useCallback(() => {
-    alert('cette fonctionnalité sera faite PC-16598')
+    const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
+    setCookiesConsent({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted,
+      refused,
+    })
     hideModal()
-  }, [hideModal])
+  }, [settingsCookiesChoice, hideModal, setCookiesConsent])
 
   const { childrenProps } = useCookiesModalContent({
     cookiesStep,
+    settingsCookiesChoice,
     setCookiesStep,
+    setSettingsCookiesChoice,
     acceptAll,
     declineAll,
     customChoice,

@@ -4,6 +4,7 @@ import React from 'react'
 import { CookiesConsentButtons } from 'features/cookies/components/CookiesConsentButtons'
 import { CookiesConsentExplanations } from 'features/cookies/components/CookiesConsentExplanations'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
+import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -15,7 +16,9 @@ export enum CookiesSteps {
 
 interface Props {
   cookiesStep: number
+  settingsCookiesChoice: CookiesChoiceByCategory
   setCookiesStep: (number: CookiesSteps) => void
+  setSettingsCookiesChoice: React.Dispatch<React.SetStateAction<CookiesChoiceByCategory>>
   acceptAll: () => void
   declineAll: () => void
   customChoice: () => void
@@ -29,7 +32,9 @@ type ReportOfferModalContent = {
 
 export const useCookiesModalContent = ({
   cookiesStep,
+  settingsCookiesChoice,
   setCookiesStep,
+  setSettingsCookiesChoice,
   acceptAll,
   declineAll,
   customChoice,
@@ -37,7 +42,12 @@ export const useCookiesModalContent = ({
   const pickChildren = (step: CookiesSteps): ReportOfferModalContent => {
     if (step === CookiesSteps.COOKIES_SETTINGS) {
       return {
-        children: <CookiesDetails />,
+        children: (
+          <CookiesDetails
+            settingsCookiesChoice={settingsCookiesChoice}
+            setSettingsCookiesChoice={setSettingsCookiesChoice}
+          />
+        ),
         leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),
