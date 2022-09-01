@@ -5,6 +5,6 @@ export default jest.fn(
     ({
       // a date in far future to still get a valid token for api calls
       exp: 3454545353,
-      user_claims: { user_id: 111 },
+      user_claims: { user_id: 1234 },
     } as JwtPayload)
 )

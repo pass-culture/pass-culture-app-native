@@ -66,8 +66,8 @@ describe('<Login/>', () => {
     await flushAllPromisesWithAct()
 
     await waitForExpect(() => {
-      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
-      expect(analytics.setUserId).toHaveBeenCalledWith(111)
+      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('1234')
+      expect(analytics.setUserId).toHaveBeenCalledWith(1234)
       expect(navigateToHome).toBeCalledTimes(1)
       expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
       expect(mockStagedSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
@@ -327,10 +327,10 @@ describe('<Login/>', () => {
     fireEvent.changeText(emailInput, 'email@gmail.com')
     fireEvent.changeText(passwordInput, 'mypassword')
 
-    await waitForExpect(() => {
-      const enabledButtonSnapshot = renderAPI.toJSON()
-      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
-    })
+    await flushAllPromisesWithAct()
+
+    const enabledButtonSnapshot = renderAPI.toJSON()
+    expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
   })
 })
 
