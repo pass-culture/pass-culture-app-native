@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
 
+import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { v4 } from '__mocks__/uuid'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/useCookies'
@@ -8,7 +9,6 @@ import { act, flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
-const userId = 1234
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 
@@ -104,11 +104,11 @@ describe('useCookies', () => {
         })
         await flushAllPromisesWithAct()
 
-        await act(async () => setUserId(userId))
+        await act(async () => setUserId(FAKE_USER_ID))
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
         expect(cookiesConsent).toEqual({
-          userId,
+          userId: FAKE_USER_ID,
           deviceId,
           choiceDatetime: Today.toISOString(),
           consent: {
@@ -122,7 +122,7 @@ describe('useCookies', () => {
       it('can set user ID before giving cookies consent', async () => {
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
-        await act(async () => setUserId(userId))
+        await act(async () => setUserId(FAKE_USER_ID))
 
         act(() => {
           setCookiesConsent({
@@ -135,7 +135,7 @@ describe('useCookies', () => {
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
         expect(cookiesConsent).toEqual({
-          userId,
+          userId: FAKE_USER_ID,
           deviceId,
           choiceDatetime: Today.toISOString(),
           consent: {
@@ -157,7 +157,7 @@ describe('useCookies', () => {
           })
         })
         await flushAllPromisesWithAct()
-        await act(async () => setUserId(userId))
+        await act(async () => setUserId(FAKE_USER_ID))
 
         const secondUserId = 5678
         await act(async () => setUserId(secondUserId))

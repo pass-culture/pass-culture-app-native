@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQueryClient } from 'react-query'
 
+import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState } from 'api/gen'
 import { LoggedInQueryKeys, useLoginRoutine, useLogoutRoutine } from 'features/auth/AuthContext'
@@ -81,30 +82,24 @@ describe('AuthContext', () => {
       expect(accessTokenStorage).toEqual(accessToken)
     })
 
-    it('should log analytics', async () => {
-      await renderUseLoginRoutine()
-
-      expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
-    })
-
     describe('connectServicesRequiringUserId', () => {
       it('should set batch identifier', async () => {
         await renderUseLoginRoutine()
 
-        expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, '1234')
+        expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
       })
 
       it('should log set user id analytics', async () => {
         await renderUseLoginRoutine()
 
-        expect(analytics.setUserId).toHaveBeenCalledWith(1234)
+        expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
       })
 
       it('should set user id in cookies consent storage', async () => {
         await renderUseLoginRoutine()
 
         const cookiesConsentStorage = await storage.readObject('cookies_consent')
-        expect(cookiesConsentStorage).toEqual({ userId: 1234 })
+        expect(cookiesConsentStorage).toEqual({ userId: FAKE_USER_ID })
       })
     })
 
