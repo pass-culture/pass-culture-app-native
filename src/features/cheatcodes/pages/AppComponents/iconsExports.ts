@@ -89,6 +89,7 @@ import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Sun } from 'ui/svg/icons/Sun'
 import { Trash } from 'ui/svg/icons/Trash'
 import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { Warning } from 'ui/svg/icons/Warning'
 
 export const SocialNetworkIcons = {
@@ -187,6 +188,7 @@ export const TertiaryAndSmallerIcons = {
   Question,
   SMSFilled,
   Validate,
+  ValidateOff,
 }
 
 const LogoPassCulture = styled(PassCultureIcon).attrs(({ theme }) => ({

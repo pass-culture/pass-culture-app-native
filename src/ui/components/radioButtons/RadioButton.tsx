@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { Fragment, FunctionComponent, useRef, useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -9,6 +9,7 @@ import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationFor
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
@@ -27,6 +28,7 @@ export function RadioButton(props: RadioButtonProps) {
   const { isMobileViewport } = useTheme()
   const [isFocus, setIsFocus] = useState(false)
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
+  const ValidateOff = isMobileViewport ? ValidateOffIcon : Fragment
   const StyledIcon =
     !!props.icon &&
     styled(props.icon).attrs(({ theme }) => ({
@@ -36,6 +38,7 @@ export function RadioButton(props: RadioButtonProps) {
     }))``
 
   const onPress = () => props.onSelect(props.label)
+
   useArrowNavigationForRadioButton(containerRef)
   useSpaceBarAction(isFocus ? onPress : undefined)
   return (
@@ -52,7 +55,7 @@ export function RadioButton(props: RadioButtonProps) {
         {!!StyledIcon && (
           <React.Fragment>
             <StyledIcon />
-            <Spacer.Row numberOfSpaces={4} />
+            <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         )}
         <View>
@@ -60,7 +63,7 @@ export function RadioButton(props: RadioButtonProps) {
           {!!props.description && <GreyDarkCaption>{props.description}</GreyDarkCaption>}
         </View>
       </LabelContainer>
-      <Spacer.Flex flex={0.1}>{!!props.isSelected && <ValidateIconPrimary />}</Spacer.Flex>
+      <IconContainer>{props.isSelected ? <ValidateIconPrimary /> : <ValidateOff />}</IconContainer>
     </StyledTouchableOpacity>
   )
 }
@@ -94,7 +97,20 @@ const Label = styled(Typo.ButtonText).attrs({
   color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
 
+const IconContainer = styled.View(({ theme }) => ({
+  flex: 0.1,
+  justifyContent: 'center',
+  alignItems: 'flex-end',
+  width: theme.icons.sizes.smaller,
+  height: theme.icons.sizes.smaller,
+}))
+
 const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: theme.icons.sizes.small,
+  size: theme.icons.sizes.smaller,
+}))``
+
+const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+  size: theme.icons.sizes.smaller,
 }))``
