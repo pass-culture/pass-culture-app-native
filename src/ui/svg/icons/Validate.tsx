@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import * as React from 'react'
 import { Circle, Path } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
@@ -22,7 +21,7 @@ const ValidateSvg: React.FunctionComponent<AccessibleIcon> = ({
       width={size}
       height={size}
       viewBox="0 0 48 48"
-      accessibilityLabel={accessibilityLabel ?? t`Sélectionné`}
+      accessibilityLabel={accessibilityLabel ?? `Sélectionné`}
       testID={testID}>
       <Circle r={10} cx={24} cy={24} fill={fillColor} />
       <Path

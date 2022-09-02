@@ -9,6 +9,7 @@ import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationFor
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
@@ -52,7 +53,7 @@ export function RadioButton(props: RadioButtonProps) {
         {!!StyledIcon && (
           <React.Fragment>
             <StyledIcon />
-            <Spacer.Row numberOfSpaces={4} />
+            <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         )}
         <View>
@@ -60,7 +61,9 @@ export function RadioButton(props: RadioButtonProps) {
           {!!props.description && <GreyDarkCaption>{props.description}</GreyDarkCaption>}
         </View>
       </LabelContainer>
-      <Spacer.Flex flex={0.1}>{!!props.isSelected && <ValidateIconPrimary />}</Spacer.Flex>
+      <IconContainer>
+        {props.isSelected ? <ValidateIconPrimary /> : <ValidateOffIcon />}
+      </IconContainer>
     </StyledTouchableOpacity>
   )
 }
@@ -94,7 +97,20 @@ const Label = styled(Typo.ButtonText).attrs({
   color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
 
+const IconContainer = styled.View({
+  flex: 0.1,
+  justifyContent: 'center',
+  alignItems: 'flex-end',
+  width: getSpacing(5),
+  height: getSpacing(5),
+})
+
 const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: theme.icons.sizes.small,
+  size: theme.icons.sizes.smaller,
+}))``
+
+const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+  size: theme.icons.sizes.smaller,
 }))``

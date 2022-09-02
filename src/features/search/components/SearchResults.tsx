@@ -74,7 +74,7 @@ export const SearchResults: React.FC = () => {
     visible: categoriesModalVisible,
     showModal: showCategoriesModal,
     hideModal: hideCategoriesModal,
-  } = useModal(false)
+  } = useModal(true)
   const theme = useTheme()
   const { isDesktopViewport } = theme
   const filterPageIsModal = Platform.OS === 'web' && isDesktopViewport
