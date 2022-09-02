@@ -7,6 +7,7 @@ import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
@@ -29,6 +30,7 @@ export const NewConsentSettings = () => {
     performance: false,
     marketing: false,
   })
+  const { mutate: logCookiesConsent } = useLogCookiesConsent()
 
   const saveChoice = () => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -37,6 +39,7 @@ export const NewConsentSettings = () => {
       accepted,
       refused,
     })
+    logCookiesConsent()
     showSuccessSnackBar({
       message: t`Ton choix a bien été enregistré.`,
       timeout: SNACK_BAR_TIME_OUT,

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 
 import { PrivacyPolicy } from './PrivacyPolicy'
@@ -93,7 +94,10 @@ describe('<PrivacyPolicy />', () => {
     })
 
     it('should show cookies modal V2 when appEnableCookiesV2 feature flag is activated', async () => {
-      const renderAPI = render(<PrivacyPolicy />)
+      const renderAPI = render(<PrivacyPolicy />, {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
       await flushAllPromisesWithAct()
 
       const title = renderAPI.queryByText('Choisir les cookies')

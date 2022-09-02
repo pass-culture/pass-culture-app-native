@@ -557,6 +557,53 @@ export interface ChangePasswordRequest {
 }
 /**
  * @export
+ * @interface Consent
+ */
+export interface Consent {
+  /**
+   * @type {Array<string>}
+   * @memberof Consent
+   */
+  accepted: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof Consent
+   */
+  mandatory: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof Consent
+   */
+  refused: Array<string>
+}
+/**
+ * @export
+ * @interface CookieConsentRequest
+ */
+export interface CookieConsentRequest {
+  /**
+   * @type {string}
+   * @memberof CookieConsentRequest
+   */
+  choiceDatetime: string
+  /**
+   * @type {Consent}
+   * @memberof CookieConsentRequest
+   */
+  consent: Consent
+  /**
+   * @type {string}
+   * @memberof CookieConsentRequest
+   */
+  deviceId: string
+  /**
+   * @type {number}
+   * @memberof CookieConsentRequest
+   */
+  userId?: number | null
+}
+/**
+ * @export
  * @interface Coordinates
  */
 export interface Coordinates {
@@ -3336,6 +3383,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary cookies_consent <POST>
+     * @param {CookieConsentRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1cookiesConsent(body?: CookieConsentRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/cookies_consent`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"CookieConsentRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary post_cultural_survey_answers <POST>
      * @param {CulturalSurveyAnswersRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4134,6 +4201,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary cookies_consent <POST>
+     * @param {CookieConsentRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1cookiesConsent(basePath: string, body?: CookieConsentRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1cookiesConsent(body, options)
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary post_cultural_survey_answers <POST>
      * @param {CulturalSurveyAnswersRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4682,6 +4761,17 @@ export class DefaultApi extends BaseAPI {
     */
   public async postnativev1changePassword(body?: ChangePasswordRequest, options?: any) {
     return DefaultApiFp(this, this.configuration).postnativev1changePassword(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary cookies_consent <POST>
+    * @param {CookieConsentRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1cookiesConsent(body?: CookieConsentRequest, options?: any) {
+    return DefaultApiFp(this, this.configuration).postnativev1cookiesConsent(this.basePath, body, options)
   }
   /**
     * 
