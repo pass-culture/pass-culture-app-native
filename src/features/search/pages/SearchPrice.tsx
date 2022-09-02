@@ -4,18 +4,24 @@ import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
+import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSafeState } from 'libs/hooks'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 
 // 3 integers max separate by a dot or point with 2 decimals max
@@ -24,9 +30,19 @@ const priceRegex = /^\d{1,3}(?:[,.]\d{0,2})?$/
 export const SearchPrice: FunctionComponent = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Price)
   const { navigate } = useNavigation<UseNavigationType>()
+  const { isLoggedIn } = useAuthContext()
+  const { data: user } = useUserProfileInfo()
   const { searchState, dispatch } = useSearch()
   const [selectedMinPrice, setSelectedMinPrice] = useSafeState<string>(searchState?.minPrice || '')
   const [selectedMaxPrice, setSelectedMaxPrice] = useSafeState<string>(searchState?.maxPrice || '')
+  const availableCredit = useAvailableCredit()
+  const formatAvailableCredit = availableCredit?.amount
+    ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
+    : '0'
+
+  const isLimitCreditMaxPrice = searchState?.maxPrice === formatAvailableCredit
+  const [isLimitCreditSearch, setIsLimitCreditSearch] = useSafeState<boolean>(isLimitCreditMaxPrice)
+  const limiteCreditSearchToggleIsVisible = isLoggedIn && user?.isBeneficiary
 
   const onSearchPress = () => {
     logUseFilter()
@@ -80,6 +96,24 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }, [navigate, searchState])
 
+  const toggleLimitCreditSearch = useCallback(() => {
+    const toggleLimitCreditSearchValue = isLimitCreditSearch ? false : true
+    setIsLimitCreditSearch(toggleLimitCreditSearchValue)
+
+    if (toggleLimitCreditSearchValue) {
+      setSelectedMaxPrice(formatAvailableCredit)
+      return
+    }
+
+    setSelectedMaxPrice(searchState?.maxPrice || '')
+  }, [
+    formatAvailableCredit,
+    isLimitCreditSearch,
+    searchState?.maxPrice,
+    setIsLimitCreditSearch,
+    setSelectedMaxPrice,
+  ])
+
   const titleID = uuidv4()
   const minPriceInputId = uuidv4()
   const maxPriceInputId = uuidv4()
@@ -98,6 +132,20 @@ export const SearchPrice: FunctionComponent = () => {
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={getScrollViewContentContainerStyle()}>
         <Form.MaxWidth>
+          {!!limiteCreditSearchToggleIsVisible && (
+            <React.Fragment>
+              <FilterSwitchWithLabel
+                isActive={isLimitCreditSearch}
+                toggle={toggleLimitCreditSearch}
+                label="Limiter la recherche à mon crédit"
+                testID="limitCreditSearch"
+              />
+              <Spacer.Column numberOfSpaces={6} />
+              <Separator />
+              <Spacer.Column numberOfSpaces={6} />
+            </React.Fragment>
+          )}
+
           <TextInput
             autoComplete="off" // disable autofill on android
             autoCapitalize="none"
@@ -125,6 +173,7 @@ export const SearchPrice: FunctionComponent = () => {
             testID="Entrée pour le prix maximum"
             rightLabel={`max : ${MAX_PRICE} €`}
             placeholder={`${MAX_PRICE}`}
+            disabled={isLimitCreditSearch}
           />
         </Form.MaxWidth>
       </StyledScrollView>
