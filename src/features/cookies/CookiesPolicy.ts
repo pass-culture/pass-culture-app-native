@@ -35,7 +35,7 @@ export interface Consent {
 export interface CookiesConsent {
   consent: Consent
   deviceId: string
-  choiceDatetime: Date
+  choiceDatetime: string
   userId?: number
 }
 

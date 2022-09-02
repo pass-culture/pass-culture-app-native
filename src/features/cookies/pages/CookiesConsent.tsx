@@ -9,6 +9,7 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
 
 interface Props {
   visible: boolean
@@ -23,6 +24,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     marketing: false,
   })
   const { setCookiesConsent } = useCookies()
+  const { mutate: logCookiesConsent } = useLogCookiesConsent()
 
   const acceptAll = useCallback(() => {
     setCookiesConsent({
@@ -30,8 +32,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted: ALL_OPTIONAL_COOKIES,
       refused: [],
     })
+    logCookiesConsent()
     hideModal()
-  }, [hideModal, setCookiesConsent])
+  }, [hideModal, setCookiesConsent, logCookiesConsent])
 
   const declineAll = useCallback(() => {
     setCookiesConsent({
@@ -39,8 +42,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted: [],
       refused: ALL_OPTIONAL_COOKIES,
     })
+    logCookiesConsent()
     hideModal()
-  }, [hideModal, setCookiesConsent])
+  }, [hideModal, setCookiesConsent, logCookiesConsent])
 
   const customChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -49,8 +53,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted,
       refused,
     })
+    logCookiesConsent()
     hideModal()
-  }, [settingsCookiesChoice, hideModal, setCookiesConsent])
+  }, [settingsCookiesChoice, hideModal, setCookiesConsent, logCookiesConsent])
 
   const { childrenProps } = useCookiesModalContent({
     cookiesStep,

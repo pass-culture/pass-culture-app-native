@@ -6,7 +6,8 @@ import { storage } from 'libs/storage'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 
-const getCookiesChoice = async () => await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
+export const getCookiesChoice = async () =>
+  await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
 export const useCookies = () => {
   const [cookiesConsent, setCookiesConsent] = useState<Consent>()
@@ -25,7 +26,7 @@ export const useCookies = () => {
         storage.saveObject(COOKIES_CONSENT_KEY, {
           userId: value?.userId,
           deviceId: value?.deviceId ?? uuidv4(),
-          choiceDatetime: new Date(),
+          choiceDatetime: new Date().toISOString(),
           consent: cookiesConsent,
         })
       })
