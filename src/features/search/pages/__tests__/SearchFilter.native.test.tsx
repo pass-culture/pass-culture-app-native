@@ -10,9 +10,14 @@ import { render } from 'tests/utils'
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'
 
+const mockStagedSearchState = initialSearchState
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({
+    searchState: mockStagedSearchState,
+    dispatch: jest.fn(),
+  }),
+  useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
   }),
@@ -37,20 +42,26 @@ jest.mock('features/profile/api', () => ({
 const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
 describe('SearchFilter component', () => {
   it('should render correctly', () => {
-    mockSearchState.locationFilter = { locationType: LocationType.AROUND_ME, aroundRadius: 100 }
+    mockStagedSearchState.locationFilter = {
+      locationType: LocationType.AROUND_ME,
+      aroundRadius: 100,
+    }
     const { toJSON } = renderSearchFilter()
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should not render section Radius if search everywhere or venue selected', () => {
-    mockSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
+    mockStagedSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeNull()
 
-    mockSearchState.locationFilter = { locationType: LocationType.AROUND_ME, aroundRadius: 100 }
+    mockStagedSearchState.locationFilter = {
+      locationType: LocationType.AROUND_ME,
+      aroundRadius: 100,
+    }
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
 
     // Address
-    mockSearchState.locationFilter = {
+    mockStagedSearchState.locationFilter = {
       locationType: LocationType.PLACE,
       aroundRadius: 10,
       place: Kourou,
@@ -58,7 +69,7 @@ describe('SearchFilter component', () => {
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
 
     // Venue
-    mockSearchState.locationFilter = {
+    mockStagedSearchState.locationFilter = {
       locationType: LocationType.VENUE,
       venue: { ...Kourou, venueId: 4 },
     }

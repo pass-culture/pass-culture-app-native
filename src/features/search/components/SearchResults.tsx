@@ -71,8 +71,8 @@ export const SearchResults: React.FC = () => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categoryLabel = searchGroupLabelMapping[offerCategories[0]] ?? 'Catégories'
   const {
-    visible: cancelCategoriesModalVisible,
-    showModal: showCancelCategoriesModal,
+    visible: categoriesModalVisible,
+    showModal: showCategoriesModal,
     hideModal: hideCategoriesModal,
   } = useModal(false)
   const theme = useTheme()
@@ -122,12 +122,12 @@ export const SearchResults: React.FC = () => {
 
   const redirectToCategoryFilterPage = useCallback(() => {
     if (filterPageIsModal) {
-      showCancelCategoriesModal()
+      showCategoriesModal()
       return
     }
 
     navigate('SearchCategories')
-  }, [filterPageIsModal, navigate, showCancelCategoriesModal])
+  }, [filterPageIsModal, navigate, showCategoriesModal])
 
   const redirectToPriceFilterPage = useCallback(() => {
     navigate('SearchPrice')
@@ -271,7 +271,7 @@ export const SearchResults: React.FC = () => {
           <Spacer.BottomScreen />
         </ScrollToTopContainer>
       )}
-      <CategoriesModal visible={cancelCategoriesModalVisible} dismissModal={hideCategoriesModal} />
+      <CategoriesModal visible={categoriesModalVisible} dismissModal={hideCategoriesModal} />
     </React.Fragment>
   )
 }
