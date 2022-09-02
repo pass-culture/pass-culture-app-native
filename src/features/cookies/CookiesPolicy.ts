@@ -1,4 +1,4 @@
-enum CookieNameEnum {
+export enum CookieNameEnum {
   ACCESS_TOKEN = 'access_token',
   ALGOLIA = 'algolia',
   AMPLITUDE = 'amplitude',
