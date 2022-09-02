@@ -6,7 +6,7 @@ import { flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 
 import { PrivacyPolicy } from './PrivacyPolicy'
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
+const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: false } })
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))

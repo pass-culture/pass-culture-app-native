@@ -17,13 +17,13 @@ export function PrivacyPolicy() {
   const { visible: cookiesConsentModalVisible, hideModal: hideCookiesConsentModal } = useModal(true)
 
   useEffect(() => {
-    if (settings)
+    if (settings?.appEnableCookiesV2 === false)
       getCookiesConsent().then((hasAcceptedCookie) => {
         if (hasAcceptedCookie === null) {
           setHasUserMadeCookieChoiceV1(false)
         }
       })
-  }, [settings])
+  }, [settings?.appEnableCookiesV2])
 
   async function acceptCookie() {
     setHasUserMadeCookieChoiceV1(true)
