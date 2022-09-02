@@ -125,6 +125,7 @@ export type RootStackParamList = {
   SearchCategories: undefined
   SearchPrice: undefined
   SearchFilter: undefined
+  ShareAppModal: undefined
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SuspendedAccount: undefined

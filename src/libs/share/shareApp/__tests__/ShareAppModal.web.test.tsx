@@ -1,13 +1,13 @@
 import React from 'react'
 
+import { navigateToHome } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { shareAppContent } from 'libs/share/shareApp/shareAppContent'
 import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
 import { fireEvent, render } from 'tests/utils/web'
 
-const dismissModal = jest.fn()
-
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
@@ -16,17 +16,12 @@ const message = shareAppContent.message
 
 describe('<ShareAppModal />', () => {
   it('should match snapshot', () => {
-    const renderAPI = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const renderAPI = render(<ShareAppModal />)
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should not display if visible false', () => {
-    const renderAPI = render(<ShareAppModal visible={false} dismissModal={dismissModal} />)
-    expect(renderAPI.container).toBeEmptyDOMElement()
-  })
-
   it('should open the email on the email button click', () => {
-    const { getByLabelText } = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const { getByLabelText } = render(<ShareAppModal />)
     const emailButton = getByLabelText('Ouvrir le gestionnaire mail')
     fireEvent.click(emailButton)
     expect(mockedOpenUrl).toHaveBeenNthCalledWith(
@@ -37,7 +32,7 @@ describe('<ShareAppModal />', () => {
   })
 
   it('should open Twitter when sharing with Twitter', () => {
-    const { getByText } = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const { getByText } = render(<ShareAppModal />)
     const twitterButton = getByText('Twitter')
     fireEvent.click(twitterButton)
     expect(mockedOpenUrl).toHaveBeenNthCalledWith(
@@ -48,7 +43,7 @@ describe('<ShareAppModal />', () => {
   })
 
   it('should open Telegram when sharing with Telegram', () => {
-    const { getByText } = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const { getByText } = render(<ShareAppModal />)
     const telegramButton = getByText('Telegram')
     fireEvent.click(telegramButton)
     expect(mockedOpenUrl).toHaveBeenNthCalledWith(
@@ -59,7 +54,7 @@ describe('<ShareAppModal />', () => {
   })
 
   it('should open WhatsApp when sharing with WhatsApp', () => {
-    const { getByText } = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const { getByText } = render(<ShareAppModal />)
     const whatsAppButton = getByText('WhatsApp')
     fireEvent.click(whatsAppButton)
     expect(mockedOpenUrl).toHaveBeenNthCalledWith(
@@ -70,7 +65,7 @@ describe('<ShareAppModal />', () => {
   })
 
   it('should open Facebook when sharing with Facebook', () => {
-    const { getByText } = render(<ShareAppModal visible={true} dismissModal={dismissModal} />)
+    const { getByText } = render(<ShareAppModal />)
     const facebookButton = getByText('Facebook')
     fireEvent.click(facebookButton)
     expect(mockedOpenUrl).toHaveBeenNthCalledWith(
@@ -80,5 +75,12 @@ describe('<ShareAppModal />', () => {
       )}&quote=${encodeURIComponent(message)}`,
       undefined
     )
+  })
+
+  it('should redirect to Home on close', () => {
+    const { getByTestId } = render(<ShareAppModal />)
+    const closeButton = getByTestId('Fermer la modale')
+    fireEvent.click(closeButton)
+    expect(navigateToHome).toBeCalled()
   })
 })
