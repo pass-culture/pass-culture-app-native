@@ -56,6 +56,7 @@ import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
@@ -172,6 +173,7 @@ export const TertiaryAndSmallerIcons = {
   Invalidate,
   Key,
   LocationPointer,
+  LocationPointerWithBorder,
   Lock,
   PhoneFilled,
   PlainArrowPrevious,
