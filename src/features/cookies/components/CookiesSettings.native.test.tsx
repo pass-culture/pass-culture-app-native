@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
-import { render } from 'tests/utils'
+import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
+import { analytics } from 'libs/firebase/analytics'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 describe('<CookiesSettings/>', () => {
   it('should render correctly', () => {
@@ -18,6 +21,18 @@ describe('<CookiesSettings/>', () => {
       disabled: true,
       checked: true,
     })
+  })
+
+  it('should log accordion toggle', async () => {
+    const { getByText } = renderCookiesSettings()
+
+    const cookieCategory = CookieCategoriesEnum.customization
+    const customizationAccordion = getByText(cookiesInfo[cookieCategory].title)
+    fireEvent.press(customizationAccordion)
+
+    await waitFor(() =>
+      expect(analytics.logHasOpenedCookiesAccordion).toBeCalledWith(cookieCategory)
+    )
   })
 })
 

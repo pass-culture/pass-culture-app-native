@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { logGoogleAnalytics } from 'features/cookies/logGoogleAnalytics'
+import * as Analytics from 'features/cookies/logGoogleAnalytics'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
@@ -28,8 +28,7 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
-jest.mock('features/cookies/logGoogleAnalytics')
-const mockLogGoogleAnalytics = logGoogleAnalytics as jest.Mock
+const mockLogGoogleAnalytics = jest.spyOn(Analytics, 'logGoogleAnalytics')
 
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
@@ -71,6 +70,16 @@ describe('<CookiesConsent/>', () => {
       await flushAllPromisesWithAct()
 
       expect(analytics.enableCollection).toHaveBeenCalled()
+    })
+
+    it('should log analytics', async () => {
+      const { getByText } = renderCookiesConsent()
+      const acceptAllButton = getByText('Tout accepter')
+
+      fireEvent.press(acceptAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalled()
     })
 
     it('should request tracking transparency', async () => {
@@ -188,6 +197,38 @@ describe('<CookiesConsent/>', () => {
       await flushAllPromisesWithAct()
 
       expect(mockLogGoogleAnalytics).toHaveBeenCalled()
+    })
+
+    it('should log analytics if performance cookies are accepted', async () => {
+      const { getByText, getByTestId } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const performanceSwitch = getByTestId('Interrupteur-performance')
+      fireEvent.press(performanceSwitch)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+
+      await flushAllPromisesWithAct()
+      expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
+        from: 'Modal',
+        type: { performance: true, customization: false, marketing: false },
+      })
+    })
+
+    it('should not log analytics if performance cookies are refused', async () => {
+      const { getByText } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+
+      await flushAllPromisesWithAct()
+      expect(analytics.disableCollection).toHaveBeenCalled()
     })
 
     it('should request tracking transparency', async () => {

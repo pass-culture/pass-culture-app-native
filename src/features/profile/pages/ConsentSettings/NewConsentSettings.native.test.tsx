@@ -3,8 +3,9 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { logGoogleAnalytics } from 'features/cookies/logGoogleAnalytics'
+import * as Analytics from 'features/cookies/logGoogleAnalytics'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
+import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -28,8 +29,7 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
-jest.mock('features/cookies/logGoogleAnalytics')
-const mockLogGoogleAnalytics = logGoogleAnalytics as jest.Mock
+const mockLogGoogleAnalytics = jest.spyOn(Analytics, 'logGoogleAnalytics')
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -88,6 +88,32 @@ describe('<NewConsentSettings/>', () => {
     await waitFor(() => {
       expect(mockLogGoogleAnalytics).toHaveBeenCalled()
     })
+  })
+
+  it('should log analytics if performance cookies are accepted', async () => {
+    const { getByText, getByTestId } = renderConsentSettings()
+
+    const performanceSwitch = getByTestId('Interrupteur-performance')
+    fireEvent.press(performanceSwitch)
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() =>
+      expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
+        from: 'ConsentSettings',
+        type: { performance: true, customization: false, marketing: false },
+      })
+    )
+  })
+
+  it('should not log analytics if performance cookies are refused', async () => {
+    const { getByText } = renderConsentSettings()
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() => expect(analytics.disableCollection).toHaveBeenCalled())
   })
 
   it('should show snackbar and navigate to home on save', async () => {

@@ -10,6 +10,7 @@ import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
 import { CookiesSettingsProps } from 'features/cookies/pages/CookiesDetails'
 import { useCookies } from 'features/cookies/useCookies'
 import { useCookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { analytics } from 'libs/firebase/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -75,6 +76,7 @@ export const CookiesSettings = ({
           <React.Fragment key={cookie}>
             <StyledAccordionItem
               title={<Typo.Body>{info.title}</Typo.Body>}
+              onOpenOnce={() => analytics.logHasOpenedCookiesAccordion(cookie)}
               switchProps={{
                 testID: cookie,
                 active: isEssential ? true : settingsCookiesChoice[cookie],

@@ -1,6 +1,7 @@
 import { Platform } from 'react-native'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
@@ -157,6 +158,12 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason }),
   logProfilSignUp: () => analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SIGN_UP),
   logLogout: () => analyticsProvider.logEvent(AnalyticsEvent.LOGOUT),
+  logHasAcceptedAllCookies: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_ACCEPTED_ALL_COOKIES),
+  logHasMadeAChoiceForCookies: (params: { from: string; type: CookiesChoiceByCategory }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES, params),
+  logHasOpenedCookiesAccordion: (type: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION, { type }),
   logHasRefusedCookie: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE),
   logClickSocialNetwork: (network: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
