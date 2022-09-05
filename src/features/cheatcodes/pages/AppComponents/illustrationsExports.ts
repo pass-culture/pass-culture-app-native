@@ -29,14 +29,14 @@ import { UserError } from 'ui/svg/icons/UserError'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 
 export const BicolorIllustrations = {
+  BicolorBrokenConnection,
   BicolorCircledCheck,
   BicolorEmailSent,
   BicolorError,
   BicolorIdCardWithMagnifyingGlass,
-  BicolorPhonePending,
-  BicolorBrokenConnection,
-  BicolorNoId,
   BicolorIdLost,
+  BicolorNoId,
+  BicolorPhonePending,
 }
 
 export const UniqueColorIllustrations = {
