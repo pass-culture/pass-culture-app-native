@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { LocationChoice } from 'features/search/components/LocationChoice'
@@ -29,6 +29,8 @@ export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const [areButtonsDisabled, setButtonsDisabled] = useState(false)
 
+  const { params } = useRoute<UseRouteType<'LocationFilter'>>()
+
   const { searchState, dispatch } = useSearch()
   const [selectedFilter, setSelectedFilter] = useState<LocationFilterType>(
     searchState.locationFilter
@@ -42,6 +44,23 @@ export const LocationFilter: React.FC = () => {
     showGeolocPermissionModal,
   } = useGeolocation()
 
+  useEffect(() => {
+    if (params?.selectedVenue) {
+      setSelectedFilter({ locationType: LocationType.VENUE, venue: params.selectedVenue })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params?.selectedVenue?.venueId])
+
+  useEffect(() => {
+    if (params?.selectedPlace) {
+      setSelectedFilter({
+        locationType: LocationType.PLACE,
+        place: params.selectedPlace,
+        aroundRadius: MAX_RADIUS,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params?.selectedPlace?.label])
 
   const onPressPickPlace = () => {
     setButtonsDisabled(true)

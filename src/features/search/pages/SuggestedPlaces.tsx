@@ -1,16 +1,13 @@
 import { plural, t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
 import React, { useRef, useState } from 'react'
 import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/firebase/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -70,21 +67,14 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
 }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
-  const { dispatch } = useStagedSearch()
-  const { goBack } = useGoBack(...getTabNavConfig('Search'))
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
     if (isVenue(hit) && hit.venueId) {
-      analytics.logChangeSearchLocation({ type: 'venue', venueId: hit.venueId })
-      dispatch({ type: 'SET_LOCATION_VENUE', payload: hit })
+      navigate('LocationFilter', { selectedVenue: hit })
     } else if (isPlace(hit) && hit.geolocation) {
-      analytics.logChangeSearchLocation({ type: 'place' })
-      dispatch({ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: hit } })
+      navigate('LocationFilter', { selectedPlace: hit })
     }
-    // we need to call goBack twice, first to LocationPicker
-    goBack()
-    // then previous page
-    goBack()
   }
 
   const filteredPlaces: SuggestedPlaceOrVenue[] = [

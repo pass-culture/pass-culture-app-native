@@ -3,6 +3,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { SuggestedPlace } from 'libs/place'
+import { SuggestedVenue } from 'libs/venue'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
@@ -119,7 +121,7 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
-  LocationFilter: undefined
+  LocationFilter?: { selectedVenue?: SuggestedVenue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   PersonalData: undefined
   SearchCategories: undefined

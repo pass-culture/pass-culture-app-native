@@ -38,7 +38,7 @@ import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phon
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
-import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
@@ -242,7 +242,11 @@ export const routes: Route[] = [
   {
     name: 'LocationFilter',
     component: LocationFilter,
-    path: 'recherche/localisation/filtres',
+    pathConfig: {
+      path: 'recherche/localisation/filtres',
+      parse: screenParamsParser['LocationFilter'],
+      stringify: screenParamsStringifier['LocationFilter'],
+    },
     options: { title: t`Recherche par localisation` },
   },
   {
