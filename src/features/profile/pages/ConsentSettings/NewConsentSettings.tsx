@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
+import { logGoogleAnalytics } from 'features/cookies/logGoogleAnalytics'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
@@ -12,6 +13,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -32,20 +34,22 @@ export const NewConsentSettings = () => {
   })
   const { mutate: logCookiesConsent } = useLogCookiesConsent()
 
-  const saveChoice = () => {
+  const saveChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
       accepted,
       refused,
     })
+    logGoogleAnalytics(accepted)
+    requestIDFATrackingConsent()
     logCookiesConsent()
     showSuccessSnackBar({
       message: t`Ton choix a bien été enregistré.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate(...getTabNavConfig('Profile'))
-  }
+  }, [logCookiesConsent, navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
     <PageProfileSection title={t`Paramètres de confidentialité`} scrollable>

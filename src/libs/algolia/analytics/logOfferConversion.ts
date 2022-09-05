@@ -1,39 +1,47 @@
 import { useMemo } from 'react'
 import AlgoliaSearchInsights from 'search-insights'
 
+import { useAppSettings } from 'features/auth/settings'
+import { CookieNameEnum } from 'features/cookies/CookiesPolicy'
+import { getAcceptedCookieConsent } from 'features/cookies/getAcceptedCookieConsent'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { getCookiesConsent } from 'libs/trackingConsent/consent'
 
-export const logOfferConversion = (queryID?: string) => async (objectID: string) => {
-  const hasAcceptedCookies = await getCookiesConsent()
-  if (!hasAcceptedCookies) {
-    return
-  }
+export const logOfferConversion =
+  (appEnableCookiesV2: boolean, queryID?: string) => async (objectID: string) => {
+    // TODO(PC-17175): use getAcceptedCookieConsent instead
+    const hasAcceptedAlogliaInsights = appEnableCookiesV2
+      ? await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
+      : await getCookiesConsent()
 
-  if (queryID === undefined) {
-    captureMonitoringError(
-      'Algolia Analytics: useLogOfferConversion called without any QueryID set'
-    )
-    return
-  }
+    if (!hasAcceptedAlogliaInsights) return
 
-  AlgoliaSearchInsights('convertedObjectIDsAfterSearch', {
-    eventName: 'Offer reserved',
-    index: env.ALGOLIA_OFFERS_INDEX_NAME,
-    queryID,
-    objectIDs: [objectID],
-  })
-}
+    if (queryID === undefined) {
+      captureMonitoringError(
+        'Algolia Analytics: useLogOfferConversion called without any QueryID set'
+      )
+      return
+    }
+
+    AlgoliaSearchInsights('convertedObjectIDsAfterSearch', {
+      eventName: 'Offer reserved',
+      index: env.ALGOLIA_OFFERS_INDEX_NAME,
+      queryID,
+      objectIDs: [objectID],
+    })
+  }
 
 export const useLogOfferConversion = () => {
   const { currentQueryID } = useSearchAnalyticsState()
+  const { data: settings } = useAppSettings()
+  const appEnableCookiesV2 = !!settings?.appEnableCookiesV2
 
   return useMemo(
     () => ({
-      logOfferConversion: logOfferConversion(currentQueryID),
+      logOfferConversion: logOfferConversion(appEnableCookiesV2, currentQueryID),
     }),
-    [currentQueryID]
+    [currentQueryID, appEnableCookiesV2]
   )
 }

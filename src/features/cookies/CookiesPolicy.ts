@@ -1,6 +1,6 @@
-enum CookieNameEnum {
+export enum CookieNameEnum {
   ACCESS_TOKEN = 'access_token',
-  ALGOLIA = 'algolia',
+  ALGOLIA_INSIGHTS = 'algolia_insights',
   AMPLITUDE = 'amplitude',
   APP_TRACKING_TRANSPARENCY = 'app_tracking_transparency',
   APPSFLYER = 'appsflyer',
@@ -55,7 +55,7 @@ export const COOKIES_BY_CATEGORY: Record<CookieCategoriesEnum, Cookies> = {
     CookieNameEnum.TRAFFIC_SOURCE,
   ],
   [CookieCategoriesEnum.performance]: [
-    CookieNameEnum.ALGOLIA,
+    CookieNameEnum.ALGOLIA_INSIGHTS,
     CookieNameEnum.AMPLITUDE,
     CookieNameEnum.GOOGLE_ANALYTICS,
   ],

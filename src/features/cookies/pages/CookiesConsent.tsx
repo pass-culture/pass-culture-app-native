@@ -7,9 +7,12 @@ import {
 } from 'features/cookies/components/useCookiesModalContent'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
+import { logGoogleAnalytics } from 'features/cookies/logGoogleAnalytics'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { analytics } from 'libs/firebase/analytics'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 interface Props {
   visible: boolean
@@ -32,6 +35,8 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted: ALL_OPTIONAL_COOKIES,
       refused: [],
     })
+    analytics.enableCollection()
+    requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()
   }, [hideModal, setCookiesConsent, logCookiesConsent])
@@ -42,6 +47,8 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted: [],
       refused: ALL_OPTIONAL_COOKIES,
     })
+    analytics.disableCollection()
+    requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()
   }, [hideModal, setCookiesConsent, logCookiesConsent])
@@ -53,6 +60,8 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted,
       refused,
     })
+    logGoogleAnalytics(accepted)
+    requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()
   }, [settingsCookiesChoice, hideModal, setCookiesConsent, logCookiesConsent])

@@ -4,8 +4,11 @@ import waitForExpect from 'wait-for-expect'
 
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { logGoogleAnalytics } from 'features/cookies/logGoogleAnalytics'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, flushAllPromisesWithAct, waitFor } from 'tests/utils'
 
@@ -22,6 +25,12 @@ jest.mock('@react-navigation/native', () => ({
   useFocusEffect: jest.fn(),
 }))
 
+jest.mock('libs/trackingConsent/useTrackingConsent')
+const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
+
+jest.mock('features/cookies/logGoogleAnalytics')
+const mockLogGoogleAnalytics = logGoogleAnalytics as jest.Mock
+
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 
@@ -31,7 +40,7 @@ describe('<CookiesConsent/>', () => {
   })
 
   describe('accept all cookies', () => {
-    it('should save cookies consent information in storage and log choice when accepted all cookies', async () => {
+    it('should save cookies consent information in storage and log choice', async () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
@@ -54,7 +63,27 @@ describe('<CookiesConsent/>', () => {
       )
     })
 
-    it('should hide modale when accepted all cookies', async () => {
+    it('should enable analytics', async () => {
+      const { getByText } = renderCookiesConsent()
+      const acceptAllButton = getByText('Tout accepter')
+
+      fireEvent.press(acceptAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(analytics.enableCollection).toHaveBeenCalled()
+    })
+
+    it('should request tracking transparency', async () => {
+      const { getByText } = renderCookiesConsent()
+      const acceptAllButton = getByText('Tout accepter')
+
+      fireEvent.press(acceptAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+    })
+
+    it('should hide modal', async () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
@@ -66,11 +95,11 @@ describe('<CookiesConsent/>', () => {
   })
 
   describe('refuse all cookies', () => {
-    it('should save cookies consent information in storage and log choice when user refused all cookies', async () => {
+    it('should save cookies consent information in storage and log choice', async () => {
       const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout refuser')
+      const declineAllButton = getByText('Tout refuser')
 
-      fireEvent.press(acceptAllButton)
+      fireEvent.press(declineAllButton)
 
       await flushAllPromisesWithAct()
 
@@ -89,11 +118,31 @@ describe('<CookiesConsent/>', () => {
       )
     })
 
-    it('should hide modale when user refused all cookies', async () => {
+    it('should disable analytics', async () => {
       const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout refuser')
+      const declineAllButton = getByText('Tout refuser')
 
-      fireEvent.press(acceptAllButton)
+      fireEvent.press(declineAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(analytics.disableCollection).toHaveBeenCalled()
+    })
+
+    it('should request tracking transparency', async () => {
+      const { getByText } = renderCookiesConsent()
+      const declineAllButton = getByText('Tout refuser')
+
+      fireEvent.press(declineAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+    })
+
+    it('should hide modal', async () => {
+      const { getByText } = renderCookiesConsent()
+      const declineAllButton = getByText('Tout refuser')
+
+      fireEvent.press(declineAllButton)
       await flushAllPromisesWithAct()
 
       expect(hideModal).toBeCalled()
@@ -126,6 +175,32 @@ describe('<CookiesConsent/>', () => {
         expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
         expect(api.postnativev1cookiesConsent).toBeCalledWith(storageContent)
       })
+    })
+
+    it('should call logGoogleAnalytics', async () => {
+      const { getByText } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await flushAllPromisesWithAct()
+
+      expect(mockLogGoogleAnalytics).toHaveBeenCalled()
+    })
+
+    it('should request tracking transparency', async () => {
+      const { getByText } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await flushAllPromisesWithAct()
+
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
     })
 
     it('should hide modale when user saves cookies choice', async () => {

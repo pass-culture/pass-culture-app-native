@@ -23,7 +23,7 @@ export interface IAuthContext {
 }
 
 const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
-  const { setUserId } = useCookies()
+  const { setUserId: setUserIdToCookiesChoice } = useCookies()
   return useCallback(
     (accessToken) => {
       if (!accessToken) return
@@ -33,10 +33,10 @@ const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => v
         BatchUser.editor().setIdentifier(userId.toString()).save()
         analytics.setUserId(userId)
         eventMonitoring.setUser({ id: userId.toString() })
-        setUserId(userId)
+        setUserIdToCookiesChoice(userId)
       }
     },
-    [setUserId]
+    [setUserIdToCookiesChoice]
   )
 }
 
