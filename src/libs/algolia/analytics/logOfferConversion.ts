@@ -12,11 +12,11 @@ import { getCookiesConsent } from 'libs/trackingConsent/consent'
 export const logOfferConversion =
   (appEnableCookiesV2: boolean, queryID?: string) => async (objectID: string) => {
     // TODO(PC-17175): use getAcceptedCookieConsent instead
-    const hasAcceptedCookies = appEnableCookiesV2
+    const hasAcceptedAlogliaInsights = appEnableCookiesV2
       ? await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
       : await getCookiesConsent()
 
-    if (!hasAcceptedCookies) return
+    if (!hasAcceptedAlogliaInsights) return
 
     if (queryID === undefined) {
       captureMonitoringError(

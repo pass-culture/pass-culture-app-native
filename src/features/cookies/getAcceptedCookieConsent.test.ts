@@ -24,7 +24,7 @@ describe('getAcceptedCookieConsent', () => {
       },
     })
 
-    const { result } = renderHook(() => getAcceptedCookieConsent(CookieNameEnum.ALGOLIA))
+    const { result } = renderHook(() => getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS))
     const hasAcceptedCookie = await result.current
 
     expect(hasAcceptedCookie).toEqual(false)
