@@ -10,9 +10,8 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'
-import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { AsyncError, captureMonitoringError } from 'libs/monitoring'
+import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -122,13 +121,8 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
 
       await amplitude().logEvent('user_accepted_terms_clicked_front')
     } catch (error) {
-      const errorMessage = `Request info : ${JSON.stringify({
-        ...signupData,
-        password: 'excludedFromSentryLog',
-        captchaSiteKey: env.SITE_KEY,
-      })}`
-      captureMonitoringError(errorMessage, 'SignUpError')
-      throw error
+      ;(error as Error).name = 'SignUpError'
+      eventMonitoring.captureException(error)
     }
   }
 
