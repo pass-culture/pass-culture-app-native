@@ -46,10 +46,12 @@ export const LocationFilter: React.FC = () => {
   }
 
   const onPressAroundMe = async () => {
+    const grantedButUnknownPosition =
+      position === null && permissionState === GeolocPermissionState.GRANTED
+    if (grantedButUnknownPosition) {
+      return
+    }
     if (position === null) {
-      if (permissionState === GeolocPermissionState.GRANTED) {
-        return
-      }
       if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
         showGeolocPermissionModal()
       } else {
