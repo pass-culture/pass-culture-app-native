@@ -1,20 +1,16 @@
 import React from 'react'
 
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
-import { analytics } from 'libs/firebase/analytics'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockStagedDispatch = jest.fn()
-const venueId = mockedSuggestedVenues[1].venueId
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({
@@ -24,7 +20,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 let mockPlaces: SuggestedPlace[] = []
-let mockVenues: SuggestedVenue[] = []
+const mockVenues: SuggestedVenue[] = []
 
 let mockIsLoading = false
 jest.mock('libs/place', () => ({
@@ -33,17 +29,13 @@ jest.mock('libs/place', () => ({
 }))
 
 describe('SuggestedPlaces component', () => {
-  it('should dispatch SET_LOCATION_PLACE on pick place', () => {
+  it('should navigate on location filter page when selecting a place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
     const { getByTestId } = render(<SuggestedPlaces query="paris" />)
 
     fireEvent.press(getByTestId(keyExtractor(mockPlaces[1])))
 
-    expect(mockStagedDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION_PLACE',
-      payload: { aroundRadius: MAX_RADIUS, place: mockPlaces[1] },
-    })
-    expect(mockGoBack).toBeCalledTimes(2)
+    expect(navigate).toHaveBeenCalledWith('LocationFilter', { selectedPlace: mockPlaces[1] })
   })
 
   it('should show empty component only when query is not empty and the results are not loading', () => {
@@ -65,22 +57,5 @@ describe('SuggestedPlaces component', () => {
     mockIsLoading = true
     const { queryByText } = render(<SuggestedPlaces query="paris" />)
     expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeNull()
-  })
-
-  it(`should log analytics event ChangeSearchLocation when clicking on pick place`, () => {
-    mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
-    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
-
-    fireEvent.press(getByTestId(keyExtractor(mockPlaces[1])))
-    expect(analytics.logChangeSearchLocation).toHaveBeenNthCalledWith(1, { type: 'place' })
-  })
-
-  it(`should log analytics event ChangeSearchLocation when clicking on pick venue`, () => {
-    mockVenues = mockedSuggestedVenues
-    mockIsLoading = false
-    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
-
-    fireEvent.press(getByTestId(keyExtractor(mockVenues[1])))
-    expect(analytics.logChangeSearchLocation).toHaveBeenNthCalledWith(1, { type: 'venue', venueId })
   })
 })

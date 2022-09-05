@@ -21,6 +21,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
   }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
   useCommit: () => ({
     commit: jest.fn(),
   }),

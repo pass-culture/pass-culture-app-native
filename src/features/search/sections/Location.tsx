@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -19,9 +19,9 @@ import { Typo, Spacer } from 'ui/theme'
 
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState: stagedSearchState } = useStagedSearch()
+  const { searchState } = useSearch()
 
-  const { locationType, section } = useLocationType(stagedSearchState)
+  const { locationType, section } = useLocationType(searchState)
   const { Icon, label } = useLocationChoice(section)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
 

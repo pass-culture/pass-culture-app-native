@@ -13,6 +13,7 @@ type ScreensRequiringParsing = Extract<
   | 'ResetPasswordExpiredLink'
   | 'Venue'
   | 'Search'
+  | 'LocationFilter'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -90,6 +91,10 @@ export const screenParamsParser: ParamsParsers = {
     minPrice: JSON.parse,
     maxPrice: JSON.parse,
   },
+  LocationFilter: {
+    selectedVenue: JSON.parse,
+    selectedPlace: JSON.parse,
+  },
 }
 
 // We allow to use `any` (instead of `string`) in order to support enum members
@@ -120,7 +125,7 @@ function parseDataWithISODates(data: any) {
   return JSON.parse(typeof data === 'string' ? data : JSON.stringify(data), reviver)
 }
 
-type ScreensRequiringStringifying = Extract<ScreenNames, 'Search'>
+type ScreensRequiringStringifying = Extract<ScreenNames, 'Search' | 'LocationFilter'>
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
     [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
@@ -151,5 +156,9 @@ export const screenParamsStringifier: ParamsStringifiers = {
     previousView: JSON.stringify,
     minPrice: JSON.stringify,
     maxPrice: JSON.stringify,
+  },
+  LocationFilter: {
+    selectedVenue: JSON.stringify,
+    selectedPlace: JSON.stringify,
   },
 }

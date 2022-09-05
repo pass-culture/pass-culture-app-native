@@ -1,39 +1,39 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { LocationType } from 'features/search/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
+import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
   testID: string
   onPress?: () => void
   arrowNext?: boolean
   accessibilityDescribedBy?: string
   // used by DeeplinksGeneratorForm
-  isSelected?: boolean
+  isSelected: boolean
   disabled?: boolean
+  label: string
+  Icon: React.FC<BicolorIconInterface>
 }
 
 export const LocationChoice: React.FC<Props> = ({
-  section,
   onPress,
   arrowNext = false,
   testID,
   accessibilityDescribedBy,
   isSelected,
   disabled = false,
+  label,
+  Icon,
 }) => {
-  const { Icon, label, isSelected: defaultIsSelected } = useLocationChoice(section)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color2: defaultIsSelected ? theme.colors.primary : theme.colors.secondary,
+    color2: isSelected ? theme.colors.primary : theme.colors.secondary,
     size: theme.icons.sizes.small,
   }))``
 
@@ -43,8 +43,6 @@ export const LocationChoice: React.FC<Props> = ({
   const [isFocus, setIsFocus] = useState(false)
   useSpaceBarAction(isFocus ? onPress : undefined)
 
-  const selected = isSelected ?? defaultIsSelected
-
   return (
     <Container
       onPress={onPress}
@@ -52,7 +50,7 @@ export const LocationChoice: React.FC<Props> = ({
       onBlur={() => setIsFocus(false)}
       disabled={disabled}
       accessibilityRole={AccessibilityRole.RADIO}
-      accessibilityState={{ checked: selected }}
+      accessibilityState={{ checked: isSelected }}
       testID={`locationChoice-${testID}`}>
       <FirstPart ref={containerRef}>
         <Spacer.Row numberOfSpaces={3} />
@@ -61,16 +59,16 @@ export const LocationChoice: React.FC<Props> = ({
         <TextContainer>
           <ButtonText
             numberOfLines={3}
-            isSelected={selected}
+            isSelected={isSelected}
             aria-describedby={accessibilityDescribedBy}>
             {label}
           </ButtonText>
         </TextContainer>
-        {selected ? <Validate testID="validateIcon" /> : null}
+        {isSelected ? <Validate testID="validateIcon" /> : null}
       </FirstPart>
       <SecondPart>
         {arrowNext ? <ArrowNext /> : null}
-        {!selected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
+        {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
     </Container>
   )

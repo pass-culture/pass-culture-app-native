@@ -5,6 +5,8 @@ import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
+import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Spacer } from 'ui/theme'
 
 interface Props {
@@ -30,7 +32,8 @@ export const LocationFilterChoice = (props: Props) => {
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
           testID="aroundMe"
-          section={LocationType.AROUND_ME}
+          label={'Autour de moi'}
+          Icon={AroundMe}
           onPress={onPressAroundMe}
           isSelected={LocationType.AROUND_ME === selected}
         />
@@ -39,7 +42,8 @@ export const LocationFilterChoice = (props: Props) => {
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
           testID="everywhere"
-          section={LocationType.EVERYWHERE}
+          label={'Partout'}
+          Icon={Everywhere}
           onPress={onPressEverywhere}
           isSelected={LocationType.EVERYWHERE === selected}
         />
