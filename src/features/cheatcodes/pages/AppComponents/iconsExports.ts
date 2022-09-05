@@ -7,6 +7,7 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
+import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
@@ -113,6 +114,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorSignal,
   BicolorSmartphone,
   BicolorFrance,
+  BicolorEarth,
   ArrowNext,
   ArrowPrevious,
   Bell,
