@@ -6,18 +6,18 @@ import { renderHook } from 'tests/utils'
 let acceptedCookies: Cookies = []
 
 describe('logGoogleAnalytics', () => {
-  it('should disabled Google Analytics when user not refused all cookies', () => {
+  it('should disable Google Analytics when user not refused all cookies', () => {
     renderHook(() => logGoogleAnalytics(acceptedCookies))
     expect(analytics.disableCollection).toHaveBeenCalled()
   })
 
-  it('should disabled Google Analytics when user accepted cookies but not Google Analytics', () => {
+  it('should disable Google Analytics when user accepted cookies but not Google Analytics', () => {
     acceptedCookies = COOKIES_BY_CATEGORY.marketing // without Google Analytics
     renderHook(() => logGoogleAnalytics(acceptedCookies))
     expect(analytics.disableCollection).toHaveBeenCalled()
   })
 
-  it('should enabled Google Analytics when user accepted all cookies', () => {
+  it('should enable Google Analytics when user accepted all cookies', () => {
     acceptedCookies = ALL_OPTIONAL_COOKIES
     renderHook(() => logGoogleAnalytics(acceptedCookies))
     expect(analytics.enableCollection).toHaveBeenCalled()

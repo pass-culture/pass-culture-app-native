@@ -37,7 +37,7 @@ export const logClickOnOffer =
 export const useLogClickOnOffer = () => {
   const { currentQueryID } = useSearchAnalyticsState()
   const { data: settings } = useAppSettings()
-  const appEnableCookiesV2 = settings?.appEnableCookiesV2 ?? false
+  const appEnableCookiesV2 = !!settings?.appEnableCookiesV2
 
   return useMemo(
     () => ({

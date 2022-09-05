@@ -63,7 +63,7 @@ describe('<CookiesConsent/>', () => {
       )
     })
 
-    it('should enabled analytics', async () => {
+    it('should enable analytics', async () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
@@ -118,7 +118,7 @@ describe('<CookiesConsent/>', () => {
       )
     })
 
-    it('should disabled analytics', async () => {
+    it('should disable analytics', async () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
