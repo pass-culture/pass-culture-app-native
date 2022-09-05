@@ -1,13 +1,15 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useUserProfileInfo } from 'features/profile/api'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { SearchView } from 'features/search/types'
 import { fireEvent, render } from 'tests/utils'
 
-const mockSearchState = initialSearchState
+let mockSearchState = initialSearchState
 
 const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
@@ -16,6 +18,23 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     dispatch: mockDispatch,
   }),
 }))
+
+const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
+jest.mock('features/profile/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({
+    data: {
+      isBeneficiary: true,
+      domainsCredit: { all: { initial: 30000, remaining: 10000 } },
+    },
+  })),
+}))
+
+const mockedUseAuthContext = useAuthContext as jest.Mock
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
+jest.mock('react-query')
 
 describe('SearchPrice component', () => {
   it('should render correctly', () => {
@@ -103,5 +122,78 @@ describe('SearchPrice component', () => {
     await fireEvent.press(resetButton)
 
     expect(maxPriceInput.props.value).toStrictEqual('')
+  })
+
+  it('should update the maximum price when activate limit credit search toggle', async () => {
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
+    await fireEvent.press(toggleLimitCreditSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    expect(maxPriceInput.props.value).toStrictEqual('100')
+  })
+
+  it('should disable the maximum price input when activate limit credit search toggle', async () => {
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
+    await fireEvent.press(toggleLimitCreditSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    expect(maxPriceInput.props.disabled).toStrictEqual(true)
+  })
+
+  it('should reset the maximum price when desactivate limit credit search toggle and no max price entered in the current search', async () => {
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
+    await fireEvent.press(toggleLimitCreditSearch)
+    await fireEvent.press(toggleLimitCreditSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    expect(maxPriceInput.props.value).toStrictEqual('')
+  })
+
+  it('should update the maximum price by the max price entered in the current search when desactivate limit credit search toggle', async () => {
+    mockSearchState = { ...initialSearchState, maxPrice: '15' }
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
+    await fireEvent.press(toggleLimitCreditSearch)
+    await fireEvent.press(toggleLimitCreditSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    expect(maxPriceInput.props.value).toStrictEqual('15')
+  })
+
+  describe('when user is not logged in', () => {
+    beforeEach(() => {
+      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+    })
+
+    it('should not display limit credit search toggle', () => {
+      const { queryByTestId } = render(<SearchPrice />)
+
+      const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
+
+      expect(toggleLimitCreditSearch).toBeFalsy()
+    })
+  })
+
+  describe('when user is not a beneficiary', () => {
+    beforeEach(() => {
+      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
+        data: { isBeneficiary: false, domainsCredit: undefined },
+      }))
+    })
+
+    it('should not display limit credit search toggle', () => {
+      const { queryByTestId } = render(<SearchPrice />)
+
+      const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
+
+      expect(toggleLimitCreditSearch).toBeFalsy()
+    })
   })
 })
