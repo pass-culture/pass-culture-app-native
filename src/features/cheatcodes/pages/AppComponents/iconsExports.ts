@@ -15,6 +15,7 @@ import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
@@ -115,6 +116,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorSmartphone,
   BicolorFrance,
   BicolorEarth,
+  BicolorNoPhone,
   ArrowNext,
   ArrowPrevious,
   Bell,
