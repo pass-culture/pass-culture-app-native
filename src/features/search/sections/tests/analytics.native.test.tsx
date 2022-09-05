@@ -18,6 +18,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: mockStagedDispatch,
   }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockStagedDispatch,
+  }),
 }))
 
 jest.mock('features/search/components', () => ({

@@ -7,12 +7,16 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
+import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { Action } from 'features/search/pages/reducer'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { useSearch } from 'features/search/pages/SearchWrapper'
+import { LocationFilter as LocationFilterType } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
+import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -91,6 +95,47 @@ export const LocationFilter: React.FC = () => {
   const onPressEverywhere = () => {
     setSelectedFilter({ locationType: LocationType.EVERYWHERE })
   }
+
+  const onResetPress = () => {
+    setSelectedFilter({ locationType: LocationType.EVERYWHERE })
+  }
+
+  const onSearchPress = () => {
+    let toDispatch: Action
+    let toSendToAnalytics: ChangeSearchLocationParam
+    switch (selectedFilter.locationType) {
+      case LocationType.EVERYWHERE:
+        toDispatch = { type: 'SET_LOCATION_EVERYWHERE' }
+        toSendToAnalytics = { type: 'everywhere' }
+        break
+      case LocationType.AROUND_ME:
+        toDispatch = { type: 'SET_LOCATION_AROUND_ME' }
+        toSendToAnalytics = { type: 'aroundMe' }
+        break
+      case LocationType.PLACE:
+        toDispatch = {
+          type: 'SET_LOCATION_PLACE',
+          payload: { aroundRadius: selectedFilter.aroundRadius, place: selectedFilter.place },
+        }
+        toSendToAnalytics = { type: 'place' }
+        break
+      case LocationType.VENUE:
+        toDispatch = {
+          type: 'SET_LOCATION_VENUE',
+          payload: { ...selectedFilter.venue },
+        }
+        toSendToAnalytics = { type: 'venue', venueId: selectedFilter.venue.venueId }
+        break
+    }
+
+    dispatch(toDispatch)
+    analytics.logChangeSearchLocation(toSendToAnalytics)
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        locationFilter: selectedFilter,
+      })
+    )
   }
 
   const VenueOrPlaceLabel =
@@ -166,6 +211,7 @@ export const LocationFilter: React.FC = () => {
           </Li>
         </VerticalUl>
       </ScrollView>
+      <FilterPageButtons onResetPress={onResetPress} onSearchPress={onSearchPress} />
     </Container>
   )
 }

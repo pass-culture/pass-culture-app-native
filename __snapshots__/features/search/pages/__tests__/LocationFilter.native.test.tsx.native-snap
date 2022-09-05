@@ -734,5 +734,143 @@ exports[`LocationFilter component should render correctly 1`] = `
       </View>
     </View>
   </RCTScrollView>
+  <View
+    isModal={false}
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 24,
+          "paddingHorizontal": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Réinitialiser"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 16,
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "auto",
+        }
+      }
+      testID="Réinitialiser"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          height={16}
+          testID="button-icon"
+          width={16}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "marginLeft": 4,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Réinitialiser
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Rechercher"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "auto",
+        }
+      }
+      testID="Rechercher"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Rechercher
+      </Text>
+    </View>
+  </View>
 </View>
 `;

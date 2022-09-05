@@ -12,6 +12,9 @@ import { urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
 
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
+export type ChangeSearchLocationParam =
+  | { type: 'place' | 'everywhere' | 'aroundMe' }
+  | { type: 'venue'; venueId: number | null }
 
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
@@ -200,9 +203,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
-  logChangeSearchLocation: (
-    params: { type: 'place' | 'everywhere' | 'aroundMe' } | { type: 'venue'; venueId: number }
-  ) => analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, params),
+  logChangeSearchLocation: (params: ChangeSearchLocationParam) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, params),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
   logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
   logSendActivationMailAgain: (numberOfTimes: number) =>

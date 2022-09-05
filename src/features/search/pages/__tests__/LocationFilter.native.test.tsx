@@ -18,7 +18,7 @@ import { LocationFilter } from '../LocationFilter'
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useStagedSearch: () => ({
+  useSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
   }),
@@ -65,51 +65,61 @@ describe('LocationFilter component', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const { getByText, getByTestId } = renderLocationFilter()
+    const { getByTestId, queryByText } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
-    getByText(mockPositionError.message)
-    expect(mockDispatch).not.toBeCalled()
+
+    queryByText(mockPositionError.message)
   })
 
-  it('should dispatch actions on click (position=YES, type=AROUND_ME)', () => {
-    const { getByTestId, queryByText } = renderLocationFilter()
+  it('should change location filter on search button press (position=YES, type=AROUND_ME)', () => {
+    const { getByTestId, getByText, queryByText } = renderLocationFilter()
+
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
     expect(
       queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
     ).toBeFalsy()
+
+    fireEvent.press(getByText('Rechercher'))
+
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
   })
 
-  it('should log ChangeSearchLocation event when selecting Around Me', () => {
-    const { getByTestId } = renderLocationFilter()
+  it('should log ChangeSearchLocation event when selecting Around Me and pressing on the search button', () => {
+    const { getByTestId, getByText } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
+    fireEvent.press(getByText('Rechercher'))
 
     expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'aroundMe' })
   })
 
-  it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
+  it('should not change location filter on search button press (position=NO, type=AROUND_ME)', () => {
     mockPosition = null
     const { getByTestId } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
-  it('should dispatch actions on click (position=YES, type=EVERYWHERE)', () => {
-    const { getByTestId } = renderLocationFilter()
+  it('should change location filter on search button press (position=YES, type=EVERYWHERE)', () => {
+    const { getByTestId, getByText } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-everywhere'))
+    fireEvent.press(getByText('Rechercher'))
+
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
-  it('should log ChangeSearchLocation event when selecting Everywhere', () => {
-    const { getByTestId } = renderLocationFilter()
+  it('should log ChangeSearchLocation event when selecting Everywhere and pressing on the search button', () => {
+    const { getByTestId, getByText } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-everywhere'))
+    fireEvent.press(getByText('Rechercher'))
 
     expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'everywhere' })
   })
 
-  it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
-    const { getByTestId } = renderLocationFilter()
+  it('should change location filter on search button press (position=NO, type=EVERYWHERE)', () => {
+    const { getByTestId, getByText } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-everywhere'))
+    fireEvent.press(getByText('Rechercher'))
+
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
@@ -124,6 +134,31 @@ describe('LocationFilter component', () => {
     expect(queryByTestId('BicolorLocationPointer')).toBeNull()
   })
 
+  it('should change location filter on search button press (type=VENUE)', () => {
+    mockSearchState.locationFilter = {
+      locationType: LocationType.VENUE,
+      venue: { ...Kourou, venueId: 4 },
+    }
+    const { getByText } = renderLocationFilter()
+    fireEvent.press(getByText('Rechercher'))
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_LOCATION_VENUE',
+      payload: { ...Kourou, venueId: 4 },
+    })
+  })
+
+  it('should log ChangeSearchLocation event when selecting a Venue and pressing on the search button', () => {
+    mockSearchState.locationFilter = {
+      locationType: LocationType.VENUE,
+      venue: { ...Kourou, venueId: 4 },
+    }
+    const { getByText } = renderLocationFilter()
+    fireEvent.press(getByText('Rechercher'))
+
+    expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'venue', venueId: 4 })
+  })
+
   it('should show the pointer icon if a location is chosen', () => {
     mockSearchState.locationFilter = {
       locationType: LocationType.PLACE,
@@ -133,6 +168,33 @@ describe('LocationFilter component', () => {
     const { queryByTestId } = renderLocationFilter()
     expect(queryByTestId('BicolorLocationBuilding')).toBeNull()
     expect(queryByTestId('BicolorLocationPointer')).toBeTruthy()
+  })
+
+  it('should change location filter on search button press (type=PLACE)', () => {
+    mockSearchState.locationFilter = {
+      locationType: LocationType.PLACE,
+      aroundRadius: 10,
+      place: Kourou,
+    }
+    const { getByText } = renderLocationFilter()
+    fireEvent.press(getByText('Rechercher'))
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_LOCATION_PLACE',
+      payload: { aroundRadius: 10, place: Kourou },
+    })
+  })
+
+  it('should log ChangeSearchLocation event when selecting a Place and pressing on the search button', () => {
+    mockSearchState.locationFilter = {
+      locationType: LocationType.PLACE,
+      aroundRadius: 10,
+      place: Kourou,
+    }
+    const { getByText } = renderLocationFilter()
+    fireEvent.press(getByText('Rechercher'))
+
+    expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'place' })
   })
 })
 
