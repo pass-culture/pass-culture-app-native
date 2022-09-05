@@ -3,8 +3,10 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { logGoogleAnalytics } from 'features/cookies/logGoogleAnalytics'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
 import { storage } from 'libs/storage'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -22,6 +24,12 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
   useFocusEffect: jest.fn(),
 }))
+
+jest.mock('libs/trackingConsent/useTrackingConsent')
+const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
+
+jest.mock('features/cookies/logGoogleAnalytics')
+const mockLogGoogleAnalytics = logGoogleAnalytics as jest.Mock
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -57,6 +65,28 @@ describe('<NewConsentSettings/>', () => {
     await waitFor(async () => {
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
       expect(api.postnativev1cookiesConsent).toBeCalledWith(storageContent)
+    })
+  })
+
+  it('should request tracking transparency when user saves cookies choice', async () => {
+    const { getByText } = renderConsentSettings()
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() => {
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+    })
+  })
+
+  it('should call logGoogleAnalytics when user saves cookies choice', async () => {
+    const { getByText } = renderConsentSettings()
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() => {
+      expect(mockLogGoogleAnalytics).toHaveBeenCalled()
     })
   })
 
