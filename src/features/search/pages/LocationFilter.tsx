@@ -29,7 +29,11 @@ export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const [areButtonsDisabled, setButtonsDisabled] = useState(false)
 
-  const { goBack } = useGoBack(...getTabNavConfig('Search'))
+  const { searchState, dispatch } = useSearch()
+  const [selectedFilter, setSelectedFilter] = useState<LocationFilterType>(
+    searchState.locationFilter
+  )
+
   const {
     position,
     positionError,
@@ -37,7 +41,7 @@ export const LocationFilter: React.FC = () => {
     requestGeolocPermission,
     showGeolocPermissionModal,
   } = useGeolocation()
-  const { dispatch } = useStagedSearch()
+
 
   const onPressPickPlace = () => {
     setButtonsDisabled(true)
@@ -57,21 +61,17 @@ export const LocationFilter: React.FC = () => {
       } else {
         setButtonsDisabled(true)
         await requestGeolocPermission()
-        goBack()
+        setButtonsDisabled(false)
+        setSelectedFilter({ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS })
       }
     } else {
-      setButtonsDisabled(true)
-      dispatch({ type: 'SET_LOCATION_AROUND_ME' })
-      goBack()
-      analytics.logChangeSearchLocation({ type: 'aroundMe' })
+      setSelectedFilter({ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS })
     }
   }
 
   const onPressEverywhere = () => {
-    setButtonsDisabled(true)
-    dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
-    goBack()
-    analytics.logChangeSearchLocation({ type: 'everywhere' })
+    setSelectedFilter({ locationType: LocationType.EVERYWHERE })
+  }
   }
 
   const VenueOrPlaceLabel =
