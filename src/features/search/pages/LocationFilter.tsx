@@ -19,6 +19,10 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
+import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
+import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const LocationFilter: React.FC = () => {
@@ -68,6 +72,16 @@ export const LocationFilter: React.FC = () => {
     analytics.logChangeSearchLocation({ type: 'everywhere' })
   }
 
+  const VenueOrPlaceLabel =
+    selectedFilter.locationType === LocationType.VENUE
+      ? selectedFilter.venue.label
+      : selectedFilter.locationType === LocationType.PLACE
+      ? selectedFilter.place.label
+      : 'Choisir un lieu'
+
+  const VenueOrPlaceIcon =
+    selectedFilter.locationType === LocationType.VENUE ? LocationBuilding : LocationPointer
+
   const locationChoiceErrorId = uuidv4()
   const titleID = uuidv4()
 
@@ -89,20 +103,27 @@ export const LocationFilter: React.FC = () => {
           <Li>
             <LocationChoice
               testID="pickPlace"
-              section={LocationType.PLACE}
               arrowNext={true}
               onPress={onPressPickPlace}
               disabled={areButtonsDisabled}
+              isSelected={
+                selectedFilter.locationType === LocationType.PLACE ||
+                selectedFilter.locationType === LocationType.VENUE
+              }
+              label={VenueOrPlaceLabel}
+              Icon={VenueOrPlaceIcon}
             />
             <Spacer.Column numberOfSpaces={6} />
           </Li>
           <Li>
             <LocationChoice
               testID="aroundMe"
-              section={LocationType.AROUND_ME}
               onPress={onPressAroundMe}
               disabled={areButtonsDisabled}
               accessibilityDescribedBy={locationChoiceErrorId}
+              isSelected={selectedFilter.locationType === LocationType.AROUND_ME}
+              label={'Autour de moi'}
+              Icon={AroundMe}
             />
             <InputError
               visible={!!positionError}
@@ -115,9 +136,11 @@ export const LocationFilter: React.FC = () => {
           <Li>
             <LocationChoice
               testID="everywhere"
-              section={LocationType.EVERYWHERE}
               onPress={onPressEverywhere}
               disabled={areButtonsDisabled}
+              isSelected={selectedFilter.locationType === LocationType.EVERYWHERE}
+              label={'Partout'}
+              Icon={Everywhere}
             />
           </Li>
         </VerticalUl>
