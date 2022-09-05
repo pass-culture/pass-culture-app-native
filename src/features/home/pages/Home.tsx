@@ -29,6 +29,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchUser } from 'libs/react-native-batch'
+import { theme } from 'theme'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -133,7 +134,7 @@ export const OnlineHome: FunctionComponent = () => {
     BatchUser.trackEvent('has_seen_all_the_homepage')
   )
   const showSkeleton = useShowSkeleton()
-  const initialNumToRender = 5
+  const initialNumToRender = 10
   const maxToRenderPerBatch = 5
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
@@ -141,6 +142,12 @@ export const OnlineHome: FunctionComponent = () => {
 
   const onScroll = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isCloseToBottom({ ...nativeEvent, padding: theme.minScreenHeight * 2 })) {
+        if (Platform.OS !== 'web' && maxIndex < modules.length) {
+          setIsLoading(true)
+          setMaxIndex(maxIndex + maxToRenderPerBatch)
+        }
+      }
       if (isCloseToBottom(nativeEvent) && modulesToDisplay.length === modules.length) {
         trackEventHasSeenAllModules()
         logHasSeenAllModules()
@@ -149,14 +156,6 @@ export const OnlineHome: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length, modulesToDisplay.length]
   )
-
-  const onEndReached = useCallback(() => {
-    if (Platform.OS === 'web') return
-    if (maxIndex < modules.length) {
-      setIsLoading(true)
-      setMaxIndex(maxIndex + maxToRenderPerBatch)
-    }
-  }, [modules.length, maxIndex])
 
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
@@ -190,7 +189,7 @@ export const OnlineHome: FunctionComponent = () => {
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatList
           testID="homeBodyScrollView"
-          scrollEventThrottle={400}
+          scrollEventThrottle={1000}
           onScroll={onScroll}
           data={modulesToDisplay}
           renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
@@ -198,9 +197,7 @@ export const OnlineHome: FunctionComponent = () => {
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
           ListHeaderComponent={ListHeaderComponent}
           initialNumToRender={initialNumToRender}
-          onEndReachedThreshold={1}
           removeClippedSubviews={false}
-          onEndReached={onEndReached}
           onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
           bounces
         />
