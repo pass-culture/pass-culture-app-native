@@ -1,20 +1,29 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQueryClient } from 'react-query'
+import waitForExpect from 'wait-for-expect'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
+import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { LoggedInQueryKeys, useLoginRoutine, useLogoutRoutine } from 'features/auth/AuthContext'
 import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
+import { flushAllPromisesWithAct } from 'tests/utils'
 
 const mockSearchDispatch = jest.fn()
 const mockStagedSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
-jest.mock('react-query')
+jest.mock('api/api')
+jest.mock('react-query', () => ({
+  ...jest.requireActual('react-query'),
+  useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
+  useQuery: jest.fn(),
+}))
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
@@ -75,6 +84,15 @@ describe('AuthContext', () => {
       expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
     })
 
+    it('should log cookies consent choice', async () => {
+      await renderUseLoginRoutine()
+
+      const cookiesConsentStorage = await storage.readObject('cookies_consent')
+      await waitForExpect(() => {
+        expect(api.postnativev1cookiesConsent).toBeCalledWith(cookiesConsentStorage)
+      })
+    })
+
     it('should save access token to storage', async () => {
       await renderUseLoginRoutine()
 
@@ -132,7 +150,11 @@ const renderUseLogoutRoutine = async () => {
 }
 
 const renderUseLoginRoutine = async () => {
-  const { result } = renderHook(useLoginRoutine)
+  const { result } = renderHook(useLoginRoutine, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+  flushAllPromisesWithAct()
   const login = result.current
   await login(
     {
