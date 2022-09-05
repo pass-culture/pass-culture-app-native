@@ -9,6 +9,7 @@ import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -111,6 +112,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorSearch,
   BicolorSignal,
   BicolorSmartphone,
+  BicolorFrance,
   ArrowNext,
   ArrowPrevious,
   Bell,
