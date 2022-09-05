@@ -53,7 +53,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { searchState } = useSearch()
   const [query, setQuery] = useState<string>(params?.query || '')
   const accessibilityDescribedBy = uuidv4()
-  const { locationFilter, section } = useLocationType(stagedSearchState)
+  const { locationFilter, section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started

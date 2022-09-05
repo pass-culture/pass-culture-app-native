@@ -10,7 +10,7 @@ import { Location } from '../Location'
 const mockSearchState = initialSearchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useStagedSearch: () => ({
+  useSearch: () => ({
     searchState: mockSearchState,
   }),
 }))

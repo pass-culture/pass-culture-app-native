@@ -4,24 +4,18 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
-import { SuggestedVenue } from 'libs/venue'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render } from 'tests/utils'
 
 import { SearchBox } from '../SearchBox'
-
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 const mockSearchState = initialSearchState
 const mockStagedSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-  locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
 }
 
