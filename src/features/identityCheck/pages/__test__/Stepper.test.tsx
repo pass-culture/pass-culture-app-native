@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
@@ -9,6 +10,8 @@ import { render, superFlushWithAct } from 'tests/utils'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
+
+mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
 jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
@@ -54,22 +57,8 @@ jest.mock('react-query')
 
 describe('Stepper navigation', () => {
   beforeEach(jest.clearAllMocks)
-  it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
-    mockNextSubscriptionStep = {
-      ...mockStep,
-      nextSubscriptionStep: null,
-    }
-    mockUserProfileData = {
-      ...mockUserProfileData,
-      domainsCredit: { all: { initial: 30000, remaining: 30000 } },
-    }
-    render(<IdentityCheckStepper />)
-    await superFlushWithAct()
-    await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
-    })
-  })
-  it('should stay on stepper when next_step is null initialCredit is not between 0 and 300 euros', async () => {
+
+  it('should stay on stepper when next_step is null and initialCredit is not between 0 and 300 euros', async () => {
     mockNextSubscriptionStep = {
       ...mockStep,
       nextSubscriptionStep: null,
@@ -83,6 +72,23 @@ describe('Stepper navigation', () => {
     await superFlushWithAct()
     await waitForExpect(() => {
       expect(navigate).not.toHaveBeenCalled()
+    })
+  })
+
+  it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
+    mockNextSubscriptionStep = {
+      ...mockStep,
+      nextSubscriptionStep: null,
+    }
+    mockUserProfileData = {
+      ...mockUserProfileData,
+      depositExpirationDate: '2021-11-01T00:00:00.000Z',
+      domainsCredit: { all: { initial: 30000, remaining: 30000 } },
+    }
+    render(<IdentityCheckStepper />)
+    await superFlushWithAct()
+    await waitForExpect(() => {
+      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
 })
