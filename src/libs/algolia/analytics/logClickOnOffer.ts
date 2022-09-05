@@ -10,11 +10,11 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { getCookiesConsent } from 'libs/trackingConsent/consent'
 
 export const logClickOnOffer =
-  (currentQueryID?: string, appEnableCookiesV2?: boolean) =>
+  (appEnableCookiesV2: boolean, currentQueryID?: string) =>
   async ({ objectID, position }: { objectID: string; position: number }) => {
     // TODO(PC-17175): use getAcceptedCookieConsent instead
     const hasAcceptedCookies = appEnableCookiesV2
-      ? await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA)
+      ? await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
       : await getCookiesConsent()
 
     if (!hasAcceptedCookies) return
@@ -37,11 +37,11 @@ export const logClickOnOffer =
 export const useLogClickOnOffer = () => {
   const { currentQueryID } = useSearchAnalyticsState()
   const { data: settings } = useAppSettings()
-  const appEnableCookiesV2 = settings?.appEnableCookiesV2
+  const appEnableCookiesV2 = settings?.appEnableCookiesV2 ?? false
 
   return useMemo(
     () => ({
-      logClickOnOffer: logClickOnOffer(currentQueryID, appEnableCookiesV2),
+      logClickOnOffer: logClickOnOffer(appEnableCookiesV2, currentQueryID),
     }),
     [appEnableCookiesV2, currentQueryID]
   )
