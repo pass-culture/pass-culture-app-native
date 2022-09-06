@@ -532,7 +532,7 @@ jobs:
             equal: ['master', << pipeline.git.branch >>]
           steps:
             - notify-slack:
-                channel: shérif
+                channel: dev-mobile
       - sonarcloud-scanner
 
   test-web:
