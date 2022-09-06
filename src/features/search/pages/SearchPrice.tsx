@@ -28,7 +28,8 @@ import { getSpacing, Spacer } from 'ui/theme'
 const priceRegex = /^\d{1,3}(?:[,.]\d{0,2})?$/
 
 export const SearchPrice: FunctionComponent = () => {
-  const logUseFilter = useLogFilterOnce(SectionTitle.Price)
+  const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price)
+  const logUseFreeOffersFilter = useLogFilterOnce(SectionTitle.Free)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
@@ -40,17 +41,26 @@ export const SearchPrice: FunctionComponent = () => {
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
     : '0'
 
-  const isLimitCreditMaxPrice = searchState?.maxPrice === formatAvailableCredit
-  const [isLimitCreditSearch, setIsLimitCreditSearch] = useSafeState<boolean>(isLimitCreditMaxPrice)
-  const limiteCreditSearchToggleIsVisible = isLoggedIn && user?.isBeneficiary
+  const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
+  const [isLimitCreditSearch, setIsLimitCreditSearch] = useSafeState<boolean>(
+    isLimitCreditSearchDefaultValue
+  )
+  const limitCreditSearchToggleIsVisible = isLoggedIn && user?.isBeneficiary
+
+  const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
+  const [isOnlyFreeOffersSearch, setIsOnlyFreeOffersSearch] = useSafeState<boolean>(
+    isOnlyFreeOffersSearchDefaultValue
+  )
 
   const onSearchPress = () => {
-    logUseFilter()
+    const offerIsFree =
+      isOnlyFreeOffersSearch || (selectedMaxPrice === '0' && selectedMinPrice === '')
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
       minPrice: undefined,
       maxPrice: undefined,
+      offerIsFree,
     }
 
     if (selectedMinPrice) {
@@ -60,6 +70,13 @@ export const SearchPrice: FunctionComponent = () => {
     if (selectedMaxPrice) {
       dispatch({ type: 'SET_MAX_PRICE', payload: selectedMaxPrice })
       additionalSearchState = { ...additionalSearchState, maxPrice: selectedMaxPrice }
+    }
+
+    if (offerIsFree) {
+      dispatch({ type: 'TOGGLE_OFFER_FREE' })
+      logUseFreeOffersFilter()
+    } else {
+      logUsePriceFilter()
     }
 
     navigate(
@@ -73,6 +90,8 @@ export const SearchPrice: FunctionComponent = () => {
   const onResetPress = () => {
     setSelectedMinPrice('')
     setSelectedMaxPrice('')
+    setIsLimitCreditSearch(false)
+    setIsOnlyFreeOffersSearch(false)
   }
 
   const onChangeMinPrice = (price: string) => {
@@ -102,6 +121,7 @@ export const SearchPrice: FunctionComponent = () => {
 
     if (toggleLimitCreditSearchValue) {
       setSelectedMaxPrice(formatAvailableCredit)
+      setIsOnlyFreeOffersSearch(false)
       return
     }
 
@@ -111,7 +131,31 @@ export const SearchPrice: FunctionComponent = () => {
     isLimitCreditSearch,
     searchState?.maxPrice,
     setIsLimitCreditSearch,
+    setIsOnlyFreeOffersSearch,
     setSelectedMaxPrice,
+  ])
+
+  const toggleOnlyFreeOffersSearch = useCallback(() => {
+    const toggleOnlyFreeOffersSearchValue = isOnlyFreeOffersSearch ? false : true
+    setIsOnlyFreeOffersSearch(toggleOnlyFreeOffersSearchValue)
+
+    if (toggleOnlyFreeOffersSearchValue) {
+      setSelectedMaxPrice('0')
+      setSelectedMinPrice('0')
+      setIsLimitCreditSearch(false)
+      return
+    }
+
+    setSelectedMaxPrice(searchState?.maxPrice || '')
+    setSelectedMinPrice(searchState?.minPrice || '')
+  }, [
+    isOnlyFreeOffersSearch,
+    searchState?.maxPrice,
+    searchState?.minPrice,
+    setIsLimitCreditSearch,
+    setIsOnlyFreeOffersSearch,
+    setSelectedMaxPrice,
+    setSelectedMinPrice,
   ])
 
   const titleID = uuidv4()
@@ -132,7 +176,16 @@ export const SearchPrice: FunctionComponent = () => {
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={getScrollViewContentContainerStyle()}>
         <Form.MaxWidth>
-          {!!limiteCreditSearchToggleIsVisible && (
+          <FilterSwitchWithLabel
+            isActive={isOnlyFreeOffersSearch}
+            toggle={toggleOnlyFreeOffersSearch}
+            label="Uniquement les offres gratuites"
+            testID="onlyFreeOffers"
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
+          {!!limitCreditSearchToggleIsVisible && (
             <React.Fragment>
               <FilterSwitchWithLabel
                 isActive={isLimitCreditSearch}
@@ -158,6 +211,7 @@ export const SearchPrice: FunctionComponent = () => {
             accessibilityDescribedBy={minPriceInputId}
             testID="Entrée pour le prix minimum"
             placeholder="0"
+            disabled={isOnlyFreeOffersSearch}
           />
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
@@ -173,7 +227,7 @@ export const SearchPrice: FunctionComponent = () => {
             testID="Entrée pour le prix maximum"
             rightLabel={`max : ${MAX_PRICE} €`}
             placeholder={`${MAX_PRICE}`}
-            disabled={isLimitCreditSearch}
+            disabled={isLimitCreditSearch || isOnlyFreeOffersSearch}
           />
         </Form.MaxWidth>
       </StyledScrollView>
