@@ -1,17 +1,16 @@
-import React, { FunctionComponent } from 'react'
-import { Text, View } from 'react-native'
+import React, { FunctionComponent, ReactElement } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type HeroButtonListProps = {
-  title?: string
+  DescriptionContent: ReactElement
   icon: FunctionComponent<IconInterface>
   onPress: () => void
-  selected: boolean
 }
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
@@ -21,17 +20,11 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
   }))``
 
   return (
-    <ChoiceContainer onPress={props.onPress} testID={`${props?.title}-HeroButtonList`}>
+    <ChoiceContainer onPress={props.onPress} testID={`HeroButtonList`}>
       <IconContainer>
         <Icon />
       </IconContainer>
-      <DescriptionContainer>
-        <Text>
-          <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
-          <Typo.ButtonText>étranger</Typo.ButtonText>
-          <Typo.Body> ou un titre séjour français</Typo.Body>
-        </Text>
-      </DescriptionContainer>
+      <DescriptionContainer>{props.DescriptionContent}</DescriptionContainer>
       <View>
         <StyledArrowNextIcon />
       </View>

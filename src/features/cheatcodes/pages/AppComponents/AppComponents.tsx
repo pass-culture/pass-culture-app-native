@@ -493,8 +493,13 @@ export const AppComponents: FunctionComponent = () => {
           <View>
             <Text> Hero Button List </Text>
             <HeroButtonList
-              selected={true}
-              title={"J'ai une carte d'identité ou un passeport français"}
+              DescriptionContent={
+                <Text>
+                  <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
+                  <Typo.ButtonText>étranger</Typo.ButtonText>
+                  <Typo.Body> ou un titre séjour français</Typo.Body>
+                </Text>
+              }
               onPress={() => null}
               icon={BicolorSmartphone}
             />
