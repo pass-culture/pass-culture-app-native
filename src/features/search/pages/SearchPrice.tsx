@@ -18,6 +18,7 @@ import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSafeState } from 'libs/hooks'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -45,7 +46,7 @@ export const SearchPrice: FunctionComponent = () => {
   const [isLimitCreditSearch, setIsLimitCreditSearch] = useSafeState<boolean>(
     isLimitCreditSearchDefaultValue
   )
-  const limitCreditSearchToggleIsVisible = isLoggedIn && user?.isBeneficiary
+  const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
   const [isOnlyFreeOffersSearch, setIsOnlyFreeOffersSearch] = useSafeState<boolean>(
@@ -161,6 +162,7 @@ export const SearchPrice: FunctionComponent = () => {
   const titleID = uuidv4()
   const minPriceInputId = uuidv4()
   const maxPriceInputId = uuidv4()
+  const bannerTitle = `Il te reste ${formatAvailableCredit}\u00a0€ sur ton pass Culture.`
   return (
     <Container>
       <PageHeader
@@ -176,6 +178,12 @@ export const SearchPrice: FunctionComponent = () => {
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={getScrollViewContentContainerStyle()}>
         <Form.MaxWidth>
+          {!!isLoggedInAndBeneficiary && (
+            <BannerContainer testID="creditBanner">
+              <Banner title={bannerTitle} />
+              <Spacer.Column numberOfSpaces={6} />
+            </BannerContainer>
+          )}
           <FilterSwitchWithLabel
             isActive={isOnlyFreeOffersSearch}
             toggle={toggleOnlyFreeOffersSearch}
@@ -185,7 +193,7 @@ export const SearchPrice: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          {!!limitCreditSearchToggleIsVisible && (
+          {!!isLoggedInAndBeneficiary && (
             <React.Fragment>
               <FilterSwitchWithLabel
                 isActive={isLimitCreditSearch}
@@ -251,3 +259,5 @@ const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
   paddingHorizontal: getSpacing(6),
 })
+
+const BannerContainer = styled.View({})
