@@ -3,7 +3,6 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^api(.*)$': '<rootDir>/src/api$1',
-    '^features(.*)$': '<rootDir>/src/features$1',
     '^fixtures(.*)$': '<rootDir>/src/fixtures$1',
     '^libs(.*)$': '<rootDir>/src/libs$1',
     '^theme(.*)$': '<rootDir>/src/theme$1',
