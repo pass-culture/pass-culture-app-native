@@ -227,6 +227,94 @@ exports[`SearchPrice component should render correctly 1`] = `
         <View
           style={
             Array [
+              Object {},
+            ]
+          }
+          testID="creditBanner"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 4,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "paddingLeft": 12,
+                  "paddingRight": 20,
+                  "paddingVertical": 16,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={3}
+              style={
+                Array [
+                  Object {
+                    "width": 12,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Il te reste 100 € sur ton pass Culture.
+              </Text>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Array [
               Object {
                 "alignItems": "center",
                 "flexDirection": "row",

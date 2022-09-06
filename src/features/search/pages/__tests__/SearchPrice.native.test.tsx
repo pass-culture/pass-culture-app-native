@@ -343,6 +343,14 @@ describe('SearchPrice component', () => {
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
   })
 
+  it('should display credit banner with remaining credit of the user', () => {
+    const { queryByText } = render(<SearchPrice />)
+
+    const creditBanner = queryByText('Il te reste 100 € sur ton pass Culture.')
+
+    expect(creditBanner).toBeTruthy()
+  })
+
   describe('when user is not logged in', () => {
     beforeEach(() => {
       mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
@@ -354,6 +362,14 @@ describe('SearchPrice component', () => {
       const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
 
       expect(toggleLimitCreditSearch).toBeFalsy()
+    })
+
+    it('should not display credit banner', () => {
+      const { queryByTestId } = render(<SearchPrice />)
+
+      const creditBanner = queryByTestId('creditBanner')
+
+      expect(creditBanner).toBeFalsy()
     })
   })
 
@@ -370,6 +386,14 @@ describe('SearchPrice component', () => {
       const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
 
       expect(toggleLimitCreditSearch).toBeFalsy()
+    })
+
+    it('should not display credit banner', () => {
+      const { queryByTestId } = render(<SearchPrice />)
+
+      const creditBanner = queryByTestId('creditBanner')
+
+      expect(creditBanner).toBeFalsy()
     })
   })
 })
