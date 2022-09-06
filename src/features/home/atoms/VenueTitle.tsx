@@ -2,8 +2,8 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { mapVenueTypeToIcon, parseTypeHomeLabel, VenueTypeCode } from 'libs/parsers'
-import { Typo, GUTTER_DP, Spacer } from 'ui/theme'
+import { parseTypeHomeLabel, VenueTypeCode } from 'libs/parsers'
+import { Typo, GUTTER_DP } from 'ui/theme'
 
 interface VenueCaptionProps {
   width: number
@@ -12,39 +12,33 @@ interface VenueCaptionProps {
   distance?: string
 }
 
-export const VenueCaption = (props: VenueCaptionProps) => {
+export const VenueTitle = (props: VenueCaptionProps) => {
   const { width, name, venueType, distance } = props
   const typeLabel = parseTypeHomeLabel(venueType)
-  const Icon = styled(mapVenueTypeToIcon(venueType)).attrs(({ theme }) => ({
-    color: theme.colors.greyDark,
-    size: theme.icons.sizes.extraSmall,
-  }))``
 
   return (
-    <CaptionContainer maxWidth={width}>
+    <Container maxWidth={width}>
       <VenueName>{name}</VenueName>
-      <IconWithCaption>
-        <Icon />
-        <Spacer.Row numberOfSpaces={1} />
+      <Row>
         <TypeLabel>{typeLabel}</TypeLabel>
-      </IconWithCaption>
-      <Distance>{distance}</Distance>
-    </CaptionContainer>
+        {/* eslint-disable-next-line react-native/no-raw-text */}
+        {!!distance && <Distance>{` | ${distance}`}</Distance>}
+      </Row>
+    </Container>
   )
 }
 
-const CaptionContainer = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
+const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
   maxWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
 }))
 
-const VenueName = styled(Typo.Caption).attrs({
+const VenueName = styled(Typo.ButtonText).attrs({
   numberOfLines: 2,
 })({})
 
-const IconWithCaption = styled.View({
+const Row = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
 })
 
 const TypeLabel = styled(Typo.Caption).attrs({

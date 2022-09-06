@@ -4,7 +4,7 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeCode } from 'libs/parsers'
 import { render } from 'tests/utils'
 
-import { VenueCaption } from '../VenueCaption'
+import { VenueTitle } from '../VenueTitle'
 
 const props = {
   name: 'Musée du Louvre',
@@ -12,11 +12,16 @@ const props = {
   venueType: VenueTypeCodeKey.MUSEUM as VenueTypeCode,
 }
 
-describe('VenueCaption component', () => {
+describe('VenueTitle component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON } = render(<VenueCaption {...props} />)
+    const { toJSON } = render(<VenueTitle {...props} />)
     expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should show distance prop when provided', () => {
+    const { getByText } = render(<VenueTitle {...props} distance={'100km'} />)
+    expect(getByText(' | 100km')).toBeTruthy()
   })
 })
