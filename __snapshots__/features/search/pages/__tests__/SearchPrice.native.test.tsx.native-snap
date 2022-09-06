@@ -260,6 +260,164 @@ exports[`SearchPrice component should render correctly 1`] = `
                 ]
               }
             >
+              Uniquement les offres gratuites
+            </Text>
+          </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Non
+            </Text>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Interrupteur-onlyFreeOffers"
+            >
+              <View
+                active={false}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#90949D",
+                      "borderRadius": 16,
+                      "height": 32,
+                      "justifyContent": "center",
+                      "width": 56,
+                    },
+                  ]
+                }
+              >
+                <View
+                  collapsable={false}
+                  disabled={false}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "marginLeft": 2,
+                      "shadowColor": "#161617",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 28,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "width": "100%",
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              },
+            ]
+          }
+        >
+          <Text
+            htmlFor="testUuidV4"
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
               Limiter la recherche à mon crédit
             </Text>
           </Text>
@@ -465,6 +623,7 @@ exports[`SearchPrice component should render correctly 1`] = `
               aria-required={false}
               autoCapitalize="none"
               autoComplete="off"
+              disabled={false}
               editable={true}
               isEmpty={true}
               keyboardType="numeric"
