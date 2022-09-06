@@ -28,28 +28,14 @@ Object {
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 Le Petit Rintintin 1
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row;"
+                style="flex-direction: row;"
               >
-                <div
-                  class="css-view-1dbjc4n"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 4px;"
-                />
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
                   dir="ltr"
@@ -58,11 +44,6 @@ Object {
                   Salle de projections
                 </div>
               </div>
-              <div
-                class="css-text-901oao"
-                dir="ltr"
-                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-              />
             </div>
           </div>
         </div>
@@ -93,28 +74,14 @@ Object {
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               Le Petit Rintintin 1
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row;"
+              style="flex-direction: row;"
             >
-              <div
-                class="css-view-1dbjc4n"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 4px;"
-              />
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="ltr"
@@ -123,11 +90,6 @@ Object {
                 Salle de projections
               </div>
             </div>
-            <div
-              class="css-text-901oao"
-              dir="ltr"
-              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-            />
           </div>
         </div>
       </div>

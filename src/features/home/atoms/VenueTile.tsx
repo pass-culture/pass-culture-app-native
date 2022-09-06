@@ -1,13 +1,15 @@
 import React, { memo, useState } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { VenueCaption } from 'features/home/atoms/VenueCaption'
+import { VenueTitle } from 'features/home/atoms/VenueTitle'
+import { VenueTypeLocationIcon } from 'features/home/components/VenueTypeLocationIcon'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
-import { formatDistance } from 'libs/parsers'
+import { formatDistance, mapVenueTypeToIcon } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -16,6 +18,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
 export interface VenueTileProps {
   venue: VenueHit
   moduleName: string
@@ -37,6 +40,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const { venue, width, height, userPosition } = props
   const queryClient = useQueryClient()
+  const { colors } = useTheme()
 
   const distance = formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
@@ -65,13 +69,23 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         accessibilityLabel={accessibilityLabel}
         testID="venueTile">
         <Container>
-          <VenueCaption
+          <VenueTitle
             width={width}
             name={venue.name}
             venueType={venue.venueTypeCode || null}
             distance={distance}
           />
-          <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+          {venue.bannerUrl ? (
+            <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+          ) : (
+            <VenueTypeTile width={width} height={height} testID="venue-type-tile">
+              <VenueTypeLocationIcon
+                VenueTypeIcon={mapVenueTypeToIcon(venue.venueTypeCode)}
+                iconColor={colors.greySemiDark}
+                backgroundColor={colors.greyLight}
+              />
+            </VenueTypeTile>
+          )}
         </Container>
       </StyledTouchableLink>
     </View>
@@ -97,3 +111,15 @@ const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline(theme, theme.colors.black, isFocus),
 }))
+
+const VenueTypeTile = styled.View<{ width: number; height: number }>(
+  ({ theme, width, height }) => ({
+    backgroundColor: theme.colors.greyLight,
+    width: width,
+    height: height,
+    borderRadius: theme.borderRadius.radius,
+    border: `1px solid ${theme.colors.greySemiDark}`,
+    alignItems: 'center',
+    justifyContent: 'center',
+  })
+)
