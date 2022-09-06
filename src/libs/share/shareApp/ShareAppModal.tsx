@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
-import { Platform, Modal } from 'react-native'
+import { Platform } from 'react-native'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -17,8 +17,7 @@ export const ShareAppModal = () => {
 
   useEffect(() => {
     if (Platform.OS !== 'web') {
-      goBack()
-      shareApp()
+      shareApp().then(goBack)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -38,11 +37,6 @@ export const ShareAppModal = () => {
         />
       </React.Fragment>
     )
-  }
-
-  if (Platform.OS === 'ios') {
-    // Hack to show the native share modal on the page the user is currently on
-    return <Modal visible={true} />
   }
 
   return <Background />
