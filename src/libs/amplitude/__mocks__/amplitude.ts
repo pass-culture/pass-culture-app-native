@@ -1,7 +1,5 @@
-import { AmplitudeClient } from '../types'
-
-export const amplitude = (): AmplitudeClient => {
-  return {
-    logEvent: jest.fn().mockResolvedValue(undefined),
-  }
-}
+export const amplitude = jest.fn(() => ({
+  logEvent: jest.fn().mockReturnValue(undefined),
+  disableCollection: jest.fn(),
+  enableCollection: jest.fn(),
+}))
