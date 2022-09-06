@@ -14,9 +14,13 @@ export const amplitude = (): AmplitudeClient => {
   }
   return {
     logEvent(eventType, eventProperties) {
-      return new Promise((resolve) =>
-        ampInstance.logEvent(eventType, eventProperties, () => resolve())
-      )
+      ampInstance.logEvent(eventType, eventProperties)
+    },
+    enableCollection() {
+      ampInstance.setOptOut(false)
+    },
+    disableCollection() {
+      ampInstance.setOptOut(true)
     },
   }
 }

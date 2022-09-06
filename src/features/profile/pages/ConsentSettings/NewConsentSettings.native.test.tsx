@@ -3,7 +3,7 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import * as Analytics from 'features/cookies/logGoogleAnalytics'
+import * as Tracking from 'features/cookies/startTracking'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
@@ -29,7 +29,7 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
-const mockLogGoogleAnalytics = jest.spyOn(Analytics, 'logGoogleAnalytics')
+const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -79,14 +79,28 @@ describe('<NewConsentSettings/>', () => {
     })
   })
 
-  it('should call logGoogleAnalytics when user saves cookies choice', async () => {
+  it('should call startTracking with false if user refuses performance cookies', async () => {
     const { getByText } = renderConsentSettings()
 
     const saveChoice = getByText('Enregistrer mes choix')
     fireEvent.press(saveChoice)
 
     await waitFor(() => {
-      expect(mockLogGoogleAnalytics).toHaveBeenCalled()
+      expect(mockStartTracking).toHaveBeenCalledWith(false)
+    })
+  })
+
+  it('should call startTracking with true if user accepts performance cookies', async () => {
+    const { getByTestId, getByText } = renderConsentSettings()
+
+    const performanceSwitch = getByTestId('Interrupteur-performance')
+    fireEvent.press(performanceSwitch)
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() => {
+      expect(mockStartTracking).toHaveBeenCalledWith(true)
     })
   })
 

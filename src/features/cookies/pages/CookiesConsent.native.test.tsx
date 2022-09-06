@@ -4,8 +4,8 @@ import waitForExpect from 'wait-for-expect'
 
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import * as Analytics from 'features/cookies/logGoogleAnalytics'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import * as Tracking from 'features/cookies/startTracking'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -28,7 +28,7 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
-const mockLogGoogleAnalytics = jest.spyOn(Analytics, 'logGoogleAnalytics')
+const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
 
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
@@ -62,14 +62,14 @@ describe('<CookiesConsent/>', () => {
       )
     })
 
-    it('should enable analytics', async () => {
+    it('should enable tracking', async () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
       fireEvent.press(acceptAllButton)
       await flushAllPromisesWithAct()
 
-      expect(analytics.enableCollection).toHaveBeenCalled()
+      expect(mockStartTracking).toHaveBeenCalledWith(true)
     })
 
     it('should log analytics', async () => {
@@ -127,14 +127,14 @@ describe('<CookiesConsent/>', () => {
       )
     })
 
-    it('should disable analytics', async () => {
+    it('should disable tracking', async () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
       fireEvent.press(declineAllButton)
       await flushAllPromisesWithAct()
 
-      expect(analytics.disableCollection).toHaveBeenCalled()
+      expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
     it('should request tracking transparency', async () => {
@@ -186,7 +186,7 @@ describe('<CookiesConsent/>', () => {
       })
     })
 
-    it('should call logGoogleAnalytics', async () => {
+    it('should call startTracking with false if performance cookies are refused', async () => {
       const { getByText } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
@@ -196,7 +196,23 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(saveChoice)
       await flushAllPromisesWithAct()
 
-      expect(mockLogGoogleAnalytics).toHaveBeenCalled()
+      expect(mockStartTracking).toHaveBeenCalledWith(false)
+    })
+
+    it('should call startTracking with true if performance cookies are accepted', async () => {
+      const { getByText, getByTestId } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const performanceSwitch = getByTestId('Interrupteur-performance')
+      fireEvent.press(performanceSwitch)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await flushAllPromisesWithAct()
+
+      expect(mockStartTracking).toHaveBeenCalledWith(true)
     })
 
     it('should log analytics if performance cookies are accepted', async () => {
