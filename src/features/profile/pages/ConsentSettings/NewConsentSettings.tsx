@@ -5,6 +5,7 @@ import React, { useCallback, useState } from 'react'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
+import { startBatch } from 'features/cookies/startBatch'
 import { startTracking } from 'features/cookies/startTracking'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
@@ -44,6 +45,7 @@ export const NewConsentSettings = () => {
       refused,
     })
     startTracking(settingsCookiesChoice.performance)
+    startBatch(settingsCookiesChoice.customization)
     campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
     analytics.logHasMadeAChoiceForCookies({
       from: 'ConsentSettings',

@@ -160,8 +160,11 @@ export const analytics = {
   logLogout: () => analyticsProvider.logEvent(AnalyticsEvent.LOGOUT),
   logHasAcceptedAllCookies: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_ACCEPTED_ALL_COOKIES),
-  logHasMadeAChoiceForCookies: (params: { from: string; type: CookiesChoiceByCategory }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES, params),
+  logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES, {
+      from,
+      type: JSON.stringify(type),
+    }),
   logHasOpenedCookiesAccordion: (type: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION, { type }),
   logHasRefusedCookie: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE),
