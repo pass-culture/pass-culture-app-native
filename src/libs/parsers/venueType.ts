@@ -70,10 +70,10 @@ export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): str
 export const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<IconInterface>
 } = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: venueTypesIcons.ArtisticCourse,
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: venueTypesIcons.Bag,
   [VenueTypeCodeKey.BOOKSTORE]: venueTypesIcons.Bookstore,
-  [VenueTypeCodeKey.CONCERT_HALL]: venueTypesIcons.ConcertHall,
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: venueTypesIcons.CreativeArtsStore,
+  [VenueTypeCodeKey.CONCERT_HALL]: venueTypesIcons.Opera,
+  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: venueTypesIcons.ArtMaterial,
   [VenueTypeCodeKey.CULTURAL_CENTRE]: venueTypesIcons.CulturalCentre,
   [VenueTypeCodeKey.DIGITAL]: venueTypesIcons.Digital,
   [VenueTypeCodeKey.FESTIVAL]: venueTypesIcons.Festival,
