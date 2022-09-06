@@ -13,6 +13,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -42,6 +43,10 @@ export const NewConsentSettings = () => {
       refused,
     })
     logGoogleAnalytics(accepted)
+    analytics.logHasMadeAChoiceForCookies({
+      from: 'ConsentSettings',
+      type: settingsCookiesChoice,
+    })
     requestIDFATrackingConsent()
     logCookiesConsent()
     showSuccessSnackBar({

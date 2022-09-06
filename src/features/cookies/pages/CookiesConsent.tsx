@@ -36,6 +36,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused: [],
     })
     analytics.enableCollection()
+    analytics.logHasAcceptedAllCookies()
     requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()
@@ -61,6 +62,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused,
     })
     logGoogleAnalytics(accepted)
+    analytics.logHasMadeAChoiceForCookies({ from: 'Modal', type: settingsCookiesChoice })
     requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()
