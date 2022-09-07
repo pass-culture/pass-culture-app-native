@@ -11,7 +11,7 @@ import { startTracking } from 'features/cookies/startTracking/startTracking'
 import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
-import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { usePostCookiesConsent } from 'features/cookies/usePostCookiesConsent'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -29,7 +29,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     marketing: false,
   })
   const { setCookiesConsent } = useCookies()
-  const { mutate: logCookiesConsent } = useLogCookiesConsent()
+  const { mutate: postCookiesConsent } = usePostCookiesConsent()
 
   const acceptAll = useCallback(() => {
     setCookiesConsent({
@@ -42,9 +42,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     campaignTracker.startAppsFlyer(true)
     analytics.logHasAcceptedAllCookies()
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     hideModal()
-  }, [hideModal, setCookiesConsent, logCookiesConsent])
+  }, [hideModal, setCookiesConsent, postCookiesConsent])
 
   const declineAll = useCallback(() => {
     setCookiesConsent({
@@ -56,9 +56,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     startBatch(false)
     campaignTracker.startAppsFlyer(false)
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     hideModal()
-  }, [hideModal, setCookiesConsent, logCookiesConsent])
+  }, [hideModal, setCookiesConsent, postCookiesConsent])
 
   const customChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -74,9 +74,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       type: settingsCookiesChoice,
     })
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     hideModal()
-  }, [settingsCookiesChoice, hideModal, setCookiesConsent, logCookiesConsent])
+  }, [settingsCookiesChoice, hideModal, setCookiesConsent, postCookiesConsent])
 
   const { childrenProps } = useCookiesModalContent({
     cookiesStep,

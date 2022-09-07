@@ -9,7 +9,7 @@ import { startBatch } from 'features/cookies/startBatch'
 import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
-import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { usePostCookiesConsent } from 'features/cookies/usePostCookiesConsent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
@@ -34,7 +34,7 @@ export const NewConsentSettings = () => {
     performance: false,
     marketing: false,
   })
-  const { mutate: logCookiesConsent } = useLogCookiesConsent()
+  const { mutate: postCookiesConsent } = usePostCookiesConsent()
 
   const saveChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -50,13 +50,13 @@ export const NewConsentSettings = () => {
       type: settingsCookiesChoice,
     })
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     showSuccessSnackBar({
       message: t`Ton choix a bien été enregistré.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate(...getTabNavConfig('Profile'))
-  }, [logCookiesConsent, navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
+  }, [postCookiesConsent, navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
     <PageProfileSection title={t`Paramètres de confidentialité`} scrollable>
