@@ -14,6 +14,6 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   const acceptedAmplitude = acceptedCookies.includes(CookieNameEnum.AMPLITUDE)
   acceptedAmplitude ? amplitude().enableCollection() : amplitude().disableCollection()
 
-  const acceptedBatch = acceptedCookies.includes(CookieNameEnum.AMPLITUDE)
+  const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
   acceptedBatch ? Batch.optIn() : Batch.optOut()
 }

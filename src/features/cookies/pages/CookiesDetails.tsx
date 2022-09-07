@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
-import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { CookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
 import { env } from 'libs/environment'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'

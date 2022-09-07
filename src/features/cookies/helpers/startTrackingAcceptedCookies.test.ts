@@ -1,5 +1,5 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
+import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
@@ -33,21 +33,27 @@ describe('startTrackingAcceptedCookies', () => {
     expect(Batch.optIn).toHaveBeenCalled()
   })
 
-  it('should enabled Google Analytics if performance cookies are accepted', () => {
+  it('should enable Google Analytics if performance cookies are accepted', () => {
     startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.performance) // with Google Analytics
 
     expect(analytics.enableCollection).toHaveBeenCalled()
   })
 
-  it('should enabled Amplitude if performance cookies are accepted', () => {
+  it('should enable Amplitude if performance cookies are accepted', () => {
     startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.performance) // with Amplitude
 
     expect(mockEnableAmplitudeCollection).toHaveBeenCalled()
   })
 
-  it('should enabled AppsFlyers if marketing cookies are accepted', () => {
+  it('should enable AppsFlyers if marketing cookies are accepted', () => {
     startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing) // with AppsFlyers
 
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
+  })
+
+  it('should enable Batch if marketing cookies are accepted', () => {
+    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.customization) // with Batch
+
+    expect(Batch.optIn).toHaveBeenCalled()
   })
 })

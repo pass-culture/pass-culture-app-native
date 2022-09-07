@@ -1,6 +1,6 @@
 import AlgoliaSearchInsights from 'search-insights'
 
-import { getAcceptedCookieConsent } from 'features/cookies/getAcceptedCookieConsent'
+import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { logClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { captureMonitoringError } from 'libs/monitoring'
 import { getCookiesConsent } from 'libs/trackingConsent/consent'
@@ -15,7 +15,7 @@ jest.mock('libs/trackingConsent/consent')
 const mockGetConsentToCookies = getCookiesConsent as jest.Mock
 mockGetConsentToCookies.mockResolvedValue(true)
 
-jest.mock('features/cookies/getAcceptedCookieConsent')
+jest.mock('features/cookies/helpers/getAcceptedCookieConsent')
 const mockGetAcceptedCookieConsent = getAcceptedCookieConsent as jest.Mock
 mockGetAcceptedCookieConsent.mockResolvedValue(true)
 

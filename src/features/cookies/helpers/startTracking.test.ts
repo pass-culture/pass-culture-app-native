@@ -1,4 +1,4 @@
-import { startTracking } from 'features/cookies/startTracking/startTracking'
+import { startTracking } from 'features/cookies/helpers/startTracking'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
@@ -23,7 +23,7 @@ describe('startTracking', () => {
     expect(Batch.optOut).toHaveBeenCalled()
   })
 
-  it('should enabled tracking if enabled = true', () => {
+  it('should enable tracking if enabled = true', () => {
     startTracking(true)
 
     expect(mockEnableAmplitudeCollection).toHaveBeenCalled()

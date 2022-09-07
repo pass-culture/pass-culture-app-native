@@ -3,7 +3,7 @@ import AlgoliaSearchInsights from 'search-insights'
 
 import { useAppSettings } from 'features/auth/settings'
 import { CookieNameEnum } from 'features/cookies/CookiesPolicy'
-import { getAcceptedCookieConsent } from 'features/cookies/getAcceptedCookieConsent'
+import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'

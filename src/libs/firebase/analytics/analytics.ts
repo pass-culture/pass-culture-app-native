@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
-import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { CookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'

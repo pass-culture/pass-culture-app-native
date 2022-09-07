@@ -3,10 +3,8 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import * as Batch from 'features/cookies/startBatch'
-import * as Tracking from 'features/cookies/startTracking/startTrackingAcceptedCookies'
+import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
-import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -31,7 +29,6 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
-const mockStartBatch = jest.spyOn(Batch, 'startBatch')
 const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
 
 const mockShowSuccessSnackBar = jest.fn()
@@ -93,28 +90,6 @@ describe('<NewConsentSettings/>', () => {
     })
   })
 
-  it('should call startBatch with false if user refuses customization cookies', async () => {
-    const { getByText } = renderConsentSettings()
-
-    const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(mockStartBatch).toHaveBeenCalledWith(false)
-    })
-  })
-
-  it('should call startAppsFlyer with false if user refuses marketing cookies', async () => {
-    const { getByText } = renderConsentSettings()
-
-    const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
-    })
-  })
-
   it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
@@ -126,34 +101,6 @@ describe('<NewConsentSettings/>', () => {
 
     await waitFor(() => {
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
-    })
-  })
-
-  it('should call startBatch with true if user accepts customization cookies', async () => {
-    const { getByTestId, getByText } = renderConsentSettings()
-
-    const customizationSwitch = getByTestId('Interrupteur-customization')
-    fireEvent.press(customizationSwitch)
-
-    const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(mockStartBatch).toHaveBeenCalledWith(true)
-    })
-  })
-
-  it('should call startAppsFlyer with true if user accepts marketing cookies', async () => {
-    const { getByTestId, getByText } = renderConsentSettings()
-
-    const marketingSwitch = getByTestId('Interrupteur-marketing')
-    fireEvent.press(marketingSwitch)
-
-    const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     })
   })
 
@@ -172,15 +119,6 @@ describe('<NewConsentSettings/>', () => {
         type: { performance: true, customization: false, marketing: false },
       })
     )
-  })
-
-  it('should not log analytics if performance cookies are refused', async () => {
-    const { getByText } = renderConsentSettings()
-
-    const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => expect(analytics.disableCollection).toHaveBeenCalled())
   })
 
   it('should show snackbar and navigate to home on save', async () => {
