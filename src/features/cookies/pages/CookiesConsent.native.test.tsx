@@ -6,7 +6,8 @@ import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import * as Batch from 'features/cookies/startBatch'
-import * as Tracking from 'features/cookies/startTracking'
+import * as Tracking from 'features/cookies/startTracking/startTracking'
+import * as TrackingAcceptedCookies from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
@@ -32,6 +33,10 @@ const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
 const mockStartBatch = jest.spyOn(Batch, 'startBatch')
 const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
+const mockStartTrackingAcceptedCookies = jest.spyOn(
+  TrackingAcceptedCookies,
+  'startTrackingAcceptedCookies'
+)
 
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
@@ -229,7 +234,7 @@ describe('<CookiesConsent/>', () => {
       })
     })
 
-    it('should call startTracking with false if performance cookies are refused', async () => {
+    it('should call startTrackingAcceptedCookies with empty array if all cookies are refused', async () => {
       const { getByText } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
@@ -239,7 +244,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(saveChoice)
       await flushAllPromisesWithAct()
 
-      expect(mockStartTracking).toHaveBeenCalledWith(false)
+      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
     })
 
     it('should call startBatch with false if customization cookies are refused', async () => {
@@ -268,7 +273,7 @@ describe('<CookiesConsent/>', () => {
       expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
     })
 
-    it('should call startTracking with true if performance cookies are accepted', async () => {
+    it('should call startTrackingAcceptedCookies with performance if performance cookies are accepted', async () => {
       const { getByText, getByTestId } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
@@ -281,7 +286,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(saveChoice)
       await flushAllPromisesWithAct()
 
-      expect(mockStartTracking).toHaveBeenCalledWith(true)
+      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
     })
 
     it('should call startBatch with true if customization cookies are accepted', async () => {

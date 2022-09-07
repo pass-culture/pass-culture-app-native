@@ -4,7 +4,7 @@ import React from 'react'
 import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Batch from 'features/cookies/startBatch'
-import * as Tracking from 'features/cookies/startTracking'
+import * as Tracking from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
@@ -32,7 +32,7 @@ jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
 const mockStartBatch = jest.spyOn(Batch, 'startBatch')
-const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
+const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -82,14 +82,14 @@ describe('<NewConsentSettings/>', () => {
     })
   })
 
-  it('should call startTracking with false if user refuses performance cookies', async () => {
+  it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
     const { getByText } = renderConsentSettings()
 
     const saveChoice = getByText('Enregistrer mes choix')
     fireEvent.press(saveChoice)
 
     await waitFor(() => {
-      expect(mockStartTracking).toHaveBeenCalledWith(false)
+      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
     })
   })
 
@@ -115,7 +115,7 @@ describe('<NewConsentSettings/>', () => {
     })
   })
 
-  it('should call startTracking with true if user accepts performance cookies', async () => {
+  it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
     const performanceSwitch = getByTestId('Interrupteur-performance')
@@ -125,7 +125,7 @@ describe('<NewConsentSettings/>', () => {
     fireEvent.press(saveChoice)
 
     await waitFor(() => {
-      expect(mockStartTracking).toHaveBeenCalledWith(true)
+      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
     })
   })
 
