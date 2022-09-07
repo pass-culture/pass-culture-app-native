@@ -97,7 +97,11 @@ export const LocationFilter: React.FC = () => {
   }
 
   const onResetPress = () => {
-    setSelectedFilter({ locationType: LocationType.EVERYWHERE })
+    if (position !== null) {
+      setSelectedFilter({ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS })
+    } else {
+      setSelectedFilter({ locationType: LocationType.EVERYWHERE })
+    }
   }
 
   const onSearchPress = () => {
