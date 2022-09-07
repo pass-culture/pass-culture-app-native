@@ -11,6 +11,7 @@ export const mockDefaultSettings: SettingsResponse = {
   appEnableCategoryFilterPage: false,
   autoActivateDigitalBookings: true,
   enableFrontImageResizing: false,
+  enableNewIdentificationFlow: false,
   enableUserProfiling: false,
   proDisableEventsQrcode: false,
   enableNativeCulturalSurvey: false,

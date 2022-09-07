@@ -135,6 +135,7 @@ function requestSettingsSuccess(
     enablePhoneValidation: false,
     enableFrontImageResizing: false,
     proDisableEventsQrcode: false,
+    enableNewIdentificationFlow: false,
     enableUserProfiling: false,
     enableUnderageGeneralisation: false,
     objectStorageUrl: 'https://localhost',
