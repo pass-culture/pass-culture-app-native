@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 
+import { usePostCookiesConsent } from 'features/cookies/api/usePostCookiesConsent'
 import { CookiesConsentModal } from 'features/cookies/components/CookiesConsentModal'
 import {
   CookiesSteps,
@@ -11,7 +12,6 @@ import { startTracking } from 'features/cookies/startTracking/startTracking'
 import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
-import { usePostCookiesConsent } from 'features/cookies/usePostCookiesConsent'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
