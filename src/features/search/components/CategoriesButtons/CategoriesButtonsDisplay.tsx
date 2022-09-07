@@ -2,6 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -15,9 +17,11 @@ type Props = {
 }
 
 const CategoyButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
-  <CategoryButtonContainer>
-    <CategoryButton {...item} />
-  </CategoryButtonContainer>
+  <StyledLi>
+    <CategoryButtonContainer>
+      <CategoryButton {...item} />
+    </CategoryButtonContainer>
+  </StyledLi>
 )
 
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
@@ -25,16 +29,18 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   const numColumns = theme.isDesktopViewport ? 4 : 2
   const key = numColumns // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
   return (
-    <FlatList
-      data={sortedCategories}
-      renderItem={CategoyButtonItem}
-      keyExtractor={(item) => item.label}
-      numColumns={numColumns}
-      key={key}
-      ListHeaderComponent={CategoriesTitle}
-      contentContainerStyle={contentContainerStyle}
-      testID="categoriesButtons"
-    />
+    <Ul>
+      <FlatList
+        data={sortedCategories}
+        renderItem={CategoyButtonItem}
+        keyExtractor={(item) => item.label}
+        numColumns={numColumns}
+        key={key}
+        ListHeaderComponent={CategoriesTitle}
+        contentContainerStyle={contentContainerStyle}
+        testID="categoriesButtons"
+      />
+    </Ul>
   )
 }
 
@@ -53,6 +59,9 @@ const contentContainerStyle = {
 }
 
 const CategoryButtonContainer = styled.View(({ theme }) => ({
-  flexBasis: theme.isDesktopViewport ? '25%' : '50%',
   padding: getSpacing(theme.isDesktopViewport ? 2 : 1),
+}))
+
+const StyledLi = styled(Li)(({ theme }) => ({
+  flexBasis: theme.isDesktopViewport ? '25%' : '50%',
 }))
