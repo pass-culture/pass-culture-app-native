@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenueTitle component should render correctly 1`] = `
+exports[`VenueDetails component should render correctly 1`] = `
 <View
   maxWidth={100}
   style={

@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { VenueTitle } from 'features/home/atoms/VenueTitle'
+import { VenueDetails } from 'features/home/atoms/VenueDetails'
 import { VenueTypeLocationIcon } from 'features/home/components/VenueTypeLocationIcon'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -69,7 +69,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         accessibilityLabel={accessibilityLabel}
         testID="venueTile">
         <Container>
-          <VenueTitle
+          <VenueDetails
             width={width}
             name={venue.name}
             venueType={venue.venueTypeCode || null}

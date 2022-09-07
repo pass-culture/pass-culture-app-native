@@ -5,14 +5,14 @@ import styled from 'styled-components/native'
 import { parseTypeHomeLabel, VenueTypeCode } from 'libs/parsers'
 import { Typo, GUTTER_DP } from 'ui/theme'
 
-interface VenueCaptionProps {
+interface VenueDetailsProps {
   width: number
   name: string
   venueType: VenueTypeCode | null
   distance?: string
 }
 
-export const VenueTitle = (props: VenueCaptionProps) => {
+export const VenueDetails = (props: VenueDetailsProps) => {
   const { width, name, venueType, distance } = props
   const typeLabel = parseTypeHomeLabel(venueType)
 
