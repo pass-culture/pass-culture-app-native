@@ -1,7 +1,9 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
+import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { LENGTH_S } from 'ui/theme'
 
 import { VenueTile } from './VenueTile'
@@ -9,6 +11,15 @@ import { VenueTile } from './VenueTile'
 export default {
   title: 'Features/Home/VenueTile',
   component: VenueTile,
+  decorators: [
+    (Story) => (
+      <ReactQueryClientProvider>
+        <NavigationContainer>
+          <Story />
+        </NavigationContainer>
+      </ReactQueryClientProvider>
+    ),
+  ],
 } as ComponentMeta<typeof VenueTile>
 
 const Template: ComponentStory<typeof VenueTile> = (props) => <VenueTile {...props} />
