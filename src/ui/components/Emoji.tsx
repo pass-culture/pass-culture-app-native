@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import React from 'react'
-import { Text } from 'react-native'
+import { StyleProp, Text, TextStyle } from 'react-native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
@@ -9,6 +9,7 @@ export type Props = {
   withSpaceBefore?: boolean
   withSpaceAfter?: boolean
   children?: string
+  style?: StyleProp<TextStyle>
 }
 
 const nonBreakingSpace = '\u00a0'
@@ -18,9 +19,11 @@ const Container: React.FC<Props> = ({
   withSpaceBefore,
   withSpaceAfter,
   children,
+  style,
 }) => {
   return (
     <Text
+      style={style}
       accessibilityRole={AccessibilityRole.IMAGE}
       accessibilityLabel={accessibilityLabel}
       aria-hidden={!accessibilityLabel}>
