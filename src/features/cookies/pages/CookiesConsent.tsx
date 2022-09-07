@@ -2,16 +2,14 @@ import React, { useCallback, useState } from 'react'
 
 import { usePostCookiesConsent } from 'features/cookies/api/usePostCookiesConsent'
 import { CookiesConsentModal } from 'features/cookies/components/CookiesConsentModal'
-import {
-  CookiesSteps,
-  useCookiesModalContent,
-} from 'features/cookies/components/useCookiesModalContent'
+import { useCookiesModalContent } from 'features/cookies/components/useCookiesModalContent'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { CookiesSteps } from 'features/cookies/enums'
 import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
 import { startTracking } from 'features/cookies/helpers/startTracking'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
-import { CookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
+import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'

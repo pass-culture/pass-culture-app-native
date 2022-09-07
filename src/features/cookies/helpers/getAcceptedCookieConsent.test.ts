@@ -1,4 +1,5 @@
-import { CookieNameEnum, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { CookieNameEnum } from 'features/cookies/enums'
 import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { storage } from 'libs/storage'
 import { renderHook } from 'tests/utils'

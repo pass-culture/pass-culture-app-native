@@ -1,17 +1,7 @@
-import {
-  Consent,
-  CookieCategoriesEnum,
-  COOKIES_BY_CATEGORY,
-  Cookies,
-} from 'features/cookies/CookiesPolicy'
+import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { Consent, Cookies, CookiesChoiceByCategory } from 'features/cookies/types'
 
 type CookiesChoice = Omit<Consent, 'mandatory'>
-
-export type CookiesChoiceByCategory = {
-  [CookieCategoriesEnum.marketing]: boolean
-  [CookieCategoriesEnum.performance]: boolean
-  [CookieCategoriesEnum.customization]: boolean
-}
 
 export const useCookiesChoiceByCategory = (
   cookiesChoice?: CookiesChoice

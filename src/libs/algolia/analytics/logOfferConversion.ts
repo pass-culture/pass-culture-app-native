@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import AlgoliaSearchInsights from 'search-insights'
 
 import { useAppSettings } from 'features/auth/settings'
-import { CookieNameEnum } from 'features/cookies/CookiesPolicy'
+import { CookieNameEnum } from 'features/cookies/enums'
 import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { env } from 'libs/environment'

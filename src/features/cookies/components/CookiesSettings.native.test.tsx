@@ -2,7 +2,7 @@ import React from 'react'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
-import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
+import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 

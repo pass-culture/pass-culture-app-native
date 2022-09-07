@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
+import { CookieCategoriesEnum } from 'features/cookies/enums'
 
 export const cookiesInfo: {
   [key in CookieCategoriesEnum]: {

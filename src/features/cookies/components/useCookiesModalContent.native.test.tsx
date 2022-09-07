@@ -1,7 +1,5 @@
-import {
-  CookiesSteps,
-  useCookiesModalContent,
-} from 'features/cookies/components/useCookiesModalContent'
+import { useCookiesModalContent } from 'features/cookies/components/useCookiesModalContent'
+import { CookiesSteps } from 'features/cookies/enums'
 
 const settingsCookiesChoice = {
   customization: false,

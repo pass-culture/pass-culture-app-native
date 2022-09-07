@@ -1,4 +1,5 @@
-import { CookieNameEnum, Cookies } from 'features/cookies/CookiesPolicy'
+import { CookieNameEnum } from 'features/cookies/enums'
+import { Cookies } from 'features/cookies/types'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'

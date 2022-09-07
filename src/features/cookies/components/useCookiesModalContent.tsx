@@ -3,16 +3,12 @@ import React from 'react'
 
 import { CookiesConsentButtons } from 'features/cookies/components/CookiesConsentButtons'
 import { CookiesConsentExplanations } from 'features/cookies/components/CookiesConsentExplanations'
-import { CookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
+import { CookiesSteps } from 'features/cookies/enums'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
+import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-
-export enum CookiesSteps {
-  COOKIES_CONSENT = 0,
-  COOKIES_SETTINGS = 1,
-}
 
 interface Props {
   cookiesStep: number
