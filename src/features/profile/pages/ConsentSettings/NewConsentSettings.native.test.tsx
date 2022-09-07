@@ -5,6 +5,7 @@ import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/startTracking'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
+import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -90,6 +91,17 @@ describe('<NewConsentSettings/>', () => {
     })
   })
 
+  it('should call startAppsFlyer with false if user refuses marketing cookies', async () => {
+    const { getByText } = renderConsentSettings()
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() => {
+      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
+    })
+  })
+
   it('should call startTracking with true if user accepts performance cookies', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
@@ -101,6 +113,20 @@ describe('<NewConsentSettings/>', () => {
 
     await waitFor(() => {
       expect(mockStartTracking).toHaveBeenCalledWith(true)
+    })
+  })
+
+  it('should call startAppsFlyer with true if user accepts marketing cookies', async () => {
+    const { getByTestId, getByText } = renderConsentSettings()
+
+    const marketingSwitch = getByTestId('Interrupteur-marketing')
+    fireEvent.press(marketingSwitch)
+
+    const saveChoice = getByText('Enregistrer mes choix')
+    fireEvent.press(saveChoice)
+
+    await waitFor(() => {
+      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     })
   })
 

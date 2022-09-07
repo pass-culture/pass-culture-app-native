@@ -12,6 +12,7 @@ import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
+import { campaignTracker } from 'libs/campaign'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -43,6 +44,7 @@ export const NewConsentSettings = () => {
       refused,
     })
     startTracking(settingsCookiesChoice.performance)
+    campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
     analytics.logHasMadeAChoiceForCookies({
       from: 'ConsentSettings',
       type: settingsCookiesChoice,

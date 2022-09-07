@@ -11,6 +11,7 @@ import { startTracking } from 'features/cookies/startTracking'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
@@ -36,6 +37,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused: [],
     })
     startTracking(true)
+    campaignTracker.startAppsFlyer(true)
     analytics.logHasAcceptedAllCookies()
     requestIDFATrackingConsent()
     logCookiesConsent()
@@ -49,6 +51,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused: ALL_OPTIONAL_COOKIES,
     })
     startTracking(false)
+    campaignTracker.startAppsFlyer(false)
     requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()
@@ -62,6 +65,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused,
     })
     startTracking(settingsCookiesChoice.performance)
+    campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
     analytics.logHasMadeAChoiceForCookies({ from: 'Modal', type: settingsCookiesChoice })
     requestIDFATrackingConsent()
     logCookiesConsent()
