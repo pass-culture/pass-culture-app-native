@@ -6,6 +6,7 @@ import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import * as Tracking from 'features/cookies/startTracking'
+import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -70,6 +71,16 @@ describe('<CookiesConsent/>', () => {
       await flushAllPromisesWithAct()
 
       expect(mockStartTracking).toHaveBeenCalledWith(true)
+    })
+
+    it('should enable appsFlyer', async () => {
+      const { getByText } = renderCookiesConsent()
+      const acceptAllButton = getByText('Tout accepter')
+
+      fireEvent.press(acceptAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     })
 
     it('should log analytics', async () => {
@@ -137,6 +148,16 @@ describe('<CookiesConsent/>', () => {
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
+    it('should disable appsFlyer', async () => {
+      const { getByText } = renderCookiesConsent()
+      const declineAllButton = getByText('Tout refuser')
+
+      fireEvent.press(declineAllButton)
+      await flushAllPromisesWithAct()
+
+      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
+    })
+
     it('should request tracking transparency', async () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
@@ -199,6 +220,19 @@ describe('<CookiesConsent/>', () => {
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
+    it('should call startAppsFlyer with false if marketing cookies are refused', async () => {
+      const { getByText } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await flushAllPromisesWithAct()
+
+      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
+    })
+
     it('should call startTracking with true if performance cookies are accepted', async () => {
       const { getByText, getByTestId } = renderCookiesConsent()
 
@@ -213,6 +247,22 @@ describe('<CookiesConsent/>', () => {
       await flushAllPromisesWithAct()
 
       expect(mockStartTracking).toHaveBeenCalledWith(true)
+    })
+
+    it('should call startAppsFlyer with true if marketing cookies are accepted', async () => {
+      const { getByText, getByTestId } = renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const marketingSwitch = getByTestId('Interrupteur-marketing')
+      fireEvent.press(marketingSwitch)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await flushAllPromisesWithAct()
+
+      expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     })
 
     it('should log analytics if performance cookies are accepted', async () => {

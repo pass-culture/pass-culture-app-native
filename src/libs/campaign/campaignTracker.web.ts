@@ -14,8 +14,13 @@ async function getUserId(): Promise<string | undefined> {
   return undefined
 }
 
+function startAppsFlyer() {
+  return
+}
+
 export const campaignTracker: CampaignTracker = {
   logEvent,
   getUserId,
   useInit,
+  startAppsFlyer,
 }
