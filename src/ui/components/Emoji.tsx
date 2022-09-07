@@ -32,7 +32,9 @@ const Container: React.FC<Props> = ({
 }
 
 const CryingFace = (props: Props) => <Container {...props}>😢</Container>
+const Warning = (props: Props) => <Container {...props}>⚠️</Container>
 
 export const Emoji = {
   CryingFace,
+  Warning,
 }
