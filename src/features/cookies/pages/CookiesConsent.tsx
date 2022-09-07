@@ -7,8 +7,8 @@ import {
 } from 'features/cookies/components/useCookiesModalContent'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
-import { startBatch } from 'features/cookies/startBatch'
-import { startTracking } from 'features/cookies/startTracking'
+import { startTracking } from 'features/cookies/startTracking/startTracking'
+import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
@@ -67,10 +67,12 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted,
       refused,
     })
-    startTracking(settingsCookiesChoice.performance)
+    startTrackingAcceptedCookies(accepted)
     startBatch(settingsCookiesChoice.customization)
-    campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
-    analytics.logHasMadeAChoiceForCookies({ from: 'Modal', type: settingsCookiesChoice })
+    analytics.logHasMadeAChoiceForCookies({
+      from: 'Modal',
+      type: settingsCookiesChoice,
+    })
     requestIDFATrackingConsent()
     logCookiesConsent()
     hideModal()

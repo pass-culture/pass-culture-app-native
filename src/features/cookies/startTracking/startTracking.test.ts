@@ -1,4 +1,4 @@
-import { startTracking } from 'features/cookies/startTracking'
+import { startTracking } from 'features/cookies/startTracking/startTracking'
 import { analytics } from 'libs/firebase/analytics'
 
 const mockDisableCollection = jest.fn()

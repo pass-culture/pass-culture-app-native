@@ -6,14 +6,13 @@ import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
 import { startBatch } from 'features/cookies/startBatch'
-import { startTracking } from 'features/cookies/startTracking'
+import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
 import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
-import { campaignTracker } from 'libs/campaign'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -44,9 +43,8 @@ export const NewConsentSettings = () => {
       accepted,
       refused,
     })
-    startTracking(settingsCookiesChoice.performance)
+    startTrackingAcceptedCookies(accepted)
     startBatch(settingsCookiesChoice.customization)
-    campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
     analytics.logHasMadeAChoiceForCookies({
       from: 'ConsentSettings',
       type: settingsCookiesChoice,
