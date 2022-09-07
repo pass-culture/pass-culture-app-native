@@ -196,6 +196,31 @@ describe('LocationFilter component', () => {
 
     expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'place' })
   })
+
+  it('should select Around Me filter when pressing the reset button with geoloc activated', () => {
+    mockSearchState.locationFilter = {
+      locationType: LocationType.PLACE,
+      aroundRadius: 10,
+      place: Kourou,
+    }
+    const { getByText } = renderLocationFilter()
+    fireEvent.press(getByText('Réinitialiser'))
+
+    expect(getByText('Autour de moi')).toHaveStyle({ color: '#eb0055' })
+  })
+
+  it('should select Everywhere filter when pressing the reset button with geoloc deactivated', () => {
+    mockPosition = null
+    mockSearchState.locationFilter = {
+      locationType: LocationType.PLACE,
+      aroundRadius: 10,
+      place: Kourou,
+    }
+    const { getByText } = renderLocationFilter()
+    fireEvent.press(getByText('Réinitialiser'))
+
+    expect(getByText('Partout')).toHaveStyle({ color: '#eb0055' })
+  })
 })
 
 function renderLocationFilter() {
