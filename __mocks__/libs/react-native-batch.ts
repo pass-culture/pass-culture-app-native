@@ -1,5 +1,7 @@
 export const Batch = {
   start: jest.fn(),
+  optIn: jest.fn(),
+  optOut: jest.fn(),
 }
 
 export const BatchUser = {
