@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 export const Batch = {
   start() {},
+  optIn() {},
+  optOut() {},
 }
 
 export const BatchUser = {
