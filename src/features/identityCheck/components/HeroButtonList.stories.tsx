@@ -4,6 +4,7 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
+import { Emoji } from 'ui/components/Emoji'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Typo } from 'ui/theme'
 
@@ -21,9 +22,27 @@ const description = (
     <Typo.Body> ou un titre séjour français</Typo.Body>
   </Text>
 )
+const description2 = (
+  <Text>
+    <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
+    <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
+  </Text>
+)
 
+const caption = (
+  <Text>
+    <Emoji.Warning withSpaceAfter />
+    <Typo.Caption>Les copies ne sont pas acceptées </Typo.Caption>
+  </Text>
+)
 export const Default = Template.bind({})
 Default.args = {
-  DescriptionContent: description,
+  Title: description,
+  icon: BicolorSmartphone,
+}
+export const HeroButtonListWithCaption = Template.bind({})
+HeroButtonListWithCaption.args = {
+  Title: description2,
+  Subtitle: caption,
   icon: BicolorSmartphone,
 }

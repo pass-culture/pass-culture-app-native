@@ -8,7 +8,8 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type HeroButtonListProps = {
-  DescriptionContent: ReactElement
+  Title: ReactElement
+  Subtitle?: ReactElement
   icon: FunctionComponent<IconInterface>
   onPress: () => void
 }
@@ -24,7 +25,10 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
       <IconContainer>
         <Icon />
       </IconContainer>
-      <DescriptionContainer>{props.DescriptionContent}</DescriptionContainer>
+      <DescriptionContainer>
+        {props.Title}
+        {!!props.Subtitle && <SubtitleContainer>{props.Subtitle}</SubtitleContainer>}
+      </DescriptionContainer>
       <View>
         <StyledArrowNextIcon />
       </View>
@@ -45,14 +49,17 @@ const ChoiceContainer = styled(TouchableOpacity)(({ theme }) => ({
   borderColor: theme.colors.greySemiDark,
   minHeight: getSpacing(18),
   paddingHorizontal: getSpacing(4),
+  padding: getSpacing(4),
 }))
 
 const DescriptionContainer = styled.View({
   flex: 1,
   marginHorizontal: getSpacing(4),
 })
+const SubtitleContainer = styled.View({
+  marginTop: getSpacing(1),
+})
 
 const IconContainer = styled.View({
   alignContent: 'center',
-  marginVertical: getSpacing(7.5),
 })

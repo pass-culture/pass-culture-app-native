@@ -35,6 +35,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { ClippedTag } from 'ui/components/ClippedTag'
+import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Hero } from 'ui/components/hero/Hero'
@@ -492,8 +493,26 @@ export const AppComponents: FunctionComponent = () => {
         <AccordionItem title="Profile components">
           <View>
             <Text> Hero Button List </Text>
+            <Spacer.Column numberOfSpaces={3} />
             <HeroButtonList
-              DescriptionContent={
+              Title={
+                <Text>
+                  <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
+                  <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
+                </Text>
+              }
+              Subtitle={
+                <Typo.Caption>
+                  <Emoji.Warning withSpaceAfter />
+                  Les copies ne sont pas acceptées
+                </Typo.Caption>
+              }
+              onPress={() => null}
+              icon={BicolorSmartphone}
+            />
+            <Spacer.Column numberOfSpaces={1} />
+            <HeroButtonList
+              Title={
                 <Text>
                   <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
                   <Typo.ButtonText>étranger</Typo.ButtonText>
