@@ -2,6 +2,7 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { startTrackingAcceptedCookies } from 'features/cookies/startTracking/startTrackingAcceptedCookies'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
+import { Batch } from 'libs/react-native-batch'
 
 const mockDisableAmplitudeCollection = jest.fn()
 const mockEnableAmplitudeCollection = jest.fn()
@@ -20,6 +21,7 @@ describe('startTrackingAcceptedCookies', () => {
     expect(mockDisableAmplitudeCollection).toHaveBeenCalled()
     expect(analytics.disableCollection).toHaveBeenCalled()
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
+    expect(Batch.optOut).toHaveBeenCalled()
   })
 
   it('should enable tracking if accepted all cookies', () => {
@@ -28,6 +30,7 @@ describe('startTrackingAcceptedCookies', () => {
     expect(mockEnableAmplitudeCollection).toHaveBeenCalled()
     expect(analytics.enableCollection).toHaveBeenCalled()
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
+    expect(Batch.optIn).toHaveBeenCalled()
   })
 
   it('should enabled Google Analytics if performance cookies are accepted', () => {
