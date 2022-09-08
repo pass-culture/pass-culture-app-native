@@ -7,12 +7,15 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
+import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
@@ -102,12 +105,15 @@ export const SecondaryAndBiggerIcons = {
   BicolorAroundMe,
   BicolorBookings,
   BicolorConfidentiality,
+  BicolorEarth,
   BicolorEverywhere,
   BicolorFavorite,
+  BicolorFrance,
   BicolorLock,
   BicolorLocationPointer,
   BicolorLocationBuilding,
   BicolorLogo,
+  BicolorNoPhone,
   BicolorProfile,
   BicolorSearch,
   BicolorSignal,

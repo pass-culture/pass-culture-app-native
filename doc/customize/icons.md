@@ -24,6 +24,9 @@ Pictograms can be linear or filled.
 - Linear pictograms have to be used at size 20px or bigger for Accessibility reasons. Typical use cases include Primary and Secondary buttons.
 - Filled pictograms have to be used at size 20 px or smaller. Typical use cases include Tertiary and Quaternary buttons.
 
+If you don't download icons from the [Fondations file](https://www.figma.com/file/jswn3bl2Sy7hm4XDyOLWE9/Fondations), make sure to use the viewbox values from your import, rather than the default "48 48 0 0" used in Fondations. The Path and the ViewBox are related to maintain a consistent ratio.
+
+
 # Importing new icons
 
 All types of icons should be imported the same way to enforce consistency in use throughout the codebase. Follow the given templates (or existing icons) to import your icons correctly.
