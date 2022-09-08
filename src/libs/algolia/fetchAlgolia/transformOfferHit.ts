@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
-import { IncompleteSearchHit, IncompleteVenueHit, VenueHit } from 'libs/search'
+import { IncompleteSearchHit } from 'libs/search'
 
 import { AlgoliaHit } from '..'
 
@@ -40,10 +40,6 @@ const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
 // We don't want to display offers without image nor subcategoryId
 export const filterOfferHit = (hit: IncompleteSearchHit): boolean =>
   hit && hit.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
-
-// We don't want to display venues without image
-export const isVenueHitTypeguard = (hit: IncompleteVenueHit): hit is VenueHit =>
-  hit && typeof hit.bannerUrl === 'string'
 
 export const transformOfferHit =
   (urlPrefix?: string) =>

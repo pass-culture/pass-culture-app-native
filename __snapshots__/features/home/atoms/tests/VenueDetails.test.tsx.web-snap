@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenueCaption component should render correctly 1`] = `
+exports[`VenueDetails component should render correctly 1`] = `
 <div
   className="css-view-1dbjc4n"
   style={
@@ -17,9 +17,9 @@ exports[`VenueCaption component should render correctly 1`] = `
       Object {
         "WebkitLineClamp": 2,
         "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
+        "fontFamily": "Montserrat-Bold",
+        "fontSize": "15px",
+        "lineHeight": "20px",
       }
     }
   >
@@ -29,36 +29,14 @@ exports[`VenueCaption component should render correctly 1`] = `
     className="css-view-1dbjc4n"
     style={
       Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
         "WebkitBoxDirection": "normal",
         "WebkitBoxOrient": "horizontal",
         "WebkitFlexDirection": "row",
-        "alignItems": "center",
         "flexDirection": "row",
-        "msFlexAlign": "center",
         "msFlexDirection": "row",
       }
     }
   >
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-text-901oao"
-        dir="ltr"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "4px",
-        }
-      }
-    />
     <div
       className="css-text-901oao css-textMultiLine-cens5h"
       dir="ltr"
@@ -78,17 +56,5 @@ exports[`VenueCaption component should render correctly 1`] = `
       Musée
     </div>
   </div>
-  <div
-    className="css-text-901oao"
-    dir="ltr"
-    style={
-      Object {
-        "color": "rgba(105,106,111,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-      }
-    }
-  />
 </div>
 `;

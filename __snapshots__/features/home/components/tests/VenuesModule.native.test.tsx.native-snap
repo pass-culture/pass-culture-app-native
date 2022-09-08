@@ -810,9 +810,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Array [
                                 Object {
                                   "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
@@ -823,30 +823,11 @@ exports[`VenuesModule component should render correctly 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "center",
                                   "flexDirection": "row",
                                 },
                               ]
                             }
                           >
-                            <View
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "width": 4,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               numberOfLines={1}
                               style={
@@ -864,18 +845,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Salle de projections
                             </Text>
                           </View>
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#696A6F",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
                           style={
@@ -1060,9 +1029,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Array [
                                 Object {
                                   "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
@@ -1073,30 +1042,11 @@ exports[`VenuesModule component should render correctly 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "center",
                                   "flexDirection": "row",
                                 },
                               ]
                             }
                           >
-                            <View
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "width": 4,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               numberOfLines={1}
                               style={
@@ -1114,18 +1064,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Salle de projections
                             </Text>
                           </View>
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#696A6F",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
                           style={
@@ -1310,9 +1248,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Array [
                                 Object {
                                   "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
@@ -1323,30 +1261,11 @@ exports[`VenuesModule component should render correctly 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "center",
                                   "flexDirection": "row",
                                 },
                               ]
                             }
                           >
-                            <View
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "width": 4,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               numberOfLines={1}
                               style={
@@ -1364,18 +1283,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Salle de projections
                             </Text>
                           </View>
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#696A6F",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
                           style={
@@ -1560,9 +1467,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Array [
                                 Object {
                                   "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
@@ -1573,30 +1480,11 @@ exports[`VenuesModule component should render correctly 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "center",
                                   "flexDirection": "row",
                                 },
                               ]
                             }
                           >
-                            <View
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "width": 4,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               numberOfLines={1}
                               style={
@@ -1614,18 +1502,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                               Salle de projections
                             </Text>
                           </View>
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#696A6F",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
                           style={
@@ -1758,9 +1634,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                           Array [
                             Object {
                               "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
                             },
                           ]
                         }
@@ -1771,30 +1647,11 @@ exports[`VenuesModule component should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexDirection": "row",
                             },
                           ]
                         }
                       >
-                        <View
-                          height={16}
-                          width={16}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           numberOfLines={1}
                           style={
@@ -1812,18 +1669,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                           Salle de projections
                         </Text>
                       </View>
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#696A6F",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      />
                     </View>
                     <View
                       style={

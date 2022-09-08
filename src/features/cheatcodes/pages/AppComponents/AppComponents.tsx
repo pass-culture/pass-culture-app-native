@@ -11,11 +11,13 @@ import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
+import { VenueTile } from 'features/home/atoms/VenueTile'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
+import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
@@ -65,7 +67,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_S, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
   Alert.alert('you pressed it')
@@ -682,6 +684,26 @@ export const AppComponents: FunctionComponent = () => {
               <QRCode value="passculture" />
             </ThreeShapesTicket>
           </AlignedText>
+
+          <VenueTile
+            moduleId={'module-id'}
+            moduleName={'le nom du module'}
+            height={LENGTH_S}
+            width={LENGTH_S * (3 / 2)}
+            userPosition={null}
+            venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
+          />
+          <VenueTile
+            moduleId={'module-id'}
+            moduleName={'le nom du module géolocalisé'}
+            height={LENGTH_S}
+            width={LENGTH_S * (3 / 2)}
+            userPosition={{
+              latitude: 50,
+              longitude: 51,
+            }}
+            venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
+          />
         </AccordionItem>
         <Spacer.Column numberOfSpaces={5} />
         <Spacer.BottomScreen />

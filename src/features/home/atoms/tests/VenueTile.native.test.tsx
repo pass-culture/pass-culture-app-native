@@ -42,4 +42,11 @@ describe('VenueTile component', () => {
       moduleId: 'module-id',
     })
   })
+
+  it('should show venue placeholder when no venue does not have image', () => {
+    const { getByTestId } = render(
+      <VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />
+    )
+    expect(getByTestId('venue-type-tile')).toBeTruthy()
+  })
 })

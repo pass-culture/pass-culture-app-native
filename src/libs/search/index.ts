@@ -28,7 +28,7 @@ export interface SearchHit {
 
 export type Geoloc = AlgoliaGeoloc
 
-export type IncompleteVenueHit = Pick<
+export type VenueHit = Pick<
   VenueResponse,
   | 'accessibility'
   | 'bannerUrl'
@@ -41,7 +41,4 @@ export type IncompleteVenueHit = Pick<
   | 'publicName'
 > & {
   venueTypeCode: VenueTypeCode
-}
-export type VenueHit = Exclude<IncompleteVenueHit, 'bannerUrl'> & {
-  bannerUrl: string
 }
