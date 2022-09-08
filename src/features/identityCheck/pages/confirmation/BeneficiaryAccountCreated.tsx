@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import {
@@ -18,6 +18,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -38,6 +39,11 @@ export function BeneficiaryAccountCreated() {
   const text = isUnderageBeneficiary
     ? t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
     : t`Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
+
+  const trackValidatedSubscription = useCallback(
+    () => BatchUser.trackEvent(BatchEvent.hasValidatedSubscription),
+    []
+  )
 
   useEnterKeyAction(navigateToHome)
 
@@ -67,6 +73,7 @@ export function BeneficiaryAccountCreated() {
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
+          onPress={trackValidatedSubscription}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>

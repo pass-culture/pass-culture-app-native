@@ -28,7 +28,7 @@ import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { theme } from 'theme'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -131,7 +131,7 @@ export const OnlineHome: FunctionComponent = () => {
   const { modules, homeEntryId } = useHomepageModules(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
-    BatchUser.trackEvent('has_seen_all_the_homepage')
+    BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
   )
   const showSkeleton = useShowSkeleton()
   const initialNumToRender = 10

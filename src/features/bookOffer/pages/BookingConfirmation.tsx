@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -9,6 +9,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { analytics } from 'libs/firebase/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -22,8 +23,11 @@ export function BookingConfirmation() {
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
+  const trackBooking = useCallback(() => BatchUser.trackEvent(BatchEvent.hasBooked), [])
+
   const displayBookingDetails = () => {
     analytics.logSeeMyBooking(params.offerId)
+    trackBooking()
     reset({
       index: 1,
       routes: [
@@ -61,6 +65,7 @@ export function BookingConfirmation() {
           as={ButtonTertiaryWhite}
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
+          onPress={trackBooking}
         />,
       ]}>
       <StyledBody>

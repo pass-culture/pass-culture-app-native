@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import {
@@ -9,6 +9,7 @@ import {
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -20,6 +21,11 @@ export function AccountCreated() {
   const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
+
+  const trackValidatedAccount = useCallback(
+    () => BatchUser.trackEvent(BatchEvent.hasValidatedAccount),
+    []
+  )
 
   useEffect(() => {
     if (user?.id)
@@ -38,6 +44,7 @@ export function AccountCreated() {
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
+          onPress={trackValidatedAccount}
         />,
       ]}>
       {!!shouldNavigateToCulturalSurvey && (
