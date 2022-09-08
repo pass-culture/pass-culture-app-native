@@ -51,9 +51,19 @@ describe('startTrackingAcceptedCookies', () => {
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
   })
 
-  it('should enable Batch if marketing cookies are accepted', () => {
+  it('should enable Batch if customization cookies are accepted', () => {
     startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.customization) // with Batch
 
     expect(Batch.optIn).toHaveBeenCalled()
+  })
+
+  it('should disable Amplitude, Batch and Google Analytics if only marketing cookies are accepted', () => {
+    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing) // without Amplitude, Batch and Google Analytics
+
+    expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
+
+    expect(Batch.optOut).toHaveBeenCalled()
+    expect(mockDisableAmplitudeCollection).toHaveBeenCalled()
+    expect(analytics.disableCollection).toHaveBeenCalled()
   })
 })
