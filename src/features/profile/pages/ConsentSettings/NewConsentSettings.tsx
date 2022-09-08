@@ -2,18 +2,16 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
+import { usePostCookiesConsent } from 'features/cookies/api/usePostCookiesConsent'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
-import { startBatch } from 'features/cookies/startBatch'
-import { startTracking } from 'features/cookies/startTracking'
-import { useCookies } from 'features/cookies/useCookies'
-import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
-import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
+import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import { useCookies } from 'features/cookies/helpers/useCookies'
+import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
-import { campaignTracker } from 'libs/campaign'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -35,7 +33,7 @@ export const NewConsentSettings = () => {
     performance: false,
     marketing: false,
   })
-  const { mutate: logCookiesConsent } = useLogCookiesConsent()
+  const { mutate: postCookiesConsent } = usePostCookiesConsent()
 
   const saveChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -44,21 +42,19 @@ export const NewConsentSettings = () => {
       accepted,
       refused,
     })
-    startTracking(settingsCookiesChoice.performance)
-    startBatch(settingsCookiesChoice.customization)
-    campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
+    startTrackingAcceptedCookies(accepted)
     analytics.logHasMadeAChoiceForCookies({
       from: 'ConsentSettings',
       type: settingsCookiesChoice,
     })
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     showSuccessSnackBar({
       message: t`Ton choix a bien été enregistré.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate(...getTabNavConfig('Profile'))
-  }, [logCookiesConsent, navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
+  }, [postCookiesConsent, navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
     <PageProfileSection title={t`Paramètres de confidentialité`} scrollable>

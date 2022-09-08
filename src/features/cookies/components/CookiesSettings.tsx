@@ -6,10 +6,10 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
-import { CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
-import { CookiesSettingsProps } from 'features/cookies/pages/CookiesDetails'
-import { useCookies } from 'features/cookies/useCookies'
-import { useCookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { CookieCategoriesEnum } from 'features/cookies/enums'
+import { useCookies } from 'features/cookies/helpers/useCookies'
+import { useCookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
+import { CookiesChoiceSettings } from 'features/cookies/types'
 import { analytics } from 'libs/firebase/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
@@ -24,7 +24,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const CookiesSettings = ({
   settingsCookiesChoice,
   setSettingsCookiesChoice,
-}: CookiesSettingsProps) => {
+}: CookiesChoiceSettings) => {
   const checkboxID = uuidv4()
   const { cookiesConsent } = useCookies()
   const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)

@@ -1,5 +1,5 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
+import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
 
 describe('getCookiesChoiceFromCategories', () => {
   it('should refuse all cookies if all categories are disabled', () => {

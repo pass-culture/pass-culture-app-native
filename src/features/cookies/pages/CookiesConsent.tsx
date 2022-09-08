@@ -1,17 +1,15 @@
 import React, { useCallback, useState } from 'react'
 
+import { usePostCookiesConsent } from 'features/cookies/api/usePostCookiesConsent'
 import { CookiesConsentModal } from 'features/cookies/components/CookiesConsentModal'
-import {
-  CookiesSteps,
-  useCookiesModalContent,
-} from 'features/cookies/components/useCookiesModalContent'
+import { useCookiesModalContent } from 'features/cookies/components/useCookiesModalContent'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { getCookiesChoiceFromCategories } from 'features/cookies/getCookiesChoiceFromCategories'
-import { startBatch } from 'features/cookies/startBatch'
-import { startTracking } from 'features/cookies/startTracking'
-import { useCookies } from 'features/cookies/useCookies'
-import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
-import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { CookiesSteps } from 'features/cookies/enums'
+import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
+import { startTracking } from 'features/cookies/helpers/startTracking'
+import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import { useCookies } from 'features/cookies/helpers/useCookies'
+import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
@@ -29,7 +27,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     marketing: false,
   })
   const { setCookiesConsent } = useCookies()
-  const { mutate: logCookiesConsent } = useLogCookiesConsent()
+  const { mutate: postCookiesConsent } = usePostCookiesConsent()
 
   const acceptAll = useCallback(() => {
     setCookiesConsent({
@@ -38,13 +36,12 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused: [],
     })
     startTracking(true)
-    startBatch(true)
     campaignTracker.startAppsFlyer(true)
     analytics.logHasAcceptedAllCookies()
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     hideModal()
-  }, [hideModal, setCookiesConsent, logCookiesConsent])
+  }, [hideModal, setCookiesConsent, postCookiesConsent])
 
   const declineAll = useCallback(() => {
     setCookiesConsent({
@@ -53,12 +50,11 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused: ALL_OPTIONAL_COOKIES,
     })
     startTracking(false)
-    startBatch(false)
     campaignTracker.startAppsFlyer(false)
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     hideModal()
-  }, [hideModal, setCookiesConsent, logCookiesConsent])
+  }, [hideModal, setCookiesConsent, postCookiesConsent])
 
   const customChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -67,14 +63,15 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       accepted,
       refused,
     })
-    startTracking(settingsCookiesChoice.performance)
-    startBatch(settingsCookiesChoice.customization)
-    campaignTracker.startAppsFlyer(settingsCookiesChoice.marketing)
-    analytics.logHasMadeAChoiceForCookies({ from: 'Modal', type: settingsCookiesChoice })
+    startTrackingAcceptedCookies(accepted)
+    analytics.logHasMadeAChoiceForCookies({
+      from: 'Modal',
+      type: settingsCookiesChoice,
+    })
     requestIDFATrackingConsent()
-    logCookiesConsent()
+    postCookiesConsent()
     hideModal()
-  }, [settingsCookiesChoice, hideModal, setCookiesConsent, logCookiesConsent])
+  }, [settingsCookiesChoice, hideModal, setCookiesConsent, postCookiesConsent])
 
   const { childrenProps } = useCookiesModalContent({
     cookiesStep,

@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
-import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { CookiesChoiceSettings } from 'features/cookies/types'
 import { env } from 'libs/environment'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -12,12 +12,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export interface CookiesSettingsProps {
-  settingsCookiesChoice: CookiesChoiceByCategory
-  setSettingsCookiesChoice: React.Dispatch<React.SetStateAction<CookiesChoiceByCategory>>
-}
-
-export const CookiesDetails = (props: CookiesSettingsProps) => {
+export const CookiesDetails = (props: CookiesChoiceSettings) => {
   return (
     <React.Fragment>
       <AccordionContainer>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
+import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
-import { useCookies } from 'features/cookies/useCookies'
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { analytics } from 'libs/firebase/analytics'
 import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'

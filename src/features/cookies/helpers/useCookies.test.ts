@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { v4 } from '__mocks__/uuid'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { useCookies } from 'features/cookies/useCookies'
+import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
 import { act, flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
 

@@ -6,8 +6,8 @@ import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
 import { useResetContexts } from 'features/auth/useResetContexts'
-import { useCookies } from 'features/cookies/useCookies'
-import { useLogCookiesConsent } from 'features/cookies/useLogCookiesConsent'
+import { usePostCookiesConsent } from 'features/cookies/api/usePostCookiesConsent'
+import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useAppStateChange } from 'libs/appState'
 import { analytics, LoginRoutineMethod } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
@@ -108,7 +108,7 @@ export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()
   const resetContexts = useResetContexts()
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
-  const { mutate: logCookiesConsent } = useLogCookiesConsent()
+  const { mutate: postCookiesConsent } = usePostCookiesConsent()
 
   /**
    * Executes the minimal set of instructions required to proceed to the login
@@ -118,7 +118,7 @@ export function useLoginRoutine() {
 
   return async (response: SigninResponse, method: LoginRoutineMethod) => {
     connectServicesRequiringUserId(response.accessToken)
-    logCookiesConsent()
+    postCookiesConsent()
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     analytics.logLogin({ method })

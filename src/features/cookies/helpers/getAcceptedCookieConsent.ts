@@ -1,5 +1,5 @@
-import { CookieNameEnum } from 'features/cookies/CookiesPolicy'
-import { getCookiesChoice as getCookiesConsentV2 } from 'features/cookies/useCookies'
+import { CookieNameEnum } from 'features/cookies/enums'
+import { getCookiesChoice as getCookiesConsentV2 } from 'features/cookies/helpers/useCookies'
 
 export const getAcceptedCookieConsent = async (cookie: CookieNameEnum): Promise<boolean | null> => {
   const cookiesChoiceV2 = await getCookiesConsentV2()

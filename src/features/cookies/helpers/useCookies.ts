@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { Consent, CookiesConsent } from 'features/cookies/CookiesPolicy'
+import { Consent, CookiesConsent } from 'features/cookies/types'
 import { storage } from 'libs/storage'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'

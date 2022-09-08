@@ -1,5 +1,6 @@
-import { Cookies, COOKIES_BY_CATEGORY, CookieCategoriesEnum } from 'features/cookies/CookiesPolicy'
-import { CookiesChoiceByCategory } from 'features/cookies/useCookiesChoiceByCategory'
+import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { CookieCategoriesEnum } from 'features/cookies/enums'
+import { Cookies, CookiesChoiceByCategory } from 'features/cookies/types'
 
 export const getCookiesChoiceFromCategories = (
   cookiesChoice: CookiesChoiceByCategory
