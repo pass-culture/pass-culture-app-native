@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.205.100",
-  "build": 10205100,
+  "version": "1.205.103",
+  "build": 10205103,
   "private": true,
   "engines": {
     "node": ">=16.13"
@@ -238,6 +238,7 @@
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-native": "^3.8.1",
     "eslint-plugin-typescript-sort-keys": "^1.8.0",
+    "execa": "^6.1.0",
     "file-loader": "^6.2.0",
     "flipper-plugin-react-query-native-devtools": "^3.0.0",
     "flush-promises": "^1.0.2",
@@ -284,6 +285,7 @@
     "resolve": "^1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^11.0.1",
+    "serve": "^14.0.1",
     "snapshot-diff": "^0.8.1",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
