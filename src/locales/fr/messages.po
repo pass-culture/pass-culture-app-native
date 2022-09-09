@@ -2695,6 +2695,10 @@ msgstr "S'inscrire"
 msgid "Saisis le code reçu au"
 msgstr "Saisis le code reçu au"
 
+#: src/features/identityCheck/pages/phoneValidation/SetPhoneValidationCode.tsx
+msgid "Saisis le code reçu par SMS."
+msgstr "Saisis le code reçu par SMS."
+
 #: src/features/profile/pages/ChangeEmail/ChangeEmailDisclaimer.tsx
 msgid "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
 msgstr "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
@@ -3437,11 +3441,11 @@ msgstr "Validation de l'identification"
 msgid "Validation du numéro de téléphone"
 msgstr "Validation du numéro de téléphone"
 
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Validation téléphone - Trop d'essais"
 msgstr "Validation téléphone - Trop d'essais"
 
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Validation téléphone - Trop de SMS envoyés"
 msgstr "Validation téléphone - Trop de SMS envoyés"
 
