@@ -5,6 +5,7 @@ import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
 import { analytics } from 'libs/firebase/analytics'
+import { BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render } from 'tests/utils'
 
 import { BookingConfirmation } from '../BookingConfirmation'
@@ -99,4 +100,15 @@ describe('<BookingConfirmation />', () => {
     jest.advanceTimersByTime(3000)
     expect(requestInAppReview).toHaveBeenCalledTimes(0)
   })
+
+  it.each(['Voir ma réservation', "Retourner à l'accueil"])(
+    'should track Batch event when button is clicked',
+    async (buttonWording) => {
+      const { getByText } = render(<BookingConfirmation />)
+
+      fireEvent.press(getByText(buttonWording))
+
+      expect(BatchUser.trackEvent).toBeCalledWith('has_booked')
+    }
+  )
 })

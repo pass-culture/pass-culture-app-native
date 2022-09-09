@@ -1,12 +1,14 @@
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { useUserProfileInfo } from 'features/profile/api'
+import { BatchUser } from 'libs/react-native-batch'
 import { render, fireEvent } from 'tests/utils'
 
 import { AccountCreated } from '../AccountCreated'
@@ -43,9 +45,11 @@ describe('<AccountCreated />', () => {
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
-    expect(navigateFromRef).not.toBeCalledTimes(1)
-    expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
+    await waitForExpect(() => {
+      expect(navigateFromRef).not.toBeCalledTimes(1)
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
+    })
   })
 
   it('should redirect to native cultural survey page WHEN "On y va !" button is clicked when native feature flag is activated', async () => {
@@ -54,9 +58,11 @@ describe('<AccountCreated />', () => {
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
-    expect(navigateFromRef).not.toBeCalled()
-    expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('CulturalSurveyIntro', undefined)
+    await waitForExpect(() => {
+      expect(navigateFromRef).not.toBeCalled()
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('CulturalSurveyIntro', undefined)
+    })
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
@@ -68,7 +74,20 @@ describe('<AccountCreated />', () => {
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
-    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
-    expect(navigate).not.toBeCalledWith('CulturalSurvey', undefined)
+    await waitForExpect(() => {
+      expect(navigateFromRef).toBeCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
+      expect(navigate).not.toBeCalledWith('CulturalSurvey', undefined)
+    })
+  })
+
+  it('should track Batch event when "On y va !" button is clicked', async () => {
+    const renderAPI = render(<AccountCreated />)
+
+    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+
+    expect(BatchUser.trackEvent).toBeCalledWith('has_validated_account')
   })
 })

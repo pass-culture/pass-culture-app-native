@@ -1,3 +1,5 @@
+export { BatchEvent } from 'libs/react-native-batch/enums'
+
 export const Batch = {
   start: jest.fn(),
   optIn: jest.fn(),

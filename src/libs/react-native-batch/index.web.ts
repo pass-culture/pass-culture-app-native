@@ -1,3 +1,5 @@
+export { BatchEvent } from 'libs/react-native-batch/enums'
+
 /* eslint-disable @typescript-eslint/no-empty-function */
 export const Batch = {
   start() {},
