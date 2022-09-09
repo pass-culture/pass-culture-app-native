@@ -9,8 +9,9 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -24,10 +25,17 @@ type Props = {
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
+  customModalHeader?: JSX.Element
+  fixedModalBottom?: JSX.Element
+  isFullscreen?: boolean
+  noPadding?: boolean
+  modalSpacing?: ModalSpacing
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitraty values
 const modalStyles = { margin: 'auto' }
+
+const DESKTOP_FULLSCREEN_RATIO = 0.75
 
 export const AppModal: FunctionComponent<Props> = ({
   animationOutTiming,
@@ -44,6 +52,11 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldDisplayOverlay = true,
   onBackdropPress,
   scrollEnabled = true,
+  isFullscreen,
+  noPadding,
+  customModalHeader,
+  fixedModalBottom,
+  modalSpacing,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -104,6 +117,17 @@ export const AppModal: FunctionComponent<Props> = ({
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
+  let desktopMaxHeight = undefined
+  let maxHeight = undefined
+  let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
+
+  // no fullscreen in desktop view
+  if (isFullscreen) {
+    desktopMaxHeight = windowHeight * DESKTOP_FULLSCREEN_RATIO
+    maxHeight = windowHeight
+    modalContainerHeight = windowHeight
+  }
+
   return (
     <StyledModal
       animationOutTiming={animationOutTiming}
@@ -119,25 +143,53 @@ export const AppModal: FunctionComponent<Props> = ({
       aria-labelledby={titleId}
       accessibilityRole={AccessibilityRole.DIALOG}
       aria-modal={true}>
-      <ModalContainer height={isSmallScreen ? windowHeight : modalHeight} testID="modalContainer">
-        <ModalHeader
-          title={title}
-          numberOfLines={titleNumberOfLines}
-          onLayout={updateHeaderHeight}
-          titleID={titleId}
-          {...iconProps}
-        />
-        <SpacerBetweenHeaderAndContent />
-        <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
-          <ScrollView
-            contentContainerStyle={contentContainerStyle}
-            ref={scrollViewRef}
-            scrollEnabled={scrollEnabled}
-            onContentSizeChange={updateScrollViewContentHeight}
-            testID="modalScrollView">
+      <ModalContainer
+        height={modalContainerHeight}
+        testID="modalContainer"
+        desktopMaxHeight={desktopMaxHeight}
+        maxHeight={maxHeight}
+        noPadding={noPadding}>
+        {customModalHeader ? (
+          <CustomModalHeaderContainer testID="customModalHeader">
+            {customModalHeader}
+          </CustomModalHeaderContainer>
+        ) : (
+          <ModalHeader
+            title={title}
+            numberOfLines={titleNumberOfLines}
+            onLayout={updateHeaderHeight}
+            titleID={titleId}
+            modalSpacing={modalSpacing}
+            {...iconProps}
+          />
+        )}
+        {isFullscreen ? (
+          <StyledScrollView modalSpacing={modalSpacing} testID="fullscreenModalScrollView">
             {children}
-          </ScrollView>
-        </ScrollViewContainer>
+          </StyledScrollView>
+        ) : (
+          <React.Fragment>
+            <SpacerBetweenHeaderAndContent />
+            <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
+              <ScrollView
+                contentContainerStyle={contentContainerStyle}
+                ref={scrollViewRef}
+                scrollEnabled={scrollEnabled}
+                onContentSizeChange={updateScrollViewContentHeight}
+                testID="modalScrollView">
+                {children}
+              </ScrollView>
+            </ScrollViewContainer>
+          </React.Fragment>
+        )}
+        {!!fixedModalBottom && (
+          <React.Fragment>
+            <FixedModalBottomContainer testID="fixedModalBottom">
+              {fixedModalBottom}
+            </FixedModalBottomContainer>
+            <Spacer.BottomScreen />
+          </React.Fragment>
+        )}
       </ModalContainer>
     </StyledModal>
   )
@@ -183,10 +235,33 @@ const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => 
 })
 
 const MAX_HEIGHT = 650
-const ModalContainer = styled.View<{ height: number }>(({ height, theme }) => {
+const ModalContainer = styled.View<{
+  height: number
+  desktopMaxHeight?: number
+  maxHeight?: number
+  noPadding?: boolean
+}>(({ height, desktopMaxHeight, maxHeight, noPadding, theme }) => {
   return appModalContainerStyle({
     theme,
     height,
-    maxHeight: MAX_HEIGHT,
+    desktopMaxHeight,
+    maxHeight: maxHeight ?? MAX_HEIGHT,
+    noPadding,
   })
+})
+
+const StyledScrollView = styled.ScrollView<{
+  modalSpacing?: ModalSpacing
+}>(({ modalSpacing }) => ({
+  width: '100%',
+  ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
+}))
+
+const CustomModalHeaderContainer = styled.View({
+  flexDirection: 'row',
+  width: '100%',
+})
+
+const FixedModalBottomContainer = styled.View({
+  width: '100%',
 })
