@@ -42,7 +42,23 @@ Object {
   text-decoration: none;
 }
 
-.c3 {
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -75,47 +91,47 @@ Object {
   box-sizing: border-box;
 }
 
-.c3:disabled {
+.c4:disabled {
   cursor: initial;
   background: none;
 }
 
-.c3:focus-visible {
+.c4:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c3:active {
+.c4:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c3:hover {
+.c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c3:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4:disabled {
+.c5:disabled {
   background-color: #F1F1F4;
 }
 
-.c1 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c2 {
+.c3 {
   width: 100%;
 }
 
@@ -157,7 +173,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c0"
+                    class="c0 c1 sc-gsDKAQ c1"
                     data-testid="backButton"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -293,7 +309,7 @@ Object {
                       style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                     >
                       <label
-                        class="c1 c2"
+                        class="c2 c3"
                         for="testUuidV4"
                       >
                         <div
@@ -357,7 +373,7 @@ Object {
                       style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                     >
                       <label
-                        class="c1 c2"
+                        class="c2 c3"
                         for="testUuidV4"
                       >
                         <div
@@ -421,7 +437,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="c3 c4"
+                  class="c4 c5"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
@@ -484,7 +500,23 @@ Object {
   text-decoration: none;
 }
 
-.c3 {
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -517,47 +549,47 @@ Object {
   box-sizing: border-box;
 }
 
-.c3:disabled {
+.c4:disabled {
   cursor: initial;
   background: none;
 }
 
-.c3:focus-visible {
+.c4:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c3:active {
+.c4:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c3:hover {
+.c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c3:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4:disabled {
+.c5:disabled {
   background-color: #F1F1F4;
 }
 
-.c1 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c2 {
+.c3 {
   width: 100%;
 }
 
@@ -598,7 +630,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0"
+                  class="c0 c1 sc-gsDKAQ c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -734,7 +766,7 @@ Object {
                     style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                   >
                     <label
-                      class="c1 c2"
+                      class="c2 c3"
                       for="testUuidV4"
                     >
                       <div
@@ -798,7 +830,7 @@ Object {
                     style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                   >
                     <label
-                      class="c1 c2"
+                      class="c2 c3"
                       for="testUuidV4"
                     >
                       <div
@@ -862,7 +894,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l'étape suivante"
-                class="c3 c4"
+                class="c4 c5"
                 data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"

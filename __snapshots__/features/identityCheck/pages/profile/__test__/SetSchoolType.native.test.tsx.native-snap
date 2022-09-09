@@ -121,6 +121,13 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
                   "opacity": 1,
                   "userSelect": "auto",
                 }
@@ -1058,6 +1065,13 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
                   "opacity": 1,
                   "userSelect": "auto",
                 }

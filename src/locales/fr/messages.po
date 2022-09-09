@@ -2837,10 +2837,6 @@ msgstr "Supprimer mon compte"
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
 
-#: src/ui/svg/icons/Validate.tsx
-msgid "Sélectionné"
-msgstr "Sélectionné"
-
 #: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."

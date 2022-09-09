@@ -3,7 +3,7 @@
 exports[`FavoritesSorts component should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c1 {
+  "baseElement": .c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -39,36 +39,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c2:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c2:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c2:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c2:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c1:hover:disabled {
+.c2:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2:disabled {
+.c3:disabled {
   background-color: #F1F1F4;
 }
 
@@ -111,6 +111,22 @@ Object {
   text-decoration: none;
 }
 
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <body>
     <div>
       <div
@@ -149,7 +165,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c0"
+                    class="c0 c1 sc-eCImPb c1"
                     data-testid="backButton"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -264,7 +280,7 @@ Object {
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
+                      style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -314,8 +330,19 @@ Object {
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                    />
+                      style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div
                     role="alert"
@@ -353,8 +380,19 @@ Object {
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                    />
+                      style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div
                     role="alert"
@@ -369,7 +407,7 @@ Object {
           style="padding: 20px 20px 20px 20px;"
         >
           <button
-            class="c1 c2"
+            class="c2 c3"
             tabindex="0"
             type="button"
           >
@@ -385,7 +423,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c1 {
+  "container": .c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -421,36 +459,36 @@ Object {
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c2:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c2:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c2:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c2:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c1:hover:disabled {
+.c2:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2:disabled {
+.c3:disabled {
   background-color: #F1F1F4;
 }
 
@@ -493,6 +531,22 @@ Object {
   text-decoration: none;
 }
 
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
     <div
       class="css-view-1dbjc4n"
@@ -530,7 +584,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0"
+                  class="c0 c1 sc-eCImPb c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -645,7 +699,7 @@ Object {
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
+                    style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -695,8 +749,19 @@ Object {
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                  />
+                    style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
                   role="alert"
@@ -734,8 +799,19 @@ Object {
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                  />
+                    style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
                   role="alert"
@@ -750,7 +826,7 @@ Object {
         style="padding: 20px 20px 20px 20px;"
       >
         <button
-          class="c1 c2"
+          class="c2 c3"
           tabindex="0"
           type="button"
         >

@@ -41,6 +41,22 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
 }
 
 .c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -72,36 +88,36 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c2:disabled {
   cursor: initial;
   background: none;
 }
 
-.c1:focus-visible {
+.c2:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c1:active {
+.c2:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c1:hover {
+.c2:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c1:hover:disabled {
+.c2:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 {
+.c3 {
   background-color: transparent;
 }
 
@@ -241,7 +257,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0"
+              className="c0 c1 sc-gsDKAQ c1"
               data-testid="backButton"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -528,7 +544,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               }
             >
               <a
-                className="c1 c2"
+                className="c2 c3"
                 href="https://dmsfrenchcitizen"
                 onClick={[Function]}
                 onDoubleClick={[Function]}
@@ -652,7 +668,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 </div>
               </div>
               <a
-                className="c1 c2"
+                className="c2 c3"
                 href="https://dmsforeigncitizen"
                 onClick={[Function]}
                 onDoubleClick={[Function]}
