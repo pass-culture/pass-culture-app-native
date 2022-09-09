@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
-import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
+import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
 import { render } from 'tests/utils'
 
 jest.mock('features/identityCheck/useIdentityCheckNavigation')
