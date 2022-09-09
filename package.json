@@ -266,7 +266,6 @@
     "postcss-preset-env": "^7.3.3",
     "postcss-safe-parser": "^6.0.0",
     "prettier": "^2.5.1",
-    "puppeteer": "^16.2.0",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.4",
     "react-device-detect": "^2.0.1",
