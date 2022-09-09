@@ -12,11 +12,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ModalIconProps } from './types'
 
-type ModalHeaderProps = {
+export type ModalHeaderProps = {
   title: string
   titleID?: string
   boldTitle?: boolean
   numberOfLines?: number
+  padding?: number
   onLayout?: (event: LayoutChangeEvent) => void
 } & ModalIconProps
 
@@ -31,6 +32,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   onRightIconPress,
   boldTitle = false,
   numberOfLines = 2,
+  padding,
   onLayout,
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
@@ -46,7 +48,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     }))``
 
   return (
-    <Container onLayout={onLayout} testID="modalHeader">
+    <Container onLayout={onLayout} testID="modalHeader" padding={padding}>
       <LeftHeaderActionContainer>
         {!!LeftIcon && (
           <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
@@ -71,12 +73,13 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ padding?: number }>(({ padding }) => ({
   display: 'flex',
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'center',
-})
+  ...(padding ? { padding } : {}),
+}))
 
 const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
