@@ -168,6 +168,10 @@ export const analytics = {
   logHasOpenedCookiesAccordion: (type: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION, { type }),
   logHasRefusedCookie: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE),
+  logHasSharedApp: (type: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_SHARED_APP, { type }),
+  logHasDismissedAppSharingModal: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL),
   logClickSocialNetwork: (network: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
   logOpenExternalUrl: (url: string, params: OfferAnalyticsData) =>
