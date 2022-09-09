@@ -41,6 +41,22 @@ Array [
   text-decoration: none;
 }
 
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <header
     className="css-view-1dbjc4n"
     role="banner"
@@ -151,7 +167,7 @@ Array [
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0"
+              className="c0 c1 sc-iqseJM c1"
               data-testid="backButton"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -675,19 +691,40 @@ Array [
                   className="css-view-1dbjc4n"
                   style={
                     Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
                       "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 0.1,
                       "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": "0px",
                       "flexGrow": 0.1,
                       "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
                       "msFlexNegative": 1,
+                      "msFlexPack": "center",
                       "msFlexPositive": 0.1,
                       "msFlexPreferredSize": "0px",
+                      "width": "20px",
                     }
                   }
-                />
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -808,19 +845,40 @@ Array [
                   className="css-view-1dbjc4n"
                   style={
                     Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
                       "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 0.1,
                       "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": "0px",
                       "flexGrow": 0.1,
                       "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
                       "msFlexNegative": 1,
+                      "msFlexPack": "center",
                       "msFlexPositive": 0.1,
                       "msFlexPreferredSize": "0px",
+                      "width": "20px",
                     }
                   }
-                />
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -941,16 +999,26 @@ Array [
                   className="css-view-1dbjc4n"
                   style={
                     Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
                       "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 0.1,
                       "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": "0px",
                       "flexGrow": 0.1,
                       "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
                       "msFlexNegative": 1,
+                      "msFlexPack": "center",
                       "msFlexPositive": 0.1,
                       "msFlexPreferredSize": "0px",
+                      "width": "20px",
                     }
                   }
                 >
@@ -1085,19 +1153,40 @@ Array [
                   className="css-view-1dbjc4n"
                   style={
                     Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
                       "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 0.1,
                       "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": "0px",
                       "flexGrow": 0.1,
                       "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
                       "msFlexNegative": 1,
+                      "msFlexPack": "center",
                       "msFlexPositive": 0.1,
                       "msFlexPreferredSize": "0px",
+                      "width": "20px",
                     }
                   }
-                />
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -1218,19 +1307,40 @@ Array [
                   className="css-view-1dbjc4n"
                   style={
                     Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
                       "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 0.1,
                       "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": "0px",
                       "flexGrow": 0.1,
                       "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
                       "msFlexNegative": 1,
+                      "msFlexPack": "center",
                       "msFlexPositive": 0.1,
                       "msFlexPreferredSize": "0px",
+                      "width": "20px",
                     }
                   }
-                />
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -1351,19 +1461,40 @@ Array [
                   className="css-view-1dbjc4n"
                   style={
                     Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
                       "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 0.1,
                       "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": "0px",
                       "flexGrow": 0.1,
                       "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
                       "msFlexNegative": 1,
+                      "msFlexPack": "center",
                       "msFlexPositive": 0.1,
                       "msFlexPreferredSize": "0px",
+                      "width": "20px",
                     }
                   }
-                />
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"

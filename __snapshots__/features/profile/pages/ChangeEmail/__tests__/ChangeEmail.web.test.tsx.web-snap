@@ -3,7 +3,7 @@
 exports[`<ChangeEmail/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c4 {
+  "baseElement": .c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -36,31 +36,31 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c5:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c5:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -104,22 +104,38 @@ Object {
   text-decoration: none;
 }
 
-.c5:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
 .c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c2 {
+.c3 {
   width: 100%;
 }
 
-.c3 {
+.c4 {
   max-width: 60px;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
@@ -161,7 +177,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0"
+                  class="c0 c1 sc-gKclnd c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -249,7 +265,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c1 c2"
+                  class="c2 c3"
                   for="testUuidV4"
                 >
                   <div
@@ -314,7 +330,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c1 c2"
+                  class="c2 c3"
                   for="testUuidV4"
                 >
                   <div
@@ -368,7 +384,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="c0 c3 sc-bYoBSM c3"
+                    class="c0 c4 sc-kLwhqv c4"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     title="Afficher le mot de passe"
@@ -401,7 +417,7 @@ Object {
               >
                 <button
                   aria-label="Enregistrer les modifications"
-                  class="c4 c5"
+                  class="c5 c6"
                   data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
@@ -425,7 +441,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c4 {
+  "container": .c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -458,31 +474,31 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:focus-visible {
+.c5:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c4:active {
+.c5:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c4:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -526,22 +542,38 @@ Object {
   text-decoration: none;
 }
 
-.c5:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
 .c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c2 {
+.c3 {
   width: 100%;
 }
 
-.c3 {
+.c4 {
   max-width: 60px;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
@@ -582,7 +614,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="c0"
+                class="c0 c1 sc-gKclnd c1"
                 data-testid="backButton"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -670,7 +702,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c1 c2"
+                class="c2 c3"
                 for="testUuidV4"
               >
                 <div
@@ -735,7 +767,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c1 c2"
+                class="c2 c3"
                 for="testUuidV4"
               >
                 <div
@@ -789,7 +821,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="c0 c3 sc-bYoBSM c3"
+                  class="c0 c4 sc-kLwhqv c4"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   title="Afficher le mot de passe"
@@ -822,7 +854,7 @@ Object {
             >
               <button
                 aria-label="Enregistrer les modifications"
-                class="c4 c5"
+                class="c5 c6"
                 data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"

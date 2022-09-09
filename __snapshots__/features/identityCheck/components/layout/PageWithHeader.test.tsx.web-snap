@@ -40,6 +40,22 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   text-decoration: none;
 }
 
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div
   className="css-view-1dbjc4n"
   style={
@@ -176,7 +192,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0"
+              className="c0 c1 sc-gsDKAQ c1"
               data-testid="backButton"
               onClick={[MockFunction]}
               tabIndex="0"

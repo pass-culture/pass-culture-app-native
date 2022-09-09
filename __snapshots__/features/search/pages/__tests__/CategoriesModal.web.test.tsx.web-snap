@@ -261,7 +261,7 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
                       <button
-                        class="c0 c1 sc-iCfMLu c1"
+                        class="c0 c1 sc-furwcr c1"
                         data-testid="Ne pas filtrer sur les catégories et retourner aux résultats"
                         tabindex="0"
                         type="button"
@@ -349,7 +349,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -365,7 +365,7 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
                                       >
                                         <div
                                           class="css-view-1dbjc4n"
@@ -409,7 +409,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -425,8 +425,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -458,7 +469,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -474,8 +485,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -507,7 +529,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -523,8 +545,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -556,7 +589,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -572,8 +605,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -605,7 +649,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -621,8 +665,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -654,7 +709,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -670,8 +725,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -703,7 +769,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -719,8 +785,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -752,7 +829,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -768,8 +845,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -801,7 +889,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -817,8 +905,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -850,7 +949,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -866,8 +965,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -899,7 +1009,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -915,8 +1025,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -948,7 +1069,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -964,8 +1085,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -997,7 +1129,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -1013,8 +1145,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -1046,7 +1189,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -1062,8 +1205,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                   <li
@@ -1095,7 +1249,7 @@ Object {
                                         </div>
                                         <div
                                           class="css-view-1dbjc4n"
-                                          style="width: 16px;"
+                                          style="width: 8px;"
                                         />
                                         <div
                                           class="css-view-1dbjc4n"
@@ -1111,8 +1265,19 @@ Object {
                                       </div>
                                       <div
                                         class="css-view-1dbjc4n"
-                                        style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
-                                      />
+                                        style="align-items: flex-end; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; height: 20px; justify-content: center; width: 20px;"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            undefined-SVG-Mock
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </li>
                                 </ul>

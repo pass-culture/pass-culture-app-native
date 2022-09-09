@@ -42,7 +42,23 @@ Object {
   text-decoration: none;
 }
 
-.c2 {
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -75,40 +91,40 @@ Object {
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c3:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c3:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c3:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c4:disabled {
   background-color: #F1F1F4;
 }
 
-.c1 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
@@ -153,7 +169,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c0"
+                    class="c0 c1 sc-gsDKAQ c1"
                     data-testid="backButton"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -236,7 +252,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="c1"
+                    class="c2"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -308,7 +324,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="c2 c3"
+                  class="c3 c4"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
@@ -371,7 +387,23 @@ Object {
   text-decoration: none;
 }
 
-.c2 {
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -404,40 +436,40 @@ Object {
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c3:disabled {
   cursor: initial;
   background: none;
 }
 
-.c2:focus-visible {
+.c3:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c2:active {
+.c3:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c2:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c2:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3:disabled {
+.c4:disabled {
   background-color: #F1F1F4;
 }
 
-.c1 {
+.c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
@@ -481,7 +513,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0"
+                  class="c0 c1 sc-gsDKAQ c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -564,7 +596,7 @@ Object {
                   style="height: 20px;"
                 />
                 <label
-                  class="c1"
+                  class="c2"
                   for="testUuidV4"
                 >
                   Indique ton code postal et choisis ta ville
@@ -636,7 +668,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l'étape suivante"
-                class="c2 c3"
+                class="c3 c4"
                 data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"
