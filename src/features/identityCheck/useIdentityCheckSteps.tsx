@@ -3,6 +3,7 @@ import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { theme } from 'theme'
@@ -17,6 +18,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
   const { profile, identification } = useIdentityCheckContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { data: nextSubscriptionStep } = useNextSubscriptionStep()
+  const { remainingAttempts } = usePhoneValidationRemainingAttempts()
 
   const steps: StepConfig[] = [
     {
@@ -55,7 +57,10 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
         name: IdentityCheckStep.PHONE_VALIDATION,
         icon: SmartphoneIcon,
         label: t`Numéro de téléphone`,
-        screens: ['SetPhoneNumber', 'SetPhoneValidationCode'],
+        screens:
+          remainingAttempts === 0
+            ? ['PhoneValidationTooManySMSSent']
+            : ['SetPhoneNumber', 'SetPhoneValidationCode'],
       },
       ...steps,
     ]

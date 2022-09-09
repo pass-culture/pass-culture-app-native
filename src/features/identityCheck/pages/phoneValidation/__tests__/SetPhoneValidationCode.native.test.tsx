@@ -142,7 +142,7 @@ describe('SetPhoneValidationCode', () => {
     fireEvent.press(continueButton)
 
     await waitFor(() => {
-      expect(mockNavigateToNextScreen).toHaveBeenCalled()
+      expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
     })
   })
 })
