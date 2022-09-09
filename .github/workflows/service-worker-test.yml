@@ -4,14 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       versionFrom:
-        description: "Nom de la release (ex: 1.199.0)"
+        description: 'Nom de la release (ex: 1.199.0)'
         required: true
         type: string
       versionTo:
-        description: "Nom de la release (ex: 1.200.0)"
+        description: 'Nom de la release (ex: 1.200.0)'
         required: true
         type: string
-
 
 jobs:
   testServiceWorker:
@@ -43,6 +42,7 @@ jobs:
         shell: bash
         run: |
           yarn install --immutable
+          yarn add puppeteer
 
       # Clone the version from in its own directory
       - name: Checkout ${{ github.event.inputs.versionFrom }}

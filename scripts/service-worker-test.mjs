@@ -2,6 +2,10 @@
 import { cpSync } from 'fs'
 import { join } from 'path'
 
+// We do not want to install puppeteer on the whole project
+// as the JS dependencies caused build issues after building with the CI
+// https://github.com/pass-culture/pass-culture-app-native/pull/3528
+// eslint-disable-next-line import/no-unresolved
 import puppeteer from 'puppeteer'
 
 const versionFrom = process.argv[2]
