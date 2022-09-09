@@ -126,7 +126,8 @@ export const SearchPrice: FunctionComponent = () => {
       return
     }
 
-    setSelectedMaxPrice(searchState?.maxPrice || '')
+    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
+    setSelectedMaxPrice(availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '')
   }, [
     formatAvailableCredit,
     isLimitCreditSearch,
@@ -147,8 +148,11 @@ export const SearchPrice: FunctionComponent = () => {
       return
     }
 
-    setSelectedMaxPrice(searchState?.maxPrice || '')
-    setSelectedMinPrice(searchState?.minPrice || '')
+    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
+    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
+
+    setSelectedMaxPrice(maxPrice)
+    setSelectedMinPrice(minPrice)
   }, [
     isOnlyFreeOffersSearch,
     searchState?.maxPrice,
