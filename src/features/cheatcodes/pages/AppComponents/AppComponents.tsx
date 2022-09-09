@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { ScrollView, View, Text, Alert, Button } from 'react-native'
+import { Alert, Button, ScrollView, Text, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
@@ -12,6 +12,7 @@ import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrat
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { VenueTile } from 'features/home/atoms/VenueTile'
+import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -34,6 +35,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { ClippedTag } from 'ui/components/ClippedTag'
+import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Hero } from 'ui/components/hero/Hero'
@@ -60,6 +62,7 @@ import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
+import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
@@ -488,6 +491,39 @@ export const AppComponents: FunctionComponent = () => {
 
         {/* Profile components */}
         <AccordionItem title="Profile components">
+          <View>
+            <Text> Hero Button List </Text>
+            <Spacer.Column numberOfSpaces={3} />
+            <HeroButtonList
+              Title={
+                <Text>
+                  <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
+                  <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
+                </Text>
+              }
+              Subtitle={
+                <Typo.Caption>
+                  <Emoji.Warning withSpaceAfter />
+                  Les copies ne sont pas acceptées
+                </Typo.Caption>
+              }
+              onPress={() => null}
+              icon={BicolorSmartphone}
+            />
+            <Spacer.Column numberOfSpaces={1} />
+            <HeroButtonList
+              Title={
+                <Text>
+                  <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
+                  <Typo.ButtonText>étranger</Typo.ButtonText>
+                  <Typo.Body> ou un titre séjour français</Typo.Body>
+                </Text>
+              }
+              onPress={() => null}
+              icon={BicolorSmartphone}
+            />
+          </View>
+          <Spacer.Column numberOfSpaces={1} />
           <GreyView>
             <Spacer.Column numberOfSpaces={1} />
             <Text> Progress bars </Text>
