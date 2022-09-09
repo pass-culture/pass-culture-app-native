@@ -29,6 +29,8 @@ export type IdentityCheckRootStackParamList = {
   // PhoneValidation
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined
+  PhoneValidationTooManyAttempts: undefined
+  PhoneValidationTooManySMSSent: undefined
   // Profile
   SetName: undefined
   IdentityCheckCity: undefined
@@ -135,8 +137,6 @@ export type RootStackParamList = {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
   }
-  PhoneValidationTooManyAttempts: undefined
-  PhoneValidationTooManySMSSent: undefined
   VerifyEligibility: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
