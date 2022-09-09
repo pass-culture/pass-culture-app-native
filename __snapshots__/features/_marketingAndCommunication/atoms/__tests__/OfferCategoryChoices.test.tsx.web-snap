@@ -1,0 +1,1649 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxLines": "multiple",
+      "WebkitBoxOrient": "vertical",
+      "WebkitFlexDirection": "column",
+      "WebkitFlexWrap": "wrap",
+      "flexDirection": "column",
+      "flexWrap": "wrap",
+      "marginBottom": "-12px",
+      "marginRight": "-12px",
+      "msFlexDirection": "column",
+      "msFlexWrap": "wrap",
+    }
+  }
+>
+  <ul
+    className="css-reset-4rbku5 css-view-1dbjc4n"
+    role="list"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxLines": "multiple",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "WebkitFlexWrap": "wrap",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "msFlexDirection": "row",
+        "msFlexWrap": "wrap",
+        "overflowX": "auto",
+        "overflowY": "auto",
+        "paddingLeft": "0px",
+      }
+    }
+  >
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Arts & loisirs créatifs
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Arts & loisirs créatifs"
+          checked={false}
+          hidden={true}
+          name="Arts & loisirs créatifs"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Bibliothèques, Médiathèques
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Bibliothèques, Médiathèques"
+          checked={false}
+          hidden={true}
+          name="Bibliothèques, Médiathèques"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Cartes jeunes
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Cartes jeunes"
+          checked={false}
+          hidden={true}
+          name="Cartes jeunes"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          CD, vinyle, musique en ligne
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="CD, vinyle, musique en ligne"
+          checked={false}
+          hidden={true}
+          name="CD, vinyle, musique en ligne"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Concerts & festivals
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Concerts & festivals"
+          checked={false}
+          hidden={true}
+          name="Concerts & festivals"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Conférences & rencontres
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Conférences & rencontres"
+          checked={false}
+          hidden={true}
+          name="Conférences & rencontres"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Événements en ligne
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Événements en ligne"
+          checked={false}
+          hidden={true}
+          name="Événements en ligne"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Films, séries, cinéma
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Films, séries, cinéma"
+          checked={false}
+          hidden={true}
+          name="Films, séries, cinéma"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Instruments de musique
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Instruments de musique"
+          checked={false}
+          hidden={true}
+          name="Instruments de musique"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Jeux & jeux vidéos
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Jeux & jeux vidéos"
+          checked={false}
+          hidden={true}
+          name="Jeux & jeux vidéos"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Livres
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Livres"
+          checked={false}
+          hidden={true}
+          name="Livres"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Médias & presse
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Médias & presse"
+          checked={false}
+          hidden={true}
+          name="Médias & presse"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Musées & visites culturelles
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Musées & visites culturelles"
+          checked={false}
+          hidden={true}
+          name="Musées & visites culturelles"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Plateformes en ligne
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Plateformes en ligne"
+          checked={false}
+          hidden={true}
+          name="Plateformes en ligne"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        className="css-view-1dbjc4n"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Spectacles
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Spectacles"
+          checked={false}
+          hidden={true}
+          name="Spectacles"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+  </ul>
+</div>
+`;
