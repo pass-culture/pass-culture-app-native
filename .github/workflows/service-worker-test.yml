@@ -1,4 +1,4 @@
-name: Upgrade version automatically using ServiceWorker
+name: Test the service worker automatic update between two version
 
 on:
   workflow_dispatch:
@@ -12,98 +12,22 @@ on:
         required: true
         type: string
 
-
 jobs:
-  testServiceWorker:
-    name: Test service worker
+  installDependencies:
+    name: Install Dependencies
     runs-on: ubuntu-latest
-    env:
-      PORT: 5000
-    container:
-      image: kopax/puppeteer-headful:latest
-      options: --user root
     steps:
-      # Docker entrypoint is otherwise ignored in GitHub Action
-      - name: Docker entrypoint
-        shell: bash
-        run: /entrypoint.sh
-
-      # Useful to get the latest service worker test script
-      - name: Checkout registry
-        uses: actions/checkout@v3
-
-      # To initialize the latest node version
-      - name: Setup Node.JS
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@Z
+      - name: Install Dependencies
+        uses: actions/setup-node@v2
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
         with:
-          node-version-file: '.nvmrc'
-
-      # Necessary for the latest service worker test script
-      - name: Install dependencies
-        shell: bash
-        run: |
-          yarn install --immutable
-
-      # Clone the version from in its own directory
-      - name: Checkout ${{ github.event.inputs.versionFrom }}
-        uses: actions/checkout@v3
+          args: install
+      - name: Test service worker
+        uses: mujo-code/puppeteer-headful@v2
+        env:
+          CI: 'true'
         with:
-          ref: ${{ github.event.inputs.versionFrom }}
-          path: versionFrom
+          args: yarn test:sw ${{ github.event.inputs.versionFrom }} ${{ github.event.inputs.versionTo }}
 
-      # Build version from in versionFrom/build
-      - name: Building Webapp ${{ github.event.inputs.versionFrom }}
-        shell: bash
-        run: |
-          yarn install --cwd versionFrom --immutable
-          NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn --cwd versionFrom build:testing
-
-      # Clone the version to in its own directory
-      - name: Checkout ${{ github.event.inputs.versionTo }}
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.inputs.versionTo }}
-          path: versionTo
-
-      # Build version to in versionTo/build
-      ## Important: This build will be used during the last step by the JS script
-      ##            There is an alternative way to improve this, described here: https://github.com/pass-culture/pass-culture-app-native/pull/3452
-      - name: Building Webapp ${{ github.event.inputs.versionTo }}
-        shell: bash
-        run: |
-          yarn install --cwd versionTo --immutable
-          NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn --cwd versionTo build:testing
-
-      # Create build directory for serve
-      - name: Create a build directory to be served
-        run: mkdir build
-
-      # Run HTTP server
-      - name: Serve Files
-        uses: Eun/http-server-action@v1
-        with:
-          directory: build
-          port: ${{ env.PORT }}
-          no-cache: false
-          content-types: |
-            {
-              "appcache": "text/cache-manifest",
-              "css": "text/css",
-              "gif": "image/gif",
-              "html": "text/html",
-              "ico": "image/x-icon",
-              "jpeg": "image/jpeg",
-              "jpg": "image/jpeg",
-              "js": "text/javascript",
-              "json": "application/json",
-              "png": "image/png",
-              "txt": "text/plain",
-              "xml": "text/xml"
-            }
-
-      # Copy versionFrom to build directory
-      - name: Copy versionFrom to server directory
-        run: yes | cp -rf versionFrom/build/* build/
-
-      # Run puppeteer
-      - run: yarn test:sw ${{ github.event.inputs.versionFrom }} ${{ github.event.inputs.versionTo }}
