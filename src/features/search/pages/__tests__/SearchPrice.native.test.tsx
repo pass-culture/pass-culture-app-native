@@ -192,7 +192,18 @@ describe('SearchPrice component', () => {
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
-  it('should update the maximum price by the max price entered in the current search when desactivate limit credit search toggle', async () => {
+  it('should reset the maximum price when desactivate limit credit search toggle if max price entered in the current search is the available credit', async () => {
+    mockSearchState = { ...initialSearchState, maxPrice: '100' }
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
+    await fireEvent.press(toggleLimitCreditSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    expect(maxPriceInput.props.value).toStrictEqual('')
+  })
+
+  it('should update the maximum price by the max price entered in the current search if different from avaiable credit when desactivate limit credit search toggle', async () => {
     mockSearchState = { ...initialSearchState, maxPrice: '15' }
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
@@ -307,6 +318,58 @@ describe('SearchPrice component', () => {
     await fireEvent.press(toggleOnlyFreeOffersSearch)
 
     expect(minPriceInput.props.value).toStrictEqual('0')
+  })
+
+  it('should update the minimum price by empty value when desactivate only free offers search toggle if minimum price in the current search is 0', async () => {
+    mockSearchState = { ...initialSearchState, minPrice: '0' }
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+
+    const minPriceInput = getByPlaceholderText('0')
+
+    expect(minPriceInput.props.value).toStrictEqual('')
+  })
+
+  it('should update the minimum price by minimum price in the current search when desactivate only free offers search toggle if minimum price in the current search is not 0', async () => {
+    mockSearchState = { ...initialSearchState, minPrice: '5' }
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+
+    const minPriceInput = getByPlaceholderText('0')
+
+    expect(minPriceInput.props.value).toStrictEqual('5')
+  })
+
+  it('should update the maximum price by empty value when desactivate only free offers search toggle if maximum price in the current search is 0', async () => {
+    mockSearchState = { ...initialSearchState, maxPrice: '0' }
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+
+    expect(maxPriceInput.props.value).toStrictEqual('')
+  })
+
+  it('should update the maximum price by maximum price in the current search when desactivate only free offers search toggle if maximum price in the current search is not 0', async () => {
+    mockSearchState = { ...initialSearchState, maxPrice: '20' }
+    const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
+
+    const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await fireEvent.press(toggleOnlyFreeOffersSearch)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+
+    expect(maxPriceInput.props.value).toStrictEqual('20')
   })
 
   it('should disable the minimum price input when pressing only free offers search toggle', async () => {
