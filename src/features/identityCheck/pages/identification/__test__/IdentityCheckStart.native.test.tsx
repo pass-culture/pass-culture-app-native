@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
-import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart'
+import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
 import { fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 jest.mock('react-query')
