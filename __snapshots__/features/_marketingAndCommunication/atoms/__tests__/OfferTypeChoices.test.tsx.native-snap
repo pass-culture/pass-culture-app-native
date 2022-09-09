@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "column",
+        "flexWrap": "wrap",
+        "marginBottom": -12,
+        "marginRight": -12,
+      },
+    ]
+  }
+>
+  <View
+    accessibilityRole="list"
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "paddingLeft": 0,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Offre numérique
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Sortie
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Offre physique
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

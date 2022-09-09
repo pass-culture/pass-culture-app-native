@@ -4,6 +4,12 @@ import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/
 import { render, fireEvent } from 'tests/utils'
 
 describe('<OfferCategoryChoices />', () => {
+  it('should match snapshot', () => {
+    const onChange = jest.fn()
+    const renderAPI = render(<OfferCategoryChoices onChange={onChange} />)
+
+    expect(renderAPI).toMatchSnapshot()
+  })
   it('should call onChange with proper categories when toggling', () => {
     const onChange = jest.fn()
     const renderAPI = render(<OfferCategoryChoices onChange={onChange} />)

@@ -52,7 +52,7 @@ export const OfferTypeChoices = (props: Props) => {
 
 const BodyContainer = styled.View({
   flexWrap: 'wrap',
-  flexDirection: 'row',
+  flexDirection: 'column',
   marginBottom: getSpacing(-3),
   marginRight: getSpacing(-3),
 })
