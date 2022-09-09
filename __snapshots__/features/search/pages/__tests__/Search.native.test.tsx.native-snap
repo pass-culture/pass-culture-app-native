@@ -366,7 +366,7 @@ exports[`Search component should render Search 1`] = `
                 "target": [Function],
                 "withComponent": [Function],
               },
-              "label": "CD, vinyle, musique en ligne",
+              "label": "CD, vinyles, musique en ligne",
               "onPress": [Function],
             },
             Object {
@@ -994,7 +994,7 @@ exports[`Search component should render Search 1`] = `
                         ]
                       }
                     >
-                      CD, vinyle, musique en ligne
+                      CD, vinyles, musique en ligne
                     </Text>
                   </View>
                 </View>

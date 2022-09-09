@@ -447,7 +447,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             }
           }
         >
-          CD, vinyle, musique en ligne
+          CD, vinyles, musique en ligne
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -458,10 +458,10 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         />
         <input
-          aria-label="CD, vinyle, musique en ligne"
+          aria-label="CD, vinyles, musique en ligne"
           checked={false}
           hidden={true}
-          name="CD, vinyle, musique en ligne"
+          name="CD, vinyles, musique en ligne"
           readOnly={true}
           type="checkbox"
         />

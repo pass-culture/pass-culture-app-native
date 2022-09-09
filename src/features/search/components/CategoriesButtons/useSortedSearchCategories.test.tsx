@@ -32,7 +32,7 @@ describe('useSortedSearchCategories', () => {
       'Arts & loisirs créatifs',
       'Bibliothèques, Médiathèques',
       'Cartes jeunes',
-      'CD, vinyle, musique en ligne',
+      'CD, vinyles, musique en ligne',
       'Concerts & festivals',
       'Conférences & rencontres',
       'Événements en ligne',

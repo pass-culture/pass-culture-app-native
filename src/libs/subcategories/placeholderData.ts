@@ -664,7 +664,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     { name: SearchGroupNameEnumv2.CARTES_JEUNES, value: 'Cartes jeunes' },
     {
       name: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-      value: 'CD, vinyle, musique en ligne',
+      value: 'CD, vinyles, musique en ligne',
     },
     { name: SearchGroupNameEnumv2.CONCERTS_FESTIVALS, value: 'Concerts & festivals' },
     { name: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES, value: 'Conférences & rencontres' },

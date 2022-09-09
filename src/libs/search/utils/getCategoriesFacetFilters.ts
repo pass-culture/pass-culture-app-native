@@ -6,7 +6,7 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
   ['Arts & loisirs créatifs']: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
   ['Bibliothèques, Médiathèques']: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
   ['Cartes jeunes']: SearchGroupNameEnumv2.CARTES_JEUNES,
-  ['CD, vinyle, musique en ligne']: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+  ['CD, vinyles, musique en ligne']: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
   ['Concerts & festivals']: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
   ['Conférences & rencontres']: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
   ['Événements en ligne']: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
