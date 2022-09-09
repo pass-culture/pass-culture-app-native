@@ -14,11 +14,11 @@ type Props = {
   nativeID?: string
 }
 
-const PASSWORD_MIN_LENGTH = 12
-const CAPITAL_REGEX = /[A-Z]+/
-const LOWERCASE_REGEX = /[a-z]+/
-const NUMBER_REGEX = /[0-9]+/
-const SPECIAL_CHARACTER_REGEX = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/
+export const PASSWORD_MIN_LENGTH = 12
+export const CAPITAL_REGEX = /[A-Z]+/
+export const LOWERCASE_REGEX = /[a-z]+/
+export const NUMBER_REGEX = /[0-9]+/
+export const SPECIAL_CHARACTER_REGEX = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/
 
 export function isPasswordCorrect(password: string) {
   return (

@@ -25,8 +25,8 @@ export function useValidateEmailMutation(
 }
 
 export function useChangePasswordMutation(
-  onSuccess: () => void,
-  onError: (error: unknown) => void
+  onSuccess?: () => void,
+  onError?: (error: unknown) => void
 ) {
   return useMutation((body: ChangePasswordRequest) => api.postnativev1changePassword(body), {
     onSuccess,

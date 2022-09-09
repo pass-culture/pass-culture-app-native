@@ -619,8 +619,6 @@ msgstr "Confirmer la réservation"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
@@ -1002,7 +1000,6 @@ msgid "En voir plus"
 msgstr "En voir plus"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer"
@@ -1013,7 +1010,6 @@ msgid "Enregistrer des statistiques de navigation"
 msgstr "Enregistrer des statistiques de navigation"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer les modifications"
@@ -1570,7 +1566,6 @@ msgid "Les informations que tu as renseignées sont-elles correctes ?"
 msgstr "Les informations que tu as renseignées sont-elles correctes ?"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Les mots de passe ne concordent pas"
 msgstr "Les mots de passe ne concordent pas"
 
@@ -1780,17 +1775,11 @@ msgstr "Mon profil"
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "Mot de passe actuel"
-msgstr "Mot de passe actuel"
-
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Mot de passe incorrect"
 msgstr "Mot de passe incorrect"
 
@@ -1936,7 +1925,6 @@ msgid "Nous étudions ton dossier..."
 msgstr "Nous étudions ton dossier..."
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
@@ -3000,14 +2988,6 @@ msgstr "Ton inscription est en cours de vérification. Tu recevras une notificat
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "Ton mot de passe actuel"
-msgstr "Ton mot de passe actuel"
-
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "Ton mot de passe est modifié"
-msgstr "Ton mot de passe est modifié"
-
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 msgid "Ton mot de passe est modifié !"
 msgstr "Ton mot de passe est modifié !"
@@ -3028,10 +3008,6 @@ msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Ton nom/prénom | Profil"
 msgstr "Ton nom/prénom | Profil"
-
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "Ton nouveau mot de passe"
-msgstr "Ton nouveau mot de passe"
 
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
