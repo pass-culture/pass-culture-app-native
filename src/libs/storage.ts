@@ -19,6 +19,7 @@ export type StorageKey =
 
 export const storage = {
   clear,
+  getAllKeys,
   readObject,
   readString,
   readMultiString,
@@ -94,6 +95,14 @@ async function saveObject(storageKey: StorageKey, value: unknown): Promise<void>
 async function clear(storageKey: StorageKey): Promise<void> {
   try {
     await AsyncStorage.removeItem(storageKey)
+  } catch (error) {
+    if (error instanceof Error) onAsyncStorageError(error)
+  }
+}
+
+async function getAllKeys(): Promise<readonly StorageKey[] | void> {
+  try {
+    return (await AsyncStorage.getAllKeys()) as StorageKey[]
   } catch (error) {
     if (error instanceof Error) onAsyncStorageError(error)
   }
