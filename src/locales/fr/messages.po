@@ -391,7 +391,7 @@ msgid "Cadre l’intégralité de ton document"
 msgstr "Cadre l’intégralité de ton document"
 
 #: src/features/identityCheck/components/DMSModal.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Carte d’identité ou passeport."
 msgstr "Carte d’identité ou passeport."
 
@@ -545,8 +545,8 @@ msgid "Code non reçu ?"
 msgstr "Code non reçu ?"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.web.tsx
 msgid "Commencer la vérification"
 msgstr "Commencer la vérification"
 
@@ -768,7 +768,7 @@ msgstr "Crédit numérique insuffisant"
 msgid "Crédit photo : {credit}"
 msgstr "Crédit photo : {credit}"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Créer un dossier sur le site des Démarches Simplifiées"
 msgstr "Créer un dossier sur le site des Démarches Simplifiées"
 
@@ -1064,7 +1064,7 @@ msgstr "Entrée pour le prénom"
 msgid "Envie de tout envie de lien ?"
 msgstr "Envie de tout envie de lien ?"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Environ 10 jours"
 msgstr "Environ 10 jours"
 
@@ -1158,7 +1158,7 @@ msgstr "Fin du parcours"
 msgid "Format : 6 chiffres"
 msgstr "Format : 6 chiffres"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 
@@ -1230,12 +1230,12 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.web.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
@@ -1255,7 +1255,7 @@ msgstr "Identification avec ÉduConnect"
 msgid "Identification manuelle"
 msgstr "Identification manuelle"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Identification par le site Démarches-Simplifiées"
 msgstr "Identification par le site Démarches-Simplifiées"
 
@@ -1299,7 +1299,7 @@ msgstr "Il semblerait que les informations que tu nous as communiquées ne soien
 msgid "Il te reste"
 msgstr "Il te reste"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
+#: src/features/identityCheck/pages/identification/ubble/IdentityCheckPending.tsx
 msgid "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
 msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
 
@@ -1371,12 +1371,12 @@ msgid "Je découvre les offres"
 msgstr "Je découvre les offres"
 
 #: src/features/identityCheck/components/DMSModal.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Je suis de nationalité française"
 msgstr "Je suis de nationalité française"
 
 #: src/features/identityCheck/components/DMSModal.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Je suis de nationalité étrangère"
 msgstr "Je suis de nationalité étrangère"
 
@@ -1408,6 +1408,16 @@ msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations p
 #: src/features/profile/components/CreditExplanation/getCreditModal.ts
 msgid "J’ai dépensé tout mon crédit, que faire ?"
 msgstr "J’ai dépensé tout mon crédit, que faire ?"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "J’ai une carte d’identité ou un passeport"
+msgstr "J’ai une carte d’identité ou un passeport"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "J’ai une carte d’identité, un passeport"
+msgstr "J’ai une carte d’identité, un passeport"
 
 #: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
@@ -1472,7 +1482,7 @@ msgstr "La réservation a bien été archivée. Tu pourras la retrouver dans tes
 msgid "La réservation est annulable jusqu'au {formattedConfirmationDate}"
 msgstr "La réservation est annulable jusqu'au {formattedConfirmationDate}"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 msgstr "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 
@@ -1541,8 +1551,8 @@ msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque t
 msgid "Les données qu’on conserve :"
 msgstr "Les données qu’on conserve :"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.web.tsx
 msgid "Les informations extraites sont-elles correctes ?"
 msgstr "Les informations extraites sont-elles correctes ?"
 
@@ -1755,9 +1765,9 @@ msgstr "Mon crédit est expiré, que faire ?"
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.web.tsx
 msgid "Mon identité"
 msgstr "Mon identité"
 
@@ -1792,6 +1802,11 @@ msgstr "Mot de passe oublié"
 #: src/features/auth/login/Login.tsx
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "Munis-toi de ta pièce d’identité et débloque ton crédit !"
+msgstr "Munis-toi de ta pièce d’identité et débloque ton crédit !"
 
 #: src/libs/parsers/venueType.ts
 msgid "Musique - Disquaire"
@@ -2039,8 +2054,8 @@ msgstr "Oups, cette offre n’est plus disponible !"
 
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/home/components/NoContentError.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/pages/identification/ubble/IdentityCheckPending.tsx
 #: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
@@ -2065,7 +2080,7 @@ msgstr "Ouvrir le gestionnaire mail"
 msgid "Ouvrir le gestionnaire mail pour contacter le support"
 msgstr "Ouvrir le gestionnaire mail pour contacter le support"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm.web.tsx
 msgid "Ouvrir un onglet ÉduConnect"
 msgstr "Ouvrir un onglet ÉduConnect"
 
@@ -2242,6 +2257,11 @@ msgstr "Politique des cookies"
 msgid "Possibilité de réserver 2 places."
 msgstr "Possibilité de réserver 2 places."
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "Pour cela, nous avons besoin de vérifier ton identité."
+msgstr "Pour cela, nous avons besoin de vérifier ton identité."
+
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
@@ -2279,8 +2299,8 @@ msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm.web.tsx
 msgid "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 msgstr "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 
@@ -2310,11 +2330,11 @@ msgstr "Pratique artistiques"
 msgid "Prends 1 minute"
 msgstr "Prends 1 minute"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "Prends une photo de ta"
 msgstr "Prends une photo de ta"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 msgstr "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 
@@ -2516,9 +2536,9 @@ msgstr "Retour"
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 #: src/features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect.tsx
+#: src/features/identityCheck/pages/identification/ubble/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 #: src/features/navigation/PageNotFound.tsx
@@ -2767,7 +2787,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
 msgstr "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
 msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
 
@@ -2845,12 +2865,12 @@ msgstr "Sélectionne ton statut"
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.web.tsx
 msgid "Ta date de naissance"
 msgstr "Ta date de naissance"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
+#: src/features/identityCheck/pages/identification/ubble/IdentityCheckEnd.tsx
 msgid "Ta pièce d’identité a bien été transmise !"
 msgstr "Ta pièce d’identité a bien été transmise !"
 
@@ -2874,7 +2894,7 @@ msgstr "Terminer ma réservation"
 msgid "Tes réponses vont nous aider à mieux te connaître."
 msgstr "Tes réponses vont nous aider à mieux te connaître."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Titre de séjour, carte d'identité ou passeport."
 msgstr "Titre de séjour, carte d'identité ou passeport."
 
@@ -2972,7 +2992,7 @@ msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 msgid "Ton inscription est en cours de traitement."
 msgstr "Ton inscription est en cours de traitement."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
+#: src/features/identityCheck/pages/identification/ubble/IdentityCheckPending.tsx
 msgid "Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé."
 msgstr "Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé."
 
@@ -3000,8 +3020,8 @@ msgstr "Ton mot de passe est modifié !"
 msgid "Ton nom"
 msgstr "Ton nom"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.web.tsx
 msgid "Ton nom de famille"
 msgstr "Ton nom de famille"
 
@@ -3022,8 +3042,8 @@ msgstr "Ton nouveau mot de passe"
 msgid "Ton numéro de téléphone"
 msgstr "Ton numéro de téléphone"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.web.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton prénom"
 msgstr "Ton prénom"
@@ -3072,7 +3092,7 @@ msgid "Toutes les catégories"
 msgstr "Toutes les catégories"
 
 #: src/features/identityCheck/components/DMSModal.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "Transmettre un document"
 msgstr "Transmettre un document"
 
@@ -3179,7 +3199,7 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Tu n'as pas de smartphone ?"
 msgstr "Tu n'as pas de smartphone ?"
 
@@ -3347,7 +3367,7 @@ msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm.web.tsx
 msgid "Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
 msgstr "Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
 
@@ -3467,8 +3487,8 @@ msgstr "Valider et continuer"
 msgid "Valider la date"
 msgstr "Valider la date"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.tsx
+#: src/features/identityCheck/pages/identification/educonnect/IdentityCheckValidation.web.tsx
 msgid "Valider mes informations"
 msgstr "Valider mes informations"
 
@@ -3567,11 +3587,11 @@ msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notr
 msgid "Vérification d'identité"
 msgstr "Vérification d'identité"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "Vérification de l'identité"
 msgstr "Vérification de l'identité"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Vérification par smartphone"
 msgstr "Vérification par smartphone"
 
@@ -3587,7 +3607,7 @@ msgstr "Vérifie que tu as un bon réseau"
 msgid "Vérifie ton identité"
 msgstr "Vérifie ton identité"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Vérifie ton identité sur ton smartphone"
 msgstr "Vérifie ton identité sur ton smartphone"
 
@@ -3644,7 +3664,7 @@ msgstr "Oups ! Nous ne pouvons afficher correctement l'application car ton navi
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "carte d'identité"
 msgstr "carte d'identité"
 
@@ -3707,7 +3727,7 @@ msgstr "Tu as jusqu’au {deadline} pour faire ta demande"
 msgid "en cours"
 msgstr "en cours"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "en cours de validité pour accéder à ton pass Culture."
 msgstr "en cours de validité pour accéder à ton pass Culture."
 
@@ -3738,6 +3758,11 @@ msgstr "et si tu as..."
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
 msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "français"
+msgstr "français"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "genre"
@@ -3811,15 +3836,20 @@ msgstr "offerId is undefined"
 msgid "ou"
 msgstr "ou"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "ou de ton"
 msgstr "ou de ton"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "ou un titre de séjour français"
+msgstr "ou un titre de séjour français"
 
 #: src/features/navigation/RootNavigator/linking/getPathFromState.ts
 msgid "page-introuvable"
 msgstr "page-introuvable"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "passeport"
 msgstr "passeport"
 
@@ -4092,3 +4122,8 @@ msgstr "à faire"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
+msgid "étranger"
+msgstr "étranger"
