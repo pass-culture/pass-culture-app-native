@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import Package from '__mocks__/package.json'
 import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
@@ -54,6 +55,7 @@ describe('<NewConsentSettings/>', () => {
     fireEvent.press(saveChoice)
 
     const storageContent = {
+      buildVersion: Package.build,
       deviceId,
       choiceDatetime: Today.toISOString(),
       consent: {

@@ -1,5 +1,10 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import * as CookiesExpiration from 'features/cookies/helpers/isConsentChoiceExpired'
+import * as Cookies from 'features/cookies/helpers/useCookies'
+import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -11,6 +16,25 @@ const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: fal
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))
+
+const defaultUseCookies = {
+  cookiesConsent: {
+    mandatory: COOKIES_BY_CATEGORY.essential,
+    accepted: ALL_OPTIONAL_COOKIES,
+    refused: [],
+  },
+  setCookiesConsent: jest.fn(),
+  setUserId: jest.fn(),
+}
+const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
+
+const mockUseIsCookiesListUpToDate = jest
+  .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
+  .mockReturnValue(true)
+
+const mockIsConsentExpired = jest
+  .spyOn(CookiesExpiration, 'isConsentChoiceExpired')
+  .mockResolvedValue(false)
 
 describe('<PrivacyPolicy />', () => {
   describe('Cookies Modal V1', () => {
@@ -94,14 +118,54 @@ describe('<PrivacyPolicy />', () => {
     })
 
     it('should show cookies modal V2 when appEnableCookiesV2 feature flag is activated', async () => {
-      const renderAPI = render(<PrivacyPolicy />, {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      mockUseCookies.mockReturnValueOnce({ ...defaultUseCookies, cookiesConsent: undefined })
+      const renderAPI = await renderPrivacyPolicyV2()
+
+      const title = renderAPI.queryByText('Choisir les cookies')
+      expect(title).toBeTruthy()
+    })
+
+    it('should not show cookies modal V2 when appEnableCookiesV2 feature flag is activated and user has made consent choice', async () => {
+      const renderAPI = await renderPrivacyPolicyV2()
+
+      const title = renderAPI.queryByText('Choisir les cookies')
+      expect(title).toBeNull()
+    })
+
+    it('should not show cookies modal V2 when user has made a consent choice', async () => {
+      const renderAPI = await renderPrivacyPolicyV2()
+
+      const title = renderAPI.queryByText('Choisir les cookies')
+      await waitForExpect(() => {
+        expect(title).toBeNull()
       })
-      await flushAllPromisesWithAct()
+    })
+
+    it('should show cookies modal V2 when user has made a consent choice but consent has expired', async () => {
+      mockIsConsentExpired.mockResolvedValueOnce(true)
+
+      const renderAPI = await renderPrivacyPolicyV2()
+
+      const title = renderAPI.queryByText('Choisir les cookies')
+      expect(title).toBeTruthy()
+    })
+
+    it('should show cookies modal V2 when user has made a consent choice but cookies list is not up to date', async () => {
+      mockUseIsCookiesListUpToDate.mockReturnValueOnce(false)
+
+      const renderAPI = await renderPrivacyPolicyV2()
 
       const title = renderAPI.queryByText('Choisir les cookies')
       expect(title).toBeTruthy()
     })
   })
 })
+
+const renderPrivacyPolicyV2 = async () => {
+  const renderAPI = render(<PrivacyPolicy />, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+  await flushAllPromisesWithAct()
+  return renderAPI
+}

@@ -9,6 +9,7 @@ export interface Consent {
 }
 
 export interface CookiesConsent {
+  buildVersion: number
   consent: Consent
   deviceId: string
   choiceDatetime: string

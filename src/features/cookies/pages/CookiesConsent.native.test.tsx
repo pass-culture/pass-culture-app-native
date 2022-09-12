@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import Package from '__mocks__/package.json'
 import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTracking'
@@ -54,6 +55,7 @@ describe('<CookiesConsent/>', () => {
       await superFlushWithAct()
 
       const storageContent = {
+        buildVersion: Package.build,
         deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
@@ -128,6 +130,7 @@ describe('<CookiesConsent/>', () => {
       await superFlushWithAct()
 
       const storageContent = {
+        buildVersion: Package.build,
         deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
@@ -193,6 +196,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(saveChoice)
 
       const storageContent = {
+        buildVersion: Package.build,
         deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
