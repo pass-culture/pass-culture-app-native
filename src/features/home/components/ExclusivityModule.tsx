@@ -1,6 +1,5 @@
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
-import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
@@ -9,6 +8,7 @@ import { ContentTypes, ExclusivityPane } from 'features/home/contentful'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
+import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -21,7 +21,7 @@ export interface ExclusivityModuleProps extends ExclusivityPane {
 const UnmemoizedExclusivityModule = ({
   title,
   alt,
-  image,
+  image: imageUri,
   id,
   moduleId,
   display,
@@ -39,8 +39,6 @@ const UnmemoizedExclusivityModule = ({
     analytics.logConsultOffer({ offerId: id, moduleName: title, moduleId, from: 'exclusivity' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
-
-  const source = useMemo(() => ({ uri: image }), [image])
 
   const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position, maxPrice)
 
@@ -68,7 +66,7 @@ const UnmemoizedExclusivityModule = ({
           onBlur={() => setIsFocus(false)}
           isFocus={isFocus}
           testID="imageExclu">
-          <Image source={source} accessible={false} accessibilityLabel={alt} />
+          <Image uri={imageUri} accessible={false} accessibilityLabel={alt} />
         </StyledTouchableLink>
       </ImageContainer>
       <Spacer.Row numberOfSpaces={6} />

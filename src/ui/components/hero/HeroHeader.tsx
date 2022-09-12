@@ -2,6 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { Image } from 'libs/resizing-image-on-demand/Image'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
@@ -42,7 +43,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
             width={appContentWidth}
             blurRadius={blurImageRadius}
             resizeMode="cover"
-            source={{ uri: props.imageUrl }}
+            uri={props.imageUrl}
             // @ts-ignore TODO(kopax): remove when https://github.com/necolas/react-native-web/issues/2139 is fixed
             {...blurImageTransform}
           />
@@ -67,7 +68,7 @@ const BackgroundContainer = styled.View({
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
 
-const BlurImage = styled.Image<{ height: number; width: number }>((props) => ({
+const BlurImage = styled(Image)<{ height: number; width: number }>((props) => ({
   height: props.height,
   width: props.width,
 }))

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ArrowNextDouble as DefaultArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
 import { getSpacing } from 'ui/theme'
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 export const Cover = (props: Props) => {
   return (
     <Container height={props.height} width={props.width}>
-      <Image source={{ uri: props.uri }} testID="coverImage" />
+      <StyledImage uri={props.uri} testID="coverImage" />
       <ArrowsContainer>
         <ArrowMarginContainer>
           <ArrowNextDouble />
@@ -29,7 +30,7 @@ const Container = styled.View<{ width: number; height: number }>(({ width, heigh
   justifyContent: 'center',
 }))
 
-const Image = styled.Image(({ theme }) => ({
+const StyledImage = styled(Image)(({ theme }) => ({
   height: '100%',
   width: '100%',
   borderRadius: theme.borderRadius.radius,

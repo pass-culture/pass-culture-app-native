@@ -9,6 +9,8 @@ import { openUrl } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
+import { Image } from 'libs/resizing-image-on-demand/Image'
+import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -30,7 +32,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     firstLine,
     secondLine,
     leftIcon,
-    image,
+    image: imageUri,
     url,
     homeEntryId,
     index,
@@ -96,14 +98,14 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
         isFocus={isFocus}
         disabled={isDisabled}>
         <ImageContainer>
-          <ImageBackground
-            source={{ uri: image }}
+          <StyledImageBackground
+            uri={imageUri}
             height={imageHeight}
             width={imageWidth}
             testID="imageBusiness">
             <Container>
               <IconContainer>
-                {leftIcon ? <Image source={{ uri: leftIcon }} /> : <IdeaIcon />}
+                {leftIcon ? <StyledImage uri={leftIcon} /> : <IdeaIcon />}
               </IconContainer>
               <TextContainer>
                 <ButtonText testID="firstLine">{firstLine}</ButtonText>
@@ -115,7 +117,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
                 </IconContainer>
               )}
             </Container>
-          </ImageBackground>
+          </StyledImageBackground>
         </ImageContainer>
       </StyledTouchableLink>
       <Spacer.Row numberOfSpaces={6} />
@@ -143,18 +145,20 @@ const ImageContainer = styled.View(({ theme }) => ({
   maxHeight: LENGTH_XS,
 }))
 
-const Image = styled.Image(({ theme }) => ({
+const StyledImage = styled(Image)(({ theme }) => ({
   width: getSpacing(14),
   height: getSpacing(14),
   tintColor: theme.colors.white,
 }))
 
-const ImageBackground = styled.ImageBackground<{ width: number; height: number }>((props) => ({
-  height: props.height,
-  width: props.width,
-  justifyContent: 'center',
-  backgroundColor: props.theme.colors.primary,
-}))
+const StyledImageBackground = styled(ImageBackground)<{ width: number; height: number }>(
+  (props) => ({
+    height: props.height,
+    width: props.width,
+    justifyContent: 'center',
+    backgroundColor: props.theme.colors.primary,
+  })
+)
 
 const Container = styled.View({
   flexDirection: 'row',

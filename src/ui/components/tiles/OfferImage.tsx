@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Platform } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
+import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
 
@@ -18,13 +19,12 @@ type Props = {
 } & SizeProps
 
 export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'small' }) => {
-  const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
   const Icon = mapCategoryToIcon(categoryId || null)
 
   return (
     <Container size={size}>
       {imageUrl ? (
-        <StyledFastImage source={source} resizeMode={FastImage.resizeMode.cover} size={size} />
+        <StyledFastImage uri={imageUrl} resizeMode={FastImage.resizeMode.cover} size={size} />
       ) : (
         <StyledImagePlaceholder Icon={Icon} />
       )}
@@ -32,7 +32,7 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'smal
   )
 }
 
-const StyledFastImage = styled(FastImage)<SizeProps>(({ theme, size }) => ({
+const StyledFastImage = styled(ResizedFastImage)<SizeProps>(({ theme, size }) => ({
   backgroundColor: theme.colors.greyLight,
   ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
   borderRadius: theme.tiles.borderRadius,
