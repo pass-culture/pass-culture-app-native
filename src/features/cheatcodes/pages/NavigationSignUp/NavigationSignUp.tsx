@@ -33,6 +33,10 @@ export function NavigationSignUp(): JSX.Element {
           onPress={() => navigate('NavigationIdentityCheck')}
         />
         <LinkToComponent
+          title={'NewIdentificationFlow 🎨'}
+          onPress={() => navigate('NewIdentificationFlow')}
+        />
+        <LinkToComponent
           title={'Email envoyé'}
           onPress={() =>
             navigate('SignupConfirmationEmailSent', {
