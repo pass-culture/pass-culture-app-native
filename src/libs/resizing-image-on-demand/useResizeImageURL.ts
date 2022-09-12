@@ -2,6 +2,7 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
+import { env } from 'libs/environment'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432
@@ -20,7 +21,7 @@ export const useResizeImageURL = (imageURL: string) => {
   const size = imageMaxSize * pixelRatio
 
   return imageURL.replace(
-    'https://storage.googleapis.com/passculture-metier-ehp-testing-assets',
-    `https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=${size}&filename=passculture-metier-ehp-testing-assets-fine-grained`
+    appSettings.objectStorageUrl,
+    `${env.RESIZE_IMAGE_ON_DEMAND_URL}/?size=${size}&filename=${env.GCP_IMAGE_COULD_STORAGE_NAME}`
   )
 }

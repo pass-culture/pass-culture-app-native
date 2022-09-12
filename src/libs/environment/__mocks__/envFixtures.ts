@@ -42,6 +42,7 @@ export const env: Environment = {
   FIREBASE_MESSAGINGSENDERID: 'FIREBASE_MESSAGINGSENDERID',
   FIREBASE_PROJECTID: 'FIREBASE_PROJECTID',
   FIREBASE_STORAGEBUCKET: 'FIREBASE_STORAGEBUCKET',
+  GCP_IMAGE_COULD_STORAGE_NAME: 'localhost-storage-v2',
   GOOGLE_PLAY_STORE_URL:
     'https://play.google.com/store/apps/details?id=app.passculture.webapp&hl=fr',
   IOS_APP_ID: 'app.ios',
@@ -51,6 +52,7 @@ export const env: Environment = {
   PUBLIC_URL: 'https://web.example.com',
   RECOMMENDATION_ENDPOINT: 'https://recommmendation-endpoint',
   RECOMMENDATION_TOKEN: 'recommmendation-token',
+  RESIZE_IMAGE_ON_DEMAND_URL: 'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com',
   SENTRY_DSN: 'SENTRY_DSN',
   SIGNIN_IDENTIFIER: '',
   SIGNIN_PASSWORD: '',
