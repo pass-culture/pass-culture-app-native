@@ -2,7 +2,6 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import Package from '__mocks__/package.json'
-import { api } from 'api/api'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
@@ -18,8 +17,6 @@ const COOKIES_CONSENT_KEY = 'cookies_consent'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 const deviceId = 'testUuidV4'
-
-jest.mock('api/api')
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
@@ -46,7 +43,7 @@ describe('<NewConsentSettings/>', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should save cookies consent information in storage and log choice when user partially accepts cookies', async () => {
+  it('should persist cookies consent information when user partially accepts cookies', async () => {
     const { getByText, getByTestId } = renderConsentSettings()
 
     const performanceSwitch = getByTestId('Interrupteur-performance')
@@ -67,15 +64,6 @@ describe('<NewConsentSettings/>', () => {
     }
     await waitFor(async () => {
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-      expect(api.postnativev1cookiesConsent).toBeCalledWith({
-        deviceId,
-        choiceDatetime: Today.toISOString(),
-        consent: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: COOKIES_BY_CATEGORY.performance,
-          refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
-        },
-      })
     })
   })
 

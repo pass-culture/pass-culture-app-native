@@ -3,6 +3,8 @@ import React from 'react'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { render } from 'tests/utils'
 
+jest.mock('features/profile/api')
+
 describe('<CookiesDetails/>', () => {
   it('should render correctly', async () => {
     const renderAPI = render(

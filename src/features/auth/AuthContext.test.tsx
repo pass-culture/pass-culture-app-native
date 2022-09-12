@@ -3,14 +3,17 @@ import { useQueryClient } from 'react-query'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { LoggedInQueryKeys, useLoginRoutine, useLogoutRoutine } from 'features/auth/AuthContext'
+import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
+import { CookiesConsent } from 'features/cookies/types'
 import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, superFlushWithAct } from 'tests/utils'
+
+jest.mock('features/profile/api')
 
 const mockSearchDispatch = jest.fn()
 const mockStagedSearchDispatch = jest.fn()
@@ -33,7 +36,23 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 const accessToken = 'access_token'
 const method = 'fromLogin'
 
+const COOKIES_CONSENT_KEY = 'cookies_consent'
+const cookiesChoice: CookiesConsent = {
+  buildVersion: 1001005,
+  deviceId: 'uuid',
+  choiceDatetime: new Date(2022, 9, 29).toISOString(),
+  consent: {
+    mandatory: COOKIES_BY_CATEGORY.essential,
+    accepted: ALL_OPTIONAL_COOKIES,
+    refused: [],
+  },
+}
+
 describe('AuthContext', () => {
+  beforeEach(async () => {
+    await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+  })
+
   describe('useLogoutRoutine', () => {
     it('should remove batch identifier', async () => {
       await renderUseLogoutRoutine()
@@ -82,13 +101,6 @@ describe('AuthContext', () => {
       expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
     })
 
-    it('should log cookies consent choice', async () => {
-      await renderUseLoginRoutine()
-
-      const cookiesConsentStorage = await storage.readObject('cookies_consent')
-      expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith(cookiesConsentStorage)
-    })
-
     it('should save access token to storage', async () => {
       await renderUseLoginRoutine()
 
@@ -112,8 +124,11 @@ describe('AuthContext', () => {
       it('should set user id in cookies consent storage', async () => {
         await renderUseLoginRoutine()
 
-        const cookiesConsentStorage = await storage.readObject('cookies_consent')
-        expect(cookiesConsentStorage).toEqual({ userId: FAKE_USER_ID })
+        const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsentStorage).toEqual({
+          ...cookiesChoice,
+          userId: FAKE_USER_ID,
+        })
       })
     })
 

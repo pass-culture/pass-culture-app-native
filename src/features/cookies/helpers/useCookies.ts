@@ -1,7 +1,10 @@
+import omit from 'lodash/omit'
 import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { api } from 'api/api'
 import { Consent, CookiesConsent } from 'features/cookies/types'
+import { useUserProfileInfo } from 'features/profile/api'
 import { storage } from 'libs/storage'
 
 import Package from '../../../../package.json'
@@ -13,6 +16,7 @@ export const getCookiesChoice = async () =>
 
 export const useCookies = () => {
   const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent>()
+  const { data: userProfileInfo } = useUserProfileInfo()
 
   useEffect(() => {
     getCookiesChoice().then((value) => {
@@ -26,22 +30,29 @@ export const useCookies = () => {
     setCookiesConsentInternalState(cookiesConsent)
 
     const oldCookiesChoice = await getCookiesChoice()
+
     const newCookiesChoice = {
       buildVersion: Package.build,
-      userId: oldCookiesChoice?.userId,
+      userId: oldCookiesChoice?.userId ?? userProfileInfo?.id,
       deviceId: oldCookiesChoice?.deviceId ?? uuidv4(),
       choiceDatetime: new Date().toISOString(),
       consent: cookiesConsent,
     }
-    await storage.saveObject(COOKIES_CONSENT_KEY, newCookiesChoice)
+
+    await persist(newCookiesChoice)
   }
 
   const setUserId = async (userId: number): Promise<void> => {
-    const cookiesChoice = await getCookiesChoice()
-    await storage.saveObject(COOKIES_CONSENT_KEY, {
-      ...cookiesChoice,
+    const oldCookiesChoice = await getCookiesChoice()
+
+    if (!oldCookiesChoice) return
+
+    const newCookiesChoice = {
+      ...oldCookiesChoice,
       userId,
-    })
+    }
+
+    await persist(newCookiesChoice)
   }
 
   return {
@@ -49,4 +60,10 @@ export const useCookies = () => {
     setCookiesConsent,
     setUserId,
   }
+}
+
+const persist = async (cookiesChoice: CookiesConsent) => {
+  await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+
+  await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
 }
