@@ -834,7 +834,7 @@ Object {
                           aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           class="css-view-1dbjc4n"
                           data-testid="offre Titane - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                           tabindex="0"
                         >
                           <div
@@ -911,7 +911,7 @@ Object {
                           aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           class="css-view-1dbjc4n"
                           data-testid="offre Bac Nord - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                           tabindex="0"
                         >
                           <div
@@ -988,7 +988,7 @@ Object {
                           aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           class="css-view-1dbjc4n"
                           data-testid="offre Black Widow - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                           tabindex="0"
                         >
                           <div
@@ -2570,7 +2570,7 @@ Object {
                         aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Titane - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -2647,7 +2647,7 @@ Object {
                         aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Bac Nord - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -2724,7 +2724,7 @@ Object {
                         aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Black Widow - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
                         tabindex="0"
                       >
                         <div

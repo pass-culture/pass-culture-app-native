@@ -1318,8 +1318,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
                               },
                               Object {
                                 "borderRadius": 8,
+                                "height": 360,
                                 "marginVertical": 4,
-                                "maxHeight": 360,
                               },
                             ]
                           }
@@ -1590,8 +1590,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
                               },
                               Object {
                                 "borderRadius": 8,
+                                "height": 360,
                                 "marginVertical": 4,
-                                "maxHeight": 360,
                               },
                             ]
                           }
@@ -1841,8 +1841,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
                               },
                               Object {
                                 "borderRadius": 8,
+                                "height": 360,
                                 "marginVertical": 4,
-                                "maxHeight": 360,
                               },
                             ]
                           }
@@ -2295,8 +2295,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
                           },
                           Object {
                             "borderRadius": 8,
+                            "height": 360,
                             "marginVertical": 4,
-                            "maxHeight": 360,
                           },
                         ]
                       }

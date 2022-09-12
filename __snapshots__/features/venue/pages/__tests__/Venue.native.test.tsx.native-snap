@@ -1648,8 +1648,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 },
                                 Object {
                                   "borderRadius": 8,
+                                  "height": 360,
                                   "marginVertical": 4,
-                                  "maxHeight": 360,
                                 },
                               ]
                             }
@@ -1920,8 +1920,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 },
                                 Object {
                                   "borderRadius": 8,
+                                  "height": 360,
                                   "marginVertical": 4,
-                                  "maxHeight": 360,
                                 },
                               ]
                             }
@@ -2171,8 +2171,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 },
                                 Object {
                                   "borderRadius": 8,
+                                  "height": 360,
                                   "marginVertical": 4,
-                                  "maxHeight": 360,
                                 },
                               ]
                             }
@@ -2625,8 +2625,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                             Object {
                               "borderRadius": 8,
+                              "height": 360,
                               "marginVertical": 4,
-                              "maxHeight": 360,
                             },
                           ]
                         }
