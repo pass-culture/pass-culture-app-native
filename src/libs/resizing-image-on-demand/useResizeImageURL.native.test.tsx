@@ -1,17 +1,22 @@
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 import { renderHook } from 'tests/utils'
 
 jest.mock('react-native', () => ({ useWindowDimensions: jest.fn() }))
 jest.mock('styled-components/native')
+jest.mock('features/auth/settings')
 
 const mockUseWindowDimensions = useWindowDimensions as jest.Mock
 mockUseWindowDimensions.mockReturnValue({ scale: 1 })
 
 const mockUseTheme = useTheme as jest.Mock
 mockUseTheme.mockReturnValue({ isDesktopViewport: false })
+
+const mockUseAppSettings = useAppSettings as jest.Mock
+mockUseAppSettings.mockReturnValue({ data: { enableFrontImageResizing: true } })
 
 describe('useResizeImageURL hook', () => {
   it('should return a smaller resized image URL on mobile', () => {
@@ -48,4 +53,12 @@ describe('useResizeImageURL hook', () => {
     expect(result.current).toEqual(expectedImageURL)
   })
 
+  it('should return the given image URL when the feature flag is off', () => {
+    mockUseAppSettings.mockReturnValueOnce({ data: { enableFrontImageResizing: false } })
+    const imageURL =
+      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/BF6Q'
+    const { result } = renderHook(() => useResizeImageURL(imageURL))
+
+    expect(result.current).toEqual(imageURL)
+  })
 })
