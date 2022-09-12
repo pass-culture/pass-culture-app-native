@@ -2,7 +2,6 @@ import React from 'react'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { env } from 'libs/environment'
 import { shareAppContent } from 'libs/share/shareApp/shareAppContent'
 import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
 import { fireEvent, render } from 'tests/utils/web'
@@ -11,7 +10,7 @@ jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
-const url = env.PASSCULTURE_DOWNLOAD_APP_URL
+const url = shareAppContent.url
 const message = shareAppContent.message
 
 describe('<ShareAppModal />', () => {

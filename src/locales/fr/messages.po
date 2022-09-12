@@ -2366,8 +2366,8 @@ msgid "Profite de ton crédit jusqu’au"
 msgstr "Profite de ton crédit jusqu’au"
 
 #: src/libs/share/shareApp/shareAppContent.ts
-msgid "Profite toi aussi de tous les bons plans du pass Culture"
-msgstr "Profite toi aussi de tous les bons plans du pass Culture"
+msgid "Profite toi aussi de tous les bons plans du pass Culture :"
+msgstr "Profite toi aussi de tous les bons plans du pass Culture :"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Proposition d'adresse {0} : {address}"

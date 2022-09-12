@@ -425,7 +425,7 @@ Object {
                                 aria-label="Ouvrir le gestionnaire mail"
                                 class="c4 c3"
                                 data-testid="Ouvrir le gestionnaire mail"
-                                href="mailto:?subject=Profite toi aussi de tous les bons plans du pass Culture&body=https://pass.culture.fr/nosapplications/"
+                                href="mailto:?subject=Profite toi aussi de tous les bons plans du pass Culture :&body=https://webapp-v2.example.com/accueil?utm_campaign=partage_app&utm_source=batch&utm_medium=app"
                                 tabindex="0"
                                 target="_blank"
                               >
@@ -479,7 +479,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpass.culture.fr%2Fnosapplications%2F&quote=Profite%20toi%20aussi%20de%20tous%20les%20bons%20plans%20du%20pass%20Culture"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Futm_campaign%3Dpartage_app%26utm_source%3Dbatch%26utm_medium%3Dapp&quote=Profite%20toi%20aussi%20de%20tous%20les%20bons%20plans%20du%20pass%20Culture%C2%A0%3A"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
@@ -512,7 +512,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://twitter.com/intent/tweet?text=Profite toi aussi de tous les bons plans du pass Culture&url=https://pass.culture.fr/nosapplications/"
+                                href="https://twitter.com/intent/tweet?text=Profite toi aussi de tous les bons plans du pass Culture :&url=https://webapp-v2.example.com/accueil?utm_campaign=partage_app&utm_source=batch&utm_medium=app"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
@@ -545,7 +545,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://api.whatsapp.com/send?text=Profite%20toi%20aussi%20de%20tous%20les%20bons%20plans%20du%20pass%20Culture%0Ahttps%3A%2F%2Fpass.culture.fr%2Fnosapplications%2F"
+                                href="https://api.whatsapp.com/send?text=Profite%20toi%20aussi%20de%20tous%20les%20bons%20plans%20du%20pass%20Culture%C2%A0%3A%0Ahttps%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Futm_campaign%3Dpartage_app%26utm_source%3Dbatch%26utm_medium%3Dapp"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
@@ -578,7 +578,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://telegram.me/share/msg?url=https://pass.culture.fr/nosapplications/&text=Profite toi aussi de tous les bons plans du pass Culture"
+                                href="https://telegram.me/share/msg?url=https://webapp-v2.example.com/accueil?utm_campaign=partage_app&utm_source=batch&utm_medium=app&text=Profite toi aussi de tous les bons plans du pass Culture :"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
