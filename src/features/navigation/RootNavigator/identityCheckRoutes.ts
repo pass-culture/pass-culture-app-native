@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 
 import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
+import { NewIdentificationFlow } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck/NewIdentificationFlow/NewIdentificationFlow'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
@@ -13,6 +14,7 @@ import { IdentityCheckValidation } from 'features/identityCheck/pages/identifica
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
+import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
@@ -49,6 +51,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: NavigationIdentityCheck,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-identity-check',
+  },
+  {
+    // debug route: in navigation component
+    name: 'NewIdentificationFlow',
+    component: NewIdentificationFlow,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-navigation-new-identification-flow',
   },
   // Stepper
   {
@@ -209,5 +218,11 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: EduConnectErrors,
     path: 'educonnect/erreur',
     options: { title: t`Erreur` },
+  },
+  // New Identification Flow
+  {
+    name: 'SelectIDOrigin',
+    component: SelectIDOrigin,
+    path: 'identification/origine-document-identite',
   },
 ]

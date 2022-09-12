@@ -1,4 +1,4 @@
-import { getStateFromPath, PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
+import { getStateFromPath, ParamListBase, PathConfig, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
@@ -22,8 +22,10 @@ export type CulturalSurveyRootStackParamList = {
 }
 
 export type IdentityCheckRootStackParamList = {
+  // Cheatcodes
   NavigationSignUp: undefined
   NavigationIdentityCheck: undefined
+  NewIdentificationFlow: undefined
   // Stepper
   IdentityCheckStepper: undefined
   // PhoneValidation
@@ -50,6 +52,7 @@ export type IdentityCheckRootStackParamList = {
     dateOfBirth?: string
     logoutUrl?: string
   }
+  SelectIDOrigin: undefined
   // TODO(PC-12433): this duplicate route is required until we solve PC-12433
   Validation: {
     firstName?: string
