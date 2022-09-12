@@ -47,7 +47,7 @@ const ChoiceContainer = styled(TouchableOpacity)(({ theme }) => ({
   border: getSpacing(0.25),
   borderRadius: getSpacing(1.8),
   borderColor: theme.colors.greySemiDark,
-  minHeight: getSpacing(18),
+  minHeight: getSpacing(23),
   paddingHorizontal: getSpacing(4),
   padding: getSpacing(4),
 }))
