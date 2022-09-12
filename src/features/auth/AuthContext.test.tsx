@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQueryClient } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
@@ -11,8 +10,7 @@ import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook } from 'tests/utils'
-import { flushAllPromisesWithAct } from 'tests/utils'
+import { act, renderHook, superFlushWithAct } from 'tests/utils'
 
 const mockSearchDispatch = jest.fn()
 const mockStagedSearchDispatch = jest.fn()
@@ -88,9 +86,7 @@ describe('AuthContext', () => {
       await renderUseLoginRoutine()
 
       const cookiesConsentStorage = await storage.readObject('cookies_consent')
-      await waitForExpect(() => {
-        expect(api.postnativev1cookiesConsent).toBeCalledWith(cookiesConsentStorage)
-      })
+      expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith(cookiesConsentStorage)
     })
 
     it('should save access token to storage', async () => {
@@ -154,14 +150,16 @@ const renderUseLoginRoutine = async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  flushAllPromisesWithAct()
   const login = result.current
-  await login(
-    {
-      accessToken,
-      accountState: AccountState.ACTIVE,
-      refreshToken: 'refresh_token',
-    },
-    method
-  )
+  await act(async () => {
+    await login(
+      {
+        accessToken,
+        accountState: AccountState.ACTIVE,
+        refreshToken: 'refresh_token',
+      },
+      method
+    )
+  })
+  await superFlushWithAct()
 }
