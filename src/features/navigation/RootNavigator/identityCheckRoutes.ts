@@ -17,6 +17,10 @@ import { IdentityCheckStart } from 'features/identityCheck/pages/identification/
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
+import {
+  PhoneValidationTooManyAttempts,
+  PhoneValidationTooManySMSSent,
+} from 'features/identityCheck/pages/phoneValidation/errors'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
@@ -67,6 +71,18 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: SetPhoneValidationCode,
     path: 'creation-compte/code-de-validation-telephone',
     options: { title: t`Validation du numéro de téléphone` },
+  },
+  {
+    name: 'PhoneValidationTooManyAttempts',
+    component: PhoneValidationTooManyAttempts,
+    path: 'creation-compte/code-de-validation-trop-d-essais',
+    options: { title: t`Validation téléphone - Trop d'essais` },
+  },
+  {
+    name: 'PhoneValidationTooManySMSSent',
+    component: PhoneValidationTooManySMSSent,
+    path: 'creation-compte/code-de-validation-trop-de-sms',
+    options: { title: t`Validation téléphone - Trop de SMS envoyés` },
   },
   // Profile
   {

@@ -1,20 +1,22 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { CountryCode } from 'libphonenumber-js'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/api'
+import {
+  usePhoneValidationRemainingAttempts,
+  useValidatePhoneNumberMutation,
+} from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/utils'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import {
   IdentityCheckRootStackParamList,
   UseNavigationType,
@@ -42,16 +44,26 @@ export const SetPhoneValidationCode = () => {
         phoneValidation?.country.countryCode as CountryCode
       )
     : ''
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, dispatch } = useNavigation<UseNavigationType>()
+  const { remainingAttempts } = usePhoneValidationRemainingAttempts()
 
-  useFocusEffect(
-    useCallback(() => {
-      if (!phoneValidation) {
-        setTimeout(() => navigate('SetPhoneNumber'))
-      }
-    }, [phoneValidation, navigate])
-  )
+  // We amend our navigation history to replace "SetPhoneNumber" with "PhoneValidationTooManySMSSent"
+  const goBackToPhoneValidationTooManySMSSent = () => {
+    dispatch((state) => {
+      // Here we check the index of our 'IdentityCheckStepper' page in our navigation stack
+      const stepperIndex = state.routes.findIndex((route) => route.name === 'IdentityCheckStepper')
+      // Here we reset the routes parameter, taking all pages up to IdentityCheckStepper and adding 'PhoneValidationTooManySMSSent'
+      // The ternary is used to prevent edge case crashes. stepperIndex could return -1 if we were brought to this page
+      // without going through the stepper, e.g. through a deeplink.
+      const routes =
+        stepperIndex === -1
+          ? [...state.routes, { name: 'PhoneValidationTooManySMSSent' }]
+          : [...state.routes.slice(0, stepperIndex + 1), { name: 'PhoneValidationTooManySMSSent' }]
+      // Here we reset the state AND navigate to the page whose index is given to the "index" parameter.
+      // Therefore, we navigate to "PhoneValidationTooManySMSSent"
+      return CommonActions.reset({ ...state, routes, index: routes.length - 1 })
+    })
+  }
 
   const [codeInputState, setCodeInputState] = useState({
     code: '',
@@ -66,7 +78,7 @@ export const SetPhoneValidationCode = () => {
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: () => {
-      navigateToNextScreen()
+      navigate('IdentityCheckStepper')
     },
     onError: (err: unknown | ApiError) => {
       const { content } = err as ApiError
@@ -97,9 +109,15 @@ export const SetPhoneValidationCode = () => {
     await amplitude().logEvent('young18_set_phone_validation_code_clicked_front')
   }
 
+  const enterCodeInstructions =
+    formattedPhoneNumber === ''
+      ? t`Saisis le code reçu par SMS.`
+      : t`Saisis le code reçu au` + ` ${formattedPhoneNumber}.`
+
   return (
     <PageWithHeader
       title={t`Numéro de téléphone`}
+      onGoBack={remainingAttempts === 0 ? goBackToPhoneValidationTooManySMSSent : undefined}
       fixedTopChildren={
         <React.Fragment>
           <CenteredTitle titleID={titleID} title={t`Valide ton numéro de téléphone`} />
@@ -109,7 +127,7 @@ export const SetPhoneValidationCode = () => {
       scrollChildren={
         <Form.MaxWidth>
           <View aria-labelledby={titleID}>
-            <StyledBody>{t`Saisis le code reçu au` + ` ${formattedPhoneNumber}.`}</StyledBody>
+            <StyledBody>{enterCodeInstructions}</StyledBody>
             <Spacer.Column numberOfSpaces={6} />
             <InputContainer>
               <TextInput

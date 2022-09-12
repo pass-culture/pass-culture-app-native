@@ -33,8 +33,6 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
-import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
-import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
@@ -371,18 +369,6 @@ export const routes: Route[] = [
     options: { title: t`Email création de compte expiré` },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  {
-    name: 'PhoneValidationTooManyAttempts',
-    component: PhoneValidationTooManyAttempts,
-    path: 'creation-compte/code-de-validation-trop-d-essais',
-    options: { title: t`Validation téléphone - Trop d'essais` },
-  },
-  {
-    name: 'PhoneValidationTooManySMSSent',
-    component: PhoneValidationTooManySMSSent,
-    path: 'creation-compte/code-de-validation-trop-de-sms',
-    options: { title: t`Validation téléphone - Trop de SMS envoyés` },
-  },
   {
     name: 'VerifyEligibility',
     component: VerifyEligibility,

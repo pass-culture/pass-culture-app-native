@@ -1,15 +1,27 @@
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
 
 let mockNextSubscriptionStep = mockStep
 let mockIdentityCheckState = mockState
+const mockRemainingAttempts = {
+  remainingAttempts: 5,
+  counterResetDatetime: 'time',
+  isLastAttempt: false,
+}
 
 jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),
 }))
+
+jest.mock('features/identityCheck/api/api')
+
+const mockUsePhoneValidationRemainingAttempts = (
+  usePhoneValidationRemainingAttempts as jest.Mock
+).mockReturnValue(mockRemainingAttempts)
 
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: jest.fn(() => ({
@@ -52,5 +64,34 @@ describe('useIdentityCheckSteps', () => {
     }
     const steps = useIdentityCheckSteps()
     expect(steps[0].screens.includes('IdentityCheckSchoolType')).toEqual(false)
+  })
+  it('should include only PhoneValidationTooManySMSSent if no remaining attempts left', () => {
+    mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+      remainingAttempts: 0,
+      counterResetDatetime: 'time',
+      isLastAttempt: false,
+    })
+    mockNextSubscriptionStep = {
+      ...mockStep,
+      stepperIncludesPhoneValidation: true,
+    }
+    const steps = useIdentityCheckSteps()
+
+    expect(steps[0].screens.includes('PhoneValidationTooManySMSSent')).toEqual(true)
+    expect(steps[0].screens.length).toEqual(1)
+  })
+  it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
+    mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
+      remainingAttempts: 1,
+      counterResetDatetime: 'time',
+      isLastAttempt: false,
+    })
+    mockNextSubscriptionStep = {
+      ...mockStep,
+      stepperIncludesPhoneValidation: true,
+    }
+    const steps = useIdentityCheckSteps()
+
+    expect(steps[0].screens.includes('PhoneValidationTooManySMSSent')).toEqual(false)
   })
 })
