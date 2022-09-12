@@ -7,6 +7,7 @@ import { render, fireEvent } from 'tests/utils/web'
 
 import { ExclusivityModule, ExclusivityModuleProps } from '../ExclusivityModule'
 
+jest.mock('features/auth/settings')
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
