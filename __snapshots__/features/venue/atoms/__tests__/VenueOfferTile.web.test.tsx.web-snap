@@ -14,7 +14,7 @@ Object {
           aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
           class="css-view-1dbjc4n"
           data-testid="offre Mensch ! Où sont les Hommes ?"
-          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 172px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 172px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
           tabindex="0"
         >
           <div
@@ -85,7 +85,7 @@ Object {
         aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
         class="css-view-1dbjc4n"
         data-testid="offre Mensch ! Où sont les Hommes ?"
-        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 172px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 172px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
         tabindex="0"
       >
         <div

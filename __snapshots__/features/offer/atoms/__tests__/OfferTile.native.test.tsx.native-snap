@@ -23,8 +23,8 @@ exports[`OfferTile component should render correctly 1`] = `
         },
         Object {
           "borderRadius": 8,
+          "height": 172,
           "marginVertical": 4,
-          "maxHeight": 172,
         },
       ]
     }

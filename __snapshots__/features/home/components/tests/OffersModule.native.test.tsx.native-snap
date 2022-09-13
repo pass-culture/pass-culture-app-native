@@ -681,8 +681,8 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                           },
                           Object {
                             "borderRadius": 8,
+                            "height": 360,
                             "marginVertical": 4,
-                            "maxHeight": 360,
                           },
                         ]
                       }
@@ -943,8 +943,8 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                           },
                           Object {
                             "borderRadius": 8,
+                            "height": 360,
                             "marginVertical": 4,
-                            "maxHeight": 360,
                           },
                         ]
                       }
@@ -1190,8 +1190,8 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                           },
                           Object {
                             "borderRadius": 8,
+                            "height": 360,
                             "marginVertical": 4,
-                            "maxHeight": 360,
                           },
                         ]
                       }
@@ -1435,8 +1435,8 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                           },
                           Object {
                             "borderRadius": 8,
+                            "height": 360,
                             "marginVertical": 4,
-                            "maxHeight": 360,
                           },
                         ]
                       }
@@ -1646,8 +1646,8 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                       },
                       Object {
                         "borderRadius": 8,
+                        "height": 360,
                         "marginVertical": 4,
-                        "maxHeight": 360,
                       },
                     ]
                   }
