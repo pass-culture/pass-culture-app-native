@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { navigateToHome } from 'features/navigation/helpers'
+import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 jest.mock('features/culturalSurvey/useGetNextQuestion')
@@ -25,10 +26,24 @@ describe('CulturalSurveyIntro page', () => {
     })
   })
 
+  it('should log hasStartedCulturalSurvey event when pressing Débuter le questionnaire', () => {
+    const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
+    const StartButton = CulturalSurveyIntroPage.getByTestId('start-cultural-survey')
+    fireEvent.press(StartButton)
+    expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalled()
+  })
+
   it('should navigate to home when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const LaterButton = CulturalSurveyIntroPage.getByTestId('answer-survey-later')
     fireEvent.press(LaterButton)
     expect(navigateToHome).toHaveBeenCalled()
+  })
+
+  it('should log hasSkippedCulturalSurvey event when pressing Plus tard', () => {
+    const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
+    const LaterButton = CulturalSurveyIntroPage.getByTestId('answer-survey-later')
+    fireEvent.press(LaterButton)
+    expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalled()
   })
 })
