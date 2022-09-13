@@ -6,17 +6,19 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ModalIconProps } from './types'
 
-type ModalHeaderProps = {
+export type ModalHeaderProps = {
   title: string
   titleID?: string
   boldTitle?: boolean
   numberOfLines?: number
+  modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
 } & ModalIconProps
 
@@ -31,6 +33,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   onRightIconPress,
   boldTitle = false,
   numberOfLines = 2,
+  modalSpacing,
   onLayout,
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
@@ -46,7 +49,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     }))``
 
   return (
-    <Container onLayout={onLayout} testID="modalHeader">
+    <Container onLayout={onLayout} testID="modalHeader" modalSpacing={modalSpacing}>
       <LeftHeaderActionContainer>
         {!!LeftIcon && (
           <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
@@ -71,12 +74,13 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ modalSpacing?: ModalSpacing }>(({ modalSpacing }) => ({
   display: 'flex',
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'center',
-})
+  ...(modalSpacing ? { padding: modalSpacing } : {}),
+}))
 
 const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',

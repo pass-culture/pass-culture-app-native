@@ -133,5 +133,21 @@ describe('<AppModal />', () => {
 
       expect(modalContainer.props.height).toEqual(418)
     })
+
+    it('should display a custom modal header if specified', () => {
+      const modalProps: AppModalProps = { ...defaultProps, customModalHeader: <React.Fragment /> }
+      const { getByTestId } = render(<AppModal {...modalProps} />)
+      const customModalHeader = getByTestId('customModalHeader')
+
+      expect(customModalHeader).toBeTruthy()
+    })
+
+    it('should display a fixed modal bottom if specified', () => {
+      const modalProps: AppModalProps = { ...defaultProps, fixedModalBottom: <React.Fragment /> }
+      const { getByTestId } = render(<AppModal {...modalProps} />)
+      const fixedModalBottom = getByTestId('fixedModalBottom')
+
+      expect(fixedModalBottom).toBeTruthy()
+    })
   })
 })

@@ -149,4 +149,13 @@ describe('<AppModal />', () => {
     })
     expect(renderAPI).toMatchSnapshot()
   })
+
+  it('should display fullscreen modal scroll view if isFullscreen = true', () => {
+    const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true }
+    const { getByTestId } = render(<AppModal {...modalProps} />)
+
+    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+
+    expect(fullscreenModalScrollView).toBeTruthy()
+  })
 })
