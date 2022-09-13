@@ -255,5 +255,9 @@ export const analytics = {
       index,
       homeEntryId,
     }),
+  logHasStartedCulturalSurvey: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_STARTED_CULTURAL_SURVEY),
+  logHasSkippedCulturalSurvey: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_SKIPPED_CULTURAL_SURVEY),
   useInit,
 }

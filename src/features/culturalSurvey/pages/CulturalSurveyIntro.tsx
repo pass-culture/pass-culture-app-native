@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
@@ -28,11 +29,12 @@ export const CulturalSurveyIntro = (): JSX.Element => {
       <Spacer.Flex flex={1} />
       <View>
         <ButtonPrimary
-          onPress={() =>
+          onPress={() => {
+            analytics.logHasStartedCulturalSurvey()
             navigate('CulturalSurveyQuestions', {
               question: initialQuestions[0],
             })
-          }
+          }}
           wording={t`Débuter le questionnaire`}
           testID={'start-cultural-survey'}
         />
@@ -40,7 +42,10 @@ export const CulturalSurveyIntro = (): JSX.Element => {
       <ButtonTertiaryBlackContainer>
         <ButtonTertiaryBlack
           wording={t`Plus tard`}
-          onPress={navigateToHome}
+          onPress={() => {
+            analytics.logHasSkippedCulturalSurvey()
+            navigateToHome()
+          }}
           icon={ClockFilled}
           testID={'answer-survey-later'}
         />
