@@ -24,7 +24,7 @@ const mockUseAppSettings = useAppSettings as jest.Mock
 mockUseAppSettings.mockReturnValue({ data: mockDefaultSettings })
 
 describe('useResizeImageURL hook', () => {
-  it('should return a smaller resized image URL on mobile', () => {
+  it('should return a smaller resized image URL on a small screen', () => {
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
     const { result } = renderHook(() => useResizeImageURL(imageURL))
 
@@ -33,7 +33,7 @@ describe('useResizeImageURL hook', () => {
     expect(result.current).toEqual(expectedImageURL)
   })
 
-  it('should return a larger resized image URL on web', () => {
+  it('should return a larger resized image URL on a big screen', () => {
     mockUseTheme.mockReturnValueOnce({
       isDesktopViewport: true,
     })
@@ -45,7 +45,7 @@ describe('useResizeImageURL hook', () => {
     expect(result.current).toEqual(expectedImageURL)
   })
 
-  it('should return a smaller resized image URL when the pixel density is 2', () => {
+  it('should return a bigger resized image URL when the pixel density is 2', () => {
     mockUseWindowDimensions.mockReturnValueOnce({ scale: 2 })
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
     const { result } = renderHook(() => useResizeImageURL(imageURL))
