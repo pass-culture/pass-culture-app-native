@@ -43,7 +43,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
             width={appContentWidth}
             blurRadius={blurImageRadius}
             resizeMode="cover"
-            uri={props.imageUrl}
+            url={props.imageUrl}
             // @ts-ignore TODO(kopax): remove when https://github.com/necolas/react-native-web/issues/2139 is fixed
             {...blurImageTransform}
           />

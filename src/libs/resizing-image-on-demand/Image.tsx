@@ -4,14 +4,14 @@ import { Image as RNImage, ImageProps } from 'react-native'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 
 type Props = Omit<ImageProps, 'source'> & {
-  uri: string
+  url: string
   children?: never
 }
 
-export const Image: FunctionComponent<Props> = ({ uri, ...imageProps }) => {
-  const resizingImageURI = useResizeImageURL(uri)
+export const Image: FunctionComponent<Props> = ({ url, ...imageProps }) => {
+  const resizingImageURL = useResizeImageURL(url)
 
-  const source = useMemo(() => ({ uri: resizingImageURI }), [resizingImageURI])
+  const source = useMemo(() => ({ uri: resizingImageURL }), [resizingImageURL])
 
   return <RNImage source={source} {...imageProps} />
 }

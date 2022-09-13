@@ -24,7 +24,7 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'smal
   return (
     <Container size={size}>
       {imageUrl ? (
-        <StyledFastImage uri={imageUrl} resizeMode={FastImage.resizeMode.cover} size={size} />
+        <StyledFastImage url={imageUrl} resizeMode={FastImage.resizeMode.cover} size={size} />
       ) : (
         <StyledImagePlaceholder Icon={Icon} />
       )}

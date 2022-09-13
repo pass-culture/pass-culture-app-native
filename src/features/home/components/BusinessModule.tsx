@@ -32,7 +32,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     firstLine,
     secondLine,
     leftIcon,
-    image: imageUri,
+    image: imageURL,
     url,
     homeEntryId,
     index,
@@ -99,13 +99,13 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
         disabled={isDisabled}>
         <ImageContainer>
           <StyledImageBackground
-            uri={imageUri}
+            url={imageURL}
             height={imageHeight}
             width={imageWidth}
             testID="imageBusiness">
             <Container>
               <IconContainer>
-                {leftIcon ? <StyledImage uri={leftIcon} /> : <IdeaIcon />}
+                {leftIcon ? <StyledImage url={leftIcon} /> : <IdeaIcon />}
               </IconContainer>
               <TextContainer>
                 <ButtonText testID="firstLine">{firstLine}</ButtonText>

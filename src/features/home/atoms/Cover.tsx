@@ -13,7 +13,7 @@ interface Props {
 export const Cover = (props: Props) => {
   return (
     <Container height={props.height} width={props.width}>
-      <StyledImage uri={props.uri} testID="coverImage" />
+      <StyledImage url={props.uri} testID="coverImage" />
       <ArrowsContainer>
         <ArrowMarginContainer>
           <ArrowNextDouble />

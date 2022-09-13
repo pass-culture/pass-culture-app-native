@@ -21,7 +21,7 @@ export interface ExclusivityModuleProps extends ExclusivityPane {
 const UnmemoizedExclusivityModule = ({
   title,
   alt,
-  image: imageUri,
+  image: imageURL,
   id,
   moduleId,
   display,
@@ -66,7 +66,7 @@ const UnmemoizedExclusivityModule = ({
           onBlur={() => setIsFocus(false)}
           isFocus={isFocus}
           testID="imageExclu">
-          <Image uri={imageUri} accessible={false} accessibilityLabel={alt} />
+          <Image url={imageURL} accessible={false} accessibilityLabel={alt} />
         </StyledTouchableLink>
       </ImageContainer>
       <Spacer.Row numberOfSpaces={6} />

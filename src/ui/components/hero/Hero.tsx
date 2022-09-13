@@ -44,7 +44,7 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
         {imageUrl ? (
           <StyledFastImage
             style={imageStyle}
-            uri={imageUrl}
+            url={imageUrl}
             resizeMode={FastImage.resizeMode.cover}
           />
         ) : (
