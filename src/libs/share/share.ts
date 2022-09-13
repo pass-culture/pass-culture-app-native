@@ -5,7 +5,7 @@ import { analytics } from 'libs/firebase/analytics'
 export type ShareContent = {
   title?: string
   message: string
-  url: string
+  url?: string // Works with IOS only
 }
 
 type ShareOptions = Parameters<typeof Share.share>[1]
