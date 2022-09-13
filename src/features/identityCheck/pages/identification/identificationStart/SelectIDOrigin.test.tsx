@@ -1,20 +1,18 @@
 import React from 'react'
 
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
-import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
+import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
 import { render } from 'tests/utils'
 
-jest.mock('features/identityCheck/useIdentityCheckNavigation')
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: jest.fn(() => ({
     dispatch: jest.fn(),
     ...mockState,
   })),
 }))
-
-describe('<IdentityCheckEduConnect />', () => {
+describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<IdentityCheckEduConnect />)
+    const renderAPI = render(<SelectIDOrigin />)
     expect(renderAPI).toMatchSnapshot()
   })
 })

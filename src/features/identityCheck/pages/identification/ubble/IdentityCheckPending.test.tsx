@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { IdentityCheckPending } from 'features/identityCheck/pages/identification/IdentityCheckPending'
+import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render } from 'tests/utils'

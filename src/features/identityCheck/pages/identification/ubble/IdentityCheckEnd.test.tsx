@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
-import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
+import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
 import { render } from 'tests/utils'
 

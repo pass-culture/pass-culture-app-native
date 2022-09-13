@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { fireEvent, render } from 'tests/utils'
 
-import { IdentityCheckValidation } from '../IdentityCheckValidation'
+import { IdentityCheckValidation } from './IdentityCheckValidation'
 
 const mockNavigateToNextScreen = jest.fn()
 jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({

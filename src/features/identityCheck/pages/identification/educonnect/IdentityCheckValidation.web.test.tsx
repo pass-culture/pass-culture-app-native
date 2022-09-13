@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from 'tests/utils/web'
 
-import { IdentityCheckValidation } from '../IdentityCheckValidation'
+import { IdentityCheckValidation } from './IdentityCheckValidation'
 
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
 jest.mock('features/identityCheck/useIdentityCheckNavigation')
