@@ -10,7 +10,7 @@ jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
-const url = shareAppContent.url
+const url = shareAppContent.url || ''
 const message = shareAppContent.message
 
 describe('<ShareAppModal />', () => {
