@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Category } from 'features/search/sections/Category'
@@ -29,7 +28,7 @@ describe('Category component', () => {
     expect(getByText('Livres')).toBeTruthy()
   })
 
-  it('should redirect to the categories filter page when clicking on the category button', async () => {
+  it('should open the categories filter modal when clicking on the category button', async () => {
     const { getByTestId } = render(<Category />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
@@ -37,6 +36,8 @@ describe('Category component', () => {
 
     await fireEvent.press(categoryButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
+    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+
+    expect(fullscreenModalScrollView).toBeTruthy()
   })
 })

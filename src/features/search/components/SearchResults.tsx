@@ -2,7 +2,7 @@ import { plural } from '@lingui/macro'
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ActivityIndicator, ScrollView, View, Platform } from 'react-native'
+import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -14,7 +14,7 @@ import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/S
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
-import { CategoriesModal } from 'features/search/pages/CategoriesModal'
+import { Categories } from 'features/search/pages/Categories'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
@@ -76,8 +76,6 @@ export const SearchResults: React.FC = () => {
     hideModal: hideCategoriesModal,
   } = useModal(false)
   const theme = useTheme()
-  const { isDesktopViewport } = theme
-  const filterPageIsModal = Platform.OS === 'web' && isDesktopViewport
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
@@ -121,13 +119,8 @@ export const SearchResults: React.FC = () => {
   }, [stagedDispatch, navigate, searchState])
 
   const redirectToCategoryFilterPage = useCallback(() => {
-    if (filterPageIsModal) {
-      showCategoriesModal()
-      return
-    }
-
-    navigate('SearchCategories')
-  }, [filterPageIsModal, navigate, showCategoriesModal])
+    showCategoriesModal()
+  }, [showCategoriesModal])
 
   const redirectToPriceFilterPage = useCallback(() => {
     navigate('SearchPrice')
@@ -271,7 +264,12 @@ export const SearchResults: React.FC = () => {
           <Spacer.BottomScreen />
         </ScrollToTopContainer>
       )}
-      <CategoriesModal visible={categoriesModalVisible} dismissModal={hideCategoriesModal} />
+      <Categories
+        title="Catégories"
+        accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
+        isVisible={categoriesModalVisible}
+        hideModal={hideCategoriesModal}
+      />
     </React.Fragment>
   )
 }
