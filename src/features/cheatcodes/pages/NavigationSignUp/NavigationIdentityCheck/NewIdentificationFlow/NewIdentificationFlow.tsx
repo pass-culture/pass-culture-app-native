@@ -32,6 +32,11 @@ export function NewIdentificationFlow(): JSX.Element {
           title="SelectIDOrigin"
           onPress={() => navigate('SelectIDOrigin')}
         />
+        <LinkToComponent
+          name="SelectIDStatus"
+          title="SelectIDStatus"
+          onPress={() => navigate('SelectIDStatus')}
+        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
