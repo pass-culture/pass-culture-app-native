@@ -267,7 +267,7 @@ commands:
           name: Setup sentry credentials
           command: |
             echo "[defaults]" >> ~/.sentryclirc
-            echo "url=https://sentry.internal-passculture.app/" >> ~/.sentryclirc
+            echo "url=https://sentry.passculture.team/" >> ~/.sentryclirc
             echo "org=sentry" >> ~/.sentryclirc
             echo "project=application-native" >> ~/.sentryclirc
             echo "" >> ~/.sentryclirc
