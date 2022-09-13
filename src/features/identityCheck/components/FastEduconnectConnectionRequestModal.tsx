@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -16,7 +17,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Typo, Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
@@ -28,6 +29,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 > = ({ visible, hideModal }) => {
   const { dispatch } = useIdentityCheckContext()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
+  const { data: settings } = useAppSettings()
 
   const onModalRightIconPress = () => {
     analytics.logQuitAuthenticationMethodSelection()
@@ -82,7 +84,11 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         as={ButtonTertiaryBlack}
         icon={EditPen}
         wording={t`Identification manuelle`}
-        navigateTo={{ screen: 'IdentityCheckStart' }}
+        navigateTo={
+          settings?.enableNewIdentificationFlow
+            ? { screen: 'SelectIDOrigin' }
+            : { screen: 'IdentityCheckStart' }
+        }
         onPress={onPressManualIdentification}
       />
       <DurationInfoText>{ubbleETAMessage}</DurationInfoText>
