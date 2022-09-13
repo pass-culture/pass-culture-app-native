@@ -10,28 +10,28 @@ export const getCookiesChoice = async () =>
   await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
 export const useCookies = () => {
-  const [cookiesConsent, setCookiesConsent] = useState<Consent>()
+  const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent>()
 
   useEffect(() => {
     getCookiesChoice().then((value) => {
       if (value) {
-        setCookiesConsent(value.consent)
+        setCookiesConsentInternalState(value.consent)
       }
     })
   }, [])
 
-  useEffect(() => {
-    if (cookiesConsent) {
-      getCookiesChoice().then((value) => {
-        storage.saveObject(COOKIES_CONSENT_KEY, {
-          userId: value?.userId,
-          deviceId: value?.deviceId ?? uuidv4(),
-          choiceDatetime: new Date().toISOString(),
-          consent: cookiesConsent,
-        })
-      })
+  const setCookiesConsent = async (cookiesConsent: Consent) => {
+    setCookiesConsentInternalState(cookiesConsent)
+
+    const oldCookiesChoice = await getCookiesChoice()
+    const newCookiesChoice = {
+      userId: oldCookiesChoice?.userId,
+      deviceId: oldCookiesChoice?.deviceId ?? uuidv4(),
+      choiceDatetime: new Date().toISOString(),
+      consent: cookiesConsent,
     }
-  }, [cookiesConsent])
+    await storage.saveObject(COOKIES_CONSENT_KEY, newCookiesChoice)
+  }
 
   const setUserId = async (userId: number): Promise<void> => {
     const cookiesChoice = await getCookiesChoice()

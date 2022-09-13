@@ -11,7 +11,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, flushAllPromisesWithAct, waitFor } from 'tests/utils'
+import { render, fireEvent, superFlushWithAct, waitFor, act } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const hideModal = jest.fn()
@@ -48,9 +48,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      fireEvent.press(acceptAllButton)
-
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(acceptAllButton)
+      })
+      await superFlushWithAct()
 
       const storageContent = {
         deviceId,
@@ -71,8 +72,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      fireEvent.press(acceptAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(acceptAllButton)
+      })
+      await superFlushWithAct()
 
       expect(mockStartTracking).toHaveBeenCalledWith(true)
     })
@@ -81,8 +84,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      fireEvent.press(acceptAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(acceptAllButton)
+      })
+      await superFlushWithAct()
 
       expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalled()
     })
@@ -91,8 +96,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      fireEvent.press(acceptAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(acceptAllButton)
+      })
+      await superFlushWithAct()
 
       expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
     })
@@ -101,8 +108,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      fireEvent.press(acceptAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(acceptAllButton)
+      })
+      await superFlushWithAct()
 
       expect(hideModal).toBeCalled()
     })
@@ -113,9 +122,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      fireEvent.press(declineAllButton)
-
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(declineAllButton)
+      })
+      await superFlushWithAct()
 
       const storageContent = {
         deviceId,
@@ -136,8 +146,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      fireEvent.press(declineAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(declineAllButton)
+      })
+      await superFlushWithAct()
 
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
@@ -146,8 +158,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      fireEvent.press(declineAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(declineAllButton)
+      })
+      await superFlushWithAct()
 
       expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
     })
@@ -156,8 +170,10 @@ describe('<CookiesConsent/>', () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      fireEvent.press(declineAllButton)
-      await flushAllPromisesWithAct()
+      act(() => {
+        fireEvent.press(declineAllButton)
+      })
+      await superFlushWithAct()
 
       expect(hideModal).toBeCalled()
     })
@@ -199,7 +215,7 @@ describe('<CookiesConsent/>', () => {
 
       const saveChoice = getByText('Enregistrer mes choix')
       fireEvent.press(saveChoice)
-      await flushAllPromisesWithAct()
+      await superFlushWithAct()
 
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
     })
@@ -215,7 +231,7 @@ describe('<CookiesConsent/>', () => {
 
       const saveChoice = getByText('Enregistrer mes choix')
       fireEvent.press(saveChoice)
-      await flushAllPromisesWithAct()
+      await superFlushWithAct()
 
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
     })
@@ -232,7 +248,7 @@ describe('<CookiesConsent/>', () => {
       const saveChoice = getByText('Enregistrer mes choix')
       fireEvent.press(saveChoice)
 
-      await flushAllPromisesWithAct()
+      await superFlushWithAct()
       expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
         from: 'Modal',
         type: { performance: true, customization: false, marketing: false },
@@ -247,7 +263,7 @@ describe('<CookiesConsent/>', () => {
 
       const saveChoice = getByText('Enregistrer mes choix')
       fireEvent.press(saveChoice)
-      await flushAllPromisesWithAct()
+      await superFlushWithAct()
 
       expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
     })
@@ -260,7 +276,7 @@ describe('<CookiesConsent/>', () => {
 
       const saveChoice = getByText('Enregistrer mes choix')
       fireEvent.press(saveChoice)
-      await flushAllPromisesWithAct()
+      await superFlushWithAct()
 
       expect(hideModal).toBeCalled()
     })

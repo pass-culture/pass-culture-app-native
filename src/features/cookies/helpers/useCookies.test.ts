@@ -5,12 +5,14 @@ import { v4 } from '__mocks__/uuid'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
-import { act, flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
+
+jest.mock('api/api')
 
 describe('useCookies', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
@@ -23,12 +25,12 @@ describe('useCookies', () => {
       expect(cookiesConsent).toBeUndefined()
     })
 
-    it('should write state', () => {
+    it('should write state', async () => {
       const { result } = renderHook(useCookies)
       const { setCookiesConsent } = result.current
 
-      act(() => {
-        setCookiesConsent({
+      await act(async () => {
+        await setCookiesConsent({
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
@@ -48,14 +50,13 @@ describe('useCookies', () => {
       const { result } = renderHook(useCookies)
       const { setCookiesConsent } = result.current
 
-      act(() => {
-        setCookiesConsent({
+      await act(async () => {
+        await setCookiesConsent({
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         })
       })
-      await flushAllPromisesWithAct()
 
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
       expect(cookiesConsent).toEqual({
@@ -95,16 +96,17 @@ describe('useCookies', () => {
       it('can set user ID', async () => {
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
-        act(() => {
-          setCookiesConsent({
+        await act(async () => {
+          await setCookiesConsent({
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
             refused: [],
           })
         })
-        await flushAllPromisesWithAct()
 
-        await act(async () => setUserId(FAKE_USER_ID))
+        await act(async () => {
+          await setUserId(FAKE_USER_ID)
+        })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
         expect(cookiesConsent).toEqual({
@@ -122,16 +124,17 @@ describe('useCookies', () => {
       it('can set user ID before giving cookies consent', async () => {
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
-        await act(async () => setUserId(FAKE_USER_ID))
+        await act(async () => {
+          await setUserId(FAKE_USER_ID)
+        })
 
-        act(() => {
-          setCookiesConsent({
+        await act(async () => {
+          await setCookiesConsent({
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
             refused: [],
           })
         })
-        await flushAllPromisesWithAct()
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
         expect(cookiesConsent).toEqual({
@@ -149,18 +152,22 @@ describe('useCookies', () => {
       it('should overwrite user ID when setting another user ID', async () => {
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
-        act(() => {
-          setCookiesConsent({
+        await act(async () => {
+          await setCookiesConsent({
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
             refused: [],
           })
         })
-        await flushAllPromisesWithAct()
-        await act(async () => setUserId(FAKE_USER_ID))
+
+        await act(async () => {
+          await setUserId(FAKE_USER_ID)
+        })
 
         const secondUserId = 5678
-        await act(async () => setUserId(secondUserId))
+        await act(async () => {
+          await setUserId(secondUserId)
+        })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
         expect(cookiesConsent).toEqual({
@@ -183,19 +190,18 @@ describe('useCookies', () => {
     const { result } = renderHook(useCookies)
     const { setCookiesConsent } = result.current
 
-    act(() => {
-      setCookiesConsent({
+    await act(async () => {
+      await setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: ALL_OPTIONAL_COOKIES,
         refused: [],
       })
-      setCookiesConsent({
+      await setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: [],
         refused: ALL_OPTIONAL_COOKIES,
       })
     })
-    await flushAllPromisesWithAct()
 
     const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
     expect(cookiesConsent).toEqual({
