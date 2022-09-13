@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -274,13 +274,21 @@
+      >
+        <div
+          className=\\"css-view-1dbjc4n\\"
+          style={
+            Object {
+-             \\"maxHeight\\": \\"100%\\",
++             \\"WebkitBoxFlex\\": 1,
++             \\"WebkitFlexBasis\\": \\"0px\\",
++             \\"WebkitFlexGrow\\": 1,
++             \\"WebkitFlexShrink\\": 1,
++             \\"flexBasis\\": \\"0px\\",
++             \\"flexGrow\\": 1,
++             \\"flexShrink\\": 1,
+              \\"maxWidth\\": \\"500px\\",
+-             \\"paddingBottom\\": \\"24px\\",
++             \\"msFlexNegative\\": 1,
++             \\"msFlexPositive\\": 1,
++             \\"msFlexPreferredSize\\": \\"0px\\",
+              \\"width\\": \\"100%\\",
+            }
+          }
+        >
+          <div"
+`;
