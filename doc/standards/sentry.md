@@ -1,6 +1,6 @@
 ## Error Monitoring with sentry
 
-Sentry helps us monitor crash and errors in the application. See our project [here](https://sentry.internal-passculture.app/organizations/sentry/issues/?project=6)
+Sentry helps us monitor crash and errors in the application. See our project [here](https://sentry.passculture.team/organizations/sentry/issues/?project=6)
 
 ### Source maps
 
@@ -14,7 +14,7 @@ The build is configured to upload the source maps automatically, on every new re
 
 ```
 [defaults]
-url = https://sentry.internal-passculture.app/
+url = https://sentry.passculture.team/
 org = sentry
 project = application-native
 
@@ -22,7 +22,7 @@ project = application-native
 token=<token>
 ```
 
-> Click [here](https://sentry.internal-passculture.app/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
+> Click [here](https://sentry.passculture.team/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
 
 ### 📦 Create the source maps locally
 
