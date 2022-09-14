@@ -7,7 +7,7 @@ import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleBicolorIconInterface } from './types'
 
-const NotMemoizedBicolorProfile: React.FC<AccessibleBicolorIconInterface> = ({
+const NotMemoizedBicolorTabBarProfile: React.FC<AccessibleBicolorIconInterface> = ({
   size,
   color,
   color2,
@@ -41,8 +41,8 @@ const NotMemoizedBicolorProfile: React.FC<AccessibleBicolorIconInterface> = ({
   )
 }
 
-export const BicolorProfile = React.memo(
-  styled(NotMemoizedBicolorProfile).attrs(({ color, color2, size, thin, theme }) => ({
+export const BicolorTabBarProfile = React.memo(
+  styled(NotMemoizedBicolorTabBarProfile).attrs(({ color, color2, size, thin, theme }) => ({
     color: color ?? theme.colors.primary,
     color2: color2 ?? color ?? theme.colors.secondary,
     size: size ?? theme.icons.sizes.standard,

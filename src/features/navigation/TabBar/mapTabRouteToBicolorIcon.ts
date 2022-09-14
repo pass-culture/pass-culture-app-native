@@ -3,8 +3,8 @@ import React from 'react'
 import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
+import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 import { TabRouteName } from './types'
@@ -20,7 +20,7 @@ export function mapTabRouteToBicolorIcon(route: TabRouteName): React.FC<BicolorI
     case 'Favorites':
       return BicolorFavoriteCount
     case 'Profile':
-      return BicolorProfile
+      return BicolorTabBarProfile
     default:
       return BicolorLogo
   }
