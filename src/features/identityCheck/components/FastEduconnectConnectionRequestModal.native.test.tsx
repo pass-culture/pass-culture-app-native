@@ -65,7 +65,7 @@ describe('<IdentityCheckEnd/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckEduConnect', undefined)
   })
 
-  it('should redirect to identity check start screen on "Identification manuelle" button press when enableNewIdentificationFlow is false', async () => {
+  it('should dispatch ubble identification method in context when clicking on "Identification manuelle" button', async () => {
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
     )
@@ -75,6 +75,13 @@ describe('<IdentityCheckEnd/>', () => {
       payload: IdentityCheckMethod.ubble,
       type: 'SET_METHOD',
     })
+  })
+  it('should redirect to identity check start screen on "Identification manuelle" button press when enableNewIdentificationFlow is false', async () => {
+    const { getByText } = render(
+      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+    )
+    await fireEvent.press(getByText('Identification manuelle'))
+
     expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckStart', undefined)
   })
   it('should redirect to select ID Origin screen on "Identification manuelle" button press when enableNewIdentificationFlow is true', async () => {
@@ -84,11 +91,7 @@ describe('<IdentityCheckEnd/>', () => {
       <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification manuelle'))
-    expect(hideModalMock).toHaveBeenCalled()
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      payload: IdentityCheckMethod.ubble,
-      type: 'SET_METHOD',
-    })
+
     expect(navigate).toHaveBeenNthCalledWith(1, 'SelectIDOrigin', undefined)
   })
 })
