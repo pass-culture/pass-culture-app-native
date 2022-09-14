@@ -8,6 +8,7 @@ import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
+import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
@@ -27,7 +28,6 @@ import { Check } from 'ui/svg/icons/Check'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
-import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -128,7 +128,7 @@ export const SecondaryAndBiggerIcons = {
   Check,
   Close,
   Confidentiality,
-  Confirmation,
+  BicolorConfirmation,
   Duo,
   Email,
   Error,

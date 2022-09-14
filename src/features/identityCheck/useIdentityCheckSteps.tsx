@@ -7,8 +7,8 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { theme } from 'theme'
+import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -73,4 +73,6 @@ const SmartphoneIcon: React.FC<IconInterface> = () => (
 )
 const ProfileIcon: React.FC<IconInterface> = () => <Profile opacity={0.5} />
 const IdCardIcon: React.FC<IconInterface> = () => <IdCard opacity={0.5} />
-const ConfirmationIcon: React.FC<IconInterface> = () => <Confirmation opacity={0.5} />
+const ConfirmationIcon: React.FC<IconInterface> = () => (
+  <BicolorConfirmation opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+)
