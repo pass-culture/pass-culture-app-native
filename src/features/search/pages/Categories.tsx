@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -48,11 +48,11 @@ export const Categories: FunctionComponent<Props> = ({
     return selectedCategory === category
   }
 
-  const onResetPress = () => {
+  const onResetPress = useCallback(() => {
     setSelectedCategory(SearchGroupNameEnumv2.NONE)
-  }
+  }, [setSelectedCategory])
 
-  const onSearchPress = () => {
+  const onSearchPress = useCallback(() => {
     hideModal()
     const payload = selectedCategory === SearchGroupNameEnumv2.NONE ? [] : [selectedCategory]
     dispatch({ type: 'SET_CATEGORY', payload })
@@ -62,25 +62,37 @@ export const Categories: FunctionComponent<Props> = ({
         offerCategories: payload,
       })
     )
-  }
+  }, [dispatch, hideModal, navigate, searchState, selectedCategory])
 
   const titleId = uuidv4()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
+
+  const CustomModalHeaderComponent = useMemo(
+    () =>
+      isDesktopViewport ? undefined : (
+        <PageHeader
+          titleID={titleId}
+          title={title}
+          background="primary"
+          withGoBackButton
+          onGoBack={hideModal}
+          testID="pageHeader"
+        />
+      ),
+    [hideModal, isDesktopViewport, title, titleId]
+  )
+
+  const FixedModalBottomComponent = useMemo(
+    () => (
+      <FilterPageButtons onResetPress={onResetPress} onSearchPress={onSearchPress} isModal={true} />
+    ),
+    [onResetPress, onSearchPress]
+  )
+
   return (
     <AppModal
       visible={isVisible}
-      customModalHeader={
-        isDesktopViewport ? undefined : (
-          <PageHeader
-            titleID={titleId}
-            title={title}
-            background="primary"
-            withGoBackButton
-            onGoBack={hideModal}
-            testID="pageHeader"
-          />
-        )
-      }
+      customModalHeader={CustomModalHeaderComponent}
       title={title}
       isFullscreen={true}
       noPadding={true}
@@ -91,13 +103,7 @@ export const Categories: FunctionComponent<Props> = ({
       leftIconAccessibilityLabel={undefined}
       leftIcon={undefined}
       onLeftIconPress={undefined}
-      fixedModalBottom={
-        <FilterPageButtons
-          onResetPress={onResetPress}
-          onSearchPress={onSearchPress}
-          isModal={true}
-        />
-      }>
+      fixedModalBottom={FixedModalBottomComponent}>
       <VerticalUl>
         {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
           const searchGroup = category as SearchGroupNameEnumv2
