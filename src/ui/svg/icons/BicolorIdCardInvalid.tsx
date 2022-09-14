@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleBicolorIconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const BicolorNoIdSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = ({
+const BicolorIdCardInvalidSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = ({
   size,
   color,
   color2,
@@ -40,8 +40,10 @@ const BicolorNoIdSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = 
   )
 }
 
-export const BicolorNoId = styled(BicolorNoIdSvg).attrs(({ color, color2, size, theme }) => ({
-  color: color ?? theme.colors.primary,
-  color2: color2 ?? theme.colors.secondary,
-  size: size ?? theme.illustrations.sizes.medium,
-}))``
+export const BicolorIdCardInvalid = styled(BicolorIdCardInvalidSvg).attrs(
+  ({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? color ?? theme.colors.secondary,
+    size: size ?? theme.illustrations.sizes.medium,
+  })
+)``
