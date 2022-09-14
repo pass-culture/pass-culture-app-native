@@ -2,10 +2,12 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
@@ -19,6 +21,17 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
   const hasSchoolTypes = profile.hasSchoolTypes
   const { data: nextSubscriptionStep } = useNextSubscriptionStep()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
+  const { data: settings } = useAppSettings()
+
+  const educonnectFlow: (keyof IdentityCheckRootStackParamList)[] = [
+    'IdentityCheckEduConnect',
+    'IdentityCheckEduConnectForm',
+    'IdentityCheckValidation',
+  ]
+
+  const ubbleFlow: (keyof IdentityCheckRootStackParamList)[] = settings?.enableNewIdentificationFlow
+    ? ['SelectIDOrigin']
+    : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd']
 
   const steps: StepConfig[] = [
     {
@@ -40,9 +53,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       icon: IdCardIcon,
       label: t`Identification`,
       screens:
-        identification.method === IdentityCheckMethod.educonnect
-          ? ['IdentityCheckEduConnect', 'IdentityCheckEduConnectForm', 'IdentityCheckValidation']
-          : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
+        identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
