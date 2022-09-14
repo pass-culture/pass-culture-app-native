@@ -14,7 +14,8 @@ import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalS
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers/__mocks__'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator'
-import { render, fireEvent } from 'tests/utils'
+import { analytics } from 'libs/firebase/analytics'
+import { render, fireEvent, middleScrollEvent, bottomScrollEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 jest.mock('react-query')
@@ -131,6 +132,20 @@ describe('CulturalSurveysQuestions page', () => {
     expect(dispatch).not.toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',
       payload: expect.anything(),
+    })
+  })
+
+  it('should log event CulturalSurveyScrolledToBottom when user reach end of screen', () => {
+    const { getByTestId } = render(<CulturalSurveyQuestions {...navigationProps} />)
+
+    const scrollContainer = getByTestId('cultural-survey-questions-scrollview')
+
+    fireEvent.scroll(scrollContainer, middleScrollEvent)
+    expect(analytics.logCulturalSurveyScrolledToBottom).toHaveBeenCalledTimes(0)
+
+    fireEvent.scroll(scrollContainer, bottomScrollEvent)
+    expect(analytics.logCulturalSurveyScrolledToBottom).toHaveBeenNthCalledWith(1, {
+      questionId: CulturalSurveyQuestionEnum.SORTIES,
     })
   })
 })

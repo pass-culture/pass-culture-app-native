@@ -51,6 +51,7 @@ export const analytics: typeof actualAnalytics = {
   logContinueSetBirthday: jest.fn(),
   logContinueSetEmail: jest.fn(),
   logContinueSetPassword: jest.fn(),
+  logCulturalSurveyScrolledToBottom: jest.fn(),
   logDiscoverOffers: jest.fn(),
   logHasAcceptedAllCookies: jest.fn(),
   logHasActivateGeolocFromTutorial: jest.fn(),

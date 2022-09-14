@@ -166,6 +166,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
+          data-testid="cultural-survey-questions-scrollview"
           style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
         >
           <div
@@ -924,6 +925,7 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
+        data-testid="cultural-survey-questions-scrollview"
         style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
       >
         <div

@@ -123,6 +123,8 @@ export const analytics = {
   logContinueSetPassword: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SET_PASSWORD),
   logContinueSetBirthday: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SET_BIRTHDAY),
   logContinueSignup: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SIGNUP),
+  logCulturalSurveyScrolledToBottom: (params: { questionId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM, params),
   logDiscoverOffers: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from }),
   logErrorSavingNewEmail: (errorCode: string) =>
