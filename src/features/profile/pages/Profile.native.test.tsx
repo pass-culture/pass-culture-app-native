@@ -19,7 +19,15 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
-import { flushAllPromisesWithAct, render, act, fireEvent, cleanup } from 'tests/utils'
+import {
+  flushAllPromisesWithAct,
+  render,
+  act,
+  fireEvent,
+  cleanup,
+  middleScrollEvent,
+  bottomScrollEvent,
+} from 'tests/utils'
 
 import { Profile } from './Profile'
 
@@ -283,22 +291,6 @@ describe('Profile component', () => {
     })
   })
 })
-
-const middleScrollEvent = {
-  nativeEvent: {
-    layoutMeasurement: { height: 1000 },
-    contentOffset: { y: 400 },
-    contentSize: { height: 1600 },
-  },
-}
-
-const bottomScrollEvent = {
-  nativeEvent: {
-    contentOffset: { y: 1600 },
-    layoutMeasurement: { height: 1600 },
-    contentSize: { height: 1600 },
-  },
-}
 
 interface Options {
   wrapper?: NamedExoticComponent<{ children: JSX.Element }> | undefined
