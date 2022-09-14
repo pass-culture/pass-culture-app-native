@@ -57,6 +57,7 @@ export function ProfileBadge(props: ProfileBadgeProps) {
     props.popOverIcon &&
     styled(props.popOverIcon).attrs(({ theme }) => ({
       color: theme.colors.greyDark,
+      color2: theme.colors.greyDark,
       size: theme.icons.sizes.standard,
     }))``
 

@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
@@ -7,7 +8,7 @@ import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
-import { Clock } from 'ui/svg/icons/Clock'
+import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { Spacer } from 'ui/theme'
 
 type SubscriptionMessageBadgeProps = {
@@ -55,3 +56,8 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
     </React.Fragment>
   )
 }
+
+const Clock = styled(BicolorClock).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  color2: theme.colors.black,
+}))``

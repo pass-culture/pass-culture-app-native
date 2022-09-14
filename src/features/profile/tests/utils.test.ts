@@ -3,7 +3,7 @@ import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
-import { Clock } from 'ui/svg/icons/Clock'
+import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { Info } from 'ui/svg/icons/Info'
 
 import {
@@ -37,7 +37,7 @@ describe('profile utils', () => {
     })
     it("should return Clock if 'CLOCK' is passed", () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg('CLOCK')
-      expect(returnedIcon).toEqual(Clock)
+      expect(returnedIcon).toEqual(BicolorClock)
     })
     it('should return Info if unknown string is passed and fallbackIcon is true', () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg('I am an unknown string', true)

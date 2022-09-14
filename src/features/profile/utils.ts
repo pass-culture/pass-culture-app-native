@@ -3,7 +3,7 @@ import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { Again } from 'ui/svg/icons/Again'
-import { Clock } from 'ui/svg/icons/Clock'
+import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -60,7 +60,7 @@ export const matchSubscriptionMessageIconToSvg = (
     case null:
       return undefined
     case 'CLOCK':
-      return Clock
+      return BicolorClock
     case 'EXTERNAL':
       return ExternalSiteFilled
     case 'MAGNIFYING_GLASS':

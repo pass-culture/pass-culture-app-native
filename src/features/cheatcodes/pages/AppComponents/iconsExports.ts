@@ -6,6 +6,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
@@ -23,7 +24,6 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
-import { Clock } from 'ui/svg/icons/Clock'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -105,6 +105,7 @@ export const SocialNetworkIcons = {
 export const SecondaryAndBiggerIcons = {
   BicolorAroundMe,
   BicolorBookings,
+  BicolorClock,
   BicolorConfidentiality,
   BicolorEarth,
   BicolorEverywhere,
@@ -125,7 +126,6 @@ export const SecondaryAndBiggerIcons = {
   Booking,
   Calendar,
   Check,
-  Clock,
   Close,
   Confidentiality,
   Confirmation,
