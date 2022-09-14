@@ -7,10 +7,13 @@ const FormView: React.FC = styled.View.attrs({
   accessibilityRole: AccessibilityRole.FORM,
 })``
 
-const MaxWidth: React.FC = styled(FormView)(({ theme }) => ({
-  width: '100%',
-  maxWidth: theme.forms.maxWidth,
-}))
+const MaxWidth: React.FC<{ flex?: number }> = styled(FormView)<{ flex?: number }>(
+  ({ theme, flex }) => ({
+    width: '100%',
+    maxWidth: theme.forms.maxWidth,
+    flex,
+  })
+)
 
 const Flex: React.FC = styled(FormView)({
   flex: 1,
