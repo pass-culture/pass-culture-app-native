@@ -98,29 +98,21 @@ describe('SearchResults component', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
   })
 
-  it('should redirect to the filters page when clicking on the category button', async () => {
+  it('should open the categories filter modal when clicking on the category button', async () => {
     const { getByTestId } = render(<SearchResults />)
     const categoryButton = getByTestId('categoryButton')
 
     await fireEvent.press(categoryButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchCategories')
+    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+
+    expect(fullscreenModalScrollView).toBeTruthy()
   })
 
   it('should display category filter button', () => {
     const { queryByTestId } = render(<SearchResults />)
 
     expect(queryByTestId('categoryButton')).toBeTruthy()
-  })
-
-  it('should not display categories list from a modal when clicking on the category button', async () => {
-    const { getByTestId, queryByTestId } = render(<SearchResults />)
-
-    const categoryButton = getByTestId('categoryButton')
-
-    await fireEvent.press(categoryButton)
-
-    expect(queryByTestId('categoriesModal')).toBeFalsy()
   })
 
   describe('When feature flag filter activated', () => {

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { Again } from 'ui/svg/icons/Again'
 import { getSpacing } from 'ui/theme'
 
@@ -30,9 +31,9 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
 const Container = styled.View<{ isModal: boolean }>(({ isModal }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
-  ...(!isModal ? { paddingHorizontal: getSpacing(6) } : {}),
+  paddingHorizontal: ModalSpacing.MD,
   paddingTop: getSpacing(2),
-  ...(!isModal ? { paddingBottom: getSpacing(6) } : {}),
+  ...(!isModal ? { paddingBottom: ModalSpacing.MD } : {}),
 }))
 
 const ResetButton = styledButton(ButtonQuaternaryBlack)({

@@ -399,7 +399,6 @@ msgstr "Carte d’identité ou passeport."
 msgid "Catégorie de l'offre"
 msgstr "Catégorie de l'offre"
 
-#: src/features/search/pages/Categories.tsx
 #: src/features/search/sections/titles.ts
 msgid "Catégories"
 msgstr "Catégories"
@@ -2449,10 +2448,6 @@ msgstr "Recherche des offres"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Recherche et sélectionne ton adresse"
 msgstr "Recherche et sélectionne ton adresse"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Recherche par catégorie"
-msgstr "Recherche par catégorie"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/navigation/RootNavigator/routes.ts

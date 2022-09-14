@@ -51,7 +51,6 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
-import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
@@ -330,12 +329,6 @@ export const routes: Route[] = [
     component: ResetPasswordExpiredLink,
     path: 'email-modification-mot-de-passe-expire',
     options: { title: t`Email modification mot de passe expiré` },
-  },
-  {
-    name: 'SearchCategories',
-    component: SearchCategories,
-    path: 'recherche/categories',
-    options: { title: t`Recherche par catégorie` },
   },
   {
     name: 'SearchPrice',
