@@ -1222,7 +1222,7 @@ exports[`Categories component should render correctly 1`] = `
                     }
                   }
                 >
-                  CD, vinyle, musique en ligne
+                  CD, vinyles, musique en ligne
                 </div>
               </div>
             </div>

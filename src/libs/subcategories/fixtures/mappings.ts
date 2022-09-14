@@ -656,7 +656,7 @@ export const useSearchGroupLabelMappingSnap = {
   ARTS_LOISIRS_CREATIFS: 'Arts & loisirs créatifs',
   BIBLIOTHEQUES_MEDIATHEQUE: 'Bibliothèques, Médiathèques',
   CARTES_JEUNES: 'Cartes jeunes',
-  CD_VINYLE_MUSIQUE_EN_LIGNE: 'CD, vinyle, musique en ligne',
+  CD_VINYLE_MUSIQUE_EN_LIGNE: 'CD, vinyles, musique en ligne',
   CONCERTS_FESTIVALS: 'Concerts & festivals',
   RENCONTRES_CONFERENCES: 'Conférences & rencontres',
   EVENEMENTS_EN_LIGNE: 'Événements en ligne',
