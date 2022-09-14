@@ -17,15 +17,7 @@ export type ChangeSearchLocationParam =
   | { type: 'place' | 'everywhere' | 'aroundMe' }
   | { type: 'venue'; venueId: number | null }
 
-export const analytics = {
-  enableCollection: analyticsProvider.enableCollection,
-  disableCollection: analyticsProvider.disableCollection,
-  setDefaultEventParameters: analyticsProvider.setDefaultEventParameters,
-  setUserId: analyticsProvider.setUserId,
-  logLogin({ method }: { method: LoginRoutineMethod }) {
-    analyticsProvider.logLogin({ method })
-  },
-  logScreenView: analyticsProvider.logScreenView,
+const logEventAnalytics = {
   logAccountDeletion: () => analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_DELETION),
   logAccountReactivation: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_REACTIVATION, { from }),
@@ -261,5 +253,17 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
+}
+
+export const analytics = {
+  enableCollection: analyticsProvider.enableCollection,
+  disableCollection: analyticsProvider.disableCollection,
+  logLogin({ method }: { method: LoginRoutineMethod }) {
+    analyticsProvider.logLogin({ method })
+  },
+  logScreenView: analyticsProvider.logScreenView,
+  setDefaultEventParameters: analyticsProvider.setDefaultEventParameters,
+  setUserId: analyticsProvider.setUserId,
   useInit,
+  ...logEventAnalytics,
 }
