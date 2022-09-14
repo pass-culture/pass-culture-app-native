@@ -8,8 +8,8 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { theme } from 'theme'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -72,7 +72,9 @@ const SmartphoneIcon: React.FC<IconInterface> = () => (
   <BicolorSmartphone opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
 )
 const ProfileIcon: React.FC<IconInterface> = () => <Profile opacity={0.5} />
-const IdCardIcon: React.FC<IconInterface> = () => <IdCard opacity={0.5} />
+const IdCardIcon: React.FC<IconInterface> = () => (
+  <BicolorIdCard opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+)
 const ConfirmationIcon: React.FC<IconInterface> = () => (
   <BicolorConfirmation opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
 )

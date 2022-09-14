@@ -13,6 +13,7 @@ import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -48,7 +49,6 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { IdCard } from 'ui/svg/icons/IdCard'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -111,6 +111,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorEverywhere,
   BicolorFavorite,
   BicolorFrance,
+  BicolorIdCard,
   BicolorLock,
   BicolorLocationPointer,
   BicolorLocationBuilding,
@@ -142,7 +143,6 @@ export const SecondaryAndBiggerIcons = {
   HandicapMental,
   HandicapMotor,
   HandicapAudio,
-  IdCard,
   Idea,
   Info,
   LegalNotices,

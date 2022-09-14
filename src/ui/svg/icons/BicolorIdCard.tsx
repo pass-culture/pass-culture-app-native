@@ -7,7 +7,7 @@ import { BicolorGradient, svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from './types'
 
-const IdCardSvg: React.FunctionComponent<AccessibleIcon> = ({
+const BicolorIdCardSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
@@ -37,8 +37,11 @@ const IdCardSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const IdCard = styled(IdCardSvg).attrs(({ color, size, opacity, theme }) => ({
-  color: color ?? theme.colors.black,
-  size: size ?? theme.icons.sizes.standard,
-  opacity: opacity ?? 1,
-}))``
+export const BicolorIdCard = styled(BicolorIdCardSvg).attrs(
+  ({ color, color2, size, opacity, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+    opacity: opacity ?? 1,
+  })
+)``
