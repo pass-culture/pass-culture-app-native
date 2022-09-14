@@ -314,7 +314,7 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         >
                           <View
-                            fill="#161617"
+                            fill="url(#gradienttestUuid)"
                             height={24}
                             width={24}
                           >

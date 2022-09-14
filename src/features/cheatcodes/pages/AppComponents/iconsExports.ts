@@ -19,6 +19,7 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
@@ -71,7 +72,6 @@ import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Plus } from 'ui/svg/icons/Plus'
-import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
@@ -117,7 +117,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorLocationBuilding,
   BicolorLogo,
   BicolorNoPhone,
-
+  BicolorProfile,
   BicolorSearch,
   BicolorSignal,
   BicolorSmartphone,
@@ -156,7 +156,6 @@ export const SecondaryAndBiggerIcons = {
   OfferEvent,
   OrderPrice,
   OtherOffer,
-  Profile,
   ProfileDeletion,
   Quote,
   ScrollToTop,

@@ -3,11 +3,14 @@ import React from 'react'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { StepConfig } from 'features/identityCheck/types'
 import { render } from 'tests/utils'
-import { Profile } from 'ui/svg/icons/Profile'
+import { theme } from 'theme'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { IconInterface } from 'ui/svg/icons/types'
 
 const label = 'Profil'
-const icon: React.FC<IconInterface> = () => <Profile opacity={0.5} />
+const icon: React.FC<IconInterface> = () => (
+  <BicolorProfile opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+)
 const step = { label, icon } as StepConfig
 
 describe('StepButton', () => {

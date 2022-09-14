@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { theme } from 'theme'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Typo, Spacer } from 'ui/theme'
@@ -55,7 +56,7 @@ export const SectionRowContent = ({
     <View style={[styles.container, style]}>
       {!!Icon && (
         <React.Fragment>
-          <Icon size={iconSize} />
+          <Icon size={iconSize} color={theme.colors.black} />
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
       )}

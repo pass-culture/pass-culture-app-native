@@ -9,8 +9,8 @@ import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { theme } from 'theme'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { Profile } from 'ui/svg/icons/Profile'
 import { IconInterface } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
@@ -71,7 +71,9 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
 const SmartphoneIcon: React.FC<IconInterface> = () => (
   <BicolorSmartphone opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
 )
-const ProfileIcon: React.FC<IconInterface> = () => <Profile opacity={0.5} />
+const ProfileIcon: React.FC<IconInterface> = () => (
+  <BicolorProfile opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+)
 const IdCardIcon: React.FC<IconInterface> = () => (
   <BicolorIdCard opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
 )
