@@ -21,7 +21,6 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -856,7 +855,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]

@@ -17,7 +17,6 @@ exports[`Favorites component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]

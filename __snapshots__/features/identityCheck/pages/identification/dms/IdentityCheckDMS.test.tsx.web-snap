@@ -151,7 +151,6 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
     role="banner"
     style={
       Object {
-        "position": "static",
         "width": "100%",
       }
     }

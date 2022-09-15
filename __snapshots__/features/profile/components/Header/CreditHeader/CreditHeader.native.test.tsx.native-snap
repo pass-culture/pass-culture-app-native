@@ -7,7 +7,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -366,7 +365,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -798,7 +796,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -1058,7 +1055,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]

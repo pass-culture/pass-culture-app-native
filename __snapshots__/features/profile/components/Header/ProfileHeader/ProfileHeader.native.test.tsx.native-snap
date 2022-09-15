@@ -7,7 +7,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -358,7 +357,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
   style={
     Array [
       Object {
-        "position": "static",
         "width": "100%",
       },
     ]
@@ -477,7 +475,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
   style={
     Array [
       Object {
-        "position": "static",
         "width": "100%",
       },
     ]

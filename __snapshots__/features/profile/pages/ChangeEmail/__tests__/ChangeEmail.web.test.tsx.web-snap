@@ -148,7 +148,7 @@ Object {
       <header
         class="css-view-1dbjc4n"
         role="banner"
-        style="position: static; width: 100%;"
+        style="width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -258,7 +258,7 @@ Object {
             <form
               class="css-view-1dbjc4n"
               role="form"
-              style="max-width: 500px; width: 100%;"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -585,7 +585,7 @@ Object {
     <header
       class="css-view-1dbjc4n"
       role="banner"
-      style="position: static; width: 100%;"
+      style="width: 100%;"
     >
       <div
         class="css-view-1dbjc4n"
@@ -695,7 +695,7 @@ Object {
           <form
             class="css-view-1dbjc4n"
             role="form"
-            style="max-width: 500px; width: 100%;"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
           >
             <div
               class="css-view-1dbjc4n"
