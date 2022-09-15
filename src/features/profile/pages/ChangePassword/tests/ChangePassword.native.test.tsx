@@ -9,7 +9,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromisesWithAct, superFlushWithAct, render, fireEvent } from 'tests/utils'
+import { flushAllPromisesWithAct, superFlushWithAct, render, fireEvent, act } from 'tests/utils'
 import { theme } from 'theme'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -37,9 +37,15 @@ describe('ChangePassword', () => {
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    await act(async () => {
+      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    })
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
 
     const continueButton = getByTestId('Enregistrer')
     expect(continueButton).toBeEnabled()
@@ -51,8 +57,13 @@ describe('ChangePassword', () => {
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(passwordInput, '123456')
-    fireEvent.changeText(confirmationInput, '123456--')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, '123456')
+    })
+
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, '123456--')
+    })
 
     const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
 
@@ -66,7 +77,10 @@ describe('ChangePassword', () => {
     const notValidatedRulesSnapshot = toJSON()
 
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
-    fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
+
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
+    })
 
     await waitForExpect(() => {
       const validatedRulesSnapshot = toJSON()
@@ -92,9 +106,15 @@ describe('ChangePassword', () => {
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    await act(async () => {
+      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    })
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
     await superFlushWithAct()
 
     fireEvent.press(getByTestId('Enregistrer'))
@@ -123,19 +143,32 @@ describe('ChangePassword', () => {
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    await fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    await fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    await fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    await act(async () => {
+      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    })
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
 
     const continueButton = getByTestId('Enregistrer')
-    fireEvent.press(continueButton)
+
+    await act(async () => {
+      fireEvent.press(continueButton)
+    })
+
     await superFlushWithAct()
 
     await waitForExpect(() => {
       expect(queryByText('Mot de passe incorrect')).toBeTruthy()
     })
 
-    await fireEvent.changeText(currentPasswordInput, 'user')
+    await act(async () => {
+      fireEvent.changeText(currentPasswordInput, 'user@QWERTY123')
+    })
+
     await waitForExpect(() => {
       expect(queryByText('Mot de passe incorrect')).toBeNull()
     })
