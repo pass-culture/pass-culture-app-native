@@ -7,7 +7,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -329,9 +328,13 @@ Array [
       >
         <View
           accessibilityRole="none"
+          flex={1}
           style={
             Array [
               Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "maxWidth": 500,
                 "width": "100%",
               },
@@ -760,7 +763,6 @@ Array [
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -1022,9 +1024,13 @@ Array [
       >
         <View
           accessibilityRole="none"
+          flex={1}
           style={
             Array [
               Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "maxWidth": 500,
                 "width": "100%",
               },

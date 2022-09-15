@@ -116,7 +116,7 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
-          <Form.MaxWidth>
+          <Form.MaxWidth flex={1}>
             <EmailInput
               label={t`Nouvel e-mail`}
               email={email}

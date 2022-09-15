@@ -62,7 +62,6 @@ Array [
     role="banner"
     style={
       Object {
-        "position": "static",
         "width": "100%",
       }
     }

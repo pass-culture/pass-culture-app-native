@@ -21,7 +21,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]

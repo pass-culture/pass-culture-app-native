@@ -333,7 +333,6 @@ exports[`<OfferDescription /> should render 1`] = `
                           style={
                             Array [
                               Object {
-                                "position": "static",
                                 "width": "100%",
                               },
                             ]

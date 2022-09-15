@@ -151,7 +151,7 @@ export function ChangePassword() {
           validationSchema={ChangePasswordSchema}
           onSubmit={submitPassword}>
           {({ handleChange, handleBlur, values, errors, setFieldError }) => (
-            <Form.MaxWidth>
+            <Form.MaxWidth flex={1}>
               <PasswordInput
                 label={'Mot de passe actuel'}
                 value={values.currentPassword}

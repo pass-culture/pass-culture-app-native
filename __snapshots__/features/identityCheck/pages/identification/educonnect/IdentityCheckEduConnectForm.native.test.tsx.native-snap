@@ -21,7 +21,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]

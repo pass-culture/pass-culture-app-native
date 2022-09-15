@@ -21,7 +21,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
@@ -965,7 +964,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
     style={
       Array [
         Object {
-          "position": "static",
           "width": "100%",
         },
       ]
