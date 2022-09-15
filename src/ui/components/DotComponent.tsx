@@ -59,7 +59,7 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
 
   return (
     <Touchable
-      activeOpacity={1}
+      activeOpacity={2}
       onPress={props.onPress}
       testID="button"
       disabled={!clickable}
