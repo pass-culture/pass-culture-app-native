@@ -1,28 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
-import { Formik, useFormikContext } from 'formik'
+import { useFormik } from 'formik'
 import { FormikHelpers } from 'formik/dist/types'
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
-import { object, string, ref } from 'yup'
 
 import { ApiError } from 'api/apiHelpers'
-import {
-  PasswordSecurityRules,
-  PASSWORD_MIN_LENGTH,
-  CAPITAL_REGEX,
-  LOWERCASE_REGEX,
-  NUMBER_REGEX,
-  SPECIAL_CHARACTER_REGEX,
-} from 'features/auth/components/PasswordSecurityRules'
+import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
 import { useChangePasswordMutation } from 'features/auth/mutations'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { changePasswordSchema as validationSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
-import { theme } from 'theme'
+import { AppThemeType } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -33,46 +26,11 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
 
-const SubmitButton = () => {
-  const { dirty, isValid, isValidating, isSubmitting, handleSubmit } = useFormikContext()
-  const disabled = !dirty || !isValid || (!isValidating && isSubmitting)
-  useEnterKeyAction(!disabled ? () => handleSubmit() : undefined)
-
-  return (
-    <ButtonPrimary
-      wording={'Enregistrer'}
-      accessibilityLabel={'Enregistrer les modifications'}
-      onPress={handleSubmit}
-      disabled={disabled}
-    />
-  )
-}
-
 type ChangePasswordFormFields = {
   currentPassword: string
   newPassword: string
   confirmedPassword: string
 }
-
-const ChangePasswordSchema = object().shape({
-  currentPassword: string()
-    .min(PASSWORD_MIN_LENGTH)
-    .required()
-    .matches(CAPITAL_REGEX, '1 Majuscule')
-    .matches(LOWERCASE_REGEX, '1 Minuscule')
-    .matches(NUMBER_REGEX, '1 Chiffre')
-    .matches(SPECIAL_CHARACTER_REGEX, '1 Caractère spécial (!@#$%^&*...)'),
-  newPassword: string()
-    .min(PASSWORD_MIN_LENGTH)
-    .required('required')
-    .matches(CAPITAL_REGEX, '1 Majuscule')
-    .matches(LOWERCASE_REGEX, '1 Minuscule')
-    .matches(NUMBER_REGEX, '1 Chiffre')
-    .matches(SPECIAL_CHARACTER_REGEX, '1 Caractère spécial (!@#$%^&*...)'),
-  confirmedPassword: string()
-    .oneOf([ref('newPassword'), null], 'Les mots de passe ne concordent pas')
-    .required(),
-})
 
 const passwordDescribedBy = uuidv4()
 const passwordInputErrorId = uuidv4()
@@ -84,7 +42,9 @@ export function ChangePassword() {
     newPassword: '',
     confirmedPassword: '',
   }
-  const { isMobileViewport, isTouch } = useTheme()
+
+  const theme = useTheme()
+  const { isMobileViewport, isTouch } = theme
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -93,146 +53,178 @@ export function ChangePassword() {
 
   const { mutate: changePassword } = useChangePasswordMutation()
 
-  function submitPassword(
-    values: ChangePasswordFormFields,
-    { setErrors, resetForm }: FormikHelpers<ChangePasswordFormFields>
-  ) {
-    // returning a promise will allow formik to set isSubmitting to false afterward
-    return new Promise<void>((resolve) => {
-      changePassword(
-        {
-          currentPassword: values.currentPassword,
-          newPassword: values.newPassword,
-        },
-        {
-          onSuccess() {
-            resetForm()
-            showSuccessSnackBar({
-              message: 'Ton mot de passe est modifié',
-              timeout: SNACK_BAR_TIME_OUT,
-            })
-            navigate(...getTabNavConfig('Profile'))
-            analytics.logHasChangedPassword('changePassword')
-            resolve()
-          },
-          onError(error, { newPassword }) {
-            setErrors({
-              currentPassword: 'Mot de passe incorrect',
-            })
-            if (!(error instanceof ApiError)) {
-              const err = new Error('ChangePasswordUnknownError')
-              eventMonitoring.captureException(err, {
-                extra: {
-                  newPassword,
-                },
-              })
-            }
-            // no need to reject on press event, and it's harder to test
-            resolve()
-          },
-        }
-      )
-    })
-  }
-
   const scrollRef = useRef<ScrollView | null>(null)
   const { bottom } = useSafeAreaInsets()
+  const {
+    values,
+    errors,
+    dirty,
+    isValid,
+    isValidating,
+    isSubmitting,
+    handleBlur,
+    handleSubmit,
+    handleChange,
+    setFieldError,
+  } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (
+      values: ChangePasswordFormFields,
+      { setErrors, resetForm }: FormikHelpers<ChangePasswordFormFields>
+    ) => {
+      // returning a promise will allow formik to set isSubmitting to false afterward
+      return new Promise<void>((resolve) => {
+        changePassword(
+          {
+            currentPassword: values.currentPassword,
+            newPassword: values.newPassword,
+          },
+          {
+            onSuccess() {
+              resetForm()
+              showSuccessSnackBar({
+                message: 'Ton mot de passe est modifié',
+                timeout: SNACK_BAR_TIME_OUT,
+              })
+              navigate(...getTabNavConfig('Profile'))
+              analytics.logHasChangedPassword('changePassword')
+              resolve()
+            },
+            onError(error, { newPassword }) {
+              setErrors({
+                currentPassword: 'Mot de passe incorrect',
+              })
+              if (!(error instanceof ApiError)) {
+                const err = new Error('ChangePasswordUnknownError')
+                eventMonitoring.captureException(err, {
+                  extra: {
+                    newPassword,
+                  },
+                })
+              }
+              // no need to reject on press event, and it's harder to test
+              resolve()
+            },
+          }
+        )
+      })
+    },
+  })
+
+  const onChangeCurrentPasswordText = useCallback(
+    (currentPassword) => {
+      handleChange('currentPassword')(currentPassword)
+      setFieldError('currentPassword', undefined)
+    },
+    [handleChange, setFieldError]
+  )
+
+  const onFocusConfirmedPassword = useCallback(() => {
+    setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
+  }, [])
+
+  const disabled = !dirty || !isValid || (!isValidating && isSubmitting)
+  const onEnterKeyAction = useCallback(() => {
+    if (!disabled) {
+      handleSubmit()
+    }
+  }, [disabled, handleSubmit])
+
+  useEnterKeyAction(onEnterKeyAction)
+
+  const contentContainerStyle = useMemo(() => {
+    return getScrollViewContentContainerStyle(theme, keyboardHeight)
+  }, [theme, keyboardHeight])
 
   return (
     <Container>
       <PageHeader title={'Mot de passe'} background="primary" withGoBackButton />
       <StyledScrollView
         ref={scrollRef}
-        contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
+        contentContainerStyle={contentContainerStyle}
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={8} />
-        <Formik
-          initialValues={initialValues}
-          validationSchema={ChangePasswordSchema}
-          onSubmit={submitPassword}>
-          {({ handleChange, handleBlur, values, errors, setFieldError }) => (
-            <Form.MaxWidth flex={1}>
-              <PasswordInput
-                label={'Mot de passe actuel'}
-                value={values.currentPassword}
-                onChangeText={(values) => {
-                  handleChange('currentPassword')(values)
-                  setFieldError('currentPassword', undefined)
-                }}
-                onBlur={handleBlur('currentPassword')}
-                placeholder={'Ton mot de passe actuel'}
-                isRequiredField
-                accessibilityDescribedBy={passwordInputErrorId}
-                isError={!!errors.currentPassword}
-              />
-              <InputError
-                visible={!!errors.currentPassword}
-                messageId={'Mot de passe incorrect'}
-                numberOfSpacesTop={getSpacing(0.5)}
-                relatedInputId={passwordInputErrorId}
-              />
-              <Spacer.Column numberOfSpaces={7} />
-              <PasswordInput
-                label={'Nouveau mot de passe'}
-                accessibilityDescribedBy={passwordDescribedBy}
-                value={values.newPassword}
-                onChangeText={handleChange('newPassword')}
-                onBlur={handleBlur('newPassword')}
-                placeholder={'Ton nouveau mot de passe'}
-                isRequiredField
-                isError={
-                  !!errors.newPassword &&
-                  errors.newPassword !== 'required' &&
-                  values.newPassword.length > 0
-                }
-              />
-              <PasswordSecurityRules
-                password={values.newPassword}
-                visible={values.newPassword.length > 0}
-                nativeID={passwordDescribedBy}
-              />
-              <Spacer.Column numberOfSpaces={5} />
-              <PasswordInput
-                label={'Confirmer le mot de passe'}
-                value={values.confirmedPassword}
-                onChangeText={handleChange('confirmedPassword')}
-                onBlur={handleBlur('confirmedPassword')}
-                placeholder={'Confirmer le mot de passe'}
-                onFocus={() => {
-                  setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
-                }}
-                isRequiredField
-                accessibilityDescribedBy={passwordConfirmationErrorId}
-                isError={
-                  !!errors.confirmedPassword &&
-                  values.newPassword.length > 0 &&
-                  values.confirmedPassword.length > 0
-                }
-              />
-              <InputError
-                visible={
-                  !!errors.confirmedPassword &&
-                  values.newPassword.length > 0 &&
-                  values.confirmedPassword.length > 0
-                }
-                messageId={'Les mots de passe ne concordent pas'}
-                numberOfSpacesTop={getSpacing(0.5)}
-                relatedInputId={passwordConfirmationErrorId}
-              />
+        <Form.MaxWidth flex={1}>
+          <PasswordInput
+            label={'Mot de passe actuel'}
+            value={values.currentPassword}
+            onChangeText={onChangeCurrentPasswordText}
+            onBlur={handleBlur('currentPassword')}
+            placeholder={'Ton mot de passe actuel'}
+            isRequiredField
+            accessibilityDescribedBy={passwordInputErrorId}
+            isError={!!errors.currentPassword}
+          />
+          <InputError
+            visible={!!errors.currentPassword}
+            messageId={'Mot de passe incorrect'}
+            numberOfSpacesTop={getSpacing(0.5)}
+            relatedInputId={passwordInputErrorId}
+          />
+          <Spacer.Column numberOfSpaces={7} />
+          <PasswordInput
+            label={'Nouveau mot de passe'}
+            accessibilityDescribedBy={passwordDescribedBy}
+            value={values.newPassword}
+            onChangeText={handleChange('newPassword')}
+            onBlur={handleBlur('newPassword')}
+            placeholder={'Ton nouveau mot de passe'}
+            isRequiredField
+            isError={
+              !!errors.newPassword &&
+              errors.newPassword !== 'required' &&
+              values.newPassword.length > 0
+            }
+          />
+          <PasswordSecurityRules
+            password={values.newPassword}
+            visible={values.newPassword.length > 0}
+            nativeID={passwordDescribedBy}
+          />
+          <Spacer.Column numberOfSpaces={5} />
+          <PasswordInput
+            label={'Confirmer le mot de passe'}
+            value={values.confirmedPassword}
+            onChangeText={handleChange('confirmedPassword')}
+            onBlur={handleBlur('confirmedPassword')}
+            placeholder={'Confirmer le mot de passe'}
+            onFocus={onFocusConfirmedPassword}
+            isRequiredField
+            accessibilityDescribedBy={passwordConfirmationErrorId}
+            isError={
+              !!errors.confirmedPassword &&
+              values.newPassword.length > 0 &&
+              values.confirmedPassword.length > 0
+            }
+          />
+          <InputError
+            visible={
+              !!errors.confirmedPassword &&
+              values.newPassword.length > 0 &&
+              values.confirmedPassword.length > 0
+            }
+            messageId={'Les mots de passe ne concordent pas'}
+            numberOfSpacesTop={getSpacing(0.5)}
+            relatedInputId={passwordConfirmationErrorId}
+          />
 
-              {isMobileViewport && isTouch ? (
-                <Spacer.Flex flex={1} />
-              ) : (
-                <Spacer.Column numberOfSpaces={10} />
-              )}
-
-              {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
-              <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-                <SubmitButton />
-              </ButtonContainer>
-            </Form.MaxWidth>
+          {isMobileViewport && isTouch ? (
+            <Spacer.Flex flex={1} />
+          ) : (
+            <Spacer.Column numberOfSpaces={10} />
           )}
-        </Formik>
+
+          {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
+          <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
+            <ButtonPrimary
+              wording={'Enregistrer'}
+              accessibilityLabel={'Enregistrer les modifications'}
+              onPress={handleSubmit}
+              disabled={disabled}
+            />
+          </ButtonContainer>
+        </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
     </Container>
@@ -244,7 +236,10 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<ViewStyle> => ({
+const getScrollViewContentContainerStyle = (
+  theme: AppThemeType,
+  keyboardHeight: number
+): StyleProp<ViewStyle> => ({
   flexGrow: 1,
   flexDirection: 'column',
   paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
