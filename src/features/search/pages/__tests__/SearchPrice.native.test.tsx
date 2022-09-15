@@ -485,9 +485,7 @@ describe('SearchPrice component', () => {
     await act(async () => {
       fireEvent(minPriceInput, 'onChangeText', '10,559')
     })
-    const inputError = getByText(
-      'Tu as renseigné trop de chiffre après la virgule. Exemple de format attendu : 10,00'
-    )
+    const inputError = getByText(`Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`)
 
     expect(inputError).toBeTruthy()
   })
@@ -499,9 +497,7 @@ describe('SearchPrice component', () => {
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '10,559')
     })
-    const inputError = getByText(
-      'Tu as renseigné trop de chiffre après la virgule. Exemple de format attendu : 10,00'
-    )
+    const inputError = getByText(`Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`)
 
     expect(inputError).toBeTruthy()
   })

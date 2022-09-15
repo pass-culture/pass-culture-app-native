@@ -4,7 +4,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
-import * as Yup from 'yup'
+import { object, boolean } from 'yup'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -14,6 +14,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { priceSchema } from 'features/search/pages/schema/priceSchema'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
@@ -27,17 +28,11 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 
-// 3 integers max separate by a dot or point with 2 decimals max
-const priceRegex = /^\d+(?:[,.]\d{0,2})?$/
-
-const formatPriceError =
-  'Tu as renseigné trop de chiffre après la virgule. Exemple de format attendu : 10,00'
-
-const SearchPriceSchema = Yup.object().shape({
-  minPrice: Yup.string().matches(priceRegex, formatPriceError),
-  maxPrice: Yup.string().matches(priceRegex, formatPriceError),
-  isLimitCreditSearch: Yup.boolean(),
-  isOnlyFreeOffersSearch: Yup.boolean(),
+const SearchPriceSchema = object().shape({
+  minPrice: priceSchema,
+  maxPrice: priceSchema,
+  isLimitCreditSearch: boolean(),
+  isOnlyFreeOffersSearch: boolean(),
 })
 
 type SearchPriceFormFields = {
@@ -80,10 +75,9 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }, [navigate, searchState])
 
-  function search(searchPriceFormValues: SearchPriceFormFields) {
+  function search(values: SearchPriceFormFields) {
     const offerIsFree =
-      searchPriceFormValues.isOnlyFreeOffersSearch ||
-      (searchPriceFormValues.maxPrice === '0' && searchPriceFormValues.minPrice === '')
+      values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
@@ -92,13 +86,13 @@ export const SearchPrice: FunctionComponent = () => {
       offerIsFree,
     }
 
-    if (searchPriceFormValues.minPrice) {
-      dispatch({ type: 'SET_MIN_PRICE', payload: searchPriceFormValues.minPrice })
-      additionalSearchState = { ...additionalSearchState, minPrice: searchPriceFormValues.minPrice }
+    if (values.minPrice) {
+      dispatch({ type: 'SET_MIN_PRICE', payload: values.minPrice })
+      additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
     }
-    if (searchPriceFormValues.maxPrice) {
-      dispatch({ type: 'SET_MAX_PRICE', payload: searchPriceFormValues.maxPrice })
-      additionalSearchState = { ...additionalSearchState, maxPrice: searchPriceFormValues.maxPrice }
+    if (values.maxPrice) {
+      dispatch({ type: 'SET_MAX_PRICE', payload: values.maxPrice })
+      additionalSearchState = { ...additionalSearchState, maxPrice: values.maxPrice }
     }
 
     if (offerIsFree) {
@@ -131,7 +125,7 @@ export const SearchPrice: FunctionComponent = () => {
       />
       <Spacer.Column numberOfSpaces={6} />
       <Formik initialValues={initialValues} validationSchema={SearchPriceSchema} onSubmit={search}>
-        {({ handleChange, handleSubmit, resetForm, values, errors, setFieldValue }) => (
+        {({ handleChange, handleSubmit, resetForm, values, errors, setFieldValue, isValid }) => (
           <React.Fragment>
             {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
             <StyledScrollView
@@ -246,7 +240,7 @@ export const SearchPrice: FunctionComponent = () => {
             <FilterPageButtons
               onSearchPress={handleSubmit}
               onResetPress={resetForm}
-              isSearchDisabled={!!errors.minPrice || !!errors.maxPrice}
+              isSearchDisabled={!isValid}
             />
           </React.Fragment>
         )}
