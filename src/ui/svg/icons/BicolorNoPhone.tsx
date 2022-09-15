@@ -25,10 +25,10 @@ const BicolorNoPhoneSvg: React.FunctionComponent<AccessibleIcon> = ({
       <Defs>
         <LinearGradient
           id={gradientId}
-          x1="1.50854"
-          y1="1.63963"
-          x2="9.55715"
-          y2="23.3906"
+          x1="28.841%"
+          x2="71.159%"
+          y1="0%"
+          y2="100%"
           gradientUnits="userSpaceOnUse">
           <Stop stopColor={color} />
           <Stop offset="1" stopColor={color2} />

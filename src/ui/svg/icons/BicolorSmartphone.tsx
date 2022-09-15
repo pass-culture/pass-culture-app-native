@@ -24,7 +24,7 @@ const NotMemoizedBicolorSmartphone: React.FunctionComponent<AccessibleIcon> = ({
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <Defs>
-        <LinearGradient id={gradientId} x1="60.841%" x2="40.159%" y1="100%" y2="0%">
+        <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />
           <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
