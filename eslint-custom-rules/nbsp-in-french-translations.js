@@ -68,6 +68,32 @@ module.exports = {
           },
         })
       },
+
+      // For <Text>textToTranslate !</Text> with characters !, ?, :, » and €
+      'JSXText[value=/\\s+[!?:»€]/]': (node) => {
+        context.report({
+          node,
+          message:
+            'Please use &nbsp; (non-breaking space) instead of whitespace before !, ?, :, », €',
+          fix: function (fixer) {
+            const textToReplace = node.value.replace(/\s+([!?:»€])/g, '&nbsp;$1')
+
+            return fixer.replaceText(node, textToReplace)
+          },
+        })
+      },
+      // For <Text>« textToTranslate</Text>
+      'JSXText[value=/«\\s+/]': (node) => {
+        context.report({
+          node,
+          message: 'Please use &nbsp; (non-breaking space) instead of whitespace after «',
+          fix: function (fixer) {
+            const textToReplace = node.value.replace(/(«)\s+/g, '$1&nbsp;')
+
+            return fixer.replaceText(node, textToReplace)
+          },
+        })
+      },
     }
   },
 }
