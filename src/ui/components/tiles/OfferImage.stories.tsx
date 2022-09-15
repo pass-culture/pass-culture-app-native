@@ -6,11 +6,21 @@ import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 
 import { OfferImage } from './OfferImage'
 
+// @ts-ignore import is unresolved, this commit is temporary
+// eslint-disable-next-line import/no-unresolved
+import { useQueryDecorator } from '/.storybook/__mocks__/react-query'
+
 export default {
   title: 'ui/tiles/OfferImage',
   component: OfferImage,
   argTypes: {
     categoryId: selectArgTypeFromObject(CategoryIdEnum),
+  },
+  decorators: [useQueryDecorator],
+  parameters: {
+    useQuery: {
+      settings: { enableFrontImageResizing: false },
+    },
   },
 } as ComponentMeta<typeof OfferImage>
 

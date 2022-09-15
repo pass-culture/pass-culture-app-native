@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon, mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
+import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
@@ -18,7 +19,6 @@ const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
 export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   const { imageUrl, ...placeholderProps } = props
-  const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions(placeholderProps.type, !!imageUrl)
 
   const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(({ theme }) =>
@@ -44,7 +44,7 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
         {imageUrl ? (
           <StyledFastImage
             style={imageStyle}
-            source={source}
+            url={imageUrl}
             resizeMode={FastImage.resizeMode.cover}
           />
         ) : (
@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   )
 }
 
-const StyledFastImage = styled(FastImage)(({ theme }) => ({
+const StyledFastImage = styled(ResizedFastImage)(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 

@@ -5,9 +5,19 @@ import { CategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
 
 import { Hero } from './Hero'
 
+// @ts-ignore import is unresolved, this commit is temporary
+// eslint-disable-next-line import/no-unresolved
+import { useQueryDecorator } from '/.storybook/__mocks__/react-query'
+
 export default {
   title: 'ui/Hero',
   component: Hero,
+  decorators: [useQueryDecorator],
+  parameters: {
+    useQuery: {
+      settings: { enableFrontImageResizing: false },
+    },
+  },
 } as ComponentMeta<typeof Hero>
 
 const Template: ComponentStory<typeof Hero> = (props) => <Hero {...props} />

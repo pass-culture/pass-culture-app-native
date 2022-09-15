@@ -11,6 +11,7 @@ import { render, fireEvent } from 'tests/utils'
 
 import { ExclusivityModule, ExclusivityModuleProps } from '../ExclusivityModule'
 
+jest.mock('features/auth/settings')
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
 
 const props: ExclusivityModuleProps = {

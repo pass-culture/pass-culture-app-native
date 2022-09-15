@@ -39,6 +39,7 @@ export interface Environment {
   FIREBASE_MESSAGINGSENDERID: string
   FIREBASE_PROJECTID: string
   FIREBASE_STORAGEBUCKET: string
+  GCP_IMAGE_COULD_STORAGE_NAME: string
   GOOGLE_PLAY_STORE_URL: string
   IOS_APP_ID: string
   IOS_APP_STORE_ID: string
@@ -47,6 +48,7 @@ export interface Environment {
   PUBLIC_URL: string
   RECOMMENDATION_ENDPOINT: string
   RECOMMENDATION_TOKEN: string
+  RESIZE_IMAGE_ON_DEMAND_URL: string
   SENTRY_DSN: string
   SIGNIN_IDENTIFIER: string
   SIGNIN_PASSWORD: string
