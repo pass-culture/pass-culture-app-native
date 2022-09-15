@@ -33,4 +33,8 @@ module.exports = {
     },
   ],
   framework: '@storybook/react',
+  webpackFinal: async (config) => {
+    config.resolve.alias['react-query'] = require.resolve('./__mocks__/react-query.js')
+    return config
+  },
 }
