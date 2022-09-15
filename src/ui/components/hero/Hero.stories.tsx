@@ -7,7 +7,7 @@ import { Hero } from './Hero'
 
 // @ts-ignore import is unresolved, this commit is temporary
 // eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/__mocks__/react-query'
+import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
 export default {
   title: 'ui/Hero',
