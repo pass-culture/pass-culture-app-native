@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useEffect, useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import React, { useCallback, useEffect, useState } from 'react'
+import { LayoutChangeEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
@@ -33,6 +33,8 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
+import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
@@ -93,11 +95,18 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     onError,
   })
 
-  if (!culturalSurveyQuestionsData) return <React.Fragment />
-
-  const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
+  const culturalSurveyQuestion = culturalSurveyQuestionsData?.questions.find(
     (question) => question.id === route.params.question
   ) as CulturalSurveyQuestion
+
+  const logCulturalSurveyScrolledToBottom = useFunctionOnce(
+    useCallback(
+      () => analytics.logCulturalSurveyScrolledToBottom({ questionId: culturalSurveyQuestion?.id }),
+      [culturalSurveyQuestion?.id]
+    )
+  )
+
+  if (!culturalSurveyQuestionsData) return <React.Fragment />
 
   const navigateToNextQuestion = () => {
     if (isCurrentQuestionLastQuestion) {
@@ -160,6 +169,12 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     })
   }
 
+  function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
+    if (isCloseToBottom(nativeEvent)) {
+      logCulturalSurveyScrolledToBottom()
+    }
+  }
+
   return (
     <Container>
       <Spacer.TopScreen />
@@ -168,7 +183,10 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
         title={mapQuestionIdToPageTitle(culturalSurveyQuestion?.id)}
         onGoBack={onGoBack}
       />
-      <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
+      <ChildrenScrollView
+        bottomChildrenViewHeight={bottomChildrenViewHeight}
+        onScroll={onScroll}
+        testID="cultural-survey-questions-scrollview">
         <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
         <CaptionContainer>
           <GreyDarkCaption>{pageSubtitle}</GreyDarkCaption>

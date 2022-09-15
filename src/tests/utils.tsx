@@ -135,3 +135,19 @@ export function waitFor(cb: () => void, opts = {}): Promise<void> {
 export * from '@testing-library/react-native'
 
 export { customRender as render }
+
+export const middleScrollEvent = {
+  nativeEvent: {
+    layoutMeasurement: { height: 1000 },
+    contentOffset: { y: 400 },
+    contentSize: { height: 1600 },
+  },
+}
+
+export const bottomScrollEvent = {
+  nativeEvent: {
+    contentOffset: { y: 1600 },
+    layoutMeasurement: { height: 1600 },
+    contentSize: { height: 1600 },
+  },
+}
