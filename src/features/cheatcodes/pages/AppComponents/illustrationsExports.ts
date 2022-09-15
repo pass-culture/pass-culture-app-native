@@ -2,9 +2,9 @@ import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { BicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
+import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { BicolorIdLost } from 'ui/svg/icons/BicolorIdLost'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
@@ -34,7 +34,7 @@ export const BicolorIllustrations = {
   BicolorEmailSent,
   BicolorError,
   BicolorIdCardWithMagnifyingGlass,
-  BicolorIdLost,
+  BicolorIdCardError,
   BicolorIdCardInvalid,
   BicolorPhonePending,
 }
