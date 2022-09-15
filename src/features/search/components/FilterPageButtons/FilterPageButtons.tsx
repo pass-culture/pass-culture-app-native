@@ -12,6 +12,7 @@ type Props = {
   isModal?: boolean
   onResetPress: () => void
   onSearchPress: () => void
+  isSearchDisabled?: boolean
   children?: never
 }
 
@@ -19,11 +20,12 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   isModal = false,
   onResetPress,
   onSearchPress,
+  isSearchDisabled,
 }) => {
   return (
     <Container isModal={isModal}>
       <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
-      <SearchButton wording="Rechercher" onPress={onSearchPress} />
+      <SearchButton wording="Rechercher" onPress={onSearchPress} disabled={isSearchDisabled} />
     </Container>
   )
 }

@@ -982,6 +982,11 @@ exports[`SearchPrice component should render correctly 1`] = `
     </View>
     <View
       accessibilityLabel="Rechercher"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

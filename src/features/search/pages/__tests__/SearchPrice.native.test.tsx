@@ -9,7 +9,7 @@ import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
@@ -47,13 +47,19 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
     const minPriceInput = getByPlaceholderText('0')
-    await fireEvent(minPriceInput, 'onChangeText', '5')
+    await act(async () => {
+      fireEvent(minPriceInput, 'onChangeText', '5')
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '20')
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '20')
+    })
 
     const searchButton = getByText('Rechercher')
-    await fireEvent.press(searchButton)
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
 
     const expectedSearchParams = {
       ...mockSearchState,
@@ -71,37 +77,21 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
     const minPriceInput = getByPlaceholderText('0')
-    await fireEvent(minPriceInput, 'onChangeText', '5')
+    await act(async () => {
+      fireEvent(minPriceInput, 'onChangeText', '5')
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '20')
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '20')
+    })
 
     const searchButton = getByText('Rechercher')
-    await fireEvent.press(searchButton)
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
 
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Price)
-  })
-
-  it('should not update the minimum price if the enter do not respect the expected format', async () => {
-    const { getByPlaceholderText } = render(<SearchPrice />)
-
-    const minPriceInput = getByPlaceholderText('0')
-    await fireEvent(minPriceInput, 'onChangeText', '9,99')
-
-    await fireEvent(minPriceInput, 'onChangeText', '9,999')
-
-    expect(minPriceInput.props.value).toStrictEqual('9,99')
-  })
-
-  it('should not update the maximum price if the enter do not respect the expected format', async () => {
-    const { getByPlaceholderText } = render(<SearchPrice />)
-
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '9,99')
-
-    await fireEvent(maxPriceInput, 'onChangeText', '9,999')
-
-    expect(maxPriceInput.props.value).toStrictEqual('9,99')
   })
 
   it('should navigate on search results when pressing previous button', async () => {
@@ -121,10 +111,14 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
     const minPriceInput = getByPlaceholderText('0')
-    await fireEvent(minPriceInput, 'onChangeText', '5')
+    await act(async () => {
+      fireEvent(minPriceInput, 'onChangeText', '5')
+    })
 
     const resetButton = getByText('Réinitialiser')
-    await fireEvent.press(resetButton)
+    await act(async () => {
+      fireEvent.press(resetButton)
+    })
 
     expect(minPriceInput.props.value).toStrictEqual('')
   })
@@ -133,10 +127,14 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '20')
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '20')
+    })
 
     const resetButton = getByText('Réinitialiser')
-    await fireEvent.press(resetButton)
+    await act(async () => {
+      fireEvent.press(resetButton)
+    })
 
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
@@ -165,7 +163,9 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
     expect(maxPriceInput.props.value).toStrictEqual('100')
@@ -175,7 +175,9 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
@@ -185,8 +187,12 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
     expect(maxPriceInput.props.value).toStrictEqual('')
@@ -197,7 +203,9 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
     expect(maxPriceInput.props.value).toStrictEqual('')
@@ -208,8 +216,12 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
     expect(maxPriceInput.props.value).toStrictEqual('15')
@@ -219,10 +231,14 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByText } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     const searchButton = getByText('Rechercher')
-    await fireEvent.press(searchButton)
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
 
     const expectedSearchParams = {
       ...mockSearchState,
@@ -241,10 +257,14 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByText } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     const searchButton = getByText('Rechercher')
-    await fireEvent.press(searchButton)
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
 
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
   })
@@ -253,10 +273,14 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '0')
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '0')
+    })
 
     const searchButton = getByText('Rechercher')
-    await fireEvent.press(searchButton)
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
 
     const expectedSearchParams = {
       ...mockSearchState,
@@ -274,10 +298,14 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '0')
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '0')
+    })
 
     const searchButton = getByText('Rechercher')
-    await fireEvent.press(searchButton)
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
 
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
   })
@@ -286,11 +314,15 @@ describe('SearchPrice component', () => {
     const { getByTestId } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
     expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(true)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
   })
@@ -299,11 +331,15 @@ describe('SearchPrice component', () => {
     const { getByTestId } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
     expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(true)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
-    await fireEvent.press(toggleLimitCreditSearch)
+    await act(async () => {
+      fireEvent.press(toggleLimitCreditSearch)
+    })
 
     expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(false)
   })
@@ -312,10 +348,14 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByTestId } = render(<SearchPrice />)
 
     const minPriceInput = getByPlaceholderText('0')
-    await fireEvent(minPriceInput, 'onChangeText', '5')
+    await act(async () => {
+      fireEvent(minPriceInput, 'onChangeText', '5')
+    })
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     expect(minPriceInput.props.value).toStrictEqual('0')
   })
@@ -325,8 +365,12 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     const minPriceInput = getByPlaceholderText('0')
 
@@ -338,8 +382,12 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     const minPriceInput = getByPlaceholderText('0')
 
@@ -351,8 +399,12 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
 
@@ -364,8 +416,12 @@ describe('SearchPrice component', () => {
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
 
@@ -378,7 +434,9 @@ describe('SearchPrice component', () => {
     const minPriceInput = getByPlaceholderText('0')
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     expect(minPriceInput.props.disabled).toStrictEqual(true)
   })
@@ -387,10 +445,14 @@ describe('SearchPrice component', () => {
     const { getByPlaceholderText, getByTestId } = render(<SearchPrice />)
 
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    await fireEvent(maxPriceInput, 'onChangeText', '0')
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '0')
+    })
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     expect(maxPriceInput.props.value).toStrictEqual('0')
   })
@@ -401,7 +463,9 @@ describe('SearchPrice component', () => {
     const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await fireEvent.press(toggleOnlyFreeOffersSearch)
+    await act(async () => {
+      fireEvent.press(toggleOnlyFreeOffersSearch)
+    })
 
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
   })
@@ -412,6 +476,34 @@ describe('SearchPrice component', () => {
     const creditBanner = queryByText('Il te reste 100 € sur ton pass Culture.')
 
     expect(creditBanner).toBeTruthy()
+  })
+
+  it('should display an error when the expected format of minimum price is incorrect', async () => {
+    const { getByPlaceholderText, getByText } = render(<SearchPrice />)
+
+    const minPriceInput = getByPlaceholderText('0')
+    await act(async () => {
+      fireEvent(minPriceInput, 'onChangeText', '10,559')
+    })
+    const inputError = getByText(
+      'Tu as renseigné trop de chiffre après la virgule. Exemple de format attendu : 10,00'
+    )
+
+    expect(inputError).toBeTruthy()
+  })
+
+  it('should display an error when the expected format of maximum price is incorrect', async () => {
+    const { getByPlaceholderText, getByText } = render(<SearchPrice />)
+
+    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '10,559')
+    })
+    const inputError = getByText(
+      'Tu as renseigné trop de chiffre après la virgule. Exemple de format attendu : 10,00'
+    )
+
+    expect(inputError).toBeTruthy()
   })
 
   describe('when user is not logged in', () => {

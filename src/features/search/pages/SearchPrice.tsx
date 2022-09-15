@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
+import { Formik } from 'formik'
 import React, { FunctionComponent, useCallback } from 'react'
 import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
+import * as Yup from 'yup'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -16,17 +18,34 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { useSafeState } from 'libs/hooks'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 
 // 3 integers max separate by a dot or point with 2 decimals max
-const priceRegex = /^\d{1,3}(?:[,.]\d{0,2})?$/
+const priceRegex = /^\d+(?:[,.]\d{0,2})?$/
+
+const formatPriceError =
+  'Tu as renseigné trop de chiffre après la virgule. Exemple de format attendu : 10,00'
+
+const SearchPriceSchema = Yup.object().shape({
+  minPrice: Yup.string().matches(priceRegex, formatPriceError),
+  maxPrice: Yup.string().matches(priceRegex, formatPriceError),
+  isLimitCreditSearch: Yup.boolean(),
+  isOnlyFreeOffersSearch: Yup.boolean(),
+})
+
+type SearchPriceFormFields = {
+  minPrice: string
+  maxPrice: string
+  isLimitCreditSearch: boolean
+  isOnlyFreeOffersSearch: boolean
+}
 
 export const SearchPrice: FunctionComponent = () => {
   const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price)
@@ -35,27 +54,36 @@ export const SearchPrice: FunctionComponent = () => {
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
   const { searchState, dispatch } = useSearch()
-  const [selectedMinPrice, setSelectedMinPrice] = useSafeState<string>(searchState?.minPrice || '')
-  const [selectedMaxPrice, setSelectedMaxPrice] = useSafeState<string>(searchState?.maxPrice || '')
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
     : '0'
 
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
-  const [isLimitCreditSearch, setIsLimitCreditSearch] = useSafeState<boolean>(
-    isLimitCreditSearchDefaultValue
-  )
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
-  const [isOnlyFreeOffersSearch, setIsOnlyFreeOffersSearch] = useSafeState<boolean>(
-    isOnlyFreeOffersSearchDefaultValue
-  )
 
-  const onSearchPress = () => {
+  const initialValues: SearchPriceFormFields = {
+    minPrice: searchState?.minPrice || '',
+    maxPrice: searchState?.maxPrice || '',
+    isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+    isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+  }
+
+  const goBack = useCallback(() => {
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        view: SearchView.Results,
+      })
+    )
+  }, [navigate, searchState])
+
+  function search(searchPriceFormValues: SearchPriceFormFields) {
     const offerIsFree =
-      isOnlyFreeOffersSearch || (selectedMaxPrice === '0' && selectedMinPrice === '')
+      searchPriceFormValues.isOnlyFreeOffersSearch ||
+      (searchPriceFormValues.maxPrice === '0' && searchPriceFormValues.minPrice === '')
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
@@ -64,13 +92,13 @@ export const SearchPrice: FunctionComponent = () => {
       offerIsFree,
     }
 
-    if (selectedMinPrice) {
-      dispatch({ type: 'SET_MIN_PRICE', payload: selectedMinPrice })
-      additionalSearchState = { ...additionalSearchState, minPrice: selectedMinPrice }
+    if (searchPriceFormValues.minPrice) {
+      dispatch({ type: 'SET_MIN_PRICE', payload: searchPriceFormValues.minPrice })
+      additionalSearchState = { ...additionalSearchState, minPrice: searchPriceFormValues.minPrice }
     }
-    if (selectedMaxPrice) {
-      dispatch({ type: 'SET_MAX_PRICE', payload: selectedMaxPrice })
-      additionalSearchState = { ...additionalSearchState, maxPrice: selectedMaxPrice }
+    if (searchPriceFormValues.maxPrice) {
+      dispatch({ type: 'SET_MAX_PRICE', payload: searchPriceFormValues.maxPrice })
+      additionalSearchState = { ...additionalSearchState, maxPrice: searchPriceFormValues.maxPrice }
     }
 
     if (offerIsFree) {
@@ -88,81 +116,6 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }
 
-  const onResetPress = () => {
-    setSelectedMinPrice('')
-    setSelectedMaxPrice('')
-    setIsLimitCreditSearch(false)
-    setIsOnlyFreeOffersSearch(false)
-  }
-
-  const onChangeMinPrice = (price: string) => {
-    if (priceRegex.test(price) || price === '') {
-      setSelectedMinPrice(price)
-    }
-  }
-
-  const onChangeMaxPrice = (price: string) => {
-    if (priceRegex.test(price) || price === '') {
-      setSelectedMaxPrice(price)
-    }
-  }
-
-  const goBack = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        view: SearchView.Results,
-      })
-    )
-  }, [navigate, searchState])
-
-  const toggleLimitCreditSearch = useCallback(() => {
-    const toggleLimitCreditSearchValue = isLimitCreditSearch ? false : true
-    setIsLimitCreditSearch(toggleLimitCreditSearchValue)
-
-    if (toggleLimitCreditSearchValue) {
-      setSelectedMaxPrice(formatAvailableCredit)
-      setIsOnlyFreeOffersSearch(false)
-      return
-    }
-
-    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
-    setSelectedMaxPrice(availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '')
-  }, [
-    formatAvailableCredit,
-    isLimitCreditSearch,
-    searchState?.maxPrice,
-    setIsLimitCreditSearch,
-    setIsOnlyFreeOffersSearch,
-    setSelectedMaxPrice,
-  ])
-
-  const toggleOnlyFreeOffersSearch = useCallback(() => {
-    const toggleOnlyFreeOffersSearchValue = isOnlyFreeOffersSearch ? false : true
-    setIsOnlyFreeOffersSearch(toggleOnlyFreeOffersSearchValue)
-
-    if (toggleOnlyFreeOffersSearchValue) {
-      setSelectedMaxPrice('0')
-      setSelectedMinPrice('0')
-      setIsLimitCreditSearch(false)
-      return
-    }
-
-    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
-    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
-
-    setSelectedMaxPrice(maxPrice)
-    setSelectedMinPrice(minPrice)
-  }, [
-    isOnlyFreeOffersSearch,
-    searchState?.maxPrice,
-    searchState?.minPrice,
-    setIsLimitCreditSearch,
-    setIsOnlyFreeOffersSearch,
-    setSelectedMaxPrice,
-    setSelectedMinPrice,
-  ])
-
   const titleID = uuidv4()
   const minPriceInputId = uuidv4()
   const maxPriceInputId = uuidv4()
@@ -177,74 +130,127 @@ export const SearchPrice: FunctionComponent = () => {
         onGoBack={goBack}
       />
       <Spacer.Column numberOfSpaces={6} />
-      {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
-      <StyledScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={getScrollViewContentContainerStyle()}>
-        <Form.MaxWidth>
-          {!!isLoggedInAndBeneficiary && (
-            <BannerContainer testID="creditBanner">
-              <Banner title={bannerTitle} />
-              <Spacer.Column numberOfSpaces={6} />
-            </BannerContainer>
-          )}
-          <FilterSwitchWithLabel
-            isActive={isOnlyFreeOffersSearch}
-            toggle={toggleOnlyFreeOffersSearch}
-            label="Uniquement les offres gratuites"
-            testID="onlyFreeOffers"
-          />
-          <Spacer.Column numberOfSpaces={6} />
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-          {!!isLoggedInAndBeneficiary && (
-            <React.Fragment>
-              <FilterSwitchWithLabel
-                isActive={isLimitCreditSearch}
-                toggle={toggleLimitCreditSearch}
-                label="Limiter la recherche à mon crédit"
-                testID="limitCreditSearch"
-              />
-              <Spacer.Column numberOfSpaces={6} />
-              <Separator />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
-          )}
+      <Formik initialValues={initialValues} validationSchema={SearchPriceSchema} onSubmit={search}>
+        {({ handleChange, handleSubmit, resetForm, values, errors, setFieldValue }) => (
+          <React.Fragment>
+            {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
+            <StyledScrollView
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={getScrollViewContentContainerStyle()}>
+              <Form.MaxWidth>
+                {!!isLoggedInAndBeneficiary && (
+                  <BannerContainer testID="creditBanner">
+                    <Banner title={bannerTitle} />
+                    <Spacer.Column numberOfSpaces={6} />
+                  </BannerContainer>
+                )}
+                <FilterSwitchWithLabel
+                  isActive={values.isOnlyFreeOffersSearch}
+                  toggle={() => {
+                    const toggleOnlyFreeOffersSearchValue = !values.isOnlyFreeOffersSearch
+                    setFieldValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
+                    if (toggleOnlyFreeOffersSearchValue) {
+                      setFieldValue('maxPrice', '0')
+                      setFieldValue('minPrice', '0')
+                      setFieldValue('isLimitCreditSearch', false)
+                      return
+                    }
+                    const maxPrice =
+                      searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
+                    const minPrice =
+                      searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
+                    setFieldValue('maxPrice', maxPrice)
+                    setFieldValue('minPrice', minPrice)
+                  }}
+                  label="Uniquement les offres gratuites"
+                  testID="onlyFreeOffers"
+                />
+                <Spacer.Column numberOfSpaces={6} />
+                <Separator />
+                <Spacer.Column numberOfSpaces={6} />
+                {!!isLoggedInAndBeneficiary && (
+                  <React.Fragment>
+                    <FilterSwitchWithLabel
+                      isActive={values.isLimitCreditSearch}
+                      toggle={() => {
+                        const toggleLimitCreditSearchValue = !values.isLimitCreditSearch
+                        setFieldValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
 
-          <TextInput
-            autoComplete="off" // disable autofill on android
-            autoCapitalize="none"
-            isError={false}
-            keyboardType="numeric"
-            label="Prix minimum (en €)"
-            value={selectedMinPrice}
-            onChangeText={onChangeMinPrice}
-            textContentType="none" // disable autofill on iOS
-            accessibilityDescribedBy={minPriceInputId}
-            testID="Entrée pour le prix minimum"
-            placeholder="0"
-            disabled={isOnlyFreeOffersSearch}
-          />
-          <Spacer.Column numberOfSpaces={6} />
-          <TextInput
-            autoComplete="off" // disable autofill on android
-            autoCapitalize="none"
-            isError={false}
-            keyboardType="numeric"
-            label="Prix maximum (en €)"
-            value={selectedMaxPrice}
-            onChangeText={onChangeMaxPrice}
-            textContentType="none" // disable autofill on iOS
-            accessibilityDescribedBy={maxPriceInputId}
-            testID="Entrée pour le prix maximum"
-            rightLabel={`max : ${MAX_PRICE} €`}
-            placeholder={`${MAX_PRICE}`}
-            disabled={isLimitCreditSearch || isOnlyFreeOffersSearch}
-          />
-        </Form.MaxWidth>
-      </StyledScrollView>
+                        if (toggleLimitCreditSearchValue) {
+                          setFieldValue('maxPrice', formatAvailableCredit)
+                          setFieldValue('isOnlyFreeOffersSearch', false)
+                          return
+                        }
 
-      <FilterPageButtons onSearchPress={onSearchPress} onResetPress={onResetPress} />
+                        const availableCreditIsMaxPriceSearch =
+                          searchState?.maxPrice === formatAvailableCredit
+                        setFieldValue(
+                          'maxPrice',
+                          availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || ''
+                        )
+                      }}
+                      label="Limiter la recherche à mon crédit"
+                      testID="limitCreditSearch"
+                    />
+                    <Spacer.Column numberOfSpaces={6} />
+                    <Separator />
+                    <Spacer.Column numberOfSpaces={6} />
+                  </React.Fragment>
+                )}
+
+                <TextInput
+                  autoComplete="off" // disable autofill on android
+                  autoCapitalize="none"
+                  isError={!!errors.minPrice}
+                  keyboardType="numeric"
+                  label="Prix minimum (en €)"
+                  value={values.minPrice}
+                  onChangeText={handleChange('minPrice')}
+                  textContentType="none" // disable autofill on iOS
+                  accessibilityDescribedBy={minPriceInputId}
+                  testID="Entrée pour le prix minimum"
+                  placeholder="0"
+                  disabled={values.isOnlyFreeOffersSearch}
+                />
+                <InputError
+                  visible={!!errors.minPrice}
+                  messageId={errors.minPrice}
+                  numberOfSpacesTop={getSpacing(0.5)}
+                  relatedInputId={minPriceInputId}
+                />
+                <Spacer.Column numberOfSpaces={6} />
+                <TextInput
+                  autoComplete="off" // disable autofill on android
+                  autoCapitalize="none"
+                  isError={!!errors.maxPrice}
+                  keyboardType="numeric"
+                  label="Prix maximum (en €)"
+                  value={values.maxPrice}
+                  onChangeText={handleChange('maxPrice')}
+                  textContentType="none" // disable autofill on iOS
+                  accessibilityDescribedBy={maxPriceInputId}
+                  testID="Entrée pour le prix maximum"
+                  rightLabel={`max : ${MAX_PRICE} €`}
+                  placeholder={`${MAX_PRICE}`}
+                  disabled={values.isLimitCreditSearch || values.isOnlyFreeOffersSearch}
+                />
+                <InputError
+                  visible={!!errors.maxPrice}
+                  messageId={errors.maxPrice}
+                  numberOfSpacesTop={getSpacing(0.5)}
+                  relatedInputId={maxPriceInputId}
+                />
+              </Form.MaxWidth>
+            </StyledScrollView>
+
+            <FilterPageButtons
+              onSearchPress={handleSubmit}
+              onResetPress={resetForm}
+              isSearchDisabled={!!errors.minPrice || !!errors.maxPrice}
+            />
+          </React.Fragment>
+        )}
+      </Formik>
     </Container>
   )
 }
