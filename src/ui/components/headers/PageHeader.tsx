@@ -147,5 +147,4 @@ const Header: React.FC = styled.View.attrs({
   accessibilityRole: AccessibilityRole.HEADER,
 })({
   width: '100%',
-  position: 'static',
 })

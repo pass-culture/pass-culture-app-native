@@ -133,7 +133,7 @@ Object {
         <header
           class="css-view-1dbjc4n"
           role="banner"
-          style="position: static; width: 100%;"
+          style="width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -477,7 +477,7 @@ Object {
       <header
         class="css-view-1dbjc4n"
         role="banner"
-        style="position: static; width: 100%;"
+        style="width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
