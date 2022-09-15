@@ -6,10 +6,7 @@
  *
  * The work here is based on ESLint documentation: https://eslint.org/docs/latest/developer-guide/working-with-rules
  * and especially for the selectors: https://eslint.org/docs/latest/developer-guide/selectors
-<<<<<<< HEAD
  * You can visualize the "node" structure with: https://astexplorer.net/
-=======
->>>>>>> d12adb7d4 (docs(eslint nbsp): update docs)
  */
 
 module.exports = {
