@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { Formik } from 'formik'
+import { useFormik } from 'formik'
 import React, { FunctionComponent, useCallback } from 'react'
 import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -59,22 +59,6 @@ export const SearchPrice: FunctionComponent = () => {
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
-  const initialValues: SearchPriceFormFields = {
-    minPrice: searchState?.minPrice || '',
-    maxPrice: searchState?.maxPrice || '',
-    isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-    isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-  }
-
-  const goBack = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        view: SearchView.Results,
-      })
-    )
-  }, [navigate, searchState])
-
   function search(values: SearchPriceFormFields) {
     const offerIsFree =
       values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
@@ -110,6 +94,58 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }
 
+  const formik = useFormik<SearchPriceFormFields>({
+    initialValues: {
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+    },
+    validationSchema: SearchPriceSchema,
+    onSubmit: (values: SearchPriceFormFields) => search(values),
+  })
+
+  const toggleOnlyFreeOffersSearch = useCallback(() => {
+    const toggleOnlyFreeOffersSearchValue = !formik.values.isOnlyFreeOffersSearch
+    formik.setFieldValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
+    if (toggleOnlyFreeOffersSearchValue) {
+      formik.setFieldValue('maxPrice', '0')
+      formik.setFieldValue('minPrice', '0')
+      formik.setFieldValue('isLimitCreditSearch', false)
+      return
+    }
+    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
+    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
+    formik.setFieldValue('maxPrice', maxPrice)
+    formik.setFieldValue('minPrice', minPrice)
+  }, [formik, searchState?.maxPrice, searchState?.minPrice])
+
+  const toggleLimitCreditSearch = useCallback(() => {
+    const toggleLimitCreditSearchValue = !formik.values.isLimitCreditSearch
+    formik.setFieldValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
+
+    if (toggleLimitCreditSearchValue) {
+      formik.setFieldValue('maxPrice', formatAvailableCredit)
+      formik.setFieldValue('isOnlyFreeOffersSearch', false)
+      return
+    }
+
+    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
+    formik.setFieldValue(
+      'maxPrice',
+      availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || ''
+    )
+  }, [formatAvailableCredit, formik, searchState?.maxPrice])
+
+  const goBack = useCallback(() => {
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        view: SearchView.Results,
+      })
+    )
+  }, [navigate, searchState])
+
   const titleID = uuidv4()
   const minPriceInputId = uuidv4()
   const maxPriceInputId = uuidv4()
@@ -124,127 +160,90 @@ export const SearchPrice: FunctionComponent = () => {
         onGoBack={goBack}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Formik initialValues={initialValues} validationSchema={SearchPriceSchema} onSubmit={search}>
-        {({ handleChange, handleSubmit, resetForm, values, errors, setFieldValue, isValid }) => (
-          <React.Fragment>
-            {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
-            <StyledScrollView
-              keyboardShouldPersistTaps="handled"
-              contentContainerStyle={getScrollViewContentContainerStyle()}>
-              <Form.MaxWidth>
-                {!!isLoggedInAndBeneficiary && (
-                  <BannerContainer testID="creditBanner">
-                    <Banner title={bannerTitle} />
-                    <Spacer.Column numberOfSpaces={6} />
-                  </BannerContainer>
-                )}
-                <FilterSwitchWithLabel
-                  isActive={values.isOnlyFreeOffersSearch}
-                  toggle={() => {
-                    const toggleOnlyFreeOffersSearchValue = !values.isOnlyFreeOffersSearch
-                    setFieldValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
-                    if (toggleOnlyFreeOffersSearchValue) {
-                      setFieldValue('maxPrice', '0')
-                      setFieldValue('minPrice', '0')
-                      setFieldValue('isLimitCreditSearch', false)
-                      return
-                    }
-                    const maxPrice =
-                      searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
-                    const minPrice =
-                      searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
-                    setFieldValue('maxPrice', maxPrice)
-                    setFieldValue('minPrice', minPrice)
-                  }}
-                  label="Uniquement les offres gratuites"
-                  testID="onlyFreeOffers"
-                />
-                <Spacer.Column numberOfSpaces={6} />
-                <Separator />
-                <Spacer.Column numberOfSpaces={6} />
-                {!!isLoggedInAndBeneficiary && (
-                  <React.Fragment>
-                    <FilterSwitchWithLabel
-                      isActive={values.isLimitCreditSearch}
-                      toggle={() => {
-                        const toggleLimitCreditSearchValue = !values.isLimitCreditSearch
-                        setFieldValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
+      {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
+      <StyledScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={getScrollViewContentContainerStyle()}>
+        <Form.MaxWidth>
+          {!!isLoggedInAndBeneficiary && (
+            <BannerContainer testID="creditBanner">
+              <Banner title={bannerTitle} />
+              <Spacer.Column numberOfSpaces={6} />
+            </BannerContainer>
+          )}
+          <FilterSwitchWithLabel
+            isActive={formik.values.isOnlyFreeOffersSearch}
+            toggle={toggleOnlyFreeOffersSearch}
+            label="Uniquement les offres gratuites"
+            testID="onlyFreeOffers"
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
+          {!!isLoggedInAndBeneficiary && (
+            <React.Fragment>
+              <FilterSwitchWithLabel
+                isActive={formik.values.isLimitCreditSearch}
+                toggle={toggleLimitCreditSearch}
+                label="Limiter la recherche à mon crédit"
+                testID="limitCreditSearch"
+              />
+              <Spacer.Column numberOfSpaces={6} />
+              <Separator />
+              <Spacer.Column numberOfSpaces={6} />
+            </React.Fragment>
+          )}
 
-                        if (toggleLimitCreditSearchValue) {
-                          setFieldValue('maxPrice', formatAvailableCredit)
-                          setFieldValue('isOnlyFreeOffersSearch', false)
-                          return
-                        }
+          <TextInput
+            autoComplete="off" // disable autofill on android
+            autoCapitalize="none"
+            isError={!!formik.errors.minPrice}
+            keyboardType="numeric"
+            label="Prix minimum (en €)"
+            value={formik.values.minPrice}
+            onChangeText={formik.handleChange('minPrice')}
+            textContentType="none" // disable autofill on iOS
+            accessibilityDescribedBy={minPriceInputId}
+            testID="Entrée pour le prix minimum"
+            placeholder="0"
+            disabled={formik.values.isOnlyFreeOffersSearch}
+          />
+          <InputError
+            visible={!!formik.errors.minPrice}
+            messageId={formik.errors.minPrice}
+            numberOfSpacesTop={getSpacing(0.5)}
+            relatedInputId={minPriceInputId}
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <TextInput
+            autoComplete="off" // disable autofill on android
+            autoCapitalize="none"
+            isError={!!formik.errors.maxPrice}
+            keyboardType="numeric"
+            label="Prix maximum (en €)"
+            value={formik.values.maxPrice}
+            onChangeText={formik.handleChange('maxPrice')}
+            textContentType="none" // disable autofill on iOS
+            accessibilityDescribedBy={maxPriceInputId}
+            testID="Entrée pour le prix maximum"
+            rightLabel={`max : ${MAX_PRICE} €`}
+            placeholder={`${MAX_PRICE}`}
+            disabled={formik.values.isLimitCreditSearch || formik.values.isOnlyFreeOffersSearch}
+          />
+          <InputError
+            visible={!!formik.errors.maxPrice}
+            messageId={formik.errors.maxPrice}
+            numberOfSpacesTop={getSpacing(0.5)}
+            relatedInputId={maxPriceInputId}
+          />
+        </Form.MaxWidth>
+      </StyledScrollView>
 
-                        const availableCreditIsMaxPriceSearch =
-                          searchState?.maxPrice === formatAvailableCredit
-                        setFieldValue(
-                          'maxPrice',
-                          availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || ''
-                        )
-                      }}
-                      label="Limiter la recherche à mon crédit"
-                      testID="limitCreditSearch"
-                    />
-                    <Spacer.Column numberOfSpaces={6} />
-                    <Separator />
-                    <Spacer.Column numberOfSpaces={6} />
-                  </React.Fragment>
-                )}
-
-                <TextInput
-                  autoComplete="off" // disable autofill on android
-                  autoCapitalize="none"
-                  isError={!!errors.minPrice}
-                  keyboardType="numeric"
-                  label="Prix minimum (en €)"
-                  value={values.minPrice}
-                  onChangeText={handleChange('minPrice')}
-                  textContentType="none" // disable autofill on iOS
-                  accessibilityDescribedBy={minPriceInputId}
-                  testID="Entrée pour le prix minimum"
-                  placeholder="0"
-                  disabled={values.isOnlyFreeOffersSearch}
-                />
-                <InputError
-                  visible={!!errors.minPrice}
-                  messageId={errors.minPrice}
-                  numberOfSpacesTop={getSpacing(0.5)}
-                  relatedInputId={minPriceInputId}
-                />
-                <Spacer.Column numberOfSpaces={6} />
-                <TextInput
-                  autoComplete="off" // disable autofill on android
-                  autoCapitalize="none"
-                  isError={!!errors.maxPrice}
-                  keyboardType="numeric"
-                  label="Prix maximum (en €)"
-                  value={values.maxPrice}
-                  onChangeText={handleChange('maxPrice')}
-                  textContentType="none" // disable autofill on iOS
-                  accessibilityDescribedBy={maxPriceInputId}
-                  testID="Entrée pour le prix maximum"
-                  rightLabel={`max : ${MAX_PRICE} €`}
-                  placeholder={`${MAX_PRICE}`}
-                  disabled={values.isLimitCreditSearch || values.isOnlyFreeOffersSearch}
-                />
-                <InputError
-                  visible={!!errors.maxPrice}
-                  messageId={errors.maxPrice}
-                  numberOfSpacesTop={getSpacing(0.5)}
-                  relatedInputId={maxPriceInputId}
-                />
-              </Form.MaxWidth>
-            </StyledScrollView>
-
-            <FilterPageButtons
-              onSearchPress={handleSubmit}
-              onResetPress={resetForm}
-              isSearchDisabled={!isValid}
-            />
-          </React.Fragment>
-        )}
-      </Formik>
+      <FilterPageButtons
+        onSearchPress={formik.handleSubmit}
+        onResetPress={formik.resetForm}
+        isSearchDisabled={!formik.isValid}
+      />
     </Container>
   )
 }
