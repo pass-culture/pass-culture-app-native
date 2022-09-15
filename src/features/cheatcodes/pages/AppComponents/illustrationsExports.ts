@@ -11,7 +11,6 @@ import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
-import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { LocationIllustration } from 'ui/svg/icons/LocationIllustration'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
@@ -45,7 +44,6 @@ export const UniqueColorIllustrations = {
   EmailSent,
   EmptyFavorites,
   HappyFace,
-  IdCardError,
   LocationIllustration,
   MaintenanceCone,
   NoBookings,
