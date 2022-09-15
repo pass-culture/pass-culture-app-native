@@ -19,6 +19,30 @@ module.exports = {
   },
   create(context) {
     return {
+      // For 'textToTranslate !' and "textToTranslate !" with characters !, ?, :, » and €
+      'Literal[raw=/\\s+[!?:»€]/]': (node) => {
+        context.report({
+          node,
+          message:
+            'Please use unicode non-breaking space \\u00a0 instead of whitespace before !, ?, :, », €',
+          fix: function (fixer) {
+            const textToReplace = node.raw.replace(/\s+([!?:»€])/g, '\\u00a0$1')
+            return fixer.replaceText(node, textToReplace)
+          },
+        })
+      },
+      // For '« textToTranslate' and "« textToTranslate"
+      'Literal[raw=/«\\s+/]': (node) => {
+        context.report({
+          node,
+          message: 'Please use unicode non-breaking space \\u00a0 instead of whitespace after «',
+          fix: function (fixer) {
+            const textToReplace = node.raw.replace(/(«)\s+/g, '$1\\u00a0')
+            return fixer.replaceText(node, `\`${textToReplace}\``)
+          },
+        })
+      },
+
       // For `textToTranslate !` with characters !, ?, :, » and €
       'TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»€]/]': (node) => {
         context.report({
