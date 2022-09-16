@@ -1368,7 +1368,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap visuel : Non accessible"
+                                      accessibilityLabel="Handicap visuel : Non accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={12}
                                       style={
@@ -1505,7 +1505,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap psychique ou cognitif : Accessible"
+                                      accessibilityLabel="Handicap psychique ou cognitif : Accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={12}
                                       style={
@@ -1641,7 +1641,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap moteur : Non accessible"
+                                      accessibilityLabel="Handicap moteur : Non accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={12}
                                       style={
@@ -1778,7 +1778,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap auditif : Accessible"
+                                      accessibilityLabel="Handicap auditif : Accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={0}
                                       style={
@@ -3892,7 +3892,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap visuel : Non accessible"
+                                      accessibilityLabel="Handicap visuel : Non accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={12}
                                       style={
@@ -4029,7 +4029,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap psychique ou cognitif : Accessible"
+                                      accessibilityLabel="Handicap psychique ou cognitif : Accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={12}
                                       style={
@@ -4165,7 +4165,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap moteur : Non accessible"
+                                      accessibilityLabel="Handicap moteur : Non accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={12}
                                       style={
@@ -4302,7 +4302,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <View
-                                      accessibilityLabel="Handicap auditif : Accessible"
+                                      accessibilityLabel="Handicap auditif : Accessible"
                                       accessibilityRole="image"
                                       rightSpacingValue={0}
                                       style={

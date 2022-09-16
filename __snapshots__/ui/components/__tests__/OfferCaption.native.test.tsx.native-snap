@@ -25,7 +25,7 @@ exports[`OfferCaption component should render correctly 1`] = `
       ]
     }
   >
-    Mensch ! Où sont les Hommes ?
+    Mensch ! Où sont les Hommes ?
   </Text>
   <Text
     numberOfLines={1}

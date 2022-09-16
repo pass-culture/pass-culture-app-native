@@ -3,7 +3,7 @@
 exports[`OfferTile component should render correctly 1`] = `
 <View>
   <View
-    accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
+    accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
     accessibilityRole="link"
     accessible={true}
     focusable={true}
@@ -28,7 +28,7 @@ exports[`OfferTile component should render correctly 1`] = `
         },
       ]
     }
-    testID="offre Mensch ! Où sont les Hommes ?"
+    testID="offre Mensch ! Où sont les Hommes ?"
   >
     <View
       style={
@@ -63,7 +63,7 @@ exports[`OfferTile component should render correctly 1`] = `
             ]
           }
         >
-          Mensch ! Où sont les Hommes ?
+          Mensch ! Où sont les Hommes ?
         </Text>
         <Text
           numberOfLines={1}
@@ -93,7 +93,7 @@ exports[`OfferTile component should render correctly 1`] = `
           }
           testID="priceIsDuo"
         >
-          28 €
+          28 €
         </Text>
       </View>
       <View>

@@ -74,7 +74,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           ]
         }
       >
-        Avez-vous déjà vu ?
+        Avez-vous déjà vu ?
       </Text>
       <View
         numberOfSpaces={3}

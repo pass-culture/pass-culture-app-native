@@ -198,7 +198,7 @@ exports[`BookingDetails should render correctly 1`] = `
             ]
           }
         >
-          Avez-vous déjà vu ?
+          Avez-vous déjà vu ?
         </Text>
       </Text>
       <View
@@ -332,7 +332,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "id": 147874,
                       "isDigital": true,
                       "isPermanent": false,
-                      "name": "Avez-vous déjà vu ?",
+                      "name": "Avez-vous déjà vu ?",
                       "subcategoryId": "EVENEMENT_PATRIMOINE",
                       "venue": Object {
                         "city": "Drancy",
@@ -473,7 +473,7 @@ exports[`BookingDetails should render correctly 1`] = `
                         ]
                       }
                     >
-                      Avez-vous déjà vu ?
+                      Avez-vous déjà vu ?
                     </Text>
                     <View
                       numberOfSpaces={3}

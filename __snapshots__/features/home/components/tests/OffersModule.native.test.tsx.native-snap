@@ -145,7 +145,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 "dates": Array [],
                 "isDigital": false,
                 "isDuo": false,
-                "name": "Mensch ! Où sont les Hommes ?",
+                "name": "Mensch ! Où sont les Hommes ?",
                 "prices": Array [
                   2800,
                 ],
@@ -224,7 +224,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   "dates": Array [],
                   "isDigital": false,
                   "isDuo": false,
-                  "name": "Mensch ! Où sont les Hommes ?",
+                  "name": "Mensch ! Où sont les Hommes ?",
                   "prices": Array [
                     2800,
                   ],
@@ -448,7 +448,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                     "dates": Array [],
                     "isDigital": false,
                     "isDuo": false,
-                    "name": "Mensch ! Où sont les Hommes ?",
+                    "name": "Mensch ! Où sont les Hommes ?",
                     "prices": Array [
                       2800,
                     ],
@@ -1170,7 +1170,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 >
                   <View>
                     <View
-                      accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie Concert,   prix 28 €. "
+                      accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie Concert,   prix 28 €. "
                       accessibilityRole="link"
                       accessible={true}
                       focusable={true}
@@ -1195,7 +1195,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                           },
                         ]
                       }
-                      testID="offre Mensch ! Où sont les Hommes ?"
+                      testID="offre Mensch ! Où sont les Hommes ?"
                     >
                       <View
                         style={
@@ -1230,7 +1230,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                               ]
                             }
                           >
-                            Mensch ! Où sont les Hommes ?
+                            Mensch ! Où sont les Hommes ?
                           </Text>
                           <Text
                             style={
@@ -1354,7 +1354,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                         "dates": Array [],
                         "isDigital": false,
                         "isDuo": false,
-                        "name": "Mensch ! Où sont les Hommes ?",
+                        "name": "Mensch ! Où sont les Hommes ?",
                         "prices": Array [
                           2800,
                         ],
