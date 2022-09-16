@@ -6,7 +6,8 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { IdCardError } from 'ui/svg/icons/IdCardError'
+import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
+import { IconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckPending() {
@@ -28,6 +29,8 @@ export function IdentityCheckPending() {
     </GenericInfoPage>
   )
 }
+
+const IdCardError: React.FC<IconInterface> = (props) => <BicolorIdCardError {...props} />
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,

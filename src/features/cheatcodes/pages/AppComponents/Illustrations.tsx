@@ -2,7 +2,10 @@ import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
 import { IconsContainer } from 'features/cheatcodes/pages/AppComponents/IconsContainer'
-import { UniqueColorIllustrations } from 'features/cheatcodes/pages/AppComponents/illustrationsExports'
+import {
+  BicolorIllustrations,
+  UniqueColorIllustrations,
+} from 'features/cheatcodes/pages/AppComponents/illustrationsExports'
 import { Spacer } from 'ui/theme'
 
 export const Illustrations: FunctionComponent = () => {
@@ -17,7 +20,7 @@ export const Illustrations: FunctionComponent = () => {
 }
 
 const Bicolors = () => {
-  return <IconsContainer title="Bicolors" icons={UniqueColorIllustrations} />
+  return <IconsContainer title="Bicolors" icons={BicolorIllustrations} />
 }
 
 const UniqueColor = () => {

@@ -6,28 +6,32 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
+import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
+import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
+import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
-import { Clock } from 'ui/svg/icons/Clock'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
-import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -48,7 +52,6 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { IdCard } from 'ui/svg/icons/IdCard'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -71,7 +74,6 @@ import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Plus } from 'ui/svg/icons/Plus'
-import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
@@ -105,30 +107,34 @@ export const SocialNetworkIcons = {
 export const SecondaryAndBiggerIcons = {
   BicolorAroundMe,
   BicolorBookings,
+  BicolorClock,
   BicolorConfidentiality,
   BicolorEarth,
   BicolorEverywhere,
   BicolorFavorite,
   BicolorFrance,
+  BicolorIdCard,
   BicolorLock,
   BicolorLocationPointer,
   BicolorLocationBuilding,
   BicolorLogo,
+  BicolorLostId,
+  BicolorNoId,
   BicolorNoPhone,
   BicolorProfile,
   BicolorSearch,
   BicolorSignal,
   BicolorSmartphone,
+  BicolorTabBarProfile,
   ArrowNext,
   ArrowPrevious,
   Bell,
   Booking,
   Calendar,
   Check,
-  Clock,
   Close,
   Confidentiality,
-  Confirmation,
+  BicolorConfirmation,
   Duo,
   Email,
   Error,
@@ -142,7 +148,6 @@ export const SecondaryAndBiggerIcons = {
   HandicapMental,
   HandicapMotor,
   HandicapAudio,
-  IdCard,
   Idea,
   Info,
   LegalNotices,
@@ -155,7 +160,6 @@ export const SecondaryAndBiggerIcons = {
   OfferEvent,
   OrderPrice,
   OtherOffer,
-  Profile,
   ProfileDeletion,
   Quote,
   ScrollToTop,

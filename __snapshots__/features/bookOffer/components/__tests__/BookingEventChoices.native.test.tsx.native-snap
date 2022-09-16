@@ -324,7 +324,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           }
         >
           <View
-            fill="#ffffff"
+            fill="url(#gradienttestUuid)"
             height={24}
             width={24}
           >
@@ -467,7 +467,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             }
           >
             <View
-              fill="#696A6F"
+              fill="url(#gradienttestUuid)"
               height={24}
               width={24}
             >
@@ -476,7 +476,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
               </Text>
             </View>
             <View
-              fill="#696A6F"
+              fill="url(#gradienttestUuid)"
               height={24}
               width={24}
             >

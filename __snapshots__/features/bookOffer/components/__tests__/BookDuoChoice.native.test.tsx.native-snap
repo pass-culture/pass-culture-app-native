@@ -119,7 +119,7 @@ Array [
           }
         >
           <View
-            fill="#ffffff"
+            fill="url(#gradienttestUuid)"
             height={24}
             width={24}
           >
@@ -243,7 +243,7 @@ Array [
             }
           >
             <View
-              fill="#161617"
+              fill="url(#gradienttestUuid)"
               height={24}
               width={24}
             >
@@ -252,7 +252,7 @@ Array [
               </Text>
             </View>
             <View
-              fill="#161617"
+              fill="url(#gradienttestUuid)"
               height={24}
               width={24}
             >

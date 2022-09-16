@@ -26,12 +26,12 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Ul, VerticalUl } from 'ui/components/Ul'
 import { Bell } from 'ui/svg/icons/Bell'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -124,7 +124,7 @@ const OnlineProfile: React.FC = () => {
                   title={t`Informations personnelles`}
                   type="navigable"
                   navigateTo={{ screen: 'PersonalData' }}
-                  icon={ProfileIcon}
+                  icon={BicolorProfile}
                 />
               </Li>
             )}

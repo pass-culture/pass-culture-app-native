@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Close } from 'ui/svg/icons/Close'
 import { Flash } from 'ui/svg/icons/Flash'
-import { IdCard } from 'ui/svg/icons/IdCard'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -40,7 +40,7 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
     <Instructions>
       <Instruction title={t`Désactive ton flash`} Icon={Flash} />
       <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
-      <Instruction title={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
+      <Instruction title={t`Cadre l’intégralité de ton document`} Icon={BicolorIdCard} />
     </Instructions>
     <ButtonPrimary wording={t`J'ai compris`} onPress={onPressContinue} />
   </AppModal>

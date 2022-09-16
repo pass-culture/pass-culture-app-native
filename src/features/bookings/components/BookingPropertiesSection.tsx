@@ -8,11 +8,12 @@ import { Booking } from 'features/bookings/components/types'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { useSubcategory } from 'libs/subcategories'
+import { theme } from 'theme'
 import { SectionRow } from 'ui/components/SectionRow'
+import { BicolorProfile as DefaultProfile } from 'ui/svg/icons/BicolorProfile'
 import { Calendar as DefaultCalendar } from 'ui/svg/icons/Calendar'
 import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { Profile as DefaultProfile } from 'ui/svg/icons/Profile'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -58,7 +59,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             </TitleNameContainer>
           )}
           type={'clickable'}
-          icon={() => <Profile />}
+          icon={() => <Profile color={theme.colors.black} color2={theme.colors.black} />}
         />
       ) : null}
       {propertiesLabels.dateLabel?.length > 0 && (

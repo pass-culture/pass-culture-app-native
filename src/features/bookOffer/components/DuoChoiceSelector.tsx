@@ -10,7 +10,7 @@ import {
 } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { Profile } from 'ui/svg/icons/Profile'
+import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
@@ -29,7 +29,7 @@ export const DuoChoiceSelector: React.FC = () => {
           : t`crédit insuffisant`,
       title: quantity === 1 ? t`Solo` : t`Duo`,
       selected: bookingState.quantity === quantity,
-      icon: quantity === 1 ? Profile : DuoPerson,
+      icon: quantity === 1 ? ProfileIcon : DuoPerson,
       onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
       hasEnoughCredit: enoughCredit,
     }
@@ -45,8 +45,8 @@ export const DuoChoiceSelector: React.FC = () => {
 
 const DuoPerson = (props: IconInterface): JSX.Element => (
   <DuoPersonContainer>
-    <Profile {...props} />
-    <Profile {...props} />
+    <ProfileIcon {...props} />
+    <ProfileIcon {...props} />
   </DuoPersonContainer>
 )
 

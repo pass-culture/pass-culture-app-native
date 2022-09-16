@@ -1,51 +1,48 @@
 import * as React from 'react'
-import { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { AccessibleBicolorIconInterface } from './types'
-
-const NotMemoizedBicolorProfile: React.FC<AccessibleBicolorIconInterface> = ({
+function ProfileSvg({
   size,
   color,
   color2,
-  thin,
   accessibilityLabel,
   testID,
-}) => {
-  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  opacity,
+}: AccessibleIcon): JSX.Element {
+  const { id, fill } = svgIdentifier()
+
   return (
     <AccessibleSvg
       width={size}
       height={size}
-      viewBox="0 0 20 26"
       accessibilityLabel={accessibilityLabel}
-      testID={testID}>
+      testID={testID}
+      viewBox="0 0 48 48"
+      fill={fill}>
       <Defs>
-        <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
+        <LinearGradient id={id} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />
           <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
       </Defs>
       <Path
-        d="M10.0044 1.33366C8.78947 1.33366 7.72162 1.94326 7.08908 2.87933L7.08866 2.87995C6.71371 3.43328 6.4929 4.10729 6.4929 4.83366V7.75033C6.4929 9.68433 8.06137 11.2503 10.0044 11.2503C11.9474 11.2503 13.5159 9.68432 13.5159 7.75033V4.83366C13.5159 2.89966 11.9474 1.33366 10.0044 1.33366ZM6.12206 2.22601C6.96379 0.980588 8.38799 0.166992 10.0044 0.166992C12.5894 0.166992 14.6831 2.25266 14.6831 4.83366V7.75033C14.6831 10.3313 12.5894 12.417 10.0044 12.417C7.41942 12.417 5.3257 10.3313 5.3257 7.75033V4.83366C5.3257 3.86849 5.61961 2.96763 6.12206 2.22601ZM0.395672 21.1236C1.51432 16.8725 5.37967 13.7295 9.99854 13.7295C14.617 13.7295 18.4885 16.8721 19.6073 21.1236C19.6578 21.3157 19.6071 21.5204 19.4726 21.6667C18.7994 22.399 18.0395 23.0591 17.2048 23.6222C16.9376 23.8024 16.5748 23.732 16.3946 23.465C16.2143 23.1979 16.2847 22.8353 16.5519 22.6551C17.2185 22.2054 17.8343 21.6862 18.3913 21.1122C17.3021 17.5177 13.961 14.8962 9.99854 14.8962C6.03662 14.8962 2.70085 17.5171 1.61179 21.1118C3.74026 23.2998 6.70625 24.667 10.0044 24.667C10.9405 24.667 11.8432 24.5559 12.7132 24.3502C13.0268 24.276 13.3413 24.47 13.4155 24.7835C13.4897 25.097 13.2956 25.4113 12.9819 25.4855C12.0267 25.7114 11.0339 25.8337 10.0044 25.8337C6.24677 25.8337 2.88193 24.2191 0.530775 21.6671C0.395979 21.5208 0.345054 21.316 0.395672 21.1236ZM7.05904 18.01C7.33881 17.85 7.43586 17.4937 7.27582 17.214C7.11577 16.9344 6.75923 16.8374 6.47946 16.9973C5.13772 17.7646 4.04903 18.9572 3.42449 20.4187C3.29789 20.715 3.43555 21.0577 3.73195 21.1843C4.02836 21.3108 4.37127 21.1732 4.49788 20.877C5.01997 19.6552 5.93203 18.6544 7.05904 18.01Z"
-        fill={gradientFill}
-        fillRule="evenodd"
-        clipRule="evenodd"
-        stroke={gradientFill}
-        strokeWidth={thin ? 0 : 0.3}
+        opacity={opacity}
+        d="M19.0098 7.14972C20.0941 5.54503 21.9247 4.5 24.0075 4.5C27.3384 4.5 30.0272 7.18457 30.0272 10.5V15.5C30.0272 18.8154 27.3384 21.5 24.0075 21.5C20.6766 21.5 17.9878 18.8154 17.9878 15.5V10.5C17.9878 9.2548 18.3663 8.09935 19.0091 7.15079L19.0098 7.14972ZM24.0075 2.5C21.2365 2.5 18.795 3.89474 17.352 6.02974C16.4907 7.30109 15.9868 8.84543 15.9868 10.5V15.5C15.9868 19.9246 19.5761 23.5 24.0075 23.5C28.4389 23.5 32.0281 19.9246 32.0281 15.5V10.5C32.0281 6.07543 28.4389 2.5 24.0075 2.5ZM23.9974 25.75C16.0794 25.75 9.45306 31.1381 7.53537 38.4256C7.44859 38.7554 7.53589 39.1066 7.76697 39.3574C11.7975 43.7322 17.5658 46.5 24.0075 46.5C25.7723 46.5 27.4742 46.2904 29.1118 45.9031C29.6495 45.776 29.9822 45.2372 29.855 44.6998C29.7278 44.1623 29.1888 43.8297 28.6511 43.9569C27.1597 44.3096 25.6123 44.5 24.0075 44.5C18.3535 44.5 13.269 42.1563 9.62014 38.4053C11.4871 32.2431 17.2056 27.75 23.9974 27.75C30.7903 27.75 36.5179 32.2441 38.3849 38.4061C37.4302 39.39 36.3746 40.2802 35.2317 41.0511C34.7737 41.36 34.653 41.9816 34.962 42.4394C35.2711 42.8972 35.8929 43.0178 36.3509 42.7089C37.7819 41.7437 39.0845 40.612 40.2386 39.3566C40.4692 39.1058 40.5562 38.755 40.4695 38.4256C38.5516 31.1374 31.9147 25.75 23.9974 25.75Z"
       />
     </AccessibleSvg>
   )
 }
 
-export const BicolorProfile = React.memo(
-  styled(NotMemoizedBicolorProfile).attrs(({ color, color2, size, thin, theme }) => ({
+export const BicolorProfile = styled(ProfileSvg).attrs(
+  ({ color, color2, size, opacity, theme }) => ({
     color: color ?? theme.colors.primary,
     color2: color2 ?? color ?? theme.colors.secondary,
     size: size ?? theme.icons.sizes.standard,
-    thin: thin ?? false,
-  }))``
-)
+    opacity: opacity ?? 1,
+  })
+)``
