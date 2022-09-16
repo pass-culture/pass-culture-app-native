@@ -2,7 +2,8 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { initialSearchState } from 'features/search/pages/reducer'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
@@ -12,6 +13,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
 export const ReinitializeFilters = () => {
+  const { dispatch: dispatchSearch } = useSearch()
   const { dispatch: dispatchStagedSearch } = useStagedSearch()
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters()
@@ -23,6 +25,13 @@ export const ReinitializeFilters = () => {
       type: 'SET_STATE',
       payload: {
         priceRange: [0, maxPrice],
+      },
+    })
+    dispatchSearch({
+      type: 'SET_STATE',
+      payload: {
+        locationFilter: initialSearchState.locationFilter,
+        offerCategories: initialSearchState.offerCategories,
       },
     })
     logReinitializeFilters()
