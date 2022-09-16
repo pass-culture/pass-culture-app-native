@@ -3137,7 +3137,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Handicap visuel : Accessible"
+                accessibilityLabel="Handicap visuel : Accessible"
                 accessibilityRole="image"
                 rightSpacingValue={12}
                 style={
@@ -3273,7 +3273,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
+                accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
                 accessibilityRole="image"
                 rightSpacingValue={12}
                 style={
@@ -3410,7 +3410,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Handicap moteur : Non accessible"
+                accessibilityLabel="Handicap moteur : Non accessible"
                 accessibilityRole="image"
                 rightSpacingValue={12}
                 style={
@@ -3547,7 +3547,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Handicap auditif : Non accessible"
+                accessibilityLabel="Handicap auditif : Non accessible"
                 accessibilityRole="image"
                 rightSpacingValue={0}
                 style={

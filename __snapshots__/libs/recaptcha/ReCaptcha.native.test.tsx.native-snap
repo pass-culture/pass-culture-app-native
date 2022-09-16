@@ -65,7 +65,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                 }
 
                 function onRecaptchaErrorCallback() {
-                    onError(\\"reCAPTCHA error : error-callback of widget called\\")
+                    onError(\\"reCAPTCHA error : error-callback of widget called\\")
                 }
 
                 function isReadyToExecute() { 
@@ -81,7 +81,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError(\\"reCAPTCHA error : Number of retry render exceeded\\");
+                        onError(\\"reCAPTCHA error : Number of retry render exceeded\\");
                     }
                 }
 
@@ -93,7 +93,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                             readyInterval = setInterval(executeWhenReady, 1000);
                         }
                     } catch(error) {
-                        onError(\\"reCAPTCHA error : \\" + error.message);
+                        onError(\\"reCAPTCHA error : \\" + error.message);
                     }
                 };
             </script>

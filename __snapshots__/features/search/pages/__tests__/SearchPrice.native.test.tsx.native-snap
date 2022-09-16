@@ -672,7 +672,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                   ]
                 }
               >
-                Prix minimum (en €)
+                Prix minimum (en\\u00a0€)
               </Text>
             </View>
           </View>
@@ -799,7 +799,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                   ]
                 }
               >
-                Prix maximum (en €)
+                Prix maximum (en\\u00a0€)
               </Text>
               <Text
                 style={
@@ -813,7 +813,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                   ]
                 }
               >
-                max : 300 €
+                max : 300 €
               </Text>
             </View>
           </View>
