@@ -54,6 +54,11 @@ export const SearchPrice: FunctionComponent = () => {
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
     : '0'
 
+  const initialCredit = user?.domainsCredit?.all?.initial
+  const formatInitialCredit = initialCredit
+    ? formatToFrenchDecimal(initialCredit).slice(0, -2)
+    : MAX_PRICE
+
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
 
@@ -226,8 +231,8 @@ export const SearchPrice: FunctionComponent = () => {
             textContentType="none" // disable autofill on iOS
             accessibilityDescribedBy={maxPriceInputId}
             testID="Entrée pour le prix maximum"
-            rightLabel={`max : ${MAX_PRICE} €`}
-            placeholder={`${MAX_PRICE}`}
+            rightLabel={`max : ${formatInitialCredit} €`}
+            placeholder={`${formatInitialCredit}`}
             disabled={formik.values.isLimitCreditSearch || formik.values.isOnlyFreeOffersSearch}
           />
           <InputError
