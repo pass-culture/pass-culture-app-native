@@ -25,10 +25,14 @@ export const InputRule: FunctionComponent<Props> = (props) => {
         {title}
       </StyledCaption>
       <Spacer.Row numberOfSpaces={1} />
-      <Icon testID={`rule-icon-${testIdSuffix}`} />
+      <IconContainer>
+        <Icon testID={`rule-icon-${testIdSuffix}`} />
+      </IconContainer>
     </StyledView>
   )
 }
+
+const IconContainer = styled.View({ flexShrink: 0 })
 
 const StyledView = styled.View<{ centered?: boolean }>(({ centered, theme }) => ({
   flexDirection: 'row-reverse', // For accessibility purposes, we switch the title and the icon in the DOM so the VoiceOver restitution makes sense.

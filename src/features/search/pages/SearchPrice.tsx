@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
+import { useFormik } from 'formik'
 import React, { FunctionComponent, useCallback } from 'react'
 import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
+import { object, boolean } from 'yup'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -12,21 +14,33 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { priceSchema } from 'features/search/pages/schema/priceSchema'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { useSafeState } from 'libs/hooks'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 
-// 3 integers max separate by a dot or point with 2 decimals max
-const priceRegex = /^\d{1,3}(?:[,.]\d{0,2})?$/
+const SearchPriceSchema = object().shape({
+  minPrice: priceSchema,
+  maxPrice: priceSchema,
+  isLimitCreditSearch: boolean(),
+  isOnlyFreeOffersSearch: boolean(),
+})
+
+type SearchPriceFormFields = {
+  minPrice: string
+  maxPrice: string
+  isLimitCreditSearch: boolean
+  isOnlyFreeOffersSearch: boolean
+}
 
 export const SearchPrice: FunctionComponent = () => {
   const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price)
@@ -35,27 +49,19 @@ export const SearchPrice: FunctionComponent = () => {
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
   const { searchState, dispatch } = useSearch()
-  const [selectedMinPrice, setSelectedMinPrice] = useSafeState<string>(searchState?.minPrice || '')
-  const [selectedMaxPrice, setSelectedMaxPrice] = useSafeState<string>(searchState?.maxPrice || '')
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
     : '0'
 
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
-  const [isLimitCreditSearch, setIsLimitCreditSearch] = useSafeState<boolean>(
-    isLimitCreditSearchDefaultValue
-  )
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
-  const [isOnlyFreeOffersSearch, setIsOnlyFreeOffersSearch] = useSafeState<boolean>(
-    isOnlyFreeOffersSearchDefaultValue
-  )
 
-  const onSearchPress = () => {
+  function search(values: SearchPriceFormFields) {
     const offerIsFree =
-      isOnlyFreeOffersSearch || (selectedMaxPrice === '0' && selectedMinPrice === '')
+      values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
@@ -64,13 +70,13 @@ export const SearchPrice: FunctionComponent = () => {
       offerIsFree,
     }
 
-    if (selectedMinPrice) {
-      dispatch({ type: 'SET_MIN_PRICE', payload: selectedMinPrice })
-      additionalSearchState = { ...additionalSearchState, minPrice: selectedMinPrice }
+    if (values.minPrice) {
+      dispatch({ type: 'SET_MIN_PRICE', payload: values.minPrice })
+      additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
     }
-    if (selectedMaxPrice) {
-      dispatch({ type: 'SET_MAX_PRICE', payload: selectedMaxPrice })
-      additionalSearchState = { ...additionalSearchState, maxPrice: selectedMaxPrice }
+    if (values.maxPrice) {
+      dispatch({ type: 'SET_MAX_PRICE', payload: values.maxPrice })
+      additionalSearchState = { ...additionalSearchState, maxPrice: values.maxPrice }
     }
 
     if (offerIsFree) {
@@ -88,24 +94,48 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }
 
-  const onResetPress = () => {
-    setSelectedMinPrice('')
-    setSelectedMaxPrice('')
-    setIsLimitCreditSearch(false)
-    setIsOnlyFreeOffersSearch(false)
-  }
+  const formik = useFormik<SearchPriceFormFields>({
+    initialValues: {
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+    },
+    validationSchema: SearchPriceSchema,
+    onSubmit: (values: SearchPriceFormFields) => search(values),
+  })
 
-  const onChangeMinPrice = (price: string) => {
-    if (priceRegex.test(price) || price === '') {
-      setSelectedMinPrice(price)
+  const toggleOnlyFreeOffersSearch = useCallback(() => {
+    const toggleOnlyFreeOffersSearchValue = !formik.values.isOnlyFreeOffersSearch
+    formik.setFieldValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
+    if (toggleOnlyFreeOffersSearchValue) {
+      formik.setFieldValue('maxPrice', '0')
+      formik.setFieldValue('minPrice', '0')
+      formik.setFieldValue('isLimitCreditSearch', false)
+      return
     }
-  }
+    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
+    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
+    formik.setFieldValue('maxPrice', maxPrice)
+    formik.setFieldValue('minPrice', minPrice)
+  }, [formik, searchState?.maxPrice, searchState?.minPrice])
 
-  const onChangeMaxPrice = (price: string) => {
-    if (priceRegex.test(price) || price === '') {
-      setSelectedMaxPrice(price)
+  const toggleLimitCreditSearch = useCallback(() => {
+    const toggleLimitCreditSearchValue = !formik.values.isLimitCreditSearch
+    formik.setFieldValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
+
+    if (toggleLimitCreditSearchValue) {
+      formik.setFieldValue('maxPrice', formatAvailableCredit)
+      formik.setFieldValue('isOnlyFreeOffersSearch', false)
+      return
     }
-  }
+
+    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
+    formik.setFieldValue(
+      'maxPrice',
+      availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || ''
+    )
+  }, [formatAvailableCredit, formik, searchState?.maxPrice])
 
   const goBack = useCallback(() => {
     navigate(
@@ -115,53 +145,6 @@ export const SearchPrice: FunctionComponent = () => {
       })
     )
   }, [navigate, searchState])
-
-  const toggleLimitCreditSearch = useCallback(() => {
-    const toggleLimitCreditSearchValue = isLimitCreditSearch ? false : true
-    setIsLimitCreditSearch(toggleLimitCreditSearchValue)
-
-    if (toggleLimitCreditSearchValue) {
-      setSelectedMaxPrice(formatAvailableCredit)
-      setIsOnlyFreeOffersSearch(false)
-      return
-    }
-
-    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
-    setSelectedMaxPrice(availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '')
-  }, [
-    formatAvailableCredit,
-    isLimitCreditSearch,
-    searchState?.maxPrice,
-    setIsLimitCreditSearch,
-    setIsOnlyFreeOffersSearch,
-    setSelectedMaxPrice,
-  ])
-
-  const toggleOnlyFreeOffersSearch = useCallback(() => {
-    const toggleOnlyFreeOffersSearchValue = isOnlyFreeOffersSearch ? false : true
-    setIsOnlyFreeOffersSearch(toggleOnlyFreeOffersSearchValue)
-
-    if (toggleOnlyFreeOffersSearchValue) {
-      setSelectedMaxPrice('0')
-      setSelectedMinPrice('0')
-      setIsLimitCreditSearch(false)
-      return
-    }
-
-    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
-    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
-
-    setSelectedMaxPrice(maxPrice)
-    setSelectedMinPrice(minPrice)
-  }, [
-    isOnlyFreeOffersSearch,
-    searchState?.maxPrice,
-    searchState?.minPrice,
-    setIsLimitCreditSearch,
-    setIsOnlyFreeOffersSearch,
-    setSelectedMaxPrice,
-    setSelectedMinPrice,
-  ])
 
   const titleID = uuidv4()
   const minPriceInputId = uuidv4()
@@ -189,7 +172,7 @@ export const SearchPrice: FunctionComponent = () => {
             </BannerContainer>
           )}
           <FilterSwitchWithLabel
-            isActive={isOnlyFreeOffersSearch}
+            isActive={formik.values.isOnlyFreeOffersSearch}
             toggle={toggleOnlyFreeOffersSearch}
             label="Uniquement les offres gratuites"
             testID="onlyFreeOffers"
@@ -200,7 +183,7 @@ export const SearchPrice: FunctionComponent = () => {
           {!!isLoggedInAndBeneficiary && (
             <React.Fragment>
               <FilterSwitchWithLabel
-                isActive={isLimitCreditSearch}
+                isActive={formik.values.isLimitCreditSearch}
                 toggle={toggleLimitCreditSearch}
                 label="Limiter la recherche à mon crédit"
                 testID="limitCreditSearch"
@@ -214,37 +197,53 @@ export const SearchPrice: FunctionComponent = () => {
           <TextInput
             autoComplete="off" // disable autofill on android
             autoCapitalize="none"
-            isError={false}
+            isError={!!formik.errors.minPrice}
             keyboardType="numeric"
             label="Prix minimum (en €)"
-            value={selectedMinPrice}
-            onChangeText={onChangeMinPrice}
+            value={formik.values.minPrice}
+            onChangeText={formik.handleChange('minPrice')}
             textContentType="none" // disable autofill on iOS
             accessibilityDescribedBy={minPriceInputId}
             testID="Entrée pour le prix minimum"
             placeholder="0"
-            disabled={isOnlyFreeOffersSearch}
+            disabled={formik.values.isOnlyFreeOffersSearch}
+          />
+          <InputError
+            visible={!!formik.errors.minPrice}
+            messageId={formik.errors.minPrice}
+            numberOfSpacesTop={getSpacing(0.5)}
+            relatedInputId={minPriceInputId}
           />
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
             autoComplete="off" // disable autofill on android
             autoCapitalize="none"
-            isError={false}
+            isError={!!formik.errors.maxPrice}
             keyboardType="numeric"
             label="Prix maximum (en €)"
-            value={selectedMaxPrice}
-            onChangeText={onChangeMaxPrice}
+            value={formik.values.maxPrice}
+            onChangeText={formik.handleChange('maxPrice')}
             textContentType="none" // disable autofill on iOS
             accessibilityDescribedBy={maxPriceInputId}
             testID="Entrée pour le prix maximum"
             rightLabel={`max : ${MAX_PRICE} €`}
             placeholder={`${MAX_PRICE}`}
-            disabled={isLimitCreditSearch || isOnlyFreeOffersSearch}
+            disabled={formik.values.isLimitCreditSearch || formik.values.isOnlyFreeOffersSearch}
+          />
+          <InputError
+            visible={!!formik.errors.maxPrice}
+            messageId={formik.errors.maxPrice}
+            numberOfSpacesTop={getSpacing(0.5)}
+            relatedInputId={maxPriceInputId}
           />
         </Form.MaxWidth>
       </StyledScrollView>
 
-      <FilterPageButtons onSearchPress={onSearchPress} onResetPress={onResetPress} />
+      <FilterPageButtons
+        onSearchPress={formik.handleSubmit}
+        onResetPress={formik.resetForm}
+        isSearchDisabled={!formik.isValid}
+      />
     </Container>
   )
 }

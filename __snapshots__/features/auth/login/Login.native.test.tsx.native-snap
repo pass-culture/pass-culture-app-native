@@ -196,7 +196,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -391,12 +391,73 @@
+@@ -391,12 +391,83 @@
                         },
                       ]
                     }
@@ -259,19 +259,29 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +                 }
                 />
 +               <View
-+                 height={16}
-+                 testID=\\"rule-icon-warn\\"
-+                 width={16}
++                 style={
++                   Array [
++                     Object {
++                       \\"flexShrink\\": 0,
++                     },
++                   ]
++                 }
 +               >
-+                 <Text>
-+                   rule-icon-warn-SVG-Mock
-+                 </Text>
++                 <View
++                   height={16}
++                   testID=\\"rule-icon-warn\\"
++                   width={16}
++                 >
++                   <Text>
++                     rule-icon-warn-SVG-Mock
++                   </Text>
++                 </View>
                 </View>
               </View>
               <View
                 numberOfSpaces={6}
                 style={
-@@ -500,11 +561,11 @@
+@@ -500,11 +571,11 @@
                   testID=\\"styled-input-container\\"
                 >
                   <TextInput
@@ -284,7 +294,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -513,15 +574,15 @@
+@@ -513,15 +584,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -302,7 +312,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -534,11 +595,11 @@
+@@ -534,11 +605,11 @@
                         },
                       ]
                     }
@@ -322,7 +332,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -255,10 +255,73 @@
+@@ -255,10 +255,83 @@
                   },
                 ]
               }
@@ -381,13 +391,23 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 }
 +               />
 +               <View
-+                 height={16}
-+                 testID=\\"rule-icon-warn\\"
-+                 width={16}
++                 style={
++                   Array [
++                     Object {
++                       \\"flexShrink\\": 0,
++                     },
++                   ]
++                 }
 +               >
-+                 <Text>
-+                   rule-icon-warn-SVG-Mock
-+                 </Text>
++                 <View
++                   height={16}
++                   testID=\\"rule-icon-warn\\"
++                   width={16}
++                 >
++                   <Text>
++                     rule-icon-warn-SVG-Mock
++                   </Text>
++                 </View>
 +               </View>
 +             </View>
 +             <View
@@ -396,7 +416,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   Array [
                     Object {
                       \\"height\\": 28,
-@@ -333,18 +396,18 @@
+@@ -333,18 +406,18 @@
                   }
                 />
                 <View
@@ -417,7 +437,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -362,11 +425,11 @@
+@@ -362,11 +435,11 @@
                     aria-describedby=\\"testUuidV4\\"
                     aria-required={true}
                     autoCapitalize=\\"none\\"
@@ -430,7 +450,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     nativeID=\\"testUuidV4\\"
                     onBlur={[Function onBlur]}
                     onChangeText={[Function onEmailChange]}
-@@ -375,15 +438,15 @@
+@@ -375,15 +448,15 @@
                     placeholderTextColor=\\"#696A6F\\"
                     returnKeyType=\\"next\\"
                     style={
@@ -448,7 +468,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -391,11 +454,11 @@
+@@ -391,11 +464,11 @@
                         },
                       ]
                     }
@@ -461,7 +481,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
               <View
                 numberOfSpaces={6}
-@@ -474,18 +537,18 @@
+@@ -474,18 +547,18 @@
                   }
                 />
                 <View
@@ -482,7 +502,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -500,11 +563,11 @@
+@@ -500,11 +573,11 @@
                   testID=\\"styled-input-container\\"
                 >
                   <TextInput
@@ -495,7 +515,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -513,15 +576,15 @@
+@@ -513,15 +586,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -513,7 +533,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -534,11 +597,11 @@
+@@ -534,11 +607,11 @@
                         },
                       ]
                     }
@@ -526,7 +546,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +753,27 @@
+@@ -690,27 +763,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -557,7 +577,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +792,11 @@
+@@ -729,11 +802,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -577,7 +597,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -255,10 +255,73 @@
+@@ -255,10 +255,83 @@
                   },
                 ]
               }
@@ -636,13 +656,23 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 }
 +               />
 +               <View
-+                 height={16}
-+                 testID=\\"rule-icon-warn\\"
-+                 width={16}
++                 style={
++                   Array [
++                     Object {
++                       \\"flexShrink\\": 0,
++                     },
++                   ]
++                 }
 +               >
-+                 <Text>
-+                   rule-icon-warn-SVG-Mock
-+                 </Text>
++                 <View
++                   height={16}
++                   testID=\\"rule-icon-warn\\"
++                   width={16}
++                 >
++                   <Text>
++                     rule-icon-warn-SVG-Mock
++                   </Text>
++                 </View>
 +               </View>
 +             </View>
 +             <View
@@ -651,7 +681,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   Array [
                     Object {
                       \\"height\\": 28,
-@@ -333,18 +396,18 @@
+@@ -333,18 +406,18 @@
                   }
                 />
                 <View
@@ -672,7 +702,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -362,11 +425,11 @@
+@@ -362,11 +435,11 @@
                     aria-describedby=\\"testUuidV4\\"
                     aria-required={true}
                     autoCapitalize=\\"none\\"
@@ -685,7 +715,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     nativeID=\\"testUuidV4\\"
                     onBlur={[Function onBlur]}
                     onChangeText={[Function onEmailChange]}
-@@ -375,15 +438,15 @@
+@@ -375,15 +448,15 @@
                     placeholderTextColor=\\"#696A6F\\"
                     returnKeyType=\\"next\\"
                     style={
@@ -703,7 +733,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -391,11 +454,11 @@
+@@ -391,11 +464,11 @@
                         },
                       ]
                     }
@@ -716,7 +746,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
               <View
                 numberOfSpaces={6}
-@@ -474,18 +537,18 @@
+@@ -474,18 +547,18 @@
                   }
                 />
                 <View
@@ -737,7 +767,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -500,11 +563,11 @@
+@@ -500,11 +573,11 @@
                   testID=\\"styled-input-container\\"
                 >
                   <TextInput
@@ -750,7 +780,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -513,15 +576,15 @@
+@@ -513,15 +586,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -768,7 +798,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -534,11 +597,11 @@
+@@ -534,11 +607,11 @@
                         },
                       ]
                     }
@@ -781,7 +811,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +753,27 @@
+@@ -690,27 +763,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -812,7 +842,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +792,11 @@
+@@ -729,11 +802,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -832,7 +862,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 - First value
 + Second value
 
-@@ -255,10 +255,73 @@
+@@ -255,10 +255,83 @@
                   },
                 ]
               }
@@ -891,13 +921,23 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 }
 +               />
 +               <View
-+                 height={16}
-+                 testID=\\"rule-icon-warn\\"
-+                 width={16}
++                 style={
++                   Array [
++                     Object {
++                       \\"flexShrink\\": 0,
++                     },
++                   ]
++                 }
 +               >
-+                 <Text>
-+                   rule-icon-warn-SVG-Mock
-+                 </Text>
++                 <View
++                   height={16}
++                   testID=\\"rule-icon-warn\\"
++                   width={16}
++                 >
++                   <Text>
++                     rule-icon-warn-SVG-Mock
++                   </Text>
++                 </View>
 +               </View>
 +             </View>
 +             <View
@@ -906,7 +946,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   Array [
                     Object {
                       \\"height\\": 28,
-@@ -333,18 +396,18 @@
+@@ -333,18 +406,18 @@
                   }
                 />
                 <View
@@ -927,7 +967,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -362,11 +425,11 @@
+@@ -362,11 +435,11 @@
                     aria-describedby=\\"testUuidV4\\"
                     aria-required={true}
                     autoCapitalize=\\"none\\"
@@ -940,7 +980,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     nativeID=\\"testUuidV4\\"
                     onBlur={[Function onBlur]}
                     onChangeText={[Function onEmailChange]}
-@@ -375,15 +438,15 @@
+@@ -375,15 +448,15 @@
                     placeholderTextColor=\\"#696A6F\\"
                     returnKeyType=\\"next\\"
                     style={
@@ -958,7 +998,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -391,11 +454,11 @@
+@@ -391,11 +464,11 @@
                         },
                       ]
                     }
@@ -971,7 +1011,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
               </View>
               <View
                 numberOfSpaces={6}
-@@ -474,18 +537,18 @@
+@@ -474,18 +547,18 @@
                   }
                 />
                 <View
@@ -992,7 +1032,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -500,11 +563,11 @@
+@@ -500,11 +573,11 @@
                   testID=\\"styled-input-container\\"
                 >
                   <TextInput
@@ -1005,7 +1045,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -513,15 +576,15 @@
+@@ -513,15 +586,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -1023,7 +1063,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -534,11 +597,11 @@
+@@ -534,11 +607,11 @@
                         },
                       ]
                     }
@@ -1036,7 +1076,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +753,27 @@
+@@ -690,27 +763,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -1067,7 +1107,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +792,11 @@
+@@ -729,11 +802,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
