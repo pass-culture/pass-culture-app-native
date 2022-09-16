@@ -478,321 +478,358 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   }
                 }
               />
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="HeroButtonList"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
+              <ul
+                className="css-reset-4rbku5 css-view-1dbjc4n"
+                role="list"
                 style={
                   Object {
-                    "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "auto",
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitBoxPack": "start",
-                    "WebkitFlexDirection": "row",
-                    "WebkitJustifyContent": "flex-start",
-                    "WebkitTransitionDuration": "0s",
-                    "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "auto",
-                    "alignItems": "center",
-                    "borderBottomColor": "rgba(144,148,157,1.00)",
-                    "borderBottomLeftRadius": "7px",
-                    "borderBottomRightRadius": "7px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(144,148,157,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(144,148,157,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(144,148,157,1.00)",
-                    "borderTopLeftRadius": "7px",
-                    "borderTopRightRadius": "7px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "cursor": "pointer",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "minHeight": "92px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "msFlexPack": "start",
-                    "msTouchAction": "manipulation",
-                    "msUserSelect": "auto",
-                    "paddingBottom": "16px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "16px",
-                    "touchAction": "manipulation",
-                    "transitionDuration": "0s",
-                    "transitionProperty": "opacity",
-                    "userSelect": "auto",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "flexDirection": "column",
+                    "msFlexDirection": "column",
+                    "overflowX": "auto",
+                    "overflowY": "auto",
+                    "paddingLeft": "0px",
                   }
                 }
-                tabIndex="0"
               >
-                <div
-                  className="css-view-1dbjc4n"
+                <li
+                  className="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
                   style={
                     Object {
-                      "WebkitAlignContent": "center",
-                      "alignContent": "center",
-                      "msFlexLinePack": "center",
+                      "display": "list-item",
                     }
                   }
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    data-testid="HeroButtonList"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    style={
+                      Object {
+                        "MozTransitionProperty": "opacity",
+                        "MozUserSelect": "auto",
+                        "WebkitAlignItems": "center",
+                        "WebkitBoxAlign": "center",
+                        "WebkitBoxDirection": "normal",
+                        "WebkitBoxOrient": "horizontal",
+                        "WebkitBoxPack": "start",
+                        "WebkitFlexDirection": "row",
+                        "WebkitJustifyContent": "flex-start",
+                        "WebkitTransitionDuration": "0s",
+                        "WebkitTransitionProperty": "opacity",
+                        "WebkitUserSelect": "auto",
+                        "alignItems": "center",
+                        "borderBottomColor": "rgba(144,148,157,1.00)",
+                        "borderBottomLeftRadius": "7px",
+                        "borderBottomRightRadius": "7px",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                        "borderLeftColor": "rgba(144,148,157,1.00)",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "1px",
+                        "borderRightColor": "rgba(144,148,157,1.00)",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "1px",
+                        "borderTopColor": "rgba(144,148,157,1.00)",
+                        "borderTopLeftRadius": "7px",
+                        "borderTopRightRadius": "7px",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "1px",
+                        "cursor": "pointer",
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "minHeight": "92px",
+                        "msFlexAlign": "center",
+                        "msFlexDirection": "row",
+                        "msFlexPack": "start",
+                        "msTouchAction": "manipulation",
+                        "msUserSelect": "auto",
+                        "paddingBottom": "16px",
+                        "paddingLeft": "16px",
+                        "paddingRight": "16px",
+                        "paddingTop": "16px",
+                        "touchAction": "manipulation",
+                        "transitionDuration": "0s",
+                        "transitionProperty": "opacity",
+                        "userSelect": "auto",
+                      }
+                    }
+                    tabIndex="0"
                   >
                     <div
-                      className="css-text-901oao"
-                      dir="ltr"
+                      className="css-view-1dbjc4n"
+                      style={
+                        Object {
+                          "WebkitAlignContent": "center",
+                          "alignContent": "center",
+                          "msFlexLinePack": "center",
+                        }
+                      }
                     >
-                      undefined-SVG-Mock
+                      <div
+                        className="css-view-1dbjc4n"
+                      >
+                        <div
+                          className="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="css-view-1dbjc4n"
+                      style={
+                        Object {
+                          "WebkitBoxFlex": 1,
+                          "WebkitFlexBasis": "0px",
+                          "WebkitFlexGrow": 1,
+                          "WebkitFlexShrink": 1,
+                          "flexBasis": "0px",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginLeft": "16px",
+                          "marginRight": "16px",
+                          "msFlexNegative": 1,
+                          "msFlexPositive": 1,
+                          "msFlexPreferredSize": "0px",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-text-901oao"
+                        dir="ltr"
+                      >
+                        <span
+                          className="css-text-901oao css-textHasAncestor-16my406"
+                          style={
+                            Object {
+                              "color": "rgba(22,22,23,1.00)",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": "15px",
+                              "lineHeight": "20px",
+                            }
+                          }
+                        >
+                          J’ai une carte d’identité ou un passeport 
+                        </span>
+                        <span
+                          className="css-text-901oao css-textHasAncestor-16my406"
+                          style={
+                            Object {
+                              "color": "rgba(22,22,23,1.00)",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": "15px",
+                              "lineHeight": "20px",
+                            }
+                          }
+                        >
+                          français
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      className="css-view-1dbjc4n"
+                    >
+                      <div
+                        className="css-view-1dbjc4n"
+                      >
+                        <div
+                          className="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </li>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginLeft": "16px",
-                      "marginRight": "16px",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
+                      "height": "24px",
                     }
                   }
-                >
-                  <div
-                    className="css-text-901oao"
-                    dir="ltr"
-                  >
-                    <span
-                      className="css-text-901oao css-textHasAncestor-16my406"
-                      style={
-                        Object {
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                        }
-                      }
-                    >
-                      J’ai une carte d’identité ou un passeport 
-                    </span>
-                    <span
-                      className="css-text-901oao css-textHasAncestor-16my406"
-                      style={
-                        Object {
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                        }
-                      }
-                    >
-                      français
-                    </span>
-                  </div>
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                  >
-                    <div
-                      className="css-text-901oao"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "24px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="HeroButtonList"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                style={
-                  Object {
-                    "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "auto",
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
-                    "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitBoxPack": "start",
-                    "WebkitFlexDirection": "row",
-                    "WebkitJustifyContent": "flex-start",
-                    "WebkitTransitionDuration": "0s",
-                    "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "auto",
-                    "alignItems": "center",
-                    "borderBottomColor": "rgba(144,148,157,1.00)",
-                    "borderBottomLeftRadius": "7px",
-                    "borderBottomRightRadius": "7px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(144,148,157,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(144,148,157,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(144,148,157,1.00)",
-                    "borderTopLeftRadius": "7px",
-                    "borderTopRightRadius": "7px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "cursor": "pointer",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "minHeight": "92px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "msFlexPack": "start",
-                    "msTouchAction": "manipulation",
-                    "msUserSelect": "auto",
-                    "paddingBottom": "16px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "16px",
-                    "touchAction": "manipulation",
-                    "transitionDuration": "0s",
-                    "transitionProperty": "opacity",
-                    "userSelect": "auto",
-                  }
-                }
-                tabIndex="0"
-              >
-                <div
-                  className="css-view-1dbjc4n"
+                />
+                <li
+                  className="css-reset-4rbku5 css-view-1dbjc4n"
+                  role="listitem"
                   style={
                     Object {
-                      "WebkitAlignContent": "center",
-                      "alignContent": "center",
-                      "msFlexLinePack": "center",
+                      "display": "list-item",
                     }
                   }
                 >
                   <div
                     className="css-view-1dbjc4n"
-                  >
-                    <div
-                      className="css-text-901oao"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginLeft": "16px",
-                      "marginRight": "16px",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
+                    data-testid="HeroButtonList"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    style={
+                      Object {
+                        "MozTransitionProperty": "opacity",
+                        "MozUserSelect": "auto",
+                        "WebkitAlignItems": "center",
+                        "WebkitBoxAlign": "center",
+                        "WebkitBoxDirection": "normal",
+                        "WebkitBoxOrient": "horizontal",
+                        "WebkitBoxPack": "start",
+                        "WebkitFlexDirection": "row",
+                        "WebkitJustifyContent": "flex-start",
+                        "WebkitTransitionDuration": "0s",
+                        "WebkitTransitionProperty": "opacity",
+                        "WebkitUserSelect": "auto",
+                        "alignItems": "center",
+                        "borderBottomColor": "rgba(144,148,157,1.00)",
+                        "borderBottomLeftRadius": "7px",
+                        "borderBottomRightRadius": "7px",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": "1px",
+                        "borderLeftColor": "rgba(144,148,157,1.00)",
+                        "borderLeftStyle": "solid",
+                        "borderLeftWidth": "1px",
+                        "borderRightColor": "rgba(144,148,157,1.00)",
+                        "borderRightStyle": "solid",
+                        "borderRightWidth": "1px",
+                        "borderTopColor": "rgba(144,148,157,1.00)",
+                        "borderTopLeftRadius": "7px",
+                        "borderTopRightRadius": "7px",
+                        "borderTopStyle": "solid",
+                        "borderTopWidth": "1px",
+                        "cursor": "pointer",
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "minHeight": "92px",
+                        "msFlexAlign": "center",
+                        "msFlexDirection": "row",
+                        "msFlexPack": "start",
+                        "msTouchAction": "manipulation",
+                        "msUserSelect": "auto",
+                        "paddingBottom": "16px",
+                        "paddingLeft": "16px",
+                        "paddingRight": "16px",
+                        "paddingTop": "16px",
+                        "touchAction": "manipulation",
+                        "transitionDuration": "0s",
+                        "transitionProperty": "opacity",
+                        "userSelect": "auto",
+                      }
                     }
-                  }
-                >
-                  <div
-                    className="css-text-901oao"
-                    dir="ltr"
-                  >
-                    <span
-                      className="css-text-901oao css-textHasAncestor-16my406"
-                      style={
-                        Object {
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                        }
-                      }
-                    >
-                      J’ai une carte d’identité, un passeport 
-                    </span>
-                    <span
-                      className="css-text-901oao css-textHasAncestor-16my406"
-                      style={
-                        Object {
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                        }
-                      }
-                    >
-                      étranger 
-                    </span>
-                    <span
-                      className="css-text-901oao css-textHasAncestor-16my406"
-                      style={
-                        Object {
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                        }
-                      }
-                    >
-                      ou un titre de séjour français
-                    </span>
-                  </div>
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                >
-                  <div
-                    className="css-view-1dbjc4n"
+                    tabIndex="0"
                   >
                     <div
-                      className="css-text-901oao"
-                      dir="ltr"
+                      className="css-view-1dbjc4n"
+                      style={
+                        Object {
+                          "WebkitAlignContent": "center",
+                          "alignContent": "center",
+                          "msFlexLinePack": "center",
+                        }
+                      }
                     >
-                      undefined-SVG-Mock
+                      <div
+                        className="css-view-1dbjc4n"
+                      >
+                        <div
+                          className="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="css-view-1dbjc4n"
+                      style={
+                        Object {
+                          "WebkitBoxFlex": 1,
+                          "WebkitFlexBasis": "0px",
+                          "WebkitFlexGrow": 1,
+                          "WebkitFlexShrink": 1,
+                          "flexBasis": "0px",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginLeft": "16px",
+                          "marginRight": "16px",
+                          "msFlexNegative": 1,
+                          "msFlexPositive": 1,
+                          "msFlexPreferredSize": "0px",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-text-901oao"
+                        dir="ltr"
+                      >
+                        <span
+                          className="css-text-901oao css-textHasAncestor-16my406"
+                          style={
+                            Object {
+                              "color": "rgba(22,22,23,1.00)",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": "15px",
+                              "lineHeight": "20px",
+                            }
+                          }
+                        >
+                          J’ai une carte d’identité, un passeport 
+                        </span>
+                        <span
+                          className="css-text-901oao css-textHasAncestor-16my406"
+                          style={
+                            Object {
+                              "color": "rgba(22,22,23,1.00)",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": "15px",
+                              "lineHeight": "20px",
+                            }
+                          }
+                        >
+                          étranger 
+                        </span>
+                        <span
+                          className="css-text-901oao css-textHasAncestor-16my406"
+                          style={
+                            Object {
+                              "color": "rgba(22,22,23,1.00)",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": "15px",
+                              "lineHeight": "20px",
+                            }
+                          }
+                        >
+                          ou un titre de séjour français
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      className="css-view-1dbjc4n"
+                    >
+                      <div
+                        className="css-view-1dbjc4n"
+                      >
+                        <div
+                          className="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

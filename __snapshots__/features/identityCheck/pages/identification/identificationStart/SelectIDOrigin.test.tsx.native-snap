@@ -347,234 +347,269 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 }
               />
               <View
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "minHeight": 92,
-                    "opacity": 1,
-                    "paddingBottom": 16,
-                    "paddingHorizontal": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="HeroButtonList"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignContent": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={32}
-                    width={32}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginHorizontal": 16,
-                      },
-                    ]
-                  }
-                >
-                  <Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      J’ai une carte d’identité ou un passeport 
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      français
-                    </Text>
-                  </Text>
-                </View>
-                <View>
-                  <View
-                    height={20}
-                    width={20}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={6}
+                accessibilityRole="list"
                 style={
                   Array [
                     Object {
-                      "height": 24,
+                      "flexDirection": "column",
+                      "paddingLeft": 0,
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "minHeight": 92,
-                    "opacity": 1,
-                    "paddingBottom": 16,
-                    "paddingHorizontal": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="HeroButtonList"
               >
                 <View
+                  accessibilityRole="none"
                   style={
                     Array [
                       Object {
-                        "alignContent": "center",
+                        "display": "flex",
                       },
                     ]
                   }
                 >
                   <View
-                    height={32}
-                    width={32}
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "borderColor": "#90949D",
+                        "borderRadius": 7,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "minHeight": 92,
+                        "opacity": 1,
+                        "paddingBottom": 16,
+                        "paddingHorizontal": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="HeroButtonList"
                   >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignContent": "center",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={32}
+                        width={32}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginHorizontal": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                        >
+                          J’ai une carte d’identité ou un passeport 
+                        </Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                        >
+                          français
+                        </Text>
+                      </Text>
+                    </View>
+                    <View>
+                      <View
+                        height={20}
+                        width={20}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
+                  numberOfSpaces={6}
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginHorizontal": 16,
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityRole="none"
+                  style={
+                    Array [
+                      Object {
+                        "display": "flex",
                       },
                     ]
                   }
                 >
-                  <Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      J’ai une carte d’identité, un passeport 
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      étranger 
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      ou un titre de séjour français
-                    </Text>
-                  </Text>
-                </View>
-                <View>
                   <View
-                    height={20}
-                    width={20}
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "borderColor": "#90949D",
+                        "borderRadius": 7,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "minHeight": 92,
+                        "opacity": 1,
+                        "paddingBottom": 16,
+                        "paddingHorizontal": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="HeroButtonList"
                   >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignContent": "center",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={32}
+                        width={32}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginHorizontal": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                        >
+                          J’ai une carte d’identité, un passeport 
+                        </Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                        >
+                          étranger 
+                        </Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                        >
+                          ou un titre de séjour français
+                        </Text>
+                      </Text>
+                    </View>
+                    <View>
+                      <View
+                        height={20}
+                        width={20}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
