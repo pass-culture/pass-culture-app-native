@@ -13,7 +13,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { searchPriceSchema } from 'features/search/pages/schema/searchPriceSchema'
+import { makeSearchPriceSchema } from 'features/search/pages/schema/makeSearchPriceSchema'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
@@ -48,10 +48,10 @@ export const SearchPrice: FunctionComponent = () => {
 
   const initialCredit = user?.domainsCredit?.all?.initial
   const formatInitialCredit = initialCredit
-    ? +formatToFrenchDecimal(initialCredit).slice(0, -2)
+    ? Number(formatToFrenchDecimal(initialCredit).slice(0, -2))
     : MAX_PRICE
 
-  const SearchPriceSchema = searchPriceSchema(formatInitialCredit.toString())
+  const searchPriceSchema = makeSearchPriceSchema(formatInitialCredit.toString())
 
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
@@ -100,7 +100,7 @@ export const SearchPrice: FunctionComponent = () => {
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     },
-    validationSchema: SearchPriceSchema,
+    validationSchema: searchPriceSchema,
     onSubmit: (values: SearchPriceFormFields) => search(values),
   })
 

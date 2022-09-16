@@ -7,7 +7,7 @@ const formatPriceError = `Format du prix incorrect. Exemple de format attendu\u0
 const maxPriceError = (initialCredit: string) =>
   `Le prix indiqué ne doit pas dépasser ${initialCredit}\u00a0€`
 
-export const priceSchema = (initialCredit: string) =>
+export const makePriceSchema = (initialCredit: string) =>
   string()
     .trim()
     .test('validPrice', formatPriceError, (value) => {
@@ -16,5 +16,5 @@ export const priceSchema = (initialCredit: string) =>
     })
     .test('validMaxPrice', maxPriceError(initialCredit), (value) => {
       if (!value) return true
-      return +value.trim().replaceAll(',', '.') <= +initialCredit
+      return Number(value.trim().replaceAll(',', '.')) <= Number(initialCredit)
     })

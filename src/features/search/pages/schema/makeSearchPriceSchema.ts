@@ -1,12 +1,12 @@
 import { boolean, object } from 'yup'
 
-import { priceSchema } from 'features/search/pages/schema/priceSchema'
+import { makePriceSchema } from 'features/search/pages/schema/makePriceSchema'
 
 export const minPriceError = `Le montant minimum ne peux pas dépasser le montant maximum`
 
-export const searchPriceSchema = (initialCredit: string) =>
+export const makeSearchPriceSchema = (initialCredit: string) =>
   object().shape({
-    minPrice: priceSchema(initialCredit.toString()).when(['maxPrice'], {
+    minPrice: makePriceSchema(initialCredit.toString()).when(['maxPrice'], {
       is: (maxPrice: string) => maxPrice !== undefined,
       then: (schema) =>
         schema.test('validMinPrice', minPriceError, (value, schema) => {
@@ -14,7 +14,7 @@ export const searchPriceSchema = (initialCredit: string) =>
           return +value <= +schema.parent.maxPrice
         }),
     }),
-    maxPrice: priceSchema(initialCredit.toString()),
+    maxPrice: makePriceSchema(initialCredit.toString()),
     isLimitCreditSearch: boolean(),
     isOnlyFreeOffersSearch: boolean(),
   })
