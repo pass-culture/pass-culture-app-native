@@ -26,7 +26,7 @@ jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     data: {
       isBeneficiary: true,
-      domainsCredit: { all: { initial: 30000, remaining: 10000 } },
+      domainsCredit: { all: { initial: 8000, remaining: 7000 } },
     },
   })),
 }))
@@ -51,7 +51,7 @@ describe('SearchPrice component', () => {
       fireEvent(minPriceInput, 'onChangeText', '5')
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '20')
     })
@@ -81,7 +81,7 @@ describe('SearchPrice component', () => {
       fireEvent(minPriceInput, 'onChangeText', '5')
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '20')
     })
@@ -126,7 +126,7 @@ describe('SearchPrice component', () => {
   it('should reset maximum price when pressing reset button', async () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '20')
     })
@@ -167,8 +167,8 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleLimitCreditSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
-    expect(maxPriceInput.props.value).toStrictEqual('100')
+    const maxPriceInput = getByPlaceholderText('80')
+    expect(maxPriceInput.props.value).toStrictEqual('70')
   })
 
   it('should disable the maximum price input when activate limit credit search toggle', async () => {
@@ -179,7 +179,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleLimitCreditSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
   })
 
@@ -194,12 +194,12 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleLimitCreditSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
   it('should reset the maximum price when desactivate limit credit search toggle if max price entered in the current search is the available credit', async () => {
-    mockSearchState = { ...initialSearchState, maxPrice: '100' }
+    mockSearchState = { ...initialSearchState, maxPrice: '70' }
     const { getByTestId, getByPlaceholderText } = render(<SearchPrice />)
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
@@ -207,7 +207,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleLimitCreditSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
@@ -223,7 +223,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleLimitCreditSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     expect(maxPriceInput.props.value).toStrictEqual('15')
   })
 
@@ -272,7 +272,7 @@ describe('SearchPrice component', () => {
   it('should navigate on search results with only free offers when pressing search button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '0')
     })
@@ -297,7 +297,7 @@ describe('SearchPrice component', () => {
   it('should log a search by only free offers when pressing search button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '0')
     })
@@ -406,7 +406,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleOnlyFreeOffersSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
 
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
@@ -423,7 +423,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(toggleOnlyFreeOffersSearch)
     })
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
 
     expect(maxPriceInput.props.value).toStrictEqual('20')
   })
@@ -444,7 +444,7 @@ describe('SearchPrice component', () => {
   it('should update the maximum price by 0 when pressing only free offers search toggle', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SearchPrice />)
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '0')
     })
@@ -460,7 +460,7 @@ describe('SearchPrice component', () => {
   it('should disable the maximum price input when pressing only free offers search toggle', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SearchPrice />)
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
     await act(async () => {
@@ -473,7 +473,7 @@ describe('SearchPrice component', () => {
   it('should display credit banner with remaining credit of the user', () => {
     const { queryByText } = render(<SearchPrice />)
 
-    const creditBanner = queryByText('Il te reste 100 € sur ton pass Culture.')
+    const creditBanner = queryByText('Il te reste 70 € sur ton pass Culture.')
 
     expect(creditBanner).toBeTruthy()
   })
@@ -493,7 +493,7 @@ describe('SearchPrice component', () => {
   it('should display an error when the expected format of maximum price is incorrect', async () => {
     const { getByPlaceholderText, getByText } = render(<SearchPrice />)
 
-    const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+    const maxPriceInput = getByPlaceholderText('80')
     await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '10,559')
     })
@@ -502,8 +502,27 @@ describe('SearchPrice component', () => {
     expect(inputError).toBeTruthy()
   })
 
+  it('should display the initial credit in maximum price input placeholder', () => {
+    const { getByPlaceholderText } = render(<SearchPrice />)
+
+    const maxPriceInput = getByPlaceholderText('80')
+
+    expect(maxPriceInput).toBeTruthy()
+  })
+
+  it('should display the initial credit in right label maximum price input', () => {
+    const { getByText } = render(<SearchPrice />)
+
+    const rightLabelMaxInput = getByText(`max : 80 €`)
+
+    expect(rightLabelMaxInput).toBeTruthy()
+  })
+
   describe('when user is not logged in', () => {
     beforeEach(() => {
+      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
+        data: {},
+      }))
       mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
     })
 
@@ -521,6 +540,22 @@ describe('SearchPrice component', () => {
       const creditBanner = queryByTestId('creditBanner')
 
       expect(creditBanner).toBeFalsy()
+    })
+
+    it('should display the credit given to 18 year olds in maximum price input placeholder', () => {
+      const { getByPlaceholderText } = render(<SearchPrice />)
+
+      const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+
+      expect(maxPriceInput).toBeTruthy()
+    })
+
+    it('should display the credit given to 18 year olds in right label maximum price input', () => {
+      const { getByText } = render(<SearchPrice />)
+
+      const rightLabelMaxInput = getByText(`max : ${MAX_PRICE} €`)
+
+      expect(rightLabelMaxInput).toBeTruthy()
     })
   })
 
@@ -545,6 +580,22 @@ describe('SearchPrice component', () => {
       const creditBanner = queryByTestId('creditBanner')
 
       expect(creditBanner).toBeFalsy()
+    })
+
+    it('should display the credit given to 18 year olds in maximum price input placeholder', () => {
+      const { getByPlaceholderText } = render(<SearchPrice />)
+
+      const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
+
+      expect(maxPriceInput).toBeTruthy()
+    })
+
+    it('should display the credit given to 18 year olds in right label maximum price input', () => {
+      const { getByText } = render(<SearchPrice />)
+
+      const rightLabelMaxInput = getByText(`max : ${MAX_PRICE} €`)
+
+      expect(rightLabelMaxInput).toBeTruthy()
     })
   })
 })

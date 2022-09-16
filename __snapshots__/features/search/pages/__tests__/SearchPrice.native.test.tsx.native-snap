@@ -303,7 +303,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                   ]
                 }
               >
-                Il te reste 100 € sur ton pass Culture.
+                Il te reste 70 € sur ton pass Culture.
               </Text>
             </View>
           </View>
@@ -813,7 +813,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                   ]
                 }
               >
-                max : 300 €
+                max : 80 €
               </Text>
             </View>
           </View>
@@ -866,7 +866,7 @@ exports[`SearchPrice component should render correctly 1`] = `
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
-              placeholder="300"
+              placeholder="80"
               placeholderTextColor="#696A6F"
               returnKeyType="next"
               style={
