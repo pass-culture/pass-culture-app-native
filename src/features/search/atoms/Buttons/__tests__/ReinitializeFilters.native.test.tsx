@@ -17,11 +17,19 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('<ReinitializeFilters />', () => {
-  it('should dispatch INIT when clicking on Réinitialiser', () => {
+  it('should dispatch INIT when clicking on the reset button', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<ReinitializeFilters />))
     fireEvent.press(getByText('Réinitialiser'))
+
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'INIT' })
+  })
+
+  it('should log analytics when clicking on the reset button', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByText } = render(reactQueryProviderHOC(<ReinitializeFilters />))
+    fireEvent.press(getByText('Réinitialiser'))
+
     expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
   })
 })
