@@ -13,7 +13,7 @@ const mockDismissModal = jest.fn()
 const defaultProps = {
   visible: true,
   headerTitle: "Partager l'offre",
-  shareContent: { message: 'Voici une super offre !', url: 'https://url.com/offer' },
+  shareContent: { message: 'Voici une super offre\u00a0!', url: 'https://url.com/offer' },
   dismissModal: mockDismissModal,
 }
 
@@ -46,7 +46,7 @@ describe('<WebShareModal/>', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('E-mail'))
     expect(openUrl).toHaveBeenCalledWith(
-      'mailto:?subject=Voici une super offre !&body=https://url.com/offer',
+      'mailto:?subject=Voici une super offre\u00a0!&body=https://url.com/offer',
       undefined
     )
   })
@@ -64,7 +64,7 @@ describe('<WebShareModal/>', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Twitter'))
     expect(openUrl).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer',
+      'https://twitter.com/intent/tweet?text=Voici une super offre\u00a0!&url=https://url.com/offer',
       undefined
     )
   })
@@ -82,7 +82,7 @@ describe('<WebShareModal/>', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Telegram'))
     expect(openUrl).toHaveBeenCalledWith(
-      'https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !',
+      'https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre\u00a0!',
       undefined
     )
   })

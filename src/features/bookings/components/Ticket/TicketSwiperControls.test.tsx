@@ -33,7 +33,7 @@ describe('<TicketSwiperControls/>', () => {
     queryByTestId('control-component-spacing-next')
   })
 
-  it('should show prev button if currentStep !== 1', () => {
+  it('should show prev button if currentStep\u00a0!== 1', () => {
     props.currentStep = 2
     const { queryByTestId } = render(<TicketSwiperControls {...props} />)
     queryByTestId('control-button-next')

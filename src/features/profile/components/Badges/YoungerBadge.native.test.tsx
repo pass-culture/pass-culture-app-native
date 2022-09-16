@@ -15,7 +15,7 @@ describe('YoungerBadge', () => {
       <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
     )
     queryByText(
-      'Patience ! Reviens à partir du 17/12/2021 pour continuer ton inscription et bénéficier du crédit pass Culture.'
+      'Patience\u00a0! Reviens à partir du 17/12/2021 pour continuer ton inscription et bénéficier du crédit pass Culture.'
     )
   })
 })

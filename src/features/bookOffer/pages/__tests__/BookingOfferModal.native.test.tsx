@@ -61,7 +61,7 @@ describe('<BookingOfferModalComponent />', () => {
         <BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />
       )
     )
-    expect(renderAPI.queryByText('Tu as déjà réservé :')).toBeTruthy()
+    expect(renderAPI.queryByText('Tu as déjà réservé\u00a0:')).toBeTruthy()
     expect(renderAPI.queryByTestId('external-link-booking-limit-exceeded')).toBeTruthy()
   })
 })

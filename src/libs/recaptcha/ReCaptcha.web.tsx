@@ -11,7 +11,7 @@ type Props = {
 
 // This will move up and reduce recaptcha challenge when viewport height is lower than 440px
 const css = `
-   @media only screen and (max-height : 440px) {
+   @media only screen and (max-height\u00a0: 440px) {
       div[style*="transition: visibility"] > div[style*="position: fixed"] + div[style*="position: absolute"] {
           transform: scale(0.75);
           transform-origin: 50% 0%;
@@ -31,7 +31,7 @@ export function ReCaptcha(props: Props) {
   }
 
   function onRecaptchaErrorCallback() {
-    props.onError('reCAPTCHA error : error-callback of widget called')
+    props.onError('reCAPTCHA error\u00a0: error-callback of widget called')
   }
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export function ReCaptcha(props: Props) {
       numberOfRetries = numberOfRetries + 1
       if (numberOfRetries > 15) {
         clearInterval(intervalId)
-        props.onError('reCAPTCHA error : Number of retries exceeded')
+        props.onError('reCAPTCHA error\u00a0: Number of retries exceeded')
         return
       }
 
@@ -76,7 +76,7 @@ export function ReCaptcha(props: Props) {
             grecaptcha.execute()
             clearInterval(intervalId)
           } catch (error) {
-            if (error instanceof Error) props.onError('reCAPTCHA error : ' + error.message)
+            if (error instanceof Error) props.onError('reCAPTCHA error\u00a0: ' + error.message)
           }
         }
       }

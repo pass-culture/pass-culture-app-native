@@ -72,7 +72,7 @@ export const RecreditBirthdayNotification = () => {
         {t({
           id: 'birthday notification text',
           values: { creditedAmount, age },
-          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :`,
+          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de\u00a0:`,
         })}
       </StyledSubtitle>
 

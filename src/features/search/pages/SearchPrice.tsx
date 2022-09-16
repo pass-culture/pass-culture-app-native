@@ -216,7 +216,7 @@ export const SearchPrice: FunctionComponent = () => {
             autoCapitalize="none"
             isError={false}
             keyboardType="numeric"
-            label="Prix minimum (en €)"
+            label="Prix minimum (en\u00a0€)"
             value={selectedMinPrice}
             onChangeText={onChangeMinPrice}
             textContentType="none" // disable autofill on iOS
@@ -231,13 +231,13 @@ export const SearchPrice: FunctionComponent = () => {
             autoCapitalize="none"
             isError={false}
             keyboardType="numeric"
-            label="Prix maximum (en €)"
+            label="Prix maximum (en\u00a0€)"
             value={selectedMaxPrice}
             onChangeText={onChangeMaxPrice}
             textContentType="none" // disable autofill on iOS
             accessibilityDescribedBy={maxPriceInputId}
             testID="Entrée pour le prix maximum"
-            rightLabel={`max : ${MAX_PRICE} €`}
+            rightLabel={`max\u00a0: ${MAX_PRICE}\u00a0€`}
             placeholder={`${MAX_PRICE}`}
             disabled={isLimitCreditSearch || isOnlyFreeOffersSearch}
           />

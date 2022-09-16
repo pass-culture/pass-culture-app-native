@@ -22,7 +22,7 @@ describe('<SetBirthday />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should display a information modal when clicking "Pour quelle raison ?" button', () => {
+  it('should display a information modal when clicking "Pour quelle raison\u00a0?" button', () => {
     const { getByTestId } = render(<SetBirthday {...props} />)
 
     const whyBirthdayButton = getByTestId('Pour quelle raison\u00a0?')
@@ -32,7 +32,7 @@ describe('<SetBirthday />', () => {
     expect(birthdayModal.props.visible).toBeTruthy()
   })
 
-  it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison ?" button', () => {
+  it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison\u00a0?" button', () => {
     const { getByTestId } = render(<SetBirthday {...props} />)
 
     const whyBirthdayLink = getByTestId('Pour quelle raison\u00a0?')

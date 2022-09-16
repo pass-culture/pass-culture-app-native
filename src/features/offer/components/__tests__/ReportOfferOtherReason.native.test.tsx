@@ -34,7 +34,7 @@ describe('<ReportOfferOtherReason />', () => {
       expect(reportButton).toBeDisabled()
 
       const largeTextInput = getByTestId('large-text-input')
-      fireEvent.changeText(largeTextInput, 'Hello !')
+      fireEvent.changeText(largeTextInput, 'Hello\u00a0!')
 
       await waitForExpect(() => {
         expect(reportButton).toBeEnabled()

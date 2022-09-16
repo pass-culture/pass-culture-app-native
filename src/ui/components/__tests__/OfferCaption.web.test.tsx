@@ -5,7 +5,7 @@ import { render } from 'tests/utils/web'
 import { OfferCaption } from '../OfferCaption'
 
 const props = {
-  name: 'Mensch ! Où sont les Hommes ?',
+  name: 'Mensch\u00a0! Où sont les Hommes\u00a0?',
   distance: '1,2km',
   imageWidth: 50,
   date: 'Dès le 2 mars 2020',

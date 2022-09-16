@@ -409,7 +409,7 @@ describe('SearchPrice component', () => {
   it('should display credit banner with remaining credit of the user', () => {
     const { queryByText } = render(<SearchPrice />)
 
-    const creditBanner = queryByText('Il te reste 100 € sur ton pass Culture.')
+    const creditBanner = queryByText('Il te reste 100\u00a0€ sur ton pass Culture.')
 
     expect(creditBanner).toBeTruthy()
   })

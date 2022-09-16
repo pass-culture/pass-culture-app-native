@@ -4,12 +4,12 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 
 import { customFindUrlChunks, highlightLinks } from '../highlightLinks'
 
-const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
-« Drôle, intelligente, intéressante, intéressée, chaleureuse et humble » Libération
-« Irrésistible ! » Elle
-« Intelligent et revigorant » Le Parisien
-« Hilarant » Vanity Fair 
-Voir plus de critiques en suivant le lien suivant :`
+const description1WithoutUrl = `PRESSE / ILS EN PARLENT\u00a0!
+«\u00a0Drôle, intelligente, intéressante, intéressée, chaleureuse et humble\u00a0» Libération
+«\u00a0Irrésistible\u00a0!\u00a0» Elle
+«\u00a0Intelligent et revigorant\u00a0» Le Parisien
+«\u00a0Hilarant\u00a0» Vanity Fair 
+Voir plus de critiques en suivant le lien suivant\u00a0:`
 
 const description1 = description1WithoutUrl + 'https://fauxliencritique.com/'
 

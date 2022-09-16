@@ -75,11 +75,11 @@ describe('OfferPartialDescription', () => {
           { text: 'vieillards peuvent appréhender de tomber ' },
           { text: 'un jour qui les rend avares, car il y en a de ' },
           { text: "tels qui ont de si grands fonds, qu'ils ne " },
-          { text: 'peuvent guère avoir cette inquiétude : et ' },
+          { text: 'peuvent guère avoir cette inquiétude\u00a0: et ' },
           { text: "d'ailleurs comment pourraient-ils craindre " },
           { text: 'de manquer dans leur caducité des ' },
           {
-            text: "commodités de la vie, puisqu'ils s'en privent eux-mêmes volontairement pour satisfaire à leur avarice ?",
+            text: "commodités de la vie, puisqu'ils s'en privent eux-mêmes volontairement pour satisfaire à leur avarice\u00a0?",
           },
         ]
         const description = lines.map(({ text }) => text).join(' ')

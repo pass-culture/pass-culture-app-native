@@ -8,10 +8,10 @@ jest.mock('features/auth/api', () => {
   return {
     ...originalModule,
     useDepositAmountsByAge: jest.fn().mockReturnValue({
-      fifteenYearsOldDeposit: '20 €',
-      sixteenYearsOldDeposit: '30 €',
-      seventeenYearsOldDeposit: '30 €',
-      eighteenYearsOldDeposit: '300 €',
+      fifteenYearsOldDeposit: '20\u00a0€',
+      sixteenYearsOldDeposit: '30\u00a0€',
+      seventeenYearsOldDeposit: '30\u00a0€',
+      eighteenYearsOldDeposit: '300\u00a0€',
     }),
   }
 })
@@ -24,7 +24,7 @@ describe('<BirthdayInformationModal />', () => {
 
   it('should show the correct deposit amount', () => {
     const { queryByText } = render(<BirthdayInformationModal visible hideModal={jest.fn()} />)
-    expect(queryByText(new RegExp('20 €'))).toBeTruthy()
-    expect(queryByText(new RegExp('300 €'))).toBeTruthy()
+    expect(queryByText(new RegExp('20\u00a0€'))).toBeTruthy()
+    expect(queryByText(new RegExp('300\u00a0€'))).toBeTruthy()
   })
 })

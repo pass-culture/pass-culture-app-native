@@ -59,7 +59,7 @@ export function NavigationProfile(): JSX.Element {
         <LinkToComponent name="ConsentSettings" />
         <LinkToComponent name="NotificationSettings" />
         <Row half>
-          <ButtonPrimary wording={'Modal Limite 500 €'} onPress={showPhysicalCeilingModal} />
+          <ButtonPrimary wording={'Modal Limite 500\u00a0€'} onPress={showPhysicalCeilingModal} />
           <CreditCeilingsModal
             domainsCredit={domains_credit_v1}
             visible={physicalCeilingModalVisible}
@@ -67,7 +67,7 @@ export function NavigationProfile(): JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording={'Modal Limite 300 €'} onPress={showCeilingModal} />
+          <ButtonPrimary wording={'Modal Limite 300\u00a0€'} onPress={showCeilingModal} />
           <CreditCeilingsModal
             domainsCredit={domains_credit_v2}
             visible={ceilingModalVisible}

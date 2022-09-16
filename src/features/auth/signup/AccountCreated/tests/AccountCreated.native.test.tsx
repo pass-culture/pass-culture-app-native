@@ -40,7 +40,7 @@ describe('<AccountCreated />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should redirect to cultural survey page WHEN "On y va !" button is clicked', async () => {
+  it('should redirect to cultural survey page WHEN "On y va\u00a0!" button is clicked', async () => {
     const renderAPI = render(<AccountCreated />)
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
@@ -52,7 +52,7 @@ describe('<AccountCreated />', () => {
     })
   })
 
-  it('should redirect to native cultural survey page WHEN "On y va !" button is clicked when native feature flag is activated', async () => {
+  it('should redirect to native cultural survey page WHEN "On y va\u00a0!" button is clicked when native feature flag is activated', async () => {
     mockSettings.enableNativeCulturalSurvey = true
     const renderAPI = render(<AccountCreated />)
 
@@ -65,7 +65,7 @@ describe('<AccountCreated />', () => {
     })
   })
 
-  it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
+  it('should redirect to home page WHEN "On y va\u00a0!" button is clicked and user needs not to fill cultural survey', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseUserProfileInfo.mockReturnValue({
       data: { needsToFillCulturalSurvey: false },
@@ -83,7 +83,7 @@ describe('<AccountCreated />', () => {
     })
   })
 
-  it('should track Batch event when "On y va !" button is clicked', async () => {
+  it('should track Batch event when "On y va\u00a0!" button is clicked', async () => {
     const renderAPI = render(<AccountCreated />)
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))

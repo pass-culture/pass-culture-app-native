@@ -15,13 +15,13 @@ describe('CodePushButton', () => {
   it('gets the metadata on mount', async () => {
     // We fake CodePush update metdata
     CodePush.getUpdateMetadata = jest.fn(() =>
-      Promise.resolve({ label: 'V4', description: 'New Release !' } as LocalPackage)
+      Promise.resolve({ label: 'V4', description: 'New Release\u00a0!' } as LocalPackage)
     )
     const testRenderer = TestRenderer.create(<CodePushButton />)
     expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
     await tick()
     // We expect that our state has those metadata
-    expect(testRenderer.root.instance.state.info).toEqual('V4 (New Release !)')
+    expect(testRenderer.root.instance.state.info).toEqual('V4 (New Release\u00a0!)')
     expect.assertions(2)
   })
   it('gets the partial metadata', async () => {
