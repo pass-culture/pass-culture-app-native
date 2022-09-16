@@ -12,14 +12,14 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
 export const ReinitializeFilters = () => {
-  const { dispatch } = useStagedSearch()
+  const { dispatch: dispatchStagedSearch } = useStagedSearch()
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters()
   })
   const maxPrice = useMaxPrice()
   const reinitializeFilters = () => {
-    dispatch({ type: 'INIT' })
-    dispatch({
+    dispatchStagedSearch({ type: 'INIT' })
+    dispatchStagedSearch({
       type: 'SET_STATE',
       payload: {
         priceRange: [0, maxPrice],
