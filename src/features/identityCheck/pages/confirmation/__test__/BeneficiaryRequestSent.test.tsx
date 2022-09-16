@@ -32,7 +32,7 @@ describe('<BeneficiaryRequestSent />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should redirect to cultural survey page WHEN "On y va !" button is clicked', () => {
+  it('should redirect to cultural survey page WHEN "On y va\u00a0!" button is clicked', () => {
     const { getByText } = render(<BeneficiaryRequestSent />)
 
     fireEvent.press(getByText('On y va\u00a0!'))
@@ -42,7 +42,7 @@ describe('<BeneficiaryRequestSent />', () => {
     expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
   })
 
-  it('should redirect to native cultural survey page WHEN "On y va !" is clicked and feature flag is activated', () => {
+  it('should redirect to native cultural survey page WHEN "On y va\u00a0!" is clicked and feature flag is activated', () => {
     mockedUseAppSettings.mockReturnValueOnce({
       data: { enableNativeCulturalSurvey: true },
       isLoading: false,
@@ -56,7 +56,7 @@ describe('<BeneficiaryRequestSent />', () => {
     expect(navigate).toBeCalledWith('CulturalSurveyIntro', undefined)
   })
 
-  it('should redirect to home page WHEN "On y va !" button is clicked and user does not need to fill cultural survey', () => {
+  it('should redirect to home page WHEN "On y va\u00a0!" button is clicked and user does not need to fill cultural survey', () => {
     mockedUseUserProfileInfo.mockReturnValue({
       data: { needsToFillCulturalSurvey: false },
     } as UseQueryResult<UserProfileResponse>)

@@ -96,7 +96,7 @@ describe('<CancelBookingModal />', () => {
     const { getByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    getByText('Avez-vous déjà vu ?')
+    getByText('Avez-vous déjà vu\u00a0?')
   })
 
   it('should display refund rule if user is beneficiary and offer is not free', () => {

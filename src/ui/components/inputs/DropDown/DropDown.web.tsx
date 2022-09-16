@@ -122,7 +122,7 @@ const StyledSelect = styled.select<SelectProps>`
     cursor: pointer;
     background-color: ${theme.colors.white};
     appearance: none;
-    &:focus-visible, :active {
+    &:focus-visible,\u00a0:active {
       border-color: ${theme.colors.primary};
     }
   `

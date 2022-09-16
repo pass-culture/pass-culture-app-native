@@ -21,7 +21,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       try {
         globalThis.navigator.clipboard.writeText(url)
         showSuccessSnackBar({
-          message: `${url} à été copié dans ton press-papier !`,
+          message: `${url} à été copié dans ton press-papier\u00a0!`,
           timeout: SNACK_BAR_TIME_OUT,
         })
       } catch (error) {

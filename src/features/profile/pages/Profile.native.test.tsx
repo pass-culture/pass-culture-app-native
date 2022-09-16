@@ -86,10 +86,10 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
 }))
 jest.mock('features/auth/api', () => ({
   useDepositAmountsByAge: jest.fn(() => ({
-    fifteenYearsOldDeposit: '20 €',
-    sixteenYearsOldDeposit: '30 €',
-    seventeenYearsOldDeposit: '30 €',
-    eighteenYearsOldDeposit: '300 €',
+    fifteenYearsOldDeposit: '20\u00a0€',
+    sixteenYearsOldDeposit: '30\u00a0€',
+    seventeenYearsOldDeposit: '30\u00a0€',
+    eighteenYearsOldDeposit: '300\u00a0€',
   })),
 }))
 jest.mock('features/auth/settings')

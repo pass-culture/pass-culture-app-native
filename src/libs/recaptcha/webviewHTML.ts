@@ -22,7 +22,7 @@ export const reCaptchaWebviewHTML = `
                 }
 
                 function onRecaptchaErrorCallback() {
-                    onError("reCAPTCHA error : error-callback of widget called")
+                    onError("reCAPTCHA error\u00a0: error-callback of widget called")
                 }
 
                 function isReadyToExecute() { 
@@ -38,7 +38,7 @@ export const reCaptchaWebviewHTML = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError("reCAPTCHA error : Number of retry render exceeded");
+                        onError("reCAPTCHA error\u00a0: Number of retry render exceeded");
                     }
                 }
 
@@ -50,7 +50,7 @@ export const reCaptchaWebviewHTML = `
                             readyInterval = setInterval(executeWhenReady, 1000);
                         }
                     } catch(error) {
-                        onError("reCAPTCHA error : " + error.message);
+                        onError("reCAPTCHA error\u00a0: " + error.message);
                     }
                 };
             </script>

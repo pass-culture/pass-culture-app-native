@@ -83,7 +83,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       if (config.serverValidator) {
         config.serverValidator(value).catch((error) => {
           showErrorSnackBar({
-            message: `${name} invalide : ${error.message}`,
+            message: `${name} invalide\u00a0: ${error.message}`,
             timeout: SNACK_BAR_TIME_OUT,
           })
         })

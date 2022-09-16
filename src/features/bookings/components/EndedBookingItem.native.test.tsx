@@ -15,7 +15,7 @@ jest.mock('react-query')
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
     const { queryByText } = renderEndedBookingItem(bookingsSnap.ended_bookings[0])
-    expect(queryByText('Avez-vous déjà vu ?')).toBeTruthy()
+    expect(queryByText('Avez-vous déjà vu\u00a0?')).toBeTruthy()
   })
 
   it('should display "Utilisé" and dateUsed labels if booking was used', () => {

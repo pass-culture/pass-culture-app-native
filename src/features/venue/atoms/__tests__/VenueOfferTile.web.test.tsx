@@ -24,7 +24,7 @@ const props = {
   name: offer.name,
   isDuo: offer.isDuo,
   offerId,
-  price: '28 €',
+  price: '28\u00a0€',
   thumbUrl: offer.thumbUrl,
   venueId,
   width: 100,

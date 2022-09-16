@@ -19,10 +19,10 @@ export function getScreensAndConfig(
   routes.forEach((route) => {
     const { name, path, deeplinkPaths, pathConfig } = route
     if (path && pathConfig) {
-      throw new Error(`Screen ${name} : you cannot declare both path and pathConfig`)
+      throw new Error(`Screen ${name}\u00a0: you cannot declare both path and pathConfig`)
     }
     if (!path && !pathConfig) {
-      throw new Error(`Screen ${name} : you have to declare either path or pathConfig`)
+      throw new Error(`Screen ${name}\u00a0: you have to declare either path or pathConfig`)
     }
     if (path) {
       screensConfig[name] = { path }

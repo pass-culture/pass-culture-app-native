@@ -12,7 +12,7 @@ describe('<Maintenance />', () => {
 
   it('should match snapshot with custom message', async () => {
     const maintenancePage = await render(
-      <Maintenance message="C'est tout cassé ! Reviens plus tard" />
+      <Maintenance message="C'est tout cassé\u00a0! Reviens plus tard" />
     )
     expect(maintenancePage).toMatchSnapshot()
   })
