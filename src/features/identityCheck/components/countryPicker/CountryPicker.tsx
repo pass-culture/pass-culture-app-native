@@ -119,9 +119,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
         title={t`Choix de l'indicatif téléphonique`}
         visible={visible}
         scrollEnabled={false}
-        leftIconAccessibilityLabel={undefined}
-        leftIcon={undefined}
-        onLeftIconPress={undefined}
         rightIconAccessibilityLabel={t`Fermer la modale de choix de l'indicatif téléphonique`}
         rightIcon={Close}
         onRightIconPress={hideModal}>

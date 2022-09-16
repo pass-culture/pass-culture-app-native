@@ -24,10 +24,7 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
       title={t`Quelques conseils`}
       onLeftIconPress={props.onGoBack}
       leftIcon={ArrowPrevious}
-      leftIconAccessibilityLabel={t`Revenir à l'étape précédente`}
-      rightIconAccessibilityLabel={undefined}
-      rightIcon={undefined}
-      onRightIconPress={undefined}>
+      leftIconAccessibilityLabel={t`Revenir à l'étape précédente`}>
       <React.Fragment>
         <Introduction>{t`Pour que la validation de ton numéro de téléphone se passe au mieux\u00a0:`}</Introduction>
         <Spacer.Column numberOfSpaces={8} />

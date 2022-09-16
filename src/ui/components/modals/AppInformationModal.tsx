@@ -44,9 +44,6 @@ export const AppInformationModal: FunctionComponent<Props> = ({
               title={title}
               titleID={titleID}
               boldTitle
-              leftIconAccessibilityLabel={undefined}
-              leftIcon={undefined}
-              onLeftIconPress={undefined}
               rightIconAccessibilityLabel={t`Fermer la modale`}
               rightIcon={Close}
               onRightIconPress={onCloseIconPress}

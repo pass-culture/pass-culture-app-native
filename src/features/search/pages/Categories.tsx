@@ -100,9 +100,6 @@ export const Categories: FunctionComponent<Props> = ({
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={hideModal}
-      leftIconAccessibilityLabel={undefined}
-      leftIcon={undefined}
-      onLeftIconPress={undefined}
       fixedModalBottom={FixedModalBottomComponent}>
       <VerticalUl>
         {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {

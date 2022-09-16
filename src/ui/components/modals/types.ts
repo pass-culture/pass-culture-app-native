@@ -8,9 +8,9 @@ type DefinedLeftIconProps = {
   onLeftIconPress: () => void
 }
 type UndefinedLeftIconProps = {
-  leftIconAccessibilityLabel: undefined
-  leftIcon: undefined
-  onLeftIconPress: undefined
+  leftIconAccessibilityLabel?: undefined
+  leftIcon?: undefined
+  onLeftIconPress?: undefined
 }
 type DefinedRightIconProps = {
   rightIconAccessibilityLabel: string
@@ -18,9 +18,9 @@ type DefinedRightIconProps = {
   onRightIconPress: () => void
 }
 type UndefinedRightIconProps = {
-  rightIconAccessibilityLabel: undefined
-  rightIcon: undefined
-  onRightIconPress: undefined
+  rightIconAccessibilityLabel?: undefined
+  rightIcon?: undefined
+  onRightIconPress?: undefined
 }
 
 export type ModalLeftIconProps = DefinedLeftIconProps | UndefinedLeftIconProps
