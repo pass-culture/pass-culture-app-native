@@ -28,13 +28,6 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 
-const SearchPriceSchema = object().shape({
-  minPrice: priceSchema,
-  maxPrice: priceSchema,
-  isLimitCreditSearch: boolean(),
-  isOnlyFreeOffersSearch: boolean(),
-})
-
 type SearchPriceFormFields = {
   minPrice: string
   maxPrice: string
@@ -56,8 +49,15 @@ export const SearchPrice: FunctionComponent = () => {
 
   const initialCredit = user?.domainsCredit?.all?.initial
   const formatInitialCredit = initialCredit
-    ? formatToFrenchDecimal(initialCredit).slice(0, -2)
+    ? +formatToFrenchDecimal(initialCredit).slice(0, -2)
     : MAX_PRICE
+
+  const SearchPriceSchema = object().shape({
+    minPrice: priceSchema(formatInitialCredit.toString()),
+    maxPrice: priceSchema(formatInitialCredit.toString()),
+    isLimitCreditSearch: boolean(),
+    isOnlyFreeOffersSearch: boolean(),
+  })
 
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
