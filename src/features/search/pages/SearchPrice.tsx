@@ -4,7 +4,6 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { ScrollView, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
-import { object, boolean } from 'yup'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -14,7 +13,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { priceSchema } from 'features/search/pages/schema/priceSchema'
+import { makeSearchPriceSchema } from 'features/search/pages/schema/makeSearchPriceSchema'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
@@ -27,13 +26,6 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
-
-const SearchPriceSchema = object().shape({
-  minPrice: priceSchema,
-  maxPrice: priceSchema,
-  isLimitCreditSearch: boolean(),
-  isOnlyFreeOffersSearch: boolean(),
-})
 
 type SearchPriceFormFields = {
   minPrice: string
@@ -56,8 +48,10 @@ export const SearchPrice: FunctionComponent = () => {
 
   const initialCredit = user?.domainsCredit?.all?.initial
   const formatInitialCredit = initialCredit
-    ? formatToFrenchDecimal(initialCredit).slice(0, -2)
+    ? Number(formatToFrenchDecimal(initialCredit).slice(0, -2))
     : MAX_PRICE
+
+  const searchPriceSchema = makeSearchPriceSchema(formatInitialCredit.toString())
 
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
@@ -106,7 +100,7 @@ export const SearchPrice: FunctionComponent = () => {
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     },
-    validationSchema: SearchPriceSchema,
+    validationSchema: searchPriceSchema,
     onSubmit: (values: SearchPriceFormFields) => search(values),
   })
 
