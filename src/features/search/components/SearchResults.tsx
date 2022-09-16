@@ -6,7 +6,6 @@ import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
@@ -64,8 +63,6 @@ export const SearchResults: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
-  const { data: appSettings } = useAppSettings()
-  const filtersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
   const offerCategories = params?.offerCategories ?? []
   const categoryIsSelected = offerCategories.length > 0
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -213,20 +210,18 @@ export const SearchResults: React.FC = () => {
                 color={categoryIsSelected ? theme.colors.primary : undefined}
               />
             </ButtonContainer>
-            {!!filtersButtonsDisplay && (
-              <React.Fragment>
-                <Spacer.Row numberOfSpaces={2} />
-                <ButtonContainer>
-                  <SingleFilterButton
-                    label={priceLabel.replaceAll('.', ',')}
-                    testID="priceButton"
-                    onPress={redirectToPriceFilterPage}
-                    Icon={priceIsEntered ? Check : undefined}
-                    color={priceIsEntered ? theme.colors.primary : undefined}
-                  />
-                </ButtonContainer>
-              </React.Fragment>
-            )}
+            <React.Fragment>
+              <Spacer.Row numberOfSpaces={2} />
+              <ButtonContainer>
+                <SingleFilterButton
+                  label={priceLabel.replaceAll('.', ',')}
+                  testID="priceButton"
+                  onPress={redirectToPriceFilterPage}
+                  Icon={priceIsEntered ? Check : undefined}
+                  color={priceIsEntered ? theme.colors.primary : undefined}
+                />
+              </ButtonContainer>
+            </React.Fragment>
             <Spacer.Row numberOfSpaces={6} />
           </ScrollView>
           <Spacer.Column numberOfSpaces={4} />
