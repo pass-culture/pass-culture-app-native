@@ -14,7 +14,7 @@ export const priceSchema = (initialCredit: string) =>
       if (!value) return true
       return PRICE_REGEX.test(value.trim())
     })
-    .test('consistentMaxPrice', maxPriceError(initialCredit), (value) => {
+    .test('validMaxPrice', maxPriceError(initialCredit), (value) => {
       if (!value) return true
       return +value.trim().replaceAll(',', '.') <= +initialCredit
     })
