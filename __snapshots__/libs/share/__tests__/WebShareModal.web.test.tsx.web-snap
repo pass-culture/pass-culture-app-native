@@ -473,7 +473,7 @@ Object {
                                 aria-label="Ouvrir le gestionnaire mail"
                                 class="c4 c3"
                                 data-testid="Ouvrir le gestionnaire mail"
-                                href="mailto:?subject=Voici une super offre !&body=https://url.com/offer"
+                                href="mailto:?subject=Voici une super offre !&body=https://url.com/offer"
                                 tabindex="0"
                                 target="_blank"
                               >
@@ -527,7 +527,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%C2%A0!"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
@@ -560,7 +560,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer"
+                                href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
@@ -593,7 +593,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer"
+                                href="https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div
@@ -626,7 +626,7 @@ Object {
                             >
                               <a
                                 class="css-reset-4rbku5 css-view-1dbjc4n"
-                                href="https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !"
+                                href="https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !"
                                 style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               >
                                 <div

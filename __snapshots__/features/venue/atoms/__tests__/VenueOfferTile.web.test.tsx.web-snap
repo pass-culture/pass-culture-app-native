@@ -11,9 +11,9 @@ Object {
         role="heading"
       >
         <div
-          aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
+          aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
           class="css-view-1dbjc4n"
-          data-testid="offre Mensch ! Où sont les Hommes ?"
+          data-testid="offre Mensch ! Où sont les Hommes ?"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 172px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
           tabindex="0"
         >
@@ -30,7 +30,7 @@ Object {
                 dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
-                Mensch ! Où sont les Hommes ?
+                Mensch ! Où sont les Hommes ?
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -45,7 +45,7 @@ Object {
                 dir="ltr"
                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
-                28 €
+                28 €
               </div>
             </div>
             <div
@@ -82,9 +82,9 @@ Object {
       role="heading"
     >
       <div
-        aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
+        aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
         class="css-view-1dbjc4n"
-        data-testid="offre Mensch ! Où sont les Hommes ?"
+        data-testid="offre Mensch ! Où sont les Hommes ?"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 172px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
         tabindex="0"
       >
@@ -101,7 +101,7 @@ Object {
               dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
-              Mensch ! Où sont les Hommes ?
+              Mensch ! Où sont les Hommes ?
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -116,7 +116,7 @@ Object {
               dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
-              28 €
+              28 €
             </div>
           </div>
           <div

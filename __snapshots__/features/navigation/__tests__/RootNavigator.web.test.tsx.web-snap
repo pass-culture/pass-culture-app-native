@@ -29,7 +29,7 @@ Object {
 }
 
 .c0:focus {
-  height: 44px !important;
+  height: 44px !important;
   margin: 8px;
   padding-left: 16px;
   padding-right: 16px;
@@ -375,7 +375,7 @@ Object {
 }
 
 .c0:focus {
-  height: 44px !important;
+  height: 44px !important;
   margin: 8px;
   padding-left: 16px;
   padding-right: 16px;
