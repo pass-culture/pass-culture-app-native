@@ -1,3 +1,4 @@
+import { useAppSettings } from 'features/auth/settings'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
@@ -29,6 +30,12 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
     ...mockIdentityCheckState,
   })),
 }))
+
+jest.mock('features/auth/settings')
+
+const mockedUseAppSettings = (useAppSettings as jest.Mock).mockReturnValue({
+  data: { enableNewIdentificationFlow: false },
+})
 
 describe('useIdentityCheckSteps', () => {
   beforeEach(jest.clearAllMocks)
@@ -94,4 +101,22 @@ describe('useIdentityCheckSteps', () => {
 
     expect(steps[0].screens.includes('PhoneValidationTooManySMSSent')).toEqual(false)
   })
+
+  it.each`
+    enableNewIdentificationFlow | expectedUbbleFlow
+    ${true}                     | ${['SelectIDOrigin']}
+    ${false}                    | ${['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd']}
+  `(
+    'should return $expectedUbbleFlow identity screen list when enableNewIdentificationFlow is $enableNewIdentificationFlow',
+    ({ enableNewIdentificationFlow: enableNewIdentificationFlowValue, expectedUbbleFlow }) => {
+      mockedUseAppSettings.mockReturnValueOnce({
+        data: { enableNewIdentificationFlow: enableNewIdentificationFlowValue },
+      })
+
+      const steps = useIdentityCheckSteps()
+      const identificationScreensFlow = steps[2].screens
+
+      expect(identificationScreensFlow).toEqual(expectedUbbleFlow)
+    }
+  )
 })
