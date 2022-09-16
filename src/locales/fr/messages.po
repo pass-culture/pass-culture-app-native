@@ -188,6 +188,10 @@ msgstr "Annulé"
 msgid "Arts visuels, arts plastiques et galeries"
 msgstr "Arts visuels, arts plastiques et galeries"
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "As-tu ta pièce d'identité avec toi ?"
+msgstr "As-tu ta pièce d'identité avec toi ?"
+
 #: src/features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal.tsx
 msgid "Assure-toi d'indiquer ton numéro de téléphone personnel"
 msgstr "Assure-toi d'indiquer ton numéro de téléphone personnel"
@@ -1365,6 +1369,10 @@ msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont
 msgid "Je découvre les offres"
 msgstr "Je découvre les offres"
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "Je n'ai pas"
+msgstr "Je n'ai pas"
+
 #: src/features/identityCheck/components/DMSModal.tsx
 #: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Je suis de nationalité française"
@@ -1403,6 +1411,10 @@ msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations p
 #: src/features/profile/components/CreditExplanation/getCreditModal.ts
 msgid "J’ai dépensé tout mon crédit, que faire ?"
 msgstr "J’ai dépensé tout mon crédit, que faire ?"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "J’ai ma pièce d'identité"
+msgstr "J’ai ma pièce d'identité"
 
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.tsx
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
@@ -1542,6 +1554,10 @@ msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque t
 msgid "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "Les copies ne sont pas acceptées"
+msgstr "Les copies ne sont pas acceptées"
+
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Les données qu’on conserve :"
 msgstr "Les données qu’on conserve :"
@@ -1624,6 +1640,10 @@ msgid ""
 msgstr ""
 "L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !\n"
 "Si l’e-mail n’arrive pas, tu peux :"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "Ma pièce d'identité est"
+msgstr "Ma pièce d'identité est"
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"
@@ -3154,6 +3174,10 @@ msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facile
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "Tu dois avoir ta pièce d'identité"
+msgstr "Tu dois avoir ta pièce d'identité"
+
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
@@ -3619,6 +3643,14 @@ msgstr "autour de toi"
 msgid "avant le début de l’événement."
 msgstr "avant le début de l’événement."
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "avec moi"
+msgstr "avec moi"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "avec toi."
+msgstr "avec toi."
+
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "birthday notification text"
 msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :"
@@ -3694,6 +3726,14 @@ msgstr "Tu as jusqu’au {deadline} pour faire ta demande"
 msgid "en cours"
 msgstr "en cours"
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "en cours de validité"
+msgstr "en cours de validité"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "en cours de validité avec moi"
+msgstr "en cours de validité avec moi"
+
 #: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
 msgid "en cours de validité pour accéder à ton pass Culture."
 msgstr "en cours de validité pour accéder à ton pass Culture."
@@ -3718,9 +3758,17 @@ msgstr "en offres physiques"
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "et"
+msgstr "et"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu as..."
 msgstr "et si tu as..."
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "expirée ou perdue"
+msgstr "expirée ou perdue"
 
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
@@ -3764,6 +3812,10 @@ msgstr "Dossier mis à jour le : {day} à {hour}"
 msgid "le"
 msgstr "le"
 
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "ma pièce d'identité originale"
+msgstr "ma pièce d'identité originale"
+
 #: src/features/profile/components/Modals/CreditCeilingsModal.tsx
 #: src/features/profile/components/Modals/CreditCeilingsModal.tsx
 msgid "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
@@ -3798,6 +3850,10 @@ msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est e
 #: src/libs/monitoring/errors.ts
 msgid "offerId is undefined"
 msgstr "offerId is undefined"
+
+#: src/features/identityCheck/pages/identification/identificationStart/SelectIDStatus.tsx
+msgid "originale"
+msgstr "originale"
 
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"

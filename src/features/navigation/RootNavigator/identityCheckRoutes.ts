@@ -15,6 +15,7 @@ import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identi
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
+import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
@@ -224,5 +225,10 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'SelectIDOrigin',
     component: SelectIDOrigin,
     path: 'identification/origine-document-identite',
+  },
+  {
+    name: 'SelectIDStatus',
+    component: SelectIDStatus,
+    path: 'identification/statut-document-identite',
   },
 ]
