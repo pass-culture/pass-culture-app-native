@@ -33,7 +33,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
   const isUserUnderage = useIsUserUnderage()
 
-  const deposit = depositAmount.replace(' ', '')
+  const deposit = depositAmount.replace(/\s/, '')
 
   const eligibilityStartDatetime = props.eligibilityStartDatetime
     ? new Date(props.eligibilityStartDatetime)

@@ -24,7 +24,7 @@ describe('<BirthdayInformationModal />', () => {
 
   it('should show the correct deposit amount', () => {
     const { queryByText } = render(<BirthdayInformationModal visible hideModal={jest.fn()} />)
-    expect(queryByText(new RegExp('20\u00a0€'))).toBeTruthy()
-    expect(queryByText(new RegExp('300\u00a0€'))).toBeTruthy()
+    expect(queryByText(/20\s€/)).toBeTruthy()
+    expect(queryByText(/300\s€/)).toBeTruthy()
   })
 })
