@@ -1,7 +1,7 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { useFormik } from 'formik'
-import { FormikHelpers } from 'formik/dist/types'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -12,7 +12,7 @@ import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurity
 import { useChangePasswordMutation } from 'features/auth/mutations'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { changePasswordSchema as validationSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
+import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { AppThemeType } from 'theme'
@@ -26,7 +26,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
 
-type ChangePasswordFormFields = {
+type ChangePasswordFormData = {
   currentPassword: string
   newPassword: string
   confirmedPassword: string
@@ -37,7 +37,7 @@ const passwordInputErrorId = uuidv4()
 const passwordConfirmationErrorId = uuidv4()
 
 export function ChangePassword() {
-  const initialValues: ChangePasswordFormFields = {
+  const defaultValues: ChangePasswordFormData = {
     currentPassword: '',
     newPassword: '',
     confirmedPassword: '',
@@ -55,81 +55,71 @@ export function ChangePassword() {
 
   const scrollRef = useRef<ScrollView | null>(null)
   const { bottom } = useSafeAreaInsets()
+
   const {
-    values,
-    errors,
-    dirty,
-    isValid,
-    isValidating,
-    isSubmitting,
-    handleBlur,
     handleSubmit,
-    handleChange,
-    setFieldError,
-  } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (
-      values: ChangePasswordFormFields,
-      { setErrors, resetForm }: FormikHelpers<ChangePasswordFormFields>
-    ) => {
-      // returning a promise will allow formik to set isSubmitting to false afterward
-      return new Promise<void>((resolve) => {
-        changePassword(
-          {
-            currentPassword: values.currentPassword,
-            newPassword: values.newPassword,
-          },
-          {
-            onSuccess() {
-              resetForm()
-              showSuccessSnackBar({
-                message: 'Ton mot de passe est modifié',
-                timeout: SNACK_BAR_TIME_OUT,
-              })
-              navigate(...getTabNavConfig('Profile'))
-              analytics.logHasChangedPassword('changePassword')
-              resolve()
-            },
-            onError(error, { newPassword }) {
-              setErrors({
-                currentPassword: 'Mot de passe incorrect',
-              })
-              if (!(error instanceof ApiError)) {
-                const err = new Error('ChangePasswordUnknownError')
-                eventMonitoring.captureException(err, {
-                  extra: {
-                    newPassword,
-                  },
-                })
-              }
-              // no need to reject on press event, and it's harder to test
-              resolve()
-            },
-          }
-        )
-      })
-    },
+    control,
+    clearErrors,
+    setError,
+    reset,
+    getValues,
+    formState: { errors, isSubmitting, isValid, isValidating, isDirty },
+  } = useForm<ChangePasswordFormData>({
+    mode: 'onChange',
+    defaultValues,
+    resolver: yupResolver(changePasswordSchema),
   })
 
-  const onChangeCurrentPasswordText = useCallback(
-    (currentPassword) => {
-      handleChange('currentPassword')(currentPassword)
-      setFieldError('currentPassword', undefined)
-    },
-    [handleChange, setFieldError]
-  )
+  const onSubmit = handleSubmit((data: ChangePasswordFormData) => {
+    // returning a promise will allow formik to set isSubmitting to false afterward
+    return new Promise<void>((resolve) => {
+      changePassword(
+        {
+          currentPassword: data.currentPassword,
+          newPassword: data.newPassword,
+        },
+        {
+          onSuccess() {
+            clearErrors()
+            reset()
+            showSuccessSnackBar({
+              message: 'Ton mot de passe est modifié',
+              timeout: SNACK_BAR_TIME_OUT,
+            })
+            navigate(...getTabNavConfig('Profile'))
+            analytics.logHasChangedPassword('changePassword')
+            resolve()
+          },
+          onError(error, { newPassword }) {
+            setError('currentPassword', {
+              message: 'Mot de passe incorrect',
+            })
+            if (!(error instanceof ApiError)) {
+              const err = new Error('ChangePasswordUnknownError')
+              eventMonitoring.captureException(err, {
+                extra: {
+                  newPassword,
+                },
+              })
+            }
+            // no need to reject on press event, and it's harder to test
+            resolve()
+          },
+        }
+      )
+    })
+  })
 
   const onFocusConfirmedPassword = useCallback(() => {
     setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
   }, [])
 
-  const disabled = !dirty || !isValid || (!isValidating && isSubmitting)
+  const disabled = !isDirty || !isValid || (!isValidating && isSubmitting)
   const onEnterKeyAction = useCallback(() => {
     if (!disabled) {
-      handleSubmit()
+      onSubmit()
     }
-  }, [disabled, handleSubmit])
+  }, [disabled, onSubmit])
 
   useEnterKeyAction(onEnterKeyAction)
 
@@ -146,67 +136,83 @@ export function ChangePassword() {
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={8} />
         <Form.MaxWidth flex={1}>
-          <PasswordInput
-            label={'Mot de passe actuel'}
-            value={values.currentPassword}
-            onChangeText={onChangeCurrentPasswordText}
-            onBlur={handleBlur('currentPassword')}
-            placeholder={'Ton mot de passe actuel'}
-            isRequiredField
-            accessibilityDescribedBy={passwordInputErrorId}
-            isError={!!errors.currentPassword}
-          />
-          <InputError
-            visible={!!errors.currentPassword}
-            messageId={'Mot de passe incorrect'}
-            numberOfSpacesTop={getSpacing(0.5)}
-            relatedInputId={passwordInputErrorId}
+          <Controller
+            control={control}
+            name="currentPassword"
+            render={({ field: { onChange, onBlur, value }, fieldState: { invalid } }) => (
+              <React.Fragment>
+                <PasswordInput
+                  label={'Mot de passe actuel'}
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  placeholder={'Ton mot de passe actuel'}
+                  isRequiredField
+                  accessibilityDescribedBy={passwordInputErrorId}
+                  isError={invalid && value.length > 0}
+                />
+                <InputError
+                  visible={invalid && value.length > 0}
+                  messageId={'Mot de passe incorrect'}
+                  numberOfSpacesTop={getSpacing(0.5)}
+                  relatedInputId={passwordInputErrorId}
+                />
+              </React.Fragment>
+            )}
           />
           <Spacer.Column numberOfSpaces={7} />
-          <PasswordInput
-            label={'Nouveau mot de passe'}
-            accessibilityDescribedBy={passwordDescribedBy}
-            value={values.newPassword}
-            onChangeText={handleChange('newPassword')}
-            onBlur={handleBlur('newPassword')}
-            placeholder={'Ton nouveau mot de passe'}
-            isRequiredField
-            isError={
-              !!errors.newPassword &&
-              errors.newPassword !== 'required' &&
-              values.newPassword.length > 0
-            }
-          />
-          <PasswordSecurityRules
-            password={values.newPassword}
-            visible={values.newPassword.length > 0}
-            nativeID={passwordDescribedBy}
+          <Controller
+            control={control}
+            name="newPassword"
+            render={({ field: { onChange, onBlur, value }, fieldState: { invalid } }) => (
+              <React.Fragment>
+                <PasswordInput
+                  label={'Nouveau mot de passe'}
+                  accessibilityDescribedBy={passwordDescribedBy}
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  placeholder={'Ton nouveau mot de passe'}
+                  isRequiredField
+                  isError={invalid && value.length > 0}
+                />
+                <PasswordSecurityRules
+                  password={value}
+                  visible={value.length > 0}
+                  nativeID={passwordDescribedBy}
+                />
+              </React.Fragment>
+            )}
           />
           <Spacer.Column numberOfSpaces={5} />
-          <PasswordInput
-            label={'Confirmer le mot de passe'}
-            value={values.confirmedPassword}
-            onChangeText={handleChange('confirmedPassword')}
-            onBlur={handleBlur('confirmedPassword')}
-            placeholder={'Confirmer le mot de passe'}
-            onFocus={onFocusConfirmedPassword}
-            isRequiredField
-            accessibilityDescribedBy={passwordConfirmationErrorId}
-            isError={
-              !!errors.confirmedPassword &&
-              values.newPassword.length > 0 &&
-              values.confirmedPassword.length > 0
-            }
-          />
-          <InputError
-            visible={
-              !!errors.confirmedPassword &&
-              values.newPassword.length > 0 &&
-              values.confirmedPassword.length > 0
-            }
-            messageId={'Les mots de passe ne concordent pas'}
-            numberOfSpacesTop={getSpacing(0.5)}
-            relatedInputId={passwordConfirmationErrorId}
+          <Controller
+            control={control}
+            name="confirmedPassword"
+            render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+              <React.Fragment>
+                <PasswordInput
+                  label={'Confirmer le mot de passe'}
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  placeholder={'Confirmer le mot de passe'}
+                  onFocus={onFocusConfirmedPassword}
+                  isRequiredField
+                  accessibilityDescribedBy={passwordConfirmationErrorId}
+                  isError={
+                    !!errors.confirmedPassword &&
+                    getValues('newPassword').length > 0 &&
+                    value.length > 0
+                  }
+                />
+                <InputError
+                  visible={invalid && getValues('newPassword').length > 0 && value.length > 0}
+                  messageId={error?.message}
+                  numberOfSpacesTop={getSpacing(0.5)}
+                  relatedInputId={passwordConfirmationErrorId}
+                />
+              </React.Fragment>
+            )}
           />
 
           {isMobileViewport && isTouch ? (
@@ -220,7 +226,7 @@ export function ChangePassword() {
             <ButtonPrimary
               wording={'Enregistrer'}
               accessibilityLabel={'Enregistrer les modifications'}
-              onPress={handleSubmit}
+              onPress={onSubmit}
               disabled={disabled}
             />
           </ButtonContainer>

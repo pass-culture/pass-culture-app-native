@@ -1,6 +1,7 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { useFormik } from 'formik'
 import React, { FunctionComponent, useCallback } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { ScrollView, StyleProp, ViewStyle, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -31,7 +32,7 @@ import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
 
-type SearchPriceFormFields = {
+type SearchPriceFormData = {
   minPrice: string
   maxPrice: string
   isLimitCreditSearch: boolean
@@ -81,7 +82,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
 
   const { isDesktopViewport } = useTheme()
 
-  function search(values: SearchPriceFormFields) {
+  function search(values: SearchPriceFormData) {
     hideModal()
     const offerIsFree =
       values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
@@ -117,85 +118,90 @@ export const SearchPrice: FunctionComponent<Props> = ({
     )
   }
 
-  const { values, resetForm, handleSubmit, isValid, errors, handleChange, setValues } =
-    useFormik<SearchPriceFormFields>({
-      initialValues: {
-        minPrice: searchState?.minPrice || '',
-        maxPrice: searchState?.maxPrice || '',
-        isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-        isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-      },
-      validationSchema: searchPriceSchema,
-      onSubmit(values: SearchPriceFormFields) {
-        return search(values)
-      },
-    })
+  const {
+    handleSubmit,
+    control,
+    reset,
+    getValues,
+    setValue,
+    trigger,
+    formState: { isSubmitting, isValid, isValidating },
+  } = useForm<SearchPriceFormData>({
+    mode: 'onChange',
+    defaultValues: {
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+    },
+    resolver: yupResolver(searchPriceSchema),
+  })
+
+  const onSubmit = handleSubmit(search)
 
   const toggleOnlyFreeOffersSearch = useCallback(() => {
-    const toggleOnlyFreeOffersSearchValue = !values.isOnlyFreeOffersSearch
-    setValues({
-      ...values,
-      isOnlyFreeOffersSearch: toggleOnlyFreeOffersSearchValue,
-      ...(toggleOnlyFreeOffersSearchValue
-        ? {
-            minPrice: '0',
-            maxPrice: '0',
-            isLimitCreditSearch: false,
-          }
-        : {
-            minPrice: searchState?.minPrice !== '0' ? searchState?.minPrice || '' : '',
-            maxPrice: searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : '',
-          }),
-    })
-  }, [searchState?.maxPrice, searchState?.minPrice, setValues, values])
+    const toggleOnlyFreeOffersSearchValue = !getValues('isOnlyFreeOffersSearch')
+    setValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
+    if (toggleOnlyFreeOffersSearchValue) {
+      setValue('maxPrice', '0')
+      setValue('minPrice', '0')
+      setValue('isLimitCreditSearch', false)
+      trigger(['minPrice', 'maxPrice'])
+      return
+    }
+    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
+    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
+    setValue('maxPrice', maxPrice)
+    setValue('minPrice', minPrice)
+    trigger(['minPrice', 'maxPrice'])
+  }, [setValue, getValues, trigger, searchState?.maxPrice, searchState?.minPrice])
 
   const toggleLimitCreditSearch = useCallback(() => {
-    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
-    const toggleLimitCreditSearchValue = !values.isLimitCreditSearch
+    const toggleLimitCreditSearchValue = !getValues('isLimitCreditSearch')
+    setValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
 
-    setValues({
-      ...values,
-      isLimitCreditSearch: toggleLimitCreditSearchValue,
-      ...(toggleLimitCreditSearchValue
-        ? {
-            maxPrice: formatAvailableCredit,
-            isOnlyFreeOffersSearch: false,
-          }
-        : {
-            maxPrice: availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '',
-          }),
-    })
-  }, [formatAvailableCredit, searchState?.maxPrice, setValues, values])
+    if (toggleLimitCreditSearchValue) {
+      setValue('maxPrice', formatAvailableCredit)
+      setValue('isOnlyFreeOffersSearch', false)
+      trigger(['minPrice', 'maxPrice'])
+      return
+    }
+
+    const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
+    setValue('maxPrice', availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '')
+    trigger(['minPrice', 'maxPrice'])
+  }, [setValue, getValues, trigger, formatAvailableCredit, searchState?.maxPrice])
 
   const close = useCallback(() => {
-    resetForm({
-      values: {
-        minPrice: searchState?.minPrice || '',
-        maxPrice: searchState?.maxPrice || '',
-        isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-        isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-      },
+    reset({
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     })
     hideModal()
   }, [
     hideModal,
     isLimitCreditSearchDefaultValue,
     isOnlyFreeOffersSearchDefaultValue,
-    resetForm,
+    reset,
     searchState?.maxPrice,
     searchState?.minPrice,
   ])
 
   const onResetPress = useCallback(() => {
-    resetForm({
-      values: {
+    reset(
+      {
         minPrice: '',
         maxPrice: '',
         isLimitCreditSearch: false,
         isOnlyFreeOffersSearch: false,
       },
-    })
-  }, [resetForm])
+      { keepDefaultValues: true }
+    )
+  }, [reset])
+
+  const disabled = !isValid || (!isValidating && isSubmitting)
 
   return (
     <AppModal
@@ -214,9 +220,9 @@ export const SearchPrice: FunctionComponent<Props> = ({
       onRightIconPress={close}
       fixedModalBottom={
         <SearchFixedModalBottom
-          onSearchPress={handleSubmit}
+          onSearchPress={onSubmit}
           onResetPress={onResetPress}
-          isSearchDisabled={!isValid}
+          isSearchDisabled={disabled}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />
@@ -231,70 +237,102 @@ export const SearchPrice: FunctionComponent<Props> = ({
               <Spacer.Column numberOfSpaces={6} />
             </View>
           )}
-          <FilterSwitchWithLabel
-            isActive={values.isOnlyFreeOffersSearch}
-            toggle={toggleOnlyFreeOffersSearch}
-            label="Uniquement les offres gratuites"
-            testID="onlyFreeOffers"
+          <Controller
+            control={control}
+            name="isOnlyFreeOffersSearch"
+            render={({ field: { value } }) => (
+              <FilterSwitchWithLabel
+                isActive={value}
+                toggle={toggleOnlyFreeOffersSearch}
+                label="Uniquement les offres gratuites"
+                testID="onlyFreeOffers"
+              />
+            )}
           />
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
           {!!isLoggedInAndBeneficiary && (
-            <React.Fragment>
-              <FilterSwitchWithLabel
-                isActive={values.isLimitCreditSearch}
-                toggle={toggleLimitCreditSearch}
-                label="Limiter la recherche à mon crédit"
-                testID="limitCreditSearch"
-              />
-              <Spacer.Column numberOfSpaces={6} />
-              <Separator />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
+            <Controller
+              control={control}
+              name="isLimitCreditSearch"
+              render={({ field: { value } }) => (
+                <React.Fragment>
+                  <FilterSwitchWithLabel
+                    isActive={value}
+                    toggle={toggleLimitCreditSearch}
+                    label="Limiter la recherche à mon crédit"
+                    testID="limitCreditSearch"
+                  />
+                  <Spacer.Column numberOfSpaces={6} />
+                  <Separator />
+                  <Spacer.Column numberOfSpaces={6} />
+                </React.Fragment>
+              )}
+            />
           )}
-
-          <TextInput
-            autoComplete="off" // disable autofill on android
-            autoCapitalize="none"
-            isError={!!errors.minPrice}
-            keyboardType="numeric"
-            label="Prix minimum (en&nbsp;€)"
-            value={values.minPrice}
-            onChangeText={handleChange('minPrice')}
-            textContentType="none" // disable autofill on iOS
-            accessibilityDescribedBy={minPriceInputId}
-            testID="Entrée pour le prix minimum"
-            placeholder="0"
-            disabled={values.isOnlyFreeOffersSearch}
-          />
-          <InputError
-            visible={!!errors.minPrice}
-            messageId={errors.minPrice}
-            numberOfSpacesTop={getSpacing(0.5)}
-            relatedInputId={minPriceInputId}
+          <Controller
+            control={control}
+            name="minPrice"
+            render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+              <React.Fragment>
+                <TextInput
+                  autoComplete="off" // disable autofill on android
+                  autoCapitalize="none"
+                  isError={invalid && value.length > 0}
+                  keyboardType="numeric"
+                  label="Prix minimum (ennbsp;€)"
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  textContentType="none" // disable autofill on iOS
+                  accessibilityDescribedBy={minPriceInputId}
+                  testID="Entrée pour le prix minimum"
+                  placeholder="0"
+                  disabled={getValues('isOnlyFreeOffersSearch')}
+                />
+                <InputError
+                  visible={invalid}
+                  messageId={error?.message}
+                  numberOfSpacesTop={getSpacing(0.5)}
+                  relatedInputId={minPriceInputId}
+                />
+              </React.Fragment>
+            )}
           />
           <Spacer.Column numberOfSpaces={6} />
-          <TextInput
-            autoComplete="off" // disable autofill on android
-            autoCapitalize="none"
-            isError={!!errors.maxPrice}
-            keyboardType="numeric"
-            label="Prix maximum (en&nbsp;€)"
-            value={values.maxPrice}
-            onChangeText={handleChange('maxPrice')}
-            textContentType="none" // disable autofill on iOS
-            accessibilityDescribedBy={maxPriceInputId}
-            testID="Entrée pour le prix maximum"
-            rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0€`}
-            placeholder={`${formatInitialCredit}`}
-            disabled={values.isLimitCreditSearch || values.isOnlyFreeOffersSearch}
-          />
-          <InputError
-            visible={!!errors.maxPrice}
-            messageId={errors.maxPrice}
-            numberOfSpacesTop={getSpacing(0.5)}
-            relatedInputId={maxPriceInputId}
+          <Controller
+            control={control}
+            name="maxPrice"
+            render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+              <React.Fragment>
+                <TextInput
+                  autoComplete="off" // disable autofill on android
+                  autoCapitalize="none"
+                  isError={invalid && value.length > 0}
+                  keyboardType="numeric"
+                  label="Prix maximum (ennbsp;€)"
+                  value={value}
+                  onChangeText={(value) => {
+                    onChange(value)
+                    trigger('minPrice')
+                  }}
+                  onBlur={onBlur}
+                  textContentType="none" // disable autofill on iOS
+                  accessibilityDescribedBy={maxPriceInputId}
+                  testID="Entrée pour le prix maximum"
+                  rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0€`}
+                  placeholder={`${formatInitialCredit}`}
+                  disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
+                />
+                <InputError
+                  visible={invalid}
+                  messageId={error?.message}
+                  numberOfSpacesTop={getSpacing(0.5)}
+                  relatedInputId={maxPriceInputId}
+                />
+              </React.Fragment>
+            )}
           />
         </Form.MaxWidth>
       </StyledScrollView>

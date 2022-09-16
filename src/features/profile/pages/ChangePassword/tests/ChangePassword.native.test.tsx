@@ -72,18 +72,18 @@ describe('ChangePassword', () => {
   })
 
   it('should validate PasswordSecurityRules when password is correct', async () => {
-    const { getByPlaceholderText, toJSON } = await renderChangePassword()
+    const renderAPI = await renderChangePassword()
 
-    const notValidatedRulesSnapshot = toJSON()
+    const notValidatedRulesSnapshot = renderAPI.toJSON()
 
-    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton nouveau mot de passe')
 
     await act(async () => {
       fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
     })
 
     await waitForExpect(() => {
-      const validatedRulesSnapshot = toJSON()
+      const validatedRulesSnapshot = renderAPI.toJSON()
       expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
