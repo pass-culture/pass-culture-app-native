@@ -18,14 +18,16 @@ describe('<QuitIdentityCheckModal/>', () => {
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitIdentityCheckModal(false)
 
-    const title = queryByText("Veux-tu abandonner la vérification d'identité\u00a0?")
+    // eslint-disable-next-line local-rules/nbsp-in-french-translations
+    const title = queryByText("Veux-tu abandonner la vérification d'identité ?")
     expect(title).toBeFalsy()
   })
 
   it('should display the modal when visible is true', () => {
     const { queryByText } = renderQuitIdentityCheckModal(true)
 
-    const title = queryByText("Veux-tu abandonner la vérification d'identité\u00a0?")
+    // eslint-disable-next-line local-rules/nbsp-in-french-translations
+    const title = queryByText("Veux-tu abandonner la vérification d'identité ?")
     expect(title).toBeTruthy()
   })
 

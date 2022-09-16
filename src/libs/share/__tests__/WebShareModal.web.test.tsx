@@ -55,7 +55,7 @@ describe('<WebShareModal/>', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Facebook'))
     expect(openUrl).toHaveBeenCalledWith(
-      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!',
+      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%C2%A0!',
       undefined
     )
   })
@@ -73,7 +73,7 @@ describe('<WebShareModal/>', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('WhatsApp'))
     expect(openUrl).toHaveBeenCalledWith(
-      'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer',
+      'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
       undefined
     )
   })
