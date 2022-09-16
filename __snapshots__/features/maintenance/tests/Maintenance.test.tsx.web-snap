@@ -154,7 +154,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
         }
       }
     >
-      C'est tout cassé ! Reviens plus tard
+      C'est tout cassé\\u00a0! Reviens plus tard
     </div>
     <div
       className="css-view-1dbjc4n"
