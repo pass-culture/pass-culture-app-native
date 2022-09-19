@@ -136,14 +136,17 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }, [formatAvailableCredit, formik, searchState?.maxPrice])
 
-  const goBack = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        view: SearchView.Results,
+  const close = () => {
+    formik.resetForm({
+      values: {
+        minPrice: searchState?.minPrice || '',
+        maxPrice: searchState?.maxPrice || '',
+        isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+        isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+      },
       })
-    )
-  }, [navigate, searchState])
+    hideModal()
+  }
 
   const titleID = uuidv4()
   const minPriceInputId = uuidv4()
