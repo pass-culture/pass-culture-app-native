@@ -69,9 +69,6 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
     <AppModal
       visible={props.isVisible}
       title={t`Code non reçu\u00a0?`}
-      onLeftIconPress={undefined}
-      leftIcon={undefined}
-      leftIconAccessibilityLabel={undefined}
       rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
       onRightIconPress={props.dismissModal}>

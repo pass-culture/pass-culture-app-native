@@ -91,9 +91,6 @@ export const WebShareModal = ({
     <AppModal
       visible={visible}
       title={headerTitle}
-      leftIconAccessibilityLabel={undefined}
-      leftIcon={undefined}
-      onLeftIconPress={undefined}
       rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
       onRightIconPress={dismissModal}>

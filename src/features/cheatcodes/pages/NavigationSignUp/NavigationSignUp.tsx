@@ -23,9 +23,6 @@ export function NavigationSignUp(): JSX.Element {
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
-        rightIconAccessibilityLabel={undefined}
-        rightIcon={undefined}
-        onRightIconPress={undefined}
       />
       <StyledContainer>
         <LinkToComponent
