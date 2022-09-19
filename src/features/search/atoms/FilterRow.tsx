@@ -27,7 +27,7 @@ export const FilterRow = ({ icon: Icon, title, description, captionId, onPress }
         <Spacer.Row numberOfSpaces={2} />
         <TextContainer>
           <Title numberOfLines={1}>{title}</Title>
-          <Description numberOfLines={1}>{description}</Description>
+          {!!description && <Description numberOfLines={1}>{description}</Description>}
         </TextContainer>
         <Spacer.Flex />
         <ArrowNext />
