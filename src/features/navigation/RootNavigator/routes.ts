@@ -54,7 +54,6 @@ import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotificat
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
-import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { Venue } from 'features/venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
@@ -329,12 +328,6 @@ export const routes: Route[] = [
     component: ResetPasswordExpiredLink,
     path: 'email-modification-mot-de-passe-expire',
     options: { title: t`Email modification mot de passe expiré` },
-  },
-  {
-    name: 'SearchPrice',
-    component: SearchPrice,
-    path: 'recherche/prix',
-    options: { title: t`Recherche par prix` },
   },
   {
     name: 'SearchFilter',

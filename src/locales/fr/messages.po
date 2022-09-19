@@ -2462,10 +2462,6 @@ msgstr "Recherche et sélectionne ton adresse"
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Recherche par prix"
-msgstr "Recherche par prix"
-
 #: src/features/search/pages/LocationPicker.tsx
 msgid "Recherche un lieu, une adresse"
 msgstr "Recherche un lieu, une adresse"
