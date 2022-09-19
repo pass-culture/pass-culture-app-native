@@ -1152,6 +1152,11 @@ export interface NextSubscriptionStepResponse {
    * @memberof NextSubscriptionStepResponse
    */
   stepperIncludesPhoneValidation: boolean
+  /**
+   * @type {SubscriptionMessage}
+   * @memberof NextSubscriptionStepResponse
+   */
+  subscriptionMessage?: SubscriptionMessage | null
 }
 /**
  * @export
