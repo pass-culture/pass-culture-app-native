@@ -4,13 +4,15 @@ import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { v4 } from '__mocks__/uuid'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/helpers/useCookies'
+import { CookiesConsent } from 'features/cookies/types'
 import { storage } from 'libs/storage'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
-const Today = new Date(2022, 9, 29)
-mockdate.set(Today)
+const TODAY = new Date(2022, 9, 29)
+const YESTERDAY = new Date(2022, 9, 28)
+mockdate.set(TODAY)
 
 jest.mock('api/api')
 
@@ -61,7 +63,7 @@ describe('useCookies', () => {
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
       expect(cookiesConsent).toEqual({
         deviceId,
-        choiceDatetime: Today.toISOString(),
+        choiceDatetime: TODAY.toISOString(),
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
@@ -73,7 +75,7 @@ describe('useCookies', () => {
     it('should restore cookies consent from the storage', async () => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
         deviceId,
-        choiceDatetime: Today,
+        choiceDatetime: TODAY,
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
@@ -90,6 +92,31 @@ describe('useCookies', () => {
           refused: [],
         })
       })
+    })
+
+    it('should update date when call setCookiesConsent is called', async () => {
+      await storage.saveObject(COOKIES_CONSENT_KEY, {
+        deviceId,
+        choiceDatetime: YESTERDAY,
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      })
+      const { result } = renderHook(useCookies)
+      const { setCookiesConsent } = result.current
+
+      await act(async () => {
+        await setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [],
+          refused: ALL_OPTIONAL_COOKIES,
+        })
+      })
+
+      const cookiesConsent = await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
+      expect(cookiesConsent?.choiceDatetime).toEqual(TODAY.toISOString())
     })
 
     describe('user ID', () => {
@@ -112,7 +139,7 @@ describe('useCookies', () => {
         expect(cookiesConsent).toEqual({
           userId: FAKE_USER_ID,
           deviceId,
-          choiceDatetime: Today.toISOString(),
+          choiceDatetime: TODAY.toISOString(),
           consent: {
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
@@ -140,7 +167,7 @@ describe('useCookies', () => {
         expect(cookiesConsent).toEqual({
           userId: FAKE_USER_ID,
           deviceId,
-          choiceDatetime: Today.toISOString(),
+          choiceDatetime: TODAY.toISOString(),
           consent: {
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
@@ -173,7 +200,7 @@ describe('useCookies', () => {
         expect(cookiesConsent).toEqual({
           userId: secondUserId,
           deviceId,
-          choiceDatetime: Today.toISOString(),
+          choiceDatetime: TODAY.toISOString(),
           consent: {
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
@@ -206,7 +233,7 @@ describe('useCookies', () => {
     const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
     expect(cookiesConsent).toEqual({
       deviceId: 'testUuidV4-first',
-      choiceDatetime: Today.toISOString(),
+      choiceDatetime: TODAY.toISOString(),
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: [],
