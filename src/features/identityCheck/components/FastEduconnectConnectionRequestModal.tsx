@@ -52,9 +52,6 @@ export const FastEduconnectConnectionRequestModal: React.FC<
     <AppModal
       title={t`Identifie-toi en 2 minutes`}
       visible={visible}
-      leftIconAccessibilityLabel={undefined}
-      leftIcon={undefined}
-      onLeftIconPress={undefined}
       rightIconAccessibilityLabel={t`Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées`}
       rightIcon={Close}
       onRightIconPress={onModalRightIconPress}>

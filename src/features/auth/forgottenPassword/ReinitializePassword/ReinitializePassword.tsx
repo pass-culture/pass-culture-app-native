@@ -76,9 +76,6 @@ export const ReinitializePassword = () => {
     <BottomContentPage>
       <ModalHeader
         title={t`Ton mot de passe`}
-        leftIconAccessibilityLabel={undefined}
-        leftIcon={undefined}
-        onLeftIconPress={undefined}
         rightIconAccessibilityLabel={t`Revenir à l'accueil`}
         rightIcon={Close}
         onRightIconPress={navigateToHome}

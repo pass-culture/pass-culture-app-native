@@ -29,9 +29,6 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
   <AppModal
     visible={visible}
     title={t`Transmettre un document`}
-    leftIconAccessibilityLabel={undefined}
-    leftIcon={undefined}
-    onLeftIconPress={undefined}
     rightIconAccessibilityLabel={t`Fermer la modale pour transmettre un document sur le site Démarches Simplifiée`}
     rightIcon={Close}
     onRightIconPress={hideModal}>

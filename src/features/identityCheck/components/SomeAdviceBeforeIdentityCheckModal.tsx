@@ -24,9 +24,6 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
   <AppModal
     visible={visible}
     title={t`Quelques conseils`}
-    leftIconAccessibilityLabel={undefined}
-    leftIcon={undefined}
-    onLeftIconPress={undefined}
     rightIconAccessibilityLabel={t`Fermer la modale de conseils pour avoir un document lisible`}
     rightIcon={Close}
     onRightIconPress={hideModal}>

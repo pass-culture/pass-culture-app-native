@@ -19,9 +19,6 @@ export function NavigationCulturalSurvey(): JSX.Element {
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
-        rightIconAccessibilityLabel={undefined}
-        rightIcon={undefined}
-        onRightIconPress={undefined}
       />
       <StyledContainer>
         <LinkToComponent name="CulturalSurveyIntro" />

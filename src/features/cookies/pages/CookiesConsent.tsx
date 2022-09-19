@@ -83,13 +83,5 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     customChoice,
   })
 
-  return (
-    <CookiesConsentModal
-      visible={visible}
-      rightIconAccessibilityLabel={undefined}
-      rightIcon={undefined}
-      onRightIconPress={undefined}
-      {...childrenProps}
-    />
-  )
+  return <CookiesConsentModal visible={visible} {...childrenProps} />
 }
