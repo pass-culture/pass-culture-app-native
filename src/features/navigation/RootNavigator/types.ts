@@ -211,10 +211,16 @@ export type NavigationResultState = ReturnType<typeof getStateFromPath>
 /**
  * Type helper to declare a route
  */
-type ExtendedPathConfig<ParamList> = Omit<PathConfig<ParamList>, 'initialRouteName'> & {
+type ExtendedPathConfig<ParamList extends Record<string, unknown>> = Omit<
+  PathConfig<ParamList>,
+  'initialRouteName'
+> & {
   deeplinkPaths?: string[]
 }
-export type GenericRoute<ParamList, NestedParamList = ParamListBase> = {
+export type GenericRoute<
+  ParamList extends Record<string, unknown>,
+  NestedParamList extends Record<string, unknown> = ParamListBase
+> = {
   name: keyof ParamList
   component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
   hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any

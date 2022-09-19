@@ -28,7 +28,7 @@ async function makeExternalRequest<ResponseBody>(
 
   const config = {
     ...request,
-    headers: headers as HeadersInit_,
+    headers: headers,
   }
 
   const response = await fetch(url, config)
