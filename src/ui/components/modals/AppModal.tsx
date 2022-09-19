@@ -30,6 +30,7 @@ type Props = {
   isFullscreen?: boolean
   noPadding?: boolean
   modalSpacing?: ModalSpacing
+  maxHeight?: number
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitraty values
@@ -57,6 +58,7 @@ export const AppModal: FunctionComponent<Props> = ({
   customModalHeader,
   fixedModalBottom,
   modalSpacing,
+  maxHeight,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -117,14 +119,14 @@ export const AppModal: FunctionComponent<Props> = ({
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
-  let desktopMaxHeight = undefined
-  let maxHeight = undefined
+  let maxContainerHeight = maxHeight
+  let desktopMaxHeight = maxHeight ? maxHeight * DESKTOP_FULLSCREEN_RATIO : undefined
   let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
 
   // no fullscreen in desktop view
   if (isFullscreen) {
     desktopMaxHeight = windowHeight * DESKTOP_FULLSCREEN_RATIO
-    maxHeight = windowHeight
+    maxContainerHeight = windowHeight
     modalContainerHeight = windowHeight
   }
 
@@ -144,10 +146,10 @@ export const AppModal: FunctionComponent<Props> = ({
       accessibilityRole={AccessibilityRole.DIALOG}
       aria-modal={true}>
       <ModalContainer
-        height={modalContainerHeight}
+        height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"
         desktopMaxHeight={desktopMaxHeight}
-        maxHeight={maxHeight}
+        maxHeight={maxContainerHeight}
         noPadding={noPadding}>
         {customModalHeader ? (
           <CustomModalHeaderContainer testID="customModalHeader">
@@ -163,16 +165,18 @@ export const AppModal: FunctionComponent<Props> = ({
             {...iconProps}
           />
         )}
-        {isFullscreen ? (
+        {isFullscreen || maxHeight ? (
           <StyledScrollView modalSpacing={modalSpacing} testID="fullscreenModalScrollView">
             {children}
           </StyledScrollView>
         ) : (
           <React.Fragment>
             <SpacerBetweenHeaderAndContent />
-            <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
+            <ScrollViewContainer
+              paddingBottom={scrollViewPaddingBottom}
+              modalSpacing={modalSpacing}>
               <ScrollView
-                contentContainerStyle={contentContainerStyle}
+                contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
                 ref={scrollViewRef}
                 scrollEnabled={scrollEnabled}
                 onContentSizeChange={updateScrollViewContentHeight}
@@ -213,11 +217,12 @@ const SpacerBetweenHeaderAndContent = styled.View({
 
 const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
   backdropColor: theme.uniqueColors.greyOverlay,
-}))<{ paddingBottom: number }>(({ paddingBottom }) => ({
+}))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
   maxHeight: '100%',
   paddingBottom,
+  ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))
 
 const MODAL_PADDING = getSpacing(5)
@@ -236,7 +241,7 @@ const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => 
 
 const MAX_HEIGHT = 650
 const ModalContainer = styled.View<{
-  height: number
+  height?: number
   desktopMaxHeight?: number
   maxHeight?: number
   noPadding?: boolean

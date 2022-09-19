@@ -1,107 +1,60 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
-import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
+import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ModalIconProps } from 'ui/components/modals/types'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type Props = {
-  title: string
-  visible: boolean
-  fixedBottomChildren: ReactNode
-} & ModalIconProps
-
-// Without this, the margin is recomputed with arbitraty values
-const modalStyles = { margin: 'auto' }
-
-export const CookiesConsentModal: FunctionComponent<Props> = ({
+export const CookiesConsentModal: typeof AppModal = ({
   title,
   visible,
-  leftIconAccessibilityLabel,
-  leftIcon,
-  onLeftIconPress,
-  rightIconAccessibilityLabel,
-  rightIcon,
-  onRightIconPress,
+  fixedModalBottom,
   children,
-  fixedBottomChildren,
+  ...iconProps
 }) => {
+  const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
-  const { height, width: windowWidth } = useWindowDimensions()
-  const windowHeight = height - top
-  const titleId = uuidv4()
 
-  const iconProps = {
-    rightIconAccessibilityLabel,
-    rightIcon,
-    onRightIconPress,
-    leftIconAccessibilityLabel,
-    leftIcon,
-    onLeftIconPress,
-  } as ModalIconProps
+  const CustomHeader = useMemo(
+    () => (
+      <HeaderContainer>
+        <ModalHeader title={title} {...iconProps} />
+      </HeaderContainer>
+    ),
+    [title, iconProps]
+  )
+
+  const FixedModalBottom = useMemo(
+    () => <FixedBottomChildrenView>{fixedModalBottom}</FixedBottomChildrenView>,
+    [fixedModalBottom]
+  )
 
   return (
-    <StyledModal
-      style={modalStyles}
-      supportedOrientations={['portrait', 'landscape']}
-      statusBarTranslucent
-      hasBackdrop
-      isVisible={visible}
-      testID="cookieModal"
-      deviceHeight={windowHeight}
-      deviceWidth={windowWidth}
-      aria-labelledby={titleId}
-      accessibilityRole={AccessibilityRole.DIALOG}
-      aria-modal={true}>
-      <ModalContainer windowHeight={windowHeight}>
-        <ModalHeader title={title} titleID={titleId} {...iconProps} />
-        <Spacer.Column numberOfSpaces={5} />
-        {!!children && <StyledScrollView>{children}</StyledScrollView>}
-        <FixedBottomChildrenView>{fixedBottomChildren}</FixedBottomChildrenView>
-        <Spacer.BottomScreen />
-      </ModalContainer>
-    </StyledModal>
+    <AppModal
+      noPadding
+      visible={visible}
+      title={title}
+      maxHeight={height - top}
+      modalSpacing={ModalSpacing.MD}
+      customModalHeader={CustomHeader}
+      fixedModalBottom={FixedModalBottom}>
+      {children}
+    </AppModal>
   )
 }
 
-// @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
-const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => {
-  const { isDesktopViewport } = theme
-  return {
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    bottom: 0,
-    top: isDesktopViewport ? 0 : 'auto',
-    alignItems: 'center',
-  }
-})
-
-const ModalContainer = styled.View<{ windowHeight: number }>(({ windowHeight, theme }) => {
-  const desktopMaxHeight = windowHeight * 0.75
-  return appModalContainerStyle({
-    theme,
-    desktopMaxHeight,
-    maxHeight: windowHeight,
-  })
-})
-
-const SCROLLBAR_SPACING = getSpacing(4)
-// Hack to shift the scrollbar
-const StyledScrollView = styled.ScrollView({
-  paddingHorizontal: SCROLLBAR_SPACING,
-  marginHorizontal: -SCROLLBAR_SPACING,
-})
-
-const FixedBottomChildrenView = styled.View(({ theme }) => ({
-  marginTop: getSpacing(5),
-  backgroundColor: theme.colors.white,
+const HeaderContainer = styled.View({
+  paddingTop: getSpacing(6),
+  paddingBottom: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
   width: '100%',
+})
+
+const FixedBottomChildrenView = styled.View({
+  marginTop: getSpacing(5),
+  paddingHorizontal: ModalSpacing.MD,
   alignItems: 'center',
-}))
+})

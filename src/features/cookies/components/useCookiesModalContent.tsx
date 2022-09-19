@@ -23,7 +23,7 @@ interface Props {
 type ReportOfferModalContent = {
   children: JSX.Element
   title: string
-  fixedBottomChildren: JSX.Element
+  fixedModalBottom: JSX.Element
 } & ModalLeftIconProps
 
 export const useCookiesModalContent = ({
@@ -47,7 +47,7 @@ export const useCookiesModalContent = ({
         leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),
-        fixedBottomChildren: (
+        fixedModalBottom: (
           <ButtonPrimary wording={t`Enregistrer mes choix`} onPress={customChoice} />
         ),
         title: t`Réglages des cookies`,
@@ -55,7 +55,7 @@ export const useCookiesModalContent = ({
     }
     return {
       children: <CookiesConsentExplanations />,
-      fixedBottomChildren: (
+      fixedModalBottom: (
         <CookiesConsentButtons
           onPressAcceptAll={acceptAll}
           onPressDeclineAll={declineAll}
