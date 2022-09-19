@@ -141,7 +141,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   describe('<IdentityCheckPendingBadge/>', () => {
-    it('should display identity check pending badge if hasIdentityCheckPending is true and SubscriptionStep is null', async () => {
+    it('should display identity check pending badge if hasIdentityCheckPending is true', async () => {
       mockNextSubscriptionStep = {
         ...mockStep,
         nextSubscriptionStep: null,
@@ -160,11 +160,12 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   describe('<SubscriptionMessageBadge/>', () => {
-    it('should render the subscription message if hasIdentityCheckPendingis false and SubscriptionStep is null', () => {
+    it('should render the subscription message if there is one', () => {
       mockNextSubscriptionStep = {
         ...mockStep,
         nextSubscriptionStep: null,
       }
+
       const { getByTestId } = render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
@@ -173,6 +174,7 @@ describe('<NonBeneficiaryHeader/>', () => {
           subscriptionMessage={mockedSubscriptionMessage}
         />
       )
+
       getByTestId('subscription-message-badge')
     })
   })
@@ -181,6 +183,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     it('should render the younger badge for user under 18 years old', () => {
       const today = '2021-01-30T00:00:00Z'
       mockdate.set(new Date(today))
+
       const { getByTestId } = render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-01-31T00:00Z"
@@ -188,14 +191,20 @@ describe('<NonBeneficiaryHeader/>', () => {
           isEligibleForBeneficiaryUpgrade={false}
         />
       )
+
       getByTestId('younger-badge')
     })
   })
 
   describe('<React.Fragment />', () => {
-    it('should not display banner or badge if isEligibleForBeneficiaryUpgrade is false and user not under 18 years old', () => {
+    it('should not display banner or badge if the user is over 15 years old but whithout nextIdentityStep or pendingIndentityCheck (non eligible to credit)', () => {
       const today = '2021-03-30T00:00:00Z'
       mockdate.set(new Date(today))
+      mockNextSubscriptionStep = {
+        ...mockStep,
+        nextSubscriptionStep: null,
+      }
+
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
@@ -204,6 +213,7 @@ describe('<NonBeneficiaryHeader/>', () => {
           subscriptionMessage={null}
         />
       )
+
       expect(queryByTestId('subscription-message-badge')).toBeFalsy()
       expect(queryByTestId('eligibility-banner')).toBeFalsy()
       expect(queryByTestId('identity-check-pending-badge')).toBeFalsy()
