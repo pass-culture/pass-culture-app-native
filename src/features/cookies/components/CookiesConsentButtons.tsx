@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   onPressAcceptAll: () => void
@@ -22,22 +22,27 @@ export const CookiesConsentButtons = ({
       <Row>
         <ButtonPrimary wording={t`Tout refuser`} onPress={onPressDeclineAll} />
       </Row>
-      <Spacer.Row numberOfSpaces={2} />
+      <ButtonSpacer />
       <Row>
         <ButtonPrimary wording={t`Tout accepter`} onPress={onPressAcceptAll} />
       </Row>
     </Container>
-    <Spacer.Column numberOfSpaces={5} />
+    <Spacer.Column numberOfSpaces={4} />
     <ButtonSecondary wording={t`Choisir les cookies`} onPress={onPressChooseCookies} />
   </React.Fragment>
 )
 
 const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
-  flexDirection: 'row',
+  flexDirection: theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column-reverse',
   width: '100%',
 }))
 
-const Row = styled.View({
-  flex: 1,
-})
+const ButtonSpacer = styled.View(({ theme }) => ({
+  width: theme.appContentWidth > theme.breakpoints.xs ? getSpacing(2) : 0,
+  height: theme.appContentWidth > theme.breakpoints.xs ? 0 : getSpacing(4),
+}))
+
+const Row = styled.View(({ theme }) => ({
+  flex: theme.appContentWidth > theme.breakpoints.xs ? 1 : undefined,
+}))

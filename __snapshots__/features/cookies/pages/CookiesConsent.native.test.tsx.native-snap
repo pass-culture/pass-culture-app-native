@@ -389,10 +389,10 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
+                  "height": 0,
                   "width": 8,
                 },
               ]
@@ -463,11 +463,11 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={5}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "height": 20,
+                "height": 16,
               },
             ]
           }
