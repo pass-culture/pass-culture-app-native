@@ -15,6 +15,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+const mockHideModal = jest.fn()
+
 describe('Categories component', () => {
   it('should render correctly', () => {
     const { toJSON } = renderCategories()
@@ -83,13 +85,24 @@ describe('Categories component', () => {
     expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
   })
 
-  it('should close the modal when pressing the search button', async () => {
-    const { getByText, queryByTestId } = renderCategories()
+  describe('should close the modal ', () => {
+    it('when pressing the search button', async () => {
+      const { getByText } = renderCategories()
 
-    const button = getByText('Rechercher')
-    fireEvent.press(button)
+      const button = getByText('Rechercher')
+      fireEvent.press(button)
 
-    expect(queryByTestId('categoriesModal')).toBeFalsy()
+      expect(mockHideModal).toHaveBeenCalled()
+    })
+
+    it('when pressing previous button', async () => {
+      const { getByTestId } = renderCategories()
+
+      const previousButton = getByTestId('backButton')
+      await fireEvent.press(previousButton)
+
+      expect(mockHideModal).toHaveBeenCalled()
+    })
   })
 })
 
@@ -99,7 +112,7 @@ function renderCategories() {
       title="Catégories"
       accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
       isVisible={true}
-      hideModal={jest.fn()}
+      hideModal={mockHideModal}
     />
   )
 }

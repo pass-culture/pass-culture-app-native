@@ -5,13 +5,20 @@ import { FilterPageButtons } from 'features/search/components/FilterPageButtons/
 type Props = {
   onResetPress: () => void
   onSearchPress: () => void
+  isSearchDisabled?: boolean
 }
 
 export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   onResetPress,
   onSearchPress,
+  isSearchDisabled,
 }: Props) {
   return (
-    <FilterPageButtons onResetPress={onResetPress} onSearchPress={onSearchPress} isModal={true} />
+    <FilterPageButtons
+      onResetPress={onResetPress}
+      onSearchPress={onSearchPress}
+      isModal={true}
+      isSearchDisabled={isSearchDisabled}
+    />
   )
 })
