@@ -13,7 +13,7 @@ const message = t({
 })
 
 export const shareAppContent = {
-  title: t`Partage le lien d’invitation`,
+  title: t`Profite toi aussi de tous les bons plans du pass Culture`,
   message,
   url: Platform.OS === 'web' ? url : undefined,
 }
