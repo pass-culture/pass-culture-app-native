@@ -11,10 +11,10 @@ export const makeSearchPriceSchema = (initialCredit: string) =>
       then: (schema) =>
         schema.test('validMinPrice', minPriceError, (value, schema) => {
           if (!value) return true
-          return +value <= +schema.parent.maxPrice
+          return Number(value) <= Number(schema.parent.maxPrice)
         }),
     }),
-    maxPrice: makePriceSchema(initialCredit.toString()),
+    maxPrice: makePriceSchema(String(initialCredit)),
     isLimitCreditSearch: boolean(),
     isOnlyFreeOffersSearch: boolean(),
   })
