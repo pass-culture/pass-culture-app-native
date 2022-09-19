@@ -77,20 +77,6 @@ Array [
         >
           Catégorie
         </Text>
-        <Text
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#696A6F",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        />
       </View>
       <View
         style={
