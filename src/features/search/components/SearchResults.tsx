@@ -14,6 +14,7 @@ import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { Categories } from 'features/search/pages/Categories'
+import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
@@ -72,6 +73,11 @@ export const SearchResults: React.FC = () => {
     showModal: showCategoriesModal,
     hideModal: hideCategoriesModal,
   } = useModal(false)
+  const {
+    visible: searchPriceModalVisible,
+    showModal: showSearchPriceModal,
+    hideModal: hideSearchPriceModal,
+  } = useModal(false)
   const theme = useTheme()
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
@@ -114,14 +120,6 @@ export const SearchResults: React.FC = () => {
     stagedDispatch({ type: 'SET_STATE', payload: searchState })
     navigate('SearchFilter')
   }, [stagedDispatch, navigate, searchState])
-
-  const redirectToCategoryFilterPage = useCallback(() => {
-    showCategoriesModal()
-  }, [showCategoriesModal])
-
-  const redirectToPriceFilterPage = useCallback(() => {
-    navigate('SearchPrice')
-  }, [navigate])
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
@@ -205,7 +203,7 @@ export const SearchResults: React.FC = () => {
               <SingleFilterButton
                 label={categoryLabel}
                 testID="categoryButton"
-                onPress={redirectToCategoryFilterPage}
+                onPress={showCategoriesModal}
                 Icon={categoryIsSelected ? Check : undefined}
                 color={categoryIsSelected ? theme.colors.primary : undefined}
               />
@@ -216,7 +214,7 @@ export const SearchResults: React.FC = () => {
                 <SingleFilterButton
                   label={priceLabel.replaceAll('.', ',')}
                   testID="priceButton"
-                  onPress={redirectToPriceFilterPage}
+                  onPress={showSearchPriceModal}
                   Icon={priceIsEntered ? Check : undefined}
                   color={priceIsEntered ? theme.colors.primary : undefined}
                 />
@@ -264,6 +262,12 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
+      />
+      <SearchPrice
+        title="Prix"
+        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+        isVisible={searchPriceModalVisible}
+        hideModal={hideSearchPriceModal}
       />
     </React.Fragment>
   )

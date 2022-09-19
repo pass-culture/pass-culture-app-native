@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 import React, { FunctionComponent, useCallback } from 'react'
 import { ScrollView, StyleProp, ViewStyle } from 'react-native'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -10,8 +11,9 @@ import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
-import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
+import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
+import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/pages/schema/makeSearchPriceSchema'
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -21,10 +23,12 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
-import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { Separator } from 'ui/components/Separator'
+import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type SearchPriceFormFields = {
@@ -34,7 +38,19 @@ type SearchPriceFormFields = {
   isOnlyFreeOffersSearch: boolean
 }
 
-export const SearchPrice: FunctionComponent = () => {
+type Props = {
+  title: string
+  accessibilityLabel: string
+  isVisible: boolean
+  hideModal: () => void
+}
+
+export const SearchPrice: FunctionComponent<Props> = ({
+  title,
+  accessibilityLabel,
+  isVisible,
+  hideModal,
+}) => {
   const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price)
   const logUseFreeOffersFilter = useLogFilterOnce(SectionTitle.Free)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -58,7 +74,10 @@ export const SearchPrice: FunctionComponent = () => {
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
+  const { isDesktopViewport } = useTheme()
+
   function search(values: SearchPriceFormFields) {
+    hideModal()
     const offerIsFree =
       values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
     let additionalSearchState: SearchState = {
@@ -136,28 +155,53 @@ export const SearchPrice: FunctionComponent = () => {
     )
   }, [formatAvailableCredit, formik, searchState?.maxPrice])
 
-  const goBack = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        view: SearchView.Results,
-      })
-    )
-  }, [navigate, searchState])
+  const close = () => {
+    formik.resetForm({
+      values: {
+        minPrice: searchState?.minPrice || '',
+        maxPrice: searchState?.maxPrice || '',
+        isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+        isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+      },
+    })
+    hideModal()
+  }
 
-  const titleID = uuidv4()
+  const titleId = uuidv4()
   const minPriceInputId = uuidv4()
   const maxPriceInputId = uuidv4()
   const bannerTitle = `Il te reste ${formatAvailableCredit}\u00a0€ sur ton pass Culture.`
   return (
-    <Container>
-      <PageHeader
-        titleID={titleID}
-        title="Prix"
-        background="primary"
-        withGoBackButton
-        onGoBack={goBack}
-      />
+    <AppModal
+      visible={isVisible}
+      customModalHeader={
+        isDesktopViewport ? undefined : (
+          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={close} />
+        )
+      }
+      title={title}
+      isFullscreen={true}
+      noPadding={true}
+      modalSpacing={ModalSpacing.MD}
+      rightIconAccessibilityLabel={accessibilityLabel}
+      rightIcon={Close}
+      onRightIconPress={close}
+      fixedModalBottom={
+        <SearchFixedModalBottom
+          onSearchPress={formik.handleSubmit}
+          onResetPress={() =>
+            formik.resetForm({
+              values: {
+                minPrice: '',
+                maxPrice: '',
+                isLimitCreditSearch: false,
+                isOnlyFreeOffersSearch: false,
+              },
+            })
+          }
+          isSearchDisabled={!formik.isValid}
+        />
+      }>
       <Spacer.Column numberOfSpaces={6} />
       {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
       <StyledScrollView
@@ -237,20 +281,9 @@ export const SearchPrice: FunctionComponent = () => {
           />
         </Form.MaxWidth>
       </StyledScrollView>
-
-      <FilterPageButtons
-        onSearchPress={formik.handleSubmit}
-        onResetPress={formik.resetForm}
-        isSearchDisabled={!formik.isValid}
-      />
-    </Container>
+    </AppModal>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
 
 const getScrollViewContentContainerStyle = (): StyleProp<ViewStyle> => ({
   flexDirection: 'column',
@@ -259,7 +292,6 @@ const getScrollViewContentContainerStyle = (): StyleProp<ViewStyle> => ({
 
 const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
-  paddingHorizontal: getSpacing(6),
 })
 
 const BannerContainer = styled.View({})

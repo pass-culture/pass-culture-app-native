@@ -121,13 +121,15 @@ describe('SearchResults component', () => {
     expect(queryByTestId('priceButton')).toBeTruthy()
   })
 
-  it('should redirect to the filters page when clicking on the prices filter button', async () => {
+  it('should open the prices filter modal when clicking on the prices filter button', async () => {
     const { getByTestId } = render(<SearchResults />)
     const priceButton = getByTestId('priceButton')
 
     await fireEvent.press(priceButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchPrice')
+    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+
+    expect(fullscreenModalScrollView).toBeTruthy()
   })
 
   describe('When feature flag filter activated', () => {
