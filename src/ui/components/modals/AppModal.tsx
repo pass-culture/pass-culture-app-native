@@ -152,7 +152,7 @@ export const AppModal: FunctionComponent<Props> = ({
         maxHeight={maxContainerHeight}
         noPadding={noPadding}>
         {customModalHeader ? (
-          <CustomModalHeaderContainer testID="customModalHeader">
+          <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
             {customModalHeader}
           </CustomModalHeaderContainer>
         ) : (
