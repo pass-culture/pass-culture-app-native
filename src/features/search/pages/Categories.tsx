@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -39,6 +39,10 @@ export const Categories: FunctionComponent<Props> = ({
     searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE
   )
   const { isDesktopViewport } = useTheme()
+
+  useEffect(() => {
+    setSelectedCategory(searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE)
+  }, [searchState?.offerCategories, setSelectedCategory])
 
   const onSelectCategory = (category: SearchGroupNameEnumv2) => () => {
     setSelectedCategory(category)
