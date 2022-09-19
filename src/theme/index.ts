@@ -136,6 +136,7 @@ export interface AppThemeType {
     greenDisabled: UniqueColors
   }
   breakpoints: {
+    xxs: Breakpoints
     xs: Breakpoints
     sm: Breakpoints
     md: Breakpoints
@@ -501,6 +502,7 @@ export const theme: AppThemeType = {
     greenDisabled: UniqueColors.GREEN_DISABLED,
   },
   breakpoints: {
+    xxs: Breakpoints.XXS,
     xs: Breakpoints.XS,
     sm: Breakpoints.SM,
     md: Breakpoints.MD,
