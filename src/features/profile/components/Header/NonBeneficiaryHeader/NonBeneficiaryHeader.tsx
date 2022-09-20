@@ -18,7 +18,6 @@ import { getSpacing, Typo } from 'ui/theme'
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
-  lastUpdated?: string
 }
 
 function NonBeneficiaryHeaderComponent({
