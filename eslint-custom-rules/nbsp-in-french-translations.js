@@ -72,6 +72,8 @@ module.exports = {
         })
       },
 
+      // TODO : For '« textToTranslate' and "« textToTranslate"
+
       // For `textToTranslate !` with characters !, ?, :, » and €
       'TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»€]/]': (node) => {
         if (node.value.raw.includes('!important')) return
