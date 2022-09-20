@@ -17,10 +17,14 @@ import { LocationFilter } from '../LocationFilter'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
+  }),
+  useStagedSearch: () => ({
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -82,6 +86,7 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByText('Rechercher'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
   })
 
   it('should log ChangeSearchLocation event when selecting Around Me and pressing on the search button', () => {
@@ -97,6 +102,7 @@ describe('LocationFilter component', () => {
     const { getByTestId } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
     expect(mockDispatch).not.toHaveBeenCalled()
+    expect(mockStagedDispatch).not.toHaveBeenCalled()
   })
 
   it('should change location filter on search button press (position=YES, type=EVERYWHERE)', () => {
@@ -105,6 +111,7 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByText('Rechercher'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
   it('should log ChangeSearchLocation event when selecting Everywhere and pressing on the search button', () => {
@@ -121,6 +128,7 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByText('Rechercher'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
   it('should show the building icon when a venue is chosen', () => {
@@ -143,6 +151,10 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByText('Rechercher'))
 
     expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_LOCATION_VENUE',
+      payload: { ...Kourou, venueId: 4 },
+    })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SET_LOCATION_VENUE',
       payload: { ...Kourou, venueId: 4 },
     })
@@ -180,6 +192,10 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByText('Rechercher'))
 
     expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_LOCATION_PLACE',
+      payload: { aroundRadius: 10, place: Kourou },
+    })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SET_LOCATION_PLACE',
       payload: { aroundRadius: 10, place: Kourou },
     })

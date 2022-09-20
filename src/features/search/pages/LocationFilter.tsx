@@ -12,7 +12,7 @@ import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
 import { Action } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationFilter as LocationFilterType } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
@@ -36,6 +36,7 @@ export const LocationFilter: React.FC = () => {
   const { params } = useRoute<UseRouteType<'LocationFilter'>>()
 
   const { searchState, dispatch } = useSearch()
+  const { dispatch: dispatchStagedSearch } = useStagedSearch()
   const [selectedFilter, setSelectedFilter] = useState<LocationFilterType>(
     searchState.locationFilter
   )
@@ -133,6 +134,7 @@ export const LocationFilter: React.FC = () => {
     }
 
     dispatch(toDispatch)
+    dispatchStagedSearch(toDispatch)
     analytics.logChangeSearchLocation(toSendToAnalytics)
     navigate(
       ...getTabNavConfig('Search', {
