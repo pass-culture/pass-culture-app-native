@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 import React, { FunctionComponent, useCallback } from 'react'
-import { ScrollView, StyleProp, ViewStyle } from 'react-native'
+import { ScrollView, StyleProp, ViewStyle, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -45,6 +45,10 @@ type Props = {
   hideModal: () => void
 }
 
+const titleId = uuidv4()
+const minPriceInputId = uuidv4()
+const maxPriceInputId = uuidv4()
+
 export const SearchPrice: FunctionComponent<Props> = ({
   title,
   accessibilityLabel,
@@ -61,13 +65,14 @@ export const SearchPrice: FunctionComponent<Props> = ({
   const formatAvailableCredit = availableCredit?.amount
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
     : '0'
+  const bannerTitle = `Il te reste ${formatAvailableCredit}\u00a0€ sur ton pass Culture.`
 
   const initialCredit = user?.domainsCredit?.all?.initial
   const formatInitialCredit = initialCredit
     ? Number(formatToFrenchDecimal(initialCredit).slice(0, -2))
     : MAX_PRICE
 
-  const searchPriceSchema = makeSearchPriceSchema(formatInitialCredit.toString())
+  const searchPriceSchema = makeSearchPriceSchema(String(formatInitialCredit))
 
   const isLimitCreditSearchDefaultValue = searchState?.maxPrice === formatAvailableCredit
   const isLoggedInAndBeneficiary = isLoggedIn && user?.isBeneficiary
@@ -112,51 +117,58 @@ export const SearchPrice: FunctionComponent<Props> = ({
     )
   }
 
-  const formik = useFormik<SearchPriceFormFields>({
-    initialValues: {
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
-      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-    },
-    validationSchema: searchPriceSchema,
-    onSubmit: (values: SearchPriceFormFields) => search(values),
-  })
+  const { values, resetForm, handleSubmit, isValid, errors, handleChange, setValues } =
+    useFormik<SearchPriceFormFields>({
+      initialValues: {
+        minPrice: searchState?.minPrice || '',
+        maxPrice: searchState?.maxPrice || '',
+        isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+        isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+      },
+      validationSchema: searchPriceSchema,
+      onSubmit(values: SearchPriceFormFields) {
+        return search(values)
+      },
+    })
 
   const toggleOnlyFreeOffersSearch = useCallback(() => {
-    const toggleOnlyFreeOffersSearchValue = !formik.values.isOnlyFreeOffersSearch
-    formik.setFieldValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
-    if (toggleOnlyFreeOffersSearchValue) {
-      formik.setFieldValue('maxPrice', '0')
-      formik.setFieldValue('minPrice', '0')
-      formik.setFieldValue('isLimitCreditSearch', false)
-      return
-    }
-    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
-    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
-    formik.setFieldValue('maxPrice', maxPrice)
-    formik.setFieldValue('minPrice', minPrice)
-  }, [formik, searchState?.maxPrice, searchState?.minPrice])
+    const toggleOnlyFreeOffersSearchValue = !values.isOnlyFreeOffersSearch
+    setValues({
+      ...values,
+      isOnlyFreeOffersSearch: toggleOnlyFreeOffersSearchValue,
+      ...(toggleOnlyFreeOffersSearchValue
+        ? {
+            minPrice: '0',
+            maxPrice: '0',
+            isLimitCreditSearch: false,
+          }
+        : {
+            minPrice: searchState?.minPrice !== '0' ? searchState?.minPrice || '' : '',
+            maxPrice: searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : '',
+          }),
+    })
+  }, [searchState?.maxPrice, searchState?.minPrice, setValues, values])
 
   const toggleLimitCreditSearch = useCallback(() => {
-    const toggleLimitCreditSearchValue = !formik.values.isLimitCreditSearch
-    formik.setFieldValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
-
-    if (toggleLimitCreditSearchValue) {
-      formik.setFieldValue('maxPrice', formatAvailableCredit)
-      formik.setFieldValue('isOnlyFreeOffersSearch', false)
-      return
-    }
-
     const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
-    formik.setFieldValue(
-      'maxPrice',
-      availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || ''
-    )
-  }, [formatAvailableCredit, formik, searchState?.maxPrice])
+    const toggleLimitCreditSearchValue = !values.isLimitCreditSearch
 
-  const close = () => {
-    formik.resetForm({
+    setValues({
+      ...values,
+      isLimitCreditSearch: toggleLimitCreditSearchValue,
+      ...(toggleLimitCreditSearchValue
+        ? {
+            maxPrice: formatAvailableCredit,
+            isOnlyFreeOffersSearch: false,
+          }
+        : {
+            maxPrice: availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '',
+          }),
+    })
+  }, [formatAvailableCredit, searchState?.maxPrice, setValues, values])
+
+  const close = useCallback(() => {
+    resetForm({
       values: {
         minPrice: searchState?.minPrice || '',
         maxPrice: searchState?.maxPrice || '',
@@ -165,12 +177,26 @@ export const SearchPrice: FunctionComponent<Props> = ({
       },
     })
     hideModal()
-  }
+  }, [
+    hideModal,
+    isLimitCreditSearchDefaultValue,
+    isOnlyFreeOffersSearchDefaultValue,
+    resetForm,
+    searchState?.maxPrice,
+    searchState?.minPrice,
+  ])
 
-  const titleId = uuidv4()
-  const minPriceInputId = uuidv4()
-  const maxPriceInputId = uuidv4()
-  const bannerTitle = `Il te reste ${formatAvailableCredit}\u00a0€ sur ton pass Culture.`
+  const onResetPress = useCallback(() => {
+    resetForm({
+      values: {
+        minPrice: '',
+        maxPrice: '',
+        isLimitCreditSearch: false,
+        isOnlyFreeOffersSearch: false,
+      },
+    })
+  }, [resetForm])
+
   return (
     <AppModal
       visible={isVisible}
@@ -188,18 +214,9 @@ export const SearchPrice: FunctionComponent<Props> = ({
       onRightIconPress={close}
       fixedModalBottom={
         <SearchFixedModalBottom
-          onSearchPress={formik.handleSubmit}
-          onResetPress={() =>
-            formik.resetForm({
-              values: {
-                minPrice: '',
-                maxPrice: '',
-                isLimitCreditSearch: false,
-                isOnlyFreeOffersSearch: false,
-              },
-            })
-          }
-          isSearchDisabled={!formik.isValid}
+          onSearchPress={handleSubmit}
+          onResetPress={onResetPress}
+          isSearchDisabled={!isValid}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />
@@ -209,13 +226,13 @@ export const SearchPrice: FunctionComponent<Props> = ({
         contentContainerStyle={getScrollViewContentContainerStyle()}>
         <Form.MaxWidth>
           {!!isLoggedInAndBeneficiary && (
-            <BannerContainer testID="creditBanner">
+            <View testID="creditBanner">
               <Banner title={bannerTitle} />
               <Spacer.Column numberOfSpaces={6} />
-            </BannerContainer>
+            </View>
           )}
           <FilterSwitchWithLabel
-            isActive={formik.values.isOnlyFreeOffersSearch}
+            isActive={values.isOnlyFreeOffersSearch}
             toggle={toggleOnlyFreeOffersSearch}
             label="Uniquement les offres gratuites"
             testID="onlyFreeOffers"
@@ -226,7 +243,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
           {!!isLoggedInAndBeneficiary && (
             <React.Fragment>
               <FilterSwitchWithLabel
-                isActive={formik.values.isLimitCreditSearch}
+                isActive={values.isLimitCreditSearch}
                 toggle={toggleLimitCreditSearch}
                 label="Limiter la recherche à mon crédit"
                 testID="limitCreditSearch"
@@ -240,20 +257,20 @@ export const SearchPrice: FunctionComponent<Props> = ({
           <TextInput
             autoComplete="off" // disable autofill on android
             autoCapitalize="none"
-            isError={!!formik.errors.minPrice}
+            isError={!!errors.minPrice}
             keyboardType="numeric"
             label="Prix minimum (en €)"
-            value={formik.values.minPrice}
-            onChangeText={formik.handleChange('minPrice')}
+            value={values.minPrice}
+            onChangeText={handleChange('minPrice')}
             textContentType="none" // disable autofill on iOS
             accessibilityDescribedBy={minPriceInputId}
             testID="Entrée pour le prix minimum"
             placeholder="0"
-            disabled={formik.values.isOnlyFreeOffersSearch}
+            disabled={values.isOnlyFreeOffersSearch}
           />
           <InputError
-            visible={!!formik.errors.minPrice}
-            messageId={formik.errors.minPrice}
+            visible={!!errors.minPrice}
+            messageId={errors.minPrice}
             numberOfSpacesTop={getSpacing(0.5)}
             relatedInputId={minPriceInputId}
           />
@@ -261,21 +278,21 @@ export const SearchPrice: FunctionComponent<Props> = ({
           <TextInput
             autoComplete="off" // disable autofill on android
             autoCapitalize="none"
-            isError={!!formik.errors.maxPrice}
+            isError={!!errors.maxPrice}
             keyboardType="numeric"
             label="Prix maximum (en €)"
-            value={formik.values.maxPrice}
-            onChangeText={formik.handleChange('maxPrice')}
+            value={values.maxPrice}
+            onChangeText={handleChange('maxPrice')}
             textContentType="none" // disable autofill on iOS
             accessibilityDescribedBy={maxPriceInputId}
             testID="Entrée pour le prix maximum"
             rightLabel={`max : ${formatInitialCredit} €`}
             placeholder={`${formatInitialCredit}`}
-            disabled={formik.values.isLimitCreditSearch || formik.values.isOnlyFreeOffersSearch}
+            disabled={values.isLimitCreditSearch || values.isOnlyFreeOffersSearch}
           />
           <InputError
-            visible={!!formik.errors.maxPrice}
-            messageId={formik.errors.maxPrice}
+            visible={!!errors.maxPrice}
+            messageId={errors.maxPrice}
             numberOfSpacesTop={getSpacing(0.5)}
             relatedInputId={maxPriceInputId}
           />
@@ -293,5 +310,3 @@ const getScrollViewContentContainerStyle = (): StyleProp<ViewStyle> => ({
 const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
 })
-
-const BannerContainer = styled.View({})

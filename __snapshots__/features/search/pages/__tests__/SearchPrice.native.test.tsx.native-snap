@@ -377,11 +377,6 @@ exports[`SearchPrice component should render correctly 1`] = `
                 }
               >
                 <View
-                  style={
-                    Array [
-                      Object {},
-                    ]
-                  }
                   testID="creditBanner"
                 >
                   <View
