@@ -28,7 +28,7 @@ describe('<ShowResults />', () => {
     ${1200} | ${'Afficher les 999+ résultats'} | ${false}
   `(
     'should display the correct translation ($expected) and be disabled=$disabled',
-    async ({ nbHits, expected, disabled }) => {
+    ({ nbHits, expected, disabled }) => {
       mockData = { pages: [{ nbHits }] }
       const { getByText } = render(
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -39,7 +39,7 @@ describe('<ShowResults />', () => {
         )
       )
 
-      expect(await getByText(expected))[disabled ? 'toBeDisabled' : 'toBeEnabled']()
+      expect(getByText(expected))[disabled ? 'toBeDisabled' : 'toBeEnabled']()
     }
   )
 
@@ -54,7 +54,8 @@ describe('<ShowResults />', () => {
       )
     )
     const button = await findByTestId('Afficher 1 résultat')
-    await fireEvent.press(button)
+    fireEvent.press(button)
+
     expect(navigate).toBeCalledWith(
       'TabNavigator',
       expect.objectContaining({
