@@ -28,7 +28,7 @@ export const ReinitializeFilters = () => {
       },
     })
     dispatchSearch({
-      type: 'SET_STATE_FROM_DEFAULT',
+      type: 'SET_STATE',
       payload: {
         locationFilter: initialSearchState.locationFilter,
         offerCategories: initialSearchState.offerCategories,
