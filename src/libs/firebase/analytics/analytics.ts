@@ -54,10 +54,16 @@ const logEventAnalytics = {
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
-  logBusinessBlockClicked: (params: { moduleName: string; moduleId: string }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
-  logExclusivityBlockClicked: (params: { moduleName: string; moduleId: string }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
+  logBusinessBlockClicked: (params: {
+    moduleName: string
+    moduleId: string
+    homeEntryId?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
+  logExclusivityBlockClicked: (params: {
+    moduleName: string
+    moduleId: string
+    homeEntryId?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, params),
   logClickSocialNetwork: (network: string) =>
@@ -93,6 +99,7 @@ const logEventAnalytics = {
     moduleName?: string
     query?: string
     venueId?: number
+    homeEntryId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
   logConsultTutorial: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_TUTORIAL, { from }),
@@ -101,6 +108,7 @@ const logEventAnalytics = {
     from: Referrals
     moduleName?: string
     moduleId?: string
+    homeEntryId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),
   logConsultWholeOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId }),
