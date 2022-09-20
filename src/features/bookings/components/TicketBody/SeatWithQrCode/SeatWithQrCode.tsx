@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -12,31 +11,17 @@ export type SeatWithQrCodeProps = {
   children?: never
 }
 
-const whiteSpace = ' '
 export const SeatWithQrCode: FunctionComponent<SeatWithQrCodeProps> = ({
   seatIndex,
   seat,
   barcode,
 }) => {
-  const currentSeatWithIndex = t({
-    id: 'siège avec nombre de sièges',
-    values: { seat: seatIndex },
-    message: 'Place\u00a0{seat}\u00a0:',
-  })
-  const currentSeat = t({
-    id: 'siège',
-    values: { seat: seat?.toUpperCase() },
-    message: 'Siège\u00a0{seat}',
-  })
+  const currentSeatWithIndex = `Place\u00a0${seatIndex}\u00a0: `
+  const currentSeat = `Siège\u00a0${seat?.toUpperCase()}`
   return (
     <React.Fragment>
       <SeatContainer>
-        {!!seatIndex && (
-          <Typo.Caption>
-            {currentSeatWithIndex}
-            {whiteSpace}
-          </Typo.Caption>
-        )}
+        {!!seatIndex && <Typo.Caption>{currentSeatWithIndex}</Typo.Caption>}
         {!!seat && <Seat>{currentSeat}</Seat>}
       </SeatContainer>
       <QrCode qrCode={barcode} />

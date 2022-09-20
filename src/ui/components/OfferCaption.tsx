@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
@@ -17,20 +16,12 @@ interface OfferCaptionProps {
 
 export const OfferCaption = (props: OfferCaptionProps) => {
   const { imageWidth, name, date, isDuo, isBeneficiary, price } = props
-
+  const priceText = isDuo && isBeneficiary ? `${price} - Duo` : price
   return (
     <CaptionContainer imageWidth={imageWidth}>
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       {!!date && <GreyDarkCaption numberOfLines={1}>{date}</GreyDarkCaption>}
-      <GreyDarkCaption testID="priceIsDuo">
-        {isDuo && isBeneficiary
-          ? t({
-              id: 'price',
-              values: { price },
-              message: '{price} - Duo',
-            })
-          : price}
-      </GreyDarkCaption>
+      <GreyDarkCaption testID="priceIsDuo">{priceText}</GreyDarkCaption>
     </CaptionContainer>
   )
 }

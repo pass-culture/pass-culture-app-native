@@ -15,45 +15,6 @@ function HelloWorld({ name: string }) {
 }
 ```
 
-For parameterized text, use this syntax:
-
-```tsx
-import { Text, View } from 'react-native'
-import { t } from '@lingui/macro'
-
-function HelloWorld({ name: string }) {
-  return (
-    <View>
-      <Text>
-        {t({
-          id: 'hello name', // Mandatory
-          values: { name },
-          message: 'Hello {name}',
-        })}
-      </Text>
-    </View>
-  )
-}
-```
-
-For plural, you can use:
-
-```tsx
-import { Text } from 'react-native'
-import { plural } from '@lingui/macro'
-
-function ShowResultsText({ count: number }) {
-  return (
-    <Text>
-      {plural(count, {
-        one: 'Afficher # résultat',
-        other: 'Afficher les # résultats',
-      })}
-    </Text>
-  )
-}
-```
-
 ## v3 migration note
 
 V3 brings the `plural` into our application, but it also brings two new non blocking bugs :

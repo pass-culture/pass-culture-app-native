@@ -1,8 +1,8 @@
-import { plural } from '@lingui/macro'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'

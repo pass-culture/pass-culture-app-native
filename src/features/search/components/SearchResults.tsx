@@ -1,4 +1,3 @@
-import { plural } from '@lingui/macro'
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -22,6 +21,7 @@ import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 import { getPriceLabel } from 'features/search/utils/getPriceLabel'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { plural } from 'libs/plural'
 import { SearchHit } from 'libs/search'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -31,7 +31,6 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeh
 import { Check } from 'ui/svg/icons/Check'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -172,7 +171,7 @@ export const SearchResults: React.FC = () => {
     one: '# résultat',
     other: '# résultats',
   })
-  const searchStateQuery = searchState.query.length > 0 ? `${SPACE} pour ${searchState.query}` : ''
+  const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
   return (

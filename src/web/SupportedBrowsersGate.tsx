@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import * as DeviceDetect from 'react-device-detect'
@@ -56,27 +55,19 @@ function isBrowserSupported() {
 }
 
 export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onPress }) => {
+  const title = `Oups\u00a0! Nous ne pouvons afficher correctement l'application car ton navigateur (${DeviceDetect.browserName} v${browserVersion}) n'est pas à jour`
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
       <Container>
-        <Title>
-          {t({
-            id: 'browser detect version',
-            values: {
-              browserName: DeviceDetect.browserName,
-              browserVersion,
-            },
-            message:
-              "Oups\u00a0! Nous ne pouvons afficher correctement l'application car ton navigateur ({browserName} v{browserVersion}) n'est pas à jour",
-          })}
-        </Title>
+        <Title>{title}</Title>
         <Spacer.Column numberOfSpaces={5} />
         <Typo.Body>
-          {t`Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une expérience optimale.`}
+          Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une
+          expérience optimale.
         </Typo.Body>
         <Spacer.Column numberOfSpaces={5} />
         <Typo.Body>
-          {t`Voici ceux que nous te conseillons pour profiter pleinement du pass Culture\u00a0:`}
+          {'Voici ceux que nous te conseillons pour profiter pleinement du pass Culture\u00a0:'}
         </Typo.Body>
         <VerticalUl>
           {supportedBrowsers.map(({ browser, version }) => {
@@ -92,12 +83,10 @@ export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onP
           })}
         </VerticalUl>
         <Spacer.Column numberOfSpaces={5} />
-        <Typo.Caption>
-          {t`Mets vite à jour ton navigateur en allant dans les paramètres`}
-        </Typo.Caption>
+        <Typo.Caption>Mets vite à jour ton navigateur en allant dans les paramètres</Typo.Caption>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
-          wording={t`J'accède au pass Culture sans mettre à jour mon navigateur`}
+          wording="J'accède au pass Culture sans mettre à jour mon navigateur"
           onPress={onPress}
           buttonHeight="tall"
           numberOfLines={2}

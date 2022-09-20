@@ -43,21 +43,6 @@ module.exports = {
             },
           })
         },
-
-      // For t({ message: 'textToTranslate !'})
-      'CallExpression[callee.name="t"] > ObjectExpression > Property[key.name="message"][value.raw=/\\s+[!?:»€]/]':
-        (node) => {
-          context.report({
-            node,
-            message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :, », €',
-            fix: function (fixer) {
-              const textToReplace =
-                'message: ' + node.value.raw.replace(/\s+([!?:»€])/g, '\\u00a0$1')
-
-              return fixer.replaceText(node, textToReplace)
-            },
-          })
-        },
       'CallExpression[callee.name="t"] > ObjectExpression > Property[key.name="message"][value.raw=/«\\s+/]':
         (node) => {
           context.report({

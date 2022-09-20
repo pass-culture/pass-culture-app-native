@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useMemo, useRef, useState } from 'react'
 import { Animated, LayoutChangeEvent } from 'react-native'
 import { useQueryClient } from 'react-query'
@@ -47,23 +46,15 @@ export const Favorite: React.FC<Props> = (props) => {
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
       showErrorSnackBar({
-        message: t`L'offre n'a pas été retirée de tes favoris`,
+        message: "L'offre n'a pas été retirée de tes favoris",
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
   })
 
   const formattedDate = useMemo(() => {
-    if (offer.date) {
-      return formatToFrenchDate(new Date(offer.date))
-    }
-    if (offer.startDate) {
-      return t({
-        id: 'starting from date',
-        values: { date: formatToFrenchDate(new Date(offer.startDate)) },
-        message: 'Dès le {date}',
-      })
-    }
+    if (offer.date) return formatToFrenchDate(new Date(offer.date))
+    if (offer.startDate) return `Dès le ${formatToFrenchDate(new Date(offer.startDate))}`
     return undefined
   }, [offer])
 
@@ -166,8 +157,8 @@ export const Favorite: React.FC<Props> = (props) => {
       <ButtonsRow>
         <ButtonContainer>
           <ButtonSecondary
-            wording={t`Supprimer`}
-            accessibilityLabel={t`Supprimer l'offre ${offer.name} de mes favoris`}
+            wording="Supprimer"
+            accessibilityLabel={`Supprimer l'offre ${offer.name} de mes favoris`}
             onPress={onRemove}
             buttonHeight="tall"
             disabled={isLoading}

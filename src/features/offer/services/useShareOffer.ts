@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { Platform } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
@@ -17,17 +16,12 @@ export function getOfferUrl(id: number): string {
 
 function getShareContentFromOffer(offer: OfferResponse) {
   const locationName = getLocationName(offer.venue, offer.isDigital)
-  const message = t({
-    id: 'share offer message',
-    values: { name: offer.name, locationName },
-    message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
-  })
-
+  const message = `Retrouve "${offer.name}" chez "${locationName}" sur le pass Culture`
   const url = getOfferUrl(offer.id)
 
   // url share content param is only for iOS, so we add url in message for android
   const completeMessage = Platform.OS === 'android' ? message.concat(`\n\n${url}`) : message
-  const title = t`Je t'invite à découvrir une super offre sur le pass Culture\u00a0!`
+  const title = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
   return {
     message: completeMessage,
     url, // iOS only

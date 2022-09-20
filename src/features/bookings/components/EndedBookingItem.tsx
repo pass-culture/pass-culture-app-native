@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
@@ -58,7 +57,8 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       analytics.logConsultOffer({ offerId: offer.id, from: 'endedbookings' })
     } else {
       showErrorSnackBar({
-        message: t`Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.`,
+        message:
+          "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.",
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
@@ -110,23 +110,17 @@ function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
   dateUsed?: string | null
 ) {
-  if (dateUsed) return <StyledInputRule title={t`Utilisé`} icon={Check} isValid />
+  if (dateUsed) return <StyledInputRule title="Utilisé" icon={Check} isValid />
 
   if (cancellationReason === BookingCancellationReasons.OFFERER)
-    return <StyledInputRule title={t`Annulé`} icon={Check} isValid={false} />
+    return <StyledInputRule title="Annulé" icon={Check} isValid={false} />
 
-  return <StyledInputRule title={t`Réservation annulée`} icon={Check} isValid={false} />
+  return <StyledInputRule title="Réservation annulée" icon={Check} isValid={false} />
 }
 
 function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
   const endDate = dateUsed ?? cancellationDate
-  if (endDate) {
-    return t({
-      id: 'jour de fin de résa',
-      values: { date: formatToSlashedFrenchDate(endDate) },
-      message: 'le {date}',
-    })
-  }
+  if (endDate) return `le ${formatToSlashedFrenchDate(endDate)}`
   return null
 }
 

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -44,13 +43,11 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     ? new Date(props.eligibilityEndDatetime)
     : undefined
 
-  const moduleBannerWording = isUserUnderage
-    ? t`Profite de ton crédit`
-    : t({
-        id: 'enjoy deposit',
-        values: { deposit },
-        message: 'Profite de {deposit}',
-      })
+  const moduleBannerWording = isUserUnderage ? 'Profite de ton crédit' : `Profite de ${deposit}`
+
+  const endDate = eligibilityEndDatetime
+    ? formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString())
+    : undefined
 
   const NonBeneficiaryBanner = () => {
     if (props.isEligibleForBeneficiaryUpgrade) {
@@ -59,22 +56,14 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
           <BannerContainer>
             <View testID="eligibility-banner-container">
               {!!eligibilityEndDatetime && (
-                <Caption>
-                  {t({
-                    id: 'eligibility deadline',
-                    values: {
-                      deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
-                    },
-                    message: `Tu as jusqu’au {deadline} pour faire ta demande`,
-                  })}
-                </Caption>
+                <Caption>Tu as jusqu’au {endDate} pour faire ta demande</Caption>
               )}
               {!!nextBeneficiaryValidationStepNavConfig && (
                 <ModuleBanner
                   navigateTo={nextBeneficiaryValidationStepNavConfig}
                   leftIcon={<ThumbUp />}
                   title={moduleBannerWording}
-                  subTitle={t`à dépenser dans l'application`}
+                  subTitle="à dépenser dans l'application"
                   testID="eligibility-banner"
                 />
               )}
@@ -113,7 +102,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Profil`} size="medium" />
+      <PageHeader title="Profil" size="medium" />
       <NonBeneficiaryBanner />
     </React.Fragment>
   )

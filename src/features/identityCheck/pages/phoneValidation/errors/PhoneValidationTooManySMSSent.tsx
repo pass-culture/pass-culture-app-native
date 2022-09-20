@@ -1,10 +1,11 @@
-import { plural, t } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { timeDiffInHours } from 'libs/dates'
+import { plural } from 'libs/plural'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'

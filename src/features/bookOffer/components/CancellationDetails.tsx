@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -12,6 +11,8 @@ export const formatDate = (limitDate: string): string => {
   return `${formatToFrenchDate(limit)}, ${formatToHour(limit)}`
 }
 
+const notCancellableMessage = 'Cette réservation n’est pas annulable'
+
 export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
   const offer = useBookingOffer()
@@ -21,16 +22,12 @@ export const CancellationDetails: React.FC = () => {
 
   const { activationCode, cancellationLimitDatetime: limitDate } = stock
 
-  let message = t`Cette réservation est annulable`
+  let message = 'Cette réservation est annulable'
   if (limitDate) {
     message =
       new Date(limitDate) < new Date()
         ? notCancellableMessage
-        : t({
-            id: "réservation annulable jusqu'au",
-            values: { date: formatDate(limitDate) },
-            message: 'Cette réservation peut être annulée jusqu’au {date}',
-          })
+        : `Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`
   }
   // if "autoActivateDigitalBookings" is set, any digital booking with activationCode will be
   // automatically activated. As a result, they are not cancellable.
@@ -40,11 +37,9 @@ export const CancellationDetails: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Conditions d'annulation`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Conditions d’annulation</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Caption>{message}</Typo.Caption>
     </React.Fragment>
   )
 }
-
-const notCancellableMessage = t`Cette réservation n’est pas annulable`

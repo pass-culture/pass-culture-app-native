@@ -1,4 +1,3 @@
-import { plural, t } from '@lingui/macro'
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
 import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
@@ -9,6 +8,7 @@ import {
   isToday,
   isTomorrow,
 } from 'libs/parsers'
+import { plural } from 'libs/plural'
 
 import { Booking } from './components/types'
 
@@ -60,7 +60,7 @@ function getDateLabel(
   properties: BookingProperties,
   appSettings: SettingsResponse | null
 ): string {
-  if (properties.isPermanent) return t`Permanent`
+  if (properties.isPermanent) return 'Permanent'
 
   if (appSettings && appSettings.autoActivateDigitalBookings && properties.hasActivationCode) {
     return getBookingLabelForActivationCode(booking)
@@ -69,13 +69,13 @@ function getDateLabel(
   if (properties.isEvent) {
     if (!booking.stock.beginningDatetime) return ''
     const day = formatToCompleteFrenchDateTime(new Date(booking.stock.beginningDatetime), false)
-    return t`Le ${day}`
+    return `Le ${day}`
   }
 
   if (properties.isPhysical) {
     if (!booking.expirationDate) return ''
     const dateLimit = formatToCompleteFrenchDate(new Date(booking.expirationDate), false)
-    return t`À retirer avant le ${dateLimit}`
+    return `À retirer avant le ${dateLimit}`
   }
 
   return ''
@@ -83,8 +83,8 @@ function getDateLabel(
 
 function getEventWithdrawLabel(stock: BookingStockResponse): string {
   if (!stock.beginningDatetime) return ''
-  if (isToday(new Date(stock.beginningDatetime))) return t`Aujourd'hui`
-  if (isTomorrow(new Date(stock.beginningDatetime))) return t`Demain`
+  if (isToday(new Date(stock.beginningDatetime))) return "Aujourd'hui"
+  if (isTomorrow(new Date(stock.beginningDatetime))) return 'Demain'
   return ''
 }
 
@@ -131,14 +131,14 @@ function getWithoutWithdrawaDelayLabel(properties: GetEventOnSiteWithdrawLabelPr
     isSameDay(properties.now, properties.eventDateMinus3Days) ||
     isSameDay(properties.now, properties.eventDateMinus2Days)
   ) {
-    return t`Billet à retirer sur place`
+    return 'Billet à retirer sur place'
   }
 
   if (isSameDay(properties.now, properties.eventDateMinus1Day))
-    return t`Billet à retirer sur place d'ici demain`
+    return "Billet à retirer sur place d'ici demain"
 
   if (isSameDay(properties.now, properties.eventDate))
-    return t`Billet à retirer sur place aujourd'hui`
+    return "Billet à retirer sur place aujourd'hui"
 
   return ''
 }
@@ -147,22 +147,20 @@ function getWithLessOneDayWithdrawaDelayLabel(
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
-    return t`Billet à retirer sur place dans 3 jours`
+    return 'Billet à retirer sur place dans 3 jours'
 
   if (isSameDay(properties.now, properties.eventDateMinus2Days))
-    return t`Billet à retirer sur place dans 2 jours`
+    return 'Billet à retirer sur place dans 2 jours'
 
   if (isSameDay(properties.now, properties.eventDateMinus1Day))
-    return t`Billet à retirer sur place demain`
+    return 'Billet à retirer sur place demain'
 
   if (isSameDay(properties.now, properties.eventDate)) {
     const withdrawalDelayInHours = properties.withdrawalDelay / 60 / 60
     const possibleWithdrawalDate = addHours(properties.eventDate, -withdrawalDelayInHours)
-
-    return (
-      t`Billet à retirer sur place dès` +
-      ` ${format(possibleWithdrawalDate, 'HH')}h${format(possibleWithdrawalDate, 'mm')}`
-    )
+    const hours = format(possibleWithdrawalDate, 'HH')
+    const minutes = format(possibleWithdrawalDate, 'mm')
+    return `Billet à retirer sur place dès ${hours}h${minutes}`
   }
 
   return ''
@@ -172,16 +170,16 @@ function getWithOneDayWithdrawaDelayLabel(
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
-    return t`Billet à retirer sur place dans 2 jours`
+    return 'Billet à retirer sur place dans 2 jours'
 
   if (isSameDay(properties.now, properties.eventDateMinus2Days))
-    return t`Billet à retirer sur place dès demain`
+    return 'Billet à retirer sur place dès demain'
 
   if (isSameDay(properties.now, properties.eventDateMinus1Day))
-    return t`Billet à retirer sur place dès aujourd'hui`
+    return "Billet à retirer sur place dès aujourd'hui"
 
   if (isSameDay(properties.now, properties.eventDate)) {
-    return t`Billet à retirer sur place aujourd'hui`
+    return "Billet à retirer sur place aujourd'hui"
   }
 
   return ''
@@ -191,16 +189,16 @@ function getWithTwoDaysWithdrawaDelayLabel(
   properties: GetEventOnSiteWithdrawLabelProperties
 ): string {
   if (isSameDay(properties.now, properties.eventDateMinus3Days))
-    return t`Billet à retirer sur place dès demain`
+    return 'Billet à retirer sur place dès demain'
 
   if (
     isSameDay(properties.now, properties.eventDateMinus2Days) ||
     isSameDay(properties.now, properties.eventDateMinus1Day)
   )
-    return t`Billet à retirer sur place dès aujourd'hui`
+    return "Billet à retirer sur place dès aujourd'hui"
 
   if (isSameDay(properties.now, properties.eventDate)) {
-    return t`Billet à retirer sur place aujourd'hui`
+    return "Billet à retirer sur place aujourd'hui"
   }
 
   return ''
@@ -208,8 +206,8 @@ function getWithTwoDaysWithdrawaDelayLabel(
 
 function getPhysicalWithdrawLabel(expiration: string | null | undefined): string {
   if (!expiration) return ''
-  if (isToday(new Date(expiration))) return t`Dernier jour pour retirer`
-  if (isTomorrow(new Date(expiration))) return t`Avant dernier jour pour retirer`
+  if (isToday(new Date(expiration))) return 'Dernier jour pour retirer'
+  if (isTomorrow(new Date(expiration))) return 'Avant dernier jour pour retirer'
   return ''
 }
 
@@ -218,7 +216,9 @@ function getWithdrawLabel(booking: Booking, properties: BookingProperties): stri
     return booking.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site
       ? getEventOnSiteWithdrawLabel(booking.stock)
       : getEventWithdrawLabel(booking.stock)
+
   if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.expirationDate)
+
   return ''
 }
 
@@ -245,15 +245,10 @@ export function getBookingLabelForActivationCode(booking: Booking) {
       new Date(booking.activationCode.expirationDate),
       false
     )
-
-    return t({
-      id: 'activate before date',
-      values: { dateLimit },
-      message: 'À activer avant le {dateLimit}',
-    })
+    return `À activer avant le ${dateLimit}`
   }
 
-  return t`À activer`
+  return 'À activer'
 }
 
 export function getOfferRules(
@@ -270,9 +265,11 @@ export function getOfferRules(
     !booking?.stock.offer.withdrawalType
 
   if (hasActivationCode && activationCodeFeatureEnabled)
-    return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+    return 'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+
   if (isDigital)
-    return t`Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+    return 'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+
   if (numberOfExternalBookings) {
     return plural(numberOfExternalBookings, {
       one: 'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.',
@@ -280,31 +277,33 @@ export function getOfferRules(
         'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.',
     })
   }
+
   if (isPhysical || (isEvent && withdrawalTypeDisplay))
-    return t`Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+    return 'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+
   return ''
 }
 
 export function formatSecondsToString(delay: number) {
   if (delay <= 60 * 30) {
     const delayInMinutes = delay / 60
-    return t`${delayInMinutes} minutes`
+    return `${delayInMinutes} minutes`
   }
 
   const delayInHour = delay / 60 / 60
   if (delay === 60 * 60) {
-    return t`${delayInHour} heure`
+    return `${delayInHour} heure`
   }
 
   if (delay <= 60 * 60 * 24 * 2) {
-    return t`${delayInHour} heures`
+    return `${delayInHour} heures`
   }
 
   const delayInDay = delay / 60 / 60 / 24
   if (delay <= 60 * 60 * 24 * 6) {
-    return t`${delayInDay} jours`
+    return `${delayInDay} jours`
   }
 
   const delayInWeek = delay / 60 / 60 / 24 / 7
-  return t`${delayInWeek} semaine`
+  return `${delayInWeek} semaine`
 }

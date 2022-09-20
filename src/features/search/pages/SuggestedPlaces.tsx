@@ -1,4 +1,3 @@
-import { plural, t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
@@ -9,6 +8,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
+import { plural } from 'libs/plural'
 import { SuggestedVenue } from 'libs/venue'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -122,7 +122,7 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
-      <DescriptionErrorText aria-live="assertive">{t`Aucun lieu ne correspond à ta recherche`}</DescriptionErrorText>
+      <StyledBody aria-live="assertive">Aucun lieu ne correspond à ta recherche</StyledBody>
     </DescriptionErrorTextContainer>
   ) : (
     <React.Fragment />
@@ -156,7 +156,7 @@ const DescriptionErrorTextContainer = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
+const StyledBody = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
 
 const LocationBuilding = styled(DefaultLocationBuilding).attrs(({ theme }) => ({
   color: theme.colors.primary,

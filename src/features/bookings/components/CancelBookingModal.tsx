@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
@@ -43,7 +42,8 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   function onSuccess() {
     navigate(...getTabNavConfig('Bookings'))
     showSuccessSnackBar({
-      message: t`La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées`,
+      message:
+        'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées',
       timeout: SNACK_BAR_TIME_OUT,
     })
   }
@@ -65,7 +65,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     } else {
       dismissModal()
       showErrorSnackBar({
-        message: t`Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.`,
+        message: "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.",
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
@@ -75,8 +75,8 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     <AppModal
       animationOutTiming={1}
       visible={visible}
-      title={t`Tu es sur le point d'annuler`}
-      rightIconAccessibilityLabel={t`Ne pas annuler`}
+      title="Tu es sur le point d'annuler"
+      rightIconAccessibilityLabel="Ne pas annuler"
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <ModalContent>
@@ -88,9 +88,9 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
           </React.Fragment>
         )}
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary wording={t`Annuler ma réservation`} onPress={confirmCancelBooking} />
+        <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
         <Spacer.Column numberOfSpaces={5} />
-        <ButtonTertiary wording={t`Retourner à ma réservation`} onPress={dismissModal} />
+        <ButtonTertiary wording="Retourner à ma réservation" onPress={dismissModal} />
         <Spacer.Column numberOfSpaces={1} />
       </ModalContent>
     </AppModal>
@@ -113,19 +113,12 @@ const Refund = styled(Typo.Body)({
 function getRefundRule(booking: Booking, user?: UserProfileResponse) {
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user) {
+    const price = formatToFrenchDecimal(booking.totalAmount)
     if (isUserExBeneficiary(user)) {
-      return t({
-        id: 'not refunded because expired',
-        values: { price: formatToFrenchDecimal(booking.totalAmount) },
-        message: 'Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré.',
-      })
+      return `Les ${price} ne seront pas recrédités sur ton pass Culture car il est expiré.`
     }
     if (isUserBeneficiary(user)) {
-      return t({
-        id: 'refunded on your pass',
-        values: { price: formatToFrenchDecimal(booking.totalAmount) },
-        message: '{price} seront recrédités sur ton pass Culture.',
-      })
+      return `${price} seront recrédités sur ton pass Culture.`
     }
   }
   return null
