@@ -36,7 +36,7 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle SET_STATE_FROM_NAVIGATE', () => {
+  it('should handle SET_STATE', () => {
     const parameters = {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
@@ -50,7 +50,7 @@ describe('Search reducer', () => {
       ],
       tags: [],
     }
-    const action: Action = { type: 'SET_STATE_FROM_NAVIGATE', payload: parameters }
+    const action: Action = { type: 'SET_STATE', payload: parameters }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,

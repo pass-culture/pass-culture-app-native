@@ -76,7 +76,7 @@ export function Search() {
   const { dispatch } = useSearch()
 
   useEffect(() => {
-    dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params || { view: SearchView.Landing } })
+    dispatch({ type: 'SET_STATE', payload: params || { view: SearchView.Landing } })
   }, [dispatch, params])
 
   if (!netInfo.isConnected) {
