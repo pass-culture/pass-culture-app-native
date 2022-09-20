@@ -135,6 +135,7 @@ exports[`Categories component should render correctly 1`] = `
       testID="modalContainer"
     >
       <View
+        nativeID="testUuidV4"
         style={
           Array [
             Object {

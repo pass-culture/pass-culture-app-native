@@ -6,7 +6,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
   animationType="none"
   aria-labelledby="testUuidV4"
   aria-modal={true}
-  deviceHeight={1318}
+  deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
@@ -28,7 +28,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     ]
   }
   swipeThreshold={100}
-  testID="cookieModal"
+  testID="modal"
   transparent={true}
   visible={true}
 >
@@ -48,7 +48,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       Object {
         "backgroundColor": "black",
         "bottom": 0,
-        "height": 1318,
+        "height": 1334,
         "left": 0,
         "opacity": 0,
         "position": "absolute",
@@ -63,7 +63,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
-    deviceHeight={1318}
+    deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
@@ -105,6 +105,9 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
+      desktopMaxHeight={988.5}
+      maxHeight={1318}
+      noPadding={true}
       style={
         Array [
           Object {
@@ -123,109 +126,123 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             "maxHeight": 1318,
             "maxWidth": 960,
             "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
             "width": "100%",
           },
         ]
       }
-      windowHeight={1318}
+      testID="modalContainer"
     >
       <View
+        nativeID="testUuidV4"
         style={
           Array [
             Object {
-              "display": "flex",
               "flexDirection": "row",
-              "justifyContent": "center",
               "width": "100%",
             },
           ]
         }
-        testID="modalHeader"
+        testID="customModalHeader"
       >
         <View
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.8,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "zIndex": 1,
+                "paddingBottom": 20,
+                "paddingHorizontal": 24,
+                "paddingTop": 24,
+                "width": "100%",
               },
             ]
           }
         >
-          <Text
-            nativeID="testUuidV4"
-            numberOfLines={2}
+          <View
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
                 },
               ]
             }
+            testID="modalHeader"
           >
-            Respect de ta vie privée
-          </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 0.1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 0.8,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "zIndex": 1,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Respect de ta vie privée
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 0.1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-end",
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-start",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-              },
-            ]
-          }
-        />
       </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <RCTScrollView
+        modalSpacing={24}
         style={
           Array [
             Object {
-              "marginHorizontal": -16,
-              "paddingHorizontal": 16,
+              "paddingHorizontal": 24,
+              "width": "100%",
             },
           ]
         }
+        testID="fullscreenModalScrollView"
       >
         <View>
           <Text
@@ -306,21 +323,19 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "marginTop": 20,
               "width": "100%",
             },
           ]
         }
+        testID="fixedModalBottom"
       >
         <View
           style={
             Array [
               Object {
-                "flexDirection": "row",
-                "maxWidth": 500,
-                "width": "100%",
+                "alignItems": "center",
+                "marginTop": 20,
+                "paddingHorizontal": 24,
               },
             ]
           }
@@ -329,201 +344,213 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "flexDirection": "row",
+                  "maxWidth": 500,
+                  "width": "100%",
                 },
               ]
             }
           >
             <View
-              accessibilityLabel="Tout refuser"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
               }
-              testID="Tout refuser"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
+                accessibilityLabel="Tout refuser"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
                 }
+                testID="Tout refuser"
               >
-                Tout refuser
-              </Text>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Tout refuser
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 0,
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Tout accepter"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Tout accepter"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Tout accepter
+                </Text>
+              </View>
             </View>
           </View>
           <View
+            numberOfSpaces={4}
             style={
               Array [
                 Object {
-                  "height": 0,
-                  "width": 8,
+                  "height": 16,
                 },
               ]
             }
           />
           <View
+            accessibilityLabel="Choisir les cookies"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Tout accepter"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
-              }
-              testID="Tout accepter"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Tout accepter
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
               Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Choisir les cookies"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderColor": "#eb0055",
-              "borderRadius": 24,
-              "borderWidth": 2,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderColor": "#eb0055",
+                "borderRadius": 24,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
+              }
             }
-          }
-          testID="Choisir les cookies"
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
+            testID="Choisir les cookies"
           >
-            Choisir les cookies
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Choisir les cookies
+            </Text>
+          </View>
         </View>
       </View>
       <View
