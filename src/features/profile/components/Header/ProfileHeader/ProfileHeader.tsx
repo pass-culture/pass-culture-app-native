@@ -24,7 +24,6 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       <NonBeneficiaryHeader
         eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
         eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
-        isEligibleForBeneficiaryUpgrade={user.isEligibleForBeneficiaryUpgrade}
         subscriptionMessage={user.subscriptionMessage}
       />
     )

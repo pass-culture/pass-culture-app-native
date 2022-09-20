@@ -21,13 +21,11 @@ interface NonBeneficiaryHeaderProps {
   eligibilityEndDatetime?: string
   lastUpdated?: string
   subscriptionMessage?: SubscriptionMessage | null
-  isEligibleForBeneficiaryUpgrade?: boolean
 }
 
 function NonBeneficiaryHeaderComponent({
   eligibilityEndDatetime,
   eligibilityStartDatetime,
-  isEligibleForBeneficiaryUpgrade,
   subscriptionMessage,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const [error, setError] = useState<Error | undefined>()

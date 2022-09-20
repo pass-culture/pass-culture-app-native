@@ -8,7 +8,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { useIsUserUnderage } from 'features/profile/utils'
-import { render, fireEvent } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -72,7 +72,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -95,7 +94,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -107,7 +105,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -121,7 +118,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -139,7 +135,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -153,7 +148,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -169,7 +163,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
           subscriptionMessage={mockedSubscriptionMessage}
         />
       )
@@ -187,7 +180,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-01-31T00:00Z"
           eligibilityEndDatetime="2022-01-31T00:00Z"
-          isEligibleForBeneficiaryUpgrade={false}
         />
       )
 
@@ -209,7 +201,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={false}
           subscriptionMessage={null}
         />
       )

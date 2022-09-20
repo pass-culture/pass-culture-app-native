@@ -7,7 +7,7 @@ import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { useIsUserUnderage } from 'features/profile/utils'
-import { render, fireEvent } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
@@ -72,7 +72,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
 
@@ -94,7 +93,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
       getByTestId('eligibility-banner-container')
@@ -105,7 +103,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
       expect(queryByText(/Profite de 300€/)).toBeTruthy()
@@ -117,7 +114,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
       expect(queryByText(/Profite de 300€/)).toBeFalsy()
@@ -133,7 +129,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
       expect(queryByTestId('eligibility-banner')).toBeFalsy()
@@ -151,7 +146,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
         />
       )
       queryByTestId('identity-check-pending-badge')
@@ -170,7 +164,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
           subscriptionMessage={mockedSubscriptionMessage}
         />
       )
@@ -188,7 +181,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-01-31T00:00Z"
           eligibilityEndDatetime="2022-01-31T00:00Z"
-          isEligibleForBeneficiaryUpgrade={false}
         />
       )
 
@@ -209,7 +201,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={false}
           subscriptionMessage={null}
         />
       )
