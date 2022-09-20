@@ -41,6 +41,11 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.BOOKING_PROCESS_START, { offerId }),
   logBookingsScrolledToBottom: () =>
     analyticsProvider.logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM),
+  logBusinessBlockClicked: (params: {
+    moduleName: string
+    moduleId: string
+    homeEntryId?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
   logCampaignTrackerEnabled: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED),
   logCancelBooking: (offerId: number) =>
@@ -54,16 +59,6 @@ const logEventAnalytics = {
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
-  logBusinessBlockClicked: (params: {
-    moduleName: string
-    moduleId: string
-    homeEntryId?: string
-  }) => analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
-  logExclusivityBlockClicked: (params: {
-    moduleName: string
-    moduleId: string
-    homeEntryId?: string
-  }) => analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, params),
   logClickSocialNetwork: (network: string) =>
@@ -129,6 +124,11 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from }),
   logErrorSavingNewEmail: (errorCode: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.ERROR_SAVING_NEW_EMAIL, { code: errorCode }),
+  logExclusivityBlockClicked: (params: {
+    moduleName: string
+    moduleId: string
+    homeEntryId?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
   logHasActivateGeolocFromTutorial: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL),
   logHasAcceptedAllCookies: () =>
