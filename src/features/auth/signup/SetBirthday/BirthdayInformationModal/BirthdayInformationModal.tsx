@@ -24,7 +24,7 @@ export function BirthdayInformationModal({ visible, hideModal }: Props) {
 
   return (
     <AppInformationModal
-      title="Pourquoi saisir ma date de naissance ?" // TODO(noticket): use &nbsp; instead of \u00a0
+      title="Pourquoi saisir ma date de naissance&nbsp;?"
       numberOfLinesTitle={3}
       visible={visible}
       onCloseIconPress={hideModal}
