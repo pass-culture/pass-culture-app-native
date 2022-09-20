@@ -629,6 +629,46 @@ describe('SearchPrice component', () => {
     })
   })
 
+  it('should hide minPrice and maxPrice errors when onlyFreeOffers is pressed', async () => {
+    const { queryByText, getByPlaceholderText, getByTestId } = renderSearchPrice()
+
+    const minPriceInput = getByPlaceholderText('0')
+    const maxPriceInput = getByPlaceholderText('80')
+    const onlyFreeOffersToggle = getByTestId('Interrupteur-onlyFreeOffers')
+
+    await act(async () => {
+      fireEvent(minPriceInput, 'onChangeText', '9999')
+      fireEvent(maxPriceInput, 'onChangeText', '9999')
+    })
+
+    expect(queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeTruthy()
+
+    await act(async () => {
+      fireEvent.press(onlyFreeOffersToggle)
+    })
+
+    expect(queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeFalsy()
+  })
+
+  it('should hide maxPrice error when limitCreditSearch is pressed', async () => {
+    const { queryByText, getByPlaceholderText, getByTestId } = renderSearchPrice()
+
+    const maxPriceInput = getByPlaceholderText('80')
+    const limitCreditSearchToggle = getByTestId('Interrupteur-limitCreditSearch')
+
+    await act(async () => {
+      fireEvent(maxPriceInput, 'onChangeText', '9999')
+    })
+
+    expect(queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeTruthy()
+
+    await act(async () => {
+      fireEvent.press(limitCreditSearchToggle)
+    })
+
+    expect(queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeFalsy()
+  })
+
   describe('when user is not logged in', () => {
     beforeEach(() => {
       mockedUseUserProfileInfo.mockImplementationOnce(() => ({
