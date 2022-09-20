@@ -24,7 +24,12 @@ interface NonBeneficiaryHeaderProps {
   isEligibleForBeneficiaryUpgrade?: boolean
 }
 
-function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+function NonBeneficiaryHeaderComponent({
+  eligibilityEndDatetime,
+  eligibilityStartDatetime,
+  isEligibleForBeneficiaryUpgrade,
+  subscriptionMessage,
+}: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const [error, setError] = useState<Error | undefined>()
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
@@ -35,12 +40,12 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   const deposit = depositAmount.replace(' ', '')
 
-  const eligibilityStartDatetime = props.eligibilityStartDatetime
-    ? new Date(props.eligibilityStartDatetime)
+  const formattedEligibilityStartDatetime = eligibilityStartDatetime
+    ? new Date(eligibilityStartDatetime)
     : undefined
 
-  const eligibilityEndDatetime = props.eligibilityEndDatetime
-    ? new Date(props.eligibilityEndDatetime)
+  const formattedEligibilityEndDatetime = eligibilityEndDatetime
+    ? formatToSlashedFrenchDate(new Date(eligibilityEndDatetime).toISOString())
     : undefined
 
   const moduleBannerWording = isUserUnderage ? 'Profite de ton crédit' : `Profite de ${deposit}`
@@ -49,21 +54,22 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     throw error
   }
 
-  const isUserTooYoungToBeEligible = eligibilityStartDatetime && eligibilityStartDatetime > today
+  const isUserTooYoungToBeEligible =
+    formattedEligibilityStartDatetime && formattedEligibilityStartDatetime > today
 
   const NonBeneficiaryBanner = () => {
     if (isUserTooYoungToBeEligible) {
       return (
         <BannerContainer>
-          <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+          <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
         </BannerContainer>
       )
     }
 
-    if (props.subscriptionMessage) {
+    if (subscriptionMessage) {
       return (
         <BannerContainer>
-          <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+          <SubscriptionMessageBadge subscriptionMessage={subscriptionMessage} />
         </BannerContainer>
       )
     }
@@ -71,9 +77,10 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       return (
         <BannerContainer>
           <View testID="eligibility-banner-container">
-            {!!eligibilityEndDatetime && (
+            {!!formattedEligibilityEndDatetime && (
               <Caption>
-                Tu as jusqu’au {formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString())}{' '}
+                Tu as jusqu’au
+                {formattedEligibilityEndDatetime}
                 pour faire ta demande
               </Caption>
             )}
