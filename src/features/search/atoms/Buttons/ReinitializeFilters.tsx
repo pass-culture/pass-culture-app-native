@@ -22,7 +22,7 @@ export const ReinitializeFilters = () => {
   const reinitializeFilters = () => {
     dispatchStagedSearch({ type: 'INIT' })
     dispatchStagedSearch({
-      type: 'SET_STATE_FROM_DEFAULT',
+      type: 'SET_STATE',
       payload: {
         priceRange: [0, maxPrice],
       },
