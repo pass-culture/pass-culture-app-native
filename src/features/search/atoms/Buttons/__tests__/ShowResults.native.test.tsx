@@ -43,7 +43,7 @@ describe('<ShowResults />', () => {
     }
   )
 
-  it('should call navigate with searchState.view = "Results"', async () => {
+  it('should navigate to search when pressing search button', async () => {
     mockData = { pages: [{ nbHits: 1 }] }
     const { findByTestId } = render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -55,26 +55,11 @@ describe('<ShowResults />', () => {
     )
     const button = await findByTestId('Afficher 1 résultat')
     await fireEvent.press(button)
-    expect(navigate).toBeCalledWith('TabNavigator', {
-      params: {
-        beginningDatetime: null,
-        date: null,
-        endingDatetime: null,
-        hitsPerPage: 20,
-        locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: [],
-        offerIsDuo: false,
-        offerIsFree: false,
-        offerIsNew: false,
-        offerSubcategories: [],
-        offerTypes: { isDigital: false, isEvent: false, isThing: false },
-        priceRange: [0, 300],
-        query: '',
-        tags: [],
-        timeRange: null,
-        view: 'Results',
-      },
-      screen: 'Search',
-    })
+    expect(navigate).toBeCalledWith(
+      'TabNavigator',
+      expect.objectContaining({
+        screen: 'Search',
+      })
+    )
   })
 })
