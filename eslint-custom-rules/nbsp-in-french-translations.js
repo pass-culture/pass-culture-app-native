@@ -19,6 +19,7 @@ module.exports = {
   },
   create(context) {
     return {
+      // TODO : For 'textToTranslate !' with characters !, ?, :, » and €
       // For 'textToTranslate !' and "textToTranslate !" with characters !, ?, :, » and €
       'Literal[raw=/\\s+[!?:»€]/]': (node) => {
         context.report({
@@ -31,6 +32,10 @@ module.exports = {
           },
         })
       },
+
+      // TODO : For "textToTranslate !" with characters !, ?, :, » and €
+
+      // TODO : For '« textToTranslate'
       // For '« textToTranslate' and "« textToTranslate"
       'Literal[raw=/«\\s+/]': (node) => {
         context.report({
@@ -42,6 +47,8 @@ module.exports = {
           },
         })
       },
+
+      // TODO : For '« textToTranslate' and "« textToTranslate"
 
       // For `textToTranslate !` with characters !, ?, :, » and €
       'TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»€]/]': (node) => {
@@ -56,6 +63,7 @@ module.exports = {
           },
         })
       },
+
       // For `« textToTranslate`
       'TemplateLiteral > TemplateElement[value.raw=/«\\s+/]': (node) => {
         context.report({
@@ -82,6 +90,7 @@ module.exports = {
           },
         })
       },
+
       // For <Text>« textToTranslate</Text>
       'JSXText[value=/«\\s+/]': (node) => {
         context.report({
