@@ -84,7 +84,7 @@ describe('SearchResults component', () => {
     await fireEvent.press(locationButton)
 
     expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
+      type: 'SET_STATE_FROM_DEFAULT',
       payload: mockSearchState,
     })
   })

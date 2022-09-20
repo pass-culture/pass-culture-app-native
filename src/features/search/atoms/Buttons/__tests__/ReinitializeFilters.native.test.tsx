@@ -36,7 +36,7 @@ describe('<ReinitializeFilters />', () => {
     fireEvent.press(getByText('Réinitialiser'))
 
     expect(mockStateDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
+      type: 'SET_STATE_FROM_DEFAULT',
       payload: {
         locationFilter: {
           locationType: 'EVERYWHERE',

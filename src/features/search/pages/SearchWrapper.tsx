@@ -74,7 +74,7 @@ export const useCommit = (): { commit: () => void } => {
 
   return {
     commit() {
-      // ReinitializeFilters when pressed will call SET_STATE and use initialSearchState.view,
+      // ReinitializeFilters when pressed will call SET_STATE_FROM_DEFAULT and use initialSearchState.view,
       // so we force it until full removal of searchState
       navigate(...getTabNavConfig('Search', { ...stagedSearchState, view: SearchView.Results }))
     },

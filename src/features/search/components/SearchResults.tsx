@@ -116,7 +116,7 @@ export const SearchResults: React.FC = () => {
   )
 
   const redirectFilters = useCallback(() => {
-    stagedDispatch({ type: 'SET_STATE', payload: searchState })
+    stagedDispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })
     navigate('SearchFilter')
   }, [stagedDispatch, navigate, searchState])
 

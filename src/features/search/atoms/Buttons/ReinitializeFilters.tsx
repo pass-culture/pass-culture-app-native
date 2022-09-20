@@ -22,13 +22,13 @@ export const ReinitializeFilters = () => {
   const reinitializeFilters = () => {
     dispatchStagedSearch({ type: 'INIT' })
     dispatchStagedSearch({
-      type: 'SET_STATE',
+      type: 'SET_STATE_FROM_DEFAULT',
       payload: {
         priceRange: [0, maxPrice],
       },
     })
     dispatchSearch({
-      type: 'SET_STATE',
+      type: 'SET_STATE_FROM_DEFAULT',
       payload: {
         locationFilter: initialSearchState.locationFilter,
         offerCategories: initialSearchState.offerCategories,
