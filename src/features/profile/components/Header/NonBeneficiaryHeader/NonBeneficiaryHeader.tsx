@@ -2,7 +2,6 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
@@ -20,13 +19,11 @@ interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
   lastUpdated?: string
-  subscriptionMessage?: SubscriptionMessage | null
 }
 
 function NonBeneficiaryHeaderComponent({
   eligibilityEndDatetime,
   eligibilityStartDatetime,
-  subscriptionMessage,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const [error, setError] = useState<Error | undefined>()
   const today = new Date()
@@ -64,10 +61,10 @@ function NonBeneficiaryHeaderComponent({
       )
     }
 
-    if (subscriptionMessage) {
+    if (subscription?.subscriptionMessage) {
       return (
         <BannerContainer>
-          <SubscriptionMessageBadge subscriptionMessage={subscriptionMessage} />
+          <SubscriptionMessageBadge subscriptionMessage={subscription?.subscriptionMessage} />
         </BannerContainer>
       )
     }

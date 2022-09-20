@@ -158,13 +158,13 @@ describe('<NonBeneficiaryHeader/>', () => {
       mockNextSubscriptionStep = {
         ...mockStep,
         nextSubscriptionStep: null,
+        subscriptionMessage: mockedSubscriptionMessage,
       }
 
       const { getByTestId } = render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          subscriptionMessage={mockedSubscriptionMessage}
         />
       )
 
@@ -201,7 +201,6 @@ describe('<NonBeneficiaryHeader/>', () => {
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-02-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
-          subscriptionMessage={null}
         />
       )
 
