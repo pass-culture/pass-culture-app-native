@@ -23,7 +23,7 @@ const RelativeWrapper = styled.div({
 const SomeNormalComponent = styled.button({
   disblay: 'flex',
   '&:focus': {
-    width: '90vw\u00a0!important', // exemple to override style of displayOnFocus:focus
+    width: '90vw !important', // exemple to override style of displayOnFocus:focus
     outline: 'royalblue solid 1px',
   },
 })

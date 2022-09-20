@@ -106,7 +106,6 @@ const StyledSelect = styled.select<SelectProps>`
       ? theme.typography.placeholder
       : theme.typography.body
 
-    /* eslint-disable local-rules/nbsp-in-french-translations */
     return `
     font-family: ${fontFamily};
     font-size: ${fontSize}px;
@@ -124,7 +123,7 @@ const StyledSelect = styled.select<SelectProps>`
     cursor: pointer;
     background-color: ${theme.colors.white};
     appearance: none;
-    &:focus-visible, :active {
+    &:focus-visible, &:active {
       border-color: ${theme.colors.primary};
     }
   `

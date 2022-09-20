@@ -23,7 +23,7 @@ const StyledA = displayOnFocus(
     alignItems: 'center',
     alignSelf: 'center',
     '&:focus': {
-      height: `${getSpacingString(11)}\u00a0!important`,
+      height: `${getSpacingString(11)} !important`,
       margin: getSpacing(2),
       paddingLeft: getSpacing(4),
       paddingRight: getSpacing(4),
