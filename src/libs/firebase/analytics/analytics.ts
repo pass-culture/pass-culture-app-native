@@ -54,9 +54,9 @@ const logEventAnalytics = {
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
-  logClickBusinessBlock: (params: { moduleName: string; moduleId: string }) =>
+  logBusinessBlockClicked: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, params),
-  logClickExclusivityBlock: (params: { moduleName: string; moduleId: string }) =>
+  logExclusivityBlockClicked: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, params),
