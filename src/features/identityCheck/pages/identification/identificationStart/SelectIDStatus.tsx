@@ -89,7 +89,7 @@ const SelectIDStatusContent: FunctionComponent = () => {
         <StyledSubtitle>{t`avec toi.`}</StyledSubtitle>
       </Text>
       <StyledVerticalUl>
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={12} />
         <Li>
           <FirstHeroButtonLink />
         </Li>

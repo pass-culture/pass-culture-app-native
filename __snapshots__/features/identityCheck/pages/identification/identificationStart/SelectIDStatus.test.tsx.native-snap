@@ -399,11 +399,11 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               >
                 <View
-                  numberOfSpaces={8}
+                  numberOfSpaces={12}
                   style={
                     Array [
                       Object {
-                        "height": 32,
+                        "height": 48,
                       },
                     ]
                   }

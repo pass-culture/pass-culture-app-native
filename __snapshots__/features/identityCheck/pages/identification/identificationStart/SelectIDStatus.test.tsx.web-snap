@@ -544,7 +544,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "height": "32px",
+                      "height": "48px",
                     }
                   }
                 />
