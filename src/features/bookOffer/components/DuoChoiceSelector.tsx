@@ -29,7 +29,7 @@ export const DuoChoiceSelector: React.FC = () => {
           : t`crédit insuffisant`,
       title: quantity === 1 ? t`Solo` : t`Duo`,
       selected: bookingState.quantity === quantity,
-      icon: quantity === 1 ? ProfileIcon : DuoPerson,
+      icon: quantity === 1 ? SoloPerson : DuoPerson,
       onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
       hasEnoughCredit: enoughCredit,
     }
@@ -42,6 +42,8 @@ export const DuoChoiceSelector: React.FC = () => {
     </DuoChoiceContainer>
   )
 }
+
+const SoloPerson = (props: IconInterface) => <ProfileIcon {...props} />
 
 const DuoPerson = (props: IconInterface): JSX.Element => (
   <DuoPersonContainer>
