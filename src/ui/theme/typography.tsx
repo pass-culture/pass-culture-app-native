@@ -77,6 +77,14 @@ const Caption = styled(RNText)(({ theme }) => ({
   ...theme.typography.caption,
 }))
 
+const CaptionPrimary = styled(Caption)(({ theme }) => ({
+  color: theme.colors.primary,
+}))
+
+const CaptionSecondary = styled(Caption)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
+
 export const Typo = {
   Hero,
   Title1,
@@ -86,4 +94,6 @@ export const Typo = {
   ButtonText,
   Body,
   Caption,
+  CaptionPrimary,
+  CaptionSecondary,
 }

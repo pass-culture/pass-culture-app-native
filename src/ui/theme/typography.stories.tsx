@@ -67,3 +67,17 @@ export const Caption: ComponentStory<typeof Typo.Caption> = ({ children }) => (
 Caption.args = {
   children: 'Caption',
 }
+
+export const CaptionPrimary: ComponentStory<typeof Typo.CaptionPrimary> = ({ children }) => (
+  <Typo.CaptionPrimary>{children}</Typo.CaptionPrimary>
+)
+CaptionPrimary.args = {
+  children: 'CaptionPrimary',
+}
+
+export const CaptionSecondary: ComponentStory<typeof Typo.CaptionSecondary> = ({ children }) => (
+  <Typo.CaptionSecondary>{children}</Typo.CaptionSecondary>
+)
+CaptionSecondary.args = {
+  children: 'CaptionSecondary',
+}
