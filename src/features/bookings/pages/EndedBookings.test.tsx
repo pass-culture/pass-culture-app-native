@@ -3,9 +3,8 @@ import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { render } from 'tests/utils'
-
-import { bookingsSnap } from '../api/bookingsSnap'
 
 import { EndedBookings } from './EndedBookings'
 

@@ -11,7 +11,7 @@ import { flushAllPromises, render, act } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
-import { bookingsSnap as mockBookings } from '../api/bookingsSnap'
+import { bookingsSnap as mockBookings } from '../fixtures/bookingsSnap'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 

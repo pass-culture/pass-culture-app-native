@@ -8,7 +8,7 @@ import * as Queries from 'features/bookings/api/queries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 
-import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
+import { emptyBookingsSnap, bookingsSnap } from '../fixtures/bookingsSnap'
 
 import { Bookings } from './Bookings'
 

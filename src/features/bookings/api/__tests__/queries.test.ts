@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 import { BookingsResponse } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

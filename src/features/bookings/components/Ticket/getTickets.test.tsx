@@ -1,5 +1,5 @@
-import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { getTickets } from 'features/bookings/components/Ticket/getTickets'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 
 const booking = bookingsSnap.ongoing_bookings[1]
 const activationCodeFeatureEnabled = true

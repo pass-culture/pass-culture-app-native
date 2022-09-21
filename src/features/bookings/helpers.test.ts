@@ -2,8 +2,8 @@ import { addDays, formatISO } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { SettingsResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { Booking } from 'features/bookings/components/types'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import {
   formatSecondsToString,
   getBookingLabelForActivationCode,

@@ -4,9 +4,8 @@ import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
 } from 'features/bookings/components/BookingDetailsCancelButton'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { fireEvent, render } from 'tests/utils/web'
-
-import { bookingsSnap } from '../api/bookingsSnap'
 
 import { Booking } from './types'
 

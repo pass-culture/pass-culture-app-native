@@ -18,8 +18,8 @@ import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from '../components/types'
+import { bookingsSnap } from '../fixtures/bookingsSnap'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 

@@ -6,10 +6,9 @@ import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
 } from 'features/bookings/components/BookingDetailsCancelButton'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { fireEvent, render } from 'tests/utils'
-
-import { bookingsSnap } from '../api/bookingsSnap'
 
 import { Booking } from './types'
 
