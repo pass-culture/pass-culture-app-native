@@ -10,7 +10,7 @@ export const mockedAlgoliaResponse: SearchResponse<SearchHit> = {
         dates: [],
         isDigital: false,
         isDuo: false,
-        name: 'Mensch\u00a0! Où sont les Hommes\u00a0?',
+        name: 'Mensch ! Où sont les Hommes ?',
         prices: [28.0],
         subcategoryId: SubcategoryIdEnum.CONCERT,
         thumbUrl:

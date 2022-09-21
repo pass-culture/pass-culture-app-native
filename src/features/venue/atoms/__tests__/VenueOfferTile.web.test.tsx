@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'

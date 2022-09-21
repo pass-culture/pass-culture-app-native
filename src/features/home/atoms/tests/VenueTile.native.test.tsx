@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
+import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
