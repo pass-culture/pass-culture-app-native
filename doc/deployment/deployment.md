@@ -68,7 +68,7 @@ CircleCI will detect the tag `patch/vX.X.X` and launch the lanes `deploy-ios-sta
 Pull master to make sure you have all the commits you need to patch.
 Checkout the tag you want to start from.
 
-- `git checkout vX.X.X`
+- `git fetch --tags && git checkout vX.X.X`
 - list all commits you want to patch to your tag.
 - run `git cherry-pick <commit-hash>` for all commits **in the order they were merged to `master`** to avoid conflicts.
 - ⚠ Run the test prior tagging the version as they won't be run by the CI : `yarn test` ⚠
