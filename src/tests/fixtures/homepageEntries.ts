@@ -199,7 +199,7 @@ export const homepageEntriesAPIResponse = {
         fields: {
           title: 'FAQ pass Culture',
           firstLine: 'En savoir plus sur le pass Culture',
-          secondLine: 'Consulte notre FAQ !',
+          secondLine: 'Consulte notre FAQ\u00a0!',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
           url: 'https://passculture.zendesk.com/hc/fr/',
           targetNotConnectedUsersOnly: true,
@@ -220,9 +220,9 @@ export const homepageEntriesAPIResponse = {
           locale: 'en-US',
         },
         fields: {
-          title: 'Crée un compte !',
-          firstLine: 'Crée un compte !',
-          secondLine: 'Si tu as 18 ans, bénéficie de 300 €.',
+          title: 'Crée un compte\u00a0!',
+          firstLine: 'Crée un compte\u00a0!',
+          secondLine: 'Si tu as 18 ans, bénéficie de 300\u00a0€.',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
           url: 'https://passculture.zendesk.com/hc/fr/',
           targetNotConnectedUsersOnly: false,
@@ -242,7 +242,7 @@ export const homepageEntriesAPIResponse = {
           },
           locale: 'en-US',
         },
-        fields: { layout: 'two-items', minOffers: 2, title: 'A faire ce week-end !' },
+        fields: { layout: 'two-items', minOffers: 2, title: 'A faire ce week-end\u00a0!' },
       },
       {
         sys: {
@@ -417,7 +417,7 @@ export const homepageEntriesAPIResponse = {
           locale: 'en-US',
         },
         fields: {
-          title: 'Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !',
+          title: 'Découvre les livres sélectionnés pour le Goncourt des lycéens 2020\u00a0!',
           layout: 'two-items',
           minOffers: 2,
         },
@@ -563,7 +563,7 @@ export const homepageEntriesAPIResponse = {
           locale: 'en-US',
         },
         fields: {
-          title: 'Découvre les livres sélectionnés pour le Goncourt des Lycéens !',
+          title: 'Découvre les livres sélectionnés pour le Goncourt des Lycéens\u00a0!',
           algoliaParameters: {
             sys: { type: 'Link', linkType: 'Entry', id: 'JAhJxDb0L6p9EUXBiVt0J' },
           },
@@ -623,7 +623,7 @@ export const homepageEntriesAPIResponse = {
           locale: 'en-US',
         },
         fields: {
-          title: 'Donne ton avis sur le pass !',
+          title: 'Donne ton avis sur le pass\u00a0!',
           firstLine: 'Donne ton avis...',
           secondLine: 'En répondant à notre rapide questionnaire',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
@@ -997,7 +997,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               },
               locale: 'en-US',
             },
-            fields: { layout: 'two-items', minOffers: 2, title: 'A faire ce week-end !' },
+            fields: { layout: 'two-items', minOffers: 2, title: 'A faire ce week-end\u00a0!' },
           },
           title: '[Vendredi][Samedi] A faire ce week-end',
         },
@@ -1017,7 +1017,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           locale: 'en-US',
         },
         fields: {
-          title: 'Donne ton avis sur le pass !',
+          title: 'Donne ton avis sur le pass\u00a0!',
           firstLine: 'Donne ton avis...',
           secondLine: 'En répondant à notre rapide questionnaire',
           image: {
@@ -1071,7 +1071,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               updatedAt: '2020-07-22T10:26:36.835Z',
             },
           },
-          secondLine: 'Consulte notre FAQ !',
+          secondLine: 'Consulte notre FAQ\u00a0!',
           targetNotConnectedUsersOnly: true,
           title: 'FAQ pass Culture',
           url: 'https://passculture.zendesk.com/hc/fr/',
@@ -1092,7 +1092,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
       },
       {
         fields: {
-          firstLine: 'Crée un compte !',
+          firstLine: 'Crée un compte\u00a0!',
           image: {
             fields: {
               description: 'Image de fond pour les blocs métiers',
@@ -1115,9 +1115,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
               updatedAt: '2020-07-22T10:26:36.835Z',
             },
           },
-          secondLine: 'Si tu as 18 ans, bénéficie de 300 €.',
+          secondLine: 'Si tu as 18 ans, bénéficie de 300\u00a0€.',
           targetNotConnectedUsersOnly: false,
-          title: 'Crée un compte !',
+          title: 'Crée un compte\u00a0!',
           url: 'https://passculture.zendesk.com/hc/fr/',
         },
         sys: {
@@ -1282,7 +1282,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
           locale: 'en-US',
         },
         fields: {
-          title: 'Découvre les livres sélectionnés pour le Goncourt des Lycéens !',
+          title: 'Découvre les livres sélectionnés pour le Goncourt des Lycéens\u00a0!',
           algoliaParameters: {
             sys: {
               space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
@@ -1314,7 +1314,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               locale: 'en-US',
             },
             fields: {
-              title: 'Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !',
+              title: 'Découvre les livres sélectionnés pour le Goncourt des lycéens 2020\u00a0!',
               layout: 'two-items',
               minOffers: 2,
             },
@@ -1426,7 +1426,7 @@ export const adaptedSecondHomepageEntry: HomepageEntry = {
               updatedAt: '2020-07-22T10:26:36.835Z',
             },
           },
-          secondLine: 'Consulte notre FAQ !',
+          secondLine: 'Consulte notre FAQ\u00a0!',
           targetNotConnectedUsersOnly: true,
           title: 'FAQ pass Culture',
           url: 'https://passculture.zendesk.com/hc/fr/',

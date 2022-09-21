@@ -70,7 +70,7 @@ export const mockedCulturalSurveyQuestions = {
     },
     {
       id: 'FESTIVALS',
-      title: 'À quels types de festivals as-tu participé ?',
+      title: 'À quels types de festivals as-tu participé\u00a0?',
       answers: [
         {
           id: 'FESTIVAL_MUSIQUE',
@@ -112,7 +112,7 @@ export const mockedCulturalSurveyQuestions = {
     },
     {
       id: 'SPECTACLES',
-      title: 'À quels types de spectacles as-tu assisté ?',
+      title: 'À quels types de spectacles as-tu assisté\u00a0?',
       answers: [
         {
           id: 'SPECTACLE_HUMOUR',

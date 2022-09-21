@@ -65,7 +65,7 @@ export const RecreditBirthdayNotification = () => {
   useAppStateChange(playAnimation, undefined)
   useEffect(playAnimation, [playAnimation])
 
-  const recreditMessage = `Pour tes ${age} ans, le Gouvernement vient d'ajouter ${creditedAmount} à ton crédit. Tu disposes maintenant de :`
+  const recreditMessage = `Pour tes ${age} ans, le Gouvernement vient d'ajouter ${creditedAmount} à ton crédit. Tu disposes maintenant de\u00a0:`
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title={'Bonne nouvelle\u00a0!'}>

@@ -29,7 +29,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
       accessibilityRole={AccessibilityRole.IMAGE}
       rightSpacingValue={rightSpacingValue}
       testID="accessibilityAtomContainer"
-      accessibilityLabel={`${wording} : ${isAccessibleLabel}`}>
+      accessibilityLabel={`${wording}\u00a0: ${isAccessibleLabel}`}>
       <Frame testID="accessibilityFrame">
         <Spacer.Flex />
         <StyledIcon />
