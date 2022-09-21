@@ -42,7 +42,7 @@ describe('OfferTile component', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to the offer when clicking on the image [WEB INTEGRATION REQUIRED]', async () => {
+  it('should navigate to the offer when clicking on the image', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.click(getByTestId(`offre ${offer.name}`))
@@ -53,7 +53,7 @@ describe('OfferTile component', () => {
     })
   })
 
-  it('Analytics - should log ConsultOffer that user opened the offer [WEB INTEGRATION REQUIRED]', async () => {
+  it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.click(getByTestId(`offre ${offer.name}`))
@@ -64,7 +64,7 @@ describe('OfferTile component', () => {
     })
   })
 
-  it('Analytics - should log ConsultOffer with homeEntryID if provided [WEB INTEGRATION REQUIRED]', async () => {
+  it('Analytics - should log ConsultOffer with homeEntryID if provided', async () => {
     const { getByTestId } = render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(<OfferTile {...props} homeEntryId={'abcd'} />)
@@ -78,7 +78,7 @@ describe('OfferTile component', () => {
     })
   })
 
-  it('should prepopulate react-query cache when clicking on offer [WEB INTEGRATION REQUIRED]', async () => {
+  it('should prepopulate react-query cache when clicking on offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.click(getByTestId(`offre ${offer.name}`))
