@@ -69,7 +69,7 @@ Array [
     "display": Object {
       "layout": "two-items",
       "minOffers": 2,
-      "title": "A faire ce week-end !",
+      "title": "A faire ce week-end !",
     },
     "moduleId": "3AbfVZZIZhfvSfGxJSrSqe",
     "search": Array [
@@ -88,7 +88,7 @@ Array [
     "moduleId": "K2yYJkeX30OoepIooo2Um",
     "secondLine": "En répondant à notre rapide questionnaire",
     "targetNotConnectedUsersOnly": undefined,
-    "title": "Donne ton avis sur le pass !",
+    "title": "Donne ton avis sur le pass !",
     "url": "https://passculture.typeform.com/to/PYl2WwKC?email={email}",
   },
   BusinessPane {
@@ -96,19 +96,19 @@ Array [
     "image": "https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png",
     "leftIcon": undefined,
     "moduleId": "24FUVnnPPJ9v7JHkO7eaXK",
-    "secondLine": "Consulte notre FAQ !",
+    "secondLine": "Consulte notre FAQ !",
     "targetNotConnectedUsersOnly": true,
     "title": "FAQ pass Culture",
     "url": "https://passculture.zendesk.com/hc/fr/",
   },
   BusinessPane {
-    "firstLine": "Crée un compte !",
+    "firstLine": "Crée un compte !",
     "image": "https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png",
     "leftIcon": undefined,
     "moduleId": "24FUVnnPPJ9v7JHkO7eaID",
-    "secondLine": "Si tu as 18 ans, bénéficie de 300 €.",
+    "secondLine": "Si tu as 18 ans, bénéficie de 300 €.",
     "targetNotConnectedUsersOnly": false,
-    "title": "Crée un compte !",
+    "title": "Crée un compte !",
     "url": "https://passculture.zendesk.com/hc/fr/",
   },
   Offers {
@@ -150,7 +150,7 @@ Array [
     "display": Object {
       "layout": "two-items",
       "minOffers": 2,
-      "title": "Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !",
+      "title": "Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !",
     },
     "moduleId": "7c7xq3ulzqO2yDRJLDmths",
     "search": Array [
