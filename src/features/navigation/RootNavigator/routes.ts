@@ -30,6 +30,7 @@ import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationN
 import { NavigationProfile } from 'features/cheatcodes/pages/NavigationProfile'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
@@ -151,6 +152,12 @@ export const routes: Route[] = [
     },
   },
   { name: 'AppComponents', component: AppComponents, path: 'composants-app' },
+  {
+    name: 'BannedCountryError',
+    component: BannedCountryError,
+    hoc: withAsyncErrorBoundary,
+    path: 'erreur-pays',
+  },
   {
     name: 'ChangeEmailExpiredLink',
     component: ChangeEmailExpiredLink,

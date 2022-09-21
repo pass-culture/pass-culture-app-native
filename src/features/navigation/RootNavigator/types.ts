@@ -91,6 +91,7 @@ export type RootStackParamList = {
   }
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
   AppComponents: undefined
+  BannedCountryError: undefined
   ChangePassword: undefined
   ChangeEmail: undefined
   ChangeEmailExpiredLink: undefined
