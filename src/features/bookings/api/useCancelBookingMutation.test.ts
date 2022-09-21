@@ -3,7 +3,7 @@ import { useQueryClient, useMutation } from 'react-query'
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
-import { useCancelBookingMutation } from '../useCancelBookingMutation'
+import { useCancelBookingMutation } from './useCancelBookingMutation'
 
 jest.mock('api/api')
 jest.mock('react-query')
