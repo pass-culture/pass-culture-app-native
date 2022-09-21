@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
+import { useArchiveBookingMutation } from 'features/bookings/api'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

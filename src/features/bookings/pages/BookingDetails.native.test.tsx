@@ -4,7 +4,8 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import * as Queries from 'features/bookings/api/queries'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as Helpers from 'features/bookings/helpers'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -19,7 +20,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Booking } from '../components/types'
-import { bookingsSnap } from '../fixtures/bookingsSnap'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
@@ -76,7 +76,10 @@ describe('BookingDetails', () => {
   })
 
   it('should call useOngoingOrEndedBooking with the right parameters', () => {
-    const useOngoingOrEndedBooking = jest.spyOn(Queries, 'useOngoingOrEndedBooking')
+    const useOngoingOrEndedBooking = jest.spyOn(
+      ongoingOrEndedBookingAPI,
+      'useOngoingOrEndedBooking'
+    )
 
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
@@ -372,7 +375,7 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking?: Booking, options = {}) {
-  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue({
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBooking').mockReturnValue({
     data: booking,
     isLoading: false,
     isSuccess: true,

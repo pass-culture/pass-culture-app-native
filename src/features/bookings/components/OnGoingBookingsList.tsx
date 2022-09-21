@@ -3,7 +3,7 @@ import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { useBookings } from 'features/bookings/api/queries'
+import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'

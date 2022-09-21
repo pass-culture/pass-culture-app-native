@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api/queries'
+import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useBookings } from 'features/bookings/api/queries'
+import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { Booking } from 'features/bookings/components/types'
 import { plural } from 'libs/plural'
