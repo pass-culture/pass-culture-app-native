@@ -366,12 +366,22 @@ Array [
             }
           />
           <View
-            height={109.2}
-            width={140}
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              height={156}
+              width={200}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
           <Text
             style={
@@ -523,8 +533,7 @@ Array [
               Array [
                 Object {
                   "alignItems": "center",
-                  "height": 272,
-                  "paddingTop": 8,
+                  "height": 132,
                 },
               ]
             }
