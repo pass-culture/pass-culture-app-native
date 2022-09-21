@@ -5,4 +5,5 @@ export const nextSubscriptionStepFixture: NextSubscriptionStepResponse = {
   nextSubscriptionStep: SubscriptionStep['identity-check'],
   hasIdentityCheckPending: false,
   stepperIncludesPhoneValidation: false,
+  subscriptionMessage: null,
 }

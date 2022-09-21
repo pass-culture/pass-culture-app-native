@@ -2,7 +2,6 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
@@ -19,12 +18,12 @@ import { getSpacing, Typo } from 'ui/theme'
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
-  lastUpdated?: string
-  subscriptionMessage?: SubscriptionMessage | null
-  isEligibleForBeneficiaryUpgrade?: boolean
 }
 
-function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+function NonBeneficiaryHeaderComponent({
+  eligibilityEndDatetime,
+  eligibilityStartDatetime,
+}: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const [error, setError] = useState<Error | undefined>()
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
@@ -35,69 +34,72 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   const deposit = depositAmount.replace(' ', '')
 
-  const eligibilityStartDatetime = props.eligibilityStartDatetime
-    ? new Date(props.eligibilityStartDatetime)
+  const formattedEligibilityStartDatetime = eligibilityStartDatetime
+    ? new Date(eligibilityStartDatetime)
     : undefined
 
-  const eligibilityEndDatetime = props.eligibilityEndDatetime
-    ? new Date(props.eligibilityEndDatetime)
+  const formattedEligibilityEndDatetime = eligibilityEndDatetime
+    ? formatToSlashedFrenchDate(new Date(eligibilityEndDatetime).toISOString())
     : undefined
 
   const moduleBannerWording = isUserUnderage ? 'Profite de ton crédit' : `Profite de ${deposit}`
 
-  const endDate = eligibilityEndDatetime
-    ? formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString())
-    : undefined
+  if (error) {
+    throw error
+  }
+
+  const isUserTooYoungToBeEligible =
+    formattedEligibilityStartDatetime && formattedEligibilityStartDatetime > today
 
   const NonBeneficiaryBanner = () => {
-    if (props.isEligibleForBeneficiaryUpgrade) {
-      if (subscription?.nextSubscriptionStep) {
-        return (
-          <BannerContainer>
-            <View testID="eligibility-banner-container">
-              {!!eligibilityEndDatetime && (
-                <Caption>Tu as jusqu’au {endDate} pour faire ta demande</Caption>
-              )}
-              {!!nextBeneficiaryValidationStepNavConfig && (
-                <ModuleBanner
-                  navigateTo={nextBeneficiaryValidationStepNavConfig}
-                  leftIcon={<ThumbUp />}
-                  title={moduleBannerWording}
-                  subTitle="à dépenser dans l'application"
-                  testID="eligibility-banner"
-                />
-              )}
-            </View>
-          </BannerContainer>
-        )
-      }
-      if (subscription?.hasIdentityCheckPending) {
-        return (
-          <BannerContainer>
-            <IdentityCheckPendingBadge />
-          </BannerContainer>
-        )
-      }
-      if (props.subscriptionMessage) {
-        return (
-          <BannerContainer>
-            <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
-          </BannerContainer>
-        )
-      }
-    }
-    if (eligibilityStartDatetime && eligibilityStartDatetime > today) {
+    if (isUserTooYoungToBeEligible) {
       return (
         <BannerContainer>
-          <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+          <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
         </BannerContainer>
       )
     }
-    return <React.Fragment />
-  }
 
-  if (error) {
-    throw error
+    if (subscription?.subscriptionMessage) {
+      return (
+        <BannerContainer>
+          <SubscriptionMessageBadge subscriptionMessage={subscription?.subscriptionMessage} />
+        </BannerContainer>
+      )
+    }
+    if (subscription?.nextSubscriptionStep) {
+      return (
+        <BannerContainer>
+          <View testID="eligibility-banner-container">
+            {!!formattedEligibilityEndDatetime && (
+              <Caption>
+                Tu as jusqu’au
+                {formattedEligibilityEndDatetime}
+                pour faire ta demande
+              </Caption>
+            )}
+            {!!nextBeneficiaryValidationStepNavConfig && (
+              <ModuleBanner
+                navigateTo={nextBeneficiaryValidationStepNavConfig}
+                leftIcon={<ThumbUp />}
+                title={moduleBannerWording}
+                subTitle="à dépenser dans l'application"
+                testID="eligibility-banner"
+              />
+            )}
+          </View>
+        </BannerContainer>
+      )
+    }
+    if (subscription?.hasIdentityCheckPending) {
+      return (
+        <BannerContainer>
+          <IdentityCheckPendingBadge />
+        </BannerContainer>
+      )
+    }
+
+    return null
   }
 
   return (
