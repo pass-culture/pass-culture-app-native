@@ -4020,7 +4020,7 @@ msgstr "{hoursUntilAllowedRetry, plural, one {Tu pourras réessayer dans # heure
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryAccountCreated.tsx
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
-msgstr "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
+msgstr "{maxPrice} € viennent d'être crédités sur ton compte pass Culture<<<<<<< HEAD"
 
 #: src/features/favorites/atoms/NumberOfResults.tsx
 msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
@@ -4030,7 +4030,7 @@ msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
 #: src/features/search/components/SearchResults.tsx
 #: src/features/search/pages/SuggestedPlaces.tsx
 msgid "{nbHits, plural, one {# résultat} other {# résultats}}"
-msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
+msgstr "{nbHits, plural, one {# résultat} other {# résultats}}>>>>>>> adad4c5d7 ((PC-17503) fix(numberOfResults): use lingui plural (#3585))"
 
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
@@ -4046,7 +4046,7 @@ msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# r�
 
 #: src/features/bookings/helpers.ts
 msgid "À activer"
-msgstr "À activer"
+msgstr "À activer======="
 
 #: src/features/offer/components/OfferIconCaptions.tsx
 msgid "À deux !"
