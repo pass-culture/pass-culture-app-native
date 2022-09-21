@@ -22,7 +22,7 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
   const { dispatch } = useStagedSearch()
 
   const reinitFilters = useCallback(() => {
-    dispatch({ type: 'SET_STATE', payload: searchState })
+    dispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })
   }, [dispatch, searchState])
 
   return (

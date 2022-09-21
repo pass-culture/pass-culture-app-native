@@ -104,7 +104,7 @@ describe('Search component', () => {
   it('should handle coming from "See More" correctly', () => {
     render(<Search />)
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE_FROM_NAVIGATE',
+      type: 'SET_STATE',
       payload: {},
     })
   })
@@ -182,7 +182,7 @@ describe('Search component', () => {
       await fireEvent.press(searchFilterButton)
 
       expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
+        type: 'SET_STATE_FROM_DEFAULT',
         payload: mockSearchState,
       })
     })
