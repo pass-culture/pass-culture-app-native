@@ -71,6 +71,7 @@ Checkout the tag you want to start from.
 - `git checkout vX.X.X`
 - list all commits you want to patch to your tag.
 - run `git cherry-pick <commit-hash>` for all commits **in the order they were merged to `master`** to avoid conflicts.
+- ⚠ Run the test prior tagging the version as they won't be run by the CI : `yarn test` ⚠
 - build and deploy the patch by running the following script: `trigger:staging:deploy:patch`
 
 ### Production (MEP)
