@@ -64,6 +64,20 @@ describe('OfferTile component', () => {
     })
   })
 
+  it('Analytics - should log ConsultOffer with homeEntryID if provided [WEB INTEGRATION REQUIRED]', async () => {
+    const { getByTestId } = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      reactQueryProviderHOC(<OfferTile {...props} homeEntryId={'abcd'} />)
+    )
+    await fireEvent.click(getByTestId(`offre ${offer.name}`))
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId,
+      from: 'home',
+      moduleName: props.moduleName,
+      homeEntryId: 'abcd',
+    })
+  })
+
   it('should prepopulate react-query cache when clicking on offer [WEB INTEGRATION REQUIRED]', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))

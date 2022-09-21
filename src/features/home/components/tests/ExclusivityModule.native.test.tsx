@@ -63,11 +63,13 @@ describe('ExclusivityModule component', () => {
     expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,
       moduleId: props.moduleId,
+      homeEntryId: props.homeEntryId,
     })
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId: mockOffer.id,
       moduleName: props.title,
       moduleId: props.moduleId,
+      homeEntryId: props.homeEntryId,
       from: 'exclusivity',
     })
   })

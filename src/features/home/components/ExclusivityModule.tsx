@@ -35,8 +35,14 @@ const UnmemoizedExclusivityModule = ({
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
-    analytics.logExclusivityBlockClicked({ moduleName: title, moduleId })
-    analytics.logConsultOffer({ offerId: id, moduleName: title, moduleId, from: 'exclusivity' })
+    analytics.logExclusivityBlockClicked({ moduleName: title, moduleId, homeEntryId })
+    analytics.logConsultOffer({
+      offerId: id,
+      moduleName: title,
+      moduleId,
+      from: 'exclusivity',
+      homeEntryId,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 

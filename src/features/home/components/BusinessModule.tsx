@@ -55,7 +55,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
-    analytics.logBusinessBlockClicked({ moduleName: title, moduleId })
+    analytics.logBusinessBlockClicked({ moduleName: title, moduleId, homeEntryId })
     openUrl(finalUrl)
   }
 

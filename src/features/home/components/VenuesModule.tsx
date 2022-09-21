@@ -43,13 +43,14 @@ export const VenuesModule = ({
       <VenueTile
         moduleName={moduleName}
         moduleId={moduleId}
+        homeEntryId={homeEntryId}
         venue={item}
         width={width}
         height={height}
         userPosition={position}
       />
     ),
-    [position, moduleName, moduleId]
+    [position, moduleName, moduleId, homeEntryId]
   )
 
   const shouldModuleBeDisplayed = hits.length > display.minOffers

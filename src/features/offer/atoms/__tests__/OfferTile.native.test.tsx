@@ -61,6 +61,19 @@ describe('OfferTile component', () => {
       moduleName: props.moduleName,
     })
   })
+  it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
+    const { getByTestId } = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      reactQueryProviderHOC(<OfferTile {...props} homeEntryId={'abcd'} />)
+    )
+    await fireEvent.press(getByTestId('tileImage'))
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId,
+      from: 'home',
+      moduleName: props.moduleName,
+      homeEntryId: 'abcd',
+    })
+  })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc

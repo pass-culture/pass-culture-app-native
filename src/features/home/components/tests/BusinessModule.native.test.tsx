@@ -69,6 +69,7 @@ describe('BusinessModule component', () => {
     expect(analytics.logBusinessBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,
       moduleId: props.moduleId,
+      homeEntryId: props.homeEntryId,
     })
   })
 

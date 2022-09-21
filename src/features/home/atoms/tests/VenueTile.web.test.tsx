@@ -43,4 +43,15 @@ describe('VenueTile component', () => {
       moduleId: 'module-id',
     })
   })
+  it('should log analytics event ConsultVenue with homeEntryId when provided', async () => {
+    const { getByTestId } = render(<VenueTile {...props} homeEntryId={'abcd'} />)
+    await fireEvent.click(getByTestId('venueTile'))
+    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+      venueId: venue.id,
+      from: 'home',
+      moduleName: 'le nom du module',
+      moduleId: 'module-id',
+      homeEntryId: 'abcd',
+    })
+  })
 })
