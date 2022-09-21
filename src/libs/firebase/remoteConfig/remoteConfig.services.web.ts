@@ -1,6 +1,8 @@
 import { fetchAndActivate, getAll } from 'firebase/remote-config'
 
-import firebaseRemoteConfig from 'libs/firebase/shims/remote-config'
+// .web extension until universal interface is supported by react-native-firebase
+// See https://github.com/invertase/react-native-firebase/discussions/6562
+import firebaseRemoteConfig from 'libs/firebase/shims/remote-config/index.web'
 
 import { CustomRemoteConfig } from './remoteConfig.types'
 
