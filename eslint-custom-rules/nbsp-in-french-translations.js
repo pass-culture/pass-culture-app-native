@@ -74,18 +74,6 @@ module.exports = {
         })
       },
 
-      // &nbsp; for "« textToTranslate"
-      'Literal[raw=/^\\".*«\\s+.*\\"$/]': (node) => {
-        context.report({
-          node,
-          message: 'Please use unicode non-breaking space &nbsp; instead of whitespace after «',
-          fix: function (fixer) {
-            const textToReplace = node.raw.replace(/(«)\s+/g, '$1&nbsp;')
-            return fixer.replaceText(node, textToReplace)
-          },
-        })
-      },
-
       // For `textToTranslate !` with characters !, ?, :, » and €
       'TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»€]/]': (node) => {
         if (node.value.raw.includes('!important')) return
