@@ -6,7 +6,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as Helpers from 'features/bookings/helpers'
+import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -173,7 +173,7 @@ describe('BookingDetails', () => {
         stock: { ...booking.stock, offer: { ...booking.stock.offer, withdrawalType } },
       }
       jest
-        .spyOn(Helpers, 'getBookingProperties')
+        .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent, isDigital: false, isPhysical: !isEvent })
 
       const { getByText } = renderBookingDetails(booking)
@@ -298,7 +298,7 @@ describe('BookingDetails', () => {
         canOpenItinerary: true,
       })
       const getBookingProperties = jest
-        .spyOn(Helpers, 'getBookingProperties')
+        .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue(dataProvider)
 
       const booking = bookingsSnap.ongoing_bookings[0]
@@ -328,7 +328,7 @@ describe('BookingDetails', () => {
           canOpenItinerary,
         })
         const getBookingProperties = jest
-          .spyOn(Helpers, 'getBookingProperties')
+          .spyOn(bookingPropertiesAPI, 'getBookingProperties')
           .mockReturnValue(dataProvider)
 
         const booking = bookingsSnap.ongoing_bookings[0]

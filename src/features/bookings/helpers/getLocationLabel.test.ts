@@ -1,5 +1,5 @@
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { getLocationLabel } from 'features/bookings/getLocationLabel'
+import { getLocationLabel } from 'features/bookings/helpers'
 
 describe('getLocationLabel', () => {
   const initialBooking = bookingsSnap.ongoing_bookings[1]
