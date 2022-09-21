@@ -10,6 +10,7 @@ export const mockedAlgoliaResponse: SearchResponse<SearchHit> = {
         dates: [],
         isDigital: false,
         isDuo: false,
+        // eslint-disable-next-line local-rules/nbsp-in-french-translations
         name: 'Mensch ! Où sont les Hommes ?',
         prices: [28.0],
         subcategoryId: SubcategoryIdEnum.CONCERT,

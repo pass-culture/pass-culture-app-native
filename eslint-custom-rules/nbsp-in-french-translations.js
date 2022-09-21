@@ -22,7 +22,7 @@ module.exports = {
     return {
       // \u00a0 for 'textToTranslate !' with characters !, ?, :, » and €
       "Literal[raw=/^'.*\\s+[!?:»€].*'$/]": (node) => {
-        if (node.value.raw && node.value.raw.includes('!important')) return
+        if (node.value.raw.includes('!important')) return
 
         context.report({
           node,

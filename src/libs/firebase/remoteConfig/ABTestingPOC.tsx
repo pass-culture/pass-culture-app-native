@@ -9,7 +9,7 @@ export const ABTestingPOC: React.FC = () => {
 
   const message = `test_param value is ${test_param}`
   const instructionsText =
-    "Voir les expériences sur la console Firebase : > Menu 'Engager' de la barre de gauche > Cliquer sur le bouton 'A/B testing' > Cliquer sur un des onglets selon l'état du test > Cliquer sur le test"
+    'Voir les expériences sur la console Firebase\u00a0: > Menu "Engager" de la barre de gauche > Cliquer sur le bouton "A/B testing" > Cliquer sur un des onglets selon l’état du test > Cliquer sur le test'
   return (
     <StyledView>
       <Typo.Title2>{message}</Typo.Title2>
