@@ -170,7 +170,7 @@ describe('SearchBox component', () => {
         await fireEvent.press(previousButton)
 
         expect(mockStagedDispatch).toBeCalledWith({
-          type: 'SET_STATE',
+          type: 'SET_STATE_FROM_DEFAULT',
           payload: {
             locationFilter: mockStagedSearchState.locationFilter,
           },
