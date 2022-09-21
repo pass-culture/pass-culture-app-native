@@ -2,10 +2,10 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { Booking } from 'features/bookings/types'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
-import { Booking } from './types'
 
 jest.mock('features/auth/settings')
 

@@ -1,4 +1,4 @@
-import { Booking } from 'features/bookings/components/types'
+import { Booking } from 'features/bookings/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 
 /**

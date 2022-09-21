@@ -1,5 +1,5 @@
-import { Booking } from 'features/bookings/components/types'
 import { getBookingProperties } from 'features/bookings/helpers'
+import { Booking } from 'features/bookings/types'
 
 describe('getBookingProperties', () => {
   it('when an event booking is provided', () => {

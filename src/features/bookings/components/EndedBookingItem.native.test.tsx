@@ -3,11 +3,11 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
-import { Booking } from './types'
 
 jest.mock('react-query')
 

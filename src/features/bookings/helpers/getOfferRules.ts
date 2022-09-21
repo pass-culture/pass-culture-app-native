@@ -1,6 +1,5 @@
 import { WithdrawalTypeEnum } from 'api/gen'
-import { Booking } from 'features/bookings/components/types'
-import { BookingProperties } from 'features/bookings/helpers/getBookingProperties'
+import { Booking, BookingProperties } from 'features/bookings/types'
 import { plural } from 'libs/plural'
 
 export function getOfferRules(

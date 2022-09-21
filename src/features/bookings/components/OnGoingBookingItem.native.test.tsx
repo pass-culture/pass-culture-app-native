@@ -4,10 +4,10 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { Booking } from 'features/bookings/types'
 import { fireEvent, render } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
-import { Booking } from './types'
 
 jest.mock('features/auth/settings')
 

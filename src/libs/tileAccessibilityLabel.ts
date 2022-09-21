@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { BookingProperties } from 'features/bookings/helpers/getBookingProperties'
+import { BookingProperties } from 'features/bookings/types'
 import { OfferTileProps } from 'features/offer/atoms/OfferTile'
 import { parseTypeHomeLabel } from 'libs/parsers/venueType'
 import { VenueHit } from 'libs/search'

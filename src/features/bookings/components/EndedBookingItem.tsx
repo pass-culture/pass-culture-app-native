@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
+import { BookingItemProps } from 'features/bookings/types'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { analytics } from 'libs/firebase/analytics'
@@ -21,7 +22,6 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingItemTitle } from './BookingItemTitle'
-import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking

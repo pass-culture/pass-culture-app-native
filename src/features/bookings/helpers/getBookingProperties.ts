@@ -1,13 +1,4 @@
-import { Booking } from 'features/bookings/components/types'
-
-export type BookingProperties = {
-  isDuo?: boolean
-  isEvent?: boolean
-  isPhysical?: boolean
-  isDigital?: boolean
-  isPermanent?: boolean
-  hasActivationCode?: boolean
-}
+import { Booking, BookingProperties } from 'features/bookings/types'
 
 function isDuoBooking(booking: Booking) {
   return booking.quantity === 2

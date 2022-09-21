@@ -1,9 +1,9 @@
 import mockdate from 'mockdate'
 
 import { SettingsResponse } from 'api/gen'
-import { Booking } from 'features/bookings/components/types'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getBookingLabels } from 'features/bookings/helpers'
+import { Booking } from 'features/bookings/types'
 
 describe('getBookingLabels', () => {
   beforeEach(jest.clearAllMocks)

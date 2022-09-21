@@ -3,9 +3,9 @@ import { addDays, formatISO } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { Booking } from 'features/bookings/components/types'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getEventOnSiteWithdrawLabel } from 'features/bookings/helpers'
+import { Booking } from 'features/bookings/types'
 
 const initialBooking: Booking = {
   ...bookingsSnap.ongoing_bookings[0],

@@ -1,11 +1,10 @@
 import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
-import { Booking } from 'features/bookings/components/types'
 import {
   getEventOnSiteWithdrawLabel,
   getLocationLabel,
   getBookingLabelForActivationCode,
 } from 'features/bookings/helpers'
-import { BookingProperties } from 'features/bookings/helpers/getBookingProperties'
+import { Booking, BookingProperties } from 'features/bookings/types'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,

@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { WithdrawalTypeEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
+import { BookingItemProps } from 'features/bookings/types'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -16,7 +17,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingItemTitle } from './BookingItemTitle'
-import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { data: settings = null } = useAppSettings()

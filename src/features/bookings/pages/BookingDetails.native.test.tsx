@@ -7,6 +7,7 @@ import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
+import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -18,8 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-
-import { Booking } from '../components/types'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
