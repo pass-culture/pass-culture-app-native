@@ -1,8 +1,8 @@
+import { plural } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { plural } from 'libs/plural'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

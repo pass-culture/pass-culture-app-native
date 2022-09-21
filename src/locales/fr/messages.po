@@ -3609,6 +3609,10 @@ msgstr "{0} {EURO_SYMBOL}"
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
 msgstr "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
 
+#: src/features/search/atoms/NumberOfResults.tsx
+msgid "{nbHits, plural, one {# résultat} other {# résultats}}"
+msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
+
 #: src/features/offer/components/OfferIconCaptions.tsx
 msgid "À deux !"
 msgstr "À deux !"
