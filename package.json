@@ -31,6 +31,7 @@
     ]
   },
   "scripts": {
+    "appcenter:install": "./scripts/appcenter-download-release.sh",
     "android": "react-native run-android --variant=developmentDebug",
     "android:testing": "react-native run-android --variant=apptestingDebug",
     "android:staging": "react-native run-android --variant=stagingDebug",
