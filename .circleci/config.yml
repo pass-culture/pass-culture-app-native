@@ -106,7 +106,11 @@ commands:
             - jest-cache-{{ arch }}
       - when:
           condition:
-            equal: ["master", << pipeline.git.branch >>]
+            or:
+              - equal: [ "master", << pipeline.git.branch >> ]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
           steps:
             - run:
                 name: Run tests with JUnit as reporter
@@ -115,7 +119,11 @@ commands:
                   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - unless:
           condition:
-            equal: ["master", << pipeline.git.branch >>]
+            or:
+              - equal: [ "master", << pipeline.git.branch >> ]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
           steps:
             - run:
                 name: Run tests with JUnit as reporter
@@ -143,7 +151,11 @@ commands:
             - jest-cache-web-{{ arch }}
       - when:
           condition:
-            equal: ["master", << pipeline.git.branch >>]
+            or:
+              - equal: [ "master", << pipeline.git.branch >> ]
+              - matches:
+                  pattern: /^(patch\/)?v.*/
+                  value: << pipeline.git.tag >>
           steps:
             - run:
                 name: Run tests with JUnit as reporter
@@ -152,7 +164,11 @@ commands:
                   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - unless:
           condition:
-            equal: ["master", << pipeline.git.branch >>]
+            or:
+              - equal: [ "master", << pipeline.git.branch >> ]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
           steps:
             - run:
                 name: Run tests with JUnit as reporter
@@ -163,7 +179,11 @@ commands:
           path: ./reports/junit/
       - when:
           condition:
-            equal: ["master", << pipeline.git.branch >>]
+            or:
+              - equal: [ "master", << pipeline.git.branch >> ]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
           steps:
             - save_cache:
                 name: Save Tests cache
@@ -957,10 +977,16 @@ workflows:
       - test-lint-and-types
       - test-translations
       - test-native:
+          filters:
+            tags:
+              only: /.*/
           context:
             - SonarCloud
             - Slack
       - test-web:
+          filters:
+            tags:
+              only: /.*/
           context: Slack
       - deploy-soft-testing:
           filters:
