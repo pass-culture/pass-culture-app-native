@@ -23,6 +23,7 @@ export interface VenueTileProps {
   venue: VenueHit
   moduleName: string
   moduleId: string
+  homeEntryId?: string
   width: number
   height: number
   userPosition: GeoCoordinates | null
@@ -53,6 +54,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
       moduleId: props.moduleId,
       moduleName: props.moduleName,
       from: 'home',
+      homeEntryId: props.homeEntryId,
     })
   }
 

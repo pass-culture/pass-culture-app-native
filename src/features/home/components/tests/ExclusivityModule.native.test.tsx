@@ -60,14 +60,16 @@ describe('ExclusivityModule component', () => {
   it('should log a click event when clicking on the image', () => {
     const { getByTestId } = renderExclusivityModule(props)
     fireEvent.press(getByTestId('imageExclu'))
-    expect(analytics.logClickExclusivityBlock).toHaveBeenCalledWith({
+    expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,
       moduleId: props.moduleId,
+      homeEntryId: props.homeEntryId,
     })
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId: mockOffer.id,
       moduleName: props.title,
       moduleId: props.moduleId,
+      homeEntryId: props.homeEntryId,
       from: 'exclusivity',
     })
   })

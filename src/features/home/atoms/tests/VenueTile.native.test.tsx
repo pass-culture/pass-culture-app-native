@@ -42,7 +42,17 @@ describe('VenueTile component', () => {
       moduleId: 'module-id',
     })
   })
-
+  it('should log analytics event ConsultVenue with homeEntryId when provided', async () => {
+    const { getByTestId } = render(<VenueTile {...props} homeEntryId={'abcd'} />)
+    await fireEvent.press(getByTestId('venueTile'))
+    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+      venueId: venue.id,
+      from: 'home',
+      moduleName: 'le nom du module',
+      moduleId: 'module-id',
+      homeEntryId: 'abcd',
+    })
+  })
   it('should show venue placeholder when no venue does not have image', () => {
     const { getByTestId } = render(
       <VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />

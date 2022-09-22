@@ -86,6 +86,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
           moduleId={moduleId}
+          homeEntryId={homeEntryId}
           width={width}
           height={height}
         />
