@@ -254,6 +254,12 @@ export function Navigation(): JSX.Element {
               }
             />
           </Row>
+          <Row half>
+            <ButtonPrimary
+              wording="Banned Country Error"
+              onPress={() => navigate('BannedCountryError')}
+            />
+          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>

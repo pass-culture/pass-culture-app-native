@@ -13,6 +13,7 @@ type Props = {
   icon?: FunctionComponent<IconInterface>
   title: string
   buttons?: Array<ReactNode>
+  noBackground?: boolean
 }
 
 export const GenericErrorPage: FunctionComponent<Props> = ({
@@ -22,13 +23,14 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   icon,
   title,
   buttons,
+  noBackground,
 }) => {
   const { isTouch } = useTheme()
   const Icon =
     !!icon &&
     styled(icon).attrs(({ theme }) => ({
       size: theme.illustrations.sizes.fullPage,
-      color: theme.colors.white,
+      color: noBackground ? undefined : theme.colors.white,
     }))``
 
   return (
@@ -38,7 +40,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
-      <Background />
+      {!noBackground && <Background />}
       {header}
       <Content>
         <Spacer.TopScreen />
@@ -50,7 +52,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         )}
-        <StyledTitle>{title}</StyledTitle>
+        <StyledTitle noBackground={noBackground}>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
         <Spacer.Column numberOfSpaces={spacingMatrix.afterChildren} />
@@ -85,10 +87,12 @@ const spacingMatrix = {
   bottom: 10,
 }
 
-const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
-}))
+const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))<{ noBackground?: boolean }>(
+  ({ theme, noBackground }) => ({
+    color: noBackground ? undefined : theme.colors.white,
+    textAlign: 'center',
+  })
+)
 
 const Content = styled.View({
   flexDirection: 'column',

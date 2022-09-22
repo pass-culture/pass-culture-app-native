@@ -17,10 +17,16 @@ import { DefaultApi } from '../gen'
 
 const api = new DefaultApi({})
 
-const respondWith = async (body: unknown, status = 200, statusText?: string): Promise<Response> => {
+const respondWith = async (
+  body: unknown,
+  status = 200,
+  statusText?: string,
+  headers?: HeadersInit
+): Promise<Response> => {
   return new Response(JSON.stringify(body), {
     headers: {
       'content-type': 'application/json',
+      ...headers,
     },
     status,
     statusText,
@@ -298,6 +304,17 @@ describe('[api] helpers', () => {
       const result = await handleGeneratedApiResponse(response)
 
       expect(navigateFromRef).toBeCalledWith('SuspensionScreen')
+      expect(result).toEqual({})
+    })
+
+    it('should navigate to banned country screen when status is 403 (forbidden) with country ban header', async () => {
+      const response = await respondWith('', 403, undefined, {
+        'x-country-ban': 'CountryName',
+      })
+
+      const result = await handleGeneratedApiResponse(response)
+
+      expect(navigateFromRef).toBeCalledWith('BannedCountryError')
       expect(result).toEqual({})
     })
 

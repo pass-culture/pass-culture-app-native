@@ -182,6 +182,11 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   }
 
   if (response.status === 403) {
+    const bannedCountry = response.headers.get('x-country-ban')
+    if (bannedCountry) {
+      navigateFromRef('BannedCountryError')
+      return {}
+    }
     navigateFromRef('SuspensionScreen')
     return {}
   }
