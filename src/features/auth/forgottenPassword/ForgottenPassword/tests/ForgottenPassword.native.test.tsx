@@ -60,7 +60,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(renderAPI.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeTruthy()
+    expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
     expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
   })
 
@@ -164,7 +164,7 @@ describe('<ForgottenPassword />', () => {
       expect(isEmailValid).toReturnWith(true)
       expect(
         queryByText(
-          "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+          'L‘e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeFalsy()
     })
@@ -180,7 +180,7 @@ describe('<ForgottenPassword />', () => {
 
       expect(
         queryByText(
-          "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+          'L‘e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeTruthy()
     })
