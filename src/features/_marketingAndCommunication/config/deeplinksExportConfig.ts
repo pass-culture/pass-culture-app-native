@@ -36,7 +36,7 @@ export const SCREENS_CONFIG: {
     id: {
       type: 'string',
       required: true,
-      description: `Identifiant unique de l'offre.`,
+      description: 'Identifiant unique de l‘offre.',
       serverValidator: (value: unknown) => api.getnativev1offerofferId(Number(value)),
     },
   },
@@ -44,7 +44,7 @@ export const SCREENS_CONFIG: {
     id: {
       type: 'string',
       required: true,
-      description: `Identifiant unique de lieu.`,
+      description: 'Identifiant unique de lieu.',
       serverValidator: (value: unknown) => api.getnativev1venuevenueId(Number(value)),
     },
   },
@@ -52,69 +52,69 @@ export const SCREENS_CONFIG: {
     entryId: {
       type: 'string',
       required: false,
-      description: `Le module d'accueil à afficher`,
+      description: 'Le module d‘accueil à afficher',
     },
   },
   Search: {
     URL: {
       type: 'string',
       required: false,
-      description: `Une URL de recherche a convertir`,
+      description: 'Une URL de recherche a convertir',
     },
     locationFilter: {
       type: 'locationFilter',
       required: false,
-      description: `Lieu`,
+      description: 'Lieu',
     },
     query: {
       type: 'string',
       required: false,
-      description: `Mot clé`,
+      description: 'Mot clé',
     },
     offerCategories: {
       type: 'offerCategories',
       required: false,
-      description: `Categories`,
+      description: 'Categories',
     },
     offerTypes: {
       type: 'offerTypes',
       required: false,
-      description: `Type d'offre`,
+      description: 'Type d‘offre',
     },
     tags: {
       type: 'stringArray',
       required: false,
-      description: `Tags`,
+      description: 'Tags',
     },
     priceRange: {
       type: 'priceRange',
       required: false,
-      description: `Prix`,
+      description: 'Prix',
     },
     offerIsFree: {
       type: 'boolean',
       required: false,
-      description: `Uniquement les offres gratuites`,
+      description: 'Uniquement les offres gratuites',
     },
     offerIsNew: {
       type: 'boolean',
       required: false,
-      description: `Uniquement les nouveautés`,
+      description: 'Uniquement les nouveautés',
     },
     offerIsDuo: {
       type: 'boolean',
       required: false,
-      description: `Offre DUO`,
+      description: 'Offre DUO',
     },
     beginningDatetime: {
       type: 'date',
       required: false,
-      description: `Date de début`,
+      description: 'Date de début',
     },
     endingDatetime: {
       type: 'date',
       required: false,
-      description: `Date de fin`,
+      description: 'Date de fin',
     },
   },
   Profile: {},
@@ -130,15 +130,18 @@ type MarketingConfig = {
 export const MARKETING_CONFIG: MarketingConfig = {
   utm_campaign: {
     type: 'string',
-    description: `Nom de la campagne. Exemple\u00a0: “festivals22”, “tempsfortJapon”, “LouisSan”... une campagne peut être menée sur différents canaux.`,
+    description:
+      'Nom de la campagne. Exemple\u00a0: “festivals22”, “tempsfortJapon”, “LouisSan”... une campagne peut être menée sur différents canaux.',
   },
   utm_source: {
     type: 'string',
-    description: `Source de la campagne\u00a0: transac, newsletter (pour les emails), batch, insta, facebook, tiktok.`,
+    description:
+      'Source de la campagne\u00a0: transac, newsletter (pour les emails), batch, insta, facebook, tiktok.',
   },
   utm_medium: {
     type: 'string',
-    description: `Canal de la campagne\u00a0: email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).`,
+    description:
+      'Canal de la campagne\u00a0: email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).',
   },
   utm_content: {
     type: 'string',
@@ -155,6 +158,6 @@ type FirebaseDynamicLinkConfig = {
 export const FDL_CONFIG: FirebaseDynamicLinkConfig = {
   amv: {
     type: 'string',
-    description: `Version minimale de l'application Android qui peut ouvrir le lien (ex: ${build}). Si l'application installée est une version plus ancienne, l'utilisateur est redirigé vers le Play Store pour mettre à niveau l'application.`,
+    description: `Version minimale de l‘application Android qui peut ouvrir le lien (ex\u00a0: ${build}). Si l‘application installée est une version plus ancienne, l‘utilisateur est redirigé vers le Play Store pour mettre à niveau l‘application.`,
   },
 }

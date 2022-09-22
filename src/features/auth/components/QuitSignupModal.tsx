@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -37,8 +36,8 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
     resume()
   }
 
-  const title = t`Veux-tu abandonner l'inscription\u00a0?`
-  const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
+  const title = 'Veux-tu abandonner l‘inscription\u00a0?'
+  const description = 'Les informations que tu as renseignées ne seront pas enregistrées.'
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix} onRequestClose={continueSignup}>
@@ -47,16 +46,8 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
         icon={ErrorIllustration}
         flex={false}
         buttons={[
-          <ButtonPrimaryWhite
-            key={1}
-            wording={t`Continuer l'inscription`}
-            onPress={continueSignup}
-          />,
-          <ButtonTertiaryWhite
-            key={2}
-            wording={t`Abandonner l'inscription`}
-            onPress={quitSignup}
-          />,
+          <ButtonPrimaryWhite key={1} wording="Continuer l‘inscription" onPress={continueSignup} />,
+          <ButtonTertiaryWhite key={2} wording="Abandonner l‘inscription" onPress={quitSignup} />,
         ]}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />

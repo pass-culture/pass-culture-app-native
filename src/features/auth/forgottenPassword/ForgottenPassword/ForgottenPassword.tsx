@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
@@ -39,7 +38,7 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
-      setErrorMessage(t`Hors connexion\u00a0: en attente du réseau.`)
+      setErrorMessage('Hors connexion\u00a0: en attente du réseau.')
       setIsDoingReCaptchaChallenge(false)
     } else {
       setErrorMessage(null)
@@ -53,7 +52,7 @@ export const ForgottenPassword: FunctionComponent = () => {
       await api.postnativev1requestPasswordReset({ email, token })
       replace('ResetPasswordEmailSent', { email })
     } catch (error) {
-      setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
+      setErrorMessage('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
       if (error instanceof ApiError) {
         captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
       }
@@ -80,12 +79,12 @@ export const ForgottenPassword: FunctionComponent = () => {
   function openReCaptchaChallenge() {
     if (!isEmailValid(email)) {
       setErrorMessage(
-        t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
+        'L‘e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
       )
       return
     }
     if (!networkInfo.isConnected) {
-      setErrorMessage(t`Hors connexion\u00a0: en attente du réseau.`)
+      setErrorMessage('Hors connexion\u00a0: en attente du réseau.')
       return
     }
     setIsDoingReCaptchaChallenge(true)
@@ -98,13 +97,13 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
+    setErrorMessage('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
     captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
   }
 
   function onReCaptchaExpire() {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage(t`Le token reCAPTCHA a expiré, tu peux réessayer.`)
+    setErrorMessage('Le token reCAPTCHA a expiré, tu peux réessayer.')
   }
 
   function onReCaptchaSuccess(token: string) {
@@ -124,24 +123,25 @@ export const ForgottenPassword: FunctionComponent = () => {
         />
       )}
       <ModalHeader
-        title={t`Mot de passe oublié`}
-        leftIconAccessibilityLabel={t`Revenir en arrière`}
+        title="Mot de passe oublié"
+        leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
         onLeftIconPress={onBackNavigation}
-        rightIconAccessibilityLabel={t`Revenir à l'accueil`}
+        rightIconAccessibilityLabel="Revenir à l'accueil"
         rightIcon={Close}
         onRightIconPress={onClose}
       />
       <ModalContent>
         <CenteredText>
           <Typo.Body>
-            {t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe\u00a0!`}
+            Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton
+            mot de passe&nbsp;!
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
         <Form.MaxWidth>
           <EmailInput
-            label={t`Adresse e-mail`}
+            label="Adresse e-mail"
             email={email}
             onEmailChange={onEmailChange}
             autoFocus={true}
@@ -155,7 +155,7 @@ export const ForgottenPassword: FunctionComponent = () => {
           />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
-            wording={t`Valider`}
+            wording="Valider"
             // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
             // Cf. backend logic for token validation
             onPress={

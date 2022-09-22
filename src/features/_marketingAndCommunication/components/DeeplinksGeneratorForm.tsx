@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import omit from 'lodash/omit'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
@@ -218,8 +217,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               sliderLength={sliderLength}
               formatValues={formatPriceInEuroToDisplayPrice}
               onValuesChangeFinish={onChangePriceRange}
-              minLabel={t`Prix minimum\u00a0:`}
-              maxLabel={t`Prix maximum\u00a0:`}
+              minLabel="Prix minimum&nbsp;:"
+              maxLabel="Prix maximum&nbsp;:"
             />
           </PaddingContainer>
         )}
@@ -290,15 +289,15 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   return (
     <React.Fragment>
       <Container>
-        <TitleContainer>{t`Besoin d'un lien\u00a0?`}</TitleContainer>
+        <StyledTitle4>Besoin d‘un lien&nbsp;?</StyledTitle4>
         <Spacer.Column numberOfSpaces={6} />
-        <AccordionItem title={t`Pages`} defaultOpen>
+        <AccordionItem title="Pages" defaultOpen>
           {Object.keys(SCREENS_CONFIG).map((key) =>
             renderScreenItem(key as ScreensUsedByMarketing)
           )}
         </AccordionItem>
         {paramsCount > 0 && (
-          <AccordionItem title={t`Paramètres applicatifs` + ` (${paramsCount})`} defaultOpen>
+          <AccordionItem title={'Paramètres applicatifs' + ` (${paramsCount})`} defaultOpen>
             {Object.entries(SCREENS_CONFIG).map(([page, screenConfig]) => (
               <React.Fragment key={page}>
                 {page === selectedScreen
@@ -310,7 +309,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             ))}
           </AccordionItem>
         )}
-        <AccordionItem title={t`Paramètres marketing`} defaultOpen>
+        <AccordionItem title="Paramètres marketing" defaultOpen>
           {Object.entries(SCREENS_CONFIG).map(([page]) => (
             <React.Fragment key={page}>
               {page === selectedScreen
@@ -321,7 +320,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             </React.Fragment>
           ))}
         </AccordionItem>
-        <AccordionItem title={t`Paramètres firebase dynamic link`}>
+        <AccordionItem title="Paramètres firebase dynamic link">
           {Object.keys(SCREENS_CONFIG).map((page) => (
             <React.Fragment key={page}>
               {page === selectedScreen
@@ -336,9 +335,9 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       <BottomContainer>
         <ErrorBanner>
           <Warning />
-          {t`Seulement les "ids" disposent de validation\u00a0!`}
+          {`Seulement les "ids" disposent de validation\u00a0!`}
         </ErrorBanner>
-        <ButtonPrimary wording={t`Générer le lien`} disabled={disabled} onPress={onPress} />
+        <ButtonPrimary wording="Générer le lien" disabled={disabled} onPress={onPress} />
       </BottomContainer>
     </React.Fragment>
   )
@@ -371,7 +370,7 @@ const ErrorBanner = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.error,
 }))
 
-const TitleContainer = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
 
