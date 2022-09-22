@@ -51,6 +51,21 @@ Connect your device to the computer and run `yarn ios:testing --device` or use t
 Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
 This will also start the metro server. If not, run `yarn start` in another tab.
 
+### 😤 Troubleshooting
+
+<details>
+  <summary>env: node: No such file or directory
+
+Command PhaseScriptExecution failed with a nonzero exit code</summary>
+
+If this error pops up while trying to build with Xcode it means that Xcode can’t find Node because the sym-link to Node is not made.
+
+Run `ln -s "\$(which node)" /usr/local/bin/node`
+
+If it says “File exists”, `rm /usr/local/bin/node` and rerun the command above
+
+</details>
+
 [1]: ./setup.md
 [2]: https://bundler.io/bundle_install.html
 [3]: https://developer.apple.com/documentation/xcode/running-your-app-in-the-simulator-or-on-a-device
