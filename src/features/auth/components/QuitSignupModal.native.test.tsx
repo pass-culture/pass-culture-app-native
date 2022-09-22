@@ -19,49 +19,49 @@ describe('QuitSignupModal', () => {
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitSignupModal(false)
 
-    const title = queryByText("Veux-tu abandonner l'inscription\u00a0?")
+    const title = queryByText('Veux-tu abandonner l’inscription ?')
     expect(title).toBeFalsy()
   })
 
   it('should display the modal when visible is true', () => {
     const { queryByText } = renderQuitSignupModal(true)
 
-    const button = queryByText("Veux-tu abandonner l'inscription\u00a0?")
+    const button = queryByText('Veux-tu abandonner l’inscription ?')
     expect(button).toBeTruthy()
   })
 
-  it('should call resume function when clicking on "Continuer l\'inscription"', () => {
+  it('should call resume function when clicking on "Continuer l’inscription"', () => {
     const { getByText } = renderQuitSignupModal(true)
 
-    const resumeButton = getByText("Continuer l'inscription")
+    const resumeButton = getByText('Continuer l’inscription')
     fireEvent.press(resumeButton)
 
     expect(resumeMock).toHaveBeenCalled()
   })
 
-  it('should go back to homepage when clicking on "Abandonner l\'inscription"', () => {
+  it('should go back to homepage when clicking on "Abandonner l’inscription"', () => {
     const { getByText } = renderQuitSignupModal(true)
 
-    const abandonButton = getByText("Abandonner l'inscription")
+    const abandonButton = getByText('Abandonner l’inscription')
     fireEvent.press(abandonButton)
 
     expect(navigateToHome).toBeCalled()
   })
 
   describe('QuitSignupModal - Analytics', () => {
-    it('should log CancelSignup when clicking on "Continuer l\'inscription"', () => {
+    it('should log CancelSignup when clicking on "Continuer l’inscription"', () => {
       const { getByText } = renderQuitSignupModal(true)
 
-      const resumeButton = getByText("Continuer l'inscription")
+      const resumeButton = getByText('Continuer l’inscription')
       fireEvent.press(resumeButton)
 
       expect(analytics.logContinueSignup).toHaveBeenCalledTimes(1)
     })
 
-    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
+    it('should log CancelSignup when clicking on "Abandonner l’inscription"', () => {
       const { getByText } = renderQuitSignupModal(true)
 
-      const abandonButton = getByText("Abandonner l'inscription")
+      const abandonButton = getByText('Abandonner l’inscription')
       fireEvent.press(abandonButton)
 
       expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)

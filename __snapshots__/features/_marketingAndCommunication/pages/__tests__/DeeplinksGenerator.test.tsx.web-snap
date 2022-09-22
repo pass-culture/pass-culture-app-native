@@ -420,7 +420,7 @@ Array [
               }
             }
           >
-            Besoin d'un lien ?
+            Besoin d’un lien ?
           </h4>
           <div
             className="css-view-1dbjc4n"
@@ -1808,7 +1808,7 @@ Array [
                     }
                   }
                 >
-                  Le module d'accueil à afficher
+                  Le module d’accueil à afficher
                 </div>
               </div>
               <div
@@ -2865,7 +2865,7 @@ Array [
                     }
                   }
                 >
-                  Version minimale de l'application Android qui peut ouvrir le lien (ex: 1001005). Si l'application installée est une version plus ancienne, l'utilisateur est redirigé vers le Play Store pour mettre à niveau l'application.
+                  Version minimale de l’application Android qui peut ouvrir le lien (ex : 1001005). Si l’application installée est une version plus ancienne, l’utilisateur est redirigé vers le Play Store pour mettre à niveau l’application.
                 </div>
               </div>
               <div

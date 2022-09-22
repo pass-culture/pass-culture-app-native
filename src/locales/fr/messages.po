@@ -37,7 +37,6 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/components/QuitSignupModal.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
 msgid "Abandonner l'inscription"
@@ -98,7 +97,6 @@ msgstr "Actualiser la page"
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SignupForm.tsx
@@ -228,10 +226,6 @@ msgstr "Autre type de lieu"
 #: src/features/profile/pages/Profile.tsx
 msgid "Autres"
 msgstr "Autres"
-
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Besoin d'un lien ?"
-msgstr "Besoin d'un lien ?"
 
 #: src/libs/parsers/venueType.ts
 msgid "Bibliothèque / médiathèque"
@@ -586,10 +580,6 @@ msgstr "Contacter le support"
 msgid "Continuer"
 msgstr "Continuer"
 
-#: src/features/auth/components/QuitSignupModal.tsx
-msgid "Continuer l'inscription"
-msgstr "Continuer l'inscription"
-
 #: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Continuer la vérification"
 msgstr "Continuer la vérification"
@@ -608,14 +598,9 @@ msgstr "Continuer vers l'étape"
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
 
-#: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
 #: src/libs/share/WebShareModal.web.tsx
 msgid "Copier"
 msgstr "Copier"
-
-#: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
-msgid "Copier dans le press-papier"
-msgstr "Copier dans le press-papier"
 
 #: src/features/bookings/atoms/TicketCode.web.tsx
 msgid "Copier le code"
@@ -913,10 +898,6 @@ msgstr "Entrée pour le numéro de téléphone"
 msgid "Entrée pour le prénom"
 msgstr "Entrée pour le prénom"
 
-#: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
-msgid "Envie de tout envie de lien ?"
-msgstr "Envie de tout envie de lien ?"
-
 #: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContentDesktop.tsx
 msgid "Environ 10 jours"
 msgstr "Environ 10 jours"
@@ -1028,10 +1009,6 @@ msgstr "Gratuit"
 msgid "Générateur de lien"
 msgstr "Générateur de lien"
 
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Générer le lien"
-msgstr "Générer le lien"
-
 #: src/features/venue/components/VenueIconCaptions.tsx
 #: src/features/venue/components/VenueIconCaptions.tsx
 msgid "Géolocalisation désactivée"
@@ -1070,8 +1047,6 @@ msgstr "Horaire maximum :"
 msgid "Horaire minimum :"
 msgstr "Horaire minimum :"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
@@ -1272,7 +1247,6 @@ msgstr "L'absence des services Google Play bloquent possiblement la géolocalisa
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
@@ -1330,10 +1304,6 @@ msgstr "Le lien a été copié dans le presse-papier !"
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
-#: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
-msgid "Le lien {0} n'a pas été ajouté à l'historique: {1}"
-msgstr "Le lien {0} n'a pas été ajouté à l'historique: {1}"
-
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
 msgstr "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
@@ -1354,7 +1324,6 @@ msgstr ""
 "Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
@@ -1392,7 +1361,6 @@ msgstr "Les informations extraites sont-elles correctes ?"
 msgid "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 msgstr "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 
-#: src/features/auth/components/QuitSignupModal.tsx
 #: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Les informations que tu as renseignées ne seront pas enregistrées."
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
@@ -1611,7 +1579,6 @@ msgstr "Mot de passe"
 msgid "Mot de passe incorrect"
 msgstr "Mot de passe incorrect"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
@@ -1916,10 +1883,6 @@ msgstr "Page introuvable"
 msgid "Page introuvable !"
 msgstr "Page introuvable !"
 
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Pages"
-msgstr "Pages"
-
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Paramètre enregistré"
@@ -1928,10 +1891,6 @@ msgstr "Paramètre enregistré"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Paramètres UTM"
 msgstr "Paramètres UTM"
-
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Paramètres applicatifs"
-msgstr "Paramètres applicatifs"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
@@ -1954,14 +1913,6 @@ msgstr "Paramètres de notifications"
 #: src/features/profile/pages/Profile.tsx
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
-
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Paramètres firebase dynamic link"
-msgstr "Paramètres firebase dynamic link"
-
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Paramètres marketing"
-msgstr "Paramètres marketing"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Partage l'app"
@@ -2129,12 +2080,10 @@ msgstr "Prix"
 msgid "Prix croissant"
 msgstr "Prix croissant"
 
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 #: src/features/search/sections/Price.tsx
 msgid "Prix maximum :"
 msgstr "Prix maximum :"
 
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 #: src/features/search/sections/Price.tsx
 msgid "Prix minimum :"
 msgstr "Prix minimum :"
@@ -2332,7 +2281,6 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Revenir au ticket précédent"
 msgstr "Revenir au ticket précédent"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
@@ -2353,7 +2301,6 @@ msgstr "Revenir en arrière"
 msgid "Revenir en haut"
 msgstr "Revenir en haut"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
@@ -2477,10 +2424,6 @@ msgstr "Saisis le code reçu par SMS."
 msgid "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
 msgstr "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
-msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
-
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité."
 msgstr "Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité."
@@ -2511,10 +2454,6 @@ msgstr "Se connecter"
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Se tiendra dans le lieu"
 msgstr "Se tiendra dans le lieu"
-
-#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Seulement les \"ids\" disposent de validation !"
-msgstr "Seulement les \"ids\" disposent de validation !"
 
 #: src/features/search/sections/Location.tsx
 msgid "Seules les sorties et offres physiques seront affichées"
@@ -3064,11 +3003,6 @@ msgstr "Un grand merci"
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
-msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
-
 #: src/features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm.web.tsx
 msgid "Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
 msgstr "Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
@@ -3166,7 +3100,6 @@ msgstr "Validation téléphone - Trop de SMS envoyés"
 msgid "Valide ton numéro de téléphone"
 msgstr "Valide ton numéro de téléphone"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Valider"
 msgstr "Valider"
@@ -3200,10 +3133,6 @@ msgstr "Version"
 #: src/libs/share/WebShareModal.web.tsx
 msgid "Veuillez choisir un contact"
 msgstr "Veuillez choisir un contact"
-
-#: src/features/auth/components/QuitSignupModal.tsx
-msgid "Veux-tu abandonner l'inscription ?"
-msgstr "Veux-tu abandonner l'inscription ?"
 
 #: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Veux-tu abandonner la vérification d'identité ?"

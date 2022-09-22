@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
@@ -36,7 +35,7 @@ export const DeeplinksGenerator = () => {
           } catch (error) {
             if (error instanceof Error)
               showErrorSnackBar({
-                message: t`Le lien ${generatedDeeplink.universalLink} n'a pas été ajouté à l'historique: ${error.message}`,
+                message: `Le lien ${generatedDeeplink.universalLink} n'a pas été ajouté à l'historique: ${error.message}`,
                 timeout: SNACK_BAR_TIME_OUT,
               })
           }
@@ -51,7 +50,7 @@ export const DeeplinksGenerator = () => {
   return (
     <React.Fragment>
       <PageHeader
-        title={t`Envie de tout envie de lien\u00a0?`}
+        title="Envie de tout envie de lien&nbsp;?"
         background="primary"
         withGoBackButton
       />

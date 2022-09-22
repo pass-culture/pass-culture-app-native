@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
@@ -27,7 +26,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       } catch (error) {
         if (error instanceof Error)
           showErrorSnackBar({
-            message: `${url} n'a pas été copié dans ton press-papier: ${error.message}`,
+            message: `${url} n'a pas été copié dans ton press-papier\u00a0: ${error.message}`,
             timeout: SNACK_BAR_TIME_OUT,
           })
       }
@@ -56,7 +55,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
           <TouchableOpacity
             style={iconContainerStyle}
             onPress={() => copyToClipboard(deeplink.universalLink)}
-            accessibilityLabel={t`Copier`}
+            accessibilityLabel="Copier"
             accessible
             testID="copy-universalLink">
             <Share />
@@ -76,7 +75,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
           <TouchableOpacity
             style={iconContainerStyle}
             onPress={() => copyToClipboard(deeplink.firebaseLink)}
-            accessibilityLabel={t`Copier dans le press-papier`}
+            accessibilityLabel="Copier dans le press-papier"
             accessible
             testID="copy-firebaselink">
             <Share />
