@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 
 import { WithdrawalTypeEnum } from 'api/gen'
@@ -16,7 +15,7 @@ export function TicketCode({ code, withdrawalType }: TicketCodeProps) {
   const copyToClipboard = useCallback(() => {
     globalThis.navigator.clipboard.writeText(code)
     showSuccessSnackBar({
-      message: t`Ton code a été copié dans le presse-papier\u00a0!`,
+      message: 'Ton code a été copié dans le presse-papier\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,7 +23,7 @@ export function TicketCode({ code, withdrawalType }: TicketCodeProps) {
 
   if (withdrawalType === undefined || withdrawalType === WithdrawalTypeEnum.on_site) {
     return (
-      <TicketCodeTitle accessibilityLabel={t`Copier le code`} onPress={copyToClipboard}>
+      <TicketCodeTitle accessibilityLabel="Copier le code" onPress={copyToClipboard}>
         {code}
       </TicketCodeTitle>
     )

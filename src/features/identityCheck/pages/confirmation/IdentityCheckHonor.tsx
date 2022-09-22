@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { useQueryClient } from 'react-query'
@@ -58,16 +57,14 @@ export const IdentityCheckHonor = () => {
 
   return (
     <PageWithHeader
-      title={t`Confirmation`}
+      title="Confirmation"
       fixedTopChildren={
         <Container>
-          <CenteredTitle
-            title={t`Les informations que tu as renseignées sont-elles correctes\u00a0?`}
-          />
+          <CenteredTitle title="Les informations que tu as renseignées sont-elles correctes&nbsp;?" />
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={10} />}
           <Declaration
-            text={t`Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.`}
-            description={t`Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.`}
+            text="Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
+            description="Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées."
           />
           {theme.isMobileViewport ? (
             <Spacer.Flex flex={2} />
@@ -78,7 +75,7 @@ export const IdentityCheckHonor = () => {
             <ButtonPrimary
               type="submit"
               onPress={postHonorStatement}
-              wording={t`Valider et continuer`}
+              wording="Valider et continuer"
               isLoading={isPostingHonorStatement || isUserProfileLoading}
             />
           </ButtonContainer>

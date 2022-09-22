@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -11,7 +10,7 @@ type Props = {
 
 export const Ean: FunctionComponent<Props> = ({ isbn }) => (
   <EANContainer testID="ean">
-    <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
+    <Typo.Caption>EAN&nbsp;</Typo.Caption>
     <GreyDarkCaption>{isbn}</GreyDarkCaption>
   </EANContainer>
 )

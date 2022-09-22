@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 
@@ -43,38 +42,41 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         onLeftIconPress: undefined,
       }
     : {
-        leftIconAccessibilityLabel: t`Revenir en arrière`,
+        leftIconAccessibilityLabel: 'Revenir en arrière',
         leftIcon: ArrowPrevious,
         onLeftIconPress: goBack,
       }
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`Confirme ton e-mail`}
-        rightIconAccessibilityLabel={t`Abandonner l'inscription`}
+        title="Confirme ton e-mail"
+        rightIconAccessibilityLabel="Abandonner l’inscription"
         rightIcon={Close}
         onRightIconPress={onClose}
         {...leftIconProps}
       />
       <EmailSentModalContent>
         <Description>
-          <Typo.Body>{t`Clique sur le lien reçu à l'adresse\u00a0:`}</Typo.Body>
+          <Typo.Body>Clique sur le lien reçu à l’adresse&nbsp;:</Typo.Body>
           <CenteredText>
             <Typo.Body>{route.params.email}</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {t`Nous devons vérifier tes informations\u00a0: l'email peut prendre quelques minutes pour arriver.`}
+              Nous devons vérifier tes informations&nbsp;: l’email peut prendre quelques minutes
+              pour arriver.
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
-            <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
+            <Typo.Body>
+              Si tu rencontres des difficultés, tu peux consulter notre centre d’aide.
+            </Typo.Body>
           </CenteredText>
           <TouchableLink
             as={ButtonTertiaryPrimary}
-            wording={t`Consulter notre centre d'aide`}
+            wording="Consulter notre centre d’aide"
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
             onPress={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}
             icon={ExternalSite}

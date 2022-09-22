@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
@@ -25,28 +24,29 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`E-mail de réinitialisation de mot de passe envoyé\u00a0!`}
-        leftIconAccessibilityLabel={t`Revenir en arrière`}
+        title="E-mail de réinitialisation de mot de passe envoyé&nbsp;!"
+        leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
-        rightIconAccessibilityLabel={t`Revenir à l'accueil`}
+        rightIconAccessibilityLabel="Revenir à l’accueil"
         rightIcon={Close}
         onRightIconPress={navigateToHome}
       />
       <ModalContent>
         <Description>
-          <Typo.Body>{t`Clique sur le lien reçu à l’adresse\u00a0:`}</Typo.Body>
+          <Typo.Body>Clique sur le lien reçu à l’adresse&nbsp;:</Typo.Body>
           <Typo.Body>{route.params.email}</Typo.Body>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {t`L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams\u00a0!\n Si l’e-mail n’arrive pas, tu peux\u00a0: `}
+              L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams&nbsp;!
             </Typo.Body>
+            <Typo.Body>Si l’e-mail n’arrive pas, tu peux&nbsp;:</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <TouchableLink
             as={ButtonTertiaryPrimary}
-            wording={t`Consulter l'article d'aide`}
+            wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED }}
             icon={ExternalSite}
           />

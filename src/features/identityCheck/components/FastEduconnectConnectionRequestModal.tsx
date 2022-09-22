@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -50,27 +49,28 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
   return (
     <AppModal
-      title={t`Identifie-toi en 2 minutes`}
+      title="Identifie-toi en 2 minutes"
       visible={visible}
-      rightIconAccessibilityLabel={t`Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées`}
+      rightIconAccessibilityLabel="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
       rightIcon={Close}
       onRightIconPress={onModalRightIconPress}>
-      <MainContent>
-        {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
-      </MainContent>
+      <StyledBody>
+        Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si
+        tu n’as pas d’identifiants ÉduConnect rapproche toi de ton établissement.
+      </StyledBody>
 
       <TouchableLink
         as={ButtonQuaternaryBlack}
         externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
         icon={InfoPlain}
-        wording={t`C’est quoi ÉduConnect\u00a0?`}
+        wording="C’est quoi ÉduConnect&nbsp;?"
       />
 
       <Spacer.Column numberOfSpaces={4} />
 
       <TouchableLink
         as={ButtonPrimary}
-        wording={t`Identification avec ÉduConnect`}
+        wording="Identification avec ÉduConnect"
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
         onPress={onPressEduConnect}
       />
@@ -80,7 +80,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       <TouchableLink
         as={ButtonTertiaryBlack}
         icon={EditPen}
-        wording={t`Identification manuelle`}
+        wording="Identification manuelle"
         navigateTo={
           settings?.enableNewIdentificationFlow
             ? { screen: 'SelectIDOrigin' }
@@ -93,7 +93,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
   )
 }
 
-const MainContent = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

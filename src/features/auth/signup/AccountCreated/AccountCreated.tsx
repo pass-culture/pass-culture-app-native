@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
@@ -34,13 +33,13 @@ export function AccountCreated() {
 
   return (
     <GenericInfoPage
-      title={t`Ton compte a été activé\u00a0!`}
+      title="Ton compte a été activé&nbsp;!"
       animation={IlluminatedSmileyAnimation}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`On y va\u00a0!`}
+          wording="On y va&nbsp;!"
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
@@ -49,7 +48,8 @@ export function AccountCreated() {
       ]}>
       {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
-          {t`Aide-nous à en savoir plus sur tes pratiques culturelles\u00a0! Ta sélection n'aura pas d'impact sur les offres proposées.`}
+          Aide-nous à en savoir plus sur tes pratiques culturelles&nbsp;! Ta sélection n’aura pas
+          d’impact sur les offres proposées.
         </StyledBody>
       )}
     </GenericInfoPage>

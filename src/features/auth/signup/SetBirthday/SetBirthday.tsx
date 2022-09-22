@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -44,8 +43,8 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
       <InnerContainer>
         <ButtonTertiaryPrimary
           icon={InfoPlain}
-          wording={t`Pour quelle raison\u00a0?`}
-          accessibilityLabel={t`Pour quelle raison me demande-t-on ma date de naissance\u00a0?`}
+          wording="Pour quelle raison&nbsp;?"
+          accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance&nbsp;?"
           onPress={onPressWhy}
         />
         <Spacer.Column numberOfSpaces={2} />
@@ -59,7 +58,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
           testID="date-picker-submit-button"
-          wording={t`Continuer`}
+          wording="Continuer"
           accessibilityLabel={props.accessibilityLabelForNextStep}
           disabled={isDisabled}
           onPress={goToNextStep}

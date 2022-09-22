@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
@@ -53,7 +52,7 @@ export const ReinitializePassword = () => {
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
     showSuccessSnackBar({
-      message: t`Ton mot de passe est modifié\u00a0!`,
+      message: 'Ton mot de passe est modifié\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
     analytics.logHasChangedPassword('resetPassword')
@@ -75,8 +74,8 @@ export const ReinitializePassword = () => {
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`Ton mot de passe`}
-        rightIconAccessibilityLabel={t`Revenir à l'accueil`}
+        title="Ton mot de passe"
+        rightIconAccessibilityLabel="Revenir à l’accueil"
         rightIcon={Close}
         onRightIconPress={navigateToHome}
       />
@@ -84,22 +83,22 @@ export const ReinitializePassword = () => {
         <Spacer.Column numberOfSpaces={6} />
         <Form.MaxWidth>
           <PasswordInput
-            label={t`Nouveau mot de passe`}
+            label="Nouveau mot de passe"
             accessibilityDescribedBy={passwordDescribedBy}
             value={password}
             autoFocus
             onChangeText={setPassword}
-            placeholder={t`Ton mot de passe`}
+            placeholder="Ton mot de passe"
             onSubmitEditing={submitPassword}
             isRequiredField
           />
           <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
           <Spacer.Column numberOfSpaces={6} />
           <PasswordInput
-            label={t`Confirmer le mot de passe`}
+            label="Confirmer le mot de passe"
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
-            placeholder={t`Confirmer le mot de passe`}
+            placeholder="Confirmer le mot de passe"
             onSubmitEditing={submitPassword}
             isRequiredField
             accessibilityDescribedBy={passwordErrorId}
@@ -107,13 +106,13 @@ export const ReinitializePassword = () => {
           <Spacer.Column numberOfSpaces={2} />
           <InputError
             visible={displayNotMatchingError}
-            messageId={t`Les mots de passe ne concordent pas`}
+            messageId="Les mots de passe ne concordent pas"
             numberOfSpacesTop={0}
             relatedInputId={passwordErrorId}
           />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
-            wording={t`Continuer`}
+            wording="Continuer"
             onPress={submitPassword}
             disabled={!allowSubmission || isLoading}
             isLoading={isLoading}

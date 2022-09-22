@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -28,13 +27,13 @@ export function IdentityCheckUnavailable() {
   }
   return (
     <GenericInfoPage
-      title={t`Victime de notre succès\u00a0!`}
+      title="Victime de notre succès&nbsp;!"
       icon={HappyFace}
       buttons={[
         !!params?.withDMS && (
           <ButtonPrimaryWhite
             key={1}
-            wording={t`Transmettre un dossier`}
+            wording="Transmettre un dossier"
             onPress={showDMSModal}
             icon={ExternalSite}
           />
@@ -42,18 +41,23 @@ export function IdentityCheckUnavailable() {
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
           icon={PlainArrowPrevious}
         />,
       ].filter(Boolean)}>
-      <StyledBody>{t`Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.`}</StyledBody>
+      <StyledBody>
+        Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre
+        quelques difficultés.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>{t`Nous reviendrons vers toi dès que le service sera rétabli.`}</StyledBody>
+      <StyledBody>Nous reviendrons vers toi dès que le service sera rétabli.</StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       {!!params?.withDMS && (
-        <StyledBody>{t`Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.
-Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
+        <StyledBody>
+          Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées. Nous
+          reviendrons vers toi d’ici quelques jours.
+        </StyledBody>
       )}
       <DMSModal visible={visible} hideModal={hideModal} />
     </GenericInfoPage>

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
@@ -31,19 +30,21 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
+  const title = 'Réservation introuvable | pass Culture'
+
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Réservation introuvable | pass Culture`}</title>
+        <title>{title}</title>
       </Helmet>
       <GenericInfoPage
-        title={t`Réservation introuvable\u00a0!`}
+        title="Réservation introuvable&nbsp;!"
         icon={NoBookings}
         buttons={[
           <TouchableLink
             key={1}
             as={ButtonPrimaryWhite}
-            wording={t`Mes réservations terminées`}
+            wording="Mes réservations terminées"
             navigateTo={{ screen: 'EndedBookings' }}
             onPress={onPress}
             navigateBeforeOnPress
@@ -51,11 +52,14 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
           <TouchableLink
             key={2}
             as={ButtonTertiaryWhite}
-            wording={t`Retourner à l'accueil`}
+            wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
           />,
         ]}>
-        <StyledBody>{t`Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`}</StyledBody>
+        <StyledBody>
+          Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite
+          pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer.
+        </StyledBody>
       </GenericInfoPage>
     </React.Fragment>
   )

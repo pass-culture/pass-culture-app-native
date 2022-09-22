@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -15,13 +14,14 @@ export const AccountReactivationSuccess = () => (
     mobileBottomFlex={0.1}
     animation={QpiThanks}
     titleComponent={Typo.Title1}
-    title={t`Ton compte a été réactivé`}>
-    <TextContent>{t`On est ravi de te revoir\u00a0!\n Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.`}</TextContent>
+    title="Ton compte a été réactivé">
+    <StyledBody>On est ravi de te revoir&nbsp;!</StyledBody>
+    <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>
     <Spacer.Flex flex={2} />
     <ButtonContainer>
       <TouchableLink
         as={ButtonPrimary}
-        wording={t`Découvrir le catalogue`}
+        wording="Découvrir le catalogue"
         navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
       />
     </ButtonContainer>
@@ -32,6 +32,6 @@ const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })
 
-const TextContent = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

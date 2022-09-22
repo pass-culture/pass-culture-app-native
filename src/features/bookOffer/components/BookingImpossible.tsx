@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
@@ -35,7 +34,7 @@ export const BookingImpossible: React.FC = () => {
     },
     onError: () => {
       showErrorSnackBar({
-        message: t`L'offre n'a pas été ajoutée à tes favoris`,
+        message: 'L’offre n’a pas été ajoutée à tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -61,26 +60,28 @@ export const BookingImpossible: React.FC = () => {
       <GreySadFace />
       <Spacer.Column numberOfSpaces={6} />
 
-      <Content>
-        {t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`}
-      </Content>
+      <StyledBody>
+        Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver
+        cette offre sur l’application.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
 
       {favorite ? (
         <React.Fragment>
-          <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver`}</Content>
+          <StyledBody>Rends-toi vite sur le site pass Culture afin de la réserver</StyledBody>
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary wording={t`Voir le détail de l'offre`} onPress={navigateToOffer} />
+          <ButtonPrimary wording="Voir le détail de l’offre" onPress={navigateToOffer} />
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <Content>
-            {t`Mets cette offre en favoris\u00a0: tu recevras une notification avec un lien pour la réserver sur notre application web\u00a0!`}
-          </Content>
+          <StyledBody>
+            Mets cette offre en favoris&nbsp;: tu recevras une notification avec un lien pour la
+            réserver sur notre application web&nbsp;!
+          </StyledBody>
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary wording={t`Mettre en favoris`} onPress={addToFavourite} />
+          <ButtonPrimary wording="Mettre en favoris" onPress={addToFavourite} />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryPrimary wording={t`Retourner à l'offre`} onPress={dismissModal} />
+          <ButtonTertiaryPrimary wording="Retourner à l'offre" onPress={dismissModal} />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />
@@ -99,4 +100,4 @@ const Container = styled.View({
   alignContent: 'center',
   alignItems: 'center',
 })
-const Content = styled(Typo.Body)({ textAlign: 'center', paddingHorizontal: getSpacing(6) })
+const StyledBody = styled(Typo.Body)({ textAlign: 'center', paddingHorizontal: getSpacing(6) })

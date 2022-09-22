@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -10,6 +9,7 @@ import { Flash } from 'ui/svg/icons/Flash'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 interface Props {
   visible: boolean
   hideModal: () => void
@@ -23,23 +23,23 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
 }) => (
   <AppModal
     visible={visible}
-    title={t`Quelques conseils`}
-    rightIconAccessibilityLabel={t`Fermer la modale de conseils pour avoir un document lisible`}
+    title="Quelques conseils"
+    rightIconAccessibilityLabel="Fermer la modale de conseils pour avoir un document lisible"
     rightIcon={Close}
     onRightIconPress={hideModal}>
     <Description>
       <Typo.Body>
-        {t`Il est important que les informations de ton document soient parfaitement lisibles.`}
-        {'\n'}
-        {t`Nos conseils\u00a0:`}
+        Il est important que les informations de ton document soient parfaitement lisibles.
       </Typo.Body>
+      {LINE_BREAK}
+      <Typo.Body>Nos conseils&nbsp;:</Typo.Body>
     </Description>
     <Instructions>
-      <Instruction title={t`Désactive ton flash`} Icon={Flash} />
-      <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
-      <Instruction title={t`Cadre l’intégralité de ton document`} Icon={BicolorIdCard} />
+      <Instruction title="Désactive ton flash" Icon={Flash} />
+      <Instruction title="Place-toi dans un lieu bien éclairé" Icon={Sun} />
+      <Instruction title="Cadre l’intégralité de ton document" Icon={BicolorIdCard} />
     </Instructions>
-    <ButtonPrimary wording={t`J'ai compris`} onPress={onPressContinue} />
+    <ButtonPrimary wording="J’ai compris" onPress={onPressContinue} />
   </AppModal>
 )
 

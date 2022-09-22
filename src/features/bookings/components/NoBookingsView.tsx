@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -22,24 +21,24 @@ export function NoBookingsView() {
       {!netInfo.isConnected ? (
         <React.Fragment>
           <StyledNoBookings />
-          <Explanation offline>{t`Aucune réservations en cours.`}</Explanation>
-          <Explanation offline>
-            {t`Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.`}
-          </Explanation>
+          <StyledBody offline>Aucune réservations en cours.</StyledBody>
+          <StyledBody offline>
+            Il est possible que certaines réservations ne s’affichent pas hors connexion.
+            Connecte-toi à internet pour vérifier.
+          </StyledBody>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <StyledNoBookings />
-          <Explanation>
-            {t`Tu n’as pas de réservations en cours.
-      Découvre les offres disponibles
-      sans attendre\u00a0!`}
-          </Explanation>
+          <StyledBody>
+            Tu n’as pas de réservations en cours. Découvre les offres disponibles sans
+            attendre&nbsp;!
+          </StyledBody>
           <ButtonContainer>
             <TouchableLink
               as={ButtonPrimary}
               navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
-              wording={t`Explorer les offres`}
+              wording="Explorer les offres"
               onPress={onPressExploreOffers}
               buttonHeight="tall"
             />
@@ -65,7 +64,7 @@ const Container = styled.View({
 
 const ButtonContainer = styled.View``
 
-const Explanation = styled(Typo.Body)<{ offline?: boolean }>(({ theme, offline }) => ({
+const StyledBody = styled(Typo.Body)<{ offline?: boolean }>(({ theme, offline }) => ({
   paddingHorizontal: getSpacing(offline ? 8 : 4),
   paddingVertical: getSpacing(4),
   maxWidth: theme.contentPage.maxWidth,

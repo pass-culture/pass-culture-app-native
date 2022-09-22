@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
@@ -105,7 +104,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           navigateToHome()
         }
       } catch {
-        setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard`)
+        setErrorMessage('Il y a eu un problème. Tu peux réessayer plus tard')
       }
     },
     [
@@ -123,16 +122,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       if (failureCode === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
-        setEmailErrorMessage(t`Cette adresse e-mail est liée à un compte supprimé`)
+        setEmailErrorMessage('Cette adresse e-mail est liée à un compte supprimé')
       } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
         setIsLoading(false)
-        setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie`)
+        setErrorMessage('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
         setIsLoading(false)
-        setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute`)
+        setErrorMessage('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       } else {
         setIsLoading(false)
-        setErrorMessage(t`E-mail ou mot de passe incorrect`)
+        setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
     [email, navigate, setEmailErrorMessage, setErrorMessage, setIsLoading]
@@ -143,7 +142,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     setErrorMessage(null)
     if (!isEmailValid(email)) {
       setEmailErrorMessage(
-        t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
+        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
       )
     } else {
       const signinResponse = await signIn({ identifier: email, password })
@@ -186,15 +185,15 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         onRightIconPress: undefined,
       }
     : {
-        rightIconAccessibilityLabel: t`Revenir à l'accueil`,
+        rightIconAccessibilityLabel: 'Revenir à l’accueil',
         rightIcon: Close,
         onRightIconPress: onClose,
       }
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`Connecte-toi\u00a0!`}
-        leftIconAccessibilityLabel={t`Revenir en arrière`}
+        title="Connecte-toi&nbsp;!"
+        leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
         {...rightIconProps}
@@ -208,7 +207,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
         <Spacer.Column numberOfSpaces={7} />
         <EmailInput
-          label={t`Adresse e-mail`}
+          label="Adresse e-mail"
           email={email}
           onEmailChange={onEmailChange}
           isError={!!emailErrorMessage || !!errorMessage}
@@ -224,10 +223,10 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
         <Spacer.Column numberOfSpaces={6} />
         <PasswordInput
-          label={t`Mot de passe`}
+          label="Mot de passe"
           value={password}
           onChangeText={setPassword}
-          placeholder={t`Ton mot de passe`}
+          placeholder="Ton mot de passe"
           isError={!!errorMessage}
           textContentType="password"
           onSubmitEditing={onSubmit}
@@ -236,7 +235,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         <Spacer.Column numberOfSpaces={7} />
         <ButtonContainer>
           <ButtonTertiaryBlack
-            wording={t`Mot de passe oublié\u00a0?`}
+            wording="Mot de passe oublié&nbsp;?"
             onPress={onForgottenPasswordClick}
             icon={Key}
             inline
@@ -245,7 +244,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
-          wording={t`Se connecter`}
+          wording="Se connecter"
           onPress={onSubmit}
           disabled={shouldDisableLoginButton}
         />

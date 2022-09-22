@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
@@ -24,26 +23,31 @@ export const IdentityCheckEduConnectForm = () => {
   return (
     <ErrorBoundary FallbackComponent={EduConnectErrorBoundary}>
       <PageWithHeader
-        title={t`Mon identité`}
+        title="Mon identité"
         scrollChildren={
           <React.Fragment>
             <Center>
               <StyledBicolorIdCardWithMagnifyingGlass />
             </Center>
 
-            <JustifiedHeader>{t`Identification`}</JustifiedHeader>
+            <StyledButtonText>Identification</StyledButtonText>
+
             <Spacer.Column numberOfSpaces={4} />
 
-            <JustifiedText>
-              {t`Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect\u00a0! Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
-            </JustifiedText>
+            <StyledBody>
+              Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de
+              ton identifiant et ton mot de passe EduConnect&nbsp;! Si tu ne les as pas, contacte
+              ton établissement pour les récupérer.
+            </StyledBody>
+
             <Spacer.Column numberOfSpaces={4} />
+
             <HavingTroubleContainer>
               <Info />
               <Spacer.Row numberOfSpaces={2} />
-
               <GreyDarkCaption>
-                {t`Un souci pour accéder à la page\u00a0? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.`}
+                Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à
+                accepter les pop-ups de ton navigateur.
               </GreyDarkCaption>
             </HavingTroubleContainer>
 
@@ -52,7 +56,7 @@ export const IdentityCheckEduConnectForm = () => {
         }
         fixedBottomChildren={
           <ButtonPrimary
-            wording={t`Ouvrir un onglet ÉduConnect`}
+            wording="Ouvrir un onglet ÉduConnect"
             onPress={openEduConnect}
             icon={ExternalSite}
           />
@@ -74,12 +78,12 @@ const Center = styled.View({
   padding: getSpacing(7),
 })
 
-const JustifiedText = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
 
-const JustifiedHeader = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

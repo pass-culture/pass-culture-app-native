@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { parse, format } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -26,21 +25,21 @@ export function IdentityCheckValidation() {
 
   return (
     <PageWithHeader
-      title={t`Mon identité`}
+      title="Mon identité"
       fixedTopChildren={
-        <CenteredTitle title={t`Les informations extraites sont-elles correctes\u00a0?`} />
+        <CenteredTitle title="Les informations extraites sont-elles correctes&nbsp;?" />
       }
       scrollChildren={
         <BodyContainer>
-          <Body>{t`Ton prénom`}</Body>
+          <StyledBody>Ton prénom</StyledBody>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-first-name">{identification.firstName}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <Body>{t`Ton nom de famille`}</Body>
+          <StyledBody>Ton nom de famille</StyledBody>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-name">{identification.lastName}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <Body>{t`Ta date de naissance`}</Body>
+          <StyledBody>Ta date de naissance</StyledBody>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-birth-date">{birthDate}</Typo.Title3>
         </BodyContainer>
@@ -48,7 +47,7 @@ export function IdentityCheckValidation() {
       fixedBottomChildren={
         <ButtonPrimary
           type="submit"
-          wording={t`Valider mes informations`}
+          wording="Valider mes informations"
           onPress={navigateToNextEduConnectStep}
         />
       }
@@ -56,7 +55,7 @@ export function IdentityCheckValidation() {
   )
 }
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
