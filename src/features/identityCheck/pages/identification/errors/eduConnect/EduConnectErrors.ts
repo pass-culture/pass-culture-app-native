@@ -17,6 +17,8 @@ export const EduConnectErrors = withEduConnectErrorBoundary(() => {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid)
   } else if (params?.code === 'UserTypeNotStudent') {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent)
+  } else if (params?.code === 'DuplicateUser') {
+    throw new EduConnectError(EduConnectErrorMessageEnum.DuplicateUser)
   } else {
     throw new Error(EduConnectErrorMessageEnum.UnknownErrorCode)
   }

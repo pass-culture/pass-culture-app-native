@@ -11,6 +11,7 @@ import { UserError } from 'ui/svg/icons/UserError'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export enum EduConnectErrorMessageEnum {
+  DuplicateUser = 'DuplicateUser',
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
   UserAgeNotValid = 'UserAgeNotValid',
   UserTypeNotStudent = 'UserTypeNotStudent',
