@@ -104,7 +104,7 @@ module.exports = {
       },
 
       // For <Text>textToTranslate !</Text> with characters !, ?, :, » and €
-      'JSXText[value=/\\s+[!?:»€]/]': (node) => {
+      'JSXText[raw=/\\s+[!?:»€]/]': (node) => {
         context.report({
           node,
           message:
@@ -118,7 +118,7 @@ module.exports = {
       },
 
       // For <Text>« textToTranslate</Text>
-      'JSXText[value=/«\\s+/]': (node) => {
+      'JSXText[raw=/«\\s+/]': (node) => {
         context.report({
           node,
           message: 'Please use &nbsp; (non-breaking space) instead of whitespace after «',
