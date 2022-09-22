@@ -5,6 +5,7 @@ import { TextStyle } from 'react-native'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
 import { UserError } from 'ui/svg/icons/UserError'
@@ -83,6 +84,18 @@ const GenericErrorData: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
 }
 
+const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
+  Illustration: UserError,
+  title: 'As-tu déja un compte\u00a0?',
+  description:
+    "Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n'as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d'informations.",
+  descriptionAlignment: 'center',
+
+  primaryButtonText: 'Contacter le support',
+  primaryButtonIcon: Email,
+  isGoHomeTertiaryButtonVisible: true,
+}
+
 export function useNotEligibleEduConnectErrorData(
   message: EduConnectErrorMessageEnum | string,
   setError: (error: Error | undefined) => void
@@ -103,6 +116,9 @@ export function useNotEligibleEduConnectErrorData(
         },
         { screen: 'IdentityCheckEduConnectForm' }
       )
+
+    case EduConnectErrorMessageEnum.DuplicateUser:
+      return DuplicatedUserErrorData
 
     default:
       return GenericErrorData
