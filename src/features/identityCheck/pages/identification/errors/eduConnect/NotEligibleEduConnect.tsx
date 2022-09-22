@@ -21,12 +21,11 @@ export const NotEligibleEduConnect = ({
 }: ScreenErrorProps) => {
   const timer = useRef<number>()
   const [error, setError] = useState<Error | undefined>()
-
   const {
     title,
     description,
     descriptionAlignment,
-    Icon,
+    Illustration,
     primaryButtonText,
     isGoHomeTertiaryButtonVisible = false,
     onPrimaryButtonPress,
@@ -70,7 +69,7 @@ export const NotEligibleEduConnect = ({
   return (
     <GenericInfoPage
       title={title}
-      icon={Icon}
+      icon={Illustration}
       buttons={[
         <TouchableLink
           key={1}

@@ -20,7 +20,7 @@ export enum EduConnectErrorMessageEnum {
 }
 
 type NotEligibleEduConnectErrorData = {
-  Icon: FunctionComponent<IconInterface>
+  Illustration: FunctionComponent<IconInterface>
   title: string
   description: string
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
@@ -32,7 +32,7 @@ type NotEligibleEduConnectErrorData = {
 }
 
 const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
-  Icon: UserError,
+  Illustration: UserError,
   title: 'Oh non\u00a0!',
   description:
     'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide du Gouvernement.' +
@@ -45,7 +45,7 @@ const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
 const getInvalidInformationErrorData = (
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
-  Icon: UserError,
+  Illustration: UserError,
   title: 'Oh non\u00a0!',
   description:
     'Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.' +
@@ -61,7 +61,7 @@ const getUserTypeNotStudentErrorData = (
   onPrimaryButtonPress: () => void,
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
-  Icon: UserError,
+  Illustration: UserError,
   title: 'Qui est-ce\u00a0?',
   description:
     'Les informations provenant d’ÉduConnect indiquent que vous êtes le représentant légal d’un jeune scolarisé.' +
@@ -75,9 +75,9 @@ const getUserTypeNotStudentErrorData = (
 })
 
 const GenericErrorData: NotEligibleEduConnectErrorData = {
-  Icon: MaintenanceCone,
+  Illustration: MaintenanceCone,
   title: 'Oups\u00a0!',
-  description: 'Une erreur s’est produite pendant le chargement',
+  description: "Une erreur s'est produite pendant le chargement",
   titleAlignment: 'center',
   descriptionAlignment: 'center',
 }
