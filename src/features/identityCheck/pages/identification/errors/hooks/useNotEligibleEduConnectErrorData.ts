@@ -26,6 +26,7 @@ type NotEligibleEduConnectErrorData = {
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   descriptionAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   primaryButtonText?: string
+  primaryButtonIcon?: FunctionComponent<IconInterface>
   isGoHomeTertiaryButtonVisible?: boolean
   onPrimaryButtonPress?: () => void
   navigateTo?: TouchableLinkProps['navigateTo']

@@ -27,8 +27,9 @@ export const NotEligibleEduConnect = ({
     descriptionAlignment,
     Illustration,
     primaryButtonText,
-    isGoHomeTertiaryButtonVisible = false,
     onPrimaryButtonPress,
+    primaryButtonIcon,
+    isGoHomeTertiaryButtonVisible = false,
     navigateTo,
   } = useNotEligibleEduConnectErrorData(message, setError)
 
@@ -77,6 +78,7 @@ export const NotEligibleEduConnect = ({
           wording={primaryButtonText ?? "Retourner à l'accueil"}
           navigateTo={navigateTo ?? navigateToHomeConfig}
           onPress={onPrimaryButtonPress}
+          icon={primaryButtonIcon}
         />,
         !!isGoHomeTertiaryButtonVisible && goBackToHomeTertiaryButton,
       ].filter(Boolean)}>
