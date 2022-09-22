@@ -1,9 +1,11 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
+import { theme } from 'theme'
 
 import { SearchResults } from '../SearchResults'
 
@@ -115,6 +117,22 @@ describe('SearchResults component', () => {
     expect(queryByTestId('categoryButton')).toBeTruthy()
   })
 
+  it('should display an icon and change color in category button when category selected', () => {
+    useRoute.mockReturnValueOnce({
+      params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
+    })
+    const { getByTestId } = render(<SearchResults />)
+
+    const categoryButtonIcon = getByTestId('categoryButtonIcon')
+    expect(categoryButtonIcon).toBeTruthy()
+
+    const categoryButton = getByTestId('categoryButton')
+    expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
+
+    const categoryButtonLabel = getByTestId('categoryButtonLabel')
+    expect(categoryButtonLabel).toHaveStyle({ color: theme.colors.primary })
+  })
+
   it('should display price filter button', () => {
     const { queryByTestId } = render(<SearchResults />)
 
@@ -130,6 +148,22 @@ describe('SearchResults component', () => {
     const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 
     expect(fullscreenModalScrollView).toBeTruthy()
+  })
+
+  it('should display an icon and change color in prices filter button when prices filter selected', () => {
+    useRoute.mockReturnValueOnce({
+      params: { minPrice: '5' },
+    })
+    const { getByTestId } = render(<SearchResults />)
+
+    const priceButtonIcon = getByTestId('priceButtonIcon')
+    expect(priceButtonIcon).toBeTruthy()
+
+    const priceButton = getByTestId('priceButton')
+    expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
+
+    const priceButtonLabel = getByTestId('priceButtonLabel')
+    expect(priceButtonLabel).toHaveStyle({ color: theme.colors.primary })
   })
 
   describe('When feature flag filter activated', () => {

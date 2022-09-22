@@ -18,12 +18,10 @@ import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
-import { getPriceLabel } from 'features/search/utils/getPriceLabel'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { SearchHit } from 'libs/search'
-import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
@@ -65,8 +63,6 @@ export const SearchResults: React.FC = () => {
   const { label: locationLabel } = useLocationChoice(section)
   const offerCategories = params?.offerCategories ?? []
   const categoryIsSelected = offerCategories.length > 0
-  const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  const categoryLabel = searchGroupLabelMapping[offerCategories[0]] ?? 'Catégories'
   const {
     visible: categoriesModalVisible,
     showModal: showCategoriesModal,
@@ -82,7 +78,6 @@ export const SearchResults: React.FC = () => {
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
   const priceIsEntered = minPrice !== undefined || maxPrice !== undefined
-  const priceLabel = getPriceLabel(minPrice, maxPrice)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -200,7 +195,7 @@ export const SearchResults: React.FC = () => {
             <Spacer.Row numberOfSpaces={2} />
             <ButtonContainer>
               <SingleFilterButton
-                label={categoryLabel}
+                label="Catégories"
                 testID="categoryButton"
                 onPress={showCategoriesModal}
                 Icon={categoryIsSelected ? Check : undefined}
@@ -211,7 +206,7 @@ export const SearchResults: React.FC = () => {
               <Spacer.Row numberOfSpaces={2} />
               <ButtonContainer>
                 <SingleFilterButton
-                  label={priceLabel.replaceAll('.', ',')}
+                  label="Prix"
                   testID="priceButton"
                   onPress={showSearchPriceModal}
                   Icon={priceIsEntered ? Check : undefined}

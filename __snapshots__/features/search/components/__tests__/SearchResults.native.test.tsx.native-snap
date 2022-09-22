@@ -71,10 +71,11 @@ Array [
           >
             <View
               height={16}
+              testID="locationButtonIcon"
               width={16}
             >
               <Text>
-                undefined-SVG-Mock
+                locationButtonIcon-SVG-Mock
               </Text>
             </View>
             <Text
@@ -94,6 +95,7 @@ Array [
                   },
                 ]
               }
+              testID="locationButtonLabel"
             >
               Partout
             </Text>
@@ -166,6 +168,7 @@ Array [
                   },
                 ]
               }
+              testID="categoryButtonLabel"
             >
               Catégories
             </Text>
@@ -238,6 +241,7 @@ Array [
                   },
                 ]
               }
+              testID="priceButtonLabel"
             >
               Prix
             </Text>

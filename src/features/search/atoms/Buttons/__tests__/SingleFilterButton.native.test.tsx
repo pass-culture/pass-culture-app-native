@@ -17,4 +17,37 @@ describe('SingleFilterButton', () => {
     )
     expect(singleFilterButton).toMatchSnapshot()
   })
+
+  it('should display an icon when specified', () => {
+    const { getByTestId } = render(
+      <SingleFilterButton label="CD, vinyles, musique en ligne" Icon={Check} onPress={jest.fn()} />
+    )
+
+    expect(getByTestId('filterButtonIcon')).toBeTruthy()
+  })
+
+  it('should use the color in the label when specified', () => {
+    const { getByTestId } = render(
+      <SingleFilterButton
+        label="CD, vinyles, musique en ligne"
+        color={theme.colors.primary}
+        onPress={jest.fn()}
+      />
+    )
+
+    expect(getByTestId('filterButtonLabel')).toHaveStyle({ color: theme.colors.primary })
+  })
+
+  it('should use the color in the border of the button when specified', () => {
+    const { getByTestId } = render(
+      <SingleFilterButton
+        label="CD, vinyles, musique en ligne"
+        color={theme.colors.primary}
+        onPress={jest.fn()}
+        testID="filterButton"
+      />
+    )
+
+    expect(getByTestId('filterButton')).toHaveStyle({ borderColor: theme.colors.primary })
+  })
 })

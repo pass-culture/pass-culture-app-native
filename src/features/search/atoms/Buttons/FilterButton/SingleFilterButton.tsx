@@ -35,10 +35,15 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
     }))({})
   }
 
+  const filterButtonIcon = testID ? `${testID}Icon` : 'filterButtonIcon'
+  const filterButtonLabel = testID ? `${testID}Label` : 'filterButtonLabel'
+
   return (
     <TouchableContainer color={color} onPress={onPress} testID={testID}>
-      {!!StyledIcon && <StyledIcon />}
-      <Label color={color}>{label}</Label>
+      {!!StyledIcon && <StyledIcon testID={filterButtonIcon} />}
+      <Label color={color} testID={filterButtonLabel}>
+        {label}
+      </Label>
     </TouchableContainer>
   )
 }
