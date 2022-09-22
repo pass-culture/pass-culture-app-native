@@ -69,6 +69,17 @@ const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => (
   ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
 }))
 
+const ButtonTextPrimary = styled(ButtonText)(({ theme }) => ({
+  color: theme.colors.primary,
+}))
+
+const ButtonTextNeutralInformation = styled(ButtonText)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+const ButtonTextSecondary = styled(ButtonText)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
+
 const Body = styled(RNText)(({ theme }) => ({
   ...theme.typography.body,
 }))
@@ -92,6 +103,9 @@ export const Typo = {
   Title3,
   Title4,
   ButtonText,
+  ButtonTextNeutralInformation,
+  ButtonTextPrimary,
+  ButtonTextSecondary,
   Body,
   Caption,
   CaptionPrimary,
