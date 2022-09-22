@@ -4,7 +4,7 @@ import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const ButtonTertiaryPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, ...rest }) => {
@@ -13,21 +13,26 @@ export const ButtonTertiaryPrimary = styledButton(AppButton).attrs<BaseButtonPro
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.tertiaryPrimary.iconColor
-          : theme.buttons.tertiaryPrimary.iconColor,
-        size: theme.buttons.tertiaryPrimary.iconSize,
+          ? theme.buttons.disabled.tertiary.iconColor
+          : theme.buttons.tertiary.iconColor,
+        size: theme.buttons.tertiary.iconSize,
       })``
     }
+
+    const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
+      color: theme.buttons.tertiary.loadingIconColor,
+      size: theme.buttons.tertiary.iconSize,
+    })``
 
     const Title = styled(Typo.ButtonText)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.tertiaryPrimary.textColor
-        : theme.buttons.tertiaryPrimary.textColor,
+        ? theme.buttons.disabled.tertiary.textColor
+        : theme.buttons.tertiary.textColor,
       fontSize: textSize,
       marginLeft: icon
-        ? theme.buttons.tertiaryPrimary.marginLeftWithIcon
-        : theme.buttons.tertiaryPrimary.marginLeft,
+        ? theme.buttons.tertiary.marginLeftWithIcon
+        : theme.buttons.tertiary.marginLeft,
     })
 
     return {
@@ -35,15 +40,9 @@ export const ButtonTertiaryPrimary = styledButton(AppButton).attrs<BaseButtonPro
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
-      inlineHeight: getSpacing(5),
-      hoverUnderlineColor: theme.buttons.tertiaryPrimary.textColor,
+      hoverUnderlineColor: theme.buttons.tertiary.textColor,
     }
   }
 )(({ theme }) => ({
-  backgroundColor: theme.buttons.tertiaryPrimary.backgroundColor,
+  backgroundColor: theme.buttons.tertiary.backgroundColor,
 }))
-
-const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
-  color: theme.buttons.tertiaryPrimary.loadingIconColor,
-  size: theme.buttons.tertiaryPrimary.iconSize,
-}))``

@@ -229,10 +229,6 @@ export interface AppThemeType {
         textColor: ColorsEnum
         iconColor: ColorsEnum
       }
-      tertiaryPrimary: {
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
       tertiarySecondary: {
         textColor: ColorsEnum
         iconColor: ColorsEnum
@@ -334,15 +330,6 @@ export interface AppThemeType {
       outlineColor: ColorsEnum
     }
     tertiaryNeutralInformation: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-    }
-    tertiaryPrimary: {
       marginLeft: number
       marginLeftWithIcon: number
       textColor: ColorsEnum
@@ -665,10 +652,6 @@ export const theme: AppThemeType = {
         textColor: ColorsEnum.GREY_MEDIUM,
         iconColor: ColorsEnum.GREY_MEDIUM,
       },
-      tertiaryPrimary: {
-        textColor: ColorsEnum.GREY_DARK,
-        iconColor: ColorsEnum.GREY_DARK,
-      },
       tertiarySecondary: {
         textColor: ColorsEnum.GREY_DARK,
         iconColor: ColorsEnum.GREY_DARK,
@@ -776,15 +759,6 @@ export const theme: AppThemeType = {
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.GREY_DARK,
       iconColor: ColorsEnum.GREY_DARK,
-      iconSize: iconSizes.smaller,
-    },
-    tertiaryPrimary: {
-      marginLeft: 0,
-      marginLeftWithIcon: getSpacing(2),
-      textColor: ColorsEnum.PRIMARY,
-      backgroundColor: ColorsEnum.TRANSPARENT,
-      loadingIconColor: ColorsEnum.PRIMARY,
-      iconColor: ColorsEnum.PRIMARY,
       iconSize: iconSizes.smaller,
     },
     tertiarySecondary: {

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
@@ -49,7 +49,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       />
       <Spacer.Column numberOfSpaces={3} />
       <TouchableLink
-        as={ButtonTertiary}
+        as={ButtonTertiaryPrimary}
         wording={t`Se connecter`}
         navigateTo={{ screen: 'Login' }}
         onPress={() => {

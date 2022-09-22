@@ -10,7 +10,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -45,7 +45,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <TouchableLink
-            as={ButtonTertiary}
+            as={ButtonTertiaryPrimary}
             wording={t`Consulter l'article d'aide`}
             externalNav={{ url: env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED }}
             icon={ExternalSite}

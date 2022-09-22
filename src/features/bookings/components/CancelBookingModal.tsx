@@ -14,7 +14,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
@@ -90,7 +90,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
         <Spacer.Column numberOfSpaces={5} />
-        <ButtonTertiary wording="Retourner à ma réservation" onPress={dismissModal} />
+        <ButtonTertiaryPrimary wording={'Retourner à ma réservation'} onPress={dismissModal} />
         <Spacer.Column numberOfSpaces={1} />
       </ModalContent>
     </AppModal>
