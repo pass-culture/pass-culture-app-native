@@ -20,6 +20,7 @@ mockdate.set(Today)
 const deviceId = 'testUuidV4'
 
 jest.mock('api/api')
+
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -66,7 +67,15 @@ describe('<NewConsentSettings/>', () => {
     }
     await waitFor(async () => {
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-      expect(api.postnativev1cookiesConsent).toBeCalledWith(storageContent)
+      expect(api.postnativev1cookiesConsent).toBeCalledWith({
+        deviceId,
+        choiceDatetime: Today.toISOString(),
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: COOKIES_BY_CATEGORY.performance,
+          refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
+        },
+      })
     })
   })
 

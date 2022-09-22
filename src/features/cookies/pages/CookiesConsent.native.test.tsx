@@ -21,6 +21,7 @@ mockdate.set(Today)
 const deviceId = 'testUuidV4'
 
 jest.mock('api/api')
+
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: jest.fn(), push: jest.fn() }),
@@ -66,7 +67,15 @@ describe('<CookiesConsent/>', () => {
       }
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
       await waitForExpect(() =>
-        expect(api.postnativev1cookiesConsent).toBeCalledWith(storageContent)
+        expect(api.postnativev1cookiesConsent).toBeCalledWith({
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
       )
     })
 
@@ -141,7 +150,15 @@ describe('<CookiesConsent/>', () => {
       }
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
       await waitForExpect(() =>
-        expect(api.postnativev1cookiesConsent).toBeCalledWith(storageContent)
+        expect(api.postnativev1cookiesConsent).toBeCalledWith({
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: [],
+            refused: ALL_OPTIONAL_COOKIES,
+          },
+        })
       )
     })
 
@@ -207,7 +224,15 @@ describe('<CookiesConsent/>', () => {
       }
       await waitFor(async () => {
         expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-        expect(api.postnativev1cookiesConsent).toBeCalledWith(storageContent)
+        expect(api.postnativev1cookiesConsent).toBeCalledWith({
+          deviceId,
+          choiceDatetime: Today.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: COOKIES_BY_CATEGORY.performance,
+            refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
+          },
+        })
       })
     })
 
