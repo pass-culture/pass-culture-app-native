@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { Consent, CookiesConsent } from 'features/cookies/types'
 import { storage } from 'libs/storage'
 
+import Package from '../../../../package.json'
+
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 
 export const getCookiesChoice = async () =>
@@ -25,6 +27,7 @@ export const useCookies = () => {
 
     const oldCookiesChoice = await getCookiesChoice()
     const newCookiesChoice = {
+      buildVersion: Package.build,
       userId: oldCookiesChoice?.userId,
       deviceId: oldCookiesChoice?.deviceId ?? uuidv4(),
       choiceDatetime: new Date().toISOString(),
