@@ -164,7 +164,7 @@ describe('<ForgottenPassword />', () => {
       expect(isEmailValid).toReturnWith(true)
       expect(
         queryByText(
-          'L‘e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeFalsy()
     })
@@ -180,7 +180,7 @@ describe('<ForgottenPassword />', () => {
 
       expect(
         queryByText(
-          'L‘e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeTruthy()
     })

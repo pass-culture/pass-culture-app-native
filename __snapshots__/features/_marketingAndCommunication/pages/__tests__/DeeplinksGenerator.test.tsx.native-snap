@@ -239,7 +239,7 @@ Array [
               ]
             }
           >
-            Besoin d‘un lien ?
+            Besoin d’un lien ?
           </Text>
           <View
             numberOfSpaces={6}
@@ -1315,7 +1315,7 @@ Array [
                     ]
                   }
                 >
-                  Le module d‘accueil à afficher
+                  Le module d’accueil à afficher
                 </Text>
               </View>
               <View
@@ -2159,7 +2159,7 @@ Array [
                     ]
                   }
                 >
-                  Version minimale de l‘application Android qui peut ouvrir le lien (ex : 1001005). Si l‘application installée est une version plus ancienne, l‘utilisateur est redirigé vers le Play Store pour mettre à niveau l‘application.
+                  Version minimale de l’application Android qui peut ouvrir le lien (ex : 1001005). Si l’application installée est une version plus ancienne, l’utilisateur est redirigé vers le Play Store pour mettre à niveau l’application.
                 </Text>
               </View>
               <View

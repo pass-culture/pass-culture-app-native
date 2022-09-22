@@ -36,7 +36,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
     resume()
   }
 
-  const title = 'Veux-tu abandonner l‘inscription\u00a0?'
+  const title = 'Veux-tu abandonner l’inscription\u00a0?'
   const description = 'Les informations que tu as renseignées ne seront pas enregistrées.'
 
   return (
@@ -46,8 +46,8 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
         icon={ErrorIllustration}
         flex={false}
         buttons={[
-          <ButtonPrimaryWhite key={1} wording="Continuer l‘inscription" onPress={continueSignup} />,
-          <ButtonTertiaryWhite key={2} wording="Abandonner l‘inscription" onPress={quitSignup} />,
+          <ButtonPrimaryWhite key={1} wording="Continuer l’inscription" onPress={continueSignup} />,
+          <ButtonTertiaryWhite key={2} wording="Abandonner l’inscription" onPress={quitSignup} />,
         ]}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />

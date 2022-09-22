@@ -70,7 +70,7 @@ describe('<SignupForm />', () => {
   it('should open quit signup modal when preventCancellation route param is false', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
     fireEvent.press(getByTestId('rightIcon'))
-    getByText('Veux-tu abandonner l‘inscription ?')
+    getByText('Veux-tu abandonner l’inscription ?')
   })
 
   it('should not open quit signup modal when preventCancellation route param is true', () => {
@@ -86,7 +86,7 @@ describe('<SignupForm />', () => {
   it('should call logCancelSignup with Email when clicking on quit signup modal on first step', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
     fireEvent.press(getByTestId('rightIcon'))
-    fireEvent.press(getByText('Abandonner l‘inscription'))
+    fireEvent.press(getByText('Abandonner l’inscription'))
     expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
     expect(analytics.logCancelSignup).toHaveBeenCalledWith('Email')
   })
@@ -95,7 +95,7 @@ describe('<SignupForm />', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
     fireEvent.press(getByTestId('goToNextStep'))
     fireEvent.press(getByTestId('rightIcon'))
-    fireEvent.press(getByText('Abandonner l‘inscription'))
+    fireEvent.press(getByText('Abandonner l’inscription'))
     expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
     expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
   })

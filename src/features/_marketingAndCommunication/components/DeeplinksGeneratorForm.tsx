@@ -291,7 +291,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   return (
     <React.Fragment>
       <Container>
-        <StyledTitle4>Besoin d‘un lien&nbsp;?</StyledTitle4>
+        <StyledTitle4>Besoin d’un lien&nbsp;?</StyledTitle4>
         <Spacer.Column numberOfSpaces={6} />
         <AccordionItem title="Pages" defaultOpen>
           {Object.keys(SCREENS_CONFIG).map((key) =>

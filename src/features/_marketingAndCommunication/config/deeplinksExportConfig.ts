@@ -36,7 +36,7 @@ export const SCREENS_CONFIG: {
     id: {
       type: 'string',
       required: true,
-      description: 'Identifiant unique de l‘offre.',
+      description: 'Identifiant unique de l’offre.',
       serverValidator: (value: unknown) => api.getnativev1offerofferId(Number(value)),
     },
   },
@@ -52,7 +52,7 @@ export const SCREENS_CONFIG: {
     entryId: {
       type: 'string',
       required: false,
-      description: 'Le module d‘accueil à afficher',
+      description: 'Le module d’accueil à afficher',
     },
   },
   Search: {
@@ -79,7 +79,7 @@ export const SCREENS_CONFIG: {
     offerTypes: {
       type: 'offerTypes',
       required: false,
-      description: 'Type d‘offre',
+      description: 'Type d’offre',
     },
     tags: {
       type: 'stringArray',
@@ -158,6 +158,6 @@ type FirebaseDynamicLinkConfig = {
 export const FDL_CONFIG: FirebaseDynamicLinkConfig = {
   amv: {
     type: 'string',
-    description: `Version minimale de l‘application Android qui peut ouvrir le lien (ex\u00a0: ${build}). Si l‘application installée est une version plus ancienne, l‘utilisateur est redirigé vers le Play Store pour mettre à niveau l‘application.`,
+    description: `Version minimale de l’application Android qui peut ouvrir le lien (ex\u00a0: ${build}). Si l’application installée est une version plus ancienne, l’utilisateur est redirigé vers le Play Store pour mettre à niveau l’application.`,
   },
 }

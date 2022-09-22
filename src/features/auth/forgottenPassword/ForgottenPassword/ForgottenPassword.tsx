@@ -79,7 +79,7 @@ export const ForgottenPassword: FunctionComponent = () => {
   function openReCaptchaChallenge() {
     if (!isEmailValid(email)) {
       setErrorMessage(
-        'L‘e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
+        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
       )
       return
     }
