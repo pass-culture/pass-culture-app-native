@@ -3,7 +3,7 @@ import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
+import { ButtonTertiaryNeutralInformation } from 'ui/components/buttons/ButtonTertiaryNeutralInformation'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -32,8 +32,8 @@ const Template: ComponentStory<typeof ButtonTertiary> = (props) => (
     <StoryContainer title="ButtonTertiaryBlack">
       <ButtonTertiaryBlack {...props} />
     </StoryContainer>
-    <StoryContainer title="ButtonTertiaryGreyDark">
-      <ButtonTertiaryGreyDark {...props} />
+    <StoryContainer title="ButtonTertiaryNeutralInformation">
+      <ButtonTertiaryNeutralInformation {...props} />
     </StoryContainer>
     <StoryContainer title="ButtonTertiaryWhite" withBackground>
       <ButtonTertiaryWhite {...props} />
