@@ -18,7 +18,7 @@ import { CreditHeader } from 'features/profile/components/Header/CreditHeader/Cr
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
-import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
+import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
@@ -425,7 +425,7 @@ export const AppComponents: FunctionComponent = () => {
           <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
           <Spacer.Column numberOfSpaces={4} />
           <Center>
-            <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
+            <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n}\u00a0€`} />
             <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
             <Spacer.Column numberOfSpaces={4} />
             <ExampleSwitch />
@@ -871,13 +871,13 @@ const SnackBars = () => {
     {
       title: '✅ Success SnackBar',
       showSnackBar: showSuccessSnackBar,
-      message: 'This was a success !!! '.repeat(5),
+      message: 'This was a success\u00a0!!! '.repeat(5),
       timeout: 5000,
     },
     {
       title: '❌ Error SnackBar',
       showSnackBar: showErrorSnackBar,
-      message: 'There was an error !',
+      message: 'There was an error\u00a0!',
       timeout: 5000,
       onClose: hideSnackBar,
     },

@@ -50,7 +50,7 @@ describe('<DeeplinkItem />', () => {
 
     expect(writeText).toBeCalledWith(deeplink.universalLink)
     expect(showSuccessSnackBar).toBeCalledWith({
-      message: `${deeplink.universalLink} à été copié dans ton press-papier !`,
+      message: `${deeplink.universalLink} à été copié dans ton press-papier\u00a0!`,
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
@@ -62,7 +62,7 @@ describe('<DeeplinkItem />', () => {
 
     expect(writeText).toBeCalledWith(deeplink.firebaseLink)
     expect(showSuccessSnackBar).toBeCalledWith({
-      message: `${deeplink.firebaseLink} à été copié dans ton press-papier !`,
+      message: `${deeplink.firebaseLink} à été copié dans ton press-papier\u00a0!`,
       timeout: SNACK_BAR_TIME_OUT,
     })
   })

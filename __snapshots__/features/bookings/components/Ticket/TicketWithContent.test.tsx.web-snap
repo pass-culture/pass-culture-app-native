@@ -133,7 +133,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           }
         }
       >
-        Avez-vous déjà vu ?
+        Avez-vous déjà vu ?
       </h1>
       <div
         className="css-view-1dbjc4n"

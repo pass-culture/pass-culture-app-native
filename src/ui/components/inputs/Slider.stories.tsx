@@ -39,12 +39,12 @@ export const Multislider = Template.bind({})
 Multislider.args = {
   values: [0, 75],
   showValues: true,
-  formatValues: (n) => `${n} €`,
+  formatValues: (n) => `${n}\u00a0€`,
 }
 
 export const MultisliderWithOverlap = Template.bind({})
 MultisliderWithOverlap.args = {
   values: [50, 50],
   showValues: true,
-  formatValues: (n) => `${n} €`,
+  formatValues: (n) => `${n}\u00a0€`,
 }

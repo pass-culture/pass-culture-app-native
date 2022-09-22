@@ -127,7 +127,7 @@ async function getBatchInstallationID() {
   } catch (e) {
     Alert.alert(
       'Batch error',
-      `An error has occured while obtaining the Batch installation ID : ${e}`
+      `An error has occured while obtaining the Batch installation ID: ${e}`
     )
     return 'Batch error'
   }

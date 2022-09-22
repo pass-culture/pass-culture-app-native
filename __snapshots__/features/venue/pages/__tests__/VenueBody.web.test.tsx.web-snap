@@ -1157,7 +1157,7 @@ Object {
                     style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
-                      aria-label="Handicap visuel : Accessible"
+                      aria-label="Handicap visuel : Accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
                       role="img"
@@ -1228,7 +1228,7 @@ Object {
                     style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
-                      aria-label="Handicap psychique ou cognitif : Non accessible"
+                      aria-label="Handicap psychique ou cognitif : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
                       role="img"
@@ -1299,7 +1299,7 @@ Object {
                     style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
-                      aria-label="Handicap moteur : Non accessible"
+                      aria-label="Handicap moteur : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
                       role="img"
@@ -1370,7 +1370,7 @@ Object {
                     style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
-                      aria-label="Handicap auditif : Non accessible"
+                      aria-label="Handicap auditif : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
                       role="img"
@@ -2688,7 +2688,7 @@ Object {
                   style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <div
-                    aria-label="Handicap visuel : Accessible"
+                    aria-label="Handicap visuel : Accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
                     role="img"
@@ -2759,7 +2759,7 @@ Object {
                   style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <div
-                    aria-label="Handicap psychique ou cognitif : Non accessible"
+                    aria-label="Handicap psychique ou cognitif : Non accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
                     role="img"
@@ -2830,7 +2830,7 @@ Object {
                   style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <div
-                    aria-label="Handicap moteur : Non accessible"
+                    aria-label="Handicap moteur : Non accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
                     role="img"
@@ -2901,7 +2901,7 @@ Object {
                   style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <div
-                    aria-label="Handicap auditif : Non accessible"
+                    aria-label="Handicap auditif : Non accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
                     role="img"

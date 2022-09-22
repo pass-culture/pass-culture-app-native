@@ -77,8 +77,8 @@ function useOnCulturalSurveyExit() {
       })
     } catch (error) {
       throw new MonitoringError(
-        `User profile could not be updated : typeform with userId ${userId} and userPk ${userPk}. 
-        Cause : ` + error,
+        `User profile could not be updated: typeform with userId ${userId} and userPk ${userPk}. 
+        Cause: ` + error,
         'UserProfileUpdateDuringCulturalSurvey'
       )
     } finally {

@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
+import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { LENGTH_S } from 'ui/theme'
 

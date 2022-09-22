@@ -35,7 +35,7 @@ describe('getScreensAndConfig()', () => {
       },
     ] as Route[]
     expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrowError(
-      new Error('Screen Offer : you have to declare either path or pathConfig')
+      new Error('Screen Offer: you have to declare either path or pathConfig')
     )
   })
 
@@ -51,7 +51,7 @@ describe('getScreensAndConfig()', () => {
       },
     ] as Route[]
     expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrowError(
-      new Error('Screen Offer : you cannot declare both path and pathConfig')
+      new Error('Screen Offer: you cannot declare both path and pathConfig')
     )
   })
 

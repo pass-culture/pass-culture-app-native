@@ -202,7 +202,7 @@ module.exports = {
           '.android.tsx',
           '.ios.ts',
           '.ios.tsx',
-          '.mjs'
+          '.mjs',
         ],
       },
       alias: {
@@ -270,7 +270,10 @@ module.exports = {
     {
       files: ['**/*.test.ts', '**/*.test.tsx', '__mocks__'],
       env: { jest: true },
-      rules: { '@typescript-eslint/no-empty-function': 'off' },
+      rules: {
+        '@typescript-eslint/no-empty-function': 'off',
+        'local-rules/nbsp-in-french-translations': 'off',
+      },
     },
   ],
 }

@@ -22,7 +22,7 @@ export const bookingsSnap: BookingsResponse = {
         beginningDatetime: '2021-03-14T20:00:00',
         offer: {
           id: 147874,
-          name: 'Avez-vous déjà vu ?',
+          name: 'Avez-vous déjà vu\u00a0?',
           extraData: null,
           isPermanent: false,
           isDigital: true,
@@ -58,7 +58,7 @@ export const bookingsSnap: BookingsResponse = {
         beginningDatetime: '2021-03-15T20:00:00',
         offer: {
           id: 147874,
-          name: 'Avez-vous déjà vu ?',
+          name: 'Avez-vous déjà vu\u00a0?',
           extraData: {
             isbn: '123456789',
           },
@@ -95,7 +95,7 @@ export const bookingsSnap: BookingsResponse = {
         beginningDatetime: '2021-03-15T20:00:00',
         offer: {
           id: 147874,
-          name: 'Avez-vous déjà vu ?',
+          name: 'Avez-vous déjà vu\u00a0?',
           extraData: {
             isbn: '123456789',
           },

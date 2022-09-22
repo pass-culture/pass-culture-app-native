@@ -1,7 +1,7 @@
 import { useAlgoliaRecommendedHits } from 'features/home/api/useAlgoliaRecommendedHits'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchOfferHitsAPI from 'libs/algolia/fetchAlgolia/fetchOfferHits'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
