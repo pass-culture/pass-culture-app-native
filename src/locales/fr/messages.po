@@ -1561,10 +1561,6 @@ msgstr "Modification de l'e-mail"
 msgid "Modification du mot de passe"
 msgstr "Modification du mot de passe"
 
-#: src/features/search/atoms/NoSearchResult.tsx
-msgid "Modifie ta recherche ou découvre toutes les offres"
-msgstr "Modifie ta recherche ou découvre toutes les offres"
-
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Modifier"
@@ -1860,7 +1856,6 @@ msgstr "Oui"
 #: src/features/home/components/NoContentError.tsx
 #: src/features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData.ts
 #: src/features/identityCheck/pages/identification/ubble/IdentityCheckPending.tsx
-#: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
 msgstr "Oups !"
@@ -2005,14 +2000,6 @@ msgstr "Pas de panique, l’aventure continue !"
 #: src/libs/network/OfflinePage.tsx
 msgid "Pas de réseau internet"
 msgstr "Pas de réseau internet"
-
-#: src/features/search/atoms/NoSearchResult.tsx
-msgid "Pas de résultat trouvé pour"
-msgstr "Pas de résultat trouvé pour"
-
-#: src/features/search/atoms/NoSearchResult.tsx
-msgid "Pas de résultat trouvé."
-msgstr "Pas de résultat trouvé."
 
 #: src/ui/components/achievements/components/GenericAchievementCard.tsx
 msgid "Passer"
@@ -3335,10 +3322,6 @@ msgstr "aucune connexion internet."
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "auteur"
 msgstr "auteur"
-
-#: src/features/search/atoms/NoSearchResult.tsx
-msgid "autour de toi"
-msgstr "autour de toi"
 
 #: src/features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal.tsx
 msgid "avant le début de l’événement."

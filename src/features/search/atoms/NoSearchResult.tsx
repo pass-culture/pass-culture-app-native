@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
@@ -41,9 +40,12 @@ export const NoSearchResult: React.FC = () => {
     )
   }, [position, pushWithStagedSearch])
 
-  const errorMessage = query
-    ? t`Pas de résultat trouvé pour` + ` "${query}"`
-    : t`Pas de résultat trouvé.`
+  const mainTitle = 'Pas de résultat'
+  const mainTitleComplement = `pour "${query}"`
+  const descriptionErrorText = query
+    ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+    : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+  const descriptionErrorTextContinuation = 'Découvre toutes les offres'
 
   return (
     <Container>
@@ -51,17 +53,20 @@ export const NoSearchResult: React.FC = () => {
       <ContainerNoOffer>
         <StyledNoOffer />
       </ContainerNoOffer>
-      <MainTitle>{t`Oups\u00a0!`}</MainTitle>
-      <DescriptionErrorTextContainer>
-        <DescriptionErrorText aria-live="assertive">{errorMessage}</DescriptionErrorText>
-      </DescriptionErrorTextContainer>
-      <DescriptionErrorTextContainer>
-        <DescriptionErrorText>
-          {t`Modifie ta recherche ou découvre toutes les offres`}
-          <Spacer.Row numberOfSpaces={1} />
-          <ButtonInsideText wording={t`autour de toi`} onPress={handlePressAroundMe} />
-        </DescriptionErrorText>
-      </DescriptionErrorTextContainer>
+      <ContainerText>
+        <MainTitle>{mainTitle}</MainTitle>
+        {!!query && <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>}
+        <DescriptionErrorTextContainer>
+          <DescriptionErrorText aria-live="assertive">{descriptionErrorText}</DescriptionErrorText>
+        </DescriptionErrorTextContainer>
+        <DescriptionErrorTextContainer>
+          <DescriptionErrorText>
+            {descriptionErrorTextContinuation}
+            <Spacer.Row numberOfSpaces={1} />
+            <ButtonInsideText wording="autour de toi" onPress={handlePressAroundMe} />
+          </DescriptionErrorText>
+        </DescriptionErrorTextContainer>
+      </ContainerText>
       <Spacer.Flex />
     </Container>
   )
@@ -76,18 +81,31 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))``
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   minHeight: 250,
   height: '100%',
   alignItems: 'center',
   justifyContent: 'center',
-  marginHorizontal: getSpacing(14.5),
-})
+  ...(theme.isDesktopViewport ? {} : { marginHorizontal: getSpacing(6) }),
+}))
+
+const ContainerText = styled.View(({ theme }) => ({
+  alignItems: 'center',
+  ...(theme.isDesktopViewport
+    ? {
+        maxWidth: theme.contentPage.maxWidth,
+      }
+    : {}),
+}))
 
 const MainTitle = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.greyDark,
-  marginTop: getSpacing(2),
+  color: theme.colors.black,
+  marginTop: getSpacing(4),
+}))
+
+const MainTitleComplement = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.black,
 }))
 
 const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({
