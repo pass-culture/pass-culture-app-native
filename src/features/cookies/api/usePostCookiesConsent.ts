@@ -1,3 +1,4 @@
+import { omit } from 'lodash'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
@@ -10,7 +11,7 @@ export function usePostCookiesConsent() {
     await wait(0) // To make the localStorage is up to date before reading it
     const consent = await getCookiesChoice()
     if (consent) {
-      await api.postnativev1cookiesConsent(consent)
+      await api.postnativev1cookiesConsent(omit(consent, ['buildVersion']))
     }
   })
 }
