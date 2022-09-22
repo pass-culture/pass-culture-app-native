@@ -48,7 +48,9 @@ export const NoSearchResult: React.FC = () => {
   return (
     <Container>
       <Spacer.Flex />
-      <StyledNoOffer />
+      <ContainerNoOffer>
+        <StyledNoOffer />
+      </ContainerNoOffer>
       <MainTitle>{t`Oups\u00a0!`}</MainTitle>
       <DescriptionErrorTextContainer>
         <DescriptionErrorText aria-live="assertive">{errorMessage}</DescriptionErrorText>
@@ -65,8 +67,12 @@ export const NoSearchResult: React.FC = () => {
   )
 }
 
+const ContainerNoOffer = styled.View({
+  flexShrink: 0,
+})
+
 const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.medium,
+  size: theme.illustrations.sizes.fullPage,
   color: theme.colors.greyMedium,
 }))``
 
