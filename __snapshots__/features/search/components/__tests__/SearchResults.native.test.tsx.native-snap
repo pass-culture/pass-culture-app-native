@@ -348,7 +348,7 @@ Array [
                 "flexShrink": 1,
                 "height": "100%",
                 "justifyContent": "center",
-                "marginHorizontal": 58,
+                "marginHorizontal": 24,
                 "minHeight": 250,
               },
             ]
@@ -383,136 +383,146 @@ Array [
               </Text>
             </View>
           </View>
-          <Text
+          <View
             style={
               Array [
                 Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "marginTop": 8,
-                },
-              ]
-            }
-          >
-            Oups !
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginTop": 26,
-                  "textAlign": "center",
+                  "alignItems": "center",
                 },
               ]
             }
           >
             <Text
-              aria-live="assertive"
               style={
                 Array [
                   Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "marginTop": 16,
                   },
                 ]
               }
             >
-              Pas de résultat trouvé.
+              Pas de résultat
             </Text>
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginTop": 26,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
             <Text
               style={
                 Array [
                   Object {
-                    "color": "#696A6F",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
+                    "marginTop": 26,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
-              Modifie ta recherche ou découvre toutes les offres
-              <View
-                numberOfSpaces={1}
+              <Text
+                aria-live="assertive"
                 style={
                   Array [
                     Object {
-                      "width": 4,
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
                     },
                   ]
                 }
-              />
-              <View>
-                <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
+              >
+                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+              </Text>
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginTop": 26,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
                     Object {
-                      "opacity": 1,
-                      "top": 3,
-                      "userSelect": "auto",
-                    }
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Découvre toutes les offres
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
                   }
-                >
+                />
+                <View>
                   <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {},
-                      ]
+                      Object {
+                        "opacity": 1,
+                        "top": 3,
+                        "userSelect": "auto",
+                      }
                     }
-                    typography="ButtonText"
                   >
-                    <Text
+                    <View
                       style={
                         Array [
-                          Object {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
+                          Object {},
                         ]
                       }
                       typography="ButtonText"
                     >
-                      autour de toi
-                    </Text>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                        typography="ButtonText"
+                      >
+                        autour de toi
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
+              </Text>
             </Text>
-          </Text>
+          </View>
           <View
             style={
               Array [

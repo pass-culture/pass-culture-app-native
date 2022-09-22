@@ -27,15 +27,31 @@ jest.mock('libs/geolocation', () => ({
 }))
 
 describe('NoSearchResult component', () => {
-  it('should show the message depending on the query', () => {
+  it('should show the message without query entered', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: '' } })
+    const { getByText } = render(<NoSearchResult />)
 
-    let text = render(<NoSearchResult />).getByText('Pas de résultat trouvé.')
+    const text = getByText('Pas de résultat')
+    const textContinuation = getByText(
+      'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+    )
     expect(text).toBeTruthy()
+    expect(textContinuation).toBeTruthy()
+  })
 
+  it('should show the message with query entered', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: 'ZZZZZZ' } })
-    text = render(<NoSearchResult />).getByText('Pas de résultat trouvé pour "ZZZZZZ"')
+    const { getByText } = render(<NoSearchResult />)
+
+    const text = getByText('Pas de résultat')
+    const complement = getByText('pour "ZZZZZZ"')
+    const textContinuation = getByText(
+      'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+    )
+
     expect(text).toBeTruthy()
+    expect(complement).toBeTruthy()
+    expect(textContinuation).toBeTruthy()
   })
 
   it('should dispatch the right actions when pressing "autour de toi" - no location', () => {
