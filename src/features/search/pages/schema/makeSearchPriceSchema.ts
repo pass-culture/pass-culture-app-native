@@ -2,7 +2,7 @@ import { boolean, object } from 'yup'
 
 import { makePriceSchema } from 'features/search/pages/schema/makePriceSchema'
 
-export const minPriceError = `Le montant minimum ne peux pas dépasser le montant maximum`
+export const minPriceError = `Le montant minimum ne peut pas dépasser le montant maximum`
 
 export const makeSearchPriceSchema = (initialCredit: string) =>
   object().shape({
