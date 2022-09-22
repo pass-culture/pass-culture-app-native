@@ -5,8 +5,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import initializeApp from '../firebase-init'
 
 const app = initializeApp()
+const firebaseRemoteConfig = getRemoteConfig(app)
+firebaseRemoteConfig.defaultConfig = DEFAULT_REMOTE_CONFIG
 
-const remoteConfig = getRemoteConfig(app)
-remoteConfig.defaultConfig = DEFAULT_REMOTE_CONFIG
-
-export default remoteConfig
+export default firebaseRemoteConfig

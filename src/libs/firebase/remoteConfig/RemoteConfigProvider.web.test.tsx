@@ -11,25 +11,21 @@ const mockedRemoteConfigRefresh = remoteConfig.refresh as jest.MockedFunction<
 >
 
 describe('<RemoteConfigProvider />', () => {
-  it('should configure() then refresh() A/B testing values then NOT call getValues() if no new config is available', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedRemoteConfigRefresh.mockResolvedValue(false)
+  it('should refresh() remote config values then NOT call getValues() if no new config is available', async () => {
+    mockedRemoteConfigRefresh.mockResolvedValueOnce(false)
     renderRemoteConfigProvider()
 
     await waitForExpect(() => {
-      expect(remoteConfig.configure).toBeCalled()
       expect(remoteConfig.refresh).toBeCalled()
     })
     expect(remoteConfig.getValues).not.toBeCalled()
   })
 
-  it('should configure() then refresh() A/B testing values then call getValues() if new config is available', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedRemoteConfigRefresh.mockResolvedValue(true)
+  it('should refresh() remote config values then call getValues() if new config is available', async () => {
+    mockedRemoteConfigRefresh.mockResolvedValueOnce(true)
     renderRemoteConfigProvider()
 
     await waitForExpect(() => {
-      expect(remoteConfig.configure).toBeCalled()
       expect(remoteConfig.refresh).toBeCalled()
     })
     expect(remoteConfig.getValues).toBeCalled()

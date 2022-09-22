@@ -21,6 +21,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment'
+import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
@@ -50,41 +51,43 @@ export function App() {
   }, [])
 
   return (
-    <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
-      <SupportedBrowsersGate>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
-            <ReactQueryClientProvider>
-              <AuthWrapper>
-                <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                  <GeolocationWrapper>
-                    <FavoritesWrapper>
-                      <SearchAnalyticsWrapper>
-                        <SearchWrapper>
-                          <I18nProvider i18n={i18n}>
-                            <SnackBarProvider>
-                              <CulturalSurveyContextProvider>
-                                <IdentityCheckContextProvider>
-                                  <AppWebHead />
-                                  <ScreenErrorProvider>
-                                    <Suspense fallback={<LoadingPage />}>
-                                      <AppNavigationContainer />
-                                    </Suspense>
-                                  </ScreenErrorProvider>
-                                </IdentityCheckContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarProvider>
-                          </I18nProvider>
-                        </SearchWrapper>
-                      </SearchAnalyticsWrapper>
-                    </FavoritesWrapper>
-                  </GeolocationWrapper>
-                </ErrorBoundary>
-              </AuthWrapper>
-            </ReactQueryClientProvider>
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </SupportedBrowsersGate>
-    </ServiceWorkerProvider>
+    <RemoteConfigProvider>
+      <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
+        <SupportedBrowsersGate>
+          <ThemeProvider theme={theme}>
+            <SafeAreaProvider>
+              <ReactQueryClientProvider>
+                <AuthWrapper>
+                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                    <GeolocationWrapper>
+                      <FavoritesWrapper>
+                        <SearchAnalyticsWrapper>
+                          <SearchWrapper>
+                            <I18nProvider i18n={i18n}>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <IdentityCheckContextProvider>
+                                    <AppWebHead />
+                                    <ScreenErrorProvider>
+                                      <Suspense fallback={<LoadingPage />}>
+                                        <AppNavigationContainer />
+                                      </Suspense>
+                                    </ScreenErrorProvider>
+                                  </IdentityCheckContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </I18nProvider>
+                          </SearchWrapper>
+                        </SearchAnalyticsWrapper>
+                      </FavoritesWrapper>
+                    </GeolocationWrapper>
+                  </ErrorBoundary>
+                </AuthWrapper>
+              </ReactQueryClientProvider>
+            </SafeAreaProvider>
+          </ThemeProvider>
+        </SupportedBrowsersGate>
+      </ServiceWorkerProvider>
+    </RemoteConfigProvider>
   )
 }

@@ -126,7 +126,7 @@ module.exports = {
         message: 'use libs/firebase/shims/firestore instead',
       },
       { name: '@react-native-firebase/perf', message: 'use libs/firebase/perf instead' },
-      { name: '@react-native-firebase/remote-config', message: 'use libs/firebase-config instead' },
+      { name: '@react-native-firebase/remote-config', message: 'use libs/firebase/shims/remote-config instead' },
     ],
     'no-restricted-properties': [
       2,
