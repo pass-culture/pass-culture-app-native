@@ -2,7 +2,10 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { ButtonQuaternaryNeutralInformation } from 'ui/components/buttons/ButtonQuaternaryNeutralInformation'
+import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
@@ -27,6 +30,15 @@ const Template: ComponentStory<typeof ButtonQuaternary> = (props) => (
     </StoryContainer>
     <StoryContainer title="ButtonQuaternaryBlack">
       <ButtonQuaternaryBlack {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternaryNeutralInformation">
+      <ButtonQuaternaryNeutralInformation {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternaryPrimary">
+      <ButtonQuaternaryPrimary {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternarySecondary">
+      <ButtonQuaternarySecondary {...props} />
     </StoryContainer>
   </React.Fragment>
 )

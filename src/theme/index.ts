@@ -245,6 +245,18 @@ export interface AppThemeType {
         iconColor: ColorsEnum
         textColor: ColorsEnum
       }
+      quaternaryPrimary: {
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
+      quaternarySecondary: {
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
+      quaternaryNeutralInformation: {
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
       linearGradient: {
         backgroundColor: ColorsEnum
         iconColor: ColorsEnum
@@ -358,6 +370,33 @@ export interface AppThemeType {
       backgroundColor: ColorsEnum
     }
     quaternaryBlack: {
+      marginLeft: number
+      marginLeftWithIcon: number
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      iconSize: number
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+    }
+    quaternaryPrimary: {
+      marginLeft: number
+      marginLeftWithIcon: number
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      iconSize: number
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+    }
+    quaternarySecondary: {
+      marginLeft: number
+      marginLeftWithIcon: number
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      iconSize: number
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+    }
+    quaternaryNeutralInformation: {
       marginLeft: number
       marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
@@ -642,6 +681,18 @@ export const theme: AppThemeType = {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
       },
+      quaternaryPrimary: {
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+      },
+      quaternarySecondary: {
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+      },
+      quaternaryNeutralInformation: {
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+      },
       linearGradient: {
         backgroundColor: ColorsEnum.GREY_LIGHT,
         textColor: ColorsEnum.GREY_DARK,
@@ -760,6 +811,33 @@ export const theme: AppThemeType = {
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.BLACK,
       textColor: ColorsEnum.BLACK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      iconSize: iconSizes.extraSmall,
+    },
+    quaternaryPrimary: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(1),
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.PRIMARY,
+      textColor: ColorsEnum.PRIMARY,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      iconSize: iconSizes.extraSmall,
+    },
+    quaternarySecondary: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(1),
+      loadingIconColor: ColorsEnum.SECONDARY,
+      iconColor: ColorsEnum.SECONDARY,
+      textColor: ColorsEnum.SECONDARY,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      iconSize: iconSizes.extraSmall,
+    },
+    quaternaryNeutralInformation: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(1),
+      loadingIconColor: ColorsEnum.GREY_DARK,
+      iconColor: ColorsEnum.GREY_DARK,
+      textColor: ColorsEnum.GREY_DARK,
       backgroundColor: ColorsEnum.TRANSPARENT,
       iconSize: iconSizes.extraSmall,
     },
