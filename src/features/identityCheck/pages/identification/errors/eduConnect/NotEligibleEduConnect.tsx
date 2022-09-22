@@ -21,13 +21,14 @@ export const NotEligibleEduConnect = ({
 }: ScreenErrorProps) => {
   const timer = useRef<number>()
   const [error, setError] = useState<Error | undefined>()
+
   const {
     title,
     description,
     descriptionAlignment,
     Icon,
     primaryButtonText,
-    tertiaryButtonVisible = false,
+    isGoHomeTertiaryButtonVisible = false,
     onPrimaryButtonPress,
     navigateTo,
   } = useNotEligibleEduConnectErrorData(message, setError)
@@ -54,6 +55,18 @@ export const NotEligibleEduConnect = ({
 
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
 
+  const goBackToHomeTertiaryButton = (
+    <TouchableLink
+      key={2}
+      as={ButtonTertiaryWhite}
+      icon={PlainArrowPrevious}
+      wording="Retourner à l'accueil"
+      navigateTo={navigateToHomeConfig}
+      onPress={onAbandon}
+      navigateBeforeOnPress
+    />
+  )
+
   return (
     <GenericInfoPage
       title={title}
@@ -66,17 +79,7 @@ export const NotEligibleEduConnect = ({
           navigateTo={navigateTo ?? navigateToHomeConfig}
           onPress={onPrimaryButtonPress}
         />,
-        !!tertiaryButtonVisible && (
-          <TouchableLink
-            key={2}
-            as={ButtonTertiaryWhite}
-            icon={PlainArrowPrevious}
-            wording="Retourner à l’accueil"
-            navigateTo={navigateToHomeConfig}
-            onPress={onAbandon}
-            navigateBeforeOnPress
-          />
-        ),
+        !!isGoHomeTertiaryButtonVisible && goBackToHomeTertiaryButton,
       ].filter(Boolean)}>
       <Helmet>
         <title>{helmetTitle}</title>

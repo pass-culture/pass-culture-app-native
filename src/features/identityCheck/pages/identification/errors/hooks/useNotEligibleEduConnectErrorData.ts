@@ -26,7 +26,7 @@ type NotEligibleEduConnectErrorData = {
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   descriptionAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   primaryButtonText?: string
-  tertiaryButtonVisible?: boolean
+  isGoHomeTertiaryButtonVisible?: boolean
   onPrimaryButtonPress?: () => void
   navigateTo?: TouchableLinkProps['navigateTo']
 }
@@ -53,7 +53,7 @@ const getInvalidInformationErrorData = (
     'Refais une demande en vérifiant ton identité avec ta pièce d’identité.',
   descriptionAlignment: 'center',
   primaryButtonText: 'Vérifier mon identité',
-  tertiaryButtonVisible: true,
+  isGoHomeTertiaryButtonVisible: true,
   navigateTo,
 })
 
@@ -68,8 +68,8 @@ const getUserTypeNotStudentErrorData = (
     DOUBLE_LINE_BREAK +
     'L’usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L’identification doit se faire au nom du futur bénéficiaire. ',
   descriptionAlignment: 'center',
-  primaryButtonText: 'Réessayer de m’identifier',
-  tertiaryButtonVisible: true,
+  primaryButtonText: "Réessayer de m'identifier",
+  isGoHomeTertiaryButtonVisible: true,
   onPrimaryButtonPress,
   navigateTo,
 })
