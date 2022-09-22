@@ -419,7 +419,7 @@ Array [
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginTop": 26,
+                    "marginTop": 24,
                     "textAlign": "center",
                   },
                 ]
@@ -441,91 +441,69 @@ Array [
                 Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
               </Text>
             </Text>
-            <Text
+          </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              accessibilityLabel="Modifier mes filtres"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginTop": 26,
-                    "textAlign": "center",
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
               }
+              testID="Modifier mes filtres"
             >
               <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
                     },
                   ]
                 }
               >
-                Découvre toutes les offres
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    Array [
-                      Object {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {},
-                        ]
-                      }
-                      typography="ButtonText"
-                    >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#eb0055",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                            },
-                          ]
-                        }
-                        typography="ButtonText"
-                      >
-                        autour de toi
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                Modifier mes filtres
               </Text>
-            </Text>
+            </View>
           </View>
           <View
             style={

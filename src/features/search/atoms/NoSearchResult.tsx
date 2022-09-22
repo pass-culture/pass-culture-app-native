@@ -1,23 +1,21 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
-import { LocationType } from 'features/search/enums'
-import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
-import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
-import { SearchView } from 'features/search/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/firebase/analytics'
-import { useGeolocation } from 'libs/geolocation'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {
-  const { position } = useGeolocation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Search'>>()
+  const { searchState } = useSearch()
+  const { dispatch: stagedDispatch } = useStagedSearch()
   const query = params?.query
-  const pushWithStagedSearch = usePushWithStagedSearch()
 
   useEffect(() => {
     if (query) {
@@ -25,27 +23,16 @@ export const NoSearchResult: React.FC = () => {
     }
   }, [query])
 
-  const handlePressAroundMe = useCallback(() => {
-    pushWithStagedSearch(
-      {
-        locationFilter: position
-          ? {
-              locationType: LocationType.AROUND_ME,
-              aroundRadius: MAX_RADIUS,
-            }
-          : { locationType: LocationType.EVERYWHERE },
-        view: SearchView.Landing,
-      },
-      { reset: true }
-    )
-  }, [position, pushWithStagedSearch])
+  const onPressUpdateFilters = useCallback(() => {
+    stagedDispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })
+    navigate('SearchFilter')
+  }, [navigate, searchState, stagedDispatch])
 
   const mainTitle = 'Pas de résultat'
   const mainTitleComplement = `pour "${query}"`
   const descriptionErrorText = query
     ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
     : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
-  const descriptionErrorTextContinuation = 'Découvre toutes les offres'
 
   return (
     <Container>
@@ -59,14 +46,11 @@ export const NoSearchResult: React.FC = () => {
         <DescriptionErrorTextContainer>
           <DescriptionErrorText aria-live="assertive">{descriptionErrorText}</DescriptionErrorText>
         </DescriptionErrorTextContainer>
-        <DescriptionErrorTextContainer>
-          <DescriptionErrorText>
-            {descriptionErrorTextContinuation}
-            <Spacer.Row numberOfSpaces={1} />
-            <ButtonInsideText wording="autour de toi" onPress={handlePressAroundMe} />
-          </DescriptionErrorText>
-        </DescriptionErrorTextContainer>
       </ContainerText>
+      <Spacer.Column numberOfSpaces={6} />
+      <View>
+        <ButtonPrimary wording="Modifier mes filtres" onPress={onPressUpdateFilters} />
+      </View>
       <Spacer.Flex />
     </Container>
   )
@@ -113,6 +97,6 @@ const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const DescriptionErrorTextContainer = styled(Typo.Body)({
-  marginTop: getSpacing(6.5),
+  marginTop: getSpacing(6),
   textAlign: 'center',
 })

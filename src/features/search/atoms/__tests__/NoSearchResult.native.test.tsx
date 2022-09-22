@@ -1,29 +1,24 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
-import { GeoCoordinates } from 'libs/geolocation'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoSearchResult } from '../NoSearchResult'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
-
+const mockDispatchStagedSearch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
   useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockDispatchStagedSearch,
   }),
-}))
-
-let mockPosition: Pick<GeoCoordinates, 'latitude' | 'longitude'> | null = null
-jest.mock('libs/geolocation', () => ({
-  useGeolocation: jest.fn(() => ({ position: mockPosition })),
 }))
 
 describe('NoSearchResult component', () => {
@@ -54,38 +49,25 @@ describe('NoSearchResult component', () => {
     expect(textContinuation).toBeTruthy()
   })
 
-  it('should dispatch the right actions when pressing "autour de toi" - no location', () => {
-    const button = render(<NoSearchResult />).getByText('autour de toi')
-    fireEvent.press(button)
-    expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenLastCalledWith('TabNavigator', {
-      screen: 'Search',
-      params: {
-        ...initialSearchState,
-        locationFilter: {
-          locationType: LocationType.EVERYWHERE,
-        },
-        view: SearchView.Landing,
-      },
+  it('should update the staged search state with the actual search state when pressing "Modifier mes filtres" button', async () => {
+    const { getByText } = render(<NoSearchResult />)
+    const button = getByText('Modifier mes filtres')
+
+    await fireEvent.press(button)
+
+    expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
+      type: 'SET_STATE_FROM_DEFAULT',
+      payload: mockSearchState,
     })
   })
 
-  it('should dispatch the right actions when pressing "autour de toi" - with location', () => {
-    mockPosition = { latitude: 2, longitude: 40 }
-    const button = render(<NoSearchResult />).getByText('autour de toi')
-    fireEvent.press(button)
-    expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenLastCalledWith('TabNavigator', {
-      screen: 'Search',
-      params: {
-        ...initialSearchState,
-        locationFilter: {
-          locationType: LocationType.AROUND_ME,
-          aroundRadius: MAX_RADIUS,
-        },
-        view: SearchView.Landing,
-      },
-    })
+  it('should redirect to the general filters page when pressing "Modifier mes filtres" button', async () => {
+    const { getByText } = render(<NoSearchResult />)
+    const button = getByText('Modifier mes filtres')
+
+    await fireEvent.press(button)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
   })
 
   it('should log NoSearchResult with the query', () => {
