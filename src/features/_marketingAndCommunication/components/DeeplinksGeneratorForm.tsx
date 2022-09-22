@@ -286,6 +286,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
   useEnterKeyAction(!disabled ? onPress : undefined)
 
+  const errorText = 'Seulement les "ids" disposent de validation\u00a0!'
+
   return (
     <React.Fragment>
       <Container>
@@ -335,7 +337,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       <BottomContainer>
         <ErrorBanner>
           <Warning />
-          {`Seulement les "ids" disposent de validation\u00a0!`}
+          {errorText}
         </ErrorBanner>
         <ButtonPrimary wording="Générer le lien" disabled={disabled} onPress={onPress} />
       </BottomContainer>
