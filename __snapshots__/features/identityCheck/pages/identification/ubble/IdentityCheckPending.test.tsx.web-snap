@@ -282,7 +282,7 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
             }
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </div>
       </button>
     </div>
