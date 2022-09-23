@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -18,20 +17,17 @@ export const ReinitializeFilters = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters()
   })
-  const maxPrice = useMaxPrice()
   const reinitializeFilters = () => {
     dispatchStagedSearch({ type: 'INIT' })
-    dispatchStagedSearch({
-      type: 'SET_STATE',
-      payload: {
-        priceRange: [0, maxPrice],
-      },
-    })
     dispatchSearch({
       type: 'SET_STATE',
       payload: {
         locationFilter: initialSearchState.locationFilter,
         offerCategories: initialSearchState.offerCategories,
+        offerIsFree: false,
+        priceRange: null,
+        minPrice: undefined,
+        maxPrice: undefined,
       },
     })
     logReinitializeFilters()

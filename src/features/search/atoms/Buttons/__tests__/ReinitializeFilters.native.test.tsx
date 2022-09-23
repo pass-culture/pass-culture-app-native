@@ -42,6 +42,10 @@ describe('<ReinitializeFilters />', () => {
           locationType: 'EVERYWHERE',
         },
         offerCategories: [],
+        offerIsFree: false,
+        priceRange: null,
+        minPrice: undefined,
+        maxPrice: undefined,
       },
     })
   })
