@@ -16,6 +16,7 @@ import { EduConnectErrors } from 'features/identityCheck/pages/identification/er
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
+import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectPhoneStatus.web'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
@@ -230,5 +231,10 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'SelectIDStatus',
     component: SelectIDStatus,
     path: 'identification/statut-document-identite',
+  },
+  {
+    name: 'SelectPhoneStatus',
+    component: SelectPhoneStatus,
+    path: 'identification/statut-telephone',
   },
 ]
