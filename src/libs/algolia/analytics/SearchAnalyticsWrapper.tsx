@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 
 interface SearchAnalyticsContextType {
   currentQueryID?: string
@@ -16,15 +16,14 @@ const SearchAnalyticsContext = React.createContext<SearchAnalyticsContextType>(d
 export const SearchAnalyticsWrapper = ({ children }: { children: JSX.Element }) => {
   const [currentQueryID, setCurrentQueryID] = useState<string | undefined>()
 
-  return (
-    <SearchAnalyticsContext.Provider
-      value={{
-        currentQueryID,
-        setCurrentQueryID,
-      }}>
-      {children}
-    </SearchAnalyticsContext.Provider>
+  const value = useMemo(
+    () => ({
+      currentQueryID,
+      setCurrentQueryID,
+    }),
+    [currentQueryID]
   )
+  return <SearchAnalyticsContext.Provider value={value}>{children}</SearchAnalyticsContext.Provider>
 }
 
 export const useSearchAnalyticsState = (): SearchAnalyticsContextType => {
