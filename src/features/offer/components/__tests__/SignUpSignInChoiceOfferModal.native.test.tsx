@@ -36,7 +36,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible={true} dismissModal={dismissModal} />
     )
 
-    const button = getByText(`S'inscrire`)
+    const button = getByText(`S’inscrire`)
     await fireEvent.press(button)
 
     expect(navigate).toBeCalledWith('SignupForm', undefined)

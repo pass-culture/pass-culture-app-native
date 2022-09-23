@@ -17,7 +17,7 @@ describe('<IdentityCheckPending/>', () => {
 
   it('should navigate to next screen after timeout', async () => {
     const { getByText } = render(<IdentityCheckPending />)
-    fireEvent.press(getByText(`Retourner à l'accueil`))
+    fireEvent.press(getByText(`Retourner à l’accueil`))
     await waitForExpect(() => {
       expect(navigateFromRef).toBeCalledWith(
         navigateToHomeConfig.screen,
