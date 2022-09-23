@@ -225,7 +225,7 @@ export interface AppThemeType {
         textColor: ColorsEnum
         iconColor: ColorsEnum
       }
-      tertiaryNeutralInformation: {
+      tertiaryNeutralInfo: {
         textColor: ColorsEnum
         iconColor: ColorsEnum
       }
@@ -245,7 +245,7 @@ export interface AppThemeType {
         iconColor: ColorsEnum
         textColor: ColorsEnum
       }
-      quaternaryNeutralInformation: {
+      quaternaryNeutralInfo: {
         iconColor: ColorsEnum
         textColor: ColorsEnum
       }
@@ -325,7 +325,7 @@ export interface AppThemeType {
       iconSize: number
       outlineColor: ColorsEnum
     }
-    tertiaryNeutralInformation: {
+    tertiaryNeutralInfo: {
       marginLeft: number
       marginLeftWithIcon: number
       textColor: ColorsEnum
@@ -370,7 +370,7 @@ export interface AppThemeType {
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
     }
-    quaternaryNeutralInformation: {
+    quaternaryNeutralInfo: {
       marginLeft: number
       marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
@@ -635,7 +635,7 @@ export const theme: AppThemeType = {
         textColor: ColorsEnum.PRIMARY_DISABLED,
         iconColor: ColorsEnum.PRIMARY_DISABLED,
       },
-      tertiaryNeutralInformation: {
+      tertiaryNeutralInfo: {
         textColor: ColorsEnum.GREY_MEDIUM,
         iconColor: ColorsEnum.GREY_MEDIUM,
       },
@@ -655,7 +655,7 @@ export const theme: AppThemeType = {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
       },
-      quaternaryNeutralInformation: {
+      quaternaryNeutralInfo: {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
       },
@@ -735,7 +735,7 @@ export const theme: AppThemeType = {
       iconSize: iconSizes.smaller,
       outlineColor: ColorsEnum.WHITE,
     },
-    tertiaryNeutralInformation: {
+    tertiaryNeutralInfo: {
       marginLeft: 0,
       marginLeftWithIcon: getSpacing(2),
       textColor: ColorsEnum.GREY_DARK,
@@ -780,7 +780,7 @@ export const theme: AppThemeType = {
       backgroundColor: ColorsEnum.TRANSPARENT,
       iconSize: iconSizes.extraSmall,
     },
-    quaternaryNeutralInformation: {
+    quaternaryNeutralInfo: {
       marginLeft: 0,
       marginLeftWithIcon: getSpacing(1),
       loadingIconColor: ColorsEnum.GREY_DARK,

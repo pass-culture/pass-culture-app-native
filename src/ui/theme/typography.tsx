@@ -73,7 +73,7 @@ const ButtonTextPrimary = styled(ButtonText)(({ theme }) => ({
   color: theme.colors.primary,
 }))
 
-const ButtonTextNeutralInformation = styled(ButtonText)(({ theme }) => ({
+const ButtonTextNeutralInfo = styled(ButtonText)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 const ButtonTextSecondary = styled(ButtonText)(({ theme }) => ({
@@ -103,7 +103,7 @@ export const Typo = {
   Title3,
   Title4,
   ButtonText,
-  ButtonTextNeutralInformation,
+  ButtonTextNeutralInfo,
   ButtonTextPrimary,
   ButtonTextSecondary,
   Body,

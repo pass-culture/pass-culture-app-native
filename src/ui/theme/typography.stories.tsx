@@ -61,14 +61,12 @@ ButtonText.args = {
   children: 'ButtonText',
 }
 
-export const ButtonTextNeutralInformation: ComponentStory<
-  typeof Typo.ButtonTextNeutralInformation
-> = ({ children }) => (
-  <Typo.ButtonTextNeutralInformation>{children}</Typo.ButtonTextNeutralInformation>
-)
-ButtonTextNeutralInformation.storyName = 'ButtonTextNeutralInformation'
-ButtonTextNeutralInformation.args = {
-  children: 'ButtonTextNeutralInformation',
+export const ButtonTextNeutralInfo: ComponentStory<typeof Typo.ButtonTextNeutralInfo> = ({
+  children,
+}) => <Typo.ButtonTextNeutralInfo>{children}</Typo.ButtonTextNeutralInfo>
+ButtonTextNeutralInfo.storyName = 'ButtonTextNeutralInfo'
+ButtonTextNeutralInfo.args = {
+  children: 'ButtonTextNeutralInfo',
 }
 
 export const ButtonTextPrimary: ComponentStory<typeof Typo.ButtonTextPrimary> = ({ children }) => (
