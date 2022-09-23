@@ -181,7 +181,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         ]
       }
     >
-      Une erreur s'est produite pendant le chargement.
+      Une erreur s’est produite pendant le chargement.
     </Text>
     <View
       numberOfSpaces={10}

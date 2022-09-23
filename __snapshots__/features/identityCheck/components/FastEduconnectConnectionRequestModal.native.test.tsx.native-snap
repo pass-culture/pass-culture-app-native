@@ -322,7 +322,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 ]
               }
             >
-              Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
+              Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n’as pas d’identifiants ÉduConnect rapproche toi de ton établissement.
             </Text>
             <View
               accessibilityLabel="C’est quoi ÉduConnect ?"

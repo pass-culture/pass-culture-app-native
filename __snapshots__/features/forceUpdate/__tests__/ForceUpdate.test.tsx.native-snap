@@ -124,7 +124,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         ]
       }
     >
-      Mise à jour de l'application
+      Mise à jour de l’application
     </Text>
     <View
       numberOfSpaces={5}
@@ -149,8 +149,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         ]
       }
     >
-      Le pass Culture ne semble plus à jour sur ton téléphone !
-Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
+      Le pass Culture ne semble plus à jour sur ton téléphone ! Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
     </Text>
     <View
       numberOfSpaces={15}

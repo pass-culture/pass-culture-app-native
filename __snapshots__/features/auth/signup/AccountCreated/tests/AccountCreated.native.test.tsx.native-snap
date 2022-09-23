@@ -144,7 +144,7 @@ exports[`<AccountCreated /> should render correctly 1`] = `
         ]
       }
     >
-      Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.
+      Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n’aura pas d’impact sur les offres proposées.
     </Text>
     <View
       numberOfSpaces={15}
