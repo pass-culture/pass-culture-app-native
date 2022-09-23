@@ -277,7 +277,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 ]
               }
             >
-              Dans quel type d'établissement ?
+              Dans quel type d’établissement ?
             </Text>
           </View>
           <View
@@ -1220,7 +1220,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 ]
               }
             >
-              Dans quel type d'établissement ?
+              Dans quel type d’établissement ?
             </Text>
           </View>
           <View

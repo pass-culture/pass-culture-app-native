@@ -276,7 +276,7 @@ exports[`<SetName/> should render correctly 1`] = `
                 ]
               }
             >
-              Comment t'appelles-tu ?
+              Comment t’appelles-tu ?
             </Text>
           </View>
           <View
@@ -386,7 +386,7 @@ exports[`<SetName/> should render correctly 1`] = `
                       ]
                     }
                   >
-                    Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité.
+                    Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta carte d’identité.
                   </Text>
                 </View>
               </View>
@@ -685,7 +685,7 @@ exports[`<SetName/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Continuer vers l'étape suivante"
+            accessibilityLabel="Continuer vers l’étape suivante"
             accessibilityState={
               Object {
                 "disabled": true,

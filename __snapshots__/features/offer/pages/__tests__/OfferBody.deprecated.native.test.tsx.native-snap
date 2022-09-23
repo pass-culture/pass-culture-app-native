@@ -1934,7 +1934,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessibilityLabel="Signaler l'offre"
+                                accessibilityLabel="Signaler l’offre"
                                 accessibilityState={
                                   Object {
                                     "disabled": false,
@@ -2006,7 +2006,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     ]
                                   }
                                 >
-                                  Signaler l'offre
+                                  Signaler l’offre
                                 </Text>
                               </View>
                             </View>
@@ -4458,7 +4458,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessibilityLabel="Signaler l'offre"
+                                accessibilityLabel="Signaler l’offre"
                                 accessibilityState={
                                   Object {
                                     "disabled": false,
@@ -4530,7 +4530,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     ]
                                   }
                                 >
-                                  Signaler l'offre
+                                  Signaler l’offre
                                 </Text>
                               </View>
                             </View>

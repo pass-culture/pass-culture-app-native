@@ -288,7 +288,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                 ]
               }
             >
-              Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en demander un nouveau.
+              Si après 5 minutes tu n’as pas reçu ton code de validation, tu peux en demander un nouveau.
             </Text>
             <View
               numberOfSpaces={8}
@@ -706,7 +706,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
                 ]
               }
             >
-              Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en demander un nouveau.
+              Si après 5 minutes tu n’as pas reçu ton code de validation, tu peux en demander un nouveau.
             </Text>
             <View
               numberOfSpaces={8}

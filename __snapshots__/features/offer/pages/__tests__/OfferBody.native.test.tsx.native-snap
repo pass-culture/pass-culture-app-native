@@ -1052,7 +1052,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <View
-          accessibilityLabel="Signaler l'offre"
+          accessibilityLabel="Signaler l’offre"
           accessibilityState={
             Object {
               "disabled": false,
@@ -1124,7 +1124,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               ]
             }
           >
-            Signaler l'offre
+            Signaler l’offre
           </Text>
         </View>
       </View>
