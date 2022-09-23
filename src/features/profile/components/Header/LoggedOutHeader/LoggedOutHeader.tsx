@@ -11,6 +11,7 @@ import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function LoggedOutHeader() {
+  const loginText = 'Tu as déjà un compte\u00a0?\u00a0'
   return (
     <React.Fragment>
       <PageHeader title="Profil" size="medium" />
@@ -32,7 +33,7 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={5} />
         <StyledBody>
-          {`Tu as déjà un compte\u00a0?\u00a0`}
+          {loginText}
           <TouchableLink
             as={ButtonInsideText}
             navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
