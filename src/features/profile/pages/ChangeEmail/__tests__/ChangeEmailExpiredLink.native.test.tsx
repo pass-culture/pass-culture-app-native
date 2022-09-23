@@ -38,7 +38,7 @@ describe('<ChangeEmailExpiredLink />', () => {
   it('should redirect to home page when go back to home button is clicked', async () => {
     const { getByText } = await render(<ChangeEmailExpiredLink />)
 
-    fireEvent.press(getByText(`Retourner à l'accueil`))
+    fireEvent.press(getByText(`Retourner à l’accueil`))
 
     await waitForExpect(() => {
       expect(navigateFromRef).toBeCalledWith(

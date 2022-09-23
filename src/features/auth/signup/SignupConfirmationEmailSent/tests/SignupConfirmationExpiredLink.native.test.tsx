@@ -38,7 +38,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     const { findByText } = renderSignupConfirmationExpiredLink()
 
-    const button = await findByText("Retourner à l'accueil")
+    const button = await findByText('Retourner à l’accueil')
     await fireEvent.press(button)
 
     await waitForExpect(() => {
@@ -52,7 +52,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to signup confirmation email sent page WHEN clicking on resend email and response is success', async () => {
     const { getByText } = renderSignupConfirmationExpiredLink()
 
-    fireEvent.press(getByText(`Renvoyer l'email`))
+    fireEvent.press(getByText(`Renvoyer l’email`))
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -72,7 +72,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     )
     const { getByText } = renderSignupConfirmationExpiredLink()
 
-    fireEvent.press(getByText(`Renvoyer l'email`))
+    fireEvent.press(getByText(`Renvoyer l’email`))
     await superFlushWithAct()
 
     await waitForExpect(() => {

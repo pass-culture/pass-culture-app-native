@@ -20,7 +20,7 @@ describe('useValidateEmail function', () => {
   it('should return an error message if the new email is invalid', () => {
     const { result } = renderHook(() => useValidateEmail(invalidNewUserEmail))
     expect(result.current.emailErrorMessage).toEqual(
-      "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+      'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
     )
     expect(result.current.isEmailValid).toEqual(false)
   })
@@ -28,7 +28,7 @@ describe('useValidateEmail function', () => {
   it('should return an error message if the new email is the same than the new one ', () => {
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
     expect(result.current.emailErrorMessage).toEqual(
-      "L'e-mail saisi est identique à ton e-mail actuel"
+      'L’e-mail saisi est identique à ton e-mail actuel'
     )
     expect(result.current.isEmailValid).toEqual(false)
   })
