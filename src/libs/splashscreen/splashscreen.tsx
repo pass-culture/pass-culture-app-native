@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, memo, useState, useMemo } from 'react'
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-lottie-splash-screen'
 
 import { SplashScreenContextInterface } from './types'
 
