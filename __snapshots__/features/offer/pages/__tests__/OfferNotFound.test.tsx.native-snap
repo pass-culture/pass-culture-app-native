@@ -149,7 +149,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
         ]
       }
     >
-      Il est possible que cette offre soit désactivée ou n'existe pas.
+      Il est possible que cette offre soit désactivée ou n’existe pas.
     </Text>
     <View
       numberOfSpaces={15}
@@ -188,7 +188,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -217,7 +217,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -235,7 +235,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
     </View>

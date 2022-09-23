@@ -276,7 +276,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -305,7 +305,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <View
           style={
@@ -342,7 +342,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
     </View>
@@ -637,7 +637,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -666,7 +666,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <View
           style={
@@ -703,7 +703,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
     </View>

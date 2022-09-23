@@ -2011,7 +2011,8 @@ exports[`Profile component should render correctly 1`] = `
                       ]
                     }
                   >
-                    Version 1.10.5
+                    Version 
+                    1.10.5
                   </Text>
                   <View
                     numberOfSpaces={4}
