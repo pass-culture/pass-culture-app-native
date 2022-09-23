@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash/flatten'
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -20,16 +20,21 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
+  const previousPageObjectIds = useRef<string[]>([])
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
-    async ({ pageParam: page = 0 }) =>
-      await fetchOffer({
+    async ({ pageParam: page = 0 }) => {
+      const response = await fetchOffer({
         parameters: { page, ...searchState },
         userLocation: position,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
-      }),
+        excludedObjectIds: previousPageObjectIds.current,
+      })
+      previousPageObjectIds.current = response.hits.map((hit) => hit.objectID)
+      return response
+    },
     // first page is 0
     { getNextPageParam }
   )

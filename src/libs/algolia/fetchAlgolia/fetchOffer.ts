@@ -16,6 +16,7 @@ type FetchOfferArgs = {
   userLocation: GeoCoordinates | null
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
+  excludedObjectIds?: string[]
 }
 
 export const fetchOffer = async ({
