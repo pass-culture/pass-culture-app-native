@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -28,7 +29,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
-      setErrorMessage('Hors connexion\u00a0: en attente du réseau.')
+      setErrorMessage(t`Hors connexion\u00a0: en attente du réseau.`)
       setIsDoingReCaptchaChallenge(false)
     } else {
       setErrorMessage(null)
@@ -41,7 +42,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
       setIsFetching(true)
       await props.signUp(token)
     } catch {
-      setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+      setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
     } finally {
       setIsFetching(false)
     }
@@ -61,13 +62,13 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
 
   function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+    setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
     captureMonitoringError(error, 'AcceptCguOnReCaptchaError')
   }
 
   function onReCaptchaExpire() {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage('Le token reCAPTCHA a expiré, tu peux réessayer.')
+    setErrorMessage(t`Le token reCAPTCHA a expiré, tu peux réessayer.`)
   }
 
   function onReCaptchaSuccess(token: string) {
@@ -98,18 +99,17 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
       )}
       <CardContent>
         <Paragraphe>
-          <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes nos</Typo.Body>
-          <Spacer.Row numberOfSpaces={1} />
+          <Typo.Body>{t`En cliquant sur “Accepter et s’inscrire”, tu acceptes nos `}</Typo.Body>
           <ExternalLink
-            text="Conditions Générales d'Utilisation"
+            text={t`Conditions Générales d'Utilisation`}
             url={env.CGU_LINK}
             primary
             testID="external-link-cgu"
           />
           <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>ainsi que notre</Typo.Body>
+          <Typo.Body>{t` ainsi que notre `}</Typo.Body>
           <ExternalLink
-            text="Politique de confidentialité."
+            text={t`Politique de confidentialité.`}
             primary
             url={env.PRIVACY_POLICY_LINK}
             testID="external-link-privacy-policy"
@@ -118,8 +118,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
         <Spacer.Column numberOfSpaces={5} />
         <Paragraphe>
           <Typo.Body>
-            Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu
-            peux&nbsp;:
+            {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux\u00a0:`}
           </Typo.Body>
         </Paragraphe>
         <TouchableLink
@@ -131,8 +130,8 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
         />
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          wording="Accepter et s’inscrire"
-          accessibilityLabel="Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+          wording={t`Accepter et s’inscrire`}
+          accessibilityLabel={t`Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire`}
           // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
           // Cf. backend logic for token validation
           onPress={onSubmit}

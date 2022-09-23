@@ -41,6 +41,14 @@ msgstr "12 Caractères"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Accepter et s’inscrire"
+msgstr "Accepter et s’inscrire"
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+msgstr "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+
 #: src/features/offer/pages/OfferBody.tsx
 #: src/features/profile/pages/Profile.tsx
 #: src/features/venue/pages/VenueBody.tsx
@@ -414,6 +422,10 @@ msgstr "Compte réactivé"
 msgid "Compte suspendu"
 msgstr "Compte suspendu"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Conditions Générales d'Utilisation"
+msgstr "Conditions Générales d'Utilisation"
+
 #: src/features/profile/pages/LegalNotices/LegalNotices.tsx
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
@@ -668,6 +680,10 @@ msgstr "Email modification mot de passe envoyé"
 msgid "Email modification mot de passe expiré"
 msgstr "Email modification mot de passe expiré"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
+msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
+
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité."
 msgstr "En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité."
@@ -861,6 +877,10 @@ msgstr "Horaire maximum :"
 #: src/features/search/sections/TimeSlot.tsx
 msgid "Horaire minimum :"
 msgstr "Horaire minimum :"
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Hors connexion : en attente du réseau."
+msgstr "Hors connexion : en attente du réseau."
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "ISBN"
@@ -1068,6 +1088,10 @@ msgstr "Le lien est expiré !"
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
 msgstr "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
+msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Les conséquences :"
@@ -1593,6 +1617,10 @@ msgstr "Personnaliser ta navigation"
 msgid "Plus tard"
 msgstr "Plus tard"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Politique de confidentialité."
+msgstr "Politique de confidentialité."
+
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Politique de gestion des cookies"
 msgstr "Politique de gestion des cookies"
@@ -1610,6 +1638,10 @@ msgstr "Possibilité de réserver 2 places."
 #: src/features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web.tsx
 msgid "Pour cela, nous avons besoin de vérifier ton identité."
 msgstr "Pour cela, nous avons besoin de vérifier ton identité."
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
+msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
@@ -2390,6 +2422,11 @@ msgstr "Type de lieu"
 msgid "Téléphone"
 msgstr "Téléphone"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
+msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
+
 #: src/features/profile/pages/ChangeEmail/AlreadyChangedEmailDisclaimer.tsx
 msgid "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
@@ -2592,6 +2629,10 @@ msgstr "Bienvenue à pass Culture"
 #: src/libs/share/WebShareModal.web.tsx
 msgid "WhatsApp"
 msgstr "WhatsApp"
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "ainsi que notre"
+msgstr "ainsi que notre"
 
 #: src/libs/network/OfflineModeContainer.tsx
 msgid "aucune connexion internet."
