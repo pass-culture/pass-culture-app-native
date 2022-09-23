@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -13,17 +12,18 @@ type MaintenanceProps = {
 }
 
 export const Maintenance: React.FC<MaintenanceProps> = (props) => {
+  const helmetTitle = 'Maintenance | pass Culture'
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Maintenance` + ' | pass Culture'}</title>
+        <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPage title={t`Maintenance en cours`} icon={MaintenanceCone}>
+      <GenericInfoPage title="Maintenance en cours" icon={MaintenanceCone}>
         <Spacer.Column numberOfSpaces={6} />
         <StyledBody>
           {props.message
             ? props.message
-            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!`}
+            : 'L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!'}
         </StyledBody>
         <Spacer.Column numberOfSpaces={24} />
         <LogoPassCulture />

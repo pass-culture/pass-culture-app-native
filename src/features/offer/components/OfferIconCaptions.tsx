@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -39,8 +38,8 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, 
           <IconWithCaption
             testID="iconDuo"
             Icon={Duo}
-            accessibilityLabel={t`Offre à deux`}
-            caption={t`À deux\u00a0!`}
+            accessibilityLabel="Offre à deux"
+            caption="À deux&nbsp;!"
           />
         </React.Fragment>
       )}
@@ -48,7 +47,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, 
       <IconWithCaption
         testID="iconPrice"
         Icon={OrderPrice}
-        accessibilityLabel={t`Prix`}
+        accessibilityLabel="Prix"
         caption={formattedPrice}
       />
       <Spacer.Row numberOfSpaces={6} />

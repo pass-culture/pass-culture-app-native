@@ -317,9 +317,9 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  aria-label="Continuer vers l'étape suivante"
+                  aria-label="Continuer vers l’étape suivante"
                   class="c3 c4"
-                  data-testid="Continuer vers l'étape suivante"
+                  data-testid="Continuer vers l’étape suivante"
                   disabled=""
                   type="submit"
                 >
@@ -655,9 +655,9 @@ Object {
               style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
             >
               <button
-                aria-label="Continuer vers l'étape suivante"
+                aria-label="Continuer vers l’étape suivante"
                 class="c3 c4"
-                data-testid="Continuer vers l'étape suivante"
+                data-testid="Continuer vers l’étape suivante"
                 disabled=""
                 type="submit"
               >

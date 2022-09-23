@@ -96,7 +96,7 @@ describe('<OfferHeader />', () => {
     const { getByTestId, queryByText } = await renderOfferHeader({ isLoggedIn: false })
     fireEvent.press(getByTestId('icon-favorite'))
     expect(
-      queryByText(/Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil/)
+      queryByText('Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !')
     ).toBeTruthy()
   })
 

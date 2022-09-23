@@ -184,7 +184,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Revenir à l'étape précédente"
+            testID="Revenir à l’étape précédente"
           >
             <View
               height={20}

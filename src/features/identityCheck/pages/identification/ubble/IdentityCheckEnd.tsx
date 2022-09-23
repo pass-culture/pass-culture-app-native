@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
@@ -21,6 +20,6 @@ export const IdentityCheckEnd = () => {
   }, [subscription?.nextSubscriptionStep])
 
   return (
-    <GenericInfoPage title={t`Ta pièce d’identité a bien été transmise\u00a0!`} icon={EmailSent} />
+    <GenericInfoPage title="Ta pièce d’identité a bien été transmise&nbsp;!" icon={EmailSent} />
   )
 }

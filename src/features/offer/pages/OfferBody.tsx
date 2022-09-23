@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -100,7 +99,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           numberOfLines={3}
           adjustsFontSizeToFit
           allowFontScaling={false}
-          accessibilityLabel={t`Nom de l'offre\u00a0: ${offer.name}`}>
+          accessibilityLabel={`Nom de l'offre\u00a0: ${offer.name}`}>
           {offer.name}
         </OfferTitle>
       </MarginContainer>
@@ -115,7 +114,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       <Spacer.Column numberOfSpaces={4} />
 
       <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
-        <SectionTitle>{t`Quand\u00a0?`}</SectionTitle>
+        <StyledTitle4>Quand&nbsp;?</StyledTitle4>
         <SectionBody>{formattedDate}</SectionBody>
       </SectionWithDivider>
 
@@ -133,7 +132,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
 
       <SectionWithDivider visible={!!offer.withdrawalDetails && !!user?.isBeneficiary}>
         <AccordionItem
-          title={t`Modalités de retrait`}
+          title="Modalités de retrait"
           scrollViewRef={scrollViewRef}
           onOpenOnce={() => analytics.logConsultWithdrawal({ offerId: offer.id })}>
           <Typo.Body>
@@ -144,7 +143,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
 
       <SectionWithDivider visible={shouldShowAccessibility}>
         <AccordionItem
-          title={t`Accessibilité`}
+          title="Accessibilité"
           scrollViewRef={scrollViewRef}
           onOpenOnce={() => analytics.logConsultAccessibility({ offerId: offer.id })}>
           <AccessibilityBlock {...accessibility} />
@@ -157,13 +156,11 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         <SectionReportOffer>
           <ButtonTertiaryBlack
             inline
-            wording={
-              isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`
-            }
+            wording={isOfferAlreadyReported ? 'Tu as déjà signalé cette offre' : 'Signaler l’offre'}
             disabled={!!isOfferAlreadyReported}
             icon={() => <Flag />}
             onPress={showReportOfferDescription}
-            testID={'report-offer-body'}
+            testID="report-offer-body"
             justifyContent="flex-start"
           />
         </SectionReportOffer>
@@ -188,7 +185,7 @@ const Container = styled.ScrollView({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
 })
-const SectionTitle = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   paddingTop: getSpacing(6),
   paddingBottom: getSpacing(6),
 })

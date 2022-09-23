@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -29,9 +28,11 @@ import { Spacer } from 'ui/theme'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
-const snackbarMessage = t`Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.`
+const snackbarMessage =
+  'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.'
 const exception = 'Failed to fetch data from API: https://geo.api.gouv.fr/communes'
-const noPostalCodeFound = t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
+const noPostalCodeFound =
+  'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
 
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
@@ -92,17 +93,17 @@ export const SetCity = () => {
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title="Profil"
       fixedTopChildren={
         <Form.MaxWidth>
-          <CenteredTitle title={t`Dans quelle ville résides-tu\u00a0?`} />
+          <CenteredTitle title="Dans quelle ville résides-tu&nbsp;?" />
           <Spacer.Column numberOfSpaces={5} />
           <SearchInput
             autoFocus
             onChangeText={onChangePostalCode}
             value={query}
-            label={t`Indique ton code postal et choisis ta ville`}
-            placeholder={t`Ex\u00a0: 75017`}
+            label="Indique ton code postal et choisis ta ville"
+            placeholder="Ex&nbsp;: 75017"
             textContentType="postalCode"
             onPressRightIcon={resetSearch}
             keyboardType="number-pad"
@@ -132,7 +133,7 @@ export const SetCity = () => {
                     onPressOption={onPressOption}
                     optionKey={keyExtractor(city)}
                     {...accessibilityAndTestId(
-                      t`Proposition de ville ${index + 1}\u00a0: ${city.name}`
+                      `Proposition de ville ${index + 1}\u00a0: ${city.name}`
                     )}
                   />
                 </Li>
@@ -145,8 +146,8 @@ export const SetCity = () => {
         <ButtonPrimary
           type="submit"
           onPress={submitCity}
-          wording={t`Continuer`}
-          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          wording="Continuer"
+          accessibilityLabel="Continuer vers l'étape suivante"
           disabled={disabled}
         />
       }

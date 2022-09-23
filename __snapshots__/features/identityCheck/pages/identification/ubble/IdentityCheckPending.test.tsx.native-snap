@@ -214,7 +214,7 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -243,7 +243,7 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -261,7 +261,7 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
     </View>

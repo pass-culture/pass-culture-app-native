@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -21,17 +20,17 @@ const SelectIDOriginContent: FunctionComponent = () => {
     <Container>
       <StyledBicolorIdCardWithMagnifyingGlass />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledTitle>{t`Munis-toi de ta pièce d’identité et débloque ton crédit\u00a0!`}</StyledTitle>
+      <StyledTitle4>Munis-toi de ta pièce d’identité et débloque ton crédit&nbsp;!</StyledTitle4>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledSubtitle>{t`Pour cela, nous avons besoin de vérifier ton identité.`}</StyledSubtitle>
+      <StyledBody>Pour cela, nous avons besoin de vérifier ton identité.</StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       <VerticalUl>
         <Li>
           <HeroButtonList
             Title={
               <Text>
-                <Typo.Body>{t`J’ai une carte d’identité ou un passeport` + ' '}</Typo.Body>
-                <Typo.ButtonText>{t` français`}</Typo.ButtonText>
+                <Typo.Body>J’ai une carte d’identité ou un passeport </Typo.Body>
+                <Typo.ButtonText>français</Typo.ButtonText>
               </Text>
             }
             icon={BicolorFrance}
@@ -45,9 +44,9 @@ const SelectIDOriginContent: FunctionComponent = () => {
           <HeroButtonList
             Title={
               <Text>
-                <Typo.Body>{t`J’ai une carte d’identité, un passeport` + ' '}</Typo.Body>
-                <Typo.ButtonText>{t`étranger` + ' '}</Typo.ButtonText>
-                <Typo.Body>{t`ou un titre de séjour français`}</Typo.Body>
+                <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
+                <Typo.ButtonText>étranger </Typo.ButtonText>
+                <Typo.Body>ou un titre de séjour français</Typo.Body>
               </Text>
             }
             icon={BicolorEarth}
@@ -74,9 +73,9 @@ const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyin
   })
 )``
 
-const StyledTitle = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
-const StyledSubtitle = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { CountryCode } from 'libphonenumber-js'
@@ -111,16 +110,16 @@ export const SetPhoneValidationCode = () => {
 
   const enterCodeInstructions =
     formattedPhoneNumber === ''
-      ? t`Saisis le code reçu par SMS.`
-      : t`Saisis le code reçu au` + ` ${formattedPhoneNumber}.`
+      ? 'Saisis le code reçu par SMS.'
+      : `Saisis le code reçu au ${formattedPhoneNumber}.`
 
   return (
     <PageWithHeader
-      title={t`Numéro de téléphone`}
+      title="Numéro de téléphone"
       onGoBack={remainingAttempts === 0 ? goBackToPhoneValidationTooManySMSSent : undefined}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle titleID={titleID} title={t`Valide ton numéro de téléphone`} />
+          <CenteredTitle titleID={titleID} title="Valide ton numéro de téléphone" />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }
@@ -134,15 +133,15 @@ export const SetPhoneValidationCode = () => {
                 autoCapitalize="none"
                 isError={false}
                 keyboardType="number-pad"
-                label={t`Code de validation`}
-                rightLabel={t`Format\u00a0: 6 chiffres`}
+                label="Code de validation"
+                rightLabel="Format&nbsp;: 6 chiffres"
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
-                placeholder={'012345'}
+                placeholder="012345"
                 textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
                 accessibilityDescribedBy={validationCodeInputErrorId}
-                testID={t`Entrée pour le code reçu par sms`}
+                testID="Entrée pour le code reçu par sms"
               />
             </InputContainer>
             <InputError
@@ -156,7 +155,7 @@ export const SetPhoneValidationCode = () => {
               <ButtonTertiaryBlack
                 inline
                 icon={Again}
-                wording={t`Code non reçu\u00a0?`}
+                wording="Code non reçu&nbsp;?"
                 onPress={showModal}
               />
             </ButtonContainer>
@@ -170,7 +169,7 @@ export const SetPhoneValidationCode = () => {
       fixedBottomChildren={
         <ButtonPrimary
           type="submit"
-          wording={t`Continuer`}
+          wording="Continuer"
           isLoading={isLoading}
           disabled={!codeInputState.isValid}
           onPress={validateCode}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -30,31 +29,33 @@ export function IdentityCheckStartContentDesktop({
       <StyledBicolorPhonePending />
       <Spacer.Column numberOfSpaces={6} />
       <ContentDesktopContainer>
-        <Title>{t`Vérifie ton identité sur ton smartphone`}</Title>
+        <StyledTitle4>Vérifie ton identité sur ton smartphone</StyledTitle4>
         <Spacer.Column numberOfSpaces={6} />
-        <Body>
-          {t`Gagne du temps en vérifiant ton identité directement sur ton smartphone\u00a0! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.`}
-        </Body>
+        <StyledBody>
+          Gagne du temps en vérifiant ton identité directement sur ton smartphone&nbsp;! Sinon tu
+          peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.
+        </StyledBody>
         <Spacer.Column numberOfSpaces={2} />
-        <Body>
-          {t`Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.`}
-        </Body>
+        <StyledBody>
+          Prends une photo de ta carte d’identité ou de ton passeport en cours de validité pour
+          accéder à ton pass Culture.
+        </StyledBody>
       </ContentDesktopContainer>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         onPress={showSomeAdviceBeforeIdentityCheckModal}
-        wording={t`Vérification par smartphone`}
+        wording="Vérification par smartphone"
       />
       <Spacer.Column numberOfSpaces={8} />
       <DMSInformationContainer>
-        <StyledBody>{t`Tu n'as pas de smartphone\u00a0?`}</StyledBody>
+        <Body>Tu n’as pas de smartphone&nbsp;?</Body>
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
-          wording={t`Identification par le site Démarches-Simplifiées`}
+          wording="Identification par le site Démarches-Simplifiées"
           onPress={showDMSModal}
           icon={ExternalFilledIcon}
         />
-        <GreyDarkCaption>{t`Environ 10 jours`}</GreyDarkCaption>
+        <GreyDarkCaption>Environ 10 jours</GreyDarkCaption>
       </DMSInformationContainer>
       <DMSModal visible={visible} hideModal={hideModal} />
       <Spacer.Column numberOfSpaces={6} />
@@ -66,11 +67,11 @@ const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) 
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const Title = styled(Typo.Title4)({ textAlign: 'center' })
+const StyledTitle4 = styled(Typo.Title4)({ textAlign: 'center' })
 
-const Body = styled(Typo.Body)({ textAlign: 'center' })
+const StyledBody = styled(Typo.Body)({ textAlign: 'center' })
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

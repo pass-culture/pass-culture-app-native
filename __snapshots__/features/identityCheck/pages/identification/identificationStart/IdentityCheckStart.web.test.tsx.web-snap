@@ -90,7 +90,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                         class=\\"css-text-901oao css-textHasAncestor-16my406\\"
 +                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
                         >
--                       Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
+-                       Prends une photo de ta carte d’identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
 -                     </div>
 +                          passeport 
 +                       </span>
@@ -129,7 +129,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                       style=\\"color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;\\"
 +                         style=\\"color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;\\"
                         >
--                       Tu n'as pas de smartphone ?
+-                       Tu n’as pas de smartphone ?
 +                         Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
                         </div>
 -                     <div

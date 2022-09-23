@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -13,19 +12,24 @@ import { Spacer, Typo } from 'ui/theme'
 export function IdentityCheckPending() {
   return (
     <GenericInfoPage
-      title={t`Oups\u00a0!`}
+      title="Oups&nbsp;!"
       icon={IdCardError}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
         />,
       ]}>
-      <StyledBody>{t`Il y a déjà une demande de crédit pass Culture en cours sur ton compte.`}</StyledBody>
+      <StyledBody>
+        Il y a déjà une demande de crédit pass Culture en cours sur ton compte.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>{t`Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé.`}</StyledBody>
+      <StyledBody>
+        Ton inscription est en cours de vérification. Tu recevras une notification dès que ton
+        dossier sera validé.
+      </StyledBody>
     </GenericInfoPage>
   )
 }

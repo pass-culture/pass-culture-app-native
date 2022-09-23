@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -26,7 +25,8 @@ import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 
-const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
+const snackbarMessage =
+  'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
 export const SetAddress = () => {
@@ -90,8 +90,8 @@ export const SetAddress = () => {
       : isValidAddress
 
   const label = idCheckAddressAutocompletion
-    ? t`Recherche et sélectionne ton adresse`
-    : t`Entre ton adresse`
+    ? 'Recherche et sélectionne ton adresse'
+    : 'Entre ton adresse'
 
   const hasError = !isValidAddress && query.length > 0
 
@@ -105,17 +105,17 @@ export const SetAddress = () => {
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title="Profil"
       fixedTopChildren={
         <Form.MaxWidth>
-          <CenteredTitle title={t`Quelle est ton adresse\u00a0?`} />
+          <CenteredTitle title="Quelle est ton adresse&nbsp;?" />
           <Spacer.Column numberOfSpaces={5} />
           <SearchInput
             autoFocus
             onChangeText={onChangeAddress}
             value={query}
             label={label}
-            placeholder={t`Ex\u00a0: 34 avenue de l'Opéra`}
+            placeholder="Ex&nbsp;: 34 avenue de l'Opéra"
             textContentType="addressState"
             accessibilityDescribedBy={adressInputErrorId}
             onPressRightIcon={resetSearch}
@@ -123,7 +123,7 @@ export const SetAddress = () => {
           />
           <InputError
             visible={hasError}
-            messageId={t`Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces.`}
+            messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
             numberOfSpacesTop={2}
             relatedInputId={adressInputErrorId}
           />
@@ -141,7 +141,7 @@ export const SetAddress = () => {
                 onPressOption={onAddressSelection}
                 optionKey={address}
                 key={address}
-                {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1}\u00a0: ${address}`)}
+                {...accessibilityAndTestId(`Proposition d'adresse ${index + 1}\u00a0: ${address}`)}
               />
             ))}
           </AdressesContainer>
@@ -151,8 +151,8 @@ export const SetAddress = () => {
         <ButtonPrimary
           type="submit"
           onPress={submitAddress}
-          wording={t`Continuer`}
-          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          wording="Continuer"
+          accessibilityLabel="Continuer vers l’étape suivante"
           disabled={!enabled}
         />
       }

@@ -299,7 +299,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   ]
                 }
               >
-                As-tu ta pièce d'identité avec toi ?
+                As-tu ta pièce d’identité avec toi ?
               </Text>
               <View
                 numberOfSpaces={4}
@@ -325,7 +325,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     ]
                   }
                 >
-                  Tu dois avoir ta pièce d'identité 
+                  Tu dois avoir ta pièce d’identité 
                 </Text>
                 <Text
                   style={
@@ -493,7 +493,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             ]
                           }
                         >
-                          J’ai ma pièce d'identité 
+                          J’ai ma pièce d’identité 
                         </Text>
                         <Text
                           style={
@@ -657,7 +657,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             ]
                           }
                         >
-                          Je n'ai pas 
+                          Je n’ai pas 
                         </Text>
                         <Text
                           style={
@@ -671,7 +671,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             ]
                           }
                         >
-                          ma pièce d'identité originale 
+                          ma pièce d’identité originale 
                         </Text>
                         <Text
                           style={
@@ -796,7 +796,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             ]
                           }
                         >
-                          Ma pièce d'identité est 
+                          Ma pièce d’identité est 
                         </Text>
                         <Text
                           style={
