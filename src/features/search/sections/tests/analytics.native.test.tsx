@@ -59,22 +59,6 @@ describe('Analytics - logUseFilter', () => {
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
-  it('should log UseFilter once when sliding the price', () => {
-    const { getByTestId } = render(<Section.Price />)
-    const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChangeFinish([20, 300])
-    slider.props.onValuesChangeFinish([20, 30])
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Price)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
-
-  it('should log UseFilter once when changing free offer', () => {
-    const { getByTestId } = render(<Section.FreeOffer />)
-    fireEvent.press(getByTestId('Interrupteur'))
-    fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
 
   it('should log UseFilter once when changing duo offer', () => {
     const { getByTestId } = render(<Section.DuoOffer />)

@@ -85,10 +85,6 @@ export const SearchFilter: React.FC = () => {
           <Section.Price />
           <Separator marginVertical={getSpacing(4)} />
 
-          {/* Uniquement les offres gratuites */}
-          <Section.FreeOffer />
-          <Separator marginVertical={getSpacing(4)} />
-
           {/* Uniquement les offres duo */}
           {!!profile?.isBeneficiary && (
             <React.Fragment>
