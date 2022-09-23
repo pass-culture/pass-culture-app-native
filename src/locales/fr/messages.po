@@ -2080,14 +2080,6 @@ msgstr "Prix"
 msgid "Prix croissant"
 msgstr "Prix croissant"
 
-#: src/features/search/sections/Price.tsx
-msgid "Prix maximum :"
-msgstr "Prix maximum :"
-
-#: src/features/search/sections/Price.tsx
-msgid "Prix minimum :"
-msgstr "Prix minimum :"
-
 #: src/features/navigation/helpers/openUrl.ts
 msgid "Problème technique ;("
 msgstr "Problème technique ;("

@@ -1,3 +1,3 @@
 export const getPriceAsNumber = (price?: string, defaultValue?: number) => {
-  return price ? +price.replace(',', '.') : defaultValue
+  return price ? Number(price.replace(',', '.')) : defaultValue
 }
