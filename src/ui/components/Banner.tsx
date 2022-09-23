@@ -12,7 +12,7 @@ export const Banner: React.FC<{ title: string }> = ({ title }) => (
     </IconWrapper>
     <Spacer.Row numberOfSpaces={3} />
     <TextContainer>
-      <Caption>{title}</Caption>
+      <Typo.Caption>{title}</Typo.Caption>
     </TextContainer>
   </Background>
 )
@@ -39,7 +39,3 @@ const StyledError = styled(Error).attrs(({ theme }) => ({
 const TextContainer = styled(View)({
   flexShrink: 1,
 })
-
-const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.black,
-}))
