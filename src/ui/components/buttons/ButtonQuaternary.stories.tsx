@@ -2,31 +2,38 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { ButtonQuaternaryNeutralInfo } from 'ui/components/buttons/ButtonQuaternaryNeutralInfo'
+import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
-import { ButtonQuaternary } from './ButtonQuaternary'
-
 export default {
   title: 'ui/buttons/ButtonQuaternary',
-  component: ButtonQuaternary,
+  component: ButtonQuaternaryPrimary,
   argTypes: {
     icon: selectArgTypeFromObject({
       Email,
       EditPen,
     }),
   },
-} as ComponentMeta<typeof ButtonQuaternary>
+} as ComponentMeta<typeof ButtonQuaternaryPrimary>
 
-const Template: ComponentStory<typeof ButtonQuaternary> = (props) => (
+const Template: ComponentStory<typeof ButtonQuaternaryPrimary> = (props) => (
   <React.Fragment>
-    <StoryContainer title="ButtonQuaternary">
-      <ButtonQuaternary {...props} />
-    </StoryContainer>
     <StoryContainer title="ButtonQuaternaryBlack">
       <ButtonQuaternaryBlack {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternaryNeutralInfo">
+      <ButtonQuaternaryNeutralInfo {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternaryPrimary">
+      <ButtonQuaternaryPrimary {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternarySecondary">
+      <ButtonQuaternarySecondary {...props} />
     </StoryContainer>
   </React.Fragment>
 )
@@ -38,7 +45,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: '<ButtonQuaternary wording="Confirmer" />',
+      code: '<ButtonQuaternaryPrimary wording="Confirmer" />',
     },
   },
 }
@@ -51,7 +58,7 @@ Loading.args = {
 Loading.parameters = {
   docs: {
     source: {
-      code: '<ButtonQuaternary wording="Confirmer" isLoading />',
+      code: '<ButtonQuaternaryPrimary wording="Confirmer" isLoading />',
     },
   },
 }
@@ -64,7 +71,7 @@ Tall.args = {
 Tall.parameters = {
   docs: {
     source: {
-      code: '<ButtonQuaternary wording="Confirmer" buttonHeight="tall" />',
+      code: '<ButtonQuaternaryPrimary wording="Confirmer" buttonHeight="tall" />',
     },
   },
 }
@@ -77,7 +84,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonQuaternary wording="Confirmer" icon={Email} />',
+      code: '<ButtonQuaternaryPrimary wording="Confirmer" icon={Email} />',
     },
   },
 }
@@ -91,7 +98,7 @@ DisabledWithIcon.args = {
 DisabledWithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonQuaternary wording="Confirmer" disabled={true} icon={Email} />',
+      code: '<ButtonQuaternaryPrimary wording="Confirmer" disabled={true} icon={Email} />',
     },
   },
 }

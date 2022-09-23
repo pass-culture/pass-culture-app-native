@@ -6,7 +6,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
 
-export const ButtonTertiary = styledButton(AppButton).attrs<BaseButtonProps>(
+export const ButtonTertiaryPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, ...rest }) => {
     let Icon
 

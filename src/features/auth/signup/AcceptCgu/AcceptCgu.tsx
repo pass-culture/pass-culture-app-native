@@ -11,7 +11,7 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -122,7 +122,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
           </Typo.Body>
         </Paragraphe>
         <TouchableLink
-          as={ButtonTertiary}
+          as={ButtonTertiaryPrimary}
           wording={t`Contacter le support`}
           accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
           externalNav={contactSupport.forGenericQuestion}

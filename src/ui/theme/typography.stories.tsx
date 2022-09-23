@@ -61,9 +61,47 @@ ButtonText.args = {
   children: 'ButtonText',
 }
 
+export const ButtonTextNeutralInfo: ComponentStory<typeof Typo.ButtonTextNeutralInfo> = ({
+  children,
+}) => <Typo.ButtonTextNeutralInfo>{children}</Typo.ButtonTextNeutralInfo>
+ButtonTextNeutralInfo.storyName = 'ButtonTextNeutralInfo'
+ButtonTextNeutralInfo.args = {
+  children: 'ButtonTextNeutralInfo',
+}
+
+export const ButtonTextPrimary: ComponentStory<typeof Typo.ButtonTextPrimary> = ({ children }) => (
+  <Typo.ButtonTextPrimary>{children}</Typo.ButtonTextPrimary>
+)
+ButtonTextPrimary.storyName = 'ButtonTextPrimary'
+ButtonTextPrimary.args = {
+  children: 'ButtonTextPrimary',
+}
+
+export const ButtonTextSecondary: ComponentStory<typeof Typo.ButtonTextSecondary> = ({
+  children,
+}) => <Typo.ButtonTextSecondary>{children}</Typo.ButtonTextSecondary>
+ButtonTextSecondary.storyName = 'ButtonTextSecondary'
+ButtonTextSecondary.args = {
+  children: 'ButtonTextSecondary',
+}
+
 export const Caption: ComponentStory<typeof Typo.Caption> = ({ children }) => (
   <Typo.Caption>{children}</Typo.Caption>
 )
 Caption.args = {
   children: 'Caption',
+}
+
+export const CaptionPrimary: ComponentStory<typeof Typo.CaptionPrimary> = ({ children }) => (
+  <Typo.CaptionPrimary>{children}</Typo.CaptionPrimary>
+)
+CaptionPrimary.args = {
+  children: 'CaptionPrimary',
+}
+
+export const CaptionSecondary: ComponentStory<typeof Typo.CaptionSecondary> = ({ children }) => (
+  <Typo.CaptionSecondary>{children}</Typo.CaptionSecondary>
+)
+CaptionSecondary.args = {
+  children: 'CaptionSecondary',
 }

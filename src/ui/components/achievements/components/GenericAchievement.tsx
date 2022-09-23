@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/firebase/analytics'
-import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
+import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -92,7 +92,7 @@ export const GenericAchievement: FunctionComponent<Props> = ({
       <ScreenUsableArea>
         {!!lastIndex && (
           <SkipButton ref={skipButtonRef}>
-            <ButtonTertiaryGreyDark wording={t`Tout passer`} onPress={skipGenericAchievement} />
+            <ButtonTertiaryNeutralInfo wording={t`Tout passer`} onPress={skipGenericAchievement} />
           </SkipButton>
         )}
         <SwiperContainer>

@@ -8,7 +8,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchBox } from 'features/search/components/SearchBox'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
 import { SearchView } from 'features/search/types'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
@@ -86,7 +86,7 @@ const SearchBoxContainer = styled.View<{ isLanding: boolean; view?: SearchView }
   })
 )
 
-const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiary))({
+const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary))({
   margin: getSpacing(1),
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(4),

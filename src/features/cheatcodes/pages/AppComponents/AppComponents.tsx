@@ -27,10 +27,10 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
@@ -180,14 +180,14 @@ export const AppComponents: FunctionComponent = () => {
           {/* Buttons: Tertiary */}
           <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
           <Spacer.Column numberOfSpaces={1} />
-          <ButtonTertiary
+          <ButtonTertiaryPrimary
             wording="Triggers all active buttons"
             icon={Close}
             isLoading={buttonIsLoading}
             onPress={onTriggerFakeLoading}
           />
           <Spacer.Column numberOfSpaces={1} />
-          <ButtonTertiary wording="Disabled" onPress={onButtonPress} icon={Close} disabled />
+          <ButtonTertiaryPrimary wording="Disabled" onPress={onButtonPress} icon={Close} disabled />
           <Spacer.Column numberOfSpaces={1} />
           <ButtonTertiaryWhite
             wording="White tertiary button"
@@ -199,14 +199,19 @@ export const AppComponents: FunctionComponent = () => {
           {/* Buttons: Quaternary */}
           <Typo.Title4>Button - Theme Quaternary</Typo.Title4>
           <Spacer.Column numberOfSpaces={1} />
-          <ButtonQuaternary
+          <ButtonQuaternaryPrimary
             wording="Triggers all active buttons"
             icon={Email}
             isLoading={buttonIsLoading}
             onPress={onTriggerFakeLoading}
           />
           <Spacer.Column numberOfSpaces={1} />
-          <ButtonQuaternary wording="Se connecter" onPress={onButtonPress} icon={Email} disabled />
+          <ButtonQuaternaryPrimary
+            wording="Se connecter"
+            onPress={onButtonPress}
+            icon={Email}
+            disabled
+          />
           <ButtonQuaternaryBlack wording="Se connecter" onPress={onButtonPress} icon={Email} />
           {/* Buttons: With linear gradient */}
           <Typo.Title4>Button - With linear gradient</Typo.Title4>

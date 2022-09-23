@@ -3,38 +3,41 @@ import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
+import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
+import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
-import { ButtonTertiary } from './ButtonTertiary'
-
 export default {
   title: 'ui/buttons/ButtonTertiary',
-  component: ButtonTertiary,
+  component: ButtonTertiaryPrimary,
   argTypes: {
     icon: selectArgTypeFromObject({
       Email,
       EditPen,
     }),
   },
-} as ComponentMeta<typeof ButtonTertiary>
+} as ComponentMeta<typeof ButtonTertiaryPrimary>
 
-const Template: ComponentStory<typeof ButtonTertiary> = (props) => (
+const Template: ComponentStory<typeof ButtonTertiaryPrimary> = (props) => (
   <React.Fragment>
-    <StoryContainer title="ButtonTertiary">
-      <ButtonTertiary {...props} />
-    </StoryContainer>
     <StoryContainer title="ButtonTertiaryBlack">
       <ButtonTertiaryBlack {...props} />
     </StoryContainer>
-    <StoryContainer title="ButtonTertiaryGreyDark">
-      <ButtonTertiaryGreyDark {...props} />
+    <StoryContainer title="ButtonTertiaryNeutralInfo">
+      <ButtonTertiaryNeutralInfo {...props} />
     </StoryContainer>
     <StoryContainer title="ButtonTertiaryWhite" withBackground>
       <ButtonTertiaryWhite {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonTertiaryPrimary">
+      <ButtonTertiaryPrimary {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonTertiarySecondary">
+      <ButtonTertiarySecondary {...props} />
     </StoryContainer>
   </React.Fragment>
 )
@@ -46,7 +49,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: '<ButtonTertiary wording="Confirmer" />',
+      code: '<ButtonTertiaryPrimary wording="Confirmer" />',
     },
   },
 }
@@ -59,7 +62,7 @@ Loading.args = {
 Loading.parameters = {
   docs: {
     source: {
-      code: '<ButtonTertiary wording="Confirmer" isLoading />',
+      code: '<ButtonTertiaryPrimary wording="Confirmer" isLoading />',
     },
   },
 }
@@ -72,7 +75,7 @@ Tall.args = {
 Tall.parameters = {
   docs: {
     source: {
-      code: '<ButtonTertiary wording="Confirmer" buttonHeight="tall" />',
+      code: '<ButtonTertiaryPrimary wording="Confirmer" buttonHeight="tall" />',
     },
   },
 }
@@ -85,7 +88,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonTertiary wording="Confirmer" icon={Email} />',
+      code: '<ButtonTertiaryPrimary wording="Confirmer" icon={Email} />',
     },
   },
 }
@@ -99,7 +102,7 @@ DisabledWithIcon.args = {
 DisabledWithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonTertiary wording="Confirmer" disabled={true} icon={Email} />',
+      code: '<ButtonTertiaryPrimary wording="Confirmer" disabled={true} icon={Email} />',
     },
   },
 }

@@ -9,7 +9,7 @@ import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/firebase/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { useModal } from 'ui/components/modals/useModal'
@@ -42,7 +42,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <InnerContainer>
-        <ButtonTertiary
+        <ButtonTertiaryPrimary
           icon={InfoPlain}
           wording={t`Pour quelle raison\u00a0?`}
           accessibilityLabel={t`Pour quelle raison me demande-t-on ma date de naissance\u00a0?`}

@@ -15,7 +15,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/firebase/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -73,7 +73,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
           </CenteredText>
           <TouchableLink
-            as={ButtonTertiary}
+            as={ButtonTertiaryPrimary}
             wording={t`Consulter notre centre d'aide`}
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
             onPress={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}

@@ -7,7 +7,7 @@ import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
@@ -62,7 +62,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
           disabled={isLoading}
         />
         <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiary wording={t`Retourner à ma réservation`} onPress={props.onDismiss} />
+        <ButtonTertiaryPrimary wording={t`Retourner à ma réservation`} onPress={props.onDismiss} />
       </ModalContent>
     </AppModal>
   )

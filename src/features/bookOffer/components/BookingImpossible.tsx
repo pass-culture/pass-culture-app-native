@@ -9,7 +9,7 @@ import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorit
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -80,7 +80,7 @@ export const BookingImpossible: React.FC = () => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary wording={t`Mettre en favoris`} onPress={addToFavourite} />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiary wording={t`Retourner à l'offre`} onPress={dismissModal} />
+          <ButtonTertiaryPrimary wording={t`Retourner à l'offre`} onPress={dismissModal} />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />

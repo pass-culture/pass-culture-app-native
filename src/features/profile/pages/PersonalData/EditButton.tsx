@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
+import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EditPen } from 'ui/svg/icons/EditPen'
@@ -14,7 +14,7 @@ type EditButtonProps = {
 
 export const EditButton = ({ navigateTo, onPress, wording, testID }: EditButtonProps) => (
   <TouchableLink
-    as={ButtonQuaternary}
+    as={ButtonQuaternaryPrimary}
     navigateTo={navigateTo}
     onPress={onPress}
     wording={wording}
