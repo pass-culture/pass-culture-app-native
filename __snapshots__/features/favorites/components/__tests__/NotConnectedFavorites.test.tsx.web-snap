@@ -293,7 +293,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             }
           }
         >
-          Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
+          Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !
         </span>
       </div>
     </div>
@@ -350,7 +350,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             }
           }
         >
-          S'inscrire
+          S’inscrire
         </div>
       </button>
       <div
