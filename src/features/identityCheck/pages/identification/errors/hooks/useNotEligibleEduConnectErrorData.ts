@@ -3,8 +3,9 @@ import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { contactSupport } from 'features/auth/support.services'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { ExternalNavigationProps, TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -20,18 +21,21 @@ export enum EduConnectErrorMessageEnum {
   GenericError = 'GenericError',
 }
 
-type NotEligibleEduConnectErrorData = {
+export type NotEligibleEduConnectErrorData = {
   Illustration: FunctionComponent<IconInterface>
   title: string
   description: string
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   descriptionAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   primaryButton?: {
-    primaryButtonText?: string
-    primaryButtonIcon?: FunctionComponent<IconInterface>
-    onPrimaryButtonPress?: () => void
-    navigateTo?: TouchableLinkProps['navigateTo']
-  }
+    text: string
+    icon?: FunctionComponent<IconInterface>
+    onPress?: () => void
+  } & (
+    | { navigateTo: TouchableLinkProps['navigateTo'] }
+    | { externalNav: ExternalNavigationProps['externalNav'] }
+  )
+
   isGoHomeTertiaryButtonVisible?: boolean
 }
 
@@ -57,7 +61,7 @@ const getInvalidInformationErrorData = (
     'Refais une demande en vérifiant ton identité avec ta pièce d’identité.',
   descriptionAlignment: 'center',
   primaryButton: {
-    primaryButtonText: 'Vérifier mon identité',
+    text: 'Vérifier mon identité',
     navigateTo,
   },
   isGoHomeTertiaryButtonVisible: true,
@@ -75,8 +79,8 @@ const getUserTypeNotStudentErrorData = (
     'L’usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L’identification doit se faire au nom du futur bénéficiaire. ',
   descriptionAlignment: 'center',
   primaryButton: {
-    primaryButtonText: "Réessayer de m'identifier",
-    onPrimaryButtonPress,
+    text: 'Réessayer de m’identifier',
+    onPress: onPrimaryButtonPress,
     navigateTo,
   },
   isGoHomeTertiaryButtonVisible: true,
@@ -97,8 +101,9 @@ const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
     "Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n'as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d'informations.",
   descriptionAlignment: 'center',
   primaryButton: {
-    primaryButtonText: 'Contacter le support',
-    primaryButtonIcon: Email,
+    text: 'Contacter le support',
+    icon: Email,
+    externalNav: contactSupport.forGenericQuestion,
   },
   isGoHomeTertiaryButtonVisible: true,
 }
@@ -125,7 +130,7 @@ export function useNotEligibleEduConnectErrorData(
       )
 
     case EduConnectErrorMessageEnum.DuplicateUser:
-      return DuplicatedUserErrorData
+      return DuplicateUserErrorData
 
     default:
       return GenericErrorData

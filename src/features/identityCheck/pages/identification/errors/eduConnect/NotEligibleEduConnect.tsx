@@ -13,7 +13,57 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
-import { useNotEligibleEduConnectErrorData } from '../hooks/useNotEligibleEduConnectErrorData'
+import {
+  NotEligibleEduConnectErrorData,
+  useNotEligibleEduConnectErrorData,
+} from '../hooks/useNotEligibleEduConnectErrorData'
+
+const PrimaryButtonToDisplay = ({
+  button,
+}: {
+  button: NotEligibleEduConnectErrorData['primaryButton'] | undefined
+}): React.ReactNode => {
+  if (!button) {
+    return (
+      <TouchableLink
+        key={1}
+        as={ButtonPrimaryWhite}
+        wording="Retourner à l'accueil"
+        navigateTo={navigateToHomeConfig}
+      />
+    )
+  }
+
+  const { text: primaryButtonText, icon: primaryButtonIcon, onPress: onPrimaryButtonPress } = button
+
+  if ('navigateTo' in button && button.navigateTo) {
+    return (
+      <TouchableLink
+        key={1}
+        as={ButtonPrimaryWhite}
+        wording={primaryButtonText}
+        navigateTo={button.navigateTo}
+        icon={primaryButtonIcon}
+        onPress={onPrimaryButtonPress}
+      />
+    )
+  }
+
+  if ('externalNav' in button && button.externalNav) {
+    return (
+      <TouchableLink
+        key={1}
+        as={ButtonPrimaryWhite}
+        wording={primaryButtonText}
+        icon={primaryButtonIcon}
+        onPress={onPrimaryButtonPress}
+        externalNav={button.externalNav}
+      />
+    )
+  }
+
+  return null
+}
 
 export const NotEligibleEduConnect = ({
   error: { message },
@@ -26,7 +76,7 @@ export const NotEligibleEduConnect = ({
     description,
     descriptionAlignment,
     Illustration,
-    primaryButton,
+    primaryButton: primaryButtonProps,
     isGoHomeTertiaryButtonVisible = false,
   } = useNotEligibleEduConnectErrorData(message, setError)
 
@@ -69,14 +119,7 @@ export const NotEligibleEduConnect = ({
       title={title}
       icon={Illustration}
       buttons={[
-        <TouchableLink
-          key={1}
-          as={ButtonPrimaryWhite}
-          wording={primaryButton?.primaryButtonText ?? "Retourner à l'accueil"}
-          navigateTo={primaryButton?.navigateTo ?? navigateToHomeConfig}
-          onPress={primaryButton?.onPrimaryButtonPress}
-          icon={primaryButton?.primaryButtonIcon}
-        />,
+        PrimaryButtonToDisplay({ button: primaryButtonProps }),
         !!isGoHomeTertiaryButtonVisible && goBackToHomeTertiaryButton,
       ].filter(Boolean)}>
       <Helmet>
