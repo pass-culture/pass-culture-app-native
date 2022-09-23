@@ -117,7 +117,7 @@ describe('SearchResults component', () => {
     expect(queryByTestId('categoryButton')).toBeTruthy()
   })
 
-  it('should display an icon and change color in category button when category selected', () => {
+  it('should display an icon and change color in category button when has category selected', () => {
     useRoute.mockReturnValueOnce({
       params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
     })
@@ -150,7 +150,7 @@ describe('SearchResults component', () => {
     expect(fullscreenModalScrollView).toBeTruthy()
   })
 
-  it('should display an icon and change color in prices filter button when prices filter selected', () => {
+  it('should display an icon and change color in prices filter button when has prices filter selected', () => {
     useRoute.mockReturnValueOnce({
       params: { minPrice: '5' },
     })
@@ -170,11 +170,57 @@ describe('SearchResults component', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
     })
+
+    it('should display type filter button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('typeButton')).toBeTruthy()
+    })
+
+    it('should redirect to the general filters page when clicking on the type filter button', () => {
+      const { getByTestId } = render(<SearchResults />)
+      const typeButton = getByTestId('typeButton')
+
+      fireEvent.press(typeButton)
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+    })
+
+    it.each`
+      type               | params
+      ${'duo offer'}     | ${{ offerIsDuo: true }}
+      ${'digital offer'} | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
+      ${'event offer'}   | ${{ offerTypes: { isDigital: false, isEvent: true, isThing: false } }}
+      ${'thing offer'}   | ${{ offerTypes: { isDigital: false, isEvent: false, isThing: true } }}
+    `(
+      'should display an icon and change color in type button when has $type selected',
+      ({ params }) => {
+        useRoute.mockReturnValueOnce({
+          params,
+        })
+        const { getByTestId } = render(<SearchResults />)
+
+        const typeButtonIcon = getByTestId('typeButtonIcon')
+        expect(typeButtonIcon).toBeTruthy()
+
+        const typeButton = getByTestId('typeButton')
+        expect(typeButton).toHaveStyle({ borderColor: theme.colors.primary })
+
+        const typeButtonLabel = getByTestId('typeButtonLabel')
+        expect(typeButtonLabel).toHaveStyle({ color: theme.colors.primary })
+      }
+    )
   })
 
   describe('When feature flag filter desactivated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
+    })
+
+    it('should not display type filter button', () => {
+      const { queryByTestId } = render(<SearchResults />)
+
+      expect(queryByTestId('typeButton')).toBeNull()
     })
   })
 })
