@@ -49,13 +49,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
 msgstr "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
 
-#: src/features/profile/pages/Profile.tsx
-#: src/features/venue/pages/VenueBody.tsx
-msgid "Accessibilité"
-msgstr "Accessibilité"
-
 #: src/ui/components/ValidationMark.tsx
-#: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Accessible"
 msgstr "Accessible"
 
@@ -82,8 +76,6 @@ msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
 #: src/features/offer/atoms/LocationCaption.tsx
-#: src/features/venue/pages/VenueBody.tsx
-#: src/libs/geolocation/components/WhereSection.tsx
 msgid "Adresse"
 msgstr "Adresse"
 
@@ -100,10 +92,6 @@ msgstr "Afficher le mot de passe"
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Aides"
-msgstr "Aides"
-
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Ajouté récemment"
 msgstr "Ajouté récemment"
@@ -111,11 +99,6 @@ msgstr "Ajouté récemment"
 #: src/features/navigation/RootNavigator/Header/Header.web.tsx
 msgid "Aller au contenu principal"
 msgstr "Aller au contenu principal"
-
-#: src/libs/itinerary/useItinerary.ts
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Annuler"
-msgstr "Annuler"
 
 #: src/libs/parsers/venueType.ts
 msgid "Arts visuels, arts plastiques et galeries"
@@ -178,10 +161,6 @@ msgstr "Autre raison"
 #: src/libs/parsers/venueType.ts
 msgid "Autre type de lieu"
 msgstr "Autre type de lieu"
-
-#: src/features/profile/pages/Profile.tsx
-msgid "Autres"
-msgstr "Autres"
 
 #: src/libs/parsers/venueType.ts
 msgid "Bibliothèque / médiathèque"
@@ -271,10 +250,6 @@ msgstr "Ce week-end"
 msgid "Centre culturel"
 msgstr "Centre culturel"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Centre d'aide"
-msgstr "Centre d'aide"
-
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser."
 msgstr "Ces cookies nous permettent, en fonction de ta navigation, de te proposer des contenus supposés pertinents et susceptibles de t’intéresser."
@@ -326,10 +301,6 @@ msgstr "Choisis une date"
 msgid "Choisis une date dans le futur"
 msgstr "Choisis une date dans le futur"
 
-#: src/libs/itinerary/useItinerary.ts
-msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
-msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
-
 #: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
 msgid "Choix de l'indicatif téléphonique"
 msgstr "Choix de l'indicatif téléphonique"
@@ -343,19 +314,11 @@ msgstr "Cinéma - Salle de projections"
 msgid "Cinéma itinérant"
 msgstr "Cinéma itinérant"
 
-#: src/ui/components/LayoutExpiredLink.tsx
-msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
-msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
-
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.tsx
 #: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.web.tsx
 msgid "Commencer la vérification"
 msgstr "Commencer la vérification"
-
-#: src/features/profile/pages/Profile.tsx
-msgid "Comment ça marche ?"
-msgstr "Comment ça marche ?"
 
 #: src/features/identityCheck/atoms/StepButton.tsx
 msgid "Complété"
@@ -369,18 +332,9 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Confidentialité"
-msgstr "Confidentialité"
-
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 msgid "Confirmation"
 msgstr "Confirmation"
-
-#: src/features/profile/components/Header/LoggedOutHeader/LoggedOutHeader.tsx
-#: src/features/profile/components/Header/LoggedOutHeader/LoggedOutHeader.tsx
-msgid "Connecte-toi"
-msgstr "Connecte-toi"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
@@ -390,29 +344,13 @@ msgstr "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle de
 msgid "Conserver l'historique"
 msgstr "Conserver l'historique"
 
-#: src/ui/components/LayoutExpiredLink.tsx
-msgid "Consulter l'article d'aide"
-msgstr "Consulter l'article d'aide"
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Consulter l’article d’aide"
-msgstr "Consulter l’article d’aide"
-
 #: src/features/auth/components/OpenInboxButton.tsx
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/venue/pages/VenueBody.tsx
-msgid "Contact"
-msgstr "Contact"
-
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Contacter le service"
 msgstr "Contacter le service"
-
-#: src/ui/components/LayoutExpiredLink.tsx
-msgid "Contacter le support"
-msgstr "Contacter le support"
 
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
@@ -431,14 +369,6 @@ msgstr "Continuer vers l'étape"
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
 
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Copier"
-msgstr "Copier"
-
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Copier le lien"
-msgstr "Copier le lien"
-
 #: src/libs/parsers/venueType.ts
 msgid "Cours et pratique artistiques"
 msgstr "Cours et pratique artistiques"
@@ -452,10 +382,6 @@ msgstr "Crédit insuffisant"
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Crédit numérique insuffisant"
 msgstr "Crédit numérique insuffisant"
-
-#: src/features/venue/components/VenuePartialAccordionDescription.tsx
-msgid "Crédit photo : {credit}"
-msgstr "Crédit photo : {credit}"
 
 #: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
 msgid "Créer un dossier sur le site des Démarches Simplifiées"
@@ -493,21 +419,12 @@ msgid "Disquaire"
 msgstr "Disquaire"
 
 #: src/features/venue/components/VenueIconCaptions.tsx
-#: src/libs/geolocation/components/WhereSection.tsx
 msgid "Distance"
 msgstr "Distance"
 
 #: src/features/venue/components/VenueIconCaptions.tsx
 msgid "Distance depuis la localisation"
 msgstr "Distance depuis la localisation"
-
-#: src/features/search/sections/Radius.tsx
-msgid "Distance maximum :"
-msgstr "Distance maximum :"
-
-#: src/features/search/sections/Radius.tsx
-msgid "Distance minimum :"
-msgstr "Distance minimum :"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/DuoChoiceSelector.tsx
@@ -517,10 +434,6 @@ msgstr "Duo"
 #: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
 msgid "Débuter le questionnaire"
 msgstr "Débuter le questionnaire"
-
-#: src/features/profile/pages/Profile.tsx
-msgid "Déconnexion"
-msgstr "Déconnexion"
 
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 msgid "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
@@ -547,10 +460,6 @@ msgstr "Détails de la réservation"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
-msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -564,7 +473,6 @@ msgstr "En revanche, nous faisons de la publicité sur les réseaux sociaux pour
 msgid "En voir plus"
 msgstr "En voir plus"
 
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer"
@@ -574,7 +482,6 @@ msgstr "Enregistrer"
 msgid "Enregistrer des statistiques de navigation"
 msgstr "Enregistrer des statistiques de navigation"
 
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Enregistrer les modifications"
@@ -609,10 +516,6 @@ msgstr "Entrée pour le numéro de téléphone"
 msgid "Erreur"
 msgstr "Erreur"
 
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Facebook"
-msgstr "Facebook"
-
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Faire une nouvelle demande"
 msgstr "Faire une nouvelle demande"
@@ -623,7 +526,6 @@ msgstr "Favoris"
 
 #: src/features/bookOffer/pages/BookingOfferModal.tsx
 #: src/features/offer/components/ReportOfferModal.tsx
-#: src/libs/share/WebShareModal.web.tsx
 #: src/ui/components/modals/AppInformationModal.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Fermer la modale"
@@ -655,7 +557,6 @@ msgstr "Filtrer"
 msgid "Galeries d’art"
 msgstr "Galeries d’art"
 
-#: src/libs/parsers/getDisplayPrice.ts
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Gratuit"
 msgstr "Gratuit"
@@ -690,14 +591,6 @@ msgstr "Heure"
 msgid "Historique"
 msgstr "Historique"
 
-#: src/features/search/sections/TimeSlot.tsx
-msgid "Horaire maximum :"
-msgstr "Horaire maximum :"
-
-#: src/features/search/sections/TimeSlot.tsx
-msgid "Horaire minimum :"
-msgstr "Horaire minimum :"
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
@@ -716,14 +609,6 @@ msgstr "Identification"
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
-
-#: src/features/venue/pages/VenueNotFound.tsx
-msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
-msgstr "Il est possible que ce lieu soit désactivé ou n'existe pas."
-
-#: src/features/offer/pages/OfferNotFound.tsx
-msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
-msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
 
 #: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
 msgid "Il te reste"
@@ -754,7 +639,6 @@ msgid "Information"
 msgstr "Information"
 
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
-#: src/features/profile/pages/Profile.tsx
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
@@ -786,10 +670,6 @@ msgstr "Jeux"
 msgid "Jeux / Jeux vidéos"
 msgstr "Jeux / Jeux vidéos"
 
-#: src/features/profile/components/CreditExplanation/getCreditModal.ts
-msgid "J’ai dépensé tout mon crédit, que faire ?"
-msgstr "J’ai dépensé tout mon crédit, que faire ?"
-
 #: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
 msgstr "L'absence des services Google Play bloquent possiblement la géolocalisation"
@@ -797,14 +677,6 @@ msgstr "L'absence des services Google Play bloquent possiblement la géolocalisa
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
-
-#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
-msgid "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
-msgstr "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
-
-#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
-msgid "L'e-mail saisi est identique à ton e-mail actuel"
-msgstr "L'e-mail saisi est identique à ton e-mail actuel"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
 msgid "L'historique n'a pas pu supprimer les données locales: {0}"
@@ -836,14 +708,6 @@ msgstr "La réservation a bien été archivée. Tu pourras la retrouver dans tes
 msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 msgstr "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Le lien a été copié dans le presse-papier !"
-msgstr "Le lien a été copié dans le presse-papier !"
-
-#: src/ui/components/LayoutExpiredLink.tsx
-msgid "Le lien est expiré !"
-msgstr "Le lien est expiré !"
-
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
 msgstr "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
@@ -852,17 +716,9 @@ msgstr "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 mi
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Les conséquences :"
-msgstr "Les conséquences :"
-
 #: src/features/cookies/components/CookiesConsentExplanations.tsx
 msgid "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
 msgstr "Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible."
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Les données qu’on conserve :"
-msgstr "Les données qu’on conserve :"
 
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -877,27 +733,14 @@ msgstr "Librairie"
 msgid "Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
 msgstr "Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
 
-#: src/libs/geolocation/components/WhereSection.tsx
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Lieu"
 msgstr "Lieu"
-
-#: src/features/venue/pages/VenueNotFound.tsx
-msgid "Lieu introuvable | pass Culture"
-msgstr "Lieu introuvable | pass Culture"
-
-#: src/features/venue/pages/VenueNotFound.tsx
-msgid "Lieu introuvable !"
-msgstr "Lieu introuvable !"
 
 #: src/features/search/pages/LocationFilter.tsx
 #: src/features/search/sections/titles.ts
 msgid "Localisation"
 msgstr "Localisation"
-
-#: src/libs/firebase/firestore/maintenance.ts
-msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
-msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation."
@@ -919,12 +762,7 @@ msgstr "Magasin d’arts créatifs"
 msgid "Magasin d’instruments"
 msgstr "Magasin d’instruments"
 
-#: src/ui/components/inputs/Slider.tsx
-msgid "Maximum :"
-msgstr "Maximum :"
-
 #: src/features/profile/pages/LegalNotices/LegalNotices.tsx
-#: src/features/profile/pages/Profile.tsx
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
@@ -952,12 +790,7 @@ msgstr "Mesurer l'efficacité de nos publicités"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/ui/components/inputs/Slider.tsx
-msgid "Minimum :"
-msgstr "Minimum :"
-
 #: src/features/bookings/pages/BookingDetails.tsx
-#: src/features/venue/pages/VenueBody.tsx
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -965,10 +798,6 @@ msgstr "Modalités de retrait"
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Modifier"
 msgstr "Modifier"
-
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid "Modifier mon e-mail"
-msgstr "Modifier mon e-mail"
 
 #: src/features/bookOffer/components/Calendar/Calendar.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
@@ -980,14 +809,6 @@ msgstr "Mois précédent"
 msgid "Mois suivant"
 msgstr "Mois suivant"
 
-#: src/features/profile/components/Modals/ExpiredCreditModal.tsx
-msgid "Mon crédit est expiré, que faire ?"
-msgstr "Mon crédit est expiré, que faire ?"
-
-#: src/features/profile/components/CreditExplanation/getCreditModal.ts
-msgid "Mon crédit est expiré, que faire ?"
-msgstr "Mon crédit est expiré, que faire ?"
-
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Mon profil"
@@ -995,14 +816,9 @@ msgstr "Mon profil"
 
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SignupForm.tsx
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
-
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid "Mot de passe incorrect"
-msgstr "Mot de passe incorrect"
 
 #: src/libs/parsers/venueType.ts
 msgid "Musique - Disquaire"
@@ -1025,10 +841,6 @@ msgstr "Musée"
 msgid "Ne pas archiver"
 msgstr "Ne pas archiver"
 
-#: src/features/venue/pages/VenueBody.tsx
-msgid "Nom du lieu : {0}"
-msgstr "Nom du lieu : {0}"
-
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"
@@ -1038,7 +850,6 @@ msgid "Non"
 msgstr "Non"
 
 #: src/ui/components/ValidationMark.tsx
-#: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Non accessible"
 msgstr "Non accessible"
 
@@ -1047,7 +858,6 @@ msgid "Non complété"
 msgstr "Non complété"
 
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
-#: src/features/profile/pages/Profile.tsx
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -1059,10 +869,6 @@ msgstr "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pour
 msgid "Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application."
 msgstr "Nous enregistrons par exemple ton consentement ou non aux autres cookies pour ne pas te le redemander. Ils te permettent aussi de rester connecté et d’assurer la sécurité de l’application."
 
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité."
-msgstr "Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité."
-
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture."
 msgstr "Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture."
@@ -1070,10 +876,6 @@ msgstr "Nous ne demandons pas ton consentement pour ces cookies car ils sont obl
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
-
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid "Nouvel e-mail"
-msgstr "Nouvel e-mail"
 
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/ui/svg/icons/ExternalSite.tsx
@@ -1109,14 +911,6 @@ msgstr "Offre digitale"
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Offre expirée"
 msgstr "Offre expirée"
-
-#: src/features/offer/pages/OfferNotFound.tsx
-msgid "Offre introuvable | pass Culture"
-msgstr "Offre introuvable | pass Culture"
-
-#: src/features/offer/pages/OfferNotFound.tsx
-msgid "Offre introuvable !"
-msgstr "Offre introuvable !"
 
 #: src/features/search/sections/OfferType.tsx
 #: src/libs/parsers/venueType.ts
@@ -1154,30 +948,13 @@ msgstr "On te redemandera bien sûr ton consentement si notre politique évolue.
 msgid "Oui"
 msgstr "Oui"
 
-#: src/ui/components/LayoutExpiredLink.tsx
-msgid "Oups !"
-msgstr "Oups !"
-
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Ouvrir l'application de message"
-msgstr "Ouvrir l'application de message"
-
 #: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
 msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
 
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Ouvrir le gestionnaire mail"
-msgstr "Ouvrir le gestionnaire mail"
-
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
-#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Ouvrir le gestionnaire mail pour contacter le support"
 msgstr "Ouvrir le gestionnaire mail pour contacter le support"
-
-#: src/libs/geolocation/components/WhereSection.tsx
-msgid "Où ?"
-msgstr "Où ?"
 
 #: src/features/navigation/TabBar/routes.ts
 msgid "Page d'accueil"
@@ -1193,10 +970,6 @@ msgstr "Paramètre enregistré"
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Paramètres de l'application"
-msgstr "Paramètres de l'application"
-
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
@@ -1204,10 +977,6 @@ msgstr "Paramètres de localisation"
 #: src/libs/notifications/components/PushNotificationsModal.tsx
 msgid "Paramètres de notifications"
 msgstr "Paramètres de notifications"
-
-#: src/features/profile/pages/Profile.tsx
-msgid "Paramètres du compte"
-msgstr "Paramètres du compte"
 
 #: src/libs/share/shareApp/ShareAppModal.tsx
 msgid "Partage le lien d’invitation"
@@ -1226,18 +995,9 @@ msgstr "Partager l'offre"
 msgid "Partager le lieu"
 msgstr "Partager le lieu"
 
-#: src/features/profile/pages/Profile.tsx
-#: src/features/profile/pages/Profile.tsx
-msgid "Partager ma position"
-msgstr "Partager ma position"
-
 #: src/features/search/components/locationChoice.utils.tsx
 msgid "Partout"
 msgstr "Partout"
-
-#: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
-msgid "Pas de panique, l’aventure continue !"
-msgstr "Pas de panique, l’aventure continue !"
 
 #: src/libs/network/OfflinePage.tsx
 msgid "Pas de réseau internet"
@@ -1288,10 +1048,6 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
 msgstr "Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude."
 
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :"
-msgstr "Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :"
-
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
@@ -1299,11 +1055,6 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Pour plus d’informations, nous t’invitons à consulter notre"
 msgstr "Pour plus d’informations, nous t’invitons à consulter notre"
-
-#: src/features/profile/components/CreditExplanation/getCreditModal.ts
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "Pourquoi cette limite ?"
-msgstr "Pourquoi cette limite ?"
 
 #: src/libs/parsers/venueType.ts
 msgid "Pratique artistiques"
@@ -1332,17 +1083,12 @@ msgstr "Prix croissant"
 #: src/features/identityCheck/pages/profile/SetStatus.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
-#: src/features/profile/components/Header/LoggedOutHeader/LoggedOutHeader.tsx
 msgid "Profil"
 msgstr "Profil"
 
 #: src/features/profile/components/Header/CreditHeader/CreditHeader.tsx
 msgid "Profite de ton crédit jusqu’au"
 msgstr "Profite de ton crédit jusqu’au"
-
-#: src/libs/share/shareApp/shareAppContent.ts
-msgid "Profite toi aussi de tous les bons plans du pass Culture"
-msgstr "Profite toi aussi de tous les bons plans du pass Culture"
 
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Proximité géographique"
@@ -1392,11 +1138,6 @@ msgstr "Refuser"
 msgid "Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
 msgstr "Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
-msgid "Renvoyer l'email"
-msgstr "Renvoyer l'email"
-
 #: src/features/cookies/components/useCookiesModalContent.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Respect de ta vie privée"
@@ -1419,10 +1160,7 @@ msgstr "Retour"
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
-#: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
-#: src/features/venue/pages/VenueNotFound.tsx
-#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -1525,10 +1263,6 @@ msgstr "Réserver"
 msgid "Réserver l'offre {offerName}"
 msgstr "Réserver l'offre {offerName}"
 
-#: src/features/profile/components/Header/LoggedOutHeader/LoggedOutHeader.tsx
-msgid "S'inscrire"
-msgstr "S'inscrire"
-
 #: src/features/profile/pages/ChangeEmail/ChangeEmailDisclaimer.tsx
 msgid "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
 msgstr "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
@@ -1566,10 +1300,6 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
-#: src/ui/components/LayoutExpiredLink.tsx
-msgid "Si tu as besoin d’aide n’hésite pas à :"
-msgstr "Si tu as besoin d’aide n’hésite pas à :"
-
 #: src/features/cookies/components/cookiesInfo.ts
 msgid "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
 msgstr "Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs."
@@ -1606,15 +1336,6 @@ msgstr "Spectacle vivant"
 msgid "Succès"
 msgstr "Succès"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Suivre pass Culture"
-msgstr "Suivre pass Culture"
-
-#: src/ui/components/snackBar/SnackBar.tsx
-msgid "Supprimer le message : {0}"
-msgstr "Supprimer le message : {0}"
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
@@ -1626,10 +1347,6 @@ msgstr "Sélectionne ton statut"
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Ta réservation \"{nameCanceledBooking}\" a été annulée"
 msgstr "Ta réservation \"{nameCanceledBooking}\" a été annulée"
-
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Telegram"
-msgstr "Telegram"
 
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "Terminer ma réservation"
@@ -1692,7 +1409,6 @@ msgid "Ton inscription est en cours de traitement."
 msgstr "Ton inscription est en cours de traitement."
 
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
@@ -1744,21 +1460,9 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/profile/components/Header/LoggedOutHeader/LoggedOutHeader.tsx
-msgid "Tu as déjà un compte ?"
-msgstr "Tu as déjà un compte ?"
-
 #: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 msgid "Tu as dépassé le nombre de 5 demandes de code autorisées."
 msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
-
-#: src/features/profile/components/Modals/ExhaustedCreditModal.tsx
-msgid "Tu as dépensé tout ton crédit, que faire ?"
-msgstr "Tu as dépensé tout ton crédit, que faire ?"
-
-#: src/features/profile/components/Header/LoggedOutHeader/LoggedOutHeader.tsx
-msgid "Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton crédit pass Culture"
-msgstr "Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton crédit pass Culture"
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Tu as jusqu'au {formattedDate} pour réactiver ton compte."
@@ -1808,10 +1512,6 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
-#: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
-msgid "Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site."
-msgstr "Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site."
-
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Tu peux choisir d’accepter ou non l’activation de leur suivi."
 msgstr "Tu peux choisir d’accepter ou non l’activation de leur suivi."
@@ -1823,10 +1523,6 @@ msgstr "Tu peux faire une nouvelle demande de modification dans ton profil."
 #: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 msgid "Tu peux sélectionner une ou plusieurs réponses."
 msgstr "Tu peux sélectionner une ou plusieurs réponses."
-
-#: src/features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent.tsx
-msgid "Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture."
-msgstr "Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture."
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
@@ -1843,10 +1539,6 @@ msgstr "Tu vas recevoir un code de validation pour confirmer ton numéro."
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Tu y es presque"
 msgstr "Tu y es presque"
-
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Twitter"
-msgstr "Twitter"
 
 #: src/features/search/sections/titles.ts
 msgid "Type d'offre"
@@ -1878,25 +1570,9 @@ msgstr "Une erreur est survenue"
 msgid "Une erreur est survenue lors de la mise à jour de ton profil"
 msgstr "Une erreur est survenue lors de la mise à jour de ton profil"
 
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid ""
-"Une erreur s’est produite pendant la modification de ton e-mail.\n"
-"Réessaie plus tard."
-msgstr ""
-"Une erreur s’est produite pendant la modification de ton e-mail.\n"
-"Réessaie plus tard."
-
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Une erreur s’est produite pendant la réactivation."
 msgstr "Une erreur s’est produite pendant la réactivation."
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Une erreur s’est produite pendant le chargement."
-msgstr "Une erreur s’est produite pendant le chargement."
-
-#: src/libs/itinerary/useItinerary.ts
-msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
-msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
@@ -1943,20 +1619,7 @@ msgstr "Valider la date"
 msgid "Venue {venueId} could not be retrieved"
 msgstr "Venue {venueId} could not be retrieved"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Version"
-msgstr "Version"
-
-#: src/libs/share/WebShareModal.web.tsx
-msgid "Veuillez choisir un contact"
-msgstr "Veuillez choisir un contact"
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Veux-tu vraiment supprimer ton compte ?"
-msgstr "Veux-tu vraiment supprimer ton compte ?"
-
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
-#: src/libs/itinerary/useItinerary.ts
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
@@ -2011,10 +1674,6 @@ msgstr "Vérifie ton identité"
 #: src/libs/i18n.native.test.ts
 msgid "Welcome to pass Culture"
 msgstr "Bienvenue à pass Culture"
-
-#: src/libs/share/WebShareModal.web.tsx
-msgid "WhatsApp"
-msgstr "WhatsApp"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
@@ -2107,15 +1766,6 @@ msgstr "intervenant"
 msgid "le"
 msgstr "le"
 
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
-msgstr "maximum {digitalCeiling} en offres numériques : presse en ligne, plateforme de streaming..."
-
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "maximum {physicalCeiling} en offres physiques : livre, instrument de musique..."
-msgstr "maximum {physicalCeiling} en offres physiques : livre, instrument de musique..."
-
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"
 msgstr "metteur en scène"
@@ -2168,14 +1818,6 @@ msgstr "près de chez toi"
 msgid "réalisée"
 msgstr "réalisée"
 
-#: src/libs/share/shareApp/shareAppContent.ts
-msgid "share app"
-msgstr "Profite toi aussi de tous les bons plans du pass Culture : {url}"
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
-msgstr "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
-
 #: src/features/offer/pages/OfferDescription.tsx
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "spécialité"
@@ -2185,29 +1827,9 @@ msgstr "spécialité"
 msgid "sélectionné"
 msgstr "sélectionné"
 
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "tes réservations seront annulées et supprimées"
-msgstr "tes réservations seront annulées et supprimées"
-
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
-
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "tout ton crédit en sorties : festival, concert, cinéma..."
-msgstr "tout ton crédit en sorties : festival, concert, cinéma..."
-
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "tout ton crédit pour les offres physiques : livre, instrument de musique..."
-msgstr "tout ton crédit pour les offres physiques : livre, instrument de musique..."
-
-#: src/features/profile/components/Modals/CreditCeilingsModal.tsx
-msgid "tout ton crédit pour les sorties : festival, concert, cinéma..."
-msgstr "tout ton crédit pour les sorties : festival, concert, cinéma..."
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "tu n’auras plus accès au catalogue"
-msgstr "tu n’auras plus accès au catalogue"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "type"
@@ -2221,22 +1843,13 @@ msgstr "validé"
 msgid "venueId is undefined"
 msgstr "venueId is undefined"
 
-#: src/features/venue/components/VenuePartialAccordionDescription.tsx
-msgid "voir moins"
-msgstr "voir moins"
-
 #: src/features/offer/atoms/OfferSeeMore.tsx
-#: src/features/venue/components/VenuePartialAccordionDescription.tsx
 msgid "voir plus"
 msgstr "voir plus"
 
 #: src/ui/components/inputs/TextInput.tsx
 msgid "{0}"
 msgstr "{0}"
-
-#: src/libs/parsers/getDisplayPrice.ts
-msgid "{0} {EURO_SYMBOL}"
-msgstr "{0} {EURO_SYMBOL}"
 
 #: src/features/auth/signup/SignupForm.tsx
 msgid "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
