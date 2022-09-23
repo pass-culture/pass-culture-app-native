@@ -1,43 +1,42 @@
-import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useCallback } from 'react'
 
-import { CenteredSection, TitleWithCount } from 'features/search/atoms'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { SectionTitle } from 'features/search/sections/titles'
-import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
-import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
-import { Range } from 'libs/typesUtils/typeHelpers'
-import { Slider } from 'ui/components/inputs/Slider'
+import { FilterRow } from 'features/search/atoms/FilterRow'
+import { SearchPrice } from 'features/search/pages/SearchPrice'
+import { useSearch } from 'features/search/pages/SearchWrapper'
+import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
+import { getPriceDescription } from 'features/search/utils/getPriceDescription'
+import { useModal } from 'ui/components/modals/useModal'
+import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 
 export const Price: React.FC = () => {
-  const logUseFilter = useLogFilterOnce(SectionTitle.Price)
-  const { searchState, dispatch } = useStagedSearch()
+  const { searchState } = useSearch()
+  const {
+    visible: searchPriceModalVisible,
+    showModal: showSearchPriceModal,
+    hideModal: hideSearchPriceModal,
+  } = useModal(false)
 
-  const maxPrice = useMaxPrice()
-  const priceRange = searchState.priceRange ?? [0, maxPrice]
-  const count = +(priceRange[0] > 0 || priceRange[1] < maxPrice)
-  const values = searchState.offerIsFree ? [0, 0] : priceRange
+  const minPrice: number | undefined = getPriceAsNumber(searchState.minPrice)
+  const maxPrice: number | undefined = getPriceAsNumber(searchState.maxPrice)
 
-  const onValuesChangeFinish = (newValues: number[]) => {
-    const priceRangeIsFree = newValues[0] === 0 && newValues[1] === 0
-    if (priceRangeIsFree && !searchState.offerIsFree) dispatch({ type: 'TOGGLE_OFFER_FREE' })
-    if (!priceRangeIsFree && searchState.offerIsFree) dispatch({ type: 'TOGGLE_OFFER_FREE' })
-    dispatch({ type: 'PRICE_RANGE', payload: newValues as Range<number> })
-    logUseFilter()
-  }
+  const onPress = useCallback(() => {
+    showSearchPriceModal()
+  }, [showSearchPriceModal])
 
   return (
-    <CenteredSection title={<TitleWithCount title={SectionTitle.Price} count={count} />}>
-      <Slider
-        showValues={true}
-        values={values}
-        max={maxPrice}
-        formatValues={formatPriceInEuroToDisplayPrice}
-        onValuesChangeFinish={onValuesChangeFinish}
-        minLabel={t`Prix minimum\u00a0:`}
-        maxLabel={t`Prix maximum\u00a0:`}
+    <React.Fragment>
+      <FilterRow
+        icon={OrderPrice}
+        title="Prix"
+        description={getPriceDescription(minPrice, maxPrice)}
+        onPress={onPress}
       />
-    </CenteredSection>
+      <SearchPrice
+        title="Prix"
+        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+        isVisible={searchPriceModalVisible}
+        hideModal={hideSearchPriceModal}
+      />
+    </React.Fragment>
   )
 }

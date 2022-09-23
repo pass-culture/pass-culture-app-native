@@ -24,8 +24,8 @@ export const ReinitializeFilters = () => {
       payload: {
         locationFilter: initialSearchState.locationFilter,
         offerCategories: initialSearchState.offerCategories,
-        offerIsFree: false,
-        priceRange: null,
+        offerIsFree: initialSearchState.offerIsFree,
+        priceRange: initialSearchState.priceRange,
         minPrice: undefined,
         maxPrice: undefined,
       },

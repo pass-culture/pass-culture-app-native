@@ -77,7 +77,7 @@ export const SearchResults: React.FC = () => {
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
-  const priceIsEntered = minPrice !== undefined || maxPrice !== undefined
+  const priceIsEntered = (minPrice !== undefined && minPrice > 0) || maxPrice !== undefined
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
