@@ -47,7 +47,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should go to home page when clicking on right icon', async () => {
     const { findByTestId } = renderPage()
 
-    const rightIconButton = await findByTestId("Abandonner l'inscription")
+    const rightIconButton = await findByTestId('Abandonner l’inscription')
     fireEvent.click(rightIconButton)
 
     await waitForExpect(() => {
@@ -58,7 +58,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should open faq webpage when clicking on consult help support', async () => {
     const { findByText } = renderPage()
 
-    const consultHelpSupportButton = await findByText("Consulter notre centre d'aide")
+    const consultHelpSupportButton = await findByText('Consulter notre centre d’aide')
     fireEvent.click(consultHelpSupportButton)
 
     await waitForExpect(() => {
