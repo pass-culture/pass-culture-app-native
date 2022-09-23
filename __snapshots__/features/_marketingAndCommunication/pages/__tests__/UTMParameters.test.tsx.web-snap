@@ -166,7 +166,7 @@ Array [
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0 c1 sc-gsDKAQ c1"
+              className="c0 c1 sc-gKclnd c1"
               data-testid="backButton"
               onClick={[MockFunction]}
               tabIndex="0"

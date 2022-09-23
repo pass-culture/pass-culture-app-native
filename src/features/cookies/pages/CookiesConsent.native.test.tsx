@@ -1,9 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import Package from '__mocks__/package.json'
-import { api } from 'api/api'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTracking'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
@@ -19,8 +17,6 @@ const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 const deviceId = 'testUuidV4'
-
-jest.mock('api/api')
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -46,7 +42,7 @@ describe('<CookiesConsent/>', () => {
   })
 
   describe('accept all cookies', () => {
-    it('should save cookies consent information in storage and log choice', async () => {
+    it('should persist cookies consent information', async () => {
       const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
@@ -66,17 +62,6 @@ describe('<CookiesConsent/>', () => {
         },
       }
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-      await waitForExpect(() =>
-        expect(api.postnativev1cookiesConsent).toBeCalledWith({
-          deviceId,
-          choiceDatetime: Today.toISOString(),
-          consent: {
-            mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: ALL_OPTIONAL_COOKIES,
-            refused: [],
-          },
-        })
-      )
     })
 
     it('should enable tracking', async () => {
@@ -129,7 +114,7 @@ describe('<CookiesConsent/>', () => {
   })
 
   describe('refuse all cookies', () => {
-    it('should save cookies consent information in storage and log choice', async () => {
+    it('should persist cookies consent information', async () => {
       const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
@@ -149,17 +134,6 @@ describe('<CookiesConsent/>', () => {
         },
       }
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-      await waitForExpect(() =>
-        expect(api.postnativev1cookiesConsent).toBeCalledWith({
-          deviceId,
-          choiceDatetime: Today.toISOString(),
-          consent: {
-            mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: [],
-            refused: ALL_OPTIONAL_COOKIES,
-          },
-        })
-      )
     })
 
     it('should disable tracking', async () => {
@@ -200,7 +174,7 @@ describe('<CookiesConsent/>', () => {
   })
 
   describe('make detailled cookie choice', () => {
-    it('should save cookies consent information in storage and log choice when user partially accepts cookies', async () => {
+    it('should persist cookies consent information when user partially accepts cookies', async () => {
       const { getByText, getByTestId } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
@@ -224,15 +198,6 @@ describe('<CookiesConsent/>', () => {
       }
       await waitFor(async () => {
         expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-        expect(api.postnativev1cookiesConsent).toBeCalledWith({
-          deviceId,
-          choiceDatetime: Today.toISOString(),
-          consent: {
-            mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: COOKIES_BY_CATEGORY.performance,
-            refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
-          },
-        })
       })
     })
 

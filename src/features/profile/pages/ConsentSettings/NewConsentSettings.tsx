@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
-import { usePostCookiesConsent } from 'features/cookies/api/usePostCookiesConsent'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
@@ -33,7 +32,6 @@ export const NewConsentSettings = () => {
     performance: false,
     marketing: false,
   })
-  const { mutate: postCookiesConsent } = usePostCookiesConsent()
 
   const saveChoice = useCallback(() => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
@@ -48,13 +46,12 @@ export const NewConsentSettings = () => {
       type: settingsCookiesChoice,
     })
     requestIDFATrackingConsent()
-    postCookiesConsent()
     showSuccessSnackBar({
       message: t`Ton choix a bien été enregistré.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate(...getTabNavConfig('Profile'))
-  }, [postCookiesConsent, navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
+  }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
     <PageProfileSection title={t`Paramètres de confidentialité`} scrollable>

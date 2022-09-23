@@ -1,13 +1,24 @@
 import mockdate from 'mockdate'
+import { QueryObserverSuccessResult } from 'react-query'
+import waitForExpect from 'wait-for-expect'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import Package from '__mocks__/package.json'
 import { v4 } from '__mocks__/uuid'
+import { api } from 'api/api'
+import { UserProfileResponse } from 'api/gen'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
+import * as useUserProfileInfoAPI from 'features/profile/api'
+import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 import { act, renderHook, waitFor } from 'tests/utils'
+
+const mockUseUserProfileInfo = jest.spyOn(useUserProfileInfoAPI, 'useUserProfileInfo')
+mockUseUserProfileInfo.mockReturnValue({
+  data: undefined,
+} as UsePersistQueryResult<UserProfileResponse, unknown>)
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
@@ -18,7 +29,9 @@ mockdate.set(TODAY)
 jest.mock('api/api')
 
 describe('useCookies', () => {
-  beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
+  beforeEach(() => {
+    storage.clear(COOKIES_CONSENT_KEY)
+  })
 
   describe('state', () => {
     it('should be undefined by default', () => {
@@ -153,6 +166,9 @@ describe('useCookies', () => {
       })
 
       it('can set user ID before giving cookies consent', async () => {
+        mockUseUserProfileInfo.mockReturnValueOnce({
+          data: { id: FAKE_USER_ID } as UserProfileResponse,
+        } as QueryObserverSuccessResult<UserProfileResponse, unknown>)
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
         await act(async () => {
@@ -181,6 +197,18 @@ describe('useCookies', () => {
         })
       })
 
+      it("don't store user ID when user has not give his cookie consent", async () => {
+        const { result } = renderHook(useCookies)
+        const { setUserId } = result.current
+
+        await act(async () => {
+          await setUserId(FAKE_USER_ID)
+        })
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toBeNull()
+      })
+
       it('should overwrite user ID when setting another user ID', async () => {
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
@@ -205,6 +233,62 @@ describe('useCookies', () => {
         expect(cookiesConsent).toEqual({
           buildVersion: Package.build,
           userId: secondUserId,
+          deviceId,
+          choiceDatetime: TODAY.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+      })
+    })
+  })
+
+  describe('log API', () => {
+    it('should persist cookies consent', async () => {
+      const { result } = renderHook(useCookies)
+      const { setCookiesConsent } = result.current
+
+      await act(async () => {
+        await setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        })
+      })
+
+      await waitForExpect(() => {
+        expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
+          deviceId,
+          choiceDatetime: TODAY.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+      })
+    })
+
+    it('should persist user ID', async () => {
+      const { result } = renderHook(useCookies)
+      const { setCookiesConsent, setUserId } = result.current
+      await act(async () => {
+        await setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        })
+      })
+
+      await act(async () => {
+        await setUserId(FAKE_USER_ID)
+      })
+
+      await waitForExpect(() => {
+        expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
+          userId: FAKE_USER_ID,
           deviceId,
           choiceDatetime: TODAY.toISOString(),
           consent: {
