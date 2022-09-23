@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, {
   FunctionComponent,
   useRef,
@@ -135,7 +134,7 @@ const _SnackBar = (props: SnackBarProps) => {
                 </StyledBody>
               </Spacer.Flex>
               <Touchable
-                accessibilityLabel={t`Supprimer le message\u00a0: ${props.message}`}
+                accessibilityLabel={`Supprimer le message\u00a0: ${props.message}`}
                 testID="snackbar-close"
                 onPress={onClose}>
                 <Close color={props.color} />

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
@@ -29,26 +28,28 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
+  const helmetTitle = 'Lieu introuvable | pass Culture'
+
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Lieu introuvable | pass Culture`}</title>
+        <title>{helmetTitle}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <GenericInfoPage
-        title={t`Lieu introuvable\u00a0!`}
+        title="Lieu introuvable&nbsp;!"
         icon={NoOffer}
         buttons={[
           <TouchableLink
             key={1}
             as={ButtonPrimaryWhite}
-            wording={t`Retourner à l'accueil`}
+            wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
             onPress={onPress}
             navigateBeforeOnPress
           />,
         ]}>
-        <StyledBody>{t`Il est possible que ce lieu soit désactivé ou n'existe pas.`}</StyledBody>
+        <StyledBody>Il est possible que ce lieu soit désactivé ou n’existe pas.</StyledBody>
       </GenericInfoPage>
     </React.Fragment>
   )

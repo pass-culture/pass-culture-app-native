@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -27,26 +26,20 @@ const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
 
   return physicalCeiling ? (
     <Wrapper testID="creditTextWithPhysicalCeiling">
+      <StyledBulletListItem text="tout ton crédit en sorties&nbsp;: festival, concert, cinéma..." />
       <StyledBulletListItem
-        text={t`tout ton crédit en sorties\u00a0: festival, concert, cinéma...`}
+        text={`maximum ${digitalCeiling} en offres numériques\u00a0: presse en ligne, plateforme de streaming...`}
       />
       <StyledBulletListItem
-        text={t`maximum ${digitalCeiling} en offres numériques\u00a0: presse en ligne, plateforme de streaming...`}
-      />
-      <StyledBulletListItem
-        text={t`maximum ${physicalCeiling} en offres physiques\u00a0: livre, instrument de musique...`}
+        text={`maximum ${physicalCeiling} en offres physiques\u00a0: livre, instrument de musique...`}
       />
     </Wrapper>
   ) : (
     <Wrapper testID="creditText">
+      <StyledBulletListItem text="tout ton crédit pour les offres physiques&nbsp;: livre, instrument de musique..." />
+      <StyledBulletListItem text="tout ton crédit pour les sorties&nbsp;: festival, concert, cinéma..." />
       <StyledBulletListItem
-        text={t`tout ton crédit pour les offres physiques\u00a0: livre, instrument de musique...`}
-      />
-      <StyledBulletListItem
-        text={t`tout ton crédit pour les sorties\u00a0: festival, concert, cinéma...`}
-      />
-      <StyledBulletListItem
-        text={t`maximum ${digitalCeiling} en offres numériques\u00a0: presse en ligne, plateforme de streaming...`}
+        text={`maximum ${digitalCeiling} en offres numériques\u00a0: presse en ligne, plateforme de streaming...`}
       />
     </Wrapper>
   )
@@ -59,14 +52,15 @@ export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props
 
   return (
     <AppInformationModal
-      title={t`Pourquoi cette limite\u00a0?`}
+      title="Pourquoi cette limite&nbsp;?"
       numberOfLinesTitle={2}
       visible={visible}
       onCloseIconPress={hideModal}
       testIdSuffix="credit-ceiling-information">
       <ModalChildrenContainer>
         <Typo.Body>
-          {t`Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser\u00a0:`}
+          Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux
+          dépenser&nbsp;:
         </Typo.Body>
         <CreditText domainsCredit={domainsCredit} />
       </ModalChildrenContainer>

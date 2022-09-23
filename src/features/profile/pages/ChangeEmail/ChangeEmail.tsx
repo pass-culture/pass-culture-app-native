@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState, useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
@@ -49,7 +48,8 @@ export function ChangeEmail() {
     {
       onSuccess: () => {
         showSuccessSnackBar({
-          message: t`E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.`,
+          message:
+            'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
           timeout: SNACK_BAR_TIME_OUT,
         })
         navigateToProfile()
@@ -74,11 +74,11 @@ export function ChangeEmail() {
   const onEmailChangeError = (errorCode?: string) => {
     errorCode && analytics.logErrorSavingNewEmail(errorCode)
     if (errorCode === CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD) {
-      setPasswordErrorMessage(t`Mot de passe incorrect`)
+      setPasswordErrorMessage('Mot de passe incorrect')
     } else {
       showErrorSnackBar({
-        message: t`Une erreur s’est produite pendant la modification de ton e-mail.
-        Réessaie plus tard.`,
+        message:
+          'Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
@@ -101,7 +101,7 @@ export function ChangeEmail() {
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Modifier mon e-mail`} background="primary" withGoBackButton />
+      <PageHeader title="Modifier mon e-mail" background="primary" withGoBackButton />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
@@ -118,7 +118,7 @@ export function ChangeEmail() {
         <CenteredContainer>
           <Form.MaxWidth flex={1}>
             <EmailInput
-              label={t`Nouvel e-mail`}
+              label="Nouvel e-mail"
               email={email}
               onEmailChange={setEmail}
               disabled={hasCurrentEmailChange}
@@ -134,10 +134,10 @@ export function ChangeEmail() {
             />
             <Spacer.Column numberOfSpaces={4} />
             <PasswordInput
-              label={t`Mot de passe`}
+              label="Mot de passe"
               value={password}
               onChangeText={setPassword}
-              placeholder={t`Ton mot de passe`}
+              placeholder="Ton mot de passe"
               textContentType="password"
               disabled={hasCurrentEmailChange}
               isRequiredField
@@ -159,8 +159,8 @@ export function ChangeEmail() {
             {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
             <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
               <ButtonPrimary
-                wording={t`Enregistrer`}
-                accessibilityLabel={t`Enregistrer les modifications`}
+                wording="Enregistrer"
+                accessibilityLabel="Enregistrer les modifications"
                 onPress={submitEmailChange}
                 disabled={isSubmitButtonDisabled}
               />

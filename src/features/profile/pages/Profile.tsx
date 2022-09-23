@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
@@ -116,12 +115,12 @@ const OnlineProfile: React.FC = () => {
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={4} />
-        <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
+        <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
           <VerticalUl>
             {!!isLoggedIn && (
               <Li>
                 <Row
-                  title={t`Informations personnelles`}
+                  title="Informations personnelles"
                   type="navigable"
                   navigateTo={{ screen: 'PersonalData' }}
                   icon={BicolorProfile}
@@ -131,7 +130,7 @@ const OnlineProfile: React.FC = () => {
             <Li>
               <Row
                 type="navigable"
-                title={t`Notifications`}
+                title="Notifications"
                 icon={Bell}
                 navigateTo={{ screen: 'NotificationSettings' }}
               />
@@ -140,14 +139,14 @@ const OnlineProfile: React.FC = () => {
               <SectionWithSwitch
                 icon={LocationPointerNotFilled}
                 iconSize={SECTION_ROW_ICON_SIZE}
-                title={t`Partager ma position`}
+                title="Partager ma position"
                 active={isGeolocSwitchActive}
                 accessibilityDescribedBy={locationActivationErrorId}
                 toggle={() => {
                   switchGeolocation()
                   debouncedLogLocationToggle(!isGeolocSwitchActive)
                 }}
-                toggleLabel={t`Partager ma position`}
+                toggleLabel="Partager ma position"
               />
               <InputError
                 visible={!!positionError}
@@ -158,11 +157,11 @@ const OnlineProfile: React.FC = () => {
             </Li>
           </VerticalUl>
         </Section>
-        <Section title={t`Aides`}>
+        <Section title="Aides">
           <VerticalUl>
             <Li>
               <Row
-                title={t`Comment ça marche\u00a0?`}
+                title="Comment ça marche&nbsp;?"
                 type="navigable"
                 navigateTo={{
                   screen: 'FirstTutorial',
@@ -174,7 +173,7 @@ const OnlineProfile: React.FC = () => {
             </Li>
             <Li>
               <Row
-                title={t`Centre d'aide`}
+                title="Centre d'aide"
                 type="clickable"
                 externalNav={{ url: env.FAQ_LINK }}
                 icon={ExternalSite}
@@ -182,11 +181,11 @@ const OnlineProfile: React.FC = () => {
             </Li>
           </VerticalUl>
         </Section>
-        <Section title={t`Autres`}>
+        <Section title="Autres">
           <VerticalUl>
             <Li>
               <Row
-                title={t`Accessibilité`}
+                title="Accessibilité"
                 type="clickable"
                 externalNav={{ url: env.ACCESSIBILITY_LINK }}
                 icon={ExternalSite}
@@ -194,7 +193,7 @@ const OnlineProfile: React.FC = () => {
             </Li>
             <Li>
               <Row
-                title={t`Mentions légales`}
+                title="Mentions légales"
                 type="navigable"
                 navigateTo={{ screen: 'LegalNotices' }}
                 icon={LegalNotices}
@@ -202,7 +201,7 @@ const OnlineProfile: React.FC = () => {
             </Li>
             <Li>
               <Row
-                title={t`Confidentialité`}
+                title="Confidentialité"
                 type="navigable"
                 navigateTo={{ screen: 'ConsentSettings' }}
                 icon={Confidentiality}
@@ -210,7 +209,7 @@ const OnlineProfile: React.FC = () => {
             </Li>
           </VerticalUl>
         </Section>
-        <Section title={t`Suivre pass Culture`}>
+        <Section title="Suivre pass Culture">
           <NetworkRow>
             <NetworkRowContainer>
               <StyledUl>
@@ -234,7 +233,7 @@ const OnlineProfile: React.FC = () => {
           <Section>
             <Spacer.Column numberOfSpaces={4} />
             <SectionRow
-              title={t`Déconnexion`}
+              title="Déconnexion"
               onPress={signOut}
               type="clickable"
               icon={SignOut}
@@ -244,7 +243,7 @@ const OnlineProfile: React.FC = () => {
         )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <GreyDarkCaption>{t`Version` + `\u00a0${Package.version}`}</GreyDarkCaption>
+          <GreyDarkCaption>Version&nbsp;{Package.version}</GreyDarkCaption>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />

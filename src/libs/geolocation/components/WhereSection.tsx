@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -68,7 +67,7 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Où\u00a0?`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Où&nbsp;?</Typo.Title4>
       {showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
@@ -76,7 +75,7 @@ export const WhereSection: React.FC<Props> = ({
           <VenueNameContainer
             navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
             onPress={onVenuePress}
-            accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
+            accessibilityLabel={`Lieu ${venue.publicName || venue.name}`}
             testID="VenueBannerComponent">
             <Spacer.Row numberOfSpaces={2} />
             <IconContainer>
@@ -92,7 +91,7 @@ export const WhereSection: React.FC<Props> = ({
       {!!address && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>{t`Adresse`}</Typo.Caption>
+          <Typo.Caption>Adresse</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
@@ -100,7 +99,7 @@ export const WhereSection: React.FC<Props> = ({
       {!!distanceToLocation && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>{t`Distance`}</Typo.Caption>
+          <Typo.Caption>Distance</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Body>{distanceToLocation}</Typo.Body>
         </React.Fragment>

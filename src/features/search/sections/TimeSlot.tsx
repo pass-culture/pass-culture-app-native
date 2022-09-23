@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { CenteredSection } from 'features/search/atoms'
@@ -31,8 +30,8 @@ export const TimeSlot: React.FC = () => {
         max={MAX_HOUR}
         formatValues={formatHour}
         onValuesChangeFinish={onValuesChangeFinish}
-        minLabel={t`Horaire minimum\u00a0:`}
-        maxLabel={t`Horaire maximum\u00a0:`}
+        minLabel="Horaire minimum&nbsp;:"
+        maxLabel="Horaire maximum&nbsp;:"
       />
     </CenteredSection>
   )

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
@@ -32,8 +31,8 @@ export function Slider(props: Props) {
   const min = props.min || DEFAULT_MIN
   const max = props.max || DEFAULT_MAX
   const step = props.step || DEFAULT_STEP
-  const minLabel = props.minLabel ?? t`Minimum\u00a0:`
-  const maxLabel = props.maxLabel ?? t`Maximum\u00a0:`
+  const minLabel = props.minLabel ?? 'Minimum\u00a0:'
+  const maxLabel = props.maxLabel ?? 'Maximum\u00a0:'
 
   const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props

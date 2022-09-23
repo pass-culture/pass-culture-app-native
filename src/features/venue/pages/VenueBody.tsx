@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -76,13 +75,13 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       <MarginContainer>
         <VenueAddressContainer>
           <IconContainer>
-            <LocationPointer accessibilityLabel={t`Adresse`} />
+            <LocationPointer accessibilityLabel="Adresse" />
           </IconContainer>
           <StyledText numberOfLines={1}>{venueAddress}</StyledText>
         </VenueAddressContainer>
         <Spacer.Column numberOfSpaces={2} />
         <VenueTitle
-          accessibilityLabel={t`Nom du lieu\u00a0: ${publicName || name}`}
+          accessibilityLabel={`Nom du lieu\u00a0: ${publicName || name}`}
           testID="venueTitle"
           numberOfLines={2}
           adjustsFontSizeToFit
@@ -124,7 +123,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       {/* Modalités de retrait */}
       <SectionWithDivider visible={!!withdrawalDetails}>
         <AccordionItem
-          title={t`Modalités de retrait`}
+          title="Modalités de retrait"
           scrollViewRef={scrollViewRef}
           onOpenOnce={() => analytics.logConsultWithdrawal({ venueId })}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
@@ -134,7 +133,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       {/* Accessibilité */}
       <SectionWithDivider visible={shouldShowAccessibility}>
         <AccordionItem
-          title={t`Accessibilité`}
+          title="Accessibilité"
           scrollViewRef={scrollViewRef}
           onOpenOnce={() => analytics.logConsultAccessibility({ venueId })}>
           <AccessibilityBlock {...accessibility} />
@@ -143,7 +142,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
       {/* Contact */}
       <SectionWithDivider visible={shouldShowContact}>
-        <AccordionItem title={t`Contact`} scrollViewRef={scrollViewRef}>
+        <AccordionItem title="Contact" scrollViewRef={scrollViewRef}>
           <ContactBlock venueId={venueId} />
         </AccordionItem>
       </SectionWithDivider>

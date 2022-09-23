@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -14,17 +13,18 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export function LoggedOutHeader() {
   return (
     <React.Fragment>
-      <PageHeader title={t`Profil`} size="medium" />
+      <PageHeader title="Profil" size="medium" />
       <Spacer.Column numberOfSpaces={6} />
       <ContentContainer>
         <StyledBody>
-          {t`Tu as entre 15 et 18 ans\u00a0? Crée-toi un compte pour bénéficier de ton crédit pass Culture`}
+          Tu as entre 15 et 18 ans&nbsp;? Crée-toi un compte pour bénéficier de ton crédit pass
+          Culture
         </StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <TouchableLink
           as={ButtonPrimary}
-          testID="S'inscrire"
-          wording={t`S'inscrire`}
+          testID="S’inscrire"
+          wording="S’inscrire"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
           onPress={() => {
             analytics.logProfilSignUp()
@@ -32,13 +32,13 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={5} />
         <StyledBody>
-          {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
+          {`Tu as déjà un compte\u00a0?\u00a0`}
           <TouchableLink
             as={ButtonInsideText}
             navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
-            wording={t`Connecte-toi`}
+            wording="Connecte-toi"
             icon={Connect}
-            {...accessibilityAndTestId(t`Connecte-toi`)}
+            {...accessibilityAndTestId('Connecte-toi')}
           />
         </StyledBody>
       </ContentContainer>
