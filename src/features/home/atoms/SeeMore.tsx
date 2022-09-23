@@ -27,7 +27,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onP
       </Row>
       <Spacer.Column numberOfSpaces={2} />
       <Row>
-        <ButtonText>{t`En voir plus`}</ButtonText>
+        <Typo.ButtonTextPrimary>{t`En voir plus`}</Typo.ButtonTextPrimary>
       </Row>
     </ClickableArea>
   </Container>
@@ -64,10 +64,6 @@ const RoundContainer = styled.View(({ theme }) => ({
     shadowOpacity: 0.15,
   }),
   alignItems: 'center',
-}))
-
-const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.primary,
 }))
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
