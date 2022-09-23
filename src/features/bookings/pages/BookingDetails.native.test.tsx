@@ -258,19 +258,19 @@ describe('BookingDetails', () => {
       const renderAPI = renderBookingDetails(undefined, {
         dataUpdatedAt: new Date().getTime(),
       })
-      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeTruthy()
+      expect(renderAPI.queryByText('Réservation introuvable !')).toBeTruthy()
       expect(
         renderAPI.queryByText(
-          `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`
+          `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer.`
         )
       ).toBeTruthy()
       expect(renderAPI.queryByText('Mes réservations terminées')).toBeTruthy()
-      expect(renderAPI.queryByText(`Retourner à l'accueil`)).toBeTruthy()
+      expect(renderAPI.queryByText(`Retourner à l’accueil`)).toBeTruthy()
 
       await fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
       expect(navigate).toBeCalledWith('EndedBookings', undefined)
 
-      await fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
+      await fireEvent.press(renderAPI.getByText(`Retourner à l’accueil`))
       expect(navigateFromRef).toBeCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params

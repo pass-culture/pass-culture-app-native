@@ -58,7 +58,7 @@ describe('<SetEmail />', () => {
 
     expect(
       queryByText(
-        "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+        'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
       )
     ).toBeTruthy()
   })

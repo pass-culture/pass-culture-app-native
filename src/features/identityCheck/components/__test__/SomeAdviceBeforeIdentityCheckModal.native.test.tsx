@@ -39,7 +39,7 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
         onPressContinue={onPressContinueMock}
       />
     )
-    fireEvent.press(getByText("J'ai compris"))
+    fireEvent.press(getByText('J’ai compris'))
     expect(onPressContinueMock).toHaveBeenCalled()
   })
 })

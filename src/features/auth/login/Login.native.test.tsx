@@ -245,7 +245,7 @@ describe('<Login/>', () => {
     await waitForExpect(() => {
       expect(
         renderAPI.getByText(
-          "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeTruthy()
       const errorSnapshot = renderAPI.toJSON()
