@@ -26,11 +26,8 @@ export const NotEligibleEduConnect = ({
     description,
     descriptionAlignment,
     Illustration,
-    primaryButtonText,
-    onPrimaryButtonPress,
-    primaryButtonIcon,
+    primaryButton,
     isGoHomeTertiaryButtonVisible = false,
-    navigateTo,
   } = useNotEligibleEduConnectErrorData(message, setError)
 
   useEffect(
@@ -75,10 +72,10 @@ export const NotEligibleEduConnect = ({
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={primaryButtonText ?? "Retourner à l'accueil"}
-          navigateTo={navigateTo ?? navigateToHomeConfig}
-          onPress={onPrimaryButtonPress}
-          icon={primaryButtonIcon}
+          wording={primaryButton?.primaryButtonText ?? "Retourner à l'accueil"}
+          navigateTo={primaryButton?.navigateTo ?? navigateToHomeConfig}
+          onPress={primaryButton?.onPrimaryButtonPress}
+          icon={primaryButton?.primaryButtonIcon}
         />,
         !!isGoHomeTertiaryButtonVisible && goBackToHomeTertiaryButton,
       ].filter(Boolean)}>

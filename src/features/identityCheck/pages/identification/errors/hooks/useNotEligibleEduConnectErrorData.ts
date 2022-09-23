@@ -26,11 +26,13 @@ type NotEligibleEduConnectErrorData = {
   description: string
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   descriptionAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
-  primaryButtonText?: string
-  primaryButtonIcon?: FunctionComponent<IconInterface>
+  primaryButton?: {
+    primaryButtonText?: string
+    primaryButtonIcon?: FunctionComponent<IconInterface>
+    onPrimaryButtonPress?: () => void
+    navigateTo?: TouchableLinkProps['navigateTo']
+  }
   isGoHomeTertiaryButtonVisible?: boolean
-  onPrimaryButtonPress?: () => void
-  navigateTo?: TouchableLinkProps['navigateTo']
 }
 
 const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
@@ -54,9 +56,11 @@ const getInvalidInformationErrorData = (
     DOUBLE_LINE_BREAK +
     'Refais une demande en vérifiant ton identité avec ta pièce d’identité.',
   descriptionAlignment: 'center',
-  primaryButtonText: 'Vérifier mon identité',
+  primaryButton: {
+    primaryButtonText: 'Vérifier mon identité',
+    navigateTo,
+  },
   isGoHomeTertiaryButtonVisible: true,
-  navigateTo,
 })
 
 const getUserTypeNotStudentErrorData = (
@@ -70,10 +74,12 @@ const getUserTypeNotStudentErrorData = (
     DOUBLE_LINE_BREAK +
     'L’usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L’identification doit se faire au nom du futur bénéficiaire. ',
   descriptionAlignment: 'center',
-  primaryButtonText: "Réessayer de m'identifier",
+  primaryButton: {
+    primaryButtonText: "Réessayer de m'identifier",
+    onPrimaryButtonPress,
+    navigateTo,
+  },
   isGoHomeTertiaryButtonVisible: true,
-  onPrimaryButtonPress,
-  navigateTo,
 })
 
 const GenericErrorData: NotEligibleEduConnectErrorData = {
@@ -90,9 +96,10 @@ const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
   description:
     "Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n'as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d'informations.",
   descriptionAlignment: 'center',
-
-  primaryButtonText: 'Contacter le support',
-  primaryButtonIcon: Email,
+  primaryButton: {
+    primaryButtonText: 'Contacter le support',
+    primaryButtonIcon: Email,
+  },
   isGoHomeTertiaryButtonVisible: true,
 }
 
