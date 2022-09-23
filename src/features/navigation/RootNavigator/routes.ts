@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { DeeplinksGenerator } from 'features/_marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/_marketingAndCommunication/pages/UTMParameters'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
@@ -72,14 +70,14 @@ export const routes: Route[] = [
       deeplinkPaths: ['offer/:id', 'offre', 'offer'],
       parse: screenParamsParser['Offer'],
     },
-    options: { title: t`Offre` },
+    options: { title: 'Offre' },
   },
   {
     name: 'OfferDescription',
     component: OfferDescription,
     path: 'offre/:id/description',
     deeplinkPaths: ['offer/:id/description', 'offre/description', 'offer/description'],
-    options: { title: t`Détails de l'offre` },
+    options: { title: 'Détails de l’offre' },
   },
   {
     name: 'BookingDetails',
@@ -99,7 +97,7 @@ export const routes: Route[] = [
       deeplinkPaths: ['booking/:offerId/confirmation'],
       parse: screenParamsParser['BookingConfirmation'],
     },
-    options: { title: t`Confirmation de réservation` },
+    options: { title: 'Confirmation de réservation' },
     secure: true,
   },
   {
@@ -107,32 +105,32 @@ export const routes: Route[] = [
     component: EighteenBirthday,
     path: 'anniversaire-18-ans',
     deeplinkPaths: ['eighteen'],
-    options: { title: t`Anniversaire 18 ans` },
+    options: { title: 'Anniversaire 18 ans' },
   },
   {
     name: 'ShareAppModal',
     component: ShareAppModal,
     path: 'partage-app',
-    options: { title: t`Partage l'app` },
+    options: { title: 'Partage l’app' },
   },
   {
     name: 'RecreditBirthdayNotification',
     component: RecreditBirthdayNotification,
     path: 'recharge-credit-anniversaire',
     deeplinkPaths: ['recredit-birthday'],
-    options: { title: t`Notification rechargement anniversaire` },
+    options: { title: 'Notification rechargement anniversaire' },
   },
   {
     name: 'PageNotFound',
     component: PageNotFound,
     path: '*',
-    options: { title: t`Page introuvable` },
+    options: { title: 'Page introuvable' },
   },
   {
     name: 'AccountCreated',
     component: AccountCreated,
     path: 'creation-compte/confirmation',
-    options: { title: t`Compte créé\u00a0!` },
+    options: { title: 'Compte créé\u00a0!' },
   },
   {
     name: 'AfterChangeEmailValidationBuffer',
@@ -162,7 +160,7 @@ export const routes: Route[] = [
     name: 'ChangeEmailExpiredLink',
     component: ChangeEmailExpiredLink,
     path: 'lien-modification-email-expire',
-    options: { title: t`Lien de modification de l'email expiré` },
+    options: { title: 'Lien de modification de l’email expiré' },
   },
   { name: 'CheatCodes', component: CheatCodes, path: 'cheat-codes' },
   { name: 'CheatMenu', component: CheatMenu, path: 'cheat-menu' },
@@ -170,40 +168,40 @@ export const routes: Route[] = [
     name: 'ConsentSettings',
     component: ConsentSettings,
     path: 'profil/confidentialite',
-    options: { title: t`Paramètres de confidentialité` },
+    options: { title: 'Paramètres de confidentialité' },
   },
   {
     name: 'CulturalSurvey',
     component: CulturalSurvey,
     path: 'questionnaire-culturel',
-    options: { title: t`Questionnaire culturel` },
+    options: { title: 'Questionnaire culturel' },
     secure: true,
   },
   {
     name: 'EndedBookings',
     component: EndedBookings,
     path: 'reservations-terminees',
-    options: { title: t`Réservations terminées` },
+    options: { title: 'Réservations terminées' },
     secure: true,
   },
   {
     name: 'FavoritesSorts',
     component: FavoritesSorts,
     path: 'favoris/tri',
-    options: { title: t`Tri des favoris` },
+    options: { title: 'Tri des favoris' },
     secure: true,
   },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
     path: 'mot-de-passe-oublie',
-    options: { title: t`Mot de passe oublié` },
+    options: { title: 'Mot de passe oublié' },
   },
   {
     name: 'LegalNotices',
     component: LegalNotices,
     path: 'notices-legales',
-    options: { title: t`Mentions légales` },
+    options: { title: 'Mentions légales' },
   },
   {
     // debug route: in navigation component
@@ -216,39 +214,39 @@ export const routes: Route[] = [
     name: 'SuspensionScreen',
     component: SuspensionScreen,
     path: 'compte-desactive',
-    options: { title: t`Compte désactivé` },
+    options: { title: 'Compte désactivé' },
   },
   {
     name: 'SuspendedAccount',
     component: SuspendedAccount,
     path: 'compte-suspendu-a-la-demande',
-    options: { title: t`Compte désactivé` },
+    options: { title: 'Compte désactivé' },
   },
   {
     name: 'FraudulentAccount',
     component: FraudulentAccount,
     path: 'compte-suspendu-pour-fraude',
-    options: { title: t`Compte suspendu` },
+    options: { title: 'Compte suspendu' },
   },
   {
     name: 'AccountReactivationSuccess',
     component: AccountReactivationSuccess,
     path: 'compte-reactive',
-    options: { title: t`Compte réactivé` },
+    options: { title: 'Compte réactivé' },
     secure: true,
   },
   {
     name: 'ConfirmDeleteProfile',
     component: ConfirmDeleteProfile,
     path: 'profil/suppression',
-    options: { title: t`Suppression de compte` },
+    options: { title: 'Suppression de compte' },
     secure: true,
   },
   {
     name: 'DeleteProfileSuccess',
     component: DeleteProfileSuccess,
     path: 'profile/suppression/confirmation',
-    options: { title: t`Suppression profil confirmée` },
+    options: { title: 'Suppression profil confirmée' },
   },
   {
     name: 'LocationFilter',
@@ -258,13 +256,13 @@ export const routes: Route[] = [
       parse: screenParamsParser['LocationFilter'],
       stringify: screenParamsStringifier['LocationFilter'],
     },
-    options: { title: t`Recherche par localisation` },
+    options: { title: 'Recherche par localisation' },
   },
   {
     name: 'LocationPicker',
     component: LocationPicker,
     path: 'recherche/localisation/choisir-adresse',
-    options: { title: t`Recherche par localisation` },
+    options: { title: 'Recherche par localisation' },
   },
   {
     name: 'Login',
@@ -273,7 +271,7 @@ export const routes: Route[] = [
       path: 'connexion',
       parse: screenParamsParser['Login'],
     },
-    options: { title: t`Connexion` },
+    options: { title: 'Connexion' },
   },
   {
     name: 'Navigation',
@@ -295,25 +293,25 @@ export const routes: Route[] = [
     name: 'NotificationSettings',
     component: NotificationSettings,
     path: 'profil/notifications',
-    options: { title: t`Réglages de notifications` },
+    options: { title: 'Réglages de notifications' },
   },
   {
     name: 'PersonalData',
     component: PersonalData,
     path: 'profil/donnees-personnelles',
-    options: { title: t`Mes informations personnelles` },
+    options: { title: 'Mes informations personnelles' },
   },
   {
     name: 'ChangePassword',
     component: ChangePassword,
     path: 'profil/modification-mot-de-passe',
-    options: { title: t`Modification du mot de passe` },
+    options: { title: 'Modification du mot de passe' },
   },
   {
     name: 'ChangeEmail',
     component: ChangeEmail,
     path: 'profil/modification-email',
-    options: { title: t`Modification de l'e-mail` },
+    options: { title: 'Modification de l’e-mail' },
   },
   {
     name: 'ReinitializePassword',
@@ -322,64 +320,64 @@ export const routes: Route[] = [
       path: 'mot-de-passe-perdu',
       parse: screenParamsParser['ReinitializePassword'],
     },
-    options: { title: t`Réinitialiser le mot de passe` },
+    options: { title: 'Réinitialiser le mot de passe' },
   },
   {
     name: 'ResetPasswordEmailSent',
     component: ResetPasswordEmailSent,
     path: 'email-modification-mot-de-passe-envoye',
-    options: { title: t`Email modification mot de passe envoyé` },
+    options: { title: 'Email modification mot de passe envoyé' },
   },
   {
     name: 'ResetPasswordExpiredLink',
     component: ResetPasswordExpiredLink,
     path: 'email-modification-mot-de-passe-expire',
-    options: { title: t`Email modification mot de passe expiré` },
+    options: { title: 'Email modification mot de passe expiré' },
   },
   {
     name: 'SearchFilter',
     component: SearchFilter,
     path: 'recherche/filtres',
-    options: { title: t`Filtres de recherche` },
+    options: { title: 'Filtres de recherche' },
   },
   {
     name: 'SignupForm',
     component: SignupForm,
     path: 'creation-compte',
     deeplinkPaths: ['creation-compte/email'],
-    options: { title: t`Création de compte` },
+    options: { title: 'Création de compte' },
   },
   {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,
     path: 'email-confirmation-creation-compte/envoye',
-    options: { title: t`Email création de compte envoyé` },
+    options: { title: 'Email création de compte envoyé' },
   },
   {
     name: 'SignupConfirmationExpiredLink',
     component: SignupConfirmationExpiredLink,
     path: 'email-confirmation-creation-compte/expire',
-    options: { title: t`Email création de compte expiré` },
+    options: { title: 'Email création de compte expiré' },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   {
     name: 'VerifyEligibility',
     component: VerifyEligibility,
     path: 'verification-eligibilite',
-    options: { title: t`Vérification éligibilité` },
+    options: { title: 'Vérification éligibilité' },
   },
   {
     name: 'NotYetUnderageEligibility',
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
-    options: { title: t`C'est pour bientôt` },
+    options: { title: 'C’est pour bientôt' },
   },
 
   {
     name: 'FirstTutorial',
     component: FirstTutorial,
     path: 'introduction-tutoriel',
-    options: { title: t`Étape 1 sur 4 | Tutoriel "Comment ça marche"` },
+    options: { title: 'Étape 1 sur 4 | Tutoriel "Comment ça marche"' },
   },
   {
     name: 'Venue',
@@ -389,7 +387,7 @@ export const routes: Route[] = [
       deeplinkPaths: ['venue/:id'],
       parse: screenParamsParser['Venue'],
     },
-    options: { title: t`Lieu` },
+    options: { title: 'Lieu' },
   },
   // Internals
   {
@@ -398,7 +396,7 @@ export const routes: Route[] = [
     pathConfig: {
       path: 'liens/generateur',
     },
-    options: { title: t`Générateur de lien` },
+    options: { title: 'Générateur de lien' },
   },
   {
     name: 'UTMParameters',
@@ -406,7 +404,7 @@ export const routes: Route[] = [
     pathConfig: {
       path: 'liens/utm',
     },
-    options: { title: t`Paramètres UTM` },
+    options: { title: 'Paramètres UTM' },
   },
   {
     name: 'ABTestingPOC',
@@ -414,6 +412,6 @@ export const routes: Route[] = [
     pathConfig: {
       path: 'ab-testing-poc',
     },
-    options: { title: t`POC A/B Testing` },
+    options: { title: 'POC A/B Testing' },
   },
 ]

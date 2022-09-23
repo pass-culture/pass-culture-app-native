@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { ReportOfferDescription } from 'features/offer/components/ReportOfferDescription'
@@ -6,6 +5,7 @@ import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOth
 import { ReportOfferReason } from 'features/offer/components/ReportOfferReason'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 export enum ReportSteps {
   REPORT_OFFER_DESCRIPTION = 0,
@@ -37,20 +37,20 @@ export const useReportOfferModalContent = (props: Props) => {
               offerId={props.offerId}
             />
           ),
-          leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
+          leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
           leftIcon: ArrowPrevious,
           onLeftIconPress: () => props.setReportStep(ReportSteps.REPORT_OFFER_DESCRIPTION),
-          title: t`Pourquoi signales-tu` + '\n' + t`cette offre\u00a0?`,
+          title: 'Pourquoi signales-tu' + LINE_BREAK + 'cette offre\u00a0?',
         }
       case ReportSteps.REPORT_OFFER_OTHER_REASON:
         return {
           children: (
             <ReportOfferOtherReason dismissModal={props.dismissModal} offerId={props.offerId} />
           ),
-          leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
+          leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
           leftIcon: ArrowPrevious,
           onLeftIconPress: () => props.setReportStep(ReportSteps.REPORT_OFFER_REASON),
-          title: t`Pourquoi signales-tu` + '\n' + t`cette offre\u00a0?`,
+          title: 'Pourquoi signales-tu' + LINE_BREAK + 'cette offre\u00a0?',
         }
       default:
         return {
@@ -62,7 +62,7 @@ export const useReportOfferModalContent = (props: Props) => {
           leftIconAccessibilityLabel: undefined,
           leftIcon: undefined,
           onLeftIconPress: undefined,
-          title: t`Signaler une offre`,
+          title: 'Signaler une offre',
         }
     }
   }

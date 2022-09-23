@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -46,10 +45,10 @@ export const SetSchoolType = () => {
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title="Profil"
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle titleID={titleID} title={t`Dans quel type d'établissement\u00a0?`} />
+          <CenteredTitle titleID={titleID} title="Dans quel type d’établissement&nbsp;?" />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }
@@ -82,9 +81,9 @@ export const SetSchoolType = () => {
         <ButtonPrimary
           type="submit"
           onPress={onPressContinue}
-          wording={!selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer`}
+          wording={!selectedSchoolTypeId ? 'Choisis ton statut' : 'Continuer'}
           accessibilityLabel={
-            !selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer vers l'étape suivante`
+            !selectedSchoolTypeId ? 'Choisis ton statut' : 'Continuer vers l’étape suivante'
           }
           isLoading={isSavingCheckpoint}
           disabled={!selectedSchoolTypeId}

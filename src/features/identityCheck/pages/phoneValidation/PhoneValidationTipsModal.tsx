@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -21,29 +20,31 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
   return (
     <AppModal
       visible={props.isVisible}
-      title={t`Quelques conseils`}
+      title="Quelques conseils"
       onLeftIconPress={props.onGoBack}
       leftIcon={ArrowPrevious}
-      leftIconAccessibilityLabel={t`Revenir à l'étape précédente`}>
+      leftIconAccessibilityLabel="Revenir à l’étape précédente">
       <React.Fragment>
-        <Introduction>{t`Pour que la validation de ton numéro de téléphone se passe au mieux\u00a0:`}</Introduction>
+        <StyledBody>
+          Pour que la validation de ton numéro de téléphone se passe au mieux&nbsp;:
+        </StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <InformationComponent
           Icon={BicolorSignal}
-          text={t`Vérifie que tu as un bon réseau`}
-          subtitle={t`Tu vas recevoir un code de validation par SMS`}
+          text="Vérifie que tu as un bon réseau"
+          subtitle="Tu vas recevoir un code de validation par SMS"
         />
         <Spacer.Column numberOfSpaces={8} />
         <InformationComponent
           Icon={BicolorSmartphone}
-          text={t`Assure-toi d'indiquer ton numéro de téléphone personnel`}
-          subtitle={t`Il ne peut être associé qu’à un seul compte`}
+          text="Assure-toi d'indiquer ton numéro de téléphone personnel"
+          subtitle="Il ne peut être associé qu’à un seul compte"
         />
         <Spacer.Column numberOfSpaces={13} />
         <ButtonPrimary
-          wording={t`J'ai compris`}
+          wording="J'ai compris"
           onPress={props.dismissModal}
-          testID={'dismiss-phone-validation-tips-modal'}
+          testID="dismiss-phone-validation-tips-modal"
         />
       </React.Fragment>
     </AppModal>
@@ -71,7 +72,7 @@ const InformationComponent: FunctionComponent<{
   )
 }
 
-const Introduction = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))

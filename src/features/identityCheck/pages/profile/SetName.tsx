@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -40,50 +39,48 @@ export const SetName = () => {
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title="Profil"
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Comment t'appelles-tu\u00a0?`} />
+          <CenteredTitle title="Comment t’appelles-tu&nbsp;?" />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }
       scrollChildren={
         <Form.MaxWidth>
-          <Banner
-            title={t`Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité.`}
-          />
+          <Banner title="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta carte d’identité." />
           <Spacer.Column numberOfSpaces={4} />
           <TextInput
-            label={t`Prénom`}
+            label="Prénom"
             value={firstName}
             autoFocus={true}
             onChangeText={setFirstName}
-            placeholder={t`Ton prénom`}
+            placeholder="Ton prénom"
             textContentType="username"
             isRequiredField
             accessibilityDescribedBy={firstNameInputErrorId}
-            testID={t`Entrée pour le prénom`}
+            testID="Entrée pour le prénom"
           />
           <InputError
             visible={firstNameHasError}
-            messageId={t`Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
+            messageId="Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux."
             numberOfSpacesTop={2}
             relatedInputId={firstNameInputErrorId}
           />
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
-            label={t`Nom`}
+            label="Nom"
             value={lastName}
             onChangeText={setLastName}
-            placeholder={t`Ton nom`}
+            placeholder="Ton nom"
             textContentType="username"
             isRequiredField
             accessibilityDescribedBy={lastNameInputErrorId}
-            testID={t`Entrée pour le nom`}
+            testID="Entrée pour le nom"
           />
           <InputError
             visible={lastNameHasError}
-            messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
+            messageId="Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
             numberOfSpacesTop={2}
             relatedInputId={lastNameInputErrorId}
           />
@@ -92,8 +89,8 @@ export const SetName = () => {
       fixedBottomChildren={
         <ButtonPrimary
           type="submit"
-          wording={t`Continuer`}
-          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          wording="Continuer"
+          accessibilityLabel="Continuer vers l’étape suivante"
           onPress={submitName}
           disabled={disabled}
         />

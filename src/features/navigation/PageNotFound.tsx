@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -11,23 +10,24 @@ import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
 import { Typo } from 'ui/theme'
 
 export const PageNotFound: React.FC = () => {
+  const helmetTitle = 'Page introuvable | pass Culture'
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Page introuvable` + ' | pass Culture'}</title>
+        <title>{helmetTitle}</title>
       </Helmet>
       <GenericInfoPage
-        title={t`Page introuvable\u00a0!`}
+        title="Page introuvable&nbsp;!"
         icon={PageNotFoundIcon}
         buttons={[
           <TouchableLink
             key={1}
             as={ButtonPrimaryWhite}
-            wording={t`Retourner à l'accueil`}
+            wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
           />,
         ]}>
-        <StyledBody>{t`Il est possible que cette page soit désactivée ou n'existe pas.`}</StyledBody>
+        <StyledBody>Il est possible que cette page soit désactivée ou n’existe pas.</StyledBody>
       </GenericInfoPage>
     </React.Fragment>
   )

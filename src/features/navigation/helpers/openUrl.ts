@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { Alert, Linking } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
@@ -52,8 +51,8 @@ const openExternalUrl = async (
 }
 
 const showAlert = (url: string) => {
-  const alertTitle = t`Problème technique ;(`
-  const alertMessage = t`Nous n'arrivons pas à ouvrir ce lien\u00a0: ${url}`
+  const alertTitle = 'Problème technique'
+  const alertMessage = `Nous n’arrivons pas à ouvrir ce lien\u00a0: ${url}`
   const alertButtons = undefined
   const alertAndroidOptions = { cancelable: true }
   Alert.alert(alertTitle, alertMessage, alertButtons, alertAndroidOptions)

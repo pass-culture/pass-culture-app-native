@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -53,6 +52,8 @@ export const NotEligibleEduConnect = ({
     throw error
   }
 
+  const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
+
   return (
     <GenericInfoPage
       title={title}
@@ -70,7 +71,7 @@ export const NotEligibleEduConnect = ({
             key={2}
             as={ButtonTertiaryWhite}
             icon={PlainArrowPrevious}
-            wording={t`Retourner à l'accueil`}
+            wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
             onPress={onAbandon}
             navigateBeforeOnPress
@@ -78,7 +79,7 @@ export const NotEligibleEduConnect = ({
         ),
       ].filter(Boolean)}>
       <Helmet>
-        <title>{t`Page erreur\u00a0:` + title + ' | pass Culture'}</title>
+        <title>{helmetTitle}</title>
       </Helmet>
       <Body textAlign={descriptionAlignment}>{description}</Body>
     </GenericInfoPage>

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -24,9 +23,9 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={t`Connecte-toi pour profiter de cette fonctionnalité`}
+      title="Connecte-toi pour profiter de cette fonctionnalité"
       titleNumberOfLines={3}
-      rightIconAccessibilityLabel={t`Fermer la modale`}
+      rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={() => {
         analytics.logQuitFavoriteModalForSignIn(offerId)
@@ -34,13 +33,13 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       }}>
       <Description>
         <Typo.Body>
-          {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil\u00a0!`}
+          Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil&nbsp;!
         </Typo.Body>
       </Description>
 
       <TouchableLink
         as={ButtonPrimary}
-        wording={t`S'inscrire`}
+        wording="S’inscrire"
         navigateTo={{ screen: 'SignupForm' }}
         onPress={() => {
           analytics.logSignUpFromOffer(offerId)
@@ -50,7 +49,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={3} />
       <TouchableLink
         as={ButtonTertiaryPrimary}
-        wording={t`Se connecter`}
+        wording="Se connecter"
         navigateTo={{ screen: 'Login' }}
         onPress={() => {
           analytics.logSignInFromOffer(offerId)

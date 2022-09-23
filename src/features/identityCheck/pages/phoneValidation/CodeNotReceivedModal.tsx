@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
@@ -69,16 +68,19 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
   return (
     <AppModal
       visible={props.isVisible}
-      title={t`Code non reçu\u00a0?`}
-      rightIconAccessibilityLabel={t`Fermer la modale`}
+      title="Code non reçu&nbsp;?"
+      rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={props.dismissModal}>
       <React.Fragment>
-        <Introduction>{t`Si après 5 minutes tu n'as pas reçu ton code de validation, tu peux en demander un nouveau.`}</Introduction>
+        <StyledBody>
+          Si après 5 minutes tu n’as pas reçu ton code de validation, tu peux en demander un
+          nouveau.
+        </StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <BottomContentContainer>
           <WarningContainer>
-            <GreyDarkCaption>{t`Attention, il te reste\u00a0:` + ' '}</GreyDarkCaption>
+            <GreyDarkCaption>Attention, il te reste&nbsp;: </GreyDarkCaption>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording}
             </WarningRemainingAttempts>
@@ -87,7 +89,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
           <ButtonPrimary
             type="submit"
             onPress={requestSendPhoneValidationCode}
-            wording={t`Demander un autre code`}
+            wording="Demander un autre code"
             isLoading={isLoading}
           />
         </BottomContentContainer>
@@ -96,7 +98,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
   )
 }
 
-const Introduction = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
