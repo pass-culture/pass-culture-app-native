@@ -48,6 +48,7 @@ module.exports = {
       'error',
       {
         skip: [
+          // Default
           'Typo.Hero',
           'Typo.Title1',
           'Typo.Title2',
@@ -56,6 +57,7 @@ module.exports = {
           'Typo.ButtonText',
           'Typo.Body',
           'Typo.Caption',
+          // Styled
           'Hero',
           'Title1',
           'Title2',
@@ -72,6 +74,7 @@ module.exports = {
           'StyledButtonText',
           'StyledBody',
           'StyledCaption',
+          'GreyDarkCaption',
         ],
       },
     ],
@@ -126,7 +129,10 @@ module.exports = {
         message: 'use libs/firebase/shims/firestore instead',
       },
       { name: '@react-native-firebase/perf', message: 'use libs/firebase/perf instead' },
-      { name: '@react-native-firebase/remote-config', message: 'use libs/firebase/shims/remote-config instead' },
+      {
+        name: '@react-native-firebase/remote-config',
+        message: 'use libs/firebase/shims/remote-config instead',
+      },
     ],
     'no-restricted-properties': [
       2,
