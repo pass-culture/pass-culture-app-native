@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -19,33 +18,35 @@ export const NoContentError = () => {
     navigate(...getTabNavConfig('Search'))
   }
 
+  const helmetTitle =
+    'Page erreur\u00a0: Erreur pendant le chargement de nos recommandations | pass Culture'
+
   return (
     <React.Fragment>
       <Helmet>
-        <title>
-          {t`Page erreur\u00a0: Erreur pendant le chargement de nos recommandations` +
-            ' | pass Culture'}
-        </title>
+        <title>{helmetTitle}</title>
       </Helmet>
       <GenericErrorPage
-        title={t`Oups\u00a0!`}
+        title="Oups&nbsp;!"
         icon={BrokenConnection}
         buttons={[
           <ButtonSecondaryWhite
             key={1}
-            wording={t`Rechercher une offre`}
+            wording="Rechercher une offre"
             icon={MagnifyingGlass}
             onPress={navigateToSearchTab}
             buttonHeight="tall"
           />,
         ]}>
-        <BodyText>{t`Une erreur s’est produite pendant le chargement de nos recommandations.`}</BodyText>
+        <StyledBody>
+          Une erreur s’est produite pendant le chargement de nos recommandations.
+        </StyledBody>
       </GenericErrorPage>
     </React.Fragment>
   )
 }
 
-const BodyText = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

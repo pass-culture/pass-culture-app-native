@@ -45,7 +45,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
       ]
     }
   >
-    Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.
+    Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.
   </Text>
   <View
     numberOfSpaces={6}
@@ -253,7 +253,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
       ]
     }
   >
-    Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.
+    Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.
   </Text>
   <View
     numberOfSpaces={6}
@@ -292,7 +292,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
     }
   />
   <View
-    accessibilityLabel="Voir le détail de l'offre"
+    accessibilityLabel="Voir le détail de l’offre"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -321,7 +321,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
         "width": "100%",
       }
     }
-    testID="Voir le détail de l'offre"
+    testID="Voir le détail de l’offre"
   >
     <Text
       adjustsFontSizeToFit={false}
@@ -339,7 +339,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
         ]
       }
     >
-      Voir le détail de l'offre
+      Voir le détail de l’offre
     </Text>
   </View>
   <View

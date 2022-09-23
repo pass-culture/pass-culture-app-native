@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
@@ -30,12 +29,12 @@ export function FourthCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={StarAnimation}
       buttonCallback={onButtonPress}
-      buttonText={t`Découvrir`}
-      buttonAccessibilityLabel={t`Découvrir ton pass Culture`}
+      buttonText="Découvrir"
+      buttonAccessibilityLabel="Découvrir ton pass Culture"
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={t`quotidiennes`}
-      text={t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant\u00a0!`}
-      title={t`Des nouveautés`}
+      subTitle="quotidiennes"
+      text="Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant&nbsp;!"
+      title="Des nouveautés"
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

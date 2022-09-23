@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -38,14 +37,14 @@ export const useDatePickerErrorHandler = (date?: Date) => {
   if (AGE < 0) {
     return {
       isDisabled: true,
-      errorMessage: t`Tu ne peux pas choisir une date dans le futur`,
+      errorMessage: 'Tu ne peux pas choisir une date dans le futur',
     }
   }
   if (AGE < 15) {
     analytics.logSignUpTooYoung(AGE)
     return {
       isDisabled: true,
-      errorMessage: t`Tu dois avoir au moins ${youngestAge}\u00a0ans pour t’inscrire au pass Culture`,
+      errorMessage: `Tu dois avoir au moins ${youngestAge}\u00a0ans pour t’inscrire au pass Culture`,
     }
   }
   return {

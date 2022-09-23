@@ -70,7 +70,7 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
       ]
     }
   >
-    Il est possible que certaines réservations ne s'affichent pas hors connexion. Connecte-toi à internet pour vérifier.
+    Il est possible que certaines réservations ne s’affichent pas hors connexion. Connecte-toi à internet pour vérifier.
   </Text>
   <View
     style={
@@ -136,9 +136,7 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
       ]
     }
   >
-    Tu n’as pas de réservations en cours.
-Découvre les offres disponibles
-sans attendre !
+    Tu n’as pas de réservations en cours. Découvre les offres disponibles sans attendre !
   </Text>
   <View
     style={

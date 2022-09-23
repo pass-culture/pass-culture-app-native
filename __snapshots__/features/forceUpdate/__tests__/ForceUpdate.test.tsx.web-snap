@@ -189,7 +189,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         }
       }
     >
-      Mise à jour de l'application
+      Mise à jour de l’application
     </h1>
     <div
       className="css-view-1dbjc4n"
@@ -212,8 +212,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         }
       }
     >
-      Le pass Culture de ton navigateur ne semble plus à jour !
-Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
+      Le pass Culture de ton navigateur ne semble plus à jour ! Pour des questions de performance et de sécurité merci d’actualiser la page pour obtenir la dernière version disponible.
     </div>
     <div
       className="css-view-1dbjc4n"

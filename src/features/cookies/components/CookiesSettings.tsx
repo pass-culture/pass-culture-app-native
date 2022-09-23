@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
@@ -54,15 +53,18 @@ export const CookiesSettings = ({
     })
   }
 
+  const inputLabel = 'Tout accepter'
+
   return (
     <React.Fragment>
-      <Typo.Title4
-        {...getHeadingAttrs(2)}>{t`À quoi servent tes cookies et tes données\u00a0?`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>
+        À quoi servent tes cookies et tes données&nbsp;?
+      </Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
-        <GreyDarkCaption>{t`Je choisis mes cookies`}</GreyDarkCaption>
+        <GreyDarkCaption>Je choisis mes cookies</GreyDarkCaption>
         <AcceptAllContainer>
-          <StyledInputLabel htmlFor={checkboxID}>{t`Tout accepter`}</StyledInputLabel>
+          <StyledInputLabel htmlFor={checkboxID}>{inputLabel}</StyledInputLabel>
           <Spacer.Row numberOfSpaces={2} />
           <FilterSwitch active={hasAcceptedAll} checkboxID={checkboxID} toggle={toggleAll} />
         </AcceptAllContainer>

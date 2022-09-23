@@ -46,7 +46,7 @@ export function NavigationProfile(): JSX.Element {
       <Spacer.TopScreen />
       <ModalHeader
         title="Profile 🎨"
-        leftIconAccessibilityLabel={`Revenir en arrière`}
+        leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
       />
@@ -56,7 +56,7 @@ export function NavigationProfile(): JSX.Element {
         <LinkToComponent name="ConsentSettings" />
         <LinkToComponent name="NotificationSettings" />
         <Row half>
-          <ButtonPrimary wording={'Modal Limite 500\u00a0€'} onPress={showPhysicalCeilingModal} />
+          <ButtonPrimary wording="Modal Limite 500&nbsp;€" onPress={showPhysicalCeilingModal} />
           <CreditCeilingsModal
             domainsCredit={domains_credit_v1}
             visible={physicalCeilingModalVisible}
@@ -64,7 +64,7 @@ export function NavigationProfile(): JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording={'Modal Limite 300\u00a0€'} onPress={showCeilingModal} />
+          <ButtonPrimary wording="Modal Limite 300&nbsp;€" onPress={showCeilingModal} />
           <CreditCeilingsModal
             domainsCredit={domains_credit_v2}
             visible={ceilingModalVisible}
@@ -72,14 +72,14 @@ export function NavigationProfile(): JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording={'Modal Crédit Expiré'} onPress={showExpiredCreditModal} />
+          <ButtonPrimary wording="Modal Crédit Expiré" onPress={showExpiredCreditModal} />
           <ExpiredCreditModal
             visible={expiredCreditModalVisible}
             hideModal={hideExpiredCreditModal}
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording={'Modal Crédit Dépensé'} onPress={showExhaustedCreditModal} />
+          <ButtonPrimary wording="Modal Crédit Dépensé" onPress={showExhaustedCreditModal} />
           <ExhaustedCreditModal
             visible={exhaustedCreditModalVisible}
             hideModal={hideExhaustedCreditModal}

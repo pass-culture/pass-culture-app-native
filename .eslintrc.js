@@ -48,6 +48,7 @@ module.exports = {
       'error',
       {
         skip: [
+          // Default
           'Typo.Hero',
           'Typo.Title1',
           'Typo.Title2',
@@ -56,6 +57,7 @@ module.exports = {
           'Typo.ButtonText',
           'Typo.Body',
           'Typo.Caption',
+          // Styled
           'Hero',
           'Title1',
           'Title2',
@@ -72,6 +74,7 @@ module.exports = {
           'StyledButtonText',
           'StyledBody',
           'StyledCaption',
+          'GreyDarkCaption',
         ],
       },
     ],

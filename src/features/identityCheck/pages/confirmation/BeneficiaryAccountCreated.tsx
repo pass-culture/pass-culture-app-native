@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import { useTheme } from 'styled-components/native'
 
@@ -36,9 +35,10 @@ export function BeneficiaryAccountCreated() {
   const culturalSurveyRoute = useCulturalSurveyRoute()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
+  const subtitle = `${maxPrice}\u00a0€ viennent d'être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
-    ? t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
-    : t`Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
+    ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!'
+    : 'Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!'
 
   const trackValidatedSubscription = useCallback(
     () => BatchUser.trackEvent(BatchEvent.hasValidatedSubscription),
@@ -48,10 +48,8 @@ export function BeneficiaryAccountCreated() {
   useEnterKeyAction(navigateToHome)
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
-      <StyledSubtitle>
-        {t`${maxPrice}\u00a0€ viennent d'être crédités sur ton compte pass Culture`}
-      </StyledSubtitle>
+    <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
+      <StyledSubtitle>{subtitle}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
@@ -69,7 +67,7 @@ export function BeneficiaryAccountCreated() {
       <ButtonContainer>
         <TouchableLink
           as={ButtonPrimary}
-          wording={t`Je découvre les offres`}
+          wording="Je découvre les offres"
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }

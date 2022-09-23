@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -17,9 +16,6 @@ interface Props {
   hideModal: () => void
   testIdSuffix?: string
 }
-
-const title = t`Veux-tu abandonner la vérification d'identité\u00a0?`
-const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
 
 export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   visible,
@@ -45,22 +41,22 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
       testIdSuffix={testIdSuffix}
       onRequestClose={continueIdentityCheck}>
       <GenericInfoPage
-        title={title}
+        title="Veux-tu abandonner la vérification d’identité&nbsp;?"
         icon={ErrorIllustration}
         flex={false}
         buttons={[
           <ButtonPrimaryWhite
             key={1}
-            wording={t`Continuer la vérification`}
+            wording="Continuer la vérification"
             onPress={continueIdentityCheck}
           />,
           <ButtonTertiaryWhite
             key={2}
-            wording={t`Abandonner la vérification`}
+            wording="Abandonner la vérification"
             onPress={quitIdentityCheck}
           />,
         ]}>
-        <StyledBody>{description}</StyledBody>
+        <StyledBody>Les informations que tu as renseignées ne seront pas enregistrées.</StyledBody>
       </GenericInfoPage>
     </AppFullPageModal>
   )

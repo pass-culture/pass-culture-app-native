@@ -123,8 +123,8 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
         </Paragraphe>
         <TouchableLink
           as={ButtonTertiaryPrimary}
-          wording={t`Contacter le support`}
-          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+          wording="Contacter le support"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           externalNav={contactSupport.forGenericQuestion}
           icon={Email}
         />

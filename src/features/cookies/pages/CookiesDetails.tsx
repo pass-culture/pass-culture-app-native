@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -13,34 +12,36 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
+  const buttonText = 'Pour plus d’informations, nous t’invitons à consulter notre'
   return (
     <React.Fragment>
       <AccordionContainer>
         <StyledAccordionItem>
           <Typo.Body>
-            {t`Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.`}
+            Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu
+            peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données
+            collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
           </Typo.Body>
         </StyledAccordionItem>
       </AccordionContainer>
       <Spacer.Column numberOfSpaces={8} />
       <CookiesSettings {...props} />
       <Spacer.Column numberOfSpaces={8} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Tu as la main dessus`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
-        {t`Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.`}
+        Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
+        confidentialité de ton profil à tout moment.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
-        {t`On te redemandera bien sûr ton consentement si notre politique évolue.`}
-      </Typo.Body>
+      <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <StyledCaption>
-        {t`Pour plus d’informations, nous t’invitons à consulter notre`}
+        {buttonText}
         <Spacer.Row numberOfSpaces={1} />
         <TouchableLink
           as={ButtonInsideText}
-          wording={t`Politique de gestion des cookies`}
+          wording="Politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           icon={ExternalSiteFilled}
           typography="Caption"
@@ -57,7 +58,7 @@ const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
 
 const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(AccordionItem).attrs(({ theme }) => ({
-  title: <Typo.ButtonText>{t`Qu’est-ce que les cookies\u00a0?`}</Typo.ButtonText>,
+  title: <Typo.ButtonText>Qu’est-ce que les cookies&nbsp;?</Typo.ButtonText>,
   titleStyle: {
     backgroundColor: theme.colors.greyLight,
     paddingVertical: getSpacing(4),

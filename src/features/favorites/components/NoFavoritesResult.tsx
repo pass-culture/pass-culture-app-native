@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -21,15 +20,15 @@ export const NoFavoritesResult = () => {
       <IconContainer>
         <StyledEmptyFavorites />
       </IconContainer>
-      <Explanation>
-        {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris\u00a0!`}
-      </Explanation>
+      <StyledBody>
+        Retrouve toutes tes offres en un clin d’oeil en les ajoutant à tes favoris&nbsp;!
+      </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <TouchableLink
           as={ButtonPrimary}
           navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
-          wording={t`Explorer les offres`}
+          wording="Explorer les offres"
           onPress={onPressExploreOffers}
           buttonHeight="tall"
         />
@@ -58,7 +57,7 @@ const Container = styled.View(({ theme }) => ({
 
 const ButtonContainer = styled.View({})
 
-const Explanation = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   flex: 1,
   flexGrow: 0,
   textAlign: 'center',

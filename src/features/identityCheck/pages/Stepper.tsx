@@ -106,7 +106,7 @@ export const IdentityCheckStepper = () => {
           <Spacer.TopScreen />
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
-          <StyledTitle3>{'C’est très rapide\u00a0!'}</StyledTitle3>
+          <StyledTitle3>C’est très rapide&nbsp;!</StyledTitle3>
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>Voici les {steps.length} étapes que tu vas devoir suivre</StyledBody>
 

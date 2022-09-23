@@ -50,14 +50,14 @@ describe('<ticketBodyMessages/>', () => {
     it('should return the correct message if the offer date is today', () => {
       const emailMessage = getEmailMessage(today)
       expect(emailMessage).toEqual(
-        `C'est aujourd'hui\u00a0!${lineBreak}Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.`
+        `C’est aujourd’hui\u00a0!${lineBreak}Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.`
       )
     })
 
     it('should return the correct message if the offer date is not today', () => {
       const emailMessage = getEmailMessage(tomorrow)
       expect(emailMessage).toEqual(
-        "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
+        'Ton billet t’a été envoyé par e-mail. Pense à vérifier tes spams.'
       )
     })
   })

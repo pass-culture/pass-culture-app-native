@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -29,20 +28,19 @@ const onPress = Platform.select({
 })
 
 const title = Platform.select({
-  default: t`Mise à jour de l'application`,
-  web: t`Mise à jour de l'application`,
+  default: 'Mise à jour de l’application',
+  web: 'Mise à jour de l’application',
 })
 
 const description = Platform.select({
-  default: t`Le pass Culture ne semble plus à jour sur ton téléphone\u00a0!
-                Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.`,
-  web: t`Le pass Culture de ton navigateur ne semble plus à jour\u00a0!
-                Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.`,
+  default:
+    'Le pass Culture ne semble plus à jour sur ton téléphone\u00a0! Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.',
+  web: 'Le pass Culture de ton navigateur ne semble plus à jour\u00a0! Pour des questions de performance et de sécurité merci d’actualiser la page pour obtenir la dernière version disponible.',
 })
 
 const buttonText = Platform.select({
-  default: t`Télécharger la dernière version`,
-  web: t`Actualiser la page`,
+  default: 'Télécharger la dernière version',
+  web: 'Actualiser la page',
 })
 
 type Props = {

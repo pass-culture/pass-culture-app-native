@@ -117,8 +117,7 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
       ]
     }
   >
-    Tu peux dès maintenant découvrir 
-l’étendue du catalogue pass Culture.
+    Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
   </Text>
   <View
     flex={2}

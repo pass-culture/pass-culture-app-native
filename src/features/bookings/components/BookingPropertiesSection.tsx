@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -41,24 +40,24 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 
   return (
     <View style={style}>
-      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Ma réservation`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Ma réservation</Typo.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
       {userFullName ? (
         <SectionRow
           title={userFullName}
-          accessibilityLabel={t`Au nom de` + ` ${userFullName}`}
+          accessibilityLabel={`Au nom de ${userFullName}`}
           renderTitle={(title) => (
             <TitleNameContainer>
               <Title>{title}</Title>
               <Spacer.Row numberOfSpaces={2} />
               {!!properties.isDuo && (
-                <IconDuoContainer accessibilityLabel={t`DUO: Elle comporte 2 places.`}>
+                <IconDuoContainer accessibilityLabel="DUO&nbsp;: Elle comporte 2 places.">
                   <Duo testID="duo-icon" />
                 </IconDuoContainer>
               )}
             </TitleNameContainer>
           )}
-          type={'clickable'}
+          type="clickable"
           icon={() => <Profile color={theme.colors.black} color2={theme.colors.black} />}
         />
       ) : null}
@@ -67,9 +66,9 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           <Spacer.Column numberOfSpaces={5} />
           <SectionRow
             title={propertiesLabels.dateLabel}
-            accessibilityLabel={t`Date:` + ` ${propertiesLabels.dateLabel}`}
+            accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
             renderTitle={renderRowTitle}
-            type={'clickable'}
+            type="clickable"
             icon={() => <Calendar />}
           />
         </React.Fragment>
@@ -78,9 +77,9 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
       {!!propertiesLabels.locationLabel && (
         <SectionRow
           title={propertiesLabels.locationLabel}
-          accessibilityLabel={t`Se tiendra dans le lieu` + ` ${propertiesLabels.locationLabel}`}
+          accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
           renderTitle={renderRowTitle}
-          type={'clickable'}
+          type="clickable"
           icon={() => <LocationBuilding />}
         />
       )}

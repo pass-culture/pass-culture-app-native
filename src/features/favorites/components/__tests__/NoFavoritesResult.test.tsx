@@ -29,7 +29,7 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
 describe('NoFavoritesResult component', () => {
   it('should show the message', () => {
     const text = render(<NoFavoritesResult />).getByText(
-      `Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris\u00a0!`
+      `Retrouve toutes tes offres en un clin d’oeil en les ajoutant à tes favoris !`
     )
     expect(text).toBeTruthy()
   })

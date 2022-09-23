@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -40,7 +39,7 @@ export const IdentityCheckEduConnect = () => {
 
   return (
     <PageWithHeader
-      title={t`Identification`}
+      title="Identification"
       onGoBack={onGoBack}
       scrollChildren={
         <Container>
@@ -49,23 +48,21 @@ export const IdentityCheckEduConnect = () => {
             <StyledBicolorIdCardWithMagnifyingGlass />
           </Center>
 
-          <CenteredTitle title={t`Identification`} />
+          <CenteredTitle title="Identification" />
 
           <Spacer.Column numberOfSpaces={4} />
 
-          <TextContent>
-            {t`Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect\u00a0! Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
-          </TextContent>
+          <StyledBody>
+            Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de
+            ton identifiant et ton mot de passe EduConnect&nbsp;! Si tu ne les as pas, contacte ton
+            établissement pour les récupérer.
+          </StyledBody>
 
           <Spacer.Column numberOfSpaces={8} />
         </Container>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          wording={`Connexion avec ÉduConnect`}
-          onPress={onSubmit}
-          icon={ExternalSite}
-        />
+        <ButtonPrimary wording="Connexion avec ÉduConnect" onPress={onSubmit} icon={ExternalSite} />
       }
     />
   )
@@ -80,8 +77,10 @@ const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyin
 )``
 
 const Center = styled.View({ alignSelf: 'center' })
+
 const Container = styled.View({ flexGrow: 1, justifyContent: 'center' })
-const TextContent = styled(Typo.Body)(({ theme }) => ({
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

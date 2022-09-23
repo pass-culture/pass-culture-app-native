@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -15,15 +14,14 @@ export const CulturalSurveyThanks: React.FC = () => {
       mobileBottomFlex={0.1}
       animation={QpiThanks}
       titleComponent={Typo.Title1}
-      title={t`Un grand merci`}
-      subtitle={t`pour tes réponses\u00a0!`}>
-      <TextContent>{t`Tu peux dès maintenant découvrir 
-      l’étendue du catalogue pass Culture.`}</TextContent>
+      title="Un grand merci"
+      subtitle="pour tes réponses&nbsp;!">
+      <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
         <ButtonPrimary
           testID="discover-button"
-          wording={t`Découvrir le catalogue`}
+          wording="Découvrir le catalogue"
           onPress={navigateToHome}
         />
       </ButtonContainer>
@@ -35,6 +33,6 @@ const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })
 
-const TextContent = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

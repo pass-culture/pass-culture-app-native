@@ -141,7 +141,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           ]
         }
       >
-        Veux-tu abandonner la vérification d'identité ?
+        Veux-tu abandonner la vérification d’identité ?
       </Text>
       <View
         numberOfSpaces={5}

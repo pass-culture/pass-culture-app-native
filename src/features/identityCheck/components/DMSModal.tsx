@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -28,33 +27,34 @@ const onDMSForeignCitizenPress = () => {
 export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
   <AppModal
     visible={visible}
-    title={t`Transmettre un document`}
-    rightIconAccessibilityLabel={t`Fermer la modale pour transmettre un document sur le site Démarches Simplifiée`}
+    title="Transmettre un document"
+    rightIconAccessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
     rightIcon={Close}
     onRightIconPress={hideModal}>
     <StyledBody>
-      {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long\u00a0!`}
+      Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera
+      plus long&nbsp;!
     </StyledBody>
     <Spacer.Column numberOfSpaces={8} />
     <TouchableLink
       as={ButtonTertiaryBlack}
-      wording={t`Je suis de nationalité française`}
+      wording="Je suis de nationalité française"
       externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
       onPress={onDMSFrenchCitizenPress}
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <GreyDarkCaption>{t`Carte d’identité ou passeport.`}</GreyDarkCaption>
+    <GreyDarkCaption>Carte d’identité ou passeport.</GreyDarkCaption>
     <Spacer.Column numberOfSpaces={8} />
     <TouchableLink
       as={ButtonTertiaryBlack}
-      wording={t`Je suis de nationalité étrangère`}
+      wording="Je suis de nationalité étrangère"
       externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}
       onPress={onDMSForeignCitizenPress}
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <GreyDarkCaption>{t`Titre de séjour, carte d'identité, ou passeport.`}</GreyDarkCaption>
+    <GreyDarkCaption>Titre de séjour, carte d’identité, ou passeport.</GreyDarkCaption>
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>
 )

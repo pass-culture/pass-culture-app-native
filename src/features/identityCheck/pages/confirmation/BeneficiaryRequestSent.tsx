@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -20,30 +19,30 @@ export function BeneficiaryRequestSent() {
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
-  const body = t`Tu recevras un e-mail lorsque ta demande sera validée.`
+  const body = 'Tu recevras un e-mail lorsque ta demande sera validée.'
 
   let inTheMeantime = ''
   if (shouldNavigateToCulturalSurvey) {
-    inTheMeantime = t`En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!`
+    inTheMeantime = 'En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!'
   }
 
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
 
   return (
     <GenericInfoPage
-      title={t`Demande envoyée\u00a0!`}
+      title="Demande envoyée&nbsp;!"
       icon={RequestSent}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`On y va\u00a0!`}
+          wording="On y va&nbsp;!"
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
         />,
       ]}>
-      <StyledBody>{t`Nous étudions ton dossier...`}</StyledBody>
+      <StyledBody>Nous étudions ton dossier...</StyledBody>
       <StyledBody>{message}</StyledBody>
     </GenericInfoPage>
   )

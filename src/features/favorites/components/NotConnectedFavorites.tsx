@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -18,14 +17,14 @@ export const NotConnectedFavorites = () => {
       <Spacer.Flex />
       <StyledUserFavorite />
       <CenteredContainer>
-        <TypoTitle4>{t`Connecte-toi pour profiter de cette fonctionnalité\u00a0!`}</TypoTitle4>
+        <StyledTitle4>Connecte-toi pour profiter de cette fonctionnalité&nbsp;!</StyledTitle4>
         <Spacer.Column numberOfSpaces={4} />
 
         <TextContainer>
           <CenteredText>
-            <Body>
-              {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil\u00a0!`}
-            </Body>
+            <StyledBody>
+              Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil&nbsp;!
+            </StyledBody>
           </CenteredText>
         </TextContainer>
       </CenteredContainer>
@@ -34,7 +33,7 @@ export const NotConnectedFavorites = () => {
         <ButtonContainer>
           <TouchableLink
             as={ButtonPrimaryWhite}
-            wording={t`S'inscrire`}
+            wording="S’inscrire"
             navigateTo={{ screen: 'SignupForm' }}
             onPress={analytics.logSignUpFromFavorite}
             buttonHeight="tall"
@@ -42,7 +41,7 @@ export const NotConnectedFavorites = () => {
           <Spacer.Column numberOfSpaces={4} />
           <TouchableLink
             as={ButtonTertiaryWhite}
-            wording={t`Se connecter`}
+            wording="Se connecter"
             navigateTo={{ screen: 'Login' }}
             onPress={analytics.logSignInFromFavorite}
             buttonHeight="tall"
@@ -68,7 +67,7 @@ const Container = styled.View({
 
 const Row = styled.View({ flexDirection: 'row' })
 
-const TypoTitle4 = styled(Typo.Title4)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))
@@ -89,6 +88,6 @@ const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))

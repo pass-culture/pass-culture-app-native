@@ -206,7 +206,21 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
     }
   >
     On est ravi de te revoir !
-Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
+  </div>
+  <div
+    className="css-text-901oao"
+    dir="ltr"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
   </div>
   <div
     className="css-view-1dbjc4n"

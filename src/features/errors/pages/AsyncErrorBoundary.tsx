@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { ReactNode, useEffect } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
@@ -56,24 +55,25 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
     )
   }
 
+  const helmetTitle = 'Page erreur\u00a0: Erreur pendant le chargement | pass Culture'
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Page erreur\u00a0: Erreur pendant le chargement` + ' | pass Culture'}</title>
+        <title>{helmetTitle}</title>
       </Helmet>
       <GenericErrorPage
-        title={t`Oups\u00a0!`}
+        title="Oups&nbsp;!"
         icon={BrokenConnection}
         header={header}
         buttons={[
           <ButtonPrimaryWhite
             key={1}
-            wording={t`Réessayer`}
+            wording="Réessayer"
             onPress={handleRetry}
             buttonHeight="tall"
           />,
         ]}>
-        <StyledBody>{t`Une erreur s'est produite pendant le chargement.`}</StyledBody>
+        <StyledBody>Une erreur s’est produite pendant le chargement.</StyledBody>
       </GenericErrorPage>
     </React.Fragment>
   )
@@ -100,7 +100,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
 const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
   color: theme.colors.white,
   size: theme.icons.sizes.small,
-  accessibilityLabel: t`Revenir en arrière`,
+  accessibilityLabel: 'Revenir en arrière',
 }))``
 
 const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
