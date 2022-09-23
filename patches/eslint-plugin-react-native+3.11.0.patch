@@ -1,0 +1,13 @@
+diff --git a/node_modules/eslint-plugin-react-native/lib/rules/no-raw-text.js b/node_modules/eslint-plugin-react-native/lib/rules/no-raw-text.js
+index 6434bf9..0b88402 100644
+--- a/node_modules/eslint-plugin-react-native/lib/rules/no-raw-text.js
++++ b/node_modules/eslint-plugin-react-native/lib/rules/no-raw-text.js
+@@ -40,7 +40,7 @@ module.exports = (context) => {
+ 
+     context.report({
+       node,
+-      message: `${formattedErrorValue} cannot be used outside of a <Text> tag`,
++      message: `${formattedErrorValue} cannot be used outside of the tags specified in the 'skip' array from the no-raw-text rule in .eslintrc.js`,
+     });
+   };
+ 
