@@ -30,7 +30,7 @@ describe('Navigate to home button', () => {
   it('should redirect to Home when clicking on homepage button', async () => {
     const { getByText } = render(<PhoneValidationTooManyAttempts />)
 
-    fireEvent.click(getByText("Retourner à l'accueil"))
+    fireEvent.click(getByText('Retourner à l’accueil'))
 
     expect(navigate).toBeCalledWith(...homeNavConfig)
   })
