@@ -431,7 +431,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           }
         }
       >
-        Consulter l'article d'aide
+        Consulter l’article d'aide
       </div>
     </a>
     <button
@@ -584,7 +584,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             }
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </div>
       </button>
     </div>
