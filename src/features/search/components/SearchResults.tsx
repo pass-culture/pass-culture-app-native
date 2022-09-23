@@ -5,6 +5,7 @@ import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
@@ -61,8 +62,10 @@ export const SearchResults: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
+  const { data: appSettings } = useAppSettings()
+  const hasFiltersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
   const offerCategories = params?.offerCategories ?? []
-  const categoryIsSelected = offerCategories.length > 0
+  const hasCategory = offerCategories.length > 0
   const {
     visible: categoriesModalVisible,
     showModal: showCategoriesModal,
@@ -77,7 +80,13 @@ export const SearchResults: React.FC = () => {
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
-  const priceIsEntered = (minPrice !== undefined && minPrice > 0) || maxPrice !== undefined
+  const hasPrice = (minPrice !== undefined && minPrice > 0) || maxPrice !== undefined
+
+  const hasType =
+    params?.offerIsDuo ||
+    params?.offerTypes?.isDigital ||
+    params?.offerTypes?.isEvent ||
+    params?.offerTypes?.isThing
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -198,8 +207,8 @@ export const SearchResults: React.FC = () => {
                 label="Catégories"
                 testID="categoryButton"
                 onPress={showCategoriesModal}
-                Icon={categoryIsSelected ? Check : undefined}
-                color={categoryIsSelected ? theme.colors.primary : undefined}
+                Icon={hasCategory ? Check : undefined}
+                color={hasCategory ? theme.colors.primary : undefined}
               />
             </ButtonContainer>
             <React.Fragment>
@@ -209,11 +218,25 @@ export const SearchResults: React.FC = () => {
                   label="Prix"
                   testID="priceButton"
                   onPress={showSearchPriceModal}
-                  Icon={priceIsEntered ? Check : undefined}
-                  color={priceIsEntered ? theme.colors.primary : undefined}
+                  Icon={hasPrice ? Check : undefined}
+                  color={hasPrice ? theme.colors.primary : undefined}
                 />
               </ButtonContainer>
             </React.Fragment>
+            {!!hasFiltersButtonsDisplay && (
+              <React.Fragment>
+                <Spacer.Row numberOfSpaces={2} />
+                <ButtonContainer>
+                  <SingleFilterButton
+                    label="Type"
+                    testID="typeButton"
+                    onPress={() => navigate('SearchFilter')}
+                    Icon={hasType ? Check : undefined}
+                    color={hasType ? theme.colors.primary : undefined}
+                  />
+                </ButtonContainer>
+              </React.Fragment>
+            )}
             <Spacer.Row numberOfSpaces={6} />
           </ScrollView>
           <Spacer.Column numberOfSpaces={4} />
