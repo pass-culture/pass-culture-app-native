@@ -7,6 +7,7 @@ delete rules['react-native/split-platform-components']
 delete rules['react/jsx-fragments']
 delete rules['react/jsx-no-constructed-context-values']
 delete rules['react-native/no-raw-text']
+delete rules['import/no-extraneous-dependencies']
 
 module.exports = {
   ...config,
