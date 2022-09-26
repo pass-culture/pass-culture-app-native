@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     'local-rules/no-allow-console': ['error'],
     'local-rules/independant-mocks': ['error'],
+    'local-rules/no-raw-text': ['error'],
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],
     'local-rules/nbsp-in-french-translations': ['error'],
@@ -44,6 +45,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
+    'react-native/no-raw-text': 'off', // We use 'local-rules/no-raw-text' instead
     'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
     'react/jsx-no-constructed-context-values': 'error',
     'no-restricted-imports': [
