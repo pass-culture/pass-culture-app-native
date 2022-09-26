@@ -188,6 +188,33 @@ module.exports = {
         iosPathRegex: '\\.ios(.test)?.(ts|tsx)$',
       },
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/tests/**',
+          '**/__tests__/**',
+          '**/__mocks__/**',
+          '**/*.stories.js',
+          '**/*.test.js',
+          '**/*.stories.ts',
+          '**/*.test.ts',
+          '**/*.stories.tsx',
+          '**/*.test.tsx',
+          '**/*.stories.jsx',
+          '**/*.test.jsx',
+          '**/service-worker.ts',
+          '**/why-did-you-render.js',
+          '**/jest.*.ts',
+        ],
+        // This is features available with patch-package on eslint-plugin-import
+        // Open PR: https://github.com/import-js/eslint-plugin-import/pull/2557/files
+        ignoreImports: [
+          './__mocks__',
+          './src/tests',
+        ],
+      },
+    ],
   },
   settings: {
     react: {
