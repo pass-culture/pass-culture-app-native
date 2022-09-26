@@ -44,40 +44,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
-    'react-native/no-raw-text': [
-      'error',
-      {
-        skip: [
-          // Default
-          'Typo.Hero',
-          'Typo.Title1',
-          'Typo.Title2',
-          'Typo.Title3',
-          'Typo.Title4',
-          'Typo.ButtonText',
-          'Typo.Body',
-          'Typo.Caption',
-          'Typo.CaptionNeutralInfo',
-          // Styled
-          'Hero',
-          'Title1',
-          'Title2',
-          'Title3',
-          'Title4',
-          'ButtonText',
-          'Body',
-          'Caption',
-          'StyledHero',
-          'StyledTitle1',
-          'StyledTitle2',
-          'StyledTitle3',
-          'StyledTitle4',
-          'StyledButtonText',
-          'StyledBody',
-          'StyledCaption',
-        ],
-      },
-    ],
     'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
     'react/jsx-no-constructed-context-values': 'error',
     'no-restricted-imports': [
@@ -212,7 +178,7 @@ module.exports = {
         ignoreImports: [
           './__mocks__',
           './src/tests',
-          './src/features/cheatcodes/pages/AppComponents/IconsContainer.tsx'
+          './src/features/cheatcodes/pages/AppComponents/IconsContainer.tsx',
         ],
       },
     ],
