@@ -1,5 +1,5 @@
 diff --git a/node_modules/eslint-plugin-import/lib/rules/no-extraneous-dependencies.js b/node_modules/eslint-plugin-import/lib/rules/no-extraneous-dependencies.js
-index 6a14031..0e3f642 100644
+index 6a14031..1009eb5 100644
 --- a/node_modules/eslint-plugin-import/lib/rules/no-extraneous-dependencies.js
 +++ b/node_modules/eslint-plugin-import/lib/rules/no-extraneous-dependencies.js
 @@ -1,16 +1,17 @@
@@ -228,7 +228,7 @@ index 6a14031..0e3f642 100644
 +}
 +
 +function notInSrc(filename) {
-+  return filename.includes("server") || filename.includes("tests") || !filename.includes("src");
++  return filename.includes("jest.config.ts") || filename.includes("tests") || !filename.includes("src");
  }
  
  function testConfig(config, filename) {
