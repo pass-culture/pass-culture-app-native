@@ -103,7 +103,7 @@ describe('BookingDetails', () => {
       booking.completedUrl = 'https://example.com'
 
       const { getByText } = renderBookingDetails(booking)
-      const offerButton = getByText("Accéder à l'offre")
+      const offerButton = getByText('Accéder à l’offre')
       await fireEvent.press(offerButton)
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(booking.completedUrl, {
@@ -236,7 +236,7 @@ describe('BookingDetails', () => {
     })
     expect(analytics.logConsultOffer).not.toHaveBeenCalledWith({ offerId, from: 'bookings' })
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: `Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.`,
+      message: `Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
   })

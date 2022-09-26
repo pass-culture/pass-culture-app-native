@@ -155,7 +155,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       await waitFor(() => {
         expect(mockShowInfoSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-          message: "Ce lien de validation n'est plus valide",
+          message: 'Ce lien de validation n’est plus valide',
         })
         expect(replace).toBeCalledTimes(1)
         expect(replace).toHaveBeenCalledWith(...homeNavConfig)

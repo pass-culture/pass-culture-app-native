@@ -35,7 +35,7 @@ describe('BookingDetailsTicketContent', () => {
       const { queryByText } = render(
         <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={true} />
       )
-      expect(queryByText("Accéder à l'offre")).toBeTruthy()
+      expect(queryByText('Accéder à l’offre')).toBeTruthy()
     })
   })
 
@@ -53,7 +53,7 @@ describe('BookingDetailsTicketContent', () => {
       const { queryByText } = render(
         <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={false} />
       )
-      expect(queryByText("Accéder à l'offre")).toBeTruthy()
+      expect(queryByText('Accéder à l’offre')).toBeTruthy()
     })
 
     it('should not display the access button offer when offer is not digital', () => {
