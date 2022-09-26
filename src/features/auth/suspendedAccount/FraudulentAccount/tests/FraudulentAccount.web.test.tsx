@@ -36,7 +36,7 @@ describe('<FraudulentAccount />', () => {
   it('should go to home page when clicking on go to home button', async () => {
     const { getByText } = render(<FraudulentAccount />)
 
-    const homeButton = getByText("Retourner à l'accueil")
+    const homeButton = getByText('Retourner à l’accueil')
     fireEvent.click(homeButton)
 
     await waitForExpect(() => {
