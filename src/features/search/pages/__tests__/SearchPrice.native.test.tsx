@@ -9,7 +9,7 @@ import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, act } from 'tests/utils'
+import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
@@ -41,8 +41,20 @@ jest.mock('react-query')
 const mockHideModal = jest.fn()
 
 describe('SearchPrice component', () => {
-  it('should render correctly', () => {
-    expect(renderSearchPrice()).toMatchSnapshot()
+  it('should render modal correctly after animation and with enabled submit', async () => {
+    jest.useFakeTimers()
+    const renderAPI = render(
+      <SearchPrice
+        title="Prix"
+        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+        isVisible={true}
+        hideModal={mockHideModal}
+      />
+    )
+    await superFlushWithAct()
+    jest.advanceTimersByTime(2000)
+    expect(renderAPI).toMatchSnapshot()
+    jest.useRealTimers()
   })
 
   it('should navigate on search results when pressing on search button with minimum and maximum prices entered', async () => {
@@ -609,9 +621,19 @@ describe('SearchPrice component', () => {
 
   describe('should close the modal ', () => {
     it('when pressing the search button', async () => {
-      const { getByText } = renderSearchPrice()
+      const { getByTestId } = render(
+        <SearchPrice
+          title="Prix"
+          accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+          isVisible={true}
+          hideModal={mockHideModal}
+        />
+      )
 
-      const searchButton = getByText('Rechercher')
+      await superFlushWithAct()
+
+      const searchButton = getByTestId('Rechercher')
+
       await act(async () => {
         fireEvent.press(searchButton)
       })
@@ -620,7 +642,16 @@ describe('SearchPrice component', () => {
     })
 
     it('when pressing previous button', async () => {
-      const { getByTestId } = renderSearchPrice()
+      const { getByTestId } = render(
+        <SearchPrice
+          title="Prix"
+          accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+          isVisible={true}
+          hideModal={mockHideModal}
+        />
+      )
+
+      await superFlushWithAct()
 
       const previousButton = getByTestId('backButton')
       fireEvent.press(previousButton)
@@ -629,15 +660,32 @@ describe('SearchPrice component', () => {
     })
   })
 
-  it('should hide minPrice and maxPrice errors when onlyFreeOffers is pressed', async () => {
+  it('should hide minPrice error when onlyFreeOffers is pressed', async () => {
     const { queryByText, getByPlaceholderText, getByTestId } = renderSearchPrice()
 
     const minPriceInput = getByPlaceholderText('0')
-    const maxPriceInput = getByPlaceholderText('80')
     const onlyFreeOffersToggle = getByTestId('Interrupteur-onlyFreeOffers')
 
     await act(async () => {
       fireEvent(minPriceInput, 'onChangeText', '9999')
+    })
+
+    expect(queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeTruthy()
+
+    await act(async () => {
+      fireEvent.press(onlyFreeOffersToggle)
+    })
+
+    expect(queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeFalsy()
+  })
+
+  it('should hide maxPrice error when onlyFreeOffers is pressed', async () => {
+    const { queryByText, getByPlaceholderText, getByTestId } = renderSearchPrice()
+
+    const maxPriceInput = getByPlaceholderText('80')
+    const onlyFreeOffersToggle = getByTestId('Interrupteur-onlyFreeOffers')
+
+    await act(async () => {
       fireEvent(maxPriceInput, 'onChangeText', '9999')
     })
 

@@ -7,7 +7,7 @@ export const minPriceError = `Le montant minimum ne peut pas dépasser le montan
 export const makeSearchPriceSchema = (initialCredit: string) =>
   object().shape({
     minPrice: makePriceSchema(initialCredit.toString()).when(['maxPrice'], {
-      is: (maxPrice: string) => maxPrice !== undefined,
+      is: (maxPrice: string) => maxPrice.length > 0,
       then: (schema) =>
         schema.test('validMinPrice', minPriceError, (value, schema) => {
           if (!value) return true

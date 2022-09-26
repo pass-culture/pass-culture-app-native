@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 import { theme } from 'theme'
 
 import { SearchResults } from '../SearchResults'
@@ -83,7 +83,9 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const locationButton = getByTestId('locationButton')
 
-    await fireEvent.press(locationButton)
+    await act(async () => {
+      fireEvent.press(locationButton)
+    })
 
     expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
       type: 'SET_STATE_FROM_DEFAULT',
@@ -95,7 +97,9 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const locationButton = getByTestId('locationButton')
 
-    await fireEvent.press(locationButton)
+    await act(async () => {
+      fireEvent.press(locationButton)
+    })
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
   })
@@ -104,7 +108,9 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const categoryButton = getByTestId('categoryButton')
 
-    await fireEvent.press(categoryButton)
+    await act(async () => {
+      fireEvent.press(categoryButton)
+    })
 
     const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 
@@ -143,7 +149,9 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const priceButton = getByTestId('priceButton')
 
-    await fireEvent.press(priceButton)
+    await act(async () => {
+      fireEvent.press(priceButton)
+    })
 
     const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 

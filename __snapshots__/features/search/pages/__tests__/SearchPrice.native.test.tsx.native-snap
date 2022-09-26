@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchPrice component should render correctly 1`] = `
+exports[`SearchPrice component should render modal correctly after animation and with enabled submit 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
@@ -50,7 +50,7 @@ exports[`SearchPrice component should render correctly 1`] = `
         "bottom": 0,
         "height": 1334,
         "left": 0,
-        "opacity": 0,
+        "opacity": 0.7,
         "position": "absolute",
         "right": 0,
         "top": 0,
@@ -91,7 +91,7 @@ exports[`SearchPrice component should render correctly 1`] = `
         "top": "auto",
         "transform": Array [
           Object {
-            "translateY": 1334,
+            "translateY": 0,
           },
         ],
       }
@@ -814,7 +814,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                           ]
                         }
                       >
-                        Prix minimum (en €)
+                        Prix minimum (ennbsp;€)
                       </Text>
                     </View>
                   </View>
@@ -941,7 +941,7 @@ exports[`SearchPrice component should render correctly 1`] = `
                           ]
                         }
                       >
-                        Prix maximum (en €)
+                        Prix maximum (ennbsp;€)
                       </Text>
                       <Text
                         style={
