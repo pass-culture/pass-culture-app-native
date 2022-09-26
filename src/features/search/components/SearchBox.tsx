@@ -196,25 +196,27 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
       <SearchInputContainer {...props}>
-        {!!hasEditableSearchInput && (
-          <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
-            <ArrowPrevious />
-          </StyledTouchableOpacity>
-        )}
-        <SearchMainInput
-          ref={inputRef}
-          searchInputID={searchInputID}
-          query={query}
-          setQuery={setQuery}
-          isFocusable={false}
-          isFocus={params?.view === SearchView.Suggestions}
-          onSubmitQuery={onSubmitQuery}
-          resetQuery={resetQuery}
-          onFocus={onFocus}
-          showLocationButton={params === undefined || params.view === SearchView.Landing}
-          locationLabel={locationLabel}
-          onPressLocationButton={onPressLocationButton}
-        />
+        <SearchInputA11yContainer>
+          <SearchMainInput
+            ref={inputRef}
+            searchInputID={searchInputID}
+            query={query}
+            setQuery={setQuery}
+            isFocusable={false}
+            isFocus={params?.view === SearchView.Suggestions}
+            onSubmitQuery={onSubmitQuery}
+            resetQuery={resetQuery}
+            onFocus={onFocus}
+            showLocationButton={params === undefined || params.view === SearchView.Landing}
+            locationLabel={locationLabel}
+            onPressLocationButton={onPressLocationButton}
+          />
+          {!!hasEditableSearchInput && (
+            <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
+              <ArrowPrevious />
+            </StyledTouchableOpacity>
+          )}
+        </SearchInputA11yContainer>
         {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
@@ -238,6 +240,12 @@ const SearchInputContainer = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
   flex: 1,
+})
+
+const SearchInputA11yContainer = styled.View({
+  flex: 1,
+  flexDirection: 'row-reverse',
+  alignItems: 'center',
 })
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
