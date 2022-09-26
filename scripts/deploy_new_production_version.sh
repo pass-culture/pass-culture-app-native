@@ -2,7 +2,7 @@
 
 set -e
 
-error(){
+error() {
   echo "$1"
   exit 1
 }
@@ -13,4 +13,3 @@ git checkout $1
 
 git tag prod-hard-deploy-$1
 git push origin prod-hard-deploy-$1
-

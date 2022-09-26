@@ -2,4 +2,4 @@
 
 set -e
 
-VERSION=`yarn --silent json -f package.json version`
+VERSION=$(yarn --silent json -f package.json version)

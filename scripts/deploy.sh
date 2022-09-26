@@ -8,25 +8,27 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NO_COLOR='\033[0m'
 
-PROJECT_DIR="$( dirname "${BASH_SOURCE[0]}" )/.."
-CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+PROJECT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 . "${PROJECT_DIR}/scripts/upload_sourcemaps_to_sentry.sh"
 
 invalid_option_val() {
-  echo >&2 "Invalid option value \"$OPTARG\""; print_usage; exit 1;
-}
-
-error(){
-  echo -e >&2 "${RED}$1${NO_COLOR}"
+  echo >&2 "Invalid option value \"$OPTARG\""
+  print_usage
   exit 1
 }
 
-success(){
+error() {
+  echo -e "${RED}$1${NO_COLOR}" >&2
+  exit 1
+}
+
+success() {
   echo -e "✅  ${GREEN}$1${NO_COLOR}"
 }
 
-warn(){
+warn() {
   echo -e "⚠️  ${YELLOW}$1${NO_COLOR}"
 
   if [ $DEV -eq 0 ]; then
@@ -34,7 +36,7 @@ warn(){
   fi
 }
 
-print_usage(){
+print_usage() {
   echo "Usage : ./scripts/deploy [-e <env>] [-t hard|soft] [-o ios|android] [-h]
 
 Options:
@@ -51,18 +53,16 @@ APP_OS="ios and android"
 
 DEPLOY_TYPE="soft"
 
-check_environment(){
-  CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
-  CURRENT_TAG=`git tag --points-at HEAD`
+check_environment() {
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  CURRENT_TAG=$(git tag --points-at HEAD)
 
   # If we are not on master, we can still deploy if we have a valid tag
   # The CI jobs are based on a tag (not a branch)
   HARD_DEPLOY_TESTING_TAG_REGEX="(testing\/)?v[0-9]+(\.[0-9]+){2}"
 
-  if [[ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]];
-  then
-    if [[ $CURRENT_TAG =~ $HARD_DEPLOY_TESTING_TAG_REGEX ]];
-    then
+  if [[ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]]; then
+    if [[ $CURRENT_TAG =~ $HARD_DEPLOY_TESTING_TAG_REGEX ]]; then
       success "Not on master but tag found. Deploying to $APP_ENV."
     else
       warn "Wrong branch, checkout master or create tag to deploy to $APP_ENV."
@@ -72,9 +72,8 @@ check_environment(){
   fi
 }
 
-check_dependency(){
-  if ! which jq >/dev/null
-  then
+check_dependency() {
+  if ! which jq >/dev/null; then
     error "Please install jq at: https://stedolan.github.io/jq/download/"
     exit 1
   fi
@@ -82,12 +81,18 @@ check_dependency(){
 
 while getopts ":e:o:t:h:d" opt; do
   case $opt in
-    e) APP_ENV="$OPTARG" ;;
-    o) if [[ $OPTARG =~ ^(ios|android)$ ]]; then APP_OS="$OPTARG"; else invalid_option_val; fi;;
-    t) if [[ $OPTARG =~ ^(hard|soft)$ ]]; then DEPLOY_TYPE="$OPTARG"; else invalid_option_val; fi;;
-    h) print_usage; exit;;
-    d) DEV=1 ;;
-    \?) error "Invalid option -$OPTARG"; exit 1;;
+  e) APP_ENV="$OPTARG" ;;
+  o) if [[ $OPTARG =~ ^(ios|android)$ ]]; then APP_OS="$OPTARG"; else invalid_option_val; fi ;;
+  t) if [[ $OPTARG =~ ^(hard|soft)$ ]]; then DEPLOY_TYPE="$OPTARG"; else invalid_option_val; fi ;;
+  h)
+    print_usage
+    exit
+    ;;
+  d) DEV=1 ;;
+  \?)
+    error "Invalid option -$OPTARG"
+    exit 1
+    ;;
   esac
 done
 
