@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
@@ -16,6 +18,8 @@ export const SelectIDOrigin: FunctionComponent = () => {
 }
 
 const SelectIDOriginContent: FunctionComponent = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
   return (
     <Container>
       <StyledBicolorIdCardWithMagnifyingGlass />
@@ -35,7 +39,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
             }
             icon={BicolorFrance}
             onPress={() => {
-              return
+              navigate('SelectIDStatus')
             }}
           />
         </Li>

@@ -1,8 +1,9 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
-import { render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: jest.fn(() => ({
@@ -14,5 +15,14 @@ describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
     const renderAPI = render(<SelectIDOrigin />)
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should navigate to SelectIDStatus on press french HeroButtonList', () => {
+    const { getAllByTestId } = render(<SelectIDOrigin />)
+
+    const HeroButtonListFrench = getAllByTestId('HeroButtonList')[0]
+    fireEvent.press(HeroButtonListFrench)
+
+    expect(navigate).toHaveBeenCalledWith('SelectIDStatus')
   })
 })
