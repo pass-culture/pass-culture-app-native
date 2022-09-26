@@ -17,7 +17,7 @@ APPCENTER_DISTRIBUTION_GROUP_NAME="Collaborators"
 
 GITHUB_APP_NATIVE_RAW_REPOSITORY_URL="https://raw.githubusercontent.com/pass-culture/pass-culture-app-native"
 
-function help () {
+function help() {
   echo "Description:"
   echo
   echo "      Quickly uninstall, download and reinstall an APK from AppCenter."
@@ -70,8 +70,8 @@ function android() {
       curl -sS \
         -H "X-API-Token: ${X_API_TOKEN}" \
         -H "accept: application/json" \
-        "${APPCENTER_API_URL}/apps/pass-Culture/${app_name}/releases" \
-        | jq 'map(select(.short_version == "'"${TARGET_VERSION}"'").id)[0]'
+        "${APPCENTER_API_URL}/apps/pass-Culture/${app_name}/releases" |
+        jq 'map(select(.short_version == "'"${TARGET_VERSION}"'").id)[0]'
     )" || die "Cannot retrieve AppCenter Release ID"
     echo "Fetched ${APPCENTER_PLATFORM} AppCenter Release ID ${releaseId} for application version ${TARGET_VERSION} (${APPCENTER_ENVIRONMENT}) with success"
   else

@@ -4,7 +4,7 @@ set -e
 
 SOURCEMAPS_DIR="sourcemaps"
 
-create_sourcemaps(){
+create_sourcemaps() {
   APP_OS="$1"
   SOURCEMAPS_NAME="$2"
 
@@ -57,12 +57,12 @@ create_sourcemaps(){
   fi
 }
 
-upload_sourcemaps(){
+upload_sourcemaps() {
   APP_OS="$1"
   APP_ENV="$2"
   CODE_PUSH_LABEL="$3"
-  VERSION=`jq -r .version package.json`
-  BUILD=`jq -r .build package.json`
+  VERSION=$(jq -r .version package.json)
+  BUILD=$(jq -r .build package.json)
 
   echo "APP_OS: ${APP_OS}"
   echo "APP_ENV: ${APP_ENV}"
@@ -98,7 +98,6 @@ upload_sourcemaps(){
     fi
   fi
 
-
   DIST="${BUILD}-${APP_OS}"
   echo "RELEASE: ${RELEASE}"
   echo "DIST: ${DIST}"
@@ -111,4 +110,3 @@ upload_sourcemaps(){
 
   echo "✅ Successfully uploaded sources maps"
 }
-

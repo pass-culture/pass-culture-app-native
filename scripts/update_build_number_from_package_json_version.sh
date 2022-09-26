@@ -2,8 +2,7 @@
 
 set -e
 
-
-update_build_number_from_package_json_version(){
+update_build_number_from_package_json_version() {
   # We have to increment the build number because it is used as the versionCode
   # in app/build.gradle: versionCode (packageJson.build as Integer) and the
   # Play Store requires this value to be strictly increasing. Otherwise, we get this error:
@@ -23,7 +22,7 @@ update_build_number_from_package_json_version(){
   #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
 
   source ./scripts/get_version.sh
-  SEMVER=( ${VERSION//./ } )
+  SEMVER=(${VERSION//./ })
   MAJOR=${SEMVER[0]}
   MINOR=${SEMVER[1]}
   PATCH=${SEMVER[2]}
