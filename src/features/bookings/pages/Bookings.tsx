@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,7 +7,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 export function Bookings() {
   return (
     <Container>
-      <PageHeader title={t`Mes réservations`} size="medium" />
+      <PageHeader title="Mes réservations" size="medium" />
       <OnGoingBookingsList />
     </Container>
   )

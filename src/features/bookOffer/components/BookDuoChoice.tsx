@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
@@ -15,11 +14,13 @@ export const BookDuoChoice: React.FC = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
   }
 
-  const buttonTitle = bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`
+  const buttonTitle = bookingState.quantity && bookingState.quantity === 1 ? 'Solo' : 'Duo'
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getHeadingAttrs(2)} testID="DuoStep">{t`Nombre de place`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)} testID="DuoStep">
+        Nombre de place
+      </Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.DUO ? (
         <DuoChoiceSelector />

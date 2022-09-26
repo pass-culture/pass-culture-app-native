@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 
 import { analytics } from 'libs/firebase/analytics'
@@ -47,7 +46,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
       visible={visible}
       title={title}
       {...modalLeftIconProps}
-      rightIconAccessibilityLabel={t`Fermer la modale`}
+      rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={() => {
         dismissModal()

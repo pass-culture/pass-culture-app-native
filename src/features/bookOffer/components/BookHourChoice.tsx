@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
@@ -76,7 +75,9 @@ export const BookHourChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">{t`Heure`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">
+        Heure
+      </Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>

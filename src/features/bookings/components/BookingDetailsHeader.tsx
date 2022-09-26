@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -37,7 +36,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
               animationState={animationState}
               iconName="back"
               onPress={goBack}
-              testID={t`Revenir en arrière`}
+              testID="Revenir en arrière"
             />
           </IconContainer>
           <Spacer.Flex />

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { CookiesConsentButtons } from 'features/cookies/components/CookiesConsentButtons'
@@ -44,13 +43,11 @@ export const useCookiesModalContent = ({
             setSettingsCookiesChoice={setSettingsCookiesChoice}
           />
         ),
-        leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
+        leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
         leftIcon: ArrowPrevious,
         onLeftIconPress: () => setCookiesStep(CookiesSteps.COOKIES_CONSENT),
-        fixedModalBottom: (
-          <ButtonPrimary wording={t`Enregistrer mes choix`} onPress={customChoice} />
-        ),
-        title: t`Réglages des cookies`,
+        fixedModalBottom: <ButtonPrimary wording="Enregistrer mes choix" onPress={customChoice} />,
+        title: 'Réglages des cookies',
       }
     }
     return {
@@ -65,7 +62,7 @@ export const useCookiesModalContent = ({
       leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
-      title: t`Respect de ta vie privée`,
+      title: 'Respect de ta vie privée',
     }
   }
 

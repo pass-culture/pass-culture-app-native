@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
@@ -31,7 +30,9 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 {...getHeadingAttrs(2)} testID="DateStep">{t`Date`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)} testID="DateStep">
+        Date
+      </Typo.Title4>
       {bookingState.step === Step.DATE ? (
         <Calendar
           stocks={stocks}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -156,7 +155,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     }
   }
 
-  const pageSubtitle = t`Tu peux sélectionner une ou plusieurs réponses.`
+  const pageSubtitle = 'Tu peux sélectionner une ou plusieurs réponses.'
 
   const onGoBack = () => {
     goBack()
@@ -213,9 +212,9 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
             navigateToNextQuestion()
           }}
           disabled={!currentAnswers.length}
-          wording={t`Continuer`}
-          testID={'next-cultural-survey-question'}
-          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          wording="Continuer"
+          testID="next-cultural-survey-question"
+          accessibilityLabel="Continuer vers l’étape suivante"
         />
         <Spacer.BottomScreen />
       </FixedBottomChildrenView>

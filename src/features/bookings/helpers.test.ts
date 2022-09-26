@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { addDays, formatISO } from 'date-fns'
 import mockdate from 'mockdate'
 
@@ -79,7 +78,7 @@ describe('getBookingLabels', () => {
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
       locationLabel: 'Maison de la Brique, Drancy',
-      withdrawLabel: "Aujourd'hui",
+      withdrawLabel: 'Aujourd’hui',
     })
   })
 
@@ -352,28 +351,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place`)
+      expect(message).toEqual('Billet à retirer sur place')
     })
 
     it('should return "Billet à retirer sur place" if event in 2 days', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place`)
+      expect(message).toEqual('Billet à retirer sur place')
     })
 
     it(`should return "Billet à retirer sur place d'ici demain" if event is tomorrow`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place d'ici demain`)
+      expect(message).toEqual('Billet à retirer sur place d’ici demain')
     })
 
-    it(`should return "Billet à retirer sur place aujourd'hui" if event is today`, () => {
+    it(`should return "Billet à retirer sur place aujourd’hui" if event is today`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place aujourd'hui`)
+      expect(message).toEqual('Billet à retirer sur place aujourd’hui')
     })
   })
 
@@ -382,28 +381,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dans 3 jours`)
+      expect(message).toEqual('Billet à retirer sur place dans 3 jours')
     })
 
     it('should return "Billet à retirer sur place dans 2 jours" if event in 2 days', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dans 2 jours`)
+      expect(message).toEqual('Billet à retirer sur place dans 2 jours')
     })
 
     it(`should return "Billet à retirer sur place demain" if event is tomorrow`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place demain`)
+      expect(message).toEqual('Billet à retirer sur place demain')
     })
 
     it(`should return "Billet à retirer sur place dès 18h30" if event is today`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dès` + ' 18h30')
+      expect(message).toEqual('Billet à retirer sur place dès 18h30')
     })
   })
 
@@ -412,28 +411,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dans 2 jours`)
+      expect(message).toEqual('Billet à retirer sur place dans 2 jours')
     })
 
     it('should return "Billet à retirer sur place dès demain" if event in 2 days', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dès demain`)
+      expect(message).toEqual('Billet à retirer sur place dès demain')
     })
 
-    it(`should return "Billet à retirer sur place dès aujourd'hui" if event is tomorrow`, () => {
+    it(`should return "Billet à retirer sur place dès aujourd’hui" if event is tomorrow`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dès aujourd'hui`)
+      expect(message).toEqual('Billet à retirer sur place dès aujourd’hui')
     })
 
-    it(`should return "Billet à retirer sur place aujourd'hui" if event is today`, () => {
+    it(`should return "Billet à retirer sur place aujourd’hui" if event is today`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place aujourd'hui`)
+      expect(message).toEqual('Billet à retirer sur place aujourd’hui')
     })
   })
 
@@ -442,28 +441,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dès demain`)
+      expect(message).toEqual('Billet à retirer sur place dès demain')
     })
 
-    it(`should return "Billet à retirer sur place dès aujourd'hui" if event in 2 days`, () => {
+    it(`should return "Billet à retirer sur place dès aujourd’hui" if event in 2 days`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dès aujourd'hui`)
+      expect(message).toEqual('Billet à retirer sur place dès aujourd’hui')
     })
 
-    it(`should return "Billet à retirer sur place dès aujourd'hui" if event is tomorrow`, () => {
+    it(`should return "Billet à retirer sur place dès aujourd’hui" if event is tomorrow`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place dès aujourd'hui`)
+      expect(message).toEqual('Billet à retirer sur place dès aujourd’hui')
     })
 
-    it(`should return "Billet à retirer sur place aujourd'hui" if event is today`, () => {
+    it(`should return "Billet à retirer sur place aujourd’hui" if event is today`, () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
-      expect(message).toEqual(t`Billet à retirer sur place aujourd'hui`)
+      expect(message).toEqual('Billet à retirer sur place aujourd’hui')
     })
   })
 

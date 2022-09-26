@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -18,7 +17,7 @@ type Props = {
 export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, withdrawalDelay }) => {
   const startMessage = getStartMessage(withdrawalType)
   const delayMessage = getDelayMessage(withdrawalDelay)
-  const endMessage = t`avant le début de l’événement.`
+  const endMessage = 'avant le début de l’événement.'
 
   return (
     <React.Fragment>

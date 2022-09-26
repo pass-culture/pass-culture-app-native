@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
@@ -36,7 +35,7 @@ export const EndedBookings: React.FC = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title={t`Réservations terminées`} background="primary" withGoBackButton />
+      <PageHeader title="Réservations terminées" background="primary" withGoBackButton />
       <FlatList
         contentContainerStyle={contentContainerStyle}
         data={bookings?.ended_bookings || []}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { Platform } from 'react-native'
 
@@ -38,7 +37,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   if (isEndedUsedBooking) {
     return {
       children: <AlreadyBooked offer={offer} />,
-      title: t`Réservation impossible`,
+      title: 'Réservation impossible',
       leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
@@ -59,7 +58,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       getOfferPrice(stocks) > 0
     ) {
       return {
-        title: t`Tu y es presque`,
+        title: 'Tu y es presque',
         leftIconAccessibilityLabel: undefined,
         leftIcon: undefined,
         onLeftIconPress: undefined,
@@ -68,7 +67,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
     }
 
     return {
-      title: t`Détails de la réservation`,
+      title: 'Détails de la réservation',
       leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
@@ -78,7 +77,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
 
   if (bookingState.step !== Step.CONFIRMATION) {
     return {
-      title: t`Mes options`,
+      title: 'Mes options',
       leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
@@ -87,8 +86,8 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   }
 
   return {
-    title: t`Détails de la réservation`,
-    leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
+    title: 'Détails de la réservation',
+    leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,
     onLeftIconPress: goToPreviousStep,
     children: <BookingDetails stocks={stocks} />,

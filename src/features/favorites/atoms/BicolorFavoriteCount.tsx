@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -38,7 +37,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
         color={color}
         color2={color2}
         thin={thin}
-        accessibilityLabel={showTabBar && !showLabels ? t`Mes favoris` : undefined}
+        accessibilityLabel={showTabBar && !showLabels ? 'Mes favoris' : undefined}
         testID={testID}
       />
     )
@@ -52,7 +51,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   }
   const hasTooMany = favoritesCount >= COUNT_MAX
   const count = hasTooMany ? COUNT_MAX - 1 : favoritesCount || '0'
-  const plusSign = hasTooMany ? t`+` : ''
+  const plusSign = hasTooMany ? '+' : ''
   const accessibilityLabel =
     showTabBar && !showLabels
       ? plural(favoritesCount, {

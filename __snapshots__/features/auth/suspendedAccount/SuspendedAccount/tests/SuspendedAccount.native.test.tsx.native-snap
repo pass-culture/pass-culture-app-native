@@ -149,7 +149,9 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
         ]
       }
     >
-      Tu as jusqu'au 10 juillet 2022 à 10h29 pour réactiver ton compte.
+      Tu as jusqu’au 
+      10 juillet 2022 à 10h29
+       pour réactiver ton compte.
     </Text>
     <View
       numberOfSpaces={5}
@@ -274,7 +276,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -303,7 +305,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <View
           style={
@@ -340,7 +342,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
     </View>

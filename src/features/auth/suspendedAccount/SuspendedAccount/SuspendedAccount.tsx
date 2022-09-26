@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -38,7 +37,7 @@ export const SuspendedAccount = () => {
 
   function onAccountUnsuspendFailure() {
     showErrorSnackBar({
-      message: t`Une erreur s’est produite pendant la réactivation.`,
+      message: 'Une erreur s’est produite pendant la réactivation.',
       timeout: SNACK_BAR_TIME_OUT,
     })
   }
@@ -64,29 +63,29 @@ export const SuspendedAccount = () => {
 
   return (
     <GenericInfoPage
-      title={t`Ton compte est désactivé`}
+      title="Ton compte est désactivé"
       icon={ProfileDeletionIllustration}
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          wording={t`Réactiver mon compte`}
+          wording="Réactiver mon compte"
           isLoading={unsuspendIsLoading}
           onPress={onReactivationPress}
         />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
           onPress={signOut}
           icon={PlainArrowPrevious}
           navigateBeforeOnPress
         />,
       ]}>
-      <StyledBody>{t`Tu as jusqu'au ${formattedDate} pour réactiver ton compte.`}</StyledBody>
+      <StyledBody>Tu as jusqu’au {formattedDate} pour réactiver ton compte.</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>
-        {t`Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.`}
+        Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
       </StyledBody>
     </GenericInfoPage>
   )
