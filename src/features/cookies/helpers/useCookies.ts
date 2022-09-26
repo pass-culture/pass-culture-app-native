@@ -47,12 +47,14 @@ export const useCookies = () => {
 
     if (!oldCookiesChoice) return
 
-    const newCookiesChoice = {
-      ...oldCookiesChoice,
-      userId,
-    }
+    if (oldCookiesChoice.userId !== userId) {
+      const newCookiesChoice = {
+        ...oldCookiesChoice,
+        userId,
+      }
 
-    await persist(newCookiesChoice)
+      await persist(newCookiesChoice)
+    }
   }
 
   return {

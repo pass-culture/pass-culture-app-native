@@ -299,6 +299,30 @@ describe('useCookies', () => {
         })
       })
     })
+
+    it('should not log cookies consent choice when user logs in with same account', async () => {
+      const { result } = renderHook(useCookies)
+      const { setCookiesConsent, setUserId } = result.current
+      await act(async () => {
+        await setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        })
+      })
+      await act(async () => {
+        await setUserId(FAKE_USER_ID)
+      })
+
+      await act(async () => {
+        await setUserId(FAKE_USER_ID)
+      })
+
+      const SET_COOKIE_CONSENT = 1
+      const SET_USER_ID_AFTERLOGIN = 1
+      const API_CALLED_TIMES = SET_COOKIE_CONSENT + SET_USER_ID_AFTERLOGIN
+      expect(api.postnativev1cookiesConsent).toBeCalledTimes(API_CALLED_TIMES)
+    })
   })
 
   it('should set once device ID per device', async () => {
