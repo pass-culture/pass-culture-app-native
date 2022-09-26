@@ -105,7 +105,6 @@ const TagAndSubtitleContainer = styled.View({
   flexDirection: 'column',
 })
 
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.black,
+const StyledCaption = styled(Typo.Caption)({
   alignSelf: 'center',
-}))
+})

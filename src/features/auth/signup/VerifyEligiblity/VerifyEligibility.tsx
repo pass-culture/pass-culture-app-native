@@ -45,9 +45,9 @@ export const VerifyEligibility: FunctionComponent = () => {
           {t`Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.`}
         </StyledBody>
         <Spacer.Column numberOfSpaces={4} />
-        <BoldBody>
+        <Typo.ButtonText>
           {t`Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.`}
-        </BoldBody>
+        </Typo.ButtonText>
       </View>
     </GenericOfficialPage>
   )
@@ -55,8 +55,4 @@ export const VerifyEligibility: FunctionComponent = () => {
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
-}))
-
-const BoldBody = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.black,
 }))
