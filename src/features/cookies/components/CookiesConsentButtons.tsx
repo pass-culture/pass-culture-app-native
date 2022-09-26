@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -20,15 +19,15 @@ export const CookiesConsentButtons = ({
   <React.Fragment>
     <Container>
       <Row>
-        <ButtonPrimary wording={t`Tout refuser`} onPress={onPressDeclineAll} />
+        <ButtonPrimary wording="Tout refuser" onPress={onPressDeclineAll} />
       </Row>
       <ButtonSpacer />
       <Row>
-        <ButtonPrimary wording={t`Tout accepter`} onPress={onPressAcceptAll} />
+        <ButtonPrimary wording="Tout accepter" onPress={onPressAcceptAll} />
       </Row>
     </Container>
     <Spacer.Column numberOfSpaces={4} />
-    <ButtonSecondary wording={t`Choisir les cookies`} onPress={onPressChooseCookies} />
+    <ButtonSecondary wording="Choisir les cookies" onPress={onPressChooseCookies} />
   </React.Fragment>
 )
 

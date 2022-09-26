@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
@@ -84,7 +83,7 @@ export function BookingDetails() {
   if (cancellationConsultedBooking.length > 0) {
     const nameCanceledBooking = cancellationConsultedBooking[0].stock.offer.name
     showInfoSnackBar({
-      message: t`Ta réservation "${nameCanceledBooking}" a été annulée`,
+      message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate('EndedBookings')
@@ -151,13 +150,14 @@ export function BookingDetails() {
       analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
     } else {
       showErrorSnackBar({
-        message: t`Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.`,
+        message:
+          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
   }
 
-  const helmetTitle = `${t`Ma réservation pour`} ${booking.stock.offer.name} | pass Culture`
+  const helmetTitle = `Ma réservation pour ${booking.stock.offer.name} | pass Culture`
   return (
     <Container>
       <Helmet title={helmetTitle} />
@@ -203,7 +203,7 @@ export function BookingDetails() {
           {!!offer.withdrawalDetails && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={8} />
-              <Typo.Title4 {...getHeadingAttrs(2)}>{t`Modalités de retrait`}</Typo.Title4>
+              <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
               <Spacer.Column numberOfSpaces={4} />
               <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
             </React.Fragment>
@@ -212,8 +212,7 @@ export function BookingDetails() {
           <TouchableLink
             enableNavigate={!!netInfo.isConnected}
             as={ButtonPrimary}
-            testID="Voir le détail de l’offre"
-            wording={t`Voir le détail de l’offre`}
+            wording="Voir le détail de l’offre"
             navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
             onPress={onNavigateToOfferPress}
             fullWidth

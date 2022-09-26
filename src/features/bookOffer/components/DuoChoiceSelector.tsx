@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -26,8 +25,8 @@ export const DuoChoiceSelector: React.FC = () => {
       price:
         enoughCredit && stock
           ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
-          : t`crédit insuffisant`,
-      title: quantity === 1 ? t`Solo` : t`Duo`,
+          : 'crédit insuffisant',
+      title: quantity === 1 ? 'Solo' : 'Duo',
       selected: bookingState.quantity === quantity,
       icon: quantity === 1 ? SoloPerson : DuoPerson,
       onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),

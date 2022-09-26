@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -29,18 +28,18 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <PasswordInput
-        label={t`Mot de passe`}
+        label="Mot de passe"
         accessibilityDescribedBy={passwordDescribedBy}
         value={password}
         onChangeText={setPassword}
-        placeholder={t`Ton mot de passe`}
+        placeholder="Ton mot de passe"
         onSubmitEditing={submitPassword}
         ref={passwordInput}
       />
       <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        wording={t`Continuer`}
+        wording="Continuer"
         accessibilityLabel={props.accessibilityLabelForNextStep}
         onPress={submitPassword}
         disabled={disabled}

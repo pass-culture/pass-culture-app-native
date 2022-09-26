@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
@@ -70,7 +69,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   function onEmailValidationFailure() {
-    showInfoSnackBar({ message: t`Ce lien de validation n'est plus valide` })
+    showInfoSnackBar({ message: 'Ce lien de validation n’est plus valide' })
     delayedReplace(...homeNavConfig)
   }
 

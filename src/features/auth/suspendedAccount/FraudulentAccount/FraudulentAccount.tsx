@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -19,30 +18,30 @@ export const FraudulentAccount = () => {
 
   return (
     <GenericInfoPage
-      title={t`Ton compte a été suspendu`}
+      title="Ton compte a été suspendu"
       icon={UserBlocked}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`Contacter le service`}
-          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+          wording="Contacter le service"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
           icon={Email}
         />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
           onPress={signOut}
           icon={PlainArrowPrevious}
         />,
       ]}>
-      <StyledBody>{t`Ton compte est actuellement suspendu pour des raisons de sécurité.`}</StyledBody>
+      <StyledBody>Ton compte est actuellement suspendu pour des raisons de sécurité.</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>
-        {t`Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude.`}
+        Pour en savoir plus, tu peux contacter l’équipe de lutte contre la fraude.
       </StyledBody>
     </GenericInfoPage>
   )

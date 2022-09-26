@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
@@ -23,9 +22,9 @@ export const CulturalSurveyIntro = (): JSX.Element => {
     <GenericInfoPageWhite
       icon={StyledBicolorPhonePending}
       titleComponent={Typo.Title3}
-      title={t`Prends 1 minute`}
-      subtitle={t`pour nous parler de tes activités culturelles préférées`}>
-      <StyledBody>{t`Tes réponses vont nous aider à mieux te connaître.`}</StyledBody>
+      title="Prends 1 minute"
+      subtitle="pour nous parler de tes activités culturelles préférées">
+      <StyledBody>Tes réponses vont nous aider à mieux te connaître.</StyledBody>
       <Spacer.Flex flex={1} />
       <View>
         <ButtonPrimary
@@ -35,19 +34,19 @@ export const CulturalSurveyIntro = (): JSX.Element => {
               question: initialQuestions[0],
             })
           }}
-          wording={t`Débuter le questionnaire`}
-          testID={'start-cultural-survey'}
+          wording="Débuter le questionnaire"
+          testID="start-cultural-survey"
         />
       </View>
       <ButtonTertiaryBlackContainer>
         <ButtonTertiaryBlack
-          wording={t`Plus tard`}
+          wording="Plus tard"
           onPress={() => {
             analytics.logHasSkippedCulturalSurvey()
             navigateToHome()
           }}
           icon={ClockFilled}
-          testID={'answer-survey-later'}
+          testID="answer-survey-later"
         />
       </ButtonTertiaryBlackContainer>
     </GenericInfoPageWhite>

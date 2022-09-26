@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -62,7 +61,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
         </React.Fragment>
       )}
       <ButtonPrimary
-        wording={enabled ? t`Valider ces options` : t`Choisir les options`}
+        wording={enabled ? 'Valider ces options' : 'Choisir les options'}
         onPress={validateOptions}
         disabled={!enabled}
       />

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -55,7 +54,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   const accessExternalOfferButton = completedUrl ? (
     <TouchableLink
       as={ButtonWithLinearGradient}
-      wording={t`Accéder à l'offre`}
+      wording="Accéder à l’offre"
       icon={ExternalSite}
       externalNav={{ url: completedUrl, params: { analyticsData: { offerId } } }}
     />

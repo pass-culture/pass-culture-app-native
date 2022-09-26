@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -46,7 +45,7 @@ export function OnGoingBookingsList() {
 
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({
-      message: t`Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.`,
+      message: 'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.',
       timeout: SNACK_BAR_TIME_OUT,
     })
   }, [showErrorSnackBar])

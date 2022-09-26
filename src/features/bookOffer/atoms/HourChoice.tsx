@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,9 +7,9 @@ import { getSpacing, Typo } from 'ui/theme'
 import { ChoiceBloc, getTextColor } from './ChoiceBloc'
 
 const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
-  if (!enoughCredit) return t`crédit insuffisant`
+  if (!enoughCredit) return 'crédit insuffisant'
   if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
-  return t`épuisé`
+  return 'épuisé'
 }
 
 interface Props {

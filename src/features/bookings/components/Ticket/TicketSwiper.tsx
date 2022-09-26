@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState, useRef, ReactElement } from 'react'
 import {
   FlatList,
@@ -93,8 +92,8 @@ export function TicketSwiper({ booking, activationCodeFeatureEnabled }: TicketsP
           <TicketSwiperControls
             numberOfSteps={NUMBER_OF_TICKETS}
             currentStep={currentIndex}
-            prevTitle={t`Revenir au ticket précédent`}
-            nextTitle={t`Voir le ticket suivant`}
+            prevTitle="Revenir au ticket précédent"
+            nextTitle="Voir le ticket suivant"
             onPressPrev={() => moveTo('prev')}
             onPressNext={() => moveTo('next')}
           />

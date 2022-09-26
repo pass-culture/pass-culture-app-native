@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState, useCallback } from 'react'
@@ -39,7 +38,7 @@ type SignupStepConfig = {
 const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   {
     name: PreValidationSignupStep.Email,
-    headerTitle: t`Adresse e-mail`,
+    headerTitle: 'Adresse e-mail',
     Component: SetEmail,
     tracker: async () => {
       await amplitude().logEvent('user_set_email_clicked_front')
@@ -48,7 +47,7 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   },
   {
     name: PreValidationSignupStep.Password,
-    headerTitle: t`Mot de passe`,
+    headerTitle: 'Mot de passe',
     Component: SetPassword,
     tracker: async () => {
       await analytics.logContinueSetPassword()
@@ -56,7 +55,7 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   },
   {
     name: PreValidationSignupStep.Birthday,
-    headerTitle: t`Date de naissance`,
+    headerTitle: 'Date de naissance',
     Component: SetBirthday,
     tracker: async () => {
       await analytics.logContinueSetBirthday()
@@ -64,7 +63,7 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   },
   {
     name: PreValidationSignupStep.CGU,
-    headerTitle: t`CGU & Données`,
+    headerTitle: 'CGU & Données',
     Component: AcceptCgu,
     tracker: async () => {
       await analytics.logContinueCGU()
@@ -89,11 +88,12 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
   const accessibilityLabelForNextStep =
     stepIndex < SIGNUP_STEP_CONFIG_MAX_INDEX
-      ? t`Continuer vers l'étape` + ' ' + SIGNUP_STEP_CONFIG[stepIndex + 1].headerTitle
+      ? `Continuer vers l’étape ${SIGNUP_STEP_CONFIG[stepIndex + 1].headerTitle}`
       : undefined
   const isFirstStep = stepIndex === 0
-  const helmetTitle =
-    t`Étape ${stepIndex + 1} sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription` + ' | pass Culture'
+  const helmetTitle = `Étape ${
+    stepIndex + 1
+  } sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
 
@@ -160,7 +160,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
         onRightIconPress: undefined,
       }
     : {
-        rightIconAccessibilityLabel: t`Abandonner l'inscription`,
+        rightIconAccessibilityLabel: 'Abandonner l’inscription',
         rightIcon: Close,
         onRightIconPress: showQuitSignupModal,
       }
@@ -171,7 +171,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
       <BottomContentPage>
         <ModalHeader
           title={stepConfig.headerTitle}
-          leftIconAccessibilityLabel={t`Revenir en arrière`}
+          leftIconAccessibilityLabel="Revenir en arrière"
           leftIcon={ArrowPrevious}
           onLeftIconPress={isFirstStep ? goBackAndLeaveSignup : goToPreviousStep}
           {...rightIconProps}

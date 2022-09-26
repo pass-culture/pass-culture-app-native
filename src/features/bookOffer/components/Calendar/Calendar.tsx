@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { format } from 'date-fns'
 import React from 'react'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
@@ -28,8 +27,8 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const renderArrow = (direction: string) => {
-  if (direction === 'left') return <ArrowPrevious accessibilityLabel={t`Mois précédent`} />
-  if (direction === 'right') return <ArrowNext accessibilityLabel={t`Mois suivant`} />
+  if (direction === 'left') return <ArrowPrevious accessibilityLabel="Mois précédent" />
+  if (direction === 'right') return <ArrowNext accessibilityLabel="Mois suivant" />
   return <React.Fragment />
 }
 
