@@ -7,8 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils/web'
-
-import { DatePickerDropDown } from './DatePickerDropDown'
+import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
 
 const props = {
   onChange: jest.fn(),
