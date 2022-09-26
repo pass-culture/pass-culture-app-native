@@ -7,8 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils/web'
-
-import { DatePickerSpinner } from './DatePickerSpinner.web'
+import { DatePickerSpinner } from 'ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web'
 
 const props = {
   onChange: jest.fn(),
