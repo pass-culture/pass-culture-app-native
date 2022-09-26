@@ -741,7 +741,7 @@ Object {
           style="align-items: center; bottom: 0px; left: 0px; margin-left: auto; margin-right: auto; padding: 12px 24px 20px 24px; position: absolute; right: 0px;"
         >
           <button
-            aria-label="Continuer vers l'étape suivante"
+            aria-label="Continuer vers l’étape suivante"
             class="c0 c1"
             data-testid="next-cultural-survey-question"
             tabindex="0"
@@ -1500,7 +1500,7 @@ Object {
         style="align-items: center; bottom: 0px; left: 0px; margin-left: auto; margin-right: auto; padding: 12px 24px 20px 24px; position: absolute; right: 0px;"
       >
         <button
-          aria-label="Continuer vers l'étape suivante"
+          aria-label="Continuer vers l’étape suivante"
           class="c0 c1"
           data-testid="next-cultural-survey-question"
           tabindex="0"
