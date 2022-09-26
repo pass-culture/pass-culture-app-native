@@ -188,6 +188,27 @@ module.exports = {
         iosPathRegex: '\\.ios(.test)?.(ts|tsx)$',
       },
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/tests/**",
+          "**/__tests__/**",
+          "**/__mocks__/**",
+          "**/*.stories.js",
+          "**/*.test.js",
+          "**/*.stories.ts",
+          "**/*.test.ts",
+          "**/*.stories.tsx",
+          "**/*.test.tsx",
+          "**/*.stories.jsx",
+          "**/*.test.jsx",
+          "**/service-worker.ts",
+          "**/why-did-you-render.js",
+          "**/jest.*.ts"
+        ],
+      }
+    ],
   },
   settings: {
     react: {
