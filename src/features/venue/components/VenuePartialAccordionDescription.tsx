@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, Easing, TouchableWithoutFeedback, Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -24,7 +23,7 @@ export const VenuePartialAccordionDescription: React.FC<Props> = ({ description,
   const [maxLines, setMaxLines] = useState<number | undefined>(undefined)
   const [isLongDescription, setIsLongDescription] = useState(false)
   const animatedController = useRef(new Animated.Value(0)).current
-  const buttonLabel = open ? t`voir moins` : t`voir plus`
+  const buttonLabel = open ? 'voir moins' : 'voir plus'
 
   useEffect(() => {
     if (PARTIAL_DESCRIPTION_HEIGHT <= totalDescriptionHeight && !open) {
@@ -69,6 +68,8 @@ export const VenuePartialAccordionDescription: React.FC<Props> = ({ description,
 
   if (!description && !credit) return <Spacer.Column numberOfSpaces={6} />
 
+  const creditText = `Crédit photo\u00a0: ${credit}`
+
   return (
     <Container>
       <StyledAnimatedView style={{ height: bodyDescriptionHeight }} testID="accordionBody">
@@ -76,7 +77,7 @@ export const VenuePartialAccordionDescription: React.FC<Props> = ({ description,
           {!!description && (
             <Description numberOfLines={maxLines}>{highlightLinks(description)}</Description>
           )}
-          {!!credit && <Credit testID="credit">{t`Crédit photo\u00a0: ${credit}`}</Credit>}
+          {!!credit && <Credit testID="credit">{creditText}</Credit>}
         </DescriptionContainer>
       </StyledAnimatedView>
       {!!isLongDescription && (

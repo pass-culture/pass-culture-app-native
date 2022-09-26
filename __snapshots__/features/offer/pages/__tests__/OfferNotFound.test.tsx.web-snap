@@ -212,7 +212,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
         }
       }
     >
-      Il est possible que cette offre soit désactivée ou n'existe pas.
+      Il est possible que cette offre soit désactivée ou n’existe pas.
     </div>
     <div
       className="css-view-1dbjc4n"
@@ -259,7 +259,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
             }
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </div>
       </button>
     </div>

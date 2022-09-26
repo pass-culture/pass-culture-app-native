@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useEffect, useRef } from 'react'
 import { Alert, AlertButton, Platform } from 'react-native'
 import LN from 'react-native-launch-navigator'
@@ -39,7 +38,8 @@ export const useItinerary = (): UseItineraryResult => {
           return
         case BackupSolution.SNACKBAR_ERROR:
           showInfoSnackBar({
-            message: t`Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.`,
+            message:
+              'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
             timeout: 10000,
           })
           return
@@ -60,10 +60,10 @@ export const useItinerary = (): UseItineraryResult => {
       text: snakeCaseToUppercaseFirstLetter(app),
       onPress: () => navigateToWithApp(address, app, BackupSolution.SNACKBAR_ERROR),
     }))
-    if (Platform.OS === 'ios') alertButtons.push({ text: t`Annuler`, style: 'cancel' })
+    if (Platform.OS === 'ios') alertButtons.push({ text: 'Annuler', style: 'cancel' })
     Alert.alert(
-      t`Voir l'itinéraire`,
-      t`Choisissez l'application pour vous rendre sur le lieu de l'offre\u00a0:`,
+      'Voir l’itinéraire',
+      'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
       alertButtons,
       { cancelable: true }
     )

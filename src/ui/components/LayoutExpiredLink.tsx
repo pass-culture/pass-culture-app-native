@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -27,28 +26,28 @@ export function LayoutExpiredLink({
 }: Props) {
   return (
     <GenericInfoPage
-      title={t`Oups\u00a0!`}
+      title="Oups&nbsp;!"
       icon={SadFace}
       buttons={[
         renderResendEmailButton && renderResendEmailButton(),
         <TouchableLink
           key={1}
           as={ButtonTertiaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
           icon={PlainArrowPrevious}
         />,
       ].filter(Boolean)}>
-      <StyledBody>{t`Le lien est expiré\u00a0!`}</StyledBody>
+      <StyledBody>Le lien est expiré&nbsp;!</StyledBody>
       <StyledBody>
         {customBodyText ||
-          t`Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.`}
+          'Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.'}
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
 
       {!!urlFAQ || !!contactSupport ? (
         <React.Fragment>
-          <StyledBody>{t`Si tu as besoin d’aide n’hésite pas à\u00a0:`}</StyledBody>
+          <StyledBody>Si tu as besoin d’aide n’hésite pas à&nbsp;:</StyledBody>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       ) : null}
@@ -56,7 +55,7 @@ export function LayoutExpiredLink({
       {!!urlFAQ && (
         <TouchableLink
           as={ButtonTertiaryWhite}
-          wording={t`Consulter l'article d'aide`}
+          wording="Consulter l’article d'aide"
           externalNav={{ url: urlFAQ }}
           icon={ExternalSite}
         />
@@ -64,8 +63,8 @@ export function LayoutExpiredLink({
 
       {!!contactSupport && (
         <ButtonTertiaryWhite
-          wording={t`Contacter le support`}
-          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+          wording="Contacter le support"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           onPress={contactSupport}
           icon={EmailFilled}
         />

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -34,7 +33,7 @@ export function ConfirmDeleteProfile() {
 
   function onAccountSuspendFailure() {
     showErrorSnackBar({
-      message: t`Une erreur s’est produite pendant le chargement.`,
+      message: 'Une erreur s’est produite pendant le chargement.',
       timeout: SNACK_BAR_TIME_OUT,
     })
   }
@@ -51,33 +50,34 @@ export function ConfirmDeleteProfile() {
       separateIconFromTitle={false}
       icon={BicolorError}
       titleComponent={TitleComponent}
-      title={t`Veux-tu vraiment supprimer ton compte\u00a0?`}>
+      title="Veux-tu vraiment supprimer ton compte&nbsp;?">
       <Content>
-        <Typo.ButtonText>{t`Les conséquences\u00a0:`}</Typo.ButtonText>
+        <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>
         <VerticalUl>
-          <BulletListItem text={t`tes réservations seront annulées et supprimées`} />
-          <BulletListItem
-            text={t`si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau`}
-          />
-          <BulletListItem text={t`tu n’auras plus accès au catalogue`} />
+          <BulletListItem text="tes réservations seront annulées et supprimées" />
+          <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau" />
+          <BulletListItem text="tu n’auras plus accès au catalogue" />
         </VerticalUl>
 
         <Spacer.Column numberOfSpaces={5} />
 
-        <Typo.ButtonText>{t`Les données qu’on conserve\u00a0:`}</Typo.ButtonText>
-        <Typo.Body>{t`Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.`}</Typo.Body>
+        <Typo.ButtonText>Les données qu’on conserve&nbsp;:</Typo.ButtonText>
+        <Typo.Body>
+          Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
+          vérification de ton identité.
+        </Typo.Body>
 
         <Spacer.Column numberOfSpaces={14} />
         <ButtonContainer>
           <ButtonPrimary
-            wording={t`Supprimer mon compte`}
+            wording="Supprimer mon compte"
             isLoading={isLoading}
             onPress={notifyAccountSuspend}
           />
           <Spacer.Column numberOfSpaces={4} />
           <TouchableLink
             as={ButtonTertiaryBlack}
-            wording={t`Consulter l’article d’aide`}
+            wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_LINK_DELETE_ACCOUNT }}
             onPress={analytics.logConsultArticleAccountDeletion}
             icon={ExternalSiteFilled}

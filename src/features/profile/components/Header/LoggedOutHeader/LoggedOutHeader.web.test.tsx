@@ -10,7 +10,7 @@ describe('LoggedOutHeader', () => {
   it('should navigate to the SignupForm page', async () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
-    const signupButton = getByTestId("S'inscrire")
+    const signupButton = getByTestId('S’inscrire')
 
     await fireEvent.click(signupButton)
 

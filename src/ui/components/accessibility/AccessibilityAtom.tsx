@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -23,7 +22,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
     size: theme.icons.sizes.standard,
   }))``
 
-  const isAccessibleLabel = isAccessible ? t`Accessible` : t`Non accessible`
+  const isAccessibleLabel = isAccessible ? 'Accessible' : 'Non accessible'
   return (
     <Container
       accessibilityRole={AccessibilityRole.IMAGE}

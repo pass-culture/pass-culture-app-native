@@ -67,7 +67,7 @@ export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onP
         </Typo.Body>
         <Spacer.Column numberOfSpaces={5} />
         <Typo.Body>
-          {'Voici ceux que nous te conseillons pour profiter pleinement du pass Culture\u00a0:'}
+          Voici ceux que nous te conseillons pour profiter pleinement du pass Culture&nbsp;:
         </Typo.Body>
         <VerticalUl>
           {supportedBrowsers.map(({ browser, version }) => {

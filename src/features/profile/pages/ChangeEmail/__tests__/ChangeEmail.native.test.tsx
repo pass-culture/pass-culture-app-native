@@ -113,7 +113,7 @@ describe('<ChangeEmail/>', () => {
     await waitForExpect(() => {
       expect(submitButton).toBeDisabled()
 
-      const errorMessage = queryByText("L'e-mail saisi est identique à ton e-mail actuel")
+      const errorMessage = queryByText('L’e-mail saisi est identique à ton e-mail actuel')
       expect(errorMessage).toBeTruthy()
     })
   })
@@ -178,8 +178,7 @@ describe('<ChangeEmail/>', () => {
     await waitForExpect(() => {
       expect(navigate).not.toBeCalled()
       expect(mockShowErrorSnackBar).toBeCalledWith({
-        message: `Une erreur s’est produite pendant la modification de ton e-mail.
-Réessaie plus tard.`,
+        message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
         timeout: 5000,
       })
       expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(

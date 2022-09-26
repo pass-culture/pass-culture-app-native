@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
@@ -45,7 +43,7 @@ export const maintenanceStatusListener = (onMaintenanceChange: OnMaintenanceChan
         const message =
           typeof rawMessage === 'string'
             ? rawMessage
-            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!`
+            : 'L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!'
 
         const maintenance: Maintenance = maintenanceIsOn
           ? {

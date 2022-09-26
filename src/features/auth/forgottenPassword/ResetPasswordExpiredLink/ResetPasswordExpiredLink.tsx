@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
@@ -39,7 +38,7 @@ export function ResetPasswordExpiredLink(props: Props) {
 
   const renderResendEmailButton = () => (
     <ButtonPrimaryWhite
-      wording={t`Renvoyer l'email`}
+      wording="Renvoyer l’email"
       onPress={resetPasswordEmailQuery}
       disabled={isFetching}
     />

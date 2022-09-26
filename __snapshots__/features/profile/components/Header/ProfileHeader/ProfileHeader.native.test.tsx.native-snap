@@ -164,7 +164,7 @@ Array [
       }
     />
     <View
-      accessibilityLabel="S'inscrire"
+      accessibilityLabel="S’inscrire"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -193,7 +193,7 @@ Array [
           "width": "100%",
         }
       }
-      testID="S'inscrire"
+      testID="S’inscrire"
     >
       <Text
         adjustsFontSizeToFit={false}
@@ -211,7 +211,7 @@ Array [
           ]
         }
       >
-        S'inscrire
+        S’inscrire
       </Text>
     </View>
     <View

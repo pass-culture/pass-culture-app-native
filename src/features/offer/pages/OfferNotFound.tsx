@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
@@ -28,26 +27,26 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
-
+  const helmetTitle = 'Offre introuvable | pass Culture'
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Offre introuvable | pass Culture`}</title>
+        <title>{helmetTitle}</title>
       </Helmet>
       <GenericInfoPage
-        title={t`Offre introuvable\u00a0!`}
+        title="Offre introuvable&nbsp;!"
         icon={NoOffer}
         buttons={[
           <TouchableLink
             key={1}
             as={ButtonPrimaryWhite}
-            wording={t`Retourner à l'accueil`}
+            wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
             onPress={onPress}
             navigateBeforeOnPress
           />,
         ]}>
-        <StyledBody>{t`Il est possible que cette offre soit désactivée ou n'existe pas.`}</StyledBody>
+        <StyledBody>Il est possible que cette offre soit désactivée ou n’existe pas.</StyledBody>
       </GenericInfoPage>
     </React.Fragment>
   )

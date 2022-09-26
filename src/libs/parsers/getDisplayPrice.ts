@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { CENTS_IN_EURO, convertEuroToCents } from 'libs/parsers/pricesConversion'
 
 const EURO_SYMBOL = '€'
@@ -13,7 +11,7 @@ export const formatToFrenchDecimal = (priceInCents: number) => {
   const euros = priceInCents / CENTS_IN_EURO
   // we show 2 decimals if price is not round. Ex: 21,50 €
   const fixed = euros === Math.floor(euros) ? euros : euros.toFixed(2)
-  return t`${fixed.toString().replace('.', ',')}\u00a0${EURO_SYMBOL}`
+  return `${fixed.toString().replace('.', ',')}\u00a0${EURO_SYMBOL}`
 }
 
 export const formatPriceInEuroToDisplayPrice = (priceInEuro: number) =>
@@ -45,7 +43,7 @@ export const getFavoriteDisplayPrice = ({
   startPrice?: number | null
   price?: number | null
 }): string => {
-  if (price === 0) return t`Gratuit`
+  if (price === 0) return 'Gratuit'
   if (price && price > 0) return formatToFrenchDecimal(price)
   if (startPrice === 0 || (startPrice && startPrice > 0)) {
     return `Dès ${formatToFrenchDecimal(startPrice)}`

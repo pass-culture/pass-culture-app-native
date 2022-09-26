@@ -25,7 +25,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     const { getByText } = await renderResetPasswordExpiredLink()
 
-    fireEvent.click(getByText(`Retourner à l'accueil`))
+    fireEvent.click(getByText(`Retourner à l’accueil`))
 
     await waitForExpect(() => {
       expect(navigateFromRef).toBeCalledWith(
@@ -38,7 +38,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
     const { getByText } = await renderResetPasswordExpiredLink()
 
-    await fireEvent.click(getByText(`Renvoyer l'email`))
+    await fireEvent.click(getByText(`Renvoyer l’email`))
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -58,7 +58,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
     )
     const { getByText } = await renderResetPasswordExpiredLink()
 
-    fireEvent.click(getByText(`Renvoyer l'email`))
+    fireEvent.click(getByText(`Renvoyer l’email`))
     await superFlushWithAct()
 
     await waitForExpect(() => {

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -39,7 +38,7 @@ export const WebShareModal = ({
   const { message, url = '' } = shareContent
   const socialButtonProps = [
     {
-      label: t`Facebook`,
+      label: 'Facebook',
       icon: Facebook,
       externalNav: {
         url:
@@ -51,12 +50,12 @@ export const WebShareModal = ({
       },
     },
     {
-      label: t`Twitter`,
+      label: 'Twitter',
       icon: Twitter,
       externalNav: { url: `https://twitter.com/intent/tweet?text=${message}&url=${url}` },
     },
     {
-      label: t`WhatsApp`,
+      label: 'WhatsApp',
       icon: WhatsApp,
       externalNav: {
         url:
@@ -66,7 +65,7 @@ export const WebShareModal = ({
       },
     },
     {
-      label: t`Telegram`,
+      label: 'Telegram',
       icon: Telegram,
       externalNav: {
         url: isDesktopDeviceDetectOnWeb
@@ -79,19 +78,19 @@ export const WebShareModal = ({
   const onCopyPress = () => {
     navigator.clipboard.writeText(url)
     showSuccessSnackBar({
-      message: t`Le lien a été copié dans le presse-papier\u00a0!`,
+      message: 'Le lien a été copié dans le presse-papier\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
     dismissModal()
   }
 
-  const chooseContact = t`Veuillez choisir un contact`
+  const chooseContact = 'Veuillez choisir un contact'
 
   return (
     <AppModal
       visible={visible}
       title={headerTitle}
-      rightIconAccessibilityLabel={t`Fermer la modale`}
+      rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <Container>
@@ -101,8 +100,8 @@ export const WebShareModal = ({
         <NonSocialButtonsContainer>
           <NonSocialButtonsItem>
             <ButtonTertiaryBlack
-              wording={t`Copier`}
-              accessibilityLabel={t`Copier le lien`}
+              wording="Copier"
+              accessibilityLabel="Copier le lien"
               icon={Duplicate}
               onPress={onCopyPress}
             />
@@ -112,7 +111,7 @@ export const WebShareModal = ({
               as={ButtonTertiaryBlack}
               externalNav={{ url: 'mailto:' + '' + '?subject=' + message + '&body=' + url }}
               wording="E-mail"
-              accessibilityLabel={t`Ouvrir le gestionnaire mail`}
+              accessibilityLabel="Ouvrir le gestionnaire mail"
               icon={EmailFilled}
             />
           </NonSocialButtonsItem>
@@ -124,7 +123,7 @@ export const WebShareModal = ({
                   as={ButtonTertiaryBlack}
                   externalNav={{ url: `sms:${chooseContact}?&body=${message}: ${url}` }}
                   wording="SMS"
-                  accessibilityLabel={t`Ouvrir l'application de message`}
+                  accessibilityLabel="Ouvrir l’application de message"
                   icon={SMSFilled}
                 />
               </NonSocialButtonsItem>
@@ -142,7 +141,7 @@ export const WebShareModal = ({
           ))}
         </SocialButtonsContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary wording={t`Annuler`} onPress={dismissModal} mediumWidth />
+        <ButtonPrimary wording="Annuler" onPress={dismissModal} mediumWidth />
       </Container>
     </AppModal>
   )
