@@ -1695,7 +1695,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     }
   >
     <View
-      accessibilityLabel="Continuer vers l'étape suivante"
+      accessibilityLabel="Continuer vers l’étape suivante"
       accessibilityState={
         Object {
           "disabled": false,

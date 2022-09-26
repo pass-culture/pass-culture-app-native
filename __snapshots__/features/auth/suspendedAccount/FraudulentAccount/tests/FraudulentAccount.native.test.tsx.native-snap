@@ -174,7 +174,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
         ]
       }
     >
-      Pour en savoir plus, tu peux contacter l'équipe de lutte contre la fraude.
+      Pour en savoir plus, tu peux contacter l’équipe de lutte contre la fraude.
     </Text>
     <View
       numberOfSpaces={30}
@@ -293,7 +293,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -322,7 +322,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <View
           style={
@@ -359,7 +359,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
     </View>
