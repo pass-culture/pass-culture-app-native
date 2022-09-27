@@ -17,6 +17,7 @@ import { Piano as Instrument } from '../Piano'
 import { Press } from '../Press'
 import { Show } from '../Show'
 import { Streaming } from '../Streaming'
+import { Thing } from '../Thing'
 import { VideoGame } from '../VideoGame'
 
 export const categoriesIcons = {
@@ -38,6 +39,7 @@ export const categoriesIcons = {
   Press,
   Show,
   Streaming,
+  Thing,
   VideoGame,
   Workshop,
 }

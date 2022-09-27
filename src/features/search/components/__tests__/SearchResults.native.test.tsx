@@ -185,13 +185,38 @@ describe('SearchResults component', () => {
       expect(queryByTestId('typeButton')).toBeTruthy()
     })
 
-    it('should redirect to the general filters page when clicking on the type filter button', () => {
-      const { getByTestId } = render(<SearchResults />)
+    it('should open the type filter modal when clicking on the type filter button', async () => {
+      const { getByTestId, queryByTestId } = render(<SearchResults />)
       const typeButton = getByTestId('typeButton')
 
-      fireEvent.press(typeButton)
+      await act(async () => {
+        fireEvent.press(typeButton)
+      })
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+
+      expect(fullscreenModalScrollView).toBeTruthy()
+
+      const isInverseLayout = queryByTestId('inverseLayout')
+
+      expect(isInverseLayout).toBeFalsy()
+    })
+
+    it('should open for desktop the type filter modal when clicking on the type filter button', async () => {
+      const { getByTestId } = render(<SearchResults />, {
+        theme: {
+          isDesktopViewport: true,
+        },
+      })
+      const typeButton = getByTestId('typeButton')
+
+      await act(async () => {
+        fireEvent.press(typeButton)
+      })
+
+      const isInverseLayout = getByTestId('inverseLayout')
+
+      expect(isInverseLayout).toBeTruthy()
     })
 
     it.each`

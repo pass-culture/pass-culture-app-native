@@ -14,6 +14,7 @@ import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { Categories } from 'features/search/pages/Categories'
+import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
@@ -75,6 +76,11 @@ export const SearchResults: React.FC = () => {
     visible: searchPriceModalVisible,
     showModal: showSearchPriceModal,
     hideModal: hideSearchPriceModal,
+  } = useModal(false)
+  const {
+    visible: offerTypeModalVisible,
+    showModal: showOfferTypeModal,
+    hideModal: hideOfferTypeModal,
   } = useModal(false)
   const theme = useTheme()
 
@@ -230,7 +236,7 @@ export const SearchResults: React.FC = () => {
                   <SingleFilterButton
                     label="Type"
                     testID="typeButton"
-                    onPress={() => navigate('SearchFilter')}
+                    onPress={showOfferTypeModal}
                     Icon={hasType ? Check : undefined}
                     color={hasType ? theme.colors.primary : undefined}
                   />
@@ -285,6 +291,12 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
         isVisible={searchPriceModalVisible}
         hideModal={hideSearchPriceModal}
+      />
+      <OfferTypeModal
+        title="Type d'offre"
+        accessibilityLabel="Ne pas filtrer sur les type d'offre et retourner aux résultats"
+        isVisible={offerTypeModalVisible}
+        hideModal={hideOfferTypeModal}
       />
     </React.Fragment>
   )

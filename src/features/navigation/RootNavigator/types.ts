@@ -132,8 +132,6 @@ export type RootStackParamList = {
   LocationFilter?: { selectedVenue?: SuggestedVenue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   PersonalData: undefined
-  SearchCategories: undefined
-  SearchPrice: undefined
   SearchFilter: undefined
   ShareAppModal: undefined
   SignupConfirmationEmailSent: { email: string }

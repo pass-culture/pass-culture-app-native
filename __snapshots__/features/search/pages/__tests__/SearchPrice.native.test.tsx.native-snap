@@ -445,6 +445,7 @@ exports[`SearchPrice component should render modal correctly after animation and
               />
             </View>
             <View
+              inverseLayout={false}
               style={
                 Array [
                   Object {
@@ -603,6 +604,7 @@ exports[`SearchPrice component should render modal correctly after animation and
               }
             />
             <View
+              inverseLayout={false}
               style={
                 Array [
                   Object {

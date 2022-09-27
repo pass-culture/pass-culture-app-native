@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import React, { FunctionComponent, useMemo } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   isActive: boolean
@@ -19,15 +19,20 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   label,
   testID,
 }) => {
-  const checkboxID = uuidv4()
-  const labelID = uuidv4()
-  const describedByID = uuidv4()
+  const checkboxID = useMemo(uuidv4, [])
+  const labelID = useMemo(uuidv4, [])
+  const describedByID = useMemo(uuidv4, [])
+  const { isDesktopViewport } = useTheme()
 
   return (
-    <Container>
-      <InputLabel htmlFor={checkboxID}>
-        <Typo.ButtonText>{label}</Typo.ButtonText>
-      </InputLabel>
+    <Container inverseLayout={!!isDesktopViewport}>
+      {!isDesktopViewport && (
+        <React.Fragment>
+          <InputLabel htmlFor={checkboxID}>
+            <Typo.ButtonText>{label}</Typo.ButtonText>
+          </InputLabel>
+        </React.Fragment>
+      )}
       <FilterSwitch
         checkboxID={checkboxID}
         active={isActive}
@@ -36,12 +41,20 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
         accessibilityDescribedBy={describedByID}
         testID={testID}
       />
+      {!!isDesktopViewport && (
+        <React.Fragment>
+          <Spacer.Row numberOfSpaces={2} testID="inverseLayout" />
+          <InputLabel htmlFor={checkboxID}>
+            <Typo.ButtonText>{label}</Typo.ButtonText>
+          </InputLabel>
+        </React.Fragment>
+      )}
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ inverseLayout?: boolean }>(({ inverseLayout }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'space-between',
-})
+  ...(!inverseLayout && { justifyContent: 'space-between' }),
+}))
