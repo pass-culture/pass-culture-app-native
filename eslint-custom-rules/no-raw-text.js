@@ -1,9 +1,9 @@
 const ALLOWED_JSX_TAGS = [
   /^.*Text$/,
-  /^Styled+(Hero|Title[1-4]|Body|ButtonText(|NeutralInfo|Primary|Secondary)|Caption(|Primary|Secondary))$/,
+  /^Styled+(Hero|Title[1-4]|Body|ButtonText(|NeutralInfo|Primary|Secondary)|Caption(|NeutralInfo|Primary|Secondary))$/,
 ]
 
-const WHITESPACES_REGEX = /^\s+$/
+const WHITESPACES_REGEX = /^\s*$/
 
 const checkJSXTextAreEmpty = (child) =>
   child.type !== 'JSXText' || (child.type === 'JSXText' && WHITESPACES_REGEX.test(child.value))
@@ -12,7 +12,8 @@ module.exports = {
   name: 'no-raw-text',
   meta: {
     docs: {
-      description: 'blablabla',
+      description:
+        'We use a custom no-raw-text instead react-native/no-raw-text because we have some specific text tags',
     },
   },
   create(context) {
@@ -20,7 +21,7 @@ module.exports = {
       JSXElement: (node) => {
         const openingElement = node.openingElement.name
 
-        if (openingElement.object && openingElement.object.name === 'Typo') return
+        if (openingElement?.object?.name === 'Typo') return
         if (ALLOWED_JSX_TAGS.some((value) => value.test(openingElement.name))) return
         if (node.children.every(checkJSXTextAreEmpty)) return
 

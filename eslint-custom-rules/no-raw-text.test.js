@@ -46,6 +46,7 @@ const tests = {
     { code: '<StyledButtonTextSecondary>toto</StyledButtonTextSecondary>' },
     { code: '<StyledBody>toto</StyledBody>' },
     { code: '<StyledCaption>toto</StyledCaption>' },
+    { code: '<StyledCaptionNeutralInfo>toto</StyledCaptionNeutralInfo>' },
     { code: '<StyledCaptionPrimary>toto</StyledCaptionPrimary>' },
     { code: '<StyledCaptionSecondary>toto</StyledCaptionSecondary>' },
     // <***Text>string</***Text>
