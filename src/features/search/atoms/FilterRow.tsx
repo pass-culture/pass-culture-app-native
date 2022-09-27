@@ -53,10 +53,9 @@ const Title = styled(Typo.ButtonText)({
   flexShrink: 1,
 })
 
-const Description = styled(Typo.Caption)(({ theme }) => ({
+const Description = styled(Typo.CaptionNeutralInfo)({
   flexShrink: 1,
-  color: theme.colors.greyDark,
-}))
+})
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

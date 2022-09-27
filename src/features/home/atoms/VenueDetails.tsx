@@ -45,4 +45,4 @@ const TypeLabel = styled(Typo.Caption).attrs({
   numberOfLines: 1,
 })(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))
 
-const Distance = styled(Typo.Caption)(({ theme }) => ({ color: theme.colors.greyDark }))
+const Distance = styled(Typo.CaptionNeutralInfo)``

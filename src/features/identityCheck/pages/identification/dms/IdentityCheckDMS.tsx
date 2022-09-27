@@ -78,7 +78,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 const ButtonContainer = styled.View({ padding: getSpacing(10) })
 
-const Caption = styled(Typo.Caption)(({ theme }) => ({
+const Caption = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',
-  color: theme.colors.greyDark,
-}))
+})
