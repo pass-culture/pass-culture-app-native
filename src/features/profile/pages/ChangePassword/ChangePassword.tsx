@@ -129,7 +129,7 @@ export function ChangePassword() {
 
   return (
     <Container>
-      <PageHeader title={'Mot de passe'} background="primary" withGoBackButton />
+      <PageHeader title="Mot de passe" background="primary" withGoBackButton />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={contentContainerStyle}
@@ -139,21 +139,21 @@ export function ChangePassword() {
           <Controller
             control={control}
             name="currentPassword"
-            render={({ field: { onChange, onBlur, value }, fieldState: { invalid } }) => (
+            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
               <React.Fragment>
                 <PasswordInput
-                  label={'Mot de passe actuel'}
+                  label="Mot de passe actuel"
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
-                  placeholder={'Ton mot de passe actuel'}
+                  placeholder="Ton mot de passe actuel"
                   isRequiredField
                   accessibilityDescribedBy={passwordInputErrorId}
-                  isError={invalid && value.length > 0}
+                  isError={error && value.length > 0}
                 />
                 <InputError
-                  visible={invalid && value.length > 0}
-                  messageId={'Mot de passe incorrect'}
+                  visible={!!error && value.length > 0}
+                  messageId="Mot de passe incorrect"
                   numberOfSpacesTop={getSpacing(0.5)}
                   relatedInputId={passwordInputErrorId}
                 />
@@ -164,17 +164,17 @@ export function ChangePassword() {
           <Controller
             control={control}
             name="newPassword"
-            render={({ field: { onChange, onBlur, value }, fieldState: { invalid } }) => (
+            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
               <React.Fragment>
                 <PasswordInput
-                  label={'Nouveau mot de passe'}
+                  label="Nouveau mot de passe"
                   accessibilityDescribedBy={passwordDescribedBy}
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
-                  placeholder={'Ton nouveau mot de passe'}
+                  placeholder="Ton nouveau mot de passe"
                   isRequiredField
-                  isError={invalid && value.length > 0}
+                  isError={error && value.length > 0}
                 />
                 <PasswordSecurityRules
                   password={value}
@@ -188,14 +188,14 @@ export function ChangePassword() {
           <Controller
             control={control}
             name="confirmedPassword"
-            render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
               <React.Fragment>
                 <PasswordInput
-                  label={'Confirmer le mot de passe'}
+                  label="Confirmer le mot de passe"
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
-                  placeholder={'Confirmer le mot de passe'}
+                  placeholder="Confirmer le mot de passe"
                   onFocus={onFocusConfirmedPassword}
                   isRequiredField
                   accessibilityDescribedBy={passwordConfirmationErrorId}
@@ -206,7 +206,7 @@ export function ChangePassword() {
                   }
                 />
                 <InputError
-                  visible={invalid && getValues('newPassword').length > 0 && value.length > 0}
+                  visible={!!error && getValues('newPassword').length > 0 && value.length > 0}
                   messageId={error?.message}
                   numberOfSpacesTop={getSpacing(0.5)}
                   relatedInputId={passwordConfirmationErrorId}
@@ -224,8 +224,8 @@ export function ChangePassword() {
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary
-              wording={'Enregistrer'}
-              accessibilityLabel={'Enregistrer les modifications'}
+              wording="Enregistrer"
+              accessibilityLabel="Enregistrer les modifications"
               onPress={onSubmit}
               disabled={disabled}
             />
