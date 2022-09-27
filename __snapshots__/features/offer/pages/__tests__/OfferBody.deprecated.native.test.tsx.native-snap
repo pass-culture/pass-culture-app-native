@@ -1017,55 +1017,55 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityRole="button"
-                            accessibilityState={
-                              Object {
-                                "expanded": false,
-                              }
-                            }
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onLayout={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
                             style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                },
+                              ]
                             }
                           >
                             <View
-                              nativeID="testUuidV4"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                Object {
+                                  "expanded": false,
+                                }
+                              }
+                              accessible={true}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onLayout={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                    "justifyContent": "space-between",
-                                    "paddingHorizontal": 24,
-                                    "paddingVertical": 20,
-                                  },
-                                  undefined,
-                                ]
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
                               }
                             >
                               <View
+                                nativeID="testUuidV4"
                                 style={
                                   Array [
                                     Object {
                                       "alignItems": "center",
-                                      "flexBasis": 0,
                                       "flexDirection": "row",
-                                      "flexGrow": 1,
-                                      "flexShrink": 1,
+                                      "justifyContent": "space-between",
+                                      "paddingHorizontal": 24,
+                                      "paddingVertical": 20,
                                     },
+                                    undefined,
                                   ]
                                 }
                               >
@@ -1086,27 +1086,27 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   Modalités de retrait
                                 </Text>
-                              </View>
-                              <View
-                                collapsable={false}
-                                style={
-                                  Object {
-                                    "transform": Array [
-                                      Object {
-                                        "rotateZ": "1.5707963267948966rad",
-                                      },
-                                    ],
-                                  }
-                                }
-                                testID="accordionArrow"
-                              >
                                 <View
-                                  height={20}
-                                  width={20}
+                                  collapsable={false}
+                                  style={
+                                    Object {
+                                      "transform": Array [
+                                        Object {
+                                          "rotateZ": "1.5707963267948966rad",
+                                        },
+                                      ],
+                                    }
+                                  }
+                                  testID="accordionArrow"
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    width={20}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                               </View>
                             </View>
@@ -1205,55 +1205,55 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityRole="button"
-                            accessibilityState={
-                              Object {
-                                "expanded": false,
-                              }
-                            }
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onLayout={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
                             style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                },
+                              ]
                             }
                           >
                             <View
-                              nativeID="testUuidV4"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                Object {
+                                  "expanded": false,
+                                }
+                              }
+                              accessible={true}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onLayout={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                    "justifyContent": "space-between",
-                                    "paddingHorizontal": 24,
-                                    "paddingVertical": 20,
-                                  },
-                                  undefined,
-                                ]
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
                               }
                             >
                               <View
+                                nativeID="testUuidV4"
                                 style={
                                   Array [
                                     Object {
                                       "alignItems": "center",
-                                      "flexBasis": 0,
                                       "flexDirection": "row",
-                                      "flexGrow": 1,
-                                      "flexShrink": 1,
+                                      "justifyContent": "space-between",
+                                      "paddingHorizontal": 24,
+                                      "paddingVertical": 20,
                                     },
+                                    undefined,
                                   ]
                                 }
                               >
@@ -1274,27 +1274,27 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   Accessibilité
                                 </Text>
-                              </View>
-                              <View
-                                collapsable={false}
-                                style={
-                                  Object {
-                                    "transform": Array [
-                                      Object {
-                                        "rotateZ": "1.5707963267948966rad",
-                                      },
-                                    ],
-                                  }
-                                }
-                                testID="accordionArrow"
-                              >
                                 <View
-                                  height={20}
-                                  width={20}
+                                  collapsable={false}
+                                  style={
+                                    Object {
+                                      "transform": Array [
+                                        Object {
+                                          "rotateZ": "1.5707963267948966rad",
+                                        },
+                                      ],
+                                    }
+                                  }
+                                  testID="accordionArrow"
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    width={20}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                               </View>
                             </View>
@@ -3541,55 +3541,55 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityRole="button"
-                            accessibilityState={
-                              Object {
-                                "expanded": false,
-                              }
-                            }
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onLayout={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
                             style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                },
+                              ]
                             }
                           >
                             <View
-                              nativeID="testUuidV4"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                Object {
+                                  "expanded": false,
+                                }
+                              }
+                              accessible={true}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onLayout={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                    "justifyContent": "space-between",
-                                    "paddingHorizontal": 24,
-                                    "paddingVertical": 20,
-                                  },
-                                  undefined,
-                                ]
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
                               }
                             >
                               <View
+                                nativeID="testUuidV4"
                                 style={
                                   Array [
                                     Object {
                                       "alignItems": "center",
-                                      "flexBasis": 0,
                                       "flexDirection": "row",
-                                      "flexGrow": 1,
-                                      "flexShrink": 1,
+                                      "justifyContent": "space-between",
+                                      "paddingHorizontal": 24,
+                                      "paddingVertical": 20,
                                     },
+                                    undefined,
                                   ]
                                 }
                               >
@@ -3610,27 +3610,27 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   Modalités de retrait
                                 </Text>
-                              </View>
-                              <View
-                                collapsable={false}
-                                style={
-                                  Object {
-                                    "transform": Array [
-                                      Object {
-                                        "rotateZ": "1.5707963267948966rad",
-                                      },
-                                    ],
-                                  }
-                                }
-                                testID="accordionArrow"
-                              >
                                 <View
-                                  height={20}
-                                  width={20}
+                                  collapsable={false}
+                                  style={
+                                    Object {
+                                      "transform": Array [
+                                        Object {
+                                          "rotateZ": "1.5707963267948966rad",
+                                        },
+                                      ],
+                                    }
+                                  }
+                                  testID="accordionArrow"
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    width={20}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                               </View>
                             </View>
@@ -3729,55 +3729,55 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityRole="button"
-                            accessibilityState={
-                              Object {
-                                "expanded": false,
-                              }
-                            }
-                            accessible={true}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onLayout={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
                             style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                },
+                              ]
                             }
                           >
                             <View
-                              nativeID="testUuidV4"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                Object {
+                                  "expanded": false,
+                                }
+                              }
+                              accessible={true}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onLayout={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                    "justifyContent": "space-between",
-                                    "paddingHorizontal": 24,
-                                    "paddingVertical": 20,
-                                  },
-                                  undefined,
-                                ]
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
                               }
                             >
                               <View
+                                nativeID="testUuidV4"
                                 style={
                                   Array [
                                     Object {
                                       "alignItems": "center",
-                                      "flexBasis": 0,
                                       "flexDirection": "row",
-                                      "flexGrow": 1,
-                                      "flexShrink": 1,
+                                      "justifyContent": "space-between",
+                                      "paddingHorizontal": 24,
+                                      "paddingVertical": 20,
                                     },
+                                    undefined,
                                   ]
                                 }
                               >
@@ -3798,27 +3798,27 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   Accessibilité
                                 </Text>
-                              </View>
-                              <View
-                                collapsable={false}
-                                style={
-                                  Object {
-                                    "transform": Array [
-                                      Object {
-                                        "rotateZ": "1.5707963267948966rad",
-                                      },
-                                    ],
-                                  }
-                                }
-                                testID="accordionArrow"
-                              >
                                 <View
-                                  height={20}
-                                  width={20}
+                                  collapsable={false}
+                                  style={
+                                    Object {
+                                      "transform": Array [
+                                        Object {
+                                          "rotateZ": "1.5707963267948966rad",
+                                        },
+                                      ],
+                                    }
+                                  }
+                                  testID="accordionArrow"
                                 >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
+                                  <View
+                                    height={20}
+                                    width={20}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
                                 </View>
                               </View>
                             </View>

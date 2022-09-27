@@ -1277,6 +1277,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              aria-hidden={true}
               style={
                 Array [
                   Object {
@@ -1455,6 +1456,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              aria-hidden={true}
               style={
                 Array [
                   Object {
@@ -1633,6 +1635,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              aria-hidden={true}
               style={
                 Array [
                   Object {
@@ -1836,6 +1839,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              aria-hidden={true}
               style={
                 Array [
                   Object {

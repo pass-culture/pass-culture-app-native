@@ -431,82 +431,82 @@ Array [
             }
           />
           <div
-            aria-controls="testUuidV4"
-            aria-expanded={true}
-            className="css-cursor-18t94o4 css-view-1dbjc4n"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="button"
+            className="css-view-1dbjc4n"
             style={
               Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
               }
             }
-            tabIndex="0"
           >
             <div
-              className="css-view-1dbjc4n"
-              id="testUuidV4"
+              aria-controls="testUuidV4"
+              aria-expanded={true}
+              className="css-cursor-18t94o4 css-view-1dbjc4n"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="button"
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitBoxPack": "justify",
-                  "WebkitFlexDirection": "row",
-                  "WebkitJustifyContent": "space-between",
-                  "alignItems": "center",
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "auto",
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "auto",
                   "cursor": "pointer",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexPack": "justify",
-                  "paddingBottom": "20px",
-                  "paddingLeft": "24px",
-                  "paddingRight": "24px",
-                  "paddingTop": "20px",
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "auto",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "auto",
                 }
               }
+              tabIndex="0"
             >
               <div
                 className="css-view-1dbjc4n"
+                id="testUuidV4"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxFlex": 1,
                     "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexBasis": "0px",
+                    "WebkitBoxPack": "justify",
                     "WebkitFlexDirection": "row",
-                    "WebkitFlexGrow": 1,
-                    "WebkitFlexShrink": 1,
+                    "WebkitJustifyContent": "space-between",
                     "alignItems": "center",
-                    "flexBasis": "0px",
+                    "cursor": "pointer",
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "space-between",
                     "msFlexAlign": "center",
                     "msFlexDirection": "row",
-                    "msFlexNegative": 1,
-                    "msFlexPositive": 1,
-                    "msFlexPreferredSize": "0px",
+                    "msFlexPack": "justify",
+                    "paddingBottom": "20px",
+                    "paddingLeft": "24px",
+                    "paddingRight": "24px",
+                    "paddingTop": "20px",
                   }
                 }
               >
@@ -536,25 +536,25 @@ Array [
                 >
                   Pages
                 </h2>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style={
-                  Object {
-                    "WebkitTransform": "rotateZ(4.71238898038469rad)",
-                    "transform": "rotateZ(4.71238898038469rad)",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style={
+                    Object {
+                      "WebkitTransform": "rotateZ(4.71238898038469rad)",
+                      "transform": "rotateZ(4.71238898038469rad)",
+                    }
+                  }
                 >
                   <div
-                    className="css-text-901oao"
-                    dir="ltr"
+                    className="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1516,82 +1516,82 @@ Array [
             </div>
           </div>
           <div
-            aria-controls="testUuidV4"
-            aria-expanded={true}
-            className="css-cursor-18t94o4 css-view-1dbjc4n"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="button"
+            className="css-view-1dbjc4n"
             style={
               Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
               }
             }
-            tabIndex="0"
           >
             <div
-              className="css-view-1dbjc4n"
-              id="testUuidV4"
+              aria-controls="testUuidV4"
+              aria-expanded={true}
+              className="css-cursor-18t94o4 css-view-1dbjc4n"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="button"
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitBoxPack": "justify",
-                  "WebkitFlexDirection": "row",
-                  "WebkitJustifyContent": "space-between",
-                  "alignItems": "center",
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "auto",
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "auto",
                   "cursor": "pointer",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexPack": "justify",
-                  "paddingBottom": "20px",
-                  "paddingLeft": "24px",
-                  "paddingRight": "24px",
-                  "paddingTop": "20px",
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "auto",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "auto",
                 }
               }
+              tabIndex="0"
             >
               <div
                 className="css-view-1dbjc4n"
+                id="testUuidV4"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxFlex": 1,
                     "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexBasis": "0px",
+                    "WebkitBoxPack": "justify",
                     "WebkitFlexDirection": "row",
-                    "WebkitFlexGrow": 1,
-                    "WebkitFlexShrink": 1,
+                    "WebkitJustifyContent": "space-between",
                     "alignItems": "center",
-                    "flexBasis": "0px",
+                    "cursor": "pointer",
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "space-between",
                     "msFlexAlign": "center",
                     "msFlexDirection": "row",
-                    "msFlexNegative": 1,
-                    "msFlexPositive": 1,
-                    "msFlexPreferredSize": "0px",
+                    "msFlexPack": "justify",
+                    "paddingBottom": "20px",
+                    "paddingLeft": "24px",
+                    "paddingRight": "24px",
+                    "paddingTop": "20px",
                   }
                 }
               >
@@ -1621,25 +1621,25 @@ Array [
                 >
                   Paramètres applicatifs (1)
                 </h2>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style={
-                  Object {
-                    "WebkitTransform": "rotateZ(4.71238898038469rad)",
-                    "transform": "rotateZ(4.71238898038469rad)",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style={
+                    Object {
+                      "WebkitTransform": "rotateZ(4.71238898038469rad)",
+                      "transform": "rotateZ(4.71238898038469rad)",
+                    }
+                  }
                 >
                   <div
-                    className="css-text-901oao"
-                    dir="ltr"
+                    className="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1824,82 +1824,82 @@ Array [
             </div>
           </div>
           <div
-            aria-controls="testUuidV4"
-            aria-expanded={true}
-            className="css-cursor-18t94o4 css-view-1dbjc4n"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="button"
+            className="css-view-1dbjc4n"
             style={
               Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
               }
             }
-            tabIndex="0"
           >
             <div
-              className="css-view-1dbjc4n"
-              id="testUuidV4"
+              aria-controls="testUuidV4"
+              aria-expanded={true}
+              className="css-cursor-18t94o4 css-view-1dbjc4n"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="button"
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitBoxPack": "justify",
-                  "WebkitFlexDirection": "row",
-                  "WebkitJustifyContent": "space-between",
-                  "alignItems": "center",
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "auto",
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "auto",
                   "cursor": "pointer",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexPack": "justify",
-                  "paddingBottom": "20px",
-                  "paddingLeft": "24px",
-                  "paddingRight": "24px",
-                  "paddingTop": "20px",
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "auto",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "auto",
                 }
               }
+              tabIndex="0"
             >
               <div
                 className="css-view-1dbjc4n"
+                id="testUuidV4"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxFlex": 1,
                     "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexBasis": "0px",
+                    "WebkitBoxPack": "justify",
                     "WebkitFlexDirection": "row",
-                    "WebkitFlexGrow": 1,
-                    "WebkitFlexShrink": 1,
+                    "WebkitJustifyContent": "space-between",
                     "alignItems": "center",
-                    "flexBasis": "0px",
+                    "cursor": "pointer",
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "space-between",
                     "msFlexAlign": "center",
                     "msFlexDirection": "row",
-                    "msFlexNegative": 1,
-                    "msFlexPositive": 1,
-                    "msFlexPreferredSize": "0px",
+                    "msFlexPack": "justify",
+                    "paddingBottom": "20px",
+                    "paddingLeft": "24px",
+                    "paddingRight": "24px",
+                    "paddingTop": "20px",
                   }
                 }
               >
@@ -1929,25 +1929,25 @@ Array [
                 >
                   Paramètres marketing
                 </h2>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style={
-                  Object {
-                    "WebkitTransform": "rotateZ(4.71238898038469rad)",
-                    "transform": "rotateZ(4.71238898038469rad)",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style={
+                    Object {
+                      "WebkitTransform": "rotateZ(4.71238898038469rad)",
+                      "transform": "rotateZ(4.71238898038469rad)",
+                    }
+                  }
                 >
                   <div
-                    className="css-text-901oao"
-                    dir="ltr"
+                    className="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2573,82 +2573,82 @@ Array [
             </div>
           </div>
           <div
-            aria-controls="testUuidV4"
-            aria-expanded={false}
-            className="css-cursor-18t94o4 css-view-1dbjc4n"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="button"
+            className="css-view-1dbjc4n"
             style={
               Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
               }
             }
-            tabIndex="0"
           >
             <div
-              className="css-view-1dbjc4n"
-              id="testUuidV4"
+              aria-controls="testUuidV4"
+              aria-expanded={false}
+              className="css-cursor-18t94o4 css-view-1dbjc4n"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="button"
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitBoxPack": "justify",
-                  "WebkitFlexDirection": "row",
-                  "WebkitJustifyContent": "space-between",
-                  "alignItems": "center",
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "auto",
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "auto",
                   "cursor": "pointer",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexPack": "justify",
-                  "paddingBottom": "20px",
-                  "paddingLeft": "24px",
-                  "paddingRight": "24px",
-                  "paddingTop": "20px",
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "auto",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "auto",
                 }
               }
+              tabIndex="0"
             >
               <div
                 className="css-view-1dbjc4n"
+                id="testUuidV4"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxFlex": 1,
                     "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexBasis": "0px",
+                    "WebkitBoxPack": "justify",
                     "WebkitFlexDirection": "row",
-                    "WebkitFlexGrow": 1,
-                    "WebkitFlexShrink": 1,
+                    "WebkitJustifyContent": "space-between",
                     "alignItems": "center",
-                    "flexBasis": "0px",
+                    "cursor": "pointer",
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "space-between",
                     "msFlexAlign": "center",
                     "msFlexDirection": "row",
-                    "msFlexNegative": 1,
-                    "msFlexPositive": 1,
-                    "msFlexPreferredSize": "0px",
+                    "msFlexPack": "justify",
+                    "paddingBottom": "20px",
+                    "paddingLeft": "24px",
+                    "paddingRight": "24px",
+                    "paddingTop": "20px",
                   }
                 }
               >
@@ -2678,25 +2678,25 @@ Array [
                 >
                   Paramètres firebase dynamic link
                 </h2>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style={
-                  Object {
-                    "WebkitTransform": "rotateZ(1.5707963267948966rad)",
-                    "transform": "rotateZ(1.5707963267948966rad)",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style={
+                    Object {
+                      "WebkitTransform": "rotateZ(1.5707963267948966rad)",
+                      "transform": "rotateZ(1.5707963267948966rad)",
+                    }
+                  }
                 >
                   <div
-                    className="css-text-901oao"
-                    dir="ltr"
+                    className="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>

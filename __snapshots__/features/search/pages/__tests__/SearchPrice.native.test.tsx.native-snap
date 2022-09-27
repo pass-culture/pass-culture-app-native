@@ -495,6 +495,7 @@ exports[`SearchPrice component should render modal correctly after animation and
                 }
               >
                 <Text
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {
@@ -654,6 +655,7 @@ exports[`SearchPrice component should render modal correctly after animation and
                 }
               >
                 <Text
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {
