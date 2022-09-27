@@ -54,6 +54,7 @@ export type IdentityCheckRootStackParamList = {
   }
   SelectIDOrigin: undefined
   SelectIDStatus: undefined
+  SelectPhoneStatus: undefined
   // TODO(PC-12433): this duplicate route is required until we solve PC-12433
   Validation: {
     firstName?: string

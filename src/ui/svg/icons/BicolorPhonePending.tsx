@@ -34,8 +34,8 @@ const BicolorPhonePendingSvg: React.FC<AccessibleBicolorIconInterface> = ({
       <Defs>
         <LinearGradient
           id={gradientId}
-          x1="28.841%"
-          x2="71.159%"
+          x1="48.841%"
+          x2="51.159%"
           y1="0%"
           y2="100%"
           gradientUnits="userSpaceOnUse">

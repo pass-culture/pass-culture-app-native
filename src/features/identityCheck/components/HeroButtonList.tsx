@@ -15,8 +15,8 @@ type HeroButtonListProps = {
 }
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
-    color: theme.colors.secondary,
-    color2: theme.colors.primary,
+    color: theme.colors.primary,
+    color2: theme.colors.secondary,
     size: theme.icons.sizes.standard,
   }))``
 
