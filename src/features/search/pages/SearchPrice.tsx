@@ -1,10 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { ScrollView, StyleProp, ViewStyle, View } from 'react-native'
+import { View } from 'react-native'
 import { useTheme } from 'styled-components'
-import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -26,6 +25,7 @@ import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Separator } from 'ui/components/Separator'
@@ -81,6 +81,9 @@ export const SearchPrice: FunctionComponent<Props> = ({
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
   const { isDesktopViewport } = useTheme()
+
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+  useForHeightKeyboardEvents(setKeyboardHeight)
 
   function search(values: SearchPriceFormData) {
     hideModal()
@@ -203,6 +206,8 @@ export const SearchPrice: FunctionComponent<Props> = ({
 
   const disabled = !isValid || (!isValidating && isSubmitting)
 
+  const isKeyboardOpen = keyboardHeight > 0
+
   return (
     <AppModal
       visible={isVisible}
@@ -224,127 +229,115 @@ export const SearchPrice: FunctionComponent<Props> = ({
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
         />
-      }>
+      }
+      shouldScrollToEnd={true}>
       <Spacer.Column numberOfSpaces={6} />
-      {/* https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native */}
-      <StyledScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={getScrollViewContentContainerStyle()}>
-        <Form.MaxWidth>
-          {!!isLoggedInAndBeneficiary && (
-            <View testID="creditBanner">
-              <Banner title={bannerTitle} />
-              <Spacer.Column numberOfSpaces={6} />
-            </View>
-          )}
-          <Controller
-            control={control}
-            name="isOnlyFreeOffersSearch"
-            render={({ field: { value } }) => (
-              <FilterSwitchWithLabel
-                isActive={value}
-                toggle={toggleOnlyFreeOffersSearch}
-                label="Uniquement les offres gratuites"
-                testID="onlyFreeOffers"
-              />
-            )}
-          />
-          <Spacer.Column numberOfSpaces={6} />
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-          {!!isLoggedInAndBeneficiary && (
-            <Controller
-              control={control}
-              name="isLimitCreditSearch"
-              render={({ field: { value } }) => (
-                <React.Fragment>
-                  <FilterSwitchWithLabel
-                    isActive={value}
-                    toggle={toggleLimitCreditSearch}
-                    label="Limiter la recherche à mon crédit"
-                    testID="limitCreditSearch"
-                  />
-                  <Spacer.Column numberOfSpaces={6} />
-                  <Separator />
-                  <Spacer.Column numberOfSpaces={6} />
-                </React.Fragment>
-              )}
+      <Form.MaxWidth>
+        {!!isLoggedInAndBeneficiary && (
+          <View testID="creditBanner">
+            <Banner title={bannerTitle} />
+            <Spacer.Column numberOfSpaces={6} />
+          </View>
+        )}
+        <Controller
+          control={control}
+          name="isOnlyFreeOffersSearch"
+          render={({ field: { value } }) => (
+            <FilterSwitchWithLabel
+              isActive={value}
+              toggle={toggleOnlyFreeOffersSearch}
+              label="Uniquement les offres gratuites"
+              testID="onlyFreeOffers"
             />
           )}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator />
+        <Spacer.Column numberOfSpaces={6} />
+        {!!isLoggedInAndBeneficiary && (
           <Controller
             control={control}
-            name="minPrice"
-            render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+            name="isLimitCreditSearch"
+            render={({ field: { value } }) => (
               <React.Fragment>
-                <TextInput
-                  autoComplete="off" // disable autofill on android
-                  autoCapitalize="none"
-                  isError={invalid && value.length > 0}
-                  keyboardType="numeric"
-                  label="Prix minimum (ennbsp;€)"
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  textContentType="none" // disable autofill on iOS
-                  accessibilityDescribedBy={minPriceInputId}
-                  testID="Entrée pour le prix minimum"
-                  placeholder="0"
-                  disabled={getValues('isOnlyFreeOffersSearch')}
+                <FilterSwitchWithLabel
+                  isActive={value}
+                  toggle={toggleLimitCreditSearch}
+                  label="Limiter la recherche à mon crédit"
+                  testID="limitCreditSearch"
                 />
-                <InputError
-                  visible={invalid}
-                  messageId={error?.message}
-                  numberOfSpacesTop={getSpacing(0.5)}
-                  relatedInputId={minPriceInputId}
-                />
+                <Spacer.Column numberOfSpaces={6} />
+                <Separator />
+                <Spacer.Column numberOfSpaces={6} />
               </React.Fragment>
             )}
           />
-          <Spacer.Column numberOfSpaces={6} />
-          <Controller
-            control={control}
-            name="maxPrice"
-            render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
-              <React.Fragment>
-                <TextInput
-                  autoComplete="off" // disable autofill on android
-                  autoCapitalize="none"
-                  isError={invalid && value.length > 0}
-                  keyboardType="numeric"
-                  label="Prix maximum (ennbsp;€)"
-                  value={value}
-                  onChangeText={(value) => {
-                    onChange(value)
-                    trigger('minPrice')
-                  }}
-                  onBlur={onBlur}
-                  textContentType="none" // disable autofill on iOS
-                  accessibilityDescribedBy={maxPriceInputId}
-                  testID="Entrée pour le prix maximum"
-                  rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0€`}
-                  placeholder={`${formatInitialCredit}`}
-                  disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
-                />
-                <InputError
-                  visible={invalid}
-                  messageId={error?.message}
-                  numberOfSpacesTop={getSpacing(0.5)}
-                  relatedInputId={maxPriceInputId}
-                />
-              </React.Fragment>
-            )}
-          />
-        </Form.MaxWidth>
-      </StyledScrollView>
+        )}
+        <Controller
+          control={control}
+          name="minPrice"
+          render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+            <React.Fragment>
+              <TextInput
+                autoComplete="off" // disable autofill on android
+                autoCapitalize="none"
+                isError={invalid && value.length > 0}
+                keyboardType="numeric"
+                label="Prix minimum (en&nbsp;€)"
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                textContentType="none" // disable autofill on iOS
+                accessibilityDescribedBy={minPriceInputId}
+                testID="Entrée pour le prix minimum"
+                placeholder="0"
+                disabled={getValues('isOnlyFreeOffersSearch')}
+              />
+              <InputError
+                visible={invalid}
+                messageId={error?.message}
+                numberOfSpacesTop={getSpacing(0.5)}
+                relatedInputId={minPriceInputId}
+              />
+            </React.Fragment>
+          )}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <Controller
+          control={control}
+          name="maxPrice"
+          render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+            <React.Fragment>
+              <TextInput
+                autoComplete="off" // disable autofill on android
+                autoCapitalize="none"
+                isError={invalid && value.length > 0}
+                keyboardType="numeric"
+                label="Prix maximum (en&nbsp;€)"
+                value={value}
+                onChangeText={(value) => {
+                  onChange(value)
+                  trigger('minPrice')
+                }}
+                onBlur={onBlur}
+                textContentType="none" // disable autofill on iOS
+                accessibilityDescribedBy={maxPriceInputId}
+                testID="Entrée pour le prix maximum"
+                rightLabel={`max\u00a0: ${formatInitialCredit}\u00a0€`}
+                placeholder={`${formatInitialCredit}`}
+                disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
+              />
+              <InputError
+                visible={invalid}
+                messageId={error?.message}
+                numberOfSpacesTop={getSpacing(0.5)}
+                relatedInputId={maxPriceInputId}
+              />
+            </React.Fragment>
+          )}
+        />
+      </Form.MaxWidth>
+      {!!isKeyboardOpen && <Spacer.Column numberOfSpaces={8} />}
     </AppModal>
   )
 }
-
-const getScrollViewContentContainerStyle = (): StyleProp<ViewStyle> => ({
-  flexDirection: 'column',
-  alignItems: 'center',
-})
-
-const StyledScrollView = styled(ScrollView)({
-  flexGrow: 1,
-})

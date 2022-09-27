@@ -31,6 +31,7 @@ type Props = {
   noPadding?: boolean
   modalSpacing?: ModalSpacing
   maxHeight?: number
+  shouldScrollToEnd?: boolean
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitraty values
@@ -59,6 +60,7 @@ export const AppModal: FunctionComponent<Props> = ({
   fixedModalBottom,
   modalSpacing,
   maxHeight,
+  shouldScrollToEnd,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -77,6 +79,7 @@ export const AppModal: FunctionComponent<Props> = ({
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
   const [headerHeight, setHeaderHeight] = useState(50)
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const fullscreenScrollViewRef = useRef<ScrollView | null>(null)
 
   useKeyboardEvents({
     onBeforeShow(data) {
@@ -114,6 +117,15 @@ export const AppModal: FunctionComponent<Props> = ({
     },
     [setScrollViewContentHeight, scrollViewRef]
   )
+
+  const onContentSizeChangeFullscreenModal = useCallback(() => {
+    if (!shouldScrollToEnd) return
+    fullscreenScrollViewRef.current?.scrollToEnd()
+  }, [shouldScrollToEnd])
+
+  const setFullscreenScrollViewRef = useCallback((ref: ScrollView | null) => {
+    fullscreenScrollViewRef.current = ref
+  }, [])
 
   const titleId = uuidv4()
 
@@ -166,7 +178,11 @@ export const AppModal: FunctionComponent<Props> = ({
           />
         )}
         {isFullscreen || maxHeight ? (
-          <StyledScrollView modalSpacing={modalSpacing} testID="fullscreenModalScrollView">
+          <StyledScrollView
+            modalSpacing={modalSpacing}
+            testID="fullscreenModalScrollView"
+            ref={setFullscreenScrollViewRef}
+            onContentSizeChange={onContentSizeChangeFullscreenModal}>
             {children}
           </StyledScrollView>
         ) : (
