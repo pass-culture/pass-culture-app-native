@@ -25,30 +25,33 @@ describe('Favorites sorts', () => {
     const data: Array<FavoriteResponse> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, price: 10 } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, price: 30 } },
+      { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: 20 } },
     ]
     data.sort(sortByAscendingPrice)
-    expect(data.map(({ id }) => id)).toEqual([1, 2, 3])
+    expect(data.map(({ id }) => id)).toEqual([4, 1, 2, 3])
   })
 
   it('should sort by ASCENDING_PRICE and place expired offer last', () => {
     const data: Array<FavoriteResponse> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, price: 10 } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, price: 30 } },
+      { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: 20, isExpired: true } },
     ]
     data.sort(sortByAscendingPrice)
-    expect(data.map(({ id }) => id)).toEqual([1, 3, 2])
+    expect(data.map(({ id }) => id)).toEqual([4, 1, 3, 2])
   })
 
   it('should sort by ASCENDING_PRICE and place offer with no price last', () => {
     const data: Array<FavoriteResponse> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, price: 10 } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, price: 30 } },
+      { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: null } },
     ]
     data.sort(sortByAscendingPrice)
-    expect(data.map(({ id }) => id)).toEqual([1, 3, 2])
+    expect(data.map(({ id }) => id)).toEqual([4, 1, 3, 2])
   })
 
   it('should sort by AROUND_ME', () => {
