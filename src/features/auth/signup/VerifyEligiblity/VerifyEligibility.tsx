@@ -42,7 +42,8 @@ export const VerifyEligibility: FunctionComponent = () => {
       ]}>
       <View>
         <StyledBody>
-          {t`Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement.`}
+          Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de
+          l’aide financière de l’État.
         </StyledBody>
         <Spacer.Column numberOfSpaces={4} />
         <Typo.ButtonText>

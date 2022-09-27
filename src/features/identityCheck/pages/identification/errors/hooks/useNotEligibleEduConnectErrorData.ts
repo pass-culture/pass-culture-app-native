@@ -34,7 +34,7 @@ const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
   Icon: UserError,
   title: 'Oh non\u00a0!',
   description:
-    'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide du Gouvernement.' +
+    'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide de l’État.' +
     DOUBLE_LINE_BREAK +
     'S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect.',
   titleAlignment: 'center',

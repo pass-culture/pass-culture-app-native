@@ -28,7 +28,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
         pauseAnimationOnRenderAtFrame={62}
         title="Le pass Culture"
         subTitle="c'est..."
-        text="une initiative du Gouvernement financée par le ministère de la Culture."
+        text="une initiative de l’État financée par le ministère de la Culture."
         swiperRef={props.swiperRef}
         name={props.name}
         index={props.index}

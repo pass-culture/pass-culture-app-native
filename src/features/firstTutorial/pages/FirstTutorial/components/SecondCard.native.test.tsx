@@ -17,9 +17,7 @@ describe('SecondCard', () => {
     const { getByText } = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)
 
     expect(
-      getByText(
-        'de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.'
-      )
+      getByText('de 15 à 18 ans\u00a0: l’État offre un crédit à dépenser dans l’application.')
     ).toBeTruthy()
   })
 

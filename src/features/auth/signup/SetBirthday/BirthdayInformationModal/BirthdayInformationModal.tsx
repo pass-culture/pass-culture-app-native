@@ -18,7 +18,7 @@ export function BirthdayInformationModal({ visible, hideModal }: Props) {
   const deposit15 = fifteenYearsOldDeposit.replace(' ', '\u00a0')
   const deposit18 = eighteenYearsOldDeposit.replace(' ', '\u00a0')
   const birthdayInformation =
-    `Nous avons besoin de connaître ton âge. Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de ${deposit15} à\u00a0${deposit18}\u00a0offerte par le Gouvernement.` +
+    `Nous avons besoin de connaître ton âge. Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de ${deposit15} à\u00a0${deposit18}\u00a0offerte par l’État.` +
     LINE_BREAK +
     'Cette aide sera créditée directement sur ton compte pass Culture.'
 

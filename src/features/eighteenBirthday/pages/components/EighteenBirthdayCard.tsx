@@ -23,7 +23,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
       buttonText="Vérifier mon identité"
       pauseAnimationOnRenderAtFrame={62}
       subTitle="Tu as 18 ans..."
-      text={`Tu pourras bénéficier des ${deposit} offerts par le Gouvernement dès que tu auras vérifié ton identité`}
+      text={`Tu pourras bénéficier des ${deposit} offerts par l’État dès que tu auras vérifié ton identité`}
       title="Bonne nouvelle&nbsp;!"
       swiperRef={props.swiperRef}
       name={props.name}
