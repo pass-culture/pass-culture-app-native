@@ -1,13 +1,13 @@
 import React from 'react'
 import { AppState, AppStateStatus } from 'react-native'
 import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
-import { addPlugin } from 'react-query-native-devtools'
 
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
 if (__DEV__ && process.env.JEST !== 'true') {
-  addPlugin({ queryClient })
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  import('react-query-native-devtools').then(({ addPlugin }) => addPlugin({ queryClient }))
 }
 
 // By default, on the web, if a user leaves the app and returns to stale data,
