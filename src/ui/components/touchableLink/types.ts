@@ -35,11 +35,10 @@ type AsProps = {
   as?: ElementType // Component that will be used to render the link
 } & Record<string, unknown>
 
-export type TouchableLinkProps =
-  | (InternalNavigationProps | ExternalNavigationProps) & {
-      navigateBeforeOnPress?: boolean // If true, triggers navigation before onPress function
-      highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
-      hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
-      isOnPressDebounced?: boolean
-    } & TouchableOpacityProps &
-      AsProps
+export type TouchableLinkProps = (InternalNavigationProps | ExternalNavigationProps) & {
+  navigateBeforeOnPress?: boolean // If true, triggers navigation before onPress function
+  highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
+  hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
+  isOnPressDebounced?: boolean
+} & TouchableOpacityProps &
+  AsProps
