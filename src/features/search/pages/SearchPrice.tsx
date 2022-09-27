@@ -276,12 +276,12 @@ export const SearchPrice: FunctionComponent<Props> = ({
         <Controller
           control={control}
           name="minPrice"
-          render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+          render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
             <React.Fragment>
               <TextInput
                 autoComplete="off" // disable autofill on android
                 autoCapitalize="none"
-                isError={invalid && value.length > 0}
+                isError={error && value.length > 0}
                 keyboardType="numeric"
                 label="Prix minimum (en&nbsp;€)"
                 value={value}
@@ -294,7 +294,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
                 disabled={getValues('isOnlyFreeOffersSearch')}
               />
               <InputError
-                visible={invalid}
+                visible={!!error}
                 messageId={error?.message}
                 numberOfSpacesTop={getSpacing(0.5)}
                 relatedInputId={minPriceInputId}
@@ -306,12 +306,12 @@ export const SearchPrice: FunctionComponent<Props> = ({
         <Controller
           control={control}
           name="maxPrice"
-          render={({ field: { onChange, onBlur, value }, fieldState: { invalid, error } }) => (
+          render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
             <React.Fragment>
               <TextInput
                 autoComplete="off" // disable autofill on android
                 autoCapitalize="none"
-                isError={invalid && value.length > 0}
+                isError={error && value.length > 0}
                 keyboardType="numeric"
                 label="Prix maximum (en&nbsp;€)"
                 value={value}
@@ -328,7 +328,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
                 disabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
               />
               <InputError
-                visible={invalid}
+                visible={!!error}
                 messageId={error?.message}
                 numberOfSpacesTop={getSpacing(0.5)}
                 relatedInputId={maxPriceInputId}
