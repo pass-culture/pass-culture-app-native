@@ -51,8 +51,7 @@ export const SearchType: FunctionComponent<Props> = ({
   const { searchState } = useSearch()
   const isLimitduoOfferSearchDefaultValue = searchState?.offerIsDuo
   const { isDesktopViewport } = useTheme()
-  function search() {
-  }
+  function search() {}
 
   const {
     handleSubmit,
@@ -64,8 +63,8 @@ export const SearchType: FunctionComponent<Props> = ({
     mode: 'onChange',
     defaultValues: {
       typeChoice: 'tous les types',
-      isLimitDuoOfferSearch: isLimitduoOfferSearchDefaultValue
-    }
+      isLimitDuoOfferSearch: isLimitduoOfferSearchDefaultValue,
+    },
   })
 
   const onSubmit = handleSubmit(search)
@@ -79,9 +78,9 @@ export const SearchType: FunctionComponent<Props> = ({
     hideModal()
   }, [hideModal])
 
-  const onResetPress = useCallback(() => { }, [])
+  const onResetPress = useCallback(() => {}, [])
   const getHeightContent = (h: number) => {
-    isDesktopViewport && setHeightModal(h);
+    isDesktopViewport && setHeightModal(h)
   }
 
   return (
@@ -111,7 +110,9 @@ export const SearchType: FunctionComponent<Props> = ({
       <StyledScrollView
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={getScrollViewContentContainerStyle()}
-        onContentSizeChange={(w, h) => { getHeightContent(h) }}>
+        onContentSizeChange={(w, h) => {
+          getHeightContent(h)
+        }}>
         <Form.MaxWidth>
           <React.Fragment>
             {radioButtonItems.map((item) => {

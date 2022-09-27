@@ -100,16 +100,16 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
   justifyContent: 'center',
   ...(!disabled
     ? {
-      ...getShadow({
-        shadowOffset: {
-          width: 0,
-          height: getSpacing(0.5),
-        },
-        shadowRadius: 2.5,
-        shadowColor: theme.colors.black,
-        shadowOpacity: 0.2,
-      }),
-    }
+        ...getShadow({
+          shadowOffset: {
+            width: 0,
+            height: getSpacing(0.5),
+          },
+          shadowRadius: 2.5,
+          shadowColor: theme.colors.black,
+          shadowOpacity: 0.2,
+        }),
+      }
     : {}),
 }))
 
