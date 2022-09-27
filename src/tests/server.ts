@@ -18,7 +18,7 @@ import {
   ValidateEmailResponse,
   VenueResponse,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { env } from 'libs/environment'

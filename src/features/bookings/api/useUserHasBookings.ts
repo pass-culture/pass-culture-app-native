@@ -1,4 +1,4 @@
-import { useBookings } from 'features/bookings/api/queries'
+import { useBookings } from 'features/bookings/api'
 
 export function useUserHasBookings() {
   const { data: bookings } = useBookings()

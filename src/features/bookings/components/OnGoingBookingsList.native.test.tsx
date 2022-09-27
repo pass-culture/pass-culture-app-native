@@ -3,7 +3,8 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { useBookings } from 'features/bookings/api/queries'
+import { useBookings } from 'features/bookings/api'
+import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -11,13 +12,11 @@ import { flushAllPromises, render, act } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
-import { bookingsSnap as mockBookings } from '../api/bookingsSnap'
-
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
 jest.mock('react-query')
 
-jest.mock('features/bookings/api/queries')
+jest.mock('features/bookings/api')
 const mockUseBookings = mocked(useBookings)
 mockUseBookings.mockReturnValue({
   data: mockBookings,

@@ -1,9 +1,9 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
-import { Booking } from 'features/bookings/components/types'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { Booking } from 'features/bookings/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 

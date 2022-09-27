@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
-import { Booking } from 'features/bookings/components/types'
+import { useCancelBookingMutation } from 'features/bookings/api'
+import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -19,8 +20,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { useCancelBookingMutation } from '../services/useCancelBookingMutation'
 
 interface Props {
   visible: boolean

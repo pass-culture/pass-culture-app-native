@@ -2,9 +2,8 @@ import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { render } from 'tests/utils'
-
-import { bookingsSnap } from '../api/bookingsSnap'
 
 describe('BookingDetailsTicketContent', () => {
   const originalBooking = bookingsSnap.ongoing_bookings[0]

@@ -4,11 +4,10 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse } from 'api/gen'
-import * as Queries from 'features/bookings/api/queries'
+import * as bookingsAPI from 'features/bookings/api/useBookings'
+import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
-
-import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
 
@@ -16,7 +15,7 @@ describe('Bookings', () => {
   afterEach(jest.restoreAllMocks)
 
   it('should always execute the query (in cache or in network)', () => {
-    const useBookings = jest.spyOn(Queries, 'useBookings')
+    const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
     renderBookings(bookingsSnap)
     expect(useBookings).toBeCalledTimes(1)
   })
@@ -54,7 +53,7 @@ describe('Bookings', () => {
 
 const renderBookings = (bookings: BookingsResponse) => {
   jest
-    .spyOn(Queries, 'useBookings')
+    .spyOn(bookingsAPI, 'useBookings')
     .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
       BookingsResponse,
       unknown

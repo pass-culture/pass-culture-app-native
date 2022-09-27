@@ -1,5 +1,5 @@
 import { BookingStockResponse } from 'api/gen'
-import { BookingProperties } from 'features/bookings/helpers'
+import { BookingProperties } from 'features/bookings/types'
 
 export function getLocationLabel(
   stock: BookingStockResponse,

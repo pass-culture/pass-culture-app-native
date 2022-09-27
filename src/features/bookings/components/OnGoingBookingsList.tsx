@@ -3,8 +3,9 @@ import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { useBookings } from 'features/bookings/api/queries'
+import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
+import { Booking } from 'features/bookings/types'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -23,7 +24,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
-import { Booking } from './types'
 
 const emptyBookings: Booking[] = []
 

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 
 import { WithdrawalTypeEnum } from 'api/gen'
-import { TicketCodeTitle } from 'features/bookings/atoms/TicketCodeTitle'
+import { TicketCodeTitle } from 'features/bookings/components/TicketCodeTitle'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 type TicketCodeProps = {

@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { getBookingProperties } from 'features/bookings/helpers'
+import { Booking } from 'features/bookings/types'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
@@ -9,8 +10,6 @@ import { useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
-
-import { Booking } from './types'
 
 export interface BookingDetailsCancelButtonProps {
   booking: Booking

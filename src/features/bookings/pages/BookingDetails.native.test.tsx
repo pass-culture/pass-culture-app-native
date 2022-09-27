@@ -4,8 +4,10 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import * as Queries from 'features/bookings/api/queries'
-import * as Helpers from 'features/bookings/helpers'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
+import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -17,9 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-
-import { bookingsSnap } from '../api/bookingsSnap'
-import { Booking } from '../components/types'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
@@ -76,7 +75,10 @@ describe('BookingDetails', () => {
   })
 
   it('should call useOngoingOrEndedBooking with the right parameters', () => {
-    const useOngoingOrEndedBooking = jest.spyOn(Queries, 'useOngoingOrEndedBooking')
+    const useOngoingOrEndedBooking = jest.spyOn(
+      ongoingOrEndedBookingAPI,
+      'useOngoingOrEndedBooking'
+    )
 
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
@@ -170,7 +172,7 @@ describe('BookingDetails', () => {
         stock: { ...booking.stock, offer: { ...booking.stock.offer, withdrawalType } },
       }
       jest
-        .spyOn(Helpers, 'getBookingProperties')
+        .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent, isDigital: false, isPhysical: !isEvent })
 
       const { getByText } = renderBookingDetails(booking)
@@ -295,7 +297,7 @@ describe('BookingDetails', () => {
         canOpenItinerary: true,
       })
       const getBookingProperties = jest
-        .spyOn(Helpers, 'getBookingProperties')
+        .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue(dataProvider)
 
       const booking = bookingsSnap.ongoing_bookings[0]
@@ -325,7 +327,7 @@ describe('BookingDetails', () => {
           canOpenItinerary,
         })
         const getBookingProperties = jest
-          .spyOn(Helpers, 'getBookingProperties')
+          .spyOn(bookingPropertiesAPI, 'getBookingProperties')
           .mockReturnValue(dataProvider)
 
         const booking = bookingsSnap.ongoing_bookings[0]
@@ -372,7 +374,7 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking?: Booking, options = {}) {
-  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue({
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBooking').mockReturnValue({
     data: booking,
     isLoading: false,
     isSuccess: true,

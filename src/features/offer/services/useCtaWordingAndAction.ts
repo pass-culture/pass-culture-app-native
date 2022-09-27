@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useEndedBookingFromOfferId } from 'features/bookings/api/queries'
+import { useEndedBookingFromOfferId } from 'features/bookings/api'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'

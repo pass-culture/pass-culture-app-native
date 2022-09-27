@@ -4,11 +4,9 @@ import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
 } from 'features/bookings/components/BookingDetailsCancelButton'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { Booking } from 'features/bookings/types'
 import { fireEvent, render } from 'tests/utils/web'
-
-import { bookingsSnap } from '../api/bookingsSnap'
-
-import { Booking } from './types'
 
 jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
