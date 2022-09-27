@@ -1,17 +1,18 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferType } from 'features/search/enums'
 import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
-import { fireEvent, render } from 'tests/utils'
+import { OfferTypes, SearchView } from 'features/search/types'
+import { fireEvent, render, act } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
   }),
 }))
 
@@ -110,20 +111,106 @@ describe('OfferTypeModal component', () => {
   })
 
   describe('should close the modal ', () => {
-    // it('when pressing the search button', async () => {
-    //   const { getByText } = renderOfferTypeModal({
-    //     hideOfferTypeModal,
-    //     offerTypeModalVisible: true,
-    //   })
-    //
-    //   const button = getByText('Rechercher')
-    //
-    //   await act(async () => {
-    //     fireEvent.press(button)
-    //   })
-    //
-    //   expect(hideOfferTypeModal).toHaveBeenCalled()
-    // })
+    it('should close modal on submit', async () => {
+      const { getByText } = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+      const button = getByText('Rechercher')
+
+      await act(async () => {
+        fireEvent.press(button)
+      })
+
+      expect(hideOfferTypeModal).toHaveBeenCalled()
+    })
+
+    it('should navigate to Search results when selecting DUO offer and submit form', async () => {
+      const { getByText, getByTestId } = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+      const toggle = getByTestId('Interrupteur-limitDuoOfferSearch')
+      const button = getByText('Rechercher')
+
+      fireEvent.press(toggle)
+
+      await act(async () => {
+        fireEvent.press(button)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          view: SearchView.Results,
+          offerIsDuo: true,
+        },
+        screen: 'Search',
+      })
+    })
+
+    it('should use default filters when submitting without change', async () => {
+      const { getByText } = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const button = getByText('Rechercher')
+
+      await act(async () => {
+        fireEvent.press(button)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          view: SearchView.Results,
+          offerIsDuo: false,
+        },
+        screen: 'Search',
+      })
+    })
+
+    it.each`
+      offerType      | label
+      ${undefined}   | ${OfferType.ALL_TYPE}
+      ${'isDigital'} | ${OfferType.DIGITAL}
+      ${'isEvent'}   | ${OfferType.EVENT}
+      ${'isThing'}   | ${OfferType.THING}
+    `(
+      'should navigate to search results with digital offer',
+      async ({ offerType, label }: { offerType?: OfferTypes; label: OfferType }) => {
+        const { getByText, getByTestId } = renderOfferTypeModal({
+          hideOfferTypeModal,
+          offerTypeModalVisible: true,
+        })
+        const radio = getByTestId(label)
+
+        fireEvent.press(radio)
+
+        const button = getByText('Rechercher')
+
+        await act(async () => {
+          fireEvent.press(button)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            view: SearchView.Results,
+            offerTypes: {
+              ...mockSearchState.offerTypes,
+              ...(offerType !== undefined
+                ? {
+                    [offerType]: true,
+                  }
+                : {}),
+            },
+          },
+          screen: 'Search',
+        })
+      }
+    )
 
     it('when pressing previous button', () => {
       const { getByTestId } = renderOfferTypeModal({
