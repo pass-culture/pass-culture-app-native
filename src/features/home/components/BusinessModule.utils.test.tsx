@@ -1,4 +1,4 @@
-import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from '../BusinessModule.utils'
+import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
 describe('BusinessModule.utils', () => {
   describe('shouldUrlBeFilled', () => {

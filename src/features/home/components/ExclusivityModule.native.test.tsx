@@ -9,7 +9,7 @@ import { offerResponseSnap as mockOffer } from 'features/offer/api/snaps/offerRe
 import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
-import { ExclusivityModule, ExclusivityModuleProps } from '../ExclusivityModule'
+import { ExclusivityModule, ExclusivityModuleProps } from './ExclusivityModule'
 
 jest.mock('features/auth/settings')
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))

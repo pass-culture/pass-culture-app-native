@@ -7,6 +7,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
+import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -16,19 +17,30 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
-  const { data: userInfos } = useUserProfileInfo()
+  const { data: user } = useUserProfileInfo()
   const availableCredit = useAvailableCredit()
   const { top } = useCustomSafeInsets()
   const { isLoggedIn } = useAuthContext()
 
   const welcomeTitle =
-    userInfos?.firstName && isLoggedIn ? `Bonjour ${userInfos.firstName}` : 'Bienvenue\u00a0!'
+    user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
 
-  let subtitle = 'Toute la culture à portée de main'
-  if (userInfos?.isBeneficiary && availableCredit && isLoggedIn) {
-    subtitle = availableCredit.isExpired
-      ? 'Ton crédit est expiré'
-      : `Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`
+  // we distinguish three different cases:
+  // - not connected OR eligible-to-credit users
+  // - beneficiary users
+  // - ex-beneficiary users
+  const getSubtitle = () => {
+    const shouldSeeDefaultSubtitle =
+      !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
+    if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
+
+    const shouldSeeBeneficiarySubtitle =
+      isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
+    if (shouldSeeBeneficiarySubtitle) {
+      const credit = formatToFrenchDecimal(availableCredit.amount)
+      return `Tu as ${credit} sur ton pass`
+    }
+    return 'Ton crédit est expiré'
   }
 
   return (
@@ -46,7 +58,7 @@ export const HomeHeader: FunctionComponent = function () {
         <Spacer.Column numberOfSpaces={8} />
         <StyledTitle1>{welcomeTitle}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Body>{subtitle}</Body>
+        <Body>{getSubtitle()}</Body>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>

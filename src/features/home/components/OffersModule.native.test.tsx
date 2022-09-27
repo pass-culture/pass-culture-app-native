@@ -13,7 +13,7 @@ import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { theme } from 'theme'
 
-import { OffersModule } from '../OffersModule'
+import { OffersModule } from './OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
 
