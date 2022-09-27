@@ -15,8 +15,9 @@ export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {
   const bPrice = getOfferPrice(b)
 
   if (aPrice === null && bPrice === null) return 0
-  if (!aPrice) return 1
-  if (!bPrice) return -1
+  if (!aPrice && aPrice !== 0) return 1
+  if (!bPrice && bPrice !== 0) return -1
+
   return aPrice - bPrice
 }
 
