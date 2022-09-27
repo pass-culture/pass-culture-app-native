@@ -72,11 +72,11 @@ function NonBeneficiaryHeaderComponent({
         <BannerContainer>
           <View testID="eligibility-banner-container">
             {!!formattedEligibilityEndDatetime && (
-              <Caption>
+              <StyledCaption>
                 Tu as jusqu’au
                 {formattedEligibilityEndDatetime}
                 pour faire ta demande
-              </Caption>
+              </StyledCaption>
             )}
             {!!nextBeneficiaryValidationStepNavConfig && (
               <ModuleBanner
@@ -118,4 +118,4 @@ const BannerContainer = styled.View({
   position: 'relative',
 })
 
-const Caption = styled(Typo.Caption)({ marginBottom: getSpacing(2) })
+const StyledCaption = styled(Typo.Caption)({ marginBottom: getSpacing(2) })

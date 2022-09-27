@@ -30,15 +30,15 @@ export function IdentityCheckStartContentDesktop({
       <ContentDesktopContainer>
         <StyledTitle4>Vérifie ton identité sur ton smartphone</StyledTitle4>
         <Spacer.Column numberOfSpaces={6} />
-        <StyledBody>
+        <CenteredText>
           Gagne du temps en vérifiant ton identité directement sur ton smartphone&nbsp;! Sinon tu
           peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.
-        </StyledBody>
+        </CenteredText>
         <Spacer.Column numberOfSpaces={2} />
-        <StyledBody>
+        <CenteredText>
           Prends une photo de ta carte d’identité ou de ton passeport en cours de validité pour
           accéder à ton pass Culture.
-        </StyledBody>
+        </CenteredText>
       </ContentDesktopContainer>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
@@ -47,7 +47,7 @@ export function IdentityCheckStartContentDesktop({
       />
       <Spacer.Column numberOfSpaces={8} />
       <DMSInformationContainer>
-        <Body>Tu n’as pas de smartphone&nbsp;?</Body>
+        <StyledBody>Tu n’as pas de smartphone&nbsp;?</StyledBody>
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
           wording="Identification par le site Démarches-Simplifiées"
@@ -68,9 +68,9 @@ const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) 
 
 const StyledTitle4 = styled(Typo.Title4)({ textAlign: 'center' })
 
-const StyledBody = styled(Typo.Body)({ textAlign: 'center' })
+const CenteredText = styled(Typo.Body)({ textAlign: 'center' })
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

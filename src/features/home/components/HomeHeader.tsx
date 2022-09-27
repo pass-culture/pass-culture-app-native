@@ -50,7 +50,7 @@ export const HomeHeader: FunctionComponent = function () {
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
           style={{ top: getSpacing(3) + top }}>
-          <Body>CheatMenu</Body>
+          <StyledBody>CheatMenu</StyledBody>
         </CheatCodeButtonContainer>
       )}
 
@@ -58,14 +58,14 @@ export const HomeHeader: FunctionComponent = function () {
         <Spacer.Column numberOfSpaces={8} />
         <StyledTitle1>{welcomeTitle}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Body>{getSubtitle()}</Body>
+        <StyledBody>{getSubtitle()}</StyledBody>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
