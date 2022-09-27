@@ -25,6 +25,7 @@ features
             |- login.test.ts
             |- otherCall.ts
             |- otherCall.test.ts
+            |- index.ts => optional, exports methods explicitly
         |- components ==> feature-specific UI components
           \
             |- Component1
@@ -41,6 +42,12 @@ features
                 |- Page1.test.tsx
             |- ...
         |- helpers ==> utils or data transform functions
+          \
+              |- helper1.tsx
+              |- helper1.test.tsx
+              |- helper2.tsx
+              |- helper2.test.tsx
+              |- index.ts => optional, exports methods explicitly
         |- fixtures
           \
             |- fixture1.ts ==> data for testing (for example API call responses mocks)
