@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext, useEffect, useMemo } from 'react'
+import React, { memo, useCallback, useContext, useEffect } from 'react'
 import { Linking } from 'react-native'
 
 import { useAppStateChange } from 'libs/appState'
@@ -50,7 +50,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const triggerPositionUpdate = useCallback(async () => {
+  async function triggerPositionUpdate() {
     try {
       const newPosition = await getPosition()
       setPosition(newPosition)
@@ -61,7 +61,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       setPositionError(newPositionError as GeolocationError)
       return null
     }
-  }, [setPosition, setPositionError])
+  }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
   const contextualRequestGeolocPermission = useCallback(
@@ -122,26 +122,16 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
     hideGeolocPermissionModal()
   }
 
-  const value = useMemo(
-    () => ({
-      position,
-      positionError,
-      permissionState,
-      requestGeolocPermission: contextualRequestGeolocPermission,
-      triggerPositionUpdate,
-      showGeolocPermissionModal,
-    }),
-    [
-      contextualRequestGeolocPermission,
-      permissionState,
-      position,
-      positionError,
-      showGeolocPermissionModal,
-      triggerPositionUpdate,
-    ]
-  )
   return (
-    <GeolocationContext.Provider value={value}>
+    <GeolocationContext.Provider
+      value={{
+        position,
+        positionError,
+        permissionState,
+        requestGeolocPermission: contextualRequestGeolocPermission,
+        triggerPositionUpdate,
+        showGeolocPermissionModal,
+      }}>
       {children}
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}

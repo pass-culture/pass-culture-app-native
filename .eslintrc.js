@@ -79,7 +79,6 @@ module.exports = {
       },
     ],
     'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
-    'react/jsx-no-constructed-context-values': 'error',
     'no-restricted-imports': [
       'error',
       { name: 'lottie-react-native', message: 'use libs/lottie instead' },
@@ -130,10 +129,7 @@ module.exports = {
         message: 'use libs/firebase/shims/firestore instead',
       },
       { name: '@react-native-firebase/perf', message: 'use libs/firebase/perf instead' },
-      {
-        name: '@react-native-firebase/remote-config',
-        message: 'use libs/firebase/shims/remote-config instead',
-      },
+      { name: '@react-native-firebase/remote-config', message: 'use libs/firebase/shims/remote-config instead' },
     ],
     'no-restricted-properties': [
       2,
@@ -280,7 +276,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-french-translations': 'off',
-        'react/jsx-no-constructed-context-values': 'off',
       },
     },
   ],
