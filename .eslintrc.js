@@ -75,7 +75,6 @@ module.exports = {
           'StyledButtonText',
           'StyledBody',
           'StyledCaption',
-          'GreyDarkCaption',
         ],
       },
     ],
