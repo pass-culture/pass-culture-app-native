@@ -57,6 +57,7 @@ module.exports = {
           'Typo.ButtonText',
           'Typo.Body',
           'Typo.Caption',
+          'Typo.CaptionNeutralInfo',
           // Styled
           'Hero',
           'Title1',
