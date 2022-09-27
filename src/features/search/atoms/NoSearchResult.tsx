@@ -9,6 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NoSearchResult: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -83,7 +84,9 @@ const ContainerText = styled.View(({ theme }) => ({
     : {}),
 }))
 
-const MainTitle = styled(Typo.Title4)(({ theme }) => ({
+const MainTitle = styled(Typo.Title4).attrs({
+  ...getHeadingAttrs(1),
+})(({ theme }) => ({
   color: theme.colors.black,
   marginTop: getSpacing(4),
 }))
