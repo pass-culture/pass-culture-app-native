@@ -7,7 +7,6 @@ import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
@@ -48,9 +47,9 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Typo.Body>
       </Description>
       <SubDescription>
-        <GreyDarkCaption>
+        <Typo.CaptionNeutralInfo>
           {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}
-        </GreyDarkCaption>
+        </Typo.CaptionNeutralInfo>
       </SubDescription>
       <CallToActionsContainer>
         <ButtonPrimary

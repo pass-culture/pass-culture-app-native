@@ -16,7 +16,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -59,9 +58,9 @@ export const NewConsentSettings = () => {
         {t`L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation.`}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <GreyDarkCaption>
+      <Typo.CaptionNeutralInfo>
         {t`Tu peux choisir d’accepter ou non l’activation de leur suivi.`}
-      </GreyDarkCaption>
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
       <CookiesSettings
         settingsCookiesChoice={settingsCookiesChoice}
@@ -78,7 +77,7 @@ export const NewConsentSettings = () => {
         {t`On te redemandera bien sûr ton consentement si notre politique évolue.`}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <GreyDarkCaption>
+      <Typo.CaptionNeutralInfo>
         {t`Pour plus d’informations, nous t’invitons à consulter notre`}
         <Spacer.Row numberOfSpaces={1} />
         <TouchableLink
@@ -88,7 +87,7 @@ export const NewConsentSettings = () => {
           icon={ExternalSiteFilled}
           typography="Caption"
         />
-      </GreyDarkCaption>
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary wording={t`Enregistrer mes choix`} onPress={saveChoice} center />
       <Spacer.Column numberOfSpaces={4} />

@@ -6,7 +6,6 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/firebase/analytics'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -26,14 +25,14 @@ export function PersonalData() {
     <PageProfileSection title={t`Informations personnelles`}>
       {!!user?.isBeneficiary && (
         <React.Fragment>
-          <GreyDarkCaption>{t`Prénom et nom`}</GreyDarkCaption>
+          <Typo.CaptionNeutralInfo>{t`Prénom et nom`}</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{fullname}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
       )}
 
-      <GreyDarkCaption>{t`Adresse e-mail`}</GreyDarkCaption>
+      <Typo.CaptionNeutralInfo>{t`Adresse e-mail`}</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
@@ -49,14 +48,14 @@ export function PersonalData() {
 
       {!!user?.isBeneficiary && (
         <React.Fragment>
-          <GreyDarkCaption>{t`Numéro de téléphone`}</GreyDarkCaption>
+          <Typo.CaptionNeutralInfo>{t`Numéro de téléphone`}</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{user?.phoneNumber}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
       )}
 
-      <GreyDarkCaption>{t`Mot de passe`}</GreyDarkCaption>
+      <Typo.CaptionNeutralInfo>{t`Mot de passe`}</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{'*'.repeat(12)}</EditText>

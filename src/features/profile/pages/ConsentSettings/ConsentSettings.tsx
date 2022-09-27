@@ -14,7 +14,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -71,7 +70,7 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <MoreInformationContainer>
-        <GreyDarkCaption>
+        <Typo.CaptionNeutralInfo>
           {t`Pour plus d'informations, nous t'invitons à consulter notre`}
           <Spacer.Row numberOfSpaces={1} />
           <TouchableLink
@@ -81,7 +80,7 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
             icon={ExternalSiteFilled}
             typography="Caption"
           />
-        </GreyDarkCaption>
+        </Typo.CaptionNeutralInfo>
       </MoreInformationContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Separator />

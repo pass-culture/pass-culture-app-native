@@ -14,7 +14,6 @@ import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
@@ -80,7 +79,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
         <Spacer.Column numberOfSpaces={8} />
         <BottomContentContainer>
           <WarningContainer>
-            <GreyDarkCaption>Attention, il te reste&nbsp;: </GreyDarkCaption>
+            <Typo.CaptionNeutralInfo>Attention, il te reste&nbsp;: </Typo.CaptionNeutralInfo>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording}
             </WarningRemainingAttempts>

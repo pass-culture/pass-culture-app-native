@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Spacer, Typo } from 'ui/theme'
 
 export const CookiesConsentExplanations = () => (
@@ -16,10 +15,10 @@ export const CookiesConsentExplanations = () => (
       politique de gestion des cookies.
     </Typo.Body>
     <Spacer.Column numberOfSpaces={4} />
-    <GreyDarkCaption>
+    <Typo.CaptionNeutralInfo>
       Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
       confidentialité de ton profil à tout moment.
-    </GreyDarkCaption>
+    </Typo.CaptionNeutralInfo>
     <Spacer.Column numberOfSpaces={4} />
   </React.Fragment>
 )

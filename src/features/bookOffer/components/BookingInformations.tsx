@@ -6,7 +6,6 @@ import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddres
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -115,7 +114,7 @@ const Item: React.FC<{
       <Spacer.Row numberOfSpaces={3} />
       {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
       <Spacer.Row numberOfSpaces={2} />
-      <GreyDarkCaption>{subtext}</GreyDarkCaption>
+      <Typo.CaptionNeutralInfo>{subtext}</Typo.CaptionNeutralInfo>
     </Row>
   )
 }
