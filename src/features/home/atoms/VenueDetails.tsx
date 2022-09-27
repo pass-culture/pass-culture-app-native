@@ -22,7 +22,7 @@ export const VenueDetails = (props: VenueDetailsProps) => {
       <Row>
         <TypeLabel>{typeLabel}</TypeLabel>
         {/* eslint-disable-next-line react-native/no-raw-text */}
-        {!!distance && <Distance>{` | ${distance}`}</Distance>}
+        {!!distance && <Typo.CaptionNeutralInfo>{` | ${distance}`}</Typo.CaptionNeutralInfo>}
       </Row>
     </Container>
   )
@@ -44,5 +44,3 @@ const Row = styled.View({
 const TypeLabel = styled(Typo.Caption).attrs({
   numberOfLines: 1,
 })(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))
-
-const Distance = styled(Typo.CaptionNeutralInfo)``
