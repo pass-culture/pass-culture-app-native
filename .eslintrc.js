@@ -212,6 +212,7 @@ module.exports = {
         ignoreImports: [
           './__mocks__',
           './src/tests',
+          './src/features/cheatcodes/pages/AppComponents/IconsContainer.tsx'
         ],
       },
     ],
