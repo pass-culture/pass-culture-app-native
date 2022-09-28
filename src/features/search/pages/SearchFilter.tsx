@@ -77,7 +77,9 @@ export const SearchFilter: React.FC = () => {
           <Separator />
 
           {/* Type d'offre */}
+          <Spacer.Column numberOfSpaces={4} />
           <Section.OfferType />
+          <Spacer.Column numberOfSpaces={4} />
           <Separator />
           <Spacer.Column numberOfSpaces={4} />
 

@@ -42,7 +42,13 @@ describe('<ReinitializeFilters />', () => {
           locationType: 'EVERYWHERE',
         },
         offerCategories: [],
+        offerIsDuo: false,
         offerIsFree: false,
+        offerTypes: {
+          isDigital: false,
+          isEvent: false,
+          isThing: false,
+        },
         priceRange: null,
         minPrice: undefined,
         maxPrice: undefined,

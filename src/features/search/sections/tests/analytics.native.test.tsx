@@ -34,6 +34,10 @@ jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
 }))
 
+jest.mock('ui/components/modals/useModal', () => ({
+  useModal: () => jest.requireActual('ui/components/modals/useModal').useModal(true),
+}))
+
 describe('Analytics - logUseFilter', () => {
   beforeEach(() => {
     mockdate.set(Today)
