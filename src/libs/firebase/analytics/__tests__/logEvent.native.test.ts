@@ -3,6 +3,7 @@ import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 const mockLogEvent = jest.fn()
 jest.mock('@react-native-firebase/analytics', () => () => ({
+  setAnalyticsCollectionEnabled: jest.fn(),
   logEvent: mockLogEvent,
 }))
 

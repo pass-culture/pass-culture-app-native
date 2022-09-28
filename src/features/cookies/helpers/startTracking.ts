@@ -5,12 +5,12 @@ import { Batch } from 'libs/react-native-batch'
 
 export const startTracking = (enabled: boolean) => {
   if (enabled) {
-    amplitude().enableCollection()
+    amplitude.enableCollection()
     analytics.enableCollection()
     campaignTracker.startAppsFlyer(true)
     Batch.optIn()
   } else {
-    amplitude().disableCollection()
+    amplitude.disableCollection()
     analytics.disableCollection()
     campaignTracker.startAppsFlyer(false)
     Batch.optOut()

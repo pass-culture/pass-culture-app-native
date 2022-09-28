@@ -14,6 +14,7 @@ import { version } from '../../../../package.json'
 import { AnalyticsProvider } from './types'
 
 const firebaseAnalytics = firebaseAnalyticsModule()
+firebaseAnalytics.setAnalyticsCollectionEnabled(false)
 
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {

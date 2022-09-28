@@ -41,7 +41,7 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     headerTitle: 'Adresse e-mail',
     Component: SetEmail,
     tracker: async () => {
-      await amplitude().logEvent('user_set_email_clicked_front')
+      await amplitude.logEvent('user_set_email_clicked_front')
       await analytics.logContinueSetEmail()
     },
   },
@@ -119,7 +119,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
       }
       navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
 
-      await amplitude().logEvent('user_accepted_terms_clicked_front')
+      await amplitude.logEvent('user_accepted_terms_clicked_front')
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
       eventMonitoring.captureException(error)

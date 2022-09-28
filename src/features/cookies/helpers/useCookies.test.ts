@@ -8,6 +8,7 @@ import { v4 } from '__mocks__/uuid'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import * as useUserProfileInfoAPI from 'features/profile/api'
@@ -19,6 +20,10 @@ const mockUseUserProfileInfo = jest.spyOn(useUserProfileInfoAPI, 'useUserProfile
 mockUseUserProfileInfo.mockReturnValue({
   data: undefined,
 } as UsePersistQueryResult<UserProfileResponse, unknown>)
+const mockStartTrackingAcceptedCookies = jest.spyOn(
+  TrackingAcceptedCookies,
+  'startTrackingAcceptedCookies'
+)
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
@@ -107,6 +112,25 @@ describe('useCookies', () => {
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         })
+      })
+    })
+
+    it('should start tracking accepted cookies when consent is already in storage', async () => {
+      storage.saveObject(COOKIES_CONSENT_KEY, {
+        buildVersion: Package.build,
+        deviceId,
+        choiceDatetime: TODAY,
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      })
+
+      renderHook(useCookies)
+
+      await waitFor(() => {
+        expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES)
       })
     })
 

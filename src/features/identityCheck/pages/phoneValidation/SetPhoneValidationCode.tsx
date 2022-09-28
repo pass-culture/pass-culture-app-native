@@ -105,7 +105,7 @@ export const SetPhoneValidationCode = () => {
       }
     }
 
-    await amplitude().logEvent('young18_set_phone_validation_code_clicked_front')
+    await amplitude.logEvent('young18_set_phone_validation_code_clicked_front')
   }
 
   const enterCodeInstructions =
