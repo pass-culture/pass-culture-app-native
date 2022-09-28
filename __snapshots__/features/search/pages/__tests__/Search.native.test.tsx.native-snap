@@ -255,6 +255,7 @@ exports[`Search component should render Search 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
+          "overflowY": "auto",
         },
       ]
     }
@@ -297,8 +298,9 @@ exports[`Search component should render Search 1`] = `
         }
         contentContainerStyle={
           Object {
+            "paddingBottom": 88,
             "paddingHorizontal": 20,
-            "paddingVertical": 24,
+            "paddingTop": 24,
           }
         }
         data={
