@@ -12,13 +12,12 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Check } from 'ui/svg/icons/Check'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingItemTitle } from './BookingItemTitle'
@@ -80,7 +79,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
             <EndedReasonAndDate>
               {endedBookingReason}
               <Spacer.Row numberOfSpaces={1} />
-              <GreyDarkCaption>{endedBookingDateLabel}</GreyDarkCaption>
+              <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
             </EndedReasonAndDate>
           </AttributesView>
         </ItemContainer>

@@ -64,7 +64,6 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
   )
 }
 
-const Intro = styled(Typo.Caption)(({ theme }) => ({
+const Intro = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'left',
-  color: theme.colors.greyDark,
-}))
+})

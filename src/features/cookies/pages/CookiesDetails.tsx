@@ -36,7 +36,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledCaption>
+      <Typo.CaptionNeutralInfo>
         {buttonText}
         <Spacer.Row numberOfSpaces={1} />
         <TouchableLink
@@ -46,15 +46,11 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
           icon={ExternalSiteFilled}
           typography="Caption"
         />
-      </StyledCaption>
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
     </React.Fragment>
   )
 }
-
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
 
 const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(AccordionItem).attrs(({ theme }) => ({

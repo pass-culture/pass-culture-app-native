@@ -25,6 +25,4 @@ const Container = styled.View({
   paddingTop: getSpacing(2),
 })
 
-const StyledCaption = styled(Typo.Caption).attrs(getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
+const StyledCaption = styled(Typo.CaptionNeutralInfo).attrs(getHeadingAttrs(2))``

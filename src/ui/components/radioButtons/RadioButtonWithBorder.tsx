@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -33,7 +32,7 @@ export const RadioButtonWithBorder = ({ label, description, selected, onPress }:
       onPress={onPressFn}>
       <TextContainer ref={containerRef}>
         <ButtonText selected={selected}>{label}</ButtonText>
-        {description ? <GreyDarkCaption>{description}</GreyDarkCaption> : null}
+        {description ? <Typo.CaptionNeutralInfo>{description}</Typo.CaptionNeutralInfo> : null}
       </TextContainer>
       {selected ? (
         <IconContainer>

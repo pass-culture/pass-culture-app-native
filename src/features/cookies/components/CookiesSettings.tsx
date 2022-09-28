@@ -12,7 +12,6 @@ import { CookiesChoiceSettings } from 'features/cookies/types'
 import { analytics } from 'libs/firebase/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Separator } from 'ui/components/Separator'
@@ -62,7 +61,7 @@ export const CookiesSettings = ({
       </Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
-        <GreyDarkCaption>Je choisis mes cookies</GreyDarkCaption>
+        <Typo.CaptionNeutralInfo>Je choisis mes cookies</Typo.CaptionNeutralInfo>
         <AcceptAllContainer>
           <StyledInputLabel htmlFor={checkboxID}>{inputLabel}</StyledInputLabel>
           <Spacer.Row numberOfSpaces={2} />
@@ -120,10 +119,10 @@ const InfoCaption: React.FC = ({ children }) => (
     <IconContainer>
       <StyledInfo />
     </IconContainer>
-    <GreyDarkCaption>
+    <Typo.CaptionNeutralInfo>
       <IconSpacer />
       {children}
-    </GreyDarkCaption>
+    </Typo.CaptionNeutralInfo>
   </View>
 )
 

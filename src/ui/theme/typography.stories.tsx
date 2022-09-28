@@ -105,3 +105,10 @@ export const CaptionSecondary: ComponentStory<typeof Typo.CaptionSecondary> = ({
 CaptionSecondary.args = {
   children: 'CaptionSecondary',
 }
+
+export const CaptionNeutralInfo: ComponentStory<typeof Typo.CaptionNeutralInfo> = ({
+  children,
+}) => <Typo.CaptionNeutralInfo>{children}</Typo.CaptionNeutralInfo>
+CaptionNeutralInfo.args = {
+  children: 'CaptionNeutralInfo',
+}

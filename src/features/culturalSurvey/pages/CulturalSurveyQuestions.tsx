@@ -36,7 +36,6 @@ import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
@@ -188,7 +187,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
         testID="cultural-survey-questions-scrollview">
         <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
         <CaptionContainer>
-          <GreyDarkCaption>{pageSubtitle}</GreyDarkCaption>
+          <Typo.CaptionNeutralInfo>{pageSubtitle}</Typo.CaptionNeutralInfo>
         </CaptionContainer>
         <VerticalUl>
           {culturalSurveyQuestion?.answers.map((answer) => (

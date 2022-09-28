@@ -5,7 +5,6 @@ import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -55,7 +54,7 @@ export function IdentityCheckStartContentDesktop({
           onPress={showDMSModal}
           icon={ExternalFilledIcon}
         />
-        <GreyDarkCaption>Environ 10 jours</GreyDarkCaption>
+        <Typo.CaptionNeutralInfo>Environ 10 jours</Typo.CaptionNeutralInfo>
       </DMSInformationContainer>
       <DMSModal visible={visible} hideModal={hideModal} />
       <Spacer.Column numberOfSpaces={6} />

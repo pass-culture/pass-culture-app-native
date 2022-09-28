@@ -12,7 +12,6 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer } from 'ui/theme'
@@ -52,9 +51,9 @@ export const Location: React.FC = () => {
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <GreyDarkCaption nativeID={captionId}>
+          <Typo.CaptionNeutralInfo nativeID={captionId}>
             {t`Seules les sorties et offres physiques seront affichées`}
-          </GreyDarkCaption>
+          </Typo.CaptionNeutralInfo>
         </React.Fragment>
       ) : null}
     </Section>

@@ -27,7 +27,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
@@ -245,7 +244,7 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const OfferRules = styled(GreyDarkCaption)({
+const OfferRules = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',
 })
 

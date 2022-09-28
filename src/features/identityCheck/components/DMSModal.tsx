@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
@@ -44,7 +43,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <GreyDarkCaption>Carte d’identité ou passeport.</GreyDarkCaption>
+    <Typo.CaptionNeutralInfo>Carte d’identité ou passeport.</Typo.CaptionNeutralInfo>
     <Spacer.Column numberOfSpaces={8} />
     <TouchableLink
       as={ButtonTertiaryBlack}
@@ -54,7 +53,9 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <GreyDarkCaption>Titre de séjour, carte d’identité, ou passeport.</GreyDarkCaption>
+    <Typo.CaptionNeutralInfo>
+      Titre de séjour, carte d’identité, ou passeport.
+    </Typo.CaptionNeutralInfo>
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>
 )

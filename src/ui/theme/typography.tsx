@@ -96,6 +96,10 @@ const CaptionSecondary = styled(Caption)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
+export const CaptionNeutralInfo = styled(Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
 export const Typo = {
   Hero,
   Title1,
@@ -110,4 +114,5 @@ export const Typo = {
   Caption,
   CaptionPrimary,
   CaptionSecondary,
+  CaptionNeutralInfo,
 }

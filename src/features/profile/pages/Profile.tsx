@@ -17,7 +17,6 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { Section } from 'ui/components/Section'
@@ -33,7 +32,7 @@ import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
@@ -243,7 +242,7 @@ const OnlineProfile: React.FC = () => {
         )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <GreyDarkCaption>Version&nbsp;{Package.version}</GreyDarkCaption>
+          <Typo.CaptionNeutralInfo>Version&nbsp;{Package.version}</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />

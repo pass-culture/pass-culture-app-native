@@ -14,7 +14,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -152,9 +151,9 @@ export function NotificationSettings() {
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <Spacer.Column numberOfSpaces={4} />
-      <GreyDarkCaption>
+      <Typo.CaptionNeutralInfo>
         {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
-      </GreyDarkCaption>
+      </Typo.CaptionNeutralInfo>
       <Form.Flex>
         <SectionWithSwitch
           title={t`Autoriser l’envoi d’e-mails`}
@@ -166,9 +165,9 @@ export function NotificationSettings() {
           <React.Fragment>
             <Separator />
             <Spacer.Column numberOfSpaces={4} />
-            <GreyDarkCaption>
+            <Typo.CaptionNeutralInfo>
               {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
-            </GreyDarkCaption>
+            </Typo.CaptionNeutralInfo>
             <SectionWithSwitch
               title={t`Autoriser les notifications marketing`}
               active={pushSwitchEnabled}

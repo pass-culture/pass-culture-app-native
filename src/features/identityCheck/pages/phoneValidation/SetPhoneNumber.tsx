@@ -28,7 +28,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
@@ -165,11 +164,11 @@ export const SetPhoneNumber = () => {
       fixedBottomChildren={
         <BottomContentContainer>
           <RemainingAttemptsContainer>
-            <GreyDarkCaption>{t`Il te reste` + ' '}</GreyDarkCaption>
+            <Typo.CaptionNeutralInfo>{t`Il te reste` + ' '}</Typo.CaptionNeutralInfo>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording + ' '}
             </WarningRemainingAttempts>
-            <GreyDarkCaption>{t`de code de validation`}</GreyDarkCaption>
+            <Typo.CaptionNeutralInfo>{t`de code de validation`}</Typo.CaptionNeutralInfo>
           </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary

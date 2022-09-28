@@ -7,7 +7,6 @@ import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Info } from 'ui/svg/icons/Info'
@@ -45,10 +44,10 @@ export const IdentityCheckEduConnectForm = () => {
             <HavingTroubleContainer>
               <Info />
               <Spacer.Row numberOfSpaces={2} />
-              <GreyDarkCaption>
+              <Typo.CaptionNeutralInfo>
                 Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à
                 accepter les pop-ups de ton navigateur.
-              </GreyDarkCaption>
+              </Typo.CaptionNeutralInfo>
             </HavingTroubleContainer>
 
             <Spacer.Column numberOfSpaces={8} />

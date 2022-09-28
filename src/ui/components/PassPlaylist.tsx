@@ -146,10 +146,9 @@ const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
 
 const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
-const StyledSubtitle = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
-  color: theme.colors.greyDark,
+const StyledSubtitle = styled(Typo.CaptionNeutralInfo).attrs({ numberOfLines: 2 })({
   marginHorizontal: getSpacing(6),
-}))
+})
 
 const TitleContainer = styled.View(({ theme }) => ({
   // The size of the title block should not exceed two lines of title and one of subtitle

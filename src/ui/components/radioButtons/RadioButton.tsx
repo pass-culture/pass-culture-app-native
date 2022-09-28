@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -60,7 +59,9 @@ export function RadioButton(props: RadioButtonProps) {
         )}
         <View>
           <Label isSelected={props.isSelected}>{props.label}</Label>
-          {!!props.description && <GreyDarkCaption>{props.description}</GreyDarkCaption>}
+          {!!props.description && (
+            <Typo.CaptionNeutralInfo>{props.description}</Typo.CaptionNeutralInfo>
+          )}
         </View>
       </LabelContainer>
       <IconContainer>{props.isSelected ? <ValidateIconPrimary /> : <ValidateOff />}</IconContainer>

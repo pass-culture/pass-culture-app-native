@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { Background } from 'ui/svg/Background'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -39,7 +38,7 @@ const ChildrenContainer = styled.View<WithBackgroundProps>(({ withBackground }) 
   padding: withBackground ? getSpacing(5) : 0,
 }))
 
-const StyledCaption = styled(GreyDarkCaption)(({ theme }) => ({
+const StyledCaption = styled(Typo.CaptionNeutralInfo)(({ theme }) => ({
   fontFamily: theme.fontFamily.regular,
   fontStyle: 'italic',
 }))

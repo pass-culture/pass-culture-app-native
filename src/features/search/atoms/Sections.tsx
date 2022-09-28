@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -47,7 +46,7 @@ export const InlineSection: React.FC<{
     {!!subtitle && (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
-        <GreyDarkCaption nativeID={subtitleID}>{subtitle}</GreyDarkCaption>
+        <Typo.CaptionNeutralInfo nativeID={subtitleID}>{subtitle}</Typo.CaptionNeutralInfo>
       </React.Fragment>
     )}
   </MarginHorizontalContainer>

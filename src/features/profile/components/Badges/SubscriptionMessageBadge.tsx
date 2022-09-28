@@ -6,9 +6,8 @@ import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
@@ -26,9 +25,9 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
     <React.Fragment>
       {!!props.subscriptionMessage?.updatedAt && (
         <React.Fragment>
-          <GreyDarkCaption>
+          <Typo.CaptionNeutralInfo>
             {formatDateToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
-          </GreyDarkCaption>
+          </Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}

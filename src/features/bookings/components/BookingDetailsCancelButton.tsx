@@ -76,7 +76,6 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   return renderButton
 }
 
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',
-  color: theme.colors.greyDark,
-}))
+})

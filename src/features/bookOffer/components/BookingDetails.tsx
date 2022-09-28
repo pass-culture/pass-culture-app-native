@@ -15,9 +15,8 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GreyDarkCaption } from 'ui/components/GreyDarkCaption'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 import { useBookOfferMutation } from '../services/useBookOfferMutation'
@@ -157,7 +156,7 @@ const Separator = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const Caption = styled(GreyDarkCaption)({
+const Caption = styled(Typo.CaptionNeutralInfo)({
   marginTop: getSpacing(1),
   textAlign: 'center',
 })
