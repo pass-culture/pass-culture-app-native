@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useUserProfileInfo } from 'features/profile/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
@@ -59,6 +60,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const [radioButtonChoice, setRadioButtonChoice] = useState('Tous les types')
   const { searchState, dispatch } = useSearch()
   const { isDesktopViewport } = useTheme()
+  const { data: profile } = useUserProfileInfo()
   const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
@@ -194,21 +196,23 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          <Controller
-            control={control}
-            name="offerIsDuo"
-            render={({ field: { value } }) => (
-              <React.Fragment>
-                <FilterSwitchWithLabel
-                  isActive={value}
-                  toggle={toggleLimitDuoOfferSearch}
-                  label="Uniquement les offres duo"
-                  testID="limitDuoOfferSearch"
-                />
-                <Spacer.Column numberOfSpaces={6} />
-              </React.Fragment>
-            )}
-          />
+          {!!profile?.isBeneficiary && !!profile?.domainsCredit?.all?.remaining && (
+              <Controller
+              control={control}
+              name="offerIsDuo"
+              render={({ field: { value } }) => (
+                <React.Fragment>
+                  <FilterSwitchWithLabel
+                    isActive={value}
+                    toggle={toggleLimitDuoOfferSearch}
+                    label="Uniquement les offres duo"
+                    testID="limitDuoOfferSearch"
+                  />
+                  <Spacer.Column numberOfSpaces={6} />
+                </React.Fragment>
+              )}
+            />
+          )}
         </Form.MaxWidth>
       </StyledScrollView>
     </AppModal>
