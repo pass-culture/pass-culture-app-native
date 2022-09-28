@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
@@ -15,6 +17,8 @@ export const SelectPhoneStatus: FunctionComponent = () => {
 }
 
 const SelectPhoneStatusContent: FunctionComponent = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
   return (
     <Container>
       <StyledBicolorPhonePending />
@@ -32,7 +36,7 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
             Title={<Typo.Body>J’ai un smartphone à proximité</Typo.Body>}
             icon={BicolorSmartphone}
             onPress={() => {
-              return
+              navigate('SelectIDStatus')
             }}
           />
         </Li>

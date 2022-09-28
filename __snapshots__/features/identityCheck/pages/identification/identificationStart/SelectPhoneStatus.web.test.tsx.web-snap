@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectPhoneStatus should render correctly 1`] = `
-.c0 {
+Object {
+  "asFragment": [Function],
+  "baseElement": .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -56,740 +58,651 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
   align-items: center;
 }
 
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitBoxDirection": "normal",
-      "WebkitBoxFlex": 1,
-      "WebkitBoxOrient": "vertical",
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexDirection": "column",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "backgroundColor": "rgba(235,0,85,1.00)",
-      "display": "flex",
-      "flexBasis": "0px",
-      "flexDirection": "column",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "msFlexDirection": "column",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-      "paddingTop": "8px",
-    }
-  }
->
-  <header
-    className="css-view-1dbjc4n"
-    role="banner"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "72px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "backgroundColor": "rgba(235,0,85,1.00)",
-          "position": "absolute",
-          "top": "0px",
-          "width": "100%",
-          "zIndex": 1,
-        }
-      }
-    >
+<body>
+    <div>
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxPack": "end",
-            "WebkitJustifyContent": "flex-end",
-            "alignItems": "center",
-            "height": "56px",
-            "justifyContent": "flex-end",
-            "msFlexAlign": "center",
-            "msFlexPack": "end",
-            "paddingBottom": "12px",
-          }
-        }
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
       >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitAlignItems": "center",
-              "WebkitBoxAlign": "center",
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxOrient": "horizontal",
-              "WebkitBoxPack": "justify",
-              "WebkitFlexDirection": "row",
-              "WebkitJustifyContent": "space-between",
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "msFlexAlign": "center",
-              "msFlexDirection": "row",
-              "msFlexPack": "justify",
-              "width": "100%",
-            }
-          }
+        <header
+          class="css-view-1dbjc4n"
+          role="banner"
+          style="width: 100%;"
         >
           <div
-            className="css-view-1dbjc4n"
-            data-testid="Revenir en arrière"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "start",
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexDirection": "row",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitJustifyContent": "flex-start",
-                "alignItems": "center",
-                "flexBasis": "0px",
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexNegative": 1,
-                "msFlexPack": "start",
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-                "paddingLeft": "12px",
-                "paddingRight": "12px",
-              }
-            }
-          >
-            <button
-              aria-label="Revenir en arrière"
-              className="c0 c1 sc-gsDKAQ c1"
-              data-testid="backButton"
-              onClick={[MockFunction]}
-              tabIndex="0"
-              title="Revenir en arrière"
-              type="button"
-            >
-              <div
-                className="css-view-1dbjc4n"
-                data-testid="icon-back"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="ltr"
-                >
-                  icon-back-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-text-901oao"
-                dir="ltr"
-                style={
-                  Object {
-                    "WebkitClipPath": "inset(50%)",
-                    "clipPath": "inset(50%)",
-                    "height": "1px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "1px",
-                  }
-                }
-              >
-                Retour
-              </div>
-            </button>
-          </div>
-          <h1
-            aria-level={1}
-            className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-            dir="ltr"
-            role="heading"
-            style={
-              Object {
-                "WebkitLineClamp": 1,
-                "color": "rgba(255,255,255,1.00)",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "18px",
-                "lineHeight": "22px",
-                "textAlign": "center",
-              }
-            }
-          >
-            Identification
-          </h1>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "end",
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexDirection": "row",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitJustifyContent": "flex-end",
-                "alignItems": "center",
-                "flexBasis": "0px",
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexNegative": 1,
-                "msFlexPack": "end",
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-                "paddingLeft": "12px",
-                "paddingRight": "12px",
-              }
-            }
+            class="css-view-1dbjc4n"
+            style="height: 72px;"
           />
-        </div>
-      </div>
-    </div>
-  </header>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "alignItems": "center",
-          "backgroundColor": "rgba(255,255,255,1.00)",
-          "borderTopLeftRadius": "22px",
-          "borderTopRightRadius": "22px",
-          "display": "flex",
-          "flexBasis": "0px",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "height": "100%",
-          "msFlexAlign": "center",
-          "msFlexDirection": "column",
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-          "overflowX": "scroll",
-          "overflowY": "scroll",
-          "paddingTop": "12px",
-        }
-      }
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxFlex": 1,
-            "WebkitFlexBasis": "0px",
-            "WebkitFlexGrow": 1,
-            "WebkitFlexShrink": 1,
-            "flexBasis": "0px",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "maxWidth": "500px",
-            "msFlexNegative": 1,
-            "msFlexPositive": 1,
-            "msFlexPreferredSize": "0px",
-            "width": "100%",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          onScroll={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onWheel={[Function]}
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "vertical",
-              "WebkitFlexDirection": "column",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitOverflowScrolling": "touch",
-              "WebkitTransform": "translateZ(0px)",
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexDirection": "column",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "overflowX": "hidden",
-              "overflowY": "auto",
-              "transform": "translateZ(0px)",
-            }
-          }
-        >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "vertical",
-                "WebkitFlexDirection": "column",
-                "WebkitFlexGrow": 1,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "msFlexDirection": "column",
-                "msFlexPositive": 1,
-                "paddingBottom": "0px",
-                "paddingLeft": "20px",
-                "paddingRight": "20px",
-              }
-            }
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
           >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "alignItems": "center",
-                  "height": "100%",
-                  "marginBottom": "32px",
-                  "marginLeft": "4px",
-                  "marginRight": "4px",
-                  "marginTop": "32px",
-                  "msFlexAlign": "center",
-                }
-              }
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; height: 56px; justify-content: flex-end; padding-bottom: 12px;"
             >
               <div
-                className="css-view-1dbjc4n"
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <div
-                  className="css-text-901oao"
-                  dir="ltr"
+                  class="css-view-1dbjc4n"
+                  data-testid="Revenir en arrière"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
                 >
-                  undefined-SVG-Mock
+                  <button
+                    aria-label="Revenir en arrière"
+                    class="c0 c1 sc-gsDKAQ c1"
+                    data-testid="backButton"
+                    tabindex="0"
+                    title="Revenir en arrière"
+                    type="button"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="icon-back"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        icon-back-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
+                    >
+                      Retour
+                    </div>
+                  </button>
+                </div>
+                <h1
+                  aria-level="1"
+                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                  dir="ltr"
+                  role="heading"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                >
+                  Identification
+                </h1>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                />
+              </div>
+            </div>
+          </div>
+        </header>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; height: 100%; margin: 32px 4px 32px 4px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 16px;"
+                    />
+                    <h4
+                      aria-level="4"
+                      class="css-reset-4rbku5 css-text-901oao"
+                      dir="ltr"
+                      role="heading"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                    >
+                      Vérifie ton identité avec un smartphone
+                    </h4>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 16px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                    >
+                      Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 32px;"
+                    />
+                    <ul
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="list"
+                      style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px; width: 100%;"
+                    >
+                      <li
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="listitem"
+                        style="display: list-item;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="HeroButtonList"
+                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-content: center;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="BicolorSmartphone"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                BicolorSmartphone-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                            >
+                              J’ai un smartphone à proximité
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 24px;"
+                      />
+                      <li
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="listitem"
+                        style="display: list-item;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="HeroButtonList"
+                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-content: center;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                            >
+                              Je n’ai pas de smartphone à proximité
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "16px",
-                  }
-                }
-              />
-              <h4
-                aria-level={4}
-                className="css-reset-4rbku5 css-text-901oao"
-                dir="ltr"
-                role="heading"
-                style={
-                  Object {
-                    "color": "rgba(22,22,23,1.00)",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": "18px",
-                    "lineHeight": "22px",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Vérifie ton identité avec un smartphone
-              </h4>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "16px",
-                  }
-                }
-              />
-              <div
-                className="css-text-901oao"
-                dir="ltr"
-                style={
-                  Object {
-                    "color": "rgba(22,22,23,1.00)",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "32px",
-                  }
-                }
-              />
-              <ul
-                className="css-reset-4rbku5 css-view-1dbjc4n"
-                role="list"
-                style={
-                  Object {
-                    "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "vertical",
-                    "WebkitFlexDirection": "column",
-                    "flexDirection": "column",
-                    "msFlexDirection": "column",
-                    "overflowX": "auto",
-                    "overflowY": "auto",
-                    "paddingLeft": "0px",
-                    "width": "100%",
-                  }
-                }
-              >
-                <li
-                  className="css-reset-4rbku5 css-view-1dbjc4n"
-                  role="listitem"
-                  style={
-                    Object {
-                      "display": "list-item",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    data-testid="HeroButtonList"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onContextMenu={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    style={
-                      Object {
-                        "MozTransitionProperty": "opacity",
-                        "MozUserSelect": "auto",
-                        "WebkitAlignItems": "center",
-                        "WebkitBoxAlign": "center",
-                        "WebkitBoxDirection": "normal",
-                        "WebkitBoxOrient": "horizontal",
-                        "WebkitBoxPack": "start",
-                        "WebkitFlexDirection": "row",
-                        "WebkitJustifyContent": "flex-start",
-                        "WebkitTransitionDuration": "0s",
-                        "WebkitTransitionProperty": "opacity",
-                        "WebkitUserSelect": "auto",
-                        "alignItems": "center",
-                        "borderBottomColor": "rgba(144,148,157,1.00)",
-                        "borderBottomLeftRadius": "7px",
-                        "borderBottomRightRadius": "7px",
-                        "borderBottomStyle": "solid",
-                        "borderBottomWidth": "1px",
-                        "borderLeftColor": "rgba(144,148,157,1.00)",
-                        "borderLeftStyle": "solid",
-                        "borderLeftWidth": "1px",
-                        "borderRightColor": "rgba(144,148,157,1.00)",
-                        "borderRightStyle": "solid",
-                        "borderRightWidth": "1px",
-                        "borderTopColor": "rgba(144,148,157,1.00)",
-                        "borderTopLeftRadius": "7px",
-                        "borderTopRightRadius": "7px",
-                        "borderTopStyle": "solid",
-                        "borderTopWidth": "1px",
-                        "cursor": "pointer",
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "minHeight": "92px",
-                        "msFlexAlign": "center",
-                        "msFlexDirection": "row",
-                        "msFlexPack": "start",
-                        "msTouchAction": "manipulation",
-                        "msUserSelect": "auto",
-                        "paddingBottom": "16px",
-                        "paddingLeft": "16px",
-                        "paddingRight": "16px",
-                        "paddingTop": "16px",
-                        "touchAction": "manipulation",
-                        "transitionDuration": "0s",
-                        "transitionProperty": "opacity",
-                        "userSelect": "auto",
-                      }
-                    }
-                    tabIndex="0"
-                  >
-                    <div
-                      className="css-view-1dbjc4n"
-                      style={
-                        Object {
-                          "WebkitAlignContent": "center",
-                          "alignContent": "center",
-                          "msFlexLinePack": "center",
-                        }
-                      }
-                    >
-                      <div
-                        className="css-view-1dbjc4n"
-                        data-testid="BicolorSmartphone"
-                      >
-                        <div
-                          className="css-text-901oao"
-                          dir="ltr"
-                        >
-                          BicolorSmartphone-SVG-Mock
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="css-view-1dbjc4n"
-                      style={
-                        Object {
-                          "WebkitBoxFlex": 1,
-                          "WebkitFlexBasis": "0px",
-                          "WebkitFlexGrow": 1,
-                          "WebkitFlexShrink": 1,
-                          "flexBasis": "0px",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": "16px",
-                          "marginRight": "16px",
-                          "msFlexNegative": 1,
-                          "msFlexPositive": 1,
-                          "msFlexPreferredSize": "0px",
-                        }
-                      }
-                    >
-                      <div
-                        className="css-text-901oao"
-                        dir="ltr"
-                        style={
-                          Object {
-                            "color": "rgba(22,22,23,1.00)",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": "15px",
-                            "lineHeight": "20px",
-                          }
-                        }
-                      >
-                        J’ai un smartphone à proximité
-                      </div>
-                    </div>
-                    <div
-                      className="css-view-1dbjc4n"
-                    >
-                      <div
-                        className="css-view-1dbjc4n"
-                      >
-                        <div
-                          className="css-text-901oao"
-                          dir="ltr"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "24px",
-                    }
-                  }
-                />
-                <li
-                  className="css-reset-4rbku5 css-view-1dbjc4n"
-                  role="listitem"
-                  style={
-                    Object {
-                      "display": "list-item",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    data-testid="HeroButtonList"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onContextMenu={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    style={
-                      Object {
-                        "MozTransitionProperty": "opacity",
-                        "MozUserSelect": "auto",
-                        "WebkitAlignItems": "center",
-                        "WebkitBoxAlign": "center",
-                        "WebkitBoxDirection": "normal",
-                        "WebkitBoxOrient": "horizontal",
-                        "WebkitBoxPack": "start",
-                        "WebkitFlexDirection": "row",
-                        "WebkitJustifyContent": "flex-start",
-                        "WebkitTransitionDuration": "0s",
-                        "WebkitTransitionProperty": "opacity",
-                        "WebkitUserSelect": "auto",
-                        "alignItems": "center",
-                        "borderBottomColor": "rgba(144,148,157,1.00)",
-                        "borderBottomLeftRadius": "7px",
-                        "borderBottomRightRadius": "7px",
-                        "borderBottomStyle": "solid",
-                        "borderBottomWidth": "1px",
-                        "borderLeftColor": "rgba(144,148,157,1.00)",
-                        "borderLeftStyle": "solid",
-                        "borderLeftWidth": "1px",
-                        "borderRightColor": "rgba(144,148,157,1.00)",
-                        "borderRightStyle": "solid",
-                        "borderRightWidth": "1px",
-                        "borderTopColor": "rgba(144,148,157,1.00)",
-                        "borderTopLeftRadius": "7px",
-                        "borderTopRightRadius": "7px",
-                        "borderTopStyle": "solid",
-                        "borderTopWidth": "1px",
-                        "cursor": "pointer",
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "minHeight": "92px",
-                        "msFlexAlign": "center",
-                        "msFlexDirection": "row",
-                        "msFlexPack": "start",
-                        "msTouchAction": "manipulation",
-                        "msUserSelect": "auto",
-                        "paddingBottom": "16px",
-                        "paddingLeft": "16px",
-                        "paddingRight": "16px",
-                        "paddingTop": "16px",
-                        "touchAction": "manipulation",
-                        "transitionDuration": "0s",
-                        "transitionProperty": "opacity",
-                        "userSelect": "auto",
-                      }
-                    }
-                    tabIndex="0"
-                  >
-                    <div
-                      className="css-view-1dbjc4n"
-                      style={
-                        Object {
-                          "WebkitAlignContent": "center",
-                          "alignContent": "center",
-                          "msFlexLinePack": "center",
-                        }
-                      }
-                    >
-                      <div
-                        className="css-view-1dbjc4n"
-                      >
-                        <div
-                          className="css-text-901oao"
-                          dir="ltr"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="css-view-1dbjc4n"
-                      style={
-                        Object {
-                          "WebkitBoxFlex": 1,
-                          "WebkitFlexBasis": "0px",
-                          "WebkitFlexGrow": 1,
-                          "WebkitFlexShrink": 1,
-                          "flexBasis": "0px",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": "16px",
-                          "marginRight": "16px",
-                          "msFlexNegative": 1,
-                          "msFlexPositive": 1,
-                          "msFlexPreferredSize": "0px",
-                        }
-                      }
-                    >
-                      <div
-                        className="css-text-901oao"
-                        dir="ltr"
-                        style={
-                          Object {
-                            "color": "rgba(22,22,23,1.00)",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": "15px",
-                            "lineHeight": "20px",
-                          }
-                        }
-                      >
-                        Je n’ai pas de smartphone à proximité
-                      </div>
-                    </div>
-                    <div
-                      className="css-view-1dbjc4n"
-                    >
-                      <div
-                        className="css-view-1dbjc4n"
-                      >
-                        <div
-                          className="css-text-901oao"
-                          dir="ltr"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </body>,
+  "container": .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+    <div
+      class="css-view-1dbjc4n"
+      style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
+    >
+      <header
+        class="css-view-1dbjc4n"
+        role="banner"
+        style="width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 72px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; height: 56px; justify-content: flex-end; padding-bottom: 12px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="Revenir en arrière"
+                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+              >
+                <button
+                  aria-label="Revenir en arrière"
+                  class="c0 c1 sc-gsDKAQ c1"
+                  data-testid="backButton"
+                  tabindex="0"
+                  title="Revenir en arrière"
+                  type="button"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="icon-back"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                    >
+                      icon-back-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
+                  >
+                    Retour
+                  </div>
+                </button>
+              </div>
+              <h1
+                aria-level="1"
+                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                dir="ltr"
+                role="heading"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+              >
+                Identification
+              </h1>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; height: 100%; margin: 32px 4px 32px 4px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <h4
+                    aria-level="4"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                  >
+                    Vérifie ton identité avec un smartphone
+                  </h4>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                  >
+                    Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 32px;"
+                  />
+                  <ul
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="list"
+                    style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px; width: 100%;"
+                  >
+                    <li
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="HeroButtonList"
+                        style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                        tabindex="0"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-content: center;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="BicolorSmartphone"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              BicolorSmartphone-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="ltr"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                          >
+                            J’ai un smartphone à proximité
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 24px;"
+                    />
+                    <li
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="HeroButtonList"
+                        style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                        tabindex="0"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-content: center;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="ltr"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                          >
+                            Je n’ai pas de smartphone à proximité
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;
