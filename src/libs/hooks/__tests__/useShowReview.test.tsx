@@ -6,6 +6,11 @@ import { useReviewInAppInformation } from 'features/bookOffer/services/useReview
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render } from 'tests/utils'
 
+const mockSettings = jest.fn().mockReturnValue({ data: {} })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
+
 jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
 const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
@@ -40,7 +45,7 @@ describe('useShowReview', () => {
 
     jest.advanceTimersByTime(3000)
 
-    expect(mockRequestInAppReview).toHaveBeenCalledWith()
+    expect(mockRequestInAppReview).toHaveBeenCalled()
   })
 
   it('should not show the review when it is not available ', () => {
@@ -78,7 +83,7 @@ describe('useShowReview', () => {
     jest.advanceTimersByTime(3000)
 
     await waitForExpect(() => {
-      expect(mockUpdateInformationWhenReviewHasBeenRequested).toHaveBeenCalledWith()
+      expect(mockUpdateInformationWhenReviewHasBeenRequested).toHaveBeenCalled()
     })
   })
 
@@ -96,6 +101,44 @@ describe('useShowReview', () => {
 
     await waitForExpect(() => {
       expect(mockUpdateInformationWhenReviewHasBeenRequested).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('FF disableStoreReview', () => {
+    beforeEach(() => {
+      mockIsAvailable.mockReturnValueOnce(true)
+      mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
+      mockRequestInAppReview.mockResolvedValueOnce(undefined)
+    })
+
+    it('should not show the review when we disabled store review', () => {
+      mockSettings.mockReturnValueOnce({ data: { disableStoreReview: false } })
+
+      render(<TestReviewComponent />)
+
+      jest.advanceTimersByTime(3000)
+
+      expect(mockRequestInAppReview).toHaveBeenCalledWith()
+    })
+
+    it('should not show review when we enabled store review', () => {
+      mockSettings.mockReturnValueOnce({ data: { disableStoreReview: true } })
+
+      render(<TestReviewComponent />)
+
+      jest.advanceTimersByTime(3000)
+
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
+    })
+
+    it('should show review when the FF is undefined', () => {
+      mockSettings.mockReturnValueOnce({ data: {} })
+
+      render(<TestReviewComponent />)
+
+      jest.advanceTimersByTime(3000)
+
+      expect(mockRequestInAppReview).toHaveBeenCalled()
     })
   })
 })
