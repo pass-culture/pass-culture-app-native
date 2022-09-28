@@ -1,4 +1,5 @@
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
+import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
 import { BicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
@@ -29,6 +30,7 @@ import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 
 export const BicolorIllustrations = {
   BicolorBrokenConnection,
+  BicolorRingingBell,
   BicolorCircledCheck,
   BicolorEmailSent,
   BicolorError,
