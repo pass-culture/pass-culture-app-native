@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useReducer } from 'react'
+import React, { useContext, useReducer } from 'react'
 
 import {
   Action,
@@ -28,11 +28,11 @@ interface BookingWrapperProps {
 export const BookingWrapper = ({ children, dismissModal }: BookingWrapperProps) => {
   const [bookingState, dispatch] = useReducer(bookOfferReducer, initialBookingState)
 
-  const value = useMemo(
-    () => ({ bookingState, dispatch, dismissModal }),
-    [bookingState, dismissModal]
+  return (
+    <BookingContext.Provider value={{ bookingState, dispatch, dismissModal }}>
+      {children}
+    </BookingContext.Provider>
   )
-  return <BookingContext.Provider value={value}>{children}</BookingContext.Provider>
 }
 
 export const useBooking = (): IBookingContext => {
