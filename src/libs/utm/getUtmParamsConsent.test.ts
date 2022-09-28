@@ -19,7 +19,20 @@ describe('getUtmParamsConsent', () => {
     storage.clear(COOKIES_CONSENT_KEY)
   })
 
-  it('should return true for all params if cookies are accepted', async () => {
+  it('should return false for all params when user has not made consent', async () => {
+    storage.saveObject(COOKIES_CONSENT_KEY, {})
+
+    const paramsConsent = await getUtmParamsConsent()
+
+    expect(paramsConsent).toEqual({
+      acceptedTrafficCampaign: false,
+      acceptedTrafficMedium: false,
+      acceptedTrafficSource: false,
+      acceptedCampaignDate: false,
+    })
+  })
+
+  it('should return true for all params when cookies are accepted', async () => {
     const { result } = renderHook(useCookies)
     const { setCookiesConsent } = result.current
 
@@ -41,7 +54,7 @@ describe('getUtmParamsConsent', () => {
     })
   })
 
-  it('should return false for all params if cookies are refused', async () => {
+  it('should return false for all params when cookies are refused', async () => {
     const { result } = renderHook(useCookies)
     const { setCookiesConsent } = result.current
 
@@ -63,7 +76,7 @@ describe('getUtmParamsConsent', () => {
     })
   })
 
-  it('should return true for all params if customization cookies are accepted', async () => {
+  it('should return true for all params when customization cookies are accepted', async () => {
     const { result } = renderHook(useCookies)
     const { setCookiesConsent } = result.current
 

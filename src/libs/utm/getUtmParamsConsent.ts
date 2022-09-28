@@ -3,7 +3,7 @@ import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
 
 export const getUtmParamsConsent = async () => {
   const cookiesChoice = await getCookiesChoice()
-  const acceptedCookies = cookiesChoice?.consent.accepted || []
+  const acceptedCookies = cookiesChoice?.consent?.accepted || []
 
   const acceptedTrafficCampaign = acceptedCookies.includes(CookieNameEnum.TRAFFIC_CAMPAIGN)
   const acceptedTrafficMedium = acceptedCookies.includes(CookieNameEnum.TRAFFIC_MEDIUM)
