@@ -1,4 +1,4 @@
-export * from 'tests/utils/web'
+export { render } from 'tests/utils/web'
 
 import { fireEvent as fireEventDOM } from 'tests/utils/web'
 

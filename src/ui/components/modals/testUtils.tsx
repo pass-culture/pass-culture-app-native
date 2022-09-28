@@ -1,1 +1,1 @@
-export * from 'tests/utils'
+export { fireEvent, render } from 'tests/utils'
