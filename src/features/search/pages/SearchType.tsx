@@ -1,14 +1,18 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
 import { ScrollView, StyleProp, ViewStyle, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SearchState, SearchView } from 'features/search/types'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
@@ -47,11 +51,58 @@ export const SearchType: FunctionComponent<Props> = ({
     { label: 'Bien physiques', icon: Thing },
   ]
   const [heightModal, setHeightModal] = useState(500)
-  const [radioButtonChoice, setRadioButtonChoice] = useState('Tous les types')
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
+  const [radioButtonChoice, setRadioButtonChoice] = useState("Tous les types")
+  const { navigate } = useNavigation<UseNavigationType>()
   const isLimitduoOfferSearchDefaultValue = searchState?.offerIsDuo
   const { isDesktopViewport } = useTheme()
-  function search() {}
+
+  useEffect(() => {
+    if (searchState.offerTypes.isDigital) {
+      setRadioButtonChoice("Numérique")
+    }
+    else if (searchState.offerTypes.isEvent) {
+      setRadioButtonChoice("Sorties")
+    }
+    else if (searchState.offerTypes.isThing) {
+      setRadioButtonChoice("Bien physiques")
+    }
+  }, [])
+
+  function search(values: SearchTypeFormData) {
+    let additionalSearchState: SearchState = {
+      ...searchState,
+      offerIsDuo: values.isLimitDuoOfferSearch,
+    }
+    let offerType: SearchState['offerTypes'] = {
+      isDigital: false,
+      isEvent: false,
+      isThing: false
+    }
+    switch (radioButtonChoice) {
+      case 'Numérique':
+        offerType.isDigital = true
+        break;
+      case 'Sorties':
+        offerType.isEvent = true
+        break;
+      case 'Bien physiques':
+        offerType.isThing = true
+        break;
+    }
+    dispatch({ type: 'OFFER_TYPE', payload: offerType })
+    if (values.isLimitDuoOfferSearch)
+      dispatch({ type: 'TOGGLE_OFFER_DUO' })
+
+    additionalSearchState = { ...additionalSearchState, offerIsDuo: values.isLimitDuoOfferSearch, offerTypes: offerType }
+    hideModal()
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...additionalSearchState,
+        view: SearchView.Results,
+      })
+    )
+  }
 
   const {
     handleSubmit,
@@ -78,7 +129,7 @@ export const SearchType: FunctionComponent<Props> = ({
     hideModal()
   }, [hideModal])
 
-  const onResetPress = useCallback(() => {}, [])
+  const onResetPress = useCallback(() => { }, [])
   const getHeightContent = (h: number) => {
     isDesktopViewport && setHeightModal(h)
   }

@@ -24,12 +24,12 @@ export const OFFER_TYPES: Array<[OfferTypes, string]> = [
 
 export const OfferType: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
-  const { searchState, dispatch } = useStagedSearch()
+  const { searchState/*, dispatch*/ } = useStagedSearch()
   const { offerTypes } = searchState
   const titleID = uuidv4()
 
   const onPress = (offerType: OfferTypes) => () => {
-    dispatch({ type: 'OFFER_TYPE', payload: offerType })
+    // dispatch({ type: 'OFFER_TYPE', payload: offerType })
     logUseFilter()
   }
 

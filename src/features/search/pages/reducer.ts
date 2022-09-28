@@ -39,7 +39,7 @@ export type Action =
   | { type: 'SET_MAX_PRICE'; payload: string }
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
-  | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
+  | { type: 'OFFER_TYPE'; payload: SearchState['offerTypes'] }
   | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnumv2[] }
   | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnumv2 }
   | { type: 'TOGGLE_OFFER_FREE' }
@@ -93,7 +93,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'OFFER_TYPE':
       return {
         ...state,
-        offerTypes: { ...state.offerTypes, [action.payload]: !state.offerTypes[action.payload] },
+        offerTypes: action.payload,
       }
     case 'TOGGLE_OFFER_FREE':
       return { ...state, offerIsFree: !state.offerIsFree }
