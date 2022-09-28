@@ -23,6 +23,9 @@ export const computePrimaryButtonToDisplay = ({
 
   const { text: primaryButtonText, icon: primaryButtonIcon, onPress: onPrimaryButtonPress } = button
 
+  // If button props are given + a navigateTo prop is defined :
+  // 'navigateTo' in button => 'navigateTo' key exists in the button object
+  // button.navigateTo => 'navigateTo' value is not null nor undefined
   if ('navigateTo' in button && button.navigateTo) {
     return (
       <TouchableLink
