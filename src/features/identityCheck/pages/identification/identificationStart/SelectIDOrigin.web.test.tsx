@@ -1,17 +1,22 @@
 import React from 'react'
 
-import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin.web'
-import { render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils/web'
 
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({
-    dispatch: jest.fn(),
-    ...mockState,
-  })),
-}))
-it('should render correctly', () => {
-  const selectIDOrigin = render(<SelectIDOrigin />)
+describe('selectIDOrigin', () => {
+  it('should render correctly', () => {
+    const selectIDOrigin = render(<SelectIDOrigin />)
 
-  expect(selectIDOrigin).toMatchSnapshot()
+    expect(selectIDOrigin).toMatchSnapshot()
+  })
+
+  it('should navigate to SelectPhoneStatus on press "J’ai une carte d’identité ou un passeport" HeroButtonList', () => {
+    const { getAllByTestId } = render(<SelectIDOrigin />)
+
+    const HeroButtonList = getAllByTestId('HeroButtonList')[0]
+    fireEvent.click(HeroButtonList)
+
+    expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus')
+  })
 })
