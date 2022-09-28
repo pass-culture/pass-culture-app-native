@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { theme } from 'theme'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
@@ -54,8 +55,11 @@ const CategoriesTitle = styled(Typo.Title4).attrs({
 })
 
 const contentContainerStyle = {
-  paddingVertical: getSpacing(6),
+  paddingTop: getSpacing(6),
   paddingHorizontal: getSpacing(5),
+  ...(Platform.OS === 'web'
+    ? { paddingBottom: getSpacing(6) }
+    : { paddingBottom: getSpacing(6) + theme.tabBar.height }),
 }
 
 const CategoryButtonContainer = styled.View(({ theme }) => ({

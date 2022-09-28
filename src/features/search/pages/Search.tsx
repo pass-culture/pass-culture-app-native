@@ -94,7 +94,10 @@ export function Search() {
   )
 }
 
-const Container = styled.View({ flex: 1 })
+const Container = styled.View({
+  flex: 1,
+  overflowY: 'auto',
+})
 
 export type HitProps = {
   hit: AlgoliaSuggestionHit
