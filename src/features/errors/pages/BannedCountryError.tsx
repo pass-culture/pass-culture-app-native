@@ -21,7 +21,7 @@ export const BannedCountryError = () => {
   return (
     <GenericErrorPage
       noBackground
-      title="Pas en France&nbsp;?"
+      title="Tu n’es pas en France&nbsp;?"
       icon={BicolorBrokenConnection}
       buttons={[
         <ButtonPrimary key={1} buttonHeight="tall" wording="Réessayer" onPress={onPress} />,

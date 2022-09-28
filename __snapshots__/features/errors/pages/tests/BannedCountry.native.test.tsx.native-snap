@@ -96,7 +96,7 @@ exports[`BannedCountryError should render correctly 1`] = `
         ]
       }
     >
-      Pas en France ?
+      Tu n’es pas en France ?
     </Text>
     <View
       numberOfSpaces={5}
