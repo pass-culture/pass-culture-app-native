@@ -41,8 +41,11 @@ export const Categories: FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
 
   useEffect(() => {
+    if (!isVisible) return
     setSelectedCategory(searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE)
-  }, [searchState?.offerCategories, setSelectedCategory])
+    // Update the category only when display the modal
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible])
 
   const onSelectCategory = (category: SearchGroupNameEnumv2) => () => {
     setSelectedCategory(category)
