@@ -35,7 +35,7 @@ export const LocationFilter: React.FC = () => {
 
   const { params } = useRoute<UseRouteType<'LocationFilter'>>()
 
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const { dispatch: dispatchStagedSearch } = useStagedSearch()
   const [selectedFilter, setSelectedFilter] = useState<LocationFilterType>(
     searchState.locationFilter
@@ -133,7 +133,6 @@ export const LocationFilter: React.FC = () => {
         break
     }
 
-    dispatch(toDispatch)
     dispatchStagedSearch(toDispatch)
     analytics.logChangeSearchLocation(toSendToAnalytics)
     navigate(

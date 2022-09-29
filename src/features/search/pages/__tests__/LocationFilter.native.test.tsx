@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { analytics } from 'libs/firebase/analytics'
 import {
   GeolocPositionError,
@@ -16,12 +18,11 @@ import { fireEvent, render } from 'tests/utils'
 import { LocationFilter } from '../LocationFilter'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
 const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: jest.fn(),
   }),
   useStagedSearch: () => ({
     dispatch: mockStagedDispatch,
@@ -85,8 +86,15 @@ describe('LocationFilter component', () => {
 
     fireEvent.press(getByText('Rechercher'))
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
+    const expectedSearchParams = {
+      ...mockSearchState,
+      locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+    }
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: expectedSearchParams,
+      screen: 'Search',
+    })
   })
 
   it('should log ChangeSearchLocation event when selecting Around Me and pressing on the search button', () => {
@@ -101,8 +109,8 @@ describe('LocationFilter component', () => {
     mockPosition = null
     const { getByTestId } = renderLocationFilter()
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
-    expect(mockDispatch).not.toHaveBeenCalled()
     expect(mockStagedDispatch).not.toHaveBeenCalled()
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   it('should change location filter on search button press (position=YES, type=EVERYWHERE)', () => {
@@ -110,8 +118,15 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByTestId('locationChoice-everywhere'))
     fireEvent.press(getByText('Rechercher'))
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
+    const expectedSearchParams = {
+      ...mockSearchState,
+      locationFilter: { locationType: LocationType.EVERYWHERE },
+    }
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: expectedSearchParams,
+      screen: 'Search',
+    })
   })
 
   it('should log ChangeSearchLocation event when selecting Everywhere and pressing on the search button', () => {
@@ -127,8 +142,15 @@ describe('LocationFilter component', () => {
     fireEvent.press(getByTestId('locationChoice-everywhere'))
     fireEvent.press(getByText('Rechercher'))
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
+    const expectedSearchParams = {
+      ...mockSearchState,
+      locationFilter: { locationType: LocationType.EVERYWHERE },
+    }
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: expectedSearchParams,
+      screen: 'Search',
+    })
   })
 
   it('should show the building icon when a venue is chosen', () => {
@@ -150,13 +172,13 @@ describe('LocationFilter component', () => {
     const { getByText } = renderLocationFilter()
     fireEvent.press(getByText('Rechercher'))
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION_VENUE',
-      payload: { ...Kourou, venueId: 4 },
-    })
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SET_LOCATION_VENUE',
       payload: { ...Kourou, venueId: 4 },
+    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: mockSearchState,
+      screen: 'Search',
     })
   })
 
@@ -191,13 +213,13 @@ describe('LocationFilter component', () => {
     const { getByText } = renderLocationFilter()
     fireEvent.press(getByText('Rechercher'))
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION_PLACE',
-      payload: { aroundRadius: 10, place: Kourou },
-    })
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SET_LOCATION_PLACE',
       payload: { aroundRadius: 10, place: Kourou },
+    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: mockSearchState,
+      screen: 'Search',
     })
   })
 

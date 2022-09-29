@@ -13,11 +13,10 @@ import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
-const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: jest.fn(),
   }),
 }))
 

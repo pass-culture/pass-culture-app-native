@@ -34,7 +34,7 @@ export const Categories: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const [selectedCategory, setSelectedCategory] = useSafeState<SearchGroupNameEnumv2>(
     searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE
   )
@@ -62,14 +62,13 @@ export const Categories: FunctionComponent<Props> = ({
   const onSearchPress = useCallback(() => {
     hideModal()
     const payload = selectedCategory === SearchGroupNameEnumv2.NONE ? [] : [selectedCategory]
-    dispatch({ type: 'SET_CATEGORY', payload })
     navigate(
       ...getTabNavConfig('Search', {
         ...searchState,
         offerCategories: payload,
       })
     )
-  }, [dispatch, hideModal, navigate, searchState, selectedCategory])
+  }, [hideModal, navigate, searchState, selectedCategory])
 
   const titleId = uuidv4()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()

@@ -61,7 +61,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
@@ -98,16 +98,13 @@ export const SearchPrice: FunctionComponent<Props> = ({
     }
 
     if (values.minPrice) {
-      dispatch({ type: 'SET_MIN_PRICE', payload: values.minPrice })
       additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
     }
     if (values.maxPrice) {
-      dispatch({ type: 'SET_MAX_PRICE', payload: values.maxPrice })
       additionalSearchState = { ...additionalSearchState, maxPrice: values.maxPrice }
     }
 
     if (offerIsFree) {
-      dispatch({ type: 'TOGGLE_OFFER_FREE' })
       logUseFreeOffersFilter()
     } else {
       logUsePriceFilter()
