@@ -12,6 +12,7 @@ import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
 import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
@@ -55,6 +56,11 @@ export function Navigation(): JSX.Element {
     visible: cookiesConsentModalVisible,
     showModal: showCookiesConsentModal,
     hideModal: hideCookiesConsentModal,
+  } = useModal(false)
+  const {
+    visible: notificationsConsentModalVisible,
+    showModal: showNotificationsConsentModal,
+    hideModal: hideNotificationsConsentModal,
   } = useModal(false)
 
   if (screenError) {
@@ -111,6 +117,16 @@ export function Navigation(): JSX.Element {
                   timeout: SNACK_BAR_TIME_OUT,
                 })
               }}
+            />
+          </Row>
+          <Row half>
+            <ButtonPrimary
+              wording="Notification consent 🔔"
+              onPress={() => showNotificationsConsentModal()}
+            />
+            <AskNotificiationsModal
+              visible={notificationsConsentModalVisible}
+              onHideModal={hideNotificationsConsentModal}
             />
           </Row>
           <Row half>

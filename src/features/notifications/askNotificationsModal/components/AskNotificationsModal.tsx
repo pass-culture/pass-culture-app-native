@@ -18,6 +18,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
       title={'Les bons plans au bon moment\u00a0!'}
       onCloseIconPress={onHideModal}
       visible={visible}>
+      <Spacer.Column numberOfSpaces={4} />
       <BicolorRingingBell />
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
