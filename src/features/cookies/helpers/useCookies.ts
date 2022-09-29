@@ -6,6 +6,7 @@ import { api } from 'api/api'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent } from 'features/cookies/types'
 import { useUserProfileInfo } from 'features/profile/api'
+import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 
 import Package from '../../../../package.json'
@@ -69,5 +70,9 @@ export const useCookies = () => {
 const persist = async (cookiesChoice: CookiesConsent) => {
   await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
 
-  await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+  try {
+    await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+  } catch {
+    eventMonitoring.captureException(new Error("can't log cookies consent choice"))
+  }
 }
