@@ -1,7 +1,9 @@
 import React from 'react'
 
-import { OfferTypeModal, RADIO_BUTTON_ITEMS } from 'features/search/pages/OfferTypeModal'
+import { OfferType } from 'features/search/enums'
+import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { OFFER_TYPES } from 'features/search/sections/OfferType'
 import { fireEvent, render } from 'tests/utils'
 
 const mockSearchState = initialSearchState
@@ -68,7 +70,7 @@ describe('OfferTypeModal component', () => {
     })
 
     it.each(
-      RADIO_BUTTON_ITEMS.filter((item) => item.label !== 'Tous les types').map(({ label }) => label)
+      OFFER_TYPES.filter((item) => item.label !== OfferType.ALL_TYPE).map(({ label }) => label)
     )(`should activate %s on press`, (label) => {
       const renderAPI = renderOfferTypeModal({
         hideOfferTypeModal,

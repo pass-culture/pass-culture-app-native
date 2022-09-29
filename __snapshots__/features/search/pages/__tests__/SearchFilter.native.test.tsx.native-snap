@@ -1111,7 +1111,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       ]
                     }
                   >
-                    Offre numérique
+                    Numérique
                   </Text>
                   <View
                     numberOfSpaces={5}
@@ -1194,7 +1194,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       ]
                     }
                   >
-                    Sortie
+                    Sorties
                   </Text>
                   <View
                     numberOfSpaces={5}
@@ -1277,7 +1277,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       ]
                     }
                   >
-                    Offre physique
+                    Bien physique
                   </Text>
                   <View
                     numberOfSpaces={5}

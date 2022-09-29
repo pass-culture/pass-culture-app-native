@@ -126,7 +126,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             }
           }
         >
-          Offre numérique
+          Numérique
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -137,10 +137,10 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         />
         <input
-          aria-label="Offre numérique"
+          aria-label="Numérique"
           checked={false}
           hidden={true}
-          name="Offre numérique"
+          name="Numérique"
           readOnly={true}
           type="checkbox"
         />
@@ -233,7 +233,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             }
           }
         >
-          Sortie
+          Sorties
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -244,10 +244,10 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         />
         <input
-          aria-label="Sortie"
+          aria-label="Sorties"
           checked={false}
           hidden={true}
-          name="Sortie"
+          name="Sorties"
           readOnly={true}
           type="checkbox"
         />
@@ -340,7 +340,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             }
           }
         >
-          Offre physique
+          Bien physique
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -351,10 +351,10 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         />
         <input
-          aria-label="Offre physique"
+          aria-label="Bien physique"
           checked={false}
           hidden={true}
-          name="Offre physique"
+          name="Bien physique"
           readOnly={true}
           type="checkbox"
         />
