@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { StyleProp, ViewStyle, View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -12,7 +12,6 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
-import { OfferType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
@@ -28,7 +27,11 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
 
 type SearchTypeFormData = {
-  offerTypeChoice: string
+  offerTypes: {
+    isDigital: boolean
+    isEvent: boolean
+    isThing: boolean
+  }
   offerIsDuo: boolean
 }
 
@@ -53,7 +56,6 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { searchState } = useSearch()
   const { data: user } = useUserProfileInfo()
-  const [offerTypes, setOfferTypes] = useState(searchState.offerTypes)
   const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -63,7 +65,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
       const additionalSearchState: SearchState = {
         ...searchState,
         offerIsDuo: values.offerIsDuo,
-        offerTypes,
+        offerTypes: values.offerTypes,
       }
       navigate(
         ...getTabNavConfig('Search', {
@@ -72,20 +74,21 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
         })
       )
     },
-    [hideModal, navigate, offerTypes, searchState]
+    [hideModal, navigate, searchState]
   )
 
   const {
     handleSubmit,
     control,
+    reset,
     getValues,
     setValue,
     formState: { isSubmitting },
   } = useForm<SearchTypeFormData>({
     mode: 'onChange',
     defaultValues: {
-      offerTypeChoice: OfferType.ALL_TYPE,
-      offerIsDuo: searchState?.offerIsDuo,
+      offerTypes: searchState.offerTypes,
+      offerIsDuo: searchState.offerIsDuo,
     },
   })
 
@@ -97,8 +100,11 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   }, [setValue, getValues])
 
   const onResetPress = useCallback(() => {
-    return
-  }, [])
+    reset({
+      offerTypes: initialSearchState.offerTypes,
+      offerIsDuo: initialSearchState.offerIsDuo,
+    })
+  }, [reset])
 
   const onContentSizeChange = useCallback(
     (width: number, height: number) => {
@@ -109,10 +115,19 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
     [isDesktopViewport]
   )
 
-  const selectedOfferType = useMemo(() => {
+  const close = useCallback(() => {
+    reset({
+      offerTypes: searchState.offerTypes,
+      offerIsDuo: searchState.offerIsDuo,
+    })
+    hideModal()
+  }, [hideModal, reset, searchState?.offerIsDuo, searchState?.offerTypes])
+
+  const getSelectedOfferType = useCallback(() => {
+    const offerTypes = getValues('offerTypes')
     const entry = Object.entries(offerTypes).find(([, value]) => value)
     return entry ? entry[0] : undefined
-  }, [offerTypes])
+  }, [getValues])
 
   const hasDisplayDuoOffer = !!user?.isBeneficiary && !!user?.domainsCredit?.all?.remaining
 
@@ -130,7 +145,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
       modalSpacing={ModalSpacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
-      onRightIconPress={hideModal}
+      onRightIconPress={close}
       maxHeight={isDesktopViewport ? heightModal : undefined}
       fixedModalBottom={
         <SearchFixedModalBottom
@@ -145,30 +160,36 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
         contentContainerStyle={scrollViewContentContainerStyle}
         onContentSizeChange={onContentSizeChange}>
         <Form.MaxWidth>
-          <React.Fragment>
-            {OFFER_TYPES.map(({ type, label, icon }) => (
-              <View key={label}>
-                <RadioButton
-                  onSelect={() => {
-                    logUseFilter()
-                    setOfferTypes({
-                      ...initialSearchState.offerTypes,
-                      ...(type !== undefined
-                        ? {
-                            [type]: true,
-                          }
-                        : {}),
-                    })
-                  }}
-                  isSelected={selectedOfferType === type}
-                  label={label}
-                  icon={icon}
-                  testID={label}
-                />
-                <Spacer.Column numberOfSpaces={6} />
-              </View>
-            ))}
-          </React.Fragment>
+          <Controller
+            control={control}
+            name="offerTypes"
+            render={({ field: { onChange } }) => (
+              <React.Fragment>
+                {OFFER_TYPES.map(({ type, label, icon }) => (
+                  <View key={label}>
+                    <RadioButton
+                      onSelect={() => {
+                        logUseFilter()
+                        onChange({
+                          ...initialSearchState.offerTypes,
+                          ...(type !== undefined
+                            ? {
+                                [type]: true,
+                              }
+                            : {}),
+                        })
+                      }}
+                      isSelected={getSelectedOfferType() === type}
+                      label={label}
+                      icon={icon}
+                      testID={label}
+                    />
+                    <Spacer.Column numberOfSpaces={6} />
+                  </View>
+                ))}
+              </React.Fragment>
+            )}
+          />
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
