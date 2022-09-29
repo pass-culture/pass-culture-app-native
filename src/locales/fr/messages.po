@@ -13,46 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "1 Caractère spécial (!@#$%^&*...)"
-msgstr "1 Caractère spécial (!@#$%^&*...)"
-
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "1 Chiffre"
-msgstr "1 Chiffre"
-
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "1 Majuscule"
-msgstr "1 Majuscule"
-
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "1 Minuscule"
-msgstr "1 Minuscule"
-
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "12 Caractères"
-msgstr "12 Caractères"
-
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Accepter et s’inscrire"
-msgstr "Accepter et s’inscrire"
-
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
-msgstr "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
-
 #: src/ui/components/ValidationMark.tsx
 msgid "Accessible"
 msgstr "Accessible"
-
-#: src/features/navigation/TabBar/routes.ts
-#: src/features/navigation/TabBar/routes.ts
-msgid "Accueil"
-msgstr "Accueil"
-
-#: src/features/navigation/RootNavigator/RootNavigator.tsx
-msgid "Accéder au menu de navigation"
-msgstr "Accéder au menu de navigation"
 
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Accéder à l'offre"
@@ -66,10 +29,6 @@ msgstr "Accéder à la billetterie"
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
-#: src/features/offer/atoms/LocationCaption.tsx
-msgid "Adresse"
-msgstr "Adresse"
-
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
@@ -82,21 +41,9 @@ msgstr "Afficher le mot de passe"
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx
-msgid "Ajouté récemment"
-msgstr "Ajouté récemment"
-
-#: src/features/navigation/RootNavigator/Header/Header.web.tsx
-msgid "Aller au contenu principal"
-msgstr "Aller au contenu principal"
-
 #: src/libs/parsers/venueType.ts
 msgid "Arts visuels, arts plastiques et galeries"
 msgstr "Arts visuels, arts plastiques et galeries"
-
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
-msgstr "Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Aucun résultat"
@@ -110,14 +57,6 @@ msgstr "Aucune connexion internet. Réessaie plus tard"
 #: src/features/search/sections/OfferDate.tsx
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Autoriser"
-msgstr "Autoriser"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Autoriser l'utilisation des outils pour réaliser des statistiques de navigation"
-msgstr "Autoriser l'utilisation des outils pour réaliser des statistiques de navigation"
 
 #: src/libs/notifications/components/PushNotificationsModal.tsx
 msgid "Autoriser les notifications"
@@ -139,10 +78,6 @@ msgstr "Autoriser l’utilisation de mes données de navigation"
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/offer/components/ReportOfferOtherReason.tsx
-msgid "Autre raison"
-msgstr "Autre raison"
-
 #: src/libs/parsers/venueType.ts
 #: src/libs/parsers/venueType.ts
 msgid "Autre type de lieu"
@@ -156,21 +91,9 @@ msgstr "Bibliothèque / médiathèque"
 msgid "Bibliothèque ou médiathèque"
 msgstr "Bibliothèque ou médiathèque"
 
-#: src/features/offer/components/ReportOfferDescription.tsx
-msgid "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
-msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
-
 #: src/ui/components/inputs/PasswordInput.tsx
 msgid "Cacher le mot de passe"
 msgstr "Cacher le mot de passe"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-msgid "Carte d’identité ou passeport."
-msgstr "Carte d’identité ou passeport."
-
-#: src/features/offer/atoms/OfferCategory.tsx
-msgid "Catégorie de l'offre"
-msgstr "Catégorie de l'offre"
 
 #: src/features/search/sections/titles.ts
 msgid "Catégories"
@@ -206,11 +129,6 @@ msgstr "Charte de protection des données personnelles"
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
-#: src/features/identityCheck/pages/profile/SetStatus.tsx
-#: src/features/identityCheck/pages/profile/SetStatus.tsx
-msgid "Choisis ton statut"
-msgstr "Choisis ton statut"
-
 #: src/features/search/components/CalendarPicker.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Choisis une date"
@@ -219,10 +137,6 @@ msgstr "Choisis une date"
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Choisis une date dans le futur"
 msgstr "Choisis une date dans le futur"
-
-#: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
-msgid "Choix de l'indicatif téléphonique"
-msgstr "Choix de l'indicatif téléphonique"
 
 #: src/libs/parsers/venueType.ts
 msgid "Cinéma - Salle de projections"
@@ -233,42 +147,14 @@ msgstr "Cinéma - Salle de projections"
 msgid "Cinéma itinérant"
 msgstr "Cinéma itinérant"
 
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.tsx
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.web.tsx
-msgid "Commencer la vérification"
-msgstr "Commencer la vérification"
-
-#: src/features/identityCheck/atoms/StepButton.tsx
-msgid "Complété"
-msgstr "Complété"
-
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Conditions Générales d'Utilisation"
-msgstr "Conditions Générales d'Utilisation"
-
 #: src/features/profile/pages/LegalNotices/LegalNotices.tsx
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
-
-#: src/features/identityCheck/useIdentityCheckSteps.tsx
-msgid "Confirmation"
-msgstr "Confirmation"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
 msgstr "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
 
-#: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
-msgid "Conserver l'historique"
-msgstr "Conserver l'historique"
-
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-#: src/features/identityCheck/pages/profile/SetStatus.tsx
-msgid "Continuer"
-msgstr "Continuer"
-
-#: src/features/identityCheck/pages/profile/SetStatus.tsx
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
@@ -277,7 +163,6 @@ msgstr "Continuer vers l'étape suivante"
 msgid "Cours et pratique artistiques"
 msgstr "Cours et pratique artistiques"
 
-#: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Crédit insuffisant"
@@ -286,10 +171,6 @@ msgstr "Crédit insuffisant"
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Crédit numérique insuffisant"
 msgstr "Crédit numérique insuffisant"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-msgid "Créer un dossier sur le site des Démarches Simplifiées"
-msgstr "Créer un dossier sur le site des Démarches Simplifiées"
 
 #: src/features/search/sections/titles.ts
 msgid "Créneau horaire"
@@ -328,10 +209,6 @@ msgstr "Distance"
 msgid "Distance depuis la localisation"
 msgstr "Distance depuis la localisation"
 
-#: src/features/offer/components/ReportOfferOtherReason.tsx
-msgid "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
-msgstr "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
-
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
@@ -340,19 +217,10 @@ msgstr "Désactiver la géolocalisation"
 msgid "Désactivé"
 msgstr "Désactivé"
 
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "Détails de l'offre"
-msgstr "Détails de l'offre"
-
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
-msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
-
-#: src/features/home/atoms/SeeMore.tsx
 #: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
@@ -387,10 +255,6 @@ msgstr "Entrée pour le jour de la date de naissance"
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "Entrée pour le numéro de téléphone"
-msgstr "Entrée pour le numéro de téléphone"
-
 #: src/ui/components/snackBar/mapSnackBarTypeToStyle.tsx
 msgid "Erreur"
 msgstr "Erreur"
@@ -399,23 +263,10 @@ msgstr "Erreur"
 msgid "Faire une nouvelle demande"
 msgstr "Faire une nouvelle demande"
 
-#: src/features/navigation/TabBar/routes.ts
-msgid "Favoris"
-msgstr "Favoris"
-
-#: src/features/offer/components/ReportOfferModal.tsx
 #: src/ui/components/modals/AppInformationModal.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Fermer la modale"
 msgstr "Fermer la modale"
-
-#: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
-msgid "Fermer la modale de choix de l'indicatif téléphonique"
-msgstr "Fermer la modale de choix de l'indicatif téléphonique"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Fermer la modale et refuser la collecte des données"
-msgstr "Fermer la modale et refuser la collecte des données"
 
 #: src/features/search/components/CalendarPicker.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
@@ -464,33 +315,6 @@ msgstr "Handicap visuel"
 msgid "Heure"
 msgstr "Heure"
 
-#: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
-msgid "Historique"
-msgstr "Historique"
-
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Hors connexion : en attente du réseau."
-msgstr "Hors connexion : en attente du réseau."
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "ISBN"
-msgstr "ISBN"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.tsx
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStart.web.tsx
-#: src/features/identityCheck/useIdentityCheckSteps.tsx
-msgid "Identification"
-msgstr "Identification"
-
-#: src/features/offer/components/ReportOfferDescription.tsx
-msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
-msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
-
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "Il te reste"
-msgstr "Il te reste"
-
 #: src/features/search/components/SearchBox.tsx
 msgid ""
 "Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
@@ -510,18 +334,6 @@ msgstr "Information"
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
-
-#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
-msgid "J'ai reçu mon code"
-msgstr "J'ai reçu mon code"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-msgid "Je suis de nationalité française"
-msgstr "Je suis de nationalité française"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-msgid "Je suis de nationalité étrangère"
-msgstr "Je suis de nationalité étrangère"
 
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
@@ -547,18 +359,6 @@ msgstr "L'absence des services Google Play bloquent possiblement la géolocalisa
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
-#: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
-msgid "L'historique n'a pas pu supprimer les données locales: {0}"
-msgstr "L'historique n'a pas pu supprimer les données locales: {0}"
-
-#: src/features/offer/components/OfferHeader.tsx
-msgid "L'offre n'a pas été ajoutée à tes favoris"
-msgstr "L'offre n'a pas été ajoutée à tes favoris"
-
-#: src/features/offer/components/OfferHeader.tsx
-msgid "L'offre n'a pas été retirée de tes favoris"
-msgstr "L'offre n'a pas été retirée de tes favoris"
-
 #: src/libs/geolocation/enums.ts
 msgid "La géolocalisation est désactivée sur l'application"
 msgstr "La géolocalisation est désactivée sur l'application"
@@ -569,22 +369,6 @@ msgstr "La géolocalisation est désactivée sur l'application"
 msgid "La géolocalisation est temporairement inutilisable"
 msgstr "La géolocalisation est temporairement inutilisable"
 
-#: src/features/bookings/components/ArchiveBookingModal.tsx
-msgid "La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées"
-msgstr "La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
-msgstr "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
-
-#: src/features/auth/components/PasswordSecurityRules.tsx
-msgid "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
-msgstr "Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
-
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
-msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
-
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
 msgstr "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -593,10 +377,6 @@ msgstr "Les réglages de ton téléphone ne nous permettent pas d’utiliser la 
 #: src/libs/parsers/venueType.ts
 msgid "Librairie"
 msgstr "Librairie"
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
-msgstr "Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
 
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Lieu"
@@ -627,20 +407,6 @@ msgstr "Magasin d’instruments"
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
-#: src/features/favorites/pages/Favorites.tsx
-#: src/features/navigation/TabBar/routes.ts
-msgid "Mes favoris"
-msgstr "Mes favoris"
-
-#: src/features/navigation/TabBar/routes.ts
-#: src/features/navigation/TabBar/routes.ts
-msgid "Mes réservations"
-msgstr "Mes réservations"
-
-#: src/features/offer/components/OfferHeader.tsx
-msgid "Mettre en favoris"
-msgstr "Mettre en favoris"
-
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Modifier"
@@ -653,11 +419,6 @@ msgstr "Mois précédent"
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Mois suivant"
 msgstr "Mois suivant"
-
-#: src/features/navigation/TabBar/routes.ts
-#: src/features/navigation/TabBar/routes.ts
-msgid "Mon profil"
-msgstr "Mon profil"
 
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Mot de passe"
@@ -680,10 +441,6 @@ msgstr "Musique - Salle de concerts"
 msgid "Musée"
 msgstr "Musée"
 
-#: src/features/bookings/components/ArchiveBookingModal.tsx
-msgid "Ne pas archiver"
-msgstr "Ne pas archiver"
-
 #: src/ui/components/FilterSwitch.tsx
 msgid "Non"
 msgstr "Non"
@@ -692,17 +449,9 @@ msgstr "Non"
 msgid "Non accessible"
 msgstr "Non accessible"
 
-#: src/features/identityCheck/atoms/StepButton.tsx
-msgid "Non complété"
-msgstr "Non complété"
-
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Notifications"
 msgstr "Notifications"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
-msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
 
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/ui/svg/icons/ExternalSite.tsx
@@ -710,9 +459,6 @@ msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation 
 msgid "Nouvelle fenêtre"
 msgstr "Nouvelle fenêtre"
 
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-#: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
@@ -729,11 +475,6 @@ msgstr "Offer {offerId} could not be retrieved"
 msgid "Offre"
 msgstr "Offre"
 
-#: src/features/offer/atoms/LocationCaption.tsx
-msgid "Offre digitale"
-msgstr "Offre digitale"
-
-#: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Offre expirée"
@@ -744,12 +485,6 @@ msgstr "Offre expirée"
 msgid "Offre numérique"
 msgstr "Offre numérique"
 
-#: src/features/favorites/atoms/BookingButton.tsx
-#: src/features/favorites/atoms/BookingButton.tsx
-msgid "Offre réservée"
-msgstr "Offre réservée"
-
-#: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
@@ -769,14 +504,6 @@ msgstr "On te redemandera bien sûr ton consentement si notre politique évolue.
 #: src/ui/components/FilterSwitch.tsx
 msgid "Oui"
 msgstr "Oui"
-
-#: src/features/identityCheck/components/countryPicker/CountryPicker.tsx
-msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
-msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
-
-#: src/features/navigation/TabBar/routes.ts
-msgid "Page d'accueil"
-msgstr "Page d'accueil"
 
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
@@ -800,14 +527,9 @@ msgstr "Paramètres de notifications"
 msgid "Partage le lien d’invitation"
 msgstr "Partage le lien d’invitation"
 
-#: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
 msgid "Partager"
 msgstr "Partager"
-
-#: src/features/offer/components/OfferHeader.tsx
-msgid "Partager l'offre"
-msgstr "Partager l'offre"
 
 #: src/features/venue/components/VenueHeader.tsx
 msgid "Partager le lieu"
@@ -833,15 +555,10 @@ msgstr "Patrimoine / tourisme"
 msgid "Patrimoine et tourisme"
 msgstr "Patrimoine et tourisme"
 
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Politique de confidentialité."
-msgstr "Politique de confidentialité."
-
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Politique de gestion des cookies"
 msgstr "Politique de gestion des cookies"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
@@ -849,10 +566,6 @@ msgstr "Politique des cookies"
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Possibilité de réserver 2 places."
 msgstr "Possibilité de réserver 2 places."
-
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
-msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
 #: src/features/profile/pages/ConsentSettings/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
@@ -866,35 +579,13 @@ msgstr "Pour plus d’informations, nous t’invitons à consulter notre"
 msgid "Pratique artistiques"
 msgstr "Pratique artistiques"
 
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "Prends une photo de ta"
-msgstr "Prends une photo de ta"
-
-#: src/features/navigation/RootNavigator/culturalSurveyRoutes.ts
-msgid "Prenons 1 minute"
-msgstr "Prenons 1 minute"
-
 #: src/features/search/sections/titles.ts
 msgid "Prix"
 msgstr "Prix"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx
-msgid "Prix croissant"
-msgstr "Prix croissant"
-
-#: src/features/identityCheck/pages/profile/SetStatus.tsx
-#: src/features/identityCheck/useIdentityCheckSteps.tsx
-#: src/features/navigation/TabBar/routes.ts
-msgid "Profil"
-msgstr "Profil"
-
 #: src/features/profile/components/Header/CreditHeader/CreditHeader.tsx
 msgid "Profite de ton crédit jusqu’au"
 msgstr "Profite de ton crédit jusqu’au"
-
-#: src/features/favorites/pages/FavoritesSorts.tsx
-msgid "Proximité géographique"
-msgstr "Proximité géographique"
 
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Prénom et nom"
@@ -903,14 +594,6 @@ msgstr "Prénom et nom"
 #: src/features/search/sections/titles.ts
 msgid "Rayon"
 msgstr "Rayon"
-
-#: src/features/navigation/TabBar/routes.ts
-msgid "Recherche"
-msgstr "Recherche"
-
-#: src/features/navigation/TabBar/routes.ts
-msgid "Recherche des offres"
-msgstr "Recherche des offres"
 
 #: src/features/search/pages/LocationPicker.tsx
 msgid "Recherche un lieu, une adresse"
@@ -923,26 +606,6 @@ msgstr "Recherche une adresse, un lieu..."
 #: src/features/search/components/SearchHeader.tsx
 msgid "Recherche une offre"
 msgstr "Recherche une offre"
-
-#: src/features/navigation/TabBar/routes.ts
-msgid "Rechercher des offres"
-msgstr "Rechercher des offres"
-
-#: src/features/home/components/BusinessModule.tsx
-msgid "Redirection en cours"
-msgstr "Redirection en cours"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Refuser"
-msgstr "Refuser"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
-msgstr "Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
-
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Respect de ta vie privée"
-msgstr "Respect de ta vie privée"
 
 #: src/libs/notifications/components/PushNotificationsModal.tsx
 msgid "Reste informé des actualités du pass Culture en activant les notifications."
@@ -957,21 +620,14 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 msgid "Retour"
 msgstr "Retour"
 
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
-
-#: src/features/bookings/components/ArchiveBookingModal.tsx
-msgid "Retourner à ma réservation"
-msgstr "Retourner à ma réservation"
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 
-#: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/BackButton.tsx
@@ -991,10 +647,6 @@ msgstr "Revenir à l'étape précédente"
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Réactiver mon compte"
 msgstr "Réactiver mon compte"
-
-#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
-msgid "Réessaie plus tard"
-msgstr "Réessaie plus tard"
 
 #: src/features/search/atoms/Buttons/ReinitializeFilters.tsx
 msgid "Réinitialiser"
@@ -1024,21 +676,10 @@ msgstr "Réservation de l'offre"
 msgid "Réservation utilisée de l'offre"
 msgstr "Réservation utilisée de l'offre"
 
-#: src/features/navigation/TabBar/routes.ts
-msgid "Réservations"
-msgstr "Réservations"
-
-#: src/features/favorites/atoms/BookingButton.tsx
-#: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Réserver"
 msgstr "Réserver"
-
-#: src/features/favorites/atoms/BookingButton.tsx
-#: src/features/favorites/atoms/BookingButton.tsx
-msgid "Réserver l'offre {offerName}"
-msgstr "Réserver l'offre {offerName}"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmailDisclaimer.tsx
 msgid "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
@@ -1073,16 +714,6 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
-msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
-
-#: src/features/offer/components/ReportOfferDescription.tsx
-#: src/features/offer/components/ReportOfferOtherReason.tsx
-#: src/features/offer/components/ReportOfferReason.tsx
-msgid "Signaler l'offre"
-msgstr "Signaler l'offre"
-
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "Site internet"
 msgstr "Site internet"
@@ -1099,18 +730,6 @@ msgstr "Succès"
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
-
-#: src/features/identityCheck/pages/profile/SetStatus.tsx
-msgid "Sélectionne ton statut"
-msgstr "Sélectionne ton statut"
-
-#: src/features/bookings/components/ArchiveBookingModal.tsx
-msgid "Terminer ma réservation"
-msgstr "Terminer ma réservation"
-
-#: src/features/identityCheck/pages/identification/dms/IdentityCheckDMS.tsx
-msgid "Titre de séjour, carte d'identité ou passeport."
-msgstr "Titre de séjour, carte d'identité ou passeport."
 
 #: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
 msgid "Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
@@ -1136,57 +755,18 @@ msgstr "Ton compte a été désactivé"
 msgid "Ton crédit a expiré le"
 msgstr "Ton crédit a expiré le"
 
-#: src/features/offer/components/ReportOfferDescription.tsx
-msgid "Ton identité restera anonyme auprès des acteurs culturels."
-msgstr "Ton identité restera anonyme auprès des acteurs culturels."
-
 #: src/features/profile/components/Badges/IdentityCheckPendingBadge.tsx
 msgid "Ton inscription est en cours de traitement."
 msgstr "Ton inscription est en cours de traitement."
-
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "Ton numéro de téléphone"
-msgstr "Ton numéro de téléphone"
-
-#: src/features/offer/components/ReportOfferOtherReason.tsx
-#: src/features/offer/components/ReportOfferReason.tsx
-msgid "Ton signalement a bien été pris en compte"
-msgstr "Ton signalement a bien été pris en compte"
 
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
 msgstr "Tout passer"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "Toute la culture"
-msgstr "Toute la culture"
-
 #: src/libs/subcategories/mappings.ts
 #: src/libs/subcategories/useSearchGroupLabel.ts
 msgid "Toutes les catégories"
 msgstr "Toutes les catégories"
-
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "Transmettre un document"
-msgstr "Transmettre un document"
-
-#: src/features/favorites/atoms/Buttons/Sort.tsx
-#: src/features/favorites/pages/FavoritesSorts.tsx
-msgid "Trier"
-msgstr "Trier"
-
-#: src/features/favorites/pages/FavoritesSorts.tsx
-#: src/features/favorites/pages/FavoritesSorts.tsx
-msgid "Trier par"
-msgstr "Trier par"
-
-#: src/features/offer/components/OfferHeader.tsx
-msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
-msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
-
-#: src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent.tsx
-msgid "Tu as dépassé le nombre de 5 demandes de code autorisées."
-msgstr "Tu as dépassé le nombre de 5 demandes de code autorisées."
 
 #: src/features/profile/pages/ConsentSettings/NewConsentSettings.tsx
 msgid "Tu as la main dessus"
@@ -1199,10 +779,6 @@ msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facile
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
-
-#: src/features/bookings/components/ArchiveBookingModal.tsx
-msgid "Tu es sur le point d'archiver"
-msgstr "Tu es sur le point d'archiver"
 
 #: src/libs/network/OfflinePage.tsx
 msgid "Tu n'es pas connecté à internet."
@@ -1232,18 +808,6 @@ msgstr "Tu peux choisir d’accepter ou non l’activation de leur suivi."
 msgid "Tu peux faire une nouvelle demande de modification dans ton profil."
 msgstr "Tu peux faire une nouvelle demande de modification dans ton profil."
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
-msgstr "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
-
-#: src/features/bookings/components/ArchiveBookingModal.tsx
-msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
-msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
-
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "Tu vas recevoir un code de validation pour confirmer ton numéro."
-msgstr "Tu vas recevoir un code de validation pour confirmer ton numéro."
-
 #: src/features/search/sections/titles.ts
 msgid "Type d'offre"
 msgstr "Type d'offre"
@@ -1256,23 +820,13 @@ msgstr "Type de lieu"
 msgid "Téléphone"
 msgstr "Téléphone"
 
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
-msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
-
 #: src/features/profile/pages/ChangeEmail/AlreadyChangedEmailDisclaimer.tsx
 msgid "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 
-#: src/api/apiHelpers.ts
 #: src/features/profile/pages/NotificationSettings/NotificationSettings.tsx
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
-
-#: src/features/identityCheck/api/api.ts
-msgid "Une erreur est survenue lors de la mise à jour de ton profil"
-msgstr "Une erreur est survenue lors de la mise à jour de ton profil"
 
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
@@ -1290,18 +844,6 @@ msgstr "Uniquement les offres duo"
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "Utiliser ma position"
-msgstr "Utiliser ma position"
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "VISA"
-msgstr "VISA"
-
-#: src/features/favorites/pages/FavoritesSorts.tsx
-msgid "Valider"
-msgstr "Valider"
-
 #: src/features/search/components/CalendarPicker.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Valider la date"
@@ -1315,10 +857,6 @@ msgstr "Venue {venueId} could not be retrieved"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/atoms/OfferSeeMore.tsx
-msgid "Voir la suite de la description"
-msgstr "Voir la suite de la description"
-
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
@@ -1326,10 +864,6 @@ msgstr "Voir les disponibilités"
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"
 msgstr "Voir ma réservation"
-
-#: src/features/offer/atoms/OfferSeeMore.tsx
-msgid "Voir plus d'informations"
-msgstr "Voir plus d'informations"
 
 #: src/ui/components/PassPlaylist.tsx
 msgid "Voir plus d’offres de la sélection"
@@ -1339,49 +873,13 @@ msgstr "Voir plus d’offres de la sélection"
 msgid "Voir toutes les offres"
 msgstr "Voir toutes les offres"
 
-#: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
-msgid "Votre lien"
-msgstr "Votre lien"
-
-#: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
-msgid "Vous devez d'abord générer un lien"
-msgstr "Vous devez d'abord générer un lien"
-
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "Vérification de l'identité"
-msgstr "Vérification de l'identité"
-
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "Vérifie ton identité"
-msgstr "Vérifie ton identité"
-
 #: src/libs/i18n.native.test.ts
 msgid "Welcome to pass Culture"
 msgstr "Bienvenue à pass Culture"
 
-#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
-msgid "ainsi que notre"
-msgstr "ainsi que notre"
-
 #: src/libs/network/OfflineModeContainer.tsx
 msgid "aucune connexion internet."
 msgstr "aucune connexion internet."
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "auteur"
-msgstr "auteur"
-
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "carte d'identité"
-msgstr "carte d'identité"
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "crédit photo"
-msgstr "crédit photo"
-
-#: src/features/identityCheck/pages/phoneValidation/SetPhoneNumber.tsx
-msgid "de code de validation"
-msgstr "de code de validation"
 
 #: src/libs/tileAccessibilityLabel.ts
 msgid "de la catégorie"
@@ -1396,25 +894,9 @@ msgstr "dont"
 msgid "du type"
 msgstr "du type"
 
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "durée"
-msgstr "durée"
-
 #: src/ui/components/DotComponent.tsx
 msgid "en cours"
 msgstr "en cours"
-
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "en cours de validité pour accéder à ton pass Culture."
-msgstr "en cours de validité pour accéder à ton pass Culture."
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "en détails"
-msgstr "en détails"
-
-#: src/features/offer/atoms/LocationCaption.tsx
-msgid "en ligne"
-msgstr "en ligne"
 
 #: src/features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings.tsx
 msgid "en offres numériques"
@@ -1424,26 +906,10 @@ msgstr "en offres numériques"
 msgid "en offres physiques"
 msgstr "en offres physiques"
 
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "genre"
-msgstr "genre"
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "interprète"
-msgstr "interprète"
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "intervenant"
-msgstr "intervenant"
-
 #: src/libs/tileAccessibilityLabel.ts
 #: src/libs/tileAccessibilityLabel.ts
 msgid "le"
 msgstr "le"
-
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "metteur en scène"
-msgstr "metteur en scène"
 
 #: src/ui/components/inputs/rules/PasswordRule.tsx
 msgid "minimum"
@@ -1457,18 +923,6 @@ msgstr "offerId is undefined"
 msgid "ou"
 msgstr "ou"
 
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "ou de ton"
-msgstr "ou de ton"
-
-#: src/features/navigation/RootNavigator/linking/getPathFromState.ts
-msgid "page-introuvable"
-msgstr "page-introuvable"
-
-#: src/features/identityCheck/pages/identification/identificationStart/IdentityCheckStartContent.tsx
-msgid "passeport"
-msgstr "passeport"
-
 #: src/libs/tileAccessibilityLabel.ts
 msgid "permanente"
 msgstr "permanente"
@@ -1481,18 +935,9 @@ msgstr "pour"
 msgid "prix"
 msgstr "prix"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "près de chez toi"
-msgstr "près de chez toi"
-
 #: src/ui/components/DotComponent.tsx
 msgid "réalisée"
 msgstr "réalisée"
-
-#: src/features/offer/pages/OfferDescription.tsx
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "spécialité"
-msgstr "spécialité"
 
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "sélectionné"
@@ -1502,10 +947,6 @@ msgstr "sélectionné"
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/offer/pages/OfferDescription.tsx
-msgid "type"
-msgstr "type"
-
 #: src/ui/components/inputs/rules/PasswordRule.tsx
 msgid "validé"
 msgstr "validé"
@@ -1513,10 +954,6 @@ msgstr "validé"
 #: src/libs/monitoring/errors.ts
 msgid "venueId is undefined"
 msgstr "venueId is undefined"
-
-#: src/features/offer/atoms/OfferSeeMore.tsx
-msgid "voir plus"
-msgstr "voir plus"
 
 #: src/ui/components/inputs/TextInput.tsx
 msgid "{0}"
