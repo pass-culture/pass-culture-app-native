@@ -15,7 +15,7 @@ interface Props {
 export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHideModal }) => {
   return (
     <AppInformationModal
-      title={'Les bons plans au bon moment\u00a0!'}
+      title="Les bons plans au bon moment&nbsp;!"
       onCloseIconPress={onHideModal}
       visible={visible}>
       <Spacer.Column numberOfSpaces={4} />

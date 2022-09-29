@@ -3,7 +3,7 @@ import React from 'react'
 import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
 import { render } from 'tests/utils'
 
-describe('QuitSignupModal', () => {
+describe('AskNotificationsModal', () => {
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderAskNotificationsModal(false)
 
