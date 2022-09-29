@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 // eslint-disable-next-line no-restricted-imports
 import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
 import React, { createContext, memo, useContext, useEffect } from 'react'
@@ -18,7 +17,7 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
   useEffect(() => {
     if (networkInfo.isConnected === false) {
       showInfoSnackBar({
-        message: t`Aucune connexion internet. Réessaie plus tard`,
+        message: 'Aucune connexion internet. Réessaie plus tard',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }

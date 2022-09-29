@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useMemo, useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
@@ -31,8 +30,6 @@ interface Props {
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
-
-const VENUE_OFFERS_CTA_WORDING = t`Voir toutes les offres`
 
 export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-medium' }) => {
   const { data: venue } = useVenue(venueId)
@@ -126,7 +123,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
       <Spacer.Column numberOfSpaces={6} />
       <PassPlaylist
         testID="offersModuleList"
-        title={t`Offres`}
+        title="Offres"
         TitleComponent={PlaylistTitle}
         data={hits}
         itemHeight={itemHeight}
@@ -140,7 +137,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
       <MarginContainer>
         <TouchableLink
           as={ButtonWithLinearGradient}
-          wording={VENUE_OFFERS_CTA_WORDING}
+          wording="Voir toutes les offres"
           onPress={seeAllOffers}
           navigateTo={searchNavConfig}
         />

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -23,21 +22,21 @@ export function BeneficiaryCeilings({
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
           <Typo.Body testID="domains-credit-digital">
-            {t`dont`}
+            dont
             {SPACE}
             <BodySecondary>{formatToFrenchDecimal(domainsCredit.digital.remaining)}</BodySecondary>
             {SPACE}
-            {t`en offres numériques`}
+            en offres numériques
           </Typo.Body>
         </React.Fragment>
       )}
       {!!domainsCredit.physical && (
         <Typo.Body testID="domains-credit-physical">
-          {t`dont`}
+          dont
           {SPACE}
           <BodySecondary>{formatToFrenchDecimal(domainsCredit.physical.remaining)}</BodySecondary>
           {SPACE}
-          {t`en offres physiques`}
+          en offres physiques
         </Typo.Body>
       )}
     </React.Fragment>

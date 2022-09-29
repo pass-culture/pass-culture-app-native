@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
@@ -158,16 +157,14 @@ export const LocationFilter: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader titleID={titleID} title={t`Localisation`} background="primary" withGoBackButton />
+      <PageHeader titleID={titleID} title="Localisation" background="primary" withGoBackButton />
       <ScrollView
         contentContainerStyle={contentContainerStyle}
         accessibilityRole={AccessibilityRole.RADIOGROUP}
         aria-labelledby={titleID}>
         <Spacer.Column numberOfSpaces={8} />
         <BannerContainer>
-          <Banner
-            title={t`Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation`}
-          />
+          <Banner title="Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation" />
         </BannerContainer>
         <Spacer.Column numberOfSpaces={6} />
         <VerticalUl>
@@ -193,7 +190,7 @@ export const LocationFilter: React.FC = () => {
               disabled={areButtonsDisabled}
               accessibilityDescribedBy={locationChoiceErrorId}
               isSelected={selectedFilter.locationType === LocationType.AROUND_ME}
-              label={'Autour de moi'}
+              label="Autour de moi"
               Icon={AroundMe}
             />
             <InputError
@@ -210,7 +207,7 @@ export const LocationFilter: React.FC = () => {
               onPress={onPressEverywhere}
               disabled={areButtonsDisabled}
               isSelected={selectedFilter.locationType === LocationType.EVERYWHERE}
-              label={'Partout'}
+              label="Partout"
               Icon={Everywhere}
             />
           </Li>

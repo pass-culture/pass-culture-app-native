@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 export enum GeolocPermissionState {
   GRANTED = 'granted',
   DENIED = 'denied',
@@ -17,10 +15,12 @@ export enum GeolocPositionError {
 }
 
 export const GEOLOCATION_USER_ERROR_MESSAGE: Record<GeolocPositionError, string> = {
-  [GeolocPositionError.PERMISSION_DENIED]: t`La géolocalisation est désactivée sur l'application`,
-  [GeolocPositionError.POSITION_UNAVAILABLE]: t`La géolocalisation est temporairement inutilisable`,
-  [GeolocPositionError.TIMEOUT]: t`La géolocalisation est temporairement inutilisable`,
-  [GeolocPositionError.PLAY_SERVICE_NOT_AVAILABLE]: t`L'absence des services Google Play bloquent possiblement la géolocalisation`,
-  [GeolocPositionError.SETTINGS_NOT_SATISFIED]: t`Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation`,
-  [GeolocPositionError.INTERNAL_ERROR]: t`La géolocalisation est temporairement inutilisable`,
+  [GeolocPositionError.PERMISSION_DENIED]: 'La géolocalisation est désactivée sur l’application',
+  [GeolocPositionError.POSITION_UNAVAILABLE]: 'La géolocalisation est temporairement inutilisable',
+  [GeolocPositionError.TIMEOUT]: 'La géolocalisation est temporairement inutilisable',
+  [GeolocPositionError.PLAY_SERVICE_NOT_AVAILABLE]:
+    'L’absence des services Google Play bloquent possiblement la géolocalisation',
+  [GeolocPositionError.SETTINGS_NOT_SATISFIED]:
+    'Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation',
+  [GeolocPositionError.INTERNAL_ERROR]: 'La géolocalisation est temporairement inutilisable',
 }

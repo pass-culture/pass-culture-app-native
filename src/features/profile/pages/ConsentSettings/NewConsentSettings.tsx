@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
@@ -46,20 +45,21 @@ export const NewConsentSettings = () => {
     })
     requestIDFATrackingConsent()
     showSuccessSnackBar({
-      message: t`Ton choix a bien été enregistré.`,
+      message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
     navigate(...getTabNavConfig('Profile'))
   }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
-    <PageProfileSection title={t`Paramètres de confidentialité`} scrollable>
+    <PageProfileSection title="Paramètres de confidentialité" scrollable>
       <Typo.Body>
-        {t`L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton expérience de navigation.`}
+        L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton
+        expérience de navigation.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
-        {t`Tu peux choisir d’accepter ou non l’activation de leur suivi.`}
+        Tu peux choisir d’accepter ou non l’activation de leur suivi.
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
       <CookiesSettings
@@ -67,29 +67,27 @@ export const NewConsentSettings = () => {
         setSettingsCookiesChoice={setSettingsCookiesChoice}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Tu as la main dessus`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
-        {t`Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.`}
+        Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
-        {t`On te redemandera bien sûr ton consentement si notre politique évolue.`}
-      </Typo.Body>
+      <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
-        {t`Pour plus d’informations, nous t’invitons à consulter notre`}
+        Pour plus d’informations, nous t’invitons à consulter notre
         <Spacer.Row numberOfSpaces={1} />
         <TouchableLink
           as={ButtonInsideText}
-          wording={t`Politique de gestion des cookies`}
+          wording="Politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           icon={ExternalSiteFilled}
           typography="Caption"
         />
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimary wording={t`Enregistrer mes choix`} onPress={saveChoice} center />
+      <ButtonPrimary wording="Enregistrer mes choix" onPress={saveChoice} center />
       <Spacer.Column numberOfSpaces={4} />
     </PageProfileSection>
   )

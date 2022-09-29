@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
@@ -7,8 +6,6 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { getSpacingString, Spacer, Typo } from 'ui/theme'
 
 export const AlreadyChangedEmailDisclaimer = () => {
-  const message = t`Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams.`
-
   useEffect(() => {
     analytics.logConsultDisclaimerValidationMail()
   }, [])
@@ -17,7 +14,10 @@ export const AlreadyChangedEmailDisclaimer = () => {
     <Container>
       <StyledClock />
       <Spacer.Row numberOfSpaces={4}></Spacer.Row>
-      <BodyText>{message}</BodyText>
+      <BodyText>
+        Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier
+        tes spams.
+      </BodyText>
     </Container>
   )
 }

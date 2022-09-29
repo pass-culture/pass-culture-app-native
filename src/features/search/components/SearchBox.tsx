@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import omit from 'lodash/omit'
@@ -220,8 +219,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
-        {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
-          "Entrée"`}
+        Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
+        ”Entrée”
       </HiddenAccessibleText>
     </RowContainer>
   )

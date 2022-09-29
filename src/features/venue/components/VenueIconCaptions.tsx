@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -39,19 +38,19 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
         disabled={!!distanceToLocation}
         testID="iconLocation"
         accessibilityLabel={
-          distanceToLocation ? t`Distance depuis la localisation` : t`Géolocalisation désactivée`
+          distanceToLocation ? 'Distance depuis la localisation' : 'Géolocalisation désactivée'
         }>
         {distanceToLocation ? (
           <IconWithCaption
             Icon={PointerLocationNotFilled}
             caption={distanceToLocation}
-            accessibilityLabel={t`Distance`}
+            accessibilityLabel="Distance"
             isDisabled={false}
           />
         ) : (
           <IconWithCaption
             Icon={PointerLocationNotFilledDisabled}
-            caption={t`Géolocalisation désactivée`}
+            caption="Géolocalisation désactivée"
             accessibilityLabel={undefined}
             isDisabled={true}
           />

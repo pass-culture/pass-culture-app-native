@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { memo, useCallback } from 'react'
 import { Platform, View } from 'react-native'
@@ -35,6 +34,8 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
   }, [params, pushWithStagedSearch])
 
   const isLanding = params === undefined || params.view === SearchView.Landing
+  const label = 'Recherche une offre'
+
   return (
     <React.Fragment>
       <Spacer.TopScreen />
@@ -50,7 +51,7 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
         {!!isLanding && (
           <React.Fragment>
             <View {...getHeadingAttrs(1)}>
-              <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
+              <StyledInputLabel htmlFor={searchInputID}>{label}</StyledInputLabel>
             </View>
             <Spacer.Column numberOfSpaces={2} />
           </React.Fragment>

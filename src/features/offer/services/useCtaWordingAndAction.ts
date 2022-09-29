@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
@@ -55,7 +53,7 @@ export const getCtaWordingAndAction = ({
   if (isEndedUsedBooking) {
     return {
       showBookingModal: true,
-      wording: t`Réserver`,
+      wording: 'Réserver',
       isEndedUsedBooking,
       onPress() {
         return false
@@ -66,7 +64,7 @@ export const getCtaWordingAndAction = ({
   if (isAlreadyBookedOffer) {
     return {
       showBookingModal: false,
-      wording: t`Voir ma réservation`,
+      wording: 'Voir ma réservation',
       navigateTo: {
         screen: 'BookingDetails',
         params: { id: bookedOffers[offer.id] },
@@ -83,26 +81,26 @@ export const getCtaWordingAndAction = ({
 
     return {
       showBookingModal: false,
-      wording: subcategory.isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
+      wording: subcategory.isEvent ? 'Accéder à la billetterie' : 'Accéder à l’offre',
       externalNav: { url: externalTicketOfficeUrl },
     }
   }
 
   // Beneficiary
-  if (!offer.isReleased) return { wording: t`Offre expirée` }
-  if (offer.isExpired) return { wording: t`Offre expirée` }
-  if (offer.isSoldOut) return { wording: t`Offre épuisée` }
+  if (!offer.isReleased) return { wording: 'Offre expirée' }
+  if (offer.isExpired) return { wording: 'Offre expirée' }
+  if (offer.isSoldOut) return { wording: 'Offre épuisée' }
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
       if (offer.isDigital && !isUnderageBeneficiary)
-        return { wording: t`Crédit numérique insuffisant` }
-      return { wording: t`Crédit insuffisant` }
+        return { wording: 'Crédit numérique insuffisant' }
+      return { wording: 'Crédit insuffisant' }
     }
 
     return {
       showBookingModal: true,
-      wording: t`Réserver`,
+      wording: 'Réserver',
       onPress: () => {
         analytics.logClickBookOffer(offer.id)
       },
@@ -110,11 +108,11 @@ export const getCtaWordingAndAction = ({
   }
 
   if (subcategory.isEvent) {
-    if (!hasEnoughCredit) return { wording: t`Crédit insuffisant` }
+    if (!hasEnoughCredit) return { wording: 'Crédit insuffisant' }
 
     return {
       showBookingModal: true,
-      wording: t`Voir les disponibilités`,
+      wording: 'Voir les disponibilités',
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
       },

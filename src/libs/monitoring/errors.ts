@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { CaptureContext } from '@sentry/types'
 import { ComponentType } from 'react'
 import { FallbackProps } from 'react-error-boundary'
@@ -79,7 +78,7 @@ export class OfferNotFoundError extends ScreenError {
     Screen: ComponentType<ScreenErrorProps>,
     callback?: () => void
   ) {
-    const message = offerId ? t`Offer ${offerId} could not be retrieved` : t`offerId is undefined`
+    const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
     super(message, Screen, callback ? async () => callback() : undefined)
   }
 }
@@ -89,7 +88,7 @@ export class VenueNotFoundError extends ScreenError {
     Screen: ComponentType<ScreenErrorProps>,
     callback?: () => void
   ) {
-    const message = venueId ? t`Venue ${venueId} could not be retrieved` : t`venueId is undefined`
+    const message = venueId ? `Venue ${venueId} could not be retrieved` : 'venueId is undefined'
     super(message, Screen, callback ? async () => callback() : undefined)
   }
 }

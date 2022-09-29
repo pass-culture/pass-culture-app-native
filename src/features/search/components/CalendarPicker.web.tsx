@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { format } from 'date-fns'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Picker from 'react-mobile-picker'
@@ -33,7 +32,7 @@ LocaleConfig.locales['fr'] = {
   monthNamesShort,
   dayNames,
   dayNamesShort,
-  today: t`Aujourd'hui`,
+  today: 'Aujourd’hui',
 } as typeof LocaleConfig.locales
 LocaleConfig.defaultLocale = 'fr'
 
@@ -93,7 +92,7 @@ export const CalendarPicker: React.FC<Props> = ({
 
   useEffect(() => {
     const DateStr = desktopCalendarDate.toISOString().replace(/T.*/gi, '')
-    setMarkedDates({ [DateStr]: { selected: true, accessibilityLabel: t`sélectionné` } })
+    setMarkedDates({ [DateStr]: { selected: true, accessibilityLabel: 'sélectionné' } })
   }, [desktopCalendarDate])
 
   const { isMobileDateInvalid, optionGroups } = useMemo(() => {
@@ -141,8 +140,8 @@ export const CalendarPicker: React.FC<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={t`Choisis une date`}
-      rightIconAccessibilityLabel={t`Fermer le calendrier`}
+      title="Choisis une date"
+      rightIconAccessibilityLabel="Fermer le calendrier"
       rightIcon={Close}
       onRightIconPress={hideCalendar}>
       {isTouch ? (
@@ -175,15 +174,15 @@ export const CalendarPicker: React.FC<Props> = ({
 
       <CalendarButtonWrapper>
         <ButtonPrimary
-          testID={'validationButton'}
-          wording={t`Valider la date`}
+          testID="validationButton"
+          wording="Valider la date"
           disabled={isMobileDateInvalid}
           onPress={onValidate}
           adjustsFontSizeToFit={true}
         />
         <InputError
           visible={isMobileDateInvalid}
-          messageId={t`Choisis une date dans le futur`}
+          messageId="Choisis une date dans le futur"
           numberOfSpacesTop={2}
           relatedInputId={bookingDateChoiceErrorId}
         />
@@ -221,10 +220,10 @@ const CalendarButtonWrapper = styled.View({
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
-  accessibilityLabel: t`Mois suivant`,
+  accessibilityLabel: 'Mois suivant',
 }))``
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
-  accessibilityLabel: t`Mois précédent`,
+  accessibilityLabel: 'Mois précédent',
 }))``

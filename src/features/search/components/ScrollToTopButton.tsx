@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
@@ -26,7 +25,7 @@ export const ScrollToTopButton = ({
       <Container
         onPress={onPress}
         disabled={disabled}
-        {...accessibilityAndTestId(t`Revenir en haut`, 'ScrollToTop')}>
+        {...accessibilityAndTestId('Revenir en haut', 'ScrollToTop')}>
         <StyledLinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}

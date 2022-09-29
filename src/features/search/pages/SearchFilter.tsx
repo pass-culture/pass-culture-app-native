@@ -58,7 +58,7 @@ export const SearchFilter: React.FC = () => {
   return (
     <Container>
       <PageHeader
-        title={t`Filtrer`}
+        title="Filtrer"
         RightComponent={ReinitializeFilters}
         background="primary"
         withGoBackButton

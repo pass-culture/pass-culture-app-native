@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -22,24 +21,24 @@ export function PersonalData() {
   }
 
   return (
-    <PageProfileSection title={t`Informations personnelles`}>
+    <PageProfileSection title="Informations personnelles">
       {!!user?.isBeneficiary && (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>{t`Prénom et nom`}</Typo.CaptionNeutralInfo>
+          <Typo.CaptionNeutralInfo>Prénom et nom</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{fullname}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
       )}
 
-      <Typo.CaptionNeutralInfo>{t`Adresse e-mail`}</Typo.CaptionNeutralInfo>
+      <Typo.CaptionNeutralInfo>Adresse e-mail</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
         <EditButton
           navigateTo={{ screen: 'ChangeEmail' }}
           onPress={onEmailChange}
-          wording={t`Modifier`}
+          wording="Modifier"
           testID="Modifier e-mail"
         />
       </EditContainer>
@@ -48,20 +47,20 @@ export function PersonalData() {
 
       {!!user?.isBeneficiary && (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>{t`Numéro de téléphone`}</Typo.CaptionNeutralInfo>
+          <Typo.CaptionNeutralInfo>Numéro de téléphone</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{user?.phoneNumber}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
       )}
 
-      <Typo.CaptionNeutralInfo>{t`Mot de passe`}</Typo.CaptionNeutralInfo>
+      <Typo.CaptionNeutralInfo>Mot de passe</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{'*'.repeat(12)}</EditText>
         <EditButton
           navigateTo={{ screen: 'ChangePassword' }}
-          wording={t`Modifier`}
+          wording="Modifier"
           testID="Modifier mot de passe"
         />
       </EditContainer>
@@ -70,7 +69,7 @@ export function PersonalData() {
 
       <Spacer.Column numberOfSpaces={2} />
       <SectionRow
-        title={t`Supprimer mon compte`}
+        title="Supprimer mon compte"
         type="navigable"
         navigateTo={{ screen: 'ConfirmDeleteProfile' }}
         onPress={analytics.logAccountDeletion}

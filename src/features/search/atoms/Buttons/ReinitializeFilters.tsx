@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -38,14 +37,14 @@ export const ReinitializeFilters = () => {
   return (
     <StyledTouchable
       onPress={reinitializeFilters}
-      {...accessibilityAndTestId(t`Réinitialiser les filtres`)}
+      {...accessibilityAndTestId('Réinitialiser les filtres')}
       type="reset">
-      <ButtonText>{t`Réinitialiser`}</ButtonText>
+      <StyledButtonText>Réinitialiser</StyledButtonText>
     </StyledTouchable>
   )
 }
 
-const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

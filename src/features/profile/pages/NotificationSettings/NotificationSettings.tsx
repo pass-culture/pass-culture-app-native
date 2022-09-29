@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
@@ -105,7 +104,7 @@ export function NotificationSettings() {
   const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
     () => {
       showSuccessSnackBar({
-        message: t`Paramètre enregistré`,
+        message: 'Paramètre enregistré',
         timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
@@ -117,7 +116,7 @@ export function NotificationSettings() {
      */
     () => {
       showErrorSnackBar({
-        message: t`Une erreur est survenue`,
+        message: 'Une erreur est survenue',
       })
       // on error rollback to the last loaded result
       setState((prevState) => ({
@@ -142,21 +141,21 @@ export function NotificationSettings() {
   const pushSwitchEnabled = Boolean(state.pushPermission === 'granted' && state.allowPush)
 
   return (
-    <PageProfileSection title={t`Notifications`}>
+    <PageProfileSection title="Notifications">
       <Typo.Body>
         {isLoggedIn
-          ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`
-          : t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `}
+          ? 'Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.'
+          : 'Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture '}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
-        {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
+        Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.
       </Typo.CaptionNeutralInfo>
       <Form.Flex>
         <SectionWithSwitch
-          title={t`Autoriser l’envoi d’e-mails`}
+          title="Autoriser l’envoi d’e-mails"
           active={allowEmails}
           toggle={toggleEmails}
           disabled={!isLoggedIn}
@@ -166,10 +165,11 @@ export function NotificationSettings() {
             <Separator />
             <Spacer.Column numberOfSpaces={4} />
             <Typo.CaptionNeutralInfo>
-              {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
+              Je veux être alerté des actualités et des meilleures offres du pass Culture
+              directement sur mon appareil.
             </Typo.CaptionNeutralInfo>
             <SectionWithSwitch
-              title={t`Autoriser les notifications marketing`}
+              title="Autoriser les notifications marketing"
               active={pushSwitchEnabled}
               toggle={togglePush}
               disabled={!isLoggedIn}
@@ -180,8 +180,8 @@ export function NotificationSettings() {
           <React.Fragment>
             <Spacer.Flex />
             <ButtonPrimary
-              wording={t`Enregistrer`}
-              accessibilityLabel={t`Enregistrer les modifications`}
+              wording="Enregistrer"
+              accessibilityLabel="Enregistrer les modifications"
               isLoading={isUpdating}
               disabled={!state.emailTouched && !state.pushTouched}
               onPress={submitProfile}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
@@ -28,8 +27,8 @@ export const CalendarPicker: React.FC<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={t`Choisis une date`}
-      rightIconAccessibilityLabel={t`Fermer le calendrier`}
+      title="Choisis une date"
+      rightIconAccessibilityLabel="Fermer le calendrier"
       rightIcon={Close}
       onRightIconPress={hideCalendar}>
       <StyledDatePicker
@@ -42,7 +41,7 @@ export const CalendarPicker: React.FC<Props> = ({
         androidVariant="nativeAndroid"
       />
       <Spacer.Column numberOfSpaces={5} />
-      <ButtonPrimary wording={t`Valider la date`} onPress={onValidate} />
+      <ButtonPrimary wording="Valider la date" onPress={onValidate} />
     </AppModal>
   )
 }
