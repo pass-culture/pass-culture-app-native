@@ -2,6 +2,7 @@ import React from 'react'
 
 import { OfferType as OfferTypeEnum } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
 import { OfferType } from '../OfferType'
@@ -16,7 +17,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('OfferType component', () => {
   it('should have no description when no selection', () => {
-    const { queryByText } = render(<OfferType />)
+    const { queryByText } = renderOfferType()
     expect(queryByText("Type d'offre")).toBeTruthy()
     expect(queryByText(OfferTypeEnum.EVENT)).toBeFalsy()
     expect(queryByText(`${OfferTypeEnum.EVENT} DUO`)).toBeFalsy()
@@ -35,7 +36,7 @@ describe('OfferType component', () => {
         },
       },
     })
-    const { queryByText } = render(<OfferType />)
+    const { queryByText } = renderOfferType()
     expect(queryByText(OfferTypeEnum.EVENT)).toBeTruthy()
     expect(queryByText(`${OfferTypeEnum.EVENT} DUO`)).toBeFalsy()
     expect(queryByText(OfferTypeEnum.THING)).toBeFalsy()
@@ -53,7 +54,7 @@ describe('OfferType component', () => {
         },
       },
     })
-    const { queryByText } = render(<OfferType />)
+    const { queryByText } = renderOfferType()
     expect(queryByText(OfferTypeEnum.EVENT)).toBeFalsy()
     expect(queryByText(`${OfferTypeEnum.EVENT} DUO`)).toBeTruthy()
     expect(queryByText(OfferTypeEnum.THING)).toBeFalsy()
@@ -71,7 +72,7 @@ describe('OfferType component', () => {
         },
       },
     })
-    const { queryByText } = render(<OfferType />)
+    const { queryByText } = renderOfferType()
     expect(queryByText(OfferTypeEnum.EVENT)).toBeFalsy()
     expect(queryByText(`${OfferTypeEnum.EVENT} DUO`)).toBeFalsy()
     expect(queryByText(OfferTypeEnum.THING)).toBeTruthy()
@@ -89,10 +90,15 @@ describe('OfferType component', () => {
         },
       },
     })
-    const { queryByText } = render(<OfferType />)
+    const { queryByText } = renderOfferType()
     expect(queryByText(OfferTypeEnum.EVENT)).toBeFalsy()
     expect(queryByText(`${OfferTypeEnum.EVENT} DUO`)).toBeFalsy()
     expect(queryByText(OfferTypeEnum.THING)).toBeFalsy()
     expect(queryByText(OfferTypeEnum.DIGITAL)).toBeTruthy()
   })
 })
+
+function renderOfferType() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<OfferType />))
+}
