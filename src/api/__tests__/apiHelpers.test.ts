@@ -236,7 +236,7 @@ describe('[api] helpers', () => {
       const result = await refreshAccessToken(api, 0)
 
       expect(result).toStrictEqual({
-        error: "Une erreur inconnue est survenue lors de la regénération de l'access token",
+        error: 'Une erreur inconnue est survenue lors de la regénération de l’access token',
       })
     })
 

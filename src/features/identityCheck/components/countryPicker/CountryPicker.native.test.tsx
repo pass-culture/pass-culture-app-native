@@ -20,7 +20,7 @@ describe('<CountryPicker />', () => {
       <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
     )
     await flushAllPromisesWithAct()
-    fireEvent.press(getByTestId("Ouvrir la modale de choix de l'indicatif téléphonique"))
+    fireEvent.press(getByTestId('Ouvrir la modale de choix de l’indicatif téléphonique'))
     fireEvent.press(getByText('Guadeloupe (+590)'))
 
     await act(async () => {

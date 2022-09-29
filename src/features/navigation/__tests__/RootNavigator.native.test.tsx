@@ -86,7 +86,7 @@ describe('ForceUpdate display logic', () => {
     const rootNavigator = await renderRootNavigator()
 
     expect(rootNavigator).toMatchSnapshot()
-    expect(rootNavigator.queryAllByText("Mise à jour de l'application")).toBeTruthy()
+    expect(rootNavigator.queryAllByText('Mise à jour de l’application')).toBeTruthy()
   })
 })
 

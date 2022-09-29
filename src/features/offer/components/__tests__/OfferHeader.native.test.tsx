@@ -172,7 +172,7 @@ describe('<OfferHeader />', () => {
     await superFlushWithAct(20)
 
     expect(showErrorSnackBar).toBeCalledWith({
-      message: `L'offre n'a pas été ajoutée à tes favoris`,
+      message: 'L’offre n’a pas été ajoutée à tes favoris',
       timeout: SNACK_BAR_TIME_OUT,
     })
 
@@ -233,7 +233,7 @@ describe('<OfferHeader />', () => {
     await superFlushWithAct()
 
     expect(showErrorSnackBar).toBeCalledWith({
-      message: `L'offre n'a pas été retirée de tes favoris`,
+      message: 'L’offre n’a pas été retirée de tes favoris',
       timeout: SNACK_BAR_TIME_OUT,
     })
 
@@ -255,7 +255,7 @@ describe('<OfferHeader />', () => {
     await superFlushWithAct()
 
     expect(showErrorSnackBar).toBeCalledWith({
-      message: `Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`,
+      message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
       timeout: SNACK_BAR_TIME_OUT,
     })
   })

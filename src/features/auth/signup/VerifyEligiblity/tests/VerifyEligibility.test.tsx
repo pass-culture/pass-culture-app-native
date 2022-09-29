@@ -25,7 +25,7 @@ describe('<VerifyEligibility />', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     const { findByText } = render(<VerifyEligibility />)
 
-    const button = await findByText("Retourner à l'accueil")
+    const button = await findByText('Retourner à l’accueil')
     fireEvent.press(button)
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
