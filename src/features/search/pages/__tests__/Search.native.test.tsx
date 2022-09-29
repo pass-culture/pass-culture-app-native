@@ -12,7 +12,7 @@ import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, superFlushWithAct } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -154,13 +154,15 @@ describe('Search component', () => {
       useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'la fnac' } })
     })
 
-    it('should show search box without label', () => {
+    it('should show search box without label', async () => {
       const { queryByTestId } = render(<Search />)
+      await superFlushWithAct()
       expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
     })
 
-    it('should show search results', () => {
+    it('should show search results', async () => {
       const { queryByTestId } = render(<Search />)
+      await superFlushWithAct()
       expect(queryByTestId('searchResults')).toBeTruthy()
     })
 

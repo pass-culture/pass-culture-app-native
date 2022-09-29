@@ -5,6 +5,7 @@ import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
@@ -13,6 +14,7 @@ import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { Categories } from 'features/search/pages/Categories'
+import { LocationModal } from 'features/search/pages/LocationModal'
 import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
@@ -62,6 +64,8 @@ export const SearchResults: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
+  const { data: appSettings } = useAppSettings()
+  const hasFiltersButtonsDisplay = appSettings?.appEnableCategoryFilterPage ?? false
   const offerCategories = params?.offerCategories ?? []
   const hasCategory = offerCategories.length > 0
   const {
@@ -78,6 +82,11 @@ export const SearchResults: React.FC = () => {
     visible: offerTypeModalVisible,
     showModal: showOfferTypeModal,
     hideModal: hideOfferTypeModal,
+  } = useModal(false)
+  const {
+    visible: locationModalVisible,
+    showModal: showLocationModal,
+    hideModal: hideLocationModal,
   } = useModal(false)
   const theme = useTheme()
 
@@ -199,7 +208,7 @@ export const SearchResults: React.FC = () => {
               <SingleFilterButton
                 label={locationLabel}
                 testID="locationButton"
-                onPress={redirectFilters}
+                onPress={hasFiltersButtonsDisplay ? showLocationModal : redirectFilters}
                 Icon={Check}
                 color={theme.colors.primary}
               />
@@ -292,6 +301,12 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les type d'offre et retourner aux résultats"
         isVisible={offerTypeModalVisible}
         hideModal={hideOfferTypeModal}
+      />
+      <LocationModal
+        title="Localisation"
+        accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
+        isVisible={locationModalVisible}
+        hideModal={hideLocationModal}
       />
     </React.Fragment>
   )
