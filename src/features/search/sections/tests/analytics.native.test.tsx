@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { OfferType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
@@ -54,8 +55,8 @@ describe('Analytics - logUseFilter', () => {
   })
   it('should log UseFilter once when selecting multiple offer types', () => {
     const { getByText } = render(<Section.OfferType />)
-    fireEvent.press(getByText('Offre numérique'))
-    fireEvent.press(getByText('Offre physique'))
+    fireEvent.press(getByText(OfferType.DIGITAL))
+    fireEvent.press(getByText(OfferType.THING))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })

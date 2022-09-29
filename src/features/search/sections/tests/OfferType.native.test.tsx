@@ -1,9 +1,10 @@
 import React from 'react'
 
+import { OfferType as OfferTypeEnum } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { fireEvent, render } from 'tests/utils'
 
-import { OfferType, OFFER_TYPES } from '../OfferType'
+import { OFFER_TYPES, OfferType } from '../OfferType'
 
 let mockSearchState = initialSearchState
 const mockStagedDispatch = jest.fn()
@@ -18,13 +19,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 describe('OfferType component', () => {
   it('should render all offer types', () => {
     const { queryByText } = render(<OfferType />)
-    OFFER_TYPES.forEach(([, label]) => {
+    OFFER_TYPES.filter(({ type }) => type).forEach(({ label }) => {
       expect(queryByText(label)).toBeTruthy()
     })
   })
   it('should dispatch OFFER_TYPE with correct offerType', () => {
     const { getByText } = render(<OfferType />)
-    fireEvent.press(getByText('Offre numérique'))
+    fireEvent.press(getByText(OfferTypeEnum.DIGITAL))
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'OFFER_TYPE',
       payload: 'isDigital',

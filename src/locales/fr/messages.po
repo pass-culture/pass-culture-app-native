@@ -743,15 +743,10 @@ msgstr "Offre digitale"
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/search/sections/OfferType.tsx
 #: src/libs/parsers/venueType.ts
 #: src/libs/parsers/venueType.ts
 msgid "Offre numérique"
 msgstr "Offre numérique"
-
-#: src/features/search/sections/OfferType.tsx
-msgid "Offre physique"
-msgstr "Offre physique"
 
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/favorites/atoms/BookingButton.tsx
@@ -1095,10 +1090,6 @@ msgstr "Signaler l'offre"
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "Site internet"
 msgstr "Site internet"
-
-#: src/features/search/sections/OfferType.tsx
-msgid "Sortie"
-msgstr "Sortie"
 
 #: src/libs/parsers/venueType.ts
 #: src/libs/parsers/venueType.ts

@@ -8,16 +8,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
+import { OfferType } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { OFFER_TYPES } from 'features/search/sections/OfferType'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
-import { Numeric } from 'ui/svg/icons/bicolor/Numeric'
-import { Show } from 'ui/svg/icons/bicolor/Show'
-import { Thing } from 'ui/svg/icons/bicolor/Thing'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
 
@@ -35,14 +33,6 @@ type Props = {
 
 const titleId = uuidv4()
 
-// TODO(alexis1993): rename to OFFER_TYPES when PC-17489 is merged
-export const RADIO_BUTTON_ITEMS = [
-  { label: 'Tous les types', icon: BicolorLogo },
-  { label: 'Numérique', icon: Numeric },
-  { label: 'Sorties', icon: Show },
-  { label: 'Bien physiques', icon: Thing },
-]
-
 const DEFAULT_HEIGHT_MODAL = 500
 
 export const OfferTypeModal: FunctionComponent<Props> = ({
@@ -52,7 +42,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
-  const [radioButtonChoice, setRadioButtonChoice] = useState('Tous les types')
+  const [radioButtonChoice, setRadioButtonChoice] = useState(OfferType.ALL_TYPE)
   const { searchState } = useSearch()
   const { isDesktopViewport } = useTheme()
 
@@ -124,7 +114,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
         onContentSizeChange={onContentSizeChange}>
         <Form.MaxWidth>
           <React.Fragment>
-            {RADIO_BUTTON_ITEMS.map(({ label, icon }) => (
+            {OFFER_TYPES.map(({ label, icon }) => (
               <View key={label}>
                 <RadioButton
                   onSelect={() => setRadioButtonChoice(label)}
