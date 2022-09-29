@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useUserProfileInfo } from 'features/profile/api'
 import { OfferType } from 'features/search/enums'
 import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -10,13 +12,28 @@ import { fireEvent, render, act } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 
-const hideOfferTypeModal = jest.fn()
-
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),
 }))
+
+const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
+jest.mock('features/profile/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({
+    data: {
+      isBeneficiary: true,
+      domainsCredit: { all: { initial: 8000, remaining: 7000 } },
+    },
+  })),
+}))
+
+const mockedUseAuthContext = useAuthContext as jest.Mock
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
+}))
+
+const hideOfferTypeModal = jest.fn()
 
 describe('OfferTypeModal component', () => {
   afterEach(jest.clearAllMocks)
@@ -87,7 +104,82 @@ describe('OfferTypeModal component', () => {
     })
   })
 
-  describe('toggle offerIsDuo', () => {
+  describe('when user is not logged in', () => {
+    beforeEach(() => {
+      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
+        data: {},
+      }))
+    })
+
+    it('should not display duo offer toggle', () => {
+      const { queryByTestId } = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const toggle = queryByTestId('Interrupteur-limitDuoOfferSearch')
+
+      expect(toggle).toBeFalsy()
+    })
+  })
+
+  describe('when user is not a beneficiary', () => {
+    beforeEach(() => {
+      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
+        data: { isBeneficiary: false },
+      }))
+    })
+
+    it('should not display duo offer toggle', () => {
+      const { queryByTestId } = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const toggle = queryByTestId('Interrupteur-limitDuoOfferSearch')
+
+      expect(toggle).toBeFalsy()
+    })
+  })
+
+  describe('when user is logged in and benificiary with no credit', () => {
+    beforeEach(() => {
+      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
+        data: { isBeneficiary: true, domainsCredit: { all: { initial: 8000, remaining: 0 } } },
+      }))
+    })
+
+    it('should not display duo offer toggle', () => {
+      const { queryByTestId } = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const toggle = queryByTestId('Interrupteur-limitDuoOfferSearch')
+
+      expect(toggle).toBeFalsy()
+    })
+  })
+
+  describe('when user is logged in and beneficiary with credit', () => {
+    beforeEach(() => {
+      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
+        data: { isBeneficiary: true, domainsCredit: { all: { initial: 8000, remaining: 1000 } } },
+      }))
+      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    })
+
+    it('should display toggle offerIsDuo', () => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+
+      expect(toggle).toBeTruthy()
+    })
+
     it('should toggle offerIsDuo', () => {
       const renderAPI = renderOfferTypeModal({
         hideOfferTypeModal,

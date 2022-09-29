@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -51,6 +52,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { searchState } = useSearch()
+  const { data: user } = useUserProfileInfo()
   const [offerTypes, setOfferTypes] = useState(searchState.offerTypes)
   const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -112,6 +114,8 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
     return entry ? entry[0] : undefined
   }, [offerTypes])
 
+  const hasDisplayDuoOffer = !!user?.isBeneficiary && !!user?.domainsCredit?.all?.remaining
+
   return (
     <AppModal
       visible={isVisible}
@@ -168,21 +172,23 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          <Controller
-            control={control}
-            name="offerIsDuo"
-            render={({ field: { value } }) => (
-              <React.Fragment>
-                <FilterSwitchWithLabel
-                  isActive={value}
-                  toggle={toggleLimitDuoOfferSearch}
-                  label="Uniquement les offres duo"
-                  testID="limitDuoOfferSearch"
-                />
-                <Spacer.Column numberOfSpaces={6} />
-              </React.Fragment>
-            )}
-          />
+          {!!hasDisplayDuoOffer && (
+            <Controller
+              control={control}
+              name="offerIsDuo"
+              render={({ field: { value } }) => (
+                <React.Fragment>
+                  <FilterSwitchWithLabel
+                    isActive={value}
+                    toggle={toggleLimitDuoOfferSearch}
+                    label="Uniquement les offres duo"
+                    testID="limitDuoOfferSearch"
+                  />
+                  <Spacer.Column numberOfSpaces={6} />
+                </React.Fragment>
+              )}
+            />
+          )}
         </Form.MaxWidth>
       </StyledScrollView>
     </AppModal>

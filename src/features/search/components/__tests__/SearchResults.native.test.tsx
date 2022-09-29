@@ -197,23 +197,6 @@ describe('SearchResults component', () => {
     expect(isInverseLayout).toBeFalsy()
   })
 
-  it('should open for desktop the type filter modal when clicking on the type filter button', async () => {
-    const { getByTestId } = render(<SearchResults />, {
-      theme: {
-        isDesktopViewport: true,
-      },
-    })
-    const typeButton = getByTestId('typeButton')
-
-    await act(async () => {
-      fireEvent.press(typeButton)
-    })
-
-    const isInverseLayout = getByTestId('inverseLayout')
-
-    expect(isInverseLayout).toBeTruthy()
-  })
-
   it.each`
     type               | params
     ${'duo offer'}     | ${{ offerIsDuo: true }}
