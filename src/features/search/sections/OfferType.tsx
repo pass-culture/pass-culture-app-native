@@ -1,23 +1,17 @@
-import React from 'react'
-import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
+import React, { useMemo } from 'react'
 
-import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
+import { FilterRow } from 'features/search/atoms/FilterRow'
 import { OfferType as OfferTypeEnum } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { SectionTitle } from 'features/search/sections/titles'
+import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { OfferTypes } from 'features/search/types'
-import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AccordionItem } from 'ui/components/AccordionItem'
-import { Li } from 'ui/components/Li'
-import { Ul } from 'ui/components/Ul'
+import { useModal } from 'ui/components/modals/useModal'
 import { Numeric } from 'ui/svg/icons/bicolor/Numeric'
 import { Show } from 'ui/svg/icons/bicolor/Show'
 import { Thing } from 'ui/svg/icons/bicolor/Thing'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { AccessibleBicolorIconInterface } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 export const OFFER_TYPES: Array<{
   type?: OfferTypes
@@ -30,53 +24,40 @@ export const OFFER_TYPES: Array<{
   { type: 'isThing', label: OfferTypeEnum.THING, icon: Thing },
 ]
 
-export const OfferType: React.FC = () => {
-  const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
-  const { searchState, dispatch } = useStagedSearch()
-  const { offerTypes } = searchState
-  const titleID = uuidv4()
+export function OfferType() {
+  const { searchState } = useSearch()
+  const { offerIsDuo, offerTypes } = searchState
+  const {
+    visible: offerTypeModalVisible,
+    showModal: showOfferTypeModal,
+    hideModal: hideOfferTypeModal,
+  } = useModal(false)
 
-  const onPress = (offerType: OfferTypes) => () => {
-    dispatch({ type: 'OFFER_TYPE', payload: offerType })
-    logUseFilter()
-  }
+  const description = useMemo(() => {
+    if (offerTypes.isEvent) {
+      return offerIsDuo ? `${OfferTypeEnum.EVENT} DUO` : OfferTypeEnum.EVENT
+    } else if (offerTypes.isThing) {
+      return OfferTypeEnum.THING
+    } else if (offerTypes.isDigital) {
+      return OfferTypeEnum.DIGITAL
+    }
+    return undefined
+  }, [offerIsDuo, offerTypes])
 
   return (
-    <AccordionItem
-      defaultOpen={true}
-      title={
-        <TitleWithCount
-          titleID={titleID}
-          title={SectionTitle.OfferType}
-          count={+offerTypes['isDigital'] + +offerTypes['isEvent'] + +offerTypes['isThing']}
-          ariaLive="polite"
-        />
-      }
-      accessibilityTitle={SectionTitle.OfferType}>
-      <BodyContainer aria-labelledby={titleID} accessibilityRole={AccessibilityRole.GROUP}>
-        <StyledUl>
-          {OFFER_TYPES.filter(({ type }) => type).map(({ type, label }) => (
-            <Li key={label}>
-              <SelectionLabel
-                label={label}
-                selected={offerTypes[type as OfferTypes]}
-                onPress={onPress(type as OfferTypes)}
-              />
-            </Li>
-          ))}
-        </StyledUl>
-      </BodyContainer>
-    </AccordionItem>
+    <React.Fragment>
+      <FilterRow
+        icon={OtherOffer}
+        title="Type d'offre"
+        description={description}
+        onPress={showOfferTypeModal}
+      />
+      <OfferTypeModal
+        title="Type d'offre"
+        accessibilityLabel="Ne pas filtrer les type d'offre et retourner aux filtres de recherche"
+        isVisible={offerTypeModalVisible}
+        hideModal={hideOfferTypeModal}
+      />
+    </React.Fragment>
   )
 }
-
-const BodyContainer = styled.View({
-  flexWrap: 'wrap',
-  flexDirection: 'row',
-  marginBottom: getSpacing(-3),
-  marginRight: getSpacing(-3),
-})
-
-const StyledUl = styled(Ul)({
-  flexWrap: 'wrap',
-})

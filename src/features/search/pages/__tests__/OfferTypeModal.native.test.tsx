@@ -10,13 +10,13 @@ import { fireEvent, render, act } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 
+const hideOfferTypeModal = jest.fn()
+
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),
 }))
-
-const hideOfferTypeModal = jest.fn()
 
 describe('OfferTypeModal component', () => {
   afterEach(jest.clearAllMocks)
@@ -178,7 +178,7 @@ describe('OfferTypeModal component', () => {
       ${'isEvent'}   | ${OfferType.EVENT}
       ${'isThing'}   | ${OfferType.THING}
     `(
-      'should navigate to search results with digital offer',
+      'should use offerType=$offerType and navigate to search results when pressing "$label"',
       async ({ offerType, label }: { offerType?: OfferTypes; label: OfferType }) => {
         const { getByText, getByTestId } = renderOfferTypeModal({
           hideOfferTypeModal,
