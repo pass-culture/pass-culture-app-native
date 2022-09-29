@@ -27,11 +27,9 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   return (
     <Container inverseLayout={!!isDesktopViewport}>
       {!isDesktopViewport && (
-        <React.Fragment>
-          <InputLabel htmlFor={checkboxID}>
-            <Typo.ButtonText>{label}</Typo.ButtonText>
-          </InputLabel>
-        </React.Fragment>
+        <InputLabel htmlFor={checkboxID}>
+          <Typo.ButtonText>{label}</Typo.ButtonText>
+        </InputLabel>
       )}
       <FilterSwitch
         checkboxID={checkboxID}
