@@ -1,8 +1,11 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useRef, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
@@ -42,6 +45,15 @@ export const SearchFilter: React.FC = () => {
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
   const [scrollEnabled, setScrollEnabled] = useState(true)
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  const onGoBack = useCallback(() => {
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+      })
+    )
+  }, [navigate, searchState])
 
   return (
     <Container>
@@ -50,6 +62,7 @@ export const SearchFilter: React.FC = () => {
         RightComponent={ReinitializeFilters}
         background="primary"
         withGoBackButton
+        onGoBack={onGoBack}
       />
       <React.Fragment>
         <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>

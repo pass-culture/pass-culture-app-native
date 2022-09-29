@@ -1,11 +1,12 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { useUserProfileInfo } from 'features/profile/api'
 import { LocationType } from 'features/search/enums'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SuggestedPlace } from 'libs/place'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'
@@ -41,44 +42,79 @@ jest.mock('features/profile/api', () => ({
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
 describe('SearchFilter component', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     mockStagedSearchState.locationFilter = {
       locationType: LocationType.AROUND_ME,
       aroundRadius: 100,
     }
     const { toJSON } = renderSearchFilter()
-    expect(toJSON()).toMatchSnapshot()
+    await act(async () => {
+      expect(toJSON()).toMatchSnapshot()
+    })
   })
 
-  it('should not render section Radius if search everywhere or venue selected', () => {
-    mockStagedSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
-    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeNull()
-
+  it('should render section Radius when search around me', async () => {
     mockStagedSearchState.locationFilter = {
       locationType: LocationType.AROUND_ME,
       aroundRadius: 100,
     }
-    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
+    const { queryByText } = renderSearchFilter()
+    await act(async () => {
+      expect(queryByText(SectionTitle.Radius)).toBeTruthy()
+    })
+  })
 
+  it('should render section Radius when search place', async () => {
     // Address
     mockStagedSearchState.locationFilter = {
       locationType: LocationType.PLACE,
       aroundRadius: 10,
       place: Kourou,
     }
-    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
+    const { queryByText } = renderSearchFilter()
+    await act(async () => {
+      expect(queryByText(SectionTitle.Radius)).toBeTruthy()
+    })
+  })
 
+  it('should not render section Radius when search everywhere', async () => {
+    mockStagedSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
+    const { queryByText } = renderSearchFilter()
+    await act(async () => {
+      expect(queryByText(SectionTitle.Radius)).toBeNull()
+    })
+  })
+
+  it('should not render section Radius when search venue', async () => {
     // Venue
     mockStagedSearchState.locationFilter = {
       locationType: LocationType.VENUE,
       venue: { ...Kourou, venueId: 4 },
     }
-    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeNull()
+    const { queryByText } = renderSearchFilter()
+    await act(async () => {
+      expect(queryByText(SectionTitle.Radius)).toBeNull()
+    })
   })
 
-  it('should not render Duo filter if user not beneficiary', () => {
+  it('should not render Duo filter if user not beneficiary', async () => {
     useUserProfileInfoMock.mockImplementationOnce(() => ({ data: { isBeneficiary: false } }))
     const { queryByTestId } = renderSearchFilter()
-    expect(queryByTestId('duoFilter')).toBeNull()
+    await act(async () => {
+      expect(queryByTestId('duoFilter')).toBeNull()
+    })
+  })
+
+  it('should navigate on search results with the current search state when pressing go back', async () => {
+    const { getByTestId } = renderSearchFilter()
+
+    await act(async () => {
+      fireEvent.press(getByTestId('backButton'))
+    })
+
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: mockSearchState,
+      screen: 'Search',
+    })
   })
 })

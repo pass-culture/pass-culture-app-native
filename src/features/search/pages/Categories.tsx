@@ -34,15 +34,18 @@ export const Categories: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const [selectedCategory, setSelectedCategory] = useSafeState<SearchGroupNameEnumv2>(
     searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE
   )
   const { isDesktopViewport } = useTheme()
 
   useEffect(() => {
+    if (!isVisible) return
     setSelectedCategory(searchState?.offerCategories?.[0] || SearchGroupNameEnumv2.NONE)
-  }, [searchState?.offerCategories, setSelectedCategory])
+    // Update the category only when display the modal
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible])
 
   const onSelectCategory = (category: SearchGroupNameEnumv2) => () => {
     setSelectedCategory(category)
@@ -59,14 +62,13 @@ export const Categories: FunctionComponent<Props> = ({
   const onSearchPress = useCallback(() => {
     hideModal()
     const payload = selectedCategory === SearchGroupNameEnumv2.NONE ? [] : [selectedCategory]
-    dispatch({ type: 'SET_CATEGORY', payload })
     navigate(
       ...getTabNavConfig('Search', {
         ...searchState,
         offerCategories: payload,
       })
     )
-  }, [dispatch, hideModal, navigate, searchState, selectedCategory])
+  }, [hideModal, navigate, searchState, selectedCategory])
 
   const titleId = uuidv4()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
