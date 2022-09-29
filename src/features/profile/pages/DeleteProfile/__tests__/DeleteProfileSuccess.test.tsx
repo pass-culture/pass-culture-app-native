@@ -19,9 +19,9 @@ describe('DeleteProfileSuccess component', () => {
     expect(renderAPI.toJSON()).toMatchSnapshot()
   })
 
-  it(`should redirect to Home page when clicking on "Retourner à l'accueil" button`, async () => {
+  it('should redirect to Home page when clicking on "Retourner à l’accueil" button', async () => {
     const renderAPI = render(<DeleteProfileSuccess />)
-    fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
+    fireEvent.press(renderAPI.getByText(`Retourner à l’accueil`))
     await waitForExpect(() => {
       expect(navigateFromRef).toBeCalledWith(
         navigateToHomeConfig.screen,
@@ -30,7 +30,7 @@ describe('DeleteProfileSuccess component', () => {
     })
   })
 
-  it(`should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button`, async () => {
+  it('should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button', async () => {
     const renderAPI = render(<DeleteProfileSuccess />)
     fireEvent.press(renderAPI.getByText('Réactiver mon compte'))
     await waitForExpect(() => {

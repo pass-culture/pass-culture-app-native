@@ -62,7 +62,7 @@ describe('<VenueBody /> - Analytics', () => {
   it('should log ConsultLocationItinerary when opening itinerary', () => {
     const wrapper = renderVenueBody()
     act(() => {
-      fireEvent.press(wrapper.getByText("Voir l'itinéraire"))
+      fireEvent.press(wrapper.getByText('Voir l’itinéraire'))
     })
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
   })
