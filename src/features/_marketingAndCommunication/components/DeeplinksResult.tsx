@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -13,12 +12,12 @@ interface Props {
 export const DeeplinksResult = ({ result }: Props) => {
   return (
     <Container>
-      <TitleContainer>{t`Votre lien`}</TitleContainer>
+      <StyledTitle4>Votre lien</StyledTitle4>
       <Container>
         <ResultContainer>
           {!result ? (
             <CenteredContainer>
-              <Typo.Body>{t`Vous devez d'abord générer un lien`}</Typo.Body>
+              <Typo.Body>Vous devez d’abord générer un lien</Typo.Body>
             </CenteredContainer>
           ) : (
             <DeeplinkItem deeplink={result} />
@@ -44,7 +43,7 @@ const ResultContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const TitleContainer = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
 

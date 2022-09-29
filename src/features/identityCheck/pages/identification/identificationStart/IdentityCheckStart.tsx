@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -31,11 +30,11 @@ export const IdentityCheckStart = () => {
   return (
     <React.Fragment>
       <PageWithHeader
-        title={t`Identification`}
+        title="Identification"
         onGoBack={onGoBack}
         scrollChildren={<IdentityCheckStartContent />}
         fixedBottomChildren={
-          <ButtonPrimary onPress={showModal} wording={t`Commencer la vérification`} />
+          <ButtonPrimary onPress={showModal} wording="Commencer la vérification" />
         }
       />
       <SomeAdviceBeforeIdentityCheckModal

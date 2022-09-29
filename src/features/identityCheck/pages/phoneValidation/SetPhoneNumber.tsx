@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
@@ -113,17 +112,19 @@ export const SetPhoneNumber = () => {
 
   return (
     <PageWithHeader
-      title={t`Numéro de téléphone`}
+      title="Numéro de téléphone"
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle titleID={titleID} title={t`Ton numéro de téléphone`} />
+          <CenteredTitle titleID={titleID} title="Ton numéro de téléphone" />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       }
       scrollChildren={
         <Form.MaxWidth>
           <View aria-labelledby={titleID}>
-            <StyledBody>{t`Tu vas recevoir un code de validation pour confirmer ton numéro.`}</StyledBody>
+            <StyledBody>
+              Tu vas recevoir un code de validation pour confirmer ton numéro.
+            </StyledBody>
             <Spacer.Column numberOfSpaces={6} />
             <InputContainer>
               <TextInput
@@ -131,14 +132,14 @@ export const SetPhoneNumber = () => {
                 autoCapitalize="none"
                 isError={false}
                 keyboardType="number-pad"
-                label={t`Numéro de téléphone`}
+                label="Numéro de téléphone"
                 value={phoneNumber}
                 onChangeText={onChangeText}
                 textContentType="none" // disable autofill on iOS
                 onSubmitEditing={requestSendPhoneValidationCode}
                 accessibilityDescribedBy={phoneNumberInputErrorId}
                 leftComponent={LeftCountryPicker}
-                testID={t`Entrée pour le numéro de téléphone`}
+                testID="Entrée pour le numéro de téléphone"
               />
             </InputContainer>
             <InputError
@@ -164,17 +165,17 @@ export const SetPhoneNumber = () => {
       fixedBottomChildren={
         <BottomContentContainer>
           <RemainingAttemptsContainer>
-            <Typo.CaptionNeutralInfo>{t`Il te reste` + ' '}</Typo.CaptionNeutralInfo>
+            <Typo.CaptionNeutralInfo>Il te reste </Typo.CaptionNeutralInfo>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
               {requestsWording + ' '}
             </WarningRemainingAttempts>
-            <Typo.CaptionNeutralInfo>{t`de code de validation`}</Typo.CaptionNeutralInfo>
+            <Typo.CaptionNeutralInfo>de code de validation</Typo.CaptionNeutralInfo>
           </RemainingAttemptsContainer>
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             type="submit"
             onPress={requestSendPhoneValidationCode}
-            wording={t`Continuer`}
+            wording="Continuer"
             disabled={!isContinueButtonEnabled}
             isLoading={isLoading}
           />

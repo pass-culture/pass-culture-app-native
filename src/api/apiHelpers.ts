@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { t } from '@lingui/macro'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -112,7 +111,7 @@ export const safeFetch = async (
 const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
 const REFRESH_TOKEN_IS_EXPIRED_ERROR = 'Le refresh token est expiré'
 const UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN =
-  "Une erreur inconnue est survenue lors de la regénération de l'access token"
+  'Une erreur inconnue est survenue lors de la regénération de l’access token'
 type Result =
   | { result: string; error?: never }
   | {
@@ -243,7 +242,7 @@ export class ApiError extends Error {
 }
 
 export function extractApiErrorMessage(error: unknown) {
-  let message = t`Une erreur est survenue`
+  let message = 'Une erreur est survenue'
   if (isApiError(error)) {
     const { content } = error as { content: { code: string; message: string } }
     if (content && content.code && content.message) {

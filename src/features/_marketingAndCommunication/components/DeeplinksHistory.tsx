@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useCallback, useEffect } from 'react'
 import { FlatList } from 'react-native'
@@ -56,7 +55,7 @@ export const DeeplinksHistory = ({
     } catch (error) {
       if (error instanceof Error)
         showErrorSnackBar({
-          message: t`L'historique n'a pas pu supprimer les données locales: ${error.message}`,
+          message: `L’historique n’a pas pu supprimer les données locales: ${error.message}`,
         })
     }
   }
@@ -76,7 +75,7 @@ export const DeeplinksHistory = ({
           clearLocalData()
         }
       } catch (error) {
-        showErrorSnackBar({ message: `L'historique est indisponible` })
+        showErrorSnackBar({ message: 'L’historique est indisponible' })
         clearLocalData()
       }
     }
@@ -86,7 +85,7 @@ export const DeeplinksHistory = ({
 
   return (
     <Container>
-      <TitleContainer>{t`Historique`}</TitleContainer>
+      <StyledTitle4>Historique</StyledTitle4>
       <FlatList
         style={flatListStyle}
         data={history}
@@ -98,7 +97,7 @@ export const DeeplinksHistory = ({
       <BottomContainer>
         <StyledCheckBox onPress={onToggleKeepHistory}>
           <CheckboxInput isChecked={!!keepHistory} />
-          <CheckBoxText>{t`Conserver l'historique`}</CheckBoxText>
+          <CheckBoxText>Conserver l’historique</CheckBoxText>
         </StyledCheckBox>
       </BottomContainer>
     </Container>
@@ -126,7 +125,7 @@ const Container = styled.View({
   padding: getSpacing(2),
 })
 
-const TitleContainer = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
 

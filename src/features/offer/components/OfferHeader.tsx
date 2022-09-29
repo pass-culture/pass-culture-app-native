@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { useRef, useState } from 'react'
 import { Animated, Platform } from 'react-native'
@@ -72,8 +71,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
       showErrorSnackBar({
         message:
           isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
-            ? t`Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`
-            : t`L'offre n'a pas été ajoutée à tes favoris`,
+            ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
+            : 'L’offre n’a pas été ajoutée à tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -82,7 +81,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { mutate: removeFavorite } = useRemoveFavorite({
     onError: () => {
       showErrorSnackBar({
-        message: t`L'offre n'a pas été retirée de tes favoris`,
+        message: 'L’offre n’a pas été retirée de tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -118,7 +117,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="back"
             onPress={goBack}
-            testID={t`Revenir en arrière`}
+            testID="Revenir en arrière"
           />
           <Spacer.Row numberOfSpaces={3} />
           <Spacer.Row testID="leftShareIconPlaceholder" numberOfSpaces={10} />
@@ -136,7 +135,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="share"
             onPress={pressShareOffer}
-            testID={t`Partager`}
+            testID="Partager"
           />
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
@@ -145,7 +144,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             initialColor={favorite ? theme.colors.primary : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
-            testID={t`Mettre en favoris`}
+            testID="Mettre en favoris"
             accessibilityRole={AccessibilityRole.CHECKBOX}
             accessibilityState={{ checked: !!favorite }}
           />
@@ -156,7 +155,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
-          headerTitle={t`Partager l'offre`}
+          headerTitle="Partager l'offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />

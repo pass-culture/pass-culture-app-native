@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
@@ -85,7 +84,7 @@ export function usePatchProfile() {
     {
       onError: () =>
         showErrorSnackBar({
-          message: t`Une erreur est survenue lors de la mise à jour de ton profil`,
+          message: 'Une erreur est survenue lors de la mise à jour de ton profil',
           timeout: SNACK_BAR_TIME_OUT,
         }),
     }

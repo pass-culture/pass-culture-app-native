@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -22,13 +21,13 @@ export const VerifyEligibility: FunctionComponent = () => {
 
   return (
     <GenericOfficialPage
-      title={t`Vérifie ton identité`}
+      title="Vérifie ton identité"
       buttons={[
         !!nextBeneficiaryValidationStepNavConfig && (
           <TouchableLink
             key={1}
             as={ButtonPrimary}
-            wording={t`Commencer la vérification`}
+            wording="Commencer la vérification"
             navigateTo={nextBeneficiaryValidationStepNavConfig}
           />
         ),
@@ -36,7 +35,7 @@ export const VerifyEligibility: FunctionComponent = () => {
           key={2}
           as={ButtonTertiaryBlack}
           icon={PlainArrowPrevious}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
         />,
       ]}>
@@ -47,7 +46,8 @@ export const VerifyEligibility: FunctionComponent = () => {
         </StyledBody>
         <Spacer.Column numberOfSpaces={4} />
         <Typo.ButtonText>
-          {t`Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.`}
+          Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter
+          ton inscription.
         </Typo.ButtonText>
       </View>
     </GenericOfficialPage>

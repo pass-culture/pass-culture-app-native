@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -22,21 +21,24 @@ export function IdentityCheckStartContent() {
       <Spacer.Column numberOfSpaces={10} />
       <StyledBicolorIdCardWithMagnifyingGlass />
       <Spacer.Column numberOfSpaces={6} />
-      <Title>{t`Vérification de l'identité`}</Title>
+      <StyledTitle4>Vérification de l’identité</StyledTitle4>
       <Spacer.Column numberOfSpaces={6} />
-      <Body>
-        {t`Prends une photo de ta`}
-        <Bold>{'\u00a0' + t`carte d'identité` + '\u00a0'}</Bold>
-        {t`ou de ton`}
-        <Bold>{'\u00a0' + t`passeport` + '\u00a0'}</Bold>
-        {t`en cours de validité pour accéder à ton pass Culture.`}
-      </Body>
+      <StyledBody>
+        Prends une photo de ta
+        <BoldText>&nbsp;carte d’identité&nbsp;</BoldText>
+        ou de ton
+        <BoldText>&nbsp;passeport&nbsp;</BoldText>
+        en cours de validité pour accéder à ton pass Culture.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <Spacer.Flex />
       <DMSInformationContainer>
-        <Typo.CaptionNeutralInfo>{t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`}</Typo.CaptionNeutralInfo>
+        <Typo.CaptionNeutralInfo>
+          Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un
+          autre document via le site Démarches-Simplifiées
+        </Typo.CaptionNeutralInfo>
         <ButtonQuaternaryBlack
-          wording={t`Transmettre un document`}
+          wording="Transmettre un document"
           onPress={showDMSModal}
           icon={Plus}
           justifyContent="flex-start"
@@ -56,14 +58,14 @@ const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyin
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
 
-const Title = styled(Typo.Title4)({ textAlign: 'center' })
+const StyledTitle4 = styled(Typo.Title4)({ textAlign: 'center' })
 
-const Body = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))
 
-const Bold = styled(Typo.Body)(({ theme }) => ({ fontFamily: theme.fontFamily.bold }))
+const BoldText = styled(Typo.Body)(({ theme }) => ({ fontFamily: theme.fontFamily.bold }))
 
 const DMSInformationContainer = styled.View(({ theme }) => ({
   display: 'flex',

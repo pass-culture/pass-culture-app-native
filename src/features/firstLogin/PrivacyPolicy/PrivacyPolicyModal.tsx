@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import noop from 'lodash/noop'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
@@ -29,18 +28,20 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={t`Respect de ta vie privée`}
+      title="Respect de ta vie privée"
       onBackdropPress={disableBackdropTap ? noop : undefined}
-      rightIconAccessibilityLabel={t`Fermer la modale et refuser la collecte des données`}
+      rightIconAccessibilityLabel="Fermer la modale et refuser la collecte des données"
       rightIcon={Close}
       onRightIconPress={onRefusal}>
       <Description>
         <Typo.Body>
-          {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
+          Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une
+          experience plus sûre. En cliquant sur “Autoriser”, tu acceptes l’utilisation de ces
+          services détaillés dans notre
           <Spacer.Row numberOfSpaces={1} />
           <TouchableLink
             as={ButtonInsideText}
-            wording={t`Politique des cookies`}
+            wording="Politique des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
             icon={ExternalSiteFilled}
           />
@@ -48,20 +49,20 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       </Description>
       <SubDescription>
         <Typo.CaptionNeutralInfo>
-          {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}
+          Tu pourras modifier tes paramètres de confidentialité dans ton profil.
         </Typo.CaptionNeutralInfo>
       </SubDescription>
       <CallToActionsContainer>
         <ButtonPrimary
-          wording={t`Autoriser`}
-          accessibilityLabel={t`Autoriser l'utilisation des outils pour réaliser des statistiques de navigation`}
+          wording="Autoriser"
+          accessibilityLabel="Autoriser l’utilisation des outils pour réaliser des statistiques de navigation"
           onPress={onApproval}
           mediumWidth
         />
         <Spacer.Column numberOfSpaces={3} />
         <ButtonSecondary
-          wording={t`Refuser`}
-          accessibilityLabel={t`Refuser l'utilisation des outils pour réaliser des statistiques de navigation`}
+          wording="Refuser"
+          accessibilityLabel="Refuser l’utilisation des outils pour réaliser des statistiques de navigation"
           onPress={onRefusal}
           mediumWidth
         />

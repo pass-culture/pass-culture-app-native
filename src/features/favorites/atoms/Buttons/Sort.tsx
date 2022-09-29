@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -16,7 +15,7 @@ export const Sort: React.FC = () => {
         colors={['#bf275f', '#5a0d80']}>
         <SortIcon />
         <Spacer.Row numberOfSpaces={1} />
-        <Title>{t`Trier`}</Title>
+        <StyledButtonText>Trier</StyledButtonText>
         <Spacer.Row numberOfSpaces={2} />
       </StyledLinearGradient>
     </Container>
@@ -43,6 +42,6 @@ const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
   height: getSpacing(10),
 }))
 
-const Title = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
@@ -28,7 +27,8 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
     bookingId: props.bookingId,
     onSuccess: () => {
       showSuccessSnackBar({
-        message: t`La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées`,
+        message:
+          'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
         timeout: SNACK_BAR_TIME_OUT,
       })
       goBack()
@@ -48,21 +48,21 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
     <AppModal
       animationOutTiming={1}
       visible={props.visible}
-      title={t`Tu es sur le point d'archiver`}
-      rightIconAccessibilityLabel={t`Ne pas archiver`}
+      title="Tu es sur le point d’archiver"
+      rightIconAccessibilityLabel="Ne pas archiver"
       rightIcon={Close}
       onRightIconPress={props.onDismiss}>
       <ModalContent>
         <Title>{props.bookingTitle}</Title>
-        <Explanation>{t`Tu pourras retrouver l’offre dans tes réservations teminées`}</Explanation>
+        <StyledBody>Tu pourras retrouver l’offre dans tes réservations teminées</StyledBody>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          wording={t`Terminer ma réservation`}
+          wording="Terminer ma réservation"
           onPress={terminateCancel}
           disabled={isLoading}
         />
         <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiaryPrimary wording={t`Retourner à ma réservation`} onPress={props.onDismiss} />
+        <ButtonTertiaryPrimary wording="Retourner à ma réservation" onPress={props.onDismiss} />
       </ModalContent>
     </AppModal>
   )
@@ -76,7 +76,7 @@ const ModalContent = styled.View({
 const Title = styled(Typo.ButtonText)({
   textAlign: 'center',
 })
-const Explanation = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
   marginTop: getSpacing(2),
 })

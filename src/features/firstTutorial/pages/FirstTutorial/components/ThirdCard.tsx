@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { analytics } from 'libs/firebase/analytics'
@@ -27,11 +26,11 @@ export function ThirdCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={GeolocationAnimation}
       buttonCallback={onGeolocationButtonPress}
-      buttonText={t`Utiliser ma position`}
+      buttonText="Utiliser ma position"
       pauseAnimationOnRenderAtFrame={62}
-      title={t`Toute la culture`}
-      subTitle={t`près de chez toi`}
-      text={t`Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité.`}
+      title="Toute la culture"
+      subTitle="près de chez toi"
+      text="Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

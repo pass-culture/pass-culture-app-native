@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -40,7 +39,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
     onSuccess: () => {
       queryClient.invalidateQueries(QueryKeys.REPORTED_OFFERS)
       showSuccessSnackBar({
-        message: t`Ton signalement a bien été pris en compte`,
+        message: 'Ton signalement a bien été pris en compte',
         timeout: SNACK_BAR_TIME_OUT,
       })
       props.dismissModal()
@@ -70,7 +69,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
         ) : (
           <StyledSectionRow
             title={reason.title}
-            type={'navigable'}
+            type="navigable"
             onPress={props.onPressOtherReason}
             key="other"
           />
@@ -78,7 +77,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
       })}
       <Spacer.Column numberOfSpaces={10.5} />
       <ButtonPrimary
-        wording={t`Signaler l'offre`}
+        wording="Signaler l’offre"
         disabled={!selectedReason}
         onPress={reportOffer}
         testID="report-button"

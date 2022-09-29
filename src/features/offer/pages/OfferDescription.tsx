@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { FlatList } from 'react-native'
@@ -22,19 +21,19 @@ type Item =
   | { key: 'photoCredit'; value: string }
 
 const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
-  description: t`en détails`,
-  author: t`auteur`,
-  durationMinutes: t`durée`,
-  isbn: t`ISBN`,
-  musicSubType: t`spécialité`,
-  musicType: t`genre`,
-  performer: t`interprète`,
-  photoCredit: t`crédit photo`,
-  showSubType: t`spécialité`,
-  showType: t`type`,
-  stageDirector: t`metteur en scène`,
-  speaker: t`intervenant`,
-  visa: t`VISA`,
+  description: 'en détails',
+  author: 'auteur',
+  durationMinutes: 'durée',
+  isbn: 'ISBN',
+  musicSubType: 'spécialité',
+  musicType: 'genre',
+  performer: 'interprète',
+  photoCredit: 'crédit photo',
+  showSubType: 'spécialité',
+  showType: 'type',
+  stageDirector: 'metteur en scène',
+  speaker: 'intervenant',
+  visa: 'VISA',
 }
 
 const KEY_ORDER: { [k in ExtendedKeys]: number } = {
@@ -110,7 +109,7 @@ export const OfferDescription = () => {
   const { description = '', extraData = {}, image, name = '' } = offerResponse || {}
   const photoCredit = image?.credit
 
-  const helmetTitle = t`Détails de l'offre` + ` ${name} | pass Culture`
+  const helmetTitle = `Détails de l'offre ${name} | pass Culture`
   return (
     <Container>
       <Helmet title={helmetTitle} />
