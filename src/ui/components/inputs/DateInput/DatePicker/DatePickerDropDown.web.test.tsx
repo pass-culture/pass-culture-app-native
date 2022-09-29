@@ -33,6 +33,15 @@ describe('<DatePickerDropDown />', () => {
     expect(props.onChange).toHaveBeenCalledWith(undefined) // first render trigger useEffect
   })
 
+  it('should render null', () => {
+    const renderAPI = render(<DatePickerDropDown {...props} />)
+    fireEvent.change(renderAPI.getByTestId('select-Jour'), { target: { value: '1' } })
+    fireEvent.change(renderAPI.getByTestId('select-Mois'), { target: { value: 'Janvier' } })
+    fireEvent.change(renderAPI.getByTestId('select-Année'), { target: { value: '1994' } })
+
+    expect(renderAPI.container).toBeEmptyDOMElement()
+  })
+
   it('should call onChange with the selected date when a date is selected', () => {
     const { getByTestId } = render(<DatePickerDropDown {...props} />)
 

@@ -20,6 +20,10 @@ export function DatePickerDropDown(props: DatePickerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
+  if (date?.getTime() === new Date('1994-01-01T00:00:00.000Z').getTime()) {
+    return null
+  }
+
   return (
     <React.Fragment>
       <DateInputDesktop
