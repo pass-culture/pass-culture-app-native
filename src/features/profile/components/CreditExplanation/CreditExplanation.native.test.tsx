@@ -5,6 +5,7 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 describe('<CreditExplanation/>', () => {
@@ -74,5 +75,52 @@ describe('<CreditExplanation/>', () => {
     const explanationButton = getByTestId('explanationButton')
     fireEvent.press(explanationButton)
     expect(queryByTestId('modalHeader')).toBeTruthy()
+  })
+
+  describe('Analytics', () => {
+    it('should log logConsultModalBeneficiaryCeilings analytics and press the button "Pourquoi cette limite ?"', () => {
+      const { getByText } = render(
+        <CreditExplanation
+          isDepositExpired={false}
+          isUserUnderageBeneficiary={false}
+          domainsCredit={domains_credit_v1}
+        />
+      )
+
+      const explanationButton = getByText('Pourquoi cette limite ?')
+      fireEvent.press(explanationButton)
+
+      expect(analytics.logConsultModalBeneficiaryCeilings).toBeCalled()
+    })
+
+    it('should log logConsultModalExpiredGrant analytics when expired deposit and press the button "Mon crédit est expiré, que faire ?"', () => {
+      const { getByText } = render(
+        <CreditExplanation
+          isDepositExpired={true}
+          isUserUnderageBeneficiary={false}
+          domainsCredit={domains_credit_v1}
+        />
+      )
+
+      const explanationButton = getByText('Mon crédit est expiré, que faire ?')
+      fireEvent.press(explanationButton)
+
+      expect(analytics.logConsultModalExpiredGrant).toBeCalled()
+    })
+
+    it('should log logConsultModalNoMoreCredit analytics when exhausted credit and press the button "J’ai dépensé tout mon crédit, que faire ?"', () => {
+      const { getByText } = render(
+        <CreditExplanation
+          isDepositExpired={false}
+          isUserUnderageBeneficiary={false}
+          domainsCredit={domains_exhausted_credit_v1}
+        />
+      )
+
+      const explanationButton = getByText('J’ai dépensé tout mon crédit, que faire ?')
+      fireEvent.press(explanationButton)
+
+      expect(analytics.logConsultModalNoMoreCredit).toBeCalled()
+    })
   })
 })
