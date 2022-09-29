@@ -12,6 +12,7 @@ import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTracking
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import * as useUserProfileInfoAPI from 'features/profile/api'
+import { eventMonitoring } from 'libs/monitoring'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 import { act, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
@@ -351,6 +352,49 @@ describe('useCookies', () => {
       const SET_USER_ID_AFTERLOGIN = 1
       const API_CALLED_TIMES = SET_COOKIE_CONSENT + SET_USER_ID_AFTERLOGIN
       expect(api.postnativev1cookiesConsent).toBeCalledTimes(API_CALLED_TIMES)
+    })
+
+    describe('when can not log cookies consent choice', () => {
+      beforeEach(() => {
+        ;(
+          api.postnativev1cookiesConsent as jest.MockedFunction<
+            typeof api.postnativev1cookiesConsent
+          >
+        ).mockRejectedValueOnce(new Error('unknown network error'))
+      })
+
+      it('should not throw errors', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent } = result.current
+
+        let promise
+        act(() => {
+          promise = setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+
+        await expect(promise).resolves.toBeUndefined()
+      })
+
+      it('should notify sentry', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent } = result.current
+
+        await act(async () => {
+          await setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          })
+        })
+
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+          new Error("can't log cookies consent choice")
+        )
+      })
     })
   })
 
