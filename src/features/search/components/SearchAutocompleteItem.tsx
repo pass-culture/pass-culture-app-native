@@ -1,3 +1,4 @@
+import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -13,15 +14,17 @@ import { getSpacing } from 'ui/theme'
 
 type Props = {
   hit: AlgoliaSuggestionHit
+  sendEvent: SendEventForHits
 }
 
-export const SearchAutocompleteItem: React.FC<Props> = ({ hit }) => {
+export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
   const query = hit.query
   const { searchState: stagedSearchState } = useStagedSearch()
   const { locationFilter } = stagedSearchState
   const pushWithStagedSearch = usePushWithStagedSearch()
 
   const onPress = () => {
+    sendEvent('click', hit, 'Suggestion clicked')
     Keyboard.dismiss()
     // When we hit enter, we may have selected a category or a venue on the search landing page
     // these are the two potentially 'staged' filters that we want to commit to the global search state.

@@ -28,6 +28,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 
+const mockSendEvent = jest.fn()
+
 describe('SearchAutocompleteItem component', () => {
   const hit = {
     objectID: '1',
@@ -43,11 +45,11 @@ describe('SearchAutocompleteItem component', () => {
   }
 
   it('should render SearchAutocompleteItem', () => {
-    expect(render(<SearchAutocompleteItem hit={hit} />)).toMatchSnapshot()
+    expect(render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)).toMatchSnapshot()
   })
 
   it('should execute a search with the name of the selected offer on hit click', async () => {
-    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} />)
+    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
     await fireEvent.press(getByTestId('autocompleteItem'))
 
     expect(navigate).toBeCalledWith(
@@ -60,5 +62,12 @@ describe('SearchAutocompleteItem component', () => {
         view: SearchView.Results,
       })
     )
+  })
+
+  it('should create a suggestion clicked event when pressing a hit', async () => {
+    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+    await fireEvent.press(getByTestId('autocompleteItem'))
+
+    expect(mockSendEvent).toHaveBeenCalled()
   })
 })
