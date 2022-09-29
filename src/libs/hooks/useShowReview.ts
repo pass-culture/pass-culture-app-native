@@ -27,5 +27,5 @@ export const useShowReview = () => {
       )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldReviewBeRequested])
+  }, [shouldReviewBeRequested, disableStoreReview])
 }
