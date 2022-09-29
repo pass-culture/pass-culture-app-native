@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { SelectionLabel } from 'features/search/atoms'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
+import { OfferTypes } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
@@ -29,15 +30,15 @@ export const OfferTypeChoices = (props: Props) => {
   return (
     <BodyContainer>
       <StyledUl>
-        {OFFER_TYPES.map(([offerType, label]) => (
+        {OFFER_TYPES.filter(({ type }) => type).map(({ type, label }) => (
           <Li key={label}>
             <SelectionLabel
               label={label}
-              selected={offerTypes[offerType]}
+              selected={offerTypes[type as OfferTypes]}
               onPress={() => {
                 setOfferTypes((prevOfferTypes) => {
                   const nextOfferTypes = { ...prevOfferTypes }
-                  nextOfferTypes[offerType] = !nextOfferTypes[offerType]
+                  nextOfferTypes[type as OfferTypes] = !nextOfferTypes[type as OfferTypes]
                   props.onChange(nextOfferTypes)
                   return nextOfferTypes
                 })
