@@ -93,6 +93,10 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'UserTypeNotStudent Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
         />
+        <LinkToComponent
+          title={'DuplicateUser Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.DuplicateUser)}
+        />
 
         <LinkToComponent
           title={'Generic Error'}

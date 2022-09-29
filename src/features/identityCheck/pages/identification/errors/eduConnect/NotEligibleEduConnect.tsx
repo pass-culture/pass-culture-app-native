@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/computePrimaryButtonToDisplay'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -25,11 +25,9 @@ export const NotEligibleEduConnect = ({
     title,
     description,
     descriptionAlignment,
-    Icon,
-    primaryButtonText,
-    tertiaryButtonVisible = false,
-    onPrimaryButtonPress,
-    navigateTo,
+    Illustration,
+    primaryButton: primaryButtonProps,
+    isGoHomeTertiaryButtonVisible = false,
   } = useNotEligibleEduConnectErrorData(message, setError)
 
   useEffect(
@@ -54,29 +52,27 @@ export const NotEligibleEduConnect = ({
 
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
 
+  const goBackToHomeTertiaryButton = (
+    <TouchableLink
+      key={2}
+      as={ButtonTertiaryWhite}
+      icon={PlainArrowPrevious}
+      wording="Retourner à l'accueil"
+      navigateTo={navigateToHomeConfig}
+      onPress={onAbandon}
+      navigateBeforeOnPress
+    />
+  )
+
+  const primaryButton = computePrimaryButtonToDisplay({ button: primaryButtonProps })
+
   return (
     <GenericInfoPage
       title={title}
-      icon={Icon}
+      icon={Illustration}
       buttons={[
-        <TouchableLink
-          key={1}
-          as={ButtonPrimaryWhite}
-          wording={primaryButtonText ?? "Retourner à l'accueil"}
-          navigateTo={navigateTo ?? navigateToHomeConfig}
-          onPress={onPrimaryButtonPress}
-        />,
-        !!tertiaryButtonVisible && (
-          <TouchableLink
-            key={2}
-            as={ButtonTertiaryWhite}
-            icon={PlainArrowPrevious}
-            wording="Retourner à l’accueil"
-            navigateTo={navigateToHomeConfig}
-            onPress={onAbandon}
-            navigateBeforeOnPress
-          />
-        ),
+        primaryButton,
+        !!isGoHomeTertiaryButtonVisible && goBackToHomeTertiaryButton,
       ].filter(Boolean)}>
       <Helmet>
         <title>{helmetTitle}</title>

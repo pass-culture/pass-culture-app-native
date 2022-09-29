@@ -49,6 +49,7 @@ export const IdentityCheckEduConnectForm = () => {
   const onNavigationStateChange = (event: WebViewNavigation) => {
     // PC Api detected an error after EduConnect authentication
     const isError = event.url.includes('educonnect/erreur')
+
     if (isError) {
       if (event.url.includes('UserAgeNotValid18YearsOld')) {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld))
@@ -56,6 +57,8 @@ export const IdentityCheckEduConnectForm = () => {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid))
       } else if (event.url.includes('UserTypeNotStudent')) {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent))
+      } else if (event.url.includes('DuplicateUser') || event.url.includes('DuplicateINE')) {
+        setError(new EduConnectError(EduConnectErrorMessageEnum.DuplicateUser))
       } else {
         setError(new Error(EduConnectErrorMessageEnum.UnknownErrorCode))
       }

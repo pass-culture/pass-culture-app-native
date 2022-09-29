@@ -1,6 +1,7 @@
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
+import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 class ContactSupportError extends Error {
   name = 'ContactSupportError'
@@ -11,7 +12,7 @@ class ContactSupportError extends Error {
 
 const subject = encodeURI('Confirmation de numéro de téléphone')
 
-export const contactSupport = {
+export const contactSupport: Record<string, ExternalNavigationProps['externalNav']> = {
   forGenericQuestion: {
     url: `mailto:${env.SUPPORT_EMAIL_ADDRESS}`,
     params: { shouldLogEvent: false },
