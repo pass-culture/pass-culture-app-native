@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -15,24 +14,25 @@ interface Props {
 export const ReportOfferDescription: FunctionComponent<Props> = ({ onPressReportOffer }) => {
   return (
     <React.Fragment>
-      <Introduction>
-        {t`Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU.`}
-      </Introduction>
+      <StyledBody>
+        Bien que l’ensemble du catalogue soit vérifié par nos soins, il n’est pas impossible que
+        certaines offres ne respectent pas les CGU.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       <InformationComponent
         Icon={BicolorLock}
-        text={t`Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs.`}
+        text="Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
       />
       <Spacer.Column numberOfSpaces={8} />
       <InformationComponent
         Icon={BicolorConfidentiality}
-        text={t`Ton identité restera anonyme auprès des acteurs culturels.`}
+        text="Ton identité restera anonyme auprès des acteurs culturels."
       />
       <Spacer.Column numberOfSpaces={13} />
       <ButtonPrimary
-        wording={t`Signaler l'offre`}
+        wording="Signaler l'offre"
         onPress={onPressReportOffer}
-        testID={'go-to-reason-report-button'}
+        testID="go-to-reason-report-button"
       />
     </React.Fragment>
   )
@@ -55,7 +55,7 @@ const InformationComponent: FunctionComponent<{
   )
 }
 
-const Introduction = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

@@ -129,7 +129,7 @@ describe('<AcceptCgu/>', () => {
     await waitFor(() => {
       expect(props.signUp).toBeCalledWith('fakeToken')
       expect(
-        renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
+        renderAPI.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeTruthy()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
@@ -145,7 +145,7 @@ describe('<AcceptCgu/>', () => {
 
     await waitFor(() => {
       expect(
-        renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
+        renderAPI.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeTruthy()
       expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,

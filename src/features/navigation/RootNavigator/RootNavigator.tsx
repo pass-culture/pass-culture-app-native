@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -44,7 +43,7 @@ export const RootNavigator: React.ComponentType = () => {
   const currentRoute = useCurrentRoute()
   const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
   const headerWithQuickAccess = showHeaderQuickAccess ? (
-    <QuickAccess href={`#${tabBarId}`} title={t`Accéder au menu de navigation`} />
+    <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
   ) : null
 
   if (!initialScreen) {

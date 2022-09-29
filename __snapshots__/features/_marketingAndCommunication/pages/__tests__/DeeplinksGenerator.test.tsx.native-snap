@@ -2368,7 +2368,7 @@ Array [
                       ]
                     }
                   >
-                    Vous devez d'abord générer un lien
+                    Vous devez d’abord générer un lien
                   </Text>
                 </View>
               </View>
@@ -2548,7 +2548,7 @@ Array [
                 ]
               }
             >
-              Conserver l'historique
+              Conserver l’historique
             </Text>
           </View>
         </View>

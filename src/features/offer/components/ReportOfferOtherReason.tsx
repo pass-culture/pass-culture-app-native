@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -27,7 +26,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
     onSuccess: () => {
       queryClient.invalidateQueries(QueryKeys.REPORTED_OFFERS)
       showSuccessSnackBar({
-        message: t`Ton signalement a bien été pris en compte`,
+        message: 'Ton signalement a bien été pris en compte',
         timeout: SNACK_BAR_TIME_OUT,
       })
       props.dismissModal()
@@ -43,10 +42,12 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
 
   return (
     <Form.MaxWidth>
-      <Intro>{t`Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre.`}</Intro>
+      <StyledCaptionNeutralInfo>
+        Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre.
+      </StyledCaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={4} />
       <LargeTextInput
-        label={t`Autre raison`}
+        label="Autre raison"
         value={inputText}
         onChangeText={setInputText}
         maxLength={200}
@@ -55,7 +56,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
       />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        wording={t`Signaler l'offre`}
+        wording="Signaler l’offre"
         disabled={!inputText}
         onPress={reportOffer}
         testID="report-other-button"
@@ -64,6 +65,6 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
   )
 }
 
-const Intro = styled(Typo.CaptionNeutralInfo)({
+const StyledCaptionNeutralInfo = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'left',
 })

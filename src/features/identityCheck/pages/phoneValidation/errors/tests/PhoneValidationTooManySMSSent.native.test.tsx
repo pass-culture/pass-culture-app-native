@@ -44,14 +44,14 @@ describe('PhoneValidationTooManySMSSent', () => {
   it('should redirect to Home when clicking on homepage button', async () => {
     const { getByText } = renderPhoneValidationTooManySMSSent()
 
-    fireEvent.press(getByText("Retourner à l'accueil"))
+    fireEvent.press(getByText('Retourner à l’accueil'))
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
   it('should redirect to SetPhoneValidationCode when clicking on second button', async () => {
     const { getByText } = renderPhoneValidationTooManySMSSent()
 
-    fireEvent.press(getByText("J'ai reçu mon code"))
+    fireEvent.press(getByText('J’ai reçu mon code'))
 
     expect(navigate).toBeCalledWith('SetPhoneValidationCode', undefined)
   })

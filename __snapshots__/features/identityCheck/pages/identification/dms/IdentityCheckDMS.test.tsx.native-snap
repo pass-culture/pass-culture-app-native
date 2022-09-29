@@ -587,7 +587,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   ]
                 }
               >
-                Titre de séjour, carte d'identité ou passeport.
+                Titre de séjour, carte d’identité ou passeport.
               </Text>
             </View>
             <View

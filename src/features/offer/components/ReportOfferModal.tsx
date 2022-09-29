@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -39,7 +38,7 @@ export const ReportOfferModal: FunctionComponent<Props> = (props) => {
       title={childrenProps.title}
       onBackdropPress={props.dismissModal}
       {...modalLeftIconProps}
-      rightIconAccessibilityLabel={t`Fermer la modale`}
+      rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={() => {
         props.dismissModal()

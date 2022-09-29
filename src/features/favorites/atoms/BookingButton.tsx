@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
@@ -45,7 +44,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   // User is an ex-beneficiary
   if (isUserExBeneficiary(props.user)) {
     if (isBookedOffer) {
-      return <ButtonPrimary wording={t`Offre réservée`} buttonHeight="tall" disabled />
+      return <ButtonPrimary wording="Offre réservée" buttonHeight="tall" disabled />
     }
     if (!props.offer.isReleased || props.offer.isExpired || props.offer.isSoldOut) {
       return null
@@ -69,16 +68,16 @@ export const BookingButton: React.FC<Props> = (props) => {
 
   // User is beneficiary
   if (isBookedOffer) {
-    return <ButtonPrimary wording={t`Offre réservée`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording="Offre réservée" buttonHeight="tall" disabled />
   }
   if (!props.offer.isReleased || props.offer.isExpired) {
-    return <ButtonPrimary wording={t`Offre expirée`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording="Offre expirée" buttonHeight="tall" disabled />
   }
   if (props.offer.isSoldOut) {
-    return <ButtonPrimary wording={t`Offre épuisée`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording="Offre épuisée" buttonHeight="tall" disabled />
   }
   if (!isFreeOffer && !doesUserHaveEnoughCredit) {
-    return <ButtonPrimary wording={t`Crédit insuffisant`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording="Crédit insuffisant" buttonHeight="tall" disabled />
   }
   return (
     <BookInAppButton
@@ -90,8 +89,8 @@ export const BookingButton: React.FC<Props> = (props) => {
 
 const BookInAppButton = ({ offerName, onPress }: { offerName: string; onPress: () => void }) => (
   <ButtonPrimary
-    wording={t`Réserver`}
-    accessibilityLabel={t`Réserver l'offre ${offerName}`}
+    wording="Réserver"
+    accessibilityLabel={`Réserver l’offre ${offerName}`}
     onPress={onPress}
     buttonHeight="tall"
   />
@@ -109,8 +108,8 @@ const BookExternallyButton = ({
   url ? (
     <TouchableLink
       as={ButtonPrimary}
-      wording={t`Réserver`}
-      accessibilityLabel={t`Réserver l'offre ${offerName}`}
+      wording="Réserver"
+      accessibilityLabel={`Réserver l’offre ${offerName}`}
       externalNav={{ url, params: { analyticsData: { offerId } } }}
       icon={ExternalSite}
       buttonHeight="tall"

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { LinkingOptions } from '@react-navigation/native'
 
 import { Bookings } from 'features/bookings/pages/Bookings'
@@ -23,7 +22,7 @@ const routes: TabRoute[] = [
     name: 'Home',
     component: Home,
     pathConfig: { path: 'accueil', deeplinkPaths: ['home'], parse: screenParamsParser['Home'] },
-    options: { title: t`Page d'accueil` },
+    options: { title: 'Page d’accueil' },
   },
   {
     name: 'Search',
@@ -33,27 +32,27 @@ const routes: TabRoute[] = [
       parse: screenParamsParser['Search'],
       stringify: screenParamsStringifier['Search'],
     },
-    options: { title: t`Recherche des offres` },
+    options: { title: 'Recherche des offres' },
   },
   {
     name: 'Bookings',
     component: Bookings,
     path: 'reservations',
     deeplinkPaths: ['bookings'],
-    options: { title: t`Mes réservations` },
+    options: { title: 'Mes réservations' },
     secure: true,
   },
   {
     name: 'Favorites',
     component: Favorites,
     path: 'favoris',
-    options: { title: t`Mes favoris` },
+    options: { title: 'Mes favoris' },
   },
   {
     name: 'Profile',
     component: Profile,
     path: 'profil',
-    options: { title: t`Mon profil` },
+    options: { title: 'Mon profil' },
   },
 ]
 
@@ -66,11 +65,11 @@ export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
 }
 
 export const menu: Record<TabRouteName, { displayName: string; accessibilityLabel?: string }> = {
-  Home: { displayName: t`Accueil`, accessibilityLabel: t`Accueil` },
-  Search: { displayName: t`Recherche`, accessibilityLabel: t`Rechercher des offres` },
-  Bookings: { displayName: t`Réservations`, accessibilityLabel: t`Mes réservations` },
-  Favorites: { displayName: t`Favoris`, accessibilityLabel: undefined },
-  Profile: { displayName: t`Profil`, accessibilityLabel: t`Mon profil` },
+  Home: { displayName: 'Accueil', accessibilityLabel: 'Accueil' },
+  Search: { displayName: 'Recherche', accessibilityLabel: 'Rechercher des offres' },
+  Bookings: { displayName: 'Réservations', accessibilityLabel: 'Mes réservations' },
+  Favorites: { displayName: 'Favoris', accessibilityLabel: undefined },
+  Profile: { displayName: 'Profil', accessibilityLabel: 'Mon profil' },
 }
 
 const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(

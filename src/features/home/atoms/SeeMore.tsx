@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -27,7 +26,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onP
       </Row>
       <Spacer.Column numberOfSpaces={2} />
       <Row>
-        <Typo.ButtonTextPrimary>{t`En voir plus`}</Typo.ButtonTextPrimary>
+        <Typo.ButtonTextPrimary>En voir plus</Typo.ButtonTextPrimary>
       </Row>
     </ClickableArea>
   </Container>

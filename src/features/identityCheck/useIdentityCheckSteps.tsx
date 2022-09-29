@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
@@ -37,7 +36,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
     {
       name: IdentityCheckStep.PROFILE,
       icon: ProfileIcon,
-      label: t`Profil`,
+      label: 'Profil',
       screens: hasSchoolTypes
         ? [
             'SetName',
@@ -51,14 +50,14 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
     {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: IdCardIcon,
-      label: t`Identification`,
+      label: 'Identification',
       screens:
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
       icon: ConfirmationIcon,
-      label: t`Confirmation`,
+      label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
   ]
@@ -67,7 +66,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       {
         name: IdentityCheckStep.PHONE_VALIDATION,
         icon: SmartphoneIcon,
-        label: t`Numéro de téléphone`,
+        label: 'Numéro de téléphone',
         screens:
           remainingAttempts === 0
             ? ['PhoneValidationTooManySMSSent']

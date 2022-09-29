@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -53,10 +52,10 @@ export const SetStatus = () => {
 
   return (
     <PageWithHeader
-      title={t`Profil`}
+      title="Profil"
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle titleID={titleID} title={t`Sélectionne ton statut`} />
+          <CenteredTitle titleID={titleID} title="Sélectionne ton statut" />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }
@@ -83,9 +82,9 @@ export const SetStatus = () => {
         <ButtonPrimary
           type="submit"
           onPress={submitStatus}
-          wording={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
+          wording={!selectedStatus ? 'Choisis ton statut' : 'Continuer'}
           accessibilityLabel={
-            !selectedStatus ? t`Choisis ton statut` : t`Continuer vers l'étape suivante`
+            !selectedStatus ? 'Choisis ton statut' : 'Continuer vers l’étape suivante'
           }
           isLoading={isSavingCheckpoint}
           disabled={!selectedStatus}

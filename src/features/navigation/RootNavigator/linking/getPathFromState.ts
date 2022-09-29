@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { getPathFromState } from '@react-navigation/native'
 
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
@@ -14,7 +13,7 @@ export function customGetPathFromState(state: State, config: Config) {
   // See this issue : https://github.com/react-navigation/react-navigation/issues/9102
   const pageNotFoundScreenName: ScreenNames = 'PageNotFound'
   if (path.includes(pageNotFoundScreenName)) {
-    return t`page-introuvable`
+    return 'page-introuvable'
   }
   return path
 }

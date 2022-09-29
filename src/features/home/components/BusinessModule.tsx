@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { memo, useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -70,7 +69,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
       return
     }
     if (isUserLoading) {
-      showInfoSnackBar({ message: t`Redirection en cours` })
+      showInfoSnackBar({ message: 'Redirection en cours' })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])

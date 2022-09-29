@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState, useEffect, useRef, ComponentProps } from 'react'
 import { ListRenderItem, LogBox, Platform } from 'react-native'
 import ReactNativeCountryPicker, {
@@ -9,6 +8,10 @@ import ReactNativeCountryPicker, {
 } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
+import {
+  ALLOWED_COUNTRY_CODES,
+  FLAG_TYPE,
+} from 'features/identityCheck/components/countryPicker/constants'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -22,8 +25,6 @@ import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { ALLOWED_COUNTRY_CODES, FLAG_TYPE } from './constants'
 
 type ReactNativeCountryPickerProps = ComponentProps<typeof ReactNativeCountryPicker>
 type ReactNativeCountryListProps = ComponentProps<typeof CountryList>
@@ -108,7 +109,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
       <StyledTouchable
         onPress={showModal}
         hoverUnderlineColor={null}
-        {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
+        {...accessibilityAndTestId('Ouvrir la modale de choix de l’indicatif téléphonique')}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
         <ArrowDown />
@@ -116,10 +117,10 @@ export const CountryPicker: React.FC<Props> = (props) => {
         <VerticalSeparator />
       </StyledTouchable>
       <AppModal
-        title={t`Choix de l'indicatif téléphonique`}
+        title="Choix de l’indicatif téléphonique"
         visible={visible}
         scrollEnabled={false}
-        rightIconAccessibilityLabel={t`Fermer la modale de choix de l'indicatif téléphonique`}
+        rightIconAccessibilityLabel="Fermer la modale de choix de l’indicatif téléphonique"
         rightIcon={Close}
         onRightIconPress={hideModal}>
         <CountryList

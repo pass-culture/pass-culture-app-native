@@ -3,7 +3,7 @@
 exports[`<CountryPicker /> should render correctly 1`] = `
 Array [
   <View
-    accessibilityLabel="Ouvrir la modale de choix de l'indicatif téléphonique"
+    accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
     accessibilityRole="button"
     accessible={true}
     collapsable={false}
@@ -24,7 +24,7 @@ Array [
         "userSelect": "auto",
       }
     }
-    testID="Ouvrir la modale de choix de l'indicatif téléphonique"
+    testID="Ouvrir la modale de choix de l’indicatif téléphonique"
   >
     <View
       style={

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useRef, useEffect, memo } from 'react'
 import { Animated } from 'react-native'
 import webStyled from 'styled-components'
@@ -80,7 +79,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
 
   return (
     <HeaderContainer>
-      <QuickAccess href={`#${mainId}`} title={t`Aller au contenu principal`} />
+      <QuickAccess href={`#${mainId}`} title="Aller au contenu principal" />
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {!!isBrandVisible && (
           <LogoContainer

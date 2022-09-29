@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -24,7 +23,7 @@ export const IdentityCheckStart = () => {
   return (
     <React.Fragment>
       <PageWithHeader
-        title={t`Identification`}
+        title="Identification"
         scrollChildren={
           <Container>
             {isMobileViewport ? (
@@ -38,7 +37,7 @@ export const IdentityCheckStart = () => {
         }
         fixedBottomChildren={
           !!isMobileViewport && (
-            <ButtonPrimary onPress={showModal} wording={t`Commencer la vérification`} />
+            <ButtonPrimary onPress={showModal} wording="Commencer la vérification" />
           )
         }
       />

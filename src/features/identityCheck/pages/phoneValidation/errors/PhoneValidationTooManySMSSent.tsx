@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -26,24 +25,24 @@ export function PhoneValidationTooManySMSSent() {
 
   return (
     <GenericInfoPage
-      title={t`Réessaie plus tard`}
+      title="Réessaie plus tard"
       icon={UserBlocked}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
         />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           icon={PlainArrowPrevious}
-          wording={t`J'ai reçu mon code`}
+          wording="J’ai reçu mon code"
           navigateTo={{ screen: 'SetPhoneValidationCode' }}
         />,
       ]}>
-      <StyledBody>{t`Tu as dépassé le nombre de 5 demandes de code autorisées.`}</StyledBody>
+      <StyledBody>Tu as dépassé le nombre de 5 demandes de code autorisées.</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>{hoursLeftWording}</StyledBody>
     </GenericInfoPage>

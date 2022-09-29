@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
@@ -25,8 +24,8 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
         testID="description-details-button"
         onPress={onPressSeeMore}
         navigateTo={{ screen: 'OfferDescription', params: { id } }}
-        wording={longWording ? t`Voir plus d'informations` : t`voir plus`}
-        accessibilityLabel={longWording ? undefined : t`Voir la suite de la description`}
+        wording={longWording ? 'Voir plus d’informations' : 'voir plus'}
+        accessibilityLabel={longWording ? undefined : 'Voir la suite de la description'}
       />
       <Spacer.Row numberOfSpaces={1} />
       <ArrowNext />

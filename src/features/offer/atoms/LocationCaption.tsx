@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -16,16 +15,16 @@ export const getLocationName = (venue: OfferVenueResponse, isDigital: boolean): 
 
 export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: Props) => {
   const locationName = getLocationName(venue, isDigital)
-  const where = isDigital ? t`en ligne` : venue.city
+  const where = isDigital ? 'en ligne' : venue.city
 
   return (
     <LocationContainer>
       <StyledView>
         <IconContainer>
           {isDigital ? (
-            <Digital accessibilityLabel={t`Offre digitale`} />
+            <Digital accessibilityLabel="Offre digitale" />
           ) : (
-            <LocationPointer accessibilityLabel={t`Adresse`} />
+            <LocationPointer accessibilityLabel="Adresse" />
           )}
         </IconContainer>
         {!!locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}

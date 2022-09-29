@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -22,9 +21,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
 
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
-  RECENTLY_ADDED: t`Ajouté récemment`,
-  ASCENDING_PRICE: t`Prix croissant`,
-  AROUND_ME: t`Proximité géographique`,
+  RECENTLY_ADDED: 'Ajouté récemment',
+  ASCENDING_PRICE: 'Prix croissant',
+  AROUND_ME: 'Proximité géographique',
 }
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
@@ -68,13 +67,15 @@ export const FavoritesSorts: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title={t`Trier`} background="primary" withGoBackButton />
+      <PageHeader title="Trier" background="primary" withGoBackButton />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
 
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
-          <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>{t`Trier par`}</Typo.Title4>
+          <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>
+            Trier par
+          </Typo.Title4>
         </TitleContainer>
 
         <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
@@ -86,7 +87,7 @@ export const FavoritesSorts: React.FC = () => {
                     label={label}
                     isSelected={stagedSelectedSortBy === sortBy}
                     onSelect={() => onSortBySelection(sortBy)}
-                    accessibilityLabel={t`Trier par` + ` ${label}`}
+                    accessibilityLabel={`Trier par ${label}`}
                     marginVertical={getSpacing(3)}
                     testID={sortBy}
                   />
@@ -103,7 +104,7 @@ export const FavoritesSorts: React.FC = () => {
       </StyledScrollView>
 
       <ButtonContainer>
-        <ButtonPrimary wording={t`Valider`} onPress={onValidation} center />
+        <ButtonPrimary wording="Valider" onPress={onValidation} center />
       </ButtonContainer>
     </Container>
   )

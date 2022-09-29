@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -58,18 +57,19 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <HiddenAccessibleText nativeID={nativeID}>
-        {t`Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial`}
+        Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et
+        un caractère spécial
       </HiddenAccessibleText>
       <RulesContainer
         isVisible={visible}
         accessibilityRole={AccessibilityRole.STATUS}
         aria-atomic={false}>
-        <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
-        <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
-        <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />
-        <PasswordRule title={t`1 Chiffre`} isValidated={containsNumber(password)} />
+        <PasswordRule title="12 Caractères" isValidated={isLongEnough(password)} />
+        <PasswordRule title="1 Majuscule" isValidated={containsCapital(password)} />
+        <PasswordRule title="1 Minuscule" isValidated={containsLowercase(password)} />
+        <PasswordRule title="1 Chiffre" isValidated={containsNumber(password)} />
         <PasswordRule
-          title={t`1 Caractère spécial (!@#$%^&*...)`}
+          title="1 Caractère spécial (!@#$%^&*...)"
           isValidated={containsSpecialCharacter(password)}
         />
       </RulesContainer>

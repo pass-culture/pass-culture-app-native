@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { NavigationCulturalSurvey } from 'features/cheatcodes/pages/NavigationCulturalSurvey/NavigationCulturalSurvey'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
@@ -22,7 +20,7 @@ export const culturalSurveyRoutes: GenericRoute<CulturalSurveyRootStackParamList
     name: 'CulturalSurveyIntro',
     component: CulturalSurveyIntro,
     path: 'questionnaire-pratiques-initiales/introduction',
-    options: { title: t`Prenons 1 minute` },
+    options: { title: 'Prenons 1 minute' },
     secure: true,
   },
   {

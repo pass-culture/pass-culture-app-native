@@ -19,6 +19,6 @@ describe('<DeeplinksResult />', () => {
 
   it('should display message when no results are provided', async () => {
     const renderAPI = render(<DeeplinksResult />)
-    expect(renderAPI.getByText(`Vous devez d'abord générer un lien`)).toBeTruthy()
+    expect(renderAPI.getByText(`Vous devez d’abord générer un lien`)).toBeTruthy()
   })
 })

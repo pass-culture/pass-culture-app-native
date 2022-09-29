@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -21,7 +20,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title={t`Mes favoris`} size="medium" />
+      <PageHeader title="Mes favoris" size="medium" />
       <FavoritesResults />
     </Container>
   )
