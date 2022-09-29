@@ -174,86 +174,80 @@ describe('SearchResults component', () => {
     expect(priceButtonLabel).toHaveStyle({ color: theme.colors.primary })
   })
 
+  it('should display type filter button', () => {
+    const { queryByTestId } = render(<SearchResults />)
+
+    expect(queryByTestId('typeButton')).toBeTruthy()
+  })
+
+  it('should open the type filter modal when clicking on the type filter button', async () => {
+    const { getByTestId, queryByTestId } = render(<SearchResults />)
+    const typeButton = getByTestId('typeButton')
+
+    await act(async () => {
+      fireEvent.press(typeButton)
+    })
+
+    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+
+    expect(fullscreenModalScrollView).toBeTruthy()
+
+    const isInverseLayout = queryByTestId('inverseLayout')
+
+    expect(isInverseLayout).toBeFalsy()
+  })
+
+  it('should open for desktop the type filter modal when clicking on the type filter button', async () => {
+    const { getByTestId } = render(<SearchResults />, {
+      theme: {
+        isDesktopViewport: true,
+      },
+    })
+    const typeButton = getByTestId('typeButton')
+
+    await act(async () => {
+      fireEvent.press(typeButton)
+    })
+
+    const isInverseLayout = getByTestId('inverseLayout')
+
+    expect(isInverseLayout).toBeTruthy()
+  })
+
+  it.each`
+    type               | params
+    ${'duo offer'}     | ${{ offerIsDuo: true }}
+    ${'digital offer'} | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
+    ${'event offer'}   | ${{ offerTypes: { isDigital: false, isEvent: true, isThing: false } }}
+    ${'thing offer'}   | ${{ offerTypes: { isDigital: false, isEvent: false, isThing: true } }}
+  `(
+    'should display an icon and change color in type button when has $type selected',
+    ({ params }) => {
+      useRoute.mockReturnValueOnce({
+        params,
+      })
+      const { getByTestId } = render(<SearchResults />)
+
+      const typeButtonIcon = getByTestId('typeButtonIcon')
+      expect(typeButtonIcon).toBeTruthy()
+
+      const typeButton = getByTestId('typeButton')
+      expect(typeButton).toHaveStyle({ borderColor: theme.colors.primary })
+
+      const typeButtonLabel = getByTestId('typeButtonLabel')
+      expect(typeButtonLabel).toHaveStyle({ color: theme.colors.primary })
+    }
+  )
+
   describe('When feature flag filter activated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
     })
-
-    it('should display type filter button', () => {
-      const { queryByTestId } = render(<SearchResults />)
-
-      expect(queryByTestId('typeButton')).toBeTruthy()
-    })
-
-    it('should open the type filter modal when clicking on the type filter button', async () => {
-      const { getByTestId, queryByTestId } = render(<SearchResults />)
-      const typeButton = getByTestId('typeButton')
-
-      await act(async () => {
-        fireEvent.press(typeButton)
-      })
-
-      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
-
-      expect(fullscreenModalScrollView).toBeTruthy()
-
-      const isInverseLayout = queryByTestId('inverseLayout')
-
-      expect(isInverseLayout).toBeFalsy()
-    })
-
-    it('should open for desktop the type filter modal when clicking on the type filter button', async () => {
-      const { getByTestId } = render(<SearchResults />, {
-        theme: {
-          isDesktopViewport: true,
-        },
-      })
-      const typeButton = getByTestId('typeButton')
-
-      await act(async () => {
-        fireEvent.press(typeButton)
-      })
-
-      const isInverseLayout = getByTestId('inverseLayout')
-
-      expect(isInverseLayout).toBeTruthy()
-    })
-
-    it.each`
-      type               | params
-      ${'duo offer'}     | ${{ offerIsDuo: true }}
-      ${'digital offer'} | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
-      ${'event offer'}   | ${{ offerTypes: { isDigital: false, isEvent: true, isThing: false } }}
-      ${'thing offer'}   | ${{ offerTypes: { isDigital: false, isEvent: false, isThing: true } }}
-    `(
-      'should display an icon and change color in type button when has $type selected',
-      ({ params }) => {
-        useRoute.mockReturnValueOnce({
-          params,
-        })
-        const { getByTestId } = render(<SearchResults />)
-
-        const typeButtonIcon = getByTestId('typeButtonIcon')
-        expect(typeButtonIcon).toBeTruthy()
-
-        const typeButton = getByTestId('typeButton')
-        expect(typeButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-        const typeButtonLabel = getByTestId('typeButtonLabel')
-        expect(typeButtonLabel).toHaveStyle({ color: theme.colors.primary })
-      }
-    )
   })
 
   describe('When feature flag filter desactivated', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
-    })
-
-    it('should not display type filter button', () => {
-      const { queryByTestId } = render(<SearchResults />)
-
-      expect(queryByTestId('typeButton')).toBeNull()
     })
   })
 })
