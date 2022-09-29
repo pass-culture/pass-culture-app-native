@@ -1,4 +1,4 @@
-/* eslint-disable react-native/no-raw-text */
+/* eslint-disable local-rules/no-raw-text */
 import React, { ReactElement } from 'react'
 import { StyleProp, Text, TextStyle } from 'react-native'
 import styled from 'styled-components/native'

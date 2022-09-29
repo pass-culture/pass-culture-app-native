@@ -4,6 +4,7 @@ const independantMocks = require('./eslint-custom-rules/independant-mocks')
 const noReactQueryProviderHOC = require('./eslint-custom-rules/no-react-query-provider-hoc')
 const nbspInFrenchTranslations = require('./eslint-custom-rules/nbsp-in-french-translations')
 const todoFormat = require('./eslint-custom-rules/todo-format')
+const noRawText = require('./eslint-custom-rules/no-raw-text')
 
 module.exports = {
   'no-allow-console': noAllowConsole,
@@ -12,4 +13,5 @@ module.exports = {
   'no-react-query-provider-hoc': noReactQueryProviderHOC,
   'nbsp-in-french-translations': nbspInFrenchTranslations,
   'todo-format': todoFormat,
+  'no-raw-text': noRawText,
 }
