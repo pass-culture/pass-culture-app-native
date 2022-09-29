@@ -32,7 +32,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     Illustration: UserError,
     title: 'Oh non\u00a0!',
     description:
-      'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide du Gouvernement.\n\nS’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect.',
+      'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide de l’État.\n\nS’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect.',
     titleAlignment: 'center',
     descriptionAlignment: 'center',
   }
