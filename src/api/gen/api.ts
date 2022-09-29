@@ -1931,6 +1931,11 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
+  disableStoreReview: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
   displayDmsRedirection: boolean
   /**
    * @type {boolean}
@@ -2389,6 +2394,11 @@ export interface UserProfileEmailUpdate {
  * @interface UserProfileResponse
  */
 export interface UserProfileResponse {
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  birthDate?: string | null
   /**
    * @type {{ [key: string]: number; }}
    * @memberof UserProfileResponse
