@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PersonalData should render for beneficiary profile 1`] = `null`;
+
 exports[`PersonalData should render personal data success 1`] = `
 Array [
   <View

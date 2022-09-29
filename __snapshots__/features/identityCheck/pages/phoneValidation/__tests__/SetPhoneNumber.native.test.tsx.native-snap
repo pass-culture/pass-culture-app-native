@@ -440,7 +440,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                       testID="styled-input-container"
                     >
                       <View
-                        accessibilityLabel="Ouvrir la modale de choix de l'indicatif téléphonique"
+                        accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
                         accessibilityRole="button"
                         accessible={true}
                         collapsable={false}
@@ -461,7 +461,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                             "userSelect": "auto",
                           }
                         }
-                        testID="Ouvrir la modale de choix de l'indicatif téléphonique"
+                        testID="Ouvrir la modale de choix de l’indicatif téléphonique"
                       >
                         <View
                           style={
@@ -1274,7 +1274,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       testID="styled-input-container"
                     >
                       <View
-                        accessibilityLabel="Ouvrir la modale de choix de l'indicatif téléphonique"
+                        accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
                         accessibilityRole="button"
                         accessible={true}
                         collapsable={false}
@@ -1295,7 +1295,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="Ouvrir la modale de choix de l'indicatif téléphonique"
+                        testID="Ouvrir la modale de choix de l’indicatif téléphonique"
                       >
                         <View
                           style={

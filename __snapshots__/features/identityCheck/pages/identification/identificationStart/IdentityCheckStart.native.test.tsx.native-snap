@@ -316,7 +316,7 @@ Array [
                     ]
                   }
                 >
-                  Vérification de l'identité
+                  Vérification de l’identité
                 </Text>
                 <View
                   numberOfSpaces={6}
@@ -354,7 +354,7 @@ Array [
                       ]
                     }
                   >
-                     carte d'identité 
+                     carte d’identité 
                   </Text>
                   ou de ton
                   <Text

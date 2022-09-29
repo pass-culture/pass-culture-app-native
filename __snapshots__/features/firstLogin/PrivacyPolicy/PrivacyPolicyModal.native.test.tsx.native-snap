@@ -300,7 +300,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                   ]
                 }
               >
-                Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre
+                Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur “Autoriser”, tu acceptes l’utilisation de ces services détaillés dans notre
                 <View
                   numberOfSpaces={1}
                   style={
@@ -451,7 +451,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Autoriser l'utilisation des outils pour réaliser des statistiques de navigation"
+                accessibilityLabel="Autoriser l’utilisation des outils pour réaliser des statistiques de navigation"
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -512,7 +512,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 }
               />
               <View
-                accessibilityLabel="Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
+                accessibilityLabel="Refuser l’utilisation des outils pour réaliser des statistiques de navigation"
                 accessible={true}
                 collapsable={false}
                 focusable={true}
