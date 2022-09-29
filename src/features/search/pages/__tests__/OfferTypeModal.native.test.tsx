@@ -74,8 +74,8 @@ describe('OfferTypeModal component', () => {
         hideOfferTypeModal,
         offerTypeModalVisible: true,
       })
-      const radioButton = renderAPI.getByTestId('Tous les types')
-      const digitalRadioButton = renderAPI.getByTestId('Numérique')
+      const radioButton = renderAPI.getByTestId(OfferType.ALL_TYPE)
+      const digitalRadioButton = renderAPI.getByTestId(OfferType.DIGITAL)
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
       fireEvent.press(digitalRadioButton)
@@ -199,6 +199,52 @@ describe('OfferTypeModal component', () => {
         disabled: false,
         checked: true,
       })
+    })
+  })
+
+  describe('click reset button', () => {
+    it('should disable duo offer when click on reset button', async () => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+
+      fireEvent.press(toggle)
+
+      const resetButton = renderAPI.getByText('Réinitialiser')
+
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
+
+      expect(toggle.props.accessibilityState).toEqual({
+        disabled: false,
+        checked: false,
+      })
+    })
+
+    it('should be all type offer when click on reset button', async () => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const radioButton = renderAPI.getByTestId(OfferType.ALL_TYPE)
+      const digitalRadioButton = renderAPI.getByTestId(OfferType.DIGITAL)
+
+      fireEvent.press(digitalRadioButton)
+
+      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+
+      const resetButton = renderAPI.getByText('Réinitialiser')
+
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
+
+      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
     })
   })
 
