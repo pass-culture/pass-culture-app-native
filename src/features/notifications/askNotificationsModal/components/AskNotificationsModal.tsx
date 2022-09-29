@@ -22,9 +22,9 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
       <BicolorRingingBell />
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
-        {`Offres personnalisées, invitations spéciales, concours...`}
+        Offres personnalisées, invitations spéciales, concours...
         {DOUBLE_LINE_BREAK}
-        {`Reçois des notifications sur les bons plans du pass Culture en exclusivité\u00a0!`}
+        Reçois des notifications sur les bons plans du pass Culture en exclusivité&nbsp;!
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary wording="Activer les notifications" />
