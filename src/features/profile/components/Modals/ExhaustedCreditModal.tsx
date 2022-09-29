@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { ExpiredOrExhaustedCreditModalContent } from 'features/profile/components/Modals/ExpiredOrExhaustedCreditModalContent'
-import { analytics } from 'libs/firebase/analytics'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 
 type Props = {
@@ -10,10 +9,6 @@ type Props = {
 }
 
 export function ExhaustedCreditModal({ visible, hideModal }: Props) {
-  useEffect(() => {
-    analytics.logConsultModalNoMoreCredit()
-  }, [])
-
   return (
     <AppInformationModal
       title="Tu as dépensé tout ton crédit, que faire&nbsp;?"

@@ -15,10 +15,15 @@ interface Props {
 
 export const CreditExplanation: FunctionComponent<Props> = (props) => {
   const { visible, showModal, hideModal } = useModal(false)
-  const { buttonTitle, creditModal: CreditModal } = getCreditModal(props)
+  const { buttonTitle, creditModal: CreditModal, analytics } = getCreditModal(props)
 
   if (!buttonTitle || !CreditModal) {
     return null
+  }
+
+  const onPressExplanationButton = () => {
+    analytics()
+    showModal()
   }
 
   return (
@@ -26,7 +31,7 @@ export const CreditExplanation: FunctionComponent<Props> = (props) => {
       <StyledButtonQuaternaryBlack
         icon={Question}
         wording={buttonTitle}
-        onPress={showModal}
+        onPress={onPressExplanationButton}
         testID="explanationButton"
       />
       <CreditModal visible={visible} hideModal={hideModal} domainsCredit={props.domainsCredit} />
