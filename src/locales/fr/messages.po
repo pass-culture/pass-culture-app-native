@@ -700,10 +700,6 @@ msgstr "Non complété"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement."
-msgstr "Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement."
-
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
