@@ -15,7 +15,9 @@ import { OfferType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
+import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
@@ -46,6 +48,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   isVisible,
   hideModal,
 }) => {
+  const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { searchState } = useSearch()
   const [offerTypes, setOfferTypes] = useState(searchState.offerTypes)
@@ -142,7 +145,8 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
             {OFFER_TYPES.map(({ type, label, icon }) => (
               <View key={label}>
                 <RadioButton
-                  onSelect={() =>
+                  onSelect={() => {
+                    logUseFilter()
                     setOfferTypes({
                       ...initialSearchState.offerTypes,
                       ...(type !== undefined
@@ -151,7 +155,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
                           }
                         : {}),
                     })
-                  }
+                  }}
                   isSelected={selectedOfferType === type}
                   label={label}
                   icon={icon}
