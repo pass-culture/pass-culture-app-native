@@ -177,3 +177,10 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
     facetFilter: VenueTypeCodeKey.VISUAL_ARTS,
   },
 }
+
+export enum OfferType {
+  ALL_TYPE = 'Tous les types',
+  DIGITAL = 'Numérique',
+  EVENT = 'Sorties',
+  THING = 'Bien physique',
+}
