@@ -13,7 +13,7 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   campaignTracker.startAppsFlyer(acceptedAppsFlyers)
 
   const acceptedAmplitude = acceptedCookies.includes(CookieNameEnum.AMPLITUDE)
-  acceptedAmplitude ? amplitude().enableCollection() : amplitude().disableCollection()
+  acceptedAmplitude ? amplitude.enableCollection() : amplitude.disableCollection()
 
   const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
   acceptedBatch ? Batch.optIn() : Batch.optOut()

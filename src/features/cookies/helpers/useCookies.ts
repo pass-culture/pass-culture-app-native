@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
+import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent } from 'features/cookies/types'
 import { useUserProfileInfo } from 'features/profile/api'
 import { storage } from 'libs/storage'
@@ -22,6 +23,7 @@ export const useCookies = () => {
     getCookiesChoice().then((value) => {
       if (value) {
         setCookiesConsentInternalState(value.consent)
+        startTrackingAcceptedCookies(value.consent.accepted)
       }
     })
   }, [])
