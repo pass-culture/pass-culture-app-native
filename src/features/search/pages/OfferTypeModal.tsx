@@ -1,16 +1,21 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { StyleProp, ViewStyle, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { OfferType } from 'features/search/enums'
+import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
+import { SearchState, SearchView } from 'features/search/types'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
@@ -42,13 +47,28 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
-  const [radioButtonChoice, setRadioButtonChoice] = useState(OfferType.ALL_TYPE)
   const { searchState } = useSearch()
+  const [offerTypes, setOfferTypes] = useState(searchState.offerTypes)
   const { isDesktopViewport } = useTheme()
+  const { navigate } = useNavigation<UseNavigationType>()
 
-  function search() {
-    return
-  }
+  const search = useCallback(
+    (values: SearchTypeFormData) => {
+      hideModal()
+      const additionalSearchState: SearchState = {
+        ...searchState,
+        offerIsDuo: values.offerIsDuo,
+        offerTypes,
+      }
+      navigate(
+        ...getTabNavConfig('Search', {
+          ...additionalSearchState,
+          view: SearchView.Results,
+        })
+      )
+    },
+    [hideModal, navigate, offerTypes, searchState]
+  )
 
   const {
     handleSubmit,
@@ -59,7 +79,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   } = useForm<SearchTypeFormData>({
     mode: 'onChange',
     defaultValues: {
-      offerTypeChoice: 'tous les types',
+      offerTypeChoice: OfferType.ALL_TYPE,
       offerIsDuo: searchState?.offerIsDuo,
     },
   })
@@ -83,6 +103,11 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
     },
     [isDesktopViewport]
   )
+
+  const selectedOfferType = useMemo(() => {
+    const entry = Object.entries(offerTypes).find(([, value]) => value)
+    return entry ? entry[0] : undefined
+  }, [offerTypes])
 
   return (
     <AppModal
@@ -114,11 +139,20 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
         onContentSizeChange={onContentSizeChange}>
         <Form.MaxWidth>
           <React.Fragment>
-            {OFFER_TYPES.map(({ label, icon }) => (
+            {OFFER_TYPES.map(({ type, label, icon }) => (
               <View key={label}>
                 <RadioButton
-                  onSelect={() => setRadioButtonChoice(label)}
-                  isSelected={radioButtonChoice === label}
+                  onSelect={() =>
+                    setOfferTypes({
+                      ...initialSearchState.offerTypes,
+                      ...(type !== undefined
+                        ? {
+                            [type]: true,
+                          }
+                        : {}),
+                    })
+                  }
+                  isSelected={selectedOfferType === type}
                   label={label}
                   icon={icon}
                   testID={label}
