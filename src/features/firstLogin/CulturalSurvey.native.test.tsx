@@ -95,10 +95,7 @@ describe('<CulturalSurvey />', () => {
     const renderAPI = await renderCulturalSurveyWithNavigation()
     act(() => {
       const webview = renderAPI.getByTestId('cultural-survey-webview')
-      // onNavigationStateChange is triggered when the WebView loading starts or ends
-      webview.props.onLoadingStart({
-        nativeEvent: { url: 'passculture.typeform.com' },
-      })
+      webview.props.onNavigationStateChange({ url: 'passculture.typeform.com' })
     })
     await superFlushWithAct()
     expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
@@ -109,10 +106,7 @@ describe('<CulturalSurvey />', () => {
     const renderAPI = await renderCulturalSurveyWithNavigation()
     act(() => {
       const webview = renderAPI.getByTestId('cultural-survey-webview')
-      // onNavigationStateChange is triggered when the WebView loading starts or ends
-      webview.props.onLoadingStart({
-        nativeEvent: { url: 'app.passculture' },
-      })
+      webview.props.onNavigationStateChange({ url: 'app.passculture' })
     })
     await superFlushWithAct()
     await waitForExpect(() => {
