@@ -3447,7 +3447,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessibilityLabel="Voir l'itinéraire"
+                                accessibilityLabel="Voir l’itinéraire"
                                 accessible={true}
                                 collapsable={false}
                                 focusable={true}
@@ -3478,7 +3478,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "width": "auto",
                                   }
                                 }
-                                testID="Voir l'itinéraire"
+                                testID="Voir l’itinéraire"
                               >
                                 <View
                                   style={
@@ -3515,7 +3515,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     ]
                                   }
                                 >
-                                  Voir l'itinéraire
+                                  Voir l’itinéraire
                                 </Text>
                               </View>
                             </View>

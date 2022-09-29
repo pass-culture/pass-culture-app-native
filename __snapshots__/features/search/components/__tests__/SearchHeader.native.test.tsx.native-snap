@@ -221,8 +221,7 @@ Array [
             ]
           }
         >
-          Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
-"Entrée"
+          Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
         </Text>
       </View>
     </View>

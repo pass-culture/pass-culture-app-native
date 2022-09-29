@@ -939,7 +939,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <View
-          accessibilityLabel="Voir l'itinéraire"
+          accessibilityLabel="Voir l’itinéraire"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -970,7 +970,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "width": "auto",
             }
           }
-          testID="Voir l'itinéraire"
+          testID="Voir l’itinéraire"
         >
           <View
             style={
@@ -1007,7 +1007,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               ]
             }
           >
-            Voir l'itinéraire
+            Voir l’itinéraire
           </Text>
         </View>
       </View>

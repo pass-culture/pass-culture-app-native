@@ -3022,7 +3022,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <View
-            accessibilityLabel="Voir l'itinéraire"
+            accessibilityLabel="Voir l’itinéraire"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -3053,7 +3053,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "width": "auto",
               }
             }
-            testID="Voir l'itinéraire"
+            testID="Voir l’itinéraire"
           >
             <View
               style={
@@ -3090,7 +3090,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 ]
               }
             >
-              Voir l'itinéraire
+              Voir l’itinéraire
             </Text>
           </View>
         </View>
