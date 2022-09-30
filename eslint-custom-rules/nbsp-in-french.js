@@ -15,6 +15,14 @@ module.exports = {
     docs: {
       description: 'force the use of non-breaking space before some characters in French',
     },
+    messages: {
+      u00u0Before:
+        'Please use unicode non-breaking space \\u00a0 instead of whitespace before !, ?, :, », €',
+      u00a0After: 'Please use unicode non-breaking space \\u00a0 instead of whitespace after «',
+      nbspBefore:
+        'Please use unicode non-breaking space &nbsp; instead of whitespace before !, ?, :, », €',
+      nbspAfter: 'Please use unicode non-breaking space &nbsp; instead of whitespace after «',
+    },
     fixable: 'code',
   },
   create(context) {
@@ -25,8 +33,7 @@ module.exports = {
 
         context.report({
           node,
-          message:
-            'Please use unicode non-breaking space \\u00a0 instead of whitespace before !, ?, :, », €',
+          messageId: 'u00u0Before',
           fix: function (fixer) {
             const textToReplace = node.raw.replace(/\s+([!?:»€])/g, '\\u00a0$1')
             return fixer.replaceText(node, textToReplace)
@@ -38,7 +45,7 @@ module.exports = {
       "Literal[raw=/^'.*«\\s+.*'$/]": (node) => {
         context.report({
           node,
-          message: 'Please use unicode non-breaking space \\u00a0 instead of whitespace after «',
+          messageId: 'u00a0After',
           fix: function (fixer) {
             const textToReplace = node.raw.replace(/(«)\s+/g, '$1\\u00a0')
             return fixer.replaceText(node, textToReplace)
@@ -52,8 +59,7 @@ module.exports = {
 
         context.report({
           node,
-          message:
-            'Please use unicode non-breaking space \\u00a0 instead of whitespace before !, ?, :, », €',
+          messageId: 'u00u0Before',
           fix: function (fixer) {
             const textToReplace = node.value.raw.replace(/\s+([!?:»€])/g, '\\u00a0$1')
             const range = getReplaceRange(node)
@@ -66,7 +72,7 @@ module.exports = {
       'TemplateLiteral > TemplateElement[value.raw=/«\\s+/]': (node) => {
         context.report({
           node,
-          message: 'Please use unicode non-breaking space \\u00a0 instead of whitespace after «',
+          messageId: 'u00a0After',
           fix: function (fixer) {
             const textToReplace = node.value.raw.replace(/(«)\s+/g, '$1\\u00a0')
             const range = getReplaceRange(node)
@@ -81,8 +87,7 @@ module.exports = {
 
         context.report({
           node,
-          message:
-            'Please use unicode non-breaking space &nbsp; instead of whitespace before !, ?, :, », €',
+          messageId: 'nbspBefore',
           fix: function (fixer) {
             const textToReplace = node.raw.replace(/\s+([!?:»€])/g, '&nbsp;$1')
             return fixer.replaceText(node, textToReplace)
@@ -94,7 +99,7 @@ module.exports = {
       'Literal[raw=/^\\".*«\\s+.*\\"$/]': (node) => {
         context.report({
           node,
-          message: 'Please use unicode non-breaking space &nbsp; instead of whitespace after «',
+          messageId: 'nbspAfter',
           fix: function (fixer) {
             const textToReplace = node.raw.replace(/(«)\s+/g, '$1&nbsp;')
             return fixer.replaceText(node, textToReplace)
@@ -106,8 +111,7 @@ module.exports = {
       'JSXText[raw=/\\s+[!?:»€]/]': (node) => {
         context.report({
           node,
-          message:
-            'Please use &nbsp; (non-breaking space) instead of whitespace before !, ?, :, », €',
+          messageId: 'nbspBefore',
           fix: function (fixer) {
             const textToReplace = node.value.replace(/\s+([!?:»€])/g, '&nbsp;$1')
 
@@ -120,7 +124,7 @@ module.exports = {
       'JSXText[raw=/«\\s+/]': (node) => {
         context.report({
           node,
-          message: 'Please use &nbsp; (non-breaking space) instead of whitespace after «',
+          messageId: 'nbspAfter',
           fix: function (fixer) {
             const textToReplace = node.value.replace(/(«)\s+/g, '$1&nbsp;')
 
