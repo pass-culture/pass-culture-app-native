@@ -1,4 +1,4 @@
-name: Upgrade version automatically using ServiceWorker
+name: Service Worker Test
 
 on:
   workflow_dispatch:
@@ -50,30 +50,30 @@ jobs:
           yarn add puppeteer
 
       # Clone the version from in its own directory
-      - name: Checkout ${{ github.event.inputs.versionFrom }}
+      - name: Checkout ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }}
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.inputs.versionFrom }}
+          ref: ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }}
           path: versionFrom
 
       # Build version from in versionFrom/build
-      - name: Building Webapp ${{ github.event.inputs.versionFrom }}
+      - name: Building Webapp ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }}
         shell: bash
         run: |
           yarn install --cwd versionFrom --immutable
           NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn --cwd versionFrom build:testing
 
       # Clone the version to in its own directory
-      - name: Checkout ${{ github.event.inputs.versionTo }}
+      - name: Checkout ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }}
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.inputs.versionTo }}
+          ref: ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }}
           path: versionTo
 
       # Build version to in versionTo/build
       ## Important: This build will be used during the last step by the JS script
       ##            There is an alternative way to improve this, described here: https://github.com/pass-culture/pass-culture-app-native/pull/3452
-      - name: Building Webapp ${{ github.event.inputs.versionTo }}
+      - name: Building Webapp ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }}
         shell: bash
         run: |
           yarn install --cwd versionTo --immutable
@@ -111,7 +111,7 @@ jobs:
         run: yes | cp -rf versionFrom/build/* build/
 
       # Run puppeteer
-      - run: yarn test:sw ${{ github.event.inputs.versionFrom }} ${{ github.event.inputs.versionTo }}
+      - run: yarn test:sw ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }} ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }}
 
       # Send failure otherwise success message to slack
       - name: Send failure message to slack
@@ -120,11 +120,11 @@ jobs:
         env:
           SLACK_WEBHOOK_SERVICE_WORKER_TEST: ${{ secrets.SLACK_WEBHOOK_SERVICE_WORKER_TEST }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"[App Web] Test service-worker failed to upgrade from ${{ github.event.inputs.versionFrom }} to ${{ github.event.inputs.versionTo }} :collision:"}'  "$SLACK_WEBHOOK_SERVICE_WORKER_TEST"
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"[App Web] Test service-worker failed to upgrade from ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }} to ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }} :collision:"}'  "$SLACK_WEBHOOK_SERVICE_WORKER_TEST"
       - name: Send success message to slack
         shell: bash
         if: success()
         env:
           SLACK_WEBHOOK_SERVICE_WORKER_TEST: ${{ secrets.SLACK_WEBHOOK_SERVICE_WORKER_TEST }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"[App Web] Test service-worker succeeded to upgrade from ${{ github.event.inputs.versionFrom }} to ${{ github.event.inputs.versionTo }} :rocket:️️"}'  "$SLACK_WEBHOOK_SERVICE_WORKER_TEST"
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"[App Web] Test service-worker succeeded to upgrade from ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }} to ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }} :rocket:️️"}'  "$SLACK_WEBHOOK_SERVICE_WORKER_TEST"
