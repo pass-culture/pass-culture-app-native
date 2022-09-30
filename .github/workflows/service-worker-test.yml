@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       versionFrom:
-        description: 'Nom de la release (ex: 1.199.0)'
+        description: "Nom de l'ancienne release (ex: 1.199.0)"
         required: true
         type: string
       versionTo:
-        description: 'Nom de la release (ex: 1.200.0)'
+        description: "Nom de la nouvelle release (ex: 1.200.0)"
         required: true
         type: string
 
@@ -19,7 +19,10 @@ jobs:
     env:
       PORT: 5000
     container:
-      image: kopax/puppeteer-headful:latest
+      image: ghcr.io/pass-culture/puppeteer:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
       options: --user root
     steps:
       # Docker entrypoint is otherwise ignored in GitHub Action
@@ -35,7 +38,7 @@ jobs:
       - name: Setup Node.JS
         uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       # Necessary for the latest service worker test script
       - name: Install dependencies
