@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { forwardRef, useRef, useState } from 'react'
 import { Insets, Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
@@ -91,7 +90,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Touchable
             hitSlop={hitSlop}
             onPress={onPressRightIcon}
-            {...accessibilityAndTestId(t`Réinitialiser la recherche`, 'resetSearchInput')}
+            {...accessibilityAndTestId('Réinitialiser la recherche', 'resetSearchInput')}
             type="reset">
             <Invalidate />
           </Touchable>

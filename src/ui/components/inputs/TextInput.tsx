@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -41,7 +40,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   const RightLabel = () => {
     if (isRequiredField) return <RequiredLabel />
     if (customProps.rightLabel)
-      return <Typo.CaptionNeutralInfo>{t`${customProps.rightLabel}`}</Typo.CaptionNeutralInfo>
+      return <Typo.CaptionNeutralInfo>{customProps.rightLabel}</Typo.CaptionNeutralInfo>
     return <React.Fragment />
   }
 

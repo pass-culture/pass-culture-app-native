@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -20,7 +19,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
   onRequestPermission,
 }) => (
   <AppInformationModal
-    title={t`Paramètres de notifications`}
+    title="Paramètres de notifications"
     visible={visible}
     onCloseIconPress={onDismiss}
     testIdSuffix="notifications-permission-modal">
@@ -28,16 +27,16 @@ export const PushNotificationsModal: React.FC<Props> = ({
       <BicolorLocationPointer />
       <Spacer.Column numberOfSpaces={10} />
       <InformationText>
-        {t`Reste informé des actualités du pass Culture en activant les notifications.`}
+        Reste informé des actualités du pass Culture en activant les notifications.
       </InformationText>
       <Spacer.Column numberOfSpaces={4} />
 
       <InformationText>
-        {t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.`}
+        Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        wording={t`Autoriser les notifications`}
+        wording="Autoriser les notifications"
         onPress={() => {
           analytics.logOpenNotificationSettings()
           onRequestPermission()

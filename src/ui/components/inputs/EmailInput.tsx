@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
@@ -21,11 +20,11 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     autoComplete="email"
     keyboardType="email-address"
     onChangeText={onEmailChange}
-    placeholder={t`tonadresse@email.com`}
+    placeholder="tonadresse@email.com"
     textContentType="emailAddress"
     value={email}
     maxLength={120}
-    testID={t`Entrée pour l'email`}
+    testID="Entrée pour l’email"
     {...inputProps}
     ref={forwardedRef}
   />

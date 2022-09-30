@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
 
@@ -28,7 +27,7 @@ export const ShareAppModal = () => {
         <Background />
         <WebShareModal
           visible={visible}
-          headerTitle={t`Partage le lien d’invitation`}
+          headerTitle="Partage le lien d’invitation"
           shareContent={shareAppContent}
           dismissModal={() => {
             navigateToHome()

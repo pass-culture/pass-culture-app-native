@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -23,9 +22,9 @@ export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
   return (
     <StyledTouchable
       onPress={onGoBack || goBack}
-      {...accessibilityAndTestId(t`Revenir en arrière`, 'backButton')}>
+      {...accessibilityAndTestId('Revenir en arrière', 'backButton')}>
       <ArrowPrevious testID="icon-back" color={color} />
-      <HiddenAccessibleText>{t`Retour`}</HiddenAccessibleText>
+      <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>
   )
 }

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
@@ -12,7 +11,7 @@ const UnmemoizedLoadingPage: FunctionComponent = () => {
     <Container>
       <Background />
       <StyledLottieView testID="Loading-Animation" source={LoadingAnimation} autoPlay loop />
-      <LoadingText>{t`Chargement en cours...`}</LoadingText>
+      <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )
 }

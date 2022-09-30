@@ -1685,7 +1685,7 @@ quotidiennes
                 }
               >
                 <View
-                  accessibilityLabel="Continuer vers l'étape suivante"
+                  accessibilityLabel="Continuer vers l’étape suivante"
                   accessibilityRole="button"
                   accessible={true}
                   collapsable={false}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -16,10 +15,11 @@ interface Props {
 
 export function DateInputDisplay({ date, isError }: Props) {
   const dateInputID = uuidv4()
+  const label = 'Date de naissance'
   return (
     <ContainerWithMaxWidth>
       <LabelContainer>
-        <InputLabel htmlFor={dateInputID}>{t`Date de naissance`}</InputLabel>
+        <InputLabel htmlFor={dateInputID}>{label}</InputLabel>
       </LabelContainer>
       <Spacer.Column numberOfSpaces={2} />
       <InputContainer isError={isError}>

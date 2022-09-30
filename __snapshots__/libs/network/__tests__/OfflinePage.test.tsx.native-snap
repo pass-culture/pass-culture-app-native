@@ -110,7 +110,7 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
         ]
       }
     >
-      Tu n'es pas connecté à internet.
+      Tu n’es pas connecté à internet.
     </Text>
     <View
       numberOfSpaces={5}

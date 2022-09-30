@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { Fragment } from 'react'
 import styled from 'styled-components/native'
 
@@ -19,7 +18,7 @@ export function AppButtonInner({
     <Fragment>
       {!!LoadingIndicator && isLoading ? (
         <LoadingIndicator
-          {...accessibilityAndTestId(t`Chargement en cours`, 'button-isloading-icon')}
+          {...accessibilityAndTestId('Chargement en cours', 'button-isloading-icon')}
         />
       ) : (
         <Fragment>

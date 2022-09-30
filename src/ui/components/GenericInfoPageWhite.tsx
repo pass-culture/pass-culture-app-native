@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -151,7 +150,7 @@ const StyledLottieView = styled(LottieView)({
 
 const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
-  accessibilityLabel: t`Revenir en arrière`,
+  accessibilityLabel: 'Revenir en arrière',
 }))``
 
 const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({

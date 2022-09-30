@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -14,9 +13,9 @@ export const OfflinePage = () => {
         <Spacer.Flex />
         <BicolorBrokenConnection size={getSpacing(46)} />
         <Spacer.Column numberOfSpaces={5} />
-        <StyledTitle2>{t`Pas de réseau internet`}</StyledTitle2>
+        <StyledTitle2>Pas de réseau internet</StyledTitle2>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>{t`Tu n'es pas connecté à internet.`}</StyledBody>
+        <StyledBody>Tu n’es pas connecté à internet.</StyledBody>
         <Spacer.Column numberOfSpaces={5} />
         <Spacer.Flex />
         <Spacer.BottomScreen />
