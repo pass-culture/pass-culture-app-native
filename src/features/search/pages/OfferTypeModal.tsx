@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { StyleProp, ViewStyle, View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -59,25 +59,8 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const search = useCallback(
-    (values: SearchTypeFormData) => {
-      hideModal()
-      const additionalSearchState: SearchState = {
-        ...searchState,
-        offerIsDuo: values.offerIsDuo,
-        offerTypes: values.offerTypes,
-      }
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...additionalSearchState,
-          view: SearchView.Results,
-        })
-      )
-    },
-    [hideModal, navigate, searchState]
-  )
-
   const {
+    watch,
     handleSubmit,
     control,
     reset,
@@ -92,7 +75,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
     },
   })
 
-  const onSubmit = handleSubmit(search)
+  const offerTypes = watch('offerTypes')
 
   const toggleLimitDuoOfferSearch = useCallback(() => {
     const toggleLimitDuoOffer = !getValues('offerIsDuo')
@@ -129,14 +112,56 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
     return entry ? entry[0] : undefined
   }, [getValues])
 
-  const hasDisplayDuoOffer = !!user?.isBeneficiary && !!user?.domainsCredit?.all?.remaining
+  const hasDuoOfferToggle = useMemo(() => {
+    const entry = Object.entries(offerTypes).find(([, value]) => value)
+    return (
+      !!user?.isBeneficiary &&
+      !!user?.domainsCredit?.all?.remaining &&
+      (!entry || (entry && entry[0] == 'isEvent'))
+    )
+  }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining, offerTypes])
+
+  const search = useCallback(
+    (values: SearchTypeFormData) => {
+      hideModal()
+      const additionalSearchState: SearchState = {
+        ...searchState,
+        offerIsDuo: hasDuoOfferToggle && values.offerIsDuo,
+        offerTypes: values.offerTypes,
+      }
+      navigate(
+        ...getTabNavConfig('Search', {
+          ...additionalSearchState,
+          view: SearchView.Results,
+        })
+      )
+    },
+    [hideModal, navigate, searchState, hasDuoOfferToggle]
+  )
+
+  const onSubmit = handleSubmit(search)
+
+  const selectOfferType = useCallback(
+    (type: string | undefined) => {
+      logUseFilter()
+      setValue('offerTypes', {
+        ...initialSearchState.offerTypes,
+        ...(type !== undefined
+          ? {
+              [type]: true,
+            }
+          : {}),
+      })
+    },
+    [logUseFilter, setValue]
+  )
 
   return (
     <AppModal
       visible={isVisible}
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={hideModal} />
+          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={close} />
         )
       }
       title={title}
@@ -163,22 +188,12 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
           <Controller
             control={control}
             name="offerTypes"
-            render={({ field: { onChange } }) => (
+            render={() => (
               <React.Fragment>
                 {OFFER_TYPES.map(({ type, label, icon }) => (
                   <View key={label}>
                     <RadioButton
-                      onSelect={() => {
-                        logUseFilter()
-                        onChange({
-                          ...initialSearchState.offerTypes,
-                          ...(type !== undefined
-                            ? {
-                                [type]: true,
-                              }
-                            : {}),
-                        })
-                      }}
+                      onSelect={() => selectOfferType(type)}
                       isSelected={getSelectedOfferType() === type}
                       label={label}
                       icon={icon}
@@ -193,7 +208,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          {!!hasDisplayDuoOffer && (
+          {!!hasDuoOfferToggle && (
             <Controller
               control={control}
               name="offerIsDuo"
