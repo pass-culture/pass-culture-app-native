@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
@@ -73,7 +72,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           options={optionGroups.days.map(String)}
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
-          ariaLabel={t`Entrée pour le jour de la date de naissance`}
+          ariaLabel="Entrée pour le jour de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>
@@ -86,7 +85,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           onChange={onPartialDateChange('month')}
           noBorderRadiusRight
           noBorderRadiusLeft
-          ariaLabel={t`Entrée pour le mois de la date de naissance`}
+          ariaLabel="Entrée pour le mois de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>
@@ -98,7 +97,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           options={optionGroups.years.map(String)}
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
-          ariaLabel={t`Entrée pour l'année de la date de naissance`}
+          ariaLabel="Entrée pour l'année de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>

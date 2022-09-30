@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { ComponentProps, ComponentType, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -67,10 +66,12 @@ export const PassPlaylist = (props: Props) => {
           onDarkBackground={props.onDarkBackground}
           navigateTo={props.titleSeeMoreLink}
           onPress={props.onPressSeeMore}
-          {...accessibilityAndTestId(t`Voir plus d’offres de la sélection` + ' ' + props.title)}>
+          {...accessibilityAndTestId(`Voir plus d’offres de la sélection ${props.title}`)}>
           <EyeSophisticated color={seeMoreColor} />
           <Spacer.Row numberOfSpaces={2} />
-          <ButtonText onDarkBackground={props.onDarkBackground}>{t`En voir plus`}</ButtonText>
+          <StyledButtonText onDarkBackground={props.onDarkBackground}>
+            En voir plus
+          </StyledButtonText>
         </StyledTouchableLink>
       </React.Fragment>
     ) : null
@@ -134,7 +135,7 @@ const StyledTouchableLink = styled(TouchableLink).attrs<{ onDarkBackground?: boo
   padding: getSpacing(1),
 })
 
-const ButtonText = styled(Typo.ButtonText)<{ onDarkBackground?: boolean }>(
+const StyledButtonText = styled(Typo.ButtonText)<{ onDarkBackground?: boolean }>(
   ({ onDarkBackground, theme }) => ({
     color: onDarkBackground ? theme.colors.white : theme.colors.primary,
   })

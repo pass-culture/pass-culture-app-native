@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, RefObject, useCallback, useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
@@ -153,7 +152,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
         </Animatable.View>
         {!props.lastIndex && (
           <FlexContainer marginTop={getSpacing(grid({ default: 4, sm: 2 }, 'height'))}>
-            <ButtonPrimaryWhite wording={t`Passer`} onPress={props.skip} />
+            <ButtonPrimaryWhite wording="Passer" onPress={props.skip} />
           </FlexContainer>
         )}
       </BottomButtonsContainer>

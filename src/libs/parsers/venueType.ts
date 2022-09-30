@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { VenueTypeCodeKey } from 'api/gen'
 import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -10,25 +8,25 @@ export type VenueTypeCode = Exclude<VenueTypeCodeKey, VenueTypeCodeKey.ADMINISTR
 export const MAP_VENUE_TYPE_TO_LABEL: {
   [k in VenueTypeCode]: string
 } = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: t`Cours et pratique artistiques`,
-  [VenueTypeCodeKey.BOOKSTORE]: t`Librairie`,
-  [VenueTypeCodeKey.CONCERT_HALL]: t`Musique - Salle de concerts`,
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: t`Magasin arts créatifs`,
-  [VenueTypeCodeKey.CULTURAL_CENTRE]: t`Centre culturel`,
-  [VenueTypeCodeKey.DIGITAL]: t`Offre numérique`,
-  [VenueTypeCodeKey.FESTIVAL]: t`Festival`,
-  [VenueTypeCodeKey.GAMES]: t`Jeux / Jeux vidéos`,
-  [VenueTypeCodeKey.LIBRARY]: t`Bibliothèque ou médiathèque`,
-  [VenueTypeCodeKey.MUSEUM]: t`Musée`,
-  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: t`Musique - Magasin d’instruments`,
-  [VenueTypeCodeKey.MOVIE]: t`Cinéma - Salle de projections`,
-  [VenueTypeCodeKey.TRAVELING_CINEMA]: t`Cinéma itinérant`,
-  [VenueTypeCodeKey.OTHER]: t`Autre type de lieu`,
-  [VenueTypeCodeKey.PATRIMONY_TOURISM]: t`Patrimoine et tourisme`,
-  [VenueTypeCodeKey.PERFORMING_ARTS]: t`Spectacle vivant`,
-  [VenueTypeCodeKey.RECORD_STORE]: t`Musique - Disquaire`,
-  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: t`Culture scientifique`,
-  [VenueTypeCodeKey.VISUAL_ARTS]: t`Arts visuels, arts plastiques et galeries`,
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'Cours et pratique artistiques',
+  [VenueTypeCodeKey.BOOKSTORE]: 'Librairie',
+  [VenueTypeCodeKey.CONCERT_HALL]: 'Musique - Salle de concerts',
+  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: 'Magasin arts créatifs',
+  [VenueTypeCodeKey.CULTURAL_CENTRE]: 'Centre culturel',
+  [VenueTypeCodeKey.DIGITAL]: 'Offre numérique',
+  [VenueTypeCodeKey.FESTIVAL]: 'Festival',
+  [VenueTypeCodeKey.GAMES]: 'Jeux / Jeux vidéos',
+  [VenueTypeCodeKey.LIBRARY]: 'Bibliothèque ou médiathèque',
+  [VenueTypeCodeKey.MUSEUM]: 'Musée',
+  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: 'Musique - Magasin d’instruments',
+  [VenueTypeCodeKey.MOVIE]: 'Cinéma - Salle de projections',
+  [VenueTypeCodeKey.TRAVELING_CINEMA]: 'Cinéma itinérant',
+  [VenueTypeCodeKey.OTHER]: 'Autre type de lieu',
+  [VenueTypeCodeKey.PATRIMONY_TOURISM]: 'Patrimoine et tourisme',
+  [VenueTypeCodeKey.PERFORMING_ARTS]: 'Spectacle vivant',
+  [VenueTypeCodeKey.RECORD_STORE]: 'Musique - Disquaire',
+  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: 'Culture scientifique',
+  [VenueTypeCodeKey.VISUAL_ARTS]: 'Arts visuels, arts plastiques et galeries',
 }
 
 export const parseType = (types: VenueTypeCode | null | undefined): string => {
@@ -40,25 +38,25 @@ export const parseType = (types: VenueTypeCode | null | undefined): string => {
 const MAP_TYPE_TO_HOME_LABEL: {
   [k in VenueTypeCode]: string
 } = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: t`Pratique artistiques`,
-  [VenueTypeCodeKey.BOOKSTORE]: t`Librairie`,
-  [VenueTypeCodeKey.CONCERT_HALL]: t`Salle de concerts`,
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: t`Magasin d’arts créatifs`,
-  [VenueTypeCodeKey.CULTURAL_CENTRE]: t`Centre culturel`,
-  [VenueTypeCodeKey.DIGITAL]: t`Offre numérique`,
-  [VenueTypeCodeKey.FESTIVAL]: t`Festival`,
-  [VenueTypeCodeKey.GAMES]: t`Jeux`,
-  [VenueTypeCodeKey.LIBRARY]: t`Bibliothèque / médiathèque`,
-  [VenueTypeCodeKey.MUSEUM]: t`Musée`,
-  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: t`Magasin d’instruments`,
-  [VenueTypeCodeKey.MOVIE]: t`Salle de projections`,
-  [VenueTypeCodeKey.TRAVELING_CINEMA]: t`Cinéma itinérant`,
-  [VenueTypeCodeKey.OTHER]: t`Autre type de lieu`,
-  [VenueTypeCodeKey.PATRIMONY_TOURISM]: t`Patrimoine / tourisme`,
-  [VenueTypeCodeKey.PERFORMING_ARTS]: t`Spectacle vivant`,
-  [VenueTypeCodeKey.RECORD_STORE]: t`Disquaire`,
-  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: t`Culture scientifique`,
-  [VenueTypeCodeKey.VISUAL_ARTS]: t`Galeries d’art`,
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'Pratique artistiques',
+  [VenueTypeCodeKey.BOOKSTORE]: 'Librairie',
+  [VenueTypeCodeKey.CONCERT_HALL]: 'Salle de concerts',
+  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: 'Magasin d’arts créatifs',
+  [VenueTypeCodeKey.CULTURAL_CENTRE]: 'Centre culturel',
+  [VenueTypeCodeKey.DIGITAL]: 'Offre numérique',
+  [VenueTypeCodeKey.FESTIVAL]: 'Festival',
+  [VenueTypeCodeKey.GAMES]: 'Jeux',
+  [VenueTypeCodeKey.LIBRARY]: 'Bibliothèque / médiathèque',
+  [VenueTypeCodeKey.MUSEUM]: 'Musée',
+  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: 'Magasin d’instruments',
+  [VenueTypeCodeKey.MOVIE]: 'Salle de projections',
+  [VenueTypeCodeKey.TRAVELING_CINEMA]: 'Cinéma itinérant',
+  [VenueTypeCodeKey.OTHER]: 'Autre type de lieu',
+  [VenueTypeCodeKey.PATRIMONY_TOURISM]: 'Patrimoine / tourisme',
+  [VenueTypeCodeKey.PERFORMING_ARTS]: 'Spectacle vivant',
+  [VenueTypeCodeKey.RECORD_STORE]: 'Disquaire',
+  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: 'Culture scientifique',
+  [VenueTypeCodeKey.VISUAL_ARTS]: 'Galeries d’art',
 }
 
 export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): string => {

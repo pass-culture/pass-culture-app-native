@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { EventArg, useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo } from 'react'
 import { Platform, View } from 'react-native'
@@ -82,8 +81,8 @@ export const GenericAchievement: FunctionComponent<Props> = ({
     ),
     PrevComponent: (props: ControlComponentProps) => <ControlComponent {...props} withMargin />,
     NextComponent: (props: ControlComponentProps) => <ControlComponent {...props} withMargin />,
-    prevTitle: t`Revenir à l'étape précédente`,
-    nextTitle: t`Continuer vers l'étape suivante`,
+    prevTitle: 'Revenir à l’étape précédente',
+    nextTitle: 'Continuer vers l’étape suivante',
   }
 
   return (
@@ -92,7 +91,7 @@ export const GenericAchievement: FunctionComponent<Props> = ({
       <ScreenUsableArea>
         {!!lastIndex && (
           <SkipButton ref={skipButtonRef}>
-            <ButtonTertiaryNeutralInfo wording={t`Tout passer`} onPress={skipGenericAchievement} />
+            <ButtonTertiaryNeutralInfo wording="Tout passer" onPress={skipGenericAchievement} />
           </SkipButton>
         )}
         <SwiperContainer>

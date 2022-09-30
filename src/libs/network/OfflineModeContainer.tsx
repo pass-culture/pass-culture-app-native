@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { ReactNode, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
@@ -40,7 +39,7 @@ export function OfflineModeContainer({ children }: { children: ReactNode }) {
       <FlexView>{children}</FlexView>
       {show ? (
         <OfflineModeBanner>
-          <OfflineModeBannerText>{t`aucune connexion internet.`}</OfflineModeBannerText>
+          <OfflineModeBannerText>aucune connexion internet.</OfflineModeBannerText>
           <Spacer.BottomScreen />
         </OfflineModeBanner>
       ) : null}

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useMemo } from 'react'
 
 import {
@@ -90,7 +89,7 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
   return useMemo(() => {
     const mapping = {} as SearchGroupLabelMapping
     searchGroups.forEach((curr) => {
-      mapping[curr.name] = curr.value || t`Toutes les catégories`
+      mapping[curr.name] = curr.value || 'Toutes les catégories'
     })
     return mapping
     // eslint-disable-next-line react-hooks/exhaustive-deps

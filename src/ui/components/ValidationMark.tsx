@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -26,10 +25,10 @@ export const ValidationMark: React.FC<Props> = ({ isValid, size, validtestID, in
 
 const ValidateGreenValid = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.greenValid,
-  accessibilityLabel: t`Accessible`,
+  accessibilityLabel: 'Accessible',
 }))``
 
 const InvalidateGreyDark = styled(Invalidate).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
-  accessibilityLabel: t`Non accessible`,
+  accessibilityLabel: 'Non accessible',
 }))``

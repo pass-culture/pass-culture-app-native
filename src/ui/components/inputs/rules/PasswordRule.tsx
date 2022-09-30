@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -12,7 +11,7 @@ type Props = {
 }
 
 const NotMemoizedPasswordRule: FunctionComponent<Props> = ({ title, isValidated }) => {
-  const validationLabel = isValidated ? t`validé` : t`minimum`
+  const validationLabel = isValidated ? 'validé' : 'minimum'
   const accessibilityLabel = `${title} ${validationLabel}`
   const CheckWithLabel = styled(Check).attrs({
     accessibilityLabel,

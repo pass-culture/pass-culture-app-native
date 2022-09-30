@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
 import { StatusBar, View } from 'react-native'
@@ -36,7 +35,7 @@ export const PageHeader: React.FC<Props> = ({
   size = 'small',
   background = 'white',
   withGoBackButton = false,
-  goBackAccessibilityLabel = t`Revenir en arrière`,
+  goBackAccessibilityLabel = 'Revenir en arrière',
   onGoBack,
   RightComponent,
   testID,

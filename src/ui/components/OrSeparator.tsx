@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +8,7 @@ export function OrSeparator() {
     <Container>
       <Line />
       <TextContainer>
-        <OrText>{t`ou`}</OrText>
+        <OrText>ou</OrText>
       </TextContainer>
     </Container>
   )

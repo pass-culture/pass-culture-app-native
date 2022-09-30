@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { SwiperProps } from 'react-native-web-swiper'
 import styled, { DefaultTheme } from 'styled-components/native'
@@ -50,11 +49,11 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   const totalSteps = props.numberOfSteps
   const clickable = !!props.onPress
 
-  let status = t`à faire`
+  let status = 'à faire'
   if (props.isActive) {
-    status = t`en cours`
+    status = 'en cours'
   } else if (props.index < props.activeIndex) {
-    status = t`réalisée`
+    status = 'réalisée'
   }
 
   return (
@@ -66,7 +65,7 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
       aria-hidden={!clickable}>
       <DotContainer>
         <Dot
-          accessibilityLabel={clickable ? t`Étape ${step} sur ${totalSteps} ${status}` : undefined}
+          accessibilityLabel={clickable ? `Étape ${step} sur ${totalSteps} ${status}` : undefined}
           size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
           testID="dot-icon"
         />

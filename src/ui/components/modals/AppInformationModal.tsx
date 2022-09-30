@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { Modal } from 'react-native'
 import styled from 'styled-components/native'
@@ -44,7 +43,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
               title={title}
               titleID={titleID}
               boldTitle
-              rightIconAccessibilityLabel={t`Fermer la modale`}
+              rightIconAccessibilityLabel="Fermer la modale"
               rightIcon={Close}
               onRightIconPress={onCloseIconPress}
               numberOfLines={numberOfLinesTitle}

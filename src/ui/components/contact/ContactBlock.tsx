@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
@@ -42,12 +41,12 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
 
   return (
     <Container>
-      {!!email && <ContactAtom label={t`E-mail`} onPress={onPressMail} Icon={EmailFilled} />}
+      {!!email && <ContactAtom label="E-mail" onPress={onPressMail} Icon={EmailFilled} />}
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
-        <ContactAtom label={t`Téléphone`} onPress={onPressPhone} Icon={PhoneFilled} />
+        <ContactAtom label="Téléphone" onPress={onPressPhone} Icon={PhoneFilled} />
       )}
       {!!website && (
-        <ContactAtom label={t`Site internet`} onPress={onPressWebsite} Icon={ExternalSiteFilled} />
+        <ContactAtom label="Site internet" onPress={onPressWebsite} Icon={ExternalSiteFilled} />
       )}
     </Container>
   )

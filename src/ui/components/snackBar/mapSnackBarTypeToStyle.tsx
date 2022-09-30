@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { Check } from 'ui/svg/icons/Check'
@@ -43,6 +42,6 @@ export const mapSnackBarTypeToStyle = (
   }
 }
 
-const AccessibleCheck = styled(Check).attrs({ accessibilityLabel: t`Succès` })``
-const AccessibleError = styled(Error).attrs({ accessibilityLabel: t`Erreur` })``
-const AccessibleInfo = styled(Info).attrs({ accessibilityLabel: t`Information` })``
+const AccessibleCheck = styled(Check).attrs({ accessibilityLabel: 'Succès' })``
+const AccessibleError = styled(Error).attrs({ accessibilityLabel: 'Erreur' })``
+const AccessibleInfo = styled(Info).attrs({ accessibilityLabel: 'Information' })``

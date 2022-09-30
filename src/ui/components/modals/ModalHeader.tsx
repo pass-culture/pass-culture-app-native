@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
@@ -26,10 +25,10 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   title,
   titleID,
   leftIcon,
-  leftIconAccessibilityLabel = t`Revenir en arrière`,
+  leftIconAccessibilityLabel = 'Revenir en arrière',
   onLeftIconPress,
   rightIcon,
-  rightIconAccessibilityLabel = t`Fermer la modale`,
+  rightIconAccessibilityLabel = 'Fermer la modale',
   onRightIconPress,
   boldTitle = false,
   numberOfLines = 2,
@@ -54,7 +53,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         {!!LeftIcon && (
           <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
             <LeftIcon {...accessibilityAndTestId(leftIconAccessibilityLabel, 'leftIcon')} />
-            <HiddenAccessibleText>{t`Retour`}</HiddenAccessibleText>
+            <HiddenAccessibleText>Retour</HiddenAccessibleText>
           </HeaderAction>
         )}
       </LeftHeaderActionContainer>

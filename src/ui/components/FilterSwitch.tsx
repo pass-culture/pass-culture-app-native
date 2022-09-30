@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
@@ -45,7 +44,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
-  const hiddenText = active ? t`Oui` : t`Non`
+  const hiddenText = active ? 'Oui' : 'Non'
 
   useSpaceBarAction(isFocus ? toggle : undefined)
 
@@ -116,7 +115,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
 const Lock = styled(LockIcon).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   size: theme.icons.sizes.extraSmall,
-  accessibilityLabel: t`Désactivé`,
+  accessibilityLabel: 'Désactivé',
 }))``
 
 const propsAreEqual = (
