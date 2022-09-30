@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent } from 'react'
 
 import { IconsContainer } from 'features/cheatcodes/pages/AppComponents/IconsContainer'

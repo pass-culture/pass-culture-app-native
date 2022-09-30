@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'

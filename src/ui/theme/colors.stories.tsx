@@ -24,7 +24,6 @@ const Color: FunctionComponent<ColorProps> = ({ name, color }) => (
   <ColorContainer>
     <Rectangle color={color} />
     <Typo.Caption>
-      {/* eslint-disable-next-line react-native/no-raw-text */}
       {name}: {color}
     </Typo.Caption>
   </ColorContainer>

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { Alert, Button, ScrollView, Text, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'

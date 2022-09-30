@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-raw-text */
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { Text } from 'react-native'

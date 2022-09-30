@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-raw-text */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native-animatable'
