@@ -1,17 +1,17 @@
-const noAllowConsole = require('./eslint-custom-rules/no-allow-console')
-const noStringCheckBeforeComponent = require('./eslint-custom-rules/no-string-check-before-component')
 const independantMocks = require('./eslint-custom-rules/independant-mocks')
-const noReactQueryProviderHOC = require('./eslint-custom-rules/no-react-query-provider-hoc')
-const nbspInFrenchTranslations = require('./eslint-custom-rules/nbsp-in-french-translations')
-const todoFormat = require('./eslint-custom-rules/todo-format')
+const nbspInFrench = require('./eslint-custom-rules/nbsp-in-french')
+const noAllowConsole = require('./eslint-custom-rules/no-allow-console')
 const noRawText = require('./eslint-custom-rules/no-raw-text')
+const noReactQueryProviderHOC = require('./eslint-custom-rules/no-react-query-provider-hoc')
+const noStringCheckBeforeComponent = require('./eslint-custom-rules/no-string-check-before-component')
+const todoFormat = require('./eslint-custom-rules/todo-format')
 
 module.exports = {
-  'no-allow-console': noAllowConsole,
-  'no-string-check-before-component': noStringCheckBeforeComponent,
   'independant-mocks': independantMocks,
-  'no-react-query-provider-hoc': noReactQueryProviderHOC,
-  'nbsp-in-french-translations': nbspInFrenchTranslations,
-  'todo-format': todoFormat,
+  'nbsp-in-french': nbspInFrench,
+  'no-allow-console': noAllowConsole,
   'no-raw-text': noRawText,
+  'no-react-query-provider-hoc': noReactQueryProviderHOC,
+  'no-string-check-before-component': noStringCheckBeforeComponent,
+  'todo-format': todoFormat,
 }

@@ -1,8 +1,8 @@
 /**
- * This rule aims to spot misuses of a space instead of a non-breaking space with code \u00a0 or &nbsp
- * before some characters in French translations, such as ! ? : ; € » or after «
+ * This rule aims to spot misuses of a space instead of a non-breaking space with code \u00a0 or &nbsp;
+ * before some characters in French, such as ! ? : ; € » or after «
  *
- * Ex: "Bienvenue !" should be "Bienvenue\u00a0!"
+ * Ex: "Bienvenue !" should be "Bienvenue&nbsp;!"
  *
  * The work here is based on ESLint documentation: https://eslint.org/docs/latest/developer-guide/working-with-rules
  * and especially for the selectors: https://eslint.org/docs/latest/developer-guide/selectors
@@ -10,17 +10,16 @@
  */
 
 module.exports = {
-  name: 'nbsp-in-french-translations',
+  name: 'nbsp-in-french',
   meta: {
     docs: {
-      description:
-        'force the use of non-breaking space before some characters in French translations',
+      description: 'force the use of non-breaking space before some characters in French',
     },
     fixable: 'code',
   },
   create(context) {
     return {
-      // \u00a0 for 'textToTranslate !' with characters !, ?, :, » and €
+      // \u00a0 for 'myText !' with characters !, ?, :, » and €
       "Literal[raw=/^'.*\\s+[!?:»€].*'$/]": (node) => {
         if (node.raw.includes('!important')) return
 
@@ -35,22 +34,7 @@ module.exports = {
         })
       },
 
-      // &nbsp; for "textToTranslate !" with characters !, ?, :, » and €
-      'Literal[raw=/^\\".*\\s+[!?:»€].*\\"$/]': (node) => {
-        if (node.raw.includes('!important')) return
-
-        context.report({
-          node,
-          message:
-            'Please use unicode non-breaking space &nbsp; instead of whitespace before !, ?, :, », €',
-          fix: function (fixer) {
-            const textToReplace = node.raw.replace(/\s+([!?:»€])/g, '&nbsp;$1')
-            return fixer.replaceText(node, textToReplace)
-          },
-        })
-      },
-
-      // \u00a0 for '« textToTranslate'
+      // \u00a0 for '« myText'
       "Literal[raw=/^'.*«\\s+.*'$/]": (node) => {
         context.report({
           node,
@@ -62,19 +46,7 @@ module.exports = {
         })
       },
 
-      // &nbsp; for "« textToTranslate"
-      'Literal[raw=/^\\".*«\\s+.*\\"$/]': (node) => {
-        context.report({
-          node,
-          message: 'Please use unicode non-breaking space &nbsp; instead of whitespace after «',
-          fix: function (fixer) {
-            const textToReplace = node.raw.replace(/(«)\s+/g, '$1&nbsp;')
-            return fixer.replaceText(node, textToReplace)
-          },
-        })
-      },
-
-      // For `textToTranslate !` with characters !, ?, :, » and €
+      // \u00a0 for `myText !` with characters !, ?, :, » and €
       'TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»€]/]': (node) => {
         if (node.value.raw.includes('!important')) return
 
@@ -90,7 +62,7 @@ module.exports = {
         })
       },
 
-      // For `« textToTranslate`
+      // \u00a0 for `« myText`
       'TemplateLiteral > TemplateElement[value.raw=/«\\s+/]': (node) => {
         context.report({
           node,
@@ -103,7 +75,34 @@ module.exports = {
         })
       },
 
-      // For <Text>textToTranslate !</Text> with characters !, ?, :, » and €
+      // &nbsp; for "myText !" with characters !, ?, :, » and €
+      'Literal[raw=/^\\".*\\s+[!?:»€].*\\"$/]': (node) => {
+        if (node.raw.includes('!important')) return
+
+        context.report({
+          node,
+          message:
+            'Please use unicode non-breaking space &nbsp; instead of whitespace before !, ?, :, », €',
+          fix: function (fixer) {
+            const textToReplace = node.raw.replace(/\s+([!?:»€])/g, '&nbsp;$1')
+            return fixer.replaceText(node, textToReplace)
+          },
+        })
+      },
+
+      // &nbsp; for "« myText"
+      'Literal[raw=/^\\".*«\\s+.*\\"$/]': (node) => {
+        context.report({
+          node,
+          message: 'Please use unicode non-breaking space &nbsp; instead of whitespace after «',
+          fix: function (fixer) {
+            const textToReplace = node.raw.replace(/(«)\s+/g, '$1&nbsp;')
+            return fixer.replaceText(node, textToReplace)
+          },
+        })
+      },
+
+      // &nbsp; for <Text>myText !</Text> with characters !, ?, :, » and €
       'JSXText[raw=/\\s+[!?:»€]/]': (node) => {
         context.report({
           node,
@@ -117,7 +116,7 @@ module.exports = {
         })
       },
 
-      // For <Text>« textToTranslate</Text>
+      // &nbsp; for <Text>« myText</Text>
       'JSXText[raw=/«\\s+/]': (node) => {
         context.report({
           node,

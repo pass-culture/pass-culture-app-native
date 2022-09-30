@@ -10,10 +10,9 @@ export const mockedAlgoliaResponse: SearchResponse<SearchHit> = {
         dates: [],
         isDigital: false,
         isDuo: false,
-        // eslint-disable-next-line local-rules/nbsp-in-french-translations
-        name: 'Mensch ! Où sont les Hommes ?',
+        name: 'La nuit des temps',
         prices: [28.0],
-        subcategoryId: SubcategoryIdEnum.CONCERT,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         thumbUrl:
           'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ',
       },

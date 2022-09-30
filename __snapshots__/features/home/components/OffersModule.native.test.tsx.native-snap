@@ -145,11 +145,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 "dates": Array [],
                 "isDigital": false,
                 "isDuo": false,
-                "name": "Mensch ! Où sont les Hommes ?",
+                "name": "La nuit des temps",
                 "prices": Array [
                   2800,
                 ],
-                "subcategoryId": "CONCERT",
+                "subcategoryId": "LIVRE_PAPIER",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
               },
             },
@@ -224,11 +224,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   "dates": Array [],
                   "isDigital": false,
                   "isDuo": false,
-                  "name": "Mensch ! Où sont les Hommes ?",
+                  "name": "La nuit des temps",
                   "prices": Array [
                     2800,
                   ],
-                  "subcategoryId": "CONCERT",
+                  "subcategoryId": "LIVRE_PAPIER",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                 },
               },
@@ -448,11 +448,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                     "dates": Array [],
                     "isDigital": false,
                     "isDuo": false,
-                    "name": "Mensch ! Où sont les Hommes ?",
+                    "name": "La nuit des temps",
                     "prices": Array [
                       2800,
                     ],
-                    "subcategoryId": "CONCERT",
+                    "subcategoryId": "LIVRE_PAPIER",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                   },
                 },
@@ -1170,7 +1170,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 >
                   <View>
                     <View
-                      accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie Concert,   prix 28 €. "
+                      accessibilityLabel="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                       accessibilityRole="link"
                       accessible={true}
                       focusable={true}
@@ -1195,7 +1195,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                           },
                         ]
                       }
-                      testID="offre Mensch ! Où sont les Hommes ?"
+                      testID="offre La nuit des temps"
                     >
                       <View
                         style={
@@ -1230,7 +1230,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                               ]
                             }
                           >
-                            Mensch ! Où sont les Hommes ?
+                            La nuit des temps
                           </Text>
                           <Text
                             style={
@@ -1333,7 +1333,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                                 }
                                 testID="categoryImageCaption"
                               >
-                                Concert
+                                Livre
                               </Text>
                             </View>
                           </View>
@@ -1354,11 +1354,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                         "dates": Array [],
                         "isDigital": false,
                         "isDuo": false,
-                        "name": "Mensch ! Où sont les Hommes ?",
+                        "name": "La nuit des temps",
                         "prices": Array [
                           2800,
                         ],
-                        "subcategoryId": "CONCERT",
+                        "subcategoryId": "LIVRE_PAPIER",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                       },
                     }

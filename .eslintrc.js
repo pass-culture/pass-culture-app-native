@@ -26,18 +26,18 @@ module.exports = {
     'local-rules/no-raw-text': ['error'],
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],
-    'local-rules/nbsp-in-french-translations': ['error'],
+    'local-rules/nbsp-in-french': ['error'],
     'local-rules/todo-format': ['error'],
     '@typescript-eslint/ban-ts-comment': [
-      2, // error
+      'error',
       {
         'ts-ignore': 'allow-with-description',
         'ts-expect-error': 'allow-with-description',
         minimumDescriptionLength: 5,
       },
     ],
-    // not ideal, but progamatically necessary sometimes
-    'no-unused-vars': 'off',
+    'no-unused-vars': 'off', // not ideal, but progamatically necessary sometimes
+
     '@typescript-eslint/no-unused-vars': [
       'error',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -104,7 +104,7 @@ module.exports = {
       },
     ],
     'no-restricted-properties': [
-      2,
+      'error',
       {
         object: 'Dimensions',
         property: 'get',
@@ -150,7 +150,7 @@ module.exports = {
      * Setting androidPathRegex and iosPathRegex aim to fix that conflict
      */
     'react-native/split-platform-components': [
-      2,
+      'error',
       {
         androidPathRegex: '\\.android(.test)?.(ts|tsx)$',
         iosPathRegex: '\\.ios(.test)?.(ts|tsx)$',
@@ -274,7 +274,7 @@ module.exports = {
       env: { jest: true },
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
-        'local-rules/nbsp-in-french-translations': 'off',
+        'local-rules/nbsp-in-french': 'off',
         'react/jsx-no-constructed-context-values': 'off',
       },
     },
