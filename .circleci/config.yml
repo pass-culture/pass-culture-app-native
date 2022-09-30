@@ -824,6 +824,18 @@ jobs:
       - notify-soft-release:
           env: production
 
+  github-action-service-worker-test:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - run:
+          name: Service Worker Test
+          command: |
+            VERSION_FROM=$(git tag -l | grep prod-hard | grep $(curl -sS https://passculture.app | awk -F 'name="version" content="' '{print $2}' | awk -F '"' '{print $1}'))
+            VERSION_TO=$CIRCLE_TAG
+            curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $APP_NATIVE_GITHUB_ACTIONS_API_TOKEN" --request POST --data '{ "event_type": "service-worker-test", "client_payload": { "versionFrom": "'$VERSION_FROM'", "versionTo":"'$VERSION_TO'" } }' https://api.github.com/repos/pass-culture/pass-culture-app-native/dispatches
+
   deploy-web-testing:
     executor: gcp
     working_directory: ~/pass-culture
@@ -1102,6 +1114,14 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
+      - github-action-service-worker-test:
+          filters:
+            tags:
+              only:
+                - /^(patch\/)?v.*/
+                - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
       - deploy-web-testing:
           filters:
             tags:
