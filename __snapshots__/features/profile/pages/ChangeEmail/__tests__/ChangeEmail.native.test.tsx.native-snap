@@ -466,7 +466,7 @@ Array [
                     },
                   ]
                 }
-                testID="Entrée pour l'email"
+                testID="Entrée pour l’email"
                 textContentType="emailAddress"
                 value=""
               />
@@ -1163,7 +1163,7 @@ Array [
                     },
                   ]
                 }
-                testID="Entrée pour l'email"
+                testID="Entrée pour l’email"
                 textContentType="emailAddress"
                 value=""
               />

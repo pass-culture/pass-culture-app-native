@@ -30,15 +30,12 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
       javaScriptEnabled={true}
       messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
-      onError={[Function]}
       onHttpError={[Function]}
-      onLoadStart={[Function]}
       onLoadingError={[Function]}
       onLoadingFinish={[Function]}
       onLoadingProgress={[Function]}
       onLoadingStart={[Function]}
       onMessage={[Function]}
-      onNavigationStateChange={[Function]}
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {

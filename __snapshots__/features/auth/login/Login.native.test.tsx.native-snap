@@ -40,7 +40,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                         },
                       ]
                     }
-                    testID=\\"Entrée pour l'email\\"
+                    testID=\\"Entrée pour l’email\\"
                     textContentType=\\"emailAddress\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
@@ -200,7 +200,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                         },
                       ]
                     }
-                    testID=\\"Entrée pour l'email\\"
+                    testID=\\"Entrée pour l’email\\"
                     textContentType=\\"emailAddress\\"
 -                   value=\\"\\"
 +                   value=\\"not_valid_email@gmail\\"
@@ -472,7 +472,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         },
                       ]
                     }
-                    testID=\\"Entrée pour l'email\\"
+                    testID=\\"Entrée pour l’email\\"
                     textContentType=\\"emailAddress\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
@@ -737,7 +737,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         },
                       ]
                     }
-                    testID=\\"Entrée pour l'email\\"
+                    testID=\\"Entrée pour l’email\\"
                     textContentType=\\"emailAddress\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
@@ -1002,7 +1002,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         },
                       ]
                     }
-                    testID=\\"Entrée pour l'email\\"
+                    testID=\\"Entrée pour l’email\\"
                     textContentType=\\"emailAddress\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
