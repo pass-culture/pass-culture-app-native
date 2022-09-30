@@ -46,7 +46,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
     'react-native/no-raw-text': 'off', // We use 'local-rules/no-raw-text' instead
-    'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
+    'react/jsx-fragments': ['error', 'element'],
     'react/jsx-no-constructed-context-values': 'error',
     'no-restricted-imports': [
       'error',
