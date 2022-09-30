@@ -11,6 +11,8 @@ on:
         description: "Nom de la nouvelle release (ex: 1.200.0)"
         required: true
         type: string
+  repository_dispatch:
+    types: service-worker-test
 
 jobs:
   testServiceWorker:
@@ -110,3 +112,19 @@ jobs:
 
       # Run puppeteer
       - run: yarn test:sw ${{ github.event.inputs.versionFrom }} ${{ github.event.inputs.versionTo }}
+
+      # Send failure otherwise success message to slack
+      - name: Send failure message to slack
+        shell: bash
+        if: failure()
+        env:
+          SLACK_WEBHOOK_SERVICE_WORKER_TEST: ${{ secrets.SLACK_WEBHOOK_SERVICE_WORKER_TEST }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"[App Web] Test service-worker failed to upgrade from ${{ github.event.inputs.versionFrom }} to ${{ github.event.inputs.versionTo }} :collision:"}'  "$SLACK_WEBHOOK_SERVICE_WORKER_TEST"
+      - name: Send success message to slack
+        shell: bash
+        if: success()
+        env:
+          SLACK_WEBHOOK_SERVICE_WORKER_TEST: ${{ secrets.SLACK_WEBHOOK_SERVICE_WORKER_TEST }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"[App Web] Test service-worker succeeded to upgrade from ${{ github.event.inputs.versionFrom }} to ${{ github.event.inputs.versionTo }} :rocket:️️"}'  "$SLACK_WEBHOOK_SERVICE_WORKER_TEST"
