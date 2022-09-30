@@ -72,11 +72,6 @@ coverage/
 ios/react-native-config.xcconfig
 ios/envfile
 
-# Lingui
-src/locales/_build
-src/locales/*/*.js
-src/locales/*/messages.ts
-
 # Deploy
 android/keystores/*
 fastlane/playStoreServiceAccount.json

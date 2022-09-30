@@ -11,9 +11,6 @@ jest.mock('./libs/notifications', () => ({
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
-jest.mock('libs/i18n', () => ({
-  activate: jest.fn(),
-}))
 jest.unmock('libs/network/NetInfoWrapper')
 
 describe('<App /> with mocked RootNavigator', () => {

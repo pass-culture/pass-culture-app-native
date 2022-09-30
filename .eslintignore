@@ -4,7 +4,6 @@ rn-cli.config.js
 .eslintrc.js
 android
 ios
-src/locales/**/*
 eslint-local-rules.js
 eslint-custom-rules/*
 
