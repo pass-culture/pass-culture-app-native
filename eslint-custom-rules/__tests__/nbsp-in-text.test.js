@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../nbsp-in-french'
+import rule from '../nbsp-in-text'
 
 const ruleTester = new RuleTester()
 
@@ -41,4 +41,4 @@ const tests = {
 tests.valid.forEach((t) => Object.assign(t, config))
 tests.invalid.forEach((t) => Object.assign(t, config))
 
-ruleTester.run('nbsp-in-french', rule, tests)
+ruleTester.run('nbsp-in-text', rule, tests)

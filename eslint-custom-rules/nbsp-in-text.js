@@ -10,10 +10,10 @@
  */
 
 module.exports = {
-  name: 'nbsp-in-french',
+  name: 'nbsp-in-text',
   meta: {
     docs: {
-      description: 'force the use of non-breaking space before some characters in French',
+      description: 'force the use of non-breaking space before some characters in text',
     },
     messages: {
       u00u0Before:

@@ -26,7 +26,7 @@ module.exports = {
     'local-rules/no-raw-text': ['error'],
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],
-    'local-rules/nbsp-in-french': ['error'],
+    'local-rules/nbsp-in-text': ['error'],
     'local-rules/todo-format': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       'error',
@@ -274,7 +274,7 @@ module.exports = {
       env: { jest: true },
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
-        'local-rules/nbsp-in-french': 'off',
+        'local-rules/nbsp-in-text': 'off',
         'react/jsx-no-constructed-context-values': 'off',
       },
     },
