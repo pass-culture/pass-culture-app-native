@@ -169,13 +169,61 @@ describe('OfferTypeModal component', () => {
       mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
     })
 
-    it('should display toggle offerIsDuo', () => {
+    it('should display toggle offerIsDuo if all type select', () => {
       const renderAPI = renderOfferTypeModal({
         hideOfferTypeModal,
         offerTypeModalVisible: true,
       })
 
+      const radioButton = renderAPI.getByTestId(OfferType.ALL_TYPE)
+
+      fireEvent.press(radioButton)
+
       const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+
+      expect(toggle).toBeTruthy()
+    })
+
+    it.each(
+      OFFER_TYPES.filter(
+        (item) => item.label !== OfferType.ALL_TYPE && item.label !== OfferType.EVENT
+      ).map(({ label }) => label)
+    )(`should not display toggle offerIsDuo when %s on press`, async (label) => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const radioButton = renderAPI.getByTestId(label)
+
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+
+      const toggle = renderAPI.queryByTestId('Interrupteur-limitDuoOfferSearch')
+
+      expect(toggle).toBeFalsy()
+    })
+
+    it.each(
+      OFFER_TYPES.filter(
+        (item) => item.label == OfferType.ALL_TYPE || item.label == OfferType.EVENT
+      ).map(({ label }) => label)
+    )(`should display toggle offerIsDuo when %s on press`, (label) => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const radioButton = renderAPI.getByTestId(label)
+
+      fireEvent.press(radioButton)
+
+      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+
+      const toggle = renderAPI.queryByTestId('Interrupteur-limitDuoOfferSearch')
 
       expect(toggle).toBeTruthy()
     })
