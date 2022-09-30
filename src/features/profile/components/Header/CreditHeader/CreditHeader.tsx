@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -35,9 +34,7 @@ export function CreditHeader({
     ? new Date(depositExpirationDate) < new Date()
     : false
 
-  const creditText = isDepositExpired
-    ? t`Ton crédit a expiré le`
-    : t`Profite de ton crédit jusqu’au`
+  const creditText = isDepositExpired ? 'Ton crédit a expiré le' : 'Profite de ton crédit jusqu’au'
 
   return (
     <React.Fragment>

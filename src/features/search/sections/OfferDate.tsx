@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -60,7 +59,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
           <VerticalUl>
             <Li>
               <RadioButton
-                label={t`Aujourd'hui`}
+                label="Aujourd’hui"
                 isSelected={option === DATE_FILTER_OPTIONS.TODAY}
                 onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
               />
@@ -68,7 +67,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
             </Li>
             <Li>
               <RadioButton
-                label={t`Cette semaine`}
+                label="Cette semaine"
                 isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
                 onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
               />
@@ -76,7 +75,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
             </Li>
             <Li>
               <RadioButton
-                label={t`Ce week-end`}
+                label="Ce week-end"
                 isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
                 onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
               />
@@ -84,7 +83,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
             </Li>
             <Li>
               <RadioButton
-                label={t`Date précise`}
+                label="Date précise"
                 isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
                 onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
                 description={

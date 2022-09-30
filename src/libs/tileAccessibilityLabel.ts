@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 import { BookingProperties } from 'features/bookings/types'
 import { OfferTileProps } from 'features/offer/atoms/OfferTile'
 import { parseTypeHomeLabel } from 'libs/parsers/venueType'
@@ -26,40 +24,37 @@ export enum TileContentType {
 
 function getOfferAccessibilityLabel(offer: Offer) {
   const { name, categoryLabel: category, distance, date, price, isDuo } = offer
-  const nameLabel = name ? ` ${name}` : ''
-  const categoryLabel = category ? t`de la catégorie` + ` ${category},` : ''
-  const distanceLabel = distance ? t`à` + ` ${distance},` : ''
-  const datePrefix = date?.match(/^\d/) ? t`le` : ''
+  const nameLabel = name ?? ''
+  const categoryLabel = category ? `de la catégorie ${category},` : ''
+  const distanceLabel = distance ? `à ${distance},` : ''
+  const datePrefix = date?.match(/^\d/) ? `le` : ''
   const dateLabel = date ? datePrefix + ` ${date},` : ''
-  const priceLabel = price === t`Gratuit` ? price : t`prix` + ` ${price}`
-  const duoLabel = isDuo ? t`Possibilité de réserver 2 places.` : ''
-  return (
-    t`Offre` +
-    `${nameLabel} ${categoryLabel} ${distanceLabel} ${dateLabel} ${priceLabel}. ${duoLabel}`
-  )
+  const priceLabel = price === 'Gratuit' ? price : `prix ${price}`
+  const duoLabel = isDuo ? 'Possibilité de réserver 2 places.' : ''
+  return `Offre ${nameLabel} ${categoryLabel} ${distanceLabel} ${dateLabel} ${priceLabel}. ${duoLabel}`
 }
 
 function getVenueAccessibilityLabel(venue: Venue) {
   const { name, venueTypeCode, distance } = venue
-  const nameLabel = name ? ` ${name}` : ''
+  const nameLabel = name ?? ''
   const venueTypeLabel = parseTypeHomeLabel(venueTypeCode)
-  const typeLabel = t`du type` + ` ${venueTypeLabel},`
-  const distanceLabel = distance ? t`à` + ` ${distance}` : ''
-  return t`Lieu` + `${nameLabel} ${typeLabel} ${distanceLabel}`
+  const typeLabel = `du type ${venueTypeLabel},`
+  const distanceLabel = distance ? `à ${distance}` : ''
+  return `Lieu ${nameLabel} ${typeLabel} ${distanceLabel}`
 }
 
 function getBookingAccessibilityLabel(booking: Booking) {
   const { name, properties, date, dateUsed, cancellationDate } = booking
-  const nameLabel = name ? ` ${name}` : ''
-  const defaultBookingLabel = t`Réservation de l'offre`
-  let bookingLabel = dateUsed ? t`Réservation utilisée de l'offre` : defaultBookingLabel
-  bookingLabel = cancellationDate ? t`Réservation annulée de l'offre` : bookingLabel
-  const datePrefix = properties?.isEvent ? t`pour` : ''
+  const nameLabel = name ?? ''
+  const defaultBookingLabel = 'Réservation de l’offre'
+  let bookingLabel = dateUsed ? 'Réservation utilisée de l’offre' : defaultBookingLabel
+  bookingLabel = cancellationDate ? 'Réservation annulée de l’offre' : bookingLabel
+  const datePrefix = properties?.isEvent ? 'pour' : ''
   const bookingDateLabel = date ? `${datePrefix} ${date}` : ''
-  const ongoingBookingDateLabel = properties?.isPermanent ? t`permanente` : bookingDateLabel
+  const ongoingBookingDateLabel = properties?.isPermanent ? 'permanente' : bookingDateLabel
   const usedBookingDateLabel =
-    dateUsed || cancellationDate ? t`le` + ` ${dateUsed ?? cancellationDate}` : undefined
-  return bookingLabel + `${nameLabel}, ${usedBookingDateLabel ?? ongoingBookingDateLabel}`
+    dateUsed || cancellationDate ? `le ${dateUsed ?? cancellationDate}` : undefined
+  return bookingLabel + ` ${nameLabel}, ${usedBookingDateLabel ?? ongoingBookingDateLabel}`
 }
 
 export function tileAccessibilityLabel(type: TileContentType, content: TileContent): string {

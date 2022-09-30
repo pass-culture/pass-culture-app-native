@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
@@ -7,6 +6,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
+import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export function ChangeEmailExpiredLink() {
   const { isLoggedIn } = useAuthContext()
@@ -20,13 +20,14 @@ export function ChangeEmailExpiredLink() {
     isLoggedIn ? navigate('ChangeEmail') : navigate('Login')
   }
 
-  const upperBodyText = t`Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.`
+  const upperBodyText =
+    'Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.'
   const lowerBodyText = isLoggedIn
-    ? t`Tu peux faire une nouvelle demande de modification dans ton profil.`
-    : t`Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.`
-  const customBodyText = upperBodyText + '\n' + '\n' + lowerBodyText
+    ? 'Tu peux faire une nouvelle demande de modification dans ton profil.'
+    : 'Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.'
+  const customBodyText = upperBodyText + DOUBLE_LINE_BREAK + lowerBodyText
 
-  const resendEmailButtonText = isLoggedIn ? t`Faire une nouvelle demande` : t`Se connecter`
+  const resendEmailButtonText = isLoggedIn ? 'Faire une nouvelle demande' : 'Se connecter'
   const renderResendEmailButton = () => (
     <ButtonPrimaryWhite wording={resendEmailButtonText} onPress={changeEmailExpiredLink} />
   )

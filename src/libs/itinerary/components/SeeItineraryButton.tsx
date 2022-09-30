@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -19,7 +18,7 @@ export function SeeItineraryButton(props: Props) {
         as={ButtonTertiaryBlack}
         inline
         externalNav={props.externalNav}
-        wording={t`Voir l'itinéraire`}
+        wording="Voir l’itinéraire"
         onPress={props.onPress}
         icon={Icon}
       />
@@ -29,7 +28,7 @@ export function SeeItineraryButton(props: Props) {
 
 const Icon = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.colors.black,
-  accessibilityLabel: t`Nouvelle fenêtre`,
+  accessibilityLabel: 'Nouvelle fenêtre',
 }))``
 
 const Container = styled.View({

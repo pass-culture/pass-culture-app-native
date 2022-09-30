@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -19,19 +18,19 @@ export function DeleteProfileSuccess() {
   const reactivationLimit = settings?.accountUnsuspensionLimit
   return (
     <GenericInfoPage
-      title={t`Ton compte a été désactivé`}
+      title="Ton compte a été désactivé"
       icon={ProfileDeletionIllustration}
       buttons={[
         <TouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording={t`Retourner à l'accueil`}
+          wording="Retourner à l’accueil"
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
         />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
-          wording={t`Réactiver mon compte`}
+          wording="Réactiver mon compte"
           onPress={() => analytics.logAccountReactivation('deleteprofilesuccess')}
           icon={Again}
           navigateTo={{ screen: 'Login' }}
@@ -39,12 +38,17 @@ export function DeleteProfileSuccess() {
       ]}>
       <StyledBody>
         <Emoji.CryingFace withSpaceAfter />
-        {t`On est super triste de te voir partir.`}
+        On est super triste de te voir partir.
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{t`Tu as ${reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.`}</StyledBody>
+      <StyledBody>
+        Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton
+        compte en te connectant.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{t`Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.`}</StyledBody>
+      <StyledBody>
+        Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
+      </StyledBody>
     </GenericInfoPage>
   )
 }

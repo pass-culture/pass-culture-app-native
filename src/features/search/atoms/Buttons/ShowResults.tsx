@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
 
 import { useCommit } from 'features/search/pages/SearchWrapper'
@@ -7,8 +6,8 @@ import { plural } from 'libs/plural'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 const formatNbHits = (nbHits: number) => {
-  if (nbHits === 0) return t`Aucun résultat`
-  if (nbHits > 1000) return t`Afficher les 999+ résultats`
+  if (nbHits === 0) return 'Aucun résultat'
+  if (nbHits > 1000) return 'Afficher les 999+ résultats'
   return plural(nbHits, {
     one: 'Afficher # résultat',
     other: 'Afficher les # résultats',

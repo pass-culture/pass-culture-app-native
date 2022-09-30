@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -18,9 +17,9 @@ type Props = {
 }
 
 const informationText = Platform.select({
-  android: t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`,
-  ios: t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.`,
-  web: t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton navigateur.`,
+  android: 'Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.',
+  ios: 'Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.',
+  web: 'Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton navigateur.',
 })
 const isNative = Platform.OS === 'android' || Platform.OS === 'ios'
 
@@ -32,11 +31,11 @@ export const GeolocationActivationModal: React.FC<Props> = ({
   const { permissionState } = useGeolocation()
   const callToActionMessage =
     permissionState === GeolocPermissionState.GRANTED
-      ? t`Désactiver la géolocalisation`
-      : t`Activer la géolocalisation`
+      ? 'Désactiver la géolocalisation'
+      : 'Activer la géolocalisation'
   return (
     <AppInformationModal
-      title={t`Paramètres de localisation`}
+      title="Paramètres de localisation"
       visible={isGeolocPermissionModalVisible}
       onCloseIconPress={hideGeolocPermissionModal}
       testIdSuffix="geoloc-permission-modal">
@@ -45,7 +44,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
         <BicolorLocationPointer size={85} />
         <Spacer.Column numberOfSpaces={10} />
         <InformationText>
-          {t`Retrouve toutes les offres autour de chez toi en activant les données de localisation.`}
+          Retrouve toutes les offres autour de chez toi en activant les données de localisation.
         </InformationText>
         <Spacer.Column numberOfSpaces={4} />
         <InformationText>{informationText}</InformationText>

@@ -225,7 +225,7 @@ Array [
     }
   >
     <View
-      accessibilityLabel="Voir l'itinéraire"
+      accessibilityLabel="Voir l’itinéraire"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -256,7 +256,7 @@ Array [
           "width": "auto",
         }
       }
-      testID="Voir l'itinéraire"
+      testID="Voir l’itinéraire"
     >
       <View
         style={
@@ -293,7 +293,7 @@ Array [
           ]
         }
       >
-        Voir l'itinéraire
+        Voir l’itinéraire
       </Text>
     </View>
   </View>,

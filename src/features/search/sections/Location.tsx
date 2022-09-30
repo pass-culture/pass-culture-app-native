@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -52,7 +51,7 @@ export const Location: React.FC = () => {
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.CaptionNeutralInfo nativeID={captionId}>
-            {t`Seules les sorties et offres physiques seront affichées`}
+            Seules les sorties et offres physiques seront affichées
           </Typo.CaptionNeutralInfo>
         </React.Fragment>
       ) : null}

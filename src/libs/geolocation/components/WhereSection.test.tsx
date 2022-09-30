@@ -45,7 +45,7 @@ describe('WhereSection', () => {
     expect(whereSectionWithoutVenueBanner).toMatchDiffSnapshot(whereSection)
   })
 
-  it('should log ConsultLocationItinerary analytics when clicking on "voir l\'itinéraire"', () => {
+  it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', () => {
     const { getByText } = render(
       <WhereSection
         venue={venue}
@@ -56,7 +56,7 @@ describe('WhereSection', () => {
       />
     )
     act(() => {
-      fireEvent.press(getByText("Voir l'itinéraire"))
+      fireEvent.press(getByText('Voir l’itinéraire'))
     })
     expect(beforeNavigateToItinerary).toHaveBeenCalledTimes(1)
   })

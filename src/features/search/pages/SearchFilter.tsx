@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
@@ -58,7 +57,7 @@ export const SearchFilter: React.FC = () => {
   return (
     <Container>
       <PageHeader
-        title={t`Filtrer`}
+        title="Filtrer"
         RightComponent={ReinitializeFilters}
         background="primary"
         withGoBackButton

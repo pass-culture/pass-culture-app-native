@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { useMutation } from 'react-query'
@@ -52,7 +51,8 @@ export function AfterChangeEmailValidationBuffer() {
     }
     delayedNavigate('Login')
     showSuccessSnackBar({
-      message: t`Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.`,
+      message:
+        'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
       timeout: SNACK_BAR_TIME_OUT,
     })
   }

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { LocationType } from 'features/search/enums'
@@ -17,14 +16,14 @@ export const useLocationChoice = (
   if (section === LocationType.EVERYWHERE)
     return {
       Icon: Everywhere,
-      label: t`Partout`,
+      label: 'Partout',
       isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
     }
 
   if (section === LocationType.AROUND_ME)
     return {
       Icon: AroundMe,
-      label: t`Autour de moi`,
+      label: 'Autour de moi',
       isSelected: searchState.locationFilter.locationType === LocationType.AROUND_ME,
     }
 
@@ -37,7 +36,7 @@ export const useLocationChoice = (
   const label =
     searchState.locationFilter.locationType === LocationType.PLACE
       ? searchState.locationFilter.place.label
-      : t`Choisir un lieu`
+      : 'Choisir un lieu'
 
   return {
     Icon: LocationPointer,

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 
 import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
@@ -19,7 +18,7 @@ export const Date: React.FC = () => {
   return (
     <SectionWithSwitch
       title={SectionTitle.Date}
-      subtitle={t`Seules les sorties seront affichées`}
+      subtitle="Seules les sorties seront affichées"
       active={!!searchState.date}
       toggle={toggle}
     />

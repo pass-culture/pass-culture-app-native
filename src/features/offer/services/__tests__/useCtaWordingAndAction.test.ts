@@ -29,7 +29,7 @@ describe('getCtaWordingAndAction', () => {
       ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
       ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${false}
       ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
-      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${false}
+      ${false} | ${'https://url-externe'} | ${{}}                        | ${'Accéder à l’offre'}        | ${false} | ${false}
       ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${false}
     `(
       'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent and url=$url',
@@ -64,7 +64,7 @@ describe('getCtaWordingAndAction', () => {
       ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
       ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${false}
       ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
-      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${false}
+      ${false} | ${'https://url-externe'} | ${{}}                        | ${'Accéder à l’offre'}        | ${false} | ${false}
       ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${false}
     `(
       'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent and url=$url',

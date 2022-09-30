@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import debounce from 'lodash/debounce'
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
@@ -33,30 +32,26 @@ export const LocationPicker: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader
-        titleID={titleID}
-        title={t`Choisir un lieu`}
-        background="primary"
-        withGoBackButton
-      />
+      <PageHeader titleID={titleID} title="Choisir un lieu" background="primary" withGoBackButton />
       <Spacer.Column numberOfSpaces={6} />
       <StyledInput>
         <HiddenAccessibleText {...getHeadingAttrs(1)}>
-          {t`Recherche une adresse, un lieu...`}
+          Recherche une adresse, un lieu...
         </HiddenAccessibleText>
         <SearchInput
           value={value}
           onChangeText={onChangeText}
-          placeholder={t`Saisis une adresse ou le nom d'un lieu`}
+          placeholder="Saisis une adresse ou le nom d’un lieu"
           autoFocus={true}
           inputHeight="regular"
-          accessibilityLabel={t`Recherche un lieu, une adresse`}
+          accessibilityLabel="Recherche un lieu, une adresse"
           onPressRightIcon={resetSearch}
           accessibilityDescribedBy={accessibilityDescribedBy}
         />
       </StyledInput>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
-        {t`Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix`}
+        Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour
+        valider ton choix
       </HiddenAccessibleText>
       <Spacer.Column numberOfSpaces={4} />
       <SuggestedPlaces query={debouncedValue} accessibilityLabelledBy={titleID} />

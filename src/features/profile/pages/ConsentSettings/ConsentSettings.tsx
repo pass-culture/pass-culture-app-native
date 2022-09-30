@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
@@ -55,7 +54,7 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
       }
     })
     showSuccessSnackBar({
-      message: t`Paramètre enregistré`,
+      message: 'Paramètre enregistré',
       timeout: SNACK_BAR_TIME_OUT,
     })
     goBack()
@@ -64,18 +63,21 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
   return settings?.appEnableCookiesV2 ? (
     <NewConsentSettings />
   ) : (
-    <PageProfileSection title={t`Paramètres de confidentialité`}>
+    <PageProfileSection title="Paramètres de confidentialité">
       <StyledBody>
-        {t`L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle.`}
+        L’application pass Culture utilise des traceurs susceptibles de réaliser des statistiques
+        sur ta navigation. Ceci permet d’améliorer la qualité et la sureté de ton expérience. Pour
+        ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée
+        personnelle.
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <MoreInformationContainer>
         <Typo.CaptionNeutralInfo>
-          {t`Pour plus d'informations, nous t'invitons à consulter notre`}
+          Pour plus d’informations, nous t’invitons à consulter notre
           <Spacer.Row numberOfSpaces={1} />
           <TouchableLink
             as={ButtonInsideText}
-            wording={t`Politique des cookies`}
+            wording="Politique des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
             icon={ExternalSiteFilled}
             typography="Caption"
@@ -85,14 +87,14 @@ export const ConsentSettings: FunctionComponent<Props> = () => {
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <SectionWithSwitch
-        title={t`Autoriser l’utilisation de mes données de navigation`}
+        title="Autoriser l’utilisation de mes données de navigation"
         active={isTrackingSwitchActive}
         toggle={toggleTrackingSwitch}
       />
       <Spacer.Flex />
       <ButtonPrimary
-        wording={t`Enregistrer`}
-        accessibilityLabel={t`Enregistrer les modifications`}
+        wording="Enregistrer"
+        accessibilityLabel="Enregistrer les modifications"
         onPress={save}
         disabled={isSaveButtonDisabled}
         center

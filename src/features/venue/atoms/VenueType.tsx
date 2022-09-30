@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
@@ -12,5 +11,5 @@ interface Props {
 
 export const VenueType = ({ type, label }: Props) => {
   const Icon = mapVenueTypeToIcon(type)
-  return <IconWithCaption Icon={Icon} caption={label || ''} accessibilityLabel={t`Type de lieu`} />
+  return <IconWithCaption Icon={Icon} caption={label || ''} accessibilityLabel={'Type de lieu'} />
 }

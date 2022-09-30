@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -6,13 +5,12 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useShareVenue } from 'features/venue/services/useShareVenue'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
-
-import { useShareVenue } from '../services/useShareVenue'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
@@ -56,7 +54,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="back"
             onPress={goBack}
-            testID={t`Revenir en arrière`}
+            testID="Revenir en arrière"
           />
           <Spacer.Flex />
 
@@ -72,7 +70,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="share"
             onPress={onSharePress}
-            testID={t`Partager`}
+            testID="Partager"
           />
           <Spacer.Row numberOfSpaces={6} />
         </Row>
@@ -81,7 +79,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
       {shareContent ? (
         <WebShareModal
           visible={shareVenueModalVisible}
-          headerTitle={t`Partager le lieu`}
+          headerTitle="Partager le lieu"
           shareContent={shareContent}
           dismissModal={hideShareVenueModal}
         />

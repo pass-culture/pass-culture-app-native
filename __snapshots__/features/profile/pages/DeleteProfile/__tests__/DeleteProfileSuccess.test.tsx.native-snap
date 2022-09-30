@@ -181,7 +181,9 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         ]
       }
     >
-      Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.
+      Tu as 
+      60
+       jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.
     </Text>
     <View
       numberOfSpaces={4}
@@ -245,7 +247,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="Retourner à l’accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -274,7 +276,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="Retourner à l’accueil"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -292,7 +294,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
             ]
           }
         >
-          Retourner à l'accueil
+          Retourner à l’accueil
         </Text>
       </View>
       <View

@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -12,9 +11,9 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function LegalNotices() {
   return (
-    <PageProfileSection title={t`Mentions légales`}>
+    <PageProfileSection title="Mentions légales">
       <SectionRow
-        title={t`Conditions Générales d’Utilisation`}
+        title="Conditions Générales d’Utilisation"
         type="clickable"
         externalNav={{ url: env.CGU_LINK }}
         icon={ExternalSite}
@@ -24,7 +23,7 @@ export function LegalNotices() {
       <StyledSeparator />
 
       <SectionRow
-        title={t`Charte de protection des données personnelles`}
+        title="Charte de protection des données personnelles"
         type="clickable"
         externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
         icon={ExternalSite}
