@@ -215,7 +215,6 @@ module.exports = {
           ['fixtures', './src/fixtures'],
           ['libs', './src/libs'],
           ['theme', './src/theme'],
-          ['locales', './src/locales'],
           ['types', './src/types'],
           ['tests', './src/tests'],
           ['ui', './src/ui'],

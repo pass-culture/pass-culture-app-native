@@ -1,1 +1,0 @@
-/*eslint-disable*/export const messages={"Welcome to pass Culture":"Bienvenue à pass Culture"};

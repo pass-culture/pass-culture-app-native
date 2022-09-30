@@ -7,7 +7,6 @@ module.exports = {
     '^fixtures(.*)$': '<rootDir>/src/fixtures$1',
     '^libs(.*)$': '<rootDir>/src/libs$1',
     '^theme(.*)$': '<rootDir>/src/theme$1',
-    '^locales(.*)$': '<rootDir>/src/locales$1',
     '^types(.*)$': '<rootDir>/src/types$1',
     '^tests(.*)$': '<rootDir>/src/tests$1',
     '^ui(.*)$': '<rootDir>/src/ui$1',
@@ -39,16 +38,11 @@ module.exports = {
     '\\.native-snap$',
     '\\.web-snap$',
     '<rootDir>/node_modules/',
-    '<rootDir>/server/'
+    '<rootDir>/server/',
   ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!**/node_modules/**', '!**/coverage/**'],
-  coveragePathIgnorePatterns: [
-    '\\.web\\.(test|spec)',
-    '/node_modules/',
-    '/src/environment',
-    '/src/locales',
-  ],
+  coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
 }

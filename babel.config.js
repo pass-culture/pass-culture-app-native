@@ -14,7 +14,6 @@ module.exports = {
           fixtures: './src/fixtures',
           libs: './src/libs',
           theme: './src/theme',
-          locales: './src/locales',
           types: './src/types',
           tests: './src/tests',
           ui: './src/ui',
@@ -23,6 +22,6 @@ module.exports = {
         },
       },
     ],
-    '@babel/plugin-proposal-unicode-property-regex'
+    '@babel/plugin-proposal-unicode-property-regex',
   ],
 }
