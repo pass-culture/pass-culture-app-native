@@ -29,7 +29,7 @@ Array [
       injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
       injectedJavaScriptForMainFrameOnly={true}
       javaScriptEnabled={true}
-      messagingEnabled={false}
+      messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
       onLoadingError={[Function]}
@@ -37,7 +37,6 @@ Array [
       onLoadingProgress={[Function]}
       onLoadingStart={[Function]}
       onMessage={[Function]}
-      onNavigationStateChange={[Function]}
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {

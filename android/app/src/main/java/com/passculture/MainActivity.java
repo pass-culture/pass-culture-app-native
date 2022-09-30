@@ -6,6 +6,8 @@ import org.devio.rn.splashscreen.SplashScreen; // react-native-splash-screen
 import com.facebook.react.ReactActivityDelegate; //@react-navigation
 import com.facebook.react.ReactRootView; //@react-navigation
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView; //@react-navigation
+import android.content.Intent;
+import com.batch.android.Batch;
 
 public class MainActivity extends ReactActivity {
     /**
@@ -22,6 +24,13 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this, R.style.SplashScreenTheme);
         super.onCreate(null);
+    }
+
+    // @batch.com/react-native-plugin (https://doc.batch.com/react-native/sdk-integration#configure-onnewintent)
+    @Override
+    public void onNewIntent(Intent intent) {
+        Batch.onNewIntent(this, intent);
+        super.onNewIntent(intent);
     }
 
     // @react-navigation (https://reactnavigation.org/docs/en/next/getting-started.html)

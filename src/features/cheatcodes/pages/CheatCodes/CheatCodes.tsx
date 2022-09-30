@@ -1,7 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Text, Alert, Button } from 'react-native'
-import { CameraOptions, launchCamera, launchImageLibrary } from 'react-native-image-picker'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -40,18 +39,6 @@ const getUserId = async () => {
   return tokenContent?.user_claims?.user_id ?? null
 }
 
-const CAMERA_OPTIONS: CameraOptions = {
-  mediaType: 'photo',
-  maxWidth: 3000,
-  maxHeight: 3000,
-  videoQuality: 'medium',
-  durationLimit: 0,
-  quality: 0.7,
-  cameraType: 'back',
-  includeBase64: false,
-  saveToPhotos: false,
-}
-
 export const CheatCodes: FunctionComponent<Props> = function () {
   const [batchInstallationId, setBatchInstallationId] = useState('none')
   const [userEmail, setUserEmail] = useState('')
@@ -85,14 +72,6 @@ export const CheatCodes: FunctionComponent<Props> = function () {
     await clearRefreshToken()
   }
 
-  function onPressLaunchCamera() {
-    launchCamera(CAMERA_OPTIONS, () => null)
-  }
-
-  function onPressLaunchImageLibrary() {
-    launchImageLibrary(CAMERA_OPTIONS, () => null)
-  }
-
   return (
     <Container>
       <Spacer.TopScreen />
@@ -104,8 +83,6 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Button title="Invalider l'access token" onPress={setOldToken} />
       <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
       <Button title="/ME" onPress={fetchMe} />
-      <Button title="LaunchCamera" onPress={onPressLaunchCamera} />
-      <Button title="LaunchImageLibrary" onPress={onPressLaunchImageLibrary} />
       <Text>{userEmail}</Text>
       <Spacer.Flex />
       <Text>Batch installation ID: {batchInstallationId}</Text>
