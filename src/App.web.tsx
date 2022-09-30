@@ -3,8 +3,6 @@
 import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
-import { i18n } from '@lingui/core'
-import { I18nProvider } from '@lingui/react'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
@@ -23,7 +21,6 @@ import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { GeolocationWrapper } from 'libs/geolocation'
-import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -38,10 +35,6 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 globalThisShim()
 
 export function App() {
-  useEffect(() => {
-    activate('fr')
-  }, [])
-
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
@@ -63,20 +56,18 @@ export function App() {
                       <FavoritesWrapper>
                         <SearchAnalyticsWrapper>
                           <SearchWrapper>
-                            <I18nProvider i18n={i18n}>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <IdentityCheckContextProvider>
-                                    <AppWebHead />
-                                    <ScreenErrorProvider>
-                                      <Suspense fallback={<LoadingPage />}>
-                                        <AppNavigationContainer />
-                                      </Suspense>
-                                    </ScreenErrorProvider>
-                                  </IdentityCheckContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </I18nProvider>
+                            <SnackBarProvider>
+                              <CulturalSurveyContextProvider>
+                                <IdentityCheckContextProvider>
+                                  <AppWebHead />
+                                  <ScreenErrorProvider>
+                                    <Suspense fallback={<LoadingPage />}>
+                                      <AppNavigationContainer />
+                                    </Suspense>
+                                  </ScreenErrorProvider>
+                                </IdentityCheckContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </SnackBarProvider>
                           </SearchWrapper>
                         </SearchAnalyticsWrapper>
                       </FavoritesWrapper>

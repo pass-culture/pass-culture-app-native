@@ -1,27 +1,13 @@
-import { i18n } from '@lingui/core'
-import { I18nProvider } from '@lingui/react'
 // eslint-disable-next-line no-restricted-imports
 import { act, render, RenderOptions } from '@testing-library/react'
 import deepmerge from 'deepmerge'
 import flushPromises from 'flush-promises'
-import { fr } from 'make-plural/plurals'
 import React, { ReactNode } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
-import { messages } from 'locales/fr/messages'
 import { computedTheme } from 'tests/computedTheme'
-
-i18n.load({
-  fr: messages,
-})
-
-i18n.loadLocaleData({
-  fr: { plurals: fr },
-})
-
-i18n.activate('fr')
 
 export async function flushAllPromises() {
   await flushPromises()
@@ -88,11 +74,7 @@ type PropsWithTheme = {
 const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
   return (
     <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
-      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
-        <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-          {children}
-        </I18nProvider>
-      </ThemeProvider>
+      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>{children}</ThemeProvider>
     </ThemeProviderWeb>
   )
 }

@@ -1,5 +1,3 @@
-import { i18n } from '@lingui/core'
-import { I18nProvider } from '@lingui/react'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -28,7 +26,6 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { GeolocationWrapper } from 'libs/geolocation'
-import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
@@ -56,10 +53,6 @@ const App: FunctionComponent = function () {
   useStartBatchNotification()
 
   useEffect(() => {
-    activate('fr')
-  }, [])
-
-  useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
@@ -78,23 +71,21 @@ const App: FunctionComponent = function () {
                   <FavoritesWrapper>
                     <SearchAnalyticsWrapper>
                       <SearchWrapper>
-                        <I18nProvider i18n={i18n}>
-                          <SnackBarProvider>
-                            <NetInfoWrapper>
-                              <CulturalSurveyContextProvider>
-                                <IdentityCheckContextProvider>
-                                  <SplashScreenProvider>
-                                    <OfflineModeContainer>
-                                      <ScreenErrorProvider>
-                                        <AppNavigationContainer />
-                                      </ScreenErrorProvider>
-                                    </OfflineModeContainer>
-                                  </SplashScreenProvider>
-                                </IdentityCheckContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </NetInfoWrapper>
-                          </SnackBarProvider>
-                        </I18nProvider>
+                        <SnackBarProvider>
+                          <NetInfoWrapper>
+                            <CulturalSurveyContextProvider>
+                              <IdentityCheckContextProvider>
+                                <SplashScreenProvider>
+                                  <OfflineModeContainer>
+                                    <ScreenErrorProvider>
+                                      <AppNavigationContainer />
+                                    </ScreenErrorProvider>
+                                  </OfflineModeContainer>
+                                </SplashScreenProvider>
+                              </IdentityCheckContextProvider>
+                            </CulturalSurveyContextProvider>
+                          </NetInfoWrapper>
+                        </SnackBarProvider>
                       </SearchWrapper>
                     </SearchAnalyticsWrapper>
                   </FavoritesWrapper>
