@@ -6,8 +6,12 @@ import { storage } from 'libs/storage'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
 import { act, flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
-jest.mock('features/profile/api')
+const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
 
+jest.mock('features/profile/api')
 jest.mock('api/api')
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'

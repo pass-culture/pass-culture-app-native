@@ -12,6 +12,11 @@ import { superFlushWithAct, act, render } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
 
+const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
+
 jest.mock('react-query')
 
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<

@@ -12,6 +12,11 @@ import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingCons
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, superFlushWithAct, waitFor, act } from 'tests/utils'
 
+const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
+
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
