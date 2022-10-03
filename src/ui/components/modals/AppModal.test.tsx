@@ -1,15 +1,16 @@
 import React from 'react'
 
+import { fireEvent, render } from 'tests/utils/web'
+
 import {
-  defaultProps,
   AppModalProps,
-  leftIconProps,
+  defaultProps,
   leftIconCallbackMock,
-  rightIconProps,
+  leftIconProps,
   rightIconCallbackMock,
+  rightIconProps,
 } from './__tests__/fixture'
 import { AppModal } from './AppModal'
-import { fireEvent, render } from './testUtils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
