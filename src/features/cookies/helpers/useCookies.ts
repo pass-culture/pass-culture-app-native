@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
+import { useAppSettings } from 'features/auth/settings'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent } from 'features/cookies/types'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -19,17 +20,22 @@ export const getCookiesChoice = async () =>
 export const useCookies = () => {
   const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent>()
   const { data: userProfileInfo } = useUserProfileInfo()
+  const { data: settings } = useAppSettings()
 
   useEffect(() => {
     getCookiesChoice().then((value) => {
+      if (!settings?.appEnableCookiesV2) return
+
       if (value) {
         setCookiesConsentInternalState(value.consent)
         startTrackingAcceptedCookies(value.consent.accepted)
       }
     })
-  }, [])
+  }, [settings?.appEnableCookiesV2])
 
   const setCookiesConsent = async (cookiesConsent: Consent) => {
+    if (!settings?.appEnableCookiesV2) return
+
     setCookiesConsentInternalState(cookiesConsent)
 
     const oldCookiesChoice = await getCookiesChoice()
@@ -46,6 +52,8 @@ export const useCookies = () => {
   }
 
   const setUserId = async (userId: number): Promise<void> => {
+    if (!settings?.appEnableCookiesV2) return
+
     const oldCookiesChoice = await getCookiesChoice()
 
     if (!oldCookiesChoice) return
