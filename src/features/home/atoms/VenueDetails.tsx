@@ -21,8 +21,7 @@ export const VenueDetails = (props: VenueDetailsProps) => {
       <VenueName>{name}</VenueName>
       <Row>
         <TypeLabel>{typeLabel}</TypeLabel>
-        {/* eslint-disable-next-line react-native/no-raw-text */}
-        {!!distance && <Typo.CaptionNeutralInfo>{` | ${distance}`}</Typo.CaptionNeutralInfo>}
+        {!!distance && <Typo.CaptionNeutralInfo> | {distance}</Typo.CaptionNeutralInfo>}
       </Row>
     </Container>
   )

@@ -1,20 +1,9 @@
 import { RuleTester } from 'eslint'
+import { config } from './config'
 
-import rule from './no-raw-text'
+import rule from '../no-raw-text'
 
 const ruleTester = new RuleTester()
-
-const config = {
-  parser: require.resolve('@babel/eslint-parser'),
-  parserOptions: {
-    requireConfigFile: false,
-    babelOptions: {
-      parserOpts: {
-        plugins: [['estree', { classFeatures: true }], 'jsx'],
-      },
-    },
-  },
-}
 
 const tests = {
   valid: [

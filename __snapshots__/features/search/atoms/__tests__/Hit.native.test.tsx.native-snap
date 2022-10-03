@@ -8,8 +8,8 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
 @@ -1,8 +1,8 @@
   <View>
     <View
--     accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Concerts & festivals,   prix 0,28 €. \\"
-+     accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Concerts & festivals, à 10 km,  prix 0,28 €. \\"
+-     accessibilityLabel=\\"Offre La nuit des temps de la catégorie Livres,   prix 0,28 €. \\"
++     accessibilityLabel=\\"Offre La nuit des temps de la catégorie Livres, à 10 km,  prix 0,28 €. \\"
       accessibilityRole=\\"link\\"
       accessible={true}
       collapsable={false}
@@ -42,7 +42,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
                 ]
               }
             >
-              Mensch ! Où sont les Hommes ?
+              La nuit des temps
             </Text>
 +         </View>
 +         <View

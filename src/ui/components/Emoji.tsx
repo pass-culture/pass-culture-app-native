@@ -1,4 +1,3 @@
-/* eslint-disable local-rules/no-raw-text */
 import React, { ReactElement } from 'react'
 import { StyleProp, Text, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -15,7 +14,7 @@ export type Props = {
 
 const nonBreakingSpace = '\u00a0'
 
-const Container: React.FC<Props> = ({
+const ContainerText: React.FC<Props> = ({
   accessibilityLabel,
   withSpaceBefore,
   withSpaceAfter,
@@ -35,15 +34,15 @@ const Container: React.FC<Props> = ({
   )
 }
 
-const BoldContainer = styled(Container)({
+const BoldContainerText = styled(ContainerText)({
   fontFamily: 'Montserrat-SemiBold',
 })
 
-const CryingFace = (props: Props) => <Container {...props}>😢</Container>
+const CryingFace = (props: Props) => <ContainerText {...props}>😢</ContainerText>
 
 // For mysterious reasons, some emojis like the warning emoji are sometimes displayed in black and white by the chrome browser.
 // To fix this issue, those emojis should be rendered with a bold fontFamily as following :
-const Warning = (props: Props) => <BoldContainer {...props}>⚠️</BoldContainer>
+const Warning = (props: Props) => <BoldContainerText {...props}>⚠️</BoldContainerText>
 
 export const Emoji = {
   CryingFace,
