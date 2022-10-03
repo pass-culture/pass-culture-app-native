@@ -518,6 +518,12 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           />
           <View
+            shouldShowMinMaxValues={false}
+            style={
+              Array [
+                Object {},
+              ]
+            }
             testID="slider"
           >
             <View>

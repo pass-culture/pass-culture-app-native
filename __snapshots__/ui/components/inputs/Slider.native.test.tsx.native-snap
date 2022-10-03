@@ -30,6 +30,12 @@ Array [
     }
   />,
   <View
+    shouldShowMinMaxValues={false}
+    style={
+      Array [
+        Object {},
+      ]
+    }
     testID="slider"
   >
     <View>

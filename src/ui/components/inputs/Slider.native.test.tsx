@@ -38,5 +38,19 @@ describe('<Slider />', () => {
       expect(queryByText('100')).toBeNull()
       expect(queryByText('0 - 100')).toBeNull()
     })
+
+    it('should show minimum value if shouldShowMinMaxValues is true', () => {
+      const { queryByText } = render(
+        <Slider values={[100]} shouldShowMinMaxValues={true} min={0} showValues={false} />
+      )
+      expect(queryByText('0\u00a0km')).toBeTruthy()
+    })
+
+    it('should show maximim value if shouldShowMinMaxValues is true', () => {
+      const { queryByText } = render(
+        <Slider values={[100]} shouldShowMinMaxValues={true} max={100} showValues={false} />
+      )
+      expect(queryByText('100\u00a0km')).toBeTruthy()
+    })
   })
 })
