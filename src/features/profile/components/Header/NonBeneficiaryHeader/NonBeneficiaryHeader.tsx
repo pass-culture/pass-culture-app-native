@@ -73,9 +73,7 @@ function NonBeneficiaryHeaderComponent({
           <View testID="eligibility-banner-container">
             {!!formattedEligibilityEndDatetime && (
               <StyledCaption>
-                Tu as jusqu’au
-                {formattedEligibilityEndDatetime}
-                pour faire ta demande
+                Tu as jusqu’au {formattedEligibilityEndDatetime} pour faire ta demande
               </StyledCaption>
             )}
             {!!nextBeneficiaryValidationStepNavConfig && (
