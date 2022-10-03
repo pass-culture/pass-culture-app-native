@@ -31,7 +31,10 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 
   return (
-    <TouchableContainer borderLeftColor={color} onPress={onPress}>
+    <TouchableContainer
+      borderLeftColor={color}
+      onPress={onPress}
+      accessibilityLabel={`Retrouver les offres dans la catégorie ${label}`}>
       <StyledIcon />
       <Label>{label}</Label>
     </TouchableContainer>

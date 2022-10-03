@@ -680,6 +680,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Arts & loisirs créatifs"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -766,6 +767,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Bibliothèques, Médiathèques"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -866,6 +868,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Cartes jeunes"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -952,6 +955,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie CD, vinyles, musique en ligne"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1051,6 +1055,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Concerts & festivals"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1137,6 +1142,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Conférences & rencontres"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1236,6 +1242,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Événements en ligne"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1322,6 +1329,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Films, séries, cinéma"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1421,6 +1429,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Instruments de musique"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1507,6 +1516,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Jeux & jeux vidéos"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1606,6 +1616,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Livres"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1692,6 +1703,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Médias & presse"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1791,6 +1803,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Musées & visites culturelles"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1877,6 +1890,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Plateformes en ligne"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1976,6 +1990,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Retrouver les offres dans la catégorie Spectacles"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
