@@ -6,6 +6,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
+import { Check as CheckIcon } from 'ui/svg/icons/Check'
 import { Lock as LockIcon } from 'ui/svg/icons/Lock'
 import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
@@ -66,6 +67,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
             {!!disabled && <Lock />}
+            {!!active && !disabled ? <Check /> : null}
           </StyledToggle>
         </StyledBackgroundColor>
       </TouchableOpacity>
@@ -116,6 +118,12 @@ const Lock = styled(LockIcon).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   size: theme.icons.sizes.extraSmall,
   accessibilityLabel: 'Désactivé',
+}))``
+
+const Check = styled(CheckIcon).attrs(({ theme }) => ({
+  color: theme.colors.greenValid,
+  size: theme.icons.sizes.extraSmall,
+  accessibilityLabel: 'Activé',
 }))``
 
 const propsAreEqual = (

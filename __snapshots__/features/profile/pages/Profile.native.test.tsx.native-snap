@@ -685,7 +685,16 @@ exports[`Profile component should render correctly 1`] = `
                                       "width": 28,
                                     }
                                   }
-                                />
+                                >
+                                  <View
+                                    height={16}
+                                    width={16}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
+                                </View>
                               </View>
                             </View>
                           </View>
