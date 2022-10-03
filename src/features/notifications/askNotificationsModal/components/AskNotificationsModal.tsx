@@ -1,4 +1,7 @@
+import { BatchPush } from '@batch.com/react-native-plugin'
 import React, { FunctionComponent, useCallback } from 'react'
+import { Linking, Platform } from 'react-native'
+import { checkNotifications, requestNotifications, RESULTS } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
@@ -14,9 +17,28 @@ interface Props {
 }
 
 export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHideModal }) => {
-  const acceptNotifications = useCallback(() => {
+  const acceptNotifications = useCallback(async () => {
     analytics.logAcceptNotifications()
-    onHideModal()
+    const permission = await checkNotifications()
+
+    if (permission.status === RESULTS.GRANTED) {
+      onHideModal()
+    } else if (permission.status === RESULTS.DENIED) {
+      if (Platform.OS === 'android' && Platform.Version >= 33) {
+        // We need to get detailed permission to know if user has already denied permission before
+        const detailedPermission = await requestNotifications([])
+        const isBlocked = detailedPermission.status === RESULTS.BLOCKED
+
+        onHideModal()
+        isBlocked && Linking.openSettings()
+      } else {
+        onHideModal()
+        BatchPush.requestNotificationAuthorization() //  For iOS
+      }
+    } else {
+      onHideModal()
+      Linking.openSettings()
+    }
   }, [onHideModal])
 
   const dismissNotifications = useCallback(() => {

@@ -237,11 +237,11 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - OpenSSL-Universal (1.1.1100)
-  - Permission-Camera (3.1.0):
+  - Permission-Camera (3.5.0):
     - RNPermissions
-  - Permission-LocationWhenInUse (3.1.0):
+  - Permission-LocationWhenInUse (3.5.0):
     - RNPermissions
-  - Permission-Notifications (3.1.0):
+  - Permission-Notifications (3.5.0):
     - RNPermissions
   - PromisesObjC (2.1.0)
   - RCT-Folly (2021.06.28.00-v2):
@@ -608,7 +608,7 @@ PODS:
     - React-Core
   - RNLaunchNavigator (1.0.8):
     - React
-  - RNPermissions (3.1.0):
+  - RNPermissions (3.5.0):
     - React-Core
   - RNReanimated (2.2.4):
     - DoubleConversion
@@ -1009,9 +1009,9 @@ SPEC CHECKSUMS:
   lottie-react-native: a501112fa980529ccb80b9f3ee117a7f98c6af3a
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  Permission-Camera: 0db4fd6e1c556c1cf47f38b989a8084cea3ec3dd
-  Permission-LocationWhenInUse: d98db702ec75e93a3ff94bc297d0b66ea04231e1
-  Permission-Notifications: e247d69c22ae72770d1c5314ad6ccd1256c57c83
+  Permission-Camera: 4f113f7e3f02d2e65030de8284dfc17f1d237a9a
+  Permission-LocationWhenInUse: 9cd4de3ae72592050bb9eba2d60530c398c7b151
+  Permission-Notifications: 57dee37a4b5d465d9ac02e7ea959de3b6c0b2e7e
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: 3e917ea5377751094f38145fdece525aa90545a0
@@ -1066,7 +1066,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
-  RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
+  RNPermissions: e5b6373c08831dc4b6b13a2b798143fac20bb100
   RNReanimated: e7d8afaf8fed4b3bf1a46e06adb2e04a2b248f1c
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
   RNSentry: f03937a2cf86c7029ba31fbbf5618c55d223cd62
