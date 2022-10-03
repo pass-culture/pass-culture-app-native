@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -28,13 +28,13 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
           Pour que la validation de ton numéro de téléphone se passe au mieux&nbsp;:
         </StyledBody>
         <Spacer.Column numberOfSpaces={8} />
-        <InformationComponent
+        <InformationWithIcon
           Icon={BicolorSignal}
           text="Vérifie que tu as un bon réseau"
           subtitle="Tu vas recevoir un code de validation par SMS"
         />
         <Spacer.Column numberOfSpaces={8} />
-        <InformationComponent
+        <InformationWithIcon
           Icon={BicolorSmartphone}
           text="Assure-toi d'indiquer ton numéro de téléphone personnel"
           subtitle="Il ne peut être associé qu’à un seul compte"
@@ -50,46 +50,7 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
   )
 }
 
-const InformationComponent: FunctionComponent<{
-  Icon: React.FC<BicolorIconInterface>
-  text: string
-  subtitle: string
-}> = ({ Icon, text, subtitle }) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.icons.sizes.small,
-  }))``
-
-  return (
-    <InfoContainer>
-      <StyledIcon />
-      <Spacer.Row numberOfSpaces={3.75} />
-      <TextContainer>
-        <Info>{text}</Info>
-        <Subtitle>{subtitle}</Subtitle>
-      </TextContainer>
-    </InfoContainer>
-  )
-}
-
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))
-
-const InfoContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
-
-const TextContainer = styled.View({
-  flexDirection: 'column',
-  flexShrink: 1,
-})
-
-const Info = styled(Typo.Body)({
-  flex: 1,
-})
-
-const Subtitle = styled(Typo.CaptionNeutralInfo)({
-  flex: 1,
-})
