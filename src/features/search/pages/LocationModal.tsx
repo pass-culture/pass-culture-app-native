@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -12,11 +13,14 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { analytics } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
+import { Slider } from 'ui/components/inputs/Slider'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
@@ -25,7 +29,7 @@ import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export enum RadioButtonLocation {
   EVERYWHERE = 'Partout',
@@ -35,6 +39,7 @@ export enum RadioButtonLocation {
 
 type LocationModalFormData = {
   locationChoice: RadioButtonLocation
+  aroundRadius: number
 }
 
 type Props = {
@@ -59,7 +64,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, appContentWidth } = useTheme()
   const { searchState } = useSearch()
   const {
     position,
@@ -68,6 +73,7 @@ export const LocationModal: FunctionComponent<Props> = ({
     requestGeolocPermission,
     showGeolocPermissionModal,
   } = useGeolocation()
+  const logChangeRadius = useLogFilterOnce(SectionTitle.Radius)
 
   const getLocationChoice = useCallback(() => {
     const locationType = searchState.locationFilter.locationType
@@ -80,6 +86,27 @@ export const LocationModal: FunctionComponent<Props> = ({
       return RadioButtonLocation.CHOOSE_PLACE_OR_VENUE
     }
   }, [searchState.locationFilter.locationType])
+
+  const {
+    handleSubmit,
+    reset,
+    setValue,
+    getValues,
+    formState: { isSubmitting, isValid, isValidating },
+    control,
+    watch,
+  } = useForm<LocationModalFormData>({
+    mode: 'onChange',
+    defaultValues: {
+      locationChoice: getLocationChoice() || RadioButtonLocation.EVERYWHERE,
+      aroundRadius:
+        searchState.locationFilter.locationType === LocationType.AROUND_ME
+          ? searchState.locationFilter.aroundRadius || MAX_RADIUS
+          : MAX_RADIUS,
+    },
+  })
+
+  const locationChoice = watch('locationChoice')
 
   const search = useCallback(
     (values: LocationModalFormData) => {
@@ -96,7 +123,7 @@ export const LocationModal: FunctionComponent<Props> = ({
           ...additionalSearchState,
           locationFilter: {
             locationType: LocationType.AROUND_ME,
-            aroundRadius: MAX_RADIUS,
+            aroundRadius: getValues('aroundRadius'),
           },
         }
         analytics.logChangeSearchLocation({ type: 'aroundMe' })
@@ -110,35 +137,26 @@ export const LocationModal: FunctionComponent<Props> = ({
       )
       hideModal()
     },
-    [hideModal, navigate, searchState]
+    [getValues, hideModal, navigate, searchState]
   )
-
-  const {
-    handleSubmit,
-    reset,
-    getValues,
-    setValue,
-    formState: { isSubmitting, isValid, isValidating },
-    control,
-  } = useForm<LocationModalFormData>({
-    mode: 'onChange',
-    defaultValues: {
-      locationChoice: getLocationChoice() || RadioButtonLocation.EVERYWHERE,
-    },
-  })
 
   const close = useCallback(() => {
     reset({
       locationChoice: getLocationChoice(),
+      aroundRadius:
+        searchState.locationFilter.locationType === LocationType.AROUND_ME
+          ? searchState.locationFilter.aroundRadius || MAX_RADIUS
+          : MAX_RADIUS,
     })
     hideModal()
-  }, [reset, getLocationChoice, hideModal])
+  }, [reset, getLocationChoice, searchState.locationFilter, hideModal])
 
   const onSubmit = handleSubmit(search)
 
   const onResetPress = useCallback(() => {
     reset({
       locationChoice: RadioButtonLocation.EVERYWHERE,
+      aroundRadius: MAX_RADIUS,
     })
   }, [reset])
 
@@ -166,6 +184,19 @@ export const LocationModal: FunctionComponent<Props> = ({
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
+  const sliderLength = isDesktopViewport ? getSpacing(111) : appContentWidth - getSpacing(19.25)
+
+  const hasAroundMeRadius = useMemo(() => {
+    return locationChoice === RadioButtonLocation.AROUND_ME
+  }, [locationChoice])
+
+  const onValuesChangeFinish = useCallback(
+    (newValues: number[]) => {
+      setValue('aroundRadius', newValues[0])
+      logChangeRadius()
+    },
+    [logChangeRadius, setValue]
+  )
 
   return (
     <AppModal
@@ -193,17 +224,45 @@ export const LocationModal: FunctionComponent<Props> = ({
         <Controller
           control={control}
           name="locationChoice"
-          render={() => (
+          render={({ field: { value } }) => (
             <React.Fragment>
               {LOCATION_TYPES.map((item, index) => (
                 <View key={item.label}>
                   <Spacer.Column numberOfSpaces={6} />
                   <RadioButton
                     onSelect={() => onSelectLocation(item.label)}
-                    isSelected={getValues('locationChoice') === item.label}
+                    isSelected={value === item.label}
                     testID={item.label}
                     {...item}
                   />
+                  {item.label === RadioButtonLocation.AROUND_ME && (
+                    <Controller
+                      control={control}
+                      name="aroundRadius"
+                      render={({ field: { value } }) => (
+                        <React.Fragment>
+                          {!!hasAroundMeRadius && (
+                            <View>
+                              <Spacer.Column numberOfSpaces={4} />
+                              <LabelRadiusContainer>
+                                <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
+                                <Typo.ButtonText>{`${value}\u00a0km`}</Typo.ButtonText>
+                              </LabelRadiusContainer>
+                              <Spacer.Column numberOfSpaces={2} />
+                              <Slider
+                                showValues={false}
+                                values={[value]}
+                                max={MAX_RADIUS}
+                                onValuesChangeFinish={onValuesChangeFinish}
+                                shouldShowMinMaxValues={true}
+                                sliderLength={sliderLength}
+                              />
+                            </View>
+                          )}
+                        </React.Fragment>
+                      )}
+                    />
+                  )}
                   <Spacer.Column numberOfSpaces={6} />
                   {index + 1 < LOCATION_TYPES.length && <Separator />}
                 </View>
@@ -220,3 +279,8 @@ export const LocationModal: FunctionComponent<Props> = ({
     </AppModal>
   )
 }
+
+const LabelRadiusContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
