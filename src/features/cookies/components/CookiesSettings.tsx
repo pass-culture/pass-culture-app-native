@@ -19,11 +19,13 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+const checkboxID = uuidv4()
+const labelID = uuidv4()
+
 export const CookiesSettings = ({
   settingsCookiesChoice,
   setSettingsCookiesChoice,
 }: CookiesChoiceSettings) => {
-  const checkboxID = uuidv4()
   const { cookiesConsent } = useCookies()
   const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)
 
@@ -63,9 +65,16 @@ export const CookiesSettings = ({
       <ChoiceContainer>
         <Typo.CaptionNeutralInfo>Je choisis mes cookies</Typo.CaptionNeutralInfo>
         <AcceptAllContainer>
-          <StyledInputLabel htmlFor={checkboxID}>{inputLabel}</StyledInputLabel>
+          <StyledInputLabel id={labelID} htmlFor={checkboxID}>
+            {inputLabel}
+          </StyledInputLabel>
           <Spacer.Row numberOfSpaces={2} />
-          <FilterSwitch active={hasAcceptedAll} checkboxID={checkboxID} toggle={toggleAll} />
+          <FilterSwitch
+            active={hasAcceptedAll}
+            accessibilityLabelledBy={labelID}
+            checkboxID={checkboxID}
+            toggle={toggleAll}
+          />
         </AcceptAllContainer>
       </ChoiceContainer>
       <Spacer.Row numberOfSpaces={4} />

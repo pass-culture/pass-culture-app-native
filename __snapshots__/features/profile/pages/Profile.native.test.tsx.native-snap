@@ -612,6 +612,7 @@ exports[`Profile component should render correctly 1`] = `
                             }
                           >
                             <Text
+                              aria-hidden={true}
                               style={
                                 Array [
                                   Object {

@@ -13,57 +13,57 @@ Array [
     }
   >
     <View
-      accessibilityRole="button"
-      accessibilityState={
-        Object {
-          "expanded": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onLayout={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <View
-        nativeID="testUuidV4"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "expanded": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onLayout={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingHorizontal": 24,
-              "paddingVertical": 20,
-            },
-            Object {
-              "backgroundColor": "#F1F1F4",
-              "paddingVertical": 16,
-            },
-          ]
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
       >
         <View
+          nativeID="testUuidV4"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
+              },
+              Object {
+                "backgroundColor": "#F1F1F4",
+                "paddingVertical": 16,
               },
             ]
           }
@@ -98,27 +98,27 @@ Array [
               Qu’est-ce que les cookies ?
             </Text>
           </Text>
-        </View>
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "transform": Array [
-                Object {
-                  "rotateZ": "1.5707963267948966rad",
-                },
-              ],
-            }
-          }
-          testID="accordionArrow"
-        >
           <View
-            height={20}
-            width={20}
+            collapsable={false}
+            style={
+              Object {
+                "transform": Array [
+                  Object {
+                    "rotateZ": "1.5707963267948966rad",
+                  },
+                ],
+              }
+            }
+            testID="accordionArrow"
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -245,6 +245,7 @@ Array [
     >
       <Text
         htmlFor="testUuidV4"
+        id="testUuidV4"
         style={
           Array [
             Object {
@@ -279,6 +280,7 @@ Array [
         }
       >
         <Text
+          aria-hidden={true}
           style={
             Array [
               Object {
@@ -368,32 +370,16 @@ Array [
     }
   />,
   <View
-    accessibilityRole="button"
-    accessibilityState={
-      Object {
-        "expanded": false,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onLayout={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+      ]
     }
   >
     <View
-      nativeID="testUuidV4"
       style={
         Array [
           Object {
@@ -415,111 +401,146 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
             },
           ]
         }
       >
-        <View
+        <Text
+          aria-hidden={true}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "display": "none",
               },
             ]
           }
         >
-          <Text
+          Non
+        </Text>
+        <View
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Interrupteur-customization"
+        >
+          <View
+            active={false}
             style={
               Array [
                 Object {
-                  "display": "none",
+                  "backgroundColor": "#90949D",
+                  "borderRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
                 },
               ]
             }
           >
-            Non
-          </Text>
-          <View
-            accessibilityRole="checkbox"
-            accessibilityState={
-              Object {
-                "checked": false,
-                "disabled": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Interrupteur-customization"
-          >
             <View
-              active={false}
+              collapsable={false}
+              disabled={false}
               style={
-                Array [
-                  Object {
-                    "backgroundColor": "#90949D",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
+                Object {
+                  "alignItems": "center",
+                  "aspectRatio": 1,
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 28,
+                  "height": 28,
+                  "justifyContent": "center",
+                  "marginLeft": 2,
+                  "shadowColor": "#161617",
+                  "shadowOffset": Object {
+                    "height": 2,
+                    "width": 0,
                   },
-                ]
-              }
-            >
-              <View
-                collapsable={false}
-                disabled={false}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "marginLeft": 2,
-                    "shadowColor": "#161617",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  }
+                  "shadowOpacity": 0.2,
+                  "shadowRadius": 2.5,
+                  "width": 28,
                 }
-              />
-            </View>
+              }
+            />
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "expanded": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "opacity": 1,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <View
+        nativeID="testUuidV4"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
         <Text
           style={
             Array [
@@ -550,27 +571,27 @@ Array [
             Personnaliser ta navigation
           </Text>
         </Text>
-      </View>
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "1.5707963267948966rad",
-              },
-            ],
-          }
-        }
-        testID="accordionArrow"
-      >
         <View
-          height={20}
-          width={20}
+          collapsable={false}
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "1.5707963267948966rad",
+                },
+              ],
+            }
+          }
+          testID="accordionArrow"
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            width={20}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -691,32 +712,16 @@ Array [
     }
   />,
   <View
-    accessibilityRole="button"
-    accessibilityState={
-      Object {
-        "expanded": false,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onLayout={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+      ]
     }
   >
     <View
-      nativeID="testUuidV4"
       style={
         Array [
           Object {
@@ -738,111 +743,146 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
             },
           ]
         }
       >
-        <View
+        <Text
+          aria-hidden={true}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "display": "none",
               },
             ]
           }
         >
-          <Text
+          Non
+        </Text>
+        <View
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Interrupteur-performance"
+        >
+          <View
+            active={false}
             style={
               Array [
                 Object {
-                  "display": "none",
+                  "backgroundColor": "#90949D",
+                  "borderRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
                 },
               ]
             }
           >
-            Non
-          </Text>
-          <View
-            accessibilityRole="checkbox"
-            accessibilityState={
-              Object {
-                "checked": false,
-                "disabled": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Interrupteur-performance"
-          >
             <View
-              active={false}
+              collapsable={false}
+              disabled={false}
               style={
-                Array [
-                  Object {
-                    "backgroundColor": "#90949D",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
+                Object {
+                  "alignItems": "center",
+                  "aspectRatio": 1,
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 28,
+                  "height": 28,
+                  "justifyContent": "center",
+                  "marginLeft": 2,
+                  "shadowColor": "#161617",
+                  "shadowOffset": Object {
+                    "height": 2,
+                    "width": 0,
                   },
-                ]
-              }
-            >
-              <View
-                collapsable={false}
-                disabled={false}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "marginLeft": 2,
-                    "shadowColor": "#161617",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  }
+                  "shadowOpacity": 0.2,
+                  "shadowRadius": 2.5,
+                  "width": 28,
                 }
-              />
-            </View>
+              }
+            />
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "expanded": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "opacity": 1,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <View
+        nativeID="testUuidV4"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
         <Text
           style={
             Array [
@@ -873,27 +913,27 @@ Array [
             Enregistrer des statistiques de navigation
           </Text>
         </Text>
-      </View>
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "1.5707963267948966rad",
-              },
-            ],
-          }
-        }
-        testID="accordionArrow"
-      >
         <View
-          height={20}
-          width={20}
+          collapsable={false}
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "1.5707963267948966rad",
+                },
+              ],
+            }
+          }
+          testID="accordionArrow"
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            width={20}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -1014,32 +1054,16 @@ Array [
     }
   />,
   <View
-    accessibilityRole="button"
-    accessibilityState={
-      Object {
-        "expanded": false,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onLayout={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+      ]
     }
   >
     <View
-      nativeID="testUuidV4"
       style={
         Array [
           Object {
@@ -1061,111 +1085,146 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
             },
           ]
         }
       >
-        <View
+        <Text
+          aria-hidden={true}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "display": "none",
               },
             ]
           }
         >
-          <Text
+          Non
+        </Text>
+        <View
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Interrupteur-marketing"
+        >
+          <View
+            active={false}
             style={
               Array [
                 Object {
-                  "display": "none",
+                  "backgroundColor": "#90949D",
+                  "borderRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
                 },
               ]
             }
           >
-            Non
-          </Text>
-          <View
-            accessibilityRole="checkbox"
-            accessibilityState={
-              Object {
-                "checked": false,
-                "disabled": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Interrupteur-marketing"
-          >
             <View
-              active={false}
+              collapsable={false}
+              disabled={false}
               style={
-                Array [
-                  Object {
-                    "backgroundColor": "#90949D",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
+                Object {
+                  "alignItems": "center",
+                  "aspectRatio": 1,
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 28,
+                  "height": 28,
+                  "justifyContent": "center",
+                  "marginLeft": 2,
+                  "shadowColor": "#161617",
+                  "shadowOffset": Object {
+                    "height": 2,
+                    "width": 0,
                   },
-                ]
-              }
-            >
-              <View
-                collapsable={false}
-                disabled={false}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "marginLeft": 2,
-                    "shadowColor": "#161617",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 2.5,
-                    "width": 28,
-                  }
+                  "shadowOpacity": 0.2,
+                  "shadowRadius": 2.5,
+                  "width": 28,
                 }
-              />
-            </View>
+              }
+            />
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "expanded": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "opacity": 1,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <View
+        nativeID="testUuidV4"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
         <Text
           style={
             Array [
@@ -1196,27 +1255,27 @@ Array [
             Mesurer l’efficacité de nos publicités
           </Text>
         </Text>
-      </View>
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "1.5707963267948966rad",
-              },
-            ],
-          }
-        }
-        testID="accordionArrow"
-      >
         <View
-          height={20}
-          width={20}
+          collapsable={false}
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "1.5707963267948966rad",
+                },
+              ],
+            }
+          }
+          testID="accordionArrow"
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            width={20}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -1337,32 +1396,16 @@ Array [
     }
   />,
   <View
-    accessibilityRole="button"
-    accessibilityState={
-      Object {
-        "expanded": false,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onLayout={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+      ]
     }
   >
     <View
-      nativeID="testUuidV4"
       style={
         Array [
           Object {
@@ -1384,113 +1427,148 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
             },
           ]
         }
       >
-        <View
+        <Text
+          aria-hidden={true}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "display": "none",
               },
             ]
           }
         >
-          <Text
+          Oui
+        </Text>
+        <View
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": true,
+              "disabled": true,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Interrupteur-essential"
+        >
+          <View
+            active={true}
             style={
               Array [
                 Object {
-                  "display": "none",
+                  "backgroundColor": "#15884f",
+                  "borderRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "width": 56,
                 },
               ]
             }
           >
-            Oui
-          </Text>
-          <View
-            accessibilityRole="checkbox"
-            accessibilityState={
-              Object {
-                "checked": true,
-                "disabled": true,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Interrupteur-essential"
-          >
             <View
-              active={true}
+              collapsable={false}
+              disabled={true}
               style={
-                Array [
-                  Object {
-                    "backgroundColor": "#15884f",
-                    "borderRadius": 16,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "width": 56,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "aspectRatio": 1,
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 28,
+                  "height": 28,
+                  "justifyContent": "center",
+                  "marginLeft": 26,
+                  "width": 28,
+                }
               }
             >
               <View
-                collapsable={false}
-                disabled={true}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 28,
-                    "height": 28,
-                    "justifyContent": "center",
-                    "marginLeft": 26,
-                    "width": 28,
-                  }
-                }
+                height={16}
+                width={16}
               >
-                <View
-                  height={16}
-                  width={16}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "expanded": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onLayout={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "opacity": 1,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <View
+        nativeID="testUuidV4"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingHorizontal": 24,
+              "paddingVertical": 20,
+            },
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            },
+          ]
+        }
+      >
         <Text
           style={
             Array [
@@ -1521,27 +1599,27 @@ Array [
             Assurer la sécurité, prévenir la fraude et corriger les bugs
           </Text>
         </Text>
-      </View>
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "1.5707963267948966rad",
-              },
-            ],
-          }
-        }
-        testID="accordionArrow"
-      >
         <View
-          height={20}
-          width={20}
+          collapsable={false}
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "1.5707963267948966rad",
+                },
+              ],
+            }
+          }
+          testID="accordionArrow"
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            width={20}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>

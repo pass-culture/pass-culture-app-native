@@ -52,7 +52,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   return (
     <FilterSwitchContainer>
-      <HiddenAccessibleText>{hiddenText}</HiddenAccessibleText>
+      <HiddenAccessibleText aria-hidden>{hiddenText}</HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
@@ -124,6 +124,8 @@ const propsAreEqual = (
 ) =>
   prevProps.active === nextProps.active &&
   prevProps.disabled === nextProps.disabled &&
-  prevProps.checkboxID === nextProps.checkboxID
+  prevProps.checkboxID === nextProps.checkboxID &&
+  prevProps.accessibilityLabelledBy === nextProps.accessibilityLabelledBy &&
+  prevProps.accessibilityDescribedBy === nextProps.accessibilityDescribedBy
 
 export default memo(FilterSwitch, propsAreEqual)

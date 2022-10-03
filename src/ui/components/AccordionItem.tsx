@@ -105,27 +105,27 @@ export const AccordionItem = ({
 
   return (
     <React.Fragment>
-      <StyledTouchableOpacity
-        accessibilityRole={AccessibilityRole.BUTTON}
-        onPress={toggleListItem}
-        onLayout={getPositionOfAccordionItem}
-        accessibilityState={{ expanded: open }}
-        aria-controls={accordionBodyId}>
-        <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
-          <SwitchContainer>
-            {!!switchProps && (
-              <React.Fragment>
-                <FilterSwitch {...switchProps} />
-                <Spacer.Row numberOfSpaces={2} />
-              </React.Fragment>
-            )}
+      <SwitchContainer>
+        {!!switchProps && (
+          <View style={[styles.titleContainer, titleStyle]}>
+            <FilterSwitch {...switchProps} accessibilityLabelledBy={accordionLabelId} />
+            <Spacer.Row numberOfSpaces={2} />
+          </View>
+        )}
+        <StyledTouchableOpacity
+          accessibilityRole={AccessibilityRole.BUTTON}
+          onPress={toggleListItem}
+          onLayout={getPositionOfAccordionItem}
+          accessibilityState={{ expanded: open }}
+          aria-controls={accordionBodyId}>
+          <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
             <Title>{title}</Title>
-          </SwitchContainer>
-          <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-            <ArrowNext />
-          </Animated.View>
-        </View>
-      </StyledTouchableOpacity>
+            <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
+              <ArrowNext />
+            </Animated.View>
+          </View>
+        </StyledTouchableOpacity>
+      </SwitchContainer>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
         <StyledView
           nativeID={accordionBodyId}
@@ -163,14 +163,13 @@ const StyledView = styled.View<{ hidden: boolean }>(({ hidden }) => ({
 }))
 
 const SwitchContainer = styled.View({
-  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
 })
 
 const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1 })<{
   isFocus?: boolean
-}>(({ theme, isFocus }) => touchableFocusOutline(theme, isFocus))
+}>(({ theme, isFocus }) => ({ flex: 1, ...touchableFocusOutline(theme, isFocus) }))
 
 const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({
   flex: '0.9',
