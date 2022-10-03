@@ -18,6 +18,7 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { useStartBatchNotification } from 'features/notifications/batchNotifications'
+import { PushNotificationsWrapper } from 'features/notifications/helpers/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
@@ -76,11 +77,13 @@ const App: FunctionComponent = function () {
                             <CulturalSurveyContextProvider>
                               <IdentityCheckContextProvider>
                                 <SplashScreenProvider>
-                                  <OfflineModeContainer>
-                                    <ScreenErrorProvider>
-                                      <AppNavigationContainer />
-                                    </ScreenErrorProvider>
-                                  </OfflineModeContainer>
+                                  <PushNotificationsWrapper>
+                                    <OfflineModeContainer>
+                                      <ScreenErrorProvider>
+                                        <AppNavigationContainer />
+                                      </ScreenErrorProvider>
+                                    </OfflineModeContainer>
+                                  </PushNotificationsWrapper>
                                 </SplashScreenProvider>
                               </IdentityCheckContextProvider>
                             </CulturalSurveyContextProvider>
