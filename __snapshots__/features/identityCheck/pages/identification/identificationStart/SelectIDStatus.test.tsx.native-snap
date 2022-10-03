@@ -311,7 +311,15 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   ]
                 }
               />
-              <Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
                 <Text
                   style={
                     Array [
@@ -320,7 +328,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "textAlign": "center",
                       },
                     ]
                   }
@@ -349,7 +356,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "textAlign": "center",
                       },
                     ]
                   }
@@ -378,7 +384,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "textAlign": "center",
                       },
                     ]
                   }

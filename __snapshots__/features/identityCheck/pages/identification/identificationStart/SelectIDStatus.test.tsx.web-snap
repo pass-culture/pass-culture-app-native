@@ -453,6 +453,11 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
               <div
                 className="css-text-901oao"
                 dir="ltr"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
               >
                 <span
                   className="css-text-901oao css-textHasAncestor-16my406"
@@ -462,7 +467,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": "15px",
                       "lineHeight": "20px",
-                      "textAlign": "center",
                     }
                   }
                 >
@@ -489,7 +493,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": "15px",
                       "lineHeight": "20px",
-                      "textAlign": "center",
                     }
                   }
                 >
@@ -516,7 +519,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": "15px",
                       "lineHeight": "20px",
-                      "textAlign": "center",
                     }
                   }
                 >
