@@ -8,7 +8,10 @@ import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
-import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import {
+  CustomRemoteConfig,
+  NotificationsTrigger,
+} from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { adaptedHomepageEntry as defaultHomeEntry } from 'tests/fixtures/homepageEntries'
 import { renderHook } from 'tests/utils'
@@ -108,6 +111,7 @@ const defaultRemoteConfig: CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
+  notificationsTrigger: NotificationsTrigger.HOME,
 }
 
 describe('useSelectHomepageEntry', () => {
@@ -173,6 +177,7 @@ describe('useSelectHomepageEntry', () => {
   describe('default home entry when no remote config available', () => {
     beforeEach(() => {
       mockUseRemoteConfigContext.mockReturnValueOnce({
+        ...defaultRemoteConfig,
         test_param: 'A',
         homeEntryIdNotConnected: '',
         homeEntryIdGeneral: '',

@@ -17,11 +17,9 @@ export const RemoteConfigProvider = memo(function RemoteConfigProvider(props: {
   useEffect(() => {
     remoteConfig
       .refresh()
-      .then((isNewConfigRetrieved) => {
-        if (isNewConfigRetrieved) {
-          const remoteConfigParams = remoteConfig.getValues()
-          setContextValue(remoteConfigParams)
-        }
+      .then(() => {
+        const remoteConfigParams = remoteConfig.getValues()
+        setContextValue(remoteConfigParams)
       })
       .catch(() => {
         console.error('Failed to retrieve firebase remote config')
