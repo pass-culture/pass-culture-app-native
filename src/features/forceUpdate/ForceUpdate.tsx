@@ -7,7 +7,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Star } from 'ui/svg/icons/Star'
 import { Typo } from 'ui/theme'
 

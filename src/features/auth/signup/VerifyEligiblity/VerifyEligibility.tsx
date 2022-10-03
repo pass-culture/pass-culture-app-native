@@ -6,8 +6,8 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { GenericOfficialPage } from 'ui/components/GenericOfficialPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { GenericOfficialPage } from 'ui/pages/GenericOfficialPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 

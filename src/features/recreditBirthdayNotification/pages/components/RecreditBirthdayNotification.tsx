@@ -19,9 +19,9 @@ import { storage } from 'libs/storage'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 export const RecreditBirthdayNotification = () => {
