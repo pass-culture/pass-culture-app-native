@@ -11,7 +11,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
-        "paddingTop": 8,
       },
     ]
   }
@@ -27,11 +26,11 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
     }
   >
     <View
-      height={72}
+      height={64}
       style={
         Array [
           Object {
-            "height": 72,
+            "height": 64,
           },
         ]
       }
@@ -63,14 +62,13 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
         }
       />
       <View
-        size="medium"
+        size="small"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
+              "height": 48,
+              "justifyContent": "center",
             },
           ]
         }
@@ -158,14 +156,14 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
           <Text
             color="#ffffff"
             numberOfLines={1}
-            size="medium"
+            size="small"
             style={
               Array [
                 Object {
                   "color": "#ffffff",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                   "textAlign": "center",
                 },
               ]

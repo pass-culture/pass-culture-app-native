@@ -143,7 +143,6 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
       "msFlexNegative": 1,
       "msFlexPositive": 1,
       "msFlexPreferredSize": "0px",
-      "paddingTop": "8px",
     }
   }
 >
@@ -160,7 +159,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "height": "72px",
+          "height": "64px",
         }
       }
     />
@@ -190,14 +189,13 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
           Object {
             "WebkitAlignItems": "center",
             "WebkitBoxAlign": "center",
-            "WebkitBoxPack": "end",
-            "WebkitJustifyContent": "flex-end",
+            "WebkitBoxPack": "center",
+            "WebkitJustifyContent": "center",
             "alignItems": "center",
-            "height": "56px",
-            "justifyContent": "flex-end",
+            "height": "48px",
+            "justifyContent": "center",
             "msFlexAlign": "center",
-            "msFlexPack": "end",
-            "paddingBottom": "12px",
+            "msFlexPack": "center",
           }
         }
       >
@@ -302,9 +300,9 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               Object {
                 "WebkitLineClamp": 1,
                 "color": "rgba(255,255,255,1.00)",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": "18px",
-                "lineHeight": "22px",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": "15px",
+                "lineHeight": "20px",
                 "textAlign": "center",
               }
             }

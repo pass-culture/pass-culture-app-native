@@ -26,7 +26,7 @@ interface Props {
 }
 
 const smallHeight = getSpacing(12)
-const mediumHeight = getSpacing(14)
+const mediumHeight = getSpacing(18)
 
 export const PageHeader: React.FC<Props> = ({
   title,
@@ -63,9 +63,13 @@ export const PageHeader: React.FC<Props> = ({
         <Spacer.TopScreen />
         <Container size={size}>
           <Row>
-            <ButtonContainer positionInHeader="left" testID={goBackAccessibilityLabel}>
-              {!!withGoBackButton && <BackButton onGoBack={onGoBack} color={color} />}
-            </ButtonContainer>
+            {isAbsolutePosition ? (
+              <ButtonContainer positionInHeader="left" testID={goBackAccessibilityLabel}>
+                {!!withGoBackButton && <BackButton onGoBack={onGoBack} color={color} />}
+              </ButtonContainer>
+            ) : (
+              <Spacer.Row numberOfSpaces={6} />
+            )}
             <Title nativeID={titleID} color={color} size={size}>
               {title}
             </Title>
@@ -119,7 +123,7 @@ const Title = styled.Text.attrs(() => ({
   numberOfLines: 1,
   ...getHeadingAttrs(1),
 }))<{ color: ColorsEnum; size?: string }>(({ theme, color, size }) => ({
-  ...(size === 'small' ? theme.typography.body : theme.typography.title4),
+  ...(size === 'small' ? theme.typography.body : theme.typography.title1),
   textAlign: 'center',
   color,
 }))

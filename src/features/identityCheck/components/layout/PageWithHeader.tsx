@@ -30,7 +30,6 @@ export const PageWithHeader = (props: Props) => {
       <PageHeader
         title={props.title}
         background="primary"
-        size="medium"
         onGoBack={props.onGoBack}
         withGoBackButton
       />
@@ -62,7 +61,6 @@ const Container = styled.View(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: theme.colors.primary,
-  paddingTop: getSpacing(2),
 }))
 
 const FixedTopChildrenView = styled.View({
