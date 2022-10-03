@@ -14,7 +14,7 @@ import { CookiesConsent } from 'features/cookies/types'
 import * as useUserProfileInfoAPI from 'features/profile/api'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
 
 const mockUseUserProfileInfo = jest.spyOn(useUserProfileInfoAPI, 'useUserProfileInfo')
 mockUseUserProfileInfo.mockReturnValue({
@@ -24,6 +24,11 @@ const mockStartTrackingAcceptedCookies = jest.spyOn(
   TrackingAcceptedCookies,
   'startTrackingAcceptedCookies'
 )
+
+const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
 
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const deviceId = 'testUuidV4'
@@ -96,7 +101,7 @@ describe('useCookies', () => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
         buildVersion: Package.build,
         deviceId,
-        choiceDatetime: TODAY,
+        choiceDatetime: TODAY.toISOString(),
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
@@ -119,7 +124,7 @@ describe('useCookies', () => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
         buildVersion: Package.build,
         deviceId,
-        choiceDatetime: TODAY,
+        choiceDatetime: TODAY.toISOString(),
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
@@ -378,6 +383,72 @@ describe('useCookies', () => {
         accepted: [],
         refused: ALL_OPTIONAL_COOKIES,
       },
+    })
+  })
+
+  describe('Feature Flag', () => {
+    describe.each([
+      ['undefined', {}],
+      ['disabled', { appEnableCookiesV2: false }],
+    ])('when feature flag is %s', (_, settings) => {
+      beforeEach(() => mockSettings.mockReturnValueOnce({ data: settings }))
+
+      it('should not change cookies consent', async () => {
+        storage.saveObject(COOKIES_CONSENT_KEY, {
+          buildVersion: Package.build,
+          deviceId,
+          choiceDatetime: TODAY.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
+
+        renderHook(useCookies)
+        await superFlushWithAct()
+
+        expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
+      })
+
+      it('should not save cookies consent in the storage', async () => {
+        const { result } = renderHook(useCookies)
+        const { setCookiesConsent } = result.current
+
+        await act(async () => {
+          await setCookiesConsent({
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: [],
+            refused: ALL_OPTIONAL_COOKIES,
+          })
+        })
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toBeNull()
+      })
+
+      it('should not set user ID', async () => {
+        const cookiesConsentWithoutUserId = {
+          buildVersion: Package.build,
+          deviceId,
+          choiceDatetime: TODAY.toISOString(),
+          consent: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        }
+        storage.saveObject(COOKIES_CONSENT_KEY, cookiesConsentWithoutUserId)
+        const { result } = renderHook(useCookies)
+        const { setUserId } = result.current
+
+        await act(async () => {
+          await setUserId(FAKE_USER_ID)
+        })
+
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+        expect(cookiesConsent).toEqual(cookiesConsentWithoutUserId)
+      })
     })
   })
 })

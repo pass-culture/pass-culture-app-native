@@ -13,6 +13,11 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
+const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => mockSettings()),
+}))
+
 const COOKIES_CONSENT_KEY = 'cookies_consent'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
