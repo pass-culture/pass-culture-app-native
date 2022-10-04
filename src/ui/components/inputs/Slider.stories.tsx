@@ -19,6 +19,14 @@ SliderWithValues.args = {
   showValues: true,
 }
 
+export const SliderWithMinMaxValues = Template.bind({})
+SliderWithMinMaxValues.args = {
+  values: [50],
+  max: 100,
+  showValues: false,
+  shouldShowMinMaxValues: true,
+}
+
 export const SliderWithFormattedValues = Template.bind({})
 SliderWithFormattedValues.args = {
   values: [50],

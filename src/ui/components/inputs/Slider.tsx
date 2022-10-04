@@ -1,5 +1,5 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -16,6 +16,7 @@ interface Props {
   sliderLength?: number
   minLabel?: string
   maxLabel?: string
+  shouldShowMinMaxValues?: boolean
 }
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
@@ -26,13 +27,14 @@ const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
 export function Slider(props: Props) {
-  const sliderContainerRef = useRef<View>(null)
+  const sliderContainerRef = useRef<View | null>(null)
 
   const min = props.min || DEFAULT_MIN
   const max = props.max || DEFAULT_MAX
   const step = props.step || DEFAULT_STEP
   const minLabel = props.minLabel ?? 'Minimum\u00a0:'
   const maxLabel = props.maxLabel ?? 'Maximum\u00a0:'
+  const shouldShowMinMaxValues = props.shouldShowMinMaxValues ?? false
 
   const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
@@ -115,6 +117,10 @@ export function Slider(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.values])
 
+  const setStyledViewRef = useCallback((ref: View | null) => {
+    sliderContainerRef.current = ref
+  }, [])
+
   return (
     <React.Fragment>
       {!!props.showValues && (
@@ -124,7 +130,10 @@ export function Slider(props: Props) {
         </CenteredText>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <View ref={sliderContainerRef} testID="slider">
+      <StyledView
+        ref={setStyledViewRef}
+        testID="slider"
+        shouldShowMinMaxValues={shouldShowMinMaxValues}>
         <StyledMultiSlider
           values={values}
           allowOverlap={true}
@@ -135,7 +144,16 @@ export function Slider(props: Props) {
           onValuesChangeFinish={props.onValuesChangeFinish}
           sliderLength={props.sliderLength}
         />
-      </View>
+      </StyledView>
+      {!!shouldShowMinMaxValues && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={1} />
+          <MinMaxContainer>
+            <MinMaxValue>{`${min}\u00a0km`}</MinMaxValue>
+            <MinMaxValue>{`${max}\u00a0km`}</MinMaxValue>
+          </MinMaxContainer>
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }
@@ -170,3 +188,18 @@ const CenteredText = styled(Typo.ButtonText)<{ width?: number }>(({ width, theme
   width: width ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   textAlign: 'center',
 }))
+
+const MinMaxContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const StyledView = styled.View<{ shouldShowMinMaxValues?: boolean }>(
+  ({ shouldShowMinMaxValues }) => ({
+    ...(shouldShowMinMaxValues && { paddingLeft: getSpacing(3.5) }),
+  })
+)

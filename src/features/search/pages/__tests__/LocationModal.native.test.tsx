@@ -1,10 +1,12 @@
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
 import { LocationModal, RadioButtonLocation } from 'features/search/pages/LocationModal'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { SectionTitle } from 'features/search/sections/titles'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
@@ -66,22 +68,88 @@ describe('LocationFilter component', () => {
     jest.useRealTimers()
   })
 
-  it('should navigate on search results with actual state with no change when pressing search button', async () => {
-    const { getByText } = renderLocationModal({ hideLocationModal })
+  describe('should navigate on search results', () => {
+    it('with actual state with no change when pressing search button', async () => {
+      const { getByText } = renderLocationModal({ hideLocationModal })
 
-    await superFlushWithAct()
+      await superFlushWithAct()
 
-    const searchButton = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(searchButton)
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          view: SearchView.Results,
+        },
+        screen: 'Search',
+      })
     })
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        ...mockSearchState,
-        view: SearchView.Results,
-      },
-      screen: 'Search',
+    it.each`
+      locationFilter                                                        | label                             | locationType
+      ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE}
+      ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}
+    `(
+      'with $locationType location type when selecting $label radio button and pressing search button',
+      async ({
+        locationFilter,
+        label,
+      }: {
+        locationFilter: LocationFilter
+        label: RadioButtonLocation
+      }) => {
+        mockSearchState = { ...mockSearchState, locationFilter }
+        const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+
+        const radioButton = getByTestId(label)
+        await act(async () => {
+          fireEvent.press(radioButton)
+        })
+
+        const searchButton = getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            locationFilter,
+            view: SearchView.Results,
+          },
+          screen: 'Search',
+        })
+      }
+    )
+
+    it('with a new radius when changing it with the slider and pressing search button', async () => {
+      mockSearchState = {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+      }
+      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+
+      await act(async () => {
+        const slider = getByTestId('slider').children[0] as ReactTestInstance
+        slider.props.onValuesChangeFinish([50])
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+          view: SearchView.Results,
+        },
+        screen: 'Search',
+      })
     })
   })
 
@@ -108,43 +176,6 @@ describe('LocationFilter component', () => {
       const radioButton = getByTestId(label)
 
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
-    }
-  )
-
-  it.each`
-    locationFilter                                                        | label                             | locationType
-    ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE}
-    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}
-  `(
-    'should navigate on search results with $locationType location type when selecting $label radio button and pressing search button',
-    async ({
-      locationFilter,
-      label,
-    }: {
-      locationFilter: LocationFilter
-      label: RadioButtonLocation
-    }) => {
-      mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
-
-      const radioButton = getByTestId(label)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          locationFilter,
-          view: SearchView.Results,
-        },
-        screen: 'Search',
-      })
     }
   )
 
@@ -196,8 +227,36 @@ describe('LocationFilter component', () => {
     queryByText(mockPositionError.message)
   })
 
-  it('should not change location filter on Autour de moi radio button press when position is null', async () => {
+  it('should display the selected radius when select Autour de moi radio button', async () => {
     mockSearchState = initialSearchState
+    const { getByTestId, queryByText } = renderLocationModal({ hideLocationModal })
+
+    await act(async () => {
+      expect(queryByText('Dans un rayon de\u00a0:')).toBeFalsy()
+    })
+
+    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    await act(async () => {
+      fireEvent.press(radioButton)
+    })
+    expect(queryByText('Dans un rayon de\u00a0:')).toBeTruthy()
+  })
+
+  it('should display the slider when select Autour de moi radio button', async () => {
+    const { queryByTestId, getByTestId } = renderLocationModal({ hideLocationModal })
+
+    await act(async () => {
+      expect(queryByTestId('slider')).toBeFalsy()
+    })
+
+    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    await act(async () => {
+      fireEvent.press(radioButton)
+    })
+    expect(queryByTestId('slider')).toBeTruthy()
+  })
+
+  it('should not change location filter on Autour de moi radio button press when position is null', async () => {
     mockPosition = null
     const { getByTestId } = renderLocationModal({ hideLocationModal })
 
@@ -227,27 +286,66 @@ describe('LocationFilter component', () => {
     }
   )
 
-  it('should reset the form when pressing reset button', async () => {
-    mockSearchState = initialSearchState
-    const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
-
-    const defaultRadioButton = getByTestId(RadioButtonLocation.EVERYWHERE)
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
-    expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
-    expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+  it('should log change radius when changing radius with the slider', async () => {
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+    }
+    const { getByTestId } = renderLocationModal({ hideLocationModal })
 
     await act(async () => {
-      fireEvent.press(radioButton)
+      const slider = getByTestId('slider').children[0] as ReactTestInstance
+      slider.props.onValuesChangeFinish([50])
     })
-    expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
-    expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
-    const resetButton = getByText('Réinitialiser')
-    await act(async () => {
-      fireEvent.press(resetButton)
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
+  })
+
+  describe('should reset', () => {
+    it('the location radio group when pressing reset button', async () => {
+      mockSearchState = initialSearchState
+      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+
+      const defaultRadioButton = getByTestId(RadioButtonLocation.EVERYWHERE)
+      const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
+      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+      expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
+      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+
+      const resetButton = getByText('Réinitialiser')
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
+      expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
+      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
     })
-    expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
-    expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+
+    it('the around me radius value when pressing reset button', async () => {
+      mockSearchState = {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+      }
+      const { getByText, getByTestId, getAllByText } = renderLocationModal({ hideLocationModal })
+      await act(async () => {
+        expect(getByText('50\u00a0km')).toBeTruthy()
+      })
+
+      const resetButton = getByText('Réinitialiser')
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
+
+      const aroundMeRadioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      await act(async () => {
+        fireEvent.press(aroundMeRadioButton)
+      })
+      expect(getAllByText(`${MAX_RADIUS}\u00a0km`).length).toEqual(2)
+    })
   })
 
   describe('should close the modal', () => {
