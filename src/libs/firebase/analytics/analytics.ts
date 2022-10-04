@@ -18,6 +18,7 @@ export type ChangeSearchLocationParam =
   | { type: 'venue'; venueId: number | null }
 
 const logEventAnalytics = {
+  logAcceptNotifications: () => analyticsProvider.logEvent(AnalyticsEvent.ACCEPT_NOTIFICATIONS),
   logAccountDeletion: () => analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_DELETION),
   logAccountReactivation: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_REACTIVATION, { from }),
@@ -122,6 +123,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM, params),
   logDiscoverOffers: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from }),
+  logDismissNotifications: () => analyticsProvider.logEvent(AnalyticsEvent.DISMISS_NOTIFICATIONS),
   logErrorSavingNewEmail: (errorCode: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.ERROR_SAVING_NEW_EMAIL, { code: errorCode }),
   logExclusivityBlockClicked: (params: {

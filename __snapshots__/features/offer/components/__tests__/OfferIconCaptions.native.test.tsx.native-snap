@@ -46,6 +46,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Catégorie de l’offre"
         height={32}
         width={32}
       >
@@ -119,6 +120,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Prix"
         fill="#696A6F"
         height={32}
         testID="iconPrice"

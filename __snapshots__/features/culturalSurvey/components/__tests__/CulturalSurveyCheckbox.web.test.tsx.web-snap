@@ -209,6 +209,7 @@ Object {
             style="align-content: center; position: absolute; right: 16px;"
           >
             <div
+              aria-label="Sélectionné"
               class="css-view-1dbjc4n"
             >
               <div
@@ -273,6 +274,7 @@ Object {
           style="align-content: center; position: absolute; right: 16px;"
         >
           <div
+            aria-label="Sélectionné"
             class="css-view-1dbjc4n"
           >
             <div

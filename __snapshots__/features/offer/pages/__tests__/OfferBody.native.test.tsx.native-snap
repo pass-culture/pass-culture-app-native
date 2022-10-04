@@ -186,6 +186,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
+            accessibilityLabel="Adresse"
             height={16}
             width={16}
           >
@@ -325,6 +326,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
+            accessibilityLabel="Catégorie de l’offre"
             height={32}
             width={32}
           >
@@ -398,6 +400,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
+            accessibilityLabel="Offre à deux"
             height={32}
             testID="iconDuo"
             width={32}
@@ -472,6 +475,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
+            accessibilityLabel="Prix"
             fill="#696A6F"
             height={32}
             testID="iconPrice"
@@ -982,6 +986,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           >
             <View
+              accessibilityLabel="Nouvelle fenêtre"
               height={20}
               testID="button-icon"
               width={20}
@@ -1338,6 +1343,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               }
             >
               <View
+                accessibilityLabel="Fermer la modale"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}

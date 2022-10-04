@@ -14,6 +14,7 @@ Object {
           style="padding: 4px 4px 4px 4px;"
         >
           <div
+            aria-label="Type de lieu"
             class="css-view-1dbjc4n"
             data-testid="Cinéma - Salle de projections"
           >
@@ -50,6 +51,7 @@ Object {
         style="padding: 4px 4px 4px 4px;"
       >
         <div
+          aria-label="Type de lieu"
           class="css-view-1dbjc4n"
           data-testid="Cinéma - Salle de projections"
         >
@@ -134,7 +136,7 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -96,11 +96,11 @@
+@@ -99,11 +99,11 @@
         />
         <div
           class=\\"css-text-901oao\\"

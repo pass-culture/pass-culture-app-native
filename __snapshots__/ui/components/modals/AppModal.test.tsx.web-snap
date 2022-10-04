@@ -1005,6 +1005,7 @@ Object {
                         type="button"
                       >
                         <div
+                          aria-label="Revenir à l'étape précédente"
                           class="css-view-1dbjc4n"
                           data-testid="leftIcon"
                         >
@@ -1758,9 +1759,11 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
                       <button
+                        aria-label="Fermer la modale et annuler"
                         class="c0 c1 sc-gsDKAQ c1"
                         data-testid="Fermer la modale et annuler"
                         tabindex="0"
+                        title="Fermer la modale et annuler"
                         type="button"
                       >
                         <div

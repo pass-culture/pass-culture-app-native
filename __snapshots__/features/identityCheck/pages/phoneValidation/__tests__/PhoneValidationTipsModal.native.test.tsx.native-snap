@@ -187,6 +187,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             testID="Revenir à l’étape précédente"
           >
             <View
+              accessibilityLabel="Revenir à l’étape précédente"
               height={20}
               testID="leftIcon"
               width={20}

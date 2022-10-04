@@ -324,6 +324,7 @@ Array [
         }
       >
         <div
+          aria-label="Nouvelle fenêtre"
           className="css-view-1dbjc4n"
           data-testid="button-icon"
         >

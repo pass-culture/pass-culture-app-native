@@ -59,6 +59,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       >
         <View
+          accessibilityLabel="République Française - Liberté Égalité Fraternité"
           fill="none"
           height="100%"
           width="100%"
@@ -78,6 +79,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       >
         <View
+          accessibilityLabel="pass culture"
           height={53}
           width={157}
         >

@@ -38,6 +38,7 @@ exports[`<DotComponent /> renders dot active color 1`] = `
     }
   >
     <View
+      accessibilityLabel="Étape 2 sur 1 en cours"
       borderColor="#eb0055"
       fillColor="#eb0055"
       height={12}
@@ -90,6 +91,7 @@ exports[`<DotComponent /> should render correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="Étape 2 sur 1 à faire"
       borderColor="#696A6F"
       fillColor="transparent"
       height={8}

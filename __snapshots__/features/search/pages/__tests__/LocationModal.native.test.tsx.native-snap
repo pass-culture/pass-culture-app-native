@@ -459,6 +459,7 @@ exports[`LocationFilter component should render modal correctly after animation 
                   }
                 >
                   <View
+                    accessibilityLabel="Sélectionné"
                     height={20}
                     width={20}
                   >
@@ -598,6 +599,7 @@ exports[`LocationFilter component should render modal correctly after animation 
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >
@@ -738,6 +740,7 @@ exports[`LocationFilter component should render modal correctly after animation 
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >

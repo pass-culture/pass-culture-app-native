@@ -153,6 +153,7 @@ Object {
             style="align-items: center; flex-direction: row; justify-content: space-between;"
           >
             <div
+              aria-label="Nouvelle fenêtre"
               class="css-view-1dbjc4n"
             >
               <div
@@ -198,6 +199,7 @@ Object {
             style="align-items: center; flex-direction: row; justify-content: space-between;"
           >
             <div
+              aria-label="Nouvelle fenêtre"
               class="css-view-1dbjc4n"
             >
               <div
@@ -385,6 +387,7 @@ Object {
           style="align-items: center; flex-direction: row; justify-content: space-between;"
         >
           <div
+            aria-label="Nouvelle fenêtre"
             class="css-view-1dbjc4n"
           >
             <div
@@ -430,6 +433,7 @@ Object {
           style="align-items: center; flex-direction: row; justify-content: space-between;"
         >
           <div
+            aria-label="Nouvelle fenêtre"
             class="css-view-1dbjc4n"
           >
             <div

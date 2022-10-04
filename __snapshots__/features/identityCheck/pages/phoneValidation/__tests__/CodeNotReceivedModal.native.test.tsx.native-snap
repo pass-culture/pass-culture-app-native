@@ -210,6 +210,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
           }
         >
           <View
+            accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
@@ -628,6 +629,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
           }
         >
           <View
+            accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}

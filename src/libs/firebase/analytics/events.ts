@@ -1,5 +1,6 @@
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
 export enum AnalyticsEvent {
+  ACCEPT_NOTIFICATIONS = 'AcceptNotifications',
   ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
   ACCOUNT_DELETION = 'AccountDeletion',
   ACCOUNT_REACTIVATION = 'AccountReactivation',
@@ -47,6 +48,7 @@ export enum AnalyticsEvent {
   CONTINUE_SIGNUP = 'ContinueSignup',
   CULTURAL_SURVEY_SCROLLED_TO_BOTTOM = 'CulturalSurveyScrolledToBottom',
   DISCOVER_OFFERS = 'DiscoverOffers',
+  DISMISS_NOTIFICATIONS = 'DismissNotifications',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',

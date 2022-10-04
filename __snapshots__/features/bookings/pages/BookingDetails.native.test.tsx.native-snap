@@ -590,6 +590,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           }
                         >
                           <View
+                            accessibilityLabel="Nouvelle fenêtre"
                             height={24}
                             width={24}
                           >

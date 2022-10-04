@@ -65,6 +65,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     testID="Revenir en arrière"
   >
     <View
+      accessibilityLabel="Revenir en arrière"
       height={24}
       width={24}
     >

@@ -243,6 +243,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       >
         <View
+          accessibilityLabel="Nouvelle fenêtre"
           height={20}
           testID="button-icon"
           width={20}

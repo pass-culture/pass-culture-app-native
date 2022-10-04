@@ -240,6 +240,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Nouvelle fenêtre"
           height={24}
           width={24}
         >
@@ -345,6 +346,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Nouvelle fenêtre"
           height={24}
           width={24}
         >

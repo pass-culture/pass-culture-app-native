@@ -67,6 +67,7 @@ exports[`<ClippedTag/> should render correctly 1`] = `
     testID="retirer-lieu"
   >
     <View
+      accessibilityLabel="Enlever le lieu"
       fill="#ffffff"
       height={20}
       testID="Enlever le lieu"

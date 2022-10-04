@@ -194,6 +194,7 @@ Object {
                 style="position: absolute; right: 2px; top: 2px;"
               >
                 <div
+                  aria-label="Sélectionné"
                   class="css-view-1dbjc4n"
                 >
                   <div
@@ -517,6 +518,7 @@ Object {
               style="position: absolute; right: 2px; top: 2px;"
             >
               <div
+                aria-label="Sélectionné"
                 class="css-view-1dbjc4n"
               >
                 <div

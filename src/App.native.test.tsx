@@ -1,11 +1,11 @@
 import React from 'react'
 
-import * as BatchLocalLib from 'libs/notifications'
+import * as BatchLocalLib from 'features/notifications/batchNotifications'
 import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 import { App } from './App'
 
-jest.mock('./libs/notifications', () => ({
+jest.mock('features/notifications/batchNotifications', () => ({
   useStartBatchNotification: jest.fn(),
 }))
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({

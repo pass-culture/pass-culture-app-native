@@ -308,6 +308,7 @@ Object {
                     style="flex-shrink: 0;"
                   >
                     <div
+                      aria-label="Nouvelle fenêtre"
                       class="css-view-1dbjc4n"
                       data-testid="button-icon"
                     >
@@ -642,6 +643,7 @@ Object {
                   style="flex-shrink: 0;"
                 >
                   <div
+                    aria-label="Nouvelle fenêtre"
                     class="css-view-1dbjc4n"
                     data-testid="button-icon"
                   >

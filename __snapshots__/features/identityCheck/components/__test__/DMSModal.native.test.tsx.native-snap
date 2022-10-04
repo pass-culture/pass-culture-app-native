@@ -210,6 +210,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
           }
         >
           <View
+            accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
@@ -341,6 +342,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Nouvelle fenêtre"
                   height={20}
                   testID="button-icon"
                   width={20}
@@ -435,6 +437,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Nouvelle fenêtre"
                   height={20}
                   testID="button-icon"
                   width={20}

@@ -244,6 +244,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           }
         >
           <View
+            accessibilityLabel="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}

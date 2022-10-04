@@ -646,6 +646,7 @@ Tous les détails du film sur AlloCiné:
                                     />
                                     <Text>
                                       <View
+                                        accessibilityLabel="Nouvelle fenêtre"
                                         height={16}
                                         testID="externalSiteIcon"
                                         width={16}

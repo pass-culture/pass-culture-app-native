@@ -26,6 +26,7 @@ exports[`OfferCategory renders correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="Catégorie de l’offre"
       height={32}
       width={32}
     >

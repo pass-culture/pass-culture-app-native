@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
+exports[`PushNotificationsModal should render properly 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
-  testID="modal-exhausted-credit"
+  testID="modal-notifications-permission-modal"
   transparent={true}
   visible={true}
 >
@@ -109,7 +109,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       >
         <Text
           nativeID="testUuidV4"
-          numberOfLines={3}
+          numberOfLines={2}
           style={
             Array [
               Object {
@@ -122,7 +122,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
             ]
           }
         >
-          Tu as dépensé tout ton crédit, que faire ?
+          Paramètres de notifications
         </Text>
       </View>
       <View
@@ -198,35 +198,123 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       }
     >
       <View
+        height={85}
+        testID="BicolorLocationPointer"
+        width={85}
+      >
+        <Text>
+          BicolorLocationPointer-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={10}
         style={
           Array [
             Object {
-              "alignItems": "center",
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
             },
           ]
         }
       >
+        Reste informé des actualités du pass Culture en activant les notifications.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Autoriser les notifications"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Autoriser les notifications"
+      >
         <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
           style={
             Array [
               Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
               },
             ]
           }
         >
-          Pas de panique, l’aventure continue !
-          
-
-
-          Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
-          
-
-
-          Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site.
+          Autoriser les notifications
         </Text>
       </View>
     </View>

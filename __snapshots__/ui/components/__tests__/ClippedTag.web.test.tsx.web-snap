@@ -28,6 +28,7 @@ Object {
           tabindex="0"
         >
           <div
+            aria-label="Enlever le lieu"
             class="css-view-1dbjc4n"
             data-testid="Enlever le lieu"
           >
@@ -66,6 +67,7 @@ Object {
         tabindex="0"
       >
         <div
+          aria-label="Enlever le lieu"
           class="css-view-1dbjc4n"
           data-testid="Enlever le lieu"
         >

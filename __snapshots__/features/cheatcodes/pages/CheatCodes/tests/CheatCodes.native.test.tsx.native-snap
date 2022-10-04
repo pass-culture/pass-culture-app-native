@@ -390,6 +390,7 @@ exports[`CheatCodes component should render correctly 1`] = `
       />
       <Text>
         <View
+          accessibilityLabel="Nouvelle fenêtre"
           height={16}
           testID="externalSiteIcon"
           width={16}

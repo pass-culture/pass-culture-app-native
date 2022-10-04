@@ -423,6 +423,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               }
             >
               <View
+                accessibilityLabel="Nouvelle fenêtre"
                 height={24}
                 testID="button-icon"
                 width={24}

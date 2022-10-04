@@ -204,6 +204,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       >
         <div
+          aria-label="République Française - Liberté Égalité Fraternité"
           className="css-view-1dbjc4n"
         >
           <div
@@ -226,6 +227,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       >
         <div
+          aria-label="pass culture"
           className="css-view-1dbjc4n"
         >
           <div

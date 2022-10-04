@@ -373,9 +373,11 @@ Object {
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
                       <button
+                        aria-label="Fermer la modale"
                         class="c0 c1 sc-gKclnd c1"
                         data-testid="Fermer la modale"
                         tabindex="0"
+                        title="Fermer la modale"
                         type="button"
                       >
                         <div

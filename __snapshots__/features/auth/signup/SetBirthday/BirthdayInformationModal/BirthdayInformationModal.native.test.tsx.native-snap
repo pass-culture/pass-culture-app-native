@@ -140,6 +140,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
         }
       >
         <View
+          accessibilityLabel="Fermer la modale"
           accessibilityRole="button"
           accessible={true}
           collapsable={false}

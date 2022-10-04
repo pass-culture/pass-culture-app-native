@@ -210,6 +210,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
           }
         >
           <View
+            accessibilityLabel="Fermer la modale et refuser la collecte des données"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
@@ -370,6 +371,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                         }
                       >
                         <View
+                          accessibilityLabel="Nouvelle fenêtre"
                           height={20}
                           testID="button-icon"
                           width={20}
