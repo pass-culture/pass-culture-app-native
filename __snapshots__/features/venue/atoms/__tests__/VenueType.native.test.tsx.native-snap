@@ -26,6 +26,7 @@ exports[`VenueType should render correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="Type de lieu"
       height={32}
       width={32}
     >

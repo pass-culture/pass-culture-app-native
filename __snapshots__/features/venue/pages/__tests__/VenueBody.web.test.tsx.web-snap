@@ -334,6 +334,7 @@ Object {
                 style="margin-right: 4px;"
               >
                 <div
+                  aria-label="Adresse"
                   class="css-view-1dbjc4n"
                 >
                   <div
@@ -389,6 +390,7 @@ Object {
                 style="padding: 4px 4px 4px 4px;"
               >
                 <div
+                  aria-label="Type de lieu"
                   class="css-view-1dbjc4n"
                 >
                   <div
@@ -500,6 +502,7 @@ Object {
                         style="white-space: nowrap;"
                       >
                         <div
+                          aria-label="Nouvelle fenêtre"
                           class="css-view-1dbjc4n"
                           data-testid="externalSiteIcon"
                           style="display: inline-flex;"
@@ -953,6 +956,7 @@ Object {
                   style="flex-shrink: 0;"
                 >
                   <div
+                    aria-label="Nouvelle fenêtre"
                     class="css-view-1dbjc4n"
                     data-testid="button-icon"
                   >
@@ -1063,6 +1067,7 @@ Object {
                       style="white-space: nowrap;"
                     >
                       <div
+                        aria-label="Nouvelle fenêtre"
                         class="css-view-1dbjc4n"
                         data-testid="externalSiteIcon"
                         style="display: inline-flex;"
@@ -1191,6 +1196,7 @@ Object {
                           style="bottom: -12px; position: absolute;"
                         >
                           <div
+                            aria-label="Accessible"
                             class="css-view-1dbjc4n"
                             data-testid="validTestId"
                           >
@@ -1262,6 +1268,7 @@ Object {
                           style="bottom: -12px; position: absolute;"
                         >
                           <div
+                            aria-label="Non accessible"
                             class="css-view-1dbjc4n"
                             data-testid="invalidTestId"
                           >
@@ -1333,6 +1340,7 @@ Object {
                           style="bottom: -12px; position: absolute;"
                         >
                           <div
+                            aria-label="Non accessible"
                             class="css-view-1dbjc4n"
                             data-testid="invalidTestId"
                           >
@@ -1404,6 +1412,7 @@ Object {
                           style="bottom: -12px; position: absolute;"
                         >
                           <div
+                            aria-label="Non accessible"
                             class="css-view-1dbjc4n"
                             data-testid="invalidTestId"
                           >
@@ -1865,6 +1874,7 @@ Object {
               style="margin-right: 4px;"
             >
               <div
+                aria-label="Adresse"
                 class="css-view-1dbjc4n"
               >
                 <div
@@ -1920,6 +1930,7 @@ Object {
               style="padding: 4px 4px 4px 4px;"
             >
               <div
+                aria-label="Type de lieu"
                 class="css-view-1dbjc4n"
               >
                 <div
@@ -2031,6 +2042,7 @@ Object {
                       style="white-space: nowrap;"
                     >
                       <div
+                        aria-label="Nouvelle fenêtre"
                         class="css-view-1dbjc4n"
                         data-testid="externalSiteIcon"
                         style="display: inline-flex;"
@@ -2484,6 +2496,7 @@ Object {
                 style="flex-shrink: 0;"
               >
                 <div
+                  aria-label="Nouvelle fenêtre"
                   class="css-view-1dbjc4n"
                   data-testid="button-icon"
                 >
@@ -2594,6 +2607,7 @@ Object {
                     style="white-space: nowrap;"
                   >
                     <div
+                      aria-label="Nouvelle fenêtre"
                       class="css-view-1dbjc4n"
                       data-testid="externalSiteIcon"
                       style="display: inline-flex;"
@@ -2722,6 +2736,7 @@ Object {
                         style="bottom: -12px; position: absolute;"
                       >
                         <div
+                          aria-label="Accessible"
                           class="css-view-1dbjc4n"
                           data-testid="validTestId"
                         >
@@ -2793,6 +2808,7 @@ Object {
                         style="bottom: -12px; position: absolute;"
                       >
                         <div
+                          aria-label="Non accessible"
                           class="css-view-1dbjc4n"
                           data-testid="invalidTestId"
                         >
@@ -2864,6 +2880,7 @@ Object {
                         style="bottom: -12px; position: absolute;"
                       >
                         <div
+                          aria-label="Non accessible"
                           class="css-view-1dbjc4n"
                           data-testid="invalidTestId"
                         >
@@ -2935,6 +2952,7 @@ Object {
                         style="bottom: -12px; position: absolute;"
                       >
                         <div
+                          aria-label="Non accessible"
                           class="css-view-1dbjc4n"
                           data-testid="invalidTestId"
                         >

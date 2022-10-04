@@ -261,6 +261,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         >
           <View
+            accessibilityLabel="Adresse"
             height={16}
             width={16}
           >
@@ -373,6 +374,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         >
           <View
+            accessibilityLabel="Type de lieu"
             height={32}
             width={32}
           >
@@ -599,6 +601,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               />
               <Text>
                 <View
+                  accessibilityLabel="Nouvelle fenêtre"
                   height={16}
                   testID="externalSiteIcon"
                   width={16}
@@ -2735,6 +2738,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             }
           >
             <View
+              accessibilityLabel="Nouvelle fenêtre"
               height={20}
               testID="button-icon"
               width={20}
@@ -2948,6 +2952,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             />
             <Text>
               <View
+                accessibilityLabel="Nouvelle fenêtre"
                 height={16}
                 testID="externalSiteIcon"
                 width={16}
@@ -3209,6 +3214,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Accessible"
                       height={24}
                       testID="validTestId"
                       width={24}
@@ -3345,6 +3351,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Non accessible"
                       fill="#696A6F"
                       height={24}
                       testID="invalidTestId"
@@ -3482,6 +3489,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Non accessible"
                       fill="#696A6F"
                       height={24}
                       testID="invalidTestId"
@@ -3619,6 +3627,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Non accessible"
                       fill="#696A6F"
                       height={24}
                       testID="invalidTestId"
@@ -3950,6 +3959,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             }
           >
             <View
+              accessibilityLabel="Nouvelle fenêtre"
               height={24}
               testID="Icon Site internet"
               width={24}

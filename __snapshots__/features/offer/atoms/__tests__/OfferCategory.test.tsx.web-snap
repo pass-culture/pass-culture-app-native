@@ -34,6 +34,7 @@ exports[`OfferCategory renders correctly 1`] = `
     }
   >
     <div
+      aria-label="Catégorie de l’offre"
       className="css-view-1dbjc4n"
     >
       <div

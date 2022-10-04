@@ -254,6 +254,7 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
       }
     >
       <View
+        accessibilityLabel="Sélectionné"
         height={20}
         width={20}
       >

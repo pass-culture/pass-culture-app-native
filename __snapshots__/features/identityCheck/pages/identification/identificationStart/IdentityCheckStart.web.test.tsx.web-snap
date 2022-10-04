@@ -5,7 +5,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-@@ -577,11 +577,11 @@
+@@ -578,11 +578,11 @@
             class=\\"css-view-1dbjc4n\\"
             style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
           >
@@ -18,7 +18,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                 class=\\"css-view-1dbjc4n\\"
                 style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
               >
-@@ -593,96 +593,85 @@
+@@ -594,105 +594,93 @@
                     class=\\"css-view-1dbjc4n\\"
                     style=\\"align-items: center; height: 100%;\\"
                   >
@@ -67,12 +67,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                         dir=\\"ltr\\"
 -                       style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
 +                       style=\\"color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
-+                     >
-+                       Prends une photo de ta
-+                       <span
-+                         class=\\"css-text-901oao css-textHasAncestor-16my406\\"
-+                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
-                        >
+                      >
 -                       Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.
 -                     </div>
 -                     <div
@@ -83,15 +78,20 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                       class=\\"css-text-901oao\\"
 -                       dir=\\"ltr\\"
 -                       style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;\\"
-+                          carte d’identité 
-+                       </span>
-+                       ou de ton
++                       Prends une photo de ta
 +                       <span
 +                         class=\\"css-text-901oao css-textHasAncestor-16my406\\"
 +                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
                         >
 -                       Prends une photo de ta carte d’identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
 -                     </div>
++                          carte d’identité 
++                       </span>
++                       ou de ton
++                       <span
++                         class=\\"css-text-901oao css-textHasAncestor-16my406\\"
++                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
++                       >
 +                          passeport 
 +                       </span>
 +                       en cours de validité pour accéder à ton pass Culture.
@@ -105,7 +105,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                     tabindex=\\"0\\"
 -                     type=\\"button\\"
 -                   >
-                      <div
+-                     <div
 -                       class=\\"css-text-901oao css-textMultiLine-cens5h\\"
 -                       dir=\\"ltr\\"
 -                       style=\\"color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;\\"
@@ -113,7 +113,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                       Vérification par smartphone
 -                     </div>
 -                   </button>
--                   <div
+                      <div
                         class=\\"css-view-1dbjc4n\\"
 -                     style=\\"height: 32px;\\"
 +                       style=\\"flex-basis: 0px; flex-grow: 1; flex-shrink: 1;\\"
@@ -144,7 +144,16 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                         >
                           <div
                             class=\\"css-view-1dbjc4n\\"
-@@ -701,29 +690,45 @@
+                            style=\\"flex-shrink: 0;\\"
+                          >
+                            <div
+-                           aria-label=\\"\\"
+                              class=\\"css-view-1dbjc4n\\"
+                              data-testid=\\"button-icon\\"
+                            >
+                              <div
+                                class=\\"css-text-901oao\\"
+@@ -703,29 +691,45 @@
                             </div>
                           </div>
                           <div

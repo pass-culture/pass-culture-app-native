@@ -679,6 +679,7 @@ exports[`Profile component should render correctly 1`] = `
                                   }
                                 >
                                   <View
+                                    accessibilityLabel="Activé"
                                     height={16}
                                     width={16}
                                   >
@@ -919,6 +920,7 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         >
                           <View
+                            accessibilityLabel="Nouvelle fenêtre"
                             height={24}
                             width={24}
                           >
@@ -1084,6 +1086,7 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         >
                           <View
+                            accessibilityLabel="Nouvelle fenêtre"
                             height={24}
                             width={24}
                           >
@@ -2037,6 +2040,7 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="République Française - Liberté Égalité Fraternité"
                       fill="none"
                       height="100%"
                       width="100%"

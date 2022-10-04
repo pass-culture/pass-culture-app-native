@@ -342,6 +342,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Nouvelle fenêtre"
                   height={20}
                   testID="button-icon"
                   width={20}
@@ -436,6 +437,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Nouvelle fenêtre"
                   height={20}
                   testID="button-icon"
                   width={20}

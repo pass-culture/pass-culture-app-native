@@ -1005,6 +1005,7 @@ Object {
                         type="button"
                       >
                         <div
+                          aria-label="Revenir à l'étape précédente"
                           class="css-view-1dbjc4n"
                           data-testid="leftIcon"
                         >

@@ -715,6 +715,7 @@ exports[`LocationFilter component should render correctly 1`] = `
                 </Text>
               </View>
               <View
+                accessibilityLabel="Sélectionné"
                 height={24}
                 testID="validateIcon"
                 width={24}

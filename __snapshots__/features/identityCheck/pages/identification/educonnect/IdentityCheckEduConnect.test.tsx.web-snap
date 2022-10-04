@@ -603,6 +603,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               }
             >
               <div
+                aria-label="Nouvelle fenêtre"
                 className="css-view-1dbjc4n"
                 data-testid="button-icon"
               >

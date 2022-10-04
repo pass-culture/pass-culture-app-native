@@ -172,6 +172,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     />
     <View
+      accessibilityLabel="pass culture"
       height={36}
       width={107}
     >
@@ -388,6 +389,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     />
     <View
+      accessibilityLabel="pass culture"
       height={36}
       width={107}
     >

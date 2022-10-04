@@ -464,6 +464,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >
@@ -582,6 +583,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >
@@ -700,6 +702,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Sélectionné"
                     height={20}
                     width={20}
                   >
@@ -818,6 +821,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >
@@ -936,6 +940,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >
@@ -1054,6 +1059,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Non sélectionné"
                     height={20}
                     width={20}
                   >

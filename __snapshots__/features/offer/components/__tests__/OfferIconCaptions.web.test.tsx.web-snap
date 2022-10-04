@@ -22,6 +22,7 @@ Object {
             style="padding: 4px 4px 4px 4px;"
           >
             <div
+              aria-label="Catégorie de l’offre"
               class="css-view-1dbjc4n"
             >
               <div
@@ -58,6 +59,7 @@ Object {
             style="padding: 4px 4px 4px 4px;"
           >
             <div
+              aria-label="Prix"
               class="css-view-1dbjc4n"
               data-testid="iconPrice"
             >
@@ -107,6 +109,7 @@ Object {
           style="padding: 4px 4px 4px 4px;"
         >
           <div
+            aria-label="Catégorie de l’offre"
             class="css-view-1dbjc4n"
           >
             <div
@@ -143,6 +146,7 @@ Object {
           style="padding: 4px 4px 4px 4px;"
         >
           <div
+            aria-label="Prix"
             class="css-view-1dbjc4n"
             data-testid="iconPrice"
           >

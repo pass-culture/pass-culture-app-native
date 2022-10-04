@@ -714,6 +714,7 @@ Array [
                   }
                 >
                   <div
+                    aria-label="Non sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div
@@ -868,6 +869,7 @@ Array [
                   }
                 >
                   <div
+                    aria-label="Non sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div
@@ -1022,6 +1024,7 @@ Array [
                   }
                 >
                   <div
+                    aria-label="Sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div
@@ -1176,6 +1179,7 @@ Array [
                   }
                 >
                   <div
+                    aria-label="Non sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div
@@ -1330,6 +1334,7 @@ Array [
                   }
                 >
                   <div
+                    aria-label="Non sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div
@@ -1484,6 +1489,7 @@ Array [
                   }
                 >
                   <div
+                    aria-label="Non sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div

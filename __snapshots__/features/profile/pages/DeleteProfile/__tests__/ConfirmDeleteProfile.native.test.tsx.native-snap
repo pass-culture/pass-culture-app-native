@@ -27,6 +27,7 @@ Array [
     testID="Revenir en arrière"
   >
     <View
+      accessibilityLabel="Revenir en arrière"
       height={24}
       width={24}
     >
@@ -485,6 +486,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Nouvelle fenêtre"
               height={20}
               testID="button-icon"
               width={20}

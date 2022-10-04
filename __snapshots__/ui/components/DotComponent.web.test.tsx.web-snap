@@ -56,6 +56,7 @@ Object {
           style="align-self: center; margin-left: 4px; margin-right: 4px;"
         >
           <div
+            aria-label="Étape 2 sur 1 en cours"
             class="css-view-1dbjc4n"
             data-testid="dot-icon"
           >
@@ -122,6 +123,7 @@ Object {
         style="align-self: center; margin-left: 4px; margin-right: 4px;"
       >
         <div
+          aria-label="Étape 2 sur 1 en cours"
           class="css-view-1dbjc4n"
           data-testid="dot-icon"
         >
@@ -245,6 +247,7 @@ Object {
           style="align-self: center; margin-left: 4px; margin-right: 4px;"
         >
           <div
+            aria-label="Étape 2 sur 1 à faire"
             class="css-view-1dbjc4n"
             data-testid="dot-icon"
           >
@@ -311,6 +314,7 @@ Object {
         style="align-self: center; margin-left: 4px; margin-right: 4px;"
       >
         <div
+          aria-label="Étape 2 sur 1 à faire"
           class="css-view-1dbjc4n"
           data-testid="dot-icon"
         >

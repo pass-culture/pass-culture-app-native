@@ -1501,6 +1501,7 @@ Array [
               }
             >
               <View
+                accessibilityLabel="Désactivé"
                 height={16}
                 width={16}
               >
@@ -1903,6 +1904,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Nouvelle fenêtre"
               height={16}
               testID="button-icon"
               width={16}

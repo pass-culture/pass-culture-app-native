@@ -187,6 +187,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             testID="Revenir en arrière"
           >
             <View
+              accessibilityLabel="Revenir en arrière"
               height={20}
               testID="leftIcon"
               width={20}

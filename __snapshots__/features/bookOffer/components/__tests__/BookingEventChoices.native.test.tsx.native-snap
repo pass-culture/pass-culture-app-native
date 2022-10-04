@@ -304,6 +304,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           }
         >
           <View
+            accessibilityLabel="Sélectionné"
             height={16}
             width={16}
           >
