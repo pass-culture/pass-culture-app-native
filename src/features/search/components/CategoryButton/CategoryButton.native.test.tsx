@@ -34,4 +34,18 @@ describe('CategoryButton', () => {
 
     expect(handleClick).toHaveBeenCalled()
   })
+
+  it('should be self-explanatory to be accessible', () => {
+    const handleClick = jest.fn()
+    const { getByLabelText } = render(
+      <CategoryButton label="Bibliothèques & Médiathèques" Icon={Bookstore} onPress={handleClick} />
+    )
+
+    const button = getByLabelText(
+      'Retrouver les offres dans la catégorie Bibliothèques & Médiathèques'
+    )
+    fireEvent.press(button)
+
+    expect(handleClick).toHaveBeenCalled()
+  })
 })
