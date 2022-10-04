@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
@@ -13,10 +14,20 @@ interface Props {
 }
 
 export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHideModal }) => {
+  const acceptNotifications = useCallback(() => {
+    analytics.logAcceptNotifications()
+    onHideModal()
+  }, [onHideModal])
+
+  const dismissNotifications = useCallback(() => {
+    analytics.logDismissNotifications()
+    onHideModal()
+  }, [onHideModal])
+
   return (
     <AppInformationModal
       title="Les bons plans au bon moment&nbsp;!"
-      onCloseIconPress={onHideModal}
+      onCloseIconPress={dismissNotifications}
       visible={visible}>
       <Spacer.Column numberOfSpaces={4} />
       <BicolorRingingBell />
@@ -27,7 +38,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
         Reçois des notifications sur les bons plans du pass Culture en exclusivité&nbsp;!
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimary wording="Activer les notifications" />
+      <ButtonPrimary wording="Activer les notifications" onPress={acceptNotifications} />
     </AppInformationModal>
   )
 }
