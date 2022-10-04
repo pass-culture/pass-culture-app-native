@@ -31,6 +31,16 @@ export function NewIdentificationFlow(): JSX.Element {
           title="SelectPhoneStatus"
           onPress={() => navigate('SelectPhoneStatus')}
         />
+        <LinkToComponent
+          name="DMSIntroduction"
+          title="DMS FR"
+          onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: false })}
+        />
+        <LinkToComponent
+          name="DMSIntroduction"
+          title="DMS ETR"
+          onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: true })}
+        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

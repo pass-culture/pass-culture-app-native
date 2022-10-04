@@ -5,6 +5,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/dms/IdentityCheckDMS'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
 import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm'
@@ -220,6 +221,11 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     options: { title: 'Erreur' },
   },
   // New Identification Flow
+  {
+    name: 'DMSIntroduction',
+    component: DMSIntroduction,
+    path: 'identification/redirection-demarches-simplifiees',
+  },
   {
     name: 'SelectIDOrigin',
     component: SelectIDOrigin,

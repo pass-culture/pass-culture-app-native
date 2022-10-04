@@ -1,0 +1,990 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DMSIntroduction should render foreign version correctly 1`] = `
+Array [
+  <View
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "left": 24,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 30,
+        "userSelect": "auto",
+        "zIndex": 1,
+      }
+    }
+    testID="Revenir en arrière"
+  >
+    <View
+      accessibilityLabel="Revenir en arrière"
+      height={24}
+      width={24}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxWidth": 500,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      flex={2}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      hasHeight={false}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="demarches-simplifiees.fr"
+        fill="none"
+        height="64"
+        width="281"
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Identifie-toi sur le site demarches-simplifiees.fr
+    </Text>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginBottom": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Pour t’identifier tu vas avoir besoin de : 
+    </Text>
+    <View
+      accessibilityRole="list"
+      style={
+        Array [
+          Object {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            10 minutes de ton temps
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Un justificatif de domicile
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            fill="url(#gradienttestUuid)"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Un selfie avec ta pièce d’identité
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+    </Text>
+    <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Aller sur demarches-simplifiees.fr"
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="start-cultural-survey"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Nouvelle fenêtre"
+          height={24}
+          testID="button-icon"
+          width={24}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Aller sur demarches-simplifiees.fr
+      </Text>
+    </View>
+    <View
+      flex={1.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
+exports[`DMSIntroduction should render french version correctly 1`] = `
+Array [
+  <View
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "left": 24,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 30,
+        "userSelect": "auto",
+        "zIndex": 1,
+      }
+    }
+    testID="Revenir en arrière"
+  >
+    <View
+      accessibilityLabel="Revenir en arrière"
+      height={24}
+      width={24}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxWidth": 500,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      flex={2}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      hasHeight={false}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="demarches-simplifiees.fr"
+        fill="none"
+        height="64"
+        width="281"
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Identifie-toi sur le site demarches-simplifiees.fr
+    </Text>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginBottom": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Pour t’identifier tu vas avoir besoin de : 
+    </Text>
+    <View
+      accessibilityRole="list"
+      style={
+        Array [
+          Object {
+            "flexDirection": "column",
+            "paddingLeft": 0,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            10 minutes de ton temps
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            fill="url(#gradienttestUuid)"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={3.75}
+            style={
+              Array [
+                Object {
+                  "width": 15,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Un selfie avec ta pièce d’identité
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4.5}
+          style={
+            Array [
+              Object {
+                "height": 18,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+    </Text>
+    <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Aller sur demarches-simplifiees.fr"
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="start-cultural-survey"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Nouvelle fenêtre"
+          height={24}
+          testID="button-icon"
+          width={24}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Aller sur demarches-simplifiees.fr
+      </Text>
+    </View>
+    <View
+      flex={1.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
