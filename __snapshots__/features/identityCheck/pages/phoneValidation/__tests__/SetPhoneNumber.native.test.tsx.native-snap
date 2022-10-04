@@ -11,7 +11,6 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
-        "paddingTop": 8,
       },
     ]
   }
@@ -27,11 +26,11 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
     }
   >
     <View
-      height={72}
+      height={64}
       style={
         Array [
           Object {
-            "height": 72,
+            "height": 64,
           },
         ]
       }
@@ -63,14 +62,13 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
         }
       />
       <View
-        size="medium"
+        size="small"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
+              "height": 48,
+              "justifyContent": "center",
             },
           ]
         }
@@ -158,14 +156,14 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
           <Text
             color="#ffffff"
             numberOfLines={1}
-            size="medium"
+            size="small"
             style={
               Array [
                 Object {
                   "color": "#ffffff",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                   "textAlign": "center",
                 },
               ]
@@ -845,7 +843,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
-        "paddingTop": 8,
       },
     ]
   }
@@ -861,11 +858,11 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
     }
   >
     <View
-      height={72}
+      height={64}
       style={
         Array [
           Object {
-            "height": 72,
+            "height": 64,
           },
         ]
       }
@@ -897,14 +894,13 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         }
       />
       <View
-        size="medium"
+        size="small"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
+              "height": 48,
+              "justifyContent": "center",
             },
           ]
         }
@@ -992,14 +988,14 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           <Text
             color="#ffffff"
             numberOfLines={1}
-            size="medium"
+            size="small"
             style={
               Array [
                 Object {
                   "color": "#ffffff",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                   "textAlign": "center",
                 },
               ]

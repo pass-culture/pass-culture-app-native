@@ -41,7 +41,7 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
+              "height": 72,
               "justifyContent": "flex-end",
               "paddingBottom": 12,
             },
@@ -61,22 +61,14 @@ Array [
           }
         >
           <View
-            positionInHeader="left"
+            numberOfSpaces={6}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
+                  "width": 24,
                 },
               ]
             }
-            testID="Revenir en arrière"
           />
           <Text
             color="#161617"
@@ -86,9 +78,9 @@ Array [
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 24,
+                  "lineHeight": 36,
                   "textAlign": "center",
                 },
               ]
@@ -399,7 +391,7 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
+              "height": 72,
               "justifyContent": "flex-end",
               "paddingBottom": 12,
             },
@@ -419,22 +411,14 @@ Array [
           }
         >
           <View
-            positionInHeader="left"
+            numberOfSpaces={6}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
+                  "width": 24,
                 },
               ]
             }
-            testID="Revenir en arrière"
           />
           <Text
             color="#161617"
@@ -444,9 +428,9 @@ Array [
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 24,
+                  "lineHeight": 36,
                   "textAlign": "center",
                 },
               ]
@@ -830,7 +814,7 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
+              "height": 72,
               "justifyContent": "flex-end",
               "paddingBottom": 12,
             },
@@ -850,22 +834,14 @@ Array [
           }
         >
           <View
-            positionInHeader="left"
+            numberOfSpaces={6}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
+                  "width": 24,
                 },
               ]
             }
-            testID="Revenir en arrière"
           />
           <Text
             color="#161617"
@@ -875,9 +851,9 @@ Array [
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 24,
+                  "lineHeight": 36,
                   "textAlign": "center",
                 },
               ]
@@ -1089,7 +1065,7 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
+              "height": 72,
               "justifyContent": "flex-end",
               "paddingBottom": 12,
             },
@@ -1109,22 +1085,14 @@ Array [
           }
         >
           <View
-            positionInHeader="left"
+            numberOfSpaces={6}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
+                  "width": 24,
                 },
               ]
             }
-            testID="Revenir en arrière"
           />
           <Text
             color="#161617"
@@ -1134,9 +1102,9 @@ Array [
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 24,
+                  "lineHeight": 36,
                   "textAlign": "center",
                 },
               ]

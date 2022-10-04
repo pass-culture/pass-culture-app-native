@@ -5,24 +5,16 @@ import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Spacer } from 'ui/theme'
 
 export function NewIdentificationFlow(): JSX.Element {
-  const { goBack } = useGoBack('Navigation', undefined)
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (
     <ScrollView>
       <Spacer.TopScreen />
-      <ModalHeader
-        title="NewIdentificationFlow 🎨"
-        leftIconAccessibilityLabel={`Revenir en arrière`}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
-      />
+      <PageHeader title="NewIdentificationFlow 🎨" position="absolute" withGoBackButton />
       <StyledContainer>
         <LinkToComponent
           name="SelectIDOrigin"

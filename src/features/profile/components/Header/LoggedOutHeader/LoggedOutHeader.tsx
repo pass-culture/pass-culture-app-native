@@ -14,8 +14,8 @@ export function LoggedOutHeader() {
   const loginText = 'Tu as déjà un compte\u00a0?\u00a0'
   return (
     <React.Fragment>
-      <PageHeader title="Profil" size="medium" />
-      <Spacer.Column numberOfSpaces={6} />
+      <PageHeader title="Mon profil" size="medium" />
+      <Spacer.Column numberOfSpaces={2} />
       <ContentContainer>
         <StyledBody>
           Tu as entre 15 et 18 ans&nbsp;? Crée-toi un compte pour bénéficier de ton crédit pass

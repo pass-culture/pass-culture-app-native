@@ -36,7 +36,7 @@ function TextPlaceholder({ width, height }: { width: number; height?: number }) 
 export function NumberOfResultsPlaceholder() {
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={7} />
+      <Spacer.Column numberOfSpaces={3} />
       <SkeletonTile width={getSpacing(20)} height={getSpacing(3)} borderRadius={2} />
       <Spacer.Column numberOfSpaces={5} />
     </Container>
@@ -46,7 +46,7 @@ export function NumberOfResultsPlaceholder() {
 export function NumberOfBookingsPlaceholder() {
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={7} />
+      <Spacer.Column numberOfSpaces={3} />
       <SkeletonTile width={getSpacing(42)} height={getSpacing(3)} borderRadius={2} />
       <Spacer.Column numberOfSpaces={5} />
     </Container>

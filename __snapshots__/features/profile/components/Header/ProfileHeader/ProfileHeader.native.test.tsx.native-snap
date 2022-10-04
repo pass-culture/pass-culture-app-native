@@ -41,7 +41,7 @@ Array [
           Array [
             Object {
               "alignItems": "center",
-              "height": 56,
+              "height": 72,
               "justifyContent": "flex-end",
               "paddingBottom": 12,
             },
@@ -61,22 +61,14 @@ Array [
           }
         >
           <View
-            positionInHeader="left"
+            numberOfSpaces={6}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
+                  "width": 24,
                 },
               ]
             }
-            testID="Revenir en arrière"
           />
           <Text
             color="#161617"
@@ -86,15 +78,15 @@ Array [
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 24,
+                  "lineHeight": 36,
                   "textAlign": "center",
                 },
               ]
             }
           >
-            Profil
+            Mon profil
           </Text>
           <View
             positionInHeader="right"
@@ -118,11 +110,11 @@ Array [
     </View>
   </View>,
   <View
-    numberOfSpaces={6}
+    numberOfSpaces={2}
     style={
       Array [
         Object {
-          "height": 24,
+          "height": 8,
         },
       ]
     }
@@ -391,7 +383,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         Array [
           Object {
             "alignItems": "center",
-            "height": 56,
+            "height": 72,
             "justifyContent": "flex-end",
             "paddingBottom": 12,
           },
@@ -411,22 +403,14 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         }
       >
         <View
-          positionInHeader="left"
+          numberOfSpaces={6}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "width": 24,
               },
             ]
           }
-          testID="Revenir en arrière"
         />
         <Text
           color="#161617"
@@ -436,15 +420,15 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
             Array [
               Object {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
+                "fontFamily": "Montserrat-Black",
+                "fontSize": 24,
+                "lineHeight": 36,
                 "textAlign": "center",
               },
             ]
           }
         >
-          Profil
+          Mon profil
         </Text>
         <View
           positionInHeader="right"
@@ -509,7 +493,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         Array [
           Object {
             "alignItems": "center",
-            "height": 56,
+            "height": 72,
             "justifyContent": "flex-end",
             "paddingBottom": 12,
           },
@@ -529,22 +513,14 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         }
       >
         <View
-          positionInHeader="left"
+          numberOfSpaces={6}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "width": 24,
               },
             ]
           }
-          testID="Revenir en arrière"
         />
         <Text
           color="#161617"
@@ -554,15 +530,15 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
             Array [
               Object {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
+                "fontFamily": "Montserrat-Black",
+                "fontSize": 24,
+                "lineHeight": 36,
                 "textAlign": "center",
               },
             ]
           }
         >
-          Profil
+          Mon profil
         </Text>
         <View
           positionInHeader="right"

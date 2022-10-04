@@ -102,7 +102,7 @@ function NonBeneficiaryHeaderComponent({
 
   return (
     <React.Fragment>
-      <PageHeader title="Profil" size="medium" />
+      <PageHeader title="Mon profil" size="medium" />
       <NonBeneficiaryBanner />
     </React.Fragment>
   )
@@ -111,8 +111,8 @@ function NonBeneficiaryHeaderComponent({
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
 const BannerContainer = styled.View({
-  padding: getSpacing(4),
-  paddingBottom: 0,
+  paddingTop: getSpacing(2),
+  paddingHorizontal: getSpacing(6),
   position: 'relative',
 })
 

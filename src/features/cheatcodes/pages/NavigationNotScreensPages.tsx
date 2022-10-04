@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { padding, Spacer } from 'ui/theme'
 import { BrowserNotSupportedPage } from 'web/SupportedBrowsersGate'
 
@@ -22,8 +20,6 @@ const mapPageToComponent: Record<Page, JSX.Element> = {
 }
 
 export function NavigationNotScreensPages(): JSX.Element {
-  const { goBack } = useGoBack('Navigation', undefined)
-
   const [page, setPage] = useState<Page | null>(null)
 
   if (page) {
@@ -31,12 +27,10 @@ export function NavigationNotScreensPages(): JSX.Element {
   }
   return (
     <ScrollView>
-      <Spacer.TopScreen />
-      <ModalHeader
+      <PageHeader
         title="Pages qui ne sont pas des écrans (tech)"
-        leftIconAccessibilityLabel={`Revenir en arrière`}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
+        position="absolute"
+        withGoBackButton
       />
       <StyledContainer>
         <Row half>

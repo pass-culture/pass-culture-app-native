@@ -139,7 +139,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
+        style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
       >
         <header
           class="css-view-1dbjc4n"
@@ -148,7 +148,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="height: 72px;"
+            style="height: 64px;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -160,7 +160,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; height: 56px; justify-content: flex-end; padding-bottom: 12px;"
+              style="align-items: center; height: 48px; justify-content: center;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -204,7 +204,7 @@ Object {
                   class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                   dir="ltr"
                   role="heading"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                 >
                   Profil
                 </h1>
@@ -596,7 +596,7 @@ Object {
 <div>
     <div
       class="css-view-1dbjc4n"
-      style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-top: 8px;"
+      style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
     >
       <header
         class="css-view-1dbjc4n"
@@ -605,7 +605,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="height: 72px;"
+          style="height: 64px;"
         />
         <div
           class="css-view-1dbjc4n"
@@ -617,7 +617,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; height: 56px; justify-content: flex-end; padding-bottom: 12px;"
+            style="align-items: center; height: 48px; justify-content: center;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -661,7 +661,7 @@ Object {
                 class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 dir="ltr"
                 role="heading"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
               >
                 Profil
               </h1>

@@ -20,7 +20,8 @@ export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites
 }
 
 const Container = styled.View({
-  margin: getSpacing(6),
+  marginTop: getSpacing(2),
+  marginHorizontal: getSpacing(6),
   marginBottom: getSpacing(4),
 })
 
