@@ -302,12 +302,13 @@ describe('LocationFilter component', () => {
   })
 
   describe('should reset', () => {
-    it('the location radio group when pressing reset button', async () => {
+    it('the location radio group at "Partout" when pressing reset button and position is null', async () => {
+      mockPosition = null
       mockSearchState = initialSearchState
       const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
 
       const defaultRadioButton = getByTestId(RadioButtonLocation.EVERYWHERE)
-      const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
 
@@ -323,6 +324,32 @@ describe('LocationFilter component', () => {
       })
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+    })
+
+    it('the location radio group at "Autour de moi" when pressing reset button and position is not null', async () => {
+      mockSearchState = {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+      }
+      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+
+      const defaultRadioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+      expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
+      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+      expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
+      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+
+      const resetButton = getByText('Réinitialiser')
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
+      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
+      expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
     })
 
     it('the around me radius value when pressing reset button', async () => {
