@@ -81,13 +81,13 @@ const SelectIDStatusContent: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
       <Spacer.Column numberOfSpaces={4} />
-      <Text>
-        <StyledBody>Tu dois avoir ta pièce d’identité </StyledBody>
+      <StyledText>
+        <Typo.Body>Tu dois avoir ta pièce d’identité </Typo.Body>
         <Typo.ButtonText>originale </Typo.ButtonText>
-        <StyledBody>et </StyledBody>
+        <Typo.Body>et </Typo.Body>
         <Typo.ButtonText>en cours de validité </Typo.ButtonText>
-        <StyledBody>avec toi.</StyledBody>
-      </Text>
+        <Typo.Body>avec toi.</Typo.Body>
+      </StyledText>
       <StyledVerticalUl>
         <Spacer.Column numberOfSpaces={12} />
         <Li>
@@ -121,6 +121,6 @@ const Container = styled.View({
 const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
-const StyledBody = styled(Typo.Body)({
+const StyledText = styled(Text)({
   textAlign: 'center',
 })
