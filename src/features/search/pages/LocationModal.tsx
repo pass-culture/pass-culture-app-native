@@ -63,6 +63,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   isVisible,
   hideModal,
 }) => {
+  const logUseFilter = useLogFilterOnce(SectionTitle.Location)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, appContentWidth } = useTheme()
   const { searchState } = useSearch()
@@ -162,6 +163,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const onSelectLocation = useCallback(
     async (locationChoice: RadioButtonLocation) => {
+      logUseFilter()
       if (locationChoice === RadioButtonLocation.AROUND_ME) {
         const grantedButUnknownPosition =
           position === null && permissionState === GeolocPermissionState.GRANTED

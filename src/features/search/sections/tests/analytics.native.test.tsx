@@ -4,10 +4,11 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { OfferType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { RadioButtonLocation } from 'features/search/pages/LocationModal'
 import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 
 import { SectionTitle } from '../titles'
 
@@ -43,20 +44,16 @@ describe('Analytics - logUseFilter', () => {
     mockdate.set(Today)
     expect(analytics.logUseFilter).not.toBeCalled()
   })
-  it('should log UseFilter for selecting a new Location', () => {
-    fireEvent.press(render(<Section.Location />).getByTestId('changeLocation'))
+
+  it('should log UseFilter for selecting a new Location', async () => {
+    const { getByText } = render(<Section.Location />)
+    await act(async () => {
+      fireEvent.press(getByText(RadioButtonLocation.AROUND_ME))
+    })
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Location)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
-  it('should log UseFilter for sliding the radius', () => {
-    const { getByTestId } = render(<Section.Radius />)
-    const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChangeFinish([50])
-    slider.props.onValuesChangeFinish([23])
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
   it('should log UseFilter once when selecting multiple offer types', () => {
     const { getByText } = render(<Section.OfferType />)
     fireEvent.press(getByText(OfferType.DIGITAL))
@@ -97,6 +94,7 @@ describe('Analytics - logUseFilter', () => {
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferDate)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
+
   it('should log UseFilter once when changing hour filter', () => {
     const { getByTestId } = render(<Section.Hour />)
     fireEvent.press(getByTestId('Interrupteur'))

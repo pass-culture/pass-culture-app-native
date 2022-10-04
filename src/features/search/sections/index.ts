@@ -7,7 +7,6 @@ import { NewOffer } from './NewOffer'
 import { OfferDate } from './OfferDate'
 import { OfferType } from './OfferType'
 import { Price } from './Price'
-import { Radius } from './Radius'
 import { TimeSlot } from './TimeSlot'
 
 export default {
@@ -20,6 +19,5 @@ export default {
   OfferType,
   Price,
   TimeSlot,
-  Radius,
   Location,
 }

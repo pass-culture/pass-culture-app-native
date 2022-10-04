@@ -65,22 +65,11 @@ export const SearchFilter: React.FC = () => {
       />
       <React.Fragment>
         <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>
-          <Spacer.Column numberOfSpaces={4} />
-
           {/* Localisation */}
+          <Spacer.Column numberOfSpaces={4} />
           <Section.Location />
           <Spacer.Column numberOfSpaces={4} />
           <Separator />
-
-          {/* Rayon */}
-          {!!('aroundRadius' in searchState.locationFilter) && (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <Section.Radius />
-              <Spacer.Column numberOfSpaces={6} />
-              <Separator />
-            </React.Fragment>
-          )}
 
           {/* Catégories */}
           <Spacer.Column numberOfSpaces={4} />

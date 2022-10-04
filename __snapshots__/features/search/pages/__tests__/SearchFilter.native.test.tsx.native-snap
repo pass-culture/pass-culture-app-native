@@ -263,56 +263,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           ]
         }
       >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Localisation
-            <Text
-              aria-live="off"
-              style={
-                Array [
-                  Object {
-                    "color": "#eb0055",
-                  },
-                ]
-              }
-              testID="titleCount"
-            >
-               (1)
-            </Text>
-          </Text>
-        </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
         <View
           accessible={true}
           collapsable={false}
@@ -327,14 +277,13 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "display": "flex",
               "flexDirection": "row",
               "justifyContent": "space-between",
               "opacity": 1,
               "userSelect": "auto",
             }
           }
-          testID="changeLocation"
+          testID="FilterRow"
         >
           <View
             height={24}
@@ -354,22 +303,49 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           />
-          <Text
-            numberOfLines={2}
+          <View
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "alignItems": "flex-start",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Autour de moi
-          </Text>
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Localisation
+            </Text>
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Autour de moi
+            </Text>
+          </View>
           <View
             style={
               Array [
@@ -390,321 +366,44 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <Text
-          nativeID="testUuidV4"
-          style={
-            Array [
-              Object {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Seules les sorties et offres physiques seront affichées
-        </Text>
       </View>
+      <Modal
+        accessibilityRole="none"
+        animationType="none"
+        aria-labelledby="testUuidV4"
+        aria-modal={true}
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          Array [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
       <View
         numberOfSpaces={4}
         style={
           Array [
             Object {
               "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-              "backgroundColor": "#F1F1F4",
-              "height": 2,
-              "marginVertical": 0,
-              "width": 912,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "marginHorizontal": 24,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
-              },
-            ]
-          }
-        >
-          Rayon
-        </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "textAlign": "center",
-                  "width": 864,
-                },
-              ]
-            }
-          >
-            100 km
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            shouldShowMinMaxValues={false}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-            testID="slider"
-          >
-            <View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "height": 50,
-                      "justifyContent": "center",
-                      "position": "relative",
-                    },
-                    Object {
-                      "height": 32,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexDirection": "row",
-                      },
-                      Object {
-                        "width": 864,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#A7A7A7",
-                          "borderRadius": 2,
-                          "height": 2,
-                        },
-                        Object {
-                          "borderRadius": 24,
-                          "height": 15,
-                          "marginTop": -7,
-                        },
-                        Object {
-                          "backgroundColor": "#eb0055",
-                        },
-                        Object {
-                          "width": 864,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#A7A7A7",
-                          "borderRadius": 2,
-                          "height": 2,
-                        },
-                        Object {
-                          "borderRadius": 24,
-                          "height": 15,
-                          "marginTop": -7,
-                        },
-                        Object {
-                          "backgroundColor": "#90949D",
-                        },
-                        Object {
-                          "width": 0,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "height": 48,
-                          "justifyContent": "center",
-                          "position": "absolute",
-                          "width": 48,
-                        },
-                        Object {
-                          "left": 840,
-                          "top": -24,
-                        },
-                        undefined,
-                        Object {
-                          "zIndex": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      onMoveShouldSetResponder={[Function]}
-                      onMoveShouldSetResponderCapture={[Function]}
-                      onResponderEnd={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderReject={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderStart={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      onStartShouldSetResponderCapture={[Function]}
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "alignSelf": "stretch",
-                            "backgroundColor": "transparent",
-                            "justifyContent": "center",
-                          },
-                          Object {
-                            "borderRadius": 15,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessible={true}
-                        focusable={false}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        testID="slider-control"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "backgroundColor": "#FFFFFF",
-                                "borderColor": "#DDDDDD",
-                                "borderRadius": 30,
-                                "borderWidth": 1,
-                                "height": 30,
-                                "shadowColor": "#000000",
-                                "shadowOffset": Object {
-                                  "height": 3,
-                                  "width": 0,
-                                },
-                                "shadowOpacity": 0.2,
-                                "shadowRadius": 1,
-                                "width": 30,
-                              },
-                              Object {
-                                "backgroundColor": "#ffffff",
-                                "borderColor": "#90949D",
-                                "borderRadius": 28,
-                                "borderWidth": 2,
-                                "height": 28,
-                                "shadowOpacity": 0,
-                                "width": 28,
-                              },
-                              undefined,
-                              undefined,
-                            ]
-                          }
-                        />
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
             },
           ]
         }

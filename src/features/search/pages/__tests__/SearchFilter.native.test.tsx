@@ -53,30 +53,6 @@ describe('SearchFilter component', () => {
     })
   })
 
-  it('should render section Radius when search around me', async () => {
-    mockStagedSearchState.locationFilter = {
-      locationType: LocationType.AROUND_ME,
-      aroundRadius: 100,
-    }
-    const { queryByText } = renderSearchFilter()
-    await act(async () => {
-      expect(queryByText(SectionTitle.Radius)).toBeTruthy()
-    })
-  })
-
-  it('should render section Radius when search place', async () => {
-    // Address
-    mockStagedSearchState.locationFilter = {
-      locationType: LocationType.PLACE,
-      aroundRadius: 10,
-      place: Kourou,
-    }
-    const { queryByText } = renderSearchFilter()
-    await act(async () => {
-      expect(queryByText(SectionTitle.Radius)).toBeTruthy()
-    })
-  })
-
   it('should not render section Radius when search everywhere', async () => {
     mockStagedSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
     const { queryByText } = renderSearchFilter()
