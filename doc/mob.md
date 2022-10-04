@@ -22,7 +22,7 @@ Faire une todo list découpée en micro-tâches et rester concentré sur la tâc
 
 C’est plus facile à organiser / faciliter quand *tout le monde* est :
 
-* physiquement présent dans la meme salle
+* physiquement présent dans la même salle
 * à distance
 
 L'hybride est possible mais plus difficile et moins agréable pour les personnes à distance
