@@ -12,6 +12,7 @@ import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identi
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckValidation'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
+import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/identificationStart/ExpiredOrLostID'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
@@ -225,6 +226,11 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'DMSIntroduction',
     component: DMSIntroduction,
     path: 'identification/redirection-demarches-simplifiees',
+  },
+  {
+    name: 'ExpiredOrLostID',
+    component: ExpiredOrLostID,
+    path: 'identification/document-identite-perdu-ou-expire',
   },
   {
     name: 'SelectIDOrigin',
