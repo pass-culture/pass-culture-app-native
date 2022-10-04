@@ -87,7 +87,6 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
 
   useAppStateChange(playAnimation, undefined)
   useEffect(playAnimation, [playAnimation])
-
   return (
     <React.Fragment>
       {props.headerGoBack && canGoBack() ? (

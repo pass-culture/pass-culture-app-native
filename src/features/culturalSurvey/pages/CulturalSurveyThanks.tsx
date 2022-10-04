@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CulturalSurveyThanks: React.FC = () => {

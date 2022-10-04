@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render } from 'tests/utils'
-import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
 describe('<GenericInfoPageWhite />', () => {

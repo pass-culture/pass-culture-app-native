@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render } from 'tests/utils'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
 describe('<GenericInfoPage />', () => {

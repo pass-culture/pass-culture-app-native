@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -19,12 +19,12 @@ export const ReportOfferDescription: FunctionComponent<Props> = ({ onPressReport
         certaines offres ne respectent pas les CGU.
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <InformationComponent
+      <InformationWithIcon
         Icon={BicolorLock}
         text="Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
       />
       <Spacer.Column numberOfSpaces={8} />
-      <InformationComponent
+      <InformationWithIcon
         Icon={BicolorConfidentiality}
         text="Ton identité restera anonyme auprès des acteurs culturels."
       />
@@ -38,32 +38,6 @@ export const ReportOfferDescription: FunctionComponent<Props> = ({ onPressReport
   )
 }
 
-const InformationComponent: FunctionComponent<{
-  Icon: React.FC<BicolorIconInterface>
-  text: string
-}> = ({ Icon, text }) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.icons.sizes.small,
-  }))``
-
-  return (
-    <InfoContainer>
-      <StyledIcon />
-      <Spacer.Row numberOfSpaces={3.75} />
-      <Info>{text}</Info>
-    </InfoContainer>
-  )
-}
-
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
-})
-
-const InfoContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
-
-const Info = styled(Typo.Body)({
-  flex: 1,
 })

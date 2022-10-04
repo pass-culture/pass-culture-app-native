@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const AccountReactivationSuccess = () => (

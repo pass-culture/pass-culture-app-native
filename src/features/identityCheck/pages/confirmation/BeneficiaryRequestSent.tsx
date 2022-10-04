@@ -8,8 +8,8 @@ import {
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { Typo } from 'ui/theme'
 
