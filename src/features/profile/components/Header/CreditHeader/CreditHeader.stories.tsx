@@ -7,7 +7,7 @@ import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/
 import { CreditHeader } from './CreditHeader'
 
 export default {
-  title: 'ui/CreditHeader',
+  title: 'features/Profile/Headers/CreditHeader',
   component: CreditHeader,
   decorators: [
     (Story) => (

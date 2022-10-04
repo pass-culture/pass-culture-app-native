@@ -8,7 +8,7 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Typo } from 'ui/theme'
 
 export default {
-  title: 'Features/HeroButtonList',
+  title: 'Features/IdentityCheck/HeroButtonList',
   component: HeroButtonList,
 } as ComponentMeta<typeof HeroButtonList>
 
