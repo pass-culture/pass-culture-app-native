@@ -12,8 +12,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdentityCheck(): JSX.Element {
@@ -35,12 +34,7 @@ export function NavigationIdentityCheck(): JSX.Element {
   return (
     <ScrollView>
       <Spacer.TopScreen />
-      <ModalHeader
-        title="IdentityCheck 🎨"
-        leftIconAccessibilityLabel={`Revenir en arrière`}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
-      />
+      <PageHeader title="IdentityCheck 🎨" withGoBackButton position="absolute" />
       <StyledContainer>
         <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
         <LinkToComponent

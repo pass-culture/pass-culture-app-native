@@ -3,20 +3,16 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationProfile(): JSX.Element {
-  const { goBack } = useGoBack('Navigation', undefined)
-
   const {
     visible: ceilingModalVisible,
     showModal: showCeilingModal,
@@ -43,13 +39,7 @@ export function NavigationProfile(): JSX.Element {
 
   return (
     <ScrollView>
-      <Spacer.TopScreen />
-      <ModalHeader
-        title="Profile 🎨"
-        leftIconAccessibilityLabel="Revenir en arrière"
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
-      />
+      <PageHeader title="Profile 🎨" position="absolute" withGoBackButton />
       <StyledContainer>
         <LinkToComponent name="Login" />
         <LinkToComponent name="ChangeEmail" />
