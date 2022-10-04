@@ -210,6 +210,7 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
           }
         >
           <View
+            accessibilityLabel="Fermer la modale de conseils pour avoir un document lisible"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}

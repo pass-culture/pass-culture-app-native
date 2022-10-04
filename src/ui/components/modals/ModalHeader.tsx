@@ -64,8 +64,11 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       </TitleContainer>
       <RightHeaderActionContainer>
         {!!RightIcon && (
-          <HeaderAction onPress={onRightIconPress} testID={rightIconAccessibilityLabel}>
-            <RightIcon {...accessibilityAndTestId(rightIconAccessibilityLabel, 'rightIcon')} />
+          <HeaderAction
+            onPress={onRightIconPress}
+            testID={rightIconAccessibilityLabel}
+            accessibilityLabel={rightIconAccessibilityLabel}>
+            <RightIcon testID="rightIcon" />
           </HeaderAction>
         )}
       </RightHeaderActionContainer>

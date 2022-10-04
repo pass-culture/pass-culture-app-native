@@ -256,6 +256,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           }
         >
           <View
+            accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}

@@ -1338,6 +1338,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               }
             >
               <View
+                accessibilityLabel="Fermer la modale"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}

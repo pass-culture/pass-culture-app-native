@@ -2494,6 +2494,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         >
           <View
+            accessibilityLabel="Fermer la modale et annuler"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
