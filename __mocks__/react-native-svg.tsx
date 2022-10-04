@@ -5,6 +5,7 @@ const mockReactNativeSvg = jest.genMockFromModule('react-native-svg')
 
 const Svg = ({
   testID,
+  accesibilityLabel,
   fill,
   fillColor,
   borderColor,
@@ -12,6 +13,7 @@ const Svg = ({
   height,
 }: {
   testID: string
+  accesibilityLabel: string
   fill: string
   fillColor: string
   borderColor: string
@@ -27,6 +29,7 @@ const Svg = ({
       borderColor={borderColor}
       width={width}
       height={height}
+      accesibilityLabel={accesibilityLabel}
       testID={testID}>
       <Text>{displayNameForTest}</Text>
     </View>
