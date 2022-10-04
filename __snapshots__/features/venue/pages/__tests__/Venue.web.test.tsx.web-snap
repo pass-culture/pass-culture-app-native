@@ -133,19 +133,6 @@ Object {
   text-decoration: none;
 }
 
-.c5 {
-  background-color: transparent;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
 .c3 {
   overflow: hidden;
   cursor: pointer;
@@ -186,6 +173,19 @@ Object {
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c5 {
+  background-color: transparent;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 <body>
@@ -623,7 +623,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="c1 c2 sc-ikJyIC c2"
+                class="c1 c2 sc-hiCibw c2"
                 data-testid="iconLocation"
                 tabindex="0"
                 title="Géolocalisation désactivée"
@@ -1879,19 +1879,6 @@ Object {
   text-decoration: none;
 }
 
-.c5 {
-  background-color: transparent;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
 .c3 {
   overflow: hidden;
   cursor: pointer;
@@ -1932,6 +1919,19 @@ Object {
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c5 {
+  background-color: transparent;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 <div>
@@ -2368,7 +2368,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="c1 c2 sc-ikJyIC c2"
+              class="c1 c2 sc-hiCibw c2"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"
