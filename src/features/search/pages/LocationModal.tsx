@@ -156,10 +156,11 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const onResetPress = useCallback(() => {
     reset({
-      locationChoice: RadioButtonLocation.EVERYWHERE,
+      locationChoice:
+        position !== null ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
       aroundRadius: MAX_RADIUS,
     })
-  }, [reset])
+  }, [position, reset])
 
   const onSelectLocation = useCallback(
     async (locationChoice: RadioButtonLocation) => {
@@ -182,7 +183,14 @@ export const LocationModal: FunctionComponent<Props> = ({
 
       setValue('locationChoice', locationChoice)
     },
-    [showGeolocPermissionModal, requestGeolocPermission, permissionState, position, setValue]
+    [
+      logUseFilter,
+      setValue,
+      position,
+      permissionState,
+      showGeolocPermissionModal,
+      requestGeolocPermission,
+    ]
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
