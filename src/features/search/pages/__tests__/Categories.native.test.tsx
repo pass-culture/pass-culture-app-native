@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 
 import { Categories } from '../Categories'
 
@@ -31,24 +31,30 @@ describe('Categories component', () => {
     expect(getByText('Jeux & jeux vidéos')).toBeTruthy()
   })
 
-  it("should change the selected category filter when pressing on another filter's checkbox", () => {
+  it("should change the selected category filter when pressing on another filter's checkbox", async () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
-    fireEvent.press(someCategoryFilterCheckbox)
+    await act(async () => {
+      fireEvent.press(someCategoryFilterCheckbox)
+    })
 
     expect(someCategoryFilterCheckbox).toHaveProp('isSelected', true)
     const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
     expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', false)
   })
 
-  it('should set the selected category filter on navigate when one is set', () => {
+  it('should set the selected category filter on navigate when one is set', async () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
-    fireEvent.press(someCategoryFilterCheckbox)
+    await act(async () => {
+      fireEvent.press(someCategoryFilterCheckbox)
+    })
     const button = getByText('Rechercher')
-    fireEvent.press(button)
+    await act(async () => {
+      fireEvent.press(button)
+    })
 
     const expectedSearchParams = {
       ...initialSearchState,
@@ -60,13 +66,18 @@ describe('Categories component', () => {
     })
   })
 
-  it('should set the selected category filter on navigate when none are set', () => {
+  it('should set the selected category filter on navigate when none are set', async () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Toutes les catégories')
-    fireEvent.press(someCategoryFilterCheckbox)
+    await act(async () => {
+      fireEvent.press(someCategoryFilterCheckbox)
+    })
+
     const button = getByText('Rechercher')
-    fireEvent.press(button)
+    await act(async () => {
+      fireEvent.press(button)
+    })
 
     const expectedSearchParams = { ...initialSearchState, offerCategories: [] }
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -75,11 +86,15 @@ describe('Categories component', () => {
     })
   })
 
-  it('should select default filter when pressing the reset button', () => {
+  it('should select default filter when pressing the reset button', async () => {
     const { getByText } = renderCategories()
 
     const button = getByText('Réinitialiser')
-    fireEvent.press(button)
+
+    await act(async () => {
+      fireEvent.press(button)
+    })
+
     const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
 
     expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
@@ -90,7 +105,10 @@ describe('Categories component', () => {
       const { getByText } = renderCategories()
 
       const button = getByText('Rechercher')
-      fireEvent.press(button)
+
+      await act(async () => {
+        fireEvent.press(button)
+      })
 
       expect(mockHideModal).toHaveBeenCalled()
     })
@@ -99,7 +117,10 @@ describe('Categories component', () => {
       const { getByTestId } = renderCategories()
 
       const previousButton = getByTestId('backButton')
-      await fireEvent.press(previousButton)
+
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       expect(mockHideModal).toHaveBeenCalled()
     })
