@@ -1,48 +1,80 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
+import { RadioButtonLocation } from 'features/search/pages/LocationModal'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { fireEvent, render } from 'tests/utils'
+import { Location } from 'features/search/sections/Location'
+import { render, fireEvent, superFlushWithAct } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
-import { Location } from '../Location'
-
-const mockSearchState = initialSearchState
+const mockSearchState = jest.fn().mockReturnValue({
+  searchState: initialSearchState,
+})
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-  }),
+  useSearch: () => mockSearchState(),
 }))
 
-const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
-
-describe('Location section', () => {
-  const countString = '\xa0(1)'
-
-  it('should not have count in title', () => {
-    expect(render(<Location />).queryByText(countString)).toBeNull()
+describe('Location component', () => {
+  it(`should have EVERYWHERE description's by default`, async () => {
+    const { getByText, queryByText } = await renderLocation()
+    expect(getByText(RadioButtonLocation.EVERYWHERE)).toBeTruthy()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
   })
 
-  it('should have count in title when searching Around me', () => {
-    mockSearchState.locationFilter = {
-      locationType: LocationType.AROUND_ME,
-      aroundRadius: 20,
-    }
-    expect(render(<Location />).queryByText(countString)).toBeTruthy()
+  it(`should have AROUND_ME description's when selected`, async () => {
+    mockSearchState.mockReturnValueOnce({
+      searchState: {
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+      },
+    })
+    const { getByText, queryByText } = await renderLocation()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
+    expect(getByText(RadioButtonLocation.AROUND_ME)).toBeTruthy()
+    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
   })
 
-  it('should have count in title when searching Place', () => {
-    mockSearchState.locationFilter = {
-      locationType: LocationType.PLACE,
-      place: Kourou,
-      aroundRadius: 20,
-    }
-    expect(render(<Location />).queryByText(countString)).toBeTruthy()
+  it(`should have VENUE description's when selected`, async () => {
+    mockSearchState.mockReturnValueOnce({
+      searchState: {
+        locationFilter: { locationType: LocationType.VENUE },
+      },
+    })
+    const { getByText, queryByText } = await renderLocation()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
+    expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeTruthy()
   })
 
-  it('should navigate to the offer when clicking on the hit', () => {
-    fireEvent.press(render(<Location />).getByTestId('changeLocation'))
-    expect(navigate).toHaveBeenCalledWith('LocationFilter')
+  it(`should have PLACE description's when selected`, async () => {
+    mockSearchState.mockReturnValueOnce({
+      searchState: {
+        locationFilter: { locationType: LocationType.PLACE },
+      },
+    })
+    const { getByText, queryByText } = await renderLocation()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
+    expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeTruthy()
+  })
+
+  it('should open modal when clicked', async () => {
+    const mockShowModal = jest.fn()
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: true,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+    const { getAllByText } = await renderLocation()
+    fireEvent.press(getAllByText(RadioButtonLocation.EVERYWHERE)[0])
+    expect(mockShowModal).toBeCalledTimes(1)
   })
 })
+
+async function renderLocation() {
+  const renderAPI = render(<Location />)
+  await superFlushWithAct()
+  return renderAPI
+}
