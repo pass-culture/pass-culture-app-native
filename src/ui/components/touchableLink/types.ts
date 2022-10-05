@@ -41,5 +41,5 @@ export type TouchableLinkProps = (InternalNavigationProps | ExternalNavigationPr
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
   hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
   isOnPressDebounced?: boolean
-} & TouchableOpacityProps &
+} & Omit<TouchableOpacityProps, 'onPress'> &
   AsProps

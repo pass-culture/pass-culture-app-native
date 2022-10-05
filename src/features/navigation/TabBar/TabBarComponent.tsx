@@ -30,7 +30,7 @@ export const TabBarComponent: React.FC<Props> = ({
 }) => (
   <TabComponentContainer
     navigateTo={navigateTo}
-    onPress={onPress}
+    onBeforeNavigate={onPress}
     activeOpacity={1}
     selected={isSelected}
     accessibilityLabel={menu[tabName].accessibilityLabel}

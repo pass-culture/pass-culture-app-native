@@ -64,7 +64,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        onPress={handlePressVenue}
+        onBeforeNavigate={handlePressVenue}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}

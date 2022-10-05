@@ -16,7 +16,7 @@ interface SeeMoreProps {
 export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onPress }) => (
   <Container height={height} width={width}>
     <Spacer.Column numberOfSpaces={2} />
-    <ClickableArea activeOpacity={1} navigateTo={navigateTo} onPress={onPress}>
+    <ClickableArea activeOpacity={1} navigateTo={navigateTo} onBeforeNavigate={onPress}>
       <Row>
         <Spacer.Row numberOfSpaces={16} />
         <RoundContainer>

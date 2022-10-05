@@ -18,7 +18,6 @@ const ON_PRESS_DEBOUNCE_DELAY = 300
 export function TouchableLink({
   onBeforeNavigate,
   onAfterNavigate,
-  onPress,
   enableNavigate = true,
   navigateTo,
   externalNav,
@@ -73,9 +72,6 @@ export function TouchableLink({
     if (onBeforeNavigate) await onBeforeNavigate(event)
     if (enableNavigate) {
       handleNavigation()
-    }
-    if (onPress) {
-      await onPress(event)
     }
     if (onAfterNavigate) await onAfterNavigate(event)
   }

@@ -69,7 +69,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
         navigateTo={
           offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
         }
-        onPress={handlePressOffer}
+        onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
         <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />

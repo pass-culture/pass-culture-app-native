@@ -22,7 +22,10 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
     : undefined
 
   return (
-    <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording, testID)}>
+    <Container
+      onBeforeNavigate={onPress}
+      disabled={isDisabled}
+      {...accessibilityAndTestId(wording, testID)}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer>
         {!!Icon && <Icon />}

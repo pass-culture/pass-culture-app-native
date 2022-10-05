@@ -23,7 +23,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   return (
     <StyledTouchableLink
       navigateTo={navigateTo}
-      onPress={onPress}
+      onBeforeNavigate={onPress}
       disabled={state !== 'current'}
       state={state}
       {...accessibilityAndTestId(undefined, label)}>
