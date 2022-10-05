@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { StyleProp, ViewStyle, View } from 'react-native'
+import { StyleProp, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -19,10 +19,12 @@ import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { Form } from 'ui/components/Form'
+import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
+import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
 
@@ -189,9 +191,9 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
             control={control}
             name="offerTypes"
             render={() => (
-              <React.Fragment>
+              <VerticalUl>
                 {OFFER_TYPES.map(({ type, label, icon }) => (
-                  <View key={label}>
+                  <Li key={label}>
                     <RadioButton
                       onSelect={() => selectOfferType(type)}
                       isSelected={getSelectedOfferType() === type}
@@ -200,9 +202,9 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
                       testID={label}
                     />
                     <Spacer.Column numberOfSpaces={6} />
-                  </View>
+                  </Li>
                 ))}
-              </React.Fragment>
+              </VerticalUl>
             )}
           />
           <Spacer.Column numberOfSpaces={6} />
