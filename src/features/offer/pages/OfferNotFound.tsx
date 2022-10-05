@@ -42,8 +42,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
             as={ButtonPrimaryWhite}
             wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
-            onPress={onPress}
-            navigateBeforeOnPress
+            onAfterNavigate={onPress}
           />,
         ]}>
         <StyledBody>Il est possible que cette offre soit désactivée ou n’existe pas.</StyledBody>
