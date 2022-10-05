@@ -41,7 +41,7 @@ export const appModalContainerStyle = ({
         borderBottomRightRadius: BORDER_HORIZTONAL_RADIUS,
         borderBottomLeftRadius: BORDER_HORIZTONAL_RADIUS,
         maxHeight: desktopMaxHeight,
-        maxWidth: getSpacing(130),
+        maxWidth: theme.modal.desktopMaxWidth,
       }
     : {
         borderBottomStartRadius: 0,

@@ -391,6 +391,13 @@ export interface AppThemeType {
       backgroundColor: ColorsEnum
     }
   }
+  slider: {
+    markerSize: number
+    trackHeight: number
+  }
+  modal: {
+    desktopMaxWidth: number
+  }
 }
 
 export const theme: AppThemeType = {
@@ -800,5 +807,12 @@ export const theme: AppThemeType = {
       borderColor: ColorsEnum.GREY_MEDIUM,
       backgroundColor: ColorsEnum.WHITE,
     },
+  },
+  slider: {
+    markerSize: getSpacing(9),
+    trackHeight: getSpacing(4),
+  },
+  modal: {
+    desktopMaxWidth: getSpacing(130),
   },
 }

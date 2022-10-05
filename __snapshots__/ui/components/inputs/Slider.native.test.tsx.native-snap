@@ -75,11 +75,13 @@ Array [
                 },
                 Object {
                   "borderRadius": 24,
-                  "height": 15,
-                  "marginTop": -7,
+                  "height": 16,
+                  "marginTop": -8,
                 },
                 Object {
-                  "backgroundColor": "#90949D",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderWidth": 2,
                 },
                 Object {
                   "width": 0,
@@ -109,8 +111,8 @@ Array [
                 },
                 Object {
                   "borderRadius": 24,
-                  "height": 15,
-                  "marginTop": -7,
+                  "height": 16,
+                  "marginTop": -8,
                 },
                 Object {
                   "backgroundColor": "#eb0055",
@@ -131,11 +133,13 @@ Array [
                 },
                 Object {
                   "borderRadius": 24,
-                  "height": 15,
-                  "marginTop": -7,
+                  "height": 16,
+                  "marginTop": -8,
                 },
                 Object {
-                  "backgroundColor": "#90949D",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderWidth": 2,
                 },
                 Object {
                   "width": 0,
@@ -222,12 +226,12 @@ Array [
                       },
                       Object {
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#90949D",
+                        "borderColor": "#161617",
                         "borderRadius": 28,
                         "borderWidth": 2,
-                        "height": 28,
+                        "height": 36,
                         "shadowOpacity": 0,
-                        "width": 28,
+                        "width": 36,
                       },
                       undefined,
                       undefined,
@@ -315,12 +319,12 @@ Array [
                       },
                       Object {
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#90949D",
+                        "borderColor": "#161617",
                         "borderRadius": 28,
                         "borderWidth": 2,
-                        "height": 28,
+                        "height": 36,
                         "shadowOpacity": 0,
-                        "width": 28,
+                        "width": 36,
                       },
                       undefined,
                       undefined,

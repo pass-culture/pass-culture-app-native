@@ -29,7 +29,7 @@ import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export enum RadioButtonLocation {
   EVERYWHERE = 'Partout',
@@ -65,7 +65,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 }) => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport, appContentWidth } = useTheme()
+  const { isDesktopViewport, appContentWidth, slider, modal } = useTheme()
   const { searchState } = useSearch()
   const {
     position,
@@ -194,7 +194,10 @@ export const LocationModal: FunctionComponent<Props> = ({
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
-  const sliderLength = isDesktopViewport ? getSpacing(111) : appContentWidth - getSpacing(19.25)
+
+  const baseSliderContainerWidth = isDesktopViewport ? modal.desktopMaxWidth : appContentWidth
+
+  const sliderLength = baseSliderContainerWidth - ModalSpacing.MD * 2 - slider.markerSize
 
   const hasAroundMeRadius = useMemo(() => {
     return locationChoice === RadioButtonLocation.AROUND_ME
