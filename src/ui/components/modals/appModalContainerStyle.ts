@@ -1,7 +1,6 @@
 import { CSSObject } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { getSpacing } from 'ui/theme'
 
 const BORDER_HORIZTONAL_RADIUS = getSpacing(5)
@@ -30,8 +29,8 @@ export const appModalContainerStyle = ({
   borderTopLeftRadius: BORDER_HORIZTONAL_RADIUS,
   flexDirection: 'column',
   justifyContent: 'center',
-  ...(noPadding ? {} : { padding: ModalSpacing.MD }),
-  paddingBottom: ModalSpacing.LG,
+  ...(noPadding ? {} : { padding: theme.modal.spacing.MD }),
+  paddingBottom: theme.modal.spacing.LG,
   width: '100%',
   height,
   ...(theme.isDesktopViewport

@@ -9,6 +9,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
+// eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'

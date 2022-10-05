@@ -22,7 +22,6 @@ import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Slider } from 'ui/components/inputs/Slider'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -197,7 +196,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const baseSliderContainerWidth = isDesktopViewport ? modal.desktopMaxWidth : appContentWidth
 
-  const sliderLength = baseSliderContainerWidth - ModalSpacing.MD * 2 - slider.markerSize
+  const sliderLength = baseSliderContainerWidth - modal.spacing.MD * 2 - slider.markerSize
 
   const hasAroundMeRadius = useMemo(() => {
     return locationChoice === RadioButtonLocation.AROUND_ME
@@ -222,7 +221,7 @@ export const LocationModal: FunctionComponent<Props> = ({
       title={title}
       isFullscreen={true}
       noPadding={true}
-      modalSpacing={ModalSpacing.MD}
+      modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={close}

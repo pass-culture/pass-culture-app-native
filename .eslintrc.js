@@ -102,6 +102,10 @@ module.exports = {
         name: '@react-native-firebase/remote-config',
         message: 'use libs/firebase/shims/remote-config instead',
       },
+      {
+        name: 'ui/components/modals/enum',
+        message: 'use modal.spacing from theme/index.ts',
+      },
     ],
     'no-restricted-properties': [
       'error',

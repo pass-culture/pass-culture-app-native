@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+// eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'

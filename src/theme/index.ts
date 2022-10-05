@@ -2,6 +2,8 @@ import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
+// eslint-disable-next-line no-restricted-imports
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { getSpacing, getSpacingString } from 'ui/theme'
 import { buttonHeights, ButtonHeightsType } from 'ui/theme/buttonHeights'
 // eslint-disable-next-line no-restricted-imports
@@ -397,6 +399,11 @@ export interface AppThemeType {
   }
   modal: {
     desktopMaxWidth: number
+    spacing: {
+      SM: number
+      MD: number
+      LG: number
+    }
   }
 }
 
@@ -813,6 +820,7 @@ export const theme: AppThemeType = {
     trackHeight: getSpacing(4),
   },
   modal: {
+    spacing: ModalSpacing,
     desktopMaxWidth: getSpacing(130),
   },
 }
