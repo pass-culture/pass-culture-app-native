@@ -116,11 +116,11 @@ describe('<TouchableLink />', () => {
       })
     })
 
-    it('should fire onPress if given, before navigation', async () => {
+    it('should fire onBeforeNavigate if given, before navigation', async () => {
       const { getByText } = render(
         <TouchableLink
           navigateTo={{ screen: 'FirstTutorial' }}
-          onPress={() => analytics.logConsultTutorial('profile')}>
+          onBeforeNavigate={() => analytics.logConsultTutorial('profile')}>
           <TouchableLinkContent />
         </TouchableLink>
       )
@@ -176,7 +176,7 @@ describe('<TouchableLink />', () => {
           as={ButtonPrimary}
           wording={buttonText}
           navigateTo={{ screen: 'FirstTutorial' }}
-          onPress={() => analytics.logConsultTutorial('profile')}
+          onBeforeNavigate={() => analytics.logConsultTutorial('profile')}
         />
       )
       const expectedStyle = getButtonByText(buttonText).props.style
@@ -206,11 +206,11 @@ describe('<TouchableLink />', () => {
       })
     })
 
-    it('should fire onPress if given, before navigation', async () => {
+    it('should fire onBeforeNavigate if given, before navigation', async () => {
       const { getByText } = render(
         <TouchableLink
           externalNav={externalNav}
-          onPress={() => analytics.logClickSocialNetwork(socialNetwork)}>
+          onBeforeNavigate={() => analytics.logClickSocialNetwork(socialNetwork)}>
           <TouchableLinkContent />
         </TouchableLink>
       )
@@ -240,24 +240,6 @@ describe('<TouchableLink />', () => {
       })
     })
 
-    it('should fire onPress after navigation if navigateBeforeOnPress={true}', async () => {
-      const { getByText } = render(
-        <TouchableLink
-          externalNav={externalNav}
-          onPress={() => analytics.logClickSocialNetwork(socialNetwork)}
-          navigateBeforeOnPress>
-          <TouchableLinkContent />
-        </TouchableLink>
-      )
-
-      fireEvent.press(getByText(linkText))
-      expect(openUrl).toBeCalledWith(externalNav.url, externalNav.params)
-      expect(analytics.logConsultAccessibility).not.toBeCalled()
-      await waitForExpect(() => {
-        expect(analytics.logClickSocialNetwork).toBeCalledWith(socialNetwork)
-      })
-    })
-
     it('should open itinerary if address is provided', async () => {
       const { getByText } = render(
         <TouchableLink
@@ -283,7 +265,7 @@ describe('<TouchableLink />', () => {
           as={ButtonPrimary}
           wording={buttonText}
           externalNav={externalNav}
-          onPress={() => analytics.logClickSocialNetwork(socialNetwork)}
+          onBeforeNavigate={() => analytics.logClickSocialNetwork(socialNetwork)}
         />
       )
       const expectedStyle = getButtonByText(buttonText).props.style

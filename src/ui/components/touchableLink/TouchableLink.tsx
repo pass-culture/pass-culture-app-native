@@ -22,7 +22,6 @@ export function TouchableLink({
   enableNavigate = true,
   navigateTo,
   externalNav,
-  navigateBeforeOnPress,
   children,
   highlight = false,
   disabled,
@@ -72,14 +71,11 @@ export function TouchableLink({
   async function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
     if (onBeforeNavigate) await onBeforeNavigate(event)
-    if (navigateBeforeOnPress && enableNavigate) {
+    if (enableNavigate) {
       handleNavigation()
     }
     if (onPress) {
       await onPress(event)
-    }
-    if (!navigateBeforeOnPress && enableNavigate) {
-      handleNavigation()
     }
     if (onAfterNavigate) await onAfterNavigate(event)
   }
