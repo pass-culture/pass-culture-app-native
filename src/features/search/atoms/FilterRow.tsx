@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
@@ -21,27 +22,25 @@ export const FilterRow = ({ icon: Icon, title, description, captionId, onPress }
     size: theme.icons.sizes.small,
   }))``
   return (
-    <MarginHorizontalContainer>
-      <LocationContentContainer testID="FilterRow" onPress={onPress} aria-describedby={captionId}>
-        <StyledIcon />
-        <Spacer.Row numberOfSpaces={2} />
-        <TextContainer>
-          <Title numberOfLines={1}>{title}</Title>
-          {!!description && <Description numberOfLines={1}>{description}</Description>}
-        </TextContainer>
-        <Spacer.Flex />
-        <ArrowNext />
-      </LocationContentContainer>
-    </MarginHorizontalContainer>
+    <LocationContentContainer testID="FilterRow" onPress={onPress} aria-describedby={captionId}>
+      <StyledIcon />
+      <Spacer.Row numberOfSpaces={2} />
+      <TextContainer>
+        <Title numberOfLines={1}>{title}</Title>
+        {!!description && <Description numberOfLines={1}>{description}</Description>}
+      </TextContainer>
+      <Spacer.Flex />
+      <ArrowNext />
+    </LocationContentContainer>
   )
 }
 
-const MarginHorizontalContainer = styled.View({ marginHorizontal: getSpacing(6) })
-
-const LocationContentContainer = styled(TouchableOpacity)({
+const LocationContentContainer = styledButton(Touchable)({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  marginLeft: getSpacing(6),
+  marginRight: getSpacing(6),
 })
 
 const TextContainer = styled.View({
