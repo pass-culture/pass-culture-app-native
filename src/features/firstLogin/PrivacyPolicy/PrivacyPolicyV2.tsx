@@ -13,7 +13,7 @@ export function PrivacyPolicyV2() {
     visible: cookiesConsentModalVisible,
     hideModal: hideCookiesConsentModal,
     showModal: showCookiesConsentModal,
-  } = useModal(true)
+  } = useModal(false)
   const isCookiesListUpToDate = useIsCookiesListUpToDate()
 
   useEffect(() => {
@@ -25,6 +25,9 @@ export function PrivacyPolicyV2() {
   }, [])
 
   useEffect(() => {
+    // while fetching hasUserMadeCookieChoiceV2 value
+    if (hasUserMadeCookieChoiceV2 === undefined) return
+
     if (hasUserMadeCookieChoiceV2 && !hasConsentChoiceExpired && isCookiesListUpToDate) {
       hideCookiesConsentModal()
     } else {
