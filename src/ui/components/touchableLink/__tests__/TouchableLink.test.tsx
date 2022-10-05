@@ -37,7 +37,7 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Home', params: undefined })
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home', params: undefined })
       })
     })
 
@@ -50,7 +50,7 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(push).toBeCalledWith('TabNavigator', {
+        expect(push).toHaveBeenCalledWith('TabNavigator', {
           screen: 'Home',
           params: undefined,
         })
@@ -66,7 +66,7 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(navigateFromRef).toBeCalledWith('TabNavigator', {
+        expect(navigateFromRef).toHaveBeenCalledWith('TabNavigator', {
           screen: 'Home',
           params: undefined,
         })
@@ -87,7 +87,7 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(pushFromRef).toBeCalledWith('TabNavigator', {
+        expect(pushFromRef).toHaveBeenCalledWith('TabNavigator', {
           screen: 'Home',
           params: undefined,
         })
@@ -109,7 +109,7 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(navigate).not.toBeCalledWith('TabNavigator', {
+        expect(navigate).not.toHaveBeenCalledWith('TabNavigator', {
           screen: 'Home',
           params: undefined,
         })
@@ -126,10 +126,10 @@ describe('<TouchableLink />', () => {
       )
 
       fireEvent.press(getByText(linkText))
-      expect(analytics.logConsultTutorial).toBeCalledWith('profile')
-      expect(navigate).not.toBeCalled()
+      expect(analytics.logConsultTutorial).toHaveBeenCalledWith('profile')
+      expect(navigate).not.toHaveBeenCalled()
       await waitForExpect(() => {
-        expect(navigate).toBeCalledWith('FirstTutorial', undefined)
+        expect(navigate).toHaveBeenCalledWith('FirstTutorial', undefined)
       })
     })
 
@@ -185,7 +185,7 @@ describe('<TouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(openUrl).toBeCalledWith(externalNav.url, externalNav.params)
+        expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params)
       })
     })
 
@@ -219,7 +219,7 @@ describe('<TouchableLink />', () => {
 
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(navigateToItineraryMock).toBeCalledWith(mockedFullAddress)
+        expect(navigateToItineraryMock).toHaveBeenCalledWith(mockedFullAddress)
       })
     })
 
