@@ -15,7 +15,7 @@ import * as useUserProfileInfoAPI from 'features/profile/api'
 import { eventMonitoring } from 'libs/monitoring'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
-import { act, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
 
 const mockUseUserProfileInfo = jest.spyOn(useUserProfileInfoAPI, 'useUserProfileInfo')
 mockUseUserProfileInfo.mockReturnValue({
@@ -45,17 +45,21 @@ describe('useCookies', () => {
   })
 
   describe('state', () => {
-    it('should be undefined by default', () => {
+    it('should be undefined by default', async () => {
       const { result } = renderHook(useCookies)
       const { cookiesConsent } = result.current
 
       expect(cookiesConsent).toBeUndefined()
+
+      // Wait in act until the useEffect finishes
+      await flushAllPromisesWithAct()
     })
 
     it('should write state', async () => {
       const { result } = renderHook(useCookies)
       const { setCookiesConsent } = result.current
 
+      await flushAllPromisesWithAct()
       await act(async () => {
         await setCookiesConsent({
           mandatory: COOKIES_BY_CATEGORY.essential,
@@ -366,6 +370,8 @@ describe('useCookies', () => {
       it('should not throw errors', async () => {
         const { result } = renderHook(useCookies)
         const { setCookiesConsent } = result.current
+
+        await flushAllPromisesWithAct()
 
         let promise
         act(() => {
