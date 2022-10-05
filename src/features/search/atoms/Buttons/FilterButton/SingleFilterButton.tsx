@@ -4,16 +4,16 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { IconInterface } from 'ui/svg/icons/types'
+import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-export type SingleFilterButtonProps = {
+type IsSelectedProps = {
+  isSelected: boolean
+}
+
+export type SingleFilterButtonProps = IsSelectedProps & {
   label: string
-  Icon?: FunctionComponent<IconInterface>
-  color?: ColorsEnum
   testID?: string
   onPress: () => void
   children?: never
@@ -21,34 +21,24 @@ export type SingleFilterButtonProps = {
 
 export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
   label,
-  Icon,
-  color,
+  isSelected,
   onPress,
   testID,
 }) => {
-  let StyledIcon
-
-  if (Icon) {
-    StyledIcon = styled(Icon).attrs(({ theme }) => ({
-      size: theme.icons.sizes.extraSmall,
-      color: color ?? theme.colors.black,
-    }))({})
-  }
-
   const filterButtonIcon = testID ? `${testID}Icon` : 'filterButtonIcon'
   const filterButtonLabel = testID ? `${testID}Label` : 'filterButtonLabel'
 
   return (
-    <TouchableContainer color={color} onPress={onPress} testID={testID}>
-      {!!StyledIcon && <StyledIcon testID={filterButtonIcon} />}
-      <Label color={color} testID={filterButtonLabel}>
+    <TouchableContainer isSelected={isSelected} onPress={onPress} testID={testID}>
+      {!!isSelected && <StyledIcon testID={filterButtonIcon} />}
+      <Label isSelected={isSelected} testID={filterButtonLabel}>
         {label}
       </Label>
     </TouchableContainer>
   )
 }
 
-const TouchableContainer = styledButton(Touchable)<{ color?: ColorsEnum }>(({ theme, color }) => ({
+const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, isSelected }) => ({
   boxSizing: 'border-box',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -58,7 +48,7 @@ const TouchableContainer = styledButton(Touchable)<{ color?: ColorsEnum }>(({ th
   paddingTop: getSpacing(1.5),
   paddingBottom: getSpacing(1.5),
   height: getSpacing(8),
-  borderColor: color ?? theme.colors.black,
+  borderColor: isSelected ? theme.colors.primary : theme.colors.black,
   borderWidth: getSpacing(0.25),
   borderRadius: theme.borderRadius.button,
   ...(Platform.OS === 'web'
@@ -68,12 +58,17 @@ const TouchableContainer = styledButton(Touchable)<{ color?: ColorsEnum }>(({ th
         },
       }
     : {}),
-  ...getHoverStyle(color ?? theme.colors.black),
+  ...getHoverStyle(isSelected ? theme.colors.primary : theme.colors.black),
 }))
 
-const Label = styled(Typo.Caption)<{ color?: ColorsEnum }>(({ theme, color }) => ({
+const StyledIcon = styled(Check).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.colors.primary,
+}))``
+
+const Label = styled(Typo.Caption)<IsSelectedProps>(({ theme, isSelected }) => ({
   flex: 1,
   marginLeft: getSpacing(1),
   textAlign: 'left',
-  color: color ?? theme.colors.black,
+  color: isSelected ? theme.colors.primary : theme.colors.black,
 }))

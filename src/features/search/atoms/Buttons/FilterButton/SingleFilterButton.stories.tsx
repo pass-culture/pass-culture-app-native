@@ -1,9 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { theme } from 'theme'
-import { Check } from 'ui/svg/icons/Check'
-
 import { SingleFilterButton } from './SingleFilterButton'
 
 export default {
@@ -15,14 +12,14 @@ const Template: ComponentStory<typeof SingleFilterButton> = (props) => (
   <SingleFilterButton {...props} />
 )
 
-export const WithColor = Template.bind({})
-WithColor.args = {
+export const IsSelected = Template.bind({})
+IsSelected.args = {
   label: 'CD, vinyles, musique en ligne',
-  Icon: Check,
-  color: theme.colors.primary,
+  isSelected: true,
 }
 
-export const WithoutColor = Template.bind({})
-WithoutColor.args = {
+export const IsNotSelected = Template.bind({})
+IsNotSelected.args = {
   label: 'Catégories',
+  isSelected: false,
 }

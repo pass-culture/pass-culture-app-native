@@ -2,7 +2,6 @@ import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
-import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -29,7 +28,6 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
-import { Check } from 'ui/svg/icons/Check'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -88,7 +86,6 @@ export const SearchResults: React.FC = () => {
     showModal: showLocationModal,
     hideModal: hideLocationModal,
   } = useModal(false)
-  const theme = useTheme()
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
@@ -209,8 +206,7 @@ export const SearchResults: React.FC = () => {
                 label={locationLabel}
                 testID="locationButton"
                 onPress={hasFiltersButtonsDisplay ? showLocationModal : redirectFilters}
-                Icon={Check}
-                color={theme.colors.primary}
+                isSelected
               />
             </ButtonContainer>
             <Spacer.Row numberOfSpaces={2} />
@@ -219,8 +215,7 @@ export const SearchResults: React.FC = () => {
                 label="Catégories"
                 testID="categoryButton"
                 onPress={showCategoriesModal}
-                Icon={hasCategory ? Check : undefined}
-                color={hasCategory ? theme.colors.primary : undefined}
+                isSelected={hasCategory}
               />
             </ButtonContainer>
             <React.Fragment>
@@ -230,8 +225,7 @@ export const SearchResults: React.FC = () => {
                   label="Prix"
                   testID="priceButton"
                   onPress={showSearchPriceModal}
-                  Icon={hasPrice ? Check : undefined}
-                  color={hasPrice ? theme.colors.primary : undefined}
+                  isSelected={hasPrice}
                 />
               </ButtonContainer>
             </React.Fragment>
@@ -242,8 +236,7 @@ export const SearchResults: React.FC = () => {
                   label="Type"
                   testID="typeButton"
                   onPress={showOfferTypeModal}
-                  Icon={hasType ? Check : undefined}
-                  color={hasType ? theme.colors.primary : undefined}
+                  isSelected={!!hasType}
                 />
               </ButtonContainer>
             </React.Fragment>
