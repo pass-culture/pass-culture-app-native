@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
+import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -16,11 +16,11 @@ export const Date: React.FC = () => {
   }, [])
 
   return (
-    <SectionWithSwitch
-      title={SectionTitle.Date}
-      subtitle="Seules les sorties seront affichées"
-      active={!!searchState.date}
+    <FilterSwitchWithLabel
+      label={SectionTitle.Date}
+      isActive={!!searchState.date}
       toggle={toggle}
+      subtitle="Seules les sorties seront affichées"
     />
   )
 }

@@ -25,3 +25,9 @@ Default.args = {
   isActive: true,
   label: 'Ceci est un label',
 }
+export const WithSubtitle = Template.bind({})
+WithSubtitle.args = {
+  isActive: true,
+  label: 'Ceci est un label',
+  subtitle: 'Ceci est un sous-titre',
+}

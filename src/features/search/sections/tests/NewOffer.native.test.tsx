@@ -32,12 +32,4 @@ describe('NewOffer component', () => {
     fireEvent.press(getByTestId(testID))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
   })
-
-  it('should have the indicator of the filters in the title', () => {
-    mockSearchState = initialSearchState
-    expect(render(<NewOffer />).queryByText('Uniquement les nouveautés')).toBeTruthy()
-    expect(render(<NewOffer />).queryByTestId('titleCount')).toBeNull()
-    mockSearchState = { ...initialSearchState, offerIsNew: true }
-    expect(render(<NewOffer />).queryByTestId('titleCount')).toBeTruthy()
-  })
 })

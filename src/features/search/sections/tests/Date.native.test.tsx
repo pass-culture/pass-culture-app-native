@@ -31,12 +31,4 @@ describe('Date component', () => {
     fireEvent.press(getByTestId('Interrupteur'))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_DATE' })
   })
-
-  it('should have the indicator of the filters in the title', () => {
-    mockSearchState = { ...initialSearchState, date: null }
-    expect(render(<DateSection />).queryByText('Date')).toBeTruthy()
-    expect(render(<DateSection />).queryByTestId('titleCount')).toBeNull()
-    mockSearchState = { ...initialSearchState, date }
-    expect(render(<DateSection />).queryByTestId('titleCount')).toBeTruthy()
-  })
 })

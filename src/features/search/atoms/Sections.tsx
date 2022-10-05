@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo, Spacer } from 'ui/theme'
@@ -31,14 +32,23 @@ export const Section: React.FC<{
   </MarginHorizontalContainer>
 )
 
-export const InlineSection: React.FC<{
+export type InlineSectionProps = {
   title: JSX.Element | string
   subtitle?: string
   subtitleID?: string
-  children: JSX.Element | Array<JSX.Element | null>
   testID?: string
-}> = ({ title, subtitle, subtitleID, children, testID }) => (
-  <MarginHorizontalContainer testID={testID}>
+  style?: StyleProp<ViewStyle>
+}
+
+export const InlineSection = ({
+  style,
+  title,
+  subtitle,
+  subtitleID,
+  children,
+  testID,
+}: PropsWithChildren<InlineSectionProps>) => (
+  <MarginHorizontalContainer testID={testID} style={style}>
     <InlineSectionTitleContainer>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
       {children}

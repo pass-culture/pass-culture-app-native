@@ -90,18 +90,22 @@ export const SearchFilter: React.FC = () => {
 
           {/* Uniquement les offres duo */}
           {!!profile?.isBeneficiary && (
-            <React.Fragment>
+            <ToggleContainer>
               <Section.DuoOffer />
               <Separator marginVertical={getSpacing(4)} />
-            </React.Fragment>
+            </ToggleContainer>
           )}
 
           {/* Uniquement les nouveautés */}
-          <Section.NewOffer />
+          <ToggleContainer>
+            <Section.NewOffer />
+          </ToggleContainer>
           <Separator marginVertical={getSpacing(4)} />
 
           {/* Date */}
-          <Section.Date />
+          <ToggleContainer>
+            <Section.Date />
+          </ToggleContainer>
           <Separator marginVertical={getSpacing(4)} />
 
           {/* Date de l'offre */}
@@ -114,7 +118,9 @@ export const SearchFilter: React.FC = () => {
           )}
 
           {/* Heure */}
-          <Section.Hour />
+          <ToggleContainer>
+            <Section.Hour />
+          </ToggleContainer>
 
           {/*Créneau horaire */}
           {!!searchState.timeRange && (
@@ -158,4 +164,7 @@ const ShowResultsContainer = styled.View({
   bottom: getSpacing(6),
   paddingHorizontal: getSpacing(6),
   alignItems: 'center',
+})
+const ToggleContainer = styled.View({
+  marginHorizontal: getSpacing(6),
 })
