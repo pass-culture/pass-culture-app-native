@@ -21,7 +21,6 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
@@ -58,7 +57,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { searchState } = useSearch()
   const { data: user } = useUserProfileInfo()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, modal } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const {
@@ -169,7 +168,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
       title={title}
       isFullscreen
       noPadding
-      modalSpacing={ModalSpacing.MD}
+      modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={close}

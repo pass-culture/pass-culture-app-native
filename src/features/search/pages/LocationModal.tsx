@@ -22,14 +22,13 @@ import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Slider } from 'ui/components/inputs/Slider'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export enum RadioButtonLocation {
   EVERYWHERE = 'Partout',
@@ -65,7 +64,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 }) => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport, appContentWidth } = useTheme()
+  const { isDesktopViewport, appContentWidth, slider, modal } = useTheme()
   const { searchState } = useSearch()
   const {
     position,
@@ -194,7 +193,10 @@ export const LocationModal: FunctionComponent<Props> = ({
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
-  const sliderLength = isDesktopViewport ? getSpacing(111) : appContentWidth - getSpacing(19.25)
+
+  const baseSliderContainerWidth = isDesktopViewport ? modal.desktopMaxWidth : appContentWidth
+
+  const sliderLength = baseSliderContainerWidth - modal.spacing.MD * 2 - slider.markerSize
 
   const hasAroundMeRadius = useMemo(() => {
     return locationChoice === RadioButtonLocation.AROUND_ME
@@ -219,7 +221,7 @@ export const LocationModal: FunctionComponent<Props> = ({
       title={title}
       isFullscreen={true}
       noPadding={true}
-      modalSpacing={ModalSpacing.MD}
+      modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={close}

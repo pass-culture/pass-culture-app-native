@@ -1,10 +1,9 @@
 import React, { memo, useState } from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { ModalSpacing } from 'ui/components/modals/enum'
 
 type Props = {
   onResetPress: () => void
@@ -17,10 +16,11 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   onSearchPress,
   isSearchDisabled,
 }: Props) {
+  const { modal } = useTheme()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const modalSpacing = Platform.OS === 'ios' ? ModalSpacing.LG : ModalSpacing.SM
+  const modalSpacing = Platform.OS === 'ios' ? modal.spacing.LG : modal.spacing.SM
 
   return (
     <FilterPageButtonsContainer paddingBottom={keyboardHeight ? keyboardHeight - modalSpacing : 0}>

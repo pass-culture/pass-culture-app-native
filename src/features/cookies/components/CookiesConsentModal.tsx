@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -17,6 +16,7 @@ export const CookiesConsentModal: typeof AppModal = ({
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
+  const { modal } = useTheme()
 
   const CustomHeader = useMemo(
     () => (
@@ -38,7 +38,7 @@ export const CookiesConsentModal: typeof AppModal = ({
       visible={visible}
       title={title}
       maxHeight={height - top}
-      modalSpacing={ModalSpacing.MD}
+      modalSpacing={modal.spacing.MD}
       customModalHeader={CustomHeader}
       fixedModalBottom={FixedModalBottom}>
       {children}
@@ -53,8 +53,8 @@ const HeaderContainer = styled.View({
   width: '100%',
 })
 
-const FixedBottomChildrenView = styled.View({
+const FixedBottomChildrenView = styled.View(({ theme }) => ({
   marginTop: getSpacing(5),
-  paddingHorizontal: ModalSpacing.MD,
+  paddingHorizontal: theme.modal.spacing.MD,
   alignItems: 'center',
-})
+}))

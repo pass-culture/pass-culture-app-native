@@ -27,7 +27,6 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -80,7 +79,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, modal } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
@@ -216,7 +215,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
       title={title}
       isFullscreen={true}
       noPadding={true}
-      modalSpacing={ModalSpacing.MD}
+      modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={close}

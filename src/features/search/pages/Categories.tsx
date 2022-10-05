@@ -15,7 +15,6 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSpacing } from 'ui/components/modals/enum'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
@@ -42,7 +41,7 @@ export const Categories: FunctionComponent<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, modal } = useTheme()
 
   const {
     handleSubmit,
@@ -97,7 +96,7 @@ export const Categories: FunctionComponent<Props> = ({
       title={title}
       isFullscreen={true}
       noPadding={true}
-      modalSpacing={ModalSpacing.MD}
+      modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={hideModal}

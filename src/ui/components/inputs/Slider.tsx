@@ -18,6 +18,7 @@ interface Props {
   maxLabel?: string
   shouldShowMinMaxValues?: boolean
 }
+
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
 const DEFAULT_STEP = 1
@@ -130,7 +131,7 @@ export function Slider(props: Props) {
         </CenteredText>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <StyledView
+      <SliderWrapper
         ref={setStyledViewRef}
         testID="slider"
         shouldShowMinMaxValues={shouldShowMinMaxValues}>
@@ -144,7 +145,7 @@ export function Slider(props: Props) {
           onValuesChangeFinish={props.onValuesChangeFinish}
           sliderLength={props.sliderLength}
         />
-      </StyledView>
+      </SliderWrapper>
       {!!shouldShowMinMaxValues && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
@@ -160,17 +161,17 @@ export function Slider(props: Props) {
 
 const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) => {
   const markerStyle = {
-    height: getSpacing(7),
-    width: getSpacing(7),
+    height: theme.slider.markerSize,
+    width: theme.slider.markerSize,
     borderRadius: getSpacing(7),
-    borderColor: theme.colors.greySemiDark,
+    borderColor: theme.colors.black,
     borderWidth: getSpacing(0.5),
     backgroundColor: theme.colors.white,
     shadowOpacity: 0,
   }
   const trackStyle = {
-    height: 15,
-    marginTop: -7,
+    height: theme.slider.trackHeight,
+    marginTop: -theme.slider.trackHeight / 2,
     borderRadius: theme.borderRadius.button,
   }
   return {
@@ -178,7 +179,11 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     pressedMarkerStyle: markerStyle,
     trackStyle,
     selectedStyle: { backgroundColor: theme.colors.primary },
-    unselectedStyle: { backgroundColor: theme.colors.greySemiDark },
+    unselectedStyle: {
+      backgroundColor: theme.colors.white,
+      borderColor: theme.colors.greySemiDark,
+      borderWidth: getSpacing(0.5),
+    },
     containerStyle: { height: getSpacing(8) },
     sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
@@ -198,8 +203,8 @@ const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const StyledView = styled.View<{ shouldShowMinMaxValues?: boolean }>(
-  ({ shouldShowMinMaxValues }) => ({
-    ...(shouldShowMinMaxValues && { paddingLeft: getSpacing(3.5) }),
+const SliderWrapper = styled.View<{ shouldShowMinMaxValues?: boolean }>(
+  ({ shouldShowMinMaxValues, theme }) => ({
+    ...(shouldShowMinMaxValues && { paddingLeft: theme.slider.markerSize / 2 }),
   })
 )
