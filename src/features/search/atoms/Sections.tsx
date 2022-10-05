@@ -5,8 +5,6 @@ import styled from 'styled-components/native'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { TitleWithCount } from './TitleWithCount'
-
 export const CenteredSection: React.FC<{
   title: JSX.Element | string
   children: JSX.Element | Array<JSX.Element | null>
@@ -15,20 +13,6 @@ export const CenteredSection: React.FC<{
     <Title>{title}</Title>
     <Spacer.Column numberOfSpaces={4} />
     <Center>{children}</Center>
-  </MarginHorizontalContainer>
-)
-
-export const Section: React.FC<{
-  title: string
-  count: number
-  children: JSX.Element | Array<JSX.Element | null>
-}> = ({ title, count, children }) => (
-  <MarginHorizontalContainer>
-    <Title>
-      <TitleWithCount title={title} count={count} />
-    </Title>
-    <Spacer.Column numberOfSpaces={4} />
-    {children}
   </MarginHorizontalContainer>
 )
 
