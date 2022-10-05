@@ -118,11 +118,19 @@ describe('<PrivacyPolicy />', () => {
     })
 
     it('should show cookies modal V2 when appEnableCookiesV2 feature flag is activated', async () => {
-      mockUseCookies.mockReturnValueOnce({ ...defaultUseCookies, cookiesConsent: undefined })
+      mockUseCookies.mockReturnValueOnce({ ...defaultUseCookies, cookiesConsent: null })
       const renderAPI = await renderPrivacyPolicyV2()
 
       const title = renderAPI.queryByText('Choisir les cookies')
       expect(title).toBeTruthy()
+    })
+
+    it('should not show cookies modal V2 when appEnableCookiesV2 feature flag is activated and fetching cookies is loading', async () => {
+      mockUseCookies.mockReturnValueOnce({ ...defaultUseCookies, cookiesConsent: undefined })
+      const renderAPI = await renderPrivacyPolicyV2()
+
+      const title = renderAPI.queryByText('Choisir les cookies')
+      expect(title).toBeNull()
     })
 
     it('should not show cookies modal V2 when appEnableCookiesV2 feature flag is activated and user has made consent choice', async () => {
