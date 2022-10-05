@@ -25,54 +25,44 @@ exports[`Search component should render Search 1`] = `
     }
   />
   <View
-    height={16}
-    position="absolute"
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#eb0055",
-          "height": 16,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": -1,
-        },
-      ]
-    }
-  >
-    <View
-      height={16}
-      width={964}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    isLanding={false}
     style={
       Array [
         Object {
           "marginTop": 24,
-          "paddingLeft": 16,
-          "paddingRight": 24,
+          "paddingHorizontal": 24,
           "zIndex": 1,
         },
       ]
     }
-    testID="searchBoxWithoutLabel"
   >
+    <View>
+      <Text
+        htmlFor="testUuidV4"
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Recherche une offre
+      </Text>
+    </View>
     <View
-      isLanding={false}
+      numberOfSpaces={2}
       style={
         Array [
-          Object {},
+          Object {
+            "height": 8,
+          },
         ]
       }
-    >
+    />
+    <View>
       <View
         style={
           Array [
@@ -83,7 +73,6 @@ exports[`Search component should render Search 1`] = `
         }
       >
         <View
-          isLanding={false}
           style={
             Array [
               Object {
@@ -94,7 +83,6 @@ exports[`Search component should render Search 1`] = `
                 "flexShrink": 1,
                 "justifyContent": "center",
               },
-              Object {},
             ]
           }
         >
@@ -236,17 +224,17 @@ exports[`Search component should render Search 1`] = `
         </Text>
       </View>
     </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
   </View>
-  <View
-    numberOfSpaces={1}
-    style={
-      Array [
-        Object {
-          "height": 4,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [
@@ -299,7 +287,6 @@ exports[`Search component should render Search 1`] = `
           Object {
             "paddingBottom": 88,
             "paddingHorizontal": 20,
-            "paddingTop": 24,
           }
         }
         data={

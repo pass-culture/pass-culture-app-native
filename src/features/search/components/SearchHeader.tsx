@@ -35,7 +35,7 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <SearchBoxContainer testID="searchBoxWithLabel">
+      <SearchBoxContainer>
         <View {...getHeadingAttrs(1)}>
           <StyledTitle4 htmlFor={searchInputID}>Recherche une offre</StyledTitle4>
         </View>

@@ -2,16 +2,6 @@
 
 exports[`SearchResults component should render correctly 1`] = `
 Array [
-  <View
-    numberOfSpaces={2}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />,
   <View>
     <RCTScrollView
       horizontal={true}
