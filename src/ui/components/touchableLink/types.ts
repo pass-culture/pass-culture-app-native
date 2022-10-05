@@ -1,5 +1,5 @@
 import { ElementType } from 'react'
-import { TouchableOpacityProps } from 'react-native'
+import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 
 import { UrlParamsProps } from 'features/navigation/helpers'
 import { RootNavigateParams } from 'features/navigation/RootNavigator'
@@ -36,6 +36,8 @@ type AsProps = {
 } & Record<string, unknown>
 
 export type TouchableLinkProps = (InternalNavigationProps | ExternalNavigationProps) & {
+  onBeforeNavigate?: (event: GestureResponderEvent) => void
+  onAfterNavigate?: (event: GestureResponderEvent) => void
   navigateBeforeOnPress?: boolean // If true, triggers navigation before onPress function
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
   hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified

@@ -150,6 +150,24 @@ describe('<TouchableLink />', () => {
       })
     })
 
+    it('should fire onAfterNavigate after navigate', async () => {
+      const mockedOnAfterNavigate = jest.fn()
+      const { getByText } = render(
+        <TouchableLink
+          navigateTo={{ screen: 'FirstTutorial' }}
+          onAfterNavigate={mockedOnAfterNavigate}>
+          <TouchableLinkContent />
+        </TouchableLink>
+      )
+
+      fireEvent.press(getByText(linkText))
+
+      expect(navigate).toHaveBeenCalledWith('FirstTutorial', undefined)
+      await waitForExpect(() => {
+        expect(mockedOnAfterNavigate).toHaveBeenCalled()
+      })
+    })
+
     it('should render with correct style if component tag is given', () => {
       const buttonText = 'button'
       const { getByText: getButtonByText } = render(<ButtonPrimary wording={buttonText} />)
@@ -202,6 +220,23 @@ describe('<TouchableLink />', () => {
       expect(openUrl).not.toBeCalled()
       await waitForExpect(() => {
         expect(openUrl).toBeCalledWith(externalNav.url, externalNav.params)
+      })
+    })
+
+    it('should fire onBeforeNavigate before navigation', async () => {
+      const mockedOnBeforeNavigate = jest.fn()
+      const { getByText } = render(
+        <TouchableLink externalNav={externalNav} onBeforeNavigate={mockedOnBeforeNavigate}>
+          <TouchableLinkContent />
+        </TouchableLink>
+      )
+
+      fireEvent.press(getByText(linkText))
+
+      expect(mockedOnBeforeNavigate).toHaveBeenCalled()
+      expect(openUrl).not.toHaveBeenCalled()
+      await waitForExpect(() => {
+        expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params)
       })
     })
 
