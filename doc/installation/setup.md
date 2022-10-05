@@ -2,6 +2,24 @@
 
 We advise to follow [the guidelines][1] to set up your environment. Select your Development OS and your target OS (Android/iOS).
 
+You'll also need `jq`:
+
+**MacOS**
+
+```sh
+brew install jq
+```
+
+**Linux with apt as root**
+
+```sh
+apt update && apt -y install jq
+```
+
+**Building from source (not recommended)**
+
+Read jq documentation https://github.com/stedolan/jq
+
 ### Android
 
 For Android, you will need to:
