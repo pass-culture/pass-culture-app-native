@@ -9,7 +9,11 @@ import { useModal } from 'ui/components/modals/useModal'
 export function PrivacyPolicyV2() {
   const { cookiesConsent: hasUserMadeCookieChoiceV2 } = useCookies()
   const [hasConsentChoiceExpired, setHasConsentChoiceExpired] = useState(false)
-  const { visible: cookiesConsentModalVisible, hideModal: hideCookiesConsentModal } = useModal(true)
+  const {
+    visible: cookiesConsentModalVisible,
+    hideModal: hideCookiesConsentModal,
+    showModal: showCookiesConsentModal,
+  } = useModal(true)
   const isCookiesListUpToDate = useIsCookiesListUpToDate()
 
   useEffect(() => {
@@ -20,7 +24,19 @@ export function PrivacyPolicyV2() {
     checkConsentExpiration()
   }, [])
 
-  if (hasUserMadeCookieChoiceV2 && !hasConsentChoiceExpired && isCookiesListUpToDate) return null
+  useEffect(() => {
+    if (hasUserMadeCookieChoiceV2 && !hasConsentChoiceExpired && isCookiesListUpToDate) {
+      hideCookiesConsentModal()
+    } else {
+      showCookiesConsentModal()
+    }
+  }, [
+    hasConsentChoiceExpired,
+    hasUserMadeCookieChoiceV2,
+    hideCookiesConsentModal,
+    isCookiesListUpToDate,
+    showCookiesConsentModal,
+  ])
 
   return <CookiesConsent visible={cookiesConsentModalVisible} hideModal={hideCookiesConsentModal} />
 }
