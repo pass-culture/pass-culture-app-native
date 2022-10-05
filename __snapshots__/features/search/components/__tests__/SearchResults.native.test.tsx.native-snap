@@ -79,7 +79,7 @@ Array [
               </Text>
             </View>
             <Text
-              color="#eb0055"
+              isSelected={true}
               style={
                 Array [
                   Object {
@@ -153,6 +153,7 @@ Array [
             testID="categoryButton"
           >
             <Text
+              isSelected={false}
               style={
                 Array [
                   Object {
@@ -226,6 +227,7 @@ Array [
             testID="priceButton"
           >
             <Text
+              isSelected={false}
               style={
                 Array [
                   Object {
@@ -299,6 +301,7 @@ Array [
             testID="typeButton"
           >
             <Text
+              isSelected={false}
               style={
                 Array [
                   Object {
