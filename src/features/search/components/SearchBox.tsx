@@ -22,9 +22,8 @@ import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStaged
 import { SearchView } from 'features/search/types'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
+import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -211,9 +210,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             onPressLocationButton={onPressLocationButton}
           />
           {!!hasEditableSearchInput && (
-            <StyledTouchableOpacity testID="previousButton" onPress={onPressArrowBack}>
-              <ArrowPrevious />
-            </StyledTouchableOpacity>
+            <StyledView>
+              <BackButton onGoBack={onPressArrowBack} />
+            </StyledView>
           )}
         </SearchInputA11yContainer>
         {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
@@ -230,10 +229,6 @@ const RowContainer = styled.View({
   flexDirection: 'row',
 })
 
-const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
-
 const SearchInputContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
@@ -247,7 +242,7 @@ const SearchInputA11yContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledView = styled.View({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
