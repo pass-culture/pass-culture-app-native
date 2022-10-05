@@ -366,6 +366,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               <TextInput
                 accessible={true}
                 aria-describedby="testUuidV4"
+                aria-hidden={false}
                 autoCorrect={false}
                 editable={true}
                 enablesReturnKeyAutomatically={true}

@@ -71,7 +71,7 @@ describe('SearchHeader component', () => {
     await userEvent.tab()
     await userEvent.tab()
 
-    const searchMainInput = getByRole('searchbox')
+    const searchMainInput = getByRole('searchbox', { hidden: true })
     expect(searchMainInput).not.toHaveFocus()
   })
 

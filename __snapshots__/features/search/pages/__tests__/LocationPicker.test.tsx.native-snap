@@ -266,6 +266,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
         accessibilityLabel="Recherche un lieu, une adresse"
         accessible={true}
         aria-describedby="testUuidV4"
+        aria-hidden={false}
         autoCorrect={false}
         editable={true}
         enablesReturnKeyAutomatically={true}

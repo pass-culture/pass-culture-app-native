@@ -364,6 +364,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
       />
       <input
         aria-describedby="testUuidV4"
+        aria-hidden={false}
         aria-label="Recherche un lieu, une adresse"
         autoCapitalize="sentences"
         autoComplete="on"

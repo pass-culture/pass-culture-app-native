@@ -43,6 +43,7 @@ exports[`SearchInput component should render SearchInput 1`] = `
   />
   <TextInput
     accessible={true}
+    aria-hidden={false}
     autoCorrect={false}
     editable={true}
     enablesReturnKeyAutomatically={true}

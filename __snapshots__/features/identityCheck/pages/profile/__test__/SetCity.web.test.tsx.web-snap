@@ -272,6 +272,7 @@ Object {
                     />
                     <input
                       aria-describedby="testUuidV4"
+                      aria-hidden="false"
                       autocapitalize="sentences"
                       autocomplete="on"
                       autocorrect="off"
@@ -616,6 +617,7 @@ Object {
                   />
                   <input
                     aria-describedby="testUuidV4"
+                    aria-hidden="false"
                     autocapitalize="sentences"
                     autocomplete="on"
                     autocorrect="off"

@@ -109,7 +109,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
           }
         />
         <TextInput
-          accessible={false}
+          accessible={true}
+          aria-hidden={false}
           autoCorrect={false}
           autoFocus={false}
           editable={true}

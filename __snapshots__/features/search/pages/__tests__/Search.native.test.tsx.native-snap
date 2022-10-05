@@ -83,7 +83,6 @@ exports[`Search component should render Search 1`] = `
         }
       >
         <View
-          isLanding={false}
           style={
             Array [
               Object {
@@ -183,7 +182,8 @@ exports[`Search component should render Search 1`] = `
                 }
               />
               <TextInput
-                accessible={false}
+                accessible={true}
+                aria-hidden={false}
                 autoCorrect={false}
                 autoFocus={false}
                 editable={true}
