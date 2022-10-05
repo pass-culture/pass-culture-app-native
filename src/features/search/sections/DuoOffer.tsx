@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
+import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -16,6 +16,10 @@ export const DuoOffer: React.FC = () => {
   }, [])
 
   return (
-    <SectionWithSwitch title={SectionTitle.Duo} active={searchState.offerIsDuo} toggle={toggle} />
+    <FilterSwitchWithLabel
+      label={SectionTitle.Duo}
+      isActive={searchState.offerIsDuo}
+      toggle={toggle}
+    />
   )
 }

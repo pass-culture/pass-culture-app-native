@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
+import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -16,6 +16,10 @@ export const NewOffer: React.FC = () => {
   }, [])
 
   return (
-    <SectionWithSwitch title={SectionTitle.New} active={searchState.offerIsNew} toggle={toggle} />
+    <FilterSwitchWithLabel
+      label={SectionTitle.New}
+      isActive={searchState.offerIsNew}
+      toggle={toggle}
+    />
   )
 }

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
+import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -16,11 +16,11 @@ export const Hour: React.FC = () => {
   }, [])
 
   return (
-    <SectionWithSwitch
-      title={SectionTitle.Hour}
-      subtitle="Seules les sorties seront affichées"
-      active={!!searchState.timeRange}
+    <FilterSwitchWithLabel
+      label={SectionTitle.Hour}
+      isActive={!!searchState.timeRange}
       toggle={toggle}
+      subtitle="Seules les sorties seront affichées"
     />
   )
 }

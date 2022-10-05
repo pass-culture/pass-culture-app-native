@@ -444,131 +444,135 @@ exports[`SearchPrice component should render modal correctly after animation and
                 }
               />
             </View>
-            <View
-              inverseLayout={false}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
-              }
-            >
-              <Text
-                htmlFor="testUuidV4"
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Uniquement les offres gratuites
-                </Text>
-              </Text>
+            <View>
               <View
+                inverseLayout={false}
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "justifyContent": "space-between",
                     },
                   ]
                 }
               >
-                <Text
-                  aria-hidden={true}
-                  style={
-                    Array [
-                      Object {
-                        "display": "none",
-                      },
-                    ]
-                  }
-                >
-                  Non
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    Object {
-                      "checked": false,
-                      "disabled": false,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur-onlyFreeOffers"
-                >
-                  <View
-                    active={false}
+                <View>
+                  <Text
+                    htmlFor="testUuidV4"
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    <View
-                      collapsable={false}
-                      disabled={false}
+                    <Text
                       style={
-                        Object {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": Object {
-                            "height": 2,
-                            "width": 0,
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
-                          "width": 28,
-                        }
+                        ]
                       }
-                    />
+                    >
+                      Uniquement les offres gratuites
+                    </Text>
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    aria-hidden={true}
+                    style={
+                      Array [
+                        Object {
+                          "display": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Non
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      Object {
+                        "checked": false,
+                        "disabled": false,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur-onlyFreeOffers"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        disabled={false}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "shadowColor": "#161617",
+                            "shadowOffset": Object {
+                              "height": 2,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "shadowRadius": 2.5,
+                            "width": 28,
+                          }
+                        }
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
@@ -604,131 +608,135 @@ exports[`SearchPrice component should render modal correctly after animation and
                 ]
               }
             />
-            <View
-              inverseLayout={false}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
-              }
-            >
-              <Text
-                htmlFor="testUuidV4"
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Limiter la recherche à mon crédit
-                </Text>
-              </Text>
+            <View>
               <View
+                inverseLayout={false}
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "justifyContent": "space-between",
                     },
                   ]
                 }
               >
-                <Text
-                  aria-hidden={true}
-                  style={
-                    Array [
-                      Object {
-                        "display": "none",
-                      },
-                    ]
-                  }
-                >
-                  Non
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    Object {
-                      "checked": false,
-                      "disabled": false,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur-limitCreditSearch"
-                >
-                  <View
-                    active={false}
+                <View>
+                  <Text
+                    htmlFor="testUuidV4"
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    <View
-                      collapsable={false}
-                      disabled={false}
+                    <Text
                       style={
-                        Object {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": Object {
-                            "height": 2,
-                            "width": 0,
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
-                          "width": 28,
-                        }
+                        ]
                       }
-                    />
+                    >
+                      Limiter la recherche à mon crédit
+                    </Text>
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    aria-hidden={true}
+                    style={
+                      Array [
+                        Object {
+                          "display": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Non
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      Object {
+                        "checked": false,
+                        "disabled": false,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur-limitCreditSearch"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        disabled={false}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "shadowColor": "#161617",
+                            "shadowOffset": Object {
+                              "height": 2,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "shadowRadius": 2.5,
+                            "width": 28,
+                          }
+                        }
+                      />
+                    </View>
                   </View>
                 </View>
               </View>

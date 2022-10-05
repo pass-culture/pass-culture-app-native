@@ -34,12 +34,4 @@ describe('Hour component', () => {
     fireEvent.press(getByTestId(testID))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_HOUR' })
   })
-
-  it('should have the indicator of the filters in the title', () => {
-    mockSearchState = { ...initialSearchState, timeRange: null }
-    expect(render(<HourSection />).queryByText('Heure')).toBeTruthy()
-    expect(render(<HourSection />).queryByTestId('titleCount')).toBeNull()
-    mockSearchState = { ...initialSearchState, timeRange }
-    expect(render(<HourSection />).queryByTestId('titleCount')).toBeTruthy()
-  })
 })

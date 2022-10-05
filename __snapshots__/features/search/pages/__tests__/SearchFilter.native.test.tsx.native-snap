@@ -877,544 +877,296 @@ exports[`SearchFilter component should render correctly 1`] = `
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
+        <View>
+          <View
+            inverseLayout={false}
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                 },
               ]
             }
           >
-            <Text
-              htmlFor="testUuidV4"
-              id="testUuidV4"
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
+            <View>
               <Text
+                htmlFor="testUuidV4"
                 style={
                   Array [
                     Object {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
+                      "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
                       "lineHeight": 20,
                     },
                   ]
                 }
               >
-                Uniquement les offres duo
-              </Text>
-            </Text>
-          </Text>
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <Text
-              aria-hidden={true}
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Non
-            </Text>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                  "disabled": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Interrupteur"
-            >
-              <View
-                active={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#90949D",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
-                }
-              >
-                <View
-                  collapsable={false}
-                  disabled={false}
+                <Text
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
-                      "height": 28,
-                      "justifyContent": "center",
-                      "marginLeft": 2,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
-                      "width": 28,
-                    }
+                    ]
                   }
-                />
-              </View>
+                >
+                  Uniquement les offres duo
+                </Text>
+              </Text>
             </View>
-          </View>
-        </View>
-      </View>
-      <View
-        marginVertical={16}
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-              "backgroundColor": "#F1F1F4",
-              "height": 2,
-              "marginVertical": 16,
-              "width": 912,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "marginHorizontal": 24,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
-              id="testUuidV4"
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <Text
+                aria-hidden={true}
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "display": "none",
                     },
                   ]
                 }
               >
-                Uniquement les nouveautés
+                Non
               </Text>
-            </Text>
-          </Text>
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <Text
-              aria-hidden={true}
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Non
-            </Text>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                  "disabled": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Interrupteur"
-            >
               <View
-                active={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#90949D",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                    "disabled": false,
+                  }
                 }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Interrupteur"
               >
                 <View
-                  collapsable={false}
-                  disabled={false}
+                  active={false}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
-                      "height": 28,
-                      "justifyContent": "center",
-                      "marginLeft": 2,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
+                    Array [
+                      Object {
+                        "backgroundColor": "#90949D",
+                        "borderRadius": 16,
+                        "height": 32,
+                        "justifyContent": "center",
+                        "width": 56,
                       },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
-                      "width": 28,
-                    }
+                    ]
                   }
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        marginVertical={16}
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-              "backgroundColor": "#F1F1F4",
-              "height": 2,
-              "marginVertical": 16,
-              "width": 912,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "marginHorizontal": 24,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
-              id="testUuidV4"
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Date
-              </Text>
-            </Text>
-          </Text>
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <Text
-              aria-hidden={true}
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Non
-            </Text>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                  "disabled": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Interrupteur"
-            >
-              <View
-                active={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#90949D",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
-                    },
-                  ]
-                }
-              >
-                <View
-                  collapsable={false}
-                  disabled={false}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
-                      "height": 28,
-                      "justifyContent": "center",
-                      "marginLeft": 2,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
-                      "width": 28,
+                >
+                  <View
+                    collapsable={false}
+                    disabled={false}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 28,
+                        "height": 28,
+                        "justifyContent": "center",
+                        "marginLeft": 2,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "shadowRadius": 2.5,
+                        "width": 28,
+                      }
                     }
-                  }
-                />
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
         <View
-          numberOfSpaces={2}
+          marginVertical={16}
           style={
             Array [
               Object {
-                "height": 8,
+                "alignSelf": "center",
+                "backgroundColor": "#F1F1F4",
+                "height": 2,
+                "marginVertical": 16,
+                "width": 912,
               },
             ]
           }
         />
-        <Text
-          nativeID="testUuidV4"
-          style={
-            Array [
-              Object {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Seules les sorties seront affichées
-        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View>
+          <View
+            inverseLayout={false}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <View>
+              <Text
+                htmlFor="testUuidV4"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Uniquement les nouveautés
+                </Text>
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                aria-hidden={true}
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Non
+              </Text>
+              <View
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Interrupteur"
+              >
+                <View
+                  active={false}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#90949D",
+                        "borderRadius": 16,
+                        "height": 32,
+                        "justifyContent": "center",
+                        "width": 56,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    disabled={false}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 28,
+                        "height": 28,
+                        "justifyContent": "center",
+                        "marginLeft": 2,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "shadowRadius": 2.5,
+                        "width": 28,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
         marginVertical={16}
@@ -1439,186 +1191,344 @@ exports[`SearchFilter component should render correctly 1`] = `
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
+        <View>
+          <View
+            inverseLayout={false}
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                 },
               ]
             }
           >
-            <Text
-              htmlFor="testUuidV4"
-              id="testUuidV4"
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
+            <View>
               <Text
+                htmlFor="testUuidV4"
                 style={
                   Array [
                     Object {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
+                      "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
                       "lineHeight": 20,
                     },
                   ]
                 }
               >
-                Heure
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Date
+                </Text>
               </Text>
-            </Text>
-          </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Seules les sorties seront affichées
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                aria-hidden={true}
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Non
+              </Text>
+              <View
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Interrupteur"
+              >
+                <View
+                  active={false}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#90949D",
+                        "borderRadius": 16,
+                        "height": 32,
+                        "justifyContent": "center",
+                        "width": 56,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    disabled={false}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 28,
+                        "height": 28,
+                        "justifyContent": "center",
+                        "marginLeft": 2,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "shadowRadius": 2.5,
+                        "width": 28,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        marginVertical={16}
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F1F1F4",
+              "height": 2,
+              "marginVertical": 16,
+              "width": 912,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View>
           <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          <View
+            inverseLayout={false}
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "justifyContent": "space-between",
                 },
               ]
             }
           >
-            <Text
-              aria-hidden={true}
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Non
-            </Text>
-            <View
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                  "disabled": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Interrupteur"
-            >
-              <View
-                active={false}
+            <View>
+              <Text
+                htmlFor="testUuidV4"
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#90949D",
-                      "borderRadius": 16,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 56,
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
                     },
                   ]
                 }
               >
-                <View
-                  collapsable={false}
-                  disabled={false}
+                <Text
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderRadius": 28,
-                      "height": 28,
-                      "justifyContent": "center",
-                      "marginLeft": 2,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
-                      "width": 28,
-                    }
+                    ]
                   }
-                />
+                >
+                  Heure
+                </Text>
+              </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Seules les sorties seront affichées
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                aria-hidden={true}
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Non
+              </Text>
+              <View
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Interrupteur"
+              >
+                <View
+                  active={false}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#90949D",
+                        "borderRadius": 16,
+                        "height": 32,
+                        "justifyContent": "center",
+                        "width": 56,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    disabled={false}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 28,
+                        "height": 28,
+                        "justifyContent": "center",
+                        "marginLeft": 2,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "shadowRadius": 2.5,
+                        "width": 28,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <Text
-          nativeID="testUuidV4"
-          style={
-            Array [
-              Object {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Seules les sorties seront affichées
-        </Text>
       </View>
       <View
         numberOfSpaces={30}

@@ -32,12 +32,4 @@ describe('DuoOffer component', () => {
     fireEvent.press(getByTestId(testID))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_DUO' })
   })
-
-  it('should have the indicator of the filters in the title', () => {
-    mockSearchState = initialSearchState
-    expect(render(<DuoOffer />).queryByText('Uniquement les offres duo')).toBeTruthy()
-    expect(render(<DuoOffer />).queryByTestId('titleCount')).toBeNull()
-    mockSearchState = { ...initialSearchState, offerIsDuo: true }
-    expect(render(<DuoOffer />).queryByTestId('titleCount')).toBeTruthy()
-  })
 })
