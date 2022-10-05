@@ -7,5 +7,7 @@ import { PrivacyPolicyV2 } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy
 export function PrivacyPolicy() {
   const { data: settings } = useAppSettings()
 
-  return settings?.appEnableCookiesV2 ? <PrivacyPolicyV2 /> : <PrivacyPolicyV1 />
+  if (settings === undefined) return null
+
+  return settings.appEnableCookiesV2 ? <PrivacyPolicyV2 /> : <PrivacyPolicyV1 />
 }
