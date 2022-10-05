@@ -133,23 +133,6 @@ describe('<TouchableLink />', () => {
       })
     })
 
-    it('should fire onPress after navigation if navigateBeforeOnPress={true}', async () => {
-      const { getByText } = render(
-        <TouchableLink
-          navigateTo={{ screen: 'FirstTutorial' }}
-          onPress={() => analytics.logConsultTutorial('profile')}
-          navigateBeforeOnPress>
-          <TouchableLinkContent />
-        </TouchableLink>
-      )
-
-      fireEvent.press(getByText(linkText))
-      expect(navigate).toBeCalledWith('FirstTutorial', undefined)
-      await waitForExpect(() => {
-        expect(analytics.logConsultTutorial).toBeCalledWith('profile')
-      })
-    })
-
     it('should fire onAfterNavigate after navigate', async () => {
       const mockedOnAfterNavigate = jest.fn()
       const { getByText } = render(
@@ -201,23 +184,6 @@ describe('<TouchableLink />', () => {
         </TouchableLink>
       )
       fireEvent.press(getByText(linkText))
-      await waitForExpect(() => {
-        expect(openUrl).toBeCalledWith(externalNav.url, externalNav.params)
-      })
-    })
-
-    it('should fire onBeforeNavigate if given, before navigation', async () => {
-      const { getByText } = render(
-        <TouchableLink
-          externalNav={externalNav}
-          onBeforeNavigate={() => analytics.logClickSocialNetwork(socialNetwork)}>
-          <TouchableLinkContent />
-        </TouchableLink>
-      )
-
-      fireEvent.press(getByText(linkText))
-      expect(analytics.logClickSocialNetwork).toBeCalledWith(socialNetwork)
-      expect(openUrl).not.toBeCalled()
       await waitForExpect(() => {
         expect(openUrl).toBeCalledWith(externalNav.url, externalNav.params)
       })
