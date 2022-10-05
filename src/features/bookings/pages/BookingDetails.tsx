@@ -213,7 +213,7 @@ export function BookingDetails() {
             as={ButtonPrimary}
             wording="Voir le détail de l’offre"
             navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
-            onPress={onNavigateToOfferPress}
+            onBeforeNavigate={onNavigateToOfferPress}
             fullWidth
           />
           <Spacer.Column numberOfSpaces={4} />

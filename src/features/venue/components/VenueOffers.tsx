@@ -138,7 +138,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         <TouchableLink
           as={ButtonWithLinearGradient}
           wording="Voir toutes les offres"
-          onPress={seeAllOffers}
+          onBeforeNavigate={seeAllOffers}
           navigateTo={searchNavConfig}
         />
       </MarginContainer>

@@ -34,7 +34,7 @@ export const computePrimaryButtonToDisplay = ({
         wording={primaryButtonText}
         navigateTo={button.navigateTo}
         icon={primaryButtonIcon}
-        onPress={onPrimaryButtonPress}
+        onBeforeNavigate={onPrimaryButtonPress}
       />
     )
   }
@@ -46,7 +46,7 @@ export const computePrimaryButtonToDisplay = ({
         as={ButtonPrimaryWhite}
         wording={primaryButtonText}
         icon={primaryButtonIcon}
-        onPress={onPrimaryButtonPress}
+        onBeforeNavigate={onPrimaryButtonPress}
         externalNav={button.externalNav}
       />
     )

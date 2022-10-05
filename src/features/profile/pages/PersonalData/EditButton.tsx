@@ -16,7 +16,7 @@ export const EditButton = ({ navigateTo, onPress, wording, testID }: EditButtonP
   <TouchableLink
     as={ButtonQuaternaryPrimary}
     navigateTo={navigateTo}
-    onPress={onPress}
+    onBeforeNavigate={onPress}
     wording={wording}
     testID={testID ?? wording}
     icon={EditPen}

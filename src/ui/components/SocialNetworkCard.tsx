@@ -23,7 +23,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   return (
     <TouchableLink
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
-      onPress={() => {
+      onBeforeNavigate={() => {
         analytics.logClickSocialNetwork(name)
       }}
       isOnPressDebounced>

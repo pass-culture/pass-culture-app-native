@@ -19,7 +19,7 @@ export function SeeItineraryButton(props: Props) {
         inline
         externalNav={props.externalNav}
         wording="Voir l’itinéraire"
-        onPress={props.onPress}
+        onBeforeNavigate={props.onPress}
         icon={Icon}
       />
     </Container>

@@ -31,7 +31,7 @@ export function DeleteProfileSuccess() {
           key={2}
           as={ButtonTertiaryWhite}
           wording="Réactiver mon compte"
-          onPress={() => analytics.logAccountReactivation('deleteprofilesuccess')}
+          onBeforeNavigate={() => analytics.logAccountReactivation('deleteprofilesuccess')}
           icon={Again}
           navigateTo={{ screen: 'Login' }}
         />,

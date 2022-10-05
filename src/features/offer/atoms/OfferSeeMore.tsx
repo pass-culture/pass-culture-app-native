@@ -22,7 +22,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
         as={ButtonTertiaryBlack}
         inline
         testID="description-details-button"
-        onPress={onPressSeeMore}
+        onBeforeNavigate={onPressSeeMore}
         navigateTo={{ screen: 'OfferDescription', params: { id } }}
         wording={longWording ? 'Voir plus d’informations' : 'voir plus'}
         accessibilityLabel={longWording ? undefined : 'Voir la suite de la description'}

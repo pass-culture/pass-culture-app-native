@@ -78,7 +78,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             as={ButtonTertiaryPrimary}
             wording="Consulter notre centre d’aide"
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
-            onPress={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}
+            onBeforeNavigate={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}
             icon={ExternalSite}
           />
         </Description>

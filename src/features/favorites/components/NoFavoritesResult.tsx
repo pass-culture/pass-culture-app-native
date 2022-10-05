@@ -29,7 +29,7 @@ export const NoFavoritesResult = () => {
           as={ButtonPrimary}
           navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
           wording="Explorer les offres"
-          onPress={onPressExploreOffers}
+          onBeforeNavigate={onPressExploreOffers}
           buttonHeight="tall"
         />
       </ButtonContainer>

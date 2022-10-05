@@ -72,7 +72,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         as={ButtonPrimary}
         wording="Identification avec ÉduConnect"
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
-        onPress={onPressEduConnect}
+        onBeforeNavigate={onPressEduConnect}
       />
 
       <OrSeparator />
@@ -86,7 +86,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
             ? { screen: 'SelectIDOrigin' }
             : { screen: 'IdentityCheckStart' }
         }
-        onPress={onPressManualIdentification}
+        onBeforeNavigate={onPressManualIdentification}
       />
       <DurationInfoText>{ubbleETAMessage}</DurationInfoText>
     </AppModal>

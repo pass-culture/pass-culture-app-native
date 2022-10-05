@@ -79,7 +79,7 @@ export function ConfirmDeleteProfile() {
             as={ButtonTertiaryBlack}
             wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_LINK_DELETE_ACCOUNT }}
-            onPress={analytics.logConsultArticleAccountDeletion}
+            onBeforeNavigate={analytics.logConsultArticleAccountDeletion}
             icon={ExternalSiteFilled}
           />
         </ButtonContainer>

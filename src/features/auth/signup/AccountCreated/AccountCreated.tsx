@@ -43,7 +43,7 @@ export function AccountCreated() {
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
-          onPress={trackValidatedAccount}
+          onBeforeNavigate={trackValidatedAccount}
         />,
       ]}>
       {!!shouldNavigateToCulturalSurvey && (

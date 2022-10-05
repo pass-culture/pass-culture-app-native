@@ -68,7 +68,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       <TouchableLink
         enableNavigate={!!netInfo.isConnected}
         navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
-        onPress={handlePressOffer}
+        onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="EndedBookingItem">
         <ItemContainer>
