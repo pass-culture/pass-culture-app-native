@@ -90,26 +90,26 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should not show previous button when being on the search landing view', () => {
+  it('should not show back button when being on the search landing view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const previousButton = queryByTestId('previousButton')
+    const previousButton = queryByTestId('backButton')
 
     expect(previousButton).toBeFalsy()
   })
 
-  it('should show previous button when being on the search results view', () => {
+  it('should show back button when being on the search results view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const previousButton = getByTestId('previousButton')
+    const previousButton = getByTestId('backButton')
 
     expect(previousButton).toBeTruthy()
   })
 
-  it('should show previous button when being on the suggestions view', () => {
+  it('should show back button when being on the suggestions view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const previousButton = getByTestId('previousButton')
+    const previousButton = getByTestId('backButton')
 
     expect(previousButton).toBeTruthy()
   })
@@ -144,7 +144,7 @@ describe('SearchBox component', () => {
 
       const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-      const previousButton = getByTestId('previousButton')
+      const previousButton = getByTestId('backButton')
 
       await fireEvent.press(previousButton)
 
@@ -165,7 +165,7 @@ describe('SearchBox component', () => {
       async (previousView) => {
         useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, previousView } })
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-        const previousButton = getByTestId('previousButton')
+        const previousButton = getByTestId('backButton')
 
         await fireEvent.press(previousButton)
 
