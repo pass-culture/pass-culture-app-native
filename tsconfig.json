@@ -2,8 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*", "*"],
-      "react-mobile-picker": ["src/types/react-mobile-picker"]
+      "*": ["src/*", "*"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -29,7 +28,6 @@
   "exclude": [
     "build/**",
     "node_modules/**",
-    "src/types",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js",

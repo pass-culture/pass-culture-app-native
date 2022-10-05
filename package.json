@@ -63,7 +63,7 @@
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:sw": "node scripts/service-worker-test.mjs",
-    "test:types": "tsc --noEmit",
+    "test:types": "tsc",
     "test:unit": "TZ=UTC JEST=true jest --forceExit",
     "test:unit:ci": "yarn test:unit --maxWorkers=4 --coverage --ci --reporters=default --reporters=jest-junit",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",

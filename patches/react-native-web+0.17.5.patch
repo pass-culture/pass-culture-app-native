@@ -94,6 +94,49 @@ index d55b552..1d968da 100644
    supportedProps.enterKeyHint = returnKeyType;
    supportedProps.onBlur = handleBlur;
    supportedProps.onChange = handleChange;
+diff --git a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
+index 05a53ed..1acd555 100644
+--- a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
++++ b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
+@@ -959,7 +959,7 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+       cells.push( /*#__PURE__*/React.createElement(VirtualizedListCellContextProvider, {
+         cellKey: this._getCellKey() + '-header',
+         key: "$header"
+-      }, /*#__PURE__*/React.createElement(View, {
++      }, /*#__PURE__*/React.createElement(this.props.listAs && this.props.itemAs && data.length ? this.props.itemAs : View, {
+         onLayout: this._onLayoutHeader,
+         style: StyleSheet.compose(inversionStyle, this.props.ListHeaderComponentStyle)
+       }, // $FlowFixMe - Typing ReactNativeComponent revealed errors
+@@ -1105,7 +1105,7 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+       cells.push( /*#__PURE__*/React.createElement(VirtualizedListCellContextProvider, {
+         cellKey: this._getFooterCellKey(),
+         key: "$footer"
+-      }, /*#__PURE__*/React.createElement(View, {
++      }, /*#__PURE__*/React.createElement(this.props.listAs && this.props.itemAs && cells.length ? this.props.itemAs : View, {
+         onLayout: this._onLayoutFooter,
+         style: StyleSheet.compose(inversionStyle, this.props.ListFooterComponentStyle)
+       }, // $FlowFixMe - Typing ReactNativeComponent revealed errors
+@@ -1140,7 +1140,7 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
++    }, this.props.listAs && cells.length ? React.createElement(this.props.listAs, {}, cells) : cells));
+     var ret = innerRet;
+ 
+     if (this.props.debug) {
+@@ -1581,9 +1581,10 @@ var CellRenderer = /*#__PURE__*/function (_React$Component) {
+       style: cellStyle,
+       onLayout: onLayout
+     }), element, itemSeparator);
++
+     return /*#__PURE__*/React.createElement(VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
+   };
+ 
+   return CellRenderer;
 diff --git a/node_modules/react-native-web/src/exports/Image/index.js b/node_modules/react-native-web/src/exports/Image/index.js
 index 7cbde9f..5cc166c 100644
 --- a/node_modules/react-native-web/src/exports/Image/index.js

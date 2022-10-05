@@ -233,6 +233,8 @@ export const SearchResults: React.FC = () => {
       </View>
       <Container testID="searchResults">
         <FlatList
+          listAs="ul"
+          itemAs="li"
           ref={flatListRef}
           testID="searchResultsFlatlist"
           data={hits}
