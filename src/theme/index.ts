@@ -12,6 +12,7 @@ import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   DESKTOP_CONTENT_MAX_WIDTH,
   DESKTOP_CONTENT_MEDIUM_WIDTH,
+  MARGIN_HORIZONTAL,
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
@@ -173,6 +174,7 @@ export interface AppThemeType {
     }
   }
   contentPage: {
+    marginHorizontal: number
     mediumWidth: number
     maxWidth: number
     bottom: { offsetTopHeightDesktopTablet: number }
@@ -590,6 +592,7 @@ export const theme: AppThemeType = {
     },
   },
   contentPage: {
+    marginHorizontal: MARGIN_HORIZONTAL,
     mediumWidth: DESKTOP_CONTENT_MEDIUM_WIDTH,
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     bottom: { offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET },
