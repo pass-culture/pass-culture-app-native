@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export type Props = {
+type Props = {
   title: string
   subtitle?: ReactNode | string
   content?: ReactNode
@@ -43,4 +43,6 @@ const GreyContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
   marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(2),
+  width: theme.isDesktopViewport ? 'fit-content' : undefined,
+  minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
 }))
