@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -18,15 +19,24 @@ import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWit
 import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
 
+type StatusForm = {
+  selectedStatus: ActivityIdEnum | null
+}
+
 export const SetStatus = () => {
   const { activities } = useProfileOptions()
   const { dispatch, profile } = useIdentityCheckContext()
   const isUserUnderage = useIsUserUnderage()
-  const [selectedStatus, setSelectedStatus] = useState<ActivityIdEnum | null>(
-    profile.status || null
-  )
   const { navigateToNextScreen, isSavingCheckpoint } = useIdentityCheckNavigation()
   const titleID = uuidv4()
+  const { control, handleSubmit, watch } = useForm<StatusForm>({
+    mode: 'onChange',
+    defaultValues: {
+      selectedStatus: profile.status || null,
+    },
+  })
+
+  const selectedStatus = watch('selectedStatus')
 
   // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration, remplacer filteredActivities par activities
   const filteredActivities = isUserUnderage
@@ -34,21 +44,27 @@ export const SetStatus = () => {
     : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLE_SCHOOL_STUDENT)
 
   // TODO(PC-12410): déléguer la responsabilité au back de vider l'array de school_types associé à l'activity (le statut)
-  const hasSchoolTypes =
-    isUserUnderage && !!filteredActivities && !!selectedStatus
-      ? activityHasSchoolTypes(selectedStatus, filteredActivities)
-      : false
+  const hasSchoolTypes = useMemo(
+    () =>
+      isUserUnderage && !!filteredActivities && !!selectedStatus
+        ? activityHasSchoolTypes(selectedStatus, filteredActivities)
+        : false,
+    [filteredActivities, isUserUnderage, selectedStatus]
+  )
 
   useEffect(() => {
     dispatch({ type: 'SET_HAS_SCHOOL_TYPES', payload: hasSchoolTypes })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasSchoolTypes])
 
-  const submitStatus = async () => {
-    if (!selectedStatus) return
-    await dispatch({ type: 'SET_STATUS', payload: selectedStatus })
-    navigateToNextScreen()
-  }
+  const submitStatus = useCallback(
+    async (formValues: StatusForm) => {
+      if (!formValues.selectedStatus) return
+      await dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
+      navigateToNextScreen()
+    },
+    [dispatch, navigateToNextScreen]
+  )
 
   return (
     <PageWithHeader
@@ -62,26 +78,35 @@ export const SetStatus = () => {
       scrollChildren={
         <Form.MaxWidth>
           <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
-            <VerticalUl>
-              {filteredActivities &&
-                filteredActivities.map((activity) => (
-                  <Li key={activity.label}>
-                    <RadioButtonWithBorder
-                      selected={activity.id === selectedStatus}
-                      description={activity.description}
-                      label={activity.label}
-                      onPress={() => setSelectedStatus(activity.id)}
-                    />
-                  </Li>
-                ))}
-            </VerticalUl>
+            <Controller
+              control={control}
+              name="selectedStatus"
+              render={({ field: { value, onChange } }) => (
+                <VerticalUl>
+                  {filteredActivities &&
+                    filteredActivities.map(
+                      (activity) =>
+                        (
+                          <Li key={activity.label}>
+                            <RadioButtonWithBorder
+                              selected={activity.id === value}
+                              description={activity.description}
+                              label={activity.label}
+                              onPress={() => onChange(activity.id)}
+                            />
+                          </Li>
+                        ) || null
+                    )}
+                </VerticalUl>
+              )}
+            />
           </View>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
         <ButtonPrimary
           type="submit"
-          onPress={submitStatus}
+          onPress={handleSubmit(submitStatus)}
           wording={!selectedStatus ? 'Choisis ton statut' : 'Continuer'}
           accessibilityLabel={
             !selectedStatus ? 'Choisis ton statut' : 'Continuer vers l’étape suivante'
