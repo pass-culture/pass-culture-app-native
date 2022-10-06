@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -44,13 +44,10 @@ export const SetStatus = () => {
     : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLE_SCHOOL_STUDENT)
 
   // TODO(PC-12410): déléguer la responsabilité au back de vider l'array de school_types associé à l'activity (le statut)
-  const hasSchoolTypes = useMemo(
-    () =>
-      isUserUnderage && !!filteredActivities && !!selectedStatus
-        ? activityHasSchoolTypes(selectedStatus, filteredActivities)
-        : false,
-    [filteredActivities, isUserUnderage, selectedStatus]
-  )
+  const hasSchoolTypes =
+    isUserUnderage && !!filteredActivities && !!selectedStatus
+      ? activityHasSchoolTypes(selectedStatus, filteredActivities)
+      : false
 
   useEffect(() => {
     dispatch({ type: 'SET_HAS_SCHOOL_TYPES', payload: hasSchoolTypes })
