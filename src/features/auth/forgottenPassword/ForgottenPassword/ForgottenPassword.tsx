@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -23,17 +24,22 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+type FormValues = {
+  email: string
+}
+
 export const ForgottenPassword: FunctionComponent = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const { navigate, replace } = useNavigation<UseNavigationType>()
   const networkInfo = useNetInfoContext()
   const emailErrorMessageId = uuidv4()
+  const { control, watch } = useForm<FormValues>({ defaultValues: { email: '' } })
 
-  const [email, setEmail] = useState('')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
 
+  const email = watch('email')
   const shouldDisableValidateButton = isValueEmpty(email) || isFetching
 
   useEffect(() => {
@@ -67,13 +73,6 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function onClose() {
     navigateToHome()
-  }
-
-  function onEmailChange(mail: string) {
-    if (errorMessage) {
-      setErrorMessage(null)
-    }
-    setEmail(mail)
   }
 
   function openReCaptchaChallenge() {
@@ -140,13 +139,20 @@ export const ForgottenPassword: FunctionComponent = () => {
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
         <Form.MaxWidth>
-          <EmailInput
-            label="Adresse e-mail"
-            email={email}
-            onEmailChange={onEmailChange}
-            autoFocus
-            accessibilityDescribedBy={emailErrorMessageId}
+          <Controller
+            control={control}
+            name="email"
+            render={({ field: { value, onChange } }) => (
+              <EmailInput
+                label="Adresse e-mail"
+                email={value}
+                onEmailChange={onChange}
+                autoFocus={true}
+                accessibilityDescribedBy={emailErrorMessageId}
+              />
+            )}
           />
+
           <InputError
             visible={!!errorMessage}
             messageId={errorMessage}
