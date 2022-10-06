@@ -4,7 +4,7 @@ import { Consent, Cookies, CookiesChoiceByCategory } from 'features/cookies/type
 type CookiesChoice = Omit<Consent, 'mandatory'>
 
 export const useCookiesChoiceByCategory = (
-  cookiesChoice?: CookiesChoice
+  cookiesChoice?: CookiesChoice | null
 ): CookiesChoiceByCategory => {
   if (!cookiesChoice)
     return {
