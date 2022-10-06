@@ -41,6 +41,11 @@ export function NewIdentificationFlow(): JSX.Element {
           title="DMS ETR"
           onPress={() => navigate('DMSIntroduction', { isForeignDMSInformation: true })}
         />
+        <LinkToComponent
+          name="ExpiredOrLostID"
+          title="ExpiredOrLostID"
+          onPress={() => navigate('ExpiredOrLostID')}
+        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
