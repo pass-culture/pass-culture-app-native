@@ -223,7 +223,7 @@ Array [
             ]
           }
         >
-          Déjà un compte ? 
+          Déjà un compte ?
           <View>
             <View
               accessible={true}
