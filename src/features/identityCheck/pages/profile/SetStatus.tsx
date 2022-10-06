@@ -60,7 +60,7 @@ export const SetStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
-      await dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
+      dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
       navigateToNextScreen()
     },
     [dispatch, navigateToNextScreen]
