@@ -11,41 +11,35 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function LoggedOutHeader() {
   const { isDesktopViewport } = useTheme()
-  const loginText = 'Déjà un compte\u00a0?\u00a0'
+
   return (
-    <HeaderWithGreyContainer
-      title="Mon profil"
-      subtitle="Tu as entre 15 et 18 ans&nbsp;?"
-      content={
-        <React.Fragment>
-          <Typo.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</Typo.Body>
-          <Spacer.Column numberOfSpaces={5} />
-          <Container>
+    <HeaderWithGreyContainer title="Mon profil" subtitle="Tu as entre 15 et 18 ans&nbsp;?">
+      <Typo.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</Typo.Body>
+      <Spacer.Column numberOfSpaces={5} />
+      <Container>
+        <TouchableLink
+          as={ButtonWithLinearGradient}
+          wording="Créer un compte"
+          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+          onPress={() => analytics.logProfilSignUp()}
+          fitContentWidth={isDesktopViewport}
+        />
+
+        {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
+
+        <LoginContainer>
+          <StyledBody>
+            Déjà un compte&nbsp;?
             <TouchableLink
-              as={ButtonWithLinearGradient}
-              wording="Créer un compte"
-              navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
-              onPress={() => analytics.logProfilSignUp()}
-              fitContentWidth={isDesktopViewport}
+              as={StyledButtonInsideText}
+              navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
+              wording="Se connecter"
+              icon={Connect}
             />
-
-            {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
-
-            <LoginContainer>
-              <StyledBody>
-                {loginText}
-                <TouchableLink
-                  as={StyledButtonInsideText}
-                  navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
-                  wording="Se connecter"
-                  icon={Connect}
-                />
-              </StyledBody>
-            </LoginContainer>
-          </Container>
-        </React.Fragment>
-      }
-    />
+          </StyledBody>
+        </LoginContainer>
+      </Container>
+    </HeaderWithGreyContainer>
   )
 }
 

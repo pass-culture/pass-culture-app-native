@@ -3,10 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
-import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
-import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
-import { beneficiaryUser } from 'fixtures/user'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { Typo } from 'ui/theme'
 
@@ -39,32 +35,37 @@ WithStringSubtitle.args = {
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
 }
 
-const Subtitle = () => (
-  <Row>
-    <Typo.Body>Profite de ton crédit jusqu’au&nbsp;</Typo.Body>
-    <Typo.ButtonText>{formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}</Typo.ButtonText>
-  </Row>
-)
-const Row = styled.View({ flexDirection: 'row', flexWrap: 'wrap' })
-
-export const WithJSXSubtitle = Template.bind({})
-WithJSXSubtitle.args = {
+const Row = styled.View({
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+})
+export const WithComponentAsSubtitle = Template.bind({})
+WithComponentAsSubtitle.args = {
   title: 'Jean Dubois',
-  subtitle: <Subtitle />,
+  subtitle: (
+    <Row>
+      <Typo.Body>Profite de ton crédit jusqu’au&nbsp;</Typo.Body>
+      <Typo.ButtonText>{formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}</Typo.ButtonText>
+    </Row>
+  ),
 }
 
-const Content = () => (
-  <React.Fragment>
-    <Typo.Body>Crée-toi un compte pour bénéficier de ton crédit pass Culture</Typo.Body>
-    {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-    <CreditInfo totalCredit={beneficiaryUser.domainsCredit!.all} />
-    <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={false} />
-  </React.Fragment>
-)
-
-export const WithContent = Template.bind({})
-WithContent.args = {
+export const WithLargeContent = Template.bind({})
+WithLargeContent.args = {
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
-  content: <Content />,
+  children: (
+    <Typo.Body>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro molestiae laudantium
+      voluptatibus accusamus aperiam maiores culpa sint repellendus nobis quisquam minus totam esse
+      neque eum soluta, illum, labore, distinctio asperiores?
+    </Typo.Body>
+  ),
+}
+
+export const WithSmallContent = Template.bind({})
+WithSmallContent.args = {
+  title: 'Jean Dubois',
+  subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
+  children: <Typo.Body>Lorem ipsum dolor, sit amet consectetur</Typo.Body>,
 }

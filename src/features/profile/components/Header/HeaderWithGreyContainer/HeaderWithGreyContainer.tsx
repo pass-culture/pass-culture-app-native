@@ -1,30 +1,31 @@
-import React, { ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = {
+type PropsWithChildren = {
   title: string
   subtitle?: ReactNode | string
-  content?: ReactNode
 }
 
-export function HeaderWithGreyContainer({ title, subtitle, content }: Props) {
-  return (
-    <React.Fragment>
-      <Spacer.TopScreen />
-      <TitleContainer>
-        <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
-      </TitleContainer>
-      {!!subtitle && (
-        <SubtitleContainer>
-          {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
-        </SubtitleContainer>
-      )}
-      {!!content && <GreyContainer>{content}</GreyContainer>}
-    </React.Fragment>
-  )
-}
+export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
+  title,
+  subtitle,
+  children,
+}) => (
+  <React.Fragment>
+    <Spacer.TopScreen />
+    <TitleContainer>
+      <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+    </TitleContainer>
+    {!!subtitle && (
+      <SubtitleContainer>
+        {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
+      </SubtitleContainer>
+    )}
+    {!!children && <GreyContainer>{children}</GreyContainer>}
+  </React.Fragment>
+)
 
 const TitleContainer = styled.View(({ theme }) => ({
   marginTop: getSpacing(6),

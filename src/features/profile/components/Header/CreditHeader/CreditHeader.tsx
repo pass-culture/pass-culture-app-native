@@ -42,22 +42,20 @@ export function CreditHeader({
           <Typo.Body>{creditText + SPACE}</Typo.Body>
           <Typo.ButtonText>{displayedExpirationDate}</Typo.ButtonText>
         </Row>
-      }
-      content={
-        !!domainsCredit && (
-          <React.Fragment>
-            {!isDepositExpired && (
-              <React.Fragment>
-                <CreditInfo totalCredit={domainsCredit.all} />
-                <BeneficiaryCeilings domainsCredit={domainsCredit} />
-              </React.Fragment>
-            )}
-            <Spacer.Column numberOfSpaces={1} />
-            <CreditExplanation isDepositExpired={isDepositExpired} domainsCredit={domainsCredit} />
-          </React.Fragment>
-        )
-      }
-    />
+      }>
+      {!!domainsCredit && (
+        <React.Fragment>
+          {!isDepositExpired && (
+            <React.Fragment>
+              <CreditInfo totalCredit={domainsCredit.all} />
+              <BeneficiaryCeilings domainsCredit={domainsCredit} />
+            </React.Fragment>
+          )}
+          <Spacer.Column numberOfSpaces={1} />
+          <CreditExplanation isDepositExpired={isDepositExpired} domainsCredit={domainsCredit} />
+        </React.Fragment>
+      )}
+    </HeaderWithGreyContainer>
   )
 }
 
