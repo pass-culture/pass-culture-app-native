@@ -35,7 +35,7 @@ describe('useSortedSearchCategories', () => {
       'CD, vinyles, musique en ligne',
       'Concerts & festivals',
       'Conférences & rencontres',
-      'Événements en ligne',
+      'Évènements en ligne',
       'Films, séries, cinéma',
       'Instruments de musique',
       'Jeux & jeux vidéos',

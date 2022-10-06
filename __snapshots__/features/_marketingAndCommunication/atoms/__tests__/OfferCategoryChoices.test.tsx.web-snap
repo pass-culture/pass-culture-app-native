@@ -768,7 +768,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             }
           }
         >
-          Événements en ligne
+          Évènements en ligne
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -779,10 +779,10 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         />
         <input
-          aria-label="Événements en ligne"
+          aria-label="Évènements en ligne"
           checked={false}
           hidden={true}
-          name="Événements en ligne"
+          name="Évènements en ligne"
           readOnly={true}
           type="checkbox"
         />

@@ -129,7 +129,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.ACTIVATION_EVENT,
       categoryId: CategoryIdEnum.TECHNIQUE,
-      appLabel: "Catégorie technique d'événement d'activation ",
+      appLabel: "Catégorie technique d'évènement d'activation ",
       searchGroupName: SearchGroupNameEnumv2.NONE,
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: true,
@@ -291,7 +291,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.EVENEMENT_CINE,
       categoryId: CategoryIdEnum.CINEMA,
-      appLabel: 'Événement cinéma',
+      appLabel: 'Évènement cinéma',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: true,
@@ -300,7 +300,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.EVENEMENT_JEU,
       categoryId: CategoryIdEnum.JEU,
-      appLabel: 'Événements - jeux',
+      appLabel: 'Évènements - jeux',
       searchGroupName: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: true,
@@ -309,7 +309,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.EVENEMENT_MUSIQUE,
       categoryId: CategoryIdEnum.MUSIQUE_LIVE,
-      appLabel: "Autre type d'événement musical",
+      appLabel: "Autre type d'évènement musical",
       searchGroupName: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
       homepageLabelName: HomepageLabelNameEnumv2.CONCERT,
       isEvent: true,
@@ -318,7 +318,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.EVENEMENT_PATRIMOINE,
       categoryId: CategoryIdEnum.MUSEE,
-      appLabel: 'Événement et atelier patrimoine',
+      appLabel: 'Évènement et atelier patrimoine',
       searchGroupName: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
       homepageLabelName: HomepageLabelNameEnumv2.VISITES,
       isEvent: true,
@@ -381,7 +381,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.LIVESTREAM_EVENEMENT,
       categoryId: CategoryIdEnum.SPECTACLE,
-      appLabel: "Live stream d'événement",
+      appLabel: "Live stream d'évènement",
       searchGroupName: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: true,
@@ -668,7 +668,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     },
     { name: SearchGroupNameEnumv2.CONCERTS_FESTIVALS, value: 'Concerts & festivals' },
     { name: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES, value: 'Conférences & rencontres' },
-    { name: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE, value: 'Événements en ligne' },
+    { name: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE, value: 'Évènements en ligne' },
     { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Films, séries, cinéma' },
     { name: SearchGroupNameEnumv2.INSTRUMENTS, value: 'Instruments de musique' },
     { name: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS, value: 'Jeux & jeux vidéos' },

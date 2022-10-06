@@ -1277,7 +1277,7 @@ exports[`Categories component should render correctly 1`] = `
                           ]
                         }
                       >
-                        Événements en ligne
+                        Évènements en ligne
                       </Text>
                     </View>
                   </View>

@@ -49,7 +49,7 @@ exports[`<NoTicket/> should render correctly 1`] = `
       }
     }
   >
-    Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement.
+    Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’évènement.
   </div>
 </div>
 `;

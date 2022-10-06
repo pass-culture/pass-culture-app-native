@@ -359,7 +359,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
           testID="caption-undefined"
         >
-          Événement et atelier patrimoine
+          Évènement et atelier patrimoine
         </Text>
       </View>
       <View

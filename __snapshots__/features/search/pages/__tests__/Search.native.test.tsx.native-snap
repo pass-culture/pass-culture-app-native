@@ -429,7 +429,7 @@ exports[`Search component should render Search 1`] = `
                 "target": [Function],
                 "withComponent": [Function],
               },
-              "label": "Événements en ligne",
+              "label": "Évènements en ligne",
               "onPress": [Function],
             },
             Object {
@@ -1230,7 +1230,7 @@ exports[`Search component should render Search 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Retrouver les offres dans la catégorie Événements en ligne"
+                    accessibilityLabel="Retrouver les offres dans la catégorie Évènements en ligne"
                     accessibilityRole="button"
                     accessible={true}
                     collapsable={false}
@@ -1288,7 +1288,7 @@ exports[`Search component should render Search 1`] = `
                         ]
                       }
                     >
-                      Événements en ligne
+                      Évènements en ligne
                     </Text>
                   </View>
                 </View>

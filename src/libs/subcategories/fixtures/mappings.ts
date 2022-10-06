@@ -179,7 +179,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'INSTRUMENTS',
   },
   ACTIVATION_EVENT: {
-    appLabel: "Catégorie technique d'événement d'activation ",
+    appLabel: "Catégorie technique d'évènement d'activation ",
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
     isEvent: true,
@@ -323,7 +323,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   EVENEMENT_CINE: {
-    appLabel: 'Événement cinéma',
+    appLabel: 'Évènement cinéma',
     categoryId: 'CINEMA',
     homepageLabelName: 'CINEMA',
     isEvent: true,
@@ -331,7 +331,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'FILMS_SERIES_CINEMA',
   },
   EVENEMENT_JEU: {
-    appLabel: 'Événements - jeux',
+    appLabel: 'Évènements - jeux',
     categoryId: 'JEU',
     homepageLabelName: 'JEUX',
     isEvent: true,
@@ -339,7 +339,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   EVENEMENT_MUSIQUE: {
-    appLabel: "Autre type d'événement musical",
+    appLabel: "Autre type d'évènement musical",
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'CONCERT',
     isEvent: true,
@@ -347,7 +347,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CONCERTS_FESTIVALS',
   },
   EVENEMENT_PATRIMOINE: {
-    appLabel: 'Événement et atelier patrimoine',
+    appLabel: 'Évènement et atelier patrimoine',
     categoryId: 'MUSEE',
     homepageLabelName: 'VISITES',
     isEvent: true,
@@ -403,7 +403,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'NONE',
   },
   LIVESTREAM_EVENEMENT: {
-    appLabel: "Live stream d'événement",
+    appLabel: "Live stream d'évènement",
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
     isEvent: true,
@@ -659,7 +659,7 @@ export const useSearchGroupLabelMappingSnap = {
   CD_VINYLE_MUSIQUE_EN_LIGNE: 'CD, vinyles, musique en ligne',
   CONCERTS_FESTIVALS: 'Concerts & festivals',
   RENCONTRES_CONFERENCES: 'Conférences & rencontres',
-  EVENEMENTS_EN_LIGNE: 'Événements en ligne',
+  EVENEMENTS_EN_LIGNE: 'Évènements en ligne',
   FILMS_SERIES_CINEMA: 'Films, séries, cinéma',
   INSTRUMENTS: 'Instruments de musique',
   JEUX_JEUX_VIDEOS: 'Jeux & jeux vidéos',

@@ -10,7 +10,7 @@ export const NoTicket: FunctionComponent = () => (
       <BicolorCircledCheck />
     </IconContainer>
     <StyledBody>
-      Tu n’as pas besoin de billet&nbsp;! Rends toi directement sur place le jour de l’événement.
+      Tu n’as pas besoin de billet&nbsp;! Rends toi directement sur place le jour de l’évènement.
     </StyledBody>
   </TicketContainer>
 )

@@ -17,7 +17,7 @@ type Props = {
 export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, withdrawalDelay }) => {
   const startMessage = getStartMessage(withdrawalType)
   const delayMessage = getDelayMessage(withdrawalDelay)
-  const endMessage = 'avant le début de l’événement.'
+  const endMessage = 'avant le début de l’évènement.'
 
   return (
     <React.Fragment>

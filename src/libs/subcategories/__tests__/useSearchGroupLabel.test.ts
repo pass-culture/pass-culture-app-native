@@ -10,7 +10,7 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'CD, vinyles, musique en ligne'}
     ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}         | ${'Concerts & festivals'}
     ${SearchGroupNameEnumv2.RENCONTRES_CONFERENCES}     | ${'Conférences & rencontres'}
-    ${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE}        | ${'Événements en ligne'}
+    ${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE}        | ${'Évènements en ligne'}
     ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}        | ${'Films, séries, cinéma'}
     ${SearchGroupNameEnumv2.INSTRUMENTS}                | ${'Instruments de musique'}
     ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}           | ${'Jeux & jeux vidéos'}
