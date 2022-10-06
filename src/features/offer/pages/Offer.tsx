@@ -11,7 +11,7 @@ import { useCtaWordingAndAction } from 'features/offer/services/useCtaWordingAnd
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'

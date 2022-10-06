@@ -1,11 +1,10 @@
 import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
-import styledNative, { DefaultTheme } from 'styled-components/native'
+import styledNative from 'styled-components/native'
 
-import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
+import { genericStyle } from 'ui/components/buttons/buttonWithLinearGradient/styles/genericStyle.web'
+import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { getSpacing, Typo } from 'ui/theme'
-import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,
@@ -19,6 +18,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   href,
   target,
   testID,
+  fitContentWidth = false,
 }) => {
   const ButtonComponent = (href ? Link : Button) as React.ElementType
   const buttonLinkProps = { accessibilityRole, href, target }
@@ -49,6 +49,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       type={href ? undefined : type}
       className={className}
       testID={testID}
+      fitContentWidth={fitContentWidth}
       {...buttonLinkProps}>
       <LegendContainer>
         {!!Icon && <Icon />}
@@ -60,31 +61,12 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   )
 }
 
-const gradientButtonStyles = ({ theme }: { theme: DefaultTheme }) => ({
-  overflow: 'hidden',
-  cursor: 'pointer',
-  height: theme.buttons.buttonHeights.tall,
-  borderRadius: theme.borderRadius.button,
-  backgroundColor: theme.colors.primary,
-  backgroundImage: `linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary})`,
-  padding: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  border: 0,
-  ['&:disabled']: {
-    cursor: 'initial',
-    background: 'none',
-    color: theme.buttons.disabled.linearGradient.textColor,
-    backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
-  },
-  ...customFocusOutline(theme, theme.buttons.outlineColor),
-  ...getHoverStyle(theme.buttons.linearGradient.textColor),
-})
+const Button = styled.button<{ fitContentWidth: boolean }>(({ theme, fitContentWidth }) => ({
+  ...genericStyle({ theme, fitContentWidth }),
+}))
 
-const Button = styled.button(gradientButtonStyles)
-const Link = styled.a(({ theme }) => ({
-  ...gradientButtonStyles({ theme }),
+const Link = styled.a<{ fitContentWidth: boolean }>(({ theme, fitContentWidth }) => ({
+  ...genericStyle({ theme, fitContentWidth }),
   textDecoration: 'none',
   boxSizing: 'border-box',
 }))
