@@ -121,7 +121,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'IdentityCheckStatus',
     component: SetStatus,
     path: 'verification-identite/profil/statut',
-    options: { title: 'Ton status | Profil' },
+    options: { title: 'Ton statut | Profil' },
     secure: true,
   },
   {
