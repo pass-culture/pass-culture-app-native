@@ -55,7 +55,7 @@ Default.args = {
 Default.parameters = {
   chromatic: {
     viewports: [
-      320,
+      theme.breakpoints.xxs,
       theme.breakpoints.sm,
       theme.breakpoints.md,
       theme.breakpoints.lg,

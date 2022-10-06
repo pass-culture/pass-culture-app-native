@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { theme } from 'theme'
 import { Typo } from 'ui/theme'
 
 import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
@@ -68,4 +69,9 @@ WithSmallContent.args = {
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
   children: <Typo.Body>Lorem ipsum dolor, sit amet consectetur</Typo.Body>,
+}
+WithSmallContent.parameters = {
+  chromatic: {
+    viewports: [theme.breakpoints.md, theme.breakpoints.lg, theme.breakpoints.xl],
+  },
 }
