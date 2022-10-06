@@ -47,7 +47,7 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
               wording="Recherche par mots-clés"
             />
           )}
-          <SearchBox searchInputID={searchInputID} />
+          <SearchBox searchInputID={searchInputID} isLanding={isLanding} />
         </View>
         <Spacer.Column numberOfSpaces={3} />
       </SearchBoxContainer>
