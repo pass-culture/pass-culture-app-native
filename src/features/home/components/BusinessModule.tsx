@@ -91,7 +91,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
       <StyledTouchableLink
         highlight
         accessibilityRole={url ? AccessibilityRole.LINK : undefined}
-        onPress={() => setShouldRedirect(true)}
+        onBeforeNavigate={() => setShouldRedirect(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}

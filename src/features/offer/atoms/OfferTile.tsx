@@ -121,7 +121,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           screen: 'Offer',
           params: { id: offerId, from: analyticsFrom, moduleName, moduleId },
         }}
-        onPress={handlePressOffer}
+        onBeforeNavigate={handlePressOffer}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}

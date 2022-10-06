@@ -41,7 +41,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         as={ButtonPrimary}
         wording="S’inscrire"
         navigateTo={{ screen: 'SignupForm' }}
-        onPress={() => {
+        onBeforeNavigate={() => {
           analytics.logSignUpFromOffer(offerId)
           dismissModal()
         }}
@@ -51,7 +51,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         as={ButtonTertiaryPrimary}
         wording="Se connecter"
         navigateTo={{ screen: 'Login' }}
-        onPress={() => {
+        onBeforeNavigate={() => {
           analytics.logSignInFromOffer(offerId)
           dismissModal()
         }}

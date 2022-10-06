@@ -74,7 +74,7 @@ export const WhereSection: React.FC<Props> = ({
 
           <VenueNameContainer
             navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-            onPress={onVenuePress}
+            onBeforeNavigate={onVenuePress}
             accessibilityLabel={`Lieu ${venue.publicName || venue.name}`}
             testID="VenueBannerComponent">
             <Spacer.Row numberOfSpaces={2} />

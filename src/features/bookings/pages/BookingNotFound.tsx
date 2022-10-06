@@ -46,8 +46,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
             as={ButtonPrimaryWhite}
             wording="Mes réservations terminées"
             navigateTo={{ screen: 'EndedBookings' }}
-            onPress={onPress}
-            navigateBeforeOnPress
+            onAfterNavigate={onPress}
           />,
           <TouchableLink
             key={2}

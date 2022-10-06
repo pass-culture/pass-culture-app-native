@@ -125,7 +125,7 @@ export const Favorite: React.FC<Props> = (props) => {
         navigateTo={
           offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
         }
-        onPress={handlePressOffer}
+        onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="favorite">
         <Row>

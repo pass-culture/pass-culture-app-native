@@ -59,8 +59,7 @@ export const NotEligibleEduConnect = ({
       icon={PlainArrowPrevious}
       wording="Retourner à l'accueil"
       navigateTo={navigateToHomeConfig}
-      onPress={onAbandon}
-      navigateBeforeOnPress
+      onAfterNavigate={onAbandon}
     />
   )
 

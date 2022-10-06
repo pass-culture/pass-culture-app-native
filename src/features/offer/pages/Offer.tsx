@@ -93,7 +93,7 @@ export const Offer: FunctionComponent = () => {
             <TouchableLink
               as={ButtonWithLinearGradient}
               wording={wording}
-              onPress={onPress}
+              onBeforeNavigate={onPress}
               {...navigationProps}
             />
           ) : (

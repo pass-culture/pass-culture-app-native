@@ -16,11 +16,11 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 const ON_PRESS_DEBOUNCE_DELAY = 300
 
 export function TouchableLink({
-  onPress,
+  onBeforeNavigate,
+  onAfterNavigate,
   enableNavigate = true,
   navigateTo,
   externalNav,
-  navigateBeforeOnPress,
   children,
   highlight = false,
   disabled,
@@ -69,15 +69,11 @@ export function TouchableLink({
 
   async function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
-    if (navigateBeforeOnPress && enableNavigate) {
+    if (onBeforeNavigate) await onBeforeNavigate(event)
+    if (enableNavigate) {
       handleNavigation()
     }
-    if (onPress) {
-      await onPress(event)
-    }
-    if (!navigateBeforeOnPress && enableNavigate) {
-      handleNavigation()
-    }
+    if (onAfterNavigate) await onAfterNavigate(event)
   }
 
   function onLinkFocus(e: NativeSyntheticEvent<TargetedEvent>) {

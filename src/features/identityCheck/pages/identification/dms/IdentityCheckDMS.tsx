@@ -43,7 +43,7 @@ export const IdentityCheckDMS = () => {
               as={ButtonTertiaryBlack}
               wording="Je suis de nationalité française"
               externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
-              onPress={onDMSFrenchCitizenPress}
+              onBeforeNavigate={onDMSFrenchCitizenPress}
               icon={ExternalSiteFilled}
             />
             <StyledCaption>Carte d’identité ou passeport.</StyledCaption>
@@ -52,7 +52,7 @@ export const IdentityCheckDMS = () => {
               as={ButtonTertiaryBlack}
               wording="Je suis de nationalité étrangère"
               externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}
-              onPress={onDMSForeignCitizenPress}
+              onBeforeNavigate={onDMSForeignCitizenPress}
               icon={ExternalSiteFilled}
             />
             <StyledCaption>Titre de séjour, carte d’identité ou passeport.</StyledCaption>

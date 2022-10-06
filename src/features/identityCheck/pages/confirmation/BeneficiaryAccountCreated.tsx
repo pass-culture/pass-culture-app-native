@@ -71,7 +71,7 @@ export function BeneficiaryAccountCreated() {
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
-          onPress={trackValidatedSubscription}
+          onBeforeNavigate={trackValidatedSubscription}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>

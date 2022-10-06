@@ -27,7 +27,7 @@ export function LoggedOutHeader() {
           testID="S’inscrire"
           wording="S’inscrire"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
-          onPress={() => {
+          onBeforeNavigate={() => {
             analytics.logProfilSignUp()
           }}
         />

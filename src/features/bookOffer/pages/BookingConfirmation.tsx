@@ -68,7 +68,7 @@ export function BookingConfirmation() {
           as={ButtonTertiaryWhite}
           wording="Retourner à l'accueil"
           navigateTo={navigateToHomeConfig}
-          onPress={trackBooking}
+          onBeforeNavigate={trackBooking}
         />,
       ]}>
       <StyledBody>{amountLeftText}</StyledBody>

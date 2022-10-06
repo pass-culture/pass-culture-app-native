@@ -65,7 +65,7 @@ export const PassPlaylist = (props: Props) => {
         <StyledTouchableLink
           onDarkBackground={props.onDarkBackground}
           navigateTo={props.titleSeeMoreLink}
-          onPress={props.onPressSeeMore}
+          onBeforeNavigate={props.onPressSeeMore}
           {...accessibilityAndTestId(`Voir plus d’offres de la sélection ${props.title}`)}>
           <EyeSophisticated color={seeMoreColor} />
           <Spacer.Row numberOfSpaces={2} />

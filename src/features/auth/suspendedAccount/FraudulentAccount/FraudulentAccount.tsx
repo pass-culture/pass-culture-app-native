@@ -34,7 +34,7 @@ export const FraudulentAccount = () => {
           as={ButtonTertiaryWhite}
           wording="Retourner à l’accueil"
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
-          onPress={signOut}
+          onBeforeNavigate={signOut}
           icon={PlainArrowPrevious}
         />,
       ]}>

@@ -34,7 +34,7 @@ export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
         as={ButtonPrimary}
         wording="Mes réservations terminées"
         navigateTo={{ screen: 'EndedBookings' }}
-        onPress={dismissModal}
+        onBeforeNavigate={dismissModal}
       />
     </Container>
   )

@@ -63,11 +63,10 @@ const UnmemoizedExclusivityModule = ({
       <ImageContainer>
         <StyledTouchableLink
           highlight
-          navigateBeforeOnPress
           navigateTo={
             typeof id === 'number' ? { screen: 'Offer', params: { id, from: 'home' } } : undefined
           }
-          onPress={handlePressExclu}
+          onAfterNavigate={handlePressExclu}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           isFocus={isFocus}

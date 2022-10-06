@@ -77,9 +77,8 @@ export const SuspendedAccount = () => {
           as={ButtonTertiaryWhite}
           wording="Retourner à l’accueil"
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
-          onPress={signOut}
+          onAfterNavigate={signOut}
           icon={PlainArrowPrevious}
-          navigateBeforeOnPress
         />,
       ]}>
       <StyledBody>Tu as jusqu’au {formattedDate} pour réactiver ton compte.</StyledBody>

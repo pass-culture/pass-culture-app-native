@@ -35,7 +35,7 @@ export const NotConnectedFavorites = () => {
             as={ButtonPrimaryWhite}
             wording="S’inscrire"
             navigateTo={{ screen: 'SignupForm' }}
-            onPress={analytics.logSignUpFromFavorite}
+            onBeforeNavigate={analytics.logSignUpFromFavorite}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
@@ -43,7 +43,7 @@ export const NotConnectedFavorites = () => {
             as={ButtonTertiaryWhite}
             wording="Se connecter"
             navigateTo={{ screen: 'Login' }}
-            onPress={analytics.logSignInFromFavorite}
+            onBeforeNavigate={analytics.logSignInFromFavorite}
             buttonHeight="tall"
           />
         </ButtonContainer>
