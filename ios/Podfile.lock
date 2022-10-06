@@ -42,9 +42,6 @@ PODS:
   - Firebase/Firestore (8.15.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.15.0)
-  - Firebase/Performance (8.15.0):
-    - Firebase/CoreOnly
-    - FirebasePerformance (~> 8.15.0)
   - Firebase/RemoteConfig (8.15.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 8.15.0)
@@ -92,15 +89,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebasePerformance (8.15.0):
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - FirebaseRemoteConfig (~> 8.0)
-    - GoogleDataTransport (~> 9.1)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/ISASwizzler (~> 7.7)
-    - GoogleUtilities/MethodSwizzler (~> 7.7)
-    - nanopb (~> 2.30908.0)
   - FirebaseRemoteConfig (8.15.0):
     - FirebaseABTesting (~> 8.0)
     - FirebaseCore (~> 8.0)
@@ -592,10 +580,6 @@ PODS:
     - Firebase/Firestore (= 8.15.0)
     - React-Core
     - RNFBApp
-  - RNFBPerf (14.9.0):
-    - Firebase/Performance (= 8.15.0)
-    - React-Core
-    - RNFBApp
   - RNFBRemoteConfig (14.9.0):
     - Firebase/RemoteConfig (= 8.15.0)
     - React-Core
@@ -752,7 +736,6 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBDynamicLinks (from `../node_modules/@react-native-firebase/dynamic-links`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
-  - "RNFBPerf (from `../node_modules/@react-native-firebase/perf`)"
   - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
   - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -780,7 +763,6 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDynamicLinks
     - FirebaseInstallations
-    - FirebasePerformance
     - FirebaseRemoteConfig
     - Flipper
     - Flipper-Boost-iOSX
@@ -933,8 +915,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/dynamic-links"
   RNFBFirestore:
     :path: "../node_modules/@react-native-firebase/firestore"
-  RNFBPerf:
-    :path: "../node_modules/@react-native-firebase/perf"
   RNFBRemoteConfig:
     :path: "../node_modules/@react-native-firebase/remote-config"
   RNFlashList:
@@ -985,7 +965,6 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: 1dc816ef789c5adac6fede0b46d11478175c70e4
   FirebaseFirestore: cb361b7f8f225a225c9f11b8d42066baebb1630c
   FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
-  FirebasePerformance: 66eb58c3e3568a0501a9be271c8ff424dea0ff34
   FirebaseRemoteConfig: 2d6e2cfdb49af79535c8af8a80a4a5009038ec2b
   Flipper: 04d9d2e38f410e3a5153178115913208aade7cbe
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
@@ -1060,7 +1039,6 @@ SPEC CHECKSUMS:
   RNFBApp: d3a0f69a3cc67c609f962acf67f483a841ffc49f
   RNFBDynamicLinks: 9df795c9d3fe892ed8f7520d69ea60be82b3e077
   RNFBFirestore: f36e896a6134becb7371389fe00dc06929303d89
-  RNFBPerf: c4b51d204881e99f1fccd491f8756c6be1bb8f3d
   RNFBRemoteConfig: ec7bfe6cff76296f0e5ec8ad0c0149f00d6d92ca
   RNFlashList: 5318fc0772902ffa55170b35caa95ad5a69da3ef
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211

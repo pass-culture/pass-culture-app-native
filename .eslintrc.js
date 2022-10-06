@@ -97,7 +97,6 @@ module.exports = {
         name: '@react-native-firebase/firestore',
         message: 'use libs/firebase/shims/firestore instead',
       },
-      { name: '@react-native-firebase/perf', message: 'use libs/firebase/perf instead' },
       {
         name: '@react-native-firebase/remote-config',
         message: 'use libs/firebase/shims/remote-config instead',
