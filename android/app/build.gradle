@@ -1,6 +1,7 @@
 // Template last updated for 0.60.3
 
 apply plugin: "com.android.application"
+apply plugin: "com.google.firebase.firebase-perf"
 
 // @react-native-config
 project.ext.envConfigFiles = [

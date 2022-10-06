@@ -4539,6 +4539,13 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-14.9.0.tgz#a0e59d0d404c23a6eab606a9f667b308d877ed5d"
   integrity sha512-FeMj0o1kQJ1GnxO3R4h78nqevScLrDKZZaDxedtq3NofC3fcSgrDkmwOJUU5FJrrgP/K9yx42PjX1dw6npASmg==
 
+"@react-native-firebase/perf@^14.9.0":
+  version "14.9.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/perf/-/perf-14.9.0.tgz#a17c33734beb69ac315df43c3b634cdbe8051060"
+  integrity sha512-b88JUNU9xZNO1cZdgdSkvkckZkRtKHBejV5KUpERPD8EQAaEH5FRpH1b7w/sNOVlDN1b0dMuaJzZVdykccWgXw==
+  dependencies:
+    "@expo/config-plugins" "^4.1.1"
+
 "@react-native-firebase/remote-config@^14.9.0":
   version "14.9.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/remote-config/-/remote-config-14.9.0.tgz#121b7854e0652c149843d3e8b6e3d7b9f1041b48"
