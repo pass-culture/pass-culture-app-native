@@ -93,6 +93,9 @@ jest.mock('react-instantsearch-hooks', () => ({
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
+jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
+  InsightsMiddleware: () => null,
+}))
 
 describe('Search component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
