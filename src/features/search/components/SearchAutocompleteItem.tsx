@@ -18,7 +18,7 @@ type Props = {
 }
 
 export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
-  const query = hit.query
+  const { query } = hit
   const { searchState: stagedSearchState } = useStagedSearch()
   const { locationFilter } = stagedSearchState
   const pushWithStagedSearch = usePushWithStagedSearch()
