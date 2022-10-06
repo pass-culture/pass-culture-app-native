@@ -7,6 +7,7 @@ import { SearchAutocompleteItem } from 'features/search/components/SearchAutocom
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
+import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent } from 'tests/utils'
@@ -42,7 +43,8 @@ describe('SearchAutocompleteItem component', () => {
         matchedWords: ['cinéma'],
       },
     },
-  }
+    __position: 123,
+  } as AlgoliaSuggestionHit
 
   it('should render SearchAutocompleteItem', () => {
     expect(render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)).toMatchSnapshot()
