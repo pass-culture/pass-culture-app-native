@@ -17,3 +17,7 @@ export const BatchUser = {
 export const BatchPush = {
   requestNotificationAuthorization: jest.fn(),
 }
+
+export const BatchMessaging = {
+  setFontOverride: jest.fn(),
+}
