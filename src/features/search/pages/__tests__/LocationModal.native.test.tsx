@@ -301,6 +301,38 @@ describe('LocationFilter component', () => {
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
   })
 
+  it.each([[RadioButtonLocation.EVERYWHERE], [RadioButtonLocation.CHOOSE_PLACE_OR_VENUE]])(
+    'should activate the scroll when location radio group is "%s"',
+    async (locationRadioButton) => {
+      const { getByTestId } = renderLocationModal({ hideLocationModal })
+
+      const radioButton = getByTestId(locationRadioButton)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      const modal = getByTestId('fullscreenModalScrollView')
+
+      await act(async () => {
+        expect(modal.props.scrollEnabled).toEqual(true)
+      })
+    }
+  )
+
+  it('should desactivate the scroll when location radio group is "Autour de moi"', async () => {
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+    }
+    const { getByTestId } = renderLocationModal({ hideLocationModal })
+
+    const modal = getByTestId('fullscreenModalScrollView')
+
+    await act(async () => {
+      expect(modal.props.scrollEnabled).toEqual(false)
+    })
+  })
+
   describe('should reset', () => {
     it('the location radio group at "Partout" when pressing reset button and position is null', async () => {
       mockPosition = null

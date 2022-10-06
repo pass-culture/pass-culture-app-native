@@ -231,7 +231,8 @@ export const LocationModal: FunctionComponent<Props> = ({
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
         />
-      }>
+      }
+      scrollEnabled={locationChoice !== RadioButtonLocation.AROUND_ME}>
       <Form.MaxWidth>
         <Controller
           control={control}

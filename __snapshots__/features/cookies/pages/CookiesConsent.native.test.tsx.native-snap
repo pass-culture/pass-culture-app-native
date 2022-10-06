@@ -235,6 +235,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       <RCTScrollView
         modalSpacing={24}
         onContentSizeChange={[Function]}
+        scrollEnabled={true}
         style={
           Array [
             Object {

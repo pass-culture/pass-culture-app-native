@@ -183,7 +183,8 @@ export const AppModal: FunctionComponent<Props> = ({
             modalSpacing={modalSpacing}
             testID="fullscreenModalScrollView"
             ref={setFullscreenScrollViewRef}
-            onContentSizeChange={onContentSizeChangeFullscreenModal}>
+            onContentSizeChange={onContentSizeChangeFullscreenModal}
+            scrollEnabled={scrollEnabled}>
             {children}
           </StyledScrollView>
         ) : (

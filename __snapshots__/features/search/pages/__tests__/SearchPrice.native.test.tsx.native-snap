@@ -329,6 +329,7 @@ exports[`SearchPrice component should render modal correctly after animation and
       <RCTScrollView
         modalSpacing={24}
         onContentSizeChange={[Function]}
+        scrollEnabled={true}
         style={
           Array [
             Object {
