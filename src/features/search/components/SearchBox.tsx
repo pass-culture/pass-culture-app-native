@@ -35,9 +35,11 @@ const SEARCH_DEBOUNCE_MS = 500
 type Props = UseSearchBoxProps & {
   searchInputID: string
   accessibleHiddenTitle?: string
+  isLanding?: boolean
 }
 
 export const SearchBox: React.FunctionComponent<Props> = ({
+  isLanding,
   searchInputID,
   accessibleHiddenTitle,
   ...props
@@ -200,7 +202,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             searchInputID={searchInputID}
             query={query}
             setQuery={setQuery}
-            isFocusable={false}
+            isFocusable={!isLanding}
             isFocus={params?.view === SearchView.Suggestions}
             onSubmitQuery={onSubmitQuery}
             resetQuery={resetQuery}
