@@ -23,8 +23,9 @@ export const DMSIntroduction = (): JSX.Element => {
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
 
   const timeLabel = '10 minutes de ton temps'
-  const IDLabel =
-    'Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité'
+  const IDLabel = params?.isForeignDMSInformation
+    ? 'Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité'
+    : 'Ta pièce d’identité française en cours de validité'
   const selfieLabel = 'Un selfie avec ta pièce d’identité'
   const homeProofLabel = 'Un justificatif de domicile'
 
@@ -60,14 +61,15 @@ export const DMSIntroduction = (): JSX.Element => {
       </VerticalUl>
       <StyledCaption>Le traitement de ton dossier peut prendre jusqu’à 5 jours.</StyledCaption>
       <Spacer.Flex flex={1} />
-      <DMSLink
-        wording="Aller sur demarches-simplifiees.fr"
-        testID="start-cultural-survey"
-        icon={ExternalSite}
-        as={ButtonPrimary}
-        // TODO(PC-17774) navigate to DMS external url
-        navigateTo={navigateToHomeConfig}
-      />
+      <LinkContainer>
+        <TouchableLink
+          wording="Aller sur demarches-simplifiees.fr"
+          icon={ExternalSite}
+          as={ButtonPrimary}
+          // TODO(PC-17774) navigate to DMS external url
+          navigateTo={navigateToHomeConfig}
+        />
+      </LinkContainer>
     </GenericInfoPageWhite>
   )
 }
@@ -81,6 +83,6 @@ const StyledCaption = styled(Typo.Caption)({
   textAlign: 'center',
 })
 
-const DMSLink = styled(TouchableLink)({
-  alignSelf: 'center',
+const LinkContainer = styled.View({
+  alignItems: 'center',
 })
