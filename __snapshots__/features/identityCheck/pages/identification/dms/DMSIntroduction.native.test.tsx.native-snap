@@ -441,76 +441,85 @@ Array [
       }
     />
     <View
-      accessibilityLabel="Aller sur demarches-simplifiees.fr"
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+          },
+        ]
       }
-      testID="start-cultural-survey"
     >
       <View
+        accessibilityLabel="Aller sur demarches-simplifiees.fr"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "flexShrink": 0,
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
+        testID="Aller sur demarches-simplifiees.fr"
       >
         <View
-          accessibilityLabel="Nouvelle fenêtre"
-          height={24}
-          testID="button-icon"
-          width={24}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            accessibilityLabel="Nouvelle fenêtre"
+            height={24}
+            testID="button-icon"
+            width={24}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Aller sur demarches-simplifiees.fr
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Aller sur demarches-simplifiees.fr
-      </Text>
     </View>
     <View
       flex={1.5}
@@ -791,7 +800,7 @@ Array [
               ]
             }
           >
-            Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
+            Ta pièce d’identité française en cours de validité
           </Text>
         </View>
         <View
@@ -902,76 +911,85 @@ Array [
       }
     />
     <View
-      accessibilityLabel="Aller sur demarches-simplifiees.fr"
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+          },
+        ]
       }
-      testID="start-cultural-survey"
     >
       <View
+        accessibilityLabel="Aller sur demarches-simplifiees.fr"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "flexShrink": 0,
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
+        testID="Aller sur demarches-simplifiees.fr"
       >
         <View
-          accessibilityLabel="Nouvelle fenêtre"
-          height={24}
-          testID="button-icon"
-          width={24}
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            accessibilityLabel="Nouvelle fenêtre"
+            height={24}
+            testID="button-icon"
+            width={24}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Aller sur demarches-simplifiees.fr
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Aller sur demarches-simplifiees.fr
-      </Text>
     </View>
     <View
       flex={1.5}
