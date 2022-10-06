@@ -17,7 +17,7 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { useStartBatchNotification } from 'features/notifications/batchNotifications'
+import { PushNotificationsWrapper } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
@@ -50,7 +50,6 @@ LogBox.ignoreLogs([
 const App: FunctionComponent = function () {
   campaignTracker.useInit()
   analytics.useInit()
-  useStartBatchNotification()
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
@@ -76,11 +75,13 @@ const App: FunctionComponent = function () {
                             <CulturalSurveyContextProvider>
                               <IdentityCheckContextProvider>
                                 <SplashScreenProvider>
-                                  <OfflineModeContainer>
-                                    <ScreenErrorProvider>
-                                      <AppNavigationContainer />
-                                    </ScreenErrorProvider>
-                                  </OfflineModeContainer>
+                                  <PushNotificationsWrapper>
+                                    <OfflineModeContainer>
+                                      <ScreenErrorProvider>
+                                        <AppNavigationContainer />
+                                      </ScreenErrorProvider>
+                                    </OfflineModeContainer>
+                                  </PushNotificationsWrapper>
                                 </SplashScreenProvider>
                               </IdentityCheckContextProvider>
                             </CulturalSurveyContextProvider>

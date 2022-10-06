@@ -1,7 +1,7 @@
 import firebaseRemoteConfig from 'libs/firebase/shims/remote-config'
 
 import { DEFAULT_REMOTE_CONFIG } from './remoteConfig.constants'
-import { CustomRemoteConfig, GenericRemoteConfig } from './remoteConfig.types'
+import { CustomRemoteConfig, GenericRemoteConfig, NotificationsTrigger } from './remoteConfig.types'
 
 export const remoteConfig = {
   async configure() {
@@ -26,6 +26,7 @@ export const remoteConfig = {
       homeEntryIdWithoutBooking_15_17: parameters.homeEntryIdWithoutBooking_15_17.asString(),
       homeEntryId_18: parameters.homeEntryId_18.asString(),
       homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
+      notificationsTrigger: parameters.notificationsTrigger.asString() as NotificationsTrigger,
     }
   },
 }

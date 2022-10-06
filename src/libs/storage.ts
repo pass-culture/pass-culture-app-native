@@ -9,6 +9,7 @@ export type StorageKey =
   | 'has_accepted_cookie'
   | 'has_seen_birthday_notification_card'
   | 'has_seen_eligible_card'
+  | 'has_seen_push_notifications_modal_once'
   | 'has_seen_tutorials'
   | 'phone_validation_code_asked_at'
   | 'react_navigation_persistence'

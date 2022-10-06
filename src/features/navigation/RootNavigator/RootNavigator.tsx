@@ -11,7 +11,10 @@ import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { usePushNotificationsContext } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { NotificationsTrigger } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
@@ -37,7 +40,9 @@ export const RootNavigator: React.ComponentType = () => {
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
   const { isSplashScreenHidden } = useSplashScreenContext()
+  const { showPushNotificationsModalForFirstTime } = usePushNotificationsContext()
 
+  const { notificationsTrigger } = useRemoteConfigContext()
   const initialScreen = useInitialScreen()
 
   const currentRoute = useCurrentRoute()
@@ -48,6 +53,10 @@ export const RootNavigator: React.ComponentType = () => {
 
   if (!initialScreen) {
     return <LoadingPage />
+  }
+
+  if (isSplashScreenHidden && notificationsTrigger === NotificationsTrigger.STARTUP) {
+    showPushNotificationsModalForFirstTime()
   }
 
   return (
