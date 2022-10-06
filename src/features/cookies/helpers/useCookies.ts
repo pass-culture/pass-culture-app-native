@@ -18,7 +18,7 @@ export const getCookiesChoice = async () =>
   await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
 export const useCookies = () => {
-  const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent>()
+  const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent | null>()
   const { data: userProfileInfo } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
 
@@ -29,6 +29,8 @@ export const useCookies = () => {
       if (value) {
         setCookiesConsentInternalState(value.consent)
         startTrackingAcceptedCookies(value.consent.accepted)
+      } else if (value === null) {
+        setCookiesConsentInternalState(null)
       }
     })
   }, [settings?.appEnableCookiesV2])
