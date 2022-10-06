@@ -2,14 +2,18 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
+import * as ProfileUtils from 'features/profile/utils'
 
-import { getCreditModal } from './getCreditModal'
+import { useGetCreditModal } from './useGetCreditModal'
 
-describe('getCreditModal()', () => {
+const mockUseIsUserUnderageBeneficiary = jest
+  .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
+  .mockReturnValue(false)
+
+describe('useGetCreditModal()', () => {
   it('should return ExpiredCreditModal if deposit is expired', async () => {
-    const { creditModal } = getCreditModal({
+    const { creditModal } = useGetCreditModal({
       domainsCredit: domains_credit_v1,
-      isUserUnderageBeneficiary: false,
       isDepositExpired: true,
     })
 
@@ -17,9 +21,8 @@ describe('getCreditModal()', () => {
   })
 
   it('should return ExhaustedCreditModal if deposit is exhausted', async () => {
-    const { creditModal } = getCreditModal({
+    const { creditModal } = useGetCreditModal({
       domainsCredit: domains_exhausted_credit_v1,
-      isUserUnderageBeneficiary: false,
       isDepositExpired: false,
     })
 
@@ -27,9 +30,8 @@ describe('getCreditModal()', () => {
   })
 
   it('should return ExpiredCreditModal if deposit is expired AND deposit is exhausted', async () => {
-    const { creditModal } = getCreditModal({
+    const { creditModal } = useGetCreditModal({
       domainsCredit: domains_exhausted_credit_v1,
-      isUserUnderageBeneficiary: false,
       isDepositExpired: true,
     })
 
@@ -37,9 +39,8 @@ describe('getCreditModal()', () => {
   })
 
   it('should return CreditCeilingsModal if deposit is not expired and not exhausted', async () => {
-    const { creditModal } = getCreditModal({
+    const { creditModal } = useGetCreditModal({
       domainsCredit: domains_credit_v1,
-      isUserUnderageBeneficiary: false,
       isDepositExpired: false,
     })
 
@@ -47,9 +48,9 @@ describe('getCreditModal()', () => {
   })
 
   it('should return null for creditModal if deposit is not expired and not exhausted and beneficiary is underage', async () => {
-    const { creditModal } = getCreditModal({
+    mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+    const { creditModal } = useGetCreditModal({
       domainsCredit: domains_credit_v1,
-      isUserUnderageBeneficiary: true,
       isDepositExpired: false,
     })
 

@@ -6,7 +6,6 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
@@ -24,7 +23,6 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
 }: CreditHeaderProps) {
-  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const name = `${firstName} ${lastName}`
 
   const displayedExpirationDate = depositExpirationDate
@@ -51,18 +49,11 @@ export function CreditHeader({
             {!isDepositExpired && (
               <React.Fragment>
                 <CreditInfo totalCredit={domainsCredit.all} />
-                <BeneficiaryCeilings
-                  domainsCredit={domainsCredit}
-                  isUserUnderageBeneficiary={isUserUnderageBeneficiary}
-                />
+                <BeneficiaryCeilings domainsCredit={domainsCredit} />
               </React.Fragment>
             )}
             <Spacer.Column numberOfSpaces={1} />
-            <CreditExplanation
-              isDepositExpired={isDepositExpired}
-              isUserUnderageBeneficiary={isUserUnderageBeneficiary}
-              domainsCredit={domainsCredit}
-            />
+            <CreditExplanation isDepositExpired={isDepositExpired} domainsCredit={domainsCredit} />
           </React.Fragment>
         )
       }
