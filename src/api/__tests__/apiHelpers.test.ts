@@ -340,7 +340,7 @@ describe('[api] helpers', () => {
 
     it('should navigate to login when access token is invalid', async () => {
       const response = await respondWith(
-        '',
+        '{ test: true }',
         NeedsAuthenticationResponse.status,
         NeedsAuthenticationResponse.statusText
       )
@@ -348,7 +348,14 @@ describe('[api] helpers', () => {
       const result = await handleGeneratedApiResponse(response)
 
       const error = new Error(NeedsAuthenticationResponse.statusText)
-      expect(eventMonitoring.captureException).toBeCalledWith(error)
+      expect(eventMonitoring.captureException).toBeCalledWith(error, {
+        extra: {
+          json: '{ test: true }',
+          status: 401,
+          statusText: 'NeedsAuthenticationResponse',
+          url: '',
+        },
+      })
       expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
       expect(result).toEqual({})
     })
