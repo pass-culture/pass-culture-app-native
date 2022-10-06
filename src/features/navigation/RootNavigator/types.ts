@@ -40,6 +40,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckStatus: undefined
   IdentityCheckSchoolType: undefined
   // Identification
+  ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }
   ExpiredOrLostID: undefined
   IdentityCheckStart: undefined

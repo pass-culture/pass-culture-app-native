@@ -5,6 +5,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { ComeBackLater } from 'features/identityCheck/pages/identification/ComeBackLater'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/dms/IdentityCheckDMS'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
@@ -246,5 +247,10 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'SelectPhoneStatus',
     component: SelectPhoneStatus,
     path: 'identification/statut-telephone',
+  },
+  {
+    name: 'ComeBackLater',
+    component: ComeBackLater,
+    path: 'identification/reviens-plus-tard',
   },
 ]
