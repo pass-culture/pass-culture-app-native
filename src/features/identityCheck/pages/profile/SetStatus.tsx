@@ -84,19 +84,16 @@ export const SetStatus = () => {
               render={({ field: { value, onChange } }) => (
                 <VerticalUl>
                   {filteredActivities &&
-                    filteredActivities.map(
-                      (activity) =>
-                        (
-                          <Li key={activity.label}>
-                            <RadioButtonWithBorder
-                              selected={activity.id === value}
-                              description={activity.description}
-                              label={activity.label}
-                              onPress={() => onChange(activity.id)}
-                            />
-                          </Li>
-                        ) || null
-                    )}
+                    filteredActivities.map((activity) => (
+                      <Li key={activity.label}>
+                        <RadioButtonWithBorder
+                          selected={activity.id === value}
+                          description={activity.description}
+                          label={activity.label}
+                          onPress={() => onChange(activity.id)}
+                        />
+                      </Li>
+                    ))}
                 </VerticalUl>
               )}
             />
