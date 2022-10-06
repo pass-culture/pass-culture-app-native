@@ -1,10 +1,11 @@
-import { CaptureContext, User, Event, SeverityLevel } from '@sentry/types'
+import { CaptureContext, User, Event, SeverityLevel, Breadcrumb, Hub } from '@sentry/types'
 
 import { getSentryConfig } from 'libs/monitoring/config'
 
 import * as SentryModule from './sentry'
 
 type EventMonitoring = {
+  addBreadcrumb: (breadcrumb: Breadcrumb) => ReturnType<Hub['addBreadcrumb']>
   captureException: (
     exception: unknown,
     captureContext?: CaptureContext | Record<string, unknown>
@@ -17,6 +18,7 @@ type EventMonitoring = {
 }
 
 export const eventMonitoring: EventMonitoring = {
+  addBreadcrumb: SentryModule.addBreadcrumb,
   captureException: SentryModule.captureException,
   captureEvent: SentryModule.captureEvent,
   captureMessage: SentryModule.captureMessage,
