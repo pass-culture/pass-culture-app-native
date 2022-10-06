@@ -195,56 +195,52 @@ export const SearchResults: React.FC = () => {
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
-
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={2} />
-        <View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <Spacer.Row numberOfSpaces={6} />
-            <ButtonContainer>
-              <SingleFilterButton
-                label={locationLabel}
-                testID="locationButton"
-                onPress={hasFiltersButtonsDisplay ? showLocationModal : redirectFilters}
-                isSelected
-              />
-            </ButtonContainer>
+      <View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <Spacer.Row numberOfSpaces={6} />
+          <ButtonContainer>
+            <SingleFilterButton
+              label={locationLabel}
+              testID="locationButton"
+              onPress={hasFiltersButtonsDisplay ? showLocationModal : redirectFilters}
+              isSelected
+            />
+          </ButtonContainer>
+          <Spacer.Row numberOfSpaces={2} />
+          <ButtonContainer>
+            <SingleFilterButton
+              label="Catégories"
+              testID="categoryButton"
+              onPress={showCategoriesModal}
+              isSelected={hasCategory}
+            />
+          </ButtonContainer>
+          <React.Fragment>
             <Spacer.Row numberOfSpaces={2} />
             <ButtonContainer>
               <SingleFilterButton
-                label="Catégories"
-                testID="categoryButton"
-                onPress={showCategoriesModal}
-                isSelected={hasCategory}
+                label="Prix"
+                testID="priceButton"
+                onPress={showSearchPriceModal}
+                isSelected={hasPrice}
               />
             </ButtonContainer>
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={2} />
-              <ButtonContainer>
-                <SingleFilterButton
-                  label="Prix"
-                  testID="priceButton"
-                  onPress={showSearchPriceModal}
-                  isSelected={hasPrice}
-                />
-              </ButtonContainer>
-            </React.Fragment>
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={2} />
-              <ButtonContainer>
-                <SingleFilterButton
-                  label="Type"
-                  testID="typeButton"
-                  onPress={showOfferTypeModal}
-                  isSelected={!!hasType}
-                />
-              </ButtonContainer>
-            </React.Fragment>
-            <Spacer.Row numberOfSpaces={6} />
-          </ScrollView>
-          <Spacer.Column numberOfSpaces={4} />
-        </View>
-      </React.Fragment>
+          </React.Fragment>
+          <React.Fragment>
+            <Spacer.Row numberOfSpaces={2} />
+            <ButtonContainer>
+              <SingleFilterButton
+                label="Type"
+                testID="typeButton"
+                onPress={showOfferTypeModal}
+                isSelected={!!hasType}
+              />
+            </ButtonContainer>
+          </React.Fragment>
+          <Spacer.Row numberOfSpaces={6} />
+        </ScrollView>
+        <Spacer.Column numberOfSpaces={4} />
+      </View>
       <Container testID="searchResults">
         <FlatList
           ref={flatListRef}

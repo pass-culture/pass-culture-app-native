@@ -11,10 +11,8 @@ import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrima
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { displayOnFocus } from 'ui/web/displayOnFocus/displayOnFocus'
 
 type Props = {
@@ -23,7 +21,6 @@ type Props = {
 
 export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props) {
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { top } = useCustomSafeInsets()
   const pushWithStagedSearch = usePushWithStagedSearch()
 
   const navigateToSuggestions = useCallback(() => {
@@ -34,58 +31,35 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
   }, [params, pushWithStagedSearch])
 
   const isLanding = params === undefined || params.view === SearchView.Landing
-  const label = 'Recherche une offre'
 
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      {isLanding ? (
-        <HeaderBackground height={top + getSpacing(20)} />
-      ) : (
-        !!top && <HeaderBackground height={top} />
-      )}
-      <SearchBoxContainer
-        view={params?.view}
-        testID={isLanding ? 'searchBoxWithLabel' : 'searchBoxWithoutLabel'}
-        isLanding={isLanding}>
-        {!!isLanding && (
-          <React.Fragment>
-            <View {...getHeadingAttrs(1)}>
-              <StyledInputLabel htmlFor={searchInputID}>{label}</StyledInputLabel>
-            </View>
-            <Spacer.Column numberOfSpaces={2} />
-          </React.Fragment>
-        )}
-        <FloatingSearchBoxContainer isLanding={isLanding}>
+      <SearchBoxContainer>
+        <View {...getHeadingAttrs(1)}>
+          <StyledTitle4 htmlFor={searchInputID}>Recherche une offre</StyledTitle4>
+        </View>
+        <Spacer.Column numberOfSpaces={2} />
+        <View>
           {!!isLanding && (
             <HiddenAccessibleButton
               onPress={navigateToSuggestions}
               wording="Recherche par mots-clés"
             />
           )}
-          <FloatingSearchBox searchInputID={searchInputID} isLanding={isLanding} />
-        </FloatingSearchBoxContainer>
-        {!!isLanding && <Spacer.Column numberOfSpaces={6} />}
+          <SearchBox searchInputID={searchInputID} />
+        </View>
+        <Spacer.Column numberOfSpaces={3} />
       </SearchBoxContainer>
-      {!isLanding && <Spacer.Column numberOfSpaces={1} />}
     </React.Fragment>
   )
 })
 
-const SearchBoxContainer = styled.View<{ isLanding: boolean; view?: SearchView }>(
-  ({ isLanding, view }) => ({
-    marginTop: getSpacing(6),
-    zIndex: 1,
-    ...(isLanding
-      ? {
-          paddingHorizontal: getSpacing(6),
-        }
-      : {
-          paddingLeft: getSpacing(4),
-          paddingRight: getSpacing(view === SearchView.Results ? 4 : 6),
-        }),
-  })
-)
+const SearchBoxContainer = styled.View({
+  marginTop: getSpacing(6),
+  zIndex: 1,
+  paddingHorizontal: getSpacing(6),
+})
 
 const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary))({
   margin: getSpacing(1),
@@ -102,26 +76,6 @@ const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary
   }),
 })
 
-const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
+const StyledTitle4 = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.title4,
-  color: theme.colors.white,
 }))
-
-const FloatingSearchBoxContainer = styled.View<{ isLanding?: boolean }>(({ isLanding }) =>
-  isLanding
-    ? {
-        position: 'relative',
-        zIndex: 1,
-      }
-    : {}
-)
-
-const FloatingSearchBox = styled(SearchBox)<{ isLanding?: boolean }>(({ isLanding }) =>
-  isLanding
-    ? {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-      }
-    : {}
-)

@@ -142,22 +142,11 @@ describe('Search component', () => {
 
       expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
     })
-
-    it('should show search box with label', () => {
-      const { queryByTestId } = render(<Search />)
-      expect(queryByTestId('searchBoxWithLabel')).toBeTruthy()
-    })
   })
 
   describe('When search executed', () => {
     beforeAll(() => {
       useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'la fnac' } })
-    })
-
-    it('should show search box without label', async () => {
-      const { queryByTestId } = render(<Search />)
-      await superFlushWithAct()
-      expect(queryByTestId('searchBoxWithoutLabel')).toBeTruthy()
     })
 
     it('should show search results', async () => {

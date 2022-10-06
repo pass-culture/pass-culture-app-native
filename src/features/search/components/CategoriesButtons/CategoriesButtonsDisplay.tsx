@@ -55,7 +55,6 @@ const CategoriesTitle = styled(Typo.Title4).attrs({
 })
 
 const contentContainerStyle = {
-  paddingTop: getSpacing(6),
   paddingHorizontal: getSpacing(5),
   ...(Platform.OS === 'web'
     ? { paddingBottom: getSpacing(6) }
