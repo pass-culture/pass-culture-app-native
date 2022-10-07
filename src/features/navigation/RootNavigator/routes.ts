@@ -35,7 +35,7 @@ import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstT
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
-import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
@@ -50,8 +50,6 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
-import { LocationFilter } from 'features/search/pages/LocationFilter'
-import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
@@ -247,22 +245,6 @@ export const routes: Route[] = [
     component: DeleteProfileSuccess,
     path: 'profile/suppression/confirmation',
     options: { title: 'Suppression profil confirmée' },
-  },
-  {
-    name: 'LocationFilter',
-    component: LocationFilter,
-    pathConfig: {
-      path: 'recherche/localisation/filtres',
-      parse: screenParamsParser['LocationFilter'],
-      stringify: screenParamsStringifier['LocationFilter'],
-    },
-    options: { title: 'Recherche par localisation' },
-  },
-  {
-    name: 'LocationPicker',
-    component: LocationPicker,
-    path: 'recherche/localisation/choisir-adresse',
-    options: { title: 'Recherche par localisation' },
   },
   {
     name: 'Login',

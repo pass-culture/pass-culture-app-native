@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -32,6 +34,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     isFocusable = true,
     onFocus: onFocusProp,
     children,
+    isRequiredField,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
@@ -53,7 +56,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     <React.Fragment>
       {!!label && (
         <React.Fragment>
-          <InputLabel htmlFor={searchInputID}>{label}</InputLabel>
+          <LabelContainer>
+            <InputLabel htmlFor={searchInputID}>{label}</InputLabel>
+            {!!isRequiredField && <RequiredLabel />}
+          </LabelContainer>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}

@@ -280,6 +280,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                   Object {
                     "WebkitClipPath": "inset(50%)",
                     "clipPath": "inset(50%)",
+                    "display": "block",
                     "height": "1px",
                     "overflowX": "hidden",
                     "overflowY": "hidden",

@@ -298,21 +298,34 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 ]
               }
             />
-            <Text
-              htmlFor="testUuidV4"
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Entre ton adresse
-            </Text>
+              <Text
+                htmlFor="testUuidV4"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Entre ton adresse
+              </Text>
+            </View>
             <View
               numberOfSpaces={2}
               style={
