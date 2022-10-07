@@ -189,7 +189,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="ltr"
-                      style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
+                      style="clip-path: inset(50%); display: block; height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                     >
                       Retour
                     </div>
@@ -251,12 +251,17 @@ Object {
                     class="css-view-1dbjc4n"
                     style="height: 20px;"
                   />
-                  <label
-                    class="c2"
-                    for="testUuidV4"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                   >
-                    Indique ton code postal et choisis ta ville
-                  </label>
+                    <label
+                      class="c2"
+                      for="testUuidV4"
+                    >
+                      Indique ton code postal et choisis ta ville
+                    </label>
+                  </div>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 8px;"
@@ -534,7 +539,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     dir="ltr"
-                    style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
+                    style="clip-path: inset(50%); display: block; height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                   >
                     Retour
                   </div>
@@ -596,12 +601,17 @@ Object {
                   class="css-view-1dbjc4n"
                   style="height: 20px;"
                 />
-                <label
-                  class="c2"
-                  for="testUuidV4"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  Indique ton code postal et choisis ta ville
-                </label>
+                  <label
+                    class="c2"
+                    for="testUuidV4"
+                  >
+                    Indique ton code postal et choisis ta ville
+                  </label>
+                </div>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"

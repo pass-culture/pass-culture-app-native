@@ -1,21 +1,21 @@
-import { useNavigation } from '@react-navigation/native'
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
-import React, { useRef, useState } from 'react'
-import { FlatList, View } from 'react-native'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { plural } from 'libs/plural'
 import { SuggestedVenue } from 'libs/venue'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+import { Li } from 'ui/components/Li'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { VerticalUl } from 'ui/components/Ul'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationPointerNotFilled as DefaultLocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
@@ -34,6 +34,8 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
   return `${prefix}-${label}-${info}-${suffix}`
 }
 
+const MAXIMUM_RESULTS = 5
+
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
   const containerRef = useRef(null)
@@ -42,7 +44,7 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
   useSpaceBarAction(isFocus ? onPress : undefined)
 
   return (
-    <ItemContainer
+    <TouchableOpacity
       accessibilityRole={AccessibilityRole.RADIO}
       onFocus={() => setIsFocus(true)}
       onBlur={() => setIsFocus(false)}
@@ -57,30 +59,24 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
           <Typo.Body>{hit.info}</Typo.Body>
         </Text>
       </RefContainer>
-    </ItemContainer>
+    </TouchableOpacity>
   )
 }
 
-export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?: string }> = ({
-  query,
-  accessibilityLabelledBy,
-}) => {
+type Props = {
+  query: string
+  setSelectedPlaceOrVenue: (placeOrVenue: SuggestedPlace | SuggestedVenue) => void
+}
+
+export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPlaceOrVenue }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
-    if (isVenue(hit) && hit.venueId) {
-      navigate('LocationFilter', { selectedVenue: hit })
-    } else if (isPlace(hit) && hit.geolocation) {
-      navigate('LocationFilter', { selectedPlace: hit })
-    }
-  }
 
   const filteredPlaces: SuggestedPlaceOrVenue[] = [
-    ...venues.slice(0, 5),
-    ...uniqWith(places, isEqual),
+    ...venues.slice(0, MAXIMUM_RESULTS),
+    ...uniqWith(places.slice(0, MAXIMUM_RESULTS), isEqual),
   ]
+
   const isLoading = isLoadingPlaces || isLoadingVenues
 
   return (
@@ -92,16 +88,19 @@ export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?
       <View accessibilityRole={AccessibilityRole.STATUS}>
         <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0 && !isLoading} />
       </View>
-      <FlatList
-        accessibilityRole={AccessibilityRole.RADIOGROUP}
-        data={filteredPlaces}
-        keyExtractor={keyExtractor}
-        renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
-        ItemSeparatorComponent={Separator}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-        aria-labelledby={accessibilityLabelledBy}
-      />
+      {filteredPlaces.length > 0 && (
+        <React.Fragment>
+          {/*<Spacer.Column numberOfSpaces={6} />*/}
+          <VerticalUl>
+            {filteredPlaces.map((item, index) => (
+              <Li key={keyExtractor(item)}>
+                <Hit hit={item} onPress={() => setSelectedPlaceOrVenue(item)} />
+                {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
+              </Li>
+            ))}
+          </VerticalUl>
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }
@@ -128,11 +127,6 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
     <React.Fragment />
   )
 
-const ItemContainer = styled(TouchableOpacity)({
-  marginHorizontal: getSpacing(6),
-  paddingVertical: getSpacing(4),
-})
-
 const RefContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
@@ -145,23 +139,17 @@ const Text = styled.Text.attrs({
   flex: 1,
 }))
 
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-}))
-
 const DescriptionErrorTextContainer = styled(Typo.Body)({
-  marginTop: getSpacing(6.5),
+  marginTop: getSpacing(6),
   textAlign: 'center',
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
 
 const LocationBuilding = styled(DefaultLocationBuilding).attrs(({ theme }) => ({
-  color: theme.colors.primary,
+  size: theme.icons.sizes.extraSmall,
 }))``
 
-const BicolorLocationPointer = styled(DefaultBicolorLocationPointer).attrs(({ theme }) => ({
-  color2: theme.colors.primary,
+const BicolorLocationPointer = styled(DefaultLocationPointerNotFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
 }))``

@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import omit from 'lodash/omit'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -14,8 +14,9 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons/FilterButton/FilterButton'
+import { LocationModal } from 'features/search/pages/LocationModal'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
@@ -24,6 +25,7 @@ import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
+import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -38,6 +40,8 @@ type Props = UseSearchBoxProps & {
   isLanding?: boolean
 }
 
+const accessibilityDescribedBy = uuidv4()
+
 export const SearchBox: React.FunctionComponent<Props> = ({
   isLanding,
   searchInputID,
@@ -45,14 +49,17 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
   const { searchState } = useSearch()
   const [query, setQuery] = useState<string>(params?.query || '')
-  const accessibilityDescribedBy = uuidv4()
   const { locationFilter, section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
+  const {
+    visible: locationModalVisible,
+    showModal: showLocationModal,
+    hideModal: hideLocationModal,
+  } = useModal(false)
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
   // An issue was opened to ask the integration of debounce directly in the lib : https://github.com/algolia/react-instantsearch/discussions/3555
@@ -143,10 +150,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     setQuery('')
   }, [appEnableAutocomplete, locationFilter, params, pushWithStagedSearch, stagedDispatch])
 
-  const onPressLocationButton = useCallback(() => {
-    navigate('LocationFilter')
-  }, [navigate])
-
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
       const queryText = event.nativeEvent.text
@@ -209,7 +212,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             onFocus={onFocus}
             showLocationButton={params === undefined || params.view === SearchView.Landing}
             locationLabel={locationLabel}
-            onPressLocationButton={onPressLocationButton}
+            onPressLocationButton={showLocationModal}
           />
           {!!hasEditableSearchInput && (
             <StyledView>
@@ -223,6 +226,12 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
         ”Entrée”
       </HiddenAccessibleText>
+      <LocationModal
+        title="Localisation"
+        accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
+        isVisible={locationModalVisible}
+        hideModal={hideLocationModal}
+      />
     </RowContainer>
   )
 }

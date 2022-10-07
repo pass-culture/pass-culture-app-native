@@ -43,6 +43,7 @@ Object {
 .c1 {
   z-index: 1;
   position: absolute;
+  display: block;
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   width: 1px;
@@ -389,6 +390,7 @@ Object {
 .c1 {
   z-index: 1;
   position: absolute;
+  display: block;
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   width: 1px;

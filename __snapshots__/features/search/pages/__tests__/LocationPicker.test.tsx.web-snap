@@ -208,6 +208,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
                   Object {
                     "WebkitClipPath": "inset(50%)",
                     "clipPath": "inset(50%)",
+                    "display": "block",
                     "height": "1px",
                     "overflowX": "hidden",
                     "overflowY": "hidden",
@@ -304,6 +305,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
         Object {
           "WebkitClipPath": "inset(50%)",
           "clipPath": "inset(50%)",
+          "display": "block",
           "height": "1px",
           "overflowX": "hidden",
           "overflowY": "hidden",
@@ -418,6 +420,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
       Object {
         "WebkitClipPath": "inset(50%)",
         "clipPath": "inset(50%)",
+        "display": "block",
         "height": "1px",
         "overflowX": "hidden",
         "overflowY": "hidden",
@@ -443,6 +446,7 @@ exports[`<LocationPicker /> should render correctly 1`] = `
       Object {
         "WebkitClipPath": "inset(50%)",
         "clipPath": "inset(50%)",
+        "display": "block",
         "height": "1px",
         "overflowX": "hidden",
         "overflowY": "hidden",
@@ -456,40 +460,5 @@ exports[`<LocationPicker /> should render correctly 1`] = `
     className="css-view-1dbjc4n"
     role="status"
   />
-  <div
-    aria-labelledby="testUuidV4"
-    className="css-view-1dbjc4n"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
-    role="radiogroup"
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxOrient": "vertical",
-        "WebkitFlexDirection": "column",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexDirection": "column",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "overflowX": "hidden",
-        "overflowY": "auto",
-        "transform": "translateZ(0px)",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-    />
-  </div>
 </div>
 `;

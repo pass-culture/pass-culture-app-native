@@ -212,6 +212,37 @@ Array [
         >
           Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
         </Text>
+        <Modal
+          accessibilityRole="none"
+          animationType="none"
+          aria-labelledby="testUuidV4"
+          aria-modal={true}
+          deviceHeight={1334}
+          deviceWidth={750}
+          hardwareAccelerated={false}
+          hideModalContentWhileAnimating={false}
+          onBackdropPress={[Function]}
+          onModalHide={[Function]}
+          onModalWillHide={[Function]}
+          onModalWillShow={[Function]}
+          onRequestClose={[Function]}
+          panResponderThreshold={4}
+          scrollHorizontal={false}
+          scrollOffset={0}
+          scrollOffsetMax={0}
+          scrollTo={null}
+          statusBarTranslucent={true}
+          supportedOrientations={
+            Array [
+              "portrait",
+              "landscape",
+            ]
+          }
+          swipeThreshold={100}
+          testID="modal"
+          transparent={true}
+          visible={false}
+        />
       </View>
     </View>
     <View
