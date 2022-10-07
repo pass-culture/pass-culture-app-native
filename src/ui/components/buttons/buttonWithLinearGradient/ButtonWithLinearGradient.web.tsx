@@ -1,10 +1,12 @@
 import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
-import styledNative from 'styled-components/native'
+import styledNative, { DefaultTheme } from 'styled-components/native'
 
-import { genericStyle } from 'ui/components/buttons/buttonWithLinearGradient/styles/genericStyle.web'
+import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,
@@ -59,6 +61,36 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       </LegendContainer>
     </ButtonComponent>
   )
+}
+
+type GenericStyleProps = {
+  theme: DefaultTheme
+  fitContentWidth: boolean
+}
+
+const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
+  return {
+    overflow: 'hidden',
+    cursor: 'pointer',
+    height: theme.buttons.buttonHeights.tall,
+    borderRadius: theme.borderRadius.button,
+    backgroundColor: theme.colors.primary,
+    backgroundImage: `linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary})`,
+    padding: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: 0,
+    ['&:disabled']: {
+      cursor: 'initial',
+      background: 'none',
+      color: theme.buttons.disabled.linearGradient.textColor,
+      backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
+    },
+    ...customFocusOutline(theme, theme.buttons.outlineColor),
+    ...getHoverStyle(theme.buttons.linearGradient.textColor),
+    ...buttonWidthStyle({ fitContentWidth }),
+  }
 }
 
 const Button = styled.button<{ fitContentWidth: boolean }>(({ theme, fitContentWidth }) => ({

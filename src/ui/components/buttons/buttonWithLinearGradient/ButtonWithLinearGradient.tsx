@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styles/buttonWidthStyle'
+import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'

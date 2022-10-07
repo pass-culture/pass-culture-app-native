@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import { AccessibilityRole } from 'react-native'
-import { DefaultTheme } from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -18,9 +17,4 @@ export interface ButtonWithLinearGradientProps {
   target?: string
   testID?: string
   fitContentWidth?: boolean
-}
-
-export type GenericStyleProps = {
-  theme: DefaultTheme
-  fitContentWidth: boolean
 }
