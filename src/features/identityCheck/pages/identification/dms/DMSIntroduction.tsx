@@ -49,7 +49,9 @@ export const DMSIntroduction = (): JSX.Element => {
       titleComponent={Typo.Title2}
       title="Identifie-toi sur le site demarches-simplifiees.fr"
       separateIconFromTitle={false}
-      headerGoBack>
+      headerGoBack
+      fullWidth
+      mobileBottomFlex={0.5}>
       <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
       <VerticalUl>
         {informationListItem.map((informationItem, index) => (
