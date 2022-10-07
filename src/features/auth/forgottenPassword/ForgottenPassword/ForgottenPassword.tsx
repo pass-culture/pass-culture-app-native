@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
-import { useForm, Controller, FieldPath } from 'react-hook-form'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
+import { useForm, Controller, FieldPath, UseFormReturn } from 'react-hook-form'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -36,108 +36,24 @@ const emailErrorMessageId = uuidv4()
 
 export const ForgottenPassword: FunctionComponent = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  const { navigate } = useNavigation<UseNavigationType>()
-  const {
-    clearErrors,
-    control,
-    formState: { errors },
-    setValue,
-    setError,
-    watch,
-  } = useForm<FormValues>({
+  const { control, ...useFormMethods } = useForm<FormValues>({
     defaultValues: { email: '', isFetching: false, isDoingReCaptchaChallenge: false },
   })
 
-  const { email, isDoingReCaptchaChallenge, isFetching } = watch()
-
-  // Little helper method to make it easier to set error
-  const setCustomError = (field: FieldPath<FormValues>, message: string) => {
-    return setError(field, { type: 'custom', message })
-  }
-
-  const networkInfo = useNetInfoContext({
-    onNetworkRecovered() {
-      clearErrors()
-    },
-    onNetworkLost() {
-      setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
-      setValue('isDoingReCaptchaChallenge', false)
-    },
-  })
-  const { replace } = useNavigation<UseNavigationType>()
-
-  /**
-   * Called after recaptcha test, or if recaptcha not needed.
-   *
-   * @param {string} token Initialized with `dummyToken` by default, since token
-   * needs to be a non-empty string even when ReCaptcha validation is deactivated.
-   * Cf. backend logic for token validation
-   */
-  async function requestPasswordReset(token = 'dummyToken') {
-    clearErrors()
-    try {
-      setValue('isFetching', true)
-      await api.postnativev1requestPasswordReset({ email, token })
-      replace('ResetPasswordEmailSent', { email })
-    } catch (error) {
-      setCustomError(
-        'email',
-        'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-      )
-      if (error instanceof ApiError) {
-        captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
-      }
-    } finally {
-      setValue('isFetching', false)
-    }
-  }
-
-  function openReCaptchaChallenge() {
-    if (!isEmailValid(email)) {
-      return setCustomError(
-        'email',
-        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-      )
-    }
-    if (!networkInfo.isConnected) {
-      return setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
-    }
-    setValue('isDoingReCaptchaChallenge', true)
-    clearErrors()
-  }
-
-  function onReCaptchaClose() {
-    setValue('isDoingReCaptchaChallenge', false)
-  }
-
-  function onReCaptchaError(error: string) {
-    setValue('isDoingReCaptchaChallenge', false)
-    setCustomError(
-      'email',
-      'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-    )
-    captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
-  }
-
-  function onReCaptchaExpire() {
-    setValue('isDoingReCaptchaChallenge', false)
-    setCustomError('reCaptcha', 'Le token reCAPTCHA a expiré, tu peux réessayer.')
-  }
-
-  function onReCaptchaSuccess(token: string) {
-    setValue('isDoingReCaptchaChallenge', false)
-    requestPasswordReset(token)
-  }
-
-  const shouldDisableValidateButton = isValueEmpty(email) || isFetching
-
-  function onBackNavigation() {
-    navigate('Login')
-  }
-
-  const errorValues = Object.values(errors)
-  const hasError = Boolean(errorValues.length)
-  const lastError = errorValues[errorValues.length - 1]?.message
+  const {
+    hasError,
+    isDoingReCaptchaChallenge,
+    isFetching,
+    lastError,
+    onBackNavigation,
+    onReCaptchaClose,
+    onReCaptchaError,
+    onReCaptchaExpire,
+    onReCaptchaSuccess,
+    openReCaptchaChallenge,
+    requestPasswordReset,
+    shouldDisableValidateButton,
+  } = useForgottenPasswordForm(useFormMethods)
 
   return (
     <BottomContentPage>
@@ -176,7 +92,7 @@ export const ForgottenPassword: FunctionComponent = () => {
                 label="Adresse e-mail"
                 email={value}
                 onEmailChange={onChange}
-                autoFocus={true}
+                autoFocus
                 accessibilityDescribedBy={emailErrorMessageId}
               />
             )}
@@ -198,6 +114,130 @@ export const ForgottenPassword: FunctionComponent = () => {
         </Form.MaxWidth>
       </ModalContent>
     </BottomContentPage>
+  )
+}
+
+const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>, 'control'>) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const {
+    setError,
+    clearErrors,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useFormMethods
+  const { email, isFetching, isDoingReCaptchaChallenge } = watch()
+
+  // Little helper method to make it easier to set error
+  const setCustomError = useCallback(
+    (field: FieldPath<FormValues>, message: string) => {
+      return setError(field, { type: 'custom', message })
+    },
+    [setError]
+  )
+
+  const networkInfo = useNetInfoContext({
+    onNetworkRecovered() {
+      clearErrors()
+    },
+    onNetworkLost() {
+      setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
+      setValue('isDoingReCaptchaChallenge', false)
+    },
+  })
+  const { replace } = useNavigation<UseNavigationType>()
+
+  /**
+   * Called after recaptcha test, or if recaptcha not needed.
+   *
+   * @param {string} token Initialized with `dummyToken` by default, since token
+   * needs to be a non-empty string even when ReCaptcha validation is deactivated.
+   * Cf. backend logic for token validation
+   */
+  const requestPasswordReset = useCallback(
+    async function requestPasswordReset(token = 'dummyToken') {
+      clearErrors()
+      try {
+        setValue('isFetching', true)
+        await api.postnativev1requestPasswordReset({ email, token })
+        replace('ResetPasswordEmailSent', { email })
+      } catch (error) {
+        setCustomError(
+          'email',
+          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
+        )
+        if (error instanceof ApiError) {
+          captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
+        }
+      } finally {
+        setValue('isFetching', false)
+      }
+    },
+    [clearErrors, email, replace, setCustomError, setValue]
+  )
+
+  const openReCaptchaChallenge = useCallback(
+    function openReCaptchaChallenge() {
+      if (!isEmailValid(email)) {
+        return setCustomError(
+          'email',
+          'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
+        )
+      }
+      if (!networkInfo.isConnected) {
+        return setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
+      }
+      setValue('isDoingReCaptchaChallenge', true)
+      clearErrors()
+    },
+    [clearErrors, email, networkInfo.isConnected, setCustomError, setValue]
+  )
+
+  const errorValues = Object.values(errors)
+
+  return useMemo(
+    () => ({
+      openReCaptchaChallenge,
+      requestPasswordReset,
+      shouldDisableValidateButton: isValueEmpty(email) || isFetching,
+      hasError: Boolean(errorValues.length),
+      lastError: errorValues[errorValues.length - 1]?.message,
+      isFetching,
+      isDoingReCaptchaChallenge,
+      onReCaptchaSuccess(token: string) {
+        setValue('isDoingReCaptchaChallenge', false)
+        requestPasswordReset(token)
+      },
+      onReCaptchaExpire() {
+        setValue('isDoingReCaptchaChallenge', false)
+        setCustomError('reCaptcha', 'Le token reCAPTCHA a expiré, tu peux réessayer.')
+      },
+      onReCaptchaClose() {
+        setValue('isDoingReCaptchaChallenge', false)
+      },
+      onReCaptchaError(error: string) {
+        setValue('isDoingReCaptchaChallenge', false)
+        setCustomError(
+          'email',
+          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
+        )
+        captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
+      },
+      onBackNavigation() {
+        navigate('Login')
+      },
+    }),
+    [
+      email,
+      errorValues,
+      isDoingReCaptchaChallenge,
+      isFetching,
+      navigate,
+      openReCaptchaChallenge,
+      requestPasswordReset,
+      setCustomError,
+      setValue,
+    ]
   )
 }
 
