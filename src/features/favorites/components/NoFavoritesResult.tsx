@@ -2,12 +2,13 @@ import React from 'react'
 
 import { NoResults } from 'ui/components/NoResults'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 export const NoFavoritesResult = () => {
-  return (
-    <NoResults
-      explanations="Retrouve toutes tes offres en un clin d’oeil en les ajoutant à tes favoris&nbsp;!"
-      icon={EmptyFavorites}
-    />
-  )
+  const explanations =
+    'Tu n’as pas encore de favori\u00a0?' +
+    LINE_BREAK +
+    'Explore le catalogue pass Culture et ajoute les offres en favoris pour les retrouver facilement\u00a0!'
+
+  return <NoResults explanations={explanations} icon={EmptyFavorites} />
 }

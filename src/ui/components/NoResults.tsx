@@ -6,6 +6,7 @@ import { SearchView } from 'features/search/types'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -38,9 +39,10 @@ export const NoResults = ({ explanations, icon, offline = false }: Props) => {
           <TouchableLink
             as={ButtonPrimary}
             navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
-            wording="Explorer les offres"
+            wording="Découvrir le catalogue"
             onBeforeNavigate={onPressExploreOffers}
             buttonHeight="tall"
+            icon={MagnifyingGlass}
           />
         </ButtonContainer>
       )}
@@ -60,7 +62,6 @@ const Container = styled.View(({ theme }) => ({
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   textAlign: 'center',
-  color: theme.colors.greyDark,
 }))
 
 const ButtonContainer = styled.View({
