@@ -10,12 +10,12 @@ import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResu
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
 import { FavoriteSortBy } from 'features/favorites/pages/FavoritesSorts'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
-import { useFavorites } from 'features/favorites/pages/useFavorites'
 import {
   sortByAscendingPrice,
   sortByDistanceAroundMe,
   sortByIdDesc,
-} from 'features/favorites/pages/utils/sorts'
+} from 'features/favorites/pages/helpers/sorts'
+import { useFavorites } from 'features/favorites/pages/useFavorites'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
