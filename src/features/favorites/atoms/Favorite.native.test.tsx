@@ -15,7 +15,7 @@ import { act, fireEvent, render, cleanup, superFlushWithAct } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { Favorite } from '../Favorite'
+import { Favorite } from './Favorite'
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

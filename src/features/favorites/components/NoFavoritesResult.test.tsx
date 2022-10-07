@@ -7,7 +7,7 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
-import { NoFavoritesResult } from '../NoFavoritesResult'
+import { NoFavoritesResult } from './NoFavoritesResult'
 
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()

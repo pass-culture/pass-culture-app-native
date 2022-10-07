@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { initialFavoritesState, favoritesReducer } from '../reducer'
+import { initialFavoritesState, favoritesReducer } from './reducer'
 
 const Today = new Date(2020, 10, 1)
 

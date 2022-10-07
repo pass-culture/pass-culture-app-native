@@ -10,12 +10,12 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils/web'
 
-import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
-import { FavoritesWrapper } from '../FavoritesWrapper'
+import { FavoriteSortBy, FavoritesSorts } from './FavoritesSorts'
+import { FavoritesWrapper } from './FavoritesWrapper'
 
-jest.mock('../FavoritesWrapper', () => jest.requireActual('../FavoritesWrapper'))
+jest.mock('./FavoritesWrapper', () => jest.requireActual('./FavoritesWrapper'))
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
@@ -23,6 +23,7 @@ let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
+const mockRequestGeolocPermission = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -31,6 +32,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
     positionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    requestGeolocPermission: mockRequestGeolocPermission,
   }),
 }))
 
@@ -50,7 +52,7 @@ describe('FavoritesSorts component', () => {
   it('should go back on validate', async () => {
     const renderAPI = await renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.click(renderAPI.getByText('Valider'))
 
     await waitForExpect(() => {
       expect(mockGoBack).toBeCalled()
@@ -72,8 +74,8 @@ describe('FavoritesSorts component', () => {
     }) => {
       const renderAPI = await renderFavoritesSort()
 
-      fireEvent.press(renderAPI.getByText(sortByWording))
-      fireEvent.press(renderAPI.getByText('Valider'))
+      fireEvent.click(renderAPI.getByText(sortByWording))
+      fireEvent.click(renderAPI.getByText('Valider'))
 
       await waitForExpect(() => {
         expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
@@ -91,7 +93,7 @@ describe('FavoritesSorts component', () => {
     }
     const renderAPI = await renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Proximité géographique'))
+    fireEvent.click(renderAPI.getByText('Proximité géographique'))
 
     renderAPI.getByText(mockPositionError.message)
   })
@@ -99,9 +101,9 @@ describe('FavoritesSorts component', () => {
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
     const renderAPI = await renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Proximité géographique'))
+    fireEvent.click(renderAPI.getByText('Proximité géographique'))
     await superFlushWithAct()
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.click(renderAPI.getByText('Valider'))
 
     await waitForExpect(() => {
       expect(
@@ -120,9 +122,9 @@ describe('FavoritesSorts component', () => {
     mockPermissionState = GeolocPermissionState.DENIED
     const renderAPI = await renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Proximité géographique'))
+    fireEvent.click(renderAPI.getByText('Proximité géographique'))
     await superFlushWithAct()
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.click(renderAPI.getByText('Valider'))
 
     await waitForExpect(() => {
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({

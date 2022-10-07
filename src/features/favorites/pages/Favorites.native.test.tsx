@@ -5,8 +5,8 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, render } from 'tests/utils'
 
-import { Favorites } from '../Favorites'
-import { initialFavoritesState } from '../reducer'
+import { Favorites } from './Favorites'
+import { initialFavoritesState } from './reducer'
 
 const mockSearchState = initialFavoritesState
 const mockDispatch = jest.fn()

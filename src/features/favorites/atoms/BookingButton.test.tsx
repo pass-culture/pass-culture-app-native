@@ -12,7 +12,7 @@ import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
-import { BookingButton } from '../BookingButton'
+import { BookingButton } from './BookingButton'
 
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('features/home/services/useAvailableCredit')

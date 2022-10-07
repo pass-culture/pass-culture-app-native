@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from 'tests/utils'
 
-import { NumberOfResults } from '../NumberOfResults'
+import { NumberOfResults } from './NumberOfResults'
 
 describe('NumberOfResults component', () => {
   it('should correctly format the number of favorites', () => {

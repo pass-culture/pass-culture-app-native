@@ -18,7 +18,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor, superFlushWithAct } from 'tests/utils'
 
-import { useFavorites, useRemoveFavorite, useAddFavorite, useFavorite } from '../useFavorites'
+import { useFavorites, useRemoveFavorite, useAddFavorite, useFavorite } from './useFavorites'
 
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })

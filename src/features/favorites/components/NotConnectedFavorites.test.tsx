@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
-import { NotConnectedFavorites } from '../NotConnectedFavorites'
+import { NotConnectedFavorites } from './NotConnectedFavorites'
 
 describe('NotConnectedFavorites component', () => {
   it('should render not connected favorites', () => {

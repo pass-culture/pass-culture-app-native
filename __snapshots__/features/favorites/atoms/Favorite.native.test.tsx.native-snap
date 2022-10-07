@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Favorite /> component offer name should take full space if no geolocation 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+        \\"opacity\\": 1,
+      }
+    }
+  >
+    <View
+-     accessibilityLabel=\\"Offre Un lit sous une rivière de la catégorie CD, vinyles, musique en ligne,   Dès le 4 mars 2021, prix Dès 2,70 €. \\"
++     accessibilityLabel=\\"Offre Un lit sous une rivière de la catégorie CD, vinyles, musique en ligne, à 10 km,  Dès le 4 mars 2021, prix Dès 2,70 €. \\"
+      accessibilityRole=\\"link\\"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function onClick]}
+@@ -123,10 +123,22 @@
+                  \\"flexDirection\\": \\"row\\",
+                },
+              ]
+            }
+          >
++           <View
++             flex={0.7}
++             style={
++               Array [
++                 Object {
++                   \\"flexBasis\\": 0,
++                   \\"flexGrow\\": 0.7,
++                   \\"flexShrink\\": 1,
++                 },
++               ]
++             }
++           >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+@@ -138,10 +150,39 @@
+                  ]
+                }
+              >
+                Un lit sous une rivière
+              </Text>
++           </View>
++           <View
++             flex={0.3}
++             style={
++               Array [
++                 Object {
++                   \\"flexBasis\\": 0,
++                   \\"flexGrow\\": 0.3,
++                   \\"flexShrink\\": 1,
++                 },
++               ]
++             }
++           >
++             <Text
++               style={
++                 Array [
++                   Object {
++                     \\"color\\": \\"#696A6F\\",
++                     \\"fontFamily\\": \\"Montserrat-Regular\\",
++                     \\"fontSize\\": 15,
++                     \\"lineHeight\\": 20,
++                     \\"textAlign\\": \\"right\\",
++                   },
++                 ]
++               }
++             >
++               10 km
++             </Text>
++           </View>
+          </View>
+          <View
+            numberOfSpaces={1}
+            style={
+              Array ["
+`;

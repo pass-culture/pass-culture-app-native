@@ -8,9 +8,9 @@ import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, superFlushWithAct } from 'tests/utils'
+import { render } from 'tests/utils/web'
 
-import { BicolorFavoriteCount } from '../BicolorFavoriteCount'
+import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -23,12 +23,11 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should render non connected icon', async () => {
     const { queryByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: false })
-    expect(queryByTestId('bicolor-favorite-count')).toBeNull()
+    expect(queryByTestId('bicolor-favorite-count')).toBeFalsy()
   })
 
   it('should render connected icon', async () => {
     const { getByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: true })
-    await superFlushWithAct()
     await waitForExpect(() => {
       expect(getByTestId('bicolor-favorite-count')).toBeTruthy()
     })
@@ -36,7 +35,6 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
     const { getByText } = await renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
-    await superFlushWithAct()
     await waitForExpect(() => {
       expect(getByText('99')).toBeTruthy()
     })
@@ -44,7 +42,6 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should show nbFavorites within badge', async () => {
     const { getByText } = await renderBicolorFavoriteCount({ isLoggedIn: true })
-    await superFlushWithAct()
     await waitForExpect(() => {
       expect(getByText(defaultOptions.count.toString())).toBeTruthy()
     })
@@ -52,7 +49,6 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should show 0 within badge when no favorite', async () => {
     const { getByText } = await renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
-    await superFlushWithAct()
     await waitForExpect(() => {
       expect(getByText('0')).toBeTruthy()
     })
