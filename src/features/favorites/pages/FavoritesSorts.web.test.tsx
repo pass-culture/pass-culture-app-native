@@ -1,6 +1,9 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { FavoriteSortBy } from 'features/favorites/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { analytics } from 'libs/firebase/analytics'
 import {
@@ -11,9 +14,6 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils/web'
-
-import { FavoriteSortBy, FavoritesSorts } from './FavoritesSorts'
-import { FavoritesWrapper } from './FavoritesWrapper'
 
 jest.mock('./FavoritesWrapper', () => jest.requireActual('./FavoritesWrapper'))
 

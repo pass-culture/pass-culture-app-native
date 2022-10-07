@@ -1,4 +1,4 @@
-import { FavoriteSortBy } from 'features/favorites/pages/FavoritesSorts'
+import { FavoriteSortBy } from 'features/favorites/types'
 
 type FavoritesState = {
   sortBy: FavoriteSortBy

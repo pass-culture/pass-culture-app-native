@@ -1,8 +1,9 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { FavoriteSortBy, FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { FavoriteSortBy } from 'features/favorites/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { analytics } from 'libs/firebase/analytics'
 import {

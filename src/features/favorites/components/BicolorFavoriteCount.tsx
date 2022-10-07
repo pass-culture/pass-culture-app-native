@@ -3,7 +3,7 @@ import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useFavoritesCount } from 'features/favorites/pages/useFavorites'
+import { useFavoritesCount } from 'features/favorites/api'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { plural } from 'libs/plural'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'

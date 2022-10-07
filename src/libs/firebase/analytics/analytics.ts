@@ -2,6 +2,7 @@ import { Platform } from 'react-native'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
+import { FavoriteSortBy } from 'features/favorites/types'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
@@ -11,7 +12,6 @@ import { LoginRoutineMethod, OfferAnalyticsData } from 'libs/firebase/analytics/
 import { useInit } from 'libs/firebase/analytics/useInit'
 import { urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
 
-type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 export type ChangeSearchLocationParam =
   | { type: 'place' | 'everywhere' | 'aroundMe' }

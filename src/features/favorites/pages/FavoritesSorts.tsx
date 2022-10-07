@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { FavoriteSortBy } from 'features/favorites/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -17,8 +18,6 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
 
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
   RECENTLY_ADDED: 'Ajouté récemment',
