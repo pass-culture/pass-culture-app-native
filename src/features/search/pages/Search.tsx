@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
-import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React, { memo, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
 import styled from 'styled-components/native'
@@ -16,7 +15,6 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useShowResultsForCategory } from 'features/search/pages/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
-import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -88,8 +86,7 @@ export function Search() {
   return (
     <Form.Flex>
       <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
-        <Configure hitsPerPage={5} clickAnalytics />
-        <InsightsMiddleware />
+        <Configure hitsPerPage={5} />
         <SearchHeader searchInputID={searchInputID} />
         <BodySearch view={params?.view} />
       </InstantSearch>
@@ -104,9 +101,8 @@ const Container = styled.View({
 
 export type HitProps = {
   hit: AlgoliaSuggestionHit
-  sendEvent: SendEventForHits
 }
 
-export function Hit({ hit, sendEvent }: HitProps) {
-  return <SearchAutocompleteItem hit={hit} sendEvent={sendEvent} />
+export function Hit({ hit }: HitProps) {
+  return <SearchAutocompleteItem hit={hit} />
 }
