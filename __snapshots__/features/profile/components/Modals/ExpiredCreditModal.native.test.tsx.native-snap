@@ -223,10 +223,6 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
 
 
           Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
-          
-
-
-          Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site.
         </Text>
       </View>
     </View>

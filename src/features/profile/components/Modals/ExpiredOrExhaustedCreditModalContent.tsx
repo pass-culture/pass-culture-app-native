@@ -11,8 +11,6 @@ export function ExpiredOrExhaustedCreditModalContent() {
         {`Pas de panique, l’aventure continue\u00a0!`}
         {LINE_BREAK}
         {`Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.`}
-        {LINE_BREAK}
-        {`Tu peux aussi réserver les activités culturelles de nos partenaires directement sur leur site.`}
       </Typo.Body>
     </ModalChildrenContainer>
   )
