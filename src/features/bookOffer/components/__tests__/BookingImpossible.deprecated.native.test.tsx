@@ -3,7 +3,7 @@ import * as React from 'react'
 import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { addFavoriteJsonResponseSnap } from 'features/favorites/fixtures/favorisResponseSnap'
+import { addFavoriteJsonResponseSnap } from 'features/favorites/fixtures/favoritesResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
