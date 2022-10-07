@@ -5,15 +5,16 @@ import styled from 'styled-components/native'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
+import { Subtitle } from 'features/profile/atoms/Subtitle'
+import { Title } from 'features/profile/atoms/Title'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
-import { getSpacing, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
@@ -72,9 +73,13 @@ function NonBeneficiaryHeaderComponent({
         <BannerContainer>
           <View testID="eligibility-banner-container">
             {!!formattedEligibilityEndDatetime && (
-              <StyledCaption>
-                Tu as jusqu’au {formattedEligibilityEndDatetime} pour faire ta demande
-              </StyledCaption>
+              <React.Fragment>
+                <Subtitle
+                  startSubtitle="Tu es éligible jusqu’au"
+                  boldEndSubtitle={formattedEligibilityEndDatetime}
+                />
+                <Spacer.Column numberOfSpaces={6} />
+              </React.Fragment>
             )}
             {!!nextBeneficiaryValidationStepNavConfig && (
               <ModuleBanner
@@ -102,7 +107,7 @@ function NonBeneficiaryHeaderComponent({
 
   return (
     <React.Fragment>
-      <PageHeader title="Mon profil" size="medium" />
+      <Title title="Mon profil" />
       <NonBeneficiaryBanner />
     </React.Fragment>
   )
@@ -110,10 +115,7 @@ function NonBeneficiaryHeaderComponent({
 
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
-const BannerContainer = styled.View({
-  paddingTop: getSpacing(2),
-  paddingHorizontal: getSpacing(6),
+const BannerContainer = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.contentPage.marginHorizontal,
   position: 'relative',
-})
-
-const StyledCaption = styled(Typo.Caption)({ marginBottom: getSpacing(2) })
+}))

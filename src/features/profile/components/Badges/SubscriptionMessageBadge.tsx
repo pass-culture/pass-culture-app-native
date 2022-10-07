@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
+import { Subtitle } from 'features/profile/atoms/Subtitle'
 import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
@@ -17,7 +18,7 @@ const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) =
   if (!lastUpdatedDate) return
   const day = formatToSlashedFrenchDate(new Date(lastUpdatedDate).toISOString())
   const hour = formatToHour(new Date(lastUpdatedDate))
-  return `Dossier mis à jour le\u00a0: ${day} à ${hour}`
+  return `${day} à ${hour}`
 }
 
 export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
@@ -25,10 +26,11 @@ export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
     <React.Fragment>
       {!!props.subscriptionMessage?.updatedAt && (
         <React.Fragment>
-          <Typo.CaptionNeutralInfo>
-            {formatDateToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
-          </Typo.CaptionNeutralInfo>
-          <Spacer.Column numberOfSpaces={2} />
+          <Subtitle
+            startSubtitle="Dossier mis à jour le&nbsp;:"
+            boldEndSubtitle={formatDateToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
+          />
+          <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
       )}
       <ProfileBadge

@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode, useCallback } from 'react'
 import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Title } from 'features/profile/atoms/Title'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type PropsWithChildren = {
@@ -25,9 +26,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <TitleContainer>
-        <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
-      </TitleContainer>
+      <Title title={title} numberOfLines={2} />
       {!!subtitle && (
         <SubtitleContainer>
           {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
@@ -38,15 +37,9 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   )
 }
 
-const TitleContainer = styled.View(({ theme }) => ({
-  marginTop: getSpacing(6),
-  marginHorizontal: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(2),
-}))
-
 const SubtitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(5),
+  marginBottom: getSpacing(6),
 }))
 
 const GreyContainer = styled.View(({ theme }) => ({
