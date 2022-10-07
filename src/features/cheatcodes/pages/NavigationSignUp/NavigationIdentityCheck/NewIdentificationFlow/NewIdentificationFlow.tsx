@@ -46,6 +46,7 @@ export function NewIdentificationFlow(): JSX.Element {
           title="ExpiredOrLostID"
           onPress={() => navigate('ExpiredOrLostID')}
         />
+        <LinkToComponent name="ComeBackLater" title="Reviens plus tard" />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

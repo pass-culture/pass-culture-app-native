@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComeBackLater should render correctly 1`] = `
+Array [
+  <View
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "left": 24,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 30,
+        "userSelect": "auto",
+        "zIndex": 1,
+      }
+    }
+    testID="Revenir en arrière"
+  >
+    <View
+      accessibilityLabel="Revenir en arrière"
+      height={24}
+      width={24}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxWidth": 500,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      flex={2}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      hasHeight={false}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="none"
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Reviens plus tard
+    </Text>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginBottom": 24,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Pour profiter du pass Culture, tu dois avoir 
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        ta pièce d’identité originale et en cours de validité avec toi.
+      </Text>
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginBottom": 24,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      N’hésite pas à revenir t’identifier quand tu l’auras avec toi !
+    </Text>
+    <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View>
+      <View
+        accessibilityLabel="M’identifier plus tard"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="M’identifier plus tard"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          M’identifier plus tard
+        </Text>
+      </View>
+    </View>
+    <View
+      flex={1.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
