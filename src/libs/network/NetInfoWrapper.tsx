@@ -36,6 +36,22 @@ const NetInfoContext = createContext<NetInfoState>({
   details: null,
 } as NetInfoState)
 
-export function useNetInfoContext(): NetInfoState {
+type UseNetInfoContext = (options?: {
+  onNetworkLost?: () => void
+  onNetworkRecovered?: () => void
+}) => NetInfoState
+
+export const useNetInfoContext: UseNetInfoContext = ({
+  onNetworkLost,
+  onNetworkRecovered,
+} = {}) => {
+  const networkInfo = useContext(NetInfoContext)
+  const { isConnected } = networkInfo
+
+  useEffect(() => {
+    if (isConnected && onNetworkRecovered) onNetworkRecovered()
+    else if (!isConnected && onNetworkLost) onNetworkLost()
+  }, [isConnected, onNetworkLost, onNetworkRecovered])
+
   return useContext(NetInfoContext)
 }
