@@ -25,7 +25,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
 
   return (
     <Container
-      onPress={onPress}
+      onBeforeNavigate={onPress}
       disabled={isDisabled}
       fitContentWidth={fitContentWidth}
       {...accessibilityAndTestId(wording, testID)}>

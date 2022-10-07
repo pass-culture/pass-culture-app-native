@@ -21,7 +21,7 @@ export function LoggedOutHeader() {
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
-          onPress={() => analytics.logProfilSignUp()}
+          onBeforeNavigate={() => analytics.logProfilSignUp()}
           fitContentWidth={isDesktopViewport}
         />
 
