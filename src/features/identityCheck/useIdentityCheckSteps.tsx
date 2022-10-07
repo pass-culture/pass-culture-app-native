@@ -30,7 +30,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
 
   const ubbleFlow: (keyof IdentityCheckRootStackParamList)[] = settings?.enableNewIdentificationFlow
     ? ['SelectIDOrigin']
-    : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd']
+    : ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd']
 
   const steps: StepConfig[] = [
     {

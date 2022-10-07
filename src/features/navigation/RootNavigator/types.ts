@@ -43,7 +43,7 @@ export type IdentityCheckRootStackParamList = {
   DMSIntroduction: { isForeignDMSInformation: boolean }
   ExpiredOrLostID: undefined
   IdentityCheckStart: undefined
-  IdentityCheckWebview: undefined
+  UbbleWebview: undefined
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable: { withDMS?: boolean }
   IdentityCheckEduConnect: undefined

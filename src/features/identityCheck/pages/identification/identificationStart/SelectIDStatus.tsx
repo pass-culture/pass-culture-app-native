@@ -34,8 +34,7 @@ const FirstHeroButtonLink: FunctionComponent = () => {
         </Typo.Caption>
       }
       icon={BicolorIdCard}
-      // FIXME(PC-16835) navigate to ubble
-      navigateTo={navigateToHomeConfig}
+      navigateTo={{ screen: 'UbbleWebview' }}
     />
   )
 }
