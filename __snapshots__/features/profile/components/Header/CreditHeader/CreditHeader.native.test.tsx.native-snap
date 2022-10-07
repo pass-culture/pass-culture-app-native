@@ -45,7 +45,7 @@ Array [
     style={
       Array [
         Object {
-          "marginBottom": 20,
+          "marginBottom": 24,
           "marginHorizontal": 24,
         },
       ]
@@ -73,7 +73,7 @@ Array [
           ]
         }
       >
-        Profite de ton crédit jusqu’au 
+        Profite de ton crédit jusqu’au
       </Text>
       <Text
         style={
@@ -87,6 +87,7 @@ Array [
           ]
         }
       >
+         
         09/02/2023
       </Text>
     </View>
@@ -328,7 +329,7 @@ Array [
     style={
       Array [
         Object {
-          "marginBottom": 20,
+          "marginBottom": 24,
           "marginHorizontal": 24,
         },
       ]
@@ -356,7 +357,7 @@ Array [
           ]
         }
       >
-        Profite de ton crédit jusqu’au 
+        Profite de ton crédit jusqu’au
       </Text>
       <Text
         style={
@@ -370,6 +371,7 @@ Array [
           ]
         }
       >
+         
         09/02/2023
       </Text>
     </View>
@@ -684,7 +686,7 @@ Array [
     style={
       Array [
         Object {
-          "marginBottom": 20,
+          "marginBottom": 24,
           "marginHorizontal": 24,
         },
       ]
@@ -712,7 +714,7 @@ Array [
           ]
         }
       >
-        Ton crédit a expiré le 
+        Ton crédit a expiré le
       </Text>
       <Text
         style={
@@ -726,6 +728,7 @@ Array [
           ]
         }
       >
+         
         01/08/2022
       </Text>
     </View>
@@ -878,7 +881,7 @@ Array [
     style={
       Array [
         Object {
-          "marginBottom": 20,
+          "marginBottom": 24,
           "marginHorizontal": 24,
         },
       ]
@@ -906,7 +909,7 @@ Array [
           ]
         }
       >
-        Profite de ton crédit jusqu’au 
+        Profite de ton crédit jusqu’au
       </Text>
       <Text
         style={
@@ -920,6 +923,7 @@ Array [
           ]
         }
       >
+         
         09/02/2023
       </Text>
     </View>

@@ -2,26 +2,52 @@
 
 exports[`SubscriptionMessageBadge should display component correctly 1`] = `
 Array [
-  <Text
+  <View
     style={
       Array [
         Object {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
+          "flexDirection": "row",
+          "flexWrap": "wrap",
         },
       ]
     }
   >
-    Dossier mis à jour le : 25/10/2021 à 13h24
-  </Text>,
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Dossier mis à jour le :
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+       
+      25/10/2021 à 13h24
+    </Text>
+  </View>,
   <View
-    numberOfSpaces={2}
+    numberOfSpaces={4}
     style={
       Array [
         Object {
-          "height": 8,
+          "height": 16,
         },
       ]
     }
@@ -35,6 +61,7 @@ Array [
           "borderRadius": 6,
           "flexDirection": "row",
           "justifyContent": "space-between",
+          "marginTop": 8,
           "paddingBottom": 16,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -102,6 +129,7 @@ exports[`SubscriptionMessageBadge should not display last update sentence if upd
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
+        "marginTop": 8,
         "paddingBottom": 16,
         "paddingLeft": 16,
         "paddingRight": 16,
