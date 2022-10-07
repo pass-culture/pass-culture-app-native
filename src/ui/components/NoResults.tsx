@@ -11,12 +11,13 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
+  title: string
   explanations: string
   icon: FunctionComponent<IconInterface>
   offline?: boolean
 }
 
-export const NoResults = ({ explanations, icon, offline = false }: Props) => {
+export const NoResults = ({ title, explanations, icon, offline = false }: Props) => {
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'bookings' })
   const searchNavConfig = getTabNavConfig('Search', { view: SearchView.Landing })
 
@@ -29,35 +30,42 @@ export const NoResults = ({ explanations, icon, offline = false }: Props) => {
 
   return (
     <Container>
-      <Spacer.Flex />
-      {!!Icon && <Icon />}
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{explanations}</StyledBody>
-      <Spacer.Column numberOfSpaces={4} />
-      {!offline && (
-        <ButtonContainer>
-          <TouchableLink
-            as={ButtonPrimary}
-            navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
-            wording="Découvrir le catalogue"
-            onBeforeNavigate={onPressExploreOffers}
-            buttonHeight="tall"
-            icon={MagnifyingGlass}
-          />
-        </ButtonContainer>
-      )}
-      <Spacer.Flex />
+      <Typo.Body>{title}</Typo.Body>
+      <CenteredContainer>
+        <Spacer.Flex />
+        {!!Icon && <Icon />}
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledBody>{explanations}</StyledBody>
+        <Spacer.Column numberOfSpaces={4} />
+        {!offline && (
+          <ButtonContainer>
+            <TouchableLink
+              as={ButtonPrimary}
+              navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
+              wording="Découvrir le catalogue"
+              onBeforeNavigate={onPressExploreOffers}
+              buttonHeight="tall"
+              icon={MagnifyingGlass}
+            />
+          </ButtonContainer>
+        )}
+        <Spacer.Flex />
+      </CenteredContainer>
     </Container>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
   marginBottom: theme.tabBar.height,
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
+
+const CenteredContainer = styled.View({
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+})
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
