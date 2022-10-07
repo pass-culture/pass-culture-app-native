@@ -189,7 +189,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0 c1 sc-gsDKAQ c1"
+              className="c0 c1 sc-iCfMLu c1"
               data-testid="backButton"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -565,6 +565,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     onContextMenu={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                     style={
                       Object {
                         "MozTransitionProperty": "opacity",
@@ -766,6 +768,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     onContextMenu={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                     style={
                       Object {
                         "MozTransitionProperty": "opacity",
@@ -944,6 +948,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     onContextMenu={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                     style={
                       Object {
                         "MozTransitionProperty": "opacity",

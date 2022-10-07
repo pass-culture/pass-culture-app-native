@@ -12,6 +12,7 @@ import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/Cultu
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -511,7 +512,7 @@ export const AppComponents: FunctionComponent = () => {
                   Les copies ne sont pas acceptées
                 </Typo.Caption>
               }
-              onPress={() => null}
+              navigateTo={navigateToHomeConfig}
               icon={BicolorSmartphone}
             />
             <Spacer.Column numberOfSpaces={1} />
@@ -523,7 +524,7 @@ export const AppComponents: FunctionComponent = () => {
                   <Typo.Body> ou un titre séjour français</Typo.Body>
                 </Text>
               }
-              onPress={() => null}
+              navigateTo={navigateToHomeConfig}
               icon={BicolorSmartphone}
             />
           </View>

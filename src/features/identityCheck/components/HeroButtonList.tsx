@@ -2,7 +2,8 @@ import React, { FunctionComponent, ReactElement } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
@@ -11,7 +12,7 @@ type HeroButtonListProps = {
   Title: ReactElement
   Subtitle?: ReactElement
   icon: FunctionComponent<IconInterface>
-  onPress: () => void
+  navigateTo: TouchableLinkProps['navigateTo']
 }
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
@@ -21,7 +22,7 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
   }))``
 
   return (
-    <ChoiceContainer onPress={props.onPress} testID={`HeroButtonList`}>
+    <ChoiceContainer navigateTo={props.navigateTo} testID={`HeroButtonList`}>
       <IconContainer>
         <Icon />
       </IconContainer>
@@ -40,7 +41,7 @@ const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const ChoiceContainer = styled(TouchableOpacity)(({ theme }) => ({
+const ChoiceContainer = styled(TouchableLink)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',

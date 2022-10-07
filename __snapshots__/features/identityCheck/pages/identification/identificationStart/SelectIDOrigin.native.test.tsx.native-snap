@@ -367,6 +367,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityRole="link"
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -492,6 +493,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityRole="link"
                     accessible={true}
                     collapsable={false}
                     focusable={true}
