@@ -330,12 +330,12 @@ Array [
       </View>
     </View>
     <View
-      flex={1.5}
+      flex={0.5}
       style={
         Array [
           Object {
             "flexBasis": 0,
-            "flexGrow": 1.5,
+            "flexGrow": 0.5,
             "flexShrink": 1,
           },
         ]
