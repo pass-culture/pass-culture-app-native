@@ -18,7 +18,8 @@ export const ExpiredOrLostID = (): JSX.Element => {
       titleComponent={Typo.Title2}
       title="Ta pièce d’identité expirée ou perdue"
       separateIconFromTitle={false}
-      headerGoBack>
+      headerGoBack
+      mobileBottomFlex={0.5}>
       <StyledBody>
         Pour profiter du pass Culture tu as besoin de ta carte d’identité ou de ton passeport en
         cours de validité.
