@@ -142,7 +142,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   {
     name: 'UbbleWebview',
     component: UbbleWebview,
-    path: 'verification-identite/parcours',
+    path: 'identification/verification-manuelle-piece-identite',
     options: { title: 'Identification' },
     secure: true,
   },
