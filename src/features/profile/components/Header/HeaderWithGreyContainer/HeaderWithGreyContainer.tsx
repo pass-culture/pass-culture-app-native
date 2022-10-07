@@ -1,4 +1,6 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { FunctionComponent, ReactNode, useCallback } from 'react'
+import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -12,20 +14,29 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   title,
   subtitle,
   children,
-}) => (
-  <React.Fragment>
-    <Spacer.TopScreen />
-    <TitleContainer>
-      <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
-    </TitleContainer>
-    {!!subtitle && (
-      <SubtitleContainer>
-        {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
-      </SubtitleContainer>
-    )}
-    {!!children && <GreyContainer>{children}</GreyContainer>}
-  </React.Fragment>
-)
+}) => {
+  useFocusEffect(
+    useCallback(() => {
+      StatusBar.setBarStyle('dark-content', true)
+      return () => StatusBar.setBarStyle('light-content', true)
+    }, [])
+  )
+
+  return (
+    <React.Fragment>
+      <Spacer.TopScreen />
+      <TitleContainer>
+        <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+      </TitleContainer>
+      {!!subtitle && (
+        <SubtitleContainer>
+          {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
+        </SubtitleContainer>
+      )}
+      {!!children && <GreyContainer>{children}</GreyContainer>}
+    </React.Fragment>
+  )
+}
 
 const TitleContainer = styled.View(({ theme }) => ({
   marginTop: getSpacing(6),
