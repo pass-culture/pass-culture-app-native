@@ -9,7 +9,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
-} from 'features/favorites/api/snaps/favorisResponseSnap'
+} from 'features/favorites/fixtures/favorisResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { env } from 'libs/environment'

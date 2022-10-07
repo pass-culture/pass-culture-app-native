@@ -3,7 +3,7 @@ import { Text as MockText } from 'react-native'
 import { QueryObserverSuccessResult, UseMutationResult } from 'react-query'
 
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/favorisResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/favorisResponseSnap'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import {
   FavoriteMutationContext,
