@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
+import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics } from 'libs/firebase/analytics'
@@ -17,8 +18,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { BookingButton } from './BookingButton'
 
 interface Props {
   favorite: FavoriteResponse
