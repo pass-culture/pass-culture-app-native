@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
-import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
@@ -31,7 +30,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
       onCloseIconPress={dismissNotifications}
       visible={visible}>
       <Spacer.Column numberOfSpaces={4} />
-      <BicolorRingingBell size={theme.illustrations.sizes.fullPage} />
+      <RingingBell />
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
         Offres personnalisées, invitations spéciales, concours...
@@ -47,3 +46,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const RingingBell = styled(BicolorRingingBell).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``
