@@ -7,7 +7,6 @@ import { SearchAutocompleteItem } from 'features/search/components/SearchAutocom
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent } from 'tests/utils'
@@ -29,8 +28,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 
-const mockSendEvent = jest.fn()
-
 describe('SearchAutocompleteItem component', () => {
   const hit = {
     objectID: '1',
@@ -43,15 +40,14 @@ describe('SearchAutocompleteItem component', () => {
         matchedWords: ['cinéma'],
       },
     },
-    __position: 123,
-  } as AlgoliaSuggestionHit
+  }
 
   it('should render SearchAutocompleteItem', () => {
-    expect(render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)).toMatchSnapshot()
+    expect(render(<SearchAutocompleteItem hit={hit} />)).toMatchSnapshot()
   })
 
   it('should execute a search with the name of the selected offer on hit click', async () => {
-    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} />)
     await fireEvent.press(getByTestId('autocompleteItem'))
 
     expect(navigate).toBeCalledWith(
@@ -64,12 +60,5 @@ describe('SearchAutocompleteItem component', () => {
         view: SearchView.Results,
       })
     )
-  })
-
-  it('should create a suggestion clicked event when pressing a hit', async () => {
-    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
-    await fireEvent.press(getByTestId('autocompleteItem'))
-
-    expect(mockSendEvent).toHaveBeenCalled()
   })
 })

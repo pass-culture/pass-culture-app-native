@@ -11,7 +11,7 @@ type Props = UseInfiniteHitsProps & {
 }
 
 export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...props }) => {
-  const { hits, sendEvent } = useInfiniteHits(props)
+  const { hits } = useInfiniteHits(props)
   const contentContainerStyle = { paddingHorizontal: getSpacing(6), paddingTop: getSpacing(4) }
 
   return (
@@ -22,9 +22,7 @@ export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...pro
       keyboardShouldPersistTaps="handled"
       keyboardDismissMode="on-drag"
       testID="autocompleteList"
-      renderItem={({ item }) => (
-        <Item hit={item as unknown as AlgoliaSuggestionHit} sendEvent={sendEvent} />
-      )}
+      renderItem={({ item }) => <Item hit={item as unknown as AlgoliaSuggestionHit} />}
     />
   )
 }

@@ -5,7 +5,7 @@ import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { render } from 'tests/utils'
 
 describe('Highlight component', () => {
-  const hit = {
+  const hit: AlgoliaSuggestionHit = {
     query: 'guerre et youpi matin',
     objectID: 'guerre et youpi matin',
     _highlightResult: {
@@ -16,8 +16,7 @@ describe('Highlight component', () => {
         matchedWords: ['guerre'],
       },
     },
-    __position: 123,
-  } as AlgoliaSuggestionHit
+  }
 
   it('should render Highlight', () => {
     expect(render(<Highlight hit={hit} attribute="query" />)).toMatchSnapshot()
