@@ -4,7 +4,7 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { getEmailMessage } from 'features/bookings/components/TicketBody/ticketBodyMessages'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Typo } from 'ui/theme'
 

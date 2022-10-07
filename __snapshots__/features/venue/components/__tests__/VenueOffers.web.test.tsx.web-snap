@@ -24,6 +24,10 @@ Object {
   -ms-flex-align: center;
   align-items: center;
   border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .c0:disabled {
@@ -429,6 +433,10 @@ Object {
   -ms-flex-align: center;
   align-items: center;
   border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .c0:disabled {

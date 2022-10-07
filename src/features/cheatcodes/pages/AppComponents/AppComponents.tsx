@@ -31,7 +31,7 @@ import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryP
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { Emoji } from 'ui/components/Emoji'

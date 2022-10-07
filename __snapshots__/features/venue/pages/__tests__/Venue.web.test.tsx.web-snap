@@ -133,19 +133,6 @@ Object {
   text-decoration: none;
 }
 
-.c5 {
-  background-color: transparent;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
 .c3 {
   overflow: hidden;
   cursor: pointer;
@@ -167,6 +154,10 @@ Object {
   -ms-flex-align: center;
   align-items: center;
   border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .c3:disabled {
@@ -186,6 +177,19 @@ Object {
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c5 {
+  background-color: transparent;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 <body>
@@ -623,7 +627,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="c1 c2 sc-jJoQJp c2"
+                class="c1 c2 sc-gWXbKe c2"
                 data-testid="iconLocation"
                 tabindex="0"
                 title="Géolocalisation désactivée"
@@ -1879,19 +1883,6 @@ Object {
   text-decoration: none;
 }
 
-.c5 {
-  background-color: transparent;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
 .c3 {
   overflow: hidden;
   cursor: pointer;
@@ -1913,6 +1904,10 @@ Object {
   -ms-flex-align: center;
   align-items: center;
   border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .c3:disabled {
@@ -1932,6 +1927,19 @@ Object {
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c5 {
+  background-color: transparent;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 <div>
@@ -2368,7 +2376,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="c1 c2 sc-jJoQJp c2"
+              class="c1 c2 sc-gWXbKe c2"
               data-testid="iconLocation"
               tabindex="0"
               title="Géolocalisation désactivée"

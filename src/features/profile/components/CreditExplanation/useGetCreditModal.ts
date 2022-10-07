@@ -2,19 +2,17 @@ import { DomainsCredit } from 'api/gen'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
+import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
 
 interface Props {
   domainsCredit: DomainsCredit
-  isUserUnderageBeneficiary: boolean
   isDepositExpired: boolean
 }
 
-export const getCreditModal = ({
-  domainsCredit,
-  isUserUnderageBeneficiary,
-  isDepositExpired,
-}: Props) => {
+export const useGetCreditModal = ({ domainsCredit, isDepositExpired }: Props) => {
+  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+
   if (isDepositExpired) {
     return {
       buttonTitle: 'Mon crédit est expiré, que\u00a0faire\u00a0?',

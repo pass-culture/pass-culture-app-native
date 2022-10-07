@@ -3,124 +3,50 @@
 exports[`CreditHeader Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
 Array [
   <View
-    accessibilityRole="header"
+    customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
-          "width": "100%",
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
-    <View
-      backgroundColor="#ffffff"
-      isAbsolutePosition={false}
+    <Text
+      fontSize={28}
+      numberOfLines={2}
       style={
         Array [
           Object {
-            "backgroundColor": "#ffffff",
-            "width": "100%",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
           },
         ]
       }
     >
-      <View
-        customHeight={16}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        size="medium"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "height": 72,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#161617"
-            numberOfLines={1}
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": 36,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Rosa Bonheur
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
+      Rosa Bonheur
+    </Text>
   </View>,
   <View
     style={
       Array [
         Object {
-          "backgroundColor": "#F1F1F4",
-          "borderRadius": 8,
+          "marginBottom": 20,
           "marginHorizontal": 24,
-          "marginVertical": 12,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
         },
       ]
     }
@@ -164,16 +90,23 @@ Array [
         09/02/2023
       </Text>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
     <View
       testID="credit-info"
     >
@@ -353,124 +286,50 @@ Array [
 exports[`CreditHeader Beneficiary is not underage should render correctly with exhausted credit 1`] = `
 Array [
   <View
-    accessibilityRole="header"
+    customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
-          "width": "100%",
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
-    <View
-      backgroundColor="#ffffff"
-      isAbsolutePosition={false}
+    <Text
+      fontSize={28}
+      numberOfLines={2}
       style={
         Array [
           Object {
-            "backgroundColor": "#ffffff",
-            "width": "100%",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
           },
         ]
       }
     >
-      <View
-        customHeight={16}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        size="medium"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "height": 72,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#161617"
-            numberOfLines={1}
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": 36,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Rosa Bonheur
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
+      Rosa Bonheur
+    </Text>
   </View>,
   <View
     style={
       Array [
         Object {
-          "backgroundColor": "#F1F1F4",
-          "borderRadius": 8,
+          "marginBottom": 20,
           "marginHorizontal": 24,
-          "marginVertical": 12,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
         },
       ]
     }
@@ -514,16 +373,23 @@ Array [
         09/02/2023
       </Text>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
     <View
       testID="credit-info"
     >
@@ -776,124 +642,50 @@ Array [
 exports[`CreditHeader Beneficiary is not underage should render correctly with expired credit 1`] = `
 Array [
   <View
-    accessibilityRole="header"
+    customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
-          "width": "100%",
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
-    <View
-      backgroundColor="#ffffff"
-      isAbsolutePosition={false}
+    <Text
+      fontSize={28}
+      numberOfLines={2}
       style={
         Array [
           Object {
-            "backgroundColor": "#ffffff",
-            "width": "100%",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
           },
         ]
       }
     >
-      <View
-        customHeight={16}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        size="medium"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "height": 72,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#161617"
-            numberOfLines={1}
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": 36,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Rosa Bonheur
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
+      Rosa Bonheur
+    </Text>
   </View>,
   <View
     style={
       Array [
         Object {
-          "backgroundColor": "#F1F1F4",
-          "borderRadius": 8,
+          "marginBottom": 20,
           "marginHorizontal": 24,
-          "marginVertical": 12,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
         },
       ]
     }
@@ -937,6 +729,23 @@ Array [
         01/08/2022
       </Text>
     </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
     <View
       numberOfSpaces={1}
       style={
@@ -1027,124 +836,50 @@ Array [
 exports[`CreditHeader Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
 Array [
   <View
-    accessibilityRole="header"
+    customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
-          "width": "100%",
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
-    <View
-      backgroundColor="#ffffff"
-      isAbsolutePosition={false}
+    <Text
+      fontSize={28}
+      numberOfLines={2}
       style={
         Array [
           Object {
-            "backgroundColor": "#ffffff",
-            "width": "100%",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
           },
         ]
       }
     >
-      <View
-        customHeight={16}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        size="medium"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "height": 72,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#161617"
-            numberOfLines={1}
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": 36,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Rosa Bonheur
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
+      Rosa Bonheur
+    </Text>
   </View>,
   <View
     style={
       Array [
         Object {
-          "backgroundColor": "#F1F1F4",
-          "borderRadius": 8,
+          "marginBottom": 20,
           "marginHorizontal": 24,
-          "marginVertical": 12,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
         },
       ]
     }
@@ -1188,16 +923,23 @@ Array [
         09/02/2023
       </Text>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
     <View
       testID="credit-info"
     >

@@ -3,118 +3,12 @@
 exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 Array [
   <View
-    accessibilityRole="header"
+    customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
-          "width": "100%",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="#ffffff"
-      isAbsolutePosition={false}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#ffffff",
-            "width": "100%",
-          },
-        ]
-      }
-    >
-      <View
-        customHeight={16}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        size="medium"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "height": 72,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#161617"
-            numberOfLines={1}
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": 36,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Mon profil
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
-  </View>,
-  <View
-    numberOfSpaces={2}
-    style={
-      Array [
-        Object {
-          "height": 8,
+          "height": 16,
         },
       ]
     }
@@ -123,9 +17,36 @@ Array [
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "paddingHorizontal": 24,
-          "width": "100%",
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "marginTop": 24,
+        },
+      ]
+    }
+  >
+    <Text
+      fontSize={28}
+      numberOfLines={2}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 28,
+            "lineHeight": 36,
+          },
+        ]
+      }
+    >
+      Mon profil
+    </Text>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 20,
+          "marginHorizontal": 24,
         },
       ]
     }
@@ -138,74 +59,43 @@ Array [
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
-            "textAlign": "center",
           },
         ]
       }
     >
-      Tu as entre 15 et 18 ans ? Crée-toi un compte pour bénéficier de ton crédit pass Culture
+      Tu as entre 15 et 18 ans ?
     </Text>
-    <View
-      numberOfSpaces={8}
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
+    <Text
       style={
         Array [
           Object {
-            "height": 32,
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
           },
         ]
       }
-    />
-    <View
-      accessibilityLabel="S’inscrire"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
-      }
-      testID="S’inscrire"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        S’inscrire
-      </Text>
-    </View>
+      Identifie-toi pour bénéficier de ton crédit pass Culture
+    </Text>
     <View
       numberOfSpaces={5}
       style={
@@ -216,130 +106,226 @@ Array [
         ]
       }
     />
-    <Text
+    <View
       style={
         Array [
           Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
+            "flexDirection": "column",
           },
         ]
       }
     >
-      Tu as déjà un compte ? 
-      <View>
-        <View
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-              "top": 3,
-              "userSelect": "auto",
-            }
+      <View
+        accessibilityLabel="Créer un compte"
+        accessibilityRole="link"
+        accessibilityState={
+          Object {
+            "disabled": false,
           }
-          testID="Connecte-toi"
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "justifyContent": "center",
+            "opacity": 1,
+            "overflow": "hidden",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "userSelect": "auto",
+          }
+        }
+        testID="Créer un compte"
+      >
+        <View
+          height={48}
+          width="100%"
         >
-          <View
-            icon={
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
               Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [
-                  [Function],
-                ],
-                "inlineStyle": InlineStyle {
-                  "rules": Array [
-                    "",
-                  ],
-                },
-                "render": [Function],
-                "shouldForwardProp": undefined,
-                "styledComponentId": "StyledNativeComponent",
-                "target": [Function],
-                "withComponent": [Function],
-              }
-            }
+                "alignItems": "center",
+                "flexDirection": "row",
+                "position": "absolute",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={true}
+            isDisabled={false}
+            numberOfLines={1}
             style={
               Array [
                 Object {
-                  "paddingLeft": 25,
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
                 },
               ]
             }
-            typography="ButtonText"
           >
+            Créer un compte
+          </Text>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Déjà un compte ?
+          <View>
             <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "left": 0,
-                    "position": "absolute",
-                  },
-                ]
+                Object {
+                  "opacity": 1,
+                  "top": 3,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
-                fill="#eb0055"
-                height={20}
-                testID="button-icon"
-                width={20}
-              >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={1}
+                icon={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [
+                      [Function],
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": Array [
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  }
+                }
                 style={
                   Array [
                     Object {
-                      "width": 4,
+                      "paddingLeft": 25,
                     },
                   ]
                 }
-              />
+                typography="ButtonText"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "left": 0,
+                        "position": "absolute",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="#320096"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <Text
+                  color="#320096"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  typography="ButtonText"
+                >
+                  Se connecter
+                </Text>
+              </View>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-              typography="ButtonText"
-            >
-              Connecte-toi
-            </Text>
           </View>
-        </View>
+        </Text>
       </View>
-    </Text>
+    </View>
   </View>,
-  <View
-    numberOfSpaces={6}
-    style={
-      Array [
-        Object {
-          "height": 24,
-        },
-      ]
-    }
-  />,
 ]
 `;
 

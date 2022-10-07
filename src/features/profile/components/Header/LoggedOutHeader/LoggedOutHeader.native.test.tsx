@@ -8,19 +8,19 @@ import { LoggedOutHeader } from './LoggedOutHeader'
 
 describe('LoggedOutHeader', () => {
   it('should navigate to the SignupForm page', async () => {
-    const { getByTestId } = render(<LoggedOutHeader />)
+    const { getByText } = render(<LoggedOutHeader />)
 
-    const signupButton = getByTestId('S’inscrire')
-
+    const signupButton = getByText('Créer un compte')
     await fireEvent.press(signupButton)
 
     expect(analytics.logProfilSignUp).toBeCalled()
     expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
   })
-  it('should navigate to the login page', async () => {
-    const { getByTestId } = render(<LoggedOutHeader />)
 
-    const connectButton = getByTestId('Connecte-toi')
+  it('should navigate to the login page', async () => {
+    const { getByText } = render(<LoggedOutHeader />)
+
+    const connectButton = getByText('Se connecter')
     await fireEvent.press(connectButton)
 
     expect(navigate).toBeCalledWith('Login', { preventCancellation: true })

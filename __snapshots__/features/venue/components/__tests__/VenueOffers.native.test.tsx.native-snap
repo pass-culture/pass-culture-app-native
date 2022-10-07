@@ -1878,6 +1878,10 @@ Array [
           "justifyContent": "center",
           "opacity": 1,
           "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
           "userSelect": "auto",
         }
       }

@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
+import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
+import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Typo } from 'ui/theme'
@@ -13,6 +14,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   isDisabled = false,
   icon,
   testID,
+  fitContentWidth = false,
 }) => {
   const Icon = icon
     ? styled(icon).attrs(({ theme }) => ({
@@ -25,6 +27,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
     <Container
       onBeforeNavigate={onPress}
       disabled={isDisabled}
+      fitContentWidth={fitContentWidth}
       {...accessibilityAndTestId(wording, testID)}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer>
@@ -42,12 +45,17 @@ const Rectangle = styled(InitialRectangle).attrs({
   size: '100%',
 })``
 
-const Container = styled(TouchableLink)(({ theme }) => ({
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: theme.borderRadius.button,
-  overflow: 'hidden',
-}))
+const Container = styled(TouchableLink)<{ fitContentWidth: boolean }>(
+  ({ theme, fitContentWidth }) => {
+    return {
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: theme.borderRadius.button,
+      overflow: 'hidden',
+      ...buttonWidthStyle({ fitContentWidth }),
+    }
+  }
+)
 
 const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled
