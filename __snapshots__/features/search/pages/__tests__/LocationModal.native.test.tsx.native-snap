@@ -329,6 +329,7 @@ exports[`LocationFilter component should render modal correctly after animation 
       <RCTScrollView
         modalSpacing={24}
         onContentSizeChange={[Function]}
+        scrollEnabled={true}
         style={
           Array [
             Object {
