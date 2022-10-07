@@ -52,7 +52,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
       onCloseIconPress={dismissNotifications}
       visible={visible}>
       <Spacer.Column numberOfSpaces={4} />
-      <BicolorRingingBell />
+      <RingingBell />
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
         Offres personnalisées, invitations spéciales, concours...
@@ -68,3 +68,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const RingingBell = styled(BicolorRingingBell).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``
