@@ -24,7 +24,7 @@ interface AbortEvent {
 }
 
 // https://ubbleai.github.io/developer-documentation/#webview-integration
-export const IdentityCheckWebview: React.FC = () => {
+export const UbbleWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 

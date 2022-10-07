@@ -14,7 +14,7 @@ import { Spacer } from 'ui/theme'
 // To avoid [Error: Unable to open URL: about:srcdoc. Add about to LSApplicationQueriesSchemes in your Info.plist.]
 const ORIGIN_WHITELIST = ['*']
 
-export const IdentityCheckWebview: React.FC = () => {
+export const UbbleWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 

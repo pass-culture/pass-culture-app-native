@@ -8,7 +8,7 @@ const steps = [
   },
   {
     name: IdentityCheckStep.IDENTIFICATION,
-    screens: ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
+    screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],
   },
   {
     name: IdentityCheckStep.CONFIRMATION,
@@ -30,9 +30,9 @@ describe('getNextScreenOrStep', () => {
     })
     // Identification
     expect(getNextScreenOrStep(steps, 'IdentityCheckStart')).toEqual({
-      screen: 'IdentityCheckWebview',
+      screen: 'UbbleWebview',
     })
-    expect(getNextScreenOrStep(steps, 'IdentityCheckWebview')).toEqual({
+    expect(getNextScreenOrStep(steps, 'UbbleWebview')).toEqual({
       screen: 'IdentityCheckEnd',
     })
   })

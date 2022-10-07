@@ -105,7 +105,7 @@ describe('useIdentityCheckSteps', () => {
   it.each`
     enableNewIdentificationFlow | expectedUbbleFlow
     ${true}                     | ${['SelectIDOrigin']}
-    ${false}                    | ${['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd']}
+    ${false}                    | ${['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd']}
   `(
     'should return $expectedUbbleFlow identity screen list when enableNewIdentificationFlow is $enableNewIdentificationFlow',
     ({ enableNewIdentificationFlow: enableNewIdentificationFlowValue, expectedUbbleFlow }) => {

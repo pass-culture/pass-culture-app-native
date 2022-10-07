@@ -49,7 +49,7 @@ jest.mock('features/identityCheck/useIdentityCheckSteps', () => ({
       name: 'IdentityCheckStep.IDENTIFICATION',
       label: 'Identification',
       icon: 'Icon',
-      screens: ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
+      screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],
     },
   ]),
 }))

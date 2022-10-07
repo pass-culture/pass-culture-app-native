@@ -20,7 +20,7 @@ import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/i
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
-import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/ubble/IdentityCheckWebview'
+import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/UbbleWebview'
 import {
   PhoneValidationTooManyAttempts,
   PhoneValidationTooManySMSSent,
@@ -140,8 +140,8 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     secure: true,
   },
   {
-    name: 'IdentityCheckWebview',
-    component: IdentityCheckWebview,
+    name: 'UbbleWebview',
+    component: UbbleWebview,
     path: 'verification-identite/parcours',
     options: { title: 'Identification' },
     secure: true,
