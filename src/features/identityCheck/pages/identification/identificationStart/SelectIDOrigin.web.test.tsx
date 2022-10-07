@@ -17,6 +17,6 @@ describe('selectIDOrigin', () => {
     const HeroButtonList = getAllByTestId('HeroButtonList')[0]
     fireEvent.click(HeroButtonList)
 
-    expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus')
+    expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus', undefined)
   })
 })

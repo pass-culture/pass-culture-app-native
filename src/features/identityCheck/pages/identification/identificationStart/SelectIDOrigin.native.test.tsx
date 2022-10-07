@@ -23,6 +23,6 @@ describe('SelectIDOrigin', () => {
     const HeroButtonListFrench = getAllByTestId('HeroButtonList')[0]
     fireEvent.press(HeroButtonListFrench)
 
-    expect(navigate).toHaveBeenCalledWith('SelectIDStatus')
+    expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
   })
 })

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { Emoji } from 'ui/components/Emoji'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
@@ -33,9 +34,8 @@ const FirstHeroButtonLink: FunctionComponent = () => {
         </Typo.Caption>
       }
       icon={BicolorIdCard}
-      onPress={() => {
-        return
-      }}
+      // FIXME(PC-16835) navigate to ubble
+      navigateTo={navigateToHomeConfig}
     />
   )
 }
@@ -51,9 +51,8 @@ const SecondHeroButtonLink: FunctionComponent = () => {
         </Text>
       }
       icon={BicolorNoId}
-      onPress={() => {
-        return
-      }}
+      //FIXME(PC-16837) navigate to comebacklater page
+      navigateTo={navigateToHomeConfig}
     />
   )
 }
@@ -68,9 +67,8 @@ const ThirdHeroButtonLink: FunctionComponent = () => {
         </Text>
       }
       icon={BicolorLostId}
-      onPress={() => {
-        return
-      }}
+      //FIXME(PC-16839) navigate to expiredOrLostId page
+      navigateTo={navigateToHomeConfig}
     />
   )
 }
