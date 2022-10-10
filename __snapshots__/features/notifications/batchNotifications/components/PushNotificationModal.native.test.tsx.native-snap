@@ -121,6 +121,7 @@ exports[`PushNotificationsModal should render properly 1`] = `
               },
             ]
           }
+          testID="modalHeaderTitle"
         >
           Paramètres de notifications
         </Text>

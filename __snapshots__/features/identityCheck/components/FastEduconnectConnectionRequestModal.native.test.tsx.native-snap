@@ -225,6 +225,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Identifie-toi en 2 minutes
           </Text>

@@ -238,6 +238,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Quelques conseils
           </Text>

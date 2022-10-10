@@ -191,6 +191,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Respect de ta vie privée
           </Text>

@@ -121,6 +121,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
               },
             ]
           }
+          testID="modalHeaderTitle"
         >
           Pourquoi saisir ma date de naissance ?
         </Text>

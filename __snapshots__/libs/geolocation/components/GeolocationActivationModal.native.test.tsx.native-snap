@@ -121,6 +121,7 @@ exports[`GeolocationActivationModal should render properly 1`] = `
               },
             ]
           }
+          testID="modalHeaderTitle"
         >
           Paramètres de localisation
         </Text>

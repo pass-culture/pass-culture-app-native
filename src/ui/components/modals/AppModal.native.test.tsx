@@ -27,11 +27,6 @@ describe('<AppModal />', () => {
     expect(modal).toHaveProp('visible', false)
   })
 
-  test('without title', () => {
-    const renderAPI = render(<AppModal {...defaultProps} title="" />)
-    expect(renderAPI).toMatchSnapshot()
-  })
-
   test('without children', () => {
     const props: AppModalProps = {
       ...defaultProps,
@@ -39,6 +34,13 @@ describe('<AppModal />', () => {
     }
     const renderAPI = render(<AppModal {...props} />)
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  test('without title', () => {
+    const { getByTestId } = render(<AppModal {...defaultProps} title="" />)
+    const modal = getByTestId('modalHeaderTitle')
+
+    expect(modal.children).toEqual([''])
   })
 
   describe('with long title', () => {
