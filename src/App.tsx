@@ -30,6 +30,7 @@ import { GeolocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
+import { BatchMessaging } from 'libs/react-native-batch'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
@@ -57,6 +58,7 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     initAlgoliaAnalytics()
+    BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
   }, [])
 
   return (
