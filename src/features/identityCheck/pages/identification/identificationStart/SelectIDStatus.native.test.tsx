@@ -27,4 +27,13 @@ describe('SelectIDStatus', () => {
 
     expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
   })
+
+  it("should navigate to ExpiredOrLostID when pressing 'Ma pièce d'identité est expirée ou perdue' button", () => {
+    const { getByText } = render(<SelectIDStatus />)
+
+    const button = getByText('Ma pièce d’identité est')
+    fireEvent.press(button)
+
+    expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
+  })
 })
