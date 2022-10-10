@@ -18,4 +18,13 @@ describe('SelectIDStatus', () => {
 
     expect(navigate).toHaveBeenCalledWith('UbbleWebview', undefined)
   })
+
+  it('should navigate to ComeBackLater when pressing "Je n’ai pas ma pièce d’identité originale" button', () => {
+    const { getByText } = render(<SelectIDStatus />)
+
+    const button = getByText('Je n’ai pas')
+    fireEvent.press(button)
+
+    expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
+  })
 })

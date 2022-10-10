@@ -50,8 +50,7 @@ const SecondHeroButtonLink: FunctionComponent = () => {
         </Text>
       }
       icon={BicolorNoId}
-      //FIXME(PC-16837) navigate to comebacklater page
-      navigateTo={navigateToHomeConfig}
+      navigateTo={{ screen: 'ComeBackLater' }}
     />
   )
 }
