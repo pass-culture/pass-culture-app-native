@@ -8,16 +8,18 @@ const mockUseNetInfo = useNetInfoDefault as jest.Mock
 
 describe('useNetInfo', () => {
   it('should return is connected when native lib says so', () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: true })
-    const { isConnected } = useNetInfo()
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: true, isInternetReachable: true })
+    const { isConnected, isInternetReachable } = useNetInfo()
 
     expect(isConnected).toEqual(true)
+    expect(isInternetReachable).toEqual(true)
   })
 
   it('should return is not connected when native lib says so', () => {
-    mockUseNetInfo.mockReturnValueOnce({ isConnected: false })
-    const { isConnected } = useNetInfo()
+    mockUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+    const { isConnected, isInternetReachable } = useNetInfo()
 
     expect(isConnected).toEqual(false)
+    expect(isInternetReachable).toEqual(false)
   })
 })

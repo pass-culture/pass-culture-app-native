@@ -190,12 +190,14 @@ describe('<ForgottenPassword />', () => {
 function simulateNoNetwork() {
   mockUseNetInfoContext.mockReturnValue({
     isConnected: false,
+    isInternetReachable: false,
   })
 }
 
 function simulateConnectedNetwork() {
   mockUseNetInfoContext.mockReturnValue({
     isConnected: true,
+    isInternetReachable: true,
   })
 }
 
