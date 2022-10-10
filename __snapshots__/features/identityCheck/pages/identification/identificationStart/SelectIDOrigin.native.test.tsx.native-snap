@@ -266,9 +266,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 Array [
                   Object {
                     "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "height": "100%",
                     "marginHorizontal": 4,
                     "marginVertical": 32,
                   },
