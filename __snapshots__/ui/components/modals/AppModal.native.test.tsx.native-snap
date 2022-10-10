@@ -4,6 +4,7 @@ exports[`<AppModal /> on big screen 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -59,6 +60,7 @@ exports[`<AppModal /> on big screen 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -175,6 +177,7 @@ exports[`<AppModal /> on big screen 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -251,6 +254,7 @@ exports[`<AppModal /> on small screen 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -306,6 +310,7 @@ exports[`<AppModal /> on small screen 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -423,6 +428,7 @@ exports[`<AppModal /> on small screen 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -499,6 +505,7 @@ exports[`<AppModal /> when hidden 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -532,6 +539,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -561,6 +569,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
 >
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -678,6 +687,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -754,6 +764,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -809,6 +820,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -926,6 +938,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -1002,6 +1015,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -1057,6 +1071,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -1174,6 +1189,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -1250,6 +1266,7 @@ exports[`<AppModal /> with left icon render 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -1305,6 +1322,7 @@ exports[`<AppModal /> with left icon render 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -1469,6 +1487,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -1545,6 +1564,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -1600,6 +1620,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -1717,6 +1738,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={1}
             style={
               Array [
@@ -1793,6 +1815,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -1848,6 +1871,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -1965,6 +1989,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -2292,6 +2317,7 @@ exports[`<AppModal /> with right icon render 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -2347,6 +2373,7 @@ exports[`<AppModal /> with right icon render 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -2464,6 +2491,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -2576,6 +2604,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -2631,6 +2660,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -2748,6 +2778,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -2824,6 +2855,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -2879,6 +2911,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -2996,6 +3029,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -3072,6 +3106,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -3127,6 +3162,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -3244,6 +3280,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -3320,6 +3357,7 @@ exports[`<AppModal /> without children 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -3375,6 +3413,7 @@ exports[`<AppModal /> without children 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -3492,6 +3531,7 @@ exports[`<AppModal /> without children 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -3564,6 +3604,7 @@ exports[`<AppModal /> without title 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
+  aria-labelledby="testUuidV4"
   aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
@@ -3619,6 +3660,7 @@ exports[`<AppModal /> without title 1`] = `
   />
   <View
     accessibilityRole="none"
+    aria-labelledby="testUuidV4"
     aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
@@ -3736,6 +3778,7 @@ exports[`<AppModal /> without title 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
