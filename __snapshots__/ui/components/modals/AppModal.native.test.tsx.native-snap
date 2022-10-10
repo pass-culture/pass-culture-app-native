@@ -501,40 +501,6 @@ exports[`<AppModal /> on small screen 1`] = `
 </Modal>
 `;
 
-exports[`<AppModal /> when hidden 1`] = `
-<Modal
-  accessibilityRole="none"
-  animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
-  deviceHeight={1334}
-  deviceWidth={750}
-  hardwareAccelerated={false}
-  hideModalContentWhileAnimating={false}
-  onBackdropPress={[Function]}
-  onModalHide={[Function]}
-  onModalWillHide={[Function]}
-  onModalWillShow={[Function]}
-  onRequestClose={[Function]}
-  panResponderThreshold={4}
-  scrollHorizontal={false}
-  scrollOffset={0}
-  scrollOffsetMax={0}
-  scrollTo={null}
-  statusBarTranslucent={true}
-  supportedOrientations={
-    Array [
-      "portrait",
-      "landscape",
-    ]
-  }
-  swipeThreshold={100}
-  testID="modal"
-  transparent={true}
-  visible={false}
-/>
-`;
-
 exports[`<AppModal /> with backdrop disabled 1`] = `
 <Modal
   accessibilityRole="none"

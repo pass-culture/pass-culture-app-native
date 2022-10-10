@@ -20,9 +20,11 @@ describe('<AppModal />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  test('when hidden', () => {
-    const renderAPI = render(<AppModal {...defaultProps} visible={false} />)
-    expect(renderAPI).toMatchSnapshot()
+  test('should hide the modal when set to hidden', () => {
+    const { getByTestId } = render(<AppModal {...defaultProps} visible={false} />)
+    const modal = getByTestId('modal')
+
+    expect(modal).toHaveProp('visible', false)
   })
 
   test('without title', () => {
