@@ -11,6 +11,8 @@ import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+const ANTS_URL = 'https://ants.gouv.fr/'
+
 export const ExpiredOrLostID = (): JSX.Element => {
   return (
     <GenericInfoPageWhite
@@ -39,8 +41,7 @@ export const ExpiredOrLostID = (): JSX.Element => {
         <TouchableLink
           as={ButtonTertiaryBlack}
           wording="Demander un renouvellement"
-          // TODO(PC-16840) navigate to external site
-          navigateTo={navigateToHomeConfig}
+          externalNav={{ url: ANTS_URL }}
           icon={ExternalSiteFilled}
         />
       </View>
