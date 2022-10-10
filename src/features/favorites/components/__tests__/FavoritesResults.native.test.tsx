@@ -51,7 +51,7 @@ describe('FavoritesResults component', () => {
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     const { getByText, queryByText } = renderFavoritesResults()
-    const button = getByText('Explorer les offres')
+    const button = getByText('Découvrir le catalogue')
     const sortByButton = queryByText('Trier')
     expect(button).toBeTruthy()
     expect(sortByButton).toBeFalsy()

@@ -5,84 +5,111 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
   style={
     Array [
       Object {
-        "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "center",
-        "marginBottom": 40,
+        "marginBottom": 64,
+        "marginHorizontal": 24,
       },
     ]
   }
 >
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    Retrouve tes réservations en un clin d’oeil
+  </Text>
   <View
     style={
       Array [
         Object {
+          "alignItems": "center",
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
+          "justifyContent": "center",
         },
       ]
     }
-  />
-  <View
-    height={156}
-    width={200}
   >
-    <Text>
-      undefined-SVG-Mock
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "maxWidth": 500,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Aucune réservations en cours.
+
+Il est possible que certaines réservations ne s’affichent pas hors connexion. Connecte-toi à internet pour vérifier.
     </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
   </View>
-  <Text
-    offline={true}
-    style={
-      Array [
-        Object {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "maxWidth": 500,
-          "paddingHorizontal": 32,
-          "paddingVertical": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Aucune réservations en cours.
-  </Text>
-  <Text
-    offline={true}
-    style={
-      Array [
-        Object {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "maxWidth": 500,
-          "paddingHorizontal": 32,
-          "paddingVertical": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Il est possible que certaines réservations ne s’affichent pas hors connexion. Connecte-toi à internet pour vérifier.
-  </Text>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
 </View>
 `;
 
@@ -91,122 +118,189 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
   style={
     Array [
       Object {
-        "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "center",
-        "marginBottom": 40,
+        "marginBottom": 64,
+        "marginHorizontal": 24,
       },
     ]
   }
 >
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    height={156}
-    width={200}
-  >
-    <Text>
-      undefined-SVG-Mock
-    </Text>
-  </View>
   <Text
     style={
       Array [
         Object {
-          "color": "#696A6F",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
-          "maxWidth": 500,
-          "paddingHorizontal": 16,
-          "paddingVertical": 16,
-          "textAlign": "center",
         },
       ]
     }
   >
-    Tu n’as pas de réservations en cours. Découvre les offres disponibles sans attendre !
+    Retrouve tes réservations en un clin d’oeil
   </Text>
   <View
     style={
       Array [
-        Object {},
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+        },
       ]
     }
   >
     <View
-      accessibilityLabel="Explorer les offres"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 48,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
       }
-      testID="Explorer les offres"
+    />
+    <View
+      height={156}
+      width={200}
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Explorer les offres
+      <Text>
+        undefined-SVG-Mock
       </Text>
     </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "maxWidth": 500,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Tu n’as pas encore trouvé ton bonheur ?
+Explore le catalogue pass Culture pour effectuer ta première réservation !
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Découvrir le catalogue"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 48,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Découvrir le catalogue"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            testID="button-icon"
+            width={24}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Découvrir le catalogue
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
 </View>
 `;
