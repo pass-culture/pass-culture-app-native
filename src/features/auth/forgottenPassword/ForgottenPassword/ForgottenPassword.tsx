@@ -137,10 +137,10 @@ const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>
   )
 
   const networkInfo = useNetInfoContext({
-    onNetworkRecovered() {
+    onConnection() {
       clearErrors()
     },
-    onNetworkLost() {
+    onConnectionLost() {
       setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
       setValue('isDoingReCaptchaChallenge', false)
     },
