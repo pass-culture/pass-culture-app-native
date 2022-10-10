@@ -69,111 +69,32 @@ exports[`Profile component should render correctly 1`] = `
           >
             <View>
               <View
-                accessibilityRole="header"
                 style={
                   Array [
                     Object {
-                      "width": "100%",
+                      "marginBottom": 8,
+                      "marginHorizontal": 24,
+                      "marginTop": 24,
                     },
                   ]
                 }
               >
-                <View
-                  backgroundColor="#ffffff"
-                  isAbsolutePosition={false}
+                <Text
+                  fontSize={28}
+                  numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "#ffffff",
-                        "width": "100%",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Black",
+                        "fontSize": 28,
+                        "lineHeight": 36,
                       },
                     ]
                   }
                 >
-                  <View
-                    customHeight={16}
-                    enable={true}
-                    style={
-                      Array [
-                        Object {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    size="medium"
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "height": 72,
-                          "justifyContent": "flex-end",
-                          "paddingBottom": 12,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        numberOfSpaces={6}
-                        style={
-                          Array [
-                            Object {
-                              "width": 24,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        color="#161617"
-                        numberOfLines={1}
-                        size="medium"
-                        style={
-                          Array [
-                            Object {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Black",
-                              "fontSize": 24,
-                              "lineHeight": 36,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Mon profil
-                      </Text>
-                      <View
-                        positionInHeader="right"
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "flex-end",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                  </View>
-                </View>
+                  Mon profil
+                </Text>
               </View>
               <View
                 style={

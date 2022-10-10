@@ -89,6 +89,7 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
   borderRadius: 6,
   padding: getSpacing(4),
+  marginTop: getSpacing(2),
 }))
 
 const IconContainer = styled.View({

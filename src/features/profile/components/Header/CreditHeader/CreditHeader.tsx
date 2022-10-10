@@ -1,14 +1,13 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
+import { Subtitle } from 'features/profile/atoms/Subtitle'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { Spacer, Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
+import { Spacer } from 'ui/theme'
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -37,12 +36,7 @@ export function CreditHeader({
   return (
     <HeaderWithGreyContainer
       title={name}
-      subtitle={
-        <Row>
-          <Typo.Body>{creditText + SPACE}</Typo.Body>
-          <Typo.ButtonText>{displayedExpirationDate}</Typo.ButtonText>
-        </Row>
-      }>
+      subtitle={<Subtitle startSubtitle={creditText} boldEndSubtitle={displayedExpirationDate} />}>
       {!!domainsCredit && (
         <React.Fragment>
           {!isDepositExpired && (
@@ -58,8 +52,3 @@ export function CreditHeader({
     </HeaderWithGreyContainer>
   )
 }
-
-const Row = styled.View({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-})
