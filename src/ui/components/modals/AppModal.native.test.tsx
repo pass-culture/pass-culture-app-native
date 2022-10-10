@@ -47,15 +47,21 @@ describe('<AppModal />', () => {
     const longTitle = 'This is a very very very very very very very very long title'
 
     test('on 2 lines by default', () => {
-      const renderAPI = render(<AppModal {...defaultProps} title={longTitle} />)
-      expect(renderAPI).toMatchSnapshot()
+      const { getByText } = render(<AppModal {...defaultProps} title={longTitle} />)
+
+      const title = getByText('This is a very very very very very very very very long title')
+
+      expect(title).toHaveProp('numberOfLines', 2)
     })
 
     test('on 1 line', () => {
-      const renderAPI = render(
+      const { getByText } = render(
         <AppModal {...defaultProps} title={longTitle} titleNumberOfLines={1} />
       )
-      expect(renderAPI).toMatchSnapshot()
+
+      const title = getByText('This is a very very very very very very very very long title')
+
+      expect(title).toHaveProp('numberOfLines', 1)
     })
   })
 
