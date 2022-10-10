@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { Emoji } from 'ui/components/Emoji'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
@@ -65,8 +64,7 @@ const ThirdHeroButtonLink: FunctionComponent = () => {
         </Text>
       }
       icon={BicolorLostId}
-      //FIXME(PC-16839) navigate to expiredOrLostId page
-      navigateTo={navigateToHomeConfig}
+      navigateTo={{ screen: 'ExpiredOrLostID' }}
     />
   )
 }
