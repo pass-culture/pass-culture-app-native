@@ -57,7 +57,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
 }
 
 const Container = styled.View({
-  flex: 1,
+  height: '100%',
   alignItems: 'center',
   marginHorizontal: getSpacing(1),
   marginVertical: getSpacing(8),
