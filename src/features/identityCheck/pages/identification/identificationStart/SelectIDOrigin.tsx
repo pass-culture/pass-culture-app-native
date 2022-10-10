@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Text } from 'react-native'
+import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
@@ -35,7 +35,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
               </Text>
             }
             icon={BicolorFrance}
-            navigateTo={{ screen: 'SelectIDStatus' }}
+            navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
           />
         </Li>
         <Spacer.Column numberOfSpaces={6} />
