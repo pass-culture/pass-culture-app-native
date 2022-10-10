@@ -25,4 +25,13 @@ describe('SelectIDOrigin', () => {
 
     expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
   })
+
+  it('should navigate to DMSIntroduction with foreign parameter on press foreign HeroButtonList', () => {
+    const { getAllByTestId } = render(<SelectIDOrigin />)
+
+    const HeroButtonListForeign = getAllByTestId('HeroButtonList')[1]
+    fireEvent.press(HeroButtonListForeign)
+
+    expect(navigate).toHaveBeenCalledWith('DMSIntroduction', { isForeignDMSInformation: true })
+  })
 })

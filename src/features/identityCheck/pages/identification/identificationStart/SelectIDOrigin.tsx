@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
@@ -49,8 +48,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
               </Text>
             }
             icon={BicolorEarth}
-            //FIXME(PC-16833) navigate to DMS page
-            navigateTo={navigateToHomeConfig}
+            navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
           />
         </Li>
       </StyledVerticalUl>
