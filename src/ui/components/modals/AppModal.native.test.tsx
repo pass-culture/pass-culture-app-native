@@ -67,18 +67,26 @@ describe('<AppModal />', () => {
 
   describe('with scroll', () => {
     test('enabled by default', () => {
-      const renderAPI = render(<AppModal {...defaultProps} />)
-      expect(renderAPI).toMatchSnapshot()
+      const { getByTestId } = render(<AppModal {...defaultProps} />)
+
+      const scrollView = getByTestId('modalScrollView')
+
+      expect(scrollView).toHaveProp('scrollEnabled', true)
     })
 
     test('explicitly enabled', () => {
-      const renderAPI = render(<AppModal {...defaultProps} scrollEnabled={true} />)
-      expect(renderAPI).toMatchSnapshot()
+      const { getByTestId } = render(<AppModal {...defaultProps} scrollEnabled={true} />)
+      const scrollView = getByTestId('modalScrollView')
+
+      expect(scrollView).toHaveProp('scrollEnabled', true)
     })
 
     test('disabled', () => {
-      const renderAPI = render(<AppModal {...defaultProps} scrollEnabled={false} />)
-      expect(renderAPI).toMatchSnapshot()
+      const { getByTestId } = render(<AppModal {...defaultProps} scrollEnabled={false} />)
+
+      const scrollView = getByTestId('modalScrollView')
+
+      expect(scrollView).toHaveProp('scrollEnabled', false)
     })
   })
 
