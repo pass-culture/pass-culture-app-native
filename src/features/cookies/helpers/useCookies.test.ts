@@ -35,6 +35,10 @@ const COOKIES_CONSENT_KEY = 'cookies'
 const deviceId = 'testUuidV4'
 const TODAY = new Date(2022, 9, 29)
 const YESTERDAY = new Date(2022, 9, 28)
+const COOKIES_CONSENT_FIVE_MONTHS_OLD = new Date(2022, 4, 29)
+const COOKIES_CONSENT_SIX_MONTHS_OLD = new Date(2022, 3, 29)
+const COOKIES_CONSENT_SEVEN_MONTHS_OLD = new Date(2022, 2, 29)
+
 mockdate.set(TODAY)
 
 jest.mock('api/api')
@@ -178,6 +182,58 @@ describe('useCookies', () => {
 
       const cookiesConsent = await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
       expect(cookiesConsent?.choiceDatetime).toEqual(TODAY.toISOString())
+    })
+
+    it('should clear storage cookies consent when last cookies choice date past 6 months', async () => {
+      storage.saveObject(COOKIES_CONSENT_KEY, {
+        choiceDatetime: COOKIES_CONSENT_SEVEN_MONTHS_OLD,
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      })
+
+      renderHook(useCookies)
+      await superFlushWithAct()
+
+      const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+      expect(cookiesConsent).toBeNull()
+    })
+
+    it('should clear storage cookies consent when last cookies choice date past exactly 6 months', async () => {
+      storage.saveObject(COOKIES_CONSENT_KEY, {
+        choiceDatetime: COOKIES_CONSENT_SIX_MONTHS_OLD,
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      })
+
+      renderHook(useCookies)
+      await superFlushWithAct()
+
+      const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+      expect(cookiesConsent).toBeNull()
+    })
+
+    it('should not clear storage cookies consent when last cookies choice date not past 6 months', async () => {
+      const cookiesConsentInStorage = {
+        choiceDatetime: COOKIES_CONSENT_FIVE_MONTHS_OLD.toISOString(),
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      }
+      storage.saveObject(COOKIES_CONSENT_KEY, cookiesConsentInStorage)
+
+      renderHook(useCookies)
+      await superFlushWithAct()
+
+      const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+      expect(cookiesConsent).toEqual(cookiesConsentInStorage)
     })
 
     describe('user ID', () => {

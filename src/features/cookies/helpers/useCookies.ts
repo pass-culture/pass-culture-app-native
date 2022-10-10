@@ -13,6 +13,8 @@ import { storage } from 'libs/storage'
 import Package from '../../../../package.json'
 
 const COOKIES_CONSENT_KEY = 'cookies'
+const ONE_YEAR = 365 * 24 * 60 * 60 * 1000
+const SIX_MONTHS = ONE_YEAR / 2
 
 export const getCookiesChoice = async () =>
   await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
@@ -27,8 +29,16 @@ export const useCookies = () => {
       if (!settings?.appEnableCookiesV2) return
 
       if (value?.consent) {
-        setCookiesConsentInternalState(value.consent)
-        startTrackingAcceptedCookies(value.consent.accepted)
+        const currentDate = Date.now()
+        const lastCookiesChoiceDate = new Date(value.choiceDatetime).getTime()
+        // After six months we reset cookies consent
+        if (currentDate >= lastCookiesChoiceDate + SIX_MONTHS) {
+          storage.clear(COOKIES_CONSENT_KEY)
+          setCookiesConsentInternalState(null)
+        } else {
+          setCookiesConsentInternalState(value.consent)
+          startTrackingAcceptedCookies(value.consent.accepted)
+        }
       } else {
         setCookiesConsentInternalState(null)
       }
