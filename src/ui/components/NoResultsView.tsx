@@ -15,10 +15,17 @@ type Props = {
   explanations: string
   icon: FunctionComponent<IconInterface>
   offline?: boolean
+  trackingExplorerOffersFrom: 'bookings' | 'favorites'
 }
 
-export const NoResults = ({ title, explanations, icon, offline = false }: Props) => {
-  const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'bookings' })
+export const NoResultsView = ({
+  title,
+  explanations,
+  icon,
+  offline = false,
+  trackingExplorerOffersFrom,
+}: Props) => {
+  const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
   const searchNavConfig = getTabNavConfig('Search', { view: SearchView.Landing })
 
   const Icon =

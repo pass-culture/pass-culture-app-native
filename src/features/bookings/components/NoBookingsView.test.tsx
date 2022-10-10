@@ -38,7 +38,7 @@ describe('<NoBookingsView />', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
-    const button = renderAPI.getByText('Explorer les offres')
+    const button = renderAPI.getByText('Découvrir le catalogue')
     await fireEvent.press(button)
     expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { view: SearchView.Landing }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NoResults } from 'ui/components/NoResults'
+import { NoResultsView } from 'ui/components/NoResultsView'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -11,10 +11,11 @@ export const NoFavoritesResult = () => {
     'Explore le catalogue pass Culture et ajoute les offres en favoris pour les retrouver facilement\u00a0!'
 
   return (
-    <NoResults
+    <NoResultsView
       title="Retrouve toutes tes offres en un clin d’oeil"
       explanations={explanations}
       icon={EmptyFavorites}
+      trackingExplorerOffersFrom="favorites"
     />
   )
 }

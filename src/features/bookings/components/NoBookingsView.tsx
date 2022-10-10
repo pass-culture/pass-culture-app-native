@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { NoResults } from 'ui/components/NoResults'
+import { NoResultsView } from 'ui/components/NoResultsView'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
@@ -21,8 +21,19 @@ export function NoBookingsView() {
     'Explore le catalogue pass Culture pour effectuer ta première réservation\u00a0!'
 
   return !netInfo.isConnected ? (
-    <NoResults title={title} offline explanations={explanationsOffline} icon={NoBookings} />
+    <NoResultsView
+      title={title}
+      offline
+      explanations={explanationsOffline}
+      icon={NoBookings}
+      trackingExplorerOffersFrom="bookings"
+    />
   ) : (
-    <NoResults title={title} explanations={explanations} icon={NoBookings} />
+    <NoResultsView
+      title={title}
+      explanations={explanations}
+      icon={NoBookings}
+      trackingExplorerOffersFrom="bookings"
+    />
   )
 }

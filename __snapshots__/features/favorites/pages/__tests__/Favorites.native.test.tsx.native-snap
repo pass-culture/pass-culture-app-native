@@ -349,11 +349,11 @@ exports[`Favorites component should render correctly 1`] = `
             }
           >
             <View
-              numberOfSpaces={3}
+              numberOfSpaces={1}
               style={
                 Array [
                   Object {
-                    "height": 12,
+                    "height": 4,
                   },
                 ]
               }
