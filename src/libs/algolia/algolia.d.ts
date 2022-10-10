@@ -1,3 +1,5 @@
+import { Hit } from 'instantsearch.js'
+
 import { SubcategoryIdEnum } from 'api/gen'
 
 interface Offer {
@@ -23,11 +25,7 @@ export interface AlgoliaHit {
   objectID: string
 }
 
-export interface AlgoliaSuggestionHit {
-  objectID: string
-  query: string
-  _highlightResult?: HighlightResultAttribute
-}
+export type AlgoliaSuggestionHit = Hit<{ query: string }>
 
 export interface HighlightResultAttribute {
   query: HighlightResult

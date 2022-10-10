@@ -1,0 +1,42 @@
+diff --git a/node_modules/instantsearch.js/cjs/helpers/get-insights-anonymous-user-token.js b/node_modules/instantsearch.js/cjs/helpers/get-insights-anonymous-user-token.js
+index 5198346..82a3017 100644
+--- a/node_modules/instantsearch.js/cjs/helpers/get-insights-anonymous-user-token.js
++++ b/node_modules/instantsearch.js/cjs/helpers/get-insights-anonymous-user-token.js
+@@ -14,6 +14,9 @@ exports.ANONYMOUS_TOKEN_COOKIE_KEY = ANONYMOUS_TOKEN_COOKIE_KEY;
+ 
+ function getCookie(name) {
+   var prefix = "".concat(name, "=");
++
++  if (typeof document === 'undefined') return undefined;
++
+   var cookies = document.cookie.split(';');
+ 
+   for (var i = 0; i < cookies.length; i++) {
+diff --git a/node_modules/instantsearch.js/dist/instantsearch.development.js b/node_modules/instantsearch.js/dist/instantsearch.development.js
+index e0c27fd..c81652b 100644
+--- a/node_modules/instantsearch.js/dist/instantsearch.development.js
++++ b/node_modules/instantsearch.js/dist/instantsearch.development.js
+@@ -8767,6 +8767,9 @@
+ 
+   function getCookie(name) {
+     var prefix = "".concat(name, "=");
++
++    if (typeof document === 'undefined') return undefined;
++
+     var cookies = document.cookie.split(';');
+ 
+     for (var i = 0; i < cookies.length; i++) {
+diff --git a/node_modules/instantsearch.js/es/helpers/get-insights-anonymous-user-token.js b/node_modules/instantsearch.js/es/helpers/get-insights-anonymous-user-token.js
+index 273947b..4a53636 100644
+--- a/node_modules/instantsearch.js/es/helpers/get-insights-anonymous-user-token.js
++++ b/node_modules/instantsearch.js/es/helpers/get-insights-anonymous-user-token.js
+@@ -3,6 +3,9 @@ export var ANONYMOUS_TOKEN_COOKIE_KEY = '_ALGOLIA';
+ 
+ function getCookie(name) {
+   var prefix = "".concat(name, "=");
++
++  if (typeof document === 'undefined') return undefined;
++
+   var cookies = document.cookie.split(';');
+ 
+   for (var i = 0; i < cookies.length; i++) {

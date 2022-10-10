@@ -13,11 +13,11 @@ export const logClickOnOffer =
   (appEnableCookiesV2: boolean, currentQueryID?: string) =>
   async ({ objectID, position }: { objectID: string; position: number }) => {
     // TODO(PC-17175): use getAcceptedCookieConsent instead
-    const hasAcceptedAlogliaInsights = appEnableCookiesV2
+    const hasAcceptedAlgoliaInsights = appEnableCookiesV2
       ? await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
       : await getCookiesConsent()
 
-    if (!hasAcceptedAlogliaInsights) return
+    if (!hasAcceptedAlgoliaInsights) return
 
     if (currentQueryID === undefined) {
       captureMonitoringError('Algolia Analytics: useLogClickOnOffer called without any QueryID set')
