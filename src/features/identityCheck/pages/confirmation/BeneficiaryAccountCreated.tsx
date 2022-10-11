@@ -59,7 +59,7 @@ export function BeneficiaryAccountCreated() {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount color={uniqueColors.brand}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
+        <Amount>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>

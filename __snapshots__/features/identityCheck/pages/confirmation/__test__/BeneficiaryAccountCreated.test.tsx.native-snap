@@ -201,11 +201,10 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       </View>
     </View>
     <Text
-      color="#870087"
       style={
         Array [
           Object {
-            "color": "#161617",
+            "color": "#870087",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 22,
             "lineHeight": 26,
@@ -529,11 +528,10 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       </View>
     </View>
     <Text
-      color="#870087"
       style={
         Array [
           Object {
-            "color": "#161617",
+            "color": "#870087",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 22,
             "lineHeight": 26,
