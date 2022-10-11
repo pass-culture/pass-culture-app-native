@@ -5,7 +5,7 @@ import { Text } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { flushAllPromisesWithAct, act, fireEvent, render } from 'tests/utils/web'
 
 import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'

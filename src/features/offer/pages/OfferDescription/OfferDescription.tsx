@@ -4,7 +4,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
 import { PageHeader } from 'ui/components/headers/PageHeader'

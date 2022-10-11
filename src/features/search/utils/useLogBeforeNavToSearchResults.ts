@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { Referrals } from 'features/navigation/RootNavigator'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/firebase/analytics'
 

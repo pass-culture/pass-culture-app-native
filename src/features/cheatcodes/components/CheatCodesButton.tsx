@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const CheatCodesButton: React.FC = () => {

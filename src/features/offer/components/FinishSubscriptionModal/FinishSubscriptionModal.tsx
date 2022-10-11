@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGetDepositAmountsByAge } from 'features/offer/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
 import { useUserProfileInfo } from 'features/profile/api'

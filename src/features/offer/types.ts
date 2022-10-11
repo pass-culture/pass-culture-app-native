@@ -1,5 +1,5 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
-import { Referrals } from 'features/navigation/RootNavigator'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined

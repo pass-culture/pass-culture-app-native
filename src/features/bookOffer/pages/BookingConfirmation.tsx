@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { formatToFrenchDecimal } from 'libs/parsers'

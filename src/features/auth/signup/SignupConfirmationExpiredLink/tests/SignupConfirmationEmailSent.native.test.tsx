@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { usePreviousRoute, navigateToHome, openUrl } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 

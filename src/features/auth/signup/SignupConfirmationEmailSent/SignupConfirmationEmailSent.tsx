@@ -9,7 +9,7 @@ import {
 } from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/firebase/analytics'

@@ -1,3 +1,1 @@
-export * from './RootNavigator'
-export * from './types'
-export * from './Stack'
+export { RootNavigator } from './RootNavigator'

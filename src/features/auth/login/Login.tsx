@@ -13,7 +13,7 @@ import {
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'

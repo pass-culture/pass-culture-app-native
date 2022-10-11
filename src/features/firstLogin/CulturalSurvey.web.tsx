@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
 import { withCulturalSurveyProvider } from 'features/firstLogin/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 export const CulturalSurvey: React.FC = withCulturalSurveyProvider(function (props) {
   const { formId, userId, userPk, source } = props.culturalSurveyConfig

@@ -13,7 +13,7 @@ import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/co
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers/__mocks__'
-import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator'
+import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent, middleScrollEvent, bottomScrollEvent } from 'tests/utils'
 

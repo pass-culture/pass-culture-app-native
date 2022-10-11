@@ -5,7 +5,7 @@ import { Keyboard } from 'react-native'
 
 import { SIGNUP_NUMBER_OF_STEPS, useSignUp } from 'features/auth/api'
 import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'

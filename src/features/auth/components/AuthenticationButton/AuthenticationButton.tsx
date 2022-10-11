@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { RootNavigateParams } from 'features/navigation/RootNavigator'
+import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Connect } from 'ui/svg/icons/Connect'

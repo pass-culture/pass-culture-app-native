@@ -8,7 +8,7 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { useResetPasswordMutation } from 'features/auth/mutations'
 import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { isTimestampExpired } from 'libs/dates'
 import { analytics } from 'libs/firebase/analytics'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'

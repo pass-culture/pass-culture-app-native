@@ -7,7 +7,7 @@ import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCook
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'

@@ -14,7 +14,7 @@ import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/co
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers'
-import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator'
+import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { render, fireEvent } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')

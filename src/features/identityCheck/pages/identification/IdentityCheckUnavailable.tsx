@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'

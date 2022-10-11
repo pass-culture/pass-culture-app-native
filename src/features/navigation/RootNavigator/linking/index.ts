@@ -1,7 +1,7 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { RequireField } from 'libs/typesUtils/typeHelpers'
 

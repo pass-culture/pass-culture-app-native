@@ -1,4 +1,4 @@
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export enum IdentityCheckStep {

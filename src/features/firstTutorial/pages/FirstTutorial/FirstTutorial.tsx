@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { BackHandler } from 'react-native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { storage } from 'libs/storage'
 import { GenericAchievement } from 'ui/components/achievements'
 

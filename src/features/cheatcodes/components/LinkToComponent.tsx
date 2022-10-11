@@ -6,7 +6,7 @@ import {
   RootScreenNames,
   RootStackParamList,
   UseNavigationType,
-} from 'features/navigation/RootNavigator'
+} from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 interface LinkToComponentProps {

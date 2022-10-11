@@ -1,5 +1,5 @@
-import { NavigationResultState } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
+import { NavigationResultState } from 'features/navigation/RootNavigator/types'
 
 import { DeeplinkParts } from './types'
 

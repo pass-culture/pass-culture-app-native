@@ -4,7 +4,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse } from 'api/gen'
-import { RootStack } from 'features/navigation/RootNavigator'
+import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'

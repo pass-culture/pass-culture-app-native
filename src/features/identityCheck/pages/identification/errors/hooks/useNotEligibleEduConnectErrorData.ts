@@ -4,7 +4,7 @@ import { TextStyle } from 'react-native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ExternalNavigationProps, TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { UserError } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'

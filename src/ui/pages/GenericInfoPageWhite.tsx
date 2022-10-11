@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { RootNavigateParams } from 'features/navigation/RootNavigator'
+import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useAppStateChange } from 'libs/appState'

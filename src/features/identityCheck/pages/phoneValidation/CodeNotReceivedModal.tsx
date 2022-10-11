@@ -9,7 +9,7 @@ import {
 } from 'features/identityCheck/api/api'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'

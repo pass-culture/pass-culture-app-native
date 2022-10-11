@@ -4,7 +4,7 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { AsyncError } from 'libs/monitoring'

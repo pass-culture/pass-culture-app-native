@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { withCulturalSurveyProvider } from 'features/firstLogin/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Spacer } from 'ui/theme'
 
 export const CulturalSurvey: React.FC = withCulturalSurveyProvider(function (props) {

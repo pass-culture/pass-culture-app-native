@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

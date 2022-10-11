@@ -17,7 +17,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'
