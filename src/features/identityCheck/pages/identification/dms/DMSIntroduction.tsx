@@ -2,8 +2,8 @@ import { useRoute } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
@@ -43,6 +43,10 @@ export const DMSIntroduction = (): JSX.Element => {
           { icon: BicolorProfile, label: selfieLabel },
         ]
 
+  const DMSUrl = params.isForeignDMSInformation
+    ? env.DMS_FOREIGN_CITIZEN_URL
+    : env.DMS_FRENCH_CITIZEN_URL
+
   return (
     <GenericInfoPageWhite
       icon={LogoDMS}
@@ -68,8 +72,9 @@ export const DMSIntroduction = (): JSX.Element => {
           wording="Aller sur demarches-simplifiees.fr"
           icon={ExternalSite}
           as={ButtonPrimary}
-          // TODO(PC-17774) navigate to DMS external url
-          navigateTo={navigateToHomeConfig}
+          externalNav={{
+            url: DMSUrl,
+          }}
         />
       </LinkContainer>
     </GenericInfoPageWhite>
