@@ -17,7 +17,7 @@ jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
