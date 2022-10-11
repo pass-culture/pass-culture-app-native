@@ -22,7 +22,7 @@ module.exports = {
   },
   rules: {
     'local-rules/no-allow-console': ['error'],
-    'local-rules/independant-mocks': ['error'],
+    'local-rules/independent-mocks': ['error'],
     'local-rules/no-raw-text': ['error'],
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],

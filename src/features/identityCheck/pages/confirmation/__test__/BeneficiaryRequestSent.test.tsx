@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/independant-mocks */
+/* eslint-disable local-rules/independent-mocks */
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'

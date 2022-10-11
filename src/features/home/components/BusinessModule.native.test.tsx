@@ -103,7 +103,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
     const { getByTestId } = renderModule({
       ...props,
@@ -122,7 +122,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     homeAPISpy.mockImplementation(() => {
       return {
         isLoading: false,
@@ -144,7 +144,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should not display a snackbar when user profile data is yet to be received but the email is not needed', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     homeAPISpy.mockImplementation(() => {
       return {
         isLoading: true,

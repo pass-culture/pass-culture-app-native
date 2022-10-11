@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/independant-mocks */
+/* eslint-disable local-rules/independent-mocks */
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 import { mocked } from 'ts-jest/utils'

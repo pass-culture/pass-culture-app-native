@@ -27,7 +27,7 @@ describe('getDatesFromTimeRangeAndDate', () => {
       // Given
       const from_midnight_to_twenty_two: Range<number> = [0, 24]
       const tuesday_april_28_2020_eleven_thirty_four_am = new Date(2020, 3, 28, 11, 34, 23, 234)
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       jest
         .spyOn(tuesday_april_28_2020_eleven_thirty_four_am, 'getTimezoneOffset')
         .mockReturnValue(0)

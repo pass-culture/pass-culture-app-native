@@ -11,7 +11,7 @@ describe('requestGeolocPermission android', () => {
   beforeAll(() => (Platform.OS = 'android'))
 
   it('should ask for android permission and return right state if granted', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(PermissionsAndroid, 'requestMultiple').mockResolvedValue({
       'android.permission.ACCESS_FINE_LOCATION': 'granted',
       'android.permission.ACCESS_COARSE_LOCATION': 'granted',
@@ -27,7 +27,7 @@ describe('requestGeolocPermission android', () => {
   })
 
   it('should return right state if permission not granted', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(PermissionsAndroid, 'requestMultiple').mockResolvedValue({
       'android.permission.ACCESS_FINE_LOCATION': 'denied',
       'android.permission.ACCESS_COARSE_LOCATION': 'denied',
@@ -39,7 +39,7 @@ describe('requestGeolocPermission android', () => {
   })
 
   it('should return right state if permission not granted and ask for never_ask_again', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(PermissionsAndroid, 'requestMultiple').mockResolvedValue({
       'android.permission.ACCESS_FINE_LOCATION': 'never_ask_again',
       'android.permission.ACCESS_COARSE_LOCATION': 'never_ask_again',

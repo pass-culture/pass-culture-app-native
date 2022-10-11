@@ -251,7 +251,7 @@ describe('Profile component', () => {
     })
 
     it('should NOT display signout row if the user is NOT connected', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: false }))
       const { queryByText } = await renderProfile()
       const row = queryByText('Déconnexion')
@@ -259,7 +259,7 @@ describe('Profile component', () => {
     })
 
     it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
       const { getByText } = await renderProfile()
 
@@ -280,7 +280,7 @@ describe('Profile component', () => {
     })
 
     it('should log event ProfilScrolledToBottom when user reach end of screen', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
       const { getByTestId } = await renderProfile()
       const scrollContainer = getByTestId('profile-scrollview')

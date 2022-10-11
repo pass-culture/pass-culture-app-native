@@ -89,7 +89,7 @@ describe('<BookingEventChoices />', () => {
   })
 
   it('should display date step and hour step and duo step on a snapshot', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockUseBooking.mockImplementation(() => ({
       bookingState: {
         offerId: 1,
@@ -105,7 +105,7 @@ describe('<BookingEventChoices />', () => {
   })
 
   it('should skip duo step if isDuo is not defined', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockUseBooking.mockImplementation(() => ({
       bookingState: {
         offerId: 1,
@@ -116,7 +116,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: mockDispatch,
     }))
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockUseBookingOffer.mockImplementation(() => ({
       id: 1,
       isDuo: false,

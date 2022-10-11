@@ -1,4 +1,4 @@
-const independantMocks = require('./eslint-custom-rules/independant-mocks')
+const independentMocks = require('./eslint-custom-rules/independent-mocks')
 const nbspInText = require('./eslint-custom-rules/nbsp-in-text')
 const noAllowConsole = require('./eslint-custom-rules/no-allow-console')
 const noRawText = require('./eslint-custom-rules/no-raw-text')
@@ -7,7 +7,7 @@ const noStringCheckBeforeComponent = require('./eslint-custom-rules/no-string-ch
 const todoFormat = require('./eslint-custom-rules/todo-format')
 
 module.exports = {
-  'independant-mocks': independantMocks,
+  'independent-mocks': independentMocks,
   'nbsp-in-text': nbspInText,
   'no-allow-console': noAllowConsole,
   'no-raw-text': noRawText,

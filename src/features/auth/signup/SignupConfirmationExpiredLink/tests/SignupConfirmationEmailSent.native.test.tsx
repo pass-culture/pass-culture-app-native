@@ -33,7 +33,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should NOT display back button when previous screen is AcceptCgu', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockUsePreviousRoute.mockReturnValue({ name: 'AcceptCgu', key: 'key' })
     const { queryByTestId } = renderPage()
 
