@@ -100,8 +100,6 @@ const ItemContainer = styled.View({
 
 const EndedReasonAndDate = styled.View({
   flexDirection: 'row',
-  flexWrap: 'wrap',
-  flex: 1,
   alignItems: 'center',
 })
 
@@ -109,12 +107,12 @@ function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
   dateUsed?: string | null
 ) {
-  if (dateUsed) return <StyledInputRule title="Utilisé" icon={Check} isValid />
+  if (dateUsed) return <StyledInputRule title="Utilisé" icon={Check} isValid noFullWidth />
 
   if (cancellationReason === BookingCancellationReasons.OFFERER)
-    return <StyledInputRule title="Annulé" icon={Check} isValid={false} />
+    return <StyledInputRule title="Annulé" icon={Check} isValid={false} noFullWidth />
 
-  return <StyledInputRule title="Réservation annulée" icon={Check} isValid={false} />
+  return <StyledInputRule title="Réservation annulée" icon={Check} isValid={false} noFullWidth />
 }
 
 function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
