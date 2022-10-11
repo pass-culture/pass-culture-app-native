@@ -197,8 +197,7 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
         ]
       }
     >
-      Tu n’as pas encore trouvé ton bonheur ?
-Explore le catalogue pass Culture pour effectuer ta première réservation !
+      Tu n’as pas de réservation en cours. Explore le catalogue pour trouver ton bonheur !
     </Text>
     <View
       numberOfSpaces={4}
