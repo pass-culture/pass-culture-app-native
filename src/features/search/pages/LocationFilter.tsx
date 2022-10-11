@@ -17,7 +17,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
-import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -26,7 +25,7 @@ import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -163,10 +162,6 @@ export const LocationFilter: React.FC = () => {
         accessibilityRole={AccessibilityRole.RADIOGROUP}
         aria-labelledby={titleID}>
         <Spacer.Column numberOfSpaces={8} />
-        <BannerContainer>
-          <Banner title="Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation" />
-        </BannerContainer>
-        <Spacer.Column numberOfSpaces={6} />
         <VerticalUl>
           <Li>
             <LocationChoice
@@ -224,5 +219,3 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const contentContainerStyle: ViewStyle = { flexGrow: 1 }
-
-const BannerContainer = styled.View({ marginHorizontal: getSpacing(6) })
