@@ -31,7 +31,7 @@ jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const deviceId = 'testUuidV4'
 const TODAY = new Date(2022, 9, 29)
 const YESTERDAY = new Date(2022, 9, 28)
@@ -77,6 +77,17 @@ describe('useCookies', () => {
   })
 
   describe('storage', () => {
+    it('should not start tracking accepted cookies if only userId is already in storage', async () => {
+      await storage.saveObject(COOKIES_CONSENT_KEY, {
+        userId: FAKE_USER_ID,
+      })
+
+      renderHook(useCookies)
+
+      await superFlushWithAct()
+      expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
+    })
+
     it('should save cookies consent in the storage', async () => {
       const { result } = renderHook(useCookies)
       const { setCookiesConsent } = result.current
@@ -231,7 +242,7 @@ describe('useCookies', () => {
         })
       })
 
-      it("don't store user ID when user has not give his cookie consent", async () => {
+      it('store user ID when user has not give his cookie consent with no consent', async () => {
         const { result } = renderHook(useCookies)
         const { setUserId } = result.current
 
@@ -240,7 +251,22 @@ describe('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
-        expect(cookiesConsent).toBeNull()
+        expect(cookiesConsent).toEqual({
+          buildVersion: Package.build,
+          userId: FAKE_USER_ID,
+          deviceId,
+        })
+      })
+
+      it('dont send user consent when user not give cookies consent', async () => {
+        const { result } = renderHook(useCookies)
+        const { setUserId } = result.current
+
+        await act(async () => {
+          await setUserId(FAKE_USER_ID)
+        })
+
+        expect(api.postnativev1cookiesConsent).not.toHaveBeenCalled()
       })
 
       it('should overwrite user ID when setting another user ID', async () => {

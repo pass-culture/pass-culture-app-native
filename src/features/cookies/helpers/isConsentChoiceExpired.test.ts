@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { storage } from 'libs/storage'
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const TODAY = new Date('2022-09-12')
 const LAST_WEEK = new Date('2022-09-05')
 // 1 month = 30 days

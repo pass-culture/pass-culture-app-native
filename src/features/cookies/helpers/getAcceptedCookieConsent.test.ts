@@ -4,7 +4,7 @@ import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCo
 import { storage } from 'libs/storage'
 import { renderHook } from 'tests/utils'
 
-const COOKIES_CONSENT_KEY_V2 = 'cookies_consent'
+const COOKIES_CONSENT_KEY_V2 = 'cookies'
 
 describe('getAcceptedCookieConsent', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY_V2))
