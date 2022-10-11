@@ -184,7 +184,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           "color": "rgba(255,255,255,1.00)",
           "fontFamily": "Montserrat-Medium",
           "fontSize": "22px",
-          "lineHeight": "28px",
+          "lineHeight": "26px",
           "textAlign": "center",
         }
       }

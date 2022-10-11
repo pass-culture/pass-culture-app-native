@@ -481,14 +481,14 @@ export const theme: AppThemeType = {
     },
     title1: {
       fontFamily: 'Montserrat-Black',
-      fontSize: getSpacing(6),
-      lineHeight: getSpacingString(9),
+      fontSize: getSpacing(6.5),
+      lineHeight: getSpacingString(8.5),
       color: ColorsEnum.BLACK,
     },
     title2: {
       fontFamily: 'Montserrat-Medium',
-      fontSize: getSpacing(6),
-      lineHeight: getSpacingString(7),
+      fontSize: getSpacing(5.5),
+      lineHeight: getSpacingString(6.5),
       color: ColorsEnum.BLACK,
     },
     title3: {

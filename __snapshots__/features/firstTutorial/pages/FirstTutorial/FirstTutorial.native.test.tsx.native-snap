@@ -242,16 +242,13 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 >
                   <Text
-                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
-                        },
-                        Object {
+                          "fontSize": 26,
+                          "lineHeight": 34,
                           "textAlign": "center",
                         },
                       ]
@@ -450,16 +447,13 @@ c'est...
                   }
                 >
                   <Text
-                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
-                        },
-                        Object {
+                          "fontSize": 26,
+                          "lineHeight": 34,
                           "textAlign": "center",
                         },
                       ]
@@ -1010,16 +1004,13 @@ et si tu as...
                   }
                 >
                   <Text
-                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
-                        },
-                        Object {
+                          "fontSize": 26,
+                          "lineHeight": 34,
                           "textAlign": "center",
                         },
                       ]
@@ -1173,16 +1164,13 @@ près de chez toi
                   }
                 >
                   <Text
-                    fontSize={28}
                     style={
                       Array [
                         Object {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
-                          "fontSize": 28,
-                          "lineHeight": 36,
-                        },
-                        Object {
+                          "fontSize": 26,
+                          "lineHeight": 34,
                           "textAlign": "center",
                         },
                       ]
