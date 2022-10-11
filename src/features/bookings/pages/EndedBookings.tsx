@@ -25,7 +25,7 @@ export const EndedBookings: React.FC = () => {
   const ListHeaderComponent = useCallback(
     () => (
       <React.Fragment>
-        <Spacer.Column numberOfSpaces={18} />
+        <Spacer.Column numberOfSpaces={6} />
         <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
       </React.Fragment>
     ),

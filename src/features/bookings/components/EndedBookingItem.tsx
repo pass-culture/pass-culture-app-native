@@ -91,7 +91,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
 
 const AttributesView = styled.View({
   flex: 1,
-  paddingLeft: getSpacing(4),
   paddingRight: getSpacing(1),
 })
 
