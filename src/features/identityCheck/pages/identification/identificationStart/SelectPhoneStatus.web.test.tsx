@@ -10,12 +10,21 @@ describe('SelectPhoneStatus', () => {
     expect(selectPhoneStatus).toMatchSnapshot()
   })
 
-  it('should navigate to SelectIDStatus on press "J’ai un smartphone à proximité" HeroButtonList', () => {
+  it('should navigate to SelectIDStatus on press "J’ai un smartphone à proximité" button', () => {
     const { getAllByTestId } = render(<SelectPhoneStatus />)
 
     const HeroButtonList = getAllByTestId('HeroButtonList')[0]
     fireEvent.click(HeroButtonList)
 
     expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
+  })
+
+  it(`should navigate to DMSIntroduction FR when pressing "Je n'ai pas de smartphone" button`, () => {
+    const { getAllByTestId } = render(<SelectPhoneStatus />)
+
+    const HeroButtonList = getAllByTestId('HeroButtonList')[1]
+    fireEvent.click(HeroButtonList)
+
+    expect(navigate).toHaveBeenCalledWith('DMSIntroduction', { isForeignDMSInformation: false })
   })
 })
