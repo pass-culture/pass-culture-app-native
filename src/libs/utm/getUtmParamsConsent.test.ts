@@ -14,7 +14,7 @@ jest.mock('features/auth/settings', () => ({
 jest.mock('features/profile/api')
 jest.mock('api/api')
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 

@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 export type StorageKey =
   | 'access_token'
   | 'campaign_date'
-  | 'cookies_consent'
+  | 'cookies'
   | 'first_time_review_has_been_requested'
   | 'has_accepted_cookie'
   | 'has_seen_birthday_notification_card'

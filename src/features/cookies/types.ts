@@ -8,13 +8,21 @@ export interface Consent {
   refused: Cookies
 }
 
-export interface CookiesConsent {
-  buildVersion: number
-  consent: Consent
-  deviceId: string
-  choiceDatetime: string
-  userId?: number
-}
+export type CookiesConsent =
+  | {
+      buildVersion: number
+      choiceDatetime: string
+      consent: Consent
+      deviceId: string
+      userId?: number
+    }
+  | {
+      buildVersion: number
+      deviceId: string
+      userId: number
+      consent?: never
+      choiceDatetime?: never
+    }
 
 export type CookiesChoiceByCategory = {
   [CookieCategoriesEnum.marketing]: boolean

@@ -12,7 +12,7 @@ import { storage } from 'libs/storage'
 
 import Package from '../../../../package.json'
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 
 export const getCookiesChoice = async () =>
   await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
@@ -26,10 +26,10 @@ export const useCookies = () => {
     getCookiesChoice().then((value) => {
       if (!settings?.appEnableCookiesV2) return
 
-      if (value) {
+      if (value?.consent) {
         setCookiesConsentInternalState(value.consent)
         startTrackingAcceptedCookies(value.consent.accepted)
-      } else if (value === null) {
+      } else {
         setCookiesConsentInternalState(null)
       }
     })
@@ -42,7 +42,7 @@ export const useCookies = () => {
 
     const oldCookiesChoice = await getCookiesChoice()
 
-    const newCookiesChoice = {
+    const newCookiesChoice: CookiesConsent = {
       buildVersion: Package.build,
       userId: oldCookiesChoice?.userId ?? userProfileInfo?.id,
       deviceId: oldCookiesChoice?.deviceId ?? uuidv4(),
@@ -58,14 +58,18 @@ export const useCookies = () => {
 
     const oldCookiesChoice = await getCookiesChoice()
 
-    if (!oldCookiesChoice) return
-
-    if (oldCookiesChoice.userId !== userId) {
-      const newCookiesChoice = {
+    if (!oldCookiesChoice) {
+      const newCookiesChoice: CookiesConsent = {
+        userId,
+        deviceId: uuidv4(),
+        buildVersion: Package.build,
+      }
+      await persist(newCookiesChoice)
+    } else if (oldCookiesChoice.userId !== userId) {
+      const newCookiesChoice: CookiesConsent = {
         ...oldCookiesChoice,
         userId,
       }
-
       await persist(newCookiesChoice)
     }
   }
@@ -81,7 +85,9 @@ const persist = async (cookiesChoice: CookiesConsent) => {
   await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
 
   try {
-    await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+    if (cookiesChoice.consent) {
+      await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+    }
   } catch {
     eventMonitoring.captureException(new Error("can't log cookies consent choice"))
   }

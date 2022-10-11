@@ -41,7 +41,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 const accessToken = 'access_token'
 const method = 'fromLogin'
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const cookiesChoice: CookiesConsent = {
   buildVersion: 1001005,
   deviceId: 'uuid',

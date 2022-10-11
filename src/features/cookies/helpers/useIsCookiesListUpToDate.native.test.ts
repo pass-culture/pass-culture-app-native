@@ -11,7 +11,7 @@ import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 import Package from '../../../../package.json'
 
 const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const TODAY = new Date('2022-09-16')
 const TOMORROW = new Date(TODAY.getTime() + MILLISECONDS_IN_A_DAY)
 const A_SECOND_AGO = new Date(TODAY.getTime() - 1000)

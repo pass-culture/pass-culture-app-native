@@ -18,7 +18,7 @@ jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))
 
-const COOKIES_CONSENT_KEY = 'cookies_consent'
+const COOKIES_CONSENT_KEY = 'cookies'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 const deviceId = 'testUuidV4'
