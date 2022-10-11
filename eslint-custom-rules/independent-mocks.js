@@ -50,6 +50,14 @@ module.exports = {
               'Use mockResolvedValue outside it() definition, or use mockResolvedValueOnce instead',
           })
         },
+      'CallExpression[callee.name="it"] > ArrowFunctionExpression > BlockStatement > ExpressionStatement > CallExpression > MemberExpression[property.name="mockRejectedValue"]':
+        (node) => {
+          context.report({
+            node,
+            message:
+              'Use mockRejectedValue outside it() definition, or use mockRejectedValueOnce instead',
+          })
+        },
     }
   },
 }
