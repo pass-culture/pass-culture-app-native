@@ -1,5 +1,5 @@
 /**
- * This rule aims to spot dependant tests.
+ * This rule aims to spot dependent tests.
  * Ex:  I mock a function in test A and the mock is not reset after. So test B uses test A's mock
  */
 
@@ -21,7 +21,7 @@ module.exports = {
   name: 'independent-mocks',
   meta: {
     docs: {
-      description: 'disallow console use',
+      description: 'This rule aims to spot dependent tests.',
     },
   },
   create(context) {
