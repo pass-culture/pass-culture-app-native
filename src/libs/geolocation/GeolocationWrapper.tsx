@@ -26,6 +26,7 @@ const GeolocationContext = React.createContext<IGeolocationContext>({
   },
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
+  onPressGeolocPermissionModalButton: () => null,
 })
 
 export const GeolocationWrapper = memo(function GeolocationWrapper({
@@ -117,10 +118,10 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 
   useAppStateChange(contextualCheckPermission, undefined, [])
 
-  function onPressGeolocPermissionModalButton() {
+  const onPressGeolocPermissionModalButton = useCallback(() => {
     Linking.openSettings()
     hideGeolocPermissionModal()
-  }
+  }, [hideGeolocPermissionModal])
 
   const value = useMemo(
     () => ({
@@ -130,6 +131,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
       showGeolocPermissionModal,
+      onPressGeolocPermissionModalButton,
     }),
     [
       contextualRequestGeolocPermission,
@@ -138,6 +140,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       positionError,
       showGeolocPermissionModal,
       triggerPositionUpdate,
+      onPressGeolocPermissionModalButton,
     ]
   )
   return (

@@ -18,10 +18,12 @@ import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { analytics } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Slider } from 'ui/components/inputs/Slider'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { useModal } from 'ui/components/modals/useModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -71,8 +73,14 @@ export const LocationModal: FunctionComponent<Props> = ({
     positionError,
     permissionState,
     requestGeolocPermission,
-    showGeolocPermissionModal,
+    onPressGeolocPermissionModalButton,
   } = useGeolocation()
+
+  const {
+    showModal: showGeolocPermissionModal,
+    hideModal: hideGeolocPermissionModal,
+    visible: isGeolocPermissionModalVisible,
+  } = useModal(false)
   const logChangeRadius = useLogFilterOnce(SectionTitle.Radius)
 
   const getLocationChoice = useCallback(() => {
@@ -284,6 +292,11 @@ export const LocationModal: FunctionComponent<Props> = ({
                 visible={!!positionError}
                 messageId={positionError?.message}
                 numberOfSpacesTop={1}
+              />
+              <GeolocationActivationModal
+                isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
+                hideGeolocPermissionModal={hideGeolocPermissionModal}
+                onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
               />
             </React.Fragment>
           )}

@@ -35,7 +35,7 @@ type Props = {
   shouldScrollToEnd?: boolean
 } & ModalIconProps
 
-// Without this, the margin is recomputed with arbitraty values
+// Without this, the margin is recomputed with arbitrary values
 const modalStyles = { margin: 'auto' }
 
 const DESKTOP_FULLSCREEN_RATIO = 0.75

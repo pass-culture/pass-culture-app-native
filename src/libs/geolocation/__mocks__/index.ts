@@ -10,6 +10,7 @@ export type { GeoCoordinates, GeolocationError, IGeolocationContext } from '../t
 export const requestGeolocPermission = jest.fn()
 export const triggerPositionUpdate = jest.fn()
 export const showGeolocPermissionModal = jest.fn()
+export const onPressGeolocPermissionModalButton = jest.fn()
 
 const geolocationContext: IGeolocationContext = {
   position: { longitude: 90, latitude: 90 },
@@ -18,6 +19,7 @@ const geolocationContext: IGeolocationContext = {
   requestGeolocPermission,
   triggerPositionUpdate,
   showGeolocPermissionModal,
+  onPressGeolocPermissionModalButton,
 }
 
 export const useGeolocation = jest.fn().mockReturnValue(geolocationContext)
