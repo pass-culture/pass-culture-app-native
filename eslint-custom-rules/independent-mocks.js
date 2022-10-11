@@ -30,21 +30,24 @@ module.exports = {
         (node) => {
           context.report({
             node,
-            message: 'Use mockImplementation outside it() definition',
+            message:
+              'Use mockImplementation outside it() definition, or use mockImplementationOnce instead',
           })
         },
       'CallExpression[callee.name="it"] > ArrowFunctionExpression > BlockStatement > ExpressionStatement > CallExpression > MemberExpression[property.name="mockReturnValue"]':
         (node) => {
           context.report({
             node,
-            message: 'Use mockReturnValue outside it() definition',
+            message:
+              'Use mockReturnValue outside it() definition, or use mockReturnValueOnce instead',
           })
         },
       'CallExpression[callee.name="it"] > ArrowFunctionExpression > BlockStatement > ExpressionStatement > CallExpression > MemberExpression[property.name="mockResolvedValue"]':
         (node) => {
           context.report({
             node,
-            message: 'Use mockResolvedValue outside it() definition',
+            message:
+              'Use mockResolvedValue outside it() definition, or use mockResolvedValueOnce instead',
           })
         },
     }
