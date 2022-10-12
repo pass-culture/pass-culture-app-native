@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
@@ -40,8 +39,7 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
           <HeroButtonList
             Title={<Typo.Body>Je n’ai pas de smartphone à proximité</Typo.Body>}
             icon={BicolorNoPhone}
-            // FIXME(PC-16997) navigate to DMS
-            navigateTo={navigateToHomeConfig}
+            navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } }}
           />
         </Li>
       </StyledVerticalUl>
