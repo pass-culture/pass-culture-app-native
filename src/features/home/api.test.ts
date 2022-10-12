@@ -51,6 +51,7 @@ describe('Home api calls', () => {
       })
 
       await waitFor(() => result.current.modules.length > 0)
+
       expect(result.current).toEqual({
         modules: processHomepageEntry(adaptedSecondHomepageEntry),
         homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
@@ -58,12 +59,13 @@ describe('Home api calls', () => {
     })
 
     it('should log ConsultHome with specified entryId', async () => {
-      const { result } = renderHook(() => useHomepageModules(entryId), {
+      renderHook(() => useHomepageModules(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.modules.length > 0)
-      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { entryId })
+      await waitFor(() =>
+        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: entryId })
+      )
     })
   })
 })
