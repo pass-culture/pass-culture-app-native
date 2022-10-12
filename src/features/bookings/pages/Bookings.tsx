@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageTitle } from 'ui/components/PageTitle'
 
 export function Bookings() {
   return (
     <Container>
-      <PageHeader title="Mes réservations" size="medium" />
+      <PageTitle title="Mes réservations" />
       <OnGoingBookingsList />
     </Container>
   )
