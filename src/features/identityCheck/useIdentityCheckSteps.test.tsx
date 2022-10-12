@@ -1,8 +1,8 @@
-import { useAppSettings } from 'features/auth/settings'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
+import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
 
 let mockNextSubscriptionStep = mockStep
 let mockIdentityCheckState = mockState
@@ -33,9 +33,11 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
 
 jest.mock('features/auth/settings')
 
-const mockedUseAppSettings = (useAppSettings as jest.Mock).mockReturnValue({
-  data: { enableNewIdentificationFlow: false },
-})
+const enableNewIdentificationFlowSpy = jest.spyOn(
+  newIdentificationFlowAPI,
+  'useEnableNewIdentificationFlow'
+)
+enableNewIdentificationFlowSpy.mockReturnValue(false)
 
 describe('useIdentityCheckSteps', () => {
   beforeEach(jest.clearAllMocks)
@@ -44,6 +46,7 @@ describe('useIdentityCheckSteps', () => {
     const steps = useIdentityCheckSteps()
     expect(steps.length).toEqual(3)
   })
+
   it('should return 4 steps if stepperIncludesPhoneValidation is true', () => {
     mockNextSubscriptionStep = {
       ...mockStep,
@@ -52,6 +55,7 @@ describe('useIdentityCheckSteps', () => {
     const steps = useIdentityCheckSteps()
     expect(steps.length).toEqual(4)
   })
+
   it('should include IdentityCheckSchoolType if reducer has school types', () => {
     mockNextSubscriptionStep = {
       ...mockStep,
@@ -64,6 +68,7 @@ describe('useIdentityCheckSteps', () => {
     const steps = useIdentityCheckSteps()
     expect(steps[0].screens.includes('IdentityCheckSchoolType')).toEqual(true)
   })
+
   it('should not include IdentityCheckSchoolType if reducer doesnnt have school types', () => {
     mockIdentityCheckState = {
       ...mockState,
@@ -72,6 +77,7 @@ describe('useIdentityCheckSteps', () => {
     const steps = useIdentityCheckSteps()
     expect(steps[0].screens.includes('IdentityCheckSchoolType')).toEqual(false)
   })
+
   it('should include only PhoneValidationTooManySMSSent if no remaining attempts left', () => {
     mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
       remainingAttempts: 0,
@@ -87,6 +93,7 @@ describe('useIdentityCheckSteps', () => {
     expect(steps[0].screens.includes('PhoneValidationTooManySMSSent')).toEqual(true)
     expect(steps[0].screens.length).toEqual(1)
   })
+
   it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
     mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
       remainingAttempts: 1,
@@ -109,9 +116,7 @@ describe('useIdentityCheckSteps', () => {
   `(
     'should return $expectedUbbleFlow identity screen list when enableNewIdentificationFlow is $enableNewIdentificationFlow',
     ({ enableNewIdentificationFlow: enableNewIdentificationFlowValue, expectedUbbleFlow }) => {
-      mockedUseAppSettings.mockReturnValueOnce({
-        data: { enableNewIdentificationFlow: enableNewIdentificationFlowValue },
-      })
+      enableNewIdentificationFlowSpy.mockReturnValueOnce(enableNewIdentificationFlowValue)
 
       const steps = useIdentityCheckSteps()
       const identificationScreensFlow = steps[2].screens
