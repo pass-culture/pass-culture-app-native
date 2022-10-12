@@ -1,12 +1,9 @@
-import React from 'react'
 import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ColorsEnum, UniqueColors } from './colors'
-import { useGrid } from './grid'
-import { getSpacing } from './spacing'
 
 interface CustomTextProps {
   color?: ColorsEnum | UniqueColors
@@ -17,37 +14,16 @@ const Hero = styled(RNText)(({ theme }) => ({
   ...theme.typography.hero,
 }))
 
-const Title1: React.FC<TextProps> = (props) => {
-  const grid = useGrid()
-  const fontSize = getSpacing(grid({ default: 7, sm: 6 }, 'height'))
-  return (
-    <StyledTitle1 {...getHeadingAttrs(1)} {...props} fontSize={fontSize}>
-      {props.children}
-    </StyledTitle1>
-  )
-}
-
-const StyledTitle1 = styled(RNText)<{
-  fontSize: number
-}>(({ fontSize, theme }) => ({
+const Title1 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
+  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 1)
+)(({ theme }) => ({
   ...theme.typography.title1,
-  fontSize: fontSize ?? theme.typography.title1.fontSize,
 }))
 
-const Title2: React.FC<TextProps> = (props) => {
-  const grid = useGrid()
-  const fontSize = getSpacing(grid({ default: 6, sm: 5.5 }, 'height'))
-  return (
-    <StyledTitle2 {...getHeadingAttrs(2)} {...props} fontSize={fontSize}>
-      {props.children}
-    </StyledTitle2>
-  )
-}
-const StyledTitle2 = styled(RNText)<{
-  fontSize: number
-}>(({ fontSize, theme }) => ({
+const Title2 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
+  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 2)
+)(({ theme }) => ({
   ...theme.typography.title2,
-  fontSize: fontSize ?? theme.typography.title2.fontSize,
 }))
 
 const Title3 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(

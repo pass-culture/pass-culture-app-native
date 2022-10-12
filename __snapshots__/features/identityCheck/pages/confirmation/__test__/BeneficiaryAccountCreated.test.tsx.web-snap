@@ -166,8 +166,8 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       Object {
         "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Black",
-        "fontSize": "24px",
-        "lineHeight": "36px",
+        "fontSize": "26px",
+        "lineHeight": "34px",
         "textAlign": "center",
       }
     }
@@ -346,10 +346,10 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       dir="ltr"
       style={
         Object {
-          "color": "rgba(22,22,23,1.00)",
+          "color": "rgba(135,0,135,1.00)",
           "fontFamily": "Montserrat-Medium",
           "fontSize": "22px",
-          "lineHeight": "28px",
+          "lineHeight": "26px",
           "textAlign": "center",
         }
       }
@@ -611,8 +611,8 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       Object {
         "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Black",
-        "fontSize": "24px",
-        "lineHeight": "36px",
+        "fontSize": "26px",
+        "lineHeight": "34px",
         "textAlign": "center",
       }
     }
@@ -791,10 +791,10 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       dir="ltr"
       style={
         Object {
-          "color": "rgba(22,22,23,1.00)",
+          "color": "rgba(135,0,135,1.00)",
           "fontFamily": "Montserrat-Medium",
           "fontSize": "22px",
-          "lineHeight": "28px",
+          "lineHeight": "26px",
           "textAlign": "center",
         }
       }

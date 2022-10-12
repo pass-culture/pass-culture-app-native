@@ -79,7 +79,7 @@ export const RecreditBirthdayNotification = () => {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount color={uniqueColors.brand}>{remainingCredit}</Amount>
+        <Amount>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget</StyledBody>

@@ -108,17 +108,13 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     />
     <Text
-      fontSize={24}
       style={
         Array [
           Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 24,
-            "lineHeight": 28,
-          },
-          Object {
             "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 22,
+            "lineHeight": 26,
             "textAlign": "center",
           },
         ]

@@ -36,15 +36,14 @@ Array [
       }
     />
     <Text
-      fontSize={28}
       numberOfLines={2}
       style={
         Array [
           Object {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
-            "fontSize": 28,
-            "lineHeight": 36,
+            "fontSize": 26,
+            "lineHeight": 34,
           },
         ]
       }
@@ -364,15 +363,14 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     }
   />
   <Text
-    fontSize={28}
     numberOfLines={1}
     style={
       Array [
         Object {
           "color": "#161617",
           "fontFamily": "Montserrat-Black",
-          "fontSize": 28,
-          "lineHeight": 36,
+          "fontSize": 26,
+          "lineHeight": 34,
         },
       ]
     }
@@ -406,15 +404,14 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     }
   />
   <Text
-    fontSize={28}
     numberOfLines={1}
     style={
       Array [
         Object {
           "color": "#161617",
           "fontFamily": "Montserrat-Black",
-          "fontSize": 28,
-          "lineHeight": 36,
+          "fontSize": 26,
+          "lineHeight": 34,
         },
       ]
     }

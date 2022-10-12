@@ -182,7 +182,7 @@ Object {
             class="css-reset-4rbku5 css-text-901oao"
             dir="ltr"
             role="heading"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 26px; text-align: center;"
           >
             Oups !
           </h1>
@@ -447,7 +447,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           class="css-reset-4rbku5 css-text-901oao"
           dir="ltr"
           role="heading"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 26px; text-align: center;"
         >
           Oups !
         </h1>
@@ -769,7 +769,7 @@ Object {
             class="css-reset-4rbku5 css-text-901oao"
             dir="ltr"
             role="heading"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 26px; text-align: center;"
           >
             Oups !
           </h1>
@@ -1034,7 +1034,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           class="css-reset-4rbku5 css-text-901oao"
           dir="ltr"
           role="heading"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 26px; text-align: center;"
         >
           Oups !
         </h1>

@@ -15,9 +15,10 @@ export const ProgressBarContainer = styled.View({
   paddingHorizontal: getSpacing(10),
 })
 
-export const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())({
+export const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.uniqueColors.brand,
+}))
 
 export const ButtonContainer = styled.View({
   alignItems: 'center',

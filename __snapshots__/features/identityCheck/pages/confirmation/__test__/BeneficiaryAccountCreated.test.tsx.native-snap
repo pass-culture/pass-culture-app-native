@@ -58,16 +58,13 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
     }
   />
   <Text
-    fontSize={28}
     style={
       Array [
         Object {
           "color": "#161617",
           "fontFamily": "Montserrat-Black",
-          "fontSize": 28,
-          "lineHeight": 36,
-        },
-        Object {
+          "fontSize": 26,
+          "lineHeight": 34,
           "textAlign": "center",
         },
       ]
@@ -204,17 +201,13 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       </View>
     </View>
     <Text
-      color="#870087"
-      fontSize={24}
       style={
         Array [
           Object {
-            "color": "#161617",
+            "color": "#870087",
             "fontFamily": "Montserrat-Medium",
-            "fontSize": 24,
-            "lineHeight": 28,
-          },
-          Object {
+            "fontSize": 22,
+            "lineHeight": 26,
             "textAlign": "center",
           },
         ]
@@ -392,16 +385,13 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
     }
   />
   <Text
-    fontSize={28}
     style={
       Array [
         Object {
           "color": "#161617",
           "fontFamily": "Montserrat-Black",
-          "fontSize": 28,
-          "lineHeight": 36,
-        },
-        Object {
+          "fontSize": 26,
+          "lineHeight": 34,
           "textAlign": "center",
         },
       ]
@@ -538,17 +528,13 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       </View>
     </View>
     <Text
-      color="#870087"
-      fontSize={24}
       style={
         Array [
           Object {
-            "color": "#161617",
+            "color": "#870087",
             "fontFamily": "Montserrat-Medium",
-            "fontSize": 24,
-            "lineHeight": 28,
-          },
-          Object {
+            "fontSize": 22,
+            "lineHeight": 26,
             "textAlign": "center",
           },
         ]

@@ -89,8 +89,8 @@ exports[`Favorites component should render correctly 1`] = `
                 Object {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": 36,
+                  "fontSize": 26,
+                  "lineHeight": 34,
                   "textAlign": "center",
                 },
               ]
