@@ -1,0 +1,443 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SetEmail /> should match previous snapshot 1`] = `
+<View
+  accessibilityRole="none"
+  style={
+    Array [
+      Object {
+        "maxWidth": 500,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "flex-start",
+          "display": "flex",
+          "flexDirection": "column",
+          "maxWidth": 500,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-end",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Adresse e-mail
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      height="small"
+      isDisabled={false}
+      isError={false}
+      isFocus={false}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 22,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "height": 40,
+            "paddingBottom": 0,
+            "paddingLeft": 17,
+            "paddingRight": 17,
+            "paddingTop": 0,
+            "width": "100%",
+          },
+        ]
+      }
+      testID="styled-input-container"
+    >
+      <TextInput
+        aria-describedby="testUuidV4"
+        aria-required={false}
+        autoCapitalize="none"
+        autoComplete="email"
+        editable={true}
+        isEmpty={true}
+        keyboardType="email-address"
+        maxLength={120}
+        nativeID="testUuidV4"
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        onSubmitEditing={[Function]}
+        placeholder="tonadresse@email.com"
+        placeholderTextColor="#696A6F"
+        returnKeyType="next"
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Italic",
+              "fontSize": 15,
+              "height": "100%",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ]
+        }
+        testID="Entrée pour l’email"
+        textContentType="emailAddress"
+        value=""
+      />
+    </View>
+  </View>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityRole="checkbox"
+    accessibilityState={
+      Object {
+        "checked": false,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      checked={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#696A6F",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 2,
+            "height": 24,
+            "paddingLeft": 0,
+            "paddingTop": 0,
+            "width": 24,
+          },
+        ]
+      }
+      testID="checkbox"
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "paddingBottom": 0,
+            "paddingLeft": 16,
+            "paddingRight": 32,
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <Text
+        htmlFor="testUuidV4"
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture.
+      </Text>
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabel="Continuer"
+    accessibilityState={
+      Object {
+        "disabled": true,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#F1F1F4",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Continuer"
+  >
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 0,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Continuer
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Déjà un compte ?
+      <View
+        numberOfSpaces={1}
+        style={
+          Array [
+            Object {
+              "width": 4,
+            },
+          ]
+        }
+      />
+      <View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "top": 3,
+              "userSelect": "auto",
+            }
+          }
+        >
+          <View
+            icon={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "paddingLeft": 25,
+                },
+              ]
+            }
+            typography="ButtonText"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "left": 0,
+                    "position": "absolute",
+                  },
+                ]
+              }
+            >
+              <View
+                fill="#eb0055"
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              typography="ButtonText"
+            >
+              Se connecter
+            </Text>
+          </View>
+        </View>
+      </View>
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+</View>
+`;
