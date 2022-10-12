@@ -2,7 +2,6 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import * as CookiesExpiration from 'features/cookies/helpers/isConsentChoiceExpired'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { analytics } from 'libs/firebase/analytics'
@@ -31,10 +30,6 @@ const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(default
 const mockUseIsCookiesListUpToDate = jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
   .mockReturnValue(true)
-
-const mockIsConsentExpired = jest
-  .spyOn(CookiesExpiration, 'isConsentChoiceExpired')
-  .mockResolvedValue(false)
 
 describe('<PrivacyPolicy />', () => {
   describe('Cookies Modal V1', () => {
@@ -147,15 +142,6 @@ describe('<PrivacyPolicy />', () => {
       await waitForExpect(() => {
         expect(title).toBeNull()
       })
-    })
-
-    it('should show cookies modal V2 when user has made a consent choice but consent has expired', async () => {
-      mockIsConsentExpired.mockResolvedValueOnce(true)
-
-      const renderAPI = await renderPrivacyPolicyV2()
-
-      const title = renderAPI.queryByText('Choisir les cookies')
-      expect(title).toBeTruthy()
     })
 
     it('should show cookies modal V2 when user has made a consent choice but cookies list is not up to date', async () => {

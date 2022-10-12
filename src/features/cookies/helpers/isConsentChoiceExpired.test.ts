@@ -16,33 +16,26 @@ const ONE_YEAR_AGO = new Date('2021-09-12')
 mockdate.set(TODAY)
 
 describe('isConsentChoiceExpired', () => {
-  beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
-
-  it('should be expired if no consent date', async () => {
-    const hasExpired = await isConsentChoiceExpired()
-    expect(hasExpired).toEqual(true)
-  })
-
   it.each([TODAY, LAST_WEEK, THREE_MONTHS_AGO, SIX_MONTHS_MINUS_A_SECOND_AGO])(
     'should not be expired if user has made choice less than 6 months ago',
-    async (choiceDatetime) => {
+    (choiceDatetime) => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
         choiceDatetime: choiceDatetime.toISOString(),
       })
 
-      const hasExpired = await isConsentChoiceExpired()
+      const hasExpired = isConsentChoiceExpired(choiceDatetime)
       expect(hasExpired).toEqual(false)
     }
   )
 
   it.each([EXACTLY_SIX_MONTHS_AGO, SIX_MONTHS_AND_ONE_SECOND_AGO, EIGHT_MONTHS_AGO, ONE_YEAR_AGO])(
     'should be expired if user has made choice 6 months ago or more than 6 months ago',
-    async (choiceDatetime) => {
+    (choiceDatetime) => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
         choiceDatetime: choiceDatetime.toISOString(),
       })
 
-      const hasExpired = await isConsentChoiceExpired()
+      const hasExpired = isConsentChoiceExpired(choiceDatetime)
       expect(hasExpired).toEqual(true)
     }
   )

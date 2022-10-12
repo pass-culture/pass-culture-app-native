@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useAppSettings } from 'features/auth/settings'
+import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent } from 'features/cookies/types'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -17,20 +18,38 @@ const COOKIES_CONSENT_KEY = 'cookies'
 export const getCookiesChoice = async () =>
   await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
+const removeCookiesConsentAndChoiceDate = async (cookiesChoice: CookiesConsent): Promise<void> => {
+  await storage.saveObject(COOKIES_CONSENT_KEY, {
+    ...cookiesChoice,
+    choiceDatetime: undefined,
+    consent: undefined,
+  })
+}
+
 export const useCookies = () => {
   const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent | null>()
   const { data: userProfileInfo } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
 
   useEffect(() => {
-    getCookiesChoice().then((value) => {
+    getCookiesChoice().then(async (cookies) => {
       if (!settings?.appEnableCookiesV2) return
 
-      if (value?.consent) {
-        setCookiesConsentInternalState(value.consent)
-        startTrackingAcceptedCookies(value.consent.accepted)
-      } else {
-        setCookiesConsentInternalState(null)
+      if (cookies) {
+        if (cookies.consent) {
+          setCookiesConsentInternalState(cookies.consent)
+          startTrackingAcceptedCookies(cookies.consent.accepted)
+        } else {
+          setCookiesConsentInternalState(null)
+        }
+
+        if (cookies.choiceDatetime) {
+          const hasExpired = isConsentChoiceExpired(new Date(cookies.choiceDatetime))
+          if (hasExpired) {
+            removeCookiesConsentAndChoiceDate(cookies)
+            setCookiesConsentInternalState(null)
+          }
+        }
       }
     })
   }, [settings?.appEnableCookiesV2])
