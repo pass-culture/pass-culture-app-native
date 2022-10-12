@@ -78,7 +78,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId }),
   logConsultDisclaimerValidationMail: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DISCLAIMER_VALIDATION_MAIL),
-  logConsultHome: (params: { entryId: string }) =>
+  logConsultHome: (params: { homeEntryId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultItinerary: (params: OfferIdOrVenueId & { from: Referrals }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ITINERARY, params),

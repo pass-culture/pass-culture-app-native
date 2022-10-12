@@ -50,7 +50,9 @@ export function useHomepageModules(paramsHomepageEntryId?: string) {
   const homepageEntryId = homepageEntry?.sys.id
 
   useEffect(() => {
-    if (homepageEntryId) analytics.logConsultHome({ entryId: homepageEntryId })
+    if (homepageEntryId) {
+      analytics.logConsultHome({ homeEntryId: homepageEntryId })
+    }
   }, [homepageEntryId])
 
   return useMemo(
