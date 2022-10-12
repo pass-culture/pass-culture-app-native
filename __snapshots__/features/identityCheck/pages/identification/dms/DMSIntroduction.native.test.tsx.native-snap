@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DMSIntroduction should render foreign version correctly 1`] = `
+exports[`DMSIntroduction foreign version should render correctly 1`] = `
 Array [
   <View
     accessibilityRole="button"
@@ -536,7 +536,7 @@ Array [
 ]
 `;
 
-exports[`DMSIntroduction should render french version correctly 1`] = `
+exports[`DMSIntroduction french version should render correctly 1`] = `
 Array [
   <View
     accessibilityRole="button"
