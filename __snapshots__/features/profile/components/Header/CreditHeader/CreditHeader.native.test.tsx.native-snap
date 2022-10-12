@@ -24,6 +24,17 @@ Array [
       ]
     }
   >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       fontSize={28}
       numberOfLines={2}
@@ -308,6 +319,17 @@ Array [
       ]
     }
   >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       fontSize={28}
       numberOfLines={2}
@@ -665,6 +687,17 @@ Array [
       ]
     }
   >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       fontSize={28}
       numberOfLines={2}
@@ -860,6 +893,17 @@ Array [
       ]
     }
   >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       fontSize={28}
       numberOfLines={2}

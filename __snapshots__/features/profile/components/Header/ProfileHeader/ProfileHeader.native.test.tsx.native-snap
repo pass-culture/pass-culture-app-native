@@ -24,6 +24,17 @@ Array [
       ]
     }
   >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       fontSize={28}
       numberOfLines={2}
@@ -341,6 +352,17 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     ]
   }
 >
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
   <Text
     fontSize={28}
     numberOfLines={1}
@@ -372,6 +394,17 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     ]
   }
 >
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
   <Text
     fontSize={28}
     numberOfLines={1}
