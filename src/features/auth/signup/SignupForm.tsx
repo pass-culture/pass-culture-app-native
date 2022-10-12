@@ -38,7 +38,7 @@ type SignupStepConfig = {
 const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   {
     name: PreValidationSignupStep.Email,
-    headerTitle: 'Adresse e-mail',
+    headerTitle: 'Crée-toi un compte',
     Component: SetEmail,
     tracker: async () => {
       await amplitude.logEvent('user_set_email_clicked_front')
