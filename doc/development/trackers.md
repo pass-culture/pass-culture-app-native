@@ -16,17 +16,6 @@ To have access to analytics we need trackers. In order to do so, we use Firebase
 
 2. Call your analytics function in a callback before giving it as a props to your button
 
-```jsx
-const acceptNotifications = () => {
-        analytics.logAcceptNotifications()
-        onHideModal()
-      }
-
-    ...
-
-    <ButtonPrimary wording="Activer les notifications" onPress={acceptNotifications} />
-```
-
 3. Test the behaviour in Firebase
 
    a. Open the Firebase console and go to the [DebugView](https://console.firebase.google.com/u/4/project/passculture-native/analytics/app/android:app.passculture/debugview)
