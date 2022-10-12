@@ -9,19 +9,19 @@ type Props = {
   iconSize: number
   isValid: boolean
   testIdSuffix?: string
-  centered?: boolean
+  noFullWidth?: boolean
 }
 
 export const InputRule: FunctionComponent<Props> = (props) => {
-  const { title, icon, iconSize, isValid, testIdSuffix, centered } = props
+  const { title, icon, iconSize, isValid, testIdSuffix, noFullWidth } = props
   const Icon = styled(icon).attrs<{ testID: string }>(({ theme }) => ({
     color: isValid ? theme.colors.greenValid : theme.colors.error,
     size: iconSize,
   }))``
 
   return (
-    <StyledView centered={centered}>
-      <StyledCaption isValid={isValid} centered={centered}>
+    <StyledView noFullWidth={noFullWidth}>
+      <StyledCaption isValid={isValid} noFullWidth={noFullWidth}>
         {title}
       </StyledCaption>
       <Spacer.Row numberOfSpaces={1} />
@@ -34,20 +34,20 @@ export const InputRule: FunctionComponent<Props> = (props) => {
 
 const IconContainer = styled.View({ flexShrink: 0 })
 
-const StyledView = styled.View<{ centered?: boolean }>(({ centered, theme }) => ({
+const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme }) => ({
   flexDirection: 'row-reverse', // For accessibility purposes, we switch the title and the icon in the DOM so the VoiceOver restitution makes sense.
   maxWidth: theme.forms.maxWidth,
   alignItems: 'center',
   justifyContent: 'flex-end',
-  ...(centered ? {} : { width: '100%' }),
+  ...(noFullWidth ? {} : { width: '100%' }),
 }))
 
 const StyledCaption = styled(Typo.Caption)<{
   isValid: boolean
-  centered?: boolean
-}>(({ isValid, theme, centered }) => ({
+  noFullWidth?: boolean
+}>(({ isValid, theme, noFullWidth }) => ({
   paddingLeft: getSpacing(1),
   flexShrink: 1,
   color: isValid ? theme.colors.greenValid : theme.colors.error,
-  ...(centered ? { textAlign: 'center' } : {}),
+  ...(noFullWidth ? { textAlign: 'center' } : {}),
 }))

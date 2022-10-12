@@ -349,7 +349,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               testID=\\"input-error-top-spacer\\"
 +             />
 +             <View
-+               centered={true}
++               noFullWidth={true}
 +               style={
 +                 Array [
 +                   Object {
@@ -362,8 +362,8 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               }
 +             >
 +               <Text
-+                 centered={true}
 +                 isValid={false}
++                 noFullWidth={true}
 +                 style={
 +                   Array [
 +                     Object {
@@ -614,7 +614,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               testID=\\"input-error-top-spacer\\"
 +             />
 +             <View
-+               centered={true}
++               noFullWidth={true}
 +               style={
 +                 Array [
 +                   Object {
@@ -627,8 +627,8 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               }
 +             >
 +               <Text
-+                 centered={true}
 +                 isValid={false}
++                 noFullWidth={true}
 +                 style={
 +                   Array [
 +                     Object {
@@ -879,7 +879,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +               testID=\\"input-error-top-spacer\\"
 +             />
 +             <View
-+               centered={true}
++               noFullWidth={true}
 +               style={
 +                 Array [
 +                   Object {
@@ -892,8 +892,8 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +               }
 +             >
 +               <Text
-+                 centered={true}
 +                 isValid={false}
++                 noFullWidth={true}
 +                 style={
 +                   Array [
 +                     Object {

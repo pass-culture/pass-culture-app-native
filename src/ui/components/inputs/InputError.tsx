@@ -26,7 +26,7 @@ export const InputError: FC<Props> = (props) => {
             icon={Error}
             testIdSuffix="warn"
             iconSize={16}
-            centered={props.centered}
+            noFullWidth={props.centered}
           />
         </React.Fragment>
       ) : null}

@@ -90,9 +90,11 @@ import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Sun } from 'ui/svg/icons/Sun'
 import { Trash } from 'ui/svg/icons/Trash'
+import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { Warning } from 'ui/svg/icons/Warning'
+import { Wrong } from 'ui/svg/icons/Wrong'
 
 export const SocialNetworkIcons = {
   Facebook,
@@ -105,18 +107,22 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
+  ArrowNext,
+  ArrowPrevious,
+  Bell,
   BicolorAroundMe,
   BicolorBookings,
   BicolorClock,
   BicolorConfidentiality,
+  BicolorConfirmation,
   BicolorEarth,
   BicolorEverywhere,
   BicolorFavorite,
   BicolorFrance,
   BicolorIdCard,
-  BicolorLock,
-  BicolorLocationPointer,
   BicolorLocationBuilding,
+  BicolorLocationPointer,
+  BicolorLock,
   BicolorLogo,
   BicolorLostId,
   BicolorNoId,
@@ -126,15 +132,11 @@ export const SecondaryAndBiggerIcons = {
   BicolorSignal,
   BicolorSmartphone,
   BicolorTabBarProfile,
-  ArrowNext,
-  ArrowPrevious,
-  Bell,
   Booking,
   Calendar,
   Check,
   Close,
   Confidentiality,
-  BicolorConfirmation,
   Duo,
   Email,
   Error,
@@ -144,10 +146,10 @@ export const SecondaryAndBiggerIcons = {
   Favorite,
   FavoriteFilled,
   Flash,
-  HandicapVisual,
+  HandicapAudio,
   HandicapMental,
   HandicapMotor,
-  HandicapAudio,
+  HandicapVisual,
   Idea,
   Info,
   LegalNotices,
@@ -163,11 +165,13 @@ export const SecondaryAndBiggerIcons = {
   ProfileDeletion,
   Quote,
   ScrollToTop,
-  SignOut,
   Share,
+  SignOut,
   Sun,
   Trash,
+  Valid,
   Warning,
+  Wrong,
 }
 
 export const TertiaryAndSmallerIcons = {

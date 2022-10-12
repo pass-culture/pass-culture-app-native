@@ -16,7 +16,8 @@ import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { Check } from 'ui/svg/icons/Check'
+import { Valid } from 'ui/svg/icons/Valid'
+import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -90,7 +91,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
 
 const AttributesView = styled.View({
   flex: 1,
-  paddingLeft: getSpacing(4),
   paddingRight: getSpacing(1),
 })
 
@@ -100,21 +100,23 @@ const ItemContainer = styled.View({
 
 const EndedReasonAndDate = styled.View({
   flexDirection: 'row',
-  flexWrap: 'wrap',
-  flex: 1,
   alignItems: 'center',
+  flexWrap: 'wrap',
 })
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
   dateUsed?: string | null
 ) {
-  if (dateUsed) return <StyledInputRule title="Utilisé" icon={Check} isValid />
+  if (dateUsed) {
+    return <StyledInputRule title="Utilisé" icon={Valid} isValid noFullWidth />
+  }
 
-  if (cancellationReason === BookingCancellationReasons.OFFERER)
-    return <StyledInputRule title="Annulé" icon={Check} isValid={false} />
+  if (cancellationReason === BookingCancellationReasons.OFFERER) {
+    return <StyledInputRule title="Annulé" icon={Wrong} isValid={false} noFullWidth />
+  }
 
-  return <StyledInputRule title="Réservation annulée" icon={Check} isValid={false} />
+  return <StyledInputRule title="Réservation annulée" icon={Wrong} isValid={false} noFullWidth />
 }
 
 function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {

@@ -21,7 +21,5 @@ const ButtonText = styled(Typo.ButtonText).attrs(() => ({
 }))``
 
 const TitleContainer = styled.View({
-  flexDirection: 'row',
-  flex: 1,
   paddingBottom: getSpacing(1),
 })
