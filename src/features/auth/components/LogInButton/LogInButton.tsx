@@ -17,6 +17,7 @@ export const LogInButton: FunctionComponent<Props> = ({ color }) => {
     <LoginContainer>
       <StyledBody>
         Déjà un compte&nbsp;?
+        <Spacer.Row numberOfSpaces={1} />
         <TouchableLink
           as={ButtonInsideText}
           navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}

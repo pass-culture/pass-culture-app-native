@@ -223,6 +223,16 @@ Array [
           }
         >
           Déjà un compte ?
+          <View
+            numberOfSpaces={1}
+            style={
+              Array [
+                Object {
+                  "width": 4,
+                },
+              ]
+            }
+          />
           <View>
             <View
               accessible={true}
