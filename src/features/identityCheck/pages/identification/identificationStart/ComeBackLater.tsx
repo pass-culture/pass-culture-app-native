@@ -16,7 +16,8 @@ export const ComeBackLater: FunctionComponent = () => {
       titleComponent={Typo.Title2}
       title="Reviens plus tard"
       separateIconFromTitle={false}
-      headerGoBack>
+      headerGoBack
+      mobileBottomFlex={0.5}>
       <StyledText>
         <Typo.Body>Pour profiter du pass Culture, tu dois avoir </Typo.Body>
         <Typo.ButtonText>
