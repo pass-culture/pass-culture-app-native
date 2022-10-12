@@ -7,16 +7,12 @@ import { LocationModal } from 'features/search/pages/LocationModal'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useModal } from 'ui/components/modals/useModal'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 
 export function Location() {
   const { searchState } = useSearch()
   const { section } = useLocationType(searchState)
-  const { Icon, label } = useLocationChoice(section)
-
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color: theme.colors.black,
-    color2: theme.colors.black,
-  }))``
+  const { label } = useLocationChoice(section)
 
   const {
     visible: locationModalVisible,
@@ -27,7 +23,7 @@ export function Location() {
   return (
     <React.Fragment>
       <FilterRow
-        icon={StyledIcon}
+        icon={LocationPointerStyledIcon}
         title="Localisation"
         description={label}
         onPress={showLocationModal}
@@ -41,3 +37,8 @@ export function Location() {
     </React.Fragment>
   )
 }
+
+const LocationPointerStyledIcon = styled(LocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  color2: theme.colors.black,
+}))``
