@@ -1,16 +1,15 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { LogInButton } from 'features/auth/components/LogInButton/LogInButton'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { analytics } from 'libs/firebase/analytics'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function LoggedOutHeader() {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, colors } = useTheme()
 
   return (
     <HeaderWithGreyContainer title="Mon profil" subtitle="Tu as entre 15 et 18 ans&nbsp;?">
@@ -27,17 +26,7 @@ export function LoggedOutHeader() {
 
         {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
 
-        <LoginContainer>
-          <StyledBody>
-            Déjà un compte&nbsp;?
-            <TouchableLink
-              as={StyledButtonInsideText}
-              navigateTo={{ screen: 'Login', params: { preventCancellation: true } }}
-              wording="Se connecter"
-              icon={Connect}
-            />
-          </StyledBody>
-        </LoginContainer>
+        <LogInButton color={colors.secondary} />
       </Container>
     </HeaderWithGreyContainer>
   )
@@ -52,15 +41,3 @@ const VerticalSeparator = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   borderRightColor: theme.colors.greyMedium,
 }))
-
-const LoginContainer = styled.View({
-  justifyContent: 'center',
-})
-
-const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  color: theme.colors.secondary,
-}))``
-
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
