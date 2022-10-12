@@ -79,6 +79,17 @@ exports[`Profile component should render correctly 1`] = `
                   ]
                 }
               >
+                <View
+                  customHeight={16}
+                  enable={true}
+                  style={
+                    Array [
+                      Object {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
                 <Text
                   fontSize={28}
                   numberOfLines={1}

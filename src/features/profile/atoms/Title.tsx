@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -11,6 +11,7 @@ type Props = {
 export const Title = ({ title, numberOfLines = 1 }: Props) => {
   return (
     <TitleContainer>
+      <Spacer.TopScreen />
       <Typo.Title1 numberOfLines={numberOfLines}>{title}</Typo.Title1>
     </TitleContainer>
   )
