@@ -13,6 +13,11 @@ jest.mock('react-query')
 describe('EndedBookings', () => {
   afterEach(jest.restoreAllMocks)
 
+  it('should render correctly', () => {
+    const renderAPI = renderEndedBookings(bookingsSnap)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should always execute the query (in cache or in network)', () => {
     const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
     renderEndedBookings(bookingsSnap)

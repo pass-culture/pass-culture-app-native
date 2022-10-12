@@ -1,0 +1,558 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EndedBookings should render correctly 1`] = `
+Array [
+  <View
+    accessibilityRole="header"
+    style={
+      Array [
+        Object {
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      height={64}
+      style={
+        Array [
+          Object {
+            "height": 64,
+          },
+        ]
+      }
+    />
+    <View
+      backgroundColor="#eb0055"
+      isAbsolutePosition={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#eb0055",
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="small"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": 48,
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            positionInHeader="left"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="backButton"
+            >
+              <View
+                height={24}
+                testID="icon-back"
+                width={24}
+              >
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Retour
+              </Text>
+            </View>
+          </View>
+          <Text
+            color="#ffffff"
+            numberOfLines={1}
+            size="small"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Réservations terminées
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView
+    ItemSeparatorComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            [Function],
+            "margin-vertical: 16px;",
+          ],
+        },
+        "render": [Function],
+        "shouldForwardProp": undefined,
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    ListFooterComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Object {
+        "paddingHorizontal": 20,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "cancellationDate": "2021-03-15T23:01:37.925926",
+          "cancellationReason": "BENEFICIARY",
+          "confirmationDate": "2021-02-15T23:01:37.925926",
+          "dateUsed": null,
+          "expirationDate": null,
+          "id": 321,
+          "quantity": 10,
+          "stock": Object {
+            "beginningDatetime": "2021-03-14T20:00:00",
+            "id": 150230,
+            "offer": Object {
+              "extraData": null,
+              "id": 147874,
+              "isDigital": true,
+              "isPermanent": false,
+              "name": "Avez-vous déjà vu ?",
+              "subcategoryId": "EVENEMENT_PATRIMOINE",
+              "venue": Object {
+                "city": "Drancy",
+                "coordinates": Object {
+                  "latitude": 48.91683,
+                  "longitude": 2.43884,
+                },
+                "id": 2185,
+                "name": "Maison de la Brique",
+              },
+              "withdrawalDetails": null,
+            },
+          },
+          "token": "352UW5",
+          "totalAmount": 1900,
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    viewabilityConfigCallbackPairs={Array []}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "paddingBottom": 22,
+              },
+            ]
+          }
+        >
+          1 réservation terminée
+        </Text>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View>
+          <View
+            accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
+            accessibilityRole="link"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="EndedBookingItem"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                size="small"
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 4,
+                      "height": 96,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": Object {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "width": 64,
+                    },
+                  ]
+                }
+              >
+                <BVLinearGradient
+                  borderRadius={4}
+                  colors={
+                    Array [
+                      4294046196,
+                      4291546578,
+                    ]
+                  }
+                  endPoint={
+                    Object {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 4,
+                        "height": "100%",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  testID="imagePlaceholder"
+                >
+                  <View
+                    height={32}
+                    testID="categoryIcon"
+                    width={32}
+                  >
+                    <Text>
+                      categoryIcon-SVG-Mock
+                    </Text>
+                  </View>
+                </BVLinearGradient>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingRight": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "paddingBottom": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    shrink={true}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                        },
+                      ]
+                    }
+                  >
+                    Avez-vous déjà vu ?
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    noFullWidth={true}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row-reverse",
+                          "justifyContent": "flex-end",
+                          "maxWidth": 500,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      isValid={false}
+                      noFullWidth={true}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#b60025",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingLeft": 4,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Réservation annulée
+                    </Text>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        testID="rule-icon-undefined"
+                        width={20}
+                      >
+                        <Text>
+                          rule-icon-undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    le 15/03/2021
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          numberOfSpaces={12}
+          style={
+            Array [
+              Object {
+                "height": 48,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>,
+]
+`;
