@@ -191,6 +191,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Code non reçu ?
           </Text>
@@ -610,6 +611,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Code non reçu ?
           </Text>

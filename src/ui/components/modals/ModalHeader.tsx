@@ -59,7 +59,10 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         )}
       </LeftHeaderActionContainer>
       <TitleContainer>
-        <TitleComponent numberOfLines={numberOfLines} nativeID={titleID}>
+        <TitleComponent
+          numberOfLines={numberOfLines}
+          nativeID={titleID}
+          testID={'modalHeaderTitle'}>
           {title}
         </TitleComponent>
       </TitleContainer>

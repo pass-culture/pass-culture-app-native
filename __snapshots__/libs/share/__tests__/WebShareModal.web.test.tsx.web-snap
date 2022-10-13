@@ -360,6 +360,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                        data-testid="modalHeaderTitle"
                         dir="ltr"
                         id="testUuidV4"
                         role="heading"

@@ -191,6 +191,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Transmettre un document
           </Text>

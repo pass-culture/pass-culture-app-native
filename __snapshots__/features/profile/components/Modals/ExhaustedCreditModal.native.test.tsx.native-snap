@@ -121,6 +121,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
               },
             ]
           }
+          testID="modalHeaderTitle"
         >
           Tu as dépensé tout ton crédit, que faire ?
         </Text>

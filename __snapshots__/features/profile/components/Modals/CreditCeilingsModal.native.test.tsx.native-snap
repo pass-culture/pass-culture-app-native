@@ -121,6 +121,7 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
               },
             ]
           }
+          testID="modalHeaderTitle"
         >
           Pourquoi cette limite ?
         </Text>

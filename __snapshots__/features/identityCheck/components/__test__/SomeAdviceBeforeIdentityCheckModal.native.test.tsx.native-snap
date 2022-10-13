@@ -191,6 +191,7 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
                 },
               ]
             }
+            testID="modalHeaderTitle"
           >
             Quelques conseils
           </Text>

@@ -1324,6 +1324,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     },
                   ]
                 }
+                testID="modalHeaderTitle"
               >
                 Signaler une offre
               </Text>
