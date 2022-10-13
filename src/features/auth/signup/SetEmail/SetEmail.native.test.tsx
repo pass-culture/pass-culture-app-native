@@ -9,12 +9,6 @@ describe('<SetEmail />', () => {
   beforeEach(jest.clearAllMocks)
   afterAll(jest.clearAllMocks)
 
-  it('should match previous snapshot', () => {
-    const setEmail = render(<SetEmail {...props} />)
-
-    expect(setEmail).toMatchSnapshot()
-  })
-
   it('should display disabled validate button when email input is not filled', async () => {
     const { getByTestId } = render(<SetEmail {...props} />)
 
