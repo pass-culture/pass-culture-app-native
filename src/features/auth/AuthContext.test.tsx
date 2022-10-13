@@ -13,11 +13,6 @@ import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, superFlushWithAct } from 'tests/utils'
 
-const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => mockSettings()),
-}))
-
 jest.mock('features/profile/api')
 
 const mockSearchDispatch = jest.fn()

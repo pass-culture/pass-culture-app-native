@@ -4,16 +4,12 @@ import { mocked } from 'ts-jest/utils'
 
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
-import { storage } from 'libs/storage'
 import { render, flushAllPromisesWithAct } from 'tests/utils'
 
 import { RootNavigator } from '../RootNavigator'
 
 const mockUseSplashScreenContext = mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
-const mockSettings = jest.fn().mockReturnValue({
-  data: { appEnableCookiesV2: false },
-})
 
 jest.mock('features/forceUpdate/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
@@ -33,17 +29,10 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 jest.mock('features/navigation/helpers', () => ({
   useCurrentRoute: () => ({ name: 'TabNavigator', key: 'key' }),
 }))
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => mockSettings()),
-}))
 jest.mock('libs/splashscreen')
 
 describe('<RootNavigator />', () => {
   beforeEach(() => mockedUseMustUpdateApp.mockReturnValue(true))
-
-  afterEach(async () => {
-    await storage.clear('has_accepted_cookie')
-  })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     mockedUseMustUpdateApp.mockReturnValueOnce(false)
@@ -77,15 +66,9 @@ describe('<RootNavigator />', () => {
 })
 
 describe('ForceUpdate display logic', () => {
-  afterEach(async () => {
-    await storage.clear('has_accepted_cookie')
-  })
-
   it('should display force update page when global variable is set', async () => {
-    await storage.saveObject('has_accepted_cookie', false)
     const rootNavigator = await renderRootNavigator()
 
-    expect(rootNavigator).toMatchSnapshot()
     expect(rootNavigator.queryAllByText('Mise à jour de l’application')).toBeTruthy()
   })
 })

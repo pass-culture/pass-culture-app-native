@@ -4,7 +4,7 @@ import appsFlyer from 'react-native-appsflyer'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
-import { useTrackingConsent } from 'libs/trackingConsent'
+import { useTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 import { CampaignEvents } from './events'
 import { CampaignTracker } from './types'
