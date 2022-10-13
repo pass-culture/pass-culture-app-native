@@ -2,9 +2,9 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckMethod } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
 import { fireEvent, render } from 'tests/utils'
 
 const hideModalMock = jest.fn()
@@ -20,11 +20,12 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
 jest.mock('libs/firebase/firestore/ubbleETAMessage', () => ({
   useUbbleETAMessage: jest.fn(() => ({ data: 'Environ 3 heures' })),
 }))
-jest.mock('features/auth/settings')
 
-const mockedUseAppSettings = (useAppSettings as jest.Mock).mockReturnValue({
-  data: { enableNewIdentificationFlow: false },
-})
+const enableNewIdentificationFlowSpy = jest.spyOn(
+  newIdentificationFlowAPI,
+  'useEnableNewIdentificationFlow'
+)
+enableNewIdentificationFlowSpy.mockReturnValue(false)
 
 describe('<IdentityCheckEnd/>', () => {
   it('should render correctly if modal visible', () => {
@@ -76,6 +77,7 @@ describe('<IdentityCheckEnd/>', () => {
       type: 'SET_METHOD',
     })
   })
+
   it('should redirect to identity check start screen on "Identification manuelle" button press when enableNewIdentificationFlow is false', async () => {
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
@@ -84,8 +86,9 @@ describe('<IdentityCheckEnd/>', () => {
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckStart', undefined)
   })
+
   it('should redirect to select ID Origin screen on "Identification manuelle" button press when enableNewIdentificationFlow is true', async () => {
-    mockedUseAppSettings.mockReturnValueOnce({ data: { enableNewIdentificationFlow: true } })
+    enableNewIdentificationFlowSpy.mockReturnValueOnce(true)
 
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />

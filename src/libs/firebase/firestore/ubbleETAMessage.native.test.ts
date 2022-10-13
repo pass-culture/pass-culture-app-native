@@ -2,7 +2,7 @@ import firestore from 'libs/firebase/shims/firestore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { getUbbleETAMessage, useUbbleETAMessage } from '../ubbleETAMessage'
+import { getUbbleETAMessage, useUbbleETAMessage } from './ubbleETAMessage'
 
 jest.mock('@react-native-firebase/firestore')
 

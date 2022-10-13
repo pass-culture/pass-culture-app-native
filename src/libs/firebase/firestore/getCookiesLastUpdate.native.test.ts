@@ -1,6 +1,6 @@
 import firestore from 'libs/firebase/shims/firestore'
 
-import { getCookiesLastUpdate } from '../getCookiesLastUpdate'
+import { getCookiesLastUpdate } from './getCookiesLastUpdate'
 
 jest.mock('@react-native-firebase/firestore')
 

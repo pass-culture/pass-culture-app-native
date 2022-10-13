@@ -1,6 +1,6 @@
 import firestore, { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
 
-import { maintenanceStatusListener } from '../maintenance'
+import { maintenanceStatusListener } from './maintenance'
 
 jest.mock('@react-native-firebase/firestore')
 

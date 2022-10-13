@@ -1,12 +1,12 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
-import { render, superFlushWithAct } from 'tests/utils'
+import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
+import { render, waitFor } from 'tests/utils'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
@@ -55,6 +55,8 @@ jest.mock('features/identityCheck/useIdentityCheckSteps', () => ({
 }))
 jest.mock('react-query')
 
+jest.spyOn(newIdentificationFlowAPI, 'useEnableNewIdentificationFlow').mockReturnValue(true)
+
 describe('Stepper navigation', () => {
   beforeEach(jest.clearAllMocks)
 
@@ -69,8 +71,7 @@ describe('Stepper navigation', () => {
       domainsCredit: {},
     }
     render(<IdentityCheckStepper />)
-    await superFlushWithAct()
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).not.toHaveBeenCalled()
     })
   })
@@ -86,8 +87,7 @@ describe('Stepper navigation', () => {
       domainsCredit: { all: { initial: 30000, remaining: 30000 } },
     }
     render(<IdentityCheckStepper />)
-    await superFlushWithAct()
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
