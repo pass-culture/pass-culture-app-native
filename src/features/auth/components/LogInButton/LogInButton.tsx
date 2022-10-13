@@ -10,6 +10,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   linkColor?: ColorsEnum
+  children?: never
 }
 
 export const LogInButton: FunctionComponent<Props> = ({ linkColor: color }) => {
