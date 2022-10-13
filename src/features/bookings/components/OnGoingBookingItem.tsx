@@ -43,7 +43,6 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
           {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}
-          <Spacer.Column numberOfSpaces={1} />
           {!!bookingProperties.isDuo && <Duo />}
           <Spacer.Flex />
           {!!withdrawLabel && (
@@ -90,7 +89,6 @@ const WithdrawContainer = styled.View(({ theme }) => ({
 }))
 
 const DateLabel = styled(Typo.Body)(({ theme }) => ({
-  flex: 1,
   color: theme.colors.greyDark,
 }))
 
