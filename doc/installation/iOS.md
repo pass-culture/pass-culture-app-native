@@ -52,6 +52,7 @@ Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
 This will also start the metro server. If not, run `yarn start` in another tab.
 
 ### 😤 Troubleshooting
+
 <br />
 <details>
   <summary>env: node: No such file or directory
@@ -77,7 +78,15 @@ If this error pops up while trying to build with Xcode it means that Xcode can�
 </details>
 <br />
 <details>
+  <summary>❌ error: An organization slug is required (provide with --org)</summary>
+
+This error means that the ~/.sentryclirc file has not been added correctly. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/standards/sentry.md#-configure-sentry-cli)
+
+</details>
+<br />
+<details>
   <summary>sentry reported an error: Invalid Token (http status: 401)</summary>
+  
 This error means that the sentry token you generated is invalid. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/standards/sentry.md#-configure-sentry-cli) and be careful with the scope permissions 😉
 
 </details>
@@ -88,7 +97,6 @@ This error means that the sentry token you generated is invalid. Please run thro
 Make sure you installed jq so the CFBundleVersion can be automatically filled.
 
 </details>
-
 
 [1]: ./setup.md
 [2]: https://bundler.io/bundle_install.html
