@@ -3,17 +3,6 @@
 exports[`CreditHeader Beneficiary is not underage should render correctly for underage beneficiary 1`] = `
 Array [
   <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
     style={
       Array [
         Object {
@@ -296,17 +285,6 @@ Array [
 
 exports[`CreditHeader Beneficiary is not underage should render correctly with exhausted credit 1`] = `
 Array [
-  <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
   <View
     style={
       Array [
@@ -664,17 +642,6 @@ Array [
 exports[`CreditHeader Beneficiary is not underage should render correctly with expired credit 1`] = `
 Array [
   <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
     style={
       Array [
         Object {
@@ -868,17 +835,6 @@ Array [
 
 exports[`CreditHeader Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
 Array [
-  <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
   <View
     style={
       Array [

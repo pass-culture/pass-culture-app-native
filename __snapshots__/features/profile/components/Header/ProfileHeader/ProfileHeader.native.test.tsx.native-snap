@@ -3,17 +3,6 @@
 exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 Array [
   <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
     style={
       Array [
         Object {

@@ -6,13 +6,13 @@ import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { Subtitle } from 'features/profile/atoms/Subtitle'
-import { Title } from 'features/profile/atoms/Title'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
+import { PageTitle } from 'ui/components/PageTitle'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Spacer } from 'ui/theme'
 
@@ -107,7 +107,7 @@ function NonBeneficiaryHeaderComponent({
 
   return (
     <React.Fragment>
-      <Title title="Mon profil" />
+      <PageTitle title="Mon profil" />
       <NonBeneficiaryBanner />
     </React.Fragment>
   )

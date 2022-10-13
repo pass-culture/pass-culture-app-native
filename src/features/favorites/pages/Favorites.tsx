@@ -6,7 +6,7 @@ import { FavoritesResults } from 'features/favorites/components/FavoritesResults
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageTitle } from 'ui/components/PageTitle'
 
 export const Favorites: React.FC = () => {
   const netInfo = useNetInfoContext()
@@ -20,7 +20,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title="Mes favoris" size="medium" />
+      <PageTitle title="Mes favoris" />
       <FavoritesResults />
     </Container>
   )

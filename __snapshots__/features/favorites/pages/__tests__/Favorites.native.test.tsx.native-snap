@@ -13,111 +13,42 @@ exports[`Favorites component should render correctly 1`] = `
   }
 >
   <View
-    accessibilityRole="header"
     style={
       Array [
         Object {
-          "width": "100%",
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
     <View
-      backgroundColor="#ffffff"
-      isAbsolutePosition={false}
+      customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
-            "backgroundColor": "#ffffff",
-            "width": "100%",
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
           },
         ]
       }
     >
-      <View
-        customHeight={16}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        size="medium"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "height": 72,
-              "justifyContent": "flex-end",
-              "paddingBottom": 12,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
-              },
-            ]
-          }
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#161617"
-            numberOfLines={1}
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 26,
-                  "lineHeight": 34,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Mes favoris
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
+      Mes favoris
+    </Text>
   </View>
   <View
     style={
