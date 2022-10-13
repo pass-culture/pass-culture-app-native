@@ -26,7 +26,7 @@ export function LoggedOutHeader() {
 
         {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
 
-        <LogInButton color={colors.secondary} />
+        <LogInButton linkColor={colors.secondary} />
       </Container>
     </HeaderWithGreyContainer>
   )

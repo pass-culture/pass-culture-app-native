@@ -9,10 +9,10 @@ import { Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
-  color?: ColorsEnum
+  linkColor?: ColorsEnum
 }
 
-export const LogInButton: FunctionComponent<Props> = ({ color }) => {
+export const LogInButton: FunctionComponent<Props> = ({ linkColor: color }) => {
   return (
     <LoginContainer>
       <StyledBody>
