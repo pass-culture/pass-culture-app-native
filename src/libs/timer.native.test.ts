@@ -32,7 +32,7 @@ describe('Timer', () => {
     })
     it('should not stop if shouldStop return false', () => {
       jest.useFakeTimers()
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(Dates, 'currentTimestamp').mockReturnValue(1)
       const myInspector = jest.fn((_elapstedTime: number) => false)
       renderHook(() => Timer.useTimer(1, myInspector))

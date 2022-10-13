@@ -62,7 +62,7 @@ describe('TabBar', () => {
   })
 
   it('should display the 5 following tabs with Bookings selected', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockedUseTabNavigationContext.mockReturnValue({
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({

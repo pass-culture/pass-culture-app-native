@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/independant-mocks */
+/* eslint-disable local-rules/independent-mocks */
 import { mocked } from 'ts-jest/utils'
 
 import { IGeolocationContext, useGeolocation } from 'libs/geolocation'

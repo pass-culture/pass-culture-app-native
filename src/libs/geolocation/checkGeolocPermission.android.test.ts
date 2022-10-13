@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/independant-mocks */
+/* eslint-disable local-rules/independent-mocks */
 import { Platform } from 'react-native'
 import { checkMultiple, Permission, PERMISSIONS } from 'react-native-permissions'
 import { mocked } from 'ts-jest/utils'

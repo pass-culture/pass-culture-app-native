@@ -901,9 +901,9 @@ describe('fetchOffer', () => {
       it('should fetch with date filter when date and today option are provided', () => {
         const query = 'search query'
         const selectedDate = new Date(2020, 3, 19, 11)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetFromDate.mockReturnValue(123456789)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
         fetchOffer({
@@ -931,9 +931,9 @@ describe('fetchOffer', () => {
       it('should fetch with date filter when date and currentWeek option are provided', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetFromDate.mockReturnValue(123456789)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
         fetchOffer({
@@ -961,9 +961,9 @@ describe('fetchOffer', () => {
       it('should fetch with date filter when date and currentWeekEnd option are provided', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mock_WEEKEND_getFirstFromDate.mockReturnValue(123456789)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
         fetchOffer({
@@ -991,9 +991,9 @@ describe('fetchOffer', () => {
       it('should fetch with date filter when date and picked option are provided', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetFirstOfDate.mockReturnValue(123456789)
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
         fetchOffer({
@@ -1022,7 +1022,7 @@ describe('fetchOffer', () => {
     describe('by time only', () => {
       it('should fetch with time filter when timeRange is provided', () => {
         const timeRange = [18, 22]
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([64800, 79200])
 
         fetchOffer({
@@ -1048,7 +1048,7 @@ describe('fetchOffer', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
         fetchOffer({
@@ -1077,7 +1077,7 @@ describe('fetchOffer', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mock_WEEK_getAllFromTimeRangeAndDate.mockReturnValue([
           [123, 124],
           [225, 226],
@@ -1113,7 +1113,7 @@ describe('fetchOffer', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mock_WEEKEND_getAllFromTimeRangeAndDate.mockReturnValue([
           [123, 124],
           [225, 226],
@@ -1151,7 +1151,7 @@ describe('fetchOffer', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
-        // eslint-disable-next-line local-rules/independant-mocks
+        // eslint-disable-next-line local-rules/independent-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
         fetchOffer({
@@ -1180,9 +1180,9 @@ describe('fetchOffer', () => {
 
   describe('multiple parameters', () => {
     it('should fetch with price and date numericFilters', () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mockGetFirstOfDate.mockReturnValue(123456789)
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mockGetLastOfDate.mockReturnValue(987654321)
       const query = ''
       const offerIsFree = true
@@ -1209,7 +1209,7 @@ describe('fetchOffer', () => {
     })
 
     it('should fetch with price and time numericFilters', () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([123456789, 987654321])
       const query = ''
       const offerIsFree = true
@@ -1236,7 +1236,7 @@ describe('fetchOffer', () => {
     })
 
     it('should fetch with price, date and time numericFilters', () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       mock_WEEKEND_getAllFromTimeRangeAndDate.mockReturnValue([
         [123456789, 987654321],
         [123, 1234],

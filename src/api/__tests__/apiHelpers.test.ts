@@ -88,7 +88,9 @@ describe('[api] helpers', () => {
     it('forces user to login when refresh token is expired', async () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       // mock refresh access token response
-      mockFetch.mockRejectedValue(new ApiError(401, 'unauthorized'))
+      mockFetch.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
+      // mock refresh access token response for the retry
+      mockFetch.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
 
       const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
 

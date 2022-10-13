@@ -66,7 +66,7 @@ describe('<AccountCreated />', () => {
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     mockedUseUserProfileInfo.mockReturnValue({
       data: { needsToFillCulturalSurvey: false },
     } as UseQueryResult<UserProfileResponse>)

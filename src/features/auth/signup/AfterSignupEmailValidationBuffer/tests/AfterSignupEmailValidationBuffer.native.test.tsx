@@ -142,7 +142,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       server.use(
         rest.post(env.API_BASE_URL + '/native/v1/validate_email', (_req, res, ctx) =>
@@ -165,7 +165,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is expired', () => {
     it('should redirect to SignupConfirmationExpiredLink', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
+      // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(true)
       renderPage()
 

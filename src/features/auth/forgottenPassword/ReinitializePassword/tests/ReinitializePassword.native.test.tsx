@@ -75,7 +75,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should redirect to ResetPasswordExpiredLink when expiration_timestamp is expired', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
+    // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(datesLib, 'isTimestampExpired').mockImplementation(() => true)
     renderReinitializePassword()
     await superFlushWithAct()
