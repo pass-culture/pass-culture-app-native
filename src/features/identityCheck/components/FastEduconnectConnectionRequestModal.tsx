@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import { useEnableNewIdentificationFlow } from 'libs/firebase/firestore/featureFlags'
 import { useUbbleETAMessage } from 'libs/firebase/firestore/ubbleETAMessage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -28,7 +28,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 > = ({ visible, hideModal }) => {
   const { dispatch } = useIdentityCheckContext()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
-  const { data: settings } = useAppSettings()
+  const enableNewIdentificationFlow = useEnableNewIdentificationFlow()
 
   const onModalRightIconPress = () => {
     analytics.logQuitAuthenticationMethodSelection()
@@ -82,7 +82,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         icon={EditPen}
         wording="Identification manuelle"
         navigateTo={
-          settings?.enableNewIdentificationFlow
+          enableNewIdentificationFlow
             ? { screen: 'SelectIDOrigin' }
             : { screen: 'IdentityCheckStart' }
         }
