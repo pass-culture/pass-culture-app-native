@@ -28,6 +28,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({ type, linkColor
     : { screen: 'SignupForm' }
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
+  const buttonWording = isLogin ? 'Se connecter' : 'Créer un compte'
 
   return (
     <AuthenticationContainer>
@@ -37,7 +38,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({ type, linkColor
         <TouchableLink
           as={ButtonInsideText}
           navigateTo={nextNavigation}
-          wording={isLogin ? 'Se connecter' : 'Créer un compte'}
+          wording={buttonWording}
           icon={isLogin ? Connect : Profile}
           color={color}
         />
