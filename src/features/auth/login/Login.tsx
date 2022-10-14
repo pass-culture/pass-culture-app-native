@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
+import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
@@ -249,6 +250,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           disabled={shouldDisableLoginButton}
         />
       </Form.MaxWidth>
+      <Spacer.Column numberOfSpaces={4} />
+      <AuthenticationButton type="signup" />
     </BottomContentPage>
   )
 })

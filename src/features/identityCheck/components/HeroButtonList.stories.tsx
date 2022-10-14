@@ -34,12 +34,14 @@ const caption = (
     <Typo.Caption>Les copies ne sont pas acceptées </Typo.Caption>
   </Text>
 )
-export const Default = Template.bind({})
+
+// TODO(PC-17931): Fix those stories
+const Default = Template.bind({})
 Default.args = {
   Title: description,
   icon: BicolorSmartphone,
 }
-export const HeroButtonListWithCaption = Template.bind({})
+const HeroButtonListWithCaption = Template.bind({})
 HeroButtonListWithCaption.args = {
   Title: description2,
   Subtitle: caption,

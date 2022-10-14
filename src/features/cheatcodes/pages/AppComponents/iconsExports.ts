@@ -74,6 +74,7 @@ import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Plus } from 'ui/svg/icons/Plus'
+import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
@@ -193,6 +194,7 @@ export const TertiaryAndSmallerIcons = {
   PhoneFilled,
   PlainArrowPrevious,
   Plus,
+  Profile,
   Question,
   SMSFilled,
   Validate,
