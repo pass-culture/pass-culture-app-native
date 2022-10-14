@@ -145,6 +145,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy }),
   logHasChangedPassword: (reason: 'changePassword' | 'resetPassword') =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason }),
+  logHasClickedMissingCode: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_CLICKED_MISSING_CODE),
   logHasDismissedAppSharingModal: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>

@@ -6,6 +6,7 @@ import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
@@ -144,6 +145,15 @@ describe('SetPhoneValidationCode', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
     })
+  })
+
+  it('should log event when pressing "Code non reçu ?" button', async () => {
+    const { getByText } = renderSetPhoneValidationCode()
+    const button = getByText('Code non reçu ?')
+
+    fireEvent.press(button)
+
+    expect(analytics.logHasClickedMissingCode).toHaveBeenCalled()
   })
 })
 

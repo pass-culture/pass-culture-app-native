@@ -12,7 +12,7 @@ To have access to analytics we need trackers. In order to do so, we use Firebase
 
    b. Add a function called `log<YourEvent>`in [src/libs/firebase/analytics/analytics.ts](../../src/libs/firebase/analytics/analytics.ts)
 
-   c. Add a mock of your function in [src/libs/firebase/analytics/mocks/analytics.ts](src/libs/firebase/analytics/mocks/analytics.ts)
+   c. Add a mock of your function in [src/libs/firebase/analytics/\_\_mocks\_\_/analytics.ts](../../src/libs/firebase/analytics/__mocks__/analytics.ts)
 
 2. Call your analytics function in a callback before giving it as a props to your button
 
