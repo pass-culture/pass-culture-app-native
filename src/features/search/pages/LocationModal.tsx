@@ -371,7 +371,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                                   setValueWithValidation('selectedPlaceOrVenue', undefined)
                                 }}
                                 placeholder="Saisis une adresse ou le nom d’un lieu"
-                                autoFocus={true}
+                                autoFocus
                                 inputHeight="regular"
                                 accessibilityLabel="Recherche un lieu, une adresse"
                                 onPressRightIcon={handleSearchReset}
@@ -380,7 +380,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                               />
                             )}
                           />
-                          <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
+                          <HiddenAccessibleText displayBlock nativeID={accessibilityDescribedBy}>
                             indique un lieu pour découvrir toutes les offres de ce lieu puis clique
                             sur le lieu pour valider ton choix
                           </HiddenAccessibleText>
