@@ -155,6 +155,7 @@ const logEventAnalytics = {
   logHasOpenedCookiesAccordion: (type: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION, { type }),
   logHasRefusedCookie: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE),
+  logHasRequestedCode: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REQUESTED_CODE),
   logHasSharedApp: (type: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_SHARED_APP, { type }),
   logHasSkippedCulturalSurvey: () =>

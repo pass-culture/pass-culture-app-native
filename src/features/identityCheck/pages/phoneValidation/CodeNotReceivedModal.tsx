@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
@@ -10,6 +10,7 @@ import {
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/firebase/analytics'
 import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
@@ -55,14 +56,15 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
     },
   })
 
-  async function requestSendPhoneValidationCode() {
+  const requestSendPhoneValidationCode = useCallback(async () => {
+    analytics.logHasRequestedCode()
     const callingCode = phoneValidation?.country.callingCodes[0]
     const phoneNumber = phoneValidation?.phoneNumber
     if (callingCode && phoneNumber) {
       const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
-  }
+  }, [phoneValidation?.country.callingCodes, phoneValidation?.phoneNumber, sendPhoneValidationCode])
 
   return (
     <AppModal
