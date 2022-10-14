@@ -65,9 +65,9 @@ describe('<SetEmail />', () => {
   })
 
   it('should navigate to the login page', async () => {
-    const { getByText } = render(<SetEmail {...props} />)
+    const { getByRole } = render(<SetEmail {...props} />)
 
-    const connectButton = getByText('Se connecter')
+    const connectButton = getByRole('link')
     await fireEvent.press(connectButton)
 
     expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
