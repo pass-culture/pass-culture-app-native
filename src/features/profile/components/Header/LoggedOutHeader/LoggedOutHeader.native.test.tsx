@@ -16,13 +16,4 @@ describe('LoggedOutHeader', () => {
     expect(analytics.logProfilSignUp).toBeCalled()
     expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
   })
-
-  it('should navigate to the login page', async () => {
-    const { getByText } = render(<LoggedOutHeader />)
-
-    const connectButton = getByText('Se connecter')
-    await fireEvent.press(connectButton)
-
-    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
-  })
 })
