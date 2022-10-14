@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/firebase/analytics'
@@ -220,54 +220,4 @@ describe('SearchResults component', () => {
       expect(typeButtonLabel).toHaveStyle({ color: theme.colors.primary })
     }
   )
-
-  describe('When feature flag filter activated', () => {
-    beforeAll(() => {
-      mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: true } })
-    })
-
-    it('should open the location filter modal when pressing on the type filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const locationButton = getByTestId('locationButton')
-
-      await act(async () => {
-        fireEvent.press(locationButton)
-      })
-
-      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
-
-      expect(fullscreenModalScrollView).toBeTruthy()
-    })
-  })
-
-  describe('When feature flag filter desactivated', () => {
-    beforeAll(() => {
-      mockSettings.mockReturnValue({ data: { appEnableCategoryFilterPage: false } })
-    })
-
-    it('should update the staged search state with the actual search state', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const locationButton = getByTestId('locationButton')
-
-      await act(async () => {
-        fireEvent.press(locationButton)
-      })
-
-      expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-        type: 'SET_STATE_FROM_DEFAULT',
-        payload: mockSearchState,
-      })
-    })
-
-    it('should redirect to the filters page when pressing the location button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const locationButton = getByTestId('locationButton')
-
-      await act(async () => {
-        fireEvent.press(locationButton)
-      })
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
-    })
-  })
 })

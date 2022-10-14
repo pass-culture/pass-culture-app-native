@@ -12,6 +12,7 @@ interface Props {
   min?: number
   max?: number
   step?: number
+  onValuesChange?: (newValues: number[]) => void
   onValuesChangeFinish?: (newValues: number[]) => void
   sliderLength?: number
   minLabel?: string
@@ -46,6 +47,12 @@ export function Slider(props: Props) {
     }
     return ['ArrowDown', 'ArrowLeft'].includes(key) ? -step : null
   }
+
+  useEffect(() => {
+    if (props.onValuesChange) {
+      props.onValuesChange(values)
+    }
+  }, [props, values])
 
   const updateCursor = (e: Event, cursor: string) => {
     const relativeStep = getRelativeStepFromKey((e as KeyboardEvent).key)

@@ -50,40 +50,35 @@ describe('Analytics - logUseFilter', () => {
     await act(async () => {
       fireEvent.press(getByText(RadioButtonLocation.AROUND_ME))
     })
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Location)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Location)
   })
 
   it('should log UseFilter once when selecting multiple offer types', () => {
     const { getByText } = render(<Section.OfferType />)
     fireEvent.press(getByText(OfferType.DIGITAL))
     fireEvent.press(getByText(OfferType.THING))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.OfferType)
   })
 
   it('should log UseFilter once when changing duo offer', () => {
     const { getByTestId } = render(<Section.DuoOffer />)
     fireEvent.press(getByTestId('Interrupteur'))
     fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Duo)
   })
 
   it('should log UseFilter once when changing new offer', () => {
     const { getByTestId } = render(<Section.NewOffer />)
     fireEvent.press(getByTestId('Interrupteur'))
     fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.New)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.New)
   })
 
   it('should log UseFilter once when changing date filter', () => {
     const { getByTestId } = render(<Section.Date />)
     fireEvent.press(getByTestId('Interrupteur'))
     fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Date)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Date)
   })
 
   it('should log UseFilter once when changing OfferDate filter', () => {
@@ -91,16 +86,14 @@ describe('Analytics - logUseFilter', () => {
     const { getByText } = render(<Section.OfferDate />)
     fireEvent.press(getByText('Cette semaine'))
     fireEvent.press(getByText('Ce week-end'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferDate)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.OfferDate)
   })
 
   it('should log UseFilter once when changing hour filter', () => {
     const { getByTestId } = render(<Section.Hour />)
     fireEvent.press(getByTestId('Interrupteur'))
     fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Hour)
   })
 
   it('should log UseFilter once when sliding the time range', () => {
@@ -108,8 +101,7 @@ describe('Analytics - logUseFilter', () => {
     const slider = getByTestId('slider').children[0] as ReactTestInstance
     slider.props.onValuesChangeFinish([8, 21])
     slider.props.onValuesChangeFinish([18, 21])
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.TimeSlot)
   })
 
   it('should log UseFilter once for each changed filter', () => {
@@ -123,8 +115,7 @@ describe('Analytics - logUseFilter', () => {
     slider.props.onValuesChangeFinish([8, 21])
     slider.props.onValuesChangeFinish([18, 21])
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
-    expect(analytics.logUseFilter).toHaveBeenCalledTimes(2)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Hour)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(2, SectionTitle.TimeSlot)
   })
 })

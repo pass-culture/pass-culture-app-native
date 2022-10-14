@@ -339,45 +339,5 @@ exports[`<LocationPicker /> should render correctly 1`] = `
   <View
     accessibilityRole="none"
   />
-  <RCTScrollView
-    ItemSeparatorComponent={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            [Function],
-          ],
-        },
-        "render": [Function],
-        "shouldForwardProp": undefined,
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    accessibilityRole="radiogroup"
-    aria-labelledby="testUuidV4"
-    data={Array []}
-    getItem={[Function]}
-    getItemCount={[Function]}
-    keyExtractor={[Function]}
-    keyboardDismissMode="on-drag"
-    keyboardShouldPersistTaps="handled"
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
-    stickyHeaderIndices={Array []}
-    viewabilityConfigCallbackPairs={Array []}
-  >
-    <View />
-  </RCTScrollView>
 </View>
 `;

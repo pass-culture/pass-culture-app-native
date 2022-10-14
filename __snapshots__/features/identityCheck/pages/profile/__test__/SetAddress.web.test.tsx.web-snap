@@ -251,12 +251,17 @@ Object {
                     class="css-view-1dbjc4n"
                     style="height: 20px;"
                   />
-                  <label
-                    class="c2"
-                    for="testUuidV4"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                   >
-                    Entre ton adresse
-                  </label>
+                    <label
+                      class="c2"
+                      for="testUuidV4"
+                    >
+                      Entre ton adresse
+                    </label>
+                  </div>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 8px;"
@@ -590,12 +595,17 @@ Object {
                   class="css-view-1dbjc4n"
                   style="height: 20px;"
                 />
-                <label
-                  class="c2"
-                  for="testUuidV4"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  Entre ton adresse
-                </label>
+                  <label
+                    class="c2"
+                    for="testUuidV4"
+                  >
+                    Entre ton adresse
+                  </label>
+                </div>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"

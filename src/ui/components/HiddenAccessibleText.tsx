@@ -3,11 +3,16 @@ import styled from 'styled-components/native'
 
 export const hiddenAccessibleStyle = {
   clipPath: 'inset(50%)',
-  width: '1px',
-  height: '1px',
+  width: 1,
+  height: 1,
   overflow: 'hidden',
 }
 
-export const HiddenAccessibleText = styled(Text)(
-  Platform.OS === 'web' ? hiddenAccessibleStyle : { display: 'none' }
+export const HiddenAccessibleText = styled(Text)<{ displayBlock?: boolean }>(({ displayBlock }) =>
+  Platform.OS === 'web'
+    ? {
+        ...hiddenAccessibleStyle,
+        ...(displayBlock ? { display: 'block' } : {}),
+      }
+    : { display: 'none' }
 )
