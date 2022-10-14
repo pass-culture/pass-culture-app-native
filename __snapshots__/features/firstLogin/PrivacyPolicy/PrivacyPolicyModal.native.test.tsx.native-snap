@@ -315,6 +315,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 />
                 <View>
                   <View
+                    accessibilityRole="link"
                     accessible={true}
                     collapsable={false}
                     focusable={true}
