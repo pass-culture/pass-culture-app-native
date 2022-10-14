@@ -457,6 +457,47 @@ describe('LocationModal component', () => {
     })
   })
 
+  describe('search reset', () => {
+    it('should reset the location search input when pressing the reset icon', async () => {
+      const locationFilter: LocationFilter = {
+        locationType: LocationType.VENUE,
+        venue: mockVenues[0],
+      }
+      mockSearchState = {
+        ...mockSearchState,
+        locationFilter,
+      }
+      const { getByTestId, getByPlaceholderText } = renderLocationModal({
+        hideLocationModal,
+      })
+
+      const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+      await act(async () => {
+        fireEvent(searchInput, 'onFocus')
+        fireEvent.changeText(searchInput, 'Paris')
+      })
+
+      expect(searchInput.props.value).toEqual('Paris')
+
+      const venue = mockVenues[0]
+
+      await act(async () => {
+        fireEvent.press(getByTestId(keyExtractor(venue)))
+      })
+
+      await act(async () => {
+        fireEvent.press(getByTestId('resetSearchInput'))
+      })
+
+      expect(searchInput.props.value).toEqual('')
+    })
+  })
+
   describe('should close the modal', () => {
     it('when pressing search button and not pristine', async () => {
       const { getByTestId } = renderLocationModal({ hideLocationModal })

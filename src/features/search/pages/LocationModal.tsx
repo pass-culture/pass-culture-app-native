@@ -143,21 +143,6 @@ export const LocationModal: FunctionComponent<Props> = ({
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
 
-  const getLocationType = useCallback(() => {
-    const { locationChoice, selectedPlaceOrVenue } = getValues()
-
-    switch (locationChoice) {
-      case RadioButtonLocation.AROUND_ME:
-        return LocationType.AROUND_ME
-      case RadioButtonLocation.EVERYWHERE:
-        return LocationType.EVERYWHERE
-      default:
-        return Object.prototype.hasOwnProperty.call(selectedPlaceOrVenue, 'geolocation')
-          ? LocationType.PLACE
-          : LocationType.VENUE
-    }
-  }, [getValues])
-
   const search = useCallback(
     ({ locationChoice, selectedPlaceOrVenue, aroundRadius }: LocationModalFormData) => {
       let additionalSearchState: SearchState = { ...searchState }
@@ -177,7 +162,12 @@ export const LocationModal: FunctionComponent<Props> = ({
         }
         analytics.logChangeSearchLocation({ type: 'aroundMe' })
       } else if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
-        const locationType = getLocationType()
+        const locationType = Object.prototype.hasOwnProperty.call(
+          selectedPlaceOrVenue,
+          'geolocation'
+        )
+          ? LocationType.PLACE
+          : LocationType.VENUE
 
         if (locationType === LocationType.PLACE) {
           additionalSearchState = {
@@ -212,7 +202,7 @@ export const LocationModal: FunctionComponent<Props> = ({
       )
       hideModal()
     },
-    [getLocationType, getValues, hideModal, navigate, searchState]
+    [getValues, hideModal, navigate, searchState]
   )
 
   const close = useCallback(() => {
