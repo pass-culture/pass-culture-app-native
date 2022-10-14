@@ -3,6 +3,7 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { LogInButton } from 'features/auth/components/LogInButton/LogInButton'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -92,7 +93,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         isLoading={false}
         disabled={shouldDisableValidateButton}
       />
-      <Spacer.Column numberOfSpaces={5} />
+      <Spacer.Column numberOfSpaces={4} />
+      <LogInButton />
+      <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { fireEvent, render } from 'tests/utils'
 
@@ -61,5 +62,14 @@ describe('<SetEmail />', () => {
         'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
       )
     ).toBeTruthy()
+  })
+
+  it('should navigate to the login page', async () => {
+    const { getByRole } = render(<SetEmail {...props} />)
+
+    const connectButton = getByRole('link')
+    await fireEvent.press(connectButton)
+
+    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
   })
 })

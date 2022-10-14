@@ -1915,6 +1915,7 @@ Array [
         />
         <View>
           <View
+            accessibilityRole="link"
             accessible={true}
             collapsable={false}
             focusable={true}

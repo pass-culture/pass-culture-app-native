@@ -16,12 +16,14 @@ export function ButtonInsideText({
   icon: Icon,
   color,
   testID,
+  accessibilityRole,
 }: ButtonInsideTexteProps) {
   return (
     <View>
       <StyledTouchableOpacity
         onPress={onPress as AppButtonEventNative}
         onLongPress={onLongPress as AppButtonEventNative}
+        accessibilityRole={accessibilityRole}
         testID={testID}>
         <ButtonInsideTextInner
           wording={wording}
