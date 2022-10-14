@@ -530,7 +530,6 @@ jobs:
           steps:
             - notify-slack:
                 channel: shérif
-      - sonarcloud-scanner
 
   test-web:
     executor: node
@@ -546,6 +545,7 @@ jobs:
           steps:
             - notify-slack:
                 channel: shérif
+      - sonarcloud-scanner
 
   notify-hard-testing-release:
     executor: node
@@ -983,7 +983,9 @@ workflows:
           filters:
             tags:
               only: /.*/
-          context: Slack
+          context:
+            - SonarCloud
+            - Slack
       - deploy-soft-testing:
           filters:
             branches:

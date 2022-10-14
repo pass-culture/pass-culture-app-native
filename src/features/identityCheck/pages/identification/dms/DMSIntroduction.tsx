@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
@@ -43,9 +44,15 @@ export const DMSIntroduction = (): JSX.Element => {
           { icon: BicolorProfile, label: selfieLabel },
         ]
 
-  const DMSUrl = params.isForeignDMSInformation
-    ? env.DMS_FOREIGN_CITIZEN_URL
-    : env.DMS_FRENCH_CITIZEN_URL
+  const toDMSWebsiteButtonProps = params?.isForeignDMSInformation
+    ? {
+        externalNav: { url: env.DMS_FOREIGN_CITIZEN_URL },
+        onBeforeNavigate: analytics.logOpenDMSForeignCitizenURL,
+      }
+    : {
+        externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
+        onBeforeNavigate: analytics.logOpenDMSFrenchCitizenURL,
+      }
 
   return (
     <GenericInfoPageWhite
@@ -72,9 +79,7 @@ export const DMSIntroduction = (): JSX.Element => {
           wording="Aller sur demarches-simplifiees.fr"
           icon={ExternalSite}
           as={ButtonPrimary}
-          externalNav={{
-            url: DMSUrl,
-          }}
+          {...toDMSWebsiteButtonProps}
         />
       </LinkContainer>
     </GenericInfoPageWhite>
