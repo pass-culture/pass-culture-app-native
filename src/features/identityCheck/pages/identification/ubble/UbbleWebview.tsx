@@ -1,12 +1,13 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api/api'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { parseUrlParams } from 'features/identityCheck/utils/parseUrlParams'
 import { navigateToHome } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { Spacer } from 'ui/theme'
@@ -16,7 +17,7 @@ const ORIGIN_WHITELIST = ['*']
 
 export const UbbleWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   function onNavigationStateChange({ url }: { url: string }) {
     const parsedUrlParams = parseUrlParams(url)
@@ -31,7 +32,7 @@ export const UbbleWebview: React.FC = () => {
       navigateToHome()
     } else if (url.includes(REDIRECT_URL_UBBLE)) {
       analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
-      navigateToNextScreen()
+      navigate('IdentityCheckEnd')
     }
   }
 
