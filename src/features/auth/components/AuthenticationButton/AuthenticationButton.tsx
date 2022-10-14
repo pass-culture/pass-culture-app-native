@@ -9,6 +9,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
+  type: 'login' | 'signup'
   linkColor?: ColorsEnum
   children?: never
 }

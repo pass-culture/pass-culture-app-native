@@ -94,7 +94,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={shouldDisableValidateButton}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <AuthenticationButton />
+      <AuthenticationButton type="login" />
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )
