@@ -212,7 +212,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         {config.type === 'priceRange' && (
           <PaddingContainer>
             <Slider
-              showValues={true}
+              showValues
               max={MAX_PRICE}
               sliderLength={sliderLength}
               formatValues={formatPriceInEuroToDisplayPrice}

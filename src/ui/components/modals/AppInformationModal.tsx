@@ -32,7 +32,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
         <Modal
           animationType="fade"
           statusBarTranslucent
-          transparent={true}
+          transparent
           visible={visible}
           testID={`modal-${testIdSuffix}`}
           onRequestClose={onCloseIconPress}>

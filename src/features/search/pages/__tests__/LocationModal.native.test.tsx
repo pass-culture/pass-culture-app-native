@@ -539,7 +539,7 @@ function renderLocationModal({ hideLocationModal }: Props) {
     <LocationModal
       title="Localisation"
       accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
-      isVisible={true}
+      isVisible
       hideModal={hideLocationModal}
     />
   )

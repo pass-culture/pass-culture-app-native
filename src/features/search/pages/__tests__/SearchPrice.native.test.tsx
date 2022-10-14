@@ -46,7 +46,7 @@ describe('SearchPrice component', () => {
       <SearchPrice
         title="Prix"
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-        isVisible={true}
+        isVisible
         hideModal={mockHideModal}
       />
     )
@@ -624,7 +624,7 @@ describe('SearchPrice component', () => {
         <SearchPrice
           title="Prix"
           accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-          isVisible={true}
+          isVisible
           hideModal={mockHideModal}
         />
       )
@@ -645,7 +645,7 @@ describe('SearchPrice component', () => {
         <SearchPrice
           title="Prix"
           accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-          isVisible={true}
+          isVisible
           hideModal={mockHideModal}
         />
       )
@@ -803,7 +803,7 @@ function renderSearchPrice() {
     <SearchPrice
       title="Prix"
       accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-      isVisible={true}
+      isVisible
       hideModal={mockHideModal}
     />
   )

@@ -47,6 +47,7 @@ module.exports = {
     'react-native/sort-styles': 'off',
     'react-native/no-raw-text': 'off', // We use 'local-rules/no-raw-text' instead
     'react/jsx-fragments': ['error', 'element'],
+    'react/jsx-boolean-value': ['error', 'never'],
     'react/jsx-no-constructed-context-values': 'error',
     'no-restricted-imports': [
       'error',

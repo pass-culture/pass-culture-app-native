@@ -97,7 +97,7 @@ export const ReCaptcha: React.FC<Props> = (props) => {
           bounces={false}
           cacheEnabled={false}
           cacheMode="LOAD_NO_CACHE"
-          incognito={true}
+          incognito
           key={keyToReCreateWebViewFromScratch}
           onError={(event) => {
             const errorMessage = 'WebView error: ' + event.nativeEvent.description

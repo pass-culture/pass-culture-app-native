@@ -159,9 +159,9 @@ export const CalendarPicker: React.FC<Props> = ({
             style={RN_CALENDAR_STYLE}
             current={format(selectedDate, 'yyyy-MM-dd')}
             firstDay={1}
-            enableSwipeMonths={true}
+            enableSwipeMonths
             renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
-            hideExtraDays={true}
+            hideExtraDays
             renderArrow={renderArrow}
             theme={calendarTheme}
             markedDates={markedDates}
@@ -178,7 +178,7 @@ export const CalendarPicker: React.FC<Props> = ({
           wording="Valider la date"
           disabled={isMobileDateInvalid}
           onPress={onValidate}
-          adjustsFontSizeToFit={true}
+          adjustsFontSizeToFit
         />
         <InputError
           visible={isMobileDateInvalid}

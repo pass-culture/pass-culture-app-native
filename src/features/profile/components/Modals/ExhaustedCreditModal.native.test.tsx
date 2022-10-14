@@ -7,7 +7,7 @@ const hideModalMock = jest.fn()
 
 describe('<ExhaustedCreditModal/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<ExhaustedCreditModal visible={true} hideModal={hideModalMock} />)
+    const renderAPI = render(<ExhaustedCreditModal visible hideModal={hideModalMock} />)
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -17,9 +17,7 @@ describe('<ExhaustedCreditModal/>', () => {
   })
 
   it('should call hideModal function when clicking on Close icon', () => {
-    const { getByTestId } = render(
-      <ExhaustedCreditModal visible={true} hideModal={hideModalMock} />
-    )
+    const { getByTestId } = render(<ExhaustedCreditModal visible hideModal={hideModalMock} />)
     const rightIcon = getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
     expect(hideModalMock).toHaveBeenCalled()

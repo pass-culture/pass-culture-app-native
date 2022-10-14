@@ -113,12 +113,12 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       <OfferPartialDescription description={offer.description || ''} id={offerId} />
       <Spacer.Column numberOfSpaces={4} />
 
-      <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
+      <SectionWithDivider visible={shouldDisplayWhenBlock} margin>
         <StyledTitle4>Quand&nbsp;?</StyledTitle4>
         <SectionBody>{formattedDate}</SectionBody>
       </SectionWithDivider>
 
-      <SectionWithDivider visible={!offer.isDigital} margin={true}>
+      <SectionWithDivider visible={!offer.isDigital} margin>
         <WhereSection
           beforeNavigateToItinerary={() =>
             analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
@@ -152,7 +152,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
 
       <SectionWithDivider
         visible={!!user && (isUserBeneficiary(user) || isUserExBeneficiary(user))}
-        margin={true}>
+        margin>
         <SectionReportOffer>
           <ButtonTertiaryBlack
             inline

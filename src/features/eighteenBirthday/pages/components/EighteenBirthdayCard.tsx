@@ -31,7 +31,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
       activeIndex={props.activeIndex}
       lastIndex={props.lastIndex}
       skip={props.skip}
-      ignoreBottomPadding={true}
+      ignoreBottomPadding
     />
   )
 }

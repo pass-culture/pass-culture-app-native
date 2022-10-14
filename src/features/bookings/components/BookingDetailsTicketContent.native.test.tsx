@@ -22,7 +22,7 @@ describe('BookingDetailsTicketContent', () => {
   describe('activationCodeFeatureEnabled === true & token', () => {
     it('should display the booking activation code when activationCodeFeatureEnabled is true', () => {
       const { getByText, queryByText } = render(
-        <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={true} />
+        <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled />
       )
 
       getByText(booking.activationCode.code)
@@ -32,7 +32,7 @@ describe('BookingDetailsTicketContent', () => {
 
     it('should display the access button offer when activationCodeFeatureEnabled is true', () => {
       const { queryByText } = render(
-        <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled={true} />
+        <BookingDetailsTicketContent booking={booking} activationCodeFeatureEnabled />
       )
       expect(queryByText('Accéder à l’offre')).toBeTruthy()
     })
@@ -77,10 +77,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       const { queryByTestId } = render(
-        <BookingDetailsTicketContent
-          booking={bookingForBookOffer}
-          activationCodeFeatureEnabled={true}
-        />
+        <BookingDetailsTicketContent booking={bookingForBookOffer} activationCodeFeatureEnabled />
       )
       expect(queryByTestId('ean')).toBeTruthy()
     })
@@ -98,10 +95,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       const { queryByTestId } = render(
-        <BookingDetailsTicketContent
-          booking={bookingWithIsbn}
-          activationCodeFeatureEnabled={true}
-        />
+        <BookingDetailsTicketContent booking={bookingWithIsbn} activationCodeFeatureEnabled />
       )
       expect(queryByTestId('ean')).toBeNull()
     })
@@ -118,10 +112,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       const { queryByTestId } = render(
-        <BookingDetailsTicketContent
-          booking={bookingWithIsbn}
-          activationCodeFeatureEnabled={true}
-        />
+        <BookingDetailsTicketContent booking={bookingWithIsbn} activationCodeFeatureEnabled />
       )
       expect(queryByTestId('ean')).toBeNull()
     })

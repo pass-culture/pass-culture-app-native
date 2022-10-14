@@ -7,7 +7,7 @@ import { theme } from 'theme'
 import { CheckboxInput } from './CheckboxInput'
 
 const NotCheckedCheckboxInput = <CheckboxInput isChecked={false} />
-const CheckedCheckboxInput = <CheckboxInput isChecked={true} />
+const CheckedCheckboxInput = <CheckboxInput isChecked />
 
 describe('<CheckboxInput />', () => {
   it('should render correctly when not checked', () => {

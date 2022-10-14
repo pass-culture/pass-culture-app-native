@@ -17,7 +17,7 @@ describe('<FilterSwitch />', () => {
   })
 
   it('should not call toggle when switch is disabled and press on', () => {
-    const { getByTestId } = render(<FilterSwitch active={active} toggle={toggle} disabled={true} />)
+    const { getByTestId } = render(<FilterSwitch active={active} toggle={toggle} disabled />)
 
     const Switch = getByTestId('Interrupteur')
 

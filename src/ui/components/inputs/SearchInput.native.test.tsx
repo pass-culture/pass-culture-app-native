@@ -42,7 +42,7 @@ describe('SearchInput component', () => {
         label="Label"
         onChangeText={onChangeText}
         onPressRightIcon={onReset}
-        isRequiredField={true}
+        isRequiredField
       />
     )
 

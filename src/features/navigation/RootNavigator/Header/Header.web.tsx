@@ -101,7 +101,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
       <CenterContainer isDesktop={theme.isDesktopViewport}>
         <LeftContainer
           margin={margin}
-          isVisible={true}
+          isVisible
           style={fadeAnimSmall}
           aria-hidden={!!isBrandVisible}>
           <LogoPassCulture color={theme.uniqueColors.brand} height={getSpacing(6.5)} width={80} />
@@ -113,7 +113,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
         />
         <RightContainer
           margin={margin}
-          isVisible={true}
+          isVisible
           style={fadeAnimSmall}
           aria-hidden={!!isBrandVisible}>
           <FlexContainer alignItems="flex-end">

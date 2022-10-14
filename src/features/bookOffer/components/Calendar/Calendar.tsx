@@ -84,9 +84,9 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
       style={RNCalendarTheme}
       current={minDate}
       firstDay={1}
-      enableSwipeMonths={true}
+      enableSwipeMonths
       renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
-      hideExtraDays={true}
+      hideExtraDays
       renderArrow={renderArrow}
       theme={calendarHeaderStyle}
       markedDates={markedDates}

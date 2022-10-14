@@ -30,7 +30,7 @@ export const ShowResults: React.FC = () => {
       wording={formatNbHits(nbHits)}
       disabled={nbHits === 0}
       onPress={commit}
-      adjustsFontSizeToFit={true}
+      adjustsFontSizeToFit
     />
   )
 }

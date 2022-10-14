@@ -34,7 +34,7 @@ export function PrivacyPolicyV1() {
 
   return (
     <PrivacyPolicyModal
-      visible={true}
+      visible
       onApproval={acceptCookie}
       onRefusal={refuseCookie}
       disableBackdropTap

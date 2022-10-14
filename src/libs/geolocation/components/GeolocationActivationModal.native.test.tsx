@@ -21,7 +21,7 @@ describe('GeolocationActivationModal', () => {
     const renderAPI = render(
       <GeolocationActivationModal
         hideGeolocPermissionModal={hideGeolocPermissionModal}
-        isGeolocPermissionModalVisible={true}
+        isGeolocPermissionModalVisible
         onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
     )
@@ -33,7 +33,7 @@ describe('GeolocationActivationModal', () => {
     const renderAPI = render(
       <GeolocationActivationModal
         hideGeolocPermissionModal={hideGeolocPermissionModal}
-        isGeolocPermissionModalVisible={true}
+        isGeolocPermissionModalVisible
         onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
     )
@@ -50,7 +50,7 @@ describe('GeolocationActivationModal', () => {
     const renderAPI = render(
       <GeolocationActivationModal
         hideGeolocPermissionModal={hideGeolocPermissionModal}
-        isGeolocPermissionModalVisible={true}
+        isGeolocPermissionModalVisible
         onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
     )

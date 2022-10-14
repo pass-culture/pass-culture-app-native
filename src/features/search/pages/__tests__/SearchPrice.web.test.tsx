@@ -21,7 +21,7 @@ describe('SearchPrice component', () => {
       <SearchPrice
         title="Prix"
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-        isVisible={true}
+        isVisible
         hideModal={jest.fn()}
       />,
       {

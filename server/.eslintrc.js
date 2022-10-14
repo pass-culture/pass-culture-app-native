@@ -5,6 +5,7 @@ delete rules['no-restricted-imports']
 delete rules['no-restricted-properties']
 delete rules['react-native/split-platform-components']
 delete rules['react/jsx-fragments']
+delete rules['react/jsx-boolean-value']
 delete rules['react/jsx-no-constructed-context-values']
 delete rules['import/no-extraneous-dependencies']
 

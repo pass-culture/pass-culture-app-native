@@ -75,7 +75,7 @@ describe('<AppModal />', () => {
     })
 
     test('explicitly enabled', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} scrollEnabled={true} />)
+      const { getByTestId } = render(<AppModal {...defaultProps} scrollEnabled />)
       const scrollView = getByTestId('modalScrollView')
 
       expect(scrollView).toHaveProp('scrollEnabled', true)
@@ -97,7 +97,7 @@ describe('<AppModal />', () => {
     })
 
     test('explicitly enabled', () => {
-      const renderAPI = render(<AppModal {...defaultProps} shouldDisplayOverlay={true} />)
+      const renderAPI = render(<AppModal {...defaultProps} shouldDisplayOverlay />)
       expect(renderAPI).toMatchSnapshot()
     })
 

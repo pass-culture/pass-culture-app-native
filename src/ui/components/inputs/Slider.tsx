@@ -144,7 +144,7 @@ export function Slider(props: Props) {
         shouldShowMinMaxValues={shouldShowMinMaxValues}>
         <StyledMultiSlider
           values={values}
-          allowOverlap={true}
+          allowOverlap
           min={min}
           max={max}
           step={step}

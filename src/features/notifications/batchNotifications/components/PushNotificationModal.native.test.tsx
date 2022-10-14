@@ -13,7 +13,7 @@ describe('PushNotificationsModal', () => {
     const renderAPI = render(
       <PushNotificationsModal
         onDismiss={onDismiss}
-        visible={true}
+        visible
         onRequestPermission={onRequestPermission}
       />
     )
@@ -24,7 +24,7 @@ describe('PushNotificationsModal', () => {
     const renderAPI = render(
       <PushNotificationsModal
         onDismiss={onDismiss}
-        visible={true}
+        visible
         onRequestPermission={onRequestPermission}
       />
     )

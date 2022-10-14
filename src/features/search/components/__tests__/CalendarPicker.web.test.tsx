@@ -18,7 +18,7 @@ describe('CalendarPicker web component', () => {
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
         setSelectedDate={mockSetSelectedDate}
-        visible={true}
+        visible
       />
     )
     const button = getByTestId('validationButton')
@@ -31,7 +31,7 @@ describe('CalendarPicker web component', () => {
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
         setSelectedDate={mockSetSelectedDate}
-        visible={true}
+        visible
       />
     )
     const button = getByTestId('validationButton')
@@ -46,7 +46,7 @@ describe('CalendarPicker web component', () => {
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
         setSelectedDate={mockSetSelectedDate}
-        visible={true}
+        visible
       />
     )
     const button = getByTestId('validationButton')
