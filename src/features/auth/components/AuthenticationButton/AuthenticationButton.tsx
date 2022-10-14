@@ -13,9 +13,9 @@ interface Props {
   children?: never
 }
 
-export const LogInButton: FunctionComponent<Props> = ({ linkColor: color }) => {
+export const AuthenticationButton: FunctionComponent<Props> = ({ linkColor: color }) => {
   return (
-    <LoginContainer>
+    <AuthenticationContainer>
       <StyledBody>
         Déjà un compte&nbsp;?
         <Spacer.Row numberOfSpaces={1} />
@@ -27,11 +27,11 @@ export const LogInButton: FunctionComponent<Props> = ({ linkColor: color }) => {
           color={color}
         />
       </StyledBody>
-    </LoginContainer>
+    </AuthenticationContainer>
   )
 }
 
-const LoginContainer = styled.View({
+const AuthenticationContainer = styled.View({
   justifyContent: 'center',
 })
 

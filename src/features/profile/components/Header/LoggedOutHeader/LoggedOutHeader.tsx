@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { LogInButton } from 'features/auth/components/LogInButton/LogInButton'
+import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
@@ -26,7 +26,7 @@ export function LoggedOutHeader() {
 
         {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
 
-        <LogInButton linkColor={colors.secondary} />
+        <AuthenticationButton linkColor={colors.secondary} />
       </Container>
     </HeaderWithGreyContainer>
   )
