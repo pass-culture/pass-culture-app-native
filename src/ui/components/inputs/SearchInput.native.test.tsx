@@ -34,4 +34,31 @@ describe('SearchInput component', () => {
 
     expect(onReset).toHaveBeenCalledTimes(1)
   })
+
+  it('should display "Obligatoire" when isRequiredField = true and has label', async () => {
+    const { queryByText } = render(
+      <SearchInput
+        value="Some text"
+        label="Label"
+        onChangeText={onChangeText}
+        onPressRightIcon={onReset}
+        isRequiredField={true}
+      />
+    )
+
+    expect(queryByText('Obligatoire')).toBeTruthy()
+  })
+
+  it('should not display "Obligatoire" when isRequiredField = false and has label', async () => {
+    const { queryByText } = render(
+      <SearchInput
+        value="Some text"
+        label="Label"
+        onChangeText={onChangeText}
+        onPressRightIcon={onReset}
+      />
+    )
+
+    expect(queryByText('Obligatoire')).toBeFalsy()
+  })
 })

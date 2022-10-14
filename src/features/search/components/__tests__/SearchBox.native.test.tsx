@@ -8,7 +8,8 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from '../SearchBox'
 
@@ -71,11 +72,13 @@ describe('SearchBox component', () => {
     expect(render(<SearchBox searchInputID={searchInputID} />)).toMatchSnapshot()
   })
 
-  it('should call logSearchQuery on submit', () => {
+  it('should call logSearchQuery on submit', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    })
 
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
     expect(navigate).toBeCalledWith(
@@ -118,16 +121,20 @@ describe('SearchBox component', () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
 
     const searchInput = getByPlaceholderText('Offre, artiste...')
-    await fireEvent(searchInput, 'onChangeText', 'Some text')
+    await act(async () => {
+      fireEvent(searchInput, 'onChangeText', 'Some text')
+    })
 
     expect(searchInput.props.value).toBe('Some text')
   })
 
-  it('should not execute a search if input is empty', () => {
+  it('should not execute a search if input is empty', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
+    })
 
     expect(navigate).not.toBeCalled()
   })
@@ -146,7 +153,9 @@ describe('SearchBox component', () => {
 
       const previousButton = getByTestId('backButton')
 
-      await fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       expect(navigate).toBeCalledWith(
         ...getTabNavConfig('Search', {
@@ -167,7 +176,9 @@ describe('SearchBox component', () => {
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
         const previousButton = getByTestId('backButton')
 
-        await fireEvent.press(previousButton)
+        await act(async () => {
+          fireEvent.press(previousButton)
+        })
 
         expect(mockStagedDispatch).toBeCalledWith({
           type: 'SET_STATE_FROM_DEFAULT',
@@ -191,7 +202,9 @@ describe('SearchBox component', () => {
       const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
       const searchInput = getByPlaceholderText('Offre, artiste...')
 
-      await fireEvent(searchInput, 'onFocus')
+      await act(async () => {
+        fireEvent(searchInput, 'onFocus')
+      })
 
       expect(navigate).not.toBeCalled()
     })
@@ -203,7 +216,9 @@ describe('SearchBox component', () => {
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
         const resetIcon = getByTestId('resetSearchInput')
-        await fireEvent.press(resetIcon)
+        await act(async () => {
+          fireEvent.press(resetIcon)
+        })
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
@@ -229,7 +244,9 @@ describe('SearchBox component', () => {
         const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
         const searchInput = getByPlaceholderText('Offre, artiste...')
 
-        await fireEvent(searchInput, 'onFocus')
+        await act(async () => {
+          fireEvent(searchInput, 'onFocus')
+        })
 
         expect(navigate).not.toBeCalled()
       }
@@ -242,7 +259,9 @@ describe('SearchBox component', () => {
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
         const resetIcon = getByTestId('resetSearchInput')
-        await fireEvent.press(resetIcon)
+        await act(async () => {
+          fireEvent.press(resetIcon)
+        })
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
@@ -256,11 +275,13 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should execute a search if input is not empty', () => {
+  it('should execute a search if input is not empty', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    })
 
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
@@ -274,20 +295,32 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should redirect on location page on location button click', async () => {
+  it('should open location modal on location button click', async () => {
+    const mockShowModal = jest.fn()
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: false,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const locationButton = getByTestId('locationButton')
-    await fireEvent.press(locationButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'LocationFilter')
+    await act(async () => {
+      fireEvent.press(locationButton)
+    })
+
+    expect(mockShowModal).toBeCalled()
   })
 
   it('should display suggestions view when focusing search input and no search executed', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
-    await fireEvent(searchInput, 'onFocus')
+    await act(async () => {
+      fireEvent(searchInput, 'onFocus')
+    })
 
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
@@ -319,9 +352,12 @@ describe('SearchBox component', () => {
 
   it('should display filter button with the number of active filters', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-    const filterButton = getByTestId('searchFilterBadge')
+    const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
+    let filterButton
+    await act(async () => {
+      filterButton = renderAPI.getByTestId('searchFilterBadge')
+    })
 
     expect(filterButton).toHaveTextContent('3')
   })

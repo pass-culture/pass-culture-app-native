@@ -6,7 +6,7 @@ import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchHeader } from 'features/search/components/SearchHeader'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
-import { render } from 'tests/utils/web'
+import { act, render } from 'tests/utils/web'
 
 jest.mock('react-query')
 
@@ -25,16 +25,16 @@ describe('SearchHeader component', () => {
 
   it('should contain a button to go to the search suggestions view', () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { queryByRole } = render(<SearchHeader searchInputID={searchInputID} />)
+    const { queryByText } = render(<SearchHeader searchInputID={searchInputID} />)
 
-    const button = queryByRole('button')
-
-    expect(button).toHaveTextContent('Recherche par mots-clés')
+    expect(queryByText('Recherche par mots-clés')).toBeTruthy()
   })
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    render(<SearchHeader searchInputID={searchInputID} />)
+    await act(async () => {
+      render(<SearchHeader searchInputID={searchInputID} />)
+    })
 
     await userEvent.tab()
 
@@ -68,8 +68,10 @@ describe('SearchHeader component', () => {
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { getByRole } = render(<SearchHeader searchInputID={searchInputID} />)
 
-    await userEvent.tab()
-    await userEvent.tab()
+    await act(async () => {
+      await userEvent.tab()
+      await userEvent.tab()
+    })
 
     const searchMainInput = getByRole('searchbox', { hidden: true })
     expect(searchMainInput).not.toHaveFocus()
@@ -81,8 +83,10 @@ describe('SearchHeader component', () => {
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { getByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
 
-    await userEvent.tab()
-    await userEvent.tab()
+    await act(async () => {
+      await userEvent.tab()
+      await userEvent.tab()
+    })
 
     const locationFilterButton = getByTestId('locationButton')
     expect(locationFilterButton).toHaveFocus()

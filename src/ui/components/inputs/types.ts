@@ -29,6 +29,7 @@ type CustomSearchInputProps = InputProps & {
   onFocus?: () => void
   inputContainerStyle?: ViewStyle
   children?: React.ReactNode
+  isRequiredField?: boolean
 }
 
 export type RNTextInputProps = Pick<
@@ -102,6 +103,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     children: props.children,
     isFocusable: props.isFocusable,
     onFocus: props.onFocus,
+    isRequiredField: props.isRequiredField,
   }
 }
 

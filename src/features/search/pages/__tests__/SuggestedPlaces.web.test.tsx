@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { SuggestedPlace } from 'libs/place'
@@ -27,14 +26,18 @@ jest.mock('libs/place', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: false }),
 }))
 
+const mockSetSelectedPlaceOrVenue = jest.fn()
+
 describe('SuggestedPlaces component', () => {
   it('should trigger onPress when pressing the Space bar on focused place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
-    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
+    const { getByTestId } = render(
+      <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
+    )
 
     fireEvent.focus(getByTestId(keyExtractor(mockPlaces[1])))
     fireEvent.keyDown(getByTestId(keyExtractor(mockPlaces[1])), { key: 'Spacebar' })
 
-    expect(navigate).toHaveBeenCalledWith('LocationFilter', { selectedPlace: mockPlaces[1] })
+    expect(mockSetSelectedPlaceOrVenue).toHaveBeenCalledWith(mockPlaces[1])
   })
 })
