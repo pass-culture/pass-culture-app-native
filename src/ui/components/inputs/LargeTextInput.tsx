@@ -47,7 +47,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
-          multiline={true}
+          multiline
           testID="large-text-input"
           nativeID={largeTextInputID}
         />

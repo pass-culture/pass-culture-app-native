@@ -144,7 +144,7 @@ export const ForgottenPassword: FunctionComponent = () => {
             label="Adresse e-mail"
             email={email}
             onEmailChange={onEmailChange}
-            autoFocus={true}
+            autoFocus
             accessibilityDescribedBy={emailErrorMessageId}
           />
           <InputError

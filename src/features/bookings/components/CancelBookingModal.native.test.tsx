@@ -45,7 +45,7 @@ describe('<CancelBookingModal />', () => {
   it('should dismiss modal on press rightIconButton', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const page = render(
-      <CancelBookingModal visible={true} dismissModal={mockDismissModal} booking={booking} />
+      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
 
     const dismissModalButton = page.getByTestId('Ne pas annuler')

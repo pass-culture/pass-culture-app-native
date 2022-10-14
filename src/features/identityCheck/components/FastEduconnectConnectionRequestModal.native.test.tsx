@@ -30,7 +30,7 @@ enableNewIdentificationFlowSpy.mockReturnValue(false)
 describe('<IdentityCheckEnd/>', () => {
   it('should render correctly if modal visible', () => {
     const renderAPI = render(
-      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     expect(renderAPI).toMatchSnapshot()
   })
@@ -44,7 +44,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   it('should call hideModal function when clicking on Close icon', () => {
     const { getByTestId } = render(
-      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     const rightIcon = getByTestId(
       "Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
@@ -55,7 +55,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   it('should redirect to EduConnect when cliking on "Identification avec ÉduConnect" button', async () => {
     const { getByText } = render(
-      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification avec ÉduConnect'))
     expect(hideModalMock).toHaveBeenCalled()
@@ -68,7 +68,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   it('should dispatch ubble identification method in context when clicking on "Identification manuelle" button', async () => {
     const { getByText } = render(
-      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification manuelle'))
     expect(hideModalMock).toHaveBeenCalled()
@@ -80,7 +80,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   it('should redirect to identity check start screen on "Identification manuelle" button press when enableNewIdentificationFlow is false', async () => {
     const { getByText } = render(
-      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification manuelle'))
 
@@ -91,7 +91,7 @@ describe('<IdentityCheckEnd/>', () => {
     enableNewIdentificationFlowSpy.mockReturnValueOnce(true)
 
     const { getByText } = render(
-      <FastEduconnectConnectionRequestModal visible={true} hideModal={hideModalMock} />
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification manuelle'))
 

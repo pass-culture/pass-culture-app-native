@@ -25,7 +25,7 @@ export const TimeSlot: React.FC = () => {
   return (
     <CenteredSection title={SectionTitle.TimeSlot}>
       <Slider
-        showValues={true}
+        showValues
         values={values}
         max={MAX_HOUR}
         formatValues={formatHour}

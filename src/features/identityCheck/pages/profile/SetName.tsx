@@ -53,7 +53,7 @@ export const SetName = () => {
           <TextInput
             label="Prénom"
             value={firstName}
-            autoFocus={true}
+            autoFocus
             onChangeText={setFirstName}
             placeholder="Ton prénom"
             textContentType="username"

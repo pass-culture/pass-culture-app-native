@@ -16,7 +16,7 @@ const mockUseIsUserUnderageBeneficiary = jest
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
     const renderAPI = render(
-      <CreditExplanation isDepositExpired={true} domainsCredit={domains_credit_v1} />
+      <CreditExplanation isDepositExpired domainsCredit={domains_credit_v1} />
     )
     expect(renderAPI).toMatchSnapshot()
   })
@@ -65,7 +65,7 @@ describe('<CreditExplanation/>', () => {
 
     it('should log logConsultModalExpiredGrant analytics when expired deposit and press the button "Mon crédit est expiré, que faire ?"', () => {
       const { getByText } = render(
-        <CreditExplanation isDepositExpired={true} domainsCredit={domains_credit_v1} />
+        <CreditExplanation isDepositExpired domainsCredit={domains_credit_v1} />
       )
 
       const explanationButton = getByText('Mon crédit est expiré, que faire ?')

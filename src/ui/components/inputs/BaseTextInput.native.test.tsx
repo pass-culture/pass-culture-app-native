@@ -21,7 +21,7 @@ describe('<BaseTextInput />', () => {
   it('should replicate autoFocus behaviour by calling focus() on mount when prop autoFocus is true', () => {
     const ref = React.createRef<RNTextInput>()
     const renderAPI = render(
-      <BaseTextInput autoFocus={true} placeholder={'placeholder'} value={'value'} ref={ref} />
+      <BaseTextInput autoFocus placeholder={'placeholder'} value={'value'} ref={ref} />
     )
 
     const nativeTextInput = renderAPI.getByPlaceholderText('placeholder')
@@ -34,11 +34,11 @@ describe('<BaseTextInput />', () => {
     const ref = React.createRef<RNTextInput>()
     const renderAPI = render(
       <BaseTextInput
-        autoFocus={true}
+        autoFocus
         placeholder={'placeholder'}
         value={'value'}
         ref={ref}
-        nativeAutoFocus={true}
+        nativeAutoFocus
       />
     )
 

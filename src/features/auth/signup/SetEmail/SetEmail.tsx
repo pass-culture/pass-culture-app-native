@@ -57,7 +57,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         label="Adresse e-mail"
         email={email}
         onEmailChange={onEmailChange}
-        autoFocus={true}
+        autoFocus
         onSubmitEditing={validateEmail}
         ref={emailInput}
         accessibilityDescribedBy={emailInputErrorId}

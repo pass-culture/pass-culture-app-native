@@ -20,7 +20,7 @@ describe('Categories component', () => {
       <Categories
         title="Catégories"
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
-        isVisible={true}
+        isVisible
         hideModal={jest.fn()}
       />,
       {

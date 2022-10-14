@@ -401,12 +401,7 @@ export const AppComponents: FunctionComponent = () => {
           />
           <Spacer.Column numberOfSpaces={1} />
           <StyledTitle4>Text Input - Error</StyledTitle4>
-          <TextInput
-            value=""
-            onChangeText={doNothingFn}
-            placeholder={'Placeholder'}
-            isError={true}
-          />
+          <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} isError />
           <Spacer.Column numberOfSpaces={1} />
           <StyledTitle4>Password Input</StyledTitle4>
           <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
@@ -561,7 +556,7 @@ export const AppComponents: FunctionComponent = () => {
             />
             <Spacer.Column numberOfSpaces={1} />
             <CulturalSurveyCheckbox
-              selected={true}
+              selected
               title={'Visité un musée,'}
               subtitle={'une canne à pêche'}
               onPress={() => null}
@@ -839,7 +834,7 @@ const FilterSwitchesSection = () => {
       <SectionRow
         type="clickable"
         title="Active and disabled"
-        cta={<FilterSwitch active={true} disabled={true} toggle={() => null} />}
+        cta={<FilterSwitch active disabled toggle={() => null} />}
       />
       <Spacer.Column numberOfSpaces={1} />
       <SectionRow
@@ -853,7 +848,7 @@ const FilterSwitchesSection = () => {
       <SectionRow
         type="clickable"
         title="Inactive and disabled"
-        cta={<FilterSwitch active={false} disabled={true} toggle={() => null} />}
+        cta={<FilterSwitch active={false} disabled toggle={() => null} />}
       />
     </React.Fragment>
   )

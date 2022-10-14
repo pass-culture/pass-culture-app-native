@@ -30,7 +30,7 @@ describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', () => {
     const page = render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={20} />)
+      reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />)
     )
 
     const dismissModalButton = page.getByTestId('Fermer la modale')
@@ -49,7 +49,7 @@ describe('<BookingOfferModalComponent />', () => {
   it('should log event BookingProcessStart when modal opens', () => {
     const offerId = 30
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={offerId} />))
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={offerId} />))
     expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerId)
   })
 

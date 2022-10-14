@@ -213,8 +213,8 @@ export const SearchPrice: FunctionComponent<Props> = ({
         )
       }
       title={title}
-      isFullscreen={true}
-      noPadding={true}
+      isFullscreen
+      noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
@@ -226,7 +226,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
           isSearchDisabled={disabled}
         />
       }
-      shouldScrollToEnd={true}>
+      shouldScrollToEnd>
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
         {!!isLoggedInAndBeneficiary && (

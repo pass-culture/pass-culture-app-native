@@ -37,7 +37,7 @@ describe('getIconAndWording', () => {
 describe('AccessibilityAtom', () => {
   it('should display the validIcon when isValid is true', () => {
     const { queryByTestId } = render(
-      <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={true} />
+      <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />
     )
     expect(queryByTestId('invalidTestId')).toBeNull()
     expect(queryByTestId('validTestId')).toBeTruthy()

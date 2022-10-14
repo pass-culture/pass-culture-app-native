@@ -24,7 +24,7 @@ describe('<TextInput />', () => {
   it('should render correctly when in error', () => {
     const notErrorInstance = render(NormalStateTextInput)
     const errorInstance = render(
-      <TextInput isError={true} placeholder="placeholder" onChangeText={doNothingFn} />
+      <TextInput isError placeholder="placeholder" onChangeText={doNothingFn} />
     )
 
     expect(notErrorInstance).toMatchDiffSnapshot(errorInstance)

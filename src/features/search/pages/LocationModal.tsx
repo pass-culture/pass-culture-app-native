@@ -319,8 +319,8 @@ export const LocationModal: FunctionComponent<Props> = ({
         )
       }
       title={title}
-      isFullscreen={true}
-      noPadding={true}
+      isFullscreen
+      noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
@@ -414,7 +414,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                                     values={[aroundRadius]}
                                     max={MAX_RADIUS}
                                     onValuesChange={onValuesChange}
-                                    shouldShowMinMaxValues={true}
+                                    shouldShowMinMaxValues
                                     sliderLength={sliderLength}
                                   />
                                 </View>

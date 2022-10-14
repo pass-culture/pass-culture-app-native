@@ -15,7 +15,7 @@ describe('<CreditCeilingsModal/>', () => {
     const renderAPI = render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
-        visible={true}
+        visible
         hideModal={hideModalMock}
       />
     )
@@ -37,7 +37,7 @@ describe('<CreditCeilingsModal/>', () => {
     const { getByTestId } = render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
-        visible={true}
+        visible
         hideModal={hideModalMock}
       />
     )
@@ -50,7 +50,7 @@ describe('<CreditCeilingsModal/>', () => {
     const { queryByTestId } = render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
-        visible={true}
+        visible
         hideModal={hideModalMock}
       />
     )
@@ -62,7 +62,7 @@ describe('<CreditCeilingsModal/>', () => {
     const { queryByTestId } = render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithPhysicalCeiling}
-        visible={true}
+        visible
         hideModal={hideModalMock}
       />
     )

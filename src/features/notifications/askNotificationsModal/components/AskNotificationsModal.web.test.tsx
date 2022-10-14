@@ -5,7 +5,7 @@ import { render } from 'tests/utils'
 
 describe('AskNotificationsModal', () => {
   it('should render null in web', () => {
-    const component = render(<AskNotificiationsModal visible={true} onHideModal={jest.fn()} />)
+    const component = render(<AskNotificiationsModal visible onHideModal={jest.fn()} />)
     expect(component).toMatchObject({})
   })
 })

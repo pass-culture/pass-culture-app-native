@@ -24,16 +24,14 @@ describe('AskNotificationsModal', () => {
   })
 
   it('should display the modal when is visible', () => {
-    const { queryByText } = render(
-      <AskNotificiationsModal visible={true} onHideModal={hideModal} />
-    )
+    const { queryByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = queryByText('Activer les notifications')
     expect(button).toBeTruthy()
   })
 
   it('should log accepted notifications when press accept button', () => {
-    const { getByText } = render(<AskNotificiationsModal visible={true} onHideModal={hideModal} />)
+    const { getByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = getByText('Activer les notifications')
     fireEvent.press(button)
@@ -42,7 +40,7 @@ describe('AskNotificationsModal', () => {
   })
 
   it('should request notification autorization accepted notifications when press accept button', () => {
-    const { getByText } = render(<AskNotificiationsModal visible={true} onHideModal={hideModal} />)
+    const { getByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = getByText('Activer les notifications')
     fireEvent.press(button)
@@ -52,7 +50,7 @@ describe('AskNotificationsModal', () => {
 
   it('should hide modal when accept button is pressed and permissions are already granted', async () => {
     mockCheckNotifications.mockResolvedValueOnce({ status: RESULTS.GRANTED, settings: {} })
-    const { getByText } = render(<AskNotificiationsModal visible={true} onHideModal={hideModal} />)
+    const { getByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = getByText('Activer les notifications')
     fireEvent.press(button)
@@ -64,7 +62,7 @@ describe('AskNotificationsModal', () => {
 
   it('should hide modal when accept button is pressed and request notification is pressed and permissions are denied (first time asking)', async () => {
     mockCheckNotifications.mockResolvedValueOnce({ status: RESULTS.DENIED, settings: {} })
-    const { getByText } = render(<AskNotificiationsModal visible={true} onHideModal={hideModal} />)
+    const { getByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = getByText('Activer les notifications')
     fireEvent.press(button)
@@ -79,9 +77,7 @@ describe('AskNotificationsModal', () => {
     'should open settings when accept button is pressed and permission is not granted nor denied',
     async (status) => {
       mockCheckNotifications.mockResolvedValueOnce({ status, settings: {} })
-      const { getByText } = render(
-        <AskNotificiationsModal visible={true} onHideModal={hideModal} />
-      )
+      const { getByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
       const button = getByText('Activer les notifications')
       fireEvent.press(button)
@@ -94,9 +90,7 @@ describe('AskNotificationsModal', () => {
   )
 
   it('should log dismissed notifications when press cross button and hide modale', async () => {
-    const { getByLabelText } = render(
-      <AskNotificiationsModal visible={true} onHideModal={hideModal} />
-    )
+    const { getByLabelText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const crossButton = getByLabelText('Fermer la modale')
     fireEvent.press(crossButton)

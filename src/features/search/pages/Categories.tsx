@@ -94,8 +94,8 @@ export const Categories: FunctionComponent<Props> = ({
         )
       }
       title={title}
-      isFullscreen={true}
-      noPadding={true}
+      isFullscreen
+      noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}

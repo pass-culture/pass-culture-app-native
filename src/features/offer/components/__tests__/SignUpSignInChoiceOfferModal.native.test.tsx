@@ -14,14 +14,14 @@ describe('SignUpSignInChoiceOfferModal', () => {
 
   it('renders the modal', () => {
     const { getByText } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible={true} dismissModal={dismissModal} />
+      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
     expect(getByText('Connecte-toi pour profiter de cette fonctionnalité')).toBeTruthy()
   })
 
   it('go to login on click button and log analytics', async () => {
     const { getByText } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible={true} dismissModal={dismissModal} />
+      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
 
     const button = getByText('Se connecter')
@@ -33,7 +33,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
 
   it('go to signup on click button and log analytics', async () => {
     const { getByText } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible={true} dismissModal={dismissModal} />
+      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
 
     const button = getByText(`S’inscrire`)
@@ -45,7 +45,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
 
   it('should log analytics when quitting modal', async () => {
     const { getByTestId } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible={true} dismissModal={dismissModal} />
+      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
 
     const closeButton = getByTestId('rightIcon')

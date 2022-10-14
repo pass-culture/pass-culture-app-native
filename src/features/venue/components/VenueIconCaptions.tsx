@@ -52,7 +52,7 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
             Icon={PointerLocationNotFilledDisabled}
             caption="Géolocalisation désactivée"
             accessibilityLabel={undefined}
-            isDisabled={true}
+            isDisabled
           />
         )}
       </ActiveGeolocationButton>

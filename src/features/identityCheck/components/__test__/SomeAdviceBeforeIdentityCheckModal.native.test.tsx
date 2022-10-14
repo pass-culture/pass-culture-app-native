@@ -10,7 +10,7 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(
       <SomeAdviceBeforeIdentityCheckModal
-        visible={true}
+        visible
         hideModal={hideModalMock}
         onPressContinue={onPressContinueMock}
       />
@@ -21,7 +21,7 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
   it('should call hideModal function when clicking on Close icon', () => {
     const { getByTestId } = render(
       <SomeAdviceBeforeIdentityCheckModal
-        visible={true}
+        visible
         hideModal={hideModalMock}
         onPressContinue={onPressContinueMock}
       />
@@ -34,7 +34,7 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
   it(`should call onPressContinue when cliking on "J'ai compris" button`, () => {
     const { getByText } = render(
       <SomeAdviceBeforeIdentityCheckModal
-        visible={true}
+        visible
         hideModal={hideModalMock}
         onPressContinue={onPressContinueMock}
       />

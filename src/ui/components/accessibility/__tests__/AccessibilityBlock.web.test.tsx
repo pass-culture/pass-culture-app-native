@@ -8,9 +8,9 @@ describe('AccessibilityBlock', () => {
   it('renders all handicap information', () => {
     const { queryByTestId } = render(
       <AccessibilityBlock
-        audioDisability={true}
+        audioDisability
         motorDisability={false}
-        mentalDisability={true}
+        mentalDisability
         visualDisability={false}
       />
     )
@@ -24,7 +24,7 @@ describe('AccessibilityBlock', () => {
       <AccessibilityBlock
         audioDisability={undefined}
         motorDisability={false}
-        mentalDisability={true}
+        mentalDisability
         visualDisability={false}
       />
     )

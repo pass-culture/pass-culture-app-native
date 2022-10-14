@@ -27,7 +27,7 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
       <FilterPageButtons
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
-        isModal={true}
+        isModal
         isSearchDisabled={isSearchDisabled}
       />
     </FilterPageButtonsContainer>

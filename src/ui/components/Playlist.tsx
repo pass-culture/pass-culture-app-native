@@ -170,7 +170,7 @@ export const Playlist: FunctionComponent<Props> = ({
         getItemLayout={getItemLayout}
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={200}
-        horizontal={true}
+        horizontal
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListHeaderComponent={HorizontalMargin}
         ListFooterComponent={HorizontalMargin}
