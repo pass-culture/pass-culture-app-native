@@ -1,7 +1,7 @@
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { CountryCode } from 'libphonenumber-js'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -21,6 +21,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
@@ -74,6 +75,11 @@ export const SetPhoneValidationCode = () => {
   const validationCodeInputErrorId = uuidv4()
 
   const { visible: isCodeNotReceivedModalVisible, hideModal, showModal } = useModal(false)
+
+  const openMissingCodeModal = useCallback(() => {
+    analytics.logHasClickedMissingCode()
+    showModal()
+  }, [showModal])
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: () => {
@@ -156,7 +162,7 @@ export const SetPhoneValidationCode = () => {
                 inline
                 icon={Again}
                 wording="Code non reçu&nbsp;?"
-                onPress={showModal}
+                onPress={openMissingCodeModal}
               />
             </ButtonContainer>
             <CodeNotReceivedModal

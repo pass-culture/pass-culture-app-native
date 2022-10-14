@@ -56,6 +56,7 @@ export enum AnalyticsEvent {
   HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
   HAS_APPLIED_FAVORITES_SORTING = 'HasAppliedFavoritesSorting',
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
+  HAS_CLICKED_MISSING_CODE = 'HasClickedMissingCode',
   HAS_DISMISSED_APP_SHARING_MODAL = 'HasDismissedAppSharingModal',
   HAS_MADE_A_CHOICE_FOR_COOKIES = 'HasMadeAChoiceForCookies',
   HAS_OPENED_COOKIES_ACCORDION = 'HasOpenedCookiesAccordion',
