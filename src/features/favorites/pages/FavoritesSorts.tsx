@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'

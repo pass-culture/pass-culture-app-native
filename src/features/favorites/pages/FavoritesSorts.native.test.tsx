@@ -1,8 +1,8 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { analytics } from 'libs/firebase/analytics'
@@ -15,7 +15,9 @@ import {
 } from 'libs/geolocation'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
-jest.mock('./FavoritesWrapper', () => jest.requireActual('./FavoritesWrapper'))
+jest.mock('features/favorites/context/FavoritesWrapper', () =>
+  jest.requireActual('features/favorites/context/FavoritesWrapper')
+)
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED

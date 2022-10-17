@@ -85,7 +85,7 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/search/pages/SearchWrapper')
 
-jest.mock('features/favorites/pages/FavoritesWrapper')
+jest.mock('features/favorites/context/FavoritesWrapper')
 jest.mock('features/navigation/useGoBack', () =>
   jest.requireActual('features/navigation/__mocks__/useGoBack.ts')
 )

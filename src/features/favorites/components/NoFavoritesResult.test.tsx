@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { initialFavoritesState } from 'features/favorites/pages/reducer'
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -19,7 +19,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
     ...mockFavoritesState,
     dispatch: mockDispatch,

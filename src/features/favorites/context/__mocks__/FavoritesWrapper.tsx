@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { View } from 'react-native'
 
-import { initialFavoritesState } from 'features/favorites/pages/reducer'
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 
 import { FavoritesWrapper as ActualFavoritesWrapper } from '../FavoritesWrapper'
 

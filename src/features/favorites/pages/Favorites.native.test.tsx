@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, render } from 'tests/utils'
 
 import { Favorites } from './Favorites'
-import { initialFavoritesState } from './reducer'
 
 const mockSearchState = initialFavoritesState
 const mockDispatch = jest.fn()
@@ -14,7 +14,7 @@ const mockDispatch = jest.fn()
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
     ...mockSearchState,
     dispatch: mockDispatch,

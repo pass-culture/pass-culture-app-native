@@ -9,7 +9,7 @@ import { Sort } from 'features/favorites/components/Buttons/Sort'
 import { Favorite } from 'features/favorites/components/Favorite'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
-import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import {
   sortByAscendingPrice,
   sortByDistanceAroundMe,

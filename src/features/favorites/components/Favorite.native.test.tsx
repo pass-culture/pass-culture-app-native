@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { ExpenseDomain, FavoriteResponse, SubcategoryIdEnum, UserProfileResponse } from 'api/gen'
-import { initialFavoritesState } from 'features/favorites/pages/reducer'
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -60,7 +60,7 @@ jest.mock('libs/geolocation/hooks/useDistance', () => ({
 }))
 
 const mockFavoritesState = initialFavoritesState
-jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
     favoritesState: mockFavoritesState,
   }),

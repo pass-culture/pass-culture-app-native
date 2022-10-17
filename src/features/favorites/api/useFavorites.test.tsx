@@ -4,11 +4,11 @@ import { View } from 'react-native'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import {
   addFavoriteJsonResponseSnap,
   paginatedFavoritesResponseSnap,
 } from 'features/favorites/fixtures/favoritesResponse'
-import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'

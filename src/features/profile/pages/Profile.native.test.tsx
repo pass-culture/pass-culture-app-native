@@ -5,8 +5,8 @@ import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
-import { initialFavoritesState } from 'features/favorites/pages/reducer'
+import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
 import { env } from 'libs/environment'
@@ -78,7 +78,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 
 const mockFavoritesState = initialFavoritesState
 const mockFavoriteDispatch = jest.fn()
-jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
     ...mockFavoritesState,
     dispatch: mockFavoriteDispatch,

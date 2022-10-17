@@ -5,8 +5,8 @@ import { QueryObserverSuccessResult, UseMutationResult } from 'react-query'
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useFavorites, useRemoveFavorite } from 'features/favorites/api'
 import { FavoriteMutationContext } from 'features/favorites/api/types'
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/favoritesResponse'
-import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,7 +15,7 @@ import { render } from 'tests/utils/web'
 import { FavoritesResults } from './FavoritesResults'
 
 const mockFavoritesState = initialFavoritesState
-jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
     ...mockFavoritesState,
     dispatch: jest.fn(),

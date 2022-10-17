@@ -4,7 +4,7 @@ import {
   initialFavoritesState,
   favoritesReducer,
   FavoritesContext as FavoritesContextType,
-} from 'features/favorites/pages/reducer'
+} from 'features/favorites/context/reducer'
 
 const FavoritesContext = React.createContext<FavoritesContextType | null>(null)
 
