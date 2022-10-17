@@ -8,6 +8,7 @@ import {
   CodeNotReceivedModal,
   CodeNotReceivedModalProps,
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -49,6 +50,7 @@ describe('<CodeNotReceivedModal />', () => {
 
   it('should match snapshot', () => {
     const renderAPI = renderCodeNotReceivedModal()
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -59,15 +61,17 @@ describe('<CodeNotReceivedModal />', () => {
       isLastAttempt: true,
     })
     const renderAPI = renderCodeNotReceivedModal()
+
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should call dismissModal upon pressing on Close', () => {
     const dismissModalMock = jest.fn()
     const { getByTestId } = renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
-    const closeButton = getByTestId('Fermer la modale')
 
+    const closeButton = getByTestId('Fermer la modale')
     fireEvent.press(closeButton)
+
     expect(dismissModalMock).toBeCalled()
   })
 
@@ -132,13 +136,21 @@ describe('<CodeNotReceivedModal />', () => {
         message: 'Le nombre de tentatives maximal est dépassé',
       })
     )
-
     const { getByTestId } = renderCodeNotReceivedModal()
 
     const requestNewCodeButton = getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
     await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
+  })
+
+  it('should log event when pressing "Demander un autre code" button', async () => {
+    const { getByTestId } = renderCodeNotReceivedModal()
+
+    const requestNewCodeButton = getByTestId('Demander un autre code')
+    fireEvent.press(requestNewCodeButton)
+
+    await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalled())
   })
 })
 
