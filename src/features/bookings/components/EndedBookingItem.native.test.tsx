@@ -17,12 +17,12 @@ describe('EndedBookingItem', () => {
     expect(queryByText('Avez-vous déjà vu ?')).toBeTruthy()
   })
 
-  it('should display "Utilisé" and dateUsed labels if booking was used', () => {
+  it('should display "Réservation utilisée" and dateUsed labels if booking was used', () => {
     const { queryByText } = renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       dateUsed: '2021-03-16T23:01:37.925926',
     })
-    expect(queryByText('Utilisé')).toBeTruthy()
+    expect(queryByText('Réservation utilisée')).toBeTruthy()
     expect(queryByText('le 16/03/2021')).toBeTruthy()
   })
 
@@ -31,7 +31,7 @@ describe('EndedBookingItem', () => {
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.OFFERER,
     })
-    expect(queryByText('Annulé')).toBeTruthy()
+    expect(queryByText('Annulée')).toBeTruthy()
     expect(queryByText('le 15/03/2021')).toBeTruthy()
   })
 

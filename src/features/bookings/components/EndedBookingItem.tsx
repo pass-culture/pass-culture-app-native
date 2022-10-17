@@ -109,11 +109,11 @@ function getEndedBookingReason(
   dateUsed?: string | null
 ) {
   if (dateUsed) {
-    return <StyledInputRule title="Utilisé" icon={Valid} isValid noFullWidth />
+    return <StyledInputRule title="Réservation utilisée" icon={Valid} isValid noFullWidth />
   }
 
   if (cancellationReason === BookingCancellationReasons.OFFERER) {
-    return <StyledInputRule title="Annulé" icon={Wrong} isValid={false} noFullWidth />
+    return <StyledInputRule title="Annulée" icon={Wrong} isValid={false} noFullWidth />
   }
 
   return <StyledInputRule title="Réservation annulée" icon={Wrong} isValid={false} noFullWidth />
