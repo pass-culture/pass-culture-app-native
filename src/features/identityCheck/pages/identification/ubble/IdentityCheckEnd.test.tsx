@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
@@ -34,11 +35,11 @@ describe('<IdentityCheckEnd/>', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to next screen after timeout if nextSubscriptionStep is not null', () => {
+  it('should navigate to stepper after timeout if nextSubscriptionStep is not null', () => {
     render(<IdentityCheckEnd />)
-    expect(mockNavigateToNextScreen).not.toHaveBeenCalled()
+    expect(navigate).not.toHaveBeenCalled()
     jest.advanceTimersByTime(3000)
-    expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
   })
 
   it('should navigate to home after timeout if nextSubscriptionStep is null', () => {
