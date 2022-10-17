@@ -364,6 +364,16 @@ exports[`Categories component should render correctly 1`] = `
               }
             >
               <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityRole="none"
                 style={
                   Array [
