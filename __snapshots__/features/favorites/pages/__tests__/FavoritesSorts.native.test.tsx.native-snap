@@ -313,12 +313,20 @@ exports[`FavoritesSorts component should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                     },
                   ]
                 }
               >
-                <View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
                   <Text
                     isSelected={true}
                     numberOfLines={2}
@@ -414,12 +422,20 @@ exports[`FavoritesSorts component should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                     },
                   ]
                 }
               >
-                <View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
                   <Text
                     isSelected={false}
                     numberOfLines={2}
@@ -515,12 +531,20 @@ exports[`FavoritesSorts component should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                     },
                   ]
                 }
               >
-                <View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
                   <Text
                     isSelected={false}
                     numberOfLines={2}

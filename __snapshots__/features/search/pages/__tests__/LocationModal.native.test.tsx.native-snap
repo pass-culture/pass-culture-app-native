@@ -432,19 +432,29 @@ exports[`LocationModal component should render modal correctly after animation a
                             "flexBasis": 0,
                             "flexDirection": "row",
                             "flexGrow": 0.9,
-                            "flexShrink": 1,
+                            "flexShrink": 0,
                           },
                         ]
                       }
                     >
                       <View
-                        height={24}
-                        testID="BicolorLocationPointer"
-                        width={24}
+                        style={
+                          Array [
+                            Object {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          BicolorLocationPointer-SVG-Mock
-                        </Text>
+                        <View
+                          height={24}
+                          testID="BicolorLocationPointer"
+                          width={24}
+                        >
+                          <Text>
+                            BicolorLocationPointer-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                       <View
                         numberOfSpaces={2}
@@ -456,7 +466,15 @@ exports[`LocationModal component should render modal correctly after animation a
                           ]
                         }
                       />
-                      <View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
                         <Text
                           isSelected={false}
                           numberOfLines={2}
@@ -582,18 +600,28 @@ exports[`LocationModal component should render modal correctly after animation a
                             "flexBasis": 0,
                             "flexDirection": "row",
                             "flexGrow": 0.9,
-                            "flexShrink": 1,
+                            "flexShrink": 0,
                           },
                         ]
                       }
                     >
                       <View
-                        height={24}
-                        width={24}
+                        style={
+                          Array [
+                            Object {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                       <View
                         numberOfSpaces={2}
@@ -605,7 +633,15 @@ exports[`LocationModal component should render modal correctly after animation a
                           ]
                         }
                       />
-                      <View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
                         <Text
                           isSelected={false}
                           numberOfLines={2}
@@ -731,18 +767,28 @@ exports[`LocationModal component should render modal correctly after animation a
                             "flexBasis": 0,
                             "flexDirection": "row",
                             "flexGrow": 0.9,
-                            "flexShrink": 1,
+                            "flexShrink": 0,
                           },
                         ]
                       }
                     >
                       <View
-                        height={24}
-                        width={24}
+                        style={
+                          Array [
+                            Object {
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                       <View
                         numberOfSpaces={2}
@@ -754,7 +800,15 @@ exports[`LocationModal component should render modal correctly after animation a
                           ]
                         }
                       />
-                      <View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
                         <Text
                           isSelected={true}
                           numberOfLines={2}

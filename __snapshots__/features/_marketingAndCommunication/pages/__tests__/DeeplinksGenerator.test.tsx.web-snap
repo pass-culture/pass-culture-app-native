@@ -652,15 +652,15 @@ Array [
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexDirection": "row",
                       "WebkitFlexGrow": 0.9,
-                      "WebkitFlexShrink": 1,
+                      "WebkitFlexShrink": 0,
                       "alignItems": "center",
                       "flexBasis": "0px",
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "msFlexNegative": 1,
+                      "msFlexNegative": 0,
                       "msFlexPositive": 0.9,
                       "msFlexPreferredSize": "0px",
                     }
@@ -668,6 +668,13 @@ Array [
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
@@ -807,15 +814,15 @@ Array [
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexDirection": "row",
                       "WebkitFlexGrow": 0.9,
-                      "WebkitFlexShrink": 1,
+                      "WebkitFlexShrink": 0,
                       "alignItems": "center",
                       "flexBasis": "0px",
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "msFlexNegative": 1,
+                      "msFlexNegative": 0,
                       "msFlexPositive": 0.9,
                       "msFlexPreferredSize": "0px",
                     }
@@ -823,6 +830,13 @@ Array [
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
@@ -962,15 +976,15 @@ Array [
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexDirection": "row",
                       "WebkitFlexGrow": 0.9,
-                      "WebkitFlexShrink": 1,
+                      "WebkitFlexShrink": 0,
                       "alignItems": "center",
                       "flexBasis": "0px",
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "msFlexNegative": 1,
+                      "msFlexNegative": 0,
                       "msFlexPositive": 0.9,
                       "msFlexPreferredSize": "0px",
                     }
@@ -978,6 +992,13 @@ Array [
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
@@ -1117,15 +1138,15 @@ Array [
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexDirection": "row",
                       "WebkitFlexGrow": 0.9,
-                      "WebkitFlexShrink": 1,
+                      "WebkitFlexShrink": 0,
                       "alignItems": "center",
                       "flexBasis": "0px",
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "msFlexNegative": 1,
+                      "msFlexNegative": 0,
                       "msFlexPositive": 0.9,
                       "msFlexPreferredSize": "0px",
                     }
@@ -1133,6 +1154,13 @@ Array [
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
@@ -1272,15 +1300,15 @@ Array [
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexDirection": "row",
                       "WebkitFlexGrow": 0.9,
-                      "WebkitFlexShrink": 1,
+                      "WebkitFlexShrink": 0,
                       "alignItems": "center",
                       "flexBasis": "0px",
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "msFlexNegative": 1,
+                      "msFlexNegative": 0,
                       "msFlexPositive": 0.9,
                       "msFlexPreferredSize": "0px",
                     }
@@ -1288,6 +1316,13 @@ Array [
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
@@ -1427,15 +1462,15 @@ Array [
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexDirection": "row",
                       "WebkitFlexGrow": 0.9,
-                      "WebkitFlexShrink": 1,
+                      "WebkitFlexShrink": 0,
                       "alignItems": "center",
                       "flexBasis": "0px",
                       "flexDirection": "row",
                       "flexGrow": 0.9,
-                      "flexShrink": 1,
+                      "flexShrink": 0,
                       "msFlexAlign": "center",
                       "msFlexDirection": "row",
-                      "msFlexNegative": 1,
+                      "msFlexNegative": 0,
                       "msFlexPositive": 0.9,
                       "msFlexPreferredSize": "0px",
                     }
@@ -1443,6 +1478,13 @@ Array [
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
