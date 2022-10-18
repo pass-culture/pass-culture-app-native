@@ -54,6 +54,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
+  const logDuoOfferFilter = useLogFilterOnce(SectionTitle.Duo)
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { searchState } = useSearch()
   const { data: user } = useUserProfileInfo()
@@ -79,9 +80,10 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const offerTypes = watch('offerTypes')
 
   const toggleLimitDuoOfferSearch = useCallback(() => {
+    logDuoOfferFilter()
     const toggleLimitDuoOffer = !getValues('offerIsDuo')
     setValue('offerIsDuo', toggleLimitDuoOffer)
-  }, [setValue, getValues])
+  }, [logDuoOfferFilter, getValues, setValue])
 
   const onResetPress = useCallback(() => {
     reset({
