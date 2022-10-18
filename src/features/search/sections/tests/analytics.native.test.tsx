@@ -60,13 +60,6 @@ describe('Analytics - logUseFilter', () => {
     expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.OfferType)
   })
 
-  it('should log UseFilter once when changing duo offer', () => {
-    const { getByTestId } = render(<Section.DuoOffer />)
-    fireEvent.press(getByTestId('Interrupteur'))
-    fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Duo)
-  })
-
   it('should log UseFilter once when changing new offer', () => {
     const { getByTestId } = render(<Section.NewOffer />)
     fireEvent.press(getByTestId('Interrupteur'))

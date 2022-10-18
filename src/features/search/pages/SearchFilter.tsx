@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
@@ -41,7 +40,6 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 
 export const SearchFilter: React.FC = () => {
   const { searchState } = useStagedSearch()
-  const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
   const [scrollEnabled, setScrollEnabled] = useState(true)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -87,14 +85,6 @@ export const SearchFilter: React.FC = () => {
           {/* Prix */}
           <Section.Price />
           <Separator marginVertical={getSpacing(4)} />
-
-          {/* Uniquement les offres duo */}
-          {!!profile?.isBeneficiary && (
-            <ToggleContainer>
-              <Section.DuoOffer />
-              <Separator marginVertical={getSpacing(4)} />
-            </ToggleContainer>
-          )}
 
           {/* Uniquement les nouveautés */}
           <ToggleContainer>
