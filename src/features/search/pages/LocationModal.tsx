@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { View } from 'react-native'
+import { Keyboard, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -249,6 +249,7 @@ export const LocationModal: FunctionComponent<Props> = ({
     setValueWithValidation('selectedPlaceOrVenue', placeOrVenue)
     setValueWithValidation('searchPlaceOrVenue', placeOrVenue.label)
     setIsSearchInputFocused(false)
+    Keyboard.dismiss()
   }
 
   const handleSearchReset = useCallback(() => {
@@ -331,7 +332,8 @@ export const LocationModal: FunctionComponent<Props> = ({
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
         />
-      }>
+      }
+      keyboardShouldPersistTaps="handled">
       <FormWrapper>
         <Form.MaxWidth>
           <Controller
