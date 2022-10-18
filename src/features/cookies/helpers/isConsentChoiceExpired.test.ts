@@ -1,9 +1,7 @@
 import mockdate from 'mockdate'
 
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
-import { storage } from 'libs/storage'
 
-const COOKIES_CONSENT_KEY = 'cookies'
 const TODAY = new Date('2022-09-12')
 const LAST_WEEK = new Date('2022-09-05')
 // 1 month = 30 days
@@ -19,10 +17,6 @@ describe('isConsentChoiceExpired', () => {
   it.each([TODAY, LAST_WEEK, THREE_MONTHS_AGO, SIX_MONTHS_MINUS_A_SECOND_AGO])(
     'should not be expired if user has made choice less than 6 months ago',
     (choiceDatetime) => {
-      storage.saveObject(COOKIES_CONSENT_KEY, {
-        choiceDatetime: choiceDatetime.toISOString(),
-      })
-
       const hasExpired = isConsentChoiceExpired(choiceDatetime)
       expect(hasExpired).toEqual(false)
     }
@@ -31,10 +25,6 @@ describe('isConsentChoiceExpired', () => {
   it.each([EXACTLY_SIX_MONTHS_AGO, SIX_MONTHS_AND_ONE_SECOND_AGO, EIGHT_MONTHS_AGO, ONE_YEAR_AGO])(
     'should be expired if user has made choice 6 months ago or more than 6 months ago',
     (choiceDatetime) => {
-      storage.saveObject(COOKIES_CONSENT_KEY, {
-        choiceDatetime: choiceDatetime.toISOString(),
-      })
-
       const hasExpired = isConsentChoiceExpired(choiceDatetime)
       expect(hasExpired).toEqual(true)
     }

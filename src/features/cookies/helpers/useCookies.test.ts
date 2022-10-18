@@ -8,6 +8,7 @@ import { v4 } from '__mocks__/uuid'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ConsentState } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
@@ -50,7 +51,7 @@ describe('useCookies', () => {
       const { result } = renderHook(useCookies)
       const { cookiesConsent } = result.current
 
-      expect(cookiesConsent).toBeUndefined()
+      expect(cookiesConsent).toEqual({ state: ConsentState.LOADING })
 
       // Wait in act until the useEffect finishes
       await flushAllPromisesWithAct()
@@ -70,9 +71,12 @@ describe('useCookies', () => {
       })
 
       expect(result.current.cookiesConsent).toEqual({
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: ALL_OPTIONAL_COOKIES,
-        refused: [],
+        state: ConsentState.HAS_CONSENT,
+        value: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
       })
     })
   })
@@ -130,9 +134,12 @@ describe('useCookies', () => {
 
       await waitFor(() => {
         expect(result.current.cookiesConsent).toEqual({
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: ALL_OPTIONAL_COOKIES,
-          refused: [],
+          state: ConsentState.HAS_CONSENT,
+          value: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
         })
       })
     })

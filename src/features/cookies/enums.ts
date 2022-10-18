@@ -35,3 +35,9 @@ export enum CookiesSteps {
   COOKIES_CONSENT = 0,
   COOKIES_SETTINGS = 1,
 }
+
+export enum ConsentState {
+  LOADING,
+  UNKNOWN,
+  HAS_CONSENT,
+}

@@ -1,4 +1,4 @@
-import { CookieCategoriesEnum, CookieNameEnum } from 'features/cookies/enums'
+import { CookieCategoriesEnum, CookieNameEnum, ConsentState } from 'features/cookies/enums'
 
 export type Cookies = CookieNameEnum[]
 
@@ -7,6 +7,16 @@ export interface Consent {
   accepted: Cookies
   refused: Cookies
 }
+
+export type ConsentStatus =
+  | {
+      state: ConsentState.LOADING | ConsentState.UNKNOWN
+      value?: never
+    }
+  | {
+      state: ConsentState.HAS_CONSENT
+      value: Consent
+    }
 
 export type CookiesConsent =
   | {

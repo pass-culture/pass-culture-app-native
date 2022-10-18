@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { ConsentState } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
@@ -15,13 +16,20 @@ export function PrivacyPolicyV2() {
   const isCookiesListUpToDate = useIsCookiesListUpToDate()
 
   useEffect(() => {
-    // while fetching hasUserMadeCookieChoiceV2 value
-    if (hasUserMadeCookieChoiceV2 === undefined) return
+    switch (hasUserMadeCookieChoiceV2.state) {
+      case ConsentState.LOADING:
+        return
 
-    if (hasUserMadeCookieChoiceV2 && isCookiesListUpToDate) {
-      hideCookiesConsentModal()
-    } else {
-      showCookiesConsentModal()
+      case ConsentState.UNKNOWN:
+        showCookiesConsentModal()
+        break
+
+      default:
+        if (isCookiesListUpToDate) {
+          hideCookiesConsentModal()
+        } else {
+          showCookiesConsentModal()
+        }
     }
   }, [
     hasUserMadeCookieChoiceV2,

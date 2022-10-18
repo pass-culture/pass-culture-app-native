@@ -2,8 +2,10 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
+import { ConsentStatus } from 'features/cookies/types'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -16,12 +18,17 @@ jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))
 
-const defaultUseCookies = {
-  cookiesConsent: {
+const consentState: ConsentStatus = {
+  state: ConsentState.HAS_CONSENT,
+  value: {
     mandatory: COOKIES_BY_CATEGORY.essential,
     accepted: ALL_OPTIONAL_COOKIES,
     refused: [],
   },
+}
+
+const defaultUseCookies = {
+  cookiesConsent: consentState,
   setCookiesConsent: jest.fn(),
   setUserId: jest.fn(),
 }
@@ -113,7 +120,10 @@ describe('<PrivacyPolicy />', () => {
     })
 
     it('should show cookies modal V2 when appEnableCookiesV2 feature flag is activated', async () => {
-      mockUseCookies.mockReturnValueOnce({ ...defaultUseCookies, cookiesConsent: null })
+      mockUseCookies.mockReturnValueOnce({
+        ...defaultUseCookies,
+        cookiesConsent: { state: ConsentState.UNKNOWN },
+      })
       const renderAPI = await renderPrivacyPolicyV2()
 
       const title = renderAPI.queryByText('Choisir les cookies')
@@ -121,7 +131,10 @@ describe('<PrivacyPolicy />', () => {
     })
 
     it('should not show cookies modal V2 when appEnableCookiesV2 feature flag is activated and fetching cookies is loading', async () => {
-      mockUseCookies.mockReturnValueOnce({ ...defaultUseCookies, cookiesConsent: undefined })
+      mockUseCookies.mockReturnValueOnce({
+        ...defaultUseCookies,
+        cookiesConsent: { state: ConsentState.LOADING },
+      })
       const renderAPI = await renderPrivacyPolicyV2()
 
       const title = renderAPI.queryByText('Choisir les cookies')

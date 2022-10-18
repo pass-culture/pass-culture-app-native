@@ -1,19 +1,25 @@
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { Consent, Cookies, CookiesChoiceByCategory } from 'features/cookies/types'
-
-type CookiesChoice = Omit<Consent, 'mandatory'>
+import { ConsentState } from 'features/cookies/enums'
+import { Cookies, CookiesChoiceByCategory, ConsentStatus } from 'features/cookies/types'
 
 export const useCookiesChoiceByCategory = (
-  cookiesChoice?: CookiesChoice | null
+  cookiesChoice: ConsentStatus
 ): CookiesChoiceByCategory => {
-  if (!cookiesChoice)
+  if (
+    cookiesChoice.state === ConsentState.LOADING ||
+    cookiesChoice.state === ConsentState.UNKNOWN
+  ) {
     return {
       marketing: false,
       performance: false,
       customization: false,
     }
+  }
+
   const hasAcceptedCookies = (cookiesByCategory: Cookies) =>
-    Object.values(cookiesByCategory).every((cookie) => cookiesChoice.accepted.includes(cookie))
+    Object.values(cookiesByCategory).every((cookie) =>
+      cookiesChoice.value?.accepted.includes(cookie)
+    )
   return {
     marketing: hasAcceptedCookies(COOKIES_BY_CATEGORY.marketing),
     performance: hasAcceptedCookies(COOKIES_BY_CATEGORY.performance),
