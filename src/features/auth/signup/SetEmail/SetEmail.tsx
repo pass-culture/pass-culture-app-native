@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -14,6 +14,7 @@ import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { padding, Spacer, Typo } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
@@ -22,6 +23,7 @@ import { PreValidationSignupStepProps } from '../types'
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
+  const [isFocus, setIsFocus] = useState(false)
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
   const emailInputErrorId = uuidv4()
   const shouldDisableValidateButton = isValueEmpty(email)
@@ -48,8 +50,23 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
     setIsNewsletterChecked((prevIsNewsletterChecked) => !prevIsNewsletterChecked)
   }
 
+  const onCheckboxFocus = useCallback(() => {
+    setIsFocus(true)
+  }, [])
+
+  const onCheckboxBlur = useCallback(() => {
+    setIsFocus(false)
+  }, [])
+
+  const accessibilityState = useMemo(
+    () => ({ checked: isNewsletterChecked }),
+    [isNewsletterChecked]
+  )
+
   const checkBoxlabel =
     'J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture.'
+
+  useSpaceBarAction(isFocus ? onCheckboxPress : undefined)
 
   return (
     <Form.MaxWidth>
@@ -72,7 +89,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
       <StyledCheckBox
         onPress={onCheckboxPress}
         accessibilityRole={AccessibilityRole.CHECKBOX}
-        accessibilityState={{ checked: isNewsletterChecked }}>
+        accessibilityState={accessibilityState}
+        onFocus={onCheckboxFocus}
+        onBlur={onCheckboxBlur}>
         <CheckboxInput isChecked={isNewsletterChecked} />
         <CheckBoxText>
           <InputLabel htmlFor={checkboxID}>{checkBoxlabel}</InputLabel>
