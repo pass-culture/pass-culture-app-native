@@ -3,13 +3,21 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FinishSubscriptionModal } from 'features/auth/signup/FinishSubscriptionModal/FinishSubscriptionModal'
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { Spacer } from 'ui/theme'
+import { useModal } from 'ui/components/modals/useModal'
+import { padding, Spacer } from 'ui/theme'
 
 export function NavigationSignUp(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
+  const {
+    visible: finishSubscriptionModalVisible,
+    showModal: showFinishSubscriptionModal,
+    hideModal: hideFinishSubscriptionModal,
+  } = useModal(false)
 
   return (
     <ScrollView>
@@ -62,6 +70,16 @@ export function NavigationSignUp(): JSX.Element {
             })
           }
         />
+        <Row half>
+          <ButtonPrimary
+            wording="Finish subscription modal"
+            onPress={showFinishSubscriptionModal}
+          />
+          <FinishSubscriptionModal
+            visible={finishSubscriptionModalVisible}
+            hideModal={hideFinishSubscriptionModal}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
@@ -73,3 +91,8 @@ const StyledContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
+
+const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
+  width: half ? '50%' : '100%',
+  ...padding(2, 0.5),
+}))
