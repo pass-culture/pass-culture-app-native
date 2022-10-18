@@ -364,6 +364,16 @@ exports[`Categories component should render correctly 1`] = `
               }
             >
               <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityRole="none"
                 style={
                   Array [
@@ -412,18 +422,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -435,7 +455,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={true}
                         numberOfLines={2}
@@ -530,18 +558,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -553,7 +591,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -648,19 +694,29 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      fill="#eb0055"
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        fill="#eb0055"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -672,7 +728,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -767,18 +831,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -790,7 +864,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -885,18 +967,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -908,7 +1000,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1003,18 +1103,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1026,7 +1136,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1121,18 +1239,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1144,7 +1272,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1239,18 +1375,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1262,7 +1408,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1357,18 +1511,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1380,7 +1544,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1475,18 +1647,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1498,7 +1680,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1593,18 +1783,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1616,7 +1816,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1711,18 +1919,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1734,7 +1952,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1829,18 +2055,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1852,7 +2088,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -1947,18 +2191,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -1970,7 +2224,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -2065,18 +2327,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -2088,7 +2360,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}
@@ -2183,18 +2463,28 @@ exports[`Categories component should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexDirection": "row",
                           "flexGrow": 0.9,
-                          "flexShrink": 1,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
                     <View
-                      height={24}
-                      width={24}
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                     <View
                       numberOfSpaces={2}
@@ -2206,7 +2496,15 @@ exports[`Categories component should render correctly 1`] = `
                         ]
                       }
                     />
-                    <View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
                       <Text
                         isSelected={false}
                         numberOfLines={2}

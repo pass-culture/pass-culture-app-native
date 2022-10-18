@@ -18,7 +18,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   title: string
@@ -113,6 +113,7 @@ export const Categories: FunctionComponent<Props> = ({
           name="offerCategories"
           render={({ field: { onChange, value } }) => (
             <VerticalUl>
+              {!isDesktopViewport && <Spacer.Column numberOfSpaces={3} />}
               {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => (
                 <Li key={category}>
                   <RadioButton

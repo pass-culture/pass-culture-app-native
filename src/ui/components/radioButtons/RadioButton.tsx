@@ -1,5 +1,4 @@
 import React, { Fragment, FunctionComponent, useRef, useState } from 'react'
-import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -53,16 +52,20 @@ export function RadioButton(props: RadioButtonProps) {
       <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
           <React.Fragment>
-            <StyledIcon />
+            <IconWrapper>
+              <StyledIcon />
+            </IconWrapper>
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         )}
-        <View>
-          <Label isSelected={props.isSelected}>{props.label}</Label>
+        <LabelWrapper>
+          <Label isSelected={props.isSelected} numberOfLines={2}>
+            {props.label}
+          </Label>
           {!!props.description && (
             <Typo.CaptionNeutralInfo>{props.description}</Typo.CaptionNeutralInfo>
           )}
-        </View>
+        </LabelWrapper>
       </LabelContainer>
       <IconContainer>{props.isSelected ? <ValidateIconPrimary /> : <ValidateOff />}</IconContainer>
     </StyledTouchableOpacity>
@@ -74,6 +77,7 @@ const LabelContainerFlex = styled(Spacer.Flex).attrs({
 })({
   flexDirection: 'row',
   alignItems: 'center',
+  flexShrink: 0,
 })
 
 const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
@@ -115,3 +119,11 @@ const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
   color: theme.colors.greySemiDark,
   size: theme.icons.sizes.smaller,
 }))``
+
+const LabelWrapper = styled.View({
+  flexShrink: 1,
+})
+
+const IconWrapper = styled.View({
+  flexShrink: 0,
+})
