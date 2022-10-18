@@ -327,6 +327,7 @@ exports[`LocationModal component should render modal correctly after animation a
         </View>
       </View>
       <RCTScrollView
+        keyboardShouldPersistTaps="handled"
         modalSpacing={24}
         onContentSizeChange={[Function]}
         scrollEnabled={true}

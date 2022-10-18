@@ -1,5 +1,11 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
-import { LayoutChangeEvent, Platform, ScrollView, useWindowDimensions } from 'react-native'
+import {
+  LayoutChangeEvent,
+  Platform,
+  ScrollView,
+  ScrollViewProps,
+  useWindowDimensions,
+} from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -33,6 +39,7 @@ type Props = {
   modalSpacing?: ModalSpacing
   maxHeight?: number
   shouldScrollToEnd?: boolean
+  keyboardShouldPersistTaps?: ScrollViewProps['keyboardShouldPersistTaps']
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values
@@ -62,6 +69,7 @@ export const AppModal: FunctionComponent<Props> = ({
   modalSpacing,
   maxHeight,
   shouldScrollToEnd,
+  keyboardShouldPersistTaps,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -184,7 +192,8 @@ export const AppModal: FunctionComponent<Props> = ({
             testID="fullscreenModalScrollView"
             ref={setFullscreenScrollViewRef}
             onContentSizeChange={onContentSizeChangeFullscreenModal}
-            scrollEnabled={scrollEnabled}>
+            scrollEnabled={scrollEnabled}
+            keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
             {children}
           </StyledScrollView>
         ) : (
