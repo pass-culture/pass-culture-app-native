@@ -54,3 +54,11 @@ export enum TwitterCard {
   summary = 'summary',
   summaryLargeImage = 'summary_large_image',
 }
+
+export type MetaConfig = Record<
+  string,
+  {
+    data: string
+    regEx: RegExp
+  }
+>

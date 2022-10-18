@@ -55,12 +55,12 @@ export const OFFER_RESPONSE_SNAPSHOT = {
     visualDisability: false,
   },
   description:
-    'Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html',
+    '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html',
   expenseDomains: ['all'],
   isDigital: false,
   isDuo: true,
   isEducational: false,
-  name: 'Sous les étoiles de Paris - VF',
+  name: '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />Sous les étoiles de Paris - VF',
   subcategoryId: 'CINE_PLEIN_AIR',
   isReleased: true,
   isExpired: false,
@@ -106,11 +106,12 @@ export const OFFER_RESPONSE_SNAPSHOT = {
 
 export const VENUE_WITH_BANNER_RESPONSE_SNAPSHOT = {
   id: 5543,
-  name: 'Le Petit Rintintin 1',
+  name: '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />Le Petit Rintintin 1',
   latitude: 48.87004,
   longitude: 2.3785,
   city: 'Paris',
-  publicName: 'Le Petit Rintintin 1',
+  publicName:
+    '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />Le Petit Rintintin 1',
   isVirtual: false,
   isPermanent: true,
   withdrawalDetails: 'How to withdraw, https://test.com',
@@ -120,7 +121,7 @@ export const VENUE_WITH_BANNER_RESPONSE_SNAPSHOT = {
     image_credit: 'https://image.png',
   },
   description:
-    'https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
+    '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
   accessibility: {
     audioDisability: false,
     mentalDisability: false,

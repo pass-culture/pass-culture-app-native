@@ -1,6 +1,8 @@
+import { encode } from 'html-entities'
+
 import { env } from '../libs/environment/env'
 import { apiClient } from '../services/apiClient'
-import { ENTITY_METAS_CONFIG_MAP, EntityKeys } from '../services/entities/types'
+import { ENTITY_METAS_CONFIG_MAP, EntityKeys, MetaConfig } from '../services/entities/types'
 
 const { APP_PUBLIC_URL, ORGANIZATION_PREFIX } = env
 
@@ -42,7 +44,7 @@ export async function replaceHtmlMetas(
   const entity = await apiClient(type, entityId)
   const subPath = endpoint.slice(1)
   const METAS_CONFIG = ENTITY_METAS_CONFIG_MAP[type]
-  const metaConfig = {
+  const metaConfig: MetaConfig = {
     title: {
       data: addOrganizationPrefix(METAS_CONFIG.title(entity)),
       regEx: REGEX.title,
@@ -119,7 +121,7 @@ export async function replaceHtmlMetas(
 
   Object.values(metaConfig).forEach(({ regEx, data }) => {
     if (data) {
-      html = html.replace(regEx, `<meta $1="$2" content="${data}" />`)
+      html = html.replace(regEx, `<meta $1="$2" content="${encode(data)}" />`)
     }
   })
 
