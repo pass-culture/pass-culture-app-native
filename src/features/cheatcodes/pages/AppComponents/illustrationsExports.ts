@@ -1,5 +1,6 @@
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
+import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { BicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
@@ -38,6 +39,7 @@ export const BicolorIllustrations = {
   BicolorIdCardError,
   BicolorIdCardInvalid,
   BicolorPhonePending,
+  BicolorUserIdentification,
 }
 
 export const UniqueColorIllustrations = {
