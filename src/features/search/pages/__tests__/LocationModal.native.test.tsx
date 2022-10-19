@@ -36,6 +36,8 @@ let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
+const mockHideGeolocPermissionModal = jest.fn()
+const mockOnPressGeolocPermissionModalButton = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -44,6 +46,8 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
     positionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    hideGeolocPermissionModal: mockHideGeolocPermissionModal,
+    onPressGeolocPermissionModalButton: mockOnPressGeolocPermissionModalButton,
   }),
 }))
 
@@ -309,6 +313,29 @@ describe('LocationModal component', () => {
       fireEvent.press(radioButton)
     })
     expect(queryByTestId('slider')).toBeTruthy()
+  })
+
+  it('should show then hide geolocation activation modal if GeolocPermissionState is NEVER_ASK_AGAIN and user choose AROUND_ME then click to open settings', async () => {
+    const geolocationModalText =
+      'Retrouve toutes les offres autour de chez toi en activant les données de localisation.'
+    mockPosition = null
+    mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
+    const { queryByText, getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+    expect(queryByText(geolocationModalText)).toBeFalsy()
+
+    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    await act(async () => {
+      fireEvent.press(radioButton)
+    })
+
+    expect(queryByText(geolocationModalText)).toBeTruthy()
+
+    const openSettingsButton = getByText('Activer la géolocalisation')
+    await act(async () => {
+      fireEvent.press(openSettingsButton)
+    })
+
+    expect(queryByText(geolocationModalText)).toBeFalsy()
   })
 
   it('should not change location filter on Autour de moi radio button press when position is null', async () => {

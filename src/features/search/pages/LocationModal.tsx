@@ -96,7 +96,7 @@ export const LocationModal: FunctionComponent<Props> = ({
     positionError,
     permissionState,
     requestGeolocPermission,
-    onPressGeolocPermissionModalButton,
+    onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useGeolocation()
 
   const {
@@ -104,6 +104,12 @@ export const LocationModal: FunctionComponent<Props> = ({
     hideModal: hideGeolocPermissionModal,
     visible: isGeolocPermissionModalVisible,
   } = useModal(false)
+
+  const onPressGeolocPermissionModalButton = useCallback(() => {
+    hideGeolocPermissionModal()
+    onPressGeolocPermissionModalButtonDefault()
+  }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
+
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
 
   const logChangeRadius = useLogFilterOnce(SectionTitle.Radius)
