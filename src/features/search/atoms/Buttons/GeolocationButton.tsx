@@ -12,14 +12,6 @@ type Props = {
 }
 
 export const GeolocationButton = ({ onPress }: Props) => {
-  const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
-    size: theme.icons.sizes.standard,
-  }))``
-
-  const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
-    size: theme.icons.sizes.small,
-  }))``
-
   return (
     <StyledTouchable onPress={onPress}>
       <SubContainer>
@@ -27,13 +19,13 @@ export const GeolocationButton = ({ onPress }: Props) => {
           <LocationIcon />
         </IconWrapper>
         <Spacer.Row numberOfSpaces={2} />
-        <LabelWrapper>
-          <LabelText>Géolocalise toi</LabelText>
+        <TextWrapper>
+          <TitleText>Géolocalise toi</TitleText>
           <Spacer.Column numberOfSpaces={1} />
           <DescriptionText numberOfLines={2}>
             Pour trouver des offres autour de toi.
           </DescriptionText>
-        </LabelWrapper>
+        </TextWrapper>
       </SubContainer>
       <Spacer.Row numberOfSpaces={2} />
       <IconWrapper>
@@ -62,14 +54,22 @@ const IconWrapper = styled.View({
   flexShrink: 0,
 })
 
-const LabelWrapper = styled.View({
+const TextWrapper = styled.View({
   flexShrink: 1,
 })
 
-const LabelText = styled(Typo.ButtonText)({
+const TitleText = styled(Typo.ButtonText)({
   textAlign: 'left',
 })
 
 const DescriptionText = styled(Typo.Caption)({
   textAlign: 'left',
 })
+
+const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
+  size: theme.icons.sizes.standard,
+}))``
+
+const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

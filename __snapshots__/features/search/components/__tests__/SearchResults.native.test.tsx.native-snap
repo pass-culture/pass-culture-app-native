@@ -372,9 +372,11 @@ Array [
         </React.Fragment>
       }
       ListHeaderComponent={
-        <NumberOfResults
-          nbHits={0}
-        />
+        <React.Fragment>
+          <NumberOfResults
+            nbHits={0}
+          />
+        </React.Fragment>
       }
       contentContainerStyle={
         Object {

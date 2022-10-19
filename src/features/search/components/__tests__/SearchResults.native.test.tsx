@@ -4,6 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/firebase/analytics'
+import { GeoCoordinates } from 'libs/geolocation'
 import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -43,6 +44,17 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
+}))
+
+const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+const mockShowGeolocPermissionModal = jest.fn()
+
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    position: mockPosition,
+    showGeolocPermissionModal: mockShowGeolocPermissionModal,
+  }),
 }))
 
 describe('SearchResults component', () => {
@@ -220,4 +232,53 @@ describe('SearchResults component', () => {
       expect(typeButtonLabel).toHaveStyle({ color: theme.colors.primary })
     }
   )
+
+  it('should not display geolocation incitation button when position is not null', async () => {
+    const { queryByText } = render(<SearchResults />)
+
+    await act(async () => {
+      expect(queryByText('Géolocalise toi')).toBeFalsy()
+    })
+  })
+
+  it.each`
+    filter                                                      | params
+    ${'digital offer'}                                          | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
+    ${`${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE} category`}  | ${{ offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE] }}
+    ${`${SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE} category`} | ${{ offerCategories: [SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE] }}
+  `(
+    'should not display geolocation incitation button when $filter filter selected and position is null',
+    async ({ params }) => {
+      mockPosition = null
+      useRoute.mockReturnValueOnce({
+        params,
+      })
+      const { queryByText } = render(<SearchResults />)
+
+      await act(async () => {
+        expect(queryByText('Géolocalise toi')).toBeFalsy()
+      })
+    }
+  )
+
+  it('should display geolocation incitation button when position is null', async () => {
+    mockPosition = null
+    const { queryByText } = render(<SearchResults />)
+
+    await act(async () => {
+      expect(queryByText('Géolocalise toi')).toBeTruthy()
+    })
+  })
+
+  it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
+    mockPosition = null
+
+    const { getByText } = render(<SearchResults />)
+
+    await act(async () => {
+      fireEvent.press(getByText('Géolocalise toi'))
+    })
+
+    expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
+  })
 })
