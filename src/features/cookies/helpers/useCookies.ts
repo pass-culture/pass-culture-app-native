@@ -1,5 +1,5 @@
 import omit from 'lodash/omit'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
@@ -39,22 +39,7 @@ export const useCookies = () => {
       if (!settings?.appEnableCookiesV2) return
 
       if (cookies) {
-        if (cookies.consent) {
-          setCookiesConsentInternalState({
-            state: ConsentState.HAS_CONSENT,
-            value: cookies.consent,
-          })
-          startTrackingAcceptedCookies(cookies.consent.accepted)
-        } else {
-          setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
-        }
-
-        if (cookies.choiceDatetime) {
-          if (isConsentChoiceExpired(new Date(cookies.choiceDatetime))) {
-            removeCookiesConsentAndChoiceDate(cookies)
-            setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
-          }
-        }
+        setConsentAndChoiceDateTime(cookies, setCookiesConsentInternalState)
       } else {
         setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
       }
@@ -104,6 +89,28 @@ export const useCookies = () => {
     cookiesConsent,
     setCookiesConsent,
     setUserId,
+  }
+}
+
+const setConsentAndChoiceDateTime = (
+  cookies: CookiesConsent,
+  setCookiesConsentInternalState: Dispatch<SetStateAction<ConsentStatus>>
+) => {
+  if (cookies.consent) {
+    setCookiesConsentInternalState({
+      state: ConsentState.HAS_CONSENT,
+      value: cookies.consent,
+    })
+    startTrackingAcceptedCookies(cookies.consent.accepted)
+  } else {
+    setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
+  }
+
+  if (cookies.choiceDatetime) {
+    if (isConsentChoiceExpired(new Date(cookies.choiceDatetime))) {
+      removeCookiesConsentAndChoiceDate(cookies)
+      setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
+    }
   }
 }
 

@@ -18,7 +18,7 @@ export function PrivacyPolicyV2() {
   useEffect(() => {
     switch (hasUserMadeCookieChoiceV2.state) {
       case ConsentState.LOADING:
-        return
+        break
 
       case ConsentState.UNKNOWN:
         showCookiesConsentModal()
