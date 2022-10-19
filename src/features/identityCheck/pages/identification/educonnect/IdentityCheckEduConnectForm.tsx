@@ -40,11 +40,7 @@ export const IdentityCheckEduConnectForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eduConnectClient])
 
-  useFocusEffect(
-    useCallback(() => {
-      loadWebView()
-    }, [loadWebView])
-  )
+  useFocusEffect(useCallback(() => loadWebView(), [loadWebView]))
 
   const onNavigationStateChange = (event: WebViewNavigation) => {
     // PC Api detected an error after EduConnect authentication
