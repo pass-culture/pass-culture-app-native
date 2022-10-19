@@ -17,7 +17,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingButton } from './BookingButton'
 
@@ -110,7 +109,6 @@ export const Favorite: React.FC<Props> = (props) => {
 
   return (
     <Animated.View
-      {...getHeadingAttrs(3)}
       onLayout={onLayout}
       style={{
         opacity: animatedOpacity,

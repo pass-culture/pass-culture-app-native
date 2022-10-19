@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -16,7 +15,6 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   hit: SearchHit
   query: string
@@ -64,40 +62,38 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
   }
 
   return (
-    <View {...getHeadingAttrs(3)}>
-      <Container
-        navigateTo={
-          offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
-        }
-        onBeforeNavigate={handlePressOffer}
-        accessibilityLabel={accessibilityLabel}>
-        <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
-        <Spacer.Row numberOfSpaces={4} />
-        <Column>
-          <Row>
-            {distanceToOffer ? (
-              <React.Fragment>
-                <Spacer.Flex flex={0.7}>
-                  <Name numberOfLines={2}>{offer.name}</Name>
-                </Spacer.Flex>
-                <Spacer.Flex flex={0.3}>
-                  <Distance>{distanceToOffer}</Distance>
-                </Spacer.Flex>
-              </React.Fragment>
-            ) : (
-              <Name numberOfLines={2}>{offer.name}</Name>
-            )}
-          </Row>
-          <Spacer.Column numberOfSpaces={1} />
-          <Body ellipsizeMode="tail" numberOfLines={1}>
-            {searchGroupLabel}
-          </Body>
-          {!!formattedDate && <Body>{formattedDate}</Body>}
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>{formattedPrice}</Typo.Caption>
-        </Column>
-      </Container>
-    </View>
+    <Container
+      navigateTo={
+        offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
+      }
+      onBeforeNavigate={handlePressOffer}
+      accessibilityLabel={accessibilityLabel}>
+      <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
+      <Spacer.Row numberOfSpaces={4} />
+      <Column>
+        <Row>
+          {distanceToOffer ? (
+            <React.Fragment>
+              <Spacer.Flex flex={0.7}>
+                <Name numberOfLines={2}>{offer.name}</Name>
+              </Spacer.Flex>
+              <Spacer.Flex flex={0.3}>
+                <Distance>{distanceToOffer}</Distance>
+              </Spacer.Flex>
+            </React.Fragment>
+          ) : (
+            <Name numberOfLines={2}>{offer.name}</Name>
+          )}
+        </Row>
+        <Spacer.Column numberOfSpaces={1} />
+        <Body ellipsizeMode="tail" numberOfLines={1}>
+          {searchGroupLabel}
+        </Body>
+        {!!formattedDate && <Body>{formattedDate}</Body>}
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Caption>{formattedPrice}</Typo.Caption>
+      </Column>
+    </Container>
   )
 }
 

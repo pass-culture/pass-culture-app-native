@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { WithdrawalTypeEnum } from 'api/gen'
@@ -14,7 +13,6 @@ import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingItemTitle } from './BookingItemTitle'
 
@@ -34,39 +32,35 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   })
 
   return (
-    <View {...getHeadingAttrs(3)}>
-      <Container
-        navigateTo={{ screen: 'BookingDetails', params: { id: booking.id } }}
-        accessibilityLabel={accessibilityLabel}
-        testID="OnGoingBookingItem">
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
-        <AttributesView>
-          <BookingItemTitle title={stock.offer.name} />
-          {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}
-          {!!bookingProperties.isDuo && <Duo />}
-          <Spacer.Flex />
-          {!!withdrawLabel && (
-            <React.Fragment>
-              {stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
-                <WithdrawContainer testID="on-site-withdrawal-container">
-                  <OfferEvent />
-                  <Spacer.Row numberOfSpaces={1} />
-                  <OnSiteWithdrawalCaption numberOfLines={2}>
-                    {withdrawLabel}
-                  </OnSiteWithdrawalCaption>
-                </WithdrawContainer>
-              ) : (
-                <WithdrawContainer testID="withdraw-container">
-                  <Clock />
-                  <Spacer.Row numberOfSpaces={1} />
-                  <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
-                </WithdrawContainer>
-              )}
-            </React.Fragment>
-          )}
-        </AttributesView>
-      </Container>
-    </View>
+    <Container
+      navigateTo={{ screen: 'BookingDetails', params: { id: booking.id } }}
+      accessibilityLabel={accessibilityLabel}
+      testID="OnGoingBookingItem">
+      <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
+      <AttributesView>
+        <BookingItemTitle title={stock.offer.name} />
+        {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}
+        {!!bookingProperties.isDuo && <Duo />}
+        <Spacer.Flex />
+        {!!withdrawLabel && (
+          <React.Fragment>
+            {stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
+              <WithdrawContainer testID="on-site-withdrawal-container">
+                <OfferEvent />
+                <Spacer.Row numberOfSpaces={1} />
+                <OnSiteWithdrawalCaption numberOfLines={2}>{withdrawLabel}</OnSiteWithdrawalCaption>
+              </WithdrawContainer>
+            ) : (
+              <WithdrawContainer testID="withdraw-container">
+                <Clock />
+                <Spacer.Row numberOfSpaces={1} />
+                <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
+              </WithdrawContainer>
+            )}
+          </React.Fragment>
+        )}
+      </AttributesView>
+    </Container>
   )
 }
 

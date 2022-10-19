@@ -129,6 +129,8 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       )}
       <Container>
         <FlatList
+          listAs="ul"
+          itemAs="li"
           ref={flatListRef}
           testID="favoritesResultsFlatlist"
           data={sortedFavorites}

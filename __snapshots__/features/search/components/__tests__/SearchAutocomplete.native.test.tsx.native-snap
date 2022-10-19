@@ -42,9 +42,11 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
   }
   getItem={[Function]}
   getItemCount={[Function]}
+  itemAs="li"
   keyExtractor={[Function]}
   keyboardDismissMode="on-drag"
   keyboardShouldPersistTaps="handled"
+  listAs="ul"
   onContentSizeChange={[Function]}
   onLayout={[Function]}
   onMomentumScrollBegin={[Function]}

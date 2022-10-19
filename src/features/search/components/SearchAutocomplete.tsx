@@ -16,6 +16,8 @@ export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...pro
 
   return (
     <FlatList
+      listAs="ul"
+      itemAs="li"
       contentContainerStyle={contentContainerStyle}
       data={hits as unknown as AlgoliaSuggestionHit[]}
       keyExtractor={(item) => item.objectID}

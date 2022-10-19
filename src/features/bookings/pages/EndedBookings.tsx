@@ -37,6 +37,8 @@ export const EndedBookings: React.FC = () => {
     <React.Fragment>
       <PageHeader title="Réservations terminées" background="primary" withGoBackButton />
       <FlatList
+        listAs="ul"
+        itemAs="li"
         contentContainerStyle={contentContainerStyle}
         data={bookings?.ended_bookings || []}
         keyExtractor={keyExtractor}
