@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { Keyboard, View } from 'react-native'
+import { Keyboard, View, TextInput as RNTextInput, Platform } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -98,6 +98,7 @@ export const LocationModal: FunctionComponent<Props> = ({
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useGeolocation()
+  const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
 
   const {
     showModal: showGeolocPermissionModal,
@@ -153,6 +154,18 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
+  const watchedLocationChoice = watch('locationChoice')
+
+  useEffect(() => {
+    if (watchedLocationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
+      if (Platform.OS === 'android') {
+        // Without timeout the focus is ok but the keyboard not open on Android device
+        setTimeout(() => searchPlaceOrVenueInputRef.current?.focus(), 0)
+      } else {
+        searchPlaceOrVenueInputRef.current?.focus()
+      }
+    }
+  }, [watchedLocationChoice])
 
   const search = useCallback(
     ({ locationChoice, selectedPlaceOrVenue, aroundRadius }: LocationModalFormData) => {
@@ -379,13 +392,13 @@ export const LocationModal: FunctionComponent<Props> = ({
                               field: { value: searchPlaceOrVenue, onChange: onPlaceSearchChange },
                             }) => (
                               <SearchInput
+                                ref={searchPlaceOrVenueInputRef}
                                 value={searchPlaceOrVenue}
                                 onChangeText={(text) => {
                                   onPlaceSearchChange(text)
                                   setValueWithValidation('selectedPlaceOrVenue', undefined)
                                 }}
                                 placeholder="Saisis une adresse ou le nom d’un lieu"
-                                autoFocus
                                 inputHeight="regular"
                                 accessibilityLabel="Recherche un lieu, une adresse"
                                 onPressRightIcon={handleSearchReset}
