@@ -74,7 +74,7 @@ commands:
             - node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
-          command: yarn install --immutable --cwd server
+          command: nvm install 16 && nvm use 16 && yarn install --immutable --cwd server
       - save_cache:
           name: Save Node Modules
           key: node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
@@ -88,7 +88,7 @@ commands:
           name: Restore Tests cache
           keys:
             - jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
-      - run: yarn --cwd server test:unit:ci
+      - run: nvm use 16 && yarn --cwd server test:unit:ci
       - save_cache:
           name: Save Tests cache
           key: jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
@@ -443,6 +443,7 @@ commands:
         type: string
     steps:
       - checkout
+      - install_node_version
       - install_node_modules_proxy
       - authenticate_gcp:
           gcp_key_name: GCP_APP_NATIVE_KEY
@@ -450,7 +451,7 @@ commands:
           name: Deploy web proxy to <<parameters.env>>
           command: |
             if ./scripts/check_server_diff.sh; then
-              yarn --cwd server deploy:<<parameters.env>>
+              nvm use 16 && yarn --cwd server deploy:<<parameters.env>>
             fi
 
   notify-slack:
@@ -483,6 +484,7 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
+      - install_node_version
       - install_node_modules_proxy
 
   test-proxy:
@@ -490,13 +492,14 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
+      - install_node_version
       - install_node_modules_proxy
       - run:
           name: Linter
-          command: yarn --cwd server test:lint
+          command: nvm use 16 && yarn --cwd server test:lint
       - run:
           name: Typescript Type Check
-          command: yarn --cwd server test:types
+          command: nvm use 16 && yarn --cwd server test:types
       - unit_test_proxy
       - sonarcloud-scanner:
           directory: server
