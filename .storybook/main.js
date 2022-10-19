@@ -34,6 +34,7 @@ module.exports = {
   framework: '@storybook/react',
   webpackFinal: async (config) => {
     config.resolve.alias['react-query'] = require.resolve('./mocks/react-query.js')
+    config.resolve.alias['@react-navigation/native'] = require.resolve('./mocks/react-navigation.js')
     return config
   },
 }

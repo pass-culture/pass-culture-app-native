@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
@@ -10,13 +9,6 @@ import { AccordionItem } from './AccordionItem'
 export default {
   title: 'ui/AccordionItem',
   component: AccordionItem,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 } as ComponentMeta<typeof AccordionItem>
 
 const Template: ComponentStory<typeof AccordionItem> = (props) => <AccordionItem {...props} />

@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -12,13 +11,6 @@ import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
 export default {
   title: 'features/Profile/HeaderWithGreyContainer',
   component: HeaderWithGreyContainer,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 } as ComponentMeta<typeof HeaderWithGreyContainer>
 
 const Template: ComponentStory<typeof HeaderWithGreyContainer> = (props) => (

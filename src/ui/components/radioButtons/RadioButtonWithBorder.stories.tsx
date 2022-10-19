@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { useState } from 'react'
 
@@ -7,13 +6,6 @@ import { RadioButtonWithBorder } from './RadioButtonWithBorder'
 export default {
   title: 'ui/inputs/radioButtons/RadioButtonWithBorder',
   component: RadioButtonWithBorder,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 } as ComponentMeta<typeof RadioButtonWithBorder>
 
 const Template: ComponentStory<typeof RadioButtonWithBorder> = (args) => (

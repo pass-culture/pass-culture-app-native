@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { useState } from 'react'
 
@@ -12,13 +11,6 @@ import { RadioButton } from './RadioButton'
 export default {
   title: 'ui/inputs/radioButtons/RadioButton',
   component: RadioButton,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
   argTypes: {
     icon: selectArgTypeFromObject({
       Email,

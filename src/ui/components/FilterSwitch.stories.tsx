@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
@@ -11,13 +10,6 @@ import FilterSwitch from './FilterSwitch'
 export default {
   title: 'ui/FilterSwitch',
   component: FilterSwitch,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 } as ComponentMeta<typeof FilterSwitch>
 
 const Template: ComponentStory<typeof FilterSwitch> = (props) => <FilterSwitch {...props} />

@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -17,13 +16,6 @@ export default {
       EditPen,
     }),
   },
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 } as ComponentMeta<typeof SectionRow>
 
 const Template: ComponentStory<typeof SectionRow> = (props) => <SectionRow {...props} />
