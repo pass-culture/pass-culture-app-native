@@ -33,7 +33,7 @@ const paddingVertical = getSpacing(4)
 
 const NetworkRow = styled.View(({ theme }) => ({
   width: '100%',
-  margin: 'auto',
+  margin: theme.isDesktopViewport ? undefined : 'auto',
   maxWidth: theme.contentPage.maxWidth,
 }))
 
