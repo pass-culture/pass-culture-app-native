@@ -52,7 +52,7 @@ describe('openUrl', () => {
     expect(navigateFromRef).toBeCalledWith('PageNotFound', undefined)
   })
 
-  it('should log analytics when shouldLogEvent is true', async () => {
+  it('should log analytics when shouldLogEvent is true (default behavior)', async () => {
     openURLSpy.mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
