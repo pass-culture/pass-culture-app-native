@@ -6,26 +6,26 @@ exports[`metas utils should replace meta for offer 1`] = `
   <head>
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | Sous les étoiles de Paris - VF\\" />
-    <meta name=\\"description\\" content=\\"Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+    <meta name=\\"title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF\\" />
+    <meta name=\\"description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
     <meta property=\\"og:url\\" content=\\"http://localhost:8080/offre/116656\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | Sous les étoiles de Paris - VF\\" />
-    <meta property=\\"og:description\\" content=\\"Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+    <meta property=\\"og:title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF\\" />
+    <meta property=\\"og:description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html\\" />
     <meta property=\\"og:image\\" content=\\"https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS\\" />
-    <meta property=\\"og:image:alt\\" content=\\"Sous les étoiles de Paris - VF\\" />
+    <meta property=\\"og:image:alt\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF\\" />
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary\\" />
     <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/offre/116656\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | Sous les étoiles de Paris - VF\\" />
-    <meta name=\\"twitter:description\\" content=\\"Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF\\" />
+    <meta name=\\"twitter:description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html\\" />
     <meta name=\\"twitter:image\\" content=\\"https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS\\" />
-    <meta name=\\"twitter:image:alt\\" content=\\"Sous les étoiles de Paris - VF\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF\\" />
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
@@ -56,21 +56,21 @@ exports[`metas utils should replace meta for venue 1`] = `
   <head>
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | Le Petit Rintintin 1\\" />
-    <meta name=\\"description\\" content=\\"https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
+    <meta name=\\"title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Le Petit Rintintin 1\\" />
+    <meta name=\\"description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
     <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/5543\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | Le Petit Rintintin 1\\" />
-    <meta property=\\"og:description\\" content=\\"https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
+    <meta property=\\"og:title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Le Petit Rintintin 1\\" />
+    <meta property=\\"og:description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
     <meta property=\\"og:image\\" content=\\"https://app.testing.passculture.team/images/app-icon-512px.png\\"/>
-    <meta property=\\"og:image:alt\\" content=\\"https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
+    <meta property=\\"og:image:alt\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
     <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/5543\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | Le Petit Rintintin 1\\" />
-    <meta name=\\"twitter:description\\" content=\\"https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Le Petit Rintintin 1\\" />
+    <meta name=\\"twitter:description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
     <meta name=\\"twitter:image\\" content=\\"https://app.testing.passculture.team/images/app-icon-512px.png\\"/>
     <meta name=\\"twitter:image:alt\\" content=\\"https://image.png\\" />
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
