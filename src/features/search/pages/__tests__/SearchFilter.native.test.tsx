@@ -1,10 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useUserProfileInfo } from 'features/profile/api'
 import { LocationType } from 'features/search/enums'
-import { SectionTitle } from 'features/search/sections/titles'
-import { SuggestedPlace } from 'libs/place'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, act } from 'tests/utils'
 
@@ -27,18 +24,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
-
-const Kourou: SuggestedPlace = {
-  label: 'Kourou',
-  info: 'Guyane',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
-}
-
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
-}))
-
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
 describe('SearchFilter component', () => {
@@ -50,34 +35,6 @@ describe('SearchFilter component', () => {
     const { toJSON } = renderSearchFilter()
     await act(async () => {
       expect(toJSON()).toMatchSnapshot()
-    })
-  })
-
-  it('should not render section Radius when search everywhere', async () => {
-    mockStagedSearchState.locationFilter = { locationType: LocationType.EVERYWHERE }
-    const { queryByText } = renderSearchFilter()
-    await act(async () => {
-      expect(queryByText(SectionTitle.Radius)).toBeNull()
-    })
-  })
-
-  it('should not render section Radius when search venue', async () => {
-    // Venue
-    mockStagedSearchState.locationFilter = {
-      locationType: LocationType.VENUE,
-      venue: { ...Kourou, venueId: 4 },
-    }
-    const { queryByText } = renderSearchFilter()
-    await act(async () => {
-      expect(queryByText(SectionTitle.Radius)).toBeNull()
-    })
-  })
-
-  it('should not render Duo filter if user not beneficiary', async () => {
-    useUserProfileInfoMock.mockImplementationOnce(() => ({ data: { isBeneficiary: false } }))
-    const { queryByTestId } = renderSearchFilter()
-    await act(async () => {
-      expect(queryByTestId('duoFilter')).toBeNull()
     })
   })
 

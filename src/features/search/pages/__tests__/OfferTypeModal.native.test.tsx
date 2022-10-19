@@ -7,7 +7,9 @@ import { OfferType } from 'features/search/enums'
 import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { OFFER_TYPES } from 'features/search/sections/OfferType'
+import { SectionTitle } from 'features/search/sections/titles'
 import { OfferTypes, SearchView } from 'features/search/types'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
 
 const mockSearchState = initialSearchState
@@ -101,6 +103,20 @@ describe('OfferTypeModal component', () => {
       fireEvent.press(radioButton)
 
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+    })
+
+    it.each(
+      OFFER_TYPES.filter((item) => item.label !== OfferType.ALL_TYPE).map(({ label }) => label)
+    )(`should log offer type selected on press`, (label) => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const radioButton = renderAPI.getByTestId(label)
+      fireEvent.press(radioButton)
+
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType)
     })
   })
 
@@ -247,6 +263,19 @@ describe('OfferTypeModal component', () => {
         disabled: false,
         checked: true,
       })
+    })
+
+    it('should log only duo offer search when pressing the toggle', () => {
+      const renderAPI = renderOfferTypeModal({
+        hideOfferTypeModal,
+        offerTypeModalVisible: true,
+      })
+
+      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+
+      fireEvent.press(toggle)
+
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo)
     })
   })
 
