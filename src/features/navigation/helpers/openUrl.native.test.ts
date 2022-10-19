@@ -7,22 +7,20 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/firebase/analytics'
 
-import { openUrl, navigateToBooking, isAppUrl } from '../helpers'
+import { openUrl } from '../helpers'
 
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/RootNavigator/linking')
+
+const openURLSpy = jest.spyOn(Linking, 'openURL')
 
 const getScreenFromDeeplinkModuleSpy = jest.spyOn(
   getScreenFromDeeplinkModule,
   'getScreenFromDeeplink'
 )
 
-const openURLSpy = jest.spyOn(Linking, 'openURL')
-
-describe('Navigation helpers', () => {
-  afterEach(() => {
-    openURLSpy.mockReset()
-  })
+describe('openUrl', () => {
+  afterEach(openURLSpy.mockReset)
 
   it('should not capture links that doesnt start with the universal links domain', async () => {
     const openURL = openURLSpy.mockResolvedValueOnce(undefined)
@@ -77,45 +75,23 @@ describe('Navigation helpers', () => {
   })
 
   it('should display alert when Linking.openURL throws', async () => {
-    jest
-      .spyOn(Linking, 'openURL')
-      .mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+    openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
     const alertMock = jest.spyOn(Alert, 'alert')
     const link = 'https://www.google.com'
 
     await openUrl(link)
     expect(alertMock).toHaveBeenCalled()
   })
+
   it('should not display alert when Linking.openURL throws but fallbackUrl is valid', async () => {
     // Last in first out, it will fail then succeed.
-    jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-    jest
-      .spyOn(Linking, 'openURL')
-      .mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+    openURLSpy.mockResolvedValueOnce(undefined)
+    openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
     const alertMock = jest.spyOn(Alert, 'alert')
     const link = 'https://www.google.com'
     const fallbackLink = 'https://www.googlefallback.com'
 
     await openUrl(link, { fallbackUrl: fallbackLink })
     expect(alertMock).not.toHaveBeenCalled()
-  })
-
-  describe('isAppUrl', () => {
-    it('should return false if url does not start with linking prefixes', () => {
-      const url = isAppUrl('https://notavalidprefix')
-      expect(url).toEqual(false)
-    })
-    it('should return true if url starts with linking prefixes', () => {
-      const url = isAppUrl('https://mockValidPrefix1')
-      expect(url).toEqual(true)
-    })
-  })
-
-  describe('[Method] navigateToBooking', () => {
-    it('should navigate to BookingDetails', async () => {
-      const bookingId = 37815152
-      navigateToBooking(bookingId)
-      expect(navigateFromRef).toBeCalledWith('BookingDetails', { id: bookingId })
-    })
   })
 })
