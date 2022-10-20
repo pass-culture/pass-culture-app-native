@@ -390,6 +390,16 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 </Text>
               </Text>
               <View
+                numberOfSpaces={12}
+                style={
+                  Array [
+                    Object {
+                      "height": 48,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityRole="list"
                 style={
                   Array [
@@ -401,16 +411,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   ]
                 }
               >
-                <View
-                  numberOfSpaces={12}
-                  style={
-                    Array [
-                      Object {
-                        "height": 48,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityRole="none"
                   style={
