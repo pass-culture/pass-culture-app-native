@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -82,6 +83,14 @@ describe('SetPhoneNumber', () => {
 
   describe('continue button', () => {
     const mockFetch = jest.spyOn(global, 'fetch')
+    mockFetch.mockResolvedValue(
+      new Response(JSON.stringify({}), {
+        headers: {
+          'content-type': 'application/json',
+        },
+        status: 200,
+      })
+    )
 
     it('should enable the button when the phone number is valid', async () => {
       const { getByTestId } = renderSetPhoneNumber()
@@ -113,15 +122,6 @@ describe('SetPhoneNumber', () => {
     })
 
     it('should call navigateToNextScreen on /send_phone_validation_code request success', async () => {
-      mockFetch.mockResolvedValueOnce(
-        new Response(JSON.stringify({}), {
-          headers: {
-            'content-type': 'application/json',
-          },
-          status: 200,
-        })
-      )
-
       const { getByTestId } = renderSetPhoneNumber()
 
       const continueButton = getByTestId('Continuer')
@@ -170,6 +170,17 @@ describe('SetPhoneNumber', () => {
       fireEvent.press(continueButton)
 
       await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
+    })
+
+    it('should log event HasRequestedCode when pressing "Continuer" button', async () => {
+      const { getByTestId } = renderSetPhoneNumber()
+
+      const continueButton = getByTestId('Continuer')
+      const input = getByTestId('Entrée pour le numéro de téléphone')
+      fireEvent.changeText(input, '612345678')
+      fireEvent.press(continueButton)
+
+      await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalled())
     })
   })
 })

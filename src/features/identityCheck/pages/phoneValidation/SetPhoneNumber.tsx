@@ -21,6 +21,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
@@ -98,6 +99,7 @@ export const SetPhoneNumber = () => {
   })
 
   async function requestSendPhoneValidationCode() {
+    analytics.logHasRequestedCode()
     const callingCode = country.callingCode[0]
     if (isContinueButtonEnabled && callingCode) {
       setInvalidPhoneNumberMessage('')
