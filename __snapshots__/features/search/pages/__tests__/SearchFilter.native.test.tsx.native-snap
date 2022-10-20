@@ -281,10 +281,11 @@ exports[`SearchFilter component should render correctly 1`] = `
       >
         <View
           height={24}
+          testID="BicolorLocationPointer"
           width={24}
         >
           <Text>
-            undefined-SVG-Mock
+            BicolorLocationPointer-SVG-Mock
           </Text>
         </View>
         <View

@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { FilterRow } from 'features/search/atoms/FilterRow'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
@@ -7,7 +6,7 @@ import { LocationModal } from 'features/search/pages/LocationModal'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useModal } from 'ui/components/modals/useModal'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 
 export function Location() {
   const { searchState } = useSearch()
@@ -23,7 +22,7 @@ export function Location() {
   return (
     <React.Fragment>
       <FilterRow
-        icon={LocationPointerStyledIcon}
+        icon={LocationPointer}
         title="Localisation"
         description={label}
         onPress={showLocationModal}
@@ -37,8 +36,3 @@ export function Location() {
     </React.Fragment>
   )
 }
-
-const LocationPointerStyledIcon = styled(LocationPointer).attrs(({ theme }) => ({
-  color: theme.colors.black,
-  color2: theme.colors.black,
-}))``
