@@ -29,8 +29,6 @@ export function SocialNetwork() {
   )
 }
 
-const paddingVertical = getSpacing(4)
-
 const NetworkRow = styled.View(({ theme }) => ({
   width: '100%',
   margin: theme.isDesktopViewport ? undefined : 'auto',
@@ -39,7 +37,7 @@ const NetworkRow = styled.View(({ theme }) => ({
 
 const NetworkRowContainer = styled.View({
   flexDirection: 'row',
-  paddingVertical,
+  paddingVertical: getSpacing(4),
   justifyContent: 'space-between',
 })
 
