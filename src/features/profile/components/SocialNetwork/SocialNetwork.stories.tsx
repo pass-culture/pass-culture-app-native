@@ -14,6 +14,6 @@ const Default: ComponentStory<typeof SocialNetwork> = () => <SocialNetwork />
 
 Default.parameters = {
   chromatic: {
-    viewports: [theme.breakpoints.lg],
+    viewports: [theme.breakpoints.md, theme.breakpoints.lg, theme.breakpoints.xl],
   },
 }
