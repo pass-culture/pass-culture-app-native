@@ -233,7 +233,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           onSubmitEditing={onSubmit}
           isRequiredField
         />
-        <Spacer.Column numberOfSpaces={7} />
+        <Spacer.Column numberOfSpaces={2} />
         <ButtonContainer>
           <ButtonTertiaryBlack
             wording="Mot de passe oublié&nbsp;?"
@@ -243,7 +243,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           />
         </ButtonContainer>
 
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           wording="Se connecter"
           onPress={onSubmit}
