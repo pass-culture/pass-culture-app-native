@@ -11,6 +11,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { env } from 'libs/environment'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -21,8 +22,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
-import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
-import { Ul, VerticalUl } from 'ui/components/Ul'
+import { VerticalUl } from 'ui/components/Ul'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -209,24 +209,7 @@ const OnlineProfile: React.FC = () => {
           </VerticalUl>
         </Section>
         <Section title="Suivre pass Culture">
-          <NetworkRow>
-            <NetworkRowContainer>
-              <StyledUl>
-                <Li>
-                  <SocialNetworkCard network="instagram" />
-                </Li>
-                <Li>
-                  <SocialNetworkCard network="twitter" />
-                </Li>
-                <Li>
-                  <SocialNetworkCard network="tiktok" />
-                </Li>
-                <Li>
-                  <SocialNetworkCard network="facebook" />
-                </Li>
-              </StyledUl>
-            </NetworkRowContainer>
-          </NetworkRow>
+          <SocialNetwork />
         </Section>
         {!!isLoggedIn && (
           <Section>
@@ -272,21 +255,4 @@ const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),
   height: getSpacing(28),
-})
-
-const NetworkRow = styled.View(({ theme }) => ({
-  width: '100%',
-  margin: 'auto',
-  maxWidth: theme.contentPage.maxWidth,
-}))
-
-const NetworkRowContainer = styled.View({
-  flexDirection: 'row',
-  paddingVertical,
-  justifyContent: 'space-between',
-})
-
-const StyledUl = styled(Ul)({
-  flex: 1,
-  justifyContent: 'space-between',
 })
