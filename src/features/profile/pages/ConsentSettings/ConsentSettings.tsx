@@ -1,114 +1,94 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import styled from 'styled-components/native'
+import React, { useCallback, useState } from 'react'
 
-import { useAppSettings } from 'features/auth/settings'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
-import { NewConsentSettings } from 'features/profile/pages/ConsentSettings/NewConsentSettings'
+import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
+import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
+import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import { useCookies } from 'features/cookies/helpers/useCookies'
+import { CookiesChoiceByCategory } from 'features/cookies/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { getCookiesConsent, setCookiesConsent } from 'libs/trackingConsent/consent'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
-
-export const ConsentSettings: FunctionComponent<Props> = () => {
-  const { data: settings } = useAppSettings()
-  const { goBack } = useNavigation()
+export const ConsentSettings = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
-  const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
-  const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
+  const { setCookiesConsent } = useCookies()
+  const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
+    customization: false,
+    performance: false,
+    marketing: false,
+  })
 
-  useEffect(() => {
-    getCookiesConsent().then((hasAcceptedCookie) => {
-      // If the user has navigated to this page from the privacy modal, we consider that
-      // as an implicit refusal, which they can change with the switch if they want to.
-      if (hasAcceptedCookie === null) {
-        setCookiesConsent(false)
-      }
-      setIsTrackingSwitchActive(Boolean(hasAcceptedCookie))
+  const saveChoice = useCallback(() => {
+    const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
+    setCookiesConsent({
+      mandatory: COOKIES_BY_CATEGORY.essential,
+      accepted,
+      refused,
     })
-  }, [])
-
-  function toggleTrackingSwitch() {
-    setIsTrackingSwitchActive((prevActive) => !prevActive)
-    setIsSaveButtonDisabled((prevValue) => !prevValue)
-  }
-
-  function save() {
-    setCookiesConsent(isTrackingSwitchActive).then(() => {
-      setIsSaveButtonDisabled((prevValue) => !prevValue)
-      if (isTrackingSwitchActive) {
-        analytics.enableCollection()
-      } else {
-        analytics.disableCollection()
-      }
+    startTrackingAcceptedCookies(accepted)
+    analytics.logHasMadeAChoiceForCookies({
+      from: 'ConsentSettings',
+      type: settingsCookiesChoice,
     })
+    requestIDFATrackingConsent()
     showSuccessSnackBar({
-      message: 'Paramètre enregistré',
+      message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    goBack()
-  }
+    navigate(...getTabNavConfig('Profile'))
+  }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
-  return settings?.appEnableCookiesV2 ? (
-    <NewConsentSettings />
-  ) : (
-    <PageProfileSection title="Paramètres de confidentialité">
-      <StyledBody>
-        L’application pass Culture utilise des traceurs susceptibles de réaliser des statistiques
-        sur ta navigation. Ceci permet d’améliorer la qualité et la sureté de ton expérience. Pour
-        ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée
-        personnelle.
-      </StyledBody>
+  return (
+    <PageProfileSection title="Paramètres de confidentialité" scrollable>
+      <Typo.Body>
+        L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton
+        expérience de navigation.
+      </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <MoreInformationContainer>
-        <Typo.CaptionNeutralInfo>
-          Pour plus d’informations, nous t’invitons à consulter notre
-          <Spacer.Row numberOfSpaces={1} />
-          <TouchableLink
-            as={ButtonInsideText}
-            wording="Politique des cookies"
-            externalNav={{ url: env.COOKIES_POLICY_LINK }}
-            icon={ExternalSiteFilled}
-            typography="Caption"
-          />
-        </Typo.CaptionNeutralInfo>
-      </MoreInformationContainer>
+      <Typo.CaptionNeutralInfo>
+        Tu peux choisir d’accepter ou non l’activation de leur suivi.
+      </Typo.CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={8} />
+      <CookiesSettings
+        settingsCookiesChoice={settingsCookiesChoice}
+        setSettingsCookiesChoice={setSettingsCookiesChoice}
+      />
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
-      <SectionWithSwitch
-        title="Autoriser l’utilisation de mes données de navigation"
-        active={isTrackingSwitchActive}
-        toggle={toggleTrackingSwitch}
-      />
-      <Spacer.Flex />
-      <ButtonPrimary
-        wording="Enregistrer"
-        accessibilityLabel="Enregistrer les modifications"
-        onPress={save}
-        disabled={isSaveButtonDisabled}
-        center
-      />
+      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.Body>
+        Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
+      </Typo.Body>
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.CaptionNeutralInfo>
+        Pour plus d’informations, nous t’invitons à consulter notre
+        <Spacer.Row numberOfSpaces={1} />
+        <TouchableLink
+          as={ButtonInsideText}
+          wording="Politique de gestion des cookies"
+          externalNav={{ url: env.COOKIES_POLICY_LINK }}
+          icon={ExternalSiteFilled}
+          typography="Caption"
+        />
+      </Typo.CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={8} />
+      <ButtonPrimary wording="Enregistrer mes choix" onPress={saveChoice} center />
+      <Spacer.Column numberOfSpaces={4} />
     </PageProfileSection>
   )
 }
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.black,
-}))
-
-const MoreInformationContainer = styled.View({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-})

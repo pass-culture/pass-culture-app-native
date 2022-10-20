@@ -6,11 +6,6 @@ import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => mockSettings()),
-}))
-
 jest.mock('features/profile/api')
 
 describe('<CookiesSettings/>', () => {

@@ -5,11 +5,6 @@ import { simulateWebviewMessage, render } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
 
-const mockSettings = jest.fn().mockReturnValue({ data: { appEnableCookiesV2: true } })
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => mockSettings()),
-}))
-
 const reCaptchaProps = {
   onClose: jest.fn(),
   onError: jest.fn(),

@@ -3,7 +3,6 @@ import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
-import { useAppSettings } from 'features/auth/settings'
 import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
@@ -32,23 +31,18 @@ export const useCookies = () => {
     state: ConsentState.LOADING,
   })
   const { data: userProfileInfo } = useUserProfileInfo()
-  const { data: settings } = useAppSettings()
 
   useEffect(() => {
     getCookiesChoice().then((cookies) => {
-      if (!settings?.appEnableCookiesV2) return
-
       if (cookies) {
         setConsentAndChoiceDateTime(cookies, setCookiesConsentInternalState)
       } else {
         setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
       }
     })
-  }, [settings?.appEnableCookiesV2])
+  }, [])
 
   const setCookiesConsent = async (cookiesConsent: Consent) => {
-    if (!settings?.appEnableCookiesV2) return
-
     setCookiesConsentInternalState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
 
     const oldCookiesChoice = await getCookiesChoice()
@@ -65,8 +59,6 @@ export const useCookies = () => {
   }
 
   const setUserId = async (userId: number): Promise<void> => {
-    if (!settings?.appEnableCookiesV2) return
-
     const oldCookiesChoice = await getCookiesChoice()
 
     if (!oldCookiesChoice) {

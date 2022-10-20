@@ -6,7 +6,6 @@ export type StorageKey =
   | 'campaign_date'
   | 'cookies'
   | 'first_time_review_has_been_requested'
-  | 'has_accepted_cookie'
   | 'has_seen_birthday_notification_card'
   | 'has_seen_eligible_card'
   | 'has_seen_push_notifications_modal_once'
