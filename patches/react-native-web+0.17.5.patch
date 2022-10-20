@@ -95,7 +95,7 @@ index d55b552..1d968da 100644
    supportedProps.onBlur = handleBlur;
    supportedProps.onChange = handleChange;
 diff --git a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
-index 05a53ed..7d96447 100644
+index 05a53ed..44a0c0e 100644
 --- a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 +++ b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 @@ -1127,6 +1127,14 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
@@ -107,7 +107,7 @@ index 05a53ed..7d96447 100644
 +    const footerIdx = cells.findIndex((cell) => cell.key === "$footer")
 +    const cellsWithoutHeaderAndFooter = cells.filter((_,idx) => !([headerIdx, footerIdx].includes(idx)))
 +    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs
-+    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, {}, cellsWithoutHeaderAndFooter) : null
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null
 +    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells
 +
      var innerRet = /*#__PURE__*/React.createElement(VirtualizedListContextProvider, {
