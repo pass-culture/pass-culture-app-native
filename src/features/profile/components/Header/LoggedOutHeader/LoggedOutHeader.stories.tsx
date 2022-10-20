@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -8,17 +7,9 @@ import { theme } from 'theme'
 export default {
   title: 'features/Profile/Headers/LoggedOutHeader',
   component: LoggedOutHeader,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 } as ComponentMeta<typeof LoggedOutHeader>
 
-// TODO(PC-17931): Fix this stories
-const Default: ComponentStory<typeof LoggedOutHeader> = () => <LoggedOutHeader />
+export const Default: ComponentStory<typeof LoggedOutHeader> = () => <LoggedOutHeader />
 Default.storyName = 'LoggedOutHeader'
 Default.parameters = {
   chromatic: {
