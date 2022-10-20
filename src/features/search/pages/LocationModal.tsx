@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { Keyboard, View, TextInput as RNTextInput, Platform } from 'react-native'
+import { Keyboard, View, TextInput as RNTextInput } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -16,6 +16,7 @@ import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { locationSchema } from 'features/search/pages/schema/locationSchema'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
+import { useSetFocusWithCondition } from 'features/search/pages/useSetFocusWithCondition'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -155,17 +156,10 @@ export const LocationModal: FunctionComponent<Props> = ({
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
   const watchedLocationChoice = watch('locationChoice')
-
-  useEffect(() => {
-    if (watchedLocationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
-      if (Platform.OS === 'android') {
-        // Without timeout the focus is ok but the keyboard not open on Android device
-        setTimeout(() => searchPlaceOrVenueInputRef.current?.focus(), 0)
-      } else {
-        searchPlaceOrVenueInputRef.current?.focus()
-      }
-    }
-  }, [watchedLocationChoice])
+  useSetFocusWithCondition(
+    watchedLocationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE,
+    searchPlaceOrVenueInputRef
+  )
 
   const search = useCallback(
     ({ locationChoice, selectedPlaceOrVenue, aroundRadius }: LocationModalFormData) => {
