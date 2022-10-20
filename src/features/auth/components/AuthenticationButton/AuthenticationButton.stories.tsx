@@ -4,7 +4,7 @@ import React from 'react'
 import { AuthenticationButton } from './AuthenticationButton'
 
 export default {
-  title: 'Features/Auth/LogInButton',
+  title: 'Features/Auth/AuthenticationButton',
   component: AuthenticationButton,
 } as ComponentMeta<typeof AuthenticationButton>
 
@@ -12,13 +12,12 @@ const Template: ComponentStory<typeof AuthenticationButton> = (props) => (
   <AuthenticationButton {...props} />
 )
 
-// TODO(PC-17931): Fix those stories
-const Login = Template.bind({})
+export const Login = Template.bind({})
 Login.args = {
   type: 'login',
 }
 
-const Signup = Template.bind({})
+export const Signup = Template.bind({})
 Signup.args = {
   type: 'signup',
 }
