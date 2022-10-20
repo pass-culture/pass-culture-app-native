@@ -6,8 +6,8 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 
-import { AccessibilityAtom } from '../AccessibilityAtom'
-import { getIconAndWording, HandicapCategory } from '../AccessibilityAtom.service'
+import { AccessibilityAtom } from './AccessibilityAtom'
+import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 
 describe('getIconAndWording', () => {
   it.each`

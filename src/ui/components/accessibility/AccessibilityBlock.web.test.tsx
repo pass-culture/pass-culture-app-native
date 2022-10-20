@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { render } from 'tests/utils/web'
-
-import { AccessibilityBlock } from '../AccessibilityBlock'
+import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 
 describe('AccessibilityBlock', () => {
   it('renders all handicap information', () => {

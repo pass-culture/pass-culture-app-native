@@ -1,13 +1,15 @@
 import React from 'react'
 
 import { render } from 'tests/utils/web'
+import { AccessibilityAtom } from 'ui/components/accessibility/AccessibilityAtom'
+import {
+  getIconAndWording,
+  HandicapCategory,
+} from 'ui/components/accessibility/AccessibilityAtom.service'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-
-import { AccessibilityAtom } from '../AccessibilityAtom'
-import { getIconAndWording, HandicapCategory } from '../AccessibilityAtom.service'
 
 describe('getIconAndWording', () => {
   it.each`
