@@ -8,6 +8,7 @@ import { v4 } from '__mocks__/uuid'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ConsentState } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
@@ -33,8 +34,9 @@ jest.mock('features/auth/settings', () => ({
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const deviceId = 'testUuidV4'
-const TODAY = new Date(2022, 9, 29)
-const YESTERDAY = new Date(2022, 9, 28)
+const TODAY = new Date('2022-09-29')
+const YESTERDAY = new Date('2022-09-28')
+const EXACTLY_SIX_MONTHS_AGO = new Date('2022-03-29')
 mockdate.set(TODAY)
 
 jest.mock('api/api')
@@ -49,7 +51,7 @@ describe('useCookies', () => {
       const { result } = renderHook(useCookies)
       const { cookiesConsent } = result.current
 
-      expect(cookiesConsent).toBeUndefined()
+      expect(cookiesConsent).toEqual({ state: ConsentState.LOADING })
 
       // Wait in act until the useEffect finishes
       await flushAllPromisesWithAct()
@@ -69,9 +71,12 @@ describe('useCookies', () => {
       })
 
       expect(result.current.cookiesConsent).toEqual({
-        mandatory: COOKIES_BY_CATEGORY.essential,
-        accepted: ALL_OPTIONAL_COOKIES,
-        refused: [],
+        state: ConsentState.HAS_CONSENT,
+        value: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
       })
     })
   })
@@ -83,8 +88,8 @@ describe('useCookies', () => {
       })
 
       renderHook(useCookies)
-
       await superFlushWithAct()
+
       expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
     })
 
@@ -129,9 +134,12 @@ describe('useCookies', () => {
 
       await waitFor(() => {
         expect(result.current.cookiesConsent).toEqual({
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: ALL_OPTIONAL_COOKIES,
-          refused: [],
+          state: ConsentState.HAS_CONSENT,
+          value: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
         })
       })
     })
@@ -178,6 +186,28 @@ describe('useCookies', () => {
 
       const cookiesConsent = await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
       expect(cookiesConsent?.choiceDatetime).toEqual(TODAY.toISOString())
+    })
+
+    it('should clear consent and choice date when user has made choice 6 months ago', async () => {
+      storage.saveObject(COOKIES_CONSENT_KEY, {
+        userId: FAKE_USER_ID,
+        deviceId,
+        choiceDatetime: EXACTLY_SIX_MONTHS_AGO.toISOString(),
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
+      })
+
+      renderHook(useCookies)
+      await superFlushWithAct()
+
+      const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+      expect(cookiesConsent).toEqual({
+        userId: FAKE_USER_ID,
+        deviceId,
+      })
     })
 
     describe('user ID', () => {

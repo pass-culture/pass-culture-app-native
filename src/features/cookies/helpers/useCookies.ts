@@ -1,11 +1,13 @@
 import omit from 'lodash/omit'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useAppSettings } from 'features/auth/settings'
+import { ConsentState } from 'features/cookies/enums'
+import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
-import { Consent, CookiesConsent } from 'features/cookies/types'
+import { Consent, CookiesConsent, ConsentStatus } from 'features/cookies/types'
 import { useUserProfileInfo } from 'features/profile/api'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
@@ -17,20 +19,29 @@ const COOKIES_CONSENT_KEY = 'cookies'
 export const getCookiesChoice = async () =>
   await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
+const removeCookiesConsentAndChoiceDate = async (cookiesChoice: CookiesConsent): Promise<void> => {
+  await storage.saveObject(COOKIES_CONSENT_KEY, {
+    ...cookiesChoice,
+    choiceDatetime: undefined,
+    consent: undefined,
+  })
+}
+
 export const useCookies = () => {
-  const [cookiesConsent, setCookiesConsentInternalState] = useState<Consent | null>()
+  const [cookiesConsent, setCookiesConsentInternalState] = useState<ConsentStatus>({
+    state: ConsentState.LOADING,
+  })
   const { data: userProfileInfo } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
 
   useEffect(() => {
-    getCookiesChoice().then((value) => {
+    getCookiesChoice().then((cookies) => {
       if (!settings?.appEnableCookiesV2) return
 
-      if (value?.consent) {
-        setCookiesConsentInternalState(value.consent)
-        startTrackingAcceptedCookies(value.consent.accepted)
+      if (cookies) {
+        setConsentAndChoiceDateTime(cookies, setCookiesConsentInternalState)
       } else {
-        setCookiesConsentInternalState(null)
+        setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
       }
     })
   }, [settings?.appEnableCookiesV2])
@@ -38,7 +49,7 @@ export const useCookies = () => {
   const setCookiesConsent = async (cookiesConsent: Consent) => {
     if (!settings?.appEnableCookiesV2) return
 
-    setCookiesConsentInternalState(cookiesConsent)
+    setCookiesConsentInternalState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
 
     const oldCookiesChoice = await getCookiesChoice()
 
@@ -78,6 +89,28 @@ export const useCookies = () => {
     cookiesConsent,
     setCookiesConsent,
     setUserId,
+  }
+}
+
+const setConsentAndChoiceDateTime = (
+  cookies: CookiesConsent,
+  setCookiesConsentInternalState: Dispatch<SetStateAction<ConsentStatus>>
+) => {
+  if (cookies.consent) {
+    setCookiesConsentInternalState({
+      state: ConsentState.HAS_CONSENT,
+      value: cookies.consent,
+    })
+    startTrackingAcceptedCookies(cookies.consent.accepted)
+  } else {
+    setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
+  }
+
+  if (cookies.choiceDatetime) {
+    if (isConsentChoiceExpired(new Date(cookies.choiceDatetime))) {
+      removeCookiesConsentAndChoiceDate(cookies)
+      setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
+    }
   }
 }
 

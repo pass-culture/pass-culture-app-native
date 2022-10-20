@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
+import { ConsentState } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
@@ -8,7 +8,6 @@ import { useModal } from 'ui/components/modals/useModal'
 
 export function PrivacyPolicyV2() {
   const { cookiesConsent: hasUserMadeCookieChoiceV2 } = useCookies()
-  const [hasConsentChoiceExpired, setHasConsentChoiceExpired] = useState(false)
   const {
     visible: cookiesConsentModalVisible,
     hideModal: hideCookiesConsentModal,
@@ -17,24 +16,22 @@ export function PrivacyPolicyV2() {
   const isCookiesListUpToDate = useIsCookiesListUpToDate()
 
   useEffect(() => {
-    const checkConsentExpiration = async () => {
-      setHasConsentChoiceExpired(await isConsentChoiceExpired())
-    }
+    switch (hasUserMadeCookieChoiceV2.state) {
+      case ConsentState.LOADING:
+        break
 
-    checkConsentExpiration()
-  }, [])
+      case ConsentState.UNKNOWN:
+        showCookiesConsentModal()
+        break
 
-  useEffect(() => {
-    // while fetching hasUserMadeCookieChoiceV2 value
-    if (hasUserMadeCookieChoiceV2 === undefined) return
-
-    if (hasUserMadeCookieChoiceV2 && !hasConsentChoiceExpired && isCookiesListUpToDate) {
-      hideCookiesConsentModal()
-    } else {
-      showCookiesConsentModal()
+      default:
+        if (isCookiesListUpToDate) {
+          hideCookiesConsentModal()
+        } else {
+          showCookiesConsentModal()
+        }
     }
   }, [
-    hasConsentChoiceExpired,
     hasUserMadeCookieChoiceV2,
     hideCookiesConsentModal,
     isCookiesListUpToDate,
