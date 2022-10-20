@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { Keyboard, View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -114,18 +114,8 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const logChangeRadius = useLogFilterOnce(SectionTitle.Radius)
 
-  const {
-    handleSubmit,
-    reset,
-    setValue,
-    getValues,
-    formState: { isSubmitting, isValid, isValidating },
-    control,
-    watch,
-  } = useForm<LocationModalFormData>({
-    mode: 'onChange',
-    resolver: yupResolver(locationSchema),
-    defaultValues: {
+  const defaultValues = useMemo(() => {
+    return {
       locationChoice: getLocationChoice(searchState.locationFilter.locationType),
       aroundRadius:
         searchState.locationFilter.locationType === LocationType.AROUND_ME
@@ -143,7 +133,21 @@ export const LocationModal: FunctionComponent<Props> = ({
           : searchState.locationFilter.locationType === LocationType.PLACE
           ? searchState.locationFilter.place
           : undefined,
-    },
+    }
+  }, [searchState.locationFilter])
+
+  const {
+    handleSubmit,
+    reset,
+    setValue,
+    getValues,
+    formState: { isSubmitting, isValid, isValidating },
+    control,
+    watch,
+  } = useForm<LocationModalFormData>({
+    mode: 'onChange',
+    resolver: yupResolver(locationSchema),
+    defaultValues,
   })
 
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
@@ -212,17 +216,9 @@ export const LocationModal: FunctionComponent<Props> = ({
   )
 
   const close = useCallback(() => {
-    reset({
-      locationChoice: getLocationChoice(searchState.locationFilter.locationType),
-      aroundRadius:
-        searchState.locationFilter.locationType === LocationType.AROUND_ME
-          ? searchState.locationFilter.aroundRadius || MAX_RADIUS
-          : MAX_RADIUS,
-      searchPlaceOrVenue: '',
-      selectedPlaceOrVenue: undefined,
-    })
+    reset(defaultValues)
     hideModal()
-  }, [reset, searchState.locationFilter, hideModal])
+  }, [defaultValues, hideModal, reset])
 
   const onResetPress = useCallback(() => {
     reset({

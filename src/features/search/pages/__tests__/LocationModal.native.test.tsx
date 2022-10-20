@@ -525,6 +525,57 @@ describe('LocationModal component', () => {
     })
   })
 
+  describe('should preserve', () => {
+    it('the selected place when closing the modal', async () => {
+      const locationFilter: LocationFilter = {
+        locationType: LocationType.PLACE,
+        place: Kourou,
+        aroundRadius: 10,
+      }
+      mockSearchState = {
+        ...initialSearchState,
+        locationFilter,
+      }
+      const { getByPlaceholderText, getByTestId } = renderLocationModal({
+        hideLocationModal,
+      })
+
+      const searchInput = getByPlaceholderText('Saisis une adresse ou le nom d’un lieu')
+      await act(async () => {
+        fireEvent(searchInput, 'onChangeText', 'test')
+      })
+
+      const previousButton = getByTestId('backButton')
+      fireEvent.press(previousButton)
+
+      expect(searchInput.props.value).toEqual('Kourou')
+    })
+
+    it('the selected venue when closing the modal', async () => {
+      const locationFilter: LocationFilter = {
+        locationType: LocationType.VENUE,
+        venue: mockVenues[0],
+      }
+      mockSearchState = {
+        ...mockSearchState,
+        locationFilter,
+      }
+      const { getByPlaceholderText, getByTestId } = renderLocationModal({
+        hideLocationModal,
+      })
+
+      const searchInput = getByPlaceholderText('Saisis une adresse ou le nom d’un lieu')
+      await act(async () => {
+        fireEvent(searchInput, 'onChangeText', 'test')
+      })
+
+      const previousButton = getByTestId('backButton')
+      fireEvent.press(previousButton)
+
+      expect(searchInput.props.value).toEqual('venue_0')
+    })
+  })
+
   describe('should close the modal', () => {
     it('when pressing search button and not pristine', async () => {
       const { getByTestId } = renderLocationModal({ hideLocationModal })
