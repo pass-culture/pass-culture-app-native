@@ -3,8 +3,7 @@ import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
+import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
@@ -13,6 +12,23 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export const SelectPhoneStatus: FunctionComponent = () => {
   return <PageWithHeader title={'Identification'} scrollChildren={<SelectPhoneStatusContent />} />
 }
+
+const buttonList = [
+  <HeroButtonList
+    Title={<Typo.Body>J’ai un smartphone à proximité</Typo.Body>}
+    icon={BicolorSmartphone}
+    navigateTo={{ screen: 'SelectIDStatus' }}
+    key={1}
+  />,
+  <HeroButtonList
+    Title={<Typo.Body>Je n’ai pas de smartphone à proximité</Typo.Body>}
+    icon={BicolorNoPhone}
+    navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } }}
+    key={2}
+  />,
+]
+
+const buttonListSeparator = <Spacer.Column numberOfSpaces={6} />
 
 const SelectPhoneStatusContent: FunctionComponent = () => {
   return (
@@ -26,30 +42,10 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
         le site demarches-simplifiees.fr mais le traitement sera plus long.
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <StyledVerticalUl>
-        <Li>
-          <HeroButtonList
-            Title={<Typo.Body>J’ai un smartphone à proximité</Typo.Body>}
-            icon={BicolorSmartphone}
-            navigateTo={{ screen: 'SelectIDStatus' }}
-          />
-        </Li>
-        <Spacer.Column numberOfSpaces={6} />
-        <Li>
-          <HeroButtonList
-            Title={<Typo.Body>Je n’ai pas de smartphone à proximité</Typo.Body>}
-            icon={BicolorNoPhone}
-            navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } }}
-          />
-        </Li>
-      </StyledVerticalUl>
+      <AccessibilityList items={buttonList} Separator={buttonListSeparator} />
     </Container>
   )
 }
-
-const StyledVerticalUl = styled(VerticalUl)({
-  width: '100%',
-})
 
 const Container = styled.View({
   height: '100%',

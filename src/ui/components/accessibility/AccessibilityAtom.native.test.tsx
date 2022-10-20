@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 
-import { AccessibilityAtom } from '../AccessibilityAtom'
-import { getIconAndWording, HandicapCategory } from '../AccessibilityAtom.service'
+import { AccessibilityAtom } from './AccessibilityAtom'
+import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 
 describe('getIconAndWording', () => {
   it.each`
@@ -39,7 +39,7 @@ describe('AccessibilityAtom', () => {
     const { queryByTestId } = render(
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />
     )
-    expect(queryByTestId('invalidTestId')).toBeFalsy()
+    expect(queryByTestId('invalidTestId')).toBeNull()
     expect(queryByTestId('validTestId')).toBeTruthy()
   })
   it('should displat the invalidIcon when isValid is false', () => {
@@ -47,7 +47,7 @@ describe('AccessibilityAtom', () => {
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
     expect(queryByTestId('invalidTestId')).toBeTruthy()
-    expect(queryByTestId('validTestId')).toBeFalsy()
+    expect(queryByTestId('validTestId')).toBeNull()
   })
   it('uses sideSpace to overgrow textContainer', async () => {
     const { getByTestId } = render(
@@ -58,6 +58,6 @@ describe('AccessibilityAtom', () => {
       />
     )
     const container = getByTestId('accessibilityAtomContainer')
-    expect(container.style.marginRight).toEqual('10px')
+    expect(container.props.style[0].marginRight).toEqual(10)
   })
 })
