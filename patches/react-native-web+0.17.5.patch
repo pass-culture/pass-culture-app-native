@@ -94,6 +94,46 @@ index d55b552..1d968da 100644
    supportedProps.enterKeyHint = returnKeyType;
    supportedProps.onBlur = handleBlur;
    supportedProps.onChange = handleChange;
+diff --git a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
+index 05a53ed..44a0c0e 100644
+--- a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
++++ b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
+@@ -1127,6 +1127,14 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+     });
+ 
+     this._hasMore = this.state.last < this.props.getItemCount(this.props.data) - 1;
++
++    const headerIdx = cells.findIndex((cell) => cell.key === "$header")
++    const footerIdx = cells.findIndex((cell) => cell.key === "$footer")
++    const cellsWithoutHeaderAndFooter = cells.filter((_,idx) => !([headerIdx, footerIdx].includes(idx)))
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null
++    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells
++
+     var innerRet = /*#__PURE__*/React.createElement(VirtualizedListContextProvider, {
+       value: {
+         cellKey: null,
+@@ -1140,7 +1148,7 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
++    }, cellsToDisplay));
+     var ret = innerRet;
+ 
+     if (this.props.debug) {
+@@ -1581,9 +1589,10 @@ var CellRenderer = /*#__PURE__*/function (_React$Component) {
+       style: cellStyle,
+       onLayout: onLayout
+     }), element, itemSeparator);
++
+     return /*#__PURE__*/React.createElement(VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
+   };
+ 
+   return CellRenderer;
 diff --git a/node_modules/react-native-web/src/exports/Image/index.js b/node_modules/react-native-web/src/exports/Image/index.js
 index 7cbde9f..5cc166c 100644
 --- a/node_modules/react-native-web/src/exports/Image/index.js

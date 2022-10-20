@@ -243,7 +243,9 @@ Array [
     }
     getItem={[Function]}
     getItemCount={[Function]}
+    itemAs="li"
     keyExtractor={[Function]}
+    listAs="ul"
     onContentSizeChange={[Function]}
     onLayout={[Function]}
     onMomentumScrollBegin={[Function]}
@@ -291,223 +293,192 @@ Array [
         onLayout={[Function]}
         style={null}
       >
-        <View>
-          <View
-            accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-            accessibilityRole="link"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+        <View
+          accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
+          accessibilityRole="link"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
             }
-            testID="EndedBookingItem"
+          }
+          testID="EndedBookingItem"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
           >
+            <View
+              size="small"
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 4,
+                    "height": 96,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": Object {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 64,
+                  },
+                ]
+              }
+            >
+              <BVLinearGradient
+                borderRadius={4}
+                colors={
+                  Array [
+                    4294046196,
+                    4291546578,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 0.5,
+                    "y": 1,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0.5,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 4,
+                      "height": "100%",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+                testID="imagePlaceholder"
+              >
+                <View
+                  height={32}
+                  testID="categoryIcon"
+                  width={32}
+                >
+                  <Text>
+                    categoryIcon-SVG-Mock
+                  </Text>
+                </View>
+              </BVLinearGradient>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "width": 16,
+                  },
+                ]
+              }
+            />
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "paddingRight": 4,
                   },
                 ]
               }
             >
               <View
-                size="small"
                 style={
                   Array [
                     Object {
-                      "borderRadius": 4,
-                      "height": 96,
-                      "shadowColor": "#696A6F",
-                      "shadowOffset": Object {
-                        "height": 4,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 4,
-                      "width": 64,
+                      "paddingBottom": 4,
                     },
                   ]
                 }
               >
-                <BVLinearGradient
-                  borderRadius={4}
-                  colors={
-                    Array [
-                      4294046196,
-                      4291546578,
-                    ]
-                  }
-                  endPoint={
-                    Object {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    Object {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
+                <Text
+                  numberOfLines={2}
+                  shrink={true}
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#F1F1F4",
-                        "borderRadius": 4,
-                        "height": "100%",
-                        "justifyContent": "center",
-                        "width": "100%",
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
                       },
                     ]
                   }
-                  testID="imagePlaceholder"
                 >
-                  <View
-                    height={32}
-                    testID="categoryIcon"
-                    width={32}
-                  >
-                    <Text>
-                      categoryIcon-SVG-Mock
-                    </Text>
-                  </View>
-                </BVLinearGradient>
+                  Avez-vous déjà vu ?
+                </Text>
               </View>
               <View
-                numberOfSpaces={4}
                 style={
                   Array [
                     Object {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingRight": 4,
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
                   ]
                 }
               >
                 <View
+                  noFullWidth={true}
                   style={
                     Array [
                       Object {
-                        "paddingBottom": 4,
+                        "alignItems": "center",
+                        "flexDirection": "row-reverse",
+                        "justifyContent": "flex-end",
+                        "maxWidth": 500,
                       },
                     ]
                   }
                 >
                   <Text
-                    numberOfLines={2}
-                    shrink={true}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                        },
-                      ]
-                    }
-                  >
-                    Avez-vous déjà vu ?
-                  </Text>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
-                    ]
-                  }
-                >
-                  <View
+                    isValid={false}
                     noFullWidth={true}
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexDirection": "row-reverse",
-                          "justifyContent": "flex-end",
-                          "maxWidth": 500,
+                          "color": "#b60025",
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "paddingLeft": 4,
+                          "textAlign": "center",
                         },
                       ]
                     }
                   >
-                    <Text
-                      isValid={false}
-                      noFullWidth={true}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#b60025",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "paddingLeft": 4,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      Réservation annulée
-                    </Text>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        height={20}
-                        testID="rule-icon-undefined"
-                        width={20}
-                      >
-                        <Text>
-                          rule-icon-undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
+                    Réservation annulée
+                  </Text>
                   <View
                     numberOfSpaces={1}
                     style={
@@ -518,21 +489,50 @@ Array [
                       ]
                     }
                   />
-                  <Text
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
+                          "flexShrink": 0,
                         },
                       ]
                     }
                   >
-                    le 15/03/2021
-                  </Text>
+                    <View
+                      height={20}
+                      testID="rule-icon-undefined"
+                      width={20}
+                    >
+                      <Text>
+                        rule-icon-undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                 </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  le 15/03/2021
+                </Text>
               </View>
             </View>
           </View>

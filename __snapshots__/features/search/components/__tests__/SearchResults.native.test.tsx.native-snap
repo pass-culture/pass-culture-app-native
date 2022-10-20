@@ -384,9 +384,11 @@ Array [
       data={Array []}
       getItem={[Function]}
       getItemCount={[Function]}
+      itemAs="li"
       keyExtractor={[Function]}
       keyboardDismissMode="on-drag"
       keyboardShouldPersistTaps="handled"
+      listAs="ul"
       onContentSizeChange={[Function]}
       onEndReached={[Function]}
       onLayout={[Function]}

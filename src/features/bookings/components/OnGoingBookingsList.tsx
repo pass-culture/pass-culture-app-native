@@ -85,6 +85,8 @@ export function OnGoingBookingsList() {
   return (
     <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
       <FlatList
+        listAs="ul"
+        itemAs="li"
         testID="OnGoingBookingsList"
         keyExtractor={keyExtractor}
         data={ongoingBookings}

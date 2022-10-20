@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -19,7 +18,6 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { BookingItemTitle } from './BookingItemTitle'
 
@@ -65,27 +63,25 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   }
 
   return (
-    <View {...getHeadingAttrs(3)}>
-      <TouchableLink
-        enableNavigate={!!netInfo.isConnected}
-        navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
-        onBeforeNavigate={handlePressOffer}
-        accessibilityLabel={accessibilityLabel}
-        testID="EndedBookingItem">
-        <ItemContainer>
-          <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
-          <Spacer.Row numberOfSpaces={4} />
-          <AttributesView>
-            <BookingItemTitle title={stock.offer.name} />
-            <EndedReasonAndDate>
-              {endedBookingReason}
-              <Spacer.Row numberOfSpaces={1} />
-              <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
-            </EndedReasonAndDate>
-          </AttributesView>
-        </ItemContainer>
-      </TouchableLink>
-    </View>
+    <TouchableLink
+      enableNavigate={!!netInfo.isConnected}
+      navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
+      onBeforeNavigate={handlePressOffer}
+      accessibilityLabel={accessibilityLabel}
+      testID="EndedBookingItem">
+      <ItemContainer>
+        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
+        <Spacer.Row numberOfSpaces={4} />
+        <AttributesView>
+          <BookingItemTitle title={stock.offer.name} />
+          <EndedReasonAndDate>
+            {endedBookingReason}
+            <Spacer.Row numberOfSpaces={1} />
+            <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
+          </EndedReasonAndDate>
+        </AttributesView>
+      </ItemContainer>
+    </TouchableLink>
   )
 }
 
