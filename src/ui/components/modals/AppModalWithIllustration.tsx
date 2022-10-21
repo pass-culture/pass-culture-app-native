@@ -10,18 +10,15 @@ type Props = {
   visible: boolean
   title: string
   Illustration: React.FC<AccessibleIcon>
-  TextComponent: React.FC
-  CTAComponent: React.FC
   hideModal: () => void
 }
 
-export const AppBottomSheetModal: FunctionComponent<Props> = ({
+export const AppModalWithIllustration: FunctionComponent<Props> = ({
   visible,
   title,
   Illustration,
-  TextComponent,
-  CTAComponent,
   hideModal,
+  children,
 }) => {
   return (
     <AppModal
@@ -33,9 +30,7 @@ export const AppBottomSheetModal: FunctionComponent<Props> = ({
       <Container>
         <Illustration />
         <Spacer.Column numberOfSpaces={6} />
-        <TextComponent />
-        <Spacer.Column numberOfSpaces={6} />
-        <CTAComponent />
+        {children}
       </Container>
     </AppModal>
   )

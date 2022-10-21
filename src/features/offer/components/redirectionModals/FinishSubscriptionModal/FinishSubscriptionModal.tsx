@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { AppBottomSheetModal } from 'ui/components/modals/AppBottomSheetModal'
+import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Typo } from 'ui/theme'
+import { Typo, Spacer } from 'ui/theme'
 
 type Props = {
   visible: boolean
@@ -20,36 +20,26 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
     hideModal()
     navigate(...getTabNavConfig('Profile'))
   }
-  const title = 'Débloque ton crédit pour réserver cette offre'
-  const TextComponent: React.FC = () => {
-    return (
+
+  return (
+    <AppModalWithIllustration
+      visible={visible}
+      title={'Débloque ton crédit pour réserver cette offre'}
+      Illustration={BicolorIdCardWithMagnifyingGlass}
+      hideModal={hideModal}>
       <StyledBody>
         Finalise ton inscription pour obtenir ton crédit de
         <Typo.ButtonText> 30€ </Typo.ButtonText>
         et réserver cette offre.
       </StyledBody>
-    )
-  }
-  const CTAComponent: React.FC = () => {
-    return (
+      <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Terminer mon inscription"
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
         mediumWidth
       />
-    )
-  }
-
-  return (
-    <AppBottomSheetModal
-      visible={visible}
-      title={title}
-      Illustration={BicolorIdCardWithMagnifyingGlass}
-      TextComponent={TextComponent}
-      CTAComponent={CTAComponent}
-      hideModal={hideModal}
-    />
+    </AppModalWithIllustration>
   )
 }
 

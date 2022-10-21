@@ -5,14 +5,16 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
 import { fireEvent, render } from 'tests/utils'
 
+const hideModal = jest.fn()
+
 describe('<AuthenticationModal />', () => {
   it('should match previous snapshot', () => {
-    const modal = render(<AuthenticationModal visible hideModal={() => {}} />)
+    const modal = render(<AuthenticationModal visible hideModal={hideModal} />)
     expect(modal).toMatchSnapshot()
   })
 
   it('should navigate to signup page when clicking on "Créer un compte" button', () => {
-    const { getByLabelText } = render(<AuthenticationModal visible hideModal={() => {}} />)
+    const { getByLabelText } = render(<AuthenticationModal visible hideModal={hideModal} />)
     const signupButton = getByLabelText('Créer un compte')
 
     fireEvent.press(signupButton)

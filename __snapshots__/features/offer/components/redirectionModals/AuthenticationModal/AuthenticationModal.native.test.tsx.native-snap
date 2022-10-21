@@ -10,7 +10,7 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
   deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
-  onBackdropPress={[Function]}
+  onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
   onModalWillHide={[Function]}
   onModalWillShow={[Function]}
@@ -67,7 +67,7 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
     deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
+    onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
     onModalWillHide={[Function]}
     onModalWillShow={[Function]}
@@ -193,7 +193,7 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Identifie-toi pour réserver l'offre
+            Identifie-toi pour réserver l’offre
           </Text>
         </View>
         <View
