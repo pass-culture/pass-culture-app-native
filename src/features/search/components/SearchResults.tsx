@@ -340,7 +340,6 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
 }))
 
 const GeolocationButtonContainer = styled.View({
-  marginTop: -getSpacing(2),
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
 })
