@@ -392,7 +392,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                                   onPlaceSearchChange(text)
                                   setValueWithValidation('selectedPlaceOrVenue', undefined)
                                 }}
-                                placeholder="Saisis une adresse ou le nom d’un lieu"
+                                placeholder="Adresse, cinéma, musée..."
                                 inputHeight="regular"
                                 accessibilityLabel="Recherche un lieu, une adresse"
                                 onPressRightIcon={handleSearchReset}
