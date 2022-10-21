@@ -6,11 +6,11 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule } from 'features/home/components'
-import { BusinessModuleProps } from 'features/home/components/BusinessModule'
+import { BusinessModuleProps } from 'features/home/components/modules/BusinessModule'
 import * as profileAPI from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils/web'
+import { fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
