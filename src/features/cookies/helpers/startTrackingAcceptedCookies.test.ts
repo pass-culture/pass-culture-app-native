@@ -1,9 +1,13 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { removeGenerateCookieKey } from 'features/cookies/helpers/removeGenerateCookieKey'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
+
+jest.mock('features/cookies/helpers/removeGenerateCookieKey')
+const mockRemoveGenerateCookieKey = removeGenerateCookieKey as jest.Mock
 
 describe('startTrackingAcceptedCookies', () => {
   it('should disable tracking if refused all cookies', () => {
@@ -56,5 +60,11 @@ describe('startTrackingAcceptedCookies', () => {
     expect(Batch.optOut).toHaveBeenCalled()
     expect(amplitude.disableCollection).toHaveBeenCalled()
     expect(analytics.disableCollection).toHaveBeenCalled()
+  })
+
+  it('should remove generate algolia key from localStorage if refused algolia tracking (performance)', () => {
+    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing) // without performance cookies and algolia insight
+
+    expect(mockRemoveGenerateCookieKey).toHaveBeenNthCalledWith(1, 'algoliasearch-client-js')
   })
 })
