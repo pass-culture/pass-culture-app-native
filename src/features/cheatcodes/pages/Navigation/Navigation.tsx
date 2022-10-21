@@ -114,26 +114,6 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Reset mdp lien expiré"
-              onPress={() =>
-                navigate('ResetPasswordExpiredLink', {
-                  email: 'john@wick.com',
-                })
-              }
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="Reset mdp email envoyé"
-              onPress={() =>
-                navigate('ResetPasswordEmailSent', {
-                  email: 'jean.dupont@gmail.com',
-                })
-              }
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
               wording="First Tutorial"
               onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             />
