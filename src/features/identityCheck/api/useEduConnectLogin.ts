@@ -35,10 +35,11 @@ export function useEduConnectLogin() {
     getLoginUrl().catch(setError)
   }, [getLoginUrl])
 
-  const openEduConnect = useCallback(async () => {
+  // do not call this in native components as it is only defined in web
+  const openEduConnectTab = useCallback(async () => {
     globalThis.window.open(loginUrl, '_blank')
     await getLoginUrl()
   }, [getLoginUrl, loginUrl])
 
-  return { openEduConnect, loginUrl, error }
+  return { openEduConnectTab, loginUrl, error }
 }

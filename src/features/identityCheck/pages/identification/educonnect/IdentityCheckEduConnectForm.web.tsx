@@ -13,7 +13,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
-  const { error, openEduConnect } = useEduConnectLogin()
+  const { error, openEduConnectTab } = useEduConnectLogin()
 
   if (error) {
     throw error
@@ -56,7 +56,7 @@ export const IdentityCheckEduConnectForm = () => {
         fixedBottomChildren={
           <ButtonPrimary
             wording="Ouvrir un onglet ÉduConnect"
-            onPress={openEduConnect}
+            onPress={openEduConnectTab}
             icon={ExternalSite}
           />
         }

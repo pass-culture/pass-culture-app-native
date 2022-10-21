@@ -1,25 +1,29 @@
-import { rest } from 'msw'
 import React from 'react'
 
-import { server } from 'tests/server'
-import { render, superFlushWithAct } from 'tests/utils/web'
+import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { IdentityCheckEduConnectForm } from './IdentityCheckEduConnectForm'
 
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
-jest.mock('libs/eduConnectClient')
-
-server.use(
-  rest.get('https://login/?redirect=false', async (req, res, ctx) =>
-    res(ctx.status(200), ctx.json({}))
-  )
-)
+const mockOpenEduConnectTab = jest.fn()
+jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
+  openEduConnectTab: mockOpenEduConnectTab,
+  loginUrl: 'https://login/?redirect=false',
+  error: null,
+})
 
 describe('<IdentityCheckEduConnectForm />', () => {
-  it('should render IdentityCheckEduConnectForm', async () => {
+  it('should render IdentityCheckEduConnectForm', () => {
     const renderAPI = render(<IdentityCheckEduConnectForm />)
-    superFlushWithAct()
-
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should navigate to next screen and open educonnect tab on press "Connexion avec ÉduConnect"', () => {
+    const { getByText } = render(<IdentityCheckEduConnectForm />)
+    const button = getByText('Ouvrir un onglet ÉduConnect')
+
+    fireEvent.click(button)
+
+    expect(mockOpenEduConnectTab).toHaveBeenCalled()
   })
 })
