@@ -13,10 +13,15 @@ import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   type: 'login' | 'signup'
   linkColor?: ColorsEnum
+  onAdditionalPress?: () => void
   children?: never
 }
 
-export const AuthenticationButton: FunctionComponent<Props> = ({ type, linkColor: color }) => {
+export const AuthenticationButton: FunctionComponent<Props> = ({
+  type,
+  linkColor: color,
+  onAdditionalPress: onPress,
+}) => {
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
@@ -41,6 +46,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({ type, linkColor
           wording={buttonWording}
           icon={isLogin ? Connect : Profile}
           color={color}
+          onBeforeNavigate={onPress}
         />
       </StyledBody>
     </AuthenticationContainer>
