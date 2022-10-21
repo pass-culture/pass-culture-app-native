@@ -24,6 +24,7 @@ export type CulturalSurveyRootStackParamList = {
 export type IdentityCheckRootStackParamList = {
   // Cheatcodes
   NavigationSignUp: undefined
+  NavigationErrors: undefined
   NavigationIdentityCheck: undefined
   NewIdentificationFlow: undefined
   // Stepper

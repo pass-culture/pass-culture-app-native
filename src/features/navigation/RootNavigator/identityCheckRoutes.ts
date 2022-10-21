@@ -1,3 +1,4 @@
+import { NavigationErrors } from 'features/cheatcodes/pages/NavigationErrors/NavigationErrors'
 import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
 import { NewIdentificationFlow } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck/NewIdentificationFlow/NewIdentificationFlow'
@@ -47,6 +48,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: NavigationSignUp,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-sign-up',
+  },
+  {
+    // debug route: in navigation component
+    name: 'NavigationErrors',
+    component: NavigationErrors,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-navigation-errors',
   },
   {
     // debug route: in navigation component
