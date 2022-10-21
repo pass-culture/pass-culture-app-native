@@ -17,8 +17,8 @@ import {
   OffersModule,
   VenuesModule,
 } from 'features/home/components'
+import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
-import { HomeHeader } from 'features/home/components/HomeHeader'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
 import { ProcessedModule, RecommendationPane } from 'features/home/contentful/moduleTypes'
