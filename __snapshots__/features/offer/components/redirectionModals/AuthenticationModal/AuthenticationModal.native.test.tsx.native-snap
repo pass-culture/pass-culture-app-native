@@ -1,0 +1,593 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
+<Modal
+  accessibilityRole="none"
+  animationType="none"
+  aria-labelledby="testUuidV4"
+  aria-modal={true}
+  deviceHeight={1334}
+  deviceWidth={750}
+  hardwareAccelerated={false}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[MockFunction]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
+  onRequestClose={[Function]}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={true}
+  supportedOrientations={
+    Array [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  testID="modal"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    forwardedRef={[Function]}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "height": 1334,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "width": 750,
+      }
+    }
+  />
+  <View
+    accessibilityRole="none"
+    aria-labelledby="testUuidV4"
+    aria-modal={true}
+    collapsable={false}
+    deviceHeight={1334}
+    deviceWidth={750}
+    forwardedRef={[Function]}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[MockFunction]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    panResponderThreshold={4}
+    pointerEvents="box-none"
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "flex": 1,
+        "justifyContent": "center",
+        "left": 0,
+        "margin": "auto",
+        "position": "absolute",
+        "right": 0,
+        "top": "auto",
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+    supportedOrientations={
+      Array [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+  >
+    <View
+      height={428}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomEndRadius": 0,
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderTopEndRadius": 16,
+            "borderTopLeftRadius": 20,
+            "borderTopRightRadius": 20,
+            "borderTopStartRadius": 16,
+            "flexDirection": "column",
+            "height": 428,
+            "justifyContent": "center",
+            "maxHeight": 650,
+            "maxWidth": 960,
+            "paddingBottom": 32,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalContainer"
+    >
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "width": "100%",
+            },
+          ]
+        }
+        testID="modalHeader"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.8,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            nativeID="testUuidV4"
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="modalHeaderTitle"
+          >
+            Identifie-toi pour réserver l’offre
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Fermer la modale"
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
+                "userSelect": "auto",
+              }
+            }
+            testID="Fermer la modale"
+          >
+            <View
+              height={20}
+              testID="rightIcon"
+              width={20}
+            >
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <View
+        backdropColor="#00000080"
+        paddingBottom={8}
+        style={
+          Array [
+            Object {
+              "maxHeight": "100%",
+              "maxWidth": 480,
+              "paddingBottom": 8,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RCTScrollView
+          contentContainerStyle={Object {}}
+          onContentSizeChange={[Function]}
+          scrollEnabled={true}
+          testID="modalScrollView"
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                height={109.2}
+                width={140}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Tu as entre 15 et 18 ans ?
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
+              </Text>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Créer un compte"
+                  accessibilityRole="link"
+                  accessibilityState={
+                    Object {
+                      "disabled": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="Créer un compte"
+                >
+                  <View
+                    height={48}
+                    width="100%"
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "position": "absolute",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      adjustsFontSizeToFit={true}
+                      isDisabled={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "paddingBottom": 8,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
+                            "paddingTop": 8,
+                          },
+                        ]
+                      }
+                    >
+                      Créer un compte
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Déjà un compte ?
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View>
+                    <View
+                      accessibilityRole="link"
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "opacity": 1,
+                          "top": 3,
+                          "userSelect": "auto",
+                        }
+                      }
+                    >
+                      <View
+                        icon={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": Array [
+                              [Function],
+                            ],
+                            "inlineStyle": InlineStyle {
+                              "rules": Array [
+                                "",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        style={
+                          Array [
+                            Object {
+                              "paddingLeft": 25,
+                            },
+                          ]
+                        }
+                        typography="ButtonText"
+                      >
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "left": 0,
+                                "position": "absolute",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            fill="#eb0055"
+                            height={20}
+                            testID="button-icon"
+                            width={20}
+                          >
+                            <Text>
+                              button-icon-SVG-Mock
+                            </Text>
+                          </View>
+                          <View
+                            numberOfSpaces={1}
+                            style={
+                              Array [
+                                Object {
+                                  "width": 4,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#eb0055",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                          typography="ButtonText"
+                        >
+                          Se connecter
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </Text>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</Modal>
+`;

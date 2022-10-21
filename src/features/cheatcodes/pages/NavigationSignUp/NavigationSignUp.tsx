@@ -3,9 +3,10 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FinishSubscriptionModal } from 'features/auth/signup/FinishSubscriptionModal/FinishSubscriptionModal'
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
+import { FinishSubscriptionModal } from 'features/offer/components/redirectionModals/FinishSubscriptionModal/FinishSubscriptionModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -17,6 +18,11 @@ export function NavigationSignUp(): JSX.Element {
     visible: finishSubscriptionModalVisible,
     showModal: showFinishSubscriptionModal,
     hideModal: hideFinishSubscriptionModal,
+  } = useModal(false)
+  const {
+    visible: authenticationModalVisible,
+    showModal: showAuthenticationModal,
+    hideModal: hideAuthenticationModal,
   } = useModal(false)
 
   return (
@@ -78,6 +84,16 @@ export function NavigationSignUp(): JSX.Element {
           <FinishSubscriptionModal
             visible={finishSubscriptionModalVisible}
             hideModal={hideFinishSubscriptionModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
+            wording="Authentication modal from offer"
+            onPress={showAuthenticationModal}
+          />
+          <AuthenticationModal
+            visible={authenticationModalVisible}
+            hideModal={hideAuthenticationModal}
           />
         </Row>
       </StyledContainer>
