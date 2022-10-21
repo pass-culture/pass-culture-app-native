@@ -4,10 +4,12 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/SingleFilterButton'
+import { GeolocationButton } from 'features/search/atoms/Buttons/GeolocationButton'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
@@ -20,6 +22,7 @@ import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 import { analytics } from 'libs/firebase/analytics'
+import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { SearchHit } from 'libs/search'
@@ -81,6 +84,7 @@ export const SearchResults: React.FC = () => {
     showModal: showLocationModal,
     hideModal: hideLocationModal,
   } = useModal(false)
+  const { position, showGeolocPermissionModal } = useGeolocation()
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
@@ -123,11 +127,32 @@ export const SearchResults: React.FC = () => {
     [searchState.query]
   )
 
-  const ListHeaderComponent = useMemo(
-    () => <NumberOfResults nbHits={nbHits} />,
+  const ListHeaderComponent = useMemo(() => {
+    const shouldDisplayGeolocationButton =
+      position === null &&
+      !params?.offerTypes?.isDigital &&
+      params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
+      params?.offerCategories?.[0] !== SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE
+
+    return (
+      <React.Fragment>
+        <NumberOfResults nbHits={nbHits} />
+        {!!shouldDisplayGeolocationButton && (
+          <GeolocationButtonContainer>
+            <GeolocationButton onPress={showGeolocPermissionModal} />
+          </GeolocationButtonContainer>
+        )}
+      </React.Fragment>
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [nbHits, searchState.locationFilter.locationType]
-  )
+  }, [
+    nbHits,
+    searchState.locationFilter.locationType,
+    position,
+    params?.offerTypes?.isDigital,
+    params?.offerCategories,
+    showGeolocPermissionModal,
+  ])
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
 
   const ListFooterComponent = useMemo(
@@ -313,6 +338,12 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
+
+const GeolocationButtonContainer = styled.View({
+  marginTop: -getSpacing(2),
+  paddingHorizontal: getSpacing(6),
+  paddingBottom: getSpacing(4),
+})
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
