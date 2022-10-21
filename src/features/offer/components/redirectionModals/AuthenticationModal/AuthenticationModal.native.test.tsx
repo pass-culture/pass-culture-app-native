@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { AuthenticationModal } from 'features/offer/components/AuthenticationModal'
+import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
 import { fireEvent, render } from 'tests/utils'
 
 describe('<AuthenticationModal />', () => {

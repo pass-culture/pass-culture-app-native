@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/firebase/analytics'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
-import { SignUpSignInChoiceOfferModal } from '../SignUpSignInChoiceOfferModal'
+import { SignUpSignInChoiceOfferModal } from './SignUpSignInChoiceOfferModal'
 
 const OFFER_ID = 123
 describe('SignUpSignInChoiceOfferModal', () => {
