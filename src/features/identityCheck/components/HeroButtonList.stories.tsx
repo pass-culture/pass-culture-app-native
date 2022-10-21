@@ -35,14 +35,19 @@ const caption = (
   </Text>
 )
 
-export const Default = Template.bind({})
+// TODO(PC-18128): Fix this stories
+const Default = Template.bind({})
 Default.args = {
   Title: description,
   icon: BicolorSmartphone,
+  navigateTo: { screen: 'AppComponents' },
 }
-export const HeroButtonListWithCaption = Template.bind({})
+
+// TODO(PC-18128): Fix this stories
+const HeroButtonListWithCaption = Template.bind({})
 HeroButtonListWithCaption.args = {
   Title: description2,
   Subtitle: caption,
   icon: BicolorSmartphone,
+  navigateTo: { screen: 'AppComponents' },
 }

@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof CreditHeader> = (props) => <CreditHeader {
 
 const depositExpirationDate = '2023-02-16T17:16:04.735235'
 
-// TODO(PC-17931): Fix this stories
+// TODO(PC-18128): Fix this stories
 const WithDomainCreditV1 = Template.bind({})
 WithDomainCreditV1.args = {
   firstName: 'Rosa',
@@ -31,7 +31,7 @@ WithDomainCreditV1.args = {
   domainsCredit: domains_credit_v1,
 }
 
-// TODO(PC-17931): Fix this stories
+// TODO(PC-18128): Fix this stories
 const WithDomainCreditV2 = Template.bind({})
 WithDomainCreditV2.args = {
   firstName: 'Rosa',
