@@ -32,3 +32,6 @@
   **[] $VALUES;
   public *;
 }
+
+# react-native-keychain
+-keep class com.facebook.crypto.** { *; }
