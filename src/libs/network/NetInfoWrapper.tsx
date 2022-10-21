@@ -36,6 +36,37 @@ const NetInfoContext = createContext<NetInfoState>({
   details: null,
 } as NetInfoState)
 
-export function useNetInfoContext(): NetInfoState {
+type UseNetInfoContext = (options?: {
+  onConnectionLost?: VoidFunction
+  onConnection?: VoidFunction
+  onInternetConnectionLost?: VoidFunction
+  onInternetConnection?: VoidFunction
+}) => NetInfoState
+
+export const useNetInfoContext: UseNetInfoContext = ({
+  onConnectionLost,
+  onConnection,
+  onInternetConnectionLost,
+  onInternetConnection,
+} = {}) => {
+  const networkInfo = useContext(NetInfoContext)
+  const { isConnected, isInternetReachable } = networkInfo
+
+  useEffect(() => {
+    if (isConnected && onConnection) {
+      onConnection()
+    } else if (!isConnected && onConnectionLost) {
+      onConnectionLost()
+    }
+  }, [isConnected, onConnectionLost, onConnection])
+
+  useEffect(() => {
+    if (isInternetReachable && onInternetConnection) {
+      onInternetConnection()
+    } else if (!isInternetReachable && onInternetConnectionLost) {
+      onInternetConnectionLost()
+    }
+  }, [isInternetReachable, onInternetConnectionLost, onInternetConnection])
+
   return useContext(NetInfoContext)
 }

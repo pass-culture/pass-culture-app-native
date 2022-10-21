@@ -1,3 +1,3 @@
 export const useNetInfo = () => {
-  return { isConnected: true }
+  return { isConnected: true, isInternetReachable: true }
 }
