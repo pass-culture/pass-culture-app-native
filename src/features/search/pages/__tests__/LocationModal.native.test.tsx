@@ -386,7 +386,7 @@ describe('LocationModal component', () => {
         fireEvent.press(radioButton)
       })
 
-      const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
         fireEvent.changeText(searchInput, 'Paris')

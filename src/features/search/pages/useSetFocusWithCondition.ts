@@ -3,11 +3,11 @@ import { TextInput as RNTextInput } from 'react-native'
 
 export const useSetFocusWithCondition = (
   shouldFocus: boolean,
-  textInput: MutableRefObject<RNTextInput | null>
+  textInputRef: MutableRefObject<RNTextInput | null>
 ) => {
   useEffect(() => {
     if (shouldFocus) {
-      textInput.current?.focus()
+      textInputRef.current?.focus()
     }
-  }, [shouldFocus, textInput])
+  }, [shouldFocus, textInputRef])
 }

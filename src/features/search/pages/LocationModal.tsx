@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState, useEffect } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { Keyboard, View, TextInput as RNTextInput } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -161,6 +161,12 @@ export const LocationModal: FunctionComponent<Props> = ({
     searchPlaceOrVenueInputRef
   )
 
+  useEffect(() => {
+    if (isVisible && searchPlaceOrVenueInputRef.current?.isFocused()) {
+      setIsSearchInputFocused(true)
+    }
+  }, [isVisible, watchedSearchPlaceOrVenue])
+
   const search = useCallback(
     ({ locationChoice, selectedPlaceOrVenue, aroundRadius }: LocationModalFormData) => {
       let additionalSearchState: SearchState = { ...searchState }
@@ -235,6 +241,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   const close = useCallback(() => {
     reset(defaultValues)
     hideModal()
+    setIsSearchInputFocused(false)
   }, [defaultValues, hideModal, reset])
 
   const onResetPress = useCallback(() => {
@@ -293,6 +300,10 @@ export const LocationModal: FunctionComponent<Props> = ({
             await requestGeolocPermission()
           }
         }
+      }
+
+      if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
+        setIsSearchInputFocused(true)
       }
 
       setValueWithValidation('locationChoice', locationChoice)
@@ -396,7 +407,6 @@ export const LocationModal: FunctionComponent<Props> = ({
                                 inputHeight="regular"
                                 accessibilityLabel="Recherche un lieu, une adresse"
                                 onPressRightIcon={handleSearchReset}
-                                onFocus={() => setIsSearchInputFocused(true)}
                                 accessibilityDescribedBy={accessibilityDescribedBy}
                               />
                             )}
