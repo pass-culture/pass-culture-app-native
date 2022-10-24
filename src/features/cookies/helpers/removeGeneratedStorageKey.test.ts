@@ -1,4 +1,4 @@
-import { removeGenerateCookieKey } from 'features/cookies/helpers/removeGenerateCookieKey'
+import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { storage, StorageKey } from 'libs/storage'
 import { renderHook, superFlushWithAct } from 'tests/utils'
 
@@ -12,7 +12,7 @@ describe('removeGenerateCookieKey', () => {
   it('should clear optional key', async () => {
     storage.saveObject(key, someValue)
 
-    renderHook(() => removeGenerateCookieKey(key))
+    renderHook(() => removeGeneratedStorageKey(key))
 
     await superFlushWithAct()
     expect(await storage.getAllKeys()).toEqual([])
@@ -21,7 +21,7 @@ describe('removeGenerateCookieKey', () => {
   it('should clear optional key with prefix', async () => {
     storage.saveObject(keyWithPrefix, someValue)
 
-    renderHook(() => removeGenerateCookieKey(keyPrefix))
+    renderHook(() => removeGeneratedStorageKey(keyPrefix))
 
     await superFlushWithAct()
     expect(await storage.getAllKeys()).toEqual([])
@@ -30,7 +30,7 @@ describe('removeGenerateCookieKey', () => {
   it('should not clear optional key with partial prefix', async () => {
     storage.saveObject(keyWithPartialPrefix, someValue)
 
-    renderHook(() => removeGenerateCookieKey(keyPrefix))
+    renderHook(() => removeGeneratedStorageKey(keyPrefix))
 
     await superFlushWithAct()
     expect(await storage.getAllKeys()).toEqual([keyWithPartialPrefix])

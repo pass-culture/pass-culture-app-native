@@ -1,5 +1,5 @@
 import { CookieNameEnum } from 'features/cookies/enums'
-import { removeGenerateCookieKey } from 'features/cookies/helpers/removeGenerateCookieKey'
+import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { Cookies } from 'features/cookies/types'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
@@ -20,5 +20,5 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   acceptedBatch ? Batch.optIn() : Batch.optOut()
 
   const acceptedAlgoliaInsights = acceptedCookies.includes(CookieNameEnum.ALGOLIA_INSIGHTS)
-  if (!acceptedAlgoliaInsights) removeGenerateCookieKey('algoliasearch-client-js')
+  if (!acceptedAlgoliaInsights) removeGeneratedStorageKey('algoliasearch-client-js')
 }
