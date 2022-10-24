@@ -9,6 +9,8 @@ import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const useScrollToEndOnTimeOrDateActivation = () => {
@@ -64,64 +66,80 @@ export const SearchFilter: React.FC = () => {
       <React.Fragment>
         <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>
           {/* Localisation */}
-          <Spacer.Column numberOfSpaces={4} />
-          <Section.Location />
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator />
+          <VerticalUl>
+            <StyledLi>
+              <Spacer.Column numberOfSpaces={4} />
+              <Section.Location />
+              <Spacer.Column numberOfSpaces={4} />
+              <Separator />
+            </StyledLi>
 
-          {/* Catégories */}
-          <Spacer.Column numberOfSpaces={4} />
-          <Section.Category />
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator />
+            {/* Catégories */}
+            <StyledLi>
+              <Spacer.Column numberOfSpaces={4} />
+              <Section.Category />
+              <Spacer.Column numberOfSpaces={4} />
+              <Separator />
+            </StyledLi>
 
-          {/* Type d'offre */}
-          <Spacer.Column numberOfSpaces={4} />
-          <Section.OfferType />
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator />
-          <Spacer.Column numberOfSpaces={4} />
+            {/* Type d'offre */}
+            <StyledLi>
+              <Spacer.Column numberOfSpaces={4} />
+              <Section.OfferType />
+              <Spacer.Column numberOfSpaces={4} />
+              <Separator />
+              <Spacer.Column numberOfSpaces={4} />
+            </StyledLi>
 
-          {/* Prix */}
-          <Section.Price />
-          <Separator marginVertical={getSpacing(4)} />
-
-          {/* Uniquement les nouveautés */}
-          <ToggleContainer>
-            <Section.NewOffer />
-          </ToggleContainer>
-          <Separator marginVertical={getSpacing(4)} />
-
-          {/* Date */}
-          <ToggleContainer>
-            <Section.Date />
-          </ToggleContainer>
-          <Separator marginVertical={getSpacing(4)} />
-
-          {/* Date de l'offre */}
-          {!!searchState.date && (
-            <React.Fragment>
-              <Section.OfferDate setScrollEnabled={setScrollEnabled} />
+            {/* Prix */}
+            <StyledLi>
+              <Section.Price />
               <Separator marginVertical={getSpacing(4)} />
-              <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
-            </React.Fragment>
-          )}
+            </StyledLi>
 
-          {/* Heure */}
-          <ToggleContainer>
-            <Section.Hour />
-          </ToggleContainer>
-
-          {/*Créneau horaire */}
-          {!!searchState.timeRange && (
-            <React.Fragment>
+            {/* Uniquement les nouveautés */}
+            <StyledLi>
+              <ToggleContainer>
+                <Section.NewOffer />
+              </ToggleContainer>
               <Separator marginVertical={getSpacing(4)} />
-              <Section.TimeSlot />
-              <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
-            </React.Fragment>
-          )}
+            </StyledLi>
 
-          <Spacer.Column numberOfSpaces={30} />
+            {/* Date */}
+            <StyledLi>
+              <ToggleContainer>
+                <Section.Date />
+              </ToggleContainer>
+              <Separator marginVertical={getSpacing(4)} />
+
+              {/* Date de l'offre */}
+              {!!searchState.date && (
+                <React.Fragment>
+                  <Section.OfferDate setScrollEnabled={setScrollEnabled} />
+                  <Separator marginVertical={getSpacing(4)} />
+                  <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
+                </React.Fragment>
+              )}
+            </StyledLi>
+
+            {/* Heure */}
+            <StyledLi>
+              <ToggleContainer>
+                <Section.Hour />
+              </ToggleContainer>
+
+              {/*Créneau horaire */}
+              {!!searchState.timeRange && (
+                <React.Fragment>
+                  <Separator marginVertical={getSpacing(4)} />
+                  <Section.TimeSlot />
+                  <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
+                </React.Fragment>
+              )}
+
+              <Spacer.Column numberOfSpaces={30} />
+            </StyledLi>
+          </VerticalUl>
         </StyledScrollView>
       </React.Fragment>
 
@@ -157,4 +175,8 @@ const ShowResultsContainer = styled.View({
 })
 const ToggleContainer = styled.View({
   marginHorizontal: getSpacing(6),
+})
+
+const StyledLi = styled(Li)({
+  display: 'flex',
 })
