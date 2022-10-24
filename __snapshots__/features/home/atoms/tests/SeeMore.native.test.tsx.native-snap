@@ -75,6 +75,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
               "borderRadius": 32,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "height": 64,
               "justifyContent": "center",
               "shadowColor": "#161617",
               "shadowOffset": Object {

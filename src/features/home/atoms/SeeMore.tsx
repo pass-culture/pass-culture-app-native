@@ -45,8 +45,10 @@ const ClickableArea = styled(TouchableLink)({
   alignItems: 'center',
 })
 
+const CONTAINER_SIZE = getSpacing(16)
 const RoundContainer = styled.View(({ theme }) => ({
-  width: getSpacing(16),
+  width: CONTAINER_SIZE,
+  height: CONTAINER_SIZE,
   aspectRatio: '1',
   borderRadius: getSpacing(8),
   backgroundColor: theme.colors.white,
