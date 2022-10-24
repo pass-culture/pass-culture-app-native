@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
@@ -19,7 +20,7 @@ export const IdentityCheckEduConnect = () => {
   const { dispatch } = useIdentityCheckContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
-  const { error, openEduConnect } = useEduConnectLogin()
+  const { error, openEduConnectTab } = useEduConnectLogin()
 
   const onGoBack = () => {
     dispatch({ type: 'SET_METHOD', payload: null })
@@ -28,7 +29,9 @@ export const IdentityCheckEduConnect = () => {
 
   const onSubmit = () => {
     navigateToNextScreen()
-    openEduConnect()
+    if (Platform.OS === 'web') {
+      openEduConnectTab()
+    }
   }
 
   useEnterKeyAction(onSubmit)

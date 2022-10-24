@@ -35,10 +35,13 @@ export function useEduConnectLogin() {
     getLoginUrl().catch(setError)
   }, [getLoginUrl])
 
-  const openEduConnect = useCallback(async () => {
+  // do not call this in native components as it is only defined in web
+  const openEduConnectTab = useCallback(async () => {
     globalThis.window.open(loginUrl, '_blank')
+    // we need to refetch educonnect login url every time we open educonnect tab on web platform to get
+    // a new login url, otherwise if we try to refresh or reopen educonnect tab, the login url is invalid
     await getLoginUrl()
   }, [getLoginUrl, loginUrl])
 
-  return { openEduConnect, loginUrl, error }
+  return { openEduConnectTab, loginUrl, error }
 }
