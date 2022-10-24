@@ -4,6 +4,7 @@ import { LocationType } from 'features/search/enums'
 import { RadioButtonLocation } from 'features/search/pages/LocationModal'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Location } from 'features/search/sections/Location'
+import { GeoCoordinates } from 'libs/geolocation'
 import { render, fireEvent, superFlushWithAct } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -13,6 +14,14 @@ const mockSearchState = jest.fn().mockReturnValue({
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
+}))
+
+const mockPosition: GeoCoordinates | null = { latitude: 2, longitude: 40 }
+
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    position: mockPosition,
+  }),
 }))
 
 describe('Location component', () => {

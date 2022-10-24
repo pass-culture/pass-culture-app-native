@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FilterRow } from 'features/search/atoms/FilterRow'
-import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { useLocationChoice } from 'features/search/components/useLocationChoice'
 import { LocationModal } from 'features/search/pages/LocationModal'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'

@@ -29,8 +29,8 @@ import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { useLocationChoice } from './locationChoice.utils'
 import { SearchMainInput } from './SearchMainInput'
+import { useLocationChoice } from './useLocationChoice'
 
 const SEARCH_DEBOUNCE_MS = 500
 
