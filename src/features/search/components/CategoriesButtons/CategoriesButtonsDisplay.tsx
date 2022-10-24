@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { FlatList, Platform } from 'react-native'
+import { FlatList, Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { theme } from 'theme'
-import { Li } from 'ui/components/Li'
-import { Ul } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -18,11 +16,9 @@ type Props = {
 }
 
 const CategoyButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
-  <StyledLi>
-    <CategoryButtonContainer>
-      <CategoryButton {...item} />
-    </CategoryButtonContainer>
-  </StyledLi>
+  <CategoryButtonContainer>
+    <CategoryButton {...item} />
+  </CategoryButtonContainer>
 )
 
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
@@ -30,18 +26,16 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   const numColumns = theme.isDesktopViewport ? 4 : 2
   const key = numColumns // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
   return (
-    <Ul>
-      <FlatList
-        data={sortedCategories}
-        renderItem={CategoyButtonItem}
-        keyExtractor={(item) => item.label}
-        numColumns={numColumns}
-        key={key}
-        ListHeaderComponent={CategoriesTitle}
-        contentContainerStyle={contentContainerStyle}
-        testID="categoriesButtons"
-      />
-    </Ul>
+    <FlatList
+      data={sortedCategories}
+      renderItem={CategoyButtonItem}
+      keyExtractor={(item) => item.label}
+      numColumns={numColumns}
+      key={key}
+      ListHeaderComponent={CategoriesTitle}
+      contentContainerStyle={contentContainerStyle}
+      testID="categoriesButtons"
+    />
   )
 }
 
@@ -61,10 +55,8 @@ const contentContainerStyle = {
     : { paddingBottom: getSpacing(6) + theme.tabBar.height }),
 }
 
-const CategoryButtonContainer = styled.View(({ theme }) => ({
+// The FlatList uses numColumns which makes the list structure hard to achieve, so titles are used instead to structure the information
+const CategoryButtonContainer = styled(View).attrs(getHeadingAttrs(3))(({ theme }) => ({
   padding: getSpacing(theme.isDesktopViewport ? 2 : 1),
-}))
-
-const StyledLi = styled(Li)(({ theme }) => ({
   flexBasis: theme.isDesktopViewport ? '25%' : '50%',
 }))
