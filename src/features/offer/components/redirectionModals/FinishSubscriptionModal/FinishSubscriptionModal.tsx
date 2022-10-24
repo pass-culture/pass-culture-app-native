@@ -8,6 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Typo, Spacer } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
@@ -20,11 +21,12 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
     hideModal()
     navigate(...getTabNavConfig('Profile'))
   }
+  const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
   return (
     <AppModalWithIllustration
       visible={visible}
-      title={'Débloque ton crédit pour réserver cette offre'}
+      title={title}
       Illustration={BicolorIdCardWithMagnifyingGlass}
       hideModal={hideModal}>
       <StyledBody>
@@ -37,7 +39,6 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
         wording="Terminer mon inscription"
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
-        mediumWidth
       />
     </AppModalWithIllustration>
   )

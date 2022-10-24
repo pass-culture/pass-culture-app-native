@@ -193,7 +193,8 @@ exports[`<FinishSubscriptionModal /> should render correctly 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Débloque ton crédit pour réserver cette offre
+            Débloque ton crédit
+pour réserver cette offre
           </Text>
         </View>
         <View
@@ -365,7 +366,7 @@ exports[`<FinishSubscriptionModal /> should render correctly 1`] = `
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
-                    "maxWidth": 320,
+                    "maxWidth": 500,
                     "minHeight": 40,
                     "opacity": 1,
                     "paddingBottom": 2,

@@ -42,10 +42,14 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <AuthenticationButton type="login" onAdditionalPress={hideModal} />
+      <StyledAuthenticationButton type="login" onAdditionalPress={hideModal} />
     </AppModalWithIllustration>
   )
 }
+
+const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
+  linkColor: theme.colors.secondary,
+}))``
 
 const StyledButtonContainer = styled.View({
   width: '100%',
