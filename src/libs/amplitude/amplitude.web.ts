@@ -1,7 +1,7 @@
 import Amplitude from 'amplitude-js'
 
+import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { env } from 'libs/environment'
-import { storage } from 'libs/storage'
 
 import { AmplitudeClient } from './types'
 
@@ -39,8 +39,6 @@ export const amplitude: AmplitudeClient = {
     if (env.AMPLITUDE_API_KEY) {
       ampInstance.init(env.AMPLITUDE_API_KEY, undefined, defaultConfig)
     }
-    storage.getAllKeys().then((keys) => {
-      keys?.forEach((key) => key.startsWith('amplitude_unsent') && storage.clear(key))
-    })
+    removeGeneratedStorageKey('amplitude_unsent')
   },
 }
