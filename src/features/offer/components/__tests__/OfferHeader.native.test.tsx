@@ -29,6 +29,10 @@ import { OfferHeader } from '../OfferHeader'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+})
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: jest.fn(() => ({})),
@@ -37,26 +41,33 @@ const mockedUseSnackBarContext = useSnackBarContext as jest.MockedFunction<
   typeof useSnackBarContext
 >
 
+mockedUseSnackBarContext.mockReturnValue({
+  hideSnackBar,
+  showInfoSnackBar,
+  showSuccessSnackBar,
+  showErrorSnackBar,
+})
+
 describe('<OfferHeader />', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
 
   it('should render all the icons', () => {
-    const offerHeader = renderOfferHeader({ isLoggedIn: true })
+    const offerHeader = renderOfferHeader()
     expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
   })
 
   it('should goBack when we press on the back button', () => {
-    const { getByTestId } = renderOfferHeader({ isLoggedIn: true })
+    const { getByTestId } = renderOfferHeader()
     fireEvent.press(getByTestId('icon-back'))
-    expect(mockGoBack).toBeCalledTimes(1)
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should fully display the title at the end of the animation', () => {
-    const { animatedValue, getByTestId } = renderOfferHeader({ isLoggedIn: true })
+  it('should fully display the title at the end of the animation', async () => {
+    const { animatedValue, getByTestId } = renderOfferHeader()
     expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeTruthy()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
@@ -65,37 +76,41 @@ describe('<OfferHeader />', () => {
       jest.advanceTimersByTime(100)
     })
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeFalsy()
       expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
     })
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', () => {
-    const { getByTestId, queryByText } = renderOfferHeader({ isLoggedIn: false })
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+    })
+    const { getByTestId, getByText } = renderOfferHeader()
     fireEvent.press(getByTestId('icon-favorite'))
     expect(
-      queryByText('Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !')
+      getByText('Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !')
     ).toBeTruthy()
   })
 
-  it('should show a favorite filled icon when viewing a offer in favorite - logged in users', () => {
+  it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
     const favoriteOfferId = 146193
-    const { getByTestId } = renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
-    waitFor(() => {
+    const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
+
+    await waitFor(() => {
       expect(getByTestId('icon-favorite-filled')).toBeTruthy()
     })
   })
 
-  it('should add favorite when adding an offer in favorite - logged in users', () => {
+  it('should add favorite when adding an offer in favorite - logged in users', async () => {
     const { getByTestId } = renderOfferHeader({
-      isLoggedIn: true,
       id: addFavoriteJsonResponseSnap.offer.id,
     })
 
     fireEvent.press(getByTestId('icon-favorite'))
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByTestId('icon-favorite-filled')).toBeTruthy()
 
       const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
@@ -119,27 +134,16 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
-    const { queryByTestId, getByTestId } = renderOfferHeader({
-      isLoggedIn: true,
+  it('should show error when adding an offer in favorite fails - logged in users', async () => {
+    const { getByTestId } = renderOfferHeader({
       hasAddFavoriteError: true,
       id: addFavoriteJsonResponseSnap.offer.id,
     })
 
     fireEvent.press(getByTestId('icon-favorite'))
 
-    waitFor(() => {
-      const mutateDataBetween = queryCache.find('favorites')?.state
-        ?.data as PaginatedFavoritesResponse
-      expect(
-        mutateDataBetween.favorites?.find(
-          (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
-        )?.offer.id
-      ).toBe(10000)
-
-      expect(queryByTestId('icon-favorite-filled')).toBeTruthy()
-
-      expect(showErrorSnackBar).toBeCalledWith({
+    await waitFor(() => {
+      expect(showErrorSnackBar).toHaveBeenCalledWith({
         message: 'L’offre n’a pas été ajoutée à tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
       })
@@ -154,85 +158,55 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should remove favorite when pressing filled favorite icon - logged in users', () => {
+  it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
-    const { getByTestId } = renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
+    const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
 
-    waitFor(() => {
-      const mutateDataBefore = queryCache.find('favorites')?.state
-        ?.data as PaginatedFavoritesResponse
-      expect(
-        mutateDataBefore.favorites?.find((f: FavoriteResponse) => f.offer.id === favoriteOfferId)
-          ?.offer.id
-      ).toBe(favoriteOfferId)
-
+    await waitFor(async () => {
       fireEvent.press(getByTestId('icon-favorite-filled'))
-    })
 
-    expect(getByTestId('icon-favorite')).toBeTruthy()
-
-    waitFor(() => {
-      const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
-      expect(
-        mutateData.favorites?.find((f: FavoriteResponse) => f.offer.id === favoriteOfferId)?.offer
-          .id
-      ).toBe(undefined)
+      await waitFor(() => {
+        expect(getByTestId('icon-favorite')).toBeTruthy()
+      })
     })
   })
 
-  it('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', () => {
+  it('should show error snackbar when remove favorite fails - logged in users', async () => {
     const favoriteOfferId = 146193
     const { getByTestId } = renderOfferHeader({
-      isLoggedIn: true,
       id: favoriteOfferId,
       hasRemoveFavoriteError: true,
     })
 
-    waitFor(() => {
+    await waitFor(async () => {
       fireEvent.press(getByTestId('icon-favorite-filled'))
-    })
 
-    waitFor(() => {
-      expect(getByTestId('icon-favorite')).toBeTruthy()
-
-      const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
-      expect(
-        mutateData.favorites?.find((f: FavoriteResponse) => f.offer.id === favoriteOfferId)?.offer
-          .id
-      ).toBe(undefined)
-    })
-
-    waitFor(() => {
-      expect(showErrorSnackBar).toBeCalledWith({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
+      await waitFor(() => {
+        expect(showErrorSnackBar).toHaveBeenCalledWith({
+          message: 'L’offre n’a pas été retirée de tes favoris',
+          timeout: SNACK_BAR_TIME_OUT,
+        })
       })
-
-      const dataAfter = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
-      expect(
-        dataAfter.favorites?.find((f: FavoriteResponse) => f.offer.id === favoriteOfferId)?.offer.id
-      ).toBe(favoriteOfferId)
     })
   })
 
-  it('should add favorite and show error when user as too many favorites - logged in users', () => {
+  it('should show error when adding an offer in favorite fails because user as too many favorites - logged in users', async () => {
     const { getByTestId } = renderOfferHeader({
-      isLoggedIn: true,
-      id: addFavoriteJsonResponseSnap.offer.id,
       hasTooManyFavorites: true,
+      id: addFavoriteJsonResponseSnap.offer.id,
     })
 
     fireEvent.press(getByTestId('icon-favorite'))
 
-    waitFor(() => {
-      expect(showErrorSnackBar).toBeCalledWith({
+    await waitFor(() => {
+      expect(showErrorSnackBar).toHaveBeenCalledWith({
         message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     })
   })
 
-  it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', () => {
+  it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
     const from = 'favorites'
     const moduleName = 'testModule'
     const offerId = addFavoriteJsonResponseSnap.offer.id
@@ -243,20 +217,23 @@ describe('<OfferHeader />', () => {
       },
     }))
     const { getByTestId } = renderOfferHeader({
-      isLoggedIn: true,
       id: offerId,
     })
 
     fireEvent.press(getByTestId('icon-favorite'))
 
-    waitFor(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toBeCalledWith({ from, offerId, moduleName })
+    await waitFor(() => {
+      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+        from,
+        offerId,
+        moduleName,
+      })
     })
   })
 
   describe('<OfferHeader /> - Analytics', () => {
     it('should log ShareOffer once when clicking on the Share button', () => {
-      const { getByTestId } = renderOfferHeader({ isLoggedIn: true })
+      const { getByTestId } = renderOfferHeader()
 
       fireEvent.press(getByTestId('icon-share'))
       expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
@@ -273,7 +250,6 @@ const offerId = 116656
 
 interface Options {
   id?: number
-  isLoggedIn?: boolean
   hasAddFavoriteError?: boolean
   hasRemoveFavoriteError?: boolean
   hasTooManyFavorites?: boolean
@@ -281,14 +257,13 @@ interface Options {
 
 const defaultOptions = {
   id: offerId,
-  isLoggedIn: true,
   hasAddFavoriteError: false,
   hasRemoveFavoriteError: false,
   hasTooManyFavorites: false,
 }
 
 function renderOfferHeader(options: Options = defaultOptions) {
-  const { id, isLoggedIn, hasAddFavoriteError, hasRemoveFavoriteError, hasTooManyFavorites } = {
+  const { id, hasAddFavoriteError, hasRemoveFavoriteError, hasTooManyFavorites } = {
     ...defaultOptions,
     ...options,
   }
@@ -301,7 +276,7 @@ function renderOfferHeader(options: Options = defaultOptions) {
       `${env.API_BASE_URL}/native/v1/me/favorites`,
       (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
     ),
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) => {
+    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
       if (hasAddFavoriteError) {
         return res(ctx.status(415), ctx.json({}))
       } else if (hasTooManyFavorites) {
@@ -317,13 +292,7 @@ function renderOfferHeader(options: Options = defaultOptions) {
       (_req, res, ctx) => (!hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422)))
     )
   )
-  mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn, setIsLoggedIn: jest.fn() }))
-  mockedUseSnackBarContext.mockReturnValueOnce({
-    hideSnackBar,
-    showInfoSnackBar,
-    showSuccessSnackBar,
-    showErrorSnackBar,
-  })
+
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
