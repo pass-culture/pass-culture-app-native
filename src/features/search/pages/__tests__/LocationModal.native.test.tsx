@@ -4,7 +4,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
 import { LocationModal, RadioButtonLocation } from 'features/search/pages/LocationModal'
-import { initialSearchState } from 'features/search/pages/reducer'
+import { Action, initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor } from 'features/search/pages/SuggestedPlaces'
 import { SectionTitle } from 'features/search/sections/titles'
@@ -24,9 +24,13 @@ import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 let mockSearchState = initialSearchState
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
+  }),
+  useStagedSearch: () => ({
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -99,6 +103,10 @@ describe('LocationModal component', () => {
 
   describe('should navigate on search results', () => {
     it('with actual state with no change when pressing search button', async () => {
+      mockSearchState = {
+        ...initialSearchState,
+        view: SearchView.Results,
+      }
       const { getByText } = renderLocationModal({ hideLocationModal })
 
       await superFlushWithAct()
@@ -121,6 +129,7 @@ describe('LocationModal component', () => {
       mockSearchState = {
         ...initialSearchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+        view: SearchView.Results,
       }
       const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
 
@@ -139,6 +148,56 @@ describe('LocationModal component', () => {
           ...mockSearchState,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
           view: SearchView.Results,
+        },
+        screen: 'Search',
+      })
+    })
+  })
+
+  describe('should navigate on landing page when location filter modal opened from search box', () => {
+    it('with the initial state', async () => {
+      mockSearchState = initialSearchState
+      const { getByText } = renderLocationModal({ hideLocationModal })
+
+      await superFlushWithAct()
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          view: SearchView.Landing,
+        },
+        screen: 'Search',
+      })
+    })
+
+    it('with a new location', async () => {
+      mockSearchState = initialSearchState
+      const { getByText, getByTestId } = renderLocationModal({
+        hideLocationModal,
+      })
+
+      await superFlushWithAct()
+
+      const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          locationFilter: { aroundRadius: 100, locationType: 'AROUND_ME' },
+          view: SearchView.Landing,
         },
         screen: 'Search',
       })
@@ -207,10 +266,43 @@ describe('LocationModal component', () => {
         params: {
           ...mockSearchState,
           locationFilter,
-          view: SearchView.Results,
         },
         screen: 'Search',
       })
+    }
+  )
+
+  it.each`
+    locationFilter                                                        | label                             | locationType               | dispatch
+    ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE} | ${{ type: 'SET_LOCATION_EVERYWHERE' }}
+    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}  | ${{ type: 'SET_LOCATION_AROUND_ME' }}
+  `(
+    'should dispatch staged search with $locationType location type when selecting $label radio button and pressing search button',
+    async ({
+      locationFilter,
+      label,
+      dispatch,
+    }: {
+      locationFilter: LocationFilter
+      label: RadioButtonLocation
+      dispatch: Action
+    }) => {
+      mockSearchState = { ...mockSearchState, locationFilter }
+      const { getByTestId, getByText } = renderLocationModal({
+        hideLocationModal,
+      })
+
+      const radioButton = getByTestId(label)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(mockStagedDispatch).toHaveBeenCalledWith(dispatch)
     }
   )
 
@@ -263,10 +355,56 @@ describe('LocationModal component', () => {
         params: {
           ...mockSearchState,
           locationFilter,
-          view: SearchView.Results,
         },
         screen: 'Search',
       })
+    }
+  )
+
+  it.each`
+    locationFilter                                                                          | label                                        | locationType          | dispatch
+    ${{ locationType: LocationType.VENUE, venue: mockVenues[0] }}                           | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.VENUE} | ${{ type: 'SET_LOCATION_VENUE', payload: { ...mockVenues[0] } }}
+    ${{ locationType: LocationType.PLACE, place: mockPlaces[0], aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE} | ${{ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: mockPlaces[0] } }}
+  `(
+    'should dispatch staged search with $locationType location type when selecting $label radio button, location/venue and pressing search button',
+    async ({
+      locationFilter,
+      label,
+      dispatch,
+    }: {
+      locationFilter: LocationFilter
+      label: RadioButtonLocation
+      dispatch: Action
+    }) => {
+      mockSearchState = { ...mockSearchState, locationFilter }
+      const { getByTestId, getByText, getByPlaceholderText } = renderLocationModal({
+        hideLocationModal,
+      })
+
+      const radioButton = getByTestId(label)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+      await act(async () => {
+        fireEvent(searchInput, 'onFocus')
+        fireEvent.changeText(searchInput, 'Paris')
+      })
+
+      const venueOrPlace =
+        locationFilter.locationType === LocationType.VENUE ? mockVenues[0] : mockPlaces[0]
+
+      await act(async () => {
+        fireEvent.press(getByTestId(keyExtractor(venueOrPlace)))
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(mockStagedDispatch).toHaveBeenCalledWith(dispatch)
     }
   )
 
@@ -546,7 +684,9 @@ describe('LocationModal component', () => {
       })
 
       const previousButton = getByTestId('backButton')
-      fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       expect(searchInput.props.value).toEqual('Kourou')
     })
@@ -570,7 +710,9 @@ describe('LocationModal component', () => {
       })
 
       const previousButton = getByTestId('backButton')
-      fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       expect(searchInput.props.value).toEqual('venue_0')
     })
