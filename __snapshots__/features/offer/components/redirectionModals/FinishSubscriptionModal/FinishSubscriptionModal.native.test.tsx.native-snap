@@ -366,7 +366,7 @@ pour réserver cette offre
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
-                    "maxWidth": 320,
+                    "maxWidth": 500,
                     "minHeight": 40,
                     "opacity": 1,
                     "paddingBottom": 2,

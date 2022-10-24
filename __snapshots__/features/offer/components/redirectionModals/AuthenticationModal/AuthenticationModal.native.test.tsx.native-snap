@@ -543,7 +543,7 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
                           }
                         >
                           <View
-                            fill="#eb0055"
+                            fill="#320096"
                             height={20}
                             testID="button-icon"
                             width={20}
@@ -564,10 +564,11 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
                           />
                         </View>
                         <Text
+                          color="#320096"
                           style={
                             Array [
                               Object {
-                                "color": "#eb0055",
+                                "color": "#320096",
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,

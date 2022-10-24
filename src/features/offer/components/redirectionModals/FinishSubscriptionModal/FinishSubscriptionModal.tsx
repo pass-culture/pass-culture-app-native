@@ -39,7 +39,6 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
         wording="Terminer mon inscription"
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
-        mediumWidth
       />
     </AppModalWithIllustration>
   )
