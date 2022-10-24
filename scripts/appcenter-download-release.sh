@@ -10,6 +10,7 @@ TARGET_VERSION="$3"
 
 UNINSTALL="${UNINSTALL:-"true"}"
 LAUNCH="${LAUNCH:-"true"}"
+REMOVE_APK_AFTER_INSTALL="${REMOVE_APK_AFTER_INSTALL:-"true"}"
 
 APPCENTER_API_URL="https://api.appcenter.ms/v0.1"
 APPCENTER_OWNER_NAME="pass-Culture"
@@ -35,6 +36,7 @@ function help() {
   echo "      | APPCENTER_USER_API_TOKEN             | Your AppCenter user API token. (See https://appcenter.ms/settings/apitokens) [REQUIRED]    |"
   echo "      | UNINSTALL                            | Set it to 'false' to skip application uninstallation                                       |"
   echo "      | LAUNCH                               | Set it to 'false' to skip application launch                                               |"
+  echo "      | REMOVE_APK_AFTER_INSTALL             | Set it to 'false' to keep apk                                                              |"
   echo
   echo "Examples:"
   echo
@@ -63,8 +65,14 @@ function help() {
 
 function android() {
   app_name="passculture-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}"
-
   releaseId="latest"
+  downloaded_file="app-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}.apk"
+
+  if [[ -f "${downloaded_file}" ]]; then
+    echo "Removing previously downloaded file ${downloaded_file} from your disk"
+    rm "${downloaded_file}"
+  fi
+
   if [[ -n "${TARGET_VERSION}" ]]; then
     releaseId="$(
       curl -sS \
@@ -85,7 +93,6 @@ function android() {
   fi
 
   download_url="${APPCENTER_API_URL}/apps/${APPCENTER_OWNER_NAME}/${app_name}/distribution_groups/${APPCENTER_DISTRIBUTION_GROUP_NAME}/releases/${releaseId}"
-  downloaded_file="app-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}.apk"
 
   echo "Downloading ${download_url}"
   curl -H "X-API-Token: ${X_API_TOKEN}" \
@@ -96,8 +103,10 @@ function android() {
   echo "Installing ${downloaded_file} (AppCenter Release ID ${releaseId}). ${TARGET_VERSION}"
   adb install "${downloaded_file}"
 
-  echo "Removing ${downloaded_file} from your disk"
-  rm "${downloaded_file}"
+  if [[ "${REMOVE_APK_AFTER_INSTALL}" = "true" ]] && [[ -f "${downloaded_file}" ]]; then
+    echo "Removing ${downloaded_file} from your disk"
+    rm "${downloaded_file}"
+  fi
 
   if [[ "${LAUNCH}" = "true" ]]; then
     app_and_activity="${package_id}/com.passculture.MainActivity"
