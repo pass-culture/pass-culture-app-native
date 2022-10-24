@@ -6,11 +6,11 @@ import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
-jest.mock('features/cookies/helpers/removeGenerateCookieKey')
-const mockRemoveGenerateCookieKey = removeGeneratedStorageKey as jest.Mock
+jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
+const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock
 
 describe('startTrackingAcceptedCookies', () => {
-  it('should disable tracking if refused all cookies', () => {
+  it('should disable tracking when refused all cookies', () => {
     startTrackingAcceptedCookies([])
 
     expect(amplitude.disableCollection).toHaveBeenCalled()
@@ -28,32 +28,36 @@ describe('startTrackingAcceptedCookies', () => {
     expect(Batch.optIn).toHaveBeenCalled()
   })
 
-  it('should enable Google Analytics if performance cookies are accepted', () => {
-    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.performance) // with Google Analytics
+  it('should enable Google Analytics when performance cookies are accepted', () => {
+    const googleAnalyticsAccepted = COOKIES_BY_CATEGORY.performance
+    startTrackingAcceptedCookies(googleAnalyticsAccepted)
 
     expect(analytics.enableCollection).toHaveBeenCalled()
   })
 
-  it('should enable Amplitude if performance cookies are accepted', () => {
-    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.performance) // with Amplitude
+  it('should enable Amplitude when performance cookies are accepted', () => {
+    const amplitudeAccepted = COOKIES_BY_CATEGORY.performance
+    startTrackingAcceptedCookies(amplitudeAccepted)
 
     expect(amplitude.enableCollection).toHaveBeenCalled()
   })
 
-  it('should enable AppsFlyers if marketing cookies are accepted', () => {
-    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing) // with AppsFlyers
+  it('should enable AppsFlyers when marketing cookies are accepted', () => {
+    const appsFlyersAccepted = COOKIES_BY_CATEGORY.marketing
+    startTrackingAcceptedCookies(appsFlyersAccepted)
 
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
   })
 
-  it('should enable Batch if customization cookies are accepted', () => {
-    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.customization) // with Batch
+  it('should enable Batch when customization cookies are accepted', () => {
+    const batchAccepted = COOKIES_BY_CATEGORY.customization
+    startTrackingAcceptedCookies(batchAccepted)
 
     expect(Batch.optIn).toHaveBeenCalled()
   })
 
-  it('should disable Amplitude, Batch and Google Analytics if only marketing cookies are accepted', () => {
-    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing) // without Amplitude, Batch and Google Analytics
+  it('should disable Amplitude, Batch and Google Analytics when only marketing cookies are accepted', () => {
+    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing)
 
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
 
@@ -62,9 +66,13 @@ describe('startTrackingAcceptedCookies', () => {
     expect(analytics.disableCollection).toHaveBeenCalled()
   })
 
-  it('should remove generate algolia key from localStorage if refused algolia tracking (performance)', () => {
-    startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing) // without performance cookies and algolia insight
+  it('should remove generate algolia key from localStorage when refused algolia tracking (performance)', () => {
+    const performanceRefused = [
+      ...COOKIES_BY_CATEGORY.marketing,
+      ...COOKIES_BY_CATEGORY.customization,
+    ]
+    startTrackingAcceptedCookies(performanceRefused)
 
-    expect(mockRemoveGenerateCookieKey).toHaveBeenNthCalledWith(1, 'algoliasearch-client-js')
+    expect(mockRemoveGeneratedStorageKey).toHaveBeenNthCalledWith(1, 'algoliasearch-client-js')
   })
 })

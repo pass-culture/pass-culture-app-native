@@ -1,38 +1,42 @@
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { storage, StorageKey } from 'libs/storage'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { act } from 'tests/utils'
 
-const key = 'traffic_medium'
-const keyPrefix = 'algoliasearch-client-js' as StorageKey
-const keyWithPrefix = keyPrefix.concat('-', '1234') as StorageKey // algoliasearch-client-js-1234
-const keyWithPartialPrefix = keyPrefix.slice(0, keyPrefix.length / 2) as StorageKey // algoliasear
 const someValue = 'some value'
 
-describe('removeGenerateCookieKey', () => {
+describe('removeGeneratedStorageKey', () => {
   it('should clear optional key', async () => {
+    const key = 'traffic_medium'
     storage.saveObject(key, someValue)
 
-    renderHook(() => removeGeneratedStorageKey(key))
+    await act(async () => {
+      removeGeneratedStorageKey(key)
+    })
 
-    await superFlushWithAct()
     expect(await storage.getAllKeys()).toEqual([])
   })
 
   it('should clear optional key with prefix', async () => {
+    const keyWithPrefix = 'algoliasearch-client-js-1234' as StorageKey
     storage.saveObject(keyWithPrefix, someValue)
 
-    renderHook(() => removeGeneratedStorageKey(keyPrefix))
+    const prefix = 'algoliasearch-client-js' as StorageKey
+    await act(async () => {
+      removeGeneratedStorageKey(prefix)
+    })
 
-    await superFlushWithAct()
     expect(await storage.getAllKeys()).toEqual([])
   })
 
   it('should not clear optional key with partial prefix', async () => {
+    const keyWithPartialPrefix = 'algoliasear' as StorageKey
     storage.saveObject(keyWithPartialPrefix, someValue)
 
-    renderHook(() => removeGeneratedStorageKey(keyPrefix))
+    const prefix = 'algoliasearch-client-js' as StorageKey
+    await act(async () => {
+      removeGeneratedStorageKey(prefix)
+    })
 
-    await superFlushWithAct()
     expect(await storage.getAllKeys()).toEqual([keyWithPartialPrefix])
   })
 })
