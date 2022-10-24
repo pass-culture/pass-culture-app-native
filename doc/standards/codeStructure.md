@@ -52,6 +52,7 @@ features
           \
             |- fixture1.ts ==> data for testing (for example API call responses mocks)
             |- ...
+        |- context ==> feature context related files (provider, reducer, etc)
         |- enums.ts
         |- types.ts
     |- register
@@ -86,7 +87,7 @@ ui
 
 ### Guidelines
 
-- Do not put component into `ui/components` if it is used only once in the app
+- Do not put component into `ui/components` if it is used only once in the app, put it in the feature that uses it
 - Put stories and tests next to corresponding page or component in dedicated subdirectory
 
 

@@ -6,11 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { isApiError } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/AuthContext'
-import {
-  useAddFavorite,
-  useFavorite,
-  useRemoveFavorite,
-} from 'features/favorites/pages/useFavorites'
+import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'

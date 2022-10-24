@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
+import { BicolorFavoriteCount } from 'features/favorites/components/BicolorFavoriteCount'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { useNotifyWebappLinkSent } from 'features/bookOffer/services/useNotifyWebappLinkSent'
-import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorites'
+import { useAddFavorite, useFavorite } from 'features/favorites/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

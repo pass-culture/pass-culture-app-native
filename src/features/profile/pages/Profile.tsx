@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
-import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/profile/api'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { ProfileContainer } from 'features/profile/components/reusables'
