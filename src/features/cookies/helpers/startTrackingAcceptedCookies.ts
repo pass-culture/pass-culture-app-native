@@ -6,6 +6,19 @@ import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
+const cookiesNameEnumUTM =
+  CookieNameEnum.TRAFFIC_CAMPAIGN &&
+  CookieNameEnum.TRAFFIC_MEDIUM &&
+  CookieNameEnum.TRAFFIC_SOURCE &&
+  CookieNameEnum.CAMPAIGN_DATE
+
+export const generateUTMKeys = [
+  'traffic_campaign',
+  'traffic_medium',
+  'traffic_source',
+  'campaign_date',
+]
+
 export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   const acceptedGoogleAnalytics = acceptedCookies.includes(CookieNameEnum.GOOGLE_ANALYTICS)
   acceptedGoogleAnalytics ? analytics.enableCollection() : analytics.disableCollection()
@@ -21,4 +34,9 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
 
   const acceptedAlgoliaInsights = acceptedCookies.includes(CookieNameEnum.ALGOLIA_INSIGHTS)
   if (!acceptedAlgoliaInsights) removeGeneratedStorageKey('algoliasearch-client-js')
+
+  const acceptedUTMCampaign = acceptedCookies.includes(cookiesNameEnumUTM)
+  if (!acceptedUTMCampaign) {
+    generateUTMKeys.forEach((key) => removeGeneratedStorageKey(key))
+  }
 }

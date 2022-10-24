@@ -1,6 +1,9 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
-import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import {
+  generateUTMKeys,
+  startTrackingAcceptedCookies,
+} from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
@@ -74,5 +77,17 @@ describe('startTrackingAcceptedCookies', () => {
     startTrackingAcceptedCookies(performanceRefused)
 
     expect(mockRemoveGeneratedStorageKey).toHaveBeenNthCalledWith(1, 'algoliasearch-client-js')
+  })
+
+  it('should remove generate UTM keys from localStorage when refused customization cookies', () => {
+    const customizationRefused = [
+      ...COOKIES_BY_CATEGORY.performance,
+      ...COOKIES_BY_CATEGORY.marketing,
+    ]
+    startTrackingAcceptedCookies(customizationRefused)
+
+    generateUTMKeys.forEach((generateKey, index) =>
+      expect(mockRemoveGeneratedStorageKey).toHaveBeenNthCalledWith(index + 1, generateKey)
+    )
   })
 })
