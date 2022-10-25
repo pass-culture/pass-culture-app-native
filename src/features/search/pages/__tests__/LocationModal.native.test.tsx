@@ -331,7 +331,7 @@ describe('LocationModal component', () => {
         fireEvent.press(radioButton)
       })
 
-      const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
         fireEvent.changeText(searchInput, 'Paris')
@@ -386,7 +386,7 @@ describe('LocationModal component', () => {
         fireEvent.press(radioButton)
       })
 
-      const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
         fireEvent.changeText(searchInput, 'Paris')
@@ -616,7 +616,7 @@ describe('LocationModal component', () => {
       })
 
       await act(async () => {
-        const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+        const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
         expect(searchInput.props.value).toEqual('')
       })
     })
@@ -641,7 +641,7 @@ describe('LocationModal component', () => {
         fireEvent.press(radioButton)
       })
 
-      const searchInput = getByPlaceholderText(`Saisis une adresse ou le nom d’un lieu`)
+      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
         fireEvent.changeText(searchInput, 'Paris')
@@ -678,7 +678,7 @@ describe('LocationModal component', () => {
         hideLocationModal,
       })
 
-      const searchInput = getByPlaceholderText('Saisis une adresse ou le nom d’un lieu')
+      const searchInput = getByPlaceholderText('Adresse, cinéma, musée...')
       await act(async () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
@@ -704,7 +704,7 @@ describe('LocationModal component', () => {
         hideLocationModal,
       })
 
-      const searchInput = getByPlaceholderText('Saisis une adresse ou le nom d’un lieu')
+      const searchInput = getByPlaceholderText('Adresse, cinéma, musée...')
       await act(async () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })

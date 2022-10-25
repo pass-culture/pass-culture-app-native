@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState, useEffect } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { Keyboard, View } from 'react-native'
+import { Keyboard, View, TextInput as RNTextInput } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -16,6 +16,7 @@ import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { locationSchema } from 'features/search/pages/schema/locationSchema'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
+import { useSetFocusWithCondition } from 'features/search/pages/useSetFocusWithCondition'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
@@ -98,6 +99,7 @@ export const LocationModal: FunctionComponent<Props> = ({
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useGeolocation()
+  const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
 
   const {
     showModal: showGeolocPermissionModal,
@@ -153,6 +155,17 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
+  const watchedLocationChoice = watch('locationChoice')
+  useSetFocusWithCondition(
+    watchedLocationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE,
+    searchPlaceOrVenueInputRef
+  )
+
+  useEffect(() => {
+    if (isVisible && searchPlaceOrVenueInputRef.current?.isFocused()) {
+      setIsSearchInputFocused(true)
+    }
+  }, [isVisible, watchedSearchPlaceOrVenue])
 
   const search = useCallback(
     ({ locationChoice, selectedPlaceOrVenue, aroundRadius }: LocationModalFormData) => {
@@ -228,6 +241,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   const close = useCallback(() => {
     reset(defaultValues)
     hideModal()
+    setIsSearchInputFocused(false)
   }, [defaultValues, hideModal, reset])
 
   const onResetPress = useCallback(() => {
@@ -286,6 +300,10 @@ export const LocationModal: FunctionComponent<Props> = ({
             await requestGeolocPermission()
           }
         }
+      }
+
+      if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
+        setIsSearchInputFocused(true)
       }
 
       setValueWithValidation('locationChoice', locationChoice)
@@ -379,17 +397,16 @@ export const LocationModal: FunctionComponent<Props> = ({
                               field: { value: searchPlaceOrVenue, onChange: onPlaceSearchChange },
                             }) => (
                               <SearchInput
+                                ref={searchPlaceOrVenueInputRef}
                                 value={searchPlaceOrVenue}
                                 onChangeText={(text) => {
                                   onPlaceSearchChange(text)
                                   setValueWithValidation('selectedPlaceOrVenue', undefined)
                                 }}
-                                placeholder="Saisis une adresse ou le nom d’un lieu"
-                                autoFocus
+                                placeholder="Adresse, cinéma, musée..."
                                 inputHeight="regular"
                                 accessibilityLabel="Recherche un lieu, une adresse"
                                 onPressRightIcon={handleSearchReset}
-                                onFocus={() => setIsSearchInputFocused(true)}
                                 accessibilityDescribedBy={accessibilityDescribedBy}
                               />
                             )}
