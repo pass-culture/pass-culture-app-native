@@ -23,12 +23,15 @@ jest.mock('react-instantsearch-hooks', () => ({
 describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
 
-  it('should contain a button to go to the search suggestions view', () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { queryByText } = render(<SearchHeader searchInputID={searchInputID} />)
+  it.each([[SearchView.Landing], [SearchView.Results]])(
+    'should contain a button to go to the search suggestions view',
+    (view) => {
+      useRoute.mockReturnValueOnce({ params: { view } })
+      const { queryByText } = render(<SearchHeader searchInputID={searchInputID} />)
 
-    expect(queryByText('Recherche par mots-clés')).toBeTruthy()
-  })
+      expect(queryByText('Recherche par mots-clés')).toBeTruthy()
+    }
+  )
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
@@ -50,34 +53,30 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it.each([[SearchView.Suggestions], [SearchView.Results]])(
-    'should not render a button to go to the search suggestion view when not on landing',
-    (view) => {
-      useRoute.mockReturnValueOnce({ params: { view, query: 'la fnac' } })
-      const { queryByRole } = render(<SearchHeader searchInputID={searchInputID} />)
+  it('should not render a button to go to the search suggestion view when not on landing or result', () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
+    const { queryByText } = render(<SearchHeader searchInputID={searchInputID} />)
 
-      const button = queryByRole('button')
+    expect(queryByText('Recherche par mots-clés')).toBeNull()
+  })
 
-      expect(button).toBeNull()
+  it.each([[SearchView.Landing], [SearchView.Results]])(
+    'should not have focus on search main input',
+    async (view) => {
+      useRoute.mockReturnValueOnce({ params: { view } }).mockReturnValueOnce({ params: { view } })
+      const { getByRole } = render(<SearchHeader searchInputID={searchInputID} />)
+
+      await act(async () => {
+        await userEvent.tab()
+        await userEvent.tab()
+      })
+
+      const searchMainInput = getByRole('searchbox', { hidden: true })
+      expect(searchMainInput).not.toHaveFocus()
     }
   )
 
-  it('search main input should not be focusable', async () => {
-    useRoute
-      .mockReturnValueOnce({ params: { view: SearchView.Landing } })
-      .mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { getByRole } = render(<SearchHeader searchInputID={searchInputID} />)
-
-    await act(async () => {
-      await userEvent.tab()
-      await userEvent.tab()
-    })
-
-    const searchMainInput = getByRole('searchbox', { hidden: true })
-    expect(searchMainInput).not.toHaveFocus()
-  })
-
-  it('skip focus on search main input, the next focus should be on the location filter button', async () => {
+  it('should skip focus on search main input, the next focus should be on the location filter button', async () => {
     useRoute
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })

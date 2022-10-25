@@ -89,114 +89,127 @@ Array [
             }
           >
             <View
-              height="regular"
-              isDisabled={false}
-              isError={false}
-              isFocus={false}
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 22,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
+                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "height": 48,
-                    "paddingBottom": 0,
-                    "paddingLeft": 17,
-                    "paddingRight": 17,
-                    "paddingTop": 0,
-                    "width": "100%",
-                  },
-                  Object {
-                    "borderRadius": 24,
-                    "outlineOffset": 0,
-                  },
-                  Object {
-                    "flex": 1,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
-              testID="styled-input-container"
             >
               <View
-                numberOfSpaces={1}
+                height="regular"
+                isDisabled={false}
+                isError={false}
+                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "width": 4,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 22,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "paddingBottom": 0,
+                      "paddingLeft": 17,
+                      "paddingRight": 17,
+                      "paddingTop": 0,
+                      "width": "100%",
                     },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
                     Object {
-                      "flexShrink": 0,
+                      "borderRadius": 24,
+                      "outlineOffset": 0,
+                    },
+                    Object {
+                      "flex": 1,
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <View
-                  height={20}
-                  width={20}
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                  <View
+                    height={20}
+                    width={20}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <TextInput
+                  accessible={true}
+                  aria-hidden={false}
+                  autoCorrect={false}
+                  autoFocus={false}
+                  editable={true}
+                  enablesReturnKeyAutomatically={true}
+                  isEmpty={true}
+                  nativeID="testUuidV4"
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  onSubmitEditing={[Function]}
+                  placeholder="Offre, artiste..."
+                  placeholderTextColor="#696A6F"
+                  returnKeyType="search"
+                  selectionColor="#696A6F"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Italic",
+                        "fontSize": 15,
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Object {},
+                    ]
+                  }
+                  testID="searchInput"
+                  value=""
+                />
               </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  Array [
-                    Object {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <TextInput
-                accessible={true}
-                aria-hidden={false}
-                autoCorrect={false}
-                autoFocus={false}
-                editable={true}
-                enablesReturnKeyAutomatically={true}
-                isEmpty={true}
-                nativeID="testUuidV4"
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder="Offre, artiste..."
-                placeholderTextColor="#696A6F"
-                returnKeyType="search"
-                selectionColor="#696A6F"
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Italic",
-                      "fontSize": 15,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                    Object {},
-                  ]
-                }
-                testID="searchInput"
-                value=""
-              />
             </View>
           </View>
         </View>

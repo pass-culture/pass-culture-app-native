@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAppSettings } from 'features/auth/settings'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons/FilterButton/FilterButton'
+import { HiddenNavigateToSuggestionsButton } from 'features/search/atoms/Buttons/HiddenNavigateToSuggestionsButton'
 import { LocationModal } from 'features/search/pages/LocationModal'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
@@ -37,13 +38,11 @@ const SEARCH_DEBOUNCE_MS = 500
 type Props = UseSearchBoxProps & {
   searchInputID: string
   accessibleHiddenTitle?: string
-  isLanding?: boolean
 }
 
 const accessibilityDescribedBy = uuidv4()
 
 export const SearchBox: React.FunctionComponent<Props> = ({
-  isLanding,
   searchInputID,
   accessibleHiddenTitle,
   ...props
@@ -68,6 +67,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ).current
   const { data: appSettings } = useAppSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
+  const isLandingOrResults =
+    params === undefined || params.view === SearchView.Landing || params.view === SearchView.Results
 
   const pushWithStagedSearch = usePushWithStagedSearch()
   const hasEditableSearchInput =
@@ -200,20 +201,23 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       )}
       <SearchInputContainer {...props}>
         <SearchInputA11yContainer>
-          <SearchMainInput
-            ref={inputRef}
-            searchInputID={searchInputID}
-            query={query}
-            setQuery={setQuery}
-            isFocusable={!isLanding}
-            isFocus={params?.view === SearchView.Suggestions}
-            onSubmitQuery={onSubmitQuery}
-            resetQuery={resetQuery}
-            onFocus={onFocus}
-            showLocationButton={params === undefined || params.view === SearchView.Landing}
-            locationLabel={locationLabel}
-            onPressLocationButton={showLocationModal}
-          />
+          <FlexView>
+            {!!isLandingOrResults && <HiddenNavigateToSuggestionsButton />}
+            <SearchMainInput
+              ref={inputRef}
+              searchInputID={searchInputID}
+              query={query}
+              setQuery={setQuery}
+              isFocusable={!isLandingOrResults}
+              isFocus={params?.view === SearchView.Suggestions}
+              onSubmitQuery={onSubmitQuery}
+              resetQuery={resetQuery}
+              onFocus={onFocus}
+              showLocationButton={params === undefined || params.view === SearchView.Landing}
+              locationLabel={locationLabel}
+              onPressLocationButton={showLocationModal}
+            />
+          </FlexView>
           {!!hasEditableSearchInput && (
             <StyledView>
               <BackButton onGoBack={onPressArrowBack} />
@@ -261,4 +265,9 @@ const StyledView = styled.View({
   width: getSpacing(10),
   height: getSpacing(10),
   marginRight: getSpacing(2),
+})
+
+const FlexView = styled.View({
+  flex: 1,
+  flexDirection: 'row',
 })
