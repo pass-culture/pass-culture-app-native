@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
-import { useForm, Controller, FieldPath, UseFormReturn } from 'react-hook-form'
+import React, { useCallback, useMemo } from 'react'
+import { useForm, Controller, FieldPath } from 'react-hook-form'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -34,13 +34,11 @@ type FormValues = {
 
 const emailErrorMessageId = uuidv4()
 
-export const ForgottenPassword: FunctionComponent = () => {
+export const ForgottenPassword = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  const { control, ...useFormMethods } = useForm<FormValues>({
-    defaultValues: { email: '', isFetching: false, isDoingReCaptchaChallenge: false },
-  })
 
   const {
+    control,
     hasError,
     isDoingReCaptchaChallenge,
     isFetching,
@@ -53,7 +51,7 @@ export const ForgottenPassword: FunctionComponent = () => {
     openReCaptchaChallenge,
     requestPasswordReset,
     shouldDisableValidateButton,
-  } = useForgottenPasswordForm(useFormMethods)
+  } = useForgottenPasswordForm()
 
   return (
     <BottomContentPage>
@@ -117,15 +115,18 @@ export const ForgottenPassword: FunctionComponent = () => {
   )
 }
 
-const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>, 'control'>) => {
+const useForgottenPasswordForm = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
+    control,
     setError,
     clearErrors,
     setValue,
     watch,
     formState: { errors },
-  } = useFormMethods
+  } = useForm<FormValues>({
+    defaultValues: { email: '', isFetching: false, isDoingReCaptchaChallenge: false },
+  })
   const { email, isFetching, isDoingReCaptchaChallenge } = watch()
 
   // Little helper method to make it easier to set error
@@ -136,14 +137,15 @@ const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>
     [setError]
   )
 
+  const onConnection = useCallback(clearErrors, [clearErrors])
+  const onConnectionLost = useCallback(() => {
+    setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
+    setValue('isDoingReCaptchaChallenge', false)
+  }, [setCustomError, setValue])
+
   const networkInfo = useNetInfoContext({
-    onConnection() {
-      clearErrors()
-    },
-    onConnectionLost() {
-      setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
-      setValue('isDoingReCaptchaChallenge', false)
-    },
+    onConnection,
+    onConnectionLost,
   })
   const { replace } = useNavigation<UseNavigationType>()
 
@@ -197,6 +199,7 @@ const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>
 
   return useMemo(
     () => ({
+      control,
       openReCaptchaChallenge,
       requestPasswordReset,
       shouldDisableValidateButton: isValueEmpty(email) || isFetching,
@@ -204,9 +207,9 @@ const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>
       lastError: errorValues[errorValues.length - 1]?.message,
       isFetching,
       isDoingReCaptchaChallenge,
-      onReCaptchaSuccess(token: string) {
+      async onReCaptchaSuccess(token: string) {
         setValue('isDoingReCaptchaChallenge', false)
-        requestPasswordReset(token)
+        await requestPasswordReset(token)
       },
       onReCaptchaExpire() {
         setValue('isDoingReCaptchaChallenge', false)
@@ -228,6 +231,7 @@ const useForgottenPasswordForm = (useFormMethods: Omit<UseFormReturn<FormValues>
       },
     }),
     [
+      control,
       email,
       errorValues,
       isDoingReCaptchaChallenge,
