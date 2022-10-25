@@ -30,7 +30,7 @@ export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
 }
 
 const StyledTouchable = styledButton(Touchable)({
-  flex: 1,
+  flexGrow: 1,
   maxWidth: getSpacing(10),
   height: getSpacing(10),
   justifyContent: 'center',

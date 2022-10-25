@@ -41,9 +41,10 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
 }
 
 .c1 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   max-width: 40px;
   height: 40px;
   -webkit-box-pack: center;

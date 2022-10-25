@@ -120,9 +120,7 @@ Array [
                 style={
                   Object {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 40,
                     "justifyContent": "center",
                     "maxWidth": 40,
