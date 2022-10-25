@@ -47,6 +47,7 @@ export enum RadioButtonLocation {
   EVERYWHERE = 'Partout',
   AROUND_ME = 'Autour de moi',
   CHOOSE_PLACE_OR_VENUE = 'Choisir un lieu',
+  NO_LOCATION = 'Aucune localisation',
 }
 
 type LocationModalFormData = {
@@ -379,7 +380,12 @@ export const LocationModal: FunctionComponent<Props> = ({
                         onSelect={() => onSelectLocation(item.label)}
                         isSelected={value === item.label}
                         testID={item.label}
-                        {...item}
+                        label={
+                          item.label === RadioButtonLocation.EVERYWHERE && position === null
+                            ? RadioButtonLocation.NO_LOCATION
+                            : item.label
+                        }
+                        icon={item.icon}
                       />
                       {item.label === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE &&
                       value === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE ? (
