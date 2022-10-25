@@ -81,7 +81,7 @@ export const getCtaWordingAndAction = ({
 
     return {
       showBookingModal: false,
-      wording: subcategory.isEvent ? 'Accéder à la billetterie' : 'Accéder à l’offre',
+      wording: 'Accéder au site partenaire',
       externalNav: { url: externalTicketOfficeUrl },
     }
   }
