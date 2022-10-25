@@ -6,6 +6,11 @@ import { ApplicationProcessingModal } from 'features/offer/components/redirectio
 import { fireEvent, render } from 'tests/utils'
 
 describe('<ApplicationProcessingModal />', () => {
+  it('should match previous snapshot', () => {
+    const modal = render(<ApplicationProcessingModal visible hideModal={jest.fn()} />)
+    expect(modal).toMatchSnapshot()
+  })
+
   it('should navigate to profile on click on Aller sur mon profil', async () => {
     const { getByLabelText } = render(<ApplicationProcessingModal visible hideModal={jest.fn()} />)
     const button = getByLabelText('Aller sur mon profil')
