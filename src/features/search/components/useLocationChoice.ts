@@ -2,6 +2,7 @@ import React from 'react'
 
 import { LocationType } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useGeolocation } from 'libs/geolocation'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
@@ -12,11 +13,12 @@ export const useLocationChoice = (
   section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
   const { searchState } = useSearch()
+  const { position } = useGeolocation()
 
   if (section === LocationType.EVERYWHERE)
     return {
       Icon: Everywhere,
-      label: 'Partout',
+      label: position === null ? 'Me localiser' : 'Partout',
       isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
     }
 
