@@ -71,6 +71,9 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
+            <ButtonPrimary wording="Errors 🎨" onPress={() => navigate('NavigationErrors')} />
+          </Row>
+          <Row half>
             <ButtonPrimary
               wording="Partage de l'app 📱"
               onPress={() => navigate('ShareAppModal')}
@@ -105,9 +108,6 @@ export function Navigation(): JSX.Element {
               visible={notificationsConsentModalVisible}
               onHideModal={hideNotificationsConsentModal}
             />
-          </Row>
-          <Row half>
-            <ButtonPrimary wording="Errors 👾" onPress={() => navigate('NavigationErrors')} />
           </Row>
           <Row half>
             <ButtonPrimary wording="POC A/B testing" onPress={() => navigate('ABTestingPOC')} />
