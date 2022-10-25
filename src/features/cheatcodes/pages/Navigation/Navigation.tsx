@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useState, createElement } from 'react'
+import React, { useState } from 'react'
 import { Alert } from 'react-native'
-import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -9,48 +8,26 @@ import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButto
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
-import { NoContentError } from 'features/home/components/NoContentError'
-import { Maintenance } from 'features/maintenance/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
 import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { AsyncError, eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
-import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { padding, Spacer, Typo } from 'ui/theme'
+import { padding, Spacer } from 'ui/theme'
 
-const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
 export function Navigation(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
-  const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
-  const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const venueId = useSomeVenueId()
   const { showInfoSnackBar } = useSnackBarContext()
-
-  const { refetch: errorAsyncQuery, isFetching } = useQuery(
-    QueryKeys.ERROR_ASYNC,
-    () => errorAsync(),
-    {
-      cacheTime: 0,
-      enabled: false,
-    }
-  )
-
-  async function errorAsync() {
-    setAsyncTestReqCount((v) => ++v)
-    if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
-    }
-  }
 
   const {
     visible: cookiesConsentModalVisible,
@@ -94,6 +71,9 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
+            <ButtonPrimary wording="Errors 🎨" onPress={() => navigate('NavigationErrors')} />
+          </Row>
+          <Row half>
             <ButtonPrimary
               wording="Partage de l'app 📱"
               onPress={() => navigate('ShareAppModal')}
@@ -134,26 +114,6 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Reset mdp lien expiré"
-              onPress={() =>
-                navigate('ResetPasswordExpiredLink', {
-                  email: 'john@wick.com',
-                })
-              }
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="Reset mdp email envoyé"
-              onPress={() =>
-                navigate('ResetPasswordEmailSent', {
-                  email: 'jean.dupont@gmail.com',
-                })
-              }
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
               wording="First Tutorial"
               onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             />
@@ -163,28 +123,6 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary wording="Venue" onPress={() => navigate('Venue', { id: venueId })} />
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="Erreur rendering"
-              onPress={() => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-expect-error
-                setRenderedError(createElement(CenteredText, { children: CenteredText })) // eslint-disable-line react/no-children-prop
-              }}
-            />
-            {renderedError}
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording={
-                asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
-                  ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
-                  : 'OK'
-              }
-              disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
-              onPress={() => errorAsyncQuery()}
-            />
           </Row>
           <Row half>
             <ButtonPrimary
@@ -200,18 +138,7 @@ export function Navigation(): JSX.Element {
               }}
             />
           </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="Maintenance Page"
-              onPress={() =>
-                setScreenError(
-                  new ScreenError('Test maintenance page', () => (
-                    <Maintenance message="Some maintenance message that is set in Firestore" />
-                  ))
-                )
-              }
-            />
-          </Row>
+
           <Row half>
             <ButtonPrimary
               wording="ForceUpdate Page"
@@ -257,25 +184,6 @@ export function Navigation(): JSX.Element {
               onPress={() => navigate('RecreditBirthdayNotification')}
             />
           </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="Contentful KO error"
-              onPress={() =>
-                setScreenError(
-                  new ScreenError(
-                    'Échec de la requête https://cdn.contentful.com/spaces/2bg01iqy0isv/environments/testing/entries?include=2&content_type=homepageNatif&access_token=<TOKEN>, code: 400',
-                    NoContentError
-                  )
-                )
-              }
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="Banned Country Error"
-              onPress={() => navigate('BannedCountryError')}
-            />
-          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>
@@ -299,8 +207,3 @@ const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
   width: half ? '50%' : '100%',
   ...padding(2, 0.5),
 }))
-
-const CenteredText = styled(Typo.Caption)({
-  width: '100%',
-  textAlign: 'center',
-})

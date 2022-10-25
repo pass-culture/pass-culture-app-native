@@ -16,6 +16,13 @@ export function NavigationAccountSuspension(): JSX.Element {
         <LinkToComponent name="AccountReactivationSuccess" />
         <LinkToComponent name="ConfirmDeleteProfile" />
         <LinkToComponent name="DeleteProfileSuccess" />
+        <LinkToComponent name="ResetPasswordExpiredLink" />
+        <LinkToComponent
+          name="ResetPasswordEmailSent"
+          navigationParams={{
+            email: 'jean.dupont@gmail.com',
+          }}
+        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
