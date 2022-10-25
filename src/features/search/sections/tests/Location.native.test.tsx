@@ -13,6 +13,9 @@ const mockSearchState = jest.fn().mockReturnValue({
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
+  useStagedSearch: () => ({
+    dispatch: jest.fn(),
+  }),
 }))
 
 describe('Location component', () => {
