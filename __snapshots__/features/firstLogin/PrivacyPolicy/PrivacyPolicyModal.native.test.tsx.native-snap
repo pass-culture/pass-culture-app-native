@@ -335,64 +335,35 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                     }
                   >
                     <View
-                      icon={
-                        Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": Array [
-                            [Function],
-                          ],
-                          "inlineStyle": InlineStyle {
-                            "rules": Array [
-                              "",
-                            ],
-                          },
-                          "render": [Function],
-                          "shouldForwardProp": undefined,
-                          "styledComponentId": "StyledNativeComponent",
-                          "target": [Function],
-                          "withComponent": [Function],
-                        }
-                      }
                       style={
                         Array [
                           Object {
-                            "paddingLeft": 25,
+                            "alignItems": "center",
+                            "flexDirection": "row",
                           },
                         ]
                       }
-                      typography="ButtonText"
                     >
                       <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
                         style={
                           Array [
                             Object {
-                              "left": 0,
-                              "position": "absolute",
+                              "width": 4,
                             },
                           ]
                         }
-                      >
-                        <View
-                          accessibilityLabel="Nouvelle fenêtre"
-                          height={20}
-                          testID="button-icon"
-                          width={20}
-                        >
-                          <Text>
-                            button-icon-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "width": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
+                      />
                       <Text
                         style={
                           Array [

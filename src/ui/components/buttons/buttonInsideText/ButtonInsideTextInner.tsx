@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -27,12 +28,12 @@ export function ButtonInsideTextInner({
     }))``
 
   return (
-    <Container icon={Icon} typography={typography}>
+    <Container hasIcon={!!Icon}>
       {!!StyledIcon && (
-        <IconContainer>
+        <React.Fragment>
           <StyledIcon testID="button-icon" />
           <Spacer.Row numberOfSpaces={1} />
-        </IconContainer>
+        </React.Fragment>
       )}
       <StyledText typography={typography} color={color}>
         {wording}
@@ -42,25 +43,15 @@ export function ButtonInsideTextInner({
 }
 
 const Container = styled.View<{
-  icon?: FunctionComponent<IconInterface>
-  typography?: string
-}>(({ theme, icon, typography }) => {
-  const iconSize =
-    typography === 'Caption' ? theme.icons.sizes.extraSmall : theme.icons.sizes.smaller
-  return {
-    paddingLeft: icon ? iconSize * 1.25 : undefined, // Hack for add space between icon and label
-  }
-})
-
-const IconContainer = styled.View({
-  position: 'absolute',
-  left: 0,
-})
+  hasIcon: boolean
+}>(({ hasIcon }) => ({
+  flexDirection: 'row',
+  top: hasIcon && Platform.OS === 'web' ? getSpacing(1) : 0,
+}))
 
 const StyledText = styled.Text<{
   typography?: string
   color?: ColorsEnum
-  icon?: FunctionComponent<IconInterface>
 }>(({ theme, typography, color }) => ({
   ...(typography === 'Caption' ? theme.typography.caption : theme.typography.buttonText),
   color: color ?? theme.colors.primary,

@@ -455,7 +455,8 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
@@ -506,64 +507,36 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
                       }
                     >
                       <View
-                        icon={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "attrs": Array [
-                              [Function],
-                            ],
-                            "inlineStyle": InlineStyle {
-                              "rules": Array [
-                                "",
-                              ],
-                            },
-                            "render": [Function],
-                            "shouldForwardProp": undefined,
-                            "styledComponentId": "StyledNativeComponent",
-                            "target": [Function],
-                            "withComponent": [Function],
-                          }
-                        }
+                        hasIcon={true}
                         style={
                           Array [
                             Object {
-                              "paddingLeft": 25,
+                              "flexDirection": "row",
+                              "top": 0,
                             },
                           ]
                         }
-                        typography="ButtonText"
                       >
                         <View
+                          fill="#320096"
+                          height={20}
+                          testID="button-icon"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-SVG-Mock
+                          </Text>
+                        </View>
+                        <View
+                          numberOfSpaces={1}
                           style={
                             Array [
                               Object {
-                                "left": 0,
-                                "position": "absolute",
+                                "width": 4,
                               },
                             ]
                           }
-                        >
-                          <View
-                            fill="#320096"
-                            height={20}
-                            testID="button-icon"
-                            width={20}
-                          >
-                            <Text>
-                              button-icon-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={1}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 4,
-                                },
-                              ]
-                            }
-                          />
-                        </View>
+                        />
                         <Text
                           color="#320096"
                           style={
