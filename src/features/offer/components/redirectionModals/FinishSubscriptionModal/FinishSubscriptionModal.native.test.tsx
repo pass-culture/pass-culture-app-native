@@ -6,15 +6,25 @@ import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/navigation/navigationRef')
+
+let mockDepositAmounts: string | undefined = '300\u00a0€'
 jest.mock('features/offer/services/useGetDepositAmountsByAge', () => ({
-  useGetDepositAmountsByAge: jest.fn(() => '300\u00a0€'),
+  useGetDepositAmountsByAge: jest.fn(() => mockDepositAmounts),
 }))
 
 const hideModal = jest.fn()
 const visible = true
 
 describe('<FinishSubscriptionModal />', () => {
-  it('should render correctly', () => {
+  beforeEach(jest.clearAllMocks)
+
+  it('should render correctly with undefined deposit amount', () => {
+    mockDepositAmounts = undefined
+    const renderAPI = render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} />)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should render correctly with eighteen years old deposit amount', () => {
     const renderAPI = render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} />)
     expect(renderAPI).toMatchSnapshot()
   })
