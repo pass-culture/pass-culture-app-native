@@ -19,7 +19,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const mockPosition: GeoCoordinates | null = { latitude: 2, longitude: 40 }
+const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -28,9 +29,21 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 }))
 
 describe('Location component', () => {
+  afterEach(() => {
+    mockPosition = DEFAULT_POSITION
+  })
+
   it(`should have EVERYWHERE description's by default`, async () => {
     const { getByText, queryByText } = await renderLocation()
     expect(getByText(RadioButtonLocation.EVERYWHERE)).toBeTruthy()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
+  })
+
+  it(`should not have description when EVERYWHERE selected and position is null`, async () => {
+    mockPosition = null
+    const { queryByText } = await renderLocation()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
     expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
     expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
   })

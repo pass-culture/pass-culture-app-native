@@ -4,16 +4,22 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { SearchState, SearchView } from 'features/search/types'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import * as useFilterCountAPI from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, act } from 'tests/utils'
+import { GeoCoordinates } from 'libs/geolocation'
+import { SuggestedPlace } from 'libs/place'
+import { SuggestedVenue } from 'libs/venue'
+import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from '../SearchBox'
 
-const mockSearchState = initialSearchState
+let mockSearchState = initialSearchState
 const mockStagedSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
@@ -64,6 +70,22 @@ const mockSettings = jest.fn().mockReturnValue({ data: {} })
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => mockSettings()),
 }))
+
+const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    position: mockPosition,
+  }),
+}))
+
+const Kourou: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
+const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
@@ -361,4 +383,35 @@ describe('SearchBox component', () => {
 
     expect(filterButton).toHaveTextContent('3')
   })
+
+  it.each`
+    locationType               | locationFilter                                                                   | position            | locationButtonLabel
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
+    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
+  `(
+    'should display $locationButtonLabel in location button label when location type is $locationType and position is $position',
+    async ({
+      locationFilter,
+      position,
+      locationButtonLabel,
+    }: {
+      locationFilter: LocationFilter
+      position: GeoCoordinates | null
+      locationButtonLabel: string
+    }) => {
+      mockSearchState = { ...initialSearchState, locationFilter }
+      mockPosition = position
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, locationFilter } })
+      const { queryByText } = render(<SearchBox searchInputID={searchInputID} />)
+
+      superFlushWithAct()
+
+      expect(queryByText(locationButtonLabel)).toBeTruthy()
+    }
+  )
 })

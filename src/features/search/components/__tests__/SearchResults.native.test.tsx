@@ -2,9 +2,15 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
+import { SuggestedPlace } from 'libs/place'
+import { SuggestedVenue } from 'libs/venue'
+import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -12,7 +18,7 @@ import { SearchResults } from '../SearchResults'
 
 jest.mock('react-query')
 
-const mockSearchState = initialSearchState
+let mockSearchState = initialSearchState
 const mockDispatchStagedSearch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
@@ -56,6 +62,13 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),
 }))
+
+const Kourou: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
+const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 describe('SearchResults component', () => {
   it('should render correctly', async () => {
@@ -281,4 +294,35 @@ describe('SearchResults component', () => {
 
     expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
   })
+
+  it.only.each`
+    locationType               | locationFilter                                                                   | position            | locationButtonLabel
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Localisation'}
+    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
+  `(
+    'should display $locationButtonLabel in location filter button label when location type is $locationType and position is $position',
+    async ({
+      locationFilter,
+      position,
+      locationButtonLabel,
+    }: {
+      locationFilter: LocationFilter
+      position: GeoCoordinates | null
+      locationButtonLabel: string
+    }) => {
+      mockPosition = position
+      mockSearchState = { ...initialSearchState, locationFilter }
+
+      const { queryByText } = render(<SearchResults />)
+
+      await act(async () => {
+        expect(queryByText(locationButtonLabel)).toBeTruthy()
+      })
+    }
+  )
 })
