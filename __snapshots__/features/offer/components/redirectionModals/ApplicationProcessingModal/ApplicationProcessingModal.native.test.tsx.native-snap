@@ -288,8 +288,8 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
               }
             >
               <View
-                height={100}
-                width={100}
+                height={109.2}
+                width={140}
               >
                 <Text>
                   undefined-SVG-Mock

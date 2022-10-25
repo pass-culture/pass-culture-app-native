@@ -5,7 +5,7 @@ import { AddToFavoritesButton } from 'features/offer/components/redirectionModal
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
+import { BicolorBookingHold } from 'ui/svg/BicolorBookingHold'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
@@ -20,7 +20,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({ visible, 
     <AppModalWithIllustration
       hideModal={hideModal}
       visible={visible}
-      Illustration={StyledIllustration}
+      Illustration={BicolorBookingHold}
       title="C'est pour bientôt&nbsp;!">
       <StyledBody>
         Nous avons reçu ton dossier et son analyse est en cours. Tu pourras réserver cette offre dès
@@ -40,10 +40,6 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({ visible, 
     </AppModalWithIllustration>
   )
 }
-
-const StyledIllustration = styled(BicolorClock).attrs(() => ({
-  size: 100,
-}))``
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
