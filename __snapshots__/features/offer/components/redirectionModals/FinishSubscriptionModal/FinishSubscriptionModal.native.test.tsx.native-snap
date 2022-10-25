@@ -320,20 +320,37 @@ pour réserver cette offre
                   ]
                 }
               >
-                Finalise ton inscription pour obtenir ton crédit de
+                Finalise ton inscription pour obtenir ton crédit
                 <Text
                   style={
                     Array [
                       Object {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
+                        "textAlign": "center",
                       },
                     ]
                   }
                 >
-                   30€ 
+                   
+                  de 
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    300 €
+                  </Text>
+                   
                 </Text>
                 et réserver cette offre.
               </Text>

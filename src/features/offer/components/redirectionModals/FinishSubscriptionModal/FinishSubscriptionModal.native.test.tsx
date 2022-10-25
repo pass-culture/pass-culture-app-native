@@ -4,7 +4,11 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { FinishSubscriptionModal } from 'features/offer/components/redirectionModals/FinishSubscriptionModal/FinishSubscriptionModal'
 import { fireEvent, render } from 'tests/utils'
 
+jest.mock('react-query')
 jest.mock('features/navigation/navigationRef')
+jest.mock('features/offer/services/useGetDepositAmountsByAge', () => ({
+  useGetDepositAmountsByAge: jest.fn(() => '300\u00a0€'),
+}))
 
 const hideModal = jest.fn()
 const visible = true
