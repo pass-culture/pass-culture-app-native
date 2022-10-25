@@ -18,7 +18,7 @@ export const useLocationChoice = (
   if (section === LocationType.EVERYWHERE)
     return {
       Icon: Everywhere,
-      label: position === null ? 'Me localiser' : 'Partout',
+      label: position === null ? '' : 'Partout',
       isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
     }
 

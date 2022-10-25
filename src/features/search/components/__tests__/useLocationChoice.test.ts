@@ -47,7 +47,7 @@ describe('useLocationChoice', () => {
     const { Icon, label, isSelected } = useLocationChoice(LocationType.EVERYWHERE)
 
     expect(Icon).toEqual(Everywhere)
-    expect(label).toEqual('Me localiser')
+    expect(label).toEqual('')
     expect(isSelected).toEqual(true)
   })
 
