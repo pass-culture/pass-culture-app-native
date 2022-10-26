@@ -314,6 +314,80 @@ Array [
           </View>
         </View>
         <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "borderColor": "#161617",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "boxSizing": "border-box",
+                "flexDirection": "row",
+                "height": 32,
+                "justifyContent": "center",
+                "opacity": 1,
+                "paddingBottom": 6,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 6,
+                "userSelect": "auto",
+              }
+            }
+            testID="datesHoursButton"
+          >
+            <Text
+              isSelected={false}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "marginLeft": 4,
+                    "textAlign": "left",
+                  },
+                ]
+              }
+              testID="datesHoursButtonLabel"
+            >
+              Dates & heures
+            </Text>
+          </View>
+        </View>
+        <View
           numberOfSpaces={6}
           style={
             Array [

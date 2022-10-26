@@ -1,4 +1,4 @@
-import { useIsFocused, useRoute } from '@react-navigation/native'
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/SingleFilterButton'
 import { GeolocationButton } from 'features/search/atoms/Buttons/GeolocationButton'
@@ -18,7 +18,7 @@ import { Categories } from 'features/search/pages/Categories'
 import { LocationModal } from 'features/search/pages/LocationModal'
 import { OfferTypeModal } from 'features/search/pages/OfferTypeModal'
 import { SearchPrice } from 'features/search/pages/SearchPrice'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
@@ -54,6 +54,7 @@ export const SearchResults: React.FC = () => {
     isFetchingNextPage,
   } = useSearchResults()
   const { searchState } = useSearch()
+  const { dispatch: stagedDispatch } = useStagedSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
@@ -61,6 +62,7 @@ export const SearchResults: React.FC = () => {
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { params } = useRoute<UseRouteType<'Search'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const offerCategories = params?.offerCategories ?? []
@@ -98,6 +100,8 @@ export const SearchResults: React.FC = () => {
     params?.offerTypes?.isEvent ||
     params?.offerTypes?.isThing
 
+  const hasDatesHours = Boolean(params?.date || params?.timeRange)
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
@@ -128,6 +132,11 @@ export const SearchResults: React.FC = () => {
     ),
     [searchState.query]
   )
+
+  const redirectFilters = useCallback(() => {
+    stagedDispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })
+    navigate('SearchFilter')
+  }, [stagedDispatch, navigate, searchState])
 
   const ListHeaderComponent = useMemo(() => {
     const shouldDisplayGeolocationButton =
@@ -251,6 +260,17 @@ export const SearchResults: React.FC = () => {
                 testID="typeButton"
                 onPress={showOfferTypeModal}
                 isSelected={!!hasType}
+              />
+            </ButtonContainer>
+          </React.Fragment>
+          <React.Fragment>
+            <Spacer.Row numberOfSpaces={2} />
+            <ButtonContainer>
+              <SingleFilterButton
+                label="Dates & heures"
+                testID="datesHoursButton"
+                onPress={redirectFilters}
+                isSelected={!!hasDatesHours}
               />
             </ButtonContainer>
           </React.Fragment>
