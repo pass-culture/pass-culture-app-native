@@ -31,11 +31,6 @@ export interface EntryCollection<T, ContentType>
   includes?: EntryCollectionInclusions<T, ContentType>
 }
 
-export interface EntryFields {
-  modules: Array<{ sys: EntryTypeLink }>
-  title: string
-}
-
 interface ContentfulCollection<T> {
   total: number
   skip: number
@@ -84,12 +79,6 @@ interface Sys<ContentType> {
 }
 
 interface SpaceLink {
-  type: string
-  linkType: string
-  id: string
-}
-
-interface EntryTypeLink {
   type: string
   linkType: string
   id: string
