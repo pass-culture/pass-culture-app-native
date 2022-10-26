@@ -3,11 +3,9 @@ import { rest } from 'msw'
 
 import { processHomepageEntry } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
-import {
-  adaptedHomepageEntry,
-  adaptedSecondHomepageEntry,
-  homepageEntriesAPIResponse,
-} from 'tests/fixtures/homepageEntries'
+import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
+import { adaptedSecondHomepageEntry } from 'tests/fixtures/adaptedSecondHomepageEntry'
+import { homepageEntriesAPIResponse } from 'tests/fixtures/homepageEntriesAPIResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'

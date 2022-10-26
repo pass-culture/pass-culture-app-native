@@ -10,7 +10,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
-import { adaptedHomepageEntry as defaultHomeEntry } from 'tests/fixtures/homepageEntries'
+import { adaptedHomepageEntry as defaultHomeEntry } from 'tests/fixtures/adaptedHomepageEntry'
 import { renderHook } from 'tests/utils'
 
 const masterTag: Tag = { sys: { id: 'master', linkType: 'Tag', type: 'Link' } }
