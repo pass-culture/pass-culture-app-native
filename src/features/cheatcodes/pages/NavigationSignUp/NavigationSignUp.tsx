@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { ApplicationProcessingModal } from 'features/offer/components/redirectionModals/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
 import { FinishSubscriptionModal } from 'features/offer/components/redirectionModals/FinishSubscriptionModal/FinishSubscriptionModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,6 +24,11 @@ export function NavigationSignUp(): JSX.Element {
     visible: authenticationModalVisible,
     showModal: showAuthenticationModal,
     hideModal: hideAuthenticationModal,
+  } = useModal(false)
+  const {
+    visible: applicationProcessingModalVisible,
+    showModal: showApplicationProcessingModal,
+    hideModal: hideApplicationProcessingModal,
   } = useModal(false)
 
   return (
@@ -94,6 +100,16 @@ export function NavigationSignUp(): JSX.Element {
           <AuthenticationModal
             visible={authenticationModalVisible}
             hideModal={hideAuthenticationModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
+            wording="Application Processing Modal"
+            onPress={showApplicationProcessingModal}
+          />
+          <ApplicationProcessingModal
+            visible={applicationProcessingModalVisible}
+            hideModal={hideApplicationProcessingModal}
           />
         </Row>
       </StyledContainer>
