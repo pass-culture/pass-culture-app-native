@@ -159,12 +159,6 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Offre inexistante"
-              onPress={() => navigate('Offer', { id: 0, from: 'search' })}
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
               wording="Booking Confirmation"
               onPress={() => navigate('BookingConfirmation', { offerId: 11224, bookingId: 1240 })}
             />
