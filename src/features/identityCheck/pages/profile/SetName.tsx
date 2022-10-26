@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -15,7 +15,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 
 export const SetName = () => {
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useSubscriptionContext()
   const [firstName, setFirstName] = useState(profile.name?.firstName ?? '')
   const [lastName, setLastName] = useState(profile.name?.lastName ?? '')
   const { navigateToNextScreen } = useIdentityCheckNavigation()

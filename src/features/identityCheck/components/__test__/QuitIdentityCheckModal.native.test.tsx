@@ -10,8 +10,8 @@ jest.mock('features/navigation/helpers')
 const mockHideModal = jest.fn()
 
 const mockStep = 'profile'
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({ step: mockStep }),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({ step: mockStep }),
 }))
 
 describe('<QuitIdentityCheckModal/>', () => {

@@ -40,11 +40,11 @@ jest.mock('features/profile/api', () => ({
     ),
   })),
 }))
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
-jest.mock('features/identityCheck/useIdentityCheckSteps', () => ({
-  useIdentityCheckSteps: jest.fn(() => [
+jest.mock('features/identityCheck/useSubscriptionSteps', () => ({
+  useSubscriptionSteps: jest.fn(() => [
     {
       name: 'IdentityCheckStep.IDENTIFICATION',
       label: 'Identification',

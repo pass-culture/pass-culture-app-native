@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
@@ -8,9 +8,9 @@ import { hasOngoingCredit } from 'features/home/services/useAvailableCredit'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
+import { useSubscriptionSteps } from 'features/identityCheck/useIdentityCheckSteps'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/useSetCurrentSubscriptionStep'
 import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -30,9 +30,9 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const steps = useIdentityCheckSteps()
+  const steps = useSubscriptionSteps()
   const getStepState = useGetStepState()
-  const context = useIdentityCheckContext()
+  const context = useSubscriptionContext()
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetch } = useUserProfileInfo()

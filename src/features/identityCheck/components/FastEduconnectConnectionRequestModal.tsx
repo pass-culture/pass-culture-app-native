@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useEnableNewIdentificationFlow } from 'libs/firebase/firestore/featureFlags'
@@ -26,7 +26,7 @@ interface FastEduconnectConnectionRequestModalProps {
 export const FastEduconnectConnectionRequestModal: React.FC<
   FastEduconnectConnectionRequestModalProps
 > = ({ visible, hideModal }) => {
-  const { dispatch } = useIdentityCheckContext()
+  const { dispatch } = useSubscriptionContext()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
   const enableNewIdentificationFlow = useEnableNewIdentificationFlow()
 

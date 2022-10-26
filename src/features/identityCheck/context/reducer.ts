@@ -1,6 +1,6 @@
-import { IdentityCheckState, Action } from 'features/identityCheck/context/types'
+import { SubscriptionState, Action } from 'features/identityCheck/context/types'
 
-export const initialIdentityCheckState: IdentityCheckState = {
+export const initialSubscriptionState: SubscriptionState = {
   step: null,
   phoneValidation: null,
   profile: {
@@ -23,13 +23,13 @@ export const initialIdentityCheckState: IdentityCheckState = {
   },
 }
 
-export const identityCheckReducer = (
-  state: IdentityCheckState,
+export const SubscriptionReducer = (
+  state: SubscriptionState,
   action: Action
-): IdentityCheckState => {
+): SubscriptionState => {
   switch (action.type) {
     case 'INIT':
-      return initialIdentityCheckState
+      return initialSubscriptionState
     case 'SET_STEP':
       return { ...state, step: action.payload }
     case 'SET_PHONE_NUMBER':

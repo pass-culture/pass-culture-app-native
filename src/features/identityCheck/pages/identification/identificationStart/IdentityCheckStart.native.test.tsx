@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
 import { fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 jest.mock('react-query')
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),
     ...mockState,
   })),

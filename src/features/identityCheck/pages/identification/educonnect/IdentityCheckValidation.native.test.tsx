@@ -14,8 +14,8 @@ jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
 }))
 
 const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({
     dispatch: mockDispatch,
     identification: {
       done: false,

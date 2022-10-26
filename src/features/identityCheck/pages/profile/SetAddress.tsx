@@ -8,7 +8,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -31,7 +31,7 @@ const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.
 
 export const SetAddress = () => {
   const { data: settings } = useAppSettings()
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const [query, setQuery] = useState<string>(profile.address || '')

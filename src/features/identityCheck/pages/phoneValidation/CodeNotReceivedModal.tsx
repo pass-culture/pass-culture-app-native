@@ -7,7 +7,7 @@ import {
   usePhoneValidationRemainingAttempts,
   useSendPhoneValidationMutation,
 } from 'features/identityCheck/api/api'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/firebase/analytics'
@@ -26,7 +26,7 @@ export interface CodeNotReceivedModalProps {
 }
 
 export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> = (props) => {
-  const { phoneValidation } = useIdentityCheckContext()
+  const { phoneValidation } = useSubscriptionContext()
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()

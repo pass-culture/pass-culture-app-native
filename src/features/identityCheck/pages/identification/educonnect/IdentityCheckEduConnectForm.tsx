@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 
 import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
@@ -17,7 +17,7 @@ import { eduConnectClient } from 'libs/eduConnectClient'
 
 export const IdentityCheckEduConnectForm = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch } = useIdentityCheckContext()
+  const { dispatch } = useSubscriptionContext()
 
   const webViewRef = useRef<WebView>(null)
   const [webViewSource, setWebViewSource] = useState<WebViewSource>()

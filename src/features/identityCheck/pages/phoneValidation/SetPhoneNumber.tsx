@@ -13,7 +13,7 @@ import {
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
@@ -37,7 +37,7 @@ const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = () => {
   const titleID = uuidv4()
-  const { dispatch, phoneValidation } = useIdentityCheckContext()
+  const { dispatch, phoneValidation } = useSubscriptionContext()
   const [phoneNumber, setPhoneNumber] = useState(phoneValidation?.phoneNumber ?? '')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)

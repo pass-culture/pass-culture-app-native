@@ -94,8 +94,8 @@ jest.mock('features/auth/api', () => ({
 }))
 jest.mock('features/auth/settings')
 
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({ identification: { processing: false } }),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({ identification: { processing: false } }),
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))

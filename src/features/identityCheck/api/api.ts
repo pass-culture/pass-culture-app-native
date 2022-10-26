@@ -6,8 +6,8 @@ import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
 import { MaintenancePageType, ProfileUpdateRequest, ProfileOptionsResponse } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { IdentityCheckState } from 'features/identityCheck/context/types'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { SubscriptionState } from 'features/identityCheck/context/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env, WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys, QueryKeys } from 'libs/queryKeys'
@@ -47,9 +47,7 @@ export function useIdentificationUrl() {
   return identificationUrl
 }
 
-const getCompleteProfile = (
-  profile: IdentityCheckState['profile']
-): ProfileUpdateRequest | null => {
+const getCompleteProfile = (profile: SubscriptionState['profile']): ProfileUpdateRequest | null => {
   if (
     profile.status &&
     profile.address &&
@@ -74,7 +72,7 @@ const getCompleteProfile = (
 }
 
 export function usePatchProfile() {
-  const { profile } = useIdentityCheckContext()
+  const { profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
   return useMutation(
     () => {

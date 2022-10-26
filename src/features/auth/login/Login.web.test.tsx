@@ -12,8 +12,8 @@ import { Login } from './Login'
 jest.mock('react-query')
 
 const mockIdentityCheckDispatch = jest.fn()
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 
 describe('<Login/>', () => {

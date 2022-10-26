@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -18,7 +18,7 @@ export function IdentityCheckValidation() {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { dispatch, identification } = useIdentityCheckContext()
+  const { dispatch, identification } = useSubscriptionContext()
 
   const birthDate = identification.birthDate
     ? format(parse(identification.birthDate, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy')

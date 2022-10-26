@@ -1,12 +1,12 @@
 import React from 'react'
 
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
-import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
 import { fireEvent, render } from 'tests/utils'
 
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),
     ...mockState,
   })),

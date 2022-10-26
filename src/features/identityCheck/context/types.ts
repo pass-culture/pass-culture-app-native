@@ -17,7 +17,7 @@ interface PhoneNumber {
   }
 }
 
-export interface IdentityCheckState {
+export interface SubscriptionState {
   step: IdentityCheckStep | null
   phoneValidation: PhoneNumber | null
   profile: {

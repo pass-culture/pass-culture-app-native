@@ -2,7 +2,7 @@ import React from 'react'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -14,7 +14,7 @@ import { IdentityCheckStartContent } from './IdentityCheckStartContent'
 export const IdentityCheckStart = () => {
   const { visible, showModal, hideModal } = useModal(false)
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch } = useIdentityCheckContext()
+  const { dispatch } = useSubscriptionContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
   const onPressContinue = () => {

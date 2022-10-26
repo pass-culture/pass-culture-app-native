@@ -4,14 +4,14 @@ import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckValidation() {
-  const { dispatch, identification } = useIdentityCheckContext()
+  const { dispatch, identification } = useSubscriptionContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const birthDate = identification.birthDate

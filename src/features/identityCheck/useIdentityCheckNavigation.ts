@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/api'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
+import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
 import {
   IdentityCheckRootStackParamList,
   UseNavigationType,
@@ -24,7 +24,7 @@ const getCurrentStep = (steps: StepConfig[], currentRoute: keyof IdentityCheckRo
 
 const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
   const { name } = useRoute()
-  const steps = useIdentityCheckSteps()
+  const steps = useSubscriptionSteps()
   const currentRoute = isIdentityCheckRoute(name) ? name : null
   const currentStep = currentRoute ? getCurrentStep(steps, currentRoute) : null
   return currentStep ? currentStep.name : null
@@ -32,7 +32,7 @@ const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
 
 const useNextScreenOrStep = (): NextScreenOrStep => {
   const { name } = useRoute()
-  const steps = useIdentityCheckSteps()
+  const steps = useSubscriptionSteps()
   const currentRoute = isIdentityCheckRoute(name) ? name : null
   return getNextScreenOrStep(steps, currentRoute)
 }
@@ -41,7 +41,7 @@ export const useIdentityCheckNavigation = (): {
   navigateToNextScreen: () => void
   isSavingCheckpoint: boolean
 } => {
-  const { dispatch } = useIdentityCheckContext()
+  const { dispatch } = useSubscriptionContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const currentStep = useCurrentIdentityCheckStep()
   const nextScreenOrStep = useNextScreenOrStep()

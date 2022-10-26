@@ -3,7 +3,7 @@ import React from 'react'
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEnableNewIdentificationFlow } from 'libs/firebase/firestore/featureFlags'
@@ -15,8 +15,8 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { IconInterface } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
-export const useIdentityCheckSteps = (): StepConfig[] => {
-  const { profile, identification } = useIdentityCheckContext()
+export const useSubscriptionSteps = (): StepConfig[] => {
+  const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { data: nextSubscriptionStep } = useNextSubscriptionStep()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()

@@ -6,7 +6,7 @@ import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { useProfileOptions } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
@@ -23,7 +23,7 @@ import { Spacer } from 'ui/theme'
 export const SetSchoolType = () => {
   const { schoolTypes, activities } = useProfileOptions()
 
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useSubscriptionContext()
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(
     profile.schoolType || null
   )

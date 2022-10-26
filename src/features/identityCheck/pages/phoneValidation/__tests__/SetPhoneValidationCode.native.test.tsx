@@ -12,8 +12,8 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/settings')
 const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({
     dispatch: mockDispatch,
     phoneValidation: {
       phoneNumber: '0612345678',

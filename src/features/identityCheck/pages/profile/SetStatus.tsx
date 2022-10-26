@@ -7,7 +7,7 @@ import { ActivityIdEnum } from 'api/gen'
 import { useProfileOptions } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -25,7 +25,7 @@ type StatusForm = {
 
 export const SetStatus = () => {
   const { activities } = useProfileOptions()
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useSubscriptionContext()
   const isUserUnderage = useIsUserUnderage()
   const { navigateToNextScreen, isSavingCheckpoint } = useIdentityCheckNavigation()
   const titleID = uuidv4()

@@ -25,8 +25,8 @@ jest.mock('react-query', () => ({
   useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
   useQuery: jest.fn(),
 }))
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),

@@ -22,8 +22,8 @@ jest.mock('features/identityCheck/api/api', () => {
   }
 })
 const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({
     dispatch: mockDispatch,
     phoneValidation: { phoneNumber: undefined, country: undefined },
   }),
