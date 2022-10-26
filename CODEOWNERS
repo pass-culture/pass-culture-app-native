@@ -1,5 +1,3 @@
-*                                            @pass-culture/jeunes
-
 src/features/_marketingAndCommunication/     @pass-culture/jeunes-retention      # Pourquoi il y a un _ ?
 src/features/auth/                           @pass-culture/jeunes-acquisition
 src/features/bookOffer/                      @pass-culture/jeunes-retention
