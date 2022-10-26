@@ -1911,11 +1911,6 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  appEnableCategoryFilterPage: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   appEnableCookiesV2: boolean
   /**
    * @type {boolean}

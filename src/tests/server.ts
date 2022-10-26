@@ -131,7 +131,6 @@ function requestSettingsSuccess(
     accountCreationMinimumAge: 15,
     accountUnsuspensionLimit: 60,
     appEnableAutocomplete: true,
-    appEnableCategoryFilterPage: false,
     appEnableCookiesV2: true,
     autoActivateDigitalBookings: false,
     disableStoreReview: false,
