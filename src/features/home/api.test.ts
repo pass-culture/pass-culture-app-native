@@ -4,15 +4,15 @@ import { rest } from 'msw'
 import { processHomepageEntry } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import {
-  homepageEntriesAPIResponse,
   adaptedHomepageEntry,
   adaptedSecondHomepageEntry,
+  homepageEntriesAPIResponse,
 } from 'tests/fixtures/homepageEntries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { getEntries, BASE_URL, PARAMS, useHomepageModules } from './api'
+import { BASE_URL, getEntries, PARAMS, useHomepageModules } from './api'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
@@ -38,10 +38,12 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.modules.length > 0)
-      expect(result.current).toEqual({
-        modules: processHomepageEntry(adaptedHomepageEntry),
-        homeEntryId: '16PgpnlCOYYIhUTclR0oO4',
+      await waitFor(() => {
+        expect(result.current).toEqual({
+          modules: processHomepageEntry(adaptedHomepageEntry),
+          homeEntryId: '16PgpnlCOYYIhUTclR0oO4',
+          thematicHomeHeader: undefined,
+        })
       })
     })
 
@@ -50,11 +52,12 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.modules.length > 0)
-
-      expect(result.current).toEqual({
-        modules: processHomepageEntry(adaptedSecondHomepageEntry),
-        homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
+      await waitFor(() => {
+        expect(result.current).toEqual({
+          modules: processHomepageEntry(adaptedSecondHomepageEntry),
+          homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
+          thematicHomeHeader: undefined,
+        })
       })
     })
 

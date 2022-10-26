@@ -238,6 +238,8 @@ export interface RecommendationParametersFields {
 interface HomepageNatifFields {
   title: string
   modules: HomepageModule[]
+  thematicHeaderTitle?: string
+  thematicHeaderSubtitle?: string
 }
 
 export type HomepageModule =

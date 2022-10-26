@@ -1,5 +1,5 @@
 import resolveResponse from 'contentful-resolve-response'
-import { useMemo, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
@@ -47,6 +47,16 @@ export function useHomepageModules(paramsHomepageEntryId?: string) {
 
   const homepageEntry = selectHomepageEntry(homepageEntries || [])
   const homepageEntryId = homepageEntry?.sys.id
+  const homepageData = {
+    homeEntryId: homepageEntryId,
+    modules: homepageEntry ? processHomepageEntry(homepageEntry) : [],
+    thematicHeader: homepageEntry?.fields.thematicHeaderTitle
+      ? {
+          title: homepageEntry?.fields.thematicHeaderTitle,
+          subtitle: homepageEntry?.fields.thematicHeaderSubtitle,
+        }
+      : undefined,
+  }
 
   useEffect(() => {
     if (homepageEntryId) {
@@ -55,10 +65,7 @@ export function useHomepageModules(paramsHomepageEntryId?: string) {
   }, [homepageEntryId])
 
   return useMemo(
-    () =>
-      homepageEntry
-        ? { modules: processHomepageEntry(homepageEntry), homeEntryId: homepageEntryId }
-        : { modules: [] },
+    () => ({ ...homepageData }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [homepageEntryId]
   )
