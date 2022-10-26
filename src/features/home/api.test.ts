@@ -5,6 +5,7 @@ import { processHomepageEntry } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
 import { adaptedSecondHomepageEntry } from 'tests/fixtures/adaptedSecondHomepageEntry'
+import { adaptedThematicHomepageEntry } from 'tests/fixtures/adaptedThematicHomepageEntry'
 import { homepageEntriesAPIResponse } from 'tests/fixtures/homepageEntriesAPIResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -55,6 +56,23 @@ describe('Home api calls', () => {
           modules: processHomepageEntry(adaptedSecondHomepageEntry),
           homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
           thematicHomeHeader: undefined,
+        })
+      })
+    })
+    it('calls the API and returns the data of a thematic home page', async () => {
+      const thematicHomeId = '7IuIeovqUykM1uvWwwPPh8'
+      const { result } = renderHook(() => useHomepageData(thematicHomeId), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => {
+        expect(result.current).toEqual({
+          modules: processHomepageEntry(adaptedThematicHomepageEntry),
+          homeEntryId: '7IuIeovqUykM1uvWwwPPh8',
+          thematicHeader: {
+            title: 'cinéma',
+            subtitle: 'Fais le plein de cinéma',
+          },
         })
       })
     })
