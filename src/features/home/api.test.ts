@@ -12,7 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { BASE_URL, getEntries, PARAMS, useHomepageModules } from './api'
+import { BASE_URL, getEntries, PARAMS, useHomepageData } from './api'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
@@ -34,7 +34,7 @@ describe('Home api calls', () => {
 
   describe('useHomepageModules', () => {
     it('calls the API and returns the data', async () => {
-      const { result } = renderHook(useHomepageModules, {
+      const { result } = renderHook(useHomepageData, {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -48,7 +48,7 @@ describe('Home api calls', () => {
     })
 
     it('calls the API and returns the data with specified entryId', async () => {
-      const { result } = renderHook(() => useHomepageModules(entryId), {
+      const { result } = renderHook(() => useHomepageData(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -62,7 +62,7 @@ describe('Home api calls', () => {
     })
 
     it('should log ConsultHome with specified entryId', async () => {
-      renderHook(() => useHomepageModules(entryId), {
+      renderHook(() => useHomepageData(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 

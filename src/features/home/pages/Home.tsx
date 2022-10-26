@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useHomepageModules } from 'features/home/api'
+import { useHomepageData } from 'features/home/api'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import {
   BusinessModule,
@@ -128,7 +128,7 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, homeEntryId } = useHomepageModules(params?.entryId) || {}
+  const { modules, homeEntryId } = useHomepageData(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)

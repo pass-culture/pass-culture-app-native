@@ -9,6 +9,7 @@ import {
   HomepageEntry,
   processHomepageEntry,
 } from 'features/home/contentful'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
@@ -34,7 +35,18 @@ export async function getEntries() {
   }
 }
 
-export function useHomepageModules(paramsHomepageEntryId?: string) {
+interface HomepageData {
+  homeEntryId: string | undefined
+  modules: ProcessedModule[]
+  thematicHeader:
+    | {
+        title: string | undefined
+        subtitle: string | undefined
+      }
+    | undefined
+}
+
+export const useHomepageData = (paramsHomepageEntryId?: string): HomepageData => {
   const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
   // this fetches all homepages available in contentful
   const { data: homepageEntries } = useQuery<HomepageEntry[]>(
