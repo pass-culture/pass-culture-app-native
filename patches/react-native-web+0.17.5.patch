@@ -95,25 +95,26 @@ index d55b552..1d968da 100644
    supportedProps.onBlur = handleBlur;
    supportedProps.onChange = handleChange;
 diff --git a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
-index 05a53ed..44a0c0e 100644
+index 05a53ed..a4d1bf0 100644
 --- a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 +++ b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
-@@ -1127,6 +1127,14 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+@@ -1127,6 +1127,15 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
      });
  
      this._hasMore = this.state.last < this.props.getItemCount(this.props.data) - 1;
 +
 +    const headerIdx = cells.findIndex((cell) => cell.key === "$header")
 +    const footerIdx = cells.findIndex((cell) => cell.key === "$footer")
++    const emptyComponentIdx = cells.findIndex((cell) => cell.key === "$empty")
 +    const cellsWithoutHeaderAndFooter = cells.filter((_,idx) => !([headerIdx, footerIdx].includes(idx)))
-+    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs && emptyComponentIdx === -1
 +    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null
 +    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells
 +
      var innerRet = /*#__PURE__*/React.createElement(VirtualizedListContextProvider, {
        value: {
          cellKey: null,
-@@ -1140,7 +1148,7 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
+@@ -1140,7 +1149,7 @@ var VirtualizedList = /*#__PURE__*/function (_React$PureComponent) {
        }
      }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
        ref: this._captureScrollRef
@@ -122,7 +123,7 @@ index 05a53ed..44a0c0e 100644
      var ret = innerRet;
  
      if (this.props.debug) {
-@@ -1581,9 +1589,10 @@ var CellRenderer = /*#__PURE__*/function (_React$Component) {
+@@ -1581,9 +1590,10 @@ var CellRenderer = /*#__PURE__*/function (_React$Component) {
        style: cellStyle,
        onLayout: onLayout
      }), element, itemSeparator);

@@ -55,13 +55,13 @@ commands:
       - restore_cache:
           name: Restore Node Modules
           keys:
-            - node-modules-v15-{{ checksum "yarn.lock" }}-{{ arch }}
+            - node-modules-v16-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
       - save_cache:
           name: Save Node Modules
-          key: node-modules-v15-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-modules-v16-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - node_modules
 
