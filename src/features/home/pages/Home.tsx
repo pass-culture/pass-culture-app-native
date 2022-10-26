@@ -1,11 +1,11 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState, FunctionComponent, memo } from 'react'
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
 import {
   FlatList,
-  ScrollView,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
+  ScrollView,
 } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -17,11 +17,11 @@ import {
   OffersModule,
   VenuesModule,
 } from 'features/home/components'
+import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
-import { HomeHeader } from 'features/home/components/HomeHeader'
-import { RecommendationModule } from 'features/home/components/RecommendationModule'
+import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
-import { RecommendationPane, ProcessedModule } from 'features/home/contentful/moduleTypes'
+import { ProcessedModule, RecommendationPane } from 'features/home/contentful/moduleTypes'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { usePushNotificationsContext } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'

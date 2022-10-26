@@ -3,14 +3,14 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
-import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityModule.utils'
+import { shouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
 import { ContentTypes, ExclusivityPane } from 'features/home/contentful'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
+import { getSpacing, LENGTH_XL, MARGIN_DP, RATIO_EXCLU, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export interface ExclusivityModuleProps extends ExclusivityPane {

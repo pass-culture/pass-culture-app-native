@@ -119,9 +119,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
               style={
                 Object {
                   "alignItems": "center",
-                  "flexBasis": 0,
                   "flexGrow": 1,
-                  "flexShrink": 1,
                   "height": 40,
                   "justifyContent": "center",
                   "maxWidth": 40,
@@ -951,9 +949,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               style={
                 Object {
                   "alignItems": "center",
-                  "flexBasis": 0,
                   "flexGrow": 1,
-                  "flexShrink": 1,
                   "height": 40,
                   "justifyContent": "center",
                   "maxWidth": 40,

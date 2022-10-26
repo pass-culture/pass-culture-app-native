@@ -26,6 +26,7 @@ import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/cheatcodes/pages/NavigationProfile'
+import { ThematicHomeHeaderCheatcode } from 'features/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeHeaderCheatcode'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
@@ -395,5 +396,12 @@ export const routes: Route[] = [
       path: 'ab-testing-poc',
     },
     options: { title: 'POC A/B Testing' },
+  },
+  {
+    // debug route: in navigation component
+    name: 'ThematicHomeHeaderCheatcode',
+    component: ThematicHomeHeaderCheatcode,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-thematic-home-header',
   },
 ]
