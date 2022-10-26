@@ -14,6 +14,13 @@ describe('getAge', () => {
     expect(result.current).toEqual(14)
   })
 
+  it('should render 14 when the date is almost 15 years old', () => {
+    const FIFTEEN_YEARS_OLD_DATE_MINUS_ONE_DAY = '2007-10-25'
+    const { result } = renderHook(() => getAge(FIFTEEN_YEARS_OLD_DATE_MINUS_ONE_DAY))
+
+    expect(result.current).toEqual(14)
+  })
+
   it('should render 15 when 15 years old date', () => {
     const FIFTEEN_YEARS_OLD_DATE = '2007-10-24'
     const { result } = renderHook(() => getAge(FIFTEEN_YEARS_OLD_DATE))
