@@ -17,6 +17,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { FilterButton } from 'features/search/atoms/Buttons/FilterButton/FilterButton'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/atoms/Buttons/HiddenNavigateToSuggestionsButton'
+import { useHasPosition } from 'features/search/components/useHasPosition'
 import { LocationModal } from 'features/search/pages/LocationModal'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
@@ -74,6 +75,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const hasEditableSearchInput =
     params?.view === SearchView.Suggestions || params?.view === SearchView.Results
   const activeFilters = useFilterCount(searchState)
+
+  const hasPosition = useHasPosition()
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
@@ -214,7 +217,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               resetQuery={resetQuery}
               onFocus={onFocus}
               showLocationButton={params === undefined || params.view === SearchView.Landing}
-              locationLabel={locationLabel}
+              locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
             />
           </FlexView>

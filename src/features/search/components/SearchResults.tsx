@@ -12,6 +12,7 @@ import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/S
 import { GeolocationButton } from 'features/search/atoms/Buttons/GeolocationButton'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
+import { useHasPosition } from 'features/search/components/useHasPosition'
 import { useLocationChoice } from 'features/search/components/useLocationChoice'
 import { Categories } from 'features/search/pages/Categories'
 import { LocationModal } from 'features/search/pages/LocationModal'
@@ -85,6 +86,7 @@ export const SearchResults: React.FC = () => {
     hideModal: hideLocationModal,
   } = useModal(false)
   const { position, showGeolocPermissionModal } = useGeolocation()
+  const hasPosition = useHasPosition()
 
   const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
   const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
@@ -215,10 +217,10 @@ export const SearchResults: React.FC = () => {
           <Spacer.Row numberOfSpaces={6} />
           <ButtonContainer>
             <SingleFilterButton
-              label={locationLabel}
+              label={hasPosition ? locationLabel : 'Localisation'}
               testID="locationButton"
               onPress={showLocationModal}
-              isSelected
+              isSelected={hasPosition}
             />
           </ButtonContainer>
           <Spacer.Row numberOfSpaces={2} />

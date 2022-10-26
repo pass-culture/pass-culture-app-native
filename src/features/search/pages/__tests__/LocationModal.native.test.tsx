@@ -34,7 +34,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
+const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPositionError: GeolocationError | null = null
@@ -451,6 +451,23 @@ describe('LocationModal component', () => {
       fireEvent.press(radioButton)
     })
     expect(queryByTestId('slider')).toBeTruthy()
+  })
+
+  it('should display Aucune localisation in RadioButtonLocation.EVERYWHERE when position is null', async () => {
+    mockPosition = null
+    const { queryByText } = renderLocationModal({ hideLocationModal })
+
+    await act(async () => {
+      expect(queryByText('Aucune localisation')).toBeTruthy()
+    })
+  })
+
+  it('should display Partout in RadioButtonLocation.EVERYWHERE when position is not null', async () => {
+    const { queryByText } = renderLocationModal({ hideLocationModal })
+
+    await act(async () => {
+      expect(queryByText('Partout')).toBeTruthy()
+    })
   })
 
   it('should show then hide geolocation activation modal if GeolocPermissionState is NEVER_ASK_AGAIN and user choose AROUND_ME then click to open settings', async () => {
