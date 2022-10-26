@@ -10,9 +10,9 @@ import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/com
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useSubscriptionSteps } from 'features/identityCheck/useIdentityCheckSteps'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/useSetCurrentSubscriptionStep'
-import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
+import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
+import { getStepState } from 'features/identityCheck/utils/getStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
@@ -31,8 +31,9 @@ export const IdentityCheckStepper = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const steps = useSubscriptionSteps()
-  const getStepState = useGetStepState()
   const context = useSubscriptionContext()
+  const currentStep = context.step
+
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetch } = useUserProfileInfo()
@@ -117,7 +118,7 @@ export const IdentityCheckStepper = () => {
               <Li key={step.name}>
                 <StepButton
                   step={step}
-                  state={getStepState(step.name)}
+                  state={getStepState(steps, step.name, currentStep)}
                   navigateTo={
                     step.name === IdentityCheckStep.IDENTIFICATION &&
                     context.identification.method === null
