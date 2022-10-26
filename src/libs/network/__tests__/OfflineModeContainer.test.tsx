@@ -30,26 +30,21 @@ describe('<OfflineModeContainer />', () => {
       isConnected: true,
       isInternetReachable: true,
     }))
-    const renderAPI = render(jsx)
+    const renderAPI = renderOfflineModeContainer()
     expect(renderAPI.queryByText('aucune connexion internet.')).toBeFalsy()
 
     mockUseNetInfoContext.mockImplementationOnce(() => ({
       isConnected: false,
       isInternetReachable: false,
     }))
-    renderAPI.rerender(
-      <OfflineModeContainer>
-        <View>
-          <Text>Hello World</Text>
-        </View>
-      </OfflineModeContainer>
-    )
+    renderAPI.rerender(getJsx())
 
     expect(renderAPI.queryByText('aucune connexion internet.')).toBeTruthy()
   })
 })
 
-const jsx = (
+// for rerender, it cannot be static, it has to be new
+const getJsx = () => (
   <OfflineModeContainer>
     <View>
       <Text>Hello World</Text>
@@ -58,11 +53,5 @@ const jsx = (
 )
 
 function renderOfflineModeContainer() {
-  return render(
-    <OfflineModeContainer>
-      <View>
-        <Text>Hello World</Text>
-      </View>
-    </OfflineModeContainer>
-  )
+  return render(getJsx())
 }
