@@ -77,7 +77,7 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Errors 🎨" onPress={() => navigate('NavigationErrors')} />
+            <ButtonPrimary wording="Errors 👾" onPress={() => navigate('NavigationErrors')} />
           </Row>
           <Row half>
             <ButtonPrimary
