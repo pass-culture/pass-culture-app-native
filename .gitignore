@@ -116,3 +116,5 @@ firebase-debug.log
 
 # artifacts
 *.apk
+*.zip
+/e2e/assets
