@@ -8,7 +8,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { BatchUser } from 'libs/react-native-batch'
 import { flushAllPromises, render } from 'tests/utils'
 
-import { Home } from '../Home'
+import { Home } from './Home'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
