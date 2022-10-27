@@ -4,7 +4,7 @@ import { fetchAndActivate, getAll } from 'firebase/remote-config'
 // See https://github.com/invertase/react-native-firebase/discussions/6562
 import firebaseRemoteConfig from 'libs/firebase/shims/remote-config/index.web'
 
-import { CustomRemoteConfig, NotificationsTrigger } from './remoteConfig.types'
+import { CustomRemoteConfig } from './remoteConfig.types'
 
 export const remoteConfig = {
   async refresh() {
@@ -22,7 +22,6 @@ export const remoteConfig = {
       homeEntryIdWithoutBooking_15_17: parameters.homeEntryIdWithoutBooking_15_17.asString(),
       homeEntryId_18: parameters.homeEntryId_18.asString(),
       homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
-      notificationsTrigger: parameters.notificationsTrigger.asString() as NotificationsTrigger,
     }
   },
 }

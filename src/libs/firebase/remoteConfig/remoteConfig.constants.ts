@@ -1,4 +1,4 @@
-import { CustomRemoteConfig, NotificationsTrigger } from './remoteConfig.types'
+import { CustomRemoteConfig } from './remoteConfig.types'
 
 export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   test_param: 'A',
@@ -8,5 +8,4 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: '',
   homeEntryId_18: '',
   homeEntryId_15_17: '',
-  notificationsTrigger: NotificationsTrigger.HOME,
 }

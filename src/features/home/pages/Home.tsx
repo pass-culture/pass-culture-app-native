@@ -24,10 +24,7 @@ import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/co
 import { ProcessedModule, RecommendationPane } from 'features/home/contentful/moduleTypes'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { usePushNotificationsContext } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
-import { NotificationsTrigger } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -131,8 +128,6 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { notificationsTrigger } = useRemoteConfigContext()
-  const { showPushNotificationsModalForFirstTime } = usePushNotificationsContext()
   const { modules, homeEntryId } = useHomepageModules(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
@@ -174,10 +169,6 @@ export const OnlineHome: FunctionComponent = () => {
 
     return () => clearInterval(loadMore)
   }, [modules.length, isLoading, maxIndex])
-
-  if (notificationsTrigger === NotificationsTrigger.HOME) {
-    showPushNotificationsModalForFirstTime()
-  }
 
   return (
     <Container>
