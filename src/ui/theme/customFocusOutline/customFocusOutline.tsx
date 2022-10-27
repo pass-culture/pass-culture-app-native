@@ -13,12 +13,17 @@ import { ColorsEnum } from 'ui/theme/colors'
  */
 const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-visible'
 
-export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum, isFocus?: boolean) {
+export function customFocusOutline(
+  theme: DefaultTheme,
+  color?: ColorsEnum,
+  isFocus?: boolean,
+  noOffset?: boolean
+) {
   const outlineRules = {
     outlineColor: color ?? theme.outline.color,
     outlineWidth: theme.outline.width,
     outlineStyle: theme.outline.style,
-    outlineOffset: theme.outline.offSet,
+    outlineOffset: noOffset ? 0 : theme.outline.offSet,
   }
 
   const outlineFocusWeb = isFocus
