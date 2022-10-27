@@ -46,12 +46,6 @@ export const IdentityCheckStepper = () => {
   } = useModal(false)
 
   useEffect(() => {
-    if (context.step === null && steps[0])
-      context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [steps.length])
-
-  useEffect(() => {
     const showMaintenance = () => {
       if (subscription?.nextSubscriptionStep === SubscriptionStep.maintenance) {
         navigate('IdentityCheckUnavailable', {
