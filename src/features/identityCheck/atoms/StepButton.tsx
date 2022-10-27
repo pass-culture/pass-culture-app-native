@@ -45,7 +45,6 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
 }
 
 const StyledTouchableLink = styled(TouchableLink)<{
-  disabled: boolean
   state: StepButtonState
 }>(({ state, theme }) => ({
   height: getSpacing(24),
