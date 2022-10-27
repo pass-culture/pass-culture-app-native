@@ -6,12 +6,6 @@ export type CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: string
   homeEntryId_18: string
   homeEntryId_15_17: string
-  notificationsTrigger: NotificationsTrigger
-}
-
-export enum NotificationsTrigger {
-  HOME = 'home',
-  STARTUP = 'startup',
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
