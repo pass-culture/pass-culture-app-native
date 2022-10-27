@@ -1,5 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import {
   FlatList,
   NativeScrollEvent,
@@ -12,18 +12,10 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
-import {
-  BusinessModule,
-  ExclusivityModule,
-  OffersModule,
-  VenuesModule,
-} from 'features/home/components'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
-import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
-import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
-import { ProcessedModule, RecommendationPane } from 'features/home/contentful/moduleTypes'
-import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
+import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -45,75 +37,10 @@ const ListHeaderComponent = () => {
   )
 }
 
-const UnmemoizedModule = ({
-  item,
-  index,
-  homeEntryId,
-}: {
-  item: ProcessedModule
-  index: number
-  homeEntryId: string | undefined
-}) => {
-  if (isOfferModuleTypeguard(item))
-    return (
-      <OffersModule
-        moduleId={item.moduleId}
-        search={item.search}
-        display={item.display}
-        cover={item instanceof OffersWithCover ? item.cover : null}
-        index={index}
-        homeEntryId={homeEntryId}
-      />
-    )
-
-  if (isVenuesModuleTypeguard(item))
-    return (
-      <VenuesModule
-        moduleId={item.moduleId}
-        display={item.display}
-        search={item.search}
-        homeEntryId={homeEntryId}
-        index={index}
-      />
-    )
-
-  if (item instanceof RecommendationPane)
-    return (
-      <RecommendationModule
-        moduleId={item.moduleId}
-        index={index}
-        displayParameters={item.displayParameters}
-        recommendationParameters={item.recommendationParameters}
-        homeEntryId={homeEntryId}
-      />
-    )
-
-  if (item instanceof ExclusivityPane)
-    return (
-      <ExclusivityModule
-        moduleId={item.moduleId}
-        title={item.title}
-        alt={item.alt}
-        image={item.image}
-        offerId={item.offerId}
-        display={item.display}
-        homeEntryId={homeEntryId}
-        index={index}
-      />
-    )
-
-  if (item instanceof BusinessPane)
-    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} />
-
-  return <React.Fragment></React.Fragment>
-}
-
-const Module = memo(UnmemoizedModule)
-
 const renderModule = (
   { item, index }: { item: ProcessedModule; index: number },
   homeEntryId: string | undefined
-) => <Module item={item} index={index} homeEntryId={homeEntryId} />
+) => <HomeModule item={item} index={index} homeEntryId={homeEntryId} />
 
 const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   return (
