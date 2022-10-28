@@ -5,7 +5,7 @@ const color = theme.colors.white
 
 describe('customWebFocusOutline', () => {
   it('should display the custom outline if isFocus = true', () => {
-    const result = customFocusOutline({ theme, isFocus: true })
+    const result = customFocusOutline({ isFocus: true })
     expect(result).toEqual({
       outlineColor: theme.outline.color,
       outlineStyle: theme.outline.style,
@@ -15,7 +15,7 @@ describe('customWebFocusOutline', () => {
   })
 
   it('should change the custom outline color if useFocus = true and use custom color', () => {
-    const result = customFocusOutline({ theme, color, isFocus: true })
+    const result = customFocusOutline({ color, isFocus: true })
     expect(result).toEqual({
       outlineColor: theme.colors.white,
       outlineStyle: theme.outline.style,
@@ -25,7 +25,7 @@ describe('customWebFocusOutline', () => {
   })
 
   it('should display the custom outline when isFocus = false', () => {
-    const result = customFocusOutline({ theme, isFocus: false })
+    const result = customFocusOutline({ isFocus: false })
     expect(result).toEqual({
       '&:active': { outline: 'none', opacity: theme.activeOpacity },
       '&:focus-visible': {
@@ -38,7 +38,7 @@ describe('customWebFocusOutline', () => {
   })
 
   it('should change the custom outline color if when isFocus = false and use custom color', () => {
-    const result = customFocusOutline({ theme, color, isFocus: false })
+    const result = customFocusOutline({ color, isFocus: false })
     expect(result).toEqual({
       '&:active': { outline: 'none', opacity: theme.activeOpacity },
       '&:focus-visible': {

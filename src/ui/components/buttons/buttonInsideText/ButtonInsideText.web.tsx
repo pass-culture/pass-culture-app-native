@@ -84,7 +84,7 @@ const webStyle = ({
     width: 'fit-content',
     margin: 0,
     padding: 0,
-    ...customFocusOutline({ theme, color: color ?? theme.colors.primary, noOffset: true }),
+    ...customFocusOutline({ color: color ?? theme.colors.primary, noOffset: true }),
     ...getHoverStyle(color ?? theme.colors.primary),
   } as CSSObject)
 

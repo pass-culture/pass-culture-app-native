@@ -135,7 +135,7 @@ const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ theme, isFocus, color: theme.colors.black }),
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))
 
 const ImageContainer = styled.View(({ theme }) => ({

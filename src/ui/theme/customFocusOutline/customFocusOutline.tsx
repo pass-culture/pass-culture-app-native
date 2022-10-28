@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-restricted-imports
 import { isSafari, browserVersion } from 'react-device-detect'
 import { Platform } from 'react-native'
-import { DefaultTheme } from 'styled-components/native'
 
+import { theme } from 'theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -14,12 +14,10 @@ import { ColorsEnum } from 'ui/theme/colors'
 const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-visible'
 
 export function customFocusOutline({
-  theme,
   color,
   isFocus,
   noOffset = false,
 }: {
-  theme: DefaultTheme
   color?: ColorsEnum
   isFocus?: boolean
   noOffset?: boolean
