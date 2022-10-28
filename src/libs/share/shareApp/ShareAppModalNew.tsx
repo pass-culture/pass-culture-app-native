@@ -26,7 +26,7 @@ export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal,
     <AppInformationModal visible={visible} title={title} onCloseIconPress={hideModal}>
       <ShoutIcon />
       <Spacer.Column numberOfSpaces={6} />
-      <StyledBody>{explanation} </StyledBody>
+      <StyledBody>{explanation}</StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Partager"
