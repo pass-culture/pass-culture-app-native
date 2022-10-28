@@ -245,6 +245,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-native": "^3.8.1",
+    "eslint-plugin-testing-library": "^5.9.1",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "file-loader": "^6.2.0",
     "flipper-plugin-react-query-native-devtools": "^3.0.0",
