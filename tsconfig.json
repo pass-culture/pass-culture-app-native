@@ -26,6 +26,7 @@
     "downlevelIteration": true
   },
   "exclude": [
+    "e2e/**",
     "build/**",
     "node_modules/**",
     "babel.config.js",
