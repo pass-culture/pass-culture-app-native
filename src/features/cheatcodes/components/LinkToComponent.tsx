@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import styled from 'styled-components/native'
 
+import { Row } from 'features/cheatcodes/components/Row'
 import {
   RootScreenNames,
   RootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { padding } from 'ui/theme'
 
 interface LinkToComponentProps {
   name?: RootScreenNames
@@ -32,8 +31,3 @@ export const LinkToComponent = ({
     </Row>
   )
 }
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))

@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
+import { Row } from 'features/cheatcodes/components/Row'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
@@ -10,7 +11,7 @@ import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { padding, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export function NavigationProfile(): JSX.Element {
   const {
@@ -86,8 +87,3 @@ const StyledContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))

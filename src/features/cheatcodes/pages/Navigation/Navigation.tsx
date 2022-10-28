@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
+import { Row } from 'features/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
@@ -18,7 +19,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { padding, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
@@ -56,6 +57,9 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="SignUp 🎨" onPress={() => navigate('NavigationSignUp')} />
           </Row>
           <Row half>
+            <ButtonPrimary wording="Share app 🔗" onPress={() => navigate('NavigationShareApp')} />
+          </Row>
+          <Row half>
             <ButtonPrimary
               wording="Cultural Survey 🎨"
               onPress={() => navigate('NavigationCulturalSurvey')}
@@ -63,7 +67,7 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Account Management 🎨"
+              wording="Account Management ⚙️"
               onPress={() => navigate('NavigationAccountSuspension')}
             />
           </Row>
@@ -74,7 +78,7 @@ export function Navigation(): JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Profile 🎨" onPress={() => navigate('NavigationProfile')} />
+            <ButtonPrimary wording="Profile 👤" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>
             <ButtonPrimary wording="Errors 👾" onPress={() => navigate('NavigationErrors')} />
@@ -125,10 +129,7 @@ export function Navigation(): JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Cultural Survey" onPress={() => navigate('CulturalSurvey')} />
-          </Row>
-          <Row half>
-            <ButtonPrimary wording="Venue" onPress={() => navigate('Venue', { id: venueId })} />
+            <ButtonPrimary wording="Venue 🏛️" onPress={() => navigate('Venue', { id: venueId })} />
           </Row>
           <Row half>
             <ButtonPrimary
@@ -202,8 +203,3 @@ const StyledContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))

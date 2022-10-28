@@ -26,6 +26,7 @@ import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/cheatcodes/pages/NavigationProfile'
+import { NavigationShareApp } from 'features/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
 import { ThematicHomeHeaderCheatcode } from 'features/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeHeaderCheatcode'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -277,6 +278,11 @@ export const routes: Route[] = [
     component: NotificationSettings,
     path: 'profil/notifications',
     options: { title: 'Réglages de notifications' },
+  },
+  {
+    name: 'NavigationShareApp',
+    component: NavigationShareApp,
+    path: 'cheat-navigation-share-app',
   },
   {
     name: 'PersonalData',

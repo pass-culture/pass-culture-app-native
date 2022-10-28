@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
+import { Row } from 'features/cheatcodes/components/Row'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
@@ -13,7 +14,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { padding, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export function NavigationIdentityCheck(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
@@ -136,8 +137,3 @@ const StyledContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))

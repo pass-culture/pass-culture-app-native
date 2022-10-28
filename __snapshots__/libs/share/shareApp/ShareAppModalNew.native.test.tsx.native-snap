@@ -1,0 +1,933 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShareAppModalNew should match beneficiary modal snapshot when beneficiary 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-undefined"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    aria-labelledby="testUuidV4"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="modalHeaderTitle"
+        >
+          La culture, ça se partage !
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Fermer la modale"
+          accessibilityRole="button"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        fill="none"
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Recommande l’appli à tes potes pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Partager l'application"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Partager"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Partager
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;
+
+exports[`ShareAppModalNew should match booking modal snapshot when booking 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-undefined"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    aria-labelledby="testUuidV4"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="modalHeaderTitle"
+        >
+          Le bon pote, c’est toi !
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Fermer la modale"
+          accessibilityRole="button"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        fill="none"
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Recommande l’appli à tes proches pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Partager l'application"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Partager"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Partager
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;
+
+exports[`ShareAppModalNew should match underage modal snapshot when underage 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-undefined"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    aria-labelledby="testUuidV4"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="modalHeaderTitle"
+        >
+          Passe la culture à ton voisin !
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Fermer la modale"
+          accessibilityRole="button"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        fill="none"
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Pour les 15-18 ans, le pass Culture offre un crédit dédié à la culture. 
+
+ Fais-en profiter ton entourage !
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Partager l'application"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Partager"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Partager
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;
