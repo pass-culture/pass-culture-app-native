@@ -6,7 +6,7 @@ import {
   ShareAppModalType,
 } from 'libs/share/shareApp/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
+import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorShout } from 'ui/svg/icons/BicolorShout'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -23,11 +23,9 @@ export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal,
   const { title, explanation } = shareAppModalInformations(modalType)
 
   return (
-    <AppModalWithIllustration
-      visible={visible}
-      title={title}
-      Illustration={BicolorShout}
-      hideModal={hideModal}>
+    <AppInformationModal visible={visible} title={title} onCloseIconPress={hideModal}>
+      <ShoutIcon />
+      <Spacer.Column numberOfSpaces={6} />
       <StyledBody>{explanation} </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
@@ -35,10 +33,14 @@ export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal,
         accessibilityLabel="Partager l'application"
         onPress={openShareAppModal}
       />
-    </AppModalWithIllustration>
+    </AppInformationModal>
   )
 }
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const ShoutIcon = styled(BicolorShout).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``
